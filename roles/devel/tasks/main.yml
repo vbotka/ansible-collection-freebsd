@@ -1,0 +1,23 @@
+---
+# devel tasks
+
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
+  tags: [devel_vars, always]
+
+- name: Import help.yml
+  ansible.builtin.import_tasks: help.yml
+  tags: [devel_help, always]
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: devel_debug|bool
+  tags: devel_debug
+
+- name: Import modules.yml
+  ansible.builtin.import_tasks: modules.yml
+  when: devel_modules|bool
+  tags: devel_modules
+
+# EOF
+...

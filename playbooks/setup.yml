@@ -1,0 +1,66 @@
+---
+# All rights reserved (c) 2021, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: setup.yml
+#
+# Description:
+#
+#   Setup collection vbotka.freebsd
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-collection-freebsd/playbooks/setup.yml
+
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  debugger: on_failed
+  collections: vbotka.freebsd
+
+  vars:
+    my_version: "1.0.0"
+    bsd_collection_dir: "{{ playbook_dir.split('/')[:-1]|join('/') }}"
+    bsd_modules_list:
+      - name: iocage
+        branch: release
+        url: https://raw.githubusercontent.com/vbotka/ansible-iocage/release/iocage.py
+      - name: ucl
+        branch: release
+        url: https://raw.githubusercontent.com/vbotka/ansible-ucl/release/ucl.py
+    bsd_modules_checksum:
+      iocage:
+        release: "sha512:020ceb22ec842b22787bc02c4c2855e46dc0cd127c158c5d391b36b4a191c5474bb42c8195e5112477a8d7f76f26f2662dbf9368edc5ae744c82d9fd59026eac"
+      ucl:
+        release: "sha512:7cc91698ba5bbf9d5f786368e91e480e24baee9a00acd1f4c423140c30a72a7e7f8b860515110a58177782430b378bf9ef92a074a63bae99e74b08267f7608f2"
+
+  tasks:
+
+    - name: "setup: Debug"
+      debug:
+        msg: |-
+          my_version [{{ my_version }}]
+          bsd_collection_dir [{{ bsd_collection_dir }}]
+          bsd_modules_list [{{ bsd_modules_list }}]
+          bsd_modules_checksum [{{ bsd_modules_checksum }}]
+      when: bsd_debug|d(false)|bool
+
+    - name: "setup: Get modules"
+      ansible.builtin.get_url:
+        url: "{{ item.url }}"
+        dest: "{{ bsd_collection_dir }}/plugins/modules/{{ item.name }}.py"
+        checksum: "{{ bsd_modules_checksum[item.name][item.branch] }}"
+      loop: "{{ bsd_modules_list }}"
+      loop_control:
+        label: "{{ item.branch }} {{ item.name }}"
+      delegate_to: localhost
+      register: result
+
+    - name: "setup: Debug"
+      debug:
+        var: result
+      when: bsd_debug|d(false)|bool
+
+# EOF
+...

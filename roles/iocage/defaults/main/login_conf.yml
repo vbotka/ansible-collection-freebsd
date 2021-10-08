@@ -1,0 +1,7 @@
+---
+iocage_user: "{{ ansible_env.SUDO_USER }}"
+iocage_login_conf: |
+  me:\
+    :charset=UTF-8:\
+    :lang=en_US.UTF-8:\
+    :setenv=LC_COLLATE=C:

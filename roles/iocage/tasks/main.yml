@@ -1,0 +1,51 @@
+---
+# iocage tasks
+
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
+  tags: [iocage_vars, always]
+
+- name: Import help.yml
+  ansible.builtin.import_tasks: help.yml
+  tags: [iocage_help, always]
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: iocage_debug|bool
+  tags: iocage_debug
+
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
+  when: iocage_install|bool
+  tags: [iocage_packages, iocage_setup]
+
+- name: Import config.yml
+  ansible.builtin.import_tasks: config.yml
+  when: iocage_config|bool
+  tags: [iocage_config, iocage_setup]
+
+- name: Import activate.yml
+  ansible.builtin.import_tasks: activate.yml
+  when: iocage_activate|bool
+  tags: [iocage_activate, iocage_setup]
+
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: iocage_sanity|bool
+  tags: [iocage_sanity, iocage_setup]
+
+- name: Import mng.yml
+  ansible.builtin.import_tasks: mng.yml
+  tags: iocage_mng
+
+- name: Import info.yml
+  ansible.builtin.import_tasks: info.yml
+  tags: iocage_info
+
+- name: Import devel.yml
+  ansible.builtin.import_tasks: devel.yml
+  tags: [iocage_devel, never]
+
+
+# EOF
+...

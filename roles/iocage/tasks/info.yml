@@ -1,0 +1,16 @@
+---
+
+- name: "info: Get iocage facts"
+  iocage:
+
+- name: "info: Debug lists"
+  ansible.builtin.debug:
+    msg: |-
+      iocage_releases = {{ iocage_releases }}
+      iocage_templates = {{ iocage_templates.keys()|list }}
+      iocage_jails = {{ iocage_jails.keys()|list }}
+      iocage_plugins = {{ iocage_plugins.keys()|list }}
+  when: iocage_debug|bool
+
+# EOF
+...

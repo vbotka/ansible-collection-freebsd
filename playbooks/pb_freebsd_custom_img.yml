@@ -1,0 +1,132 @@
+---
+# All rights reserved (c) 2020-2021, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: pb_freebsd_custom_img.yml
+#
+# Description:
+#
+#   This playbook mounts partition with installed FreeBSD and
+#   configures the system.
+#
+# Example:
+#
+#   * Dump the image to the media.
+#     shell> dd if=FreeBSD-12.0-RELEASE-arm-armv6-RPI-B.img of=/dev/mmcsd0 \
+#            bs=1m conv=sync status=progress
+#     (in Linux use bs=1M)
+#   * Fit the variables in the playbook to your needs.
+#   * Run the playbook.
+#     shell> ansible-playbook freebsd-custom-img.yml
+#   * Review the changes and umount the partition manually.
+#   * The system should automaticaly connect to the preconfigured AP and
+#     configure IP adress. It should be possible to ssh to the
+#     preinstalled user.
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ac-freebsd/playbooks/pb_freebsd_custom_img.yml
+
+- hosts: localhost
+  gather_facts: true
+  connection: local
+  debugger: on_failed
+  become: true
+  become_user: root
+  become_method: sudo
+
+  vars:
+    fci_vars_file: freebsd_custom_img_default.yml
+  vars_files:
+    - 'vars/{{ fci_vars_file }}'
+
+  tasks:
+
+    - name: Create mount point
+      ansible.builtin.file:
+        state: directory
+        path: '{{ fci_mount_path }}'
+        mode: '0755'
+      when: fci_mount_point
+      tags: fci_mount_point
+
+    - name: Mount image
+      ansible.posix.mount:
+        state: mounted
+        src: '{{ fci_mount_image }}'
+        path: '{{ fci_mount_path }}'
+        fstype: '{{ fci_mount_fstype }}'
+      when: fci_mount
+      tags: fci_mount
+
+    - name: Configure /boot/loader.conf
+      ansible.builtin.template:
+        src: fci_loader.conf.j2
+        dest: '{{ fci_mount_path }}/boot/loader.conf'
+        owner: root
+        group: wheel
+        mode: '0644'
+      when: fci_loaderconf
+      tags: fci_loaderconf
+
+    - name: Configure /etc/rc.conf
+      when: fci_rcconf
+      ansible.builtin.lineinfile:
+        dest: '{{ fci_mount_path }}/etc/rc.conf'
+        regexp: '^\s*{{ item.key }}\s*=\s*(.*)$'
+        line: '{{ item.key }}="{{ item.value }}"'
+        owner: root
+        group: wheel
+        mode: '0644'
+      loop: '{{ fci_rcconf_data }}'
+      tags: fci_rcconf
+
+    - name: Configure /etc/wpasupplicant.conf
+      when: fci_wpasupconf
+      ansible.builtin.template:
+        src: fci_wpa_supplicant.conf.j2
+        dest: '{{ fci_mount_path }}/{{ fci_wpasupconf_file }}.{{ item.dev }}'
+        owner: '{{ fci_wpasupconf_owner }}'
+        group: '{{ fci_wpasupconf_group }}'
+        mode: '{{ fci_wpasupconf_mode }}'
+        backup: '{{ fci_wpasupconf_backup }}'
+      loop: '{{ fci_wpasupconf_data }}'
+      tags: fci_wpasupconf
+
+    - name: Link /etc/wpasupplicant.conf
+      when: fci_wpasupconf_link
+      ansible.builtin.file:
+        state: link
+        src: "{{ fci_wpasupconf_file }}.{{ fci_wpasupconf_dev_link }}"
+        dest: "{{ fci_wpasupconf_file }}"
+        force: true
+      tags: fci_wpasupconf_link
+
+# Error: The module authorized_key does not work if the user does not exist.
+# "msg": "Failed to lookup user freebsd: 'getpwnam(): name not found: freebsd'"
+#
+#    - name: 'Configure authorized keys'
+#      when: fci_authkeys
+#      authorized_key:
+#        user: '{{ item.user }}'
+#        key: '{{ item.key }}'
+#        exclusive: '{{ item.exclusive|default(omit) }}'
+#        comment: '{{ item.comment|default(omit) }}'
+#        follow: '{{ item.follow|default(omit) }}'
+#        key_options: '{{ item.key_iptions|default(omit) }}'
+#        manage_dir: '{{ item.manage_dir|default(omit) }}'
+#        # path: '{{ item.path|default(omit) }}'
+#        path: '{{ fci_mount_path }}/home/{{ item.user }}/.ssh/authorized_keys'
+#        state: '{{ item.state|default(omit) }}'
+#        validate_certs: '{{ item.validate_certs|default(omit) }}'
+#      loop: '{{ fci_authorized_key }}'
+#      tags: fci_authkeys
+
+# TODO:
+# 1) authorized keys
+# 2) install: pkg, sudo, gettext-runtime, indexinfo, gtar
+# 3) config: sudo
+
+# EOF
+...

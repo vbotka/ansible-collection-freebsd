@@ -1,0 +1,81 @@
+---
+iocage_help_text: |
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Ansible collection: vbotka.freebsd
+  Ansible role: iocage {{ iocage_role_version }}
+
+  Manage FreeBSD Jails by iocage
+
+  USAGE
+
+  Display this help
+  shell> ansible-playbook playbook.yml
+
+  Manage jails
+  shell> ansible-playbook playbook.yml -t iocage_mng
+
+  Display info
+  shell> ansible-playbook playbook.yml -t iocage_info -e iocage_debug=true
+
+  SETUP
+
+  Display variables
+  shell> ansible-playbook playbook.yml -t iocage_debug -e iocage_debug=true
+
+  Install packages
+  shell> ansible-playbook playbook.yml -t iocage_packages -e iocage_install=true
+
+  Configure iocage
+  shell> ansible-playbook playbook.yml -t iocage_config -e iocage_conf=true
+
+  Activate iocage
+  shell> ansible-playbook playbook.yml -t iocage_activate -e iocage_activate=true
+
+  Test sanity
+  shell> ansible-playbook playbook.yml -t iocage_sanity -e iocage_sanity=true
+
+  All-in-one setup. Install packages, configure, activate, and test sanity
+  (eq. -t iocage_packages,iocage_config,iocage_activate,iocage_sanity)
+  shell> ansible-playbook playbook.yml -t iocage_setup
+
+  NOTES
+
+  1) Example playbook.yml
+
+     sheel> cat playbook.yml
+     - hosts: srv.example.com
+       collections:
+         - vbotka.freebsd
+       roles:
+         - iocage
+
+  2) Best practice
+
+     shell> ansible-playbook playbook.yml -t iocage_debug -e iocage_debug=true
+     shell> ansible-playbook playbook.yml -t iocage_packages -e iocage_install=true
+     shell> ansible-playbook playbook.yml -t iocage_config -e iocage_conf=true
+     shell> ansible-playbook playbook.yml -t iocage_activate -e iocage_activate=true
+     shell> ansible-playbook playbook.yml -t iocage_sanity -e iocage_sanity=true
+     shell> ansible-playbook playbook.yml -t iocage_setup
+     shell> ansible-playbook playbook.yml -t iocage_mng
+     shell> ansible-playbook playbook.yml -t iocage_info -e iocage_debug=true
+
+     After succesfull setup disable the installation, configutation and configuration to
+     speedup the play. Disable sanity testing too if not needed.
+
+  3) Optimized for yaml callback
+
+     shell> export ANSIBLE_STDOUT_CALLBACK=yaml
+
+  4) Example setup
+
+     shell> ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ANSIBLE_DISPLAY_OK_HOSTS=false \
+            ansible-playbook playbook.yml -t iocage_setup
+
+     PLAY [srv.example.com] ***************************************************************
+
+     PLAY RECAP ***************************************************************************
+     srv.example.com: ok=23 changed=0 unreachable=0 failed=0 skipped=31 rescued=0 ignored=0
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  https://github.com/vbotka/ansible-collection-freebsd

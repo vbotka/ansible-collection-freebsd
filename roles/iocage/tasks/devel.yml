@@ -1,0 +1,52 @@
+---
+
+- name: "devel: Debug"
+  vars:
+    msg: |-
+      ansible_architecture [{{ ansible_architecture }}]
+      ansible_os_family [{{ ansible_os_family }}]
+      ansible_distribution [{{ ansible_distribution }}]
+      ansible_distribution_major_version [{{ ansible_distribution_major_version }}]
+      ansible_distribution_version [{{ ansible_distribution_version }}]
+      ansible_distribution_release [{{ ansible_distribution_release }}]
+      ansible_python_version [{{ ansible_python_version }}]
+
+      iocage_role_version [{{ iocage_role_version }}]
+      iocage_config [{{ iocage_config }}]
+      iocage_activate [{{ iocage_activate }}]
+      iocage_backup_conf [{{ iocage_backup_conf }}]
+
+      iocage_sanity [{{ iocage_sanity }}]
+      iocage_sanity_platform [{{ iocage_sanity_platform }}]
+      iocage_sanity_ansible_version [{{ iocage_sanity_ansible_version }}]
+      iocage_sanity_packages [{{ iocage_sanity_packages }}]
+
+      iocage_zpool [{{ iocage_zpool }}]
+      iocage_dir_releases [{{ iocage_dir_releases }}]
+      iocage_defaults [{{ iocage_defaults }}]
+
+      iocage_data
+      {{ iocage_data|to_nice_yaml }}
+
+      iocage_python_version [{{ iocage_python_version }}]
+      al_debug [{{ al_debug }}]
+      al_sanity_packages_required
+      {{ al_sanity_packages_required|to_yaml }}
+
+      freebsd_install_method [{{ freebsd_install_method }}]
+      freebsd_use_packages [{{ freebsd_use_packages }}]
+      freebsd_install_retries [{{ freebsd_install_retries }}]
+      freebsd_install_delay [{{ freebsd_install_delay }}]
+      freebsd_flavors_enable [{{ freebsd_flavors_enable }}]
+      freebsd_flavors
+      {{ freebsd_flavors|to_yaml }}
+      iocage_install [{{ iocage_install }}]
+      iocage_packages
+      {{ iocage_packages|to_nice_yaml }}
+      iocage_packages2
+      {{ iocage_packages2|to_nice_yaml }}
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
+
+# EOF
+...

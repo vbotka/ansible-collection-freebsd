@@ -1,0 +1,32 @@
+---
+
+devel_modules_list:
+  - name: iocage
+    branch: current
+    url: "{{ devel_modules_iocage_url.current }}"
+  - name: ucl
+    branch: current
+    url: "{{ devel_modules_ucl_url.current }}"
+
+devel_modules_checksum:
+  iocage:
+    release: "sha512:020ceb22ec842b22787bc02c4c2855e46dc0cd127c158c5d391b36b4a191c5474bb42c8195e5112477a8d7f76f26f2662dbf9368edc5ae744c82d9fd59026eac"
+    current: "sha512:020ceb22ec842b22787bc02c4c2855e46dc0cd127c158c5d391b36b4a191c5474bb42c8195e5112477a8d7f76f26f2662dbf9368edc5ae744c82d9fd59026eac"
+  ucl:
+    release: "sha512:7cc91698ba5bbf9d5f786368e91e480e24baee9a00acd1f4c423140c30a72a7e7f8b860515110a58177782430b378bf9ef92a074a63bae99e74b08267f7608f2"
+    current: "sha512:7cc91698ba5bbf9d5f786368e91e480e24baee9a00acd1f4c423140c30a72a7e7f8b860515110a58177782430b378bf9ef92a074a63bae99e74b08267f7608f2"
+
+# https://github.com/vbotka/ansible-iocage
+# https://github.com/vbotka/ansible-iocage/archive/refs/tags/1.1.0.tar.gz
+devel_modules_iocage_url:
+  release: https://raw.githubusercontent.com/vbotka/ansible-iocage/release/iocage.py
+  current: https://raw.githubusercontent.com/vbotka/ansible-iocage/current/iocage.py
+
+# https://github.com/vbotka/ansible-ucl
+# https://github.com/vbotka/ansible-ucl/archive/refs/tags/1.0.0.tar.gz
+devel_modules_ucl_url:
+  release: https://raw.githubusercontent.com/vbotka/ansible-ucl/release/ucl.py
+  current: https://raw.githubusercontent.com/vbotka/ansible-ucl/current/ucl.py
+
+# EOF
+...

@@ -1,0 +1,30 @@
+---
+
+- name: "mng: Manage jails"
+  iocage:
+    state: "{{ item.state|default(omit) }}"
+    name: "{{ item.name|default(omit) }}"
+    args: "{{ item.args|default(omit) }}"
+    clone_from: "{{ item.clone_from|default(omit) }}"
+    cmd: "{{ item.cmd|default(omit) }}"
+    components: "{{ item.components|default(omit) }}"
+    jupdate: "{{ item.jupdate|default(omit) }}"
+    pkglist: "{{ item.pkglist|default(omit) }}"
+    properties: "{{ item.properties|default(omit) }}"
+    release: "{{ item.release|default(omit) }}"
+    user: "{{ item.user|default(omit) }}"
+  loop: "{{ iocage_data }}"
+  register: result
+
+- name: "mng: Debug result without ansible_facts"
+  ansible.builtin.debug:
+    msg: "{{ result.results|map('combine', {'ansible_facts': omit}) }}"
+  when: iocage_debug|bool
+
+- name: "mng: Debug result"
+  ansible.builtin.debug:
+    var: result
+  when: iocage_debug2|bool
+
+# EOF
+...

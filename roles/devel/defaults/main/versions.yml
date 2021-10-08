@@ -1,0 +1,3 @@
+---
+devel_role_version: 1.0.0
+devel_python_version: "{{ ansible_python_version.split('.')[0:2]|join() }}"

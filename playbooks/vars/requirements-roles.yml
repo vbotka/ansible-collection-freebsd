@@ -1,0 +1,148 @@
+---
+requirements:
+  - name: vbotka.ansible
+    src: https://github.com/vbotka/ansible-ansible
+    version: '1.10.2'
+    scm: git
+  - name: vbotka.ansible_lib
+    src: https://github.com/vbotka/ansible-lib
+    version: '1.7.2'
+    scm: git
+  - name: vbotka.ansible_lint
+    src: https://github.com/vbotka/ansible-lint
+    version: '1.4.1'
+    scm: git
+  - name: vbotka.ansible_runner
+    src: https://github.com/vbotka/ansible-runner
+    version: '1.2.1'
+    scm: git
+  - name: vbotka.apache
+    src: https://github.com/vbotka/ansible-apache
+    version: '1.11.1'
+    scm: git
+  - name: vbotka.bsdutils
+    src: https://github.com/vbotka/ansible-bsdutils
+    version: '1.2.2'
+    scm: git
+  - name: vbotka.certificate
+    src: https://github.com/vbotka/ansible-certificate
+    version: '1.4.1'
+    scm: git
+  - name: vbotka.config_light
+    src: https://github.com/vbotka/ansible-config-light
+    version: '1.4.2'
+    scm: git
+  - name: vbotka.doctl
+    src: https://github.com/vbotka/ansible-doctl
+    version: '1.9.1'
+    scm: git
+  - name: vbotka.freebsd_bash
+    src: https://github.com/vbotka/ansible-freebsd-bash
+    version: '1.4.1'
+    scm: git
+  - name: vbotka.freebsd_dhcp
+    src: https://github.com/vbotka/ansible-freebsd-dhcp
+    version: '1.5.2'
+    scm: git
+  - name: vbotka.freebsd_dns
+    src: https://github.com/vbotka/ansible-freebsd-dns
+    version: '1.7.2'
+    scm: git
+  - name: vbotka.freebsd_jail
+    src: https://github.com/vbotka/ansible-freebsd-jail
+    version: '1.12.2'
+    scm: git
+  - name: vbotka.freebsd_mailserver
+    src: https://github.com/vbotka/ansible-freebsd-mailserver
+    version: '1.9.1'
+    scm: git
+  - name: vbotka.freebsd_mailserver_roundcube
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-roundcube
+    version: '1.4.3'
+    scm: git
+  - name: vbotka.freebsd_mailserver_sieve
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-sieve
+    version: '1.5.2'
+    scm: git
+  - name: vbotka.freebsd_mailserver_spamassassin
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-spamassassin
+    version: '1.4.3'
+    scm: git
+  - name: vbotka.freebsd_mysql
+    src: https://github.com/vbotka/ansible-freebsd-mysql
+    version: '1.4.2'
+    scm: git
+  - name: vbotka.freebsd_nagios
+    src: https://github.com/vbotka/ansible-freebsd-nagios
+    version: '1.3.2'
+    scm: git
+  - name: vbotka.freebsd_network
+    src: https://github.com/vbotka/ansible-freebsd-network
+    version: '1.5.2'
+    scm: git
+  - name: vbotka.freebsd_packages
+    src: https://github.com/vbotka/ansible-freebsd-packages
+    version: '1.7.1'
+    scm: git
+  - name: vbotka.freebsd_pf
+    src: https://github.com/vbotka/ansible-freebsd-pf
+    version: '1.7.2'
+    scm: git
+  - name: vbotka.freebsd_php
+    src: https://github.com/vbotka/ansible-freebsd-php
+    version: '1.4.2'
+    scm: git
+  - name: vbotka.freebsd_ports
+    src: https://github.com/vbotka/ansible-freebsd-ports
+    version: '1.3.1'
+    scm: git
+  - name: vbotka.freebsd_postinstall
+    src: https://github.com/vbotka/ansible-freebsd-postinstall
+    version: '1.21.2'
+    scm: git
+  - name: vbotka.freebsd_poudriere
+    src: https://github.com/vbotka/ansible-freebsd-poudriere
+    version: '1.3.1'
+    scm: git
+  - name: vbotka.freebsd_redis
+    src: https://github.com/vbotka/ansible-freebsd-redis
+    version: '1.4.1'
+    scm: git
+  - name: vbotka.freebsd_ssmtp
+    src: https://github.com/vbotka/ansible-freebsd-ssmtp
+    version: '1.4.1'
+    scm: git
+  - name: vbotka.freebsd_timezone
+    src: https://github.com/vbotka/ansible-freebsd-timezone
+    version: '1.6.1'
+    scm: git
+  - name: vbotka.freebsd_wpa_cli
+    src: https://github.com/vbotka/ansible-freebsd-wpa-cli
+    version: '1.5.1'
+    scm: git
+  - name: vbotka.freebsd_zfs
+    src: https://github.com/vbotka/ansible-freebsd-zfs
+    version: '1.3.1'
+    scm: git
+  - name: vbotka.nginx
+    src: https://github.com/vbotka/ansible-nginx
+    version: '1.5.1'
+    scm: git
+  - name: vbotka.nrpe
+    src: https://github.com/vbotka/ansible-nrpe
+    version: '1.1.0'
+    scm: git
+  - name: vbotka.rsnapshot
+    src: https://github.com/vbotka/ansible-rsnapshot
+    version: '1.5.1'
+    scm: git
+  - name: vbotka.tower_cli
+    src: https://github.com/vbotka/ansible-tower-cli
+    version: '1.6.1'
+    scm: git
+  - name: vbotka.yazvs
+    src: https://github.com/vbotka/ansible-yazvs
+    version: '1.2.1'
+    scm: git
+# EOF
+...

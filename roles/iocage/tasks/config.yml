@@ -1,0 +1,17 @@
+---
+
+- name: "config: Config /home/{{ iocage_user }}/.login_conf"
+  ansible.builtin.copy:
+    dest: "/home/{{ iocage_user }}/.login_conf"
+    owner: "{{ iocage_user }}"
+    group: "{{ iocage_user }}"
+    mode: '0644'
+    content: "{{ iocage_login_conf }}"
+    backup: "{{ iocage_backup_conf }}"
+
+# TODO
+# /zroot/iocage/defaults.json
+# /zroot/iocage/default_rc.conf
+
+# EOF
+...

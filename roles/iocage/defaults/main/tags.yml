@@ -1,0 +1,13 @@
+---
+iocage_known_tags:
+  - iocage_vars
+  - iocage_help
+  - iocage_debug
+  - iocage_packages
+  - iocage_config
+  - iocage_activate
+  - iocage_sanity
+  - iocage_setup
+  - iocage_mng
+  - iocage_info
+  - iocage_devel

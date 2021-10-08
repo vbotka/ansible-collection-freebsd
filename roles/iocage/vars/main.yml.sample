@@ -1,0 +1,8 @@
+---
+# iocage vars
+
+iocage_data:
+  - state: facts
+
+# EOF
+...

@@ -1,0 +1,4 @@
+---
+iocage_zpool: zroot
+iocage_dir_releases: "{{ iocage_zpool }}/iocage/releases"
+iocage_defaults: "{{ iocage_zpool }}/iocage/defaults.json"

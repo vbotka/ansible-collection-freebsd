@@ -1,0 +1,9 @@
+---
+iocage_debug: false
+iocage_debug2: false
+iocage_install: true
+iocage_config: true
+iocage_activate: false
+iocage_backup_conf: false
+
+al_debug: false

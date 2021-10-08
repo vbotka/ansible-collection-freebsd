@@ -1,0 +1,24 @@
+---
+
+# FreeBSD
+- name: "packages: Install packages FreeBSD"
+  community.general.pkgng:
+    name: "{{ iocage_packages + iocage_packages2 }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
+  when: freebsd_install_method|lower == "packages"
+
+- name: "packages: Install ports FreeBSD"
+  community.general.portinstall:
+    name: "{{ item }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
+  loop: "{{ iocage_packages + iocage_packages2 }}"
+  when: freebsd_install_method|lower == "ports"
+
+# EOF
+...

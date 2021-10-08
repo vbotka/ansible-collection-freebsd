@@ -1,0 +1,114 @@
+---
+# All rights reserved (c) 2019-2021, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: pb_install_repos_from_git.yml
+#
+# Description:
+#
+# Parameters:
+#
+#   my_repos_file ............. file with the list of the repos
+#   my_repos_path ............. directory the repos will be fetched to
+#   my_mode ................... mode fo the repos
+#   my_user ................... owner of the repos
+#   my_group .................. group of the repos
+#   my_git_user ............... user allowed to read the repos from git
+#   git_module ................ use Ansible git module instead of the command
+#
+# Notes:
+#
+#   * Used also by ansible-workbench.sh
+#   * https://github.com/vbotka/ansible-ansible/contrib/workbench
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ac-freebsd/playbooks/pb_install_repos_from_git.yml
+
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  debugger: on_failed
+
+  vars:
+    my_version: "0.2.2"
+    my_vars_file: install_repos_from_git_roles_default.yml
+  vars_files:
+    - 'vars/{{ my_vars_file }}'
+
+  tasks:
+
+    - name: "Include list of repos from {{ my_repos_file }}"
+      include_vars: "{{ my_repos_file }}"
+
+    - name: "Debug"
+      debug:
+        msg: "{{ msg.split('\n') }}"
+      vars:
+        msg: |
+          my_version [{{ my_version }}]
+          git_module [{{ git_module }}]
+          my_git_user [{{ my_git_user }}]
+          my_user [{{ my_user }}]
+          my_group [{{ my_group }}]
+          my_mode [{{ my_mode }}]
+          my_repos_path [{{ my_repos_path }}]
+          my_repos_file [{{ my_repos_file }}]
+          ansible_check_mode [{{ ansible_check_mode }}]
+          requirements
+          {{ requirements|to_nice_yaml }}
+      when: debug|default(false)|bool
+
+    - name: "Git install repos"
+      git:
+        repo: "{{ item.src }}"
+        dest: "{{ my_repos_path }}/{{ item.name }}"
+        version: "{{ item.version|default('HEAD') }}"
+      loop: "{{ requirements }}"
+      when:
+        - item.install|default(true)
+        - git_module|bool
+
+    - name: "Command install repos"
+      command: "/bin/sh -c 'cd {{ my_repos_path }};
+                            if [ -e {{ item.name|quote }} ]; then
+                               (cd {{ item.name }}; git pull);
+                            else
+                               git clone {{ item.src }} {{ item.name }};
+                            fi'"
+      args:
+        chdir: "{{ my_repos_path }}"
+      loop: "{{ requirements }}"
+      when:
+        - item.install|default(true)
+        - not git_module|bool
+
+    - name: "Chown and chmod repos"
+      file:
+        state: directory
+        recurse: true
+        dest: "{{ my_repos_path }}/{{ item.name }}"
+        owner: "{{ my_user }}"
+        group: "{{ my_group }}"
+        # mode: "{{ my_mode }}"
+      loop: "{{ requirements }}"
+      when:
+        - item.install|default(true)
+        - not ansible_check_mode
+
+    - name: "Link repos"
+      file:
+        state: "link"
+        src: "{{ my_repos_path }}/{{ item.name }}"
+        dest: "{{ my_repos_path }}/{{ item.link }}"
+        owner: "{{ my_user }}"
+        group: "{{ my_group }}"
+      loop: "{{ requirements }}"
+      when:
+        - item.install|default(true)
+        - item.link is defined
+        - not ansible_check_mode
+
+# EOF
+...

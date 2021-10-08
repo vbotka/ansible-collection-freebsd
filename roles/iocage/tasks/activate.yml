@@ -1,0 +1,15 @@
+---
+
+- name: "activate: Activate iocage {{ iocage_zpool }}"
+  ansible.builtin.command:
+    cmd: "iocage activate {{ iocage_zpool }}"
+    creates: "/{{ iocage_zpool }}/iocage"
+  register: result
+
+- name: "activate: Debug"
+  ansible.builtin.debug:
+    var: result
+  when: iocage_debug|bool
+
+# EOF
+...

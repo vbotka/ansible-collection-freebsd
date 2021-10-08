@@ -1,0 +1,4 @@
+---
+# iocage_data: []
+iocage_data:
+  - state: facts

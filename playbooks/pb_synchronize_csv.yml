@@ -1,0 +1,137 @@
+---
+# All rights reserved (c) 2020-2021, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: pb_synchronize_csv.yml
+#
+# Description:
+#
+#   Rsync sources to destinations. Read data from CSV file. Create
+#   group of destination hosts 'my_dest' in the first play. Use this
+#   group of destinations in the second play to synchonize the sources to
+#   the destinations.
+#
+# Input:
+#
+#   my_csv_file ............ CSV file (default: files/rsync.csv)
+#
+# Output:
+#
+#   None.
+#
+# Example:
+#
+#   shell> cat files/rsync.csv
+#   src,dest,file
+#   test_01,test_02,/scratch/file_01
+#   test_01,test_02,/scratch/file_02
+#   test_01,test_03,/scratch/file_01
+#   shell> ansible-playbook synchronize_csv.yml -CD
+#   shell> ansible-playbook synchronize_csv.yml -e "my_debug=True"
+#   shell> ansible-playbook synchronize_csv.yml
+#
+# Notes:
+#
+#   * rsync must be installed on both src and dest hosts
+#   * ansible_user@src must be able to connect to ansible_user@dest
+#   * ansible_user@dest must be able to write the file
+#   * optionaly enable 'become*' in the second play
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ac-freebsd/playbooks/pb_synchronize_csv.yml
+
+- name: Synchronize sources to destinations. Create group of destinations.
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    my_csv_file: files/rsync.csv
+
+  tasks:
+    - name: Read data from CSV file
+      community.general.read_csv:
+        path: "{{ my_csv_file }}"
+      register: my_db
+    - name: Create group of destinations
+      ansible.builtin.add_host:
+        hostname: "{{ item.dest }}"
+        groups: my_dest
+        my_list: "{{ my_db.list }}"
+      loop: "{{ my_db.list }}"
+      changed_when: false
+
+- name: Synchronize sources to destinations. Run rsync.
+  hosts: my_dest
+  gather_facts: false
+  # become: true
+  # become_user: root
+  # become_method: sudo
+
+  vars:
+    my_debug: false
+    my_dryrun: false
+    my_clear_host_errors: false
+    my_display_results: false
+
+  tasks:
+    - name: Display debug and end host
+      block:
+        - name: Display debug
+          ansible.builtin.debug:
+            msg: "rsync {{ item.file }}
+                  from {{ item.src }} to {{ inventory_hostname }}"
+          loop: "{{ my_list|json_query(query) }}"
+          vars:
+            query: "[?dest == '{{ inventory_hostname }}']"
+        - name: End host
+          ansible.builtin.meta: end_host
+      when: my_debug|bool
+    - name: Synchronize sources to targets
+      block:
+        - name: Rsync
+          ansible.posix.synchronize:
+            archive: "{{ my_archive|default(omit) }}"
+            checksum: "{{ my_checksum|default(omit) }}"
+            compress: "{{ my_compress|default(omit) }}"
+            copy_links: "{{ my_copy|default(omit) }}"
+            delete: "{{ my_delete|default(omit) }}"
+            dest: "{{ item.file }}"
+            dest_port: "{{ my_dest_port|default(omit) }}"
+            dirs: "{{ my_dirs|default(omit) }}"
+            existing_only: "{{ my_existing_only|default(omit) }}"
+            group: "{{ my_group|default(omit) }}"
+            link_dest: "{{ my_link_dest|default(omit) }}"
+            links: "{{ my_links|default(omit) }}"
+            mode: "{{ my_mode|default(omit) }}"
+            owner: "{{ my_owner|default(omit) }}"
+            partial: "{{ my_partial|default(omit) }}"
+            perms: "{{ my_perms|default(omit) }}"
+            private_key: "{{ my_private_key|default(omit) }}"
+            recursing: "{{ my_recursing|default(omit) }}"
+            rsync_opts: "{{ my_rsync_opts|default(omit) }}"
+            rsync_path: "{{ my_rsync_path|default(omit) }}"
+            rsync_timeout: "{{ my_rsync_timeout|default(omit) }}"
+            set_remote_user: "{{ my_set_remote_user|default(omit) }}"
+            src: "{{ item.file }}"
+            times: "{{ my_times|default(omit) }}"
+            use_ssh_args: "{{ my_use_ssh_args|default(omit) }}"
+            verify_host: "{{ my_verify_host|default(omit) }}"
+          delegate_to: "{{ item.src }}"
+          loop: "{{ my_list|json_query(query) }}"
+          vars:
+            query: "[?dest == '{{ inventory_hostname }}']"
+          register: my_result
+      rescue:
+        - name: Clear host errors
+          ansible.builtin.meta: clear_host_errors
+          when: my_clear_host_errors|bool
+      always:
+        - name: Display results
+          ansible.builtin.debug:
+            var: my_results
+          when: my_display_results|bool
+
+# EOF
+...

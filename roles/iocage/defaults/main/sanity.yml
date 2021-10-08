@@ -1,0 +1,22 @@
+---
+iocage_sanity: true
+iocage_sanity_platform_gather_subset: true
+
+iocage_sanity_ansible_version: true
+iocage_sanity_ansible_version_fail: true
+iocage_sanity_ansible_version_end_host: false
+iocage_sanity_ansible_version_warning: true
+
+iocage_sanity_platform: true
+iocage_sanity_platform_fail: true
+iocage_sanity_platform_end_host: false
+iocage_sanity_platform_warning: false
+
+iocage_sanity_platform_version_fail: true
+iocage_sanity_platform_version_end_host: false
+
+iocage_sanity_packages: true
+al_sanity_packages_required:
+  FreeBSD:
+    default:
+      - - "py{{ iocage_python_version }}-iocage"

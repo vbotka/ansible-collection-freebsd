@@ -1,0 +1,49 @@
+---
+
+- block:
+    - name: "sanity: Get meta-data."
+      ansible.builtin.include_vars:
+        file: meta/main.yml
+      when: galaxy_info is undefined
+    - name: "sanity: Get role_name."
+      ansible.builtin.set_fact:
+        al_sanity_role_name: "{{ role_name }}"
+  when: iocage_sanity_platform|bool or
+        iocage_sanity_ansible_version|bool
+
+- block:
+    - name: "sanity: Set options for al_sanity_platform"
+      ansible.builtin.set_fact:
+        al_supported_versions_override: "{{ iocage_supported_versions_override }}"
+        al_sanity_platform_gather_subset: "{{ iocage_sanity_platform_gather_subset }}"
+        al_sanity_platform_fail: "{{ iocage_sanity_platform_fail }}"
+        al_sanity_platform_version_fail: "{{ iocage_sanity_platform_version_fail }}"
+        al_sanity_platform_end_host: "{{ iocage_sanity_platform_end_host }}"
+        al_sanity_platform_version_end_host: "{{ iocage_sanity_platform_version_end_host }}"
+        al_sanity_platform_warning: "{{ iocage_sanity_platform_warning }}"
+    - name: "sanity: Include vbotka.ansible_lib al_sanity_platform."
+      ansible.builtin.include_role:
+        name: vbotka.ansible_lib
+        tasks_from: al_sanity_platform
+      when: iocage_sanity_platform|bool
+
+- block:
+    - name: "sanity: Set options for al_sanity_ansible_version"
+      ansible.builtin.set_fact:
+        al_sanity_ansible_version_fail: "{{ iocage_sanity_ansible_version_fail }}"
+        al_sanity_ansible_version_end_host: "{{ iocage_sanity_ansible_version_end_host }}"
+        al_sanity_ansible_version_warning: "{{ iocage_sanity_ansible_version_warning }}"
+    - name: "sanity: Include vbotka.ansible_lib al_sanity_ansible_version."
+      ansible.builtin.include_role:
+        name: vbotka.ansible_lib
+        tasks_from: al_sanity_ansible_version
+      when: iocage_sanity_ansible_version|bool
+
+- name: "sanity: Include vbotka.ansible_lib al_sanity_packages."
+  ansible.builtin.include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_sanity_packages
+  when: iocage_sanity_packages|bool
+
+# EOF
+...

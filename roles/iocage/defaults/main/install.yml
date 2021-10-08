@@ -1,0 +1,15 @@
+---
+freebsd_install_method: packages
+# freebsd_install_method: ports
+freebsd_use_packages: true
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+freebsd_flavors_enable: true
+freebsd_flavor_python: "{{ 'py' ~ iocage_python_version }}"
+freebsd_flavors: ["{{ freebsd_flavor_python }}"]
+
+iocage_packages:
+  - sysutils/iocage
+
+iocage_packages2:
+  - devel/uclcmd

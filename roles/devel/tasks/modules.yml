@@ -1,0 +1,20 @@
+---
+
+- name: "modules: Get modules"
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    dest: "{{ devel_collection_dir }}/plugins/modules/{{ item.name }}.py"
+    checksum: "{{ devel_modules_checksum[item.name][item.branch] }}"
+  loop: "{{ devel_modules_list }}"
+  loop_control:
+    label: "{{ item.branch }} {{ item.name }}"
+  delegate_to: localhost
+  register: result
+
+- name: "modules: Debug result"
+  debug:
+    var: result
+  when: devel_debug|bool
+
+# EOF
+...

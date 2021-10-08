@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Vladimir Botka
+  description: Manage collection vbotka.freebsd
+  company: https://botka.link
+  github_branch: master
+  license: BSD
+  min_ansible_version: "2.11"
+  platforms:
+    - name: FreeBSD
+      versions:
+        - 11.3
+        - 12.1
+  galaxy_tags:
+    - freebsd
+    - devel
+dependencies: []
+collections:
+  - community.general
+...

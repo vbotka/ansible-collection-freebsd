@@ -1,0 +1,44 @@
+---
+devel_help_text: |
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Ansible collection: vbotka.freebsd
+  Ansible role: devel {{ devel_role_version }}
+
+  Manage collection
+
+  USAGE
+
+  Display this help
+  shell> ansible-playbook playbook.yml
+
+  Setup modules
+  shell> ansible-playbook playbook.yml -t devel_modules -e devel_modules=true
+
+
+  NOTES
+
+  1) Example playbook.yml
+
+     sheel> cat playbook.yml
+     - hosts: srv.example.com
+       collections:
+         - vbotka.freebsd
+       roles:
+         - devel
+
+  2) Optimized for yaml callback
+
+     shell> export ANSIBLE_STDOUT_CALLBACK=yaml
+
+  3) Example. Setup modules
+
+     shell> ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ANSIBLE_DISPLAY_OK_HOSTS=false \
+            ansible-playbook playbook.yml -t devel_modules -e devel_modules=true
+
+     PLAY [srv.example.com] ***************************************************************
+
+     PLAY RECAP ***************************************************************************
+     srv.example.com: ok=23 changed=0 unreachable=0 failed=0 skipped=31 rescued=0 ignored=0
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  https://github.com/vbotka/ansible-collection-freebsd
