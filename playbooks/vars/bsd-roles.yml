@@ -1,0 +1,152 @@
+---
+bsd_roles:
+  - name: ansible
+    src: https://github.com/vbotka/ansible-ansible
+    version: '2.2.1'
+    scm: git
+  - name: ansible_lib
+    src: https://github.com/vbotka/ansible-lib
+    version: '2.2.0'
+    scm: git
+  - name: ansible_lint
+    src: https://github.com/vbotka/ansible-lint
+    version: '2.5.0'
+    scm: git
+  - name: ansible_runner
+    src: https://github.com/vbotka/ansible-runner
+    version: '2.2.1'
+    scm: git
+  - name: apache
+    src: https://github.com/vbotka/ansible-apache
+    version: '2.2.1'
+    scm: git
+  - name: bsdutils
+    src: https://github.com/vbotka/ansible-bsdutils
+    version: '2.2.0'
+    scm: git
+  - name: certificate
+    src: https://github.com/vbotka/ansible-certificate
+    version: '2.2.0'
+    scm: git
+  - name: config_light
+    src: https://github.com/vbotka/ansible-config-light
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_bash
+    src: https://github.com/vbotka/ansible-freebsd-bash
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_custom_image
+    src: https://github.com/vbotka/ansible-freebsd-custom-image
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_dhcp
+    src: https://github.com/vbotka/ansible-freebsd-dhcp
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_dns
+    src: https://github.com/vbotka/ansible-freebsd-dns
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_mailserver
+    src: https://github.com/vbotka/ansible-freebsd-mailserver
+    version: '2.3.0'
+    scm: git
+  - name: freebsd_mailserver_roundcube
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-roundcube
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_mailserver_sieve
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-sieve
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_mailserver_spamassassin
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-spamassassin
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_mysql
+    src: https://github.com/vbotka/ansible-freebsd-mysql
+    version: '2.2.0'
+    scm: git
+  - name: freebsd_nagios
+    src: https://github.com/vbotka/ansible-freebsd-nagios
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_network
+    src: https://github.com/vbotka/ansible-freebsd-network
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_packages
+    src: https://github.com/vbotka/ansible-freebsd-packages
+    version: '2.2.0'
+    scm: git
+  - name: freebsd_pf
+    src: https://github.com/vbotka/ansible-freebsd-pf
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_php
+    src: https://github.com/vbotka/ansible-freebsd-php
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_ports
+    src: https://github.com/vbotka/ansible-freebsd-ports
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_postinstall
+    src: https://github.com/vbotka/ansible-freebsd-postinstall
+    version: '2.3.0'
+    scm: git
+  - name: freebsd_poudriere
+    src: https://github.com/vbotka/ansible-freebsd-poudriere
+    version: '2.2.0'
+    scm: git
+  - name: freebsd_redis
+    src: https://github.com/vbotka/ansible-freebsd-redis
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_ssmtp
+    src: https://github.com/vbotka/ansible-freebsd-ssmtp
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_timezone
+    src: https://github.com/vbotka/ansible-freebsd-timezone
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_wpa_cli
+    src: https://github.com/vbotka/ansible-freebsd-wpa-cli
+    version: '2.1.0'
+    scm: git
+  - name: freebsd_zfs
+    src: https://github.com/vbotka/ansible-freebsd-zfs
+    version: '2.1.0'
+    scm: git
+  - name: nrpe
+    src: https://github.com/vbotka/ansible-nrpe
+    version: '2.2.0'
+    scm: git
+  - name: nginx
+    src: https://github.com/vbotka/ansible-nginx
+    version: '2.2.0'
+    scm: git
+
+# TODO
+#
+#  - name: rsnapshot
+#    src: https://github.com/vbotka/ansible-rsnapshot
+#    version: '2.1.0'
+#    scm: git
+#  - name: yazvs
+#    src: https://github.com/vbotka/ansible-yazvs
+#    version: '2.1.0'
+#    scm: git
+
+# OBSOLETE
+#
+# Use iocage role instead.
+# - name: freebsd_jail
+#   src: https://github.com/vbotka/ansible-freebsd-jail
+#   version: '2.1.0'
+#   scm: git
+
+# EOF
+...

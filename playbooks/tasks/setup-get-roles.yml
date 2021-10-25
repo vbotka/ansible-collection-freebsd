@@ -1,0 +1,23 @@
+---
+- name: "setup: Create roles dictionaries"
+  set_fact:
+    bsd_roles_all: "{{ bsd_roles|map(attribute='name')|list }}"
+    bsd_roles_src: "{{ bsd_roles|items2dict(key_name='name', value_name='src') }}"
+    bsd_roles_version: "{{ bsd_roles|items2dict(key_name='name', value_name='version') }}"
+
+- name: "setup: Get roles"
+  ansible.builtin.git:
+    repo: "{{ bsd_roles_src[item] }}"
+    version: "{{ bsd_roles_version[item] }}"
+    single_branch: true
+    dest: "{{ bsd_collection_dir }}/roles/{{ item }}"
+  loop: "{{ (bsd_roles_setup == 'ALL')|ternary(bsd_roles_all, bsd_roles_setup) }}"
+  register: result
+
+- name: "setup: Debug roles"
+  debug:
+    var: result
+  when: bsd_debug|d(false)|bool
+
+# EOF
+...

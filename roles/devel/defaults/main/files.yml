@@ -1,2 +1,0 @@
----
-devel_collection_dir: "{{ role_path.split('/')[:-2]|join('/') }}"

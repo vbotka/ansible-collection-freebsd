@@ -42,10 +42,5 @@
   ansible.builtin.import_tasks: info.yml
   tags: iocage_info
 
-- name: Import devel.yml
-  ansible.builtin.import_tasks: devel.yml
-  tags: [iocage_devel, never]
-
-
 # EOF
 ...

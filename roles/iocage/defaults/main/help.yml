@@ -78,4 +78,4 @@ iocage_help_text: |
      srv.example.com: ok=23 changed=0 unreachable=0 failed=0 skipped=31 rescued=0 ignored=0
 
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  https://github.com/vbotka/ansible-collection-freebsd
+  https://github.com/vbotka/ansible-collection-freebsd/roles/iocage

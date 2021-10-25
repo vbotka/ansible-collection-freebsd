@@ -1,0 +1,22 @@
+---
+- name: "setup: Create modules dictionaries"
+  set_fact:
+    bsd_modules_all: "{{ bsd_modules|map(attribute='name')|list }}"
+    bsd_modules_src: "{{ bsd_modules|items2dict(key_name='name', value_name='src') }}"
+    bsd_modules_checksum: "{{ bsd_modules|items2dict(key_name='name', value_name='checksum') }}"
+
+- name: "setup: Get modules"
+  ansible.builtin.get_url:
+    url: "{{ bsd_modules_src[item] }}"
+    dest: "{{ bsd_collection_dir }}/plugins/modules/{{ item }}.py"
+    checksum: "{{ bsd_modules_checksum[item] }}"
+  loop: "{{ (bsd_modules_setup == 'ALL')|ternary(bsd_modules_all, bsd_modules_setup) }}"
+  register: result
+
+- name: "setup: Debug modules"
+  debug:
+    var: result
+  when: bsd_debug|d(false)|bool
+
+# EOF
+...

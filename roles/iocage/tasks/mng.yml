@@ -14,6 +14,8 @@
     release: "{{ item.release|default(omit) }}"
     user: "{{ item.user|default(omit) }}"
   loop: "{{ iocage_data }}"
+  loop_control:
+    label: "{'name': {{ item.name|default('None') }}, 'state': {{ item.state|d('facts') }}}"
   register: result
 
 - name: "mng: Debug result without ansible_facts"

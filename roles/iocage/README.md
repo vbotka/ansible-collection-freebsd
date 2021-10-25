@@ -40,7 +40,7 @@ This variable enables the testing of the packages installed. By default the flav
 
 ## Workflow
 
-- Install the collection and dependencies
+- Install and setup the collection and dependencies
 
 - Create playbook
 
@@ -75,6 +75,29 @@ shell> ansible-playbook playbook.yml -t iocage_sanity -e iocage_sanity=true
 ```
 shell> ansible-playbook playbook.yml -t iocage_mng
 shell> ansible-playbook playbook.yml -t iocage_info
+```
+
+
+## Notes
+
+### Module iocage return values include facts iocage_*
+
+Remove *ansible_facts* from the registered result to reduce the output
+
+```yaml
+- name: "mng: Debug result without ansible_facts"
+  ansible.builtin.debug:
+      msg: "{{ result.results|map('combine', {'ansible_facts': omit}) }}"
+        when: iocage_debug|bool
+```
+
+Enable ``iocage_debug2`` if you want to see *ansible_facts* collected by the module
+
+```yaml
+- name: "mng: Debug result"
+  ansible.builtin.debug:
+      var: result
+        when: iocage_debug2|bool
 ```
 
 

@@ -1,0 +1,21 @@
+---
+- name: "setup: Debug"
+  debug:
+    msg: |-
+      my_version [{{ my_version }}]
+      bsd_collection_dir [{{ bsd_collection_dir }}]
+
+      bsd_modules_setup
+      {{ bsd_modules_setup|to_yaml }}
+      bsd_modules_url
+      {{ bsd_modules_url|to_nice_yaml }}
+      bsd_modules_checksum
+      {{ bsd_modules_checksum|to_nice_yaml }}
+
+      bsd_roles_setup
+      {{ bsd_roles_setup|to_yaml }}
+      bsd_roles
+      {{ bsd_roles|to_nice_yaml }}
+
+#EOF
+...
