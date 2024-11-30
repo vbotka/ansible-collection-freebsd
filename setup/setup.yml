@@ -1,0 +1,136 @@
+---
+# Copyright 2024 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: setup.yml
+#
+# Description:
+#
+#   Setup collection vbotka.freebsd
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-collection-freebsd/setup/setup.yml
+
+- name: Setup the collection vbotka.freebsd
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  # debugger: on_failed
+
+  vars_files:
+    - setup.yml
+    - checksum.yml
+    - plugins.yml
+    - plugins_install.yml
+    - roles.yml
+    - roles_install.yml
+
+  tasks:
+
+    - name: Debug
+      tags: debug
+      block:
+
+        - name: "Debug debug={{ debug }}"
+          when: debug | bool
+          ansible.builtin.debug:
+            msg: |-
+              collection_dir: {{ collection_dir }}
+
+              bsd_plugins_install:
+                {{ bsd_plugins_install | to_nice_yaml(indent=2) | indent(2) }}
+              bsd_roles_install:
+                {{ bsd_roles_install | to_nice_yaml(indent=2) | indent(2) }}
+
+        - name: "Debug extended debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            msg: |-
+              assert_quiet: {{ assert_quiet }}
+              plugins_dir_mode: {{ plugins_dir_mode }}
+              plugins_file_mode: {{ plugins_file_mode }}
+              roles_dir_mode: {{ roles_dir_mode }}
+              bsd_plugins:
+                {{ bsd_plugins | to_nice_yaml(indent=2) | indent(2) }}
+              bsd_roles:
+                {{ bsd_roles | to_nice_yaml(indent=2) | indent(2) }}
+              checksum:
+                {{ checksum | to_nice_yaml(indent=2) | indent(2) }}
+              clean_role_files_enable: {{ clean_role_files_enable }}
+              clean_role_files:
+                {{ clean_role_files | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: Install plugins
+      tags: plugins
+      block:
+
+        - name: "Create directories."
+          tags: plugins_dirs
+          ansible.builtin.file:
+            path: "{{ collection_dir }}/plugins/{{ item.key }}"
+            mode: "{{ plugins_dir_mode }}"
+            state: directory
+          loop: "{{ bsd_plugins_install | dict2items }}"
+          loop_control:
+            label: "{{ item.key }}"
+
+        - name: "Install plugins."
+          register: result
+          tags: plugins_install
+          vars:
+            branch: "{{ bsd_plugins[item.0.key][item.1].branch }}"
+            url: "{{ bsd_plugins[item.0.key][item.1].url }}/{{ branch }}/{{ item.1 }}.py"
+          ansible.builtin.get_url:
+            url: "{{ url }}"
+            checksum: "{{ checksum[item.0.key][item.1][branch] }}"
+            dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
+            mode: "{{ plugins_file_mode }}"
+          loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+          loop_control:
+            label: "{{ item.0.key }} {{ item.1 }} {{ branch }}"
+
+        - name: "Debug result debug2={{ debug2 }}"
+          when: debug2 | bool
+          tags: plugins_install
+          ansible.builtin.debug:
+            var: result
+
+    - name: Install roles
+      tags: roles
+      block:
+
+        - name: "Install roles."
+          register: result
+          failed_when: result.rc not in [0, 128]
+          ansible.builtin.git:
+            dest: "{{ collection_dir }}/roles/{{ item.name }}"
+            repo: "{{ item.src }}"
+            version: "{{ item.version }}"
+            single_branch: true
+            verify_commit: true
+          loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
+	                      | selectattr('name', 'in', bsd_roles_install) }}"
+          loop_control:
+            label: "{{ item.name }} {{ item.galaxy }}"
+
+        - name: "Debug result debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: result
+
+        # TODO: roles_dir_mode
+
+        - name: "Clean roles."
+          when: clean_role_files_enable | bool
+          ansible.builtin.file:
+            state: absent
+            dest: "{{ collection_dir }}/roles/{{ item.0 }}/{{ item.1 }}"
+          loop: "{{ result.results | d([]) | selectattr('changed') | map(attribute='item.name')
+	                           | product(clean_role_files) }}"
+          loop_control:
+            label: "{{ item.0 }}/{{ item.1 }}"
+
+# EOF

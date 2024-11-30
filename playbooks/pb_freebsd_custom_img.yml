@@ -1,6 +1,7 @@
 ---
-# All rights reserved (c) 2020-2021, Vladimir Botka <vbotka@gmail.com>
+# Copyright 2020 Vladimir Botka <vbotka@gmail.com>
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Collection: vbotka.freebsd
@@ -26,52 +27,51 @@
 #     preinstalled user.
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# https://github.com/vbotka/ac-freebsd/playbooks/pb_freebsd_custom_img.yml
+# https://github.com/vbotka/ansible-collection-freebsd/playbooks/pb_freebsd_custom_img.yml
 
-- hosts: localhost
+- name: Configure FreeBSD image
+  hosts: localhost
   gather_facts: true
   connection: local
-  debugger: on_failed
   become: true
   become_user: root
-  become_method: sudo
+  become_method: ansible.builtin.sudo
+  # debugger: on_failed
 
-  vars:
-    fci_vars_file: freebsd_custom_img_default.yml
-  vars_files:
-    - 'vars/{{ fci_vars_file }}'
+  vars_files: freebsd_custom_img_default.yml
 
   tasks:
 
     - name: Create mount point
+      when: fci_mount_point | bool
+      tags: fci_mount_point
       ansible.builtin.file:
         state: directory
-        path: '{{ fci_mount_path }}'
+        path: "{{ fci_mount_path }}"
         mode: '0755'
-      when: fci_mount_point
-      tags: fci_mount_point
 
     - name: Mount image
+      when: fci_mount | bool
+      tags: fci_mount
       ansible.posix.mount:
         state: mounted
         src: '{{ fci_mount_image }}'
         path: '{{ fci_mount_path }}'
         fstype: '{{ fci_mount_fstype }}'
-      when: fci_mount
-      tags: fci_mount
 
     - name: Configure /boot/loader.conf
+      when: fci_loaderconf | bool
+      tags: fci_loaderconf
       ansible.builtin.template:
         src: fci_loader.conf.j2
         dest: '{{ fci_mount_path }}/boot/loader.conf'
         owner: root
         group: wheel
         mode: '0644'
-      when: fci_loaderconf
-      tags: fci_loaderconf
 
     - name: Configure /etc/rc.conf
-      when: fci_rcconf
+      when: fci_rcconf | bool
+      tags: fci_rcconf
       ansible.builtin.lineinfile:
         dest: '{{ fci_mount_path }}/etc/rc.conf'
         regexp: '^\s*{{ item.key }}\s*=\s*(.*)$'
@@ -80,10 +80,10 @@
         group: wheel
         mode: '0644'
       loop: '{{ fci_rcconf_data }}'
-      tags: fci_rcconf
 
     - name: Configure /etc/wpasupplicant.conf
-      when: fci_wpasupconf
+      when: fci_wpasupconf | bool
+      tags: fci_wpasupconf
       ansible.builtin.template:
         src: fci_wpa_supplicant.conf.j2
         dest: '{{ fci_mount_path }}/{{ fci_wpasupconf_file }}.{{ item.dev }}'
@@ -92,16 +92,15 @@
         mode: '{{ fci_wpasupconf_mode }}'
         backup: '{{ fci_wpasupconf_backup }}'
       loop: '{{ fci_wpasupconf_data }}'
-      tags: fci_wpasupconf
 
     - name: Link /etc/wpasupplicant.conf
-      when: fci_wpasupconf_link
+      when: fci_wpasupconf_link | bool
+      tags: fci_wpasupconf_link
       ansible.builtin.file:
         state: link
         src: "{{ fci_wpasupconf_file }}.{{ fci_wpasupconf_dev_link }}"
         dest: "{{ fci_wpasupconf_file }}"
         force: true
-      tags: fci_wpasupconf_link
 
 # Error: The module authorized_key does not work if the user does not exist.
 # "msg": "Failed to lookup user freebsd: 'getpwnam(): name not found: freebsd'"
@@ -129,4 +128,3 @@
 # 3) config: sudo
 
 # EOF
-...

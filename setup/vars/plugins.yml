@@ -1,0 +1,9 @@
+---
+bsd_plugins:
+  modules:
+    iocage:
+      branch: current
+      url: https://raw.githubusercontent.com/vbotka/ansible-iocage
+    ucl:
+      branch: release
+      url: https://raw.githubusercontent.com/vbotka/ansible-ucl

@@ -1,0 +1,79 @@
+---
+
+- name: Get iocage lists and set dictionary iocage_list
+  vars:
+    dataset_types: [jails, bases, basejails, templates]
+    list_options:
+      jails: --long --header
+      bases: --long --header --base
+      basejails: --long --header --basejails
+      templates: --long --header --template
+
+  block:
+
+    - name: "Stat: Get iocage list."
+      environment: "{{ freebsd_iocage_env }}"
+      changed_when: false
+      check_mode: false
+      register: result
+      ansible.builtin.command:
+        cmd: "iocage list {{ list_options[item] }}"
+      loop: "{{ dataset_types }}"
+
+    - name: "Stat: Debug result iocage list freebsd_iocage_debug2={{ freebsd_iocage_debug2 }}"
+      when: freebsd_iocage_debug2 | bool
+      ansible.builtin.debug:
+        var: result
+
+    - name: "Stat: Set iocage_list"
+      ansible.builtin.set_fact:
+        iocage_list: "{{ dict(dataset_types |
+	                      zip(result.results |
+	                          map(attribute='stdout_lines'))) }}"
+
+    - name: "Stat: Debug iocage_list freebsd_iocage_debug2={{ freebsd_iocage_debug2 }}"
+      when: freebsd_iocage_debug2 | bool
+      ansible.builtin.debug:
+        var: iocage_list
+
+    - name: "Stat: Set iocage_list_[jails|bases|basejails|templates]"
+      vars:
+        jails_name: "{{ iocage_list.jails | map('split') | map(attribute=1) }}"
+      ansible.builtin.set_fact:
+        iocage_list_jails: "{{ dict(jails_name |
+	                            zip(iocage_list.jails |
+	                                map('split') |
+                                        map('zip', freebsd_iocage_jail_header) |
+                                        map('map', 'reverse') |
+                                        map('community.general.dict'))) }}"
+        iocage_list_bases: "{{ iocage_list.bases }}"
+        iocage_list_basejails: "{{ iocage_list.basejails }}"
+        iocage_list_templates: "{{ iocage_list.templates }}"
+
+    - name: "Stat: Debug iocage_list_* freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          iocage_list_jails:
+            {{ iocage_list_jails | to_yaml(indent=2) | indent(2) }}
+          iocage_list_bases:
+            {{ iocage_list_bases | to_yaml(indent=2) | indent(2) }}
+          iocage_list_basejails:
+            {{ iocage_list_basejails | to_yaml(indent=2) | indent(2) }}
+          iocage_list_templates:
+            {{ iocage_list_templates | to_yaml(indent=2) | indent(2) }}
+
+  rescue:
+
+    - name: "Stat: Debug rescue freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ ansible_failed_task }}
+          {{ ansible_failed_result }}
+
+    - name: "Stat: End host."
+      when: freebsd_iocage_stat_fatal | bool
+      ansible.builtin.meta: end_host
+
+# EOF

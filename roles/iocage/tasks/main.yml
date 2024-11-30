@@ -1,51 +1,52 @@
 ---
-# iocage tasks
-
-- name: Import vars.yml
-  ansible.builtin.import_tasks: vars.yml
-  tags: [iocage_vars, always]
-
-- name: Import help.yml
-  ansible.builtin.import_tasks: help.yml
-  tags: [iocage_help, always]
+# tasks for freebsd_iocage
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: iocage_debug|bool
-  tags: iocage_debug
+  when: freebsd_iocage_debug | bool
+  tags: freebsd_iocage_debug
 
-- name: Import packages.yml
-  ansible.builtin.import_tasks: packages.yml
-  when: iocage_install|bool
-  tags: [iocage_packages, iocage_setup]
-
-- name: Import config.yml
-  ansible.builtin.import_tasks: config.yml
-  when: iocage_config|bool
-  tags: [iocage_config, iocage_setup]
+- name: Import pkg.yml
+  ansible.builtin.import_tasks: pkg.yml
+  when: freebsd_iocage_install | bool
+  tags: freebsd_iocage_pkg
 
 - name: Import activate.yml
   ansible.builtin.import_tasks: activate.yml
-  when: iocage_activate|bool
-  tags: [iocage_activate, iocage_setup]
+  when: freebsd_iocage_activate | bool
+  tags: freebsd_iocage_activate
+
+- name: Import conf.yml
+  ansible.builtin.import_tasks: conf.yml
+  tags: freebsd_iocage_conf
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
-  when: iocage_sanity|bool
-  tags: [iocage_sanity, iocage_setup]
+  when: freebsd_iocage_sanity | bool
+  tags: freebsd_iocage_sanity
 
-- name: Import mng.yml
-  ansible.builtin.import_tasks: mng.yml
-  tags: iocage_mng
+- name: Import rcconf.yml
+  ansible.builtin.import_tasks: rcconf.yml
+  tags: freebsd_iocage_rcconf
 
-- name: Import info.yml
-  ansible.builtin.import_tasks: info.yml
-  tags: iocage_info
+- name: Import data.yml
+  ansible.builtin.import_tasks: data.yml
+  when: freebsd_iocage_data | bool
+  tags: freebsd_iocage_data
 
-- name: Import devel.yml
-  ansible.builtin.import_tasks: devel.yml
-  tags: [iocage_devel, never]
+- name: Import stat.yml
+  ansible.builtin.import_tasks: stat.yml
+  when: freebsd_iocage_stat | bool
+  tags: freebsd_iocage_stat
 
+- name: Import runner.yml
+  ansible.builtin.import_tasks: runner.yml
+  when: freebsd_iocage_runner | bool
+  tags: freebsd_iocage_runner
+
+- name: Import clean.yml
+  ansible.builtin.import_tasks: clean.yml
+  when: freebsd_iocage_clean | bool
+  tags: freebsd_iocage_clean
 
 # EOF
-...

@@ -1,0 +1,78 @@
+---
+
+- name: "Clean: Debug freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+  when: freebsd_iocage_debug | bool
+  tags: freebsd_iocage_clean_debug
+  ansible.builtin.debug:
+    msg: |
+      freebsd_iocage_clean_jails:
+        {{ freebsd_iocage_clean_jails | to_nice_yaml(indent=2) | indent(2) }}
+
+- name: Sanity.
+  when: freebsd_iocage_clean_jails | length > 0
+  tags: freebsd_iocage_clean_sanity
+  block:
+
+    - name: "Clean: Assert iocage_list_jails is defined."
+      ansible.builtin.assert:
+        that: iocage_list_jails is defined
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        success_msg: '[OK]  iocage_list_jails is defined.'
+        fail_msg: '[ERR] iocage_list_jails is not defined. Run the play with -t freebsd_iocage_stat'
+
+    - name: "Clean: Assert all jails for cleaning exist."
+      vars:
+        missing_jails: "{{ freebsd_iocage_clean_jails.keys() | difference(iocage_list_jails.keys()) }}"
+      ansible.builtin.assert:
+        that: missing_jails | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        success_msg: '[OK]  All jails for cleaning exist.'
+        fail_msg: '[ERR] Missing jail(s) for cleaning: {{ missing_jails }}.'
+
+    - name: "Clean: Assert all jails for cleaning are down."
+      vars:
+        not_down_jails: "{{ iocage_list_jails | dict2items |
+	                    selectattr('key', 'in', freebsd_iocage_clean_jails) |
+	                    selectattr('value.state', 'ne', 'down') |
+                            map(attribute='key') }}"
+      ansible.builtin.assert:
+        that: not_down_jails | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        success_msg: '[OK]  All jails for cleaning are down.'
+        fail_msg: '[ERR] Jail(s) for cleaning not down: {{ not_down_jails }}.'
+
+- name: Remove jails files.
+  when: freebsd_iocage_clean_jails | length > 0
+  tags: freebsd_iocage_clean_files
+  block:
+
+    - name: "Clean: Find jails files."
+      register: out
+      ansible.builtin.find:
+        path: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/root{{ item.1.path }}"
+        pattern: "{{ item.1.pattern | d(omit)}}"
+        excludes: "{{ item.1.excludes | d(omit) }}"
+        use_regex: "{{ item.1.use_regex | d(omit) }}"
+        file_type: "{{ item.1.file_type | d(omit) }}"
+        follow: "{{ item.1.follow | d(omit) }}"
+      loop: "{{ freebsd_iocage_clean_jails | dict2items | subelements('value.files') }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.path }}/{{ item.1.pattern }}"
+
+    - name: "Clean: Debug find jail files freebsd_iocage_debug2={{ freebsd_iocage_debug2 }}"
+      when: freebsd_iocage_debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Clean: Debug find jail files freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        var: out.results | json_query('[].files[].path')
+
+    - name: "Clean: Remove jails files."
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop: "{{ out.results | json_query('[].files[].path') }}"
+
+# EOF
