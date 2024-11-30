@@ -1,6 +1,0 @@
-integration_tests_dependencies:
-- community.general
-- ansible.posix
-- community.general
-unit_tests_dependencies:
-- community.internal_test_tools

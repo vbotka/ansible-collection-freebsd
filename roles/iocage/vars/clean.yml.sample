@@ -1,0 +1,14 @@
+---
+
+freebsd_iocage_clean: true
+
+freebsd_iocage_clean_jails:
+  test_102:
+    files: "{{ freebsd_iocage_clean_files }}"
+
+freebsd_iocage_clean_files:
+  - {path: /etc/ssh, pattern: '*key*'}
+  - {path: /root/.ssh, pattern: known_hosts}
+  - {path: /home/admin/tmp, pattern: '^test\d+$', use_regex: true}
+
+# EOF

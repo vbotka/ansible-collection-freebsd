@@ -1,0 +1,17 @@
+---
+# Copyright 2024 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Write all roles dictionary to vars/roles_all.yml
+  vars:
+    bsd_roles_all: "{{ bsd_roles | items2dict(key_name='name', value_name='src') }}"
+  ansible.builtin.copy:
+    dest: vars/roles_all.yml
+    mode: '664'
+    backup: true
+    content: |
+      ---
+      bsd_roles_all_no: {{ bsd_roles_all | length }}
+      bsd_roles_all:
+        {{ bsd_roles_all | to_nice_yaml(indent=2) | indent(2) }}

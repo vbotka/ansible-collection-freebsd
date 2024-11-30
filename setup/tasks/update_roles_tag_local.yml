@@ -1,0 +1,60 @@
+---
+# Copyright 2024 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Get roles tag from local repos"
+  register: out
+  changed_when: false
+  check_mode: false
+  ansible.builtin.shell:
+    executable: bash
+    cmd: >-
+      set -o pipefail &&
+      cd {{ bsd_roles_dir }}/{{ item.galaxy }} &&
+      git tag --list | sort -V | tail -1
+  loop: "{{ bsd_roles }}"
+  loop_control:
+    label: "{{ bsd_roles_dir }}/{{ item.galaxy }}"
+
+- name: "Debug get roles tag debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out
+
+- name: "Set bsd_roles_tag"
+  ansible.builtin.set_fact:
+    bsd_roles_tag: "{{ out.results | map(attribute='stdout')
+                                   | map('community.general.dict_kv', 'version') }}"
+
+- name: "Debug bsd_roles_tag debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: bsd_roles_tag
+
+- name: "Assert bsd_roles_tag not empty"
+  ansible.builtin.assert:
+    quiet: "{{ assert_quiet }}"
+    that: bsd_roles_tag | selectattr('version') | length == bsd_roles_tag | length
+    fail_msg: "[ERR] Empty version(s) in bsd_roles_tag."
+
+- name: "Assert bsd_roles_tag valid versions"
+  ansible.builtin.assert:
+    quiet: "{{ assert_quiet }}"
+    that: bsd_roles_tag | selectattr('version', 'version', '0.0', '>') | length == bsd_roles_tag | length
+    fail_msg: "[ERR] Not a valid version(s) in bsd_roles_tag."
+
+- name: "Debug bsd_roles debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: bsd_roles | zip(bsd_roles_tag) | map('combine')
+
+- name: Update roles tag in vars/roles.yml
+  ansible.builtin.copy:
+    dest: vars/roles.yml
+    mode: '664'
+    backup: true
+    content: |
+      ---
+      bsd_roles:
+        {{ bsd_roles | zip(bsd_roles_tag) | map('combine') | to_nice_yaml(indent=2) | indent(2) }}

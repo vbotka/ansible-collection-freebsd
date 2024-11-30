@@ -4,10 +4,11 @@ quiet: false
 parseable: true
 use_default_rules: true
 skip_list:
+  - var-naming[no-role-prefix]
   - schema[meta]
 exclude_paths:
-  - docs/
-  - contrib/rolemaster/rolemaster.yml
+  - plugins/inventory/iocage.py
+  - setup/roles/devel
 
 # rulesdir:
 #   - $HOME/.ansible/ansible-lint-rules
@@ -16,5 +17,3 @@ exclude_paths:
 #
 # * schema[meta]: $.galaxy_info.platforms[0].versions[0] 12.4 is not one
 #   of ['6.1', '7.1', '7.2', 'all'].
-
-# EOF

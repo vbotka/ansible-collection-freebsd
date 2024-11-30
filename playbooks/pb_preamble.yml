@@ -1,6 +1,7 @@
 ---
-# All rights reserved (c) 2019-2021, Vladimir Botka <vbotka@gmail.com>
+# Copyright 2019 Vladimir Botka <vbotka@gmail.com>
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Collection: vbotka.freebsd
@@ -16,12 +17,15 @@
 #   shell> ansible-playbook pb_preamble.yml -e '$LIST_OF_PLAYBOOKS'
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# https://github.com/vbotka/ac-freebsd/playbooks/pb_preamble.yml
+# https://github.com/vbotka/ansible-collection-freebsd/playbooks/pb_preamble.yml
 
-- hosts: localhost
+- name: Configure playbooks parameters
+  hosts: localhost
+
   tasks:
+
     - name: Update parameters of the playbooks.
-      blockinfile:
+      ansible.builtin.blockinfile:
         path: "{{ item }}"
         insertafter: "^- hosts(.*)$"
         marker: "# {mark} ANSIBLE MANAGED BLOCK preamble"
@@ -35,4 +39,3 @@
       loop: "{{ LIST_OF_PLAYBOOKS }}"
 
 # EOF
-...
