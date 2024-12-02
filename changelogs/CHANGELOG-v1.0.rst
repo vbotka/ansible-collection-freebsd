@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Remove setup/vars/roles.yml.bak
+* Rmove plugins/inventory/__pycache__/iocage.cpython-312.pyc
 
 
 0.2.1
