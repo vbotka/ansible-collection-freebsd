@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Remove setup/vars/roles.yml.bak
 
 
 0.2.1
