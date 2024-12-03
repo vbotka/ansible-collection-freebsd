@@ -141,6 +141,12 @@ from ansible.utils.display import Display
 display = Display()
 
 
+def _parse_ip4(ip4):
+    if ip4 == '-':
+        return ip4
+    return re.split('\\||/', ip4)[1]
+
+
 class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
     ''' Host inventory parser for ansible using iocage as source. '''
 
@@ -220,13 +226,14 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                 results['_meta']['hostvars'][iocage_name]['iocage_state'] = jail[3]
                 results['_meta']['hostvars'][iocage_name]['iocage_type'] = jail[4]
                 results['_meta']['hostvars'][iocage_name]['iocage_release'] = jail[5]
-                results['_meta']['hostvars'][iocage_name]['iocage_ip4'] = re.split('\\||/', jail[6])[1]
+                results['_meta']['hostvars'][iocage_name]['iocage_ip4'] = _parse_ip4(jail[6])
                 results['_meta']['hostvars'][iocage_name]['iocage_ip6'] = jail[7]
                 results['_meta']['hostvars'][iocage_name]['iocage_template'] = jail[8]
                 results['_meta']['hostvars'][iocage_name]['iocage_basejail'] = jail[9]
 
         except Exception as e:
-            raise AnsibleParserError('Failed to parse %s: %s' % (to_native(path), to_native(e)))
+            raise AnsibleParserError('Failed to parse %s: %s. iocage_data: %s' %
+                                     (to_native(path), to_native(e), to_native(iocage_data)))
 
         if get_properties:
             for hostname, host_vars in results['_meta']['hostvars'].items():

@@ -17,7 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Update vars/checksum.yml
 * Update inventory/iocage.py
+* Update modules/iocage.py
 
 
 0.2.2
