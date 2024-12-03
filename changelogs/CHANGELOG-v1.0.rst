@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update inventory/iocage.py
 
 
 0.2.2
