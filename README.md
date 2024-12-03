@@ -22,7 +22,36 @@ The collection is shipped with
 
 ## Setup
 
-See the directory *setup*
+See the directory *setup*. The admins can use the playbooks
+*.configure.yml* and *setup.yml* to configure this collection and
+setup plugins and roles.
+
+### Plugins
+
+The dictionary of plugins *bsd_plugins* is declared in the file
+*setup/vars/plugins.yml*. Fit the entries to your needs and update the
+dictionary *checksum* declared in the file *setup/vars/checksum.yml*.
+
+Put the plugins you want to install into the dictionary
+*bsd_plugins_install*, declared in the file
+*setup/vars/plugins_install.yml*. Update the plugins
+
+```sh
+shell> ansible-playbook setup.yml -t plugins
+```
+
+This block of tasks:
+
+* downloads the plugins into the directory *setup/distfiles* if not
+  preinstalled
+* patch the files if the attribute *patch* exists in *bsd_plugins*
+* install the plugin
+
+This procedure is not idempotent if a *patch* exists.
+
+### Roles
+
+TBD
 
 
 ## License
