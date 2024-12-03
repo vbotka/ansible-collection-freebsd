@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Update README.
+* Update module iocage.yml
 * Remove setup/vars/roles.yml.bak
 * Rmove plugins/inventory/__pycache__/iocage.cpython-312.pyc
 
