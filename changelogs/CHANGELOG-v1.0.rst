@@ -17,6 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Add dependencies to galaxy.yml
+* Add playbook setup/modules-in-role.yml to list dependencies
+* Add setup/vars/keywords.yml needed by modules-in-role.yml
 
 
 0.2.3

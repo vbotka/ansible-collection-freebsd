@@ -15,6 +15,9 @@ repository: https://github.com/vbotka/ansible-collection-freebsd/
 documentation: https://readthedocs.org/projects/ansible-collection-freebsd/
 homepage: https://github.com/vbotka/ansible-collection-freebsd/wiki/
 issues: https://github.com/vbotka/ansible-collection-freebsd/issues/
+dependencies:
+  ansible.posix: "*"
+  community.general: "*"
 build_ignore:
   - TODO
   - ATTIC
