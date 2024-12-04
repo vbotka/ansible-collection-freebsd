@@ -16,9 +16,9 @@
 # shell> ansible-playbook modules-in-role.yml -e my_role_path=../roles/iocage
 #
 # TASK [Display results] ********************************************************
-# ok: [localhost] => 
+# ok: [localhost] =>
 #   msg: |2-
-#   
+#
 #     list_of_modules:
 #       - ansible.builtin.assert
 #       - ansible.builtin.command
@@ -41,7 +41,7 @@
 #       - community.general.zfs
 #       - community.general.zfs_facts
 #       - community.general.zpool_facts
-#   
+#
 #     list_of_collections:
 #       - ansible.builtin
 #       - ansible.posix
