@@ -1,0 +1,43 @@
+- hosts: iocage
+  environment:
+    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+  tasks:
+
+    - name: Fetch releases
+      vbotka.freebsd.iocage:
+        release: "{{ item }}"
+      loop: "{{ fetch }}"
+
+    - name: Create basejail
+      vbotka.freebsd.iocage:
+        state: basejail
+        name: "{{ item.name }}"
+        release: "{{ item.release }}"
+        properties: "{{ item.properties | d(omit) }}"
+      loop: "{{ basejails }}"
+
+    - name: Clone from basejail
+      vbotka.freebsd.iocage:
+        state: cloned
+        clone_from: "{{ item.clone_from }}"
+        name: "{{ item.name }}"
+        properties: "{{ item.properties | d(omit) }}"
+      loop: "{{ clones }}"
+
+    - name: Start clones
+      vbotka.freebsd.iocage:
+        state: started
+        name: "{{ item }}"
+      loop: "{{ start }}"
+
+    - name: Create Ansible facts iocage_*. This is the default state.
+      vbotka.freebsd.iocage:
+      
+    - name: Display lists of bases, plugins, templates, and jails.
+      debug:
+        msg: |-
+          {{ iocage_releases }}
+          {{ iocage_plugins.keys() | list }}
+          {{ iocage_templates.keys() | list }}
+          {{ iocage_jails.keys() | list }}
