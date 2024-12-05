@@ -18,6 +18,8 @@ Major Changes
 Minor Changes
 -------------
 * Update README.
+* Update galaxy.yml documentation.
+* Update Wiki.
 
 
 0.2.5

@@ -13,7 +13,7 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Documentation vbotka.freebsd
 
-[ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io)
+[ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
 
 
 ## Included content
