@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Update galaxy.yml documentation.
 * Update Plugins.
+* Update Example 001 Clone jails and create inventory
 
 
 0.2.6
