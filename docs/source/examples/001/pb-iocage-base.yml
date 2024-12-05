@@ -1,0 +1,27 @@
+- hosts: iocage
+  environment:
+    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+  tasks:
+
+    - name: Create basejail
+      register: out
+      vbotka.freebsd.iocage:
+        state: basejail
+        name: "{{ item.name }}"
+        release: "{{ item.release }}"
+        properties: "{{ item.properties | d(omit) }}"
+      loop: "{{ basejails }}"
+
+    - name: Debug
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: out
+      
+    - name: Display lists of bases, plugins, templates, and jails.
+      ansible.builtin.debug:
+        msg: |-
+          releases: {{ iocage_releases }}
+          plugins: {{ iocage_plugins.keys() | list }}
+          templates: {{ iocage_templates.keys() | list }}
+          jails: {{ iocage_jails.keys() | list }}

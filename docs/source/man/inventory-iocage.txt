@@ -1,0 +1,245 @@
+  Get inventory hosts from the iocage jail manager.
+  Uses a configuration file as an inventory source, it must end in
+  `.iocage.yml' or `.iocage.yaml'.
+
+OPTIONS:
+
+   cache   Toggle to enable/disable the caching of the inventory's source
+           data, requires a cache plugin setup to work.
+        set_via:
+          env:
+          - name: ANSIBLE_INVENTORY_CACHE
+          ini:
+          - key: cache
+            section: inventory
+        default: false
+        type: bool
+
+   cache_connection  Cache connection data or path, read cache plugin documentation for
+                     specifics.
+        set_via:
+          env:
+          - name: ANSIBLE_CACHE_PLUGIN_CONNECTION
+          - name: ANSIBLE_INVENTORY_CACHE_CONNECTION
+          ini:
+          - key: fact_caching_connection
+            section: defaults
+          - key: cache_connection
+            section: inventory
+        default: null
+        type: str
+
+   cache_plugin  Cache plugin to use for the inventory's source data.
+        set_via:
+          env:
+          - name: ANSIBLE_CACHE_PLUGIN
+          - name: ANSIBLE_INVENTORY_CACHE_PLUGIN
+          ini:
+          - key: fact_caching
+            section: defaults
+          - key: cache_plugin
+            section: inventory
+        default: memory
+        type: str
+
+   cache_prefix  Prefix to use for cache plugin files/tables.
+        set_via:
+          env:
+          - name: ANSIBLE_CACHE_PLUGIN_PREFIX
+          - name: ANSIBLE_INVENTORY_CACHE_PLUGIN_PREFIX
+          ini:
+          - key: fact_caching_prefix
+            section: defaults
+          - key: cache_prefix
+            section: inventory
+        default: ansible_inventory_
+
+   cache_timeout  Cache duration in seconds.
+        set_via:
+          env:
+          - name: ANSIBLE_CACHE_PLUGIN_TIMEOUT
+          - name: ANSIBLE_INVENTORY_CACHE_TIMEOUT
+          ini:
+          - key: fact_caching_timeout
+            section: defaults
+          - key: cache_timeout
+            section: inventory
+        default: 3600
+        type: int
+
+   compose  Create vars from jinja2 expressions.
+        default: {}
+        type: dict
+
+   env     `user''s environment on `host'.
+        default: []
+        elements: str
+        type: list
+
+   get_properties  Get jails' properties. Creates dictionary `iocage_properties' for
+                   each added host.
+        default: false
+        type: boolean
+
+   groups  Add hosts to group based on Jinja2 conditionals.
+        default: {}
+        type: dict
+
+   1mhost0m    The ip/name of the `iocage' host.
+        type: str
+
+   keyed_groups  Add hosts to group based on the values of a variable.
+        default: []
+        elements: dict
+        type: list
+        suboptions:
+
+           default_value          The default value when the host variable's value is an empty
+                          string.
+                          This option is mutually exclusive with
+                          `keyed_groups[].trailing_separator'.
+          default: null
+          type: str
+          added in: version 2.12 of ansible-core
+
+           key          The key from input dictionary used to generate groups.
+          default: null
+          type: str
+
+           parent_group          parent group for keyed group.
+          default: null
+          type: str
+
+           prefix          A keyed group name will start with this prefix.
+          default: ''
+          type: str
+
+           separator          separator used to build the keyed group name.
+          default: _
+          type: str
+
+           trailing_separator          Set this option to `false' to omit the
+                               `keyed_groups[].separator' after the
+                               host variable when the value is an
+                               empty string.
+                               This option is mutually exclusive with
+                               `keyed_groups[].default_value'.
+          default: true
+          type: bool
+          added in: version 2.12 of ansible-core
+
+   leading_separator  Use in conjunction with `keyed_groups'.
+                      By default, a keyed group that does not have a
+                      prefix or a separator provided will have a name
+                      that starts with an underscore.
+                      This is because the default prefix is `""' and
+                      the default separator is `"_"'.
+                      Set this option to `false' to omit the leading
+                      underscore (or other separator) if no prefix is
+                      given.
+                      If the group name is derived from a mapping the
+                      separator is still used to concatenate the
+                      items.
+                      To not use a separator in the group name at all,
+                      set the separator for the keyed group to an
+                      empty string instead.
+        default: true
+        type: boolean
+
+   1mplugin0m  The name of this plugin, it should always be set to
+           `vbotka.freebsd.iocage' for this plugin to recognize it as
+           its own.
+        choices: [vbotka.freebsd.iocage]
+        type: str
+
+   strict  If `yes' make invalid entries a fatal error, otherwise skip and
+           continue.
+           Since it is possible to use facts in the expressions they
+           might not always be available and we ignore those errors by
+           default.
+        default: false
+        type: bool
+
+   use_extra_vars  Merge extra vars into the available variables for composition
+                   (highest precedence).
+        set_via:
+          env:
+          - name: ANSIBLE_INVENTORY_USE_EXTRA_VARS
+          ini:
+          - key: use_extra_vars
+            section: inventory_plugins
+        default: false
+        type: bool
+
+   user    `iocage' user. It is expected that the `user' is able to connect
+           to the `host' and execute the command `iocage list'. This
+           option is not required if `host' is `localhost'.
+        default: null
+        type: str
+
+NOTES:
+      * You might want to test the command `ssh user@host iocage
+        list -l' on the controller before using this inventory
+        plugin.
+      * If you run this inventory plugin on `localhost' `ssh' is
+        not used. In this case, test the command `iocage list
+        -l'.
+      * This inventory plugin creates variables `iocage_*' for
+        each added host.
+      * The values of these variables are collected from the
+        output of the command `iocage list -l'
+      * The names of these variables correspond to the output
+        columns.
+      * The column `NAME' is used to name the added host.
+
+REQUIREMENTS:  iocage >= 1.8
+
+
+AUTHOR: Vladimir Botka (@vbotka)
+
+NAME: iocage
+
+EXAMPLES:
+
+# file name must end with iocage.yaml or iocage.yml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+
+# user is not required if iocage is running on localhost
+plugin: vbotka.freebsd.iocage
+host: localhost
+
+# run cryptography without legacy algorithms
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+env:
+  - CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+
+# enable cache
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+env:
+  - CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+cache: true
+
+# see inventory plugin ansible.builtin.constructed
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+env:
+  - CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+cache: true
+strict: false
+compose:
+  ansible_host: iocage_ip4
+  release: iocage_release | split('-') | first
+groups:
+  test: inventory_hostname.startswith('test')
+keyed_groups:
+  - prefix: distro
+    key: iocage_release
+  - prefix: state
+    key: iocage_state

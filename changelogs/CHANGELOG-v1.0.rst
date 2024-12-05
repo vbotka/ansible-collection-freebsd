@@ -5,6 +5,24 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.2.4
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add dependencies to galaxy.yml
+* Add playbook setup/modules-in-role.yml to list dependencies
+* Add setup/vars/keywords.yml needed by modules-in-role.yml
+* Create docs. Add example: Clone jails and create inventory
+
+
 0.2.3
 =====
 
