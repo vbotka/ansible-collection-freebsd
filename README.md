@@ -1,6 +1,7 @@
 # Ansible collection vbotka.freebsd
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
+[![Documentation Status](https://readthedocs.org/projects/ansible-collection-freebsd/badge/?version=latest)](https://ansible-collection-freebsd.readthedocs.io/en/latest/?badge=latest)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-collection-freebsd)](https://github.com/vbotka/ansible-collection-freebsd/tags)
 
 [Ansible collection vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
@@ -8,6 +9,11 @@
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-collection-freebsd/issues).
 
 [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
+
+
+## Documentation vbotka.freebsd
+
+[ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
 
 
 ## Included content
