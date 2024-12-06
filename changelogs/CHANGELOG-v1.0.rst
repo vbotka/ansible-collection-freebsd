@@ -20,6 +20,8 @@ Minor Changes
 * Update galaxy.yml documentation.
 * Update Plugins.
 * Update Example 001 Clone jails and create inventory
+* Update docs.
+* Update versions in setup/vars/roles.yml
 
 
 0.2.6
