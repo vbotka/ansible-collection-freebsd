@@ -5,7 +5,7 @@ User's guide
 ############
 
 .. contents:: Table of Contents
-   :depth: 4
+   :depth: 2
 
 
 .. _ug_introduction:

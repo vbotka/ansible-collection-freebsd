@@ -4,7 +4,7 @@ bsd_roles:
     name: ansible
     scm: git
     src: https://github.com/vbotka/ansible-ansible
-    version: 2.6.21
+    version: 2.6.23
   - galaxy: vbotka.ansible_lib
     name: lib
     scm: git
@@ -19,12 +19,12 @@ bsd_roles:
     name: ansible_runner
     scm: git
     src: https://github.com/vbotka/ansible-runner
-    version: 2.6.8
+    version: 2.6.9
   - galaxy: vbotka.apache
     name: apache
     scm: git
     src: https://github.com/vbotka/ansible-apache
-    version: 2.6.7
+    version: 2.6.8
   - galaxy: vbotka.bsdutils
     name: bsdutils
     scm: git
@@ -39,7 +39,7 @@ bsd_roles:
     name: config_light
     scm: git
     src: https://github.com/vbotka/ansible-config-light
-    version: 2.6.6
+    version: 2.6.7
   - galaxy: vbotka.freebsd_bash
     name: bash
     scm: git
@@ -49,7 +49,7 @@ bsd_roles:
     name: custom_image
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-custom-image
-    version: 2.6.5
+    version: 2.6.6
   - galaxy: vbotka.freebsd_dhcp
     name: dhcp
     scm: git
@@ -129,12 +129,12 @@ bsd_roles:
     name: postinstall
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-postinstall
-    version: 2.6.16
+    version: 2.6.18
   - galaxy: vbotka.freebsd_poudriere
     name: poudriere
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-poudriere
-    version: 2.6.2
+    version: 2.6.3
   - galaxy: vbotka.freebsd_redis
     name: redis
     scm: git
@@ -154,7 +154,7 @@ bsd_roles:
     name: wpa_cli
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-wpa-cli
-    version: 2.6.2
+    version: 2.6.3
   - galaxy: vbotka.freebsd_zfs
     name: zfs
     scm: git
