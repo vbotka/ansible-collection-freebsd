@@ -7,6 +7,8 @@ skip_list:
   - var-naming[no-role-prefix]
   - schema[meta]
 exclude_paths:
+  - dest
+  - docs
   - plugins/inventory/iocage.py
   - setup/roles/devel
 

@@ -1,7 +1,6 @@
-
 .. _ug:
 
-User's guide
+User's Guide
 ############
 
 .. contents:: Table of Contents

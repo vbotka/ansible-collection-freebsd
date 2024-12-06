@@ -17,6 +17,13 @@ Plugins:
 * :ref:`module_iocage` - FreeBSD iocage jail handling
 * :ref:`inventory_iocage` - FreeBSD iocage inventory source
 
+Roles: TBD
+
+This documentation is built in the collection directory *docs*. In
+addition to this, it is possible to create a `collection docsite
+<https://ansible.readthedocs.io/projects/antsibull-docs/collection-docs/>`_
+in Ansible standard format. See :ref:`create_collection_docsite`.
+
 | This collection is primarily licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
 | SPDX-License-Identifier: `BSD-2-Clause <https://spdx.org/licenses/BSD-2-Clause.html>`_
@@ -31,6 +38,7 @@ Plugins:
    roles
    playbooks
    examples
+   developer_guide
    copyright
    legalnotice
 
