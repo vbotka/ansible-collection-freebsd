@@ -6,12 +6,14 @@ Plugins
 .. contents:: Table of Contents
    :depth: 2
 
+
 .. _module_iocage:
 
 Module vbotka.freebsd.iocage
 ****************************
 
 .. literalinclude:: man/module-iocage.txt
+
 
 .. _inventory_iocage:
 
