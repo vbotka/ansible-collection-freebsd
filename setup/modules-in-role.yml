@@ -52,6 +52,7 @@
 
 - name: List modules and collections in a role
   hosts: localhost
+  connection: local
   gather_facts: false
 
   vars_files:

@@ -16,8 +16,8 @@
 
 - name: Setup the collection vbotka.freebsd
   hosts: localhost
-  gather_facts: false
   connection: local
+  gather_facts: false
   # debugger: on_failed
 
   vars_files:
