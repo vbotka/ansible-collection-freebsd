@@ -12,6 +12,13 @@ Release Summary
 ---------------
 Maintenance update.
 
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update plugins and roles default mode. Groups can not write.
+
 
 0.2.9
 =====
