@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update plugins and roles default mode. Groups can not write.
+* Update docs.
 
 
 0.2.9
