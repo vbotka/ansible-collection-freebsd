@@ -1,0 +1,18 @@
+---
+
+# Runner enable
+freebsd_iocage_runner: false
+
+# End host is runner fails
+freebsd_iocage_runner_fatal: true
+
+# List of commands
+freebsd_iocage_runner_exec: ''
+
+# Commands
+freebsd_iocage_runner_cmd: {}
+
+# Runner environment:
+freebsd_iocage_runner_env: {}
+
+# EOF

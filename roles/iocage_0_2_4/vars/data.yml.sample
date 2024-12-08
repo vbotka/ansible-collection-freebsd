@@ -1,0 +1,25 @@
+---
+
+freebsd_iocage_data: true
+freebsd_iocage_data_mount_enable: true
+
+freebsd_iocage_data_root: pool2/iocage-data
+freebsd_iocage_data_mount: /mnt/pool2/iocage-data
+
+freebsd_iocage_data_jails:
+  test_101:
+    files:
+      - name: firstboot.sh
+        owner: root
+        group: wheel
+        mode: '0770'
+      - name: ~/.ansible/copy/authorized_keys
+        owner: root
+        group: wheel
+        mode: '0600'
+      - name: ~/.ansible/copy/rc.conf
+        owner: root
+        group: wheel
+        mode: '0644'
+
+# EOF

@@ -5,6 +5,14 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.2.12
+======
+
+Release Summary
+---------------
+Add role iocage_0_2_4
+
+
 0.2.11
 ======
 
