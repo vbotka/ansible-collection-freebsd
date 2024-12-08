@@ -16,8 +16,8 @@
 
 - name: Setup the collection vbotka.freebsd
   hosts: localhost
-  gather_facts: false
   connection: local
+  gather_facts: false
   # debugger: on_failed
 
   vars_files:
@@ -135,11 +135,23 @@
       tags: roles
       block:
 
+        - name: "Create roles directories."
+          tags: roles_dirs
+          ansible.builtin.file:
+            path: "{{ collection_dir }}/roles/{{ item.name }}-{{ item.version }}"
+            mode: "{{ roles_dir_mode }}"
+            state: directory
+          loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
+	                      | selectattr('name', 'in', bsd_roles_install) }}"
+          loop_control:
+            label: "{{ item.name }} {{ item.galaxy }} {{ item.version }}"
+
         - name: "Install roles."
+          tags: roles_install
           register: result
-          failed_when: result.rc not in [0, 128]
+          failed_when: result.rc | d(0) not in [0, 128]
           ansible.builtin.git:
-            dest: "{{ collection_dir }}/roles/{{ item.name }}"
+            dest: "{{ collection_dir }}/roles/{{ item.name }}-{{ item.version }}"
             repo: "{{ item.src }}"
             version: "{{ item.version }}"
             single_branch: true
@@ -147,17 +159,29 @@
           loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
 	                      | selectattr('name', 'in', bsd_roles_install) }}"
           loop_control:
-            label: "{{ item.name }} {{ item.galaxy }}"
+            label: "{{ item.name }} {{ item.galaxy }} {{ item.version }}"
 
         - name: "Debug result debug2={{ debug2 }}"
           when: debug2 | bool
+          tags: roles_install
           ansible.builtin.debug:
             var: result
 
-        # TODO: roles_dir_mode
+        - name: "Link roles directories."
+          tags: roles_links
+          ansible.builtin.file:
+            src: "{{ item.name }}-{{ item.version }}"
+            dest: "../roles/{{ item.name }}"
+            state: link
+            force: true
+          loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
+	                      | selectattr('name', 'in', bsd_roles_install) }}"
+          loop_control:
+            label: "{{ item.name }} {{ item.version }}"
 
         - name: "Clean roles."
           when: clean_role_files_enable | bool
+          tags: roles_clean
           ansible.builtin.file:
             state: absent
             dest: "{{ collection_dir }}/roles/{{ item.0 }}/{{ item.1 }}"

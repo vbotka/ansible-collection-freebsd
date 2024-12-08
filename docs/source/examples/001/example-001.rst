@@ -6,6 +6,11 @@
 .. contents:: Table of Contents
    :depth: 2
 
+Requirements
+^^^^^^^^^^^^
+
+* Activated *iocage*
+
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

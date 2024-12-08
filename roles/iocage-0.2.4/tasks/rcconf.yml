@@ -35,8 +35,8 @@
       stop: "{{ freebsd_iocage_stop | bool }}"
     actions_active: "{{ actions | dict2items | selectattr('value') }}"
   ansible.builtin.assert:
-    that:
-      - freebsd_iocage_enable | bool or freebsd_iocage_rcvar.iocage_enable | upper == 'YES'
+    that: freebsd_iocage_enable | bool or freebsd_iocage_rcvar.iocage_enable | upper == 'YES'
+    quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
     fail_msg: "[ERR] Service start, restart, or stop is active and service is disabled."
     success_msg: "[OK]  Service start, restart, or stop is active and service is enabled."
 

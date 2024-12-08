@@ -47,7 +47,7 @@ Update iocage module
 * Update the code and commit the changes. You are encouraged to
   submit a PR.
 
-* Calculate iocage.yml hash. For example ::
+* Calculate iocage.yml hash. For example, ::
 
     shell> sha512sum iocage.py
 
@@ -72,3 +72,12 @@ Update iocage module
       shell> ansible-playbook setup.yml -t plugins
 
     The *plugins* tasks are not idempotent if a patch is present.
+
+.. warning::
+
+   * The collection upgrade will override the changes. Backup your
+     changes before you upgrade the collection.
+
+   * This collection does not provide an upgrade procedure for
+     preserving changes. After the upgrade, you are responsible for
+     restoring your changes.

@@ -3,7 +3,7 @@
 vbotka.freebsd
 **************
 
-Collection version 0.2.9
+Collection version 0.2.10
 
 | This `collection <https://galaxy.ansible.com/vbotka/freebsd/>`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-collection-freebsd/issues/>`_.
@@ -14,10 +14,12 @@ Collection version 0.2.9
 
 Plugins:
 
-* :ref:`module_iocage` - FreeBSD iocage jail handling
-* :ref:`inventory_iocage` - FreeBSD iocage inventory source
+* :ref:`module_iocage` - iocage jail handling.
+* :ref:`inventory_iocage` - iocage inventory source.
 
-Roles: TBD
+Roles:
+
+* `vbotka.freebsd.iocage <https://galaxy.ansible.com/vbotka/freebsd_iocage/>`_ - install and configure iocage.
 
 This documentation is built in the collection directory *docs*. In
 addition to this, it is possible to create a `collection docsite
