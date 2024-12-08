@@ -5,6 +5,14 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.2.11
+======
+
+Release Summary
+---------------
+Fix roles dir names.
+
+
 0.2.10
 ======
 

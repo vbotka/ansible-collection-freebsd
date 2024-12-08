@@ -138,7 +138,7 @@
         - name: "Create roles directories."
           tags: roles_dirs
           ansible.builtin.file:
-            path: "{{ collection_dir }}/roles/{{ item.name }}-{{ item.version }}"
+            path: "{{ collection_dir }}/roles/{{ item.name }}_{{ item.version | replace('.', '_') }}"
             mode: "{{ roles_dir_mode }}"
             state: directory
           loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
@@ -151,7 +151,7 @@
           register: result
           failed_when: result.rc | d(0) not in [0, 128]
           ansible.builtin.git:
-            dest: "{{ collection_dir }}/roles/{{ item.name }}-{{ item.version }}"
+            dest: "{{ collection_dir }}/roles/{{ item.name }}_{{ item.version | replace('.', '_') }}"
             repo: "{{ item.src }}"
             version: "{{ item.version }}"
             single_branch: true
@@ -170,7 +170,7 @@
         - name: "Link roles directories."
           tags: roles_links
           ansible.builtin.file:
-            src: "{{ item.name }}-{{ item.version }}"
+            src: "{{ item.name }}_{{ item.version | replace('.', '_') }}"
             dest: "../roles/{{ item.name }}"
             state: link
             force: true
