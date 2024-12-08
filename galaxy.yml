@@ -1,7 +1,7 @@
 ---
 name: freebsd
 namespace: vbotka
-version: 0.2.10
+version: 0.2.11
 readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
@@ -29,5 +29,3 @@ build_ignore:
   - '*.tar.gz'
   - '*~'
   - '\#*'
-
-# EOF
