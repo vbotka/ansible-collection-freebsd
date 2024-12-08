@@ -18,6 +18,7 @@
     - name: "Conf: Exists {{ freebsd_iocage_mount ~ '/defaults.json' }}"
       ansible.builtin.assert:
         that: result.stat.exists
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
         fail_msg: "[ERR] {{ freebsd_iocage_mount }}/defaults.json is missing."
         success_msg: "[OK]  {{ freebsd_iocage_mount }}/defaults.json exists."
 
@@ -45,6 +46,7 @@
         update_int_v: "{{ update_int_k | map('extract', freebsd_iocage_defaults_update) }}"
       ansible.builtin.assert:
         that: update_int_v | reject('integer') | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
         fail_msg: "[ERR] Only integers allowed in: {{ update_int_k }}"
 
     - name: "Conf: Do not override boolean."

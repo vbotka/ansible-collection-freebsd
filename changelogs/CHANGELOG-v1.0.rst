@@ -19,6 +19,8 @@ Minor Changes
 -------------
 * Update plugins and roles default mode. Groups can not write.
 * Update docs.
+* Update setup.yml. Create links to roles.
+* Upgrade role iocage to 0.2.4
 
 
 0.2.9

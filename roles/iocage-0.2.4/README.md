@@ -1,6 +1,6 @@
 # freebsd_iocage
 
-[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-iocage.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-iocage)
+[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-iocage)](https://github.com/vbotka/ansible-freebsd-iocage/tags)
 
 [Ansible role.](https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_iocage/) FreeBSD. Install, configure, and run iocage.
@@ -284,6 +284,7 @@ shell> ansible-playbook iocage.yml -t freebsd_iocage_rcconf \
 								   -e freebsd_iocage_enable=false
 ```
 
+
 ## Runner
 
 By default, the *runner* and *stat* tasks are disabled. If you want to
@@ -300,13 +301,13 @@ See *vars/runner.yml.sample* how to configure *runner*. For example,
 freebsd_iocage_runner_cmd:
   fetch_141R:
     - cmd: iocage fetch --release 14.1-RELEASE
-	  creates: "{{ freebsd_iocage_mount }}/releases/14.1-RELEASE"
+      creates: "{{ freebsd_iocage_mount }}/releases/14.1-RELEASE"
   create_141R_121:
     - cmd: iocage create --release 14.1-RELEASE --name test_121
-	  creates: "{{ freebsd_iocage_mount }}/jails/test_121"
+      creates: "{{ freebsd_iocage_mount }}/jails/test_121"
   net_121:
     - cmd: iocage set vnet=off test_121
-	- cmd: iocage set ip4_addr="em0|10.1.0.121/24" test_121
+    - cmd: iocage set ip4_addr="em0|10.1.0.121/24" test_121
 ```
 
 Run selected commands

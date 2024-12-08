@@ -22,6 +22,7 @@
         runner_cmd_missing: "{{ freebsd_iocage_runner_list | difference(freebsd_iocage_runner_cmd.keys()) }}"
       ansible.builtin.assert:
         that: runner_cmd_missing | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
         fail_msg: "[ERR] Missing command(s): {{ runner_cmd_missing }}"
         success_msg: "[OK]  All commands are available."
 
@@ -33,6 +34,7 @@
 	                           rejectattr('cmd', 'regex', '^iocage ' ~ runner_cmd_regex_set ~ '*$') }}"
       ansible.builtin.assert:
         that: runner_cmd_not_iocage | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
         fail_msg: "[ERR] Not iocage command(s): {{ runner_cmd_not_iocage }}"
         success_msg: "[OK]  All commands are iocage."
 
