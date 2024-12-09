@@ -114,7 +114,11 @@ Inventory *iocage.yml*
 .. literalinclude:: iocage.yml
     :language: yaml
 
-.. seealso:: `ansible.builtin.constructed inventory <https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory>`_
+.. seealso::
+
+   * `Inventory plugin ansible.builtin.constructed <https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory>`_
+
+   * `Enabling inventory cache plugins <https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins>`_
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
