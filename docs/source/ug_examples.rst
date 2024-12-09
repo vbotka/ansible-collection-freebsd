@@ -1,4 +1,4 @@
-.. _examples_bsd:
+.. _ug_examples:
 
 Examples
 ********

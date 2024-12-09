@@ -1,4 +1,4 @@
-.. _playbooks_bsd:
+.. _ug_playbooks_bsd:
 
 Playbooks
 *********

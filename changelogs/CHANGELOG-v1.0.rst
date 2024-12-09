@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update setup playbooks.
+* Split docs to 3 guides: User, Administrator, and Devel.
 
 
 0.2.12

@@ -1,36 +1,3 @@
-.. _ug:
-
-User's Guide
-############
-
-.. contents:: Table of Contents
-   :depth: 2
-
-
-.. _ug_introduction:
-
-Introduction
-************
-
-* Supported systems: `FreeBSD Supported Production Releases`_
-
-* Requirements:
-
-  * `ansible.posix`_
-
-  * `community.general`_
-
-* The collection is shipped with:
-
-  * module vbotka.freebsd.iocage
-  * inventory plugin vbotka.freebsd.iocage
-  * role vbotka.freebsd.iocage
-  * various playbooks
-
-.. seealso::
-
-   `Managing BSD hosts with Ansible`_
-
     
 .. _ug_installation:
 
@@ -44,23 +11,6 @@ Install the collection from Ansible Galaxy::
 .. seealso::
 
    `Installing collections`_
-
-
-.. _ug_configuration:
-
-Configuration
-*************
-
-Optionally, configure this collection. See the playbook `setup/.configure.yml`
-
-
-.. _ug_setup:
-
-Setup
-*****
-
-Optionally, install additional plugins and roles. See the playbook `setup/setup.yml`
-
 
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _FreeBSD Supported Production Releases: https://www.freebsd.org/releases

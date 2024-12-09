@@ -14,8 +14,8 @@ Collection version 0.2.13
 
 Plugins:
 
-* :ref:`module_iocage` - iocage jail handling.
-* :ref:`inventory_iocage` - iocage inventory source.
+* :ref:`ug_module_iocage` - iocage jail handling.
+* :ref:`ug_inventory_iocage` - iocage inventory source.
 
 Roles:
 
@@ -24,7 +24,7 @@ Roles:
 This documentation is built in the collection directory *docs*. In
 addition to this, it is possible to create a `collection docsite
 <https://ansible.readthedocs.io/projects/antsibull-docs/collection-docs/>`_
-in Ansible standard format. See :ref:`create_collection_docsite`.
+in Ansible standard format. See :ref:`dg_create_collection_docsite`.
 
 | This collection is primarily licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
@@ -35,11 +35,8 @@ in Ansible standard format. See :ref:`create_collection_docsite`.
    :maxdepth: 1
    :caption: Table of Contents
 
-   guide
-   plugins
-   roles
-   playbooks
-   examples
+   users_guide
+   administrator_guide
    developer_guide
    copyright
    legalnotice
