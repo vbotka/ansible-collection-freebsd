@@ -12,4 +12,5 @@ User's Guide
   ug_plugins
   ug_roles
   ug_playbooks
+  ug_best_practice
   ug_examples

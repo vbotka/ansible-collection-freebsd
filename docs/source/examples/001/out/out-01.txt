@@ -1,47 +1,98 @@
-(env) > ansible-playbook -i iocage-hosts.ini pb-iocage-fetch-base-clone-list.yml
+(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                       -l iocage_02 \
+				       -t freebsd_iocage_debug \
+				       -e freebsd_iocage_debug=true
 
-PLAY [iocage] *******************************************************************************************************
+PLAY [iocage] ******************************************************************
 
-TASK [Fetch releases] ***********************************************************************************************
-ok: [iocage_01] => (item=13.3-RELEASE)
-ok: [iocage_01] => (item=13.4-RELEASE)
-ok: [iocage_02] => (item=14.1-RELEASE)
-
-TASK [Create basejail] **********************************************************************************************
-changed: [iocage_02] => (item={'name': 'ansible_client', 'release': '14.1-RELEASE'})
-changed: [iocage_01] => (item={'name': 'ansible_client', 'release': '13.4-RELEASE'})
-
-TASK [Clone from basejail] ******************************************************************************************
-changed: [iocage_01] => (item={'name': 'test_101', 'clone_from': 'ansible_client', 'properties': {'vnet': 'on', 'defaultrouter': '10.1.0.10', 'ip4_addr': 'vnet0|10.1.0.101/24'}})
-changed: [iocage_01] => (item={'name': 'test_102', 'clone_from': 'ansible_client', 'properties': {'vnet': 'on', 'defaultrouter': '10.1.0.10', 'ip4_addr': 'vnet0|10.1.0.102/24'}})
-changed: [iocage_02] => (item={'name': 'test_111', 'clone_from': 'ansible_client', 'properties': {'ip4_addr': 'em0|10.1.0.111/24'}})
-changed: [iocage_01] => (item={'name': 'test_103', 'clone_from': 'ansible_client', 'properties': {'vnet': 'on', 'defaultrouter': '10.1.0.10', 'ip4_addr': 'vnet0|10.1.0.103/24'}})
-changed: [iocage_02] => (item={'name': 'test_112', 'clone_from': 'ansible_client', 'properties': {'ip4_addr': 'em0|10.1.0.112/24'}})
-changed: [iocage_02] => (item={'name': 'test_113', 'clone_from': 'ansible_client', 'properties': {'ip4_addr': 'em0|10.1.0.113/24'}})
-
-TASK [Start clones] *************************************************************************************************
-changed: [iocage_01] => (item=test_103)
-changed: [iocage_02] => (item=test_113)
-
-TASK [Create Ansible facts iocage_*. This is the default state.] ****************************************************
-ok: [iocage_01]
+TASK [Gathering Facts] *********************************************************
 ok: [iocage_02]
 
-TASK [Display lists of bases, plugins, templates, and jails.] *******************************************************
-ok: [iocage_01] => 
-  msg: |-
-    ['13.3-RELEASE', '13.4-RELEASE']
-    []
-    []
-    ['ansible_client', 'test_101', 'test_102', 'test_103']
+TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] **********
 ok: [iocage_02] => 
   msg: |-
-    ['14.1-RELEASE']
-    []
-    []
-    ['ansible_client', 'test_111', 'test_112', 'test_113']
+    freebsd_iocage_role_version: 0.2.5
+  
+    ansible_architecture: amd64
+    ansible_os_family: FreeBSD
+    ansible_distribution: FreeBSD
+    ansible_distribution_major_version: 14
+    ansible_distribution_version: 14.1
+    ansible_distribution_release: 14.1-RELEASE
+    ansible_python_version: 3.11.9
+  
+    freebsd_install_method: packages
+    freebsd_use_packages: True
+    freebsd_install_retries: 10
+    freebsd_install_delay: 5
+  
+    freebsd_iocage_install: True
+    freebsd_iocage_packages:
+      - sysutils/iocage
+  
+    freebsd_iocage_enable: True
+    freebsd_iocage_start: False
+    freebsd_iocage_restart: False
+    freebsd_iocage_stop: False
+  
+    freebsd_iocage_backup_conf: False
+    freebsd_iocage_assert_quiet: True
+  
+    freebsd_iocage_pool: zroot
+    freebsd_iocage_pool_mount: /mnt/zroot
+    freebsd_iocage_mount: /mnt/zroot/iocage
+  
+    freebsd_iocage_activate: False
+    freebsd_iocage_activate_fatal: True
+  
+    freebsd_iocage_sanity: True
+    freebsd_iocage_sanity_service: True
+    freebsd_iocage_sanity_env: True
+    freebsd_iocage_sanity_fdesc: True
+    freebsd_iocage_sanity_kernel: True
+    freebsd_iocage_sanity_kernel_sctp: False
+    freebsd_iocage_sanity_loader: True
+    freebsd_iocage_sanity_injail: True
+    freebsd_iocage_sanity_zfs: True
+    freebsd_iocage_sanity_zfs_pool_exists: True
+    freebsd_iocage_sanity_zfs_pool_active: False
+  
+    freebsd_iocage_lang: en_US.UTF-8
+    freebsd_iocage_env:
+      CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+  
+    freebsd_iocage_sysctl_update:
+      {}
+  
+    freebsd_iocage_defaults_override_int: False
+    freebsd_iocage_defaults_override_bool: False
+    freebsd_iocage_defaults_update:
+      {}
+  
+    freebsd_iocage_data: False
+    freebsd_iocage_data_mount_enable: False
+    freebsd_iocage_data_fstab: False
+    freebsd_iocage_data_root: zroot/iocage-data
+    freebsd_iocage_data_mount: /mnt/zroot/iocage-data
+    freebsd_iocage_data_dir: mnt
+    freebsd_iocage_data_jails:
+      {}
+  
+    freebsd_iocage_stat: False
+    freebsd_iocage_stat_fatal: True
+  
+    freebsd_iocage_runner: False
+    freebsd_iocage_runner_fatal: True
+    freebsd_iocage_runner_env:
+      {}
+  
+    freebsd_iocage_runner_exec:
+    freebsd_iocage_runner_cmd:
+      {}
+  
+    freebsd_iocage_clean: False
+    freebsd_iocage_clean_jails:
+      {}
 
-PLAY RECAP **********************************************************************************************************
-iocage_01                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_02                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
+PLAY RECAP *********************************************************************
+iocage_02: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

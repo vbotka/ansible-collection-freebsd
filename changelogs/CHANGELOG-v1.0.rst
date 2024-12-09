@@ -10,15 +10,18 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Add docs examples
+Upgrade role iocage; Update docs.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Upgrade role iocage to 0.2.5
 * Update setup playbooks.
 * Split docs to 3 guides: User, Administrator, and Devel.
+* Add docs UG chapter Best Practice.
+* Add docs Examples 002 and 003.
 
 
 0.2.12
