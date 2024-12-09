@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Add links to ug_plugin and examples.
+* Add Example 004.
 
 
 0.2.13

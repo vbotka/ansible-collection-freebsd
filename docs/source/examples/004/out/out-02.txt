@@ -1,0 +1,10 @@
+(env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
+        ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
+	ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+	                               -l iocage_02 \
+				       -t freebsd_iocage_sanity
+
+PLAY [iocage] ******************************************************************
+
+PLAY RECAP *********************************************************************
+iocage_02: ok=17   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0

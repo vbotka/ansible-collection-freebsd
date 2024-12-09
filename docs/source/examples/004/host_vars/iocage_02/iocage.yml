@@ -1,0 +1,6 @@
+ansible_python_interpreter: /usr/local/bin/python3.11
+
+freebsd_iocage_pool: zroot
+freebsd_iocage_pool_mount: /zroot
+
+freebsd_iocage_sanity_zfs_pool_active: true
