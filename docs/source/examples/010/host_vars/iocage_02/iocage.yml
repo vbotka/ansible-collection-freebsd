@@ -1,0 +1,25 @@
+ansible_python_interpreter: /usr/local/bin/python3.11
+
+fetch:
+  - 14.1-RELEASE
+
+basejails:
+  - name: ansible_client
+    release: 14.1-RELEASE
+
+clones:
+  - name: test_111
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'em0|10.1.0.111/24'
+  - name: test_112
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'em0|10.1.0.112/24'
+  - name: test_113
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'em0|10.1.0.113/24'
+
+start:
+  - test_113
