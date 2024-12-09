@@ -20,12 +20,6 @@ freebsd_iocage_data_mount: "{{ freebsd_iocage_pool_mount }}/iocage-data"
 freebsd_iocage_data_dir: mnt
 
 # data
-freebsd_iocage_data_jails:
-  test_101:
-    files:
-      - name: firstboot.sh
-        owner: root
-        group: wheel
-        mode: '0770'
+freebsd_iocage_data_jails: {}
 
 # EOF

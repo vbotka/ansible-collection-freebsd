@@ -1,0 +1,67 @@
+---
+
+- name: "Create plugins distfiles directories."
+  tags: plugins_distfiles_dirs
+  ansible.builtin.file:
+    path: "distfiles/{{ item.key }}"
+    mode: "{{ plugins_dir_mode }}"
+    state: directory
+  loop: "{{ bsd_plugins_install | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Create plugins directories."
+  tags: plugins_dirs
+  ansible.builtin.file:
+    path: "{{ collection_dir }}/plugins/{{ item.key }}"
+    mode: "{{ plugins_dir_mode }}"
+    state: directory
+  loop: "{{ bsd_plugins_install | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Download distfiles."
+  when: url != 'preinstalled in distfiles'
+  tags: plugins_distfiles
+  vars:
+    branch: "{{ bsd_plugins[item.0.key][item.1].branch }}"
+    url: "{{ bsd_plugins[item.0.key][item.1].url }}"
+  register: result
+  ansible.builtin.get_url:
+    url: "{{ url }}/{{ branch }}/{{ item.1 }}.py"
+    checksum: "{{ checksum[item.0.key][item.1][branch] }}"
+    dest: "distfiles/{{ item.0.key }}/{{ item.1 }}.py"
+    mode: "{{ plugins_file_mode }}"
+  loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1 }} {{ branch }}"
+
+- name: "Install plugins (not idempotent if patch exists)."
+  tags: plugins_install
+  register: result
+  ansible.builtin.copy:
+    src: "distfiles/{{ item.0.key }}/{{ item.1 }}.py"
+    dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
+    mode: "{{ plugins_file_mode }}"
+  loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1 }}"
+
+- name: "Patch plugins (not idempotent if patch exists)."
+  when: bsd_plugins[item.0.key][item.1].patch is defined
+  tags: plugins_patch
+  register: result
+  ansible.posix.patch:
+    src: "files/{{ bsd_plugins[item.0.key][item.1].patch }}"
+    dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
+  loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1 }}"
+
+- name: "Debug result debug2={{ debug2 }}"
+  when: debug2 | bool
+  tags: plugins_install
+  ansible.builtin.debug:
+    var: result
+
+# EOF
