@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update README.
 * Add links to ug_plugin and examples.
 * Add Example 004.
 
