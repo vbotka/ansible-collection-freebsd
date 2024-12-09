@@ -1,0 +1,8 @@
+- hosts: test
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
