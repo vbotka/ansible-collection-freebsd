@@ -1,0 +1,50 @@
+{
+    "_meta": {
+        "hostvars": {
+            "ansible_client": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "-",
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.1-RELEASE-p6",
+                "iocage_state": "down",
+                "iocage_template": "-",
+                "iocage_type": "jail"
+            },
+            "test_111": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.111",
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.1-RELEASE-p6",
+                "iocage_state": "down",
+                "iocage_template": "ansible_client",
+                "iocage_type": "jail"
+            },
+            "test_112": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.112",
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.1-RELEASE-p6",
+                "iocage_state": "down",
+                "iocage_template": "ansible_client",
+                "iocage_type": "jail"
+            },
+            "test_113": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.113",
+                "iocage_ip6": "-",
+                "iocage_jid": "60",
+                "iocage_release": "14.1-RELEASE-p6",
+                "iocage_state": "up",
+                "iocage_template": "ansible_client",
+                "iocage_type": "jail"
+            }
+        }
+    }
+}
