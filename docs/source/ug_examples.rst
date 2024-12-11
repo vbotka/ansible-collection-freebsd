@@ -13,4 +13,5 @@ Examples
    010 Clone jails. Create inventory. <examples/010/example-010.rst>
    examples/011/example-011
    examples/012/example-012
+   examples/013/example-013
    examples/014/example-014

@@ -10,16 +10,17 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Update docs.
+Update module iocage. Add docs examples.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Update module iocage.
 * Update README.
 * Add links to ug_plugin and examples.
-* Add Examples 004, 011, 012, 014.
+* Add Examples 004, 011, 012, 013, 014.
 
 
 0.2.13

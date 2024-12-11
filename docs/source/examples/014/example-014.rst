@@ -1,7 +1,7 @@
 .. _example_014:
 
-014 Inventory cache
--------------------
+014 Inventory cache.
+--------------------
 
 Extending example 010.
 
@@ -17,7 +17,7 @@ Playbook *pb-vars-ip4.yml*
 Playbook output
 ^^^^^^^^^^^^^^^
 
-| It takes 4s to create the dynamic inventory and construct the variables.
+| It takes 4s in this case to create the dynamic inventory and construct the variables.
 | (The cache is disabled in *iocage.yml*. *cache=False*)
 
 .. literalinclude:: out/out-01.txt
