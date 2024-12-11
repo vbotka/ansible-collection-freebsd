@@ -1,0 +1,14 @@
+- hosts: ansible_client
+
+  tasks:
+
+    - debug:
+        msg: |
+          inventory_hostname: {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
+          release: {{ release }}
+
+          iocage_tags:
+            {{ iocage_tags | to_nice_yaml(indent=2) | indent(2) }}
+          group_names:
+            {{ group_names | to_nice_yaml(indent=2) | indent(2) }}

@@ -23,6 +23,11 @@ Introduction
 
    `Managing BSD hosts with Ansible`_
 
+.. hint::
+
+   * Run Ansible in Python virtual environment. See `venv — Creation of virtual environments`_.
+   * Use YAML callback `community.general.yaml`_
+
 
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _FreeBSD Supported Production Releases: https://www.freebsd.org/releases
@@ -30,3 +35,5 @@ Introduction
 .. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
 .. _Installing collections: https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html
 .. _Managing BSD hosts with Ansible: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html
+.. _venv — Creation of virtual environments: https://docs.python.org/3/library/venv.html#module-venv
+.. _community.general.yaml: https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html
