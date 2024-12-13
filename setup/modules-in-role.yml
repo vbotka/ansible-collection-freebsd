@@ -1,0 +1,102 @@
+---
+# Copyright 2024 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: modules-in-role.yml
+#
+# Description:
+#
+#   List modules and collections in a role
+#
+# Example:
+#
+# shell> ansible-playbook modules-in-role.yml -e my_role_path=../roles/iocage
+#
+# TASK [Display results] ********************************************************
+# ok: [localhost] =>
+#   msg: |2-
+#
+#     list_of_modules:
+#       - ansible.builtin.assert
+#       - ansible.builtin.command
+#       - ansible.builtin.copy
+#       - ansible.builtin.debug
+#       - ansible.builtin.file
+#       - ansible.builtin.find
+#       - ansible.builtin.import_tasks
+#       - ansible.builtin.lineinfile
+#       - ansible.builtin.meta
+#       - ansible.builtin.set_fact
+#       - ansible.builtin.setup
+#       - ansible.builtin.slurp
+#       - ansible.builtin.stat
+#       - ansible.builtin.template
+#       - ansible.posix.mount
+#       - ansible.posix.sysctl
+#       - community.general.pkgng
+#       - community.general.portinstall
+#       - community.general.zfs
+#       - community.general.zfs_facts
+#       - community.general.zpool_facts
+#
+#     list_of_collections:
+#       - ansible.builtin
+#       - ansible.posix
+#       - community.general
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-collection-freebsd/setup/modules-in-role.yml
+
+- name: List modules and collections in a role
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - keywords.yml
+
+  vars:
+
+    lfm: "{{ (lft | json_query('[].keys(@)') +
+              lft | json_query('[].[block[].keys(@), rescue[].keys(@), always[].keys(@)]')) |
+              flatten | unique | difference(keywords) | sort }}"
+    lfc: "{{ lfm | map('splitext') | map('first') | unique | sort }}"
+
+  tasks:
+
+    - name: Sanity
+      block:
+
+        - name: The variable my_role_path is mandatory
+          ansible.builtin.assert:
+            that: my_role_path | d('') | length > 0
+            fail_msg: '[ERR] The variable my_role_path is mandatory.'
+
+        - name: The directory my_role_path exists
+          ansible.builtin.assert:
+            that: my_role_path is exists
+            fail_msg: '[ERR] The directory {{ my_role_path }} does not exist.'
+
+    - name: Find tasks files
+      ansible.builtin.find:
+        path: "{{ my_role_path }}/tasks"
+        patterns: '*.yml,*.yaml'
+        recurse: true
+      register: result
+
+    - name: Create list of tasks
+      ansible.builtin.set_fact:
+        lft: "{{ lft | d([]) + lookup('file', item) | from_yaml }}"
+      loop: "{{ result.files | map(attribute='path') | list }}"
+
+    - name: Display results
+      ansible.builtin.debug:
+        msg: |-
+
+          list_of_modules:
+            {{ lfm | to_nice_yaml(indent=2) | indent(2) }}
+          list_of_collections:
+            {{ lfc | to_nice_yaml(indent=2) | indent(2) }}

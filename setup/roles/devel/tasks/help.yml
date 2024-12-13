@@ -1,0 +1,16 @@
+---
+- name: Help
+  when: (my_tags | length == 0) or
+        (my_tags | intersect(devel_known_tags) | length == 0)
+  vars:
+    my_tags: "{{ ansible_run_tags | difference(['all']) }}"
+  block:
+
+    - name: "help: Help"
+      ansible.builtin.debug:
+        msg: "{{ '{}'.format(devel_help_text) }}"
+
+    - name: "help: End play"
+      meta: end_play
+
+# EOF

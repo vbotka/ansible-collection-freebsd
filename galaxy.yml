@@ -1,0 +1,31 @@
+---
+name: freebsd
+namespace: vbotka
+version: 0.3.0
+readme: README.md
+authors:
+  - Vladimir Botka <vbotka@gmail.com>
+description: FreeBSD collection.
+license_file: LICENSE
+tags:
+  - freebsd
+  - iocage
+  - infrastructure
+repository: https://github.com/vbotka/ansible-collection-freebsd/
+documentation: https://ansible-collection-freebsd.readthedocs.io/en/stable/
+homepage: https://github.com/vbotka/ansible-collection-freebsd/wiki/
+issues: https://github.com/vbotka/ansible-collection-freebsd/issues/
+dependencies:
+  ansible.posix: "*"
+  community.general: "*"
+build_ignore:
+  - TODO
+  - ATTIC
+  - playbooks/sensitive
+  - '.git/'
+  - '.gitignore'
+  - '.ansible-lint'
+  - '.yamllint'
+  - '*.tar.gz'
+  - '*~'
+  - '\#*'

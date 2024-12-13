@@ -1,0 +1,86 @@
+(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                       -l iocage_02 \
+				       -t freebsd_iocage_sanity
+
+PLAY [iocage] ******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug service start, restart, and stop freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Service start, restart, and stop are mutually exclusive] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Get environment.] ************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug mounts freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Environment LANG = en_US.UTF-8] **********
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Environment LC_COLLATE = C] **************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Get mounts] ******************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug mounts freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: /dev/fd mounted to fdescfs] **************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Get sysctl kern.conftxt] *****************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug result freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Mandatory kernel options VIMAGE, RACCT, and RCTL.] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Kernel nooptions SCTP.] ******************
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Read /boot/loader.conf] ******************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug loader_dict freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: kern.racct.enable = 1] *******************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Get sysctl security.jail.jailed] *********
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug result freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Not in jail.] ****************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Get ZFS pools.] **************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug result freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: ZFS pool exists.] ************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Get ZFS datasets.] ***********************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: Debug result freebsd_iocage_debug=False] ***
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Sanity: ZFS pool activated.] *********************
+ok: [iocage_02]
+
+PLAY RECAP *********************************************************************
+iocage_02: ok=17   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0

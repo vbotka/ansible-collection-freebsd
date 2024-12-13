@@ -1,0 +1,50 @@
+(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                       -l iocage_02 \
+				       -t freebsd_iocage_pkg \
+				       -e freebsd_iocage_debug=true
+
+PLAY [iocage] ******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Pkg: Install iocage packages.] *******************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Pkg: Debug Install iocage packages freebsd_iocage_debug=true] ***
+ok: [iocage_02] => 
+  result:
+    attempts: 1
+    changed: false
+    failed: false
+    msg: package(s) already present
+    stderr: ''
+    stderr_lines: []
+    stdout: |-
+      Updating FreeBSD repository catalogue...
+      FreeBSD repository is up to date.
+      Updating build repository catalogue...
+      Fetching meta.conf: . done
+      Fetching data.pkg: .......... done
+      Processing entries: .......... done
+      build repository update completed. 505 packages processed.
+      All repositories are up to date.
+    stdout_lines:
+    - Updating FreeBSD repository catalogue...
+    - FreeBSD repository is up to date.
+    - Updating build repository catalogue...
+    - 'Fetching meta.conf: . done'
+    - 'Fetching data.pkg: .......... done'
+    - 'Processing entries: .......... done'
+    - build repository update completed. 505 packages processed.
+    - All repositories are up to date.
+
+TASK [vbotka.freebsd.iocage : Pkg: Install iocage ports.] **********************
+skipping: [iocage_02] => (item=sysutils/iocage) 
+skipping: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Pkg: Debug install iocage ports freebsd_iocage_debug=true] ***
+skipping: [iocage_02]
+
+PLAY RECAP *********************************************************************
+iocage_02: ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

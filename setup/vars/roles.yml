@@ -1,0 +1,182 @@
+---
+bsd_roles:
+  - galaxy: vbotka.ansible
+    name: ansible
+    scm: git
+    src: https://github.com/vbotka/ansible-ansible
+    version: 2.6.23
+  - galaxy: vbotka.ansible_lib
+    name: lib
+    scm: git
+    src: https://github.com/vbotka/ansible-lib
+    version: 2.6.3
+  - galaxy: vbotka.ansible_lint
+    name: ansible_lint
+    scm: git
+    src: https://github.com/vbotka/ansible-lint
+    version: 2.6.13
+  - galaxy: vbotka.ansible_runner
+    name: ansible_runner
+    scm: git
+    src: https://github.com/vbotka/ansible-runner
+    version: 2.6.9
+  - galaxy: vbotka.apache
+    name: apache
+    scm: git
+    src: https://github.com/vbotka/ansible-apache
+    version: 2.6.8
+  - galaxy: vbotka.bsdutils
+    name: bsdutils
+    scm: git
+    src: https://github.com/vbotka/ansible-bsdutils
+    version: 2.6.2
+  - galaxy: vbotka.certificate
+    name: certificate
+    scm: git
+    src: https://github.com/vbotka/ansible-certificate
+    version: 2.6.5
+  - galaxy: vbotka.config_light
+    name: config_light
+    scm: git
+    src: https://github.com/vbotka/ansible-config-light
+    version: 2.6.7
+  - galaxy: vbotka.freebsd_bash
+    name: bash
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-bash
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_custom_image
+    name: custom_image
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-custom-image
+    version: 2.6.6
+  - galaxy: vbotka.freebsd_dhcp
+    name: dhcp
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-dhcp
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_dns
+    name: dns
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-dns
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_iocage
+    name: iocage
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-iocage
+    version: 0.3.0
+  - galaxy: vbotka.freebsd_jail
+    name: jail
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-jail
+    version: 2.6.6
+  - galaxy: vbotka.freebsd_mailserver
+    name: mailserver
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-mailserver
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_mailserver_roundcube
+    name: mailserver_roundcube
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-roundcube
+    version: 2.6.1
+  - galaxy: vbotka.freebsd_mailserver_sieve
+    name: mailserver_sieve
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-sieve
+    version: 2.6.1
+  - galaxy: vbotka.freebsd_mailserver_spamassassin
+    name: mailserver_spamassassin
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-mailserver-spamassassin
+    version: 2.6.1
+  - galaxy: vbotka.freebsd_mysql
+    name: mysql
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-mysql
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_nagios
+    name: nagios
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-nagios
+    version: 2.6.5
+  - galaxy: vbotka.freebsd_network
+    name: network
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-network
+    version: 2.6.3
+  - galaxy: vbotka.freebsd_packages
+    name: packages
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-packages
+    version: 2.6.6
+  - galaxy: vbotka.freebsd_pf
+    name: pf
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-pf
+    version: 2.6.3
+  - galaxy: vbotka.freebsd_php
+    name: php
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-php
+    version: 2.6.1
+  - galaxy: vbotka.freebsd_ports
+    name: ports
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-ports
+    version: 2.6.3
+  - galaxy: vbotka.freebsd_postinstall
+    name: postinstall
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-postinstall
+    version: 2.6.18
+  - galaxy: vbotka.freebsd_poudriere
+    name: poudriere
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-poudriere
+    version: 2.6.3
+  - galaxy: vbotka.freebsd_redis
+    name: redis
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-redis
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_ssmtp
+    name: ssmtp
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-ssmtp
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_timezone
+    name: timezone
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-timezone
+    version: 2.6.2
+  - galaxy: vbotka.freebsd_wpa_cli
+    name: wpa_cli
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-wpa-cli
+    version: 2.6.3
+  - galaxy: vbotka.freebsd_zfs
+    name: zfs
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-zfs
+    version: 2.6.3
+  - galaxy: vbotka.nginx
+    name: nginx
+    scm: git
+    src: https://github.com/vbotka/ansible-nginx
+    version: 2.1.1
+  - galaxy: vbotka.nrpe
+    name: nrpe
+    scm: git
+    src: https://github.com/vbotka/ansible-nrpe
+    version: 2.6.1
+  - galaxy: vbotka.rsnapshot
+    name: rsnapshot
+    scm: git
+    src: https://github.com/vbotka/ansible-rsnapshot
+    version: 2.6.3
+  - galaxy: vbotka.yazvs
+    name: yazvs
+    scm: git
+    src: https://github.com/vbotka/ansible-yazvs
+    version: 2.6.2

@@ -1,0 +1,24 @@
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+env:
+  - CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+get_properties: False
+cache: True
+cache_plugin: ansible.builtin.jsonfile
+cache_connection: /var/tmp/inventory_cache
+cache_timeout: 3600
+cache_prefix: iocage_
+strict: True
+compose:
+  ansible_host: iocage_ip4
+  release: iocage_release | split('-') | first
+  release_major: iocage_release | split('-') | first | split('.') | first
+  release_minor: iocage_release | split('-') | first | split('.') | last
+groups:
+    test: inventory_hostname.startswith('test')
+keyed_groups:
+  - prefix: distro
+    key: iocage_release
+  - prefix: state
+    key: iocage_state

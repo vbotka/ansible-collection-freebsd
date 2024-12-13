@@ -1,0 +1,45 @@
+---
+# Copyright 2024 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: setup.yml
+#
+# Description:
+#
+#   Setup collection vbotka.freebsd
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-collection-freebsd/setup/setup.yml
+
+- name: Setup the collection vbotka.freebsd
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  # debugger: on_failed
+
+  vars_files:
+    - setup.yml
+    - checksum.yml
+    - plugins.yml
+    - plugins_install.yml
+    - roles.yml
+    - roles_install.yml
+
+  tasks:
+
+    - name: Debug
+      tags: debug
+      ansible.builtin.import_tasks: tasks/setup-debug.yml
+
+    - name: Install plugins
+      tags: plugins
+      ansible.builtin.import_tasks: tasks/setup-plugins.yml
+
+    - name: Install roles
+      tags: roles
+      ansible.builtin.import_tasks: tasks/setup-roles.yml
+
+# EOF

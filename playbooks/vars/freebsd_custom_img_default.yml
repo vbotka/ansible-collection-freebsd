@@ -1,0 +1,71 @@
+---
+# vars for playbook pb_freebsd_custom_img.yml
+
+# mount image
+fci_mount: true
+fci_mount_point: true
+fci_mount_image: /dev/mmcsd0s2a
+# fci_mount_image: /dev/mmcsd0s2a
+fci_mount_fstype: ufs
+fci_mount_path: /mnt3
+
+# /boot/loader.conf
+fci_loaderconf: true
+fci_loaderconf_modules:
+  - 'pf'
+  - 'pflog'
+  - 'wlan'
+  - 'wlan_wep'
+  - 'wlan_tkip'
+  - 'wlan_ccmp'
+  - 'wlan_amrr'
+  - 'if_rtwn_usb'
+fci_loaderconf_data:
+  - 'hw.usb.template=3'
+  - 'umodem_load="YES"'
+  - 'beastie_disable="YES"'
+  - 'loader_color="NO"'
+  - 'legal.realtek.license_ack=1'
+fci_loaderconf_data_sysctl: []
+
+# /etc/rc.conf
+fci_rcconf: true
+fci_rcconf_data:
+  - {key: 'wlans_rtwn0', value: 'wlan0'}
+  - {key: 'ifconfig_wlan0', value: 'WPA SYNCDHCP'}
+
+# /etc/wpa_supplicant.conf
+fci_wpasupconf: true
+fci_wpasupconf_link: true
+fci_wpasupconf_file: '/etc/wpa_supplicant.conf'
+fci_wpasupconf_owner: 'root'
+fci_wpasupconf_group: 'wheel'
+fci_wpasupconf_mode: '0640'
+fci_wpasupconf_backup: false
+fci_wpasupconf_dev_link: 'wlan0'
+fci_wpasupconf_global:
+  - {key: 'ctrl_interface', value: '/var/run/wpa_supplicant'}
+  - {key: 'ctrl_interface_group', value: 'wheel'}
+  - {key: 'fast_reauth', value: '1'}
+fci_wpasupconf_data:
+  - dev: 'wlan0'
+    network:
+      - conf:
+          - {key: 'ssid', value: '"MY-AP1"'}
+          - {key: 'psk', value: '"MY-AP1-PASSWORD"'}
+          - {key: 'disabled', value: '1'}
+      - conf:
+          - {key: 'ssid', value: '"MY-AP2"'}
+          - {key: 'psk', value: '"MY-AP2-PASSWORD"'}
+          - {key: 'disabled', value: '0'}
+
+# authorized keys
+# fci_authkeys: true
+# fci_authorized_key:
+#   - user: "freebsd"
+#     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar1/id_rsa.pub') }}"
+#   - user: "freebsd"
+#     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar2/id_rsa.pub') }}"
+
+# EOF
+...

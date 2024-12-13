@@ -1,0 +1,32 @@
+---
+
+- name: "Debug debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    msg: |-
+      collection_dir: {{ collection_dir }}
+
+      bsd_plugins_install:
+        {{ bsd_plugins_install | to_nice_yaml(indent=2) | indent(2) }}
+      bsd_roles_install:
+        {{ bsd_roles_install | to_nice_yaml(indent=2) | indent(2) }}
+
+- name: "Debug extended debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    msg: |-
+      assert_quiet: {{ assert_quiet }}
+      plugins_dir_mode: {{ plugins_dir_mode }}
+      plugins_file_mode: {{ plugins_file_mode }}
+      roles_dir_mode: {{ roles_dir_mode }}
+      bsd_plugins:
+        {{ bsd_plugins | to_nice_yaml(indent=2) | indent(2) }}
+      bsd_roles:
+        {{ bsd_roles | to_nice_yaml(indent=2) | indent(2) }}
+      checksum:
+        {{ checksum | to_nice_yaml(indent=2) | indent(2) }}
+      clean_role_files_enable: {{ clean_role_files_enable }}
+      clean_role_files:
+        {{ clean_role_files | to_nice_yaml(indent=2) | indent(2) }}
+
+# EOF

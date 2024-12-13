@@ -1,0 +1,21 @@
+---
+ansible_python_interpreter: auto_silent
+debug: false
+debug2: false
+collection_dir: "{{ playbook_dir.split('/')[:-1] | join('/') }}"
+
+assert_quiet: true
+
+plugins_dir_mode: '755'
+plugins_file_mode: '644'
+roles_dir_mode: '755'
+
+clean_role_files_enable: true
+clean_role_files:
+  - .ansible-lint
+  - .ansible-lint.local
+  - .git
+  - .gitignore
+  - .travis.yml
+  - changelog
+  - tests

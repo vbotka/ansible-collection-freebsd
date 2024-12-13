@@ -1,0 +1,20 @@
+README
+======
+
+Update version
+
+  shell> grep "version =" source/conf.py 
+  version = '0.2'
+
+  shell> grep "version " source/index.rst
+  Collection version 0.2.4
+
+Create html documents
+
+  shell> make html
+
+See the documents
+
+  shell> browser build/html/index.html
+
+# EOF

@@ -1,0 +1,8 @@
+---
+# devel vars
+
+devel_data:
+  - state: facts
+
+# EOF
+...

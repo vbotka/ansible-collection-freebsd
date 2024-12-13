@@ -1,0 +1,6 @@
+- hosts: test_01,test_02
+
+  tasks:
+
+    - debug:
+        msg: "{{ inventory_hostname }} running at {{ iocage_tags.vmm }}"

@@ -1,0 +1,4 @@
+---
+bsd_plugins_install:
+  modules: [iocage]
+  inventory: [iocage]

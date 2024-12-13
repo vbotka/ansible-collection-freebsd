@@ -1,0 +1,9 @@
+- hosts: iocage
+  gather_facts: true
+
+  tasks:
+
+    - name: Debug iocage
+      ansible.builtin.include_role:
+        name: vbotka.freebsd.iocage
+        tasks_from: debug.yml

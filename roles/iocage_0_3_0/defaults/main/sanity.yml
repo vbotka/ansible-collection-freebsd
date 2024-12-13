@@ -1,0 +1,35 @@
+---
+# Sanity enable
+freebsd_iocage_sanity: true
+
+# Service start, restart, and stop are mutually exclusive
+freebsd_iocage_sanity_service: true
+
+# Mandatory environment
+freebsd_iocage_sanity_env: true
+
+# Mandatory fstab entry
+freebsd_iocage_sanity_fdesc: true
+
+# Mandatory kernel options
+freebsd_iocage_sanity_kernel: true
+
+# Mandatory kernel nooptions SCTP
+freebsd_iocage_sanity_kernel_sctp: false
+
+# Mandatory loader options
+freebsd_iocage_sanity_loader: true
+
+# Not running in jail
+freebsd_iocage_sanity_injail: true
+
+# Test ZFS
+freebsd_iocage_sanity_zfs: true
+
+# ZFS pool exists
+freebsd_iocage_sanity_zfs_pool_exists: true
+
+# ZFS dataset was activated
+freebsd_iocage_sanity_zfs_pool_active: false
+
+# EOF

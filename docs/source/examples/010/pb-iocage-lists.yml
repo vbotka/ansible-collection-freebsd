@@ -1,0 +1,16 @@
+- hosts: iocage
+  environment:
+    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+  tasks:
+
+    - name: Create Ansible facts iocage_*. This is the default state.
+      vbotka.freebsd.iocage:
+      
+    - name: Display lists of bases, plugins, templates, and jails.
+      debug:
+        msg: |-
+          {{ iocage_releases }}
+          {{ iocage_plugins.keys() | list }}
+          {{ iocage_templates.keys() | list }}
+          {{ iocage_jails.keys() | list }}

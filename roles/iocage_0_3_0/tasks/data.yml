@@ -1,0 +1,65 @@
+---
+
+- name: "Data: Debug freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+  tags: freebsd_iocage_data_debug
+  ansible.builtin.debug:
+    msg: |
+      freebsd_iocage_data_mount_enable: {{ freebsd_iocage_data_mount_enable }}
+      freebsd_iocage_data_root: {{ freebsd_iocage_data_root }}
+      freebsd_iocage_data_mount: {{ freebsd_iocage_data_mount }}
+      freebsd_iocage_data_dir: {{ freebsd_iocage_data_dir }}
+      freebsd_iocage_data_jails:
+        {{ freebsd_iocage_data_jails | to_nice_yaml(indent=2) | indent(2) }}
+
+- name: Create dataset for data root.
+  when: freebsd_iocage_data_mount_enable | bool
+  tags: freebsd_iocage_data_mount
+  block:
+
+    - name: "Data: Create dataset for data root."
+      community.general.zfs:
+        name: "{{ freebsd_iocage_data_root }}"
+        state: present
+        extra_zfs_properties: "{{ freebsd_iocage_data_root_properties | d(omit) }}"
+
+    - name: "Data: Create datasets for jails."
+      community.general.zfs:
+        name: "{{ freebsd_iocage_data_root }}/{{ item.key }}"
+        state: present
+        extra_zfs_properties: "{{ item.value.extra_zfs_properties | d(omit) }}"
+      loop: "{{ freebsd_iocage_data_jails | dict2items }}"
+      loop_control:
+        label: "{{ freebsd_iocage_data_root }}/{{ item.key }}"
+
+    - name: "Data: Create fstab entry in already created jail."
+      when: freebsd_iocage_data_fstab | bool
+      tags: freebsd_iocage_data_fstab
+      ansible.posix.mount:
+        fstab: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/fstab"
+        state: present
+        path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/{{ freebsd_iocage_data_dir }}"
+        src: "{{ freebsd_iocage_data_mount }}/{{ item.key }}"
+        fstype: nullfs
+        opts: rw
+        backup: true
+      loop: "{{ freebsd_iocage_data_jails | dict2items }}"
+      loop_control:
+        label: "{{ freebsd_iocage_data_root }}/{{ item.key }}"
+
+- name: "Data: Copy files to data."
+  tags: freebsd_iocage_data_copy
+  vars:
+    dest_data_mount: "{{ freebsd_iocage_data_mount }}/{{ item.0.key }}"
+    dest_jail_dir: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/{{ freebsd_iocage_data_dir }}"
+    dest: "{{ freebsd_iocage_data_mount_enable | ternary(dest_data_mount, dest_jail_dir) }}"
+  ansible.builtin.copy:
+    src: "{{ item.1.name }}"
+    owner: "{{ item.1.owner | d(omit) }}"
+    group: "{{ item.1.group | d(omit) }}"
+    mode: "{{ item.1.mode | d(omit) }}"
+    dest: "{{ dest }}"
+  loop: "{{ freebsd_iocage_data_jails | dict2items | subelements('value.files') }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.name }}"
+
+# EOF

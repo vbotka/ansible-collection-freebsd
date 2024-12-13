@@ -1,0 +1,12 @@
+- hosts: all
+
+  tasks:
+
+    - debug:
+        msg: |
+          inventory_hostname: {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
+
+          {% for var in q('varnames', 'iocage_*') %}
+          {{ var }}: {{ lookup('vars', var) }}
+          {% endfor %}

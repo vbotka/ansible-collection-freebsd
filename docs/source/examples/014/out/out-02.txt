@@ -1,0 +1,17 @@
+(env) > date +%r; \
+        ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+	ansible-playbook pb-vars-ip4.yml \
+	                 -i iocage.yml \
+	                 -l test_113
+
+13:55:40
+
+PLAY [all] ************************************************************ 13:55:41
+
+TASK [debug] ********************************************************** 13:55:41
+ok: [test_113] => {
+    "iocage_ip4": "10.1.0.113"
+}
+
+PLAY RECAP ************************************************************ 13:55:41
+test_113: ok=1 changed=0 unreachable=0 failed=0 skipped=0 rescued=0 ignored=0

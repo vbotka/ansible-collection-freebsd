@@ -1,0 +1,25 @@
+(env) > ansible-playbook pb-test.yml -i hosts
+
+PLAY [test_01,test_02] ************************************************************************
+
+TASK [debug] **********************************************************************************
+ok: [test_101] => 
+  msg: test_101 running at iocage_01
+ok: [test_102] => 
+  msg: test_102 running at iocage_01
+ok: [test_111] => 
+  msg: test_111 running at iocage_02
+ok: [test_103] => 
+  msg: test_103 running at iocage_01
+ok: [test_112] => 
+  msg: test_112 running at iocage_02
+ok: [test_113] => 
+  msg: test_113 running at iocage_02
+
+PLAY RECAP ************************************************************************************
+test_101: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_102: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_103: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_111: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
