@@ -30,7 +30,7 @@ in Ansible standard format. See :ref:`dg_create_collection_docsite`.
 | **BSD 2-Clause "Simplified" License**
 | SPDX-License-Identifier: `BSD-2-Clause <https://spdx.org/licenses/BSD-2-Clause.html>`_
 
-| The inventory plugin vbotka.freebsd.iocage is licensed and distributed as
+| The inventory plugin vbotka.freebsd.iocage is licensed and distributed under
 | **GNU General Public License v3.0 or later**
 | SPDX-License-Identifier: `GPL-3.0-or-later <https://spdx.org/licenses/GPL-3.0-or-later.html>`_
 
