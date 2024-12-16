@@ -44,7 +44,7 @@ Set unique *cache_prefix*
     :language: yaml
     :emphasize-lines: 7-11
 
-.. warning:: Common *cache_prefix* would make the caches to override each other repeatedly.
+.. warning:: Common *cache_prefix* would make the cache files to override each other repeatedly.
 
 Playbook *pb-vars-ip4.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,11 +71,11 @@ Take a look at the cache ::
   shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_7eb74
 
 .. literalinclude:: out/out-02.txt
-    :language: yaml
+    :language: json
 
 ::
 
   shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_5a95f
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+    :language: json

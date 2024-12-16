@@ -73,7 +73,7 @@ Take a look at the cache ::
   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_6a9dd
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+    :language: json
 
 
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
