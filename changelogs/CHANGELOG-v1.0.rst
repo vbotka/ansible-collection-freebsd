@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update inventory plugin iocage.
 * Update README.
 * Update docs.
 

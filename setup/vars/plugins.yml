@@ -12,3 +12,4 @@ bsd_plugins:
     iocage:
       branch: release
       url: preinstalled in distfiles
+      patch: inventory-iocage.patch
