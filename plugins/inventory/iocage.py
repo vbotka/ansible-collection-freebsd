@@ -16,12 +16,15 @@ DOCUMENTATION = '''
     requirements:
         - iocage >= 1.8
     description:
-        - Get inventory hosts from the iocage jail manager.
+        - Get inventory hosts from the iocage jail manager running on O(host).
+        - By default, O(host) is V(localhost). If O(host) is not V(localhost) it
+          is expected that the O(user) is able to connect to the O(host) with
+          SSH and execute the command C(iocage list).
         - Uses a configuration file as an inventory source, it must end
           in C(.iocage.yml) or C(.iocage.yaml).
     extends_documentation_fragment:
-        - constructed
-        - inventory_cache
+        - ansible.builtin.constructed
+        - ansible.builtin.inventory_cache
     options:
         plugin:
             description:
@@ -32,14 +35,14 @@ DOCUMENTATION = '''
             choices: ['vbotka.freebsd.iocage']
             type: str
         host:
-            description: The ip/name of the C(iocage) host.
-            required: true
+            description: The IP/hostname of the C(iocage) host.
             type: str
+            default: localhost
         user:
             description:
               - C(iocage) user.
                 It is expected that the O(user) is able to connect to the
-                O(host) and execute the command C(iocage list).
+                O(host) with SSH and execute the command C(iocage list).
                 This option is not required if O(host) is V(localhost).
             type: str
         get_properties:
@@ -54,12 +57,14 @@ DOCUMENTATION = '''
             elements: str
             default: []
     notes:
-      - You might want to test the command C(ssh user@host iocage list -l)
-        on the controller before using this inventory plugin.
+      - You might want to test the command C(ssh user@host iocage list -l) on
+        the controller before using this inventory plugin with O(user) specified
+        and with O(host) other than V(localhost).
       - If you run this inventory plugin on V(localhost) C(ssh) is not used.
         In this case, test the command C(iocage list -l).
       - This inventory plugin creates variables C(iocage_*) for each added host.
-      - The values of these variables are collected from the output of the command C(iocage list -l)
+      - The values of these variables are collected from the output of the
+        command C(iocage list -l).
       - The names of these variables correspond to the output columns.
       - The column C(NAME) is used to name the added host.
 '''
@@ -70,9 +75,8 @@ plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
 user: admin
 
-# user is not required if iocage is running on localhost
+# user is not required if iocage is running on localhost (default)
 plugin: vbotka.freebsd.iocage
-host: localhost
 
 # run cryptography without legacy algorithms
 plugin: vbotka.freebsd.iocage
@@ -112,7 +116,7 @@ keyed_groups:
 import re
 from subprocess import Popen, PIPE
 
-from ansible.errors import AnsibleParserError
+from ansible.errors import AnsibleError, AnsibleParserError
 from ansible.module_utils.common.text.converters import to_native, to_text
 from ansible.plugins.inventory import BaseInventoryPlugin, Constructable, Cacheable
 from ansible.utils.display import Display
@@ -174,70 +178,78 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         cmd = []
         if host != 'localhost':
             user = self.get_option('user')
-            cmd.append(f"ssh {user}@{host}")
+            cmd.append("ssh")
+            cmd.append(f"{user}@{host}")
         if env:
-            cmd.append(' '.join(env))
+            cmd.extend(env)
         cmd.append(self.IOCAGE)
 
         cmd_list = cmd.copy()
-        cmd_list.append('list --header --long')
-        cmd_list = ' '.join(cmd_list)
+        cmd_list.append('list')
+        cmd_list.append('--header')
+        cmd_list.append('--long')
         try:
-            p = Popen(cmd_list, shell=True, text=True, stdout=PIPE, stderr=PIPE)
+            p = Popen(cmd_list, stdout=PIPE, stderr=PIPE)
             stdout, stderr = p.communicate()
             if p.returncode != 0:
-                raise AnsibleParserError('Failed to run cmd=%s, rc=%s, stderr=%s' %
-                                         (cmd_list, p.returncode, to_native(stderr)))
+                raise AnsibleError('Failed to run cmd=%s, rc=%s, stderr=%s' %
+                                   (cmd_list, p.returncode, to_native(stderr)))
 
             try:
                 t_stdout = to_text(stdout, errors='surrogate_or_strict')
             except UnicodeError as e:
-                raise AnsibleParserError('Invalid (non unicode) input returned: %s' % to_native(e))
-
-            iocage_data = [x.split() for x in t_stdout.splitlines()]
-            results = {'_meta': {'hostvars': {}}}
-
-            for jail in iocage_data:
-                iocage_name = jail[1]
-                results['_meta']['hostvars'][iocage_name] = {}
-                results['_meta']['hostvars'][iocage_name]['iocage_jid'] = jail[0]
-                results['_meta']['hostvars'][iocage_name]['iocage_boot'] = jail[2]
-                results['_meta']['hostvars'][iocage_name]['iocage_state'] = jail[3]
-                results['_meta']['hostvars'][iocage_name]['iocage_type'] = jail[4]
-                results['_meta']['hostvars'][iocage_name]['iocage_release'] = jail[5]
-                results['_meta']['hostvars'][iocage_name]['iocage_ip4'] = _parse_ip4(jail[6])
-                results['_meta']['hostvars'][iocage_name]['iocage_ip6'] = jail[7]
-                results['_meta']['hostvars'][iocage_name]['iocage_template'] = jail[8]
-                results['_meta']['hostvars'][iocage_name]['iocage_basejail'] = jail[9]
+                raise AnsibleError('Invalid (non unicode) input returned: %s' % to_native(e)) from e
 
         except Exception as e:
-            raise AnsibleParserError('Failed to parse %s: %s. iocage_data: %s' %
-                                     (to_native(path), to_native(e), to_native(iocage_data)))
+            raise AnsibleParserError('Failed to parse %s: %s' %
+                                     (to_native(path), to_native(e))) from e
+
+        results = {'_meta': {'hostvars': {}}}
+        self.get_jails(t_stdout, results)
 
         if get_properties:
             for hostname, host_vars in results['_meta']['hostvars'].items():
                 cmd_get_properties = cmd.copy()
-                cmd_get_properties.append(f"get --all {hostname}")
-                cmd_get_properties = ' '.join(cmd_get_properties)
+                cmd_get_properties.append("get")
+                cmd_get_properties.append("--all")
+                cmd_get_properties.append(f"{hostname}")
                 try:
-                    p = Popen(cmd_get_properties, shell=True, text=True, stdout=PIPE, stderr=PIPE)
+                    p = Popen(cmd_get_properties, stdout=PIPE, stderr=PIPE)
                     stdout, stderr = p.communicate()
                     if p.returncode != 0:
-                        raise AnsibleParserError('Failed to run cmd=%s, rc=%s, stderr=%s' %
-                                                 (cmd_get_properties, p.returncode, to_native(stderr)))
+                        raise AnsibleError('Failed to run cmd=%s, rc=%s, stderr=%s' %
+                                           (cmd_get_properties, p.returncode, to_native(stderr)))
 
                     try:
                         t_stdout = to_text(stdout, errors='surrogate_or_strict')
                     except UnicodeError as e:
-                        raise AnsibleParserError('Invalid (non unicode) input returned: %s' % to_native(e))
-
-                    iocage_properties = dict([x.split(':', 1) for x in t_stdout.splitlines()])
-                    results['_meta']['hostvars'][hostname]['iocage_properties'] = iocage_properties
+                        raise AnsibleError('Invalid (non unicode) input returned: %s' % to_native(e)) from e
 
                 except Exception as e:
-                    raise AnsibleParserError('Failed to parse %s: %s' % (to_native(path), to_native(e)))
+                    raise AnsibleError('Failed to get properties: %s' % to_native(e)) from e
+
+                self.get_properties(t_stdout, results, hostname)
 
         return results
+
+    def get_jails(self, t_stdout, results):
+        jails = [x.split() for x in t_stdout.splitlines()]
+        for jail in jails:
+            iocage_name = jail[1]
+            results['_meta']['hostvars'][iocage_name] = {}
+            results['_meta']['hostvars'][iocage_name]['iocage_jid'] = jail[0]
+            results['_meta']['hostvars'][iocage_name]['iocage_boot'] = jail[2]
+            results['_meta']['hostvars'][iocage_name]['iocage_state'] = jail[3]
+            results['_meta']['hostvars'][iocage_name]['iocage_type'] = jail[4]
+            results['_meta']['hostvars'][iocage_name]['iocage_release'] = jail[5]
+            results['_meta']['hostvars'][iocage_name]['iocage_ip4'] = _parse_ip4(jail[6])
+            results['_meta']['hostvars'][iocage_name]['iocage_ip6'] = jail[7]
+            results['_meta']['hostvars'][iocage_name]['iocage_template'] = jail[8]
+            results['_meta']['hostvars'][iocage_name]['iocage_basejail'] = jail[9]
+
+    def get_properties(self, t_stdout, results, hostname):
+        properties = dict([x.split(':', 1) for x in t_stdout.splitlines()])
+        results['_meta']['hostvars'][hostname]['iocage_properties'] = properties
 
     def populate(self, results):
         strict = self.get_option('strict')

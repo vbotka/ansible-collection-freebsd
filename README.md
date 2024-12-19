@@ -34,7 +34,7 @@ This collection is shipped with:
 
   SPDX-License-Identifier: [BSD-2-Clause](https://spdx.org/licenses/BSD-2-Clause.html)
 
-* The inventory plugin vbotka.freebsd.iocage is licensed distributed as
+* The inventory plugin vbotka.freebsd.iocage is licensed and distributed as
 
   **GNU General Public License v3.0 or later**
 

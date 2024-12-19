@@ -12,7 +12,7 @@ Update iocage module
 * Update the code and commit the changes. You are encouraged to
   submit a PR.
 
-* Calculate iocage.yml hash. For example, ::
+* Calculate iocage.py hash. For example, ::
 
     shell> sha512sum iocage.py
 

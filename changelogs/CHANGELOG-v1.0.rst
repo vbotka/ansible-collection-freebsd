@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.3.2
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update inventory plugin iocage.
+* Update README.
+* Update docs.
+
+
 0.3.1
 =====
 
