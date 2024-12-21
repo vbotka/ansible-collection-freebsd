@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add example 020.
 
 
 0.3.2

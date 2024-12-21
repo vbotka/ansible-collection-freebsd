@@ -1,0 +1,59 @@
+- hosts: iocage
+
+  vars:
+
+    freebsd_iocage_runner_exec: "fetch,create,clone"
+    freebsd_iocage_runner_cmd: |
+      {% filter from_yaml %}
+      fetch:
+      {% for release in fetch %}
+      - cmd: iocage fetch --release {{ release }}
+        creates: {{ freebsd_iocage_mount }}/releases/{{ release }}
+      {% endfor %}
+      create:
+      {% for jail in basejails %}
+      - cmd: iocage create --release {{ jail.release }} --name {{ jail.name }}
+        creates: {{ freebsd_iocage_mount }}/jails/{{ jail.name }}
+      {% endfor %}
+      {% for jail in basejails %}
+      {% for k, v in (properties | combine(jail.properties)).items() %}
+      - cmd: iocage set {{ k }}={{ v }} {{ jail.name }}
+      {% endfor %}
+      {% endfor %}
+      clone:
+      {% for jail in clones %}
+      - cmd: iocage clone {{ jail.clone_from }} --name {{ jail.name }}
+        creates: {{ freebsd_iocage_mount }}/jails/{{ jail.name }}
+      {% endfor %}
+      {% for jail in clones %}
+      {% for k, v in (properties | combine(jail.properties)).items() %}
+      - cmd: iocage set {{ k }}={{ v }} {{ jail.name }}
+      {% endfor %}
+      {% endfor %}
+      {% endfilter %}
+
+  tasks:
+
+    - name: Debug
+      when: debug | d(false) | bool
+      tags: debug
+      ansible.builtin.debug:
+        msg: |
+          freebsd_iocage_runner_exec: {{ freebsd_iocage_runner_exec }}
+          freebsd_iocage_runner_cmd:
+            {{ freebsd_iocage_runner_cmd | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: Fetch releases, create jails, and clone jails.
+      tags: runner
+      block:
+
+        - name: Run commands
+          register: out
+          ansible.builtin.import_role:
+            name: vbotka.freebsd.iocage
+            tasks_from: runner.yml
+
+        - name: Debug
+          when: debug2 | d(false) | bool
+          ansible.builtin.debug:
+            var: out

@@ -1,0 +1,46 @@
+- name: Create lists
+  import_playbook: pb-iocage-list.yml
+
+- name: Create group test
+  hosts: iocage
+
+  vars:
+
+    jails: "{{ hostvars | json_query('*.iocage_jails') | combine }}"
+
+  tasks:
+
+    - name: Create inventory group test
+      run_once: true
+      block:
+
+        - name: Debug
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: jails
+
+        - name: Create inventory group test
+          ansible.builtin.add_host:
+            groups: test
+            name: "{{ item }}"
+            ansible_host: "{{ jails[item].ip4 | split('|') | last
+                                              | split('/') | first }}"
+            release:  "{{ jails[item].release }}"
+          loop: "{{ jails.keys() | select('match', 'test') }}"
+  
+- name: Use group test
+  hosts: test
+
+  tasks:
+
+    - debug:
+        msg: |
+          inventory_hostname: {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
+          release: {{ release }}
+
+    - debug:
+        msg: |
+          groups:
+            {{ groups | to_yaml(indent=2) | indent(2) }}
+      run_once: true

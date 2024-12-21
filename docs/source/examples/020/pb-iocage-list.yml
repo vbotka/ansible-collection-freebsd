@@ -1,0 +1,46 @@
+- hosts: iocage
+
+  vars:
+
+    jail_attr: [jid, name, boot, state, type, release, ip4, ip6, template, basejail]
+
+  tasks:
+
+    - name: Run commands
+      tags: runner
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.iocage
+        tasks_from: runner.yml
+      vars:
+        freebsd_iocage_runner_exec: lists
+        freebsd_iocage_runner_cmd:
+          lists:
+            - cmd: iocage list -rh
+            - cmd: iocage list -lh
+            - cmd: iocage list -Ph
+            - cmd: iocage list -th
+
+    - name: Debug
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Set lists
+      ansible.builtin.set_fact:
+        iocage_releases: "{{ out.results.0.stdout.splitlines() }}"
+        iocage_jails: "{{ dict(out.results.1.stdout.splitlines()
+                               | map('split', '\t')
+                               | map('zip', jail_attr)
+                               | map('map', 'reverse')
+                               | map('community.general.dict')
+                               | json_query('[].[name, @]')) }}"
+
+    - name: Display lists
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        msg: |-
+          iocage_releases: {{ iocage_releases }}
+          iocage_jails:
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+#         iocage_plugins: {{ iocage_plugins }}
+#         iocage_templates: {{ iocage_templates }}
