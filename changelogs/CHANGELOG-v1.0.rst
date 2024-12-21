@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Add example 020.
+* Update inventory iocage.
 
 
 0.3.2
