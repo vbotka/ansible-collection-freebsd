@@ -1,4 +1,3 @@
-
 .. _ug_introduction:
 
 Introduction
@@ -14,9 +13,9 @@ Introduction
 
 * The collection is shipped with:
 
-  * module vbotka.freebsd.iocage
-  * inventory plugin vbotka.freebsd.iocage
-  * role vbotka.freebsd.iocage
+  * `module vbotka.freebsd.iocage`_
+  * `inventory plugin vbotka.freebsd.iocage`_
+  * `role vbotka.freebsd.iocage`_
   * various playbooks
 
 .. seealso::
@@ -37,3 +36,7 @@ Introduction
 .. _Managing BSD hosts with Ansible: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html
 .. _venv — Creation of virtual environments: https://docs.python.org/3/library/venv.html#module-venv
 .. _community.general.yaml: https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
