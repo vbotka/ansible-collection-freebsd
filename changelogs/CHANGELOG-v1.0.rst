@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-
+* Update README.md
 
 
 0.3.3

@@ -15,9 +15,9 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 This collection is shipped with:
 
-* module vbotka.freebsd.iocage - iocage jail handling.
-* inventory plugin vbotka.freebsd.iocage - iocage inventory source.
-* role vbotka.freebsd.iocage - install and configure iocage.
+* [module vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
+* [inventory plugin vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
+* [role vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - install and configure iocage.
 * various playbooks
 
 
