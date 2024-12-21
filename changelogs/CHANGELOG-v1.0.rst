@@ -10,14 +10,16 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Maintenance udpate.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
-* Add example 020.
 * Update inventory iocage.
+* Update docs.
+* Add example 020.
 
 
 0.3.2

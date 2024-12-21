@@ -14,12 +14,12 @@ Collection version 0.3.3
 
 Plugins:
 
-* :ref:`ug_module_iocage` - iocage jail handling.
-* :ref:`ug_inventory_iocage` - iocage inventory source.
+* `module vbotka.freebsd.iocage`_
+* `inventory plugin vbotka.freebsd.iocage`_
 
 Roles:
 
-* `vbotka.freebsd.iocage <https://galaxy.ansible.com/vbotka/freebsd_iocage/>`_ - install and configure iocage.
+* `role vbotka.freebsd.iocage`_
 
 This documentation is built in the collection directory *docs*. In
 addition to this, it is possible to create a `collection docsite
@@ -52,3 +52,7 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

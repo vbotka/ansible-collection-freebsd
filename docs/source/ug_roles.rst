@@ -12,7 +12,7 @@ Installed roles
 
 This collection is shipped with one role:
 
-* vbotka.freebsd.iocage
+* `vbotka.freebsd.iocage <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/>`_
 
 
 Documented roles

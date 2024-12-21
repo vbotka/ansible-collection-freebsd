@@ -3,14 +3,11 @@
 Plugins
 *******
 
-This collection is shipped with plugins:
+.. contents:: Table of Contents
+   :depth: 2
 
-* module vbotka.freebsd.iocage
-* inventory vbotka.freebsd.iocage
+.. _ug_module_iocage:
+.. include::  ug_module_iocage.rst
 
-.. toctree::
-  :maxdepth: 1
-  :caption: Documentation
-
-  ug_module_iocage
-  ug_inventory_iocage
+.. _ug_inventory_iocage:
+.. include::  ug_inventory_iocage.rst
