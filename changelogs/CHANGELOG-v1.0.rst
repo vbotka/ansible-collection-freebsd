@@ -17,7 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Update README.md
+* Update README
+* CodeCov badge added to README
 
 
 0.3.3

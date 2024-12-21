@@ -2,6 +2,7 @@
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 [![Documentation Status](https://readthedocs.org/projects/ansible-collection-freebsd/badge/?version=latest)](https://ansible-collection-freebsd.readthedocs.io/en/latest/?badge=latest)
+[![Codecov](https://img.shields.io/codecov/c/github/vbotka/ansible-collection-freebsd)]((https://codecov.io/gh/vbotka/ansible-collection-freebsd)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-collection-freebsd)](https://github.com/vbotka/ansible-collection-freebsd/tags)
 
 [Ansible collection vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
