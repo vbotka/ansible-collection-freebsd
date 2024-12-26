@@ -12,6 +12,9 @@ Collection version 0.4.0
 | GitHub: `ansible-collection-freebsd <https://github.com/vbotka/ansible-collection-freebsd/>`_
 | Ansible Galaxy: `vbotka.freebsd <https://galaxy.ansible.com/vbotka/freebsd/>`_
 
+Included content
+################
+
 Plugins:
 
 * `module vbotka.freebsd.iocage`_
@@ -21,10 +24,16 @@ Roles:
 
 * `role vbotka.freebsd.iocage`_
 
+Documentation
+#############
+
 This documentation is built in the collection directory *docs*. In
 addition to this, it is possible to create a `collection docsite
 <https://ansible.readthedocs.io/projects/antsibull-docs/collection-docs/>`_
 in Ansible standard format. See :ref:`dg_create_collection_docsite`.
+
+License
+#######
 
 | This collection is primarily licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
