@@ -1,0 +1,7 @@
+(env) > ansible-playbook -i iocage-hosts.ini pb-iocage-template.yml
+
+PLAY [iocage] *******************************************************************************************************
+
+PLAY RECAP **********************************************************************************************************
+iocage_01: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_02: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

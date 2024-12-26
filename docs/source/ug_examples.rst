@@ -22,3 +22,4 @@ Examples
    examples/015/example-015
    examples/016/example-016
    020 Clone jails. Create inventory. <examples/020/example-020.rst>
+   030 Ansible client. <examples/030/example-030.rst>

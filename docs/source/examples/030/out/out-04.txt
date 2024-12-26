@@ -1,0 +1,1 @@
+(env) > ansible-playbook -i iocage-hosts.ini pb-iocage-ansible-clients.yml

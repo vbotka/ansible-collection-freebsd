@@ -1,0 +1,1 @@
+(env) > ansible-inventory -i iocage.ini --list --yaml

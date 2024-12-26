@@ -1,0 +1,43 @@
+- hosts: iocage
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  tasks:
+
+    - name: Display lists
+      tags: lists
+      block:
+
+        - name: Create Ansible facts iocage_*. This is the default state.
+          vbotka.freebsd.iocage:
+      
+        - name: Display templates and jails.
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            msg: |-
+              iocage_templates:
+                {{ iocage_templates | to_nice_yaml(indent=2) | indent(2)}}
+              iocage_jails:
+                {{ iocage_jails | to_nice_yaml(indent=2) | indent(2)}}
+
+    - name: Create basejail
+      tags: basejail
+      block:
+
+        - name: Create basejail
+          register: out
+          vbotka.freebsd.iocage:
+            state: basejail
+            name: "{{ item.name }}"
+            release: "{{ item.release }}"
+            properties: "{{ item.properties | d(omit) }}"
+          loop: "{{ basejails }}"
+          loop_control:
+            label: "{{ item.name }} {{ item.release }}"
+
+        - name: Debug basejails
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: out
+
+
+#   - name: Create template
