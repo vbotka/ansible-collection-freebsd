@@ -1,0 +1,10 @@
+plugin: community.general.iocage
+host: 10.1.0.18
+user: admin
+get_properties: true
+env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+compose:
+  ansible_host: iocage_ip4
+groups:
+  test_01: inventory_hostname.startswith('test')

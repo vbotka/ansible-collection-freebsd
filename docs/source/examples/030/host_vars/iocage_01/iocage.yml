@@ -1,0 +1,37 @@
+ansible_python_interpreter: /usr/local/bin/python3.9
+ansible_become_password: admin
+
+freebsd_iocage_pool: pool2
+freebsd_iocage_pool_mount: /mnt/pool2
+freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
+
+properties:
+  vnet: 'on'
+  defaultrouter: 10.1.0.10
+  notes: "vmm={{ inventory_hostname }}"
+
+fetch:
+  - 13.3-RELEASE
+  - 13.4-RELEASE
+
+basejails:
+  - name: ansible_client
+    release: 13.4-RELEASE
+    properties:
+      ip4_addr: 'vnet0|10.1.0.198/24'
+
+clones:
+  - name: test_101
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.101/24'
+  - name: test_102
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.102/24'
+  - name: test_103
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.103/24'
+
+start: [test_101, test_102, test_103]
