@@ -3,7 +3,7 @@
 vbotka.freebsd
 **************
 
-Collection version 0.3.5
+Collection version 0.4.0
 
 | This `collection <https://galaxy.ansible.com/vbotka/freebsd/>`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-collection-freebsd/issues/>`_.
