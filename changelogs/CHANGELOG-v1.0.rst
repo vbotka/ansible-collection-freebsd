@@ -18,6 +18,11 @@ Major Changes
 Minor Changes
 -------------
 
+Breaking Changes / Porting Guide
+--------------------------------
+* Upgrade inventory plugin iocage.py. Backward not
+  compatible. Parameter env changed to dictionary.
+
 
 0.3.5
 =====
