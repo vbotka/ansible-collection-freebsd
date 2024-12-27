@@ -10,13 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Minor release. Update plugins and docs.
+Minor release. Update plugins, roles, and docs.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Upgrade role vbotka.freebsd.iocage to ver. 0.4.0
 
 Breaking Changes / Porting Guide
 --------------------------------

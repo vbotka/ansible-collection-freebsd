@@ -53,6 +53,12 @@ Notes
 
    * `Variable precedence: Where should I put a variable? <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
 
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
+
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

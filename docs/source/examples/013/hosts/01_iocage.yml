@@ -2,7 +2,7 @@ plugin: vbotka.freebsd.iocage
 host: 10.1.0.18
 user: admin
 env:
-  - CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 get_properties: True
 cache: False
 strict: True
