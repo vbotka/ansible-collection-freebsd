@@ -27,6 +27,11 @@ This collection is shipped with:
 [https://ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
 
 
+## Release Notes
+
+See [changelog](https://github.com/vbotka/ansible-collection-freebsd/blob/main/changelog/CHANGELOG.md)
+
+
 ## License
 
 * This collection is primarily licensed and distributed as a whole under
