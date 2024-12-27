@@ -29,7 +29,7 @@ This collection is shipped with:
 
 ## Release Notes
 
-See [changelog](https://github.com/vbotka/ansible-collection-freebsd/blob/main/changelog/CHANGELOG.md)
+See [changelog](https://github.com/vbotka/ansible-collection-freebsd/blob/main/changelogs/CHANGELOG.md)
 
 
 ## License
