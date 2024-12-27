@@ -24,8 +24,8 @@ This collection is shipped with:
 
 ## Documentation
 
-[vbotka.freebsd](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
-[ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
+| [vbotka.freebsd](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
+| [ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
 
 
 ## Release Notes
