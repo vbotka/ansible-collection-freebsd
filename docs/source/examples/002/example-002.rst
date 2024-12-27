@@ -49,6 +49,12 @@ Notes
 
    * `Activate iocage <https://iocage.readthedocs.io/en/latest/basic-use.html#activate-iocage>`_
 
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
+
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

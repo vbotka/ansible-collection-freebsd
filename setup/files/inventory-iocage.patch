@@ -1,5 +1,5 @@
 diff --git a/setup/distfiles/inventory/iocage.py b/setup/distfiles/inventory/iocage.py
-index 4a4b94c..d8ddcbc 100644
+index 6b51bb3..f9d40dd 100644
 --- a/setup/distfiles/inventory/iocage.py
 +++ b/setup/distfiles/inventory/iocage.py
 @@ -10,7 +10,7 @@ __metaclass__ = type
@@ -11,7 +11,7 @@ index 4a4b94c..d8ddcbc 100644
      author:
          - Vladimir Botka (@vbotka)
      requirements:
-@@ -29,10 +29,10 @@ DOCUMENTATION = '''
+@@ -30,10 +30,10 @@ DOCUMENTATION = '''
          plugin:
              description:
                - The name of this plugin, it should always be set to
@@ -43,7 +43,7 @@ index 4a4b94c..d8ddcbc 100644
  host: 10.1.0.73
  user: admin
  env:
-   - CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
  
  # enable cache
 -plugin: community.general.iocage
@@ -60,7 +60,7 @@ index 4a4b94c..d8ddcbc 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -133,7 +133,7 @@ def _parse_ip4(ip4):
+@@ -134,7 +134,7 @@ def _parse_ip4(ip4):
  class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
      ''' Host inventory parser for ansible using iocage as source. '''
  

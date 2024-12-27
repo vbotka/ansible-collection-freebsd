@@ -1,4 +1,4 @@
-(env) > ansible-playbook pb-test.yml -i hosts
+(env) > ansible-playbook pb-all.yml -i hosts
 
 PLAY [all] ******************************************************************************************
 

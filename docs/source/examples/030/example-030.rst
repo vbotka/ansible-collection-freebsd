@@ -34,10 +34,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+(WIP)
+
+* On three iocage hosts:
 
   * iocage_01
   * iocage_02
+  * iocage_03
 
   In the playbook *pb-iocage-template.yml*, use the module *vbotka.freebsd.iocage* to:
 

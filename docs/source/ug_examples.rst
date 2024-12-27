@@ -5,7 +5,8 @@ Examples
 
 :001-003: Manage iocage on the remote host
 :010-016: Use the plugins
-:020-:     Use the role
+:020-:    Use the role
+:030-:    Ansible client
 
 .. toctree::
    :maxdepth: 1
