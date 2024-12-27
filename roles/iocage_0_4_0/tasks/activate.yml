@@ -1,0 +1,31 @@
+---
+
+- name: Activate iocage
+  block:
+
+    - name: "Activate: Activate iocage pool {{ freebsd_iocage_pool }}"
+      environment: "{{ freebsd_iocage_env }}"
+      register: result
+      ansible.builtin.command:
+        cmd: "iocage activate {{ freebsd_iocage_pool }}"
+        creates: "{{ freebsd_iocage_mount }}"
+
+    - name: "Activate: Debug result freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+  rescue:
+
+    - name: "Activate: Rescue: Debug freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ ansible_failed_task }}
+          {{ ansible_failed_result }}
+
+    - name: "Activate: Rescue: End host."
+      when: freebsd_iocage_activate_fatal | bool
+      ansible.builtin.meta: end_host
+
+# EOF

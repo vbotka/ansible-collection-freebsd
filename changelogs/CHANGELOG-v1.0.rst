@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.4.1
+=====
+
+Release Summary
+---------------
+Maintenance udpate.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update README
+* Upgrade role vbotka.freebsd.iocage to ver. 0.4.0
+
+
 0.4.0
 =====
 

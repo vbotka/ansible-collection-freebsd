@@ -24,7 +24,12 @@ This collection is shipped with:
 
 ## Documentation
 
-[https://ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
+[ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/stable/)
+
+
+## Release Notes
+
+See [changelog](https://github.com/vbotka/ansible-collection-freebsd/blob/master/changelogs/CHANGELOG.md).
 
 
 ## License
