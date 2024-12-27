@@ -9,7 +9,7 @@ Topics:
 
 * The *iocage* module can't cover all use-cases. The maintenance of such complexity wouldn't be efficient.
 
-* Use the *runner* tasks from the role *iocage* instead.
+* For use cases not covered by the module, use the *runner* tasks from the role *iocage*.
 
 Installation:
 
@@ -22,7 +22,7 @@ Installation:
 * Audit the installation; (role:sanity)
 
 * Configure rc.conf and start/restart/stop/enable/disable *iocage*; (role:rcconf)
-  
+
 Workflow:
 
 * Fetch release(s) and create basejail(s); (role:runner or module)

@@ -9,8 +9,8 @@ Collection version 0.4.2
 | Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-collection-freebsd/issues/>`_.
 | `Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_.
 
-| GitHub: `ansible-collection-freebsd <https://github.com/vbotka/ansible-collection-freebsd/>`_
 | Ansible Galaxy: `vbotka.freebsd <https://galaxy.ansible.com/vbotka/freebsd/>`_
+| GitHub: `ansible-collection-freebsd <https://github.com/vbotka/ansible-collection-freebsd/>`_
 
 Included content
 ################

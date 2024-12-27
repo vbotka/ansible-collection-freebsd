@@ -41,11 +41,11 @@ Requirements
 Notes
 ^^^^^
 
-* Put `'-l iocage_01'` into the run-strings to run the play on the iocage host *iocage_01*
-* Remove the limits `'-l iocage_0*'` to run the play on both iocage hosts.
+* Put ``-l iocage_01`` into the run-strings to run the play on the iocage host *iocage_01*
+* Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
 * In this case, *debug* displays the role defaults.
-* By default, *iocage* installation is enabled `'freebsd_iocage_install: true'`
-* By default, *debug* is disabled `'freebsd_iocage_debug: false'` .
+* By default, *iocage* installation is enabled ``freebsd_iocage_install: true``
+* By default, *debug* is disabled ``freebsd_iocage_debug: false`` .
 
 .. seealso::
 

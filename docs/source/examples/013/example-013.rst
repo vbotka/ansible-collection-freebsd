@@ -38,7 +38,7 @@ Synopsis
 
 * Use the property *notes* to create tags:
 
-  * Add the property `'notes: "vmm={{ inventory_hostname }}"'`
+  * Add the property ``notes: "vmm={{ inventory_hostname }}"``
   * In the inventory plugin, compose *iocage_tags*
   * In the inventory plugin, create groups *vmm_\** from *iocage_tags.vmm*
 
@@ -81,7 +81,7 @@ Requirements
 hosts/01_iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Enable `'get_properties: True'` to create the dictionary *iocage_properties*. Then, the dictionary
+Enable ``get_properties: True`` to create the dictionary *iocage_properties*. Then, the dictionary
 *iocage_tags* can be created from *iocage_properties.notes*
 
 .. literalinclude:: hosts/01_iocage.yml
