@@ -1,0 +1,14 @@
+---
+# Update /etc/sysctl.conf
+freebsd_iocage_sysctl_update: {}
+
+# Update iocage default configuration
+freebsd_iocage_defaults_update: {}
+
+# Allow override integers
+freebsd_iocage_defaults_override_int: false
+
+# Allow override boolean
+freebsd_iocage_defaults_override_bool: false
+
+# EOF
