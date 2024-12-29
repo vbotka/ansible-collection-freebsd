@@ -23,4 +23,5 @@ Examples
    examples/015/example-015
    examples/016/example-016
    020 Clone jails. Create inventory. <examples/020/example-020.rst>
-   030 Ansible client. <examples/030/example-030.rst>
+   (WIP) 030 Ansible client. <examples/030/example-030.rst>
+   (WIP) 031 Display iocage lists. <examples/031/example-031.rst>

@@ -1,0 +1,35 @@
+---
+- name: Set list of already created basejails
+  ansible.builtin.set_fact:
+    basejails_created: "{{ iocage_jails | selectattr('basejail') }}"
+
+- name: Reject already created basejails
+  ansible.builtin.set_fact:
+    basejails: "{{ basejails | rejectattr('name', 'in' , basejails_created) }}"
+
+- name: "Display already created basejails debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    msg: |-
+      basejails already created: {{ basejails_created }}
+      basejails to create: {{ basejails | map(attribute='name') }}
+
+- name: Create basejail
+  when: basejails | length > 0
+  block:
+
+    - name: Create basejail
+      register: out
+      vbotka.freebsd.iocage:
+        state: basejail
+        name: "{{ item.name }}"
+        release: "{{ item.release }}"
+        properties: "{{ item.properties | d(omit) }}"
+      loop: "{{ basejails }}"
+      loop_control:
+        label: "{{ item.name }} {{ item.release }}"
+
+    - name: "Debug basejails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

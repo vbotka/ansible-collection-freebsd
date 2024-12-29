@@ -41,9 +41,9 @@ Requirements
 Notes
 ^^^^^
 
-* Put `'-l iocage_01'` into the run-strings to run the play on the iocage host *iocage_01*
-* Remove the limits `'-l iocage_0*'` to run the play on both iocage hosts.
-* By default, *iocage* sanity is enabled `'freebsd_iocage_sanity: true'`
+* Put ``-l iocage_01`` into the run-strings to run the play on the iocage host *iocage_01*
+* Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
+* By default, *iocage* sanity is enabled ``freebsd_iocage_sanity: true``
 
 .. seealso::
 
@@ -77,7 +77,7 @@ host_vars/iocage_02/iocage.yml
 
 .. note::
 
-   By default, the activation testing is disabled `'freebsd_iocage_sanity_zfs_pool_active: false'`
+   By default, the activation testing is disabled ``freebsd_iocage_sanity_zfs_pool_active: false``
 
 
 Playbook *pb-iocage.yml*

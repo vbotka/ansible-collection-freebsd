@@ -41,9 +41,9 @@ Requirements
 Notes
 ^^^^^
 
-* Put `'-l iocage_01'` into the run-strings to run the play on the iocage host *iocage_01*
-* Remove the limits `'-l iocage_0*'` to run the play on both iocage hosts.
-* By default, *iocage* activation is disables `'freebsd_iocage_activate: false'`
+* Put ``-l iocage_01`` into the run-strings to run the play on the iocage host *iocage_01*
+* Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
+* By default, *iocage* activation is disabled ``freebsd_iocage_activate: false``
 
 .. seealso::
 
