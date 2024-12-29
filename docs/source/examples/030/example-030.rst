@@ -1,7 +1,7 @@
 .. _example_030:
 
-030 Create Ansible client template and clone Ansible client jails.
-------------------------------------------------------------------
+(WIP) 030 Create Ansible client template and clone Ansible client jails.
+------------------------------------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2
@@ -14,6 +14,8 @@ Tree
    shell> tree .
    .
    ├── ansible.cfg
+   ├── files
+   │   └── pk_admins.txt
    ├── hosts
    │   ├── 01_iocage.yml
    │   ├── 02_iocage.yml
@@ -29,7 +31,13 @@ Tree
    ├── iocage-hosts.ini
    ├── pb-iocage-ansible-clients.yml
    ├── pb-iocage-template.yml
-   └── pb-test-01.yml
+   └── tasks
+       ├── basejails_create.yml
+       ├── basejails_pkg.yml
+       ├── basejails_start.yml
+       ├── basejails_stop.yml
+       └── setup.yml
+
 
 Synopsis
 ^^^^^^^^

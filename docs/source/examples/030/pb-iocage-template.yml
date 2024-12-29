@@ -1,43 +1,32 @@
-- hosts: iocage
+- name: Create Ansible client templates.
+  hosts: iocage
   environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    debug2: false
+    basejails_stop: false
 
   tasks:
 
-    - name: Display lists
-      tags: lists
-      block:
+    - name: Setup
+      tags: [always, setup]
+      import_tasks: tasks/setup.yml
 
-        - name: Create Ansible facts iocage_*. This is the default state.
-          vbotka.freebsd.iocage:
-      
-        - name: Display templates and jails.
-          when: debug | d(false) | bool
-          ansible.builtin.debug:
-            msg: |-
-              iocage_templates:
-                {{ iocage_templates | to_nice_yaml(indent=2) | indent(2)}}
-              iocage_jails:
-                {{ iocage_jails | to_nice_yaml(indent=2) | indent(2)}}
+    - name: Basejails create
+      tags: basejails_create
+      import_tasks: tasks/basejails_create.yml
 
-    - name: Create basejail
-      tags: basejail
-      block:
+    - name: Basejails start
+      tags: basejails_start
+      import_tasks: tasks/basejails_start.yml
 
-        - name: Create basejail
-          register: out
-          vbotka.freebsd.iocage:
-            state: basejail
-            name: "{{ item.name }}"
-            release: "{{ item.release }}"
-            properties: "{{ item.properties | d(omit) }}"
-          loop: "{{ basejails }}"
-          loop_control:
-            label: "{{ item.name }} {{ item.release }}"
+    - name: Basejails install packages
+      tags: basejails_pkg
+      import_tasks: tasks/basejails_pkg.yml
 
-        - name: Debug basejails
-          when: debug | d(false) | bool
-          ansible.builtin.debug:
-            var: out
-
-
-#   - name: Create template
+    - name: Basejails stop
+      when: basejails_stop | bool
+      tags: basejails_stop
+      import_tasks: tasks/basejails_stop.yml

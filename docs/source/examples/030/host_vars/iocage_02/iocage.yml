@@ -34,3 +34,12 @@ clones:
       ip4_addr: 'em0|10.1.0.113/24'
 
 start: [test_111, test_112, test_113]
+
+# ansible client template
+
+act_user: admin
+act_pkg:
+  - security/sudo
+  - lang/python311
+act_pk:
+  - pk_admins.txt

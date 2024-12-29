@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Update module iocage.
+* Add (WIP) examples 030 and 031.
 
 
 0.4.1

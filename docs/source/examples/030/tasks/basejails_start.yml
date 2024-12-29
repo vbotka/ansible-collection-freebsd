@@ -1,0 +1,17 @@
+---
+- name: Start basejails
+  block:
+
+    - name: Start basejails
+      register: out
+      vbotka.freebsd.iocage:
+        state: started
+        name: "{{ item.name }}"
+      loop: "{{ basejails }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "Debug basejails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

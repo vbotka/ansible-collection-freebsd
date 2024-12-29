@@ -5,27 +5,5 @@
 
   tasks:
 
-    - name: Clone from ansible_client template
-      vbotka.freebsd.iocage:
-        state: cloned
-        clone_from: "{{ item.clone_from }}"
-        name: "{{ item.name }}"
-        properties: "{{ item.properties | d(omit) }}"
-      loop: "{{ clones }}"
-
-    - name: Start ansible clients
-      vbotka.freebsd.iocage:
-        state: started
-        name: "{{ item }}"
-      loop: "{{ start }}"
-
-    - name: Create Ansible facts iocage_*. This is the default state.
-      vbotka.freebsd.iocage:
-      
-    - name: Display lists of bases, plugins, templates, and jails.
-      debug:
-        msg: |-
-          {{ iocage_releases }}
-          {{ iocage_plugins.keys() | list }}
-          {{ iocage_templates.keys() | list }}
-          {{ iocage_jails.keys() | list }}
+    - debug:
+        msg: WIP
