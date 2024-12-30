@@ -1,18 +1,19 @@
 ---
-- name: Start basejails
-  tags: template
+- name: Set template
   block:
 
-    - name: Start basejails
+    - name: Set template
       register: out
       vbotka.freebsd.iocage:
-        state: started
+        state: set
         name: "{{ item.name }}"
+        properties:
+          template: 1
       loop: "{{ basejails }}"
       loop_control:
         label: "{{ item.name }}"
 
-    - name: Debug basejails
+    - name: "Debug set template debug2={{ debug2 }}"
       when: debug2 | d(false) | bool
       tags: template_start
       ansible.builtin.debug:

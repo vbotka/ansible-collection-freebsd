@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.4.3
+=====
+
+Release Summary
+---------------
+Update docs. Update module iocage.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update module iocage.
+* Update example 030 (WIP)
+
+
 0.4.2
 =====
 

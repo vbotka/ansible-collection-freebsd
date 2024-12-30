@@ -1,0 +1,18 @@
+---
+- name: Configure public keys
+  block:
+
+    - name: Configure public keys
+      register: out
+      ansible.posix.authorized_key:
+        user: "{{ act_user }}"
+        path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/home/{{ act_user }}/.ssh/authorized_keys"
+        key: "{{ lookup('file', act_pk) }}"
+      loop: "{{ basejails }}"
+      loop_control:
+        label: "{{ item.name }} {{ act_user }}"
+
+    - name: "Debug configure public keys debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

@@ -41,5 +41,4 @@ act_user: admin
 act_pkg:
   - security/sudo
   - lang/python311
-act_pk:
-  - pk_admins.txt
+act_pk: pk_admins.txt

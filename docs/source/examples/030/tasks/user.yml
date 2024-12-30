@@ -1,0 +1,19 @@
+---
+- name: Create user
+  block:
+
+    - name: Create user
+      register: out
+      vbotka.freebsd.iocage:
+        state: exec
+        name: "{{ item.name }}"
+        cmd: "pw useradd -n {{ act_user }} -s /bin/sh -m"
+      loop: "{{ basejails }}"
+      loop_control:
+        label: "{{ item.name }} {{ act_user }}"
+      failed_when: not out.stderr | d('exists', true) is search('exists')
+
+    - name: "Debug create user debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
