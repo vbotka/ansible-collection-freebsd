@@ -6,7 +6,6 @@
 
     debug: false
     debug2: false
-    basejails_stop: false
 
   tasks:
 
@@ -14,19 +13,38 @@
       tags: [always, setup]
       import_tasks: tasks/setup.yml
 
-    - name: Basejails create
-      tags: basejails_create
-      import_tasks: tasks/basejails_create.yml
+    - name: Create basejails
+      tags: create
+      import_tasks: tasks/create.yml
 
-    - name: Basejails start
-      tags: basejails_start
-      import_tasks: tasks/basejails_start.yml
+    - name: Start basejails
+      tags: start
+      import_tasks: tasks/start.yml
 
-    - name: Basejails install packages
-      tags: basejails_pkg
-      import_tasks: tasks/basejails_pkg.yml
+    - name: Install packages
+      tags: pkg
+      import_tasks: tasks/pkg.yml
 
-    - name: Basejails stop
-      when: basejails_stop | bool
-      tags: basejails_stop
-      import_tasks: tasks/basejails_stop.yml
+    - name: Create user
+      tags: user
+      import_tasks: tasks/user.yml
+
+    - name: Configure public keys
+      tags: pk
+      import_tasks: tasks/pk.yml
+
+    - name: Configure sudo
+      tags: sudo
+      import_tasks: tasks/sudo.yml
+
+    - name: Configure sshd
+      tags: sshd
+      import_tasks: tasks/sshd.yml
+
+    - name: Stop basejails
+      tags: stop
+      import_tasks: tasks/stop.yml
+
+    - name: Set template
+      tags: template
+      import_tasks: tasks/template.yml

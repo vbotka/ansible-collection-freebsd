@@ -1,0 +1,35 @@
+---
+- name: Set list of already started basejails
+  ansible.builtin.set_fact:
+    basejails_started: "{{ iocage_jails | dict2items
+                                        | selectattr('value.state', 'eq', 'up')
+                                        | map(attribute='key') }}"
+
+- name: Reject already started basejails
+  ansible.builtin.set_fact:
+    _basejails: "{{ basejails | rejectattr('name', 'in' , basejails_started) }}"
+
+- name: "Display already started basejails debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    msg: |-
+      basejails already started: {{ basejails_started }}
+      basejails to start: {{ _basejails | map(attribute='name') }}
+
+- name: Start basejail
+  when: _basejails | length > 0
+  block:
+
+    - name: Start basejails
+      register: out
+      vbotka.freebsd.iocage:
+        state: started
+        name: "{{ item.name }}"
+      loop: "{{ _basejails }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "Debug start basejails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
