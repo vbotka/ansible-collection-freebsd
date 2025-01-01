@@ -8,7 +8,7 @@
         state: exec
         name: "{{ item.name }}"
         cmd: "pw useradd -n {{ act_user }} -s /bin/sh -m"
-      loop: "{{ basejails }}"
+      loop: "{{ jails }}"
       loop_control:
         label: "{{ item.name }} {{ act_user }}"
       failed_when: not out.stderr | d('exists', true) is search('exists')

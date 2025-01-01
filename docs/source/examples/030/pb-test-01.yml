@@ -1,17 +1,33 @@
-- hosts: test
+- name: Connect to the group test.
+  hosts: test
+  remote_user: admin
+  gather_facts: true
 
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
   tasks:
 
-    - debug:
-        msg: |
-          inventory_hostname: {{ inventory_hostname }}
-          ansible_host: {{ ansible_host }}
-          release: {{ release }}
-          release_major: {{ release_major }}
-          release_minor: {{ release_minor }}
+    - ansible.builtin.command: hostname
+      register: out_host
+    
+    - ansible.builtin.debug:
+        msg: >
+          {{ out_host.stdout }}
+          {{ iocage_properties.host_hostuuid }}
+          {{ iocage_properties.hostid }}
+          {{ discovered_interpreter_python }}
 
-    - debug:
-        msg: |
-          groups:
-            {{ groups | to_yaml(indent=2) | indent(2) }}
-      run_once: true
+    - ansible.builtin.command: whoami
+      register: out_user
+
+    - ansible.builtin.command: whoami
+      register: out_root
+      become: true
+    
+    - ansible.builtin.debug:
+        msg: >
+          {{ out_host.stdout }}
+          {{ out_user.stdout }}
+          {{ out_root.stdout }}

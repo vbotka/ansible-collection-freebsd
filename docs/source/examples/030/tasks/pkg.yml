@@ -1,14 +1,14 @@
 ---
-- name: Basejails install packages
+- name: Install packages
   block:
 
-    - name: Basejails install packages
+    - name: Install packages
       register: out
       community.general.pkgng:
         use_globs: false
         jail: "{{ iocage_jails[item.name]['jid'] }}"
         name: "{{ act_pkg }}"
-      loop: "{{ basejails }}"
+      loop: "{{ jails }}"
       loop_control:
         label: "{{ item.name }}"
 

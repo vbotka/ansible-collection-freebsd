@@ -1,9 +1,86 @@
-- name: Create ansible clients.
+- name: Create and start ansible clients.
   hosts: iocage
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    debug2: false
+    destroy: false
 
   tasks:
 
-    - debug:
-        msg: WIP
+    - name: Create and start jails
+      tags: create
+      block:
+
+        - name: Create jails from template
+          register: out
+          vbotka.freebsd.iocage:
+            state: cloned
+            clone_from: ansible_client
+            name: "{{ item.name }}"
+            properties: "{{ [properties, item.properties] | combine }}"
+          loop: "{{ clones }}"
+          loop_control:
+            label: "{{ item.name }} {{ item.clone_from }}"
+
+        - name: "Debug clone jails from template debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+        - name: Start jails
+          register: out
+          vbotka.freebsd.iocage:
+            state: started
+            name: "{{ item }}"
+          loop: "{{ start }}"
+
+        - name: "Debug start jails debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+    - name: Stop and destroy jails
+      when: destroy | bool
+      tags: destroy
+      block:
+
+        - name: Stop jails
+          register: out
+          vbotka.freebsd.iocage:
+            state: stopped
+            name: "{{ item.name }}"
+          loop: "{{ clones }}"
+          loop_control:
+            label: "{{ item.name }}"
+
+        - name: "Debug stop jails debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+        - name: Destroy jails
+          register: out
+          vbotka.freebsd.iocage:
+            state: absent
+            name: "{{ item.name }}"
+          loop: "{{ clones }}"
+          loop_control:
+            label: "{{ item.name }}"
+
+        - name: "Debug destroy jails debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+    - name: "Display jails dictionary debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: iocage_jails
+
+    - name: "Display jails list debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: iocage_jails.keys()

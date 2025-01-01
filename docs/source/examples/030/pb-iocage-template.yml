@@ -13,11 +13,11 @@
       tags: [always, setup]
       import_tasks: tasks/setup.yml
 
-    - name: Create basejails
+    - name: Create jails
       tags: create
       import_tasks: tasks/create.yml
 
-    - name: Start basejails
+    - name: Start jails
       tags: start
       import_tasks: tasks/start.yml
 
@@ -37,14 +37,14 @@
       tags: sudo
       import_tasks: tasks/sudo.yml
 
-    - name: Configure sshd
-      tags: sshd
-      import_tasks: tasks/sshd.yml
+    - name: Configure /etc/rc.conf
+      tags: rc_conf
+      import_tasks: tasks/rc_conf.yml
 
-    - name: Stop basejails
+    - name: Stop jails
       tags: stop
       import_tasks: tasks/stop.yml
 
-    - name: Set template
+    - name: Convert jails to templates
       tags: template
       import_tasks: tasks/template.yml
