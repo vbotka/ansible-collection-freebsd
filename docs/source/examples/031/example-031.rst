@@ -1,7 +1,9 @@
 .. _example_031:
 
-(WIP) 031 Display iocage lists and dictionaries.
-------------------------------------------------
+031 Display iocage lists and dictionaries.
+------------------------------------------
+
+Extending example 030.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -68,15 +70,20 @@ Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sekti
 		 [-t | --template | dataset_type]
 				       Lists all templates.
 
-    
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lists at iocage_01
+^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ansible.cfg
-    :language: ini
+.. literalinclude:: out/out-02.txt
+    :language: bash
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lists at iocage_02
+^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-03.txt
+    :language: bash
+
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
     :language: ini

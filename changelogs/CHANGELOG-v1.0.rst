@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Replace deprecated stdout_callback=yaml with callback_result_format=yaml
+* Update example 031
 
 
 0.4.5
