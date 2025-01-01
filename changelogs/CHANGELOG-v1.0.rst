@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs.
+* Update module iocage.
 
 
 0.4.4
