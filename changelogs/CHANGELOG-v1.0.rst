@@ -10,13 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Update docs.
+Maintenance update incl. docs update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Replace deprecated stdout_callback=yaml with callback_result_format=yaml
 
 
 0.4.5
