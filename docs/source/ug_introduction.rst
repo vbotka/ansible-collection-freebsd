@@ -25,7 +25,7 @@ Introduction
 .. hint::
 
    * Run Ansible in Python virtual environment. See `venv — Creation of virtual environments`_.
-   * Use YAML callback `community.general.yaml`_
+   * Use `result_format=yaml <https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format>`_
 
 
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
