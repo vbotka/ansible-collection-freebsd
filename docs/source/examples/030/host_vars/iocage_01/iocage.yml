@@ -10,11 +10,7 @@ properties:
   defaultrouter: 10.1.0.10
   notes: "vmm={{ inventory_hostname }}"
 
-fetch:
-  - 13.3-RELEASE
-  - 13.4-RELEASE
-
-basejails:
+jails:
   - name: ansible_client
     release: 13.4-RELEASE
     properties:
@@ -35,3 +31,11 @@ clones:
       ip4_addr: 'vnet0|10.1.0.103/24'
 
 start: [test_101, test_102, test_103]
+
+# ansible client template
+
+act_user: admin
+act_pkg:
+  - security/sudo
+  - lang/python39
+act_pk: pk_admins.txt

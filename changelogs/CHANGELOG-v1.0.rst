@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update example 030
 
 
 0.4.3

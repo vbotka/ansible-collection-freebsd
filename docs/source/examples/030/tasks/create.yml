@@ -1,37 +1,37 @@
 ---
-- name: Set list of already created basejails
+- name: Set list of already created jails
   ansible.builtin.set_fact:
-    basejails_created: "{{ iocage_jails | dict2items
-                                        | selectattr('value.basejail', 'eq', 'yes')
-                                        | map(attribute='key') }}"
+    jails_created: "{{ iocage_jails | dict2items
+                                    | selectattr('value.basejail', 'eq', 'yes')
+                                    | map(attribute='key') }}"
 
-- name: Reject already created basejails
+- name: Reject already created jails
   ansible.builtin.set_fact:
-    _basejails: "{{ basejails | rejectattr('name', 'in' , basejails_created) }}"
+    _jails: "{{ jails | rejectattr('name', 'in' , jails_created) }}"
 
-- name: "Display already created basejails debug={{ debug }}"
+- name: "Display already created jails debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
     msg: |-
-      basejails already created: {{ basejails_created }}
-      basejails to create: {{ _basejails | map(attribute='name') }}
+      jails already created: {{ jails_created }}
+      jails to create: {{ _jails | map(attribute='name') }}
 
-- name: Create basejails
-  when: _basejails | length > 0
+- name: Create jails
+  when: _jails | length > 0
   block:
 
-    - name: Create basejails
+    - name: Create jails
       register: out
       vbotka.freebsd.iocage:
-        state: basejail
+        state: present
         name: "{{ item.name }}"
         release: "{{ item.release }}"
         properties: "{{ item.properties | d(omit) }}"
-      loop: "{{ _basejails }}"
+      loop: "{{ _jails }}"
       loop_control:
         label: "{{ item.name }} {{ item.release }}"
 
-    - name: "Debug create basejails debug2={{ debug2 }}"
+    - name: "Debug create jails debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

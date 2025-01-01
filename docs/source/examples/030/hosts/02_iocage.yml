@@ -1,4 +1,4 @@
-plugin: community.general.iocage
+plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
 user: admin
 get_properties: true

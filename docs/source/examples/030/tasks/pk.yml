@@ -8,11 +8,27 @@
         user: "{{ act_user }}"
         path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/home/{{ act_user }}/.ssh/authorized_keys"
         key: "{{ lookup('file', act_pk) }}"
-      loop: "{{ basejails }}"
+      loop: "{{ jails }}"
       loop_control:
         label: "{{ item.name }} {{ act_user }}"
 
     - name: "Debug configure public keys debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Chown .ssh
+      register: out
+      vbotka.freebsd.iocage:
+        state: exec
+        name: "{{ item.name }}"
+        cmd: "chown -R {{ act_user }}:{{ act_user }} /home/{{ act_user }}/.ssh"
+      loop: "{{ jails }}"
+      loop_control:
+        label: "{{ item.name }} {{ act_user }}"
+      changed_when: false
+
+    - name: "Debug chown .ssh debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

@@ -1,7 +1,7 @@
 .. _example_030:
 
-(WIP) 030 Create Ansible client template and clone Ansible client jails.
-------------------------------------------------------------------------
+030 Create Ansible client templates and clone Ansible client jails.
+-------------------------------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2
@@ -15,55 +15,60 @@ Tree
    .
    ├── ansible.cfg
    ├── files
-   │   └── pk_admins.txt
+   │   └── pk_admins.txt
    ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   ├── 03_iocage.yml
-   │   └── 04_constructed.yml
+   │   ├── 01_iocage.yml
+   │   ├── 02_iocage.yml
+   │   └── 03_constructed.yml
    ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   ├── iocage_02
-   │   │   └── iocage.yml
-   │   └── iocage_03
-   │       └── iocage.yml
+   │   ├── iocage_01
+   │   │   └── iocage.yml
+   │   └── iocage_02
+   │       └── iocage.yml
    ├── iocage-hosts.ini
    ├── pb-iocage-ansible-clients.yml
    ├── pb-iocage-template.yml
+   ├── pb-test-01.yml
    └── tasks
-       ├── basejails_create.yml
-       ├── basejails_pkg.yml
-       ├── basejails_start.yml
-       ├── basejails_stop.yml
-       └── setup.yml
-
+       ├── create.yml
+       ├── pkg.yml
+       ├── pk.yml
+       ├── rc_conf.yml
+       ├── setup.yml
+       ├── start.yml
+       ├── stop.yml
+       ├── sudo.yml
+       ├── template.yml
+       └── user.yml
 
 Synopsis
 ^^^^^^^^
 
-(WIP)
-
-* On three iocage hosts:
+* On two iocage hosts:
 
   * iocage_01
   * iocage_02
-  * iocage_03
 
-  In the playbook *pb-iocage-template.yml*, use the module *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage-template.yml*, use the modules:
 
-  * create Ansible client template.
+  * vbotka.freebsd.iocage to create, start, stop, and convert jails to templates.
+  * vbotka.freebsd.iocage exec to create a user and set .ssh ownership.
+  * community.general.pkgng to install packages.
+  * ansible.posix.authorized_key to configure public keys.
+  * ansible.builtin.lineinfile to configure /etc/rc.conf and /usr/local/etc/sudoers
 
   In the playbook *pb-iocage-ansible-clients.yml*, use the module *vbotka.freebsd.iocage* to:
 
-  * clone jails from the Ansible client template 
+  * create jails from the Ansible client templates
   * start all jails
   * optionally display the lists of jails.
   
-* In the playbook *pb-test-01.yml*:
+* On all created jails:
+
+  In the playbook *pb-test-01.yml*:
 
   * connect created jails
-  * audit basic configuration of the jails.
+  * display basic configuration of the jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -73,7 +78,6 @@ Requirements
 * root privilege on the iocage hosts
 * activated *iocage*
 * fetched releases
-
   
 Notes
 ^^^^^
@@ -81,6 +85,14 @@ Notes
 .. seealso::
 
    * `Using Templates <https://iocage.readthedocs.io/en/latest/templates.html>`_
+   * `Connection methods and details <https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html>`_
+   * `Understanding privilege escalation: become <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#become>`_
+
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
 
 host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,12 +106,16 @@ host_vars/iocage_02/iocage.yml
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml
 
-host_vars/iocage_03/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
 
-.. literalinclude:: host_vars/iocage_03/iocage.yml
-    :language: yaml
-
+   * The user *act_user* will be created in the template.
+   * The user *act_user* will serve as Ansible *remote_user*.
+   * The file *act_pk* provides the public keys allowed to ssh to *act_user*.
+	       
+.. warning:: The user *act_user* must exist on the *iocage*
+             host. Otherwise, the module *ansible.posix.authorized_key*
+             will crash. See *tasks/pk.yml*
+	       
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -142,6 +158,18 @@ Playbook output
 .. literalinclude:: out/out-04.txt
     :language: bash
 
+List jails at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-05.txt
+    :language: bash
+
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-06.txt
+    :language: bash
+	       
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -154,22 +182,16 @@ Inventory *hosts/02_iocage.yml*
 .. literalinclude:: hosts/02_iocage.yml
     :language: yaml
 
-Inventory *hosts/03_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/03_iocage.yml
-    :language: yaml
-
-Inventory *hosts/04_constructed.yml*
+Inventory *hosts/03_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/04_constructed.yml
+.. literalinclude:: hosts/03_constructed.yml
     :language: yaml
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-07.txt
     :language: bash
 
 Playbook *pb-test-01.yml*
@@ -181,5 +203,5 @@ Playbook *pb-test-01.yml*
 Playbook output
 ^^^^^^^^^^^^^^^
 	       
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-08.txt
     :language: bash
