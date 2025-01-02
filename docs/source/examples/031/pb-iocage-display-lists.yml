@@ -2,10 +2,6 @@
   hosts: iocage
   environment:
     CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
-
-  vars:
-
-    ansible_become_password: admin
     
   tasks:
 
@@ -14,23 +10,29 @@
 
     - name: Display iocage lists and dictionaries (omit properties).
       vars:
-        keys: "{{ iocage_jails.keys() }}"
-        vals: "{{ iocage_jails.values()
-                  | list                       
-                  | community.general.remove_keys(target=['properties']) }}"
+        tkeys: "{{ iocage_templates.keys() }}"
+        tvals: "{{ iocage_templates.values()
+                   | list                       
+                   | community.general.remove_keys(target=['properties']) }}"
+        jkeys: "{{ iocage_jails.keys() }}"
+        jvals: "{{ iocage_jails.values()
+                   | list                       
+                   | community.general.remove_keys(target=['properties']) }}"
       ansible.builtin.debug:
         msg: |
           iocage_releases: {{ iocage_releases }}
           iocage_plugins:
             {{ iocage_plugins | to_nice_yaml(indent=2) | indent(2) }}
           iocage_templates:
-            {{ iocage_templates | to_nice_yaml(indent=2) | indent(2) }}
+            {{ dict(tkeys|zip(tvals)) | to_nice_yaml(indent=2) | indent(2) }}
           iocage_jails:
-            {{ dict(keys|zip(vals)) | to_nice_yaml(indent=2) | indent(2) }}
+            {{ dict(jkeys|zip(jvals)) | to_nice_yaml(indent=2) | indent(2) }}
 
-    - name: "Display iocage jails properties={{ properties | d(false) }}"
+    - name: "Display templates and jails properties={{ properties | d(false) }}"
       when: properties | d(false) | bool
       ansible.builtin.debug:
         msg: |
+          iocage_templates:
+            {{ iocage_templates | to_nice_yaml(indent=2) | indent(2) }}
           iocage_jails:
             {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}

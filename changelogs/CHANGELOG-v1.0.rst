@@ -5,6 +5,24 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.4.6
+=====
+
+Release Summary
+---------------
+Maintenance update incl. docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update module iocage.
+* Replace deprecated stdout_callback=yaml with callback_result_format=yaml
+* Add example 017
+* Update example 031
+
+
 0.4.5
 =====
 

@@ -8,7 +8,7 @@
         state: set
         name: "{{ item.name }}"
         properties:
-          template: 1
+          template: true
       loop: "{{ jails }}"
       loop_control:
         label: "{{ item.name }}"
