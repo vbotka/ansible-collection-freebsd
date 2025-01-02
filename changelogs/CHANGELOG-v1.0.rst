@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update module iocage.
 * Replace deprecated stdout_callback=yaml with callback_result_format=yaml
 * Add example 017
 * Update example 031
