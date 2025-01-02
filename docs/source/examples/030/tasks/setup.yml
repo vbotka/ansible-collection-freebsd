@@ -14,6 +14,7 @@
           iocage_jails: {{ iocage_jails.keys() }}
 
     - name: Reject already created templates
+      when: not force | d(false) | bool
       ansible.builtin.set_fact:
         act_created: "{{ iocage_templates | intersect(jails | map(attribute='name')) }}"
         jails: "{{ jails | rejectattr('name', 'in' , iocage_templates) }}"
