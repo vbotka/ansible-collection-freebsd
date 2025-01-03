@@ -35,7 +35,9 @@ Synopsis
 Notes
 ^^^^^
 
-Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8>`_:  ::
+* *root* is not needed to run *'iocage list ...'* on the iocage hosts.
+
+* Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8>`_:  ::
 
          list	 List  the  specified dataset type.  By	default, all jails are
 		 listed.
@@ -87,6 +89,15 @@ Inventory iocage-hosts.ini
 
 .. literalinclude:: iocage-hosts.ini
     :language: ini
+
+.. note::
+
+   * The escalation *become=true* is not necessary.
+
+   * *root* is not needed to run *'iocage list ...'*
+
+   * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
+     hosts and creates the variables *iocage_\**
 	       
 Playbook *pb-iocage-display-lists.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

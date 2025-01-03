@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update example 031.
 
 
 0.4.7
