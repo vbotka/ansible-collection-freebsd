@@ -1,7 +1,7 @@
 .. _example_010:
 
-010 Clone jails and create inventory (plugins)
-----------------------------------------------
+010 Clone basejails and create inventory (plugins)
+--------------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2

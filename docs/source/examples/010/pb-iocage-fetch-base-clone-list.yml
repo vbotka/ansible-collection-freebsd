@@ -5,11 +5,13 @@
   tasks:
 
     - name: Fetch releases
+      tags: fetch
       vbotka.freebsd.iocage:
         release: "{{ item }}"
       loop: "{{ fetch }}"
 
     - name: Create basejail
+      tags: create
       vbotka.freebsd.iocage:
         state: basejail
         name: "{{ item.name }}"
@@ -18,6 +20,7 @@
       loop: "{{ basejails }}"
 
     - name: Clone from basejail
+      tags: clone
       vbotka.freebsd.iocage:
         state: cloned
         clone_from: "{{ item.clone_from }}"
@@ -26,18 +29,23 @@
       loop: "{{ clones }}"
 
     - name: Start clones
+      tags: start
       vbotka.freebsd.iocage:
         state: started
         name: "{{ item }}"
       loop: "{{ start }}"
 
-    - name: Create Ansible facts iocage_*. This is the default state.
-      vbotka.freebsd.iocage:
+    - name: Display iocage_*
+      tags: debug
+      block:
+
+        - name: Create Ansible facts iocage_*
+          vbotka.freebsd.iocage:
       
-    - name: Display lists of bases, plugins, templates, and jails.
-      debug:
-        msg: |-
-          {{ iocage_releases }}
-          {{ iocage_plugins.keys() | list }}
-          {{ iocage_templates.keys() | list }}
-          {{ iocage_jails.keys() | list }}
+        - name: Display lists of bases, plugins, templates, and jails.
+          debug:
+            msg: |-
+              {{ iocage_releases }}
+              {{ iocage_plugins.keys() | list }}
+              {{ iocage_templates.keys() | list }}
+              {{ iocage_jails.keys() | list }}

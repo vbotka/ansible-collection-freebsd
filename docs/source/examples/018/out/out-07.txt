@@ -1,0 +1,19 @@
+(env) > ansible-playbook pb-test-01.yml -i iocage.yml
+
+PLAY [all] ******************************************************************************************
+
+TASK [debug] ****************************************************************************************
+ok: [ansible_client] => 
+    msg: ansible_client None - 14.1-RELEASE-p6
+ok: [test_111] => 
+    msg: test_111 259 10.1.0.174 14.1-RELEASE-p6
+ok: [test_112] => 
+    msg: test_112 260 10.1.0.147 14.1-RELEASE-p6
+ok: [test_113] => 
+    msg: test_113 261 10.1.0.231 14.1-RELEASE-p6
+
+PLAY RECAP ******************************************************************************************
+ansible_client: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_111      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
