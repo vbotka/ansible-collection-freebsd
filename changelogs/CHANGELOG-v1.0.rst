@@ -5,20 +5,27 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-0.4.8
+0.5.0
 =====
 
 Release Summary
 ---------------
-Docs update.
+Minor release. Update plugins, roles, and docs.
 
 Major Changes
 -------------
+* Update inventory plugin iocage.
 
 Minor Changes
 -------------
-* Update examples 010,020,031.
+* Update examples.
 * Add example 018.
+
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Upgrade inventory plugin iocage.py. Backward not
+  compatible. The variable iocage_ip4 changed to dictionary.
 
 
 0.4.7

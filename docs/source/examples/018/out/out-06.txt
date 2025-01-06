@@ -6,7 +6,9 @@ all:
         ansible_client:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: '-'
+          iocage_ip4:
+            ip4: []
+            msg: '-'
           iocage_ip6: '-'
           iocage_jid: None
           iocage_release: 14.1-RELEASE-p6
@@ -16,9 +18,14 @@ all:
         test_111:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.1.0.174
+          iocage_ip4:
+            ip4:
+            - ifc: epair0b
+              ip: 10.1.0.174
+              mask: '-'
+            msg: ''
           iocage_ip6: '-'
-          iocage_jid: '259'
+          iocage_jid: '262'
           iocage_release: 14.1-RELEASE-p6
           iocage_state: up
           iocage_template: ansible_client
@@ -26,9 +33,14 @@ all:
         test_112:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.1.0.147
+          iocage_ip4:
+            ip4:
+            - ifc: epair0b
+              ip: 10.1.0.147
+              mask: '-'
+            msg: ''
           iocage_ip6: '-'
-          iocage_jid: '260'
+          iocage_jid: '263'
           iocage_release: 14.1-RELEASE-p6
           iocage_state: up
           iocage_template: ansible_client
@@ -36,9 +48,14 @@ all:
         test_113:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.1.0.231
+          iocage_ip4:
+            ip4:
+            - ifc: epair0b
+              ip: 10.1.0.231
+              mask: '-'
+            msg: ''
           iocage_ip6: '-'
-          iocage_jid: '261'
+          iocage_jid: '264'
           iocage_release: 14.1-RELEASE-p6
           iocage_state: up
           iocage_template: ansible_client

@@ -126,3 +126,19 @@ Playbook output
 	       
 .. literalinclude:: out/out-07.txt
     :language: bash
+
+List all jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the jails are stopped the IP4 tab says: *"DHCP (not running)"*.
+
+.. literalinclude:: out/out-08.txt
+    :language: bash
+
+Playbook output
+^^^^^^^^^^^^^^^
+
+The jails are stopped.
+
+.. literalinclude:: out/out-09.txt
+    :language: bash

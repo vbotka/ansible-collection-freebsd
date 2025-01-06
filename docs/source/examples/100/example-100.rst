@@ -1,6 +1,6 @@
-.. _example_020:
+.. _example_100:
 
-020 Clone jails and create inventory (role)
+100 Clone jails and create inventory (role)
 -------------------------------------------
 
 .. contents:: Table of Contents

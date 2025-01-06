@@ -4,9 +4,9 @@ Examples
 ********
 
 :001-003: Manage *iocage* on the remote host
-:010-017: Use the module and inventory plugin *vbotka.freebsd.iocage*
-:020-:    Use the role *vbotka.freebsd.iocage*
-:030-:    Ansible client
+:010-018: Use the module and inventory plugin *vbotka.freebsd.iocage*
+:100-:    Use the role *vbotka.freebsd.iocage*
+:200-:    Ansible client
 
 .. toctree::
    :maxdepth: 1
@@ -24,6 +24,6 @@ Examples
    examples/016/example-016
    017 community.general.iocage <examples/017/example-017>
    examples/018/example-018
-   020 Clone jails. Create inventory. <examples/020/example-020.rst>
-   030 Ansible client templates. <examples/030/example-030.rst>
-   031 Display iocage lists. <examples/031/example-031.rst>
+   100 Clone jails. Create inventory. <examples/100/example-100.rst>
+   200 Ansible client templates. <examples/200/example-200.rst>
+   201 Display iocage lists. <examples/201/example-201.rst>

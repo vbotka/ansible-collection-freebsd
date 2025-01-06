@@ -3,4 +3,10 @@
   tasks:
 
     - debug:
-        msg: "{{ ansible_host }} {{ iocage_jid }} {{ iocage_ip4 }} {{ iocage_release }}"
+        msg: >
+          {{ ansible_host }}
+          {{ iocage_jid }}
+          {{ iocage_release }}
+          {{ iocage_ip4.ip4 | map(attribute='ip') }}
+          {{ iocage_state }}
+          '{{ iocage_ip4.msg }}'
