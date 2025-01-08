@@ -10,17 +10,20 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Minor release. Update plugins, roles, and docs.
+Minor release. Update plugins and docs.
 
 Major Changes
 -------------
-* Update inventory plugin iocage.
 
 Minor Changes
 -------------
+* Update inventory plugin iocage.
 * Update examples.
 * Add example 018.
 
+Bugfixes
+--------
+#9538 Inventory iocage fails when DHCP is enbled.
 
 Breaking Changes / Porting Guide
 --------------------------------
