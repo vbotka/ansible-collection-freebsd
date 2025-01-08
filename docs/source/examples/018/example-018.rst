@@ -106,9 +106,22 @@ List all jails at iocage_02
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
 
+Enable *"sudo: true"*. Otherwise, *iocage* will complain *"DHCP (running -- address requires root)"*
+
 .. literalinclude:: iocage.yml
     :language: yaml
-	       
+    :emphasize-lines: 4
+
+.. hint::
+
+   * Limit admins sudo to the *"iocage list"* command ::
+
+       shell> grep iocage /usr/local/etc/sudoers
+       admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
+
+   * The tag *SETENV*, to preserve the environment, is needed when *env* is set.
+
+       
 Display inventory
 ^^^^^^^^^^^^^^^^^
 

@@ -6,7 +6,8 @@ all:
         ansible_client:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4:
+          iocage_ip4: '-'
+          iocage_ip4_dict:
             ip4: []
             msg: '-'
           iocage_ip6: '-'
@@ -18,7 +19,8 @@ all:
         test_111:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4:
+          iocage_ip4: 10.1.0.174
+          iocage_ip4_dict:
             ip4:
             - ifc: epair0b
               ip: 10.1.0.174
@@ -33,7 +35,8 @@ all:
         test_112:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4:
+          iocage_ip4: 10.1.0.147
+          iocage_ip4_dict:
             ip4:
             - ifc: epair0b
               ip: 10.1.0.147
@@ -48,7 +51,8 @@ all:
         test_113:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4:
+          iocage_ip4: 10.1.0.231
+          iocage_ip4_dict:
             ip4:
             - ifc: epair0b
               ip: 10.1.0.231
