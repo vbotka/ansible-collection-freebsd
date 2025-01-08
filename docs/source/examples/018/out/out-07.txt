@@ -1,4 +1,4 @@
-(env) > ansible-playbook pb-test-01.yml -i iocage.yml
+(env) > ansible-playbook pb-test.yml -i iocage.yml
 
 PLAY [all] ******************************************************************************************
 

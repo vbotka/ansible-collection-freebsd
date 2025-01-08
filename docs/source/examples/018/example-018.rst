@@ -24,7 +24,7 @@ Tree
    ├── iocage-hosts.ini
    ├── iocage.yml
    ├── pb-iocage-clone-list.yml
-   └── pb-test-01.yml
+   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -44,7 +44,7 @@ Use DHCP to configure the interfaces.
 
 * On the iocage host *iocage_02*
   
-  In the playbook *pb-test-01.yml*, use the inventory plugin *vbotka.freebsd.iocage* to:
+  In the playbook *pb-test.yml*, use the inventory plugin *vbotka.freebsd.iocage* to:
 
   * create the inventory groups and compose variables
   * display the hosts and composed variables in the group *test*
@@ -128,10 +128,10 @@ Display inventory
 .. literalinclude:: out/out-06.txt
     :language: yaml
 
-Playbook *pb-test-01.yml*
+Playbook *pb-test.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
     :language: yaml
 
 Playbook output
