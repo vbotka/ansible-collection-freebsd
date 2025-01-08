@@ -25,7 +25,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The inventory plugin *community.general.iocage* provides the same functionality
+* The inventory plugin *community.general.iocage* should provide the same functionality.
+
+* If you want be sure *community.general.iocage* provides the same functionality compare the hash
+  from *setup/vars/chcksum.yml* with the *community.general.iocage* hash.
 
 Notes
 ^^^^^
