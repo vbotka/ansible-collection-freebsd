@@ -27,8 +27,9 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
-* Upgrade inventory plugin iocage.py. Backward not
-  compatible. The variable iocage_ip4 changed to dictionary.
+* Upgrade inventory plugin iocage.py. Backward not compatible. In
+  multiple interface format the variable iocage_ip4 will be a string
+  of comma-separated IPs. New variable iocage_ip4_dict is created.
 
 
 0.4.7
