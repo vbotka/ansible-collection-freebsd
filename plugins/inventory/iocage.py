@@ -10,7 +10,7 @@ __metaclass__ = type
 DOCUMENTATION = '''
     name: iocage
     short_description: iocage inventory source
-    version_added: 0.5.0
+    version_added: 0.3.0
     author:
         - Vladimir Botka (@vbotka)
     requirements:
@@ -95,6 +95,7 @@ env:
 # execute as root
 # this requires sudoers configuration on the iocage host
 # for example: admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
+# the tag SETENV is needed when env is set.
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
 user: admin
@@ -225,7 +226,8 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         cmd_list = cmd.copy()
         if sudo:
             cmd_list.append('sudo')
-            cmd_list.append('--preserve-env')
+            if env:
+                cmd_list.append('--preserve-env')
         cmd_list.append(self.IOCAGE)
         cmd_list.append('list')
         cmd_list.append('--long')
