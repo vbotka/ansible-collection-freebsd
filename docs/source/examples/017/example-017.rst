@@ -25,10 +25,23 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The inventory plugin *community.general.iocage* should provide the same functionality.
+The inventory plugin *community.general.iocage* should provide the same functionality.
 
-* If you want be sure *community.general.iocage* provides the same functionality compare the hash
-  from *setup/vars/chcksum.yml* with the *community.general.iocage* hash.
+.. warning::
+
+   The inventory plugin *community.general.iocage* may differ from
+   *vbotka.freebsd.iocage*. If you want be sure
+   *community.general.iocage* provides the same functionality compare
+   the hash from *setup/vars/chcksum.yml* with the
+   *community.general.iocage* hash. Run the included playbook
+   *pb-obsolete.yml* ::
+
+     shell> ansible-playbook pb-obsolete.yml
+
+   Run the below command and see the functionality provided ::
+
+     shell> ansible-doc -t inventory vbotka.freebsd.iocage
+     shell> ansible-doc -t inventory community.general.iocage
 
 Notes
 ^^^^^
