@@ -77,14 +77,17 @@ DOCUMENTATION = '''
 '''
 
 EXAMPLES = '''
+---
 # file name must end with iocage.yaml or iocage.yml
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
 user: admin
 
+---
 # user is not required if iocage is running on localhost (default)
 plugin: vbotka.freebsd.iocage
 
+---
 # run cryptography without legacy algorithms
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
@@ -92,6 +95,7 @@ user: admin
 env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 
+---
 # execute as root
 # this requires sudoers configuration on the iocage host
 # for example: admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
@@ -103,6 +107,7 @@ sudo: true
 env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 
+---
 # enable cache
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
@@ -111,6 +116,7 @@ env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 cache: true
 
+---
 # see inventory plugin ansible.builtin.constructed
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73

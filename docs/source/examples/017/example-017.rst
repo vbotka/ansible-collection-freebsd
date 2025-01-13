@@ -20,6 +20,7 @@ Tree
    │   ├── 01_iocage.yml
    │   ├── 02_iocage.yml
    │   └── 03_constructed.yml
+   ├── pb-obsolete.yml
    └── pb-test.yml
 
 Synopsis
@@ -38,11 +39,34 @@ The inventory plugin *community.general.iocage* should provide the same function
 
      shell> ansible-playbook pb-obsolete.yml
 
-   Run the below command and see the functionality provided ::
+   If the versions are different you'll see a warning similar to this one ::
 
-     shell> ansible-doc -t inventory vbotka.freebsd.iocage
-     shell> ansible-doc -t inventory community.general.iocage
+     * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
+     *                  WARNING                                    *
+     *                                                             *
+     * The inventory plugins differ:                               *
+     *                                                             *
+     * vbotka.freebsd.iocage    db8039e6 0.4.7                     *
+     * community.general.iocage 3057fb18 10.2.0                    *
+     *                                                             *
+     * Run the below commands and see the functionality provided   *
+     *                                                             *
+     *  shell> ansible-doc -t inventory vbotka.freebsd.iocage      *
+     *  shell> ansible-doc -t inventory community.general.iocage   *
+     * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
 
+   The same versions shows nothing ::
+
+     shell> ANSIBLE_DISPLAY_OK_HOSTS=false \
+            ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
+	    ansible-playbook pb-obsolete.yml
+
+     PLAY [Test inventory plugin version.] ****************************************
+
+     PLAY RECAP *******************************************************************
+     localhost: ok=3 changed=0 unreachable=0 failed=0 skipped=2 rescued=0 ignored=0
+
+       
 Notes
 ^^^^^
 
