@@ -1,5 +1,5 @@
 diff --git a/setup/distfiles/inventory/iocage.py b/setup/distfiles/inventory/iocage.py
-index 557e2b3..5c6e3b0 100644
+index 54e6363..a4cf66f 100644
 --- a/setup/distfiles/inventory/iocage.py
 +++ b/setup/distfiles/inventory/iocage.py
 @@ -10,7 +10,7 @@ __metaclass__ = type
@@ -24,7 +24,7 @@ index 557e2b3..5c6e3b0 100644
              type: str
          host:
              description: The IP/hostname of the C(iocage) host.
-@@ -80,17 +80,17 @@ DOCUMENTATION = '''
+@@ -79,17 +79,17 @@ DOCUMENTATION = '''
  EXAMPLES = '''
  ---
  # file name must end with iocage.yaml or iocage.yml
@@ -46,9 +46,9 @@ index 557e2b3..5c6e3b0 100644
  user: admin
  env:
 @@ -98,7 +98,7 @@ env:
- 
  ---
  # execute as root
+ # sudoers example 'admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*'
 -plugin: community.general.iocage
 +plugin: vbotka.freebsd.iocage
  host: 10.1.0.73
