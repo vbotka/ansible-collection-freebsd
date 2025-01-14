@@ -44,7 +44,7 @@ The inventory plugin *community.general.iocage* should provide the same function
      * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
      *                  WARNING                                    *
      *                                                             *
-     * The inventory plugins differ:                               *
+     * The inventory plugins are different:                        *
      *                                                             *
      * vbotka.freebsd.iocage    db8039e6 0.4.7                     *
      * community.general.iocage 3057fb18 10.2.0                    *
@@ -55,7 +55,7 @@ The inventory plugin *community.general.iocage* should provide the same function
      *  shell> ansible-doc -t inventory community.general.iocage   *
      * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
 
-   The same versions shows nothing ::
+   The play shows nothing if the hashes match ::
 
      shell> ANSIBLE_DISPLAY_OK_HOSTS=false \
             ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \

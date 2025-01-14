@@ -51,6 +51,7 @@ DOCUMENTATION = '''
               - Enable execution as root.
               - This requires passwordless sudo of the command C(iocage list*)
               - If O(env) is used C(SETENV) tag is needed.
+              - For example C(admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*)
             type: boolean
             default: false
         get_properties:
@@ -97,9 +98,6 @@ env:
 
 ---
 # execute as root
-# this requires sudoers configuration on the iocage host
-# for example: admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
-# the tag SETENV is needed when env is set.
 plugin: community.general.iocage
 host: 10.1.0.73
 user: admin

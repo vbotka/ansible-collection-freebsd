@@ -48,9 +48,9 @@ License
    :maxdepth: 1
    :caption: Table of Contents
 
-   users_guide
-   administrator_guide
-   developer_guide
+   ug
+   ag
+   dg
    copyright
    legalnotice
 
