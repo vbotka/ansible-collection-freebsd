@@ -1,5 +1,5 @@
 diff --git a/setup/distfiles/inventory/iocage.py b/setup/distfiles/inventory/iocage.py
-index 4b4fca2..2c84ba3 100644
+index 557e2b3..5c6e3b0 100644
 --- a/setup/distfiles/inventory/iocage.py
 +++ b/setup/distfiles/inventory/iocage.py
 @@ -10,7 +10,7 @@ __metaclass__ = type
@@ -24,7 +24,7 @@ index 4b4fca2..2c84ba3 100644
              type: str
          host:
              description: The IP/hostname of the C(iocage) host.
-@@ -79,17 +79,17 @@ DOCUMENTATION = '''
+@@ -80,17 +80,17 @@ DOCUMENTATION = '''
  EXAMPLES = '''
  ---
  # file name must end with iocage.yaml or iocage.yml
@@ -45,16 +45,16 @@ index 4b4fca2..2c84ba3 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -100,7 +100,7 @@ env:
- # this requires sudoers configuration on the iocage host
- # for example: admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
- # the tag SETENV is needed when env is set.
+@@ -98,7 +98,7 @@ env:
+ 
+ ---
+ # execute as root
 -plugin: community.general.iocage
 +plugin: vbotka.freebsd.iocage
  host: 10.1.0.73
  user: admin
  sudo: true
-@@ -109,7 +109,7 @@ env:
+@@ -107,7 +107,7 @@ env:
  
  ---
  # enable cache
@@ -63,7 +63,7 @@ index 4b4fca2..2c84ba3 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -118,7 +118,7 @@ cache: true
+@@ -116,7 +116,7 @@ cache: true
  
  ---
  # see inventory plugin ansible.builtin.constructed
@@ -72,7 +72,7 @@ index 4b4fca2..2c84ba3 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -176,7 +176,7 @@ def _parse_ip4(ip4):
+@@ -174,7 +174,7 @@ def _parse_ip4(ip4):
  class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
      ''' Host inventory parser for ansible using iocage as source. '''
  
