@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add filter iocage. Parse iocage lists.
 * Update inventory plugin iocage.
 * Update role iocage.
 * Update examples.

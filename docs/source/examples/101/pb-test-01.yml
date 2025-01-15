@@ -9,4 +9,4 @@
 
     - name: Debug
       ansible.builtin.debug:
-        var: ansible_local
+        var: ansible_local.iocage | vbotka.freebsd.iocage
