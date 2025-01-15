@@ -79,6 +79,9 @@
       freebsd_iocage_clean_jails:
         {{ freebsd_iocage_clean_jails | to_nice_yaml(indent=2) | indent(2) }}
 
+      freebsd_iocage_facts: {{ freebsd_iocage_facts }}
+      freebsd_iocage_facts_scripts:
+        {{ freebsd_iocage_facts_scripts | to_nice_yaml(indent=2) | indent(2) }}
 
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"

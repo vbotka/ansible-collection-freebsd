@@ -49,4 +49,9 @@
   when: freebsd_iocage_clean | bool
   tags: freebsd_iocage_clean
 
+- name: Import facts.yml
+  ansible.builtin.import_tasks: facts.yml
+  when: freebsd_iocage_facts | bool
+  tags: freebsd_iocage_facts
+
 # EOF

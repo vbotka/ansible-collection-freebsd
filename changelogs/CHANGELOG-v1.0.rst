@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Minor release. Update plugins and docs.
+Minor release. Update plugins, roles and docs.
 
 Major Changes
 -------------
@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update inventory plugin iocage.
+* Update role iocage.
 * Update examples.
 * Add example 018.
 

@@ -1,0 +1,71 @@
+(env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+                                                        -t debug \
+							-e debug=true
+
+PLAY [iocage] ******************************************************************
+
+TASK [Debug] *******************************************************************
+ok: [iocage_01] => 
+  msg: |-
+    freebsd_iocage_runner_exec: fetch,create,clone
+    freebsd_iocage_runner_cmd:
+      clone:
+      - cmd: iocage clone ansible_client --name test_101
+        creates: /mnt/pool2/iocage/jails/test_101
+      - cmd: iocage clone ansible_client --name test_102
+        creates: /mnt/pool2/iocage/jails/test_102
+      - cmd: iocage clone ansible_client --name test_103
+        creates: /mnt/pool2/iocage/jails/test_103
+      - cmd: iocage set vnet=on test_101
+      - cmd: iocage set defaultrouter=10.1.0.10 test_101
+      - cmd: iocage set notes=vmm=iocage_01 test_101
+      - cmd: iocage set ip4_addr=vnet0|10.1.0.101/24 test_101
+      - cmd: iocage set vnet=on test_102
+      - cmd: iocage set defaultrouter=10.1.0.10 test_102
+      - cmd: iocage set notes=vmm=iocage_01 test_102
+      - cmd: iocage set ip4_addr=vnet0|10.1.0.102/24 test_102
+      - cmd: iocage set vnet=on test_103
+      - cmd: iocage set defaultrouter=10.1.0.10 test_103
+      - cmd: iocage set notes=vmm=iocage_01 test_103
+      - cmd: iocage set ip4_addr=vnet0|10.1.0.103/24 test_103
+      create:
+      - cmd: iocage create --release 13.4-RELEASE --name ansible_client
+        creates: /mnt/pool2/iocage/jails/ansible_client
+      - cmd: iocage set vnet=on ansible_client
+      - cmd: iocage set defaultrouter=10.1.0.10 ansible_client
+      - cmd: iocage set notes=vmm=iocage_01 ansible_client
+      - cmd: iocage set ip4_addr=vnet0|10.1.0.198/24 ansible_client
+      fetch:
+      - cmd: iocage fetch --release 13.3-RELEASE
+        creates: /mnt/pool2/iocage/releases/13.3-RELEASE
+      - cmd: iocage fetch --release 13.4-RELEASE
+        creates: /mnt/pool2/iocage/releases/13.4-RELEASE
+ok: [iocage_02] => 
+  msg: |-
+    freebsd_iocage_runner_exec: fetch,create,clone
+    freebsd_iocage_runner_cmd:
+      clone:
+      - cmd: iocage clone ansible_client --name test_111
+        creates: /zroot/iocage/jails/test_111
+      - cmd: iocage clone ansible_client --name test_112
+        creates: /zroot/iocage/jails/test_112
+      - cmd: iocage clone ansible_client --name test_113
+        creates: /zroot/iocage/jails/test_113
+      - cmd: iocage set notes=vmm=iocage_02 test_111
+      - cmd: iocage set ip4_addr=em0|10.1.0.111/24 test_111
+      - cmd: iocage set notes=vmm=iocage_02 test_112
+      - cmd: iocage set ip4_addr=em0|10.1.0.112/24 test_112
+      - cmd: iocage set notes=vmm=iocage_02 test_113
+      - cmd: iocage set ip4_addr=em0|10.1.0.113/24 test_113
+      create:
+      - cmd: iocage create --release 14.1-RELEASE --name ansible_client
+        creates: /zroot/iocage/jails/ansible_client
+      - cmd: iocage set notes=vmm=iocage_02 ansible_client
+      - cmd: iocage set ip4_addr=em0|10.1.0.199/24 ansible_client
+      fetch:
+      - cmd: iocage fetch --release 14.1-RELEASE
+        creates: /zroot/iocage/releases/14.1-RELEASE
+
+PLAY RECAP *********************************************************************
+iocage_01: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_02: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
