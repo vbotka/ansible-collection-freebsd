@@ -53,6 +53,12 @@ Requirements
 * filter vbotka.freebsd.iocage
 * root privilege on the iocage hosts
 
+
+Notes
+^^^^^
+
+* See `Adding custom facts <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts>`_
+
 	       
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,0 +1,25 @@
+---
+
+# data enable
+freebsd_iocage_data: false
+
+# data ZFS mount enable
+freebsd_iocage_data_mount_enable: false
+# If mount enable, create fstab entry by Ansible module
+# ansible.posix.mount. Don't use this after 'iocage fstab --add
+# ...' This will create a double entry because of the comment added by
+# iocage. The jail must be created to update the fstab.
+freebsd_iocage_data_fstab: false
+
+# data ZFS root
+freebsd_iocage_data_root: "{{ freebsd_iocage_pool }}/iocage-data"
+# data ZFS root mountpoint
+freebsd_iocage_data_mount: "{{ freebsd_iocage_pool_mount }}/iocage-data"
+
+# data jail dir (will be created if missing)
+freebsd_iocage_data_dir: mnt
+
+# data
+freebsd_iocage_data_jails: {}
+
+# EOF

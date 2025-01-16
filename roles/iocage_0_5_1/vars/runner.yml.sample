@@ -1,0 +1,85 @@
+---
+
+freebsd_iocage_runner: true
+
+freebsd_iocage_runner_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+# Ansible client ready
+freebsd_iocage_runner_exec: "fetch_134R,create_101,notes_101,vnet_101,data_101,start_101,firstboot_101,authorized_keys_101,rc_conf_101,sshd_start_101"
+
+# Some commands are idempotent. Feel free to improve and extend.
+freebsd_iocage_runner_cmd:
+  create_101:
+    - cmd: iocage create --release 13.4-RELEASE --name test_101
+      creates: "{{ freebsd_iocage_mount }}/jails/test_101"
+  notes_101:
+    - cmd: iocage set notes="foo-bar" test_101
+  vnet_101:
+    - cmd: iocage set vnet=on test_101
+    - cmd: iocage set defaultrouter=10.1.0.10 test_101
+    - cmd: iocage set ip4_addr="vnet0|10.1.0.101/24" test_101
+  data_101:
+    - cmd: iocage set jail_zfs=on test_101
+    - cmd: 'iocage fstab -a test_101 "{{ freebsd_iocage_data_mount }}/test_101 /{{ freebsd_iocage_data_jail_mount.dir }} nullfs rw 0 0"'
+      failed_rc: 2
+  start_101:
+    - cmd: iocage start test_101
+      when: "{{ iocage_list_jails.test_101.state | d('down') != 'up' }}"
+  stop_101:
+    - cmd: iocage stop test_101
+      when: "{{ iocage_list_jails.test_101.state | d('up') != 'down' }}"
+  firstboot_101:
+    - cmd: iocage exec test_101 /mnt/firstboot.sh
+  authorized_keys_101:
+    - cmd: iocage exec test_101 cp /mnt/authorized_keys /home/admin/.ssh
+      creates: /home/admin/.ssh/authorized_keys
+    - cmd: iocage exec test_101 chown admin:admin /home/admin/.ssh/authorized_keys
+    - cmd: iocage exec test_101 chmod 600 /home/admin/.ssh/authorized_keys
+  rc_conf_101:
+    - cmd: iocage exec test_101 cp /mnt/rc.conf /etc
+    - cmd: iocage exec test_101 chown root:wheel /etc/rc.conf
+    - cmd: iocage exec test_101 chmod 644 /etc/rc.conf
+  sshd_start_101:
+    - cmd: iocage exec test_101 /etc/rc.d/sshd start
+      failed_rc: 2
+  fetch_133R:
+    - cmd: iocage fetch --release 13.3-RELEASE
+      creates: "{{ freebsd_iocage_mount }}/releases/13.3-RELEASE"
+  fetch_134R:
+    - cmd: iocage fetch --release 13.4-RELEASE
+      creates: "{{ freebsd_iocage_mount }}/releases/13.4-RELEASE"
+  fetch_141R:
+    - cmd: iocage fetch --release 14.1-RELEASE
+      creates: "{{ freebsd_iocage_mount }}/releases/14.1-RELEASE"
+  create_134R_101:
+    - cmd: iocage create --release 13.4-RELEASE --name test_101
+      creates: "{{ freebsd_iocage_mount }}/jails/test_101"
+  create_134R_102:
+    - cmd: iocage create --release 13.4-RELEASE --name test_102
+      creates: "{{ freebsd_iocage_mount }}/jails/test_102"
+  create_134R_103:
+    - cmd: iocage create --release 13.4-RELEASE --name test_103
+      creates: "{{ freebsd_iocage_mount }}/jails/test_103"
+  create_141R_111:
+    - cmd: iocage create --release 14.1-RELEASE --name test_111
+      creates: "{{ freebsd_iocage_mount }}/jails/"
+  vnet_102:
+    - cmd: iocage set vnet=on test_102
+    - cmd: iocage set defaultrouter=10.1.0.10 test_102
+    - cmd: iocage set ip4_addr="vnet0|10.1.0.102/24" test_102
+  vnet_103:
+    - cmd: iocage set vnet=on test_103
+    - cmd: iocage set defaultrouter=10.1.0.10 test_103
+    - cmd: iocage set ip4_addr="vnet0|10.1.0.103/24" test_103
+  notes_102:
+    - cmd: iocage set notes="foo-bar" test_102
+  notes_103:
+    - cmd: iocage set notes="foo-baz" test_103
+  net_111:
+    - cmd: iocage set vnet=off test_111
+    - cmd: iocage set ip4_addr="em0|10.1.0.111/24" test_111
+  list_jails:
+    - cmd: iocage list -h
+
+# EOF
