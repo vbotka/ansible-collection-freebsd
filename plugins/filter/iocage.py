@@ -22,29 +22,71 @@ options:
 """
 
 EXAMPLES = r"""
+# Put output of the commands into the keys:
+# jail: <iocage list --long>
+# plugins: <iocage list --plugins>
+# releases: <iocage list --release --header>
+# templates: <iocage list --template --long>
+
+# Select keys you want to parse. For example, jails and releases
 ansible_local:
   iocage:
     jails: |-
-        +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-        | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
-        +======+================+======+=======+======+=================+===================+=====+================+==========+
-        | None | ansible_client | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -              | no       |
-        +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-        | None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
-        +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-        | None | test_112       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.112/24 | -   | ansible_client | no       |
-        +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-        | None | test_113       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.113/24 | -   | ansible_client | no       |
-        +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+      +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+      | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
+      +======+================+======+=======+======+=================+===================+=====+================+==========+
+      | None | ansible_client | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -              | no       |
+      +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+      | None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
+      +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+    releases: |-
+      14.1-RELEASE
 
 result: "{{ ansible_local.iocage | vbotka.freebsd.iocage }}"
+
+result:
+  jails:
+    ansible_client:
+      basejail: 'no'
+      boot: 'off'
+      ip4: 10.1.0.199
+      ip4_dict:
+        ip4:
+          - ifc: em0
+            ip: 10.1.0.199
+            mask: '24'
+        msg: ''
+      ip6: '-'
+      jid: None
+      release: 14.1-RELEASE-p6
+      state: down
+      template: '-'
+      type: jail
+    test_111:
+      basejail: 'no'
+      boot: 'off'
+      ip4: 10.1.0.111
+      ip4_dict:
+        ip4:
+          - ifc: em0
+            ip: 10.1.0.111
+            mask: '24'
+        msg: ''
+      ip6: '-'
+      jid: None
+      release: 14.1-RELEASE-p6
+      state: down
+      template: ansible_client
+      type: jail
+  releases:
+    - 14.1-RELEASE
 """
 
 RETURN = r"""
 _value:
   description: The dictionary of the iocage lists.
   type: dictionary
-  elements: list
+  elements: [list|dict]
 """
 
 import re
@@ -92,17 +134,55 @@ def _get_jails(data):
         else:
             iocage_ip4 = '-'
         result[iocage_name] = {}
-        result[iocage_name]['iocage_jid'] = jail[0]
-        result[iocage_name]['iocage_boot'] = jail[2]
-        result[iocage_name]['iocage_state'] = jail[3]
-        result[iocage_name]['iocage_type'] = jail[4]
-        result[iocage_name]['iocage_release'] = jail[5]
-        result[iocage_name]['iocage_ip4_dict'] = iocage_ip4_dict
-        result[iocage_name]['iocage_ip4'] = iocage_ip4
-        result[iocage_name]['iocage_ip6'] = jail[7]
-        result[iocage_name]['iocage_template'] = jail[8]
-        result[iocage_name]['iocage_basejail'] = jail[9]
+        result[iocage_name]['jid'] = jail[0]
+        result[iocage_name]['boot'] = jail[2]
+        result[iocage_name]['state'] = jail[3]
+        result[iocage_name]['type'] = jail[4]
+        result[iocage_name]['release'] = jail[5]
+        result[iocage_name]['ip4_dict'] = iocage_ip4_dict
+        result[iocage_name]['ip4'] = iocage_ip4
+        result[iocage_name]['ip6'] = jail[7]
+        result[iocage_name]['template'] = jail[8]
+        result[iocage_name]['basejail'] = jail[9]
 
+    return result
+
+
+def _get_plugins(data):
+
+    result = {}
+
+    lines = data.splitlines()
+    if len(lines) < 5:
+        return result
+
+    indices = [i for i, val in enumerate(lines[1]) if val == '|']
+    for line in lines[3::2]:
+        jail = [line[i + 1:j].strip() for i, j in zip(indices[:-1], indices[1:])]
+        iocage_name = jail[1]
+        iocage_ip4_dict = _parse_ip4(jail[6])
+        if iocage_ip4_dict['ip4']:
+            iocage_ip4 = ','.join([d['ip'] for d in iocage_ip4_dict['ip4']])
+        else:
+            iocage_ip4 = '-'
+        result[iocage_name] = {}
+        result[iocage_name]['jid'] = jail[0]
+        result[iocage_name]['boot'] = jail[2]
+        result[iocage_name]['state'] = jail[3]
+        result[iocage_name]['type'] = jail[4]
+        result[iocage_name]['release'] = jail[5]
+        result[iocage_name]['ip4_dict'] = iocage_ip4_dict
+        result[iocage_name]['ip4'] = iocage_ip4
+        result[iocage_name]['ip6'] = jail[7]
+        result[iocage_name]['template'] = jail[8]
+        result[iocage_name]['portal'] = jail[9]
+        result[iocage_name]['doc_url'] = jail[10]
+
+    return result
+
+
+def _get_releases(data):
+    result = data.splitlines()
     return result
 
 
@@ -110,10 +190,15 @@ def iocage(data):
     """parse dictionary of iocage lists"""
 
     results = {}
+    fnc_dict = {'jails': _get_jails,
+                'plugins': _get_plugins,
+                'releases': _get_releases,
+                'templates': _get_jails}
 
-    if 'jails' in data:
-        jails = data['jails']
-        results['jails'] = _get_jails(jails)
+    for d in fnc_dict:
+        if d in data:
+            list = data[d]
+            results[d] = fnc_dict[d](list)
 
     return results
 

@@ -1,4 +1,4 @@
-- name: Create inventory
+- name: Get custom facts
   hosts: iocage
 
   tasks:
@@ -6,6 +6,10 @@
     - name: Get custom facts
       ansible.builtin.setup:
         filter: ansible_local
+
+    - name: Debug
+      ansible.builtin.debug:
+        var: ansible_local.iocage
 
     - name: Debug
       ansible.builtin.debug:
