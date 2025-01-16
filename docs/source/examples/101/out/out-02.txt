@@ -1,65 +1,12 @@
-(env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
-                                                        -t runner
-
-PLAY [iocage] ******************************************************************
-
-TASK [vbotka.freebsd.iocage : Runner: Debug. freebsd_iocage_debug=False] *******
-skipping: [iocage_01]
-skipping: [iocage_02]
-
-TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
-ok: [iocage_01]
-ok: [iocage_02]
-
-TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
-ok: [iocage_01]
-ok: [iocage_02]
-
-TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
-ok: [iocage_01] => (item=iocage fetch --release 13.3-RELEASE)
-ok: [iocage_02] => (item=iocage fetch --release 14.1-RELEASE)
-ok: [iocage_01] => (item=iocage fetch --release 13.4-RELEASE)
-ok: [iocage_02] => (item=iocage create --release 14.1-RELEASE --name ansible_client)
-ok: [iocage_01] => (item=iocage create --release 13.4-RELEASE --name ansible_client)
-changed: [iocage_01] => (item=iocage set vnet=on ansible_client)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 ansible_client)
-changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 ansible_client)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 ansible_client)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.198/24 ansible_client)
-ok: [iocage_01] => (item=iocage clone ansible_client --name test_101)
-changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.199/24 ansible_client)
-ok: [iocage_01] => (item=iocage clone ansible_client --name test_102)
-ok: [iocage_02] => (item=iocage clone ansible_client --name test_111)
-ok: [iocage_01] => (item=iocage clone ansible_client --name test_103)
-ok: [iocage_02] => (item=iocage clone ansible_client --name test_112)
-ok: [iocage_02] => (item=iocage clone ansible_client --name test_113)
-changed: [iocage_01] => (item=iocage set vnet=on test_101)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 test_101)
-changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 test_111)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 test_101)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.101/24 test_101)
-changed: [iocage_01] => (item=iocage set vnet=on test_102)
-changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.111/24 test_111)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 test_102)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 test_102)
-changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 test_112)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.102/24 test_102)
-changed: [iocage_01] => (item=iocage set vnet=on test_103)
-changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.112/24 test_112)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 test_103)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 test_103)
-changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 test_113)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.103/24 test_103)
-changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.113/24 test_113)
-
-TASK [vbotka.freebsd.iocage : Runner: Debug run listed commands. freebsd_iocage_debug=False] ***
-skipping: [iocage_01]
-skipping: [iocage_02]
-
-TASK [Debug] *******************************************************************
-skipping: [iocage_01]
-skipping: [iocage_02]
-
-PLAY RECAP *********************************************************************
-iocage_01: ok=3    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-iocage_02: ok=3    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+[iocage_02]# iocage list -l
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
++======+================+======+=======+======+=================+===================+=====+================+==========+
+| None | ansible_client | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -              | no       |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| 7    | test_112       | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.112/24 | -   | ansible_client | no       |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| 8    | test_113       | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.113/24 | -   | ansible_client | no       |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+

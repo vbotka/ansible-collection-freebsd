@@ -3,6 +3,8 @@
 101 Create custom facts.
 ------------------------
 
+Extending example 100.
+
 .. contents:: Table of Contents
    :depth: 2
 
@@ -20,6 +22,7 @@ Tree
    │   └── iocage_02
    │       └── iocage.yml
    ├── iocage-hosts.ini
+   ├── pb-iocage.yml
    └── pb-test-01.yml
 
 Synopsis
@@ -50,6 +53,18 @@ Requirements
 * filter vbotka.freebsd.iocage
 * root privilege on the iocage hosts
 
+	       
+List all jails at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-01.txt
+    :language: bash
+
+List all jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-02.txt
+    :language: bash
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,22 +96,22 @@ Playbook *pb-iocage.yml*
 .. literalinclude:: pb-iocage.yml
     :language: yaml
 
-Playbook debug output
-^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: out/out-01.txt
-    :language: bash
-	       
-List all jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Display versions
+^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
     :language: bash
 
-List all jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create custom fact scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
+    :language: bash
+
+Display custom fact script
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-05.txt
     :language: bash
 
 Playbook *pb-test-01.yml*
@@ -105,8 +120,8 @@ Playbook *pb-test-01.yml*
 .. literalinclude:: pb-test-01.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Display custom facts and variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-06.txt
     :language: bash

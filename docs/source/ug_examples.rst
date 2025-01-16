@@ -25,5 +25,6 @@ Examples
    017 community.general.iocage <examples/017/example-017>
    examples/018/example-018
    100 Clone jails. Create inventory. <examples/100/example-100.rst>
+   examples/101/example-101
    200 Ansible client templates. <examples/200/example-200.rst>
    201 Display iocage lists. <examples/201/example-201.rst>
