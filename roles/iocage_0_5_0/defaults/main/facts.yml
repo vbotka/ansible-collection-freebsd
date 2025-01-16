@@ -1,4 +1,0 @@
----
-freebsd_iocage_facts: false
-freebsd_iocage_facts_scripts:
-  - iocage.fact
