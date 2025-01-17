@@ -39,19 +39,19 @@ Synopsis
 * Use the property *notes* to create tags:
 
   * Add the property ``notes: "vmm={{ inventory_hostname }}"``
-  * In the inventory plugin, compose *iocage_tags*
-  * In the inventory plugin, create groups *vmm_\** from *iocage_tags.vmm*
+  * In the inventory plugin, compose the variable *iocage_tags*
+  * In the inventory plugin, create groups *vmm_\** from the attribute iocage_tags.vmm*
 
 * On two iocage hosts:
 
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-base.yml*, use the module *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage-base.yml*, use the `module vbotka.freebsd.iocage`_ to:
 
   * create basejail *ansible_client*
 
-  In the playbook *pb-iocage-clone.yml*, use the module *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage-clone.yml*, use the `module vbotka.freebsd.iocage`_ to:
 
   * clone 3 jails from the basejail *ansible_client*
 
@@ -61,7 +61,7 @@ Synopsis
   * pb-ansible-client.yml
   * pb-test.yml
 
-  use the inventory plugin *vbotka.freebsd.iocage* to:
+  use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables.
   * create the dictionary *iocage_tags* from *iocage_properties.notes*
@@ -72,11 +72,11 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Module *vbotka.freebsd.iocage*
-* Inventory *vbotka.freebsd.iocage*
+* `module vbotka.freebsd.iocage`_
+* 'inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
-* Activated *iocage*
-* Fetched releases
+* activated `binary iocage`_
+* fetched releases.
 
 hosts/01_iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -150,7 +150,7 @@ Playbook output
 
 .. note::
 
-   * The inventory files in *hosts* are evaluated in alphabetical order.
+   * The inventory files in the directory *hosts* are evaluated in alphabetical order.
 
    * The jail *ansible_client* from *iocage_02* overrides the one from *iocage_01*
 
@@ -188,3 +188,8 @@ Playbook output
 
 .. literalinclude:: out/out-04.txt
     :language: bash
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _binary iocage: https://github.com/iocage/iocage/

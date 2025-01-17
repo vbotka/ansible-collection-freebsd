@@ -3,7 +3,7 @@
 018 Clone basejails and use DHCP
 --------------------------------
 
-Extending example 010
+Extending example 010.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -36,7 +36,7 @@ Use DHCP to configure the interfaces.
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-clone-list.yml*, use the module *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage-clone-list.yml*, use the `module vbotka.freebsd.iocage`_ to:
 
   * clone 3 jails from the basejail
   * start all jails
@@ -44,7 +44,7 @@ Use DHCP to configure the interfaces.
 
 * On the iocage host *iocage_02*
   
-  In the playbook *pb-test.yml*, use the inventory plugin *vbotka.freebsd.iocage* to:
+  In the playbook *pb-test.yml*, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
   * display the hosts and composed variables in the group *test*
@@ -155,3 +155,8 @@ The jails are stopped.
 
 .. literalinclude:: out/out-09.txt
     :language: bash
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _binary iocage: https://github.com/iocage/iocage/
