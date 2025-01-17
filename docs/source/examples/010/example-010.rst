@@ -32,7 +32,7 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-fetch-base-clone-list.yml*, use the module *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage-fetch-base-clone-list.yml*, use the `module vbotka.freebsd.iocage`_ to:
 
   * fetch the release
   * create basejail
@@ -42,7 +42,7 @@ Synopsis
 
 * On the iocage host *iocage_02*
   
-  In the playbook *pb-test-01.yml*, use the inventory plugin *vbotka.freebsd.iocage* to:
+  In the playbook *pb-test-01.yml*, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
   * display the hosts and composed variables in the group *test*
@@ -51,10 +51,10 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Module *vbotka.freebsd.iocage*
-* Inventory *vbotka.freebsd.iocage*
+* `module vbotka.freebsd.iocage`_
+* `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
-* Activated *iocage*
+* activated `binary iocage`_
 
 Notes
 ^^^^^
@@ -137,3 +137,8 @@ Playbook output
 	       
 .. literalinclude:: out/out-02.txt
     :language: bash
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _binary iocage: https://github.com/iocage/iocage/
