@@ -32,7 +32,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ansible-collection-freebsd'
-copyright = '2024, Vladimir Botka'
+copyright = '2025, Vladimir Botka'
 author = 'Vladimir Botka'
 
 # The version info for the project you're documenting, acts as replacement for
