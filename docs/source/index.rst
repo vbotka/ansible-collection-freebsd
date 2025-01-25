@@ -19,6 +19,7 @@ Plugins:
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
+* filter vbotka.freebsd.iocage
 
 Roles:
 

@@ -4,7 +4,7 @@ Examples
 ********
 
 :001-003: Manage *iocage* on the remote host
-:010-018: Use the module and inventory plugin *vbotka.freebsd.iocage*
+:010-019: Use the module and inventory plugin *vbotka.freebsd.iocage*
 :100-:    Use the role *vbotka.freebsd.iocage*
 :200-:    Ansible client
 

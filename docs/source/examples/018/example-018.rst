@@ -106,11 +106,12 @@ List all jails at iocage_02
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Enable *"sudo: true"*. Otherwise, *iocage* will complain *"DHCP (running -- address requires root)"*
+Enable *"sudo: true"*. Otherwise, *iocage* will complain *"DHCP (running -- address requires
+root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
 
 .. literalinclude:: iocage.yml
     :language: yaml
-    :emphasize-lines: 4
+    :emphasize-lines: 4,5
 
 .. hint::
 
