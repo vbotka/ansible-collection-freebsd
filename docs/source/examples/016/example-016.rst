@@ -29,8 +29,8 @@ Synopsis
 
 * The *iocage* plugin gets the jails(hosts):
 
-  * *test_01:03* from the host *iocage_01* 
-  * *test_11:13* from the host *iocage_02* 
+  * *test_101:103* from the host *iocage_01* 
+  * *test_111:113* from the host *iocage_02* 
 
   and creates inventory groups *test_01* and *test_02*
 

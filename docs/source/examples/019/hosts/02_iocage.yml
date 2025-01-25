@@ -1,7 +1,6 @@
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
 user: admin
-use_vars_plugins: true
 sudo: true
 sudo_preserve_env: true
 env:
@@ -10,6 +9,3 @@ compose:
   ansible_host: iocage_ip4
 groups:
   test_02: inventory_hostname.startswith('test')
-keyed_groups:
-  - prefix: region
-    key: region
