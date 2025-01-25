@@ -56,9 +56,12 @@ Notes
 ^^^^^
 
    * The inventory files in *hosts* are evaluated in alphabetical order.
-   * See :ref:`example_016`
-   * See `Documentation fragments`_
-   * See the `vars plugin ansible.builtin.host_group_vars`_
+
+.. seealso::
+
+   * `Documentation fragments`_
+   * The `vars plugin ansible.builtin.host_group_vars`_
+   * :ref:`example_016`
 
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
