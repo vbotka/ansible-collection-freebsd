@@ -1,8 +1,8 @@
 diff --git a/setup/distfiles/inventory/iocage.py b/setup/distfiles/inventory/iocage.py
-index f43df41..7d0fc6e 100644
+index 31aad30..c04ee04 100644
 --- a/setup/distfiles/inventory/iocage.py
 +++ b/setup/distfiles/inventory/iocage.py
-@@ -10,7 +10,7 @@ __metaclass__ = type
+@@ -9,7 +9,7 @@ from __future__ import annotations
  DOCUMENTATION = '''
      name: iocage
      short_description: iocage inventory source
@@ -11,7 +11,7 @@ index f43df41..7d0fc6e 100644
      author:
          - Vladimir Botka (@vbotka)
      requirements:
-@@ -30,10 +30,10 @@ DOCUMENTATION = '''
+@@ -29,10 +29,10 @@ DOCUMENTATION = '''
          plugin:
              description:
                - The name of this plugin, it should always be set to
@@ -24,7 +24,24 @@ index f43df41..7d0fc6e 100644
              type: str
          host:
              description: The IP/hostname of the C(iocage) host.
-@@ -79,17 +79,17 @@ DOCUMENTATION = '''
+@@ -51,14 +51,14 @@ DOCUMENTATION = '''
+               - This requires passwordless sudo of the command C(iocage list*).
+             type: bool
+             default: false
+-            version_added: 10.3.0
++            version_added: 0.5.0
+         sudo_preserve_env:
+             description:
+               - Preserve environment if O(sudo) is enabled.
+               - This requires C(SETENV) sudoers tag.
+             type: bool
+             default: false
+-            version_added: 10.3.0
++            version_added: 0.5.0
+         get_properties:
+             description:
+               - Get jails' properties.
+@@ -87,17 +87,17 @@ DOCUMENTATION = '''
  EXAMPLES = '''
  ---
  # file name must end with iocage.yaml or iocage.yml
@@ -45,7 +62,7 @@ index f43df41..7d0fc6e 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -98,7 +98,7 @@ env:
+@@ -106,7 +106,7 @@ env:
  ---
  # execute as root
  # sudoers example 'admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*'
@@ -54,7 +71,7 @@ index f43df41..7d0fc6e 100644
  host: 10.1.0.73
  user: admin
  sudo: true
-@@ -107,7 +107,7 @@ env:
+@@ -116,7 +116,7 @@ env:
  
  ---
  # enable cache
@@ -63,7 +80,7 @@ index f43df41..7d0fc6e 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -116,7 +116,7 @@ cache: true
+@@ -125,7 +125,7 @@ cache: true
  
  ---
  # see inventory plugin ansible.builtin.constructed
@@ -72,7 +89,7 @@ index f43df41..7d0fc6e 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -174,7 +174,7 @@ def _parse_ip4(ip4):
+@@ -183,7 +183,7 @@ def _parse_ip4(ip4):
  class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
      ''' Host inventory parser for ansible using iocage as source. '''
  

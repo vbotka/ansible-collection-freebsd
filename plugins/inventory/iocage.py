@@ -4,8 +4,7 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from __future__ import (absolute_import, division, print_function)
-__metaclass__ = type
+from __future__ import annotations
 
 DOCUMENTATION = '''
     name: iocage
@@ -49,10 +48,17 @@ DOCUMENTATION = '''
         sudo:
             description:
               - Enable execution as root.
-              - This requires passwordless sudo of the command C(iocage list*)
-              - If O(env) is used C(SETENV) tag is needed.
+              - This requires passwordless sudo of the command C(iocage list*).
             type: bool
             default: false
+            version_added: 0.5.0
+        sudo_preserve_env:
+            description:
+              - Preserve environment if O(sudo) is enabled.
+              - This requires C(SETENV) sudoers tag.
+            type: bool
+            default: false
+            version_added: 0.5.0
         get_properties:
             description:
               - Get jails' properties.
@@ -60,7 +66,9 @@ DOCUMENTATION = '''
             type: bool
             default: false
         env:
-            description: O(user)'s environment on O(host).
+            description:
+              - O(user)'s environment on O(host).
+              - Enable O(sudo_preserve_env) if O(sudo) is enabled.
             type: dict
             default: {}
     notes:
@@ -102,6 +110,7 @@ plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
 user: admin
 sudo: true
+sudo_preserve_env: true
 env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 
@@ -214,6 +223,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
     def get_inventory(self, path):
         host = self.get_option('host')
         sudo = self.get_option('sudo')
+        sudo_preserve_env = self.get_option('sudo_preserve_env')
         env = self.get_option('env')
         get_properties = self.get_option('get_properties')
 
@@ -230,7 +240,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         cmd_list = cmd.copy()
         if sudo:
             cmd_list.append('sudo')
-            if env:
+            if sudo_preserve_env:
                 cmd_list.append('--preserve-env')
         cmd_list.append(self.IOCAGE)
         cmd_list.append('list')
