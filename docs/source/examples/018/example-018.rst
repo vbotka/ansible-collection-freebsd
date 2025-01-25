@@ -1,7 +1,7 @@
 .. _example_018:
 
-018 Clone basejails and use DHCP
---------------------------------
+018 Clone basejails and use DHCP.
+---------------------------------
 
 Extending example 010.
 
