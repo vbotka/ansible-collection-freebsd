@@ -34,3 +34,13 @@ Workflow:
 * Create dynamic inventory; (role:stat and *ansible.builtin.add_host* or inventory plugin)
 
 * Manage the jails by Ansible; (playbooks)
+
+
+Use cases:
+
+* No root at iocage hosts.
+
+  A user doesn't have root access at iocage host. Unprivileged access
+  is sufficient to run *'iocage list ...'* and create dynamic
+  inventory. This user then manages the jails with escalated privilege
+  (root). See example 031.

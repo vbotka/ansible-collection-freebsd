@@ -1,9 +1,11 @@
 plugin: community.general.iocage
 host: 10.1.0.73
 user: admin
+sudo: true
+sudo_preserve_env: true
 env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 compose:
-  ansible_host: iocage_ip4
+  ansible_host: iocage_ip4 | split(',') | first
 groups:
   test_02: inventory_hostname.startswith('test')

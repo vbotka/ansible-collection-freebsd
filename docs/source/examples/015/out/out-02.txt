@@ -5,6 +5,16 @@
                 "iocage_basejail": "yes",
                 "iocage_boot": "off",
                 "iocage_ip4": "10.1.0.198",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.198",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
                 "iocage_ip6": "-",
                 "iocage_jid": "-",
                 "iocage_release": "13.4-RELEASE-p2",
@@ -16,6 +26,16 @@
                 "iocage_basejail": "yes",
                 "iocage_boot": "off",
                 "iocage_ip4": "10.1.0.101",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.101",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
                 "iocage_ip6": "-",
                 "iocage_jid": "-",
                 "iocage_release": "13.4-RELEASE-p2",
@@ -27,6 +47,16 @@
                 "iocage_basejail": "yes",
                 "iocage_boot": "off",
                 "iocage_ip4": "10.1.0.102",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.102",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
                 "iocage_ip6": "-",
                 "iocage_jid": "-",
                 "iocage_release": "13.4-RELEASE-p2",
@@ -38,6 +68,16 @@
                 "iocage_basejail": "yes",
                 "iocage_boot": "off",
                 "iocage_ip4": "10.1.0.103",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.103",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
                 "iocage_ip6": "-",
                 "iocage_jid": "-",
                 "iocage_release": "13.4-RELEASE-p2",

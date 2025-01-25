@@ -1,4 +1,5 @@
 ansible_python_interpreter: /usr/local/bin/python3.9
+ansible_become_password: admin
 
 fetch:
   - 13.3-RELEASE

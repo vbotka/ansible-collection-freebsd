@@ -15,6 +15,7 @@ Introduction
 
   * `module vbotka.freebsd.iocage`_
   * `inventory plugin vbotka.freebsd.iocage`_
+  * filter vbotka.freebsd.iocage
   * `role vbotka.freebsd.iocage`_
   * various playbooks
 

@@ -3,7 +3,7 @@
 vbotka.freebsd
 **************
 
-Collection version 0.4.7
+Collection version 0.5.0
 
 | This `collection <https://galaxy.ansible.com/vbotka/freebsd/>`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-collection-freebsd/issues/>`_.
@@ -19,6 +19,7 @@ Plugins:
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
+* filter vbotka.freebsd.iocage
 
 Roles:
 
@@ -48,9 +49,9 @@ License
    :maxdepth: 1
    :caption: Table of Contents
 
-   users_guide
-   administrator_guide
-   developer_guide
+   ug
+   ag
+   dg
    copyright
    legalnotice
 

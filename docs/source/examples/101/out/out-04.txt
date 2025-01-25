@@ -1,0 +1,21 @@
+(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                       -t freebsd_iocage_facts \
+				       -e freebsd_iocage_facts=true
+
+PLAY [Role vbotka.freebsd.iocage] ***********************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [iocage_01]
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.iocage : Facts: create directory /etc/ansible/facts.d] *****************************************
+ok: [iocage_02]
+ok: [iocage_01]
+
+TASK [vbotka.freebsd.iocage : Facts: copy scipts to /etc/ansible/facts.d] *******************************************
+ok: [iocage_02] => (item=iocage.fact)
+ok: [iocage_01] => (item=iocage.fact)
+
+PLAY RECAP **********************************************************************************************************
+iocage_01                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

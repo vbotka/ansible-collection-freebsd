@@ -34,9 +34,9 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role *vbotka.freebsd.iocage*
+* `role vbotka.freebsd.iocage`_
 * root privilege on the *iocage* hosts
-* Binary *iocage*
+* `binary iocage`_ installed.
 
 Notes
 ^^^^^
@@ -77,7 +77,9 @@ host_vars/iocage_02/iocage.yml
 
 .. note::
 
-   By default, the activation testing is disabled ``freebsd_iocage_sanity_zfs_pool_active: false``
+   By default, the activation testing is disabled ::
+
+     freebsd_iocage_sanity_zfs_pool_active: false
 
 
 Playbook *pb-iocage.yml*
@@ -104,3 +106,6 @@ Playbook output - test sanity quietly
 
    * `ANSIBLE_DISPLAY_SKIPPED_HOSTS <https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts>`_
 
+
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _binary iocage: https://github.com/iocage/iocage/

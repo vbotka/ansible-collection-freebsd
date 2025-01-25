@@ -4,8 +4,7 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from __future__ import (absolute_import, division, print_function)
-__metaclass__ = type
+from __future__ import annotations
 
 DOCUMENTATION = '''
     name: iocage
@@ -46,14 +45,30 @@ DOCUMENTATION = '''
                 O(host) with SSH and execute the command C(iocage list).
                 This option is not required if O(host) is V(localhost).
             type: str
+        sudo:
+            description:
+              - Enable execution as root.
+              - This requires passwordless sudo of the command C(iocage list*).
+            type: bool
+            default: false
+            version_added: 10.3.0
+        sudo_preserve_env:
+            description:
+              - Preserve environment if O(sudo) is enabled.
+              - This requires C(SETENV) sudoers tag.
+            type: bool
+            default: false
+            version_added: 10.3.0
         get_properties:
             description:
               - Get jails' properties.
                 Creates dictionary C(iocage_properties) for each added host.
-            type: boolean
+            type: bool
             default: false
         env:
-            description: O(user)'s environment on O(host).
+            description:
+              - O(user)'s environment on O(host).
+              - Enable O(sudo_preserve_env) if O(sudo) is enabled.
             type: dict
             default: {}
     notes:
@@ -70,14 +85,17 @@ DOCUMENTATION = '''
 '''
 
 EXAMPLES = '''
+---
 # file name must end with iocage.yaml or iocage.yml
 plugin: community.general.iocage
 host: 10.1.0.73
 user: admin
 
+---
 # user is not required if iocage is running on localhost (default)
 plugin: community.general.iocage
 
+---
 # run cryptography without legacy algorithms
 plugin: community.general.iocage
 host: 10.1.0.73
@@ -85,6 +103,18 @@ user: admin
 env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 
+---
+# execute as root
+# sudoers example 'admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*'
+plugin: community.general.iocage
+host: 10.1.0.73
+user: admin
+sudo: true
+sudo_preserve_env: true
+env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+---
 # enable cache
 plugin: community.general.iocage
 host: 10.1.0.73
@@ -93,6 +123,7 @@ env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 cache: true
 
+---
 # see inventory plugin ansible.builtin.constructed
 plugin: community.general.iocage
 host: 10.1.0.73
@@ -126,9 +157,27 @@ display = Display()
 
 
 def _parse_ip4(ip4):
-    if ip4 == '-':
-        return ip4
-    return re.split('\\||/', ip4)[1]
+    ''' Return dictionary iocage_ip4_dict. default = {ip4: [], msg: ''}.
+        If item matches ifc|IP or ifc|CIDR parse ifc, ip, and mask.
+        Otherwise, append item to msg.
+    '''
+
+    iocage_ip4_dict = {}
+    iocage_ip4_dict['ip4'] = []
+    iocage_ip4_dict['msg'] = ''
+
+    items = ip4.split(',')
+    for item in items:
+        if re.match('^\\w+\\|(?:\\d{1,3}\\.){3}\\d{1,3}.*$', item):
+            i = re.split('\\||/', item)
+            if len(i) == 3:
+                iocage_ip4_dict['ip4'].append({'ifc': i[0], 'ip': i[1], 'mask': i[2]})
+            else:
+                iocage_ip4_dict['ip4'].append({'ifc': i[0], 'ip': i[1], 'mask': '-'})
+        else:
+            iocage_ip4_dict['msg'] += item
+
+    return iocage_ip4_dict
 
 
 class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
@@ -173,6 +222,8 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
 
     def get_inventory(self, path):
         host = self.get_option('host')
+        sudo = self.get_option('sudo')
+        sudo_preserve_env = self.get_option('sudo_preserve_env')
         env = self.get_option('env')
         get_properties = self.get_option('get_properties')
 
@@ -185,27 +236,28 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             cmd.append("ssh")
             cmd.append(f"{user}@{host}")
             cmd.extend([f"{k}={v}" for k, v in env.items()])
-        cmd.append(self.IOCAGE)
 
         cmd_list = cmd.copy()
+        if sudo:
+            cmd_list.append('sudo')
+            if sudo_preserve_env:
+                cmd_list.append('--preserve-env')
+        cmd_list.append(self.IOCAGE)
         cmd_list.append('list')
-        cmd_list.append('--header')
         cmd_list.append('--long')
         try:
             p = Popen(cmd_list, stdout=PIPE, stderr=PIPE, env=my_env)
             stdout, stderr = p.communicate()
             if p.returncode != 0:
-                raise AnsibleError('Failed to run cmd=%s, rc=%s, stderr=%s' %
-                                   (cmd_list, p.returncode, to_native(stderr)))
+                raise AnsibleError(f'Failed to run cmd={cmd_list}, rc={p.returncode}, stderr={to_native(stderr)}')
 
             try:
                 t_stdout = to_text(stdout, errors='surrogate_or_strict')
             except UnicodeError as e:
-                raise AnsibleError('Invalid (non unicode) input returned: %s' % to_native(e)) from e
+                raise AnsibleError(f'Invalid (non unicode) input returned: {e}') from e
 
         except Exception as e:
-            raise AnsibleParserError('Failed to parse %s: %s' %
-                                     (to_native(path), to_native(e))) from e
+            raise AnsibleParserError(f'Failed to parse {to_native(path)}: {e}') from e
 
         results = {'_meta': {'hostvars': {}}}
         self.get_jails(t_stdout, results)
@@ -213,6 +265,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         if get_properties:
             for hostname, host_vars in results['_meta']['hostvars'].items():
                 cmd_get_properties = cmd.copy()
+                cmd_get_properties.append(self.IOCAGE)
                 cmd_get_properties.append("get")
                 cmd_get_properties.append("--all")
                 cmd_get_properties.append(f"{hostname}")
@@ -220,32 +273,42 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                     p = Popen(cmd_get_properties, stdout=PIPE, stderr=PIPE, env=my_env)
                     stdout, stderr = p.communicate()
                     if p.returncode != 0:
-                        raise AnsibleError('Failed to run cmd=%s, rc=%s, stderr=%s' %
-                                           (cmd_get_properties, p.returncode, to_native(stderr)))
+                        raise AnsibleError(
+                            f'Failed to run cmd={cmd_get_properties}, rc={p.returncode}, stderr={to_native(stderr)}')
 
                     try:
                         t_stdout = to_text(stdout, errors='surrogate_or_strict')
                     except UnicodeError as e:
-                        raise AnsibleError('Invalid (non unicode) input returned: %s' % to_native(e)) from e
+                        raise AnsibleError(f'Invalid (non unicode) input returned: {e}') from e
 
                 except Exception as e:
-                    raise AnsibleError('Failed to get properties: %s' % to_native(e)) from e
+                    raise AnsibleError(f'Failed to get properties: {e}') from e
 
                 self.get_properties(t_stdout, results, hostname)
 
         return results
 
     def get_jails(self, t_stdout, results):
-        jails = [x.split() for x in t_stdout.splitlines()]
-        for jail in jails:
+        lines = t_stdout.splitlines()
+        if len(lines) < 5:
+            return
+        indices = [i for i, val in enumerate(lines[1]) if val == '|']
+        for line in lines[3::2]:
+            jail = [line[i + 1:j].strip() for i, j in zip(indices[:-1], indices[1:])]
             iocage_name = jail[1]
+            iocage_ip4_dict = _parse_ip4(jail[6])
+            if iocage_ip4_dict['ip4']:
+                iocage_ip4 = ','.join([d['ip'] for d in iocage_ip4_dict['ip4']])
+            else:
+                iocage_ip4 = '-'
             results['_meta']['hostvars'][iocage_name] = {}
             results['_meta']['hostvars'][iocage_name]['iocage_jid'] = jail[0]
             results['_meta']['hostvars'][iocage_name]['iocage_boot'] = jail[2]
             results['_meta']['hostvars'][iocage_name]['iocage_state'] = jail[3]
             results['_meta']['hostvars'][iocage_name]['iocage_type'] = jail[4]
             results['_meta']['hostvars'][iocage_name]['iocage_release'] = jail[5]
-            results['_meta']['hostvars'][iocage_name]['iocage_ip4'] = _parse_ip4(jail[6])
+            results['_meta']['hostvars'][iocage_name]['iocage_ip4_dict'] = iocage_ip4_dict
+            results['_meta']['hostvars'][iocage_name]['iocage_ip4'] = iocage_ip4
             results['_meta']['hostvars'][iocage_name]['iocage_ip6'] = jail[7]
             results['_meta']['hostvars'][iocage_name]['iocage_template'] = jail[8]
             results['_meta']['hostvars'][iocage_name]['iocage_basejail'] = jail[9]

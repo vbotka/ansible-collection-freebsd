@@ -7,4 +7,6 @@ This inventory plugin:
 
 * implements inventory caching. See `Enabling inventory cache plugins <https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins>`_.
 
-See Ansible Galaxy `inventory iocage <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/>`_.
+.. note::
+
+   See Ansible Galaxy `inventory iocage <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/>`_.

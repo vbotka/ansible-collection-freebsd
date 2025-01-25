@@ -1,0 +1,12 @@
+ansible_python_interpreter: /usr/local/bin/python3.9
+ansible_become_password: admin
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+clones:
+  - {name: test_101, clone_from: ansible_client}
+  - {name: test_102, clone_from: ansible_client}
+  - {name: test_103, clone_from: ansible_client}

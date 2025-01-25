@@ -34,7 +34,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role *vbotka.freebsd.iocage*
+* `role vbotka.freebsd.iocage`_
 * root privilege on the *iocage* hosts
 * Binary *iocage*
 
@@ -95,3 +95,5 @@ Playbook output - display debug
     :language: bash
 
 .. note:: This *debug* shows the *result* of already activated *iocage*.
+
+.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

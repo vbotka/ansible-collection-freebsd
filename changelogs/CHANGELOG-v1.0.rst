@@ -5,6 +5,35 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.5.0
+=====
+
+Release Summary
+---------------
+Minor release. Update plugins, roles and docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add filter iocage. Parse iocage lists.
+* Update inventory plugin iocage.
+* Update role iocage.
+* Update examples.
+* Add example 018.
+
+Bugfixes
+--------
+#9538 Inventory iocage fails when DHCP is enbled.
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Upgrade inventory plugin iocage.py. Backward not compatible. In
+  multiple interface format the variable iocage_ip4 will be a string
+  of comma-separated IPs. New variable iocage_ip4_dict is created.
+
+
 0.4.7
 =====
 

@@ -1,0 +1,40 @@
+- hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  vars:
+
+    attr_debug: [jid, ip4, release, state]
+
+  tasks:
+
+    - name: Clone basejail.
+      tags: clone
+      vbotka.freebsd.iocage:
+        state: cloned
+        clone_from: "{{ item.clone_from }}"
+        name: "{{ item.name }}"
+        properties: "{{ [properties, item.properties|d({})] | combine }}"
+      loop: "{{ clones }}"
+
+    - name: Start clones.
+      tags: start
+      vbotka.freebsd.iocage:
+        state: started
+        name: "{{ item.name }}"
+      loop: "{{ clones }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Display jails
+      tags: debug
+      block:
+
+        - name: Create Ansible facts iocage_*
+          vbotka.freebsd.iocage:
+      
+        - name: Display jails.
+          debug:
+            msg: |
+              {% for jail, attr in iocage_jails.items() %}
+              {{ jail }} {{ attr_debug | map('extract', attr) | join(' ') }}
+              {% endfor %}

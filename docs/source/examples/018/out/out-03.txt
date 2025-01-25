@@ -1,0 +1,40 @@
+(env) > ansible-playbook pb-iocage-clone-list.yml -i iocage-hosts.ini
+
+PLAY [iocage] **********************************************************************************
+
+TASK [Clone basejail.] *************************************************************************
+changed: [iocage_01] => (item={'name': 'test_101', 'clone_from': 'ansible_client'})
+changed: [iocage_01] => (item={'name': 'test_102', 'clone_from': 'ansible_client'})
+changed: [iocage_02] => (item={'name': 'test_111', 'clone_from': 'ansible_client'})
+changed: [iocage_01] => (item={'name': 'test_103', 'clone_from': 'ansible_client'})
+changed: [iocage_02] => (item={'name': 'test_112', 'clone_from': 'ansible_client'})
+changed: [iocage_02] => (item={'name': 'test_113', 'clone_from': 'ansible_client'})
+
+TASK [Start clones.] ***************************************************************************
+changed: [iocage_01] => (item={'name': 'test_101', 'clone_from': 'ansible_client'})
+changed: [iocage_01] => (item={'name': 'test_102', 'clone_from': 'ansible_client'})
+changed: [iocage_02] => (item={'name': 'test_111', 'clone_from': 'ansible_client'})
+changed: [iocage_01] => (item={'name': 'test_103', 'clone_from': 'ansible_client'})
+changed: [iocage_02] => (item={'name': 'test_112', 'clone_from': 'ansible_client'})
+changed: [iocage_02] => (item={'name': 'test_113', 'clone_from': 'ansible_client'})
+
+TASK [Create Ansible facts iocage_*] ***********************************************************
+ok: [iocage_01]
+ok: [iocage_02]
+
+TASK [Display jails.] **************************************************************************
+ok: [iocage_01] => 
+    iocage_jails:
+        ansible_client:
+            basejail: 'yes'
+  ...
+
+ok: [iocage_02] => 
+    iocage_jails:
+        ansible_client:
+            basejail: 'yes'
+  ...
+
+PLAY RECAP *************************************************************************************
+iocage_01: ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+iocage_02: ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

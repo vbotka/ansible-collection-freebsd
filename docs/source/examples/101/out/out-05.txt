@@ -1,0 +1,29 @@
+shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
+#!/usr/local/bin/python
+
+import json
+import os
+from subprocess import Popen, PIPE
+
+data = {}
+
+my_env = os.environ.copy()
+my_env.update({'CRYPTOGRAPHY_OPENSSL_NO_LEGACY': '1'})
+
+cmds = {'jails': ['--long'],
+        'plugins': ['--plugins'],
+        'releases': ['--release', '--header'],
+        'templates': ['--template', '--long']
+        }
+
+cmd = ['iocage', 'list']
+
+for list, attrs in cmds.items():
+    my_cmd = cmd + attrs
+    p = Popen(my_cmd, stdout=PIPE, stderr=PIPE, env=my_env)
+    stdout, stderr = p.communicate()
+    data[list] = stdout.decode("utf-8")
+
+json_formatted_str = json.dumps(data, indent=2)
+
+print(json_formatted_str)

@@ -1,0 +1,79 @@
+- name: Test inventory plugin version.
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+
+    debug: false
+    colls: "{{ out.stdout | from_yaml }}" 
+
+    cg_collections: "{{ colls
+                        | dict2items | selectattr('value', 'contains', 'community.general')
+                        | items2dict }}"
+    cg_paths: "{{ cg_collections.keys() }}"
+    cg_versions: "{{ cg_paths | map('extract', colls, ['community.general', 'version']) }}"
+    cg_dict: "{{ dict(cg_versions | zip(cg_paths)) }}"
+    cg_latest: "{{ cg_dict | dict2items | sort(attribute='key') | last }}"
+    cg_latest_version: "{{ cg_latest.key }}"
+    cg_latest_path: "{{ cg_latest.value }}"
+    cg_latest_hash_cmd: "sha512sum {{ cg_latest_path }}/community/general/plugins/inventory/iocage.py"
+    cg_latest_hash: "sha512:{{ lookup('pipe', cg_latest_hash_cmd) | split | first }}"
+    cg_latest_hash_short: "{{ (cg_latest_hash | split(':') | last)[:8] }}"
+
+    vf_collections: "{{ colls
+                        | dict2items | selectattr('value', 'contains', 'vbotka.freebsd')
+                        | items2dict }}"
+    vf_paths: "{{ vf_collections.keys() }}"
+    vf_versions: "{{ vf_paths | map('extract', colls, ['vbotka.freebsd', 'version']) }}"
+    vf_dict: "{{ dict(vf_versions | zip(vf_paths)) }}"
+    vf_latest: "{{ vf_dict | dict2items | sort(attribute='key') | last }}"
+    vf_latest_version: "{{ vf_latest.key }}"
+    vf_latest_path: "{{ vf_latest.value }}"
+    vf_latest_hash: "{{ checksum.inventory.iocage[bsd_plugins.inventory.iocage.branch] }}"
+    vf_latest_hash_short: "{{ (vf_latest_hash | split(':') | last)[:8] }}"
+
+  tasks:
+
+    - name: Get collection list.
+      command: ansible-galaxy collection list --format yaml
+      register: out
+      changed_when: false
+
+    - name: Include setup dictionary bsd_plugins.
+      include_vars: "{{ vf_latest_path }}/vbotka/freebsd/setup/vars/plugins.yml"
+
+    - name: Include setup dictionary checksum.
+      include_vars: "{{ vf_latest_path }}/vbotka/freebsd/setup/vars/checksum.yml"
+
+    - name: "Debug inventory plugin version debug={{ debug | bool }}"
+      when: debug | bool
+      debug:
+        msg: |
+          community.general:
+            latest:
+              version: {{ cg_latest_version }}
+              path: {{ cg_latest_path }}
+              hash short: {{ cg_latest_hash_short }}
+          vbotka.freebsd:
+            latest:
+              version: {{ vf_latest_version }}
+              path: {{ vf_latest_path }}
+              hash short: {{ vf_latest_hash_short }}
+
+    - name: Fail when the hashes are different.
+      when: vf_latest_hash != cg_latest_hash
+      fail:
+        msg: |
+          * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
+          *                  WARNING                                    *
+          *                                                             *
+          * The inventory plugins differ:                               *
+          *                                                             *
+          * vbotka.freebsd.iocage    {{ vf_latest_hash_short }} {{ vf_latest_version }}                     *
+          * community.general.iocage {{ cg_latest_hash_short }} {{ cg_latest_version }}                    *
+          *                                                             *
+          * Run the below commands and see the functionality provided   *
+          *                                                             *
+          *  shell> ansible-doc -t inventory vbotka.freebsd.iocage      *
+          *  shell> ansible-doc -t inventory community.general.iocage   *
+          * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
