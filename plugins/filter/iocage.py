@@ -86,7 +86,6 @@ RETURN = r"""
 _value:
   description: The dictionary of the iocage lists.
   type: dictionary
-  elements: [list|dict]
 """
 
 import re
