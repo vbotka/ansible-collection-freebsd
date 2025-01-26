@@ -40,7 +40,7 @@ Synopsis
   In the playbook *pb-test-01.yml*:
 
   * get the custom facts
-  * use the filter *vbotka.freebsd.iocage* to parse the custom facts
+  * use the `filter vbotka.freebsd.iocage`_ to parse the custom facts
   * create the inventory group *test* and compose variables
   * display the hosts and composed variables in the group *test*
   * display all groups.
@@ -50,7 +50,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* filter vbotka.freebsd.iocage
+* `filter vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
 
 
@@ -132,4 +132,6 @@ Display custom facts and variables
 .. literalinclude:: out/out-06.txt
     :language: bash
 
+
+.. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
