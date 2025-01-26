@@ -10,13 +10,16 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Maintenance update.
+Documentation update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Fix filter iocage docs.
+* Update docs.
+* Update docs genindex.
 
 
 0.5.0
