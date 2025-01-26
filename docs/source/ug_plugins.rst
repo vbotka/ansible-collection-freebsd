@@ -11,3 +11,6 @@ Plugins
 
 .. _ug_inventory_iocage:
 .. include::  ug_inventory_iocage.rst
+
+.. _ug_filter_iocage:
+.. include::  ug_filter_iocage.rst

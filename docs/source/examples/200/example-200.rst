@@ -44,6 +44,20 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: template ansible_client; Example 200
+.. index:: single: ansible_client; Example 200
+.. index:: single: playbook pb-iocage-template.yml; Example 200
+.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 200
+.. index:: single: inventory vbotka.freebsd.iocage; Example 200
+.. index:: single: module vbotka.freebsd.iocage; Example 200
+.. index:: single: module community.general.pkgng; Example 200
+.. index:: single: module ansible.posix.authorized; Example 200
+.. index:: single: module ansible.builtin.lineinfile; Example 200
+.. index:: single: sudoers; Example 200
+.. index:: single: ; Example 200
+.. index:: single: ; Example 200
+.. index:: single: ; Example 200
+
 * On two iocage hosts:
 
   * iocage_01
@@ -78,7 +92,7 @@ Requirements
 * root privilege on the iocage hosts
 * activated *iocage*
 * fetched releases
-  
+
 Notes
 ^^^^^
 

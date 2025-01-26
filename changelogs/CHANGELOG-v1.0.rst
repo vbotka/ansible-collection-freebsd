@@ -5,6 +5,23 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.5.1
+=====
+
+Release Summary
+---------------
+Documentation update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Fix filter iocage docs.
+* Update docs.
+* Update docs genindex.
+
+
 0.5.0
 =====
 

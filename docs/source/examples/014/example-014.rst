@@ -11,6 +11,9 @@ Extending example 010.
 Synopsis
 ^^^^^^^^
 
+.. index:: single: cache; Example 014
+.. index:: single: cache_plugin; Example 014
+
 Enable and test inventory cache.
 
 Playbook *pb-vars-ip4.yml*

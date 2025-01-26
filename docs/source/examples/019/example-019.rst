@@ -31,6 +31,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: option use_vars_plugins; Example 019
+.. index:: single: use_vars_plugins; Example 019
+.. index:: single: inventory vbotka.freebsd.iocage; Example 019
+.. index:: single: inventory ansible.builtin.constructed; Example 019
+
 * The option `use_vars_plugins`_, responsible for reading *host_vars* and *group_vars* directories, is
   not available in the `inventory plugin vbotka.freebsd.iocage`_ because the `constructed fragment`_
   doesn't provide it.
@@ -56,6 +61,8 @@ Notes
 ^^^^^
 
    * The inventory files in *hosts* are evaluated in alphabetical order.
+
+.. index:: single: vars plugin ansible.builtin.host_group_vars; Example 019
 
 .. seealso::
 

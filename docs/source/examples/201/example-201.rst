@@ -22,6 +22,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: playbook pb-iocage-display-lists.yml; Example 201
+.. index:: single: module vbotka.freebsd.iocage; Example 201
+
 * On two iocage hosts:
 
   * iocage_01
@@ -35,7 +38,7 @@ Synopsis
 Notes
 ^^^^^
 
-* *root* is not needed to run *'iocage list ...'* on the iocage hosts.
+* *root* is not needed to run *'iocage list ...'* on the *iocage* hosts when DHCP isn't used.
 
 * Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8>`_:  ::
 
@@ -94,7 +97,7 @@ Inventory iocage-hosts.ini
 
    * The escalation *become=true* is not necessary.
 
-   * *root* is not needed to run *'iocage list ...'*
+   * *root* is not needed to run *'iocage list ...'* when DHCP isn't used.
 
    * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
      hosts and creates the variables *iocage_\**

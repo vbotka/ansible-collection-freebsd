@@ -29,6 +29,18 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: DHCP; Example 018
+.. index:: single: module vbotka.freebsd.iocage; Example 018
+.. index:: single: inventory vbotka.freebsd.iocage; Example 018
+.. index:: single: option compose; Example 018
+.. index:: single: compose; Example 018
+.. index:: single: option sudo; Example 018
+.. index:: single: sudo; Example 018
+.. index:: single: option sudo_preserve_env; Example 018
+.. index:: single: sudo_preserve_env; Example 018
+.. index:: single: sudoers; Example 018
+.. index:: single: SETENV; Example 018
+
 Use DHCP to configure the interfaces.
 
 * On two iocage hosts:
