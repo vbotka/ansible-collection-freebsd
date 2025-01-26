@@ -29,6 +29,9 @@ Cache enabled in multiple inventory files.
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: single: cache; Example 015
+.. index:: single: cache_prefix; Example 015
+
 Set unique *cache_prefix*
 
 .. literalinclude:: hosts/01_iocage.yml

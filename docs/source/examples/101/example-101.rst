@@ -28,6 +28,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: custom facts; Example 101
+.. index:: single: filter vbotka.freebsd.iocage; Example 101
+.. index:: single: role vbotka.freebsd.iocage; Example 101
+
 * On two iocage hosts:
 
   * iocage_01

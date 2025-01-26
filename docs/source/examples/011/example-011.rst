@@ -11,6 +11,8 @@ Extending example 010.
 Synopsis
 ^^^^^^^^
 
+.. index:: single: variables iocage_*; Example 011
+
 Display all variables *iocage_\** created by the inventory plugin.
 
 Playbook *pb-vars-all.yml*

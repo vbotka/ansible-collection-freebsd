@@ -36,6 +36,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: property notes; Example 013
+.. index:: single: notes; Example 013
+
 * Use the property *notes* to create tags:
 
   * Add the property ``notes: "vmm={{ inventory_hostname }}"``
@@ -72,14 +75,22 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+.. index:: single: module vbotka.freebsd.iocage; Example 013
+.. index:: single: inventory vbotka.freebsd.iocage; Example 013
+
 * `module vbotka.freebsd.iocage`_
-* 'inventory plugin vbotka.freebsd.iocage`_
+* `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
 * activated `binary iocage`_
 * fetched releases.
 
 hosts/01_iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: single: option get_properties; Example 013
+.. index:: single: get_properties; Example 013
+.. index:: single: variable iocage_properties; Example 013
+.. index:: single: iocage_properties; Example 013
 
 Enable ``get_properties: True`` to create the dictionary *iocage_properties*. Then, the dictionary
 *iocage_tags* can be created from *iocage_properties.notes*
@@ -105,6 +116,9 @@ host_vars/iocage_01/iocage.yml
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: single: variable iocage_tags; Example 013
+.. index:: single: iocage_tags; Example 013
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml

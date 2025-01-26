@@ -51,6 +51,9 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+.. index:: single: module vbotka.freebsd.iocage; Example 010
+.. index:: single: inventory vbotka.freebsd.iocage; Example 010
+
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts

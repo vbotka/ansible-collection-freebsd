@@ -27,6 +27,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: role vbotka.freebsd.iocage; Example 100
+
 This example demonstrates a functionality similar to that of :ref:`example_010`. But, the `role
 vbotka.freebsd.iocage`_ is used instead of the plugins.
 

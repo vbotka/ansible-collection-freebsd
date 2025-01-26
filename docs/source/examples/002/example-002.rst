@@ -34,6 +34,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+.. index:: single: role vbotka.freebsd.iocage; Example 002
+
 * `role vbotka.freebsd.iocage`_
 * root privilege on the *iocage* hosts
 * Binary *iocage*

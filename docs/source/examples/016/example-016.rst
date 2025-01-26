@@ -25,6 +25,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: inventory ansible.builtin.constructed; Example 016
+
 * Use the inventory plugin `ansible.builtin.constructed`_ after the two *iocage* inventory files.
 
 * The *iocage* plugin gets the jails(hosts):

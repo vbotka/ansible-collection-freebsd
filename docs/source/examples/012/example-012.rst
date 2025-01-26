@@ -16,6 +16,9 @@ Enable and display *iocage_properties*.
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
 
+.. index:: single: option get_properties; Example 012
+.. index:: single: get_properties; Example 012
+
 Enable *get_properties*. See :ref:`ug_inventory_iocage`
 
 .. literalinclude:: iocage.yml

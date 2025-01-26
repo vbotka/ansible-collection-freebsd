@@ -26,6 +26,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: inventory community.general.iocage; Example 017
+.. index:: single: playbook pb-obsolete.yml; Example 017
+
 The inventory plugin *community.general.iocage* should provide the same functionality.
 
 .. warning::
