@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade role postinstall to 2.6.19
 
 
 0.5.1
