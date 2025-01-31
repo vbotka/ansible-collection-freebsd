@@ -1,0 +1,11 @@
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+hooks:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: iocage_hooks.0
+groups:
+  test_02: inventory_hostname.startswith('test')

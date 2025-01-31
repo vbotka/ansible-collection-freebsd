@@ -1,15 +1,15 @@
 ---
-- name: Set list of already started basejails
+- name: "Start: Set list of already started basejails"
   ansible.builtin.set_fact:
     jails_started: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
                                     | map(attribute='key') }}"
 
-- name: Reject already started jails
+- name: "Start: Reject already started jails"
   ansible.builtin.set_fact:
     _jails: "{{ jails | rejectattr('name', 'in' , jails_started) }}"
 
-- name: "Display already started jails debug={{ debug }}"
+- name: "Start: Display already started jails debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
     msg: |-
@@ -20,7 +20,7 @@
   when: _jails | length > 0
   block:
 
-    - name: Start jails
+    - name: "Start: Start jails"
       register: out
       vbotka.freebsd.iocage:
         state: started
@@ -29,7 +29,7 @@
       loop_control:
         label: "{{ item.name }}"
 
-    - name: "Debug start jails debug2={{ debug2 }}"
+    - name: "Start: Debug start jails debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

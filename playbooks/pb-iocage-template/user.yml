@@ -2,7 +2,7 @@
 - name: Create user
   block:
 
-    - name: Create user
+    - name: "User: Create user"
       register: out
       vbotka.freebsd.iocage:
         state: exec
@@ -13,7 +13,7 @@
         label: "{{ item.name }} {{ act_user }}"
       failed_when: not out.stderr | d('exists', true) is search('exists')
 
-    - name: "Debug create user debug2={{ debug2 }}"
+    - name: "User: Debug create user debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

@@ -1,0 +1,16 @@
+- name: Connect to the group test.
+  hosts: test
+  remote_user: admin
+  gather_facts: false
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
+  tasks:
+
+    - ansible.builtin.command: hostname
+      register: out_host
+    
+    - ansible.builtin.debug:
+        msg: "ansible_host={{ ansible_host }} iocage_hooks={{ iocage_hooks }}"

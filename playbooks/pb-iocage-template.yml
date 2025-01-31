@@ -1,0 +1,60 @@
+- name: Create Ansible client templates.
+  hosts: iocage
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    debug2: false
+
+  tasks:
+
+    - name: Setup
+      tags: [always, setup]
+      import_tasks: pb-iocage-template/setup.yml
+
+    - name: Create jails
+      tags: create
+      import_tasks: pb-iocage-template/create.yml
+
+    - name: Start jails
+      tags: start
+      import_tasks: pb-iocage-template/start.yml
+
+    - name: Install packages
+      when: act_pkg | length > 0
+      tags: pkg
+      import_tasks: pb-iocage-template/pkg.yml
+
+    - name: Create user
+      when: act_user | length > 0
+      tags: user
+      import_tasks: pb-iocage-template/user.yml
+
+    - name: Configure public keys
+      when: act_pk | length > 0
+      tags: pk
+      import_tasks: pb-iocage-template/pk.yml
+
+    - name: Configure sudo
+      when: act_sudo | bool
+      tags: sudo
+      import_tasks: pb-iocage-template/sudo.yml
+
+    - name: Configure dhclient
+      when: act_dhclient | length > 0
+      tags: dhclient
+      import_tasks: pb-iocage-template/dhclient.yml
+
+    - name: Configure /etc/rc.conf
+      when: act_rcconf | bool
+      tags: rc_conf
+      import_tasks: pb-iocage-template/rc_conf.yml
+
+    - name: Stop jails
+      tags: stop
+      import_tasks: pb-iocage-template/stop.yml
+
+    - name: Convert jails to templates
+      tags: template
+      import_tasks: pb-iocage-template/template.yml

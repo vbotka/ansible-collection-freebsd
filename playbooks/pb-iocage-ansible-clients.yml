@@ -1,0 +1,95 @@
+- name: Create, start, and optionally destroy clones.
+  hosts: iocage
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    debug2: false
+    destroy: false
+
+  tasks:
+
+    - name: Create and start clones
+      tags: create
+      block:
+
+        - name: Create clones from template
+          register: out
+          vbotka.freebsd.iocage:
+            state: cloned
+            clone_from: "{{ item.clone_from }}"
+            name: "{{ item.name }}"
+            properties: "{{ [properties, item.properties|d({})] | combine }}"
+          loop: "{{ clones }}"
+          loop_control:
+            label: "{{ item.name }} {{ item.clone_from }}"
+
+        - name: "Debug clones from template debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+        - name: Start clones
+          register: out
+          vbotka.freebsd.iocage:
+            state: started
+            name: "{{ item }}"
+          loop: "{{ start }}"
+
+        - name: "Debug start clones debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+    - name: Stop and destroy clones
+      when: destroy | bool
+      tags: destroy
+      block:
+
+        - name: Stop clones
+          register: out
+          vbotka.freebsd.iocage:
+            state: stopped
+            name: "{{ item.name }}"
+          loop: "{{ clones }}"
+          loop_control:
+            label: "{{ item.name }}"
+
+        - name: "Debug stop clones debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+        - name: Destroy clones
+          register: out
+          vbotka.freebsd.iocage:
+            state: absent
+            name: "{{ item.name }}"
+          loop: "{{ clones }}"
+          loop_control:
+            label: "{{ item.name }}"
+
+        - name: "Debug destroy clones debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: out
+
+    - name: Display iocage_jails
+      when: debug | bool or debug2 | bool
+      tags: list
+      block:
+
+        - name: Get iocage_jails
+          when: iocage_jails is undefined
+          vbotka.freebsd.iocage:
+
+        - name: "Display iocage_jails dictionary debug2={{ debug2 }}"
+          when: debug2 | bool
+          ansible.builtin.debug:
+            var: iocage_jails
+
+        - name: "Display iocage_jails keys debug={{ debug }}"
+          when: debug | bool
+          ansible.builtin.debug:
+            var: iocage_jails.keys()

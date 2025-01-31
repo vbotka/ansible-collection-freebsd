@@ -2,7 +2,7 @@
 - name: Configure sudo
   block:
 
-    - name: Configure sudo
+    - name: "Sudo: Configure sudo"
       register: out
       ansible.builtin.lineinfile:
         path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/usr/local/etc/sudoers"
@@ -11,7 +11,7 @@
       loop_control:
         label: "{{ item.name }} {{ act_user }}"
 
-    - name: "Debug configure sudo debug2={{ debug2 }}"
+    - name: "Sudo: Debug configure sudo debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

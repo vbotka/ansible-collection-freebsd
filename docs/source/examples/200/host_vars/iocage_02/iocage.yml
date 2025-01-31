@@ -15,6 +15,7 @@ jails:
     release: 14.1-RELEASE
     properties:
       ip4_addr: 'em0|10.1.0.199/24'
+    dhclient: "{{ act_dhclient | dict2items }}"
 
 clones:
   - name: test_111
@@ -34,8 +35,11 @@ start: [test_111, test_112, test_113]
 
 # ansible client template
 
-act_user: admin
 act_pkg:
   - security/sudo
   - lang/python311
+act_user: admin
 act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf: true
+act_dhclient: {}

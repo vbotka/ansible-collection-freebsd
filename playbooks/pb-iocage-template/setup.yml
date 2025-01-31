@@ -3,29 +3,29 @@
   tags: setup
   block:
 
-    - name: Create Ansible facts iocage_*
+    - name: "Setup: Create Ansible facts iocage_*"
       vbotka.freebsd.iocage:
 
-    - name: "Display templates and jails debug={{ debug }}"
+    - name: "Setup: Display templates and jails debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         msg: |-
           iocage_templates: {{ iocage_templates.keys() }}
           iocage_jails: {{ iocage_jails.keys() }}
 
-    - name: Reject already created templates
+    - name: "Setup: Reject already created templates"
       when: not force | d(false) | bool
       ansible.builtin.set_fact:
         act_created: "{{ iocage_templates | intersect(jails | map(attribute='name')) }}"
         jails: "{{ jails | rejectattr('name', 'in' , iocage_templates) }}"
 
-    - name: "Display already created templates debug={{ debug }}"
+    - name: "Setup: Display already created templates debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         msg: |-
           templates already created: {{ act_created }}
           templates to create: {{ jails | map(attribute='name') }}
 
-    - name: End host if all templates already created
+    - name: "Setup: End host if all templates already created"
       when: jails | length == 0
       ansible.builtin.meta: end_host

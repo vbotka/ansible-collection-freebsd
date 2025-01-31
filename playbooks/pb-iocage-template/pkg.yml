@@ -2,7 +2,7 @@
 - name: Install packages
   block:
 
-    - name: Install packages
+    - name: "Pkg: Install packages"
       register: out
       community.general.pkgng:
         use_globs: false
@@ -12,7 +12,7 @@
       loop_control:
         label: "{{ item.name }}"
 
-    - name: "Debug install packages debug2={{ debug2 }}"
+    - name: "Pkg: Debug install packages debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

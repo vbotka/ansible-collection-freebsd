@@ -2,7 +2,7 @@
 - name: Configure public keys
   block:
 
-    - name: Configure public keys
+    - name: "Pk: Configure public keys"
       register: out
       ansible.posix.authorized_key:
         user: "{{ act_user }}"
@@ -12,12 +12,12 @@
       loop_control:
         label: "{{ item.name }} {{ act_user }}"
 
-    - name: "Debug configure public keys debug2={{ debug2 }}"
+    - name: "Pk: Debug configure public keys debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out
 
-    - name: Chown .ssh
+    - name: "Pk: Chown .ssh"
       register: out
       vbotka.freebsd.iocage:
         state: exec
@@ -28,7 +28,7 @@
         label: "{{ item.name }} {{ act_user }}"
       changed_when: false
 
-    - name: "Debug chown .ssh debug2={{ debug2 }}"
+    - name: "Pk: Debug chown .ssh debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out
