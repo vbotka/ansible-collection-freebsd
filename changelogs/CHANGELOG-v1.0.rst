@@ -17,9 +17,10 @@ Major Changes
 
 Minor Changes
 -------------
+* Update inventory plugin iocage.
 * Upgrade role postinstall to 2.6.19
 * The playbooks pb-iocage-template.yml and
-  pb-iocage-ansible-clients.yml moved from the examples to playbooks
+  pb-iocage-ansible-clients.yml moved from the examples to playbooks.
 * Update examples: 200
 * Add examples: 202
 
