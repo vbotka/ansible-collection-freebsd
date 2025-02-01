@@ -99,10 +99,16 @@ The inventory plugin reads the files, created by the hooks, and uses the IP addr
   shell> cat hosts/01_iocage.yml 
   plugin: vbotka.freebsd.iocage
   ...
-  hooks:
+  hooks_results:
     - /var/db/dhclient-hook.address.epair0b
   compose:
     ansible_host: iocage_hooks.0
+
+Default to *iocage_ip4* if the hook is not available ::
+
+  compose:
+    ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+
 
 This is the difference from :ref:`example_200`
 
