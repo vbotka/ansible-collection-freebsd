@@ -205,12 +205,18 @@ Inventory *hosts/01_iocage.yml*
 
 .. literalinclude:: hosts/01_iocage.yml
     :language: yaml
+    :emphasize-lines: 4,9
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: yaml
+    :emphasize-lines: 6,11
+
+.. note::
+
+   The option `"get_properties: True"` is needed to get the dictionary `iocage_properties`
 
 Inventory *hosts/03_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
