@@ -1,0 +1,61 @@
+- name: Stop and destroy swarms
+  vars:
+    cmd_stop: "iocage stop {{ _jails_started | join(' ') }}"
+    cmd_destroy: "iocage destroy --force {{ _swarm_exist | join(' ') }}"
+    _swarm_exist: "{{ _tags | dict2items
+                            | selectattr('value.swarm', 'eq', item.key)
+                            | map(attribute='key') }}"
+    _jails_started: "{{ _swarm_exist | intersect(_started) }}"
+  block:
+
+    - name: Get iocage facts
+      when: iocage_jails is undefined
+      vbotka.freebsd.iocage:
+
+    - name: Debug cmd_stop
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_stop }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Stop swarms
+      when:
+        - not dry_run | d(true) | bool
+        - _jails_started | length > 0
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_stop }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Debug stop swarms
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Debug cmd_destroy
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_destroy }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Destroy swarms
+      when:
+        - not dry_run | d(true) | bool
+        - _swarm_exist | length > 0
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_destroy }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Debug destroy swarms
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out
