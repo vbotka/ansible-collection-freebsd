@@ -36,8 +36,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
+.. index:: single: option get_properties; Example 013
+.. index:: single: get_properties; Example 013
 .. index:: single: property notes; Example 013
 .. index:: single: notes; Example 013
+.. index:: single: variable iocage_tags; Example 013
+.. index:: single: iocage_tags; Example 013
 
 * Use the property *notes* to create tags:
 
