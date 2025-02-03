@@ -78,6 +78,9 @@ Synopsis
   * connect created jails
   * display basic configuration of the jails.
 
+
+**Automatically generated UUID**
+
 In this example, the names of the jails are automatically generated UUID. At each iocage host three
 jails will be created from the template *ansible_client* ::
 
@@ -88,9 +91,12 @@ jails will be created from the template *ansible_client* ::
 
 The module *vbotka.freebsd.iocage* doesn't work with multiple names. We will use
 *ansible.builtin.command* instead. Such a task is not idempotent anyway if the UUID is generated
-automatically. Example of the command ::
+automatically. Example of the commands ::
 
   iocage create --short --template ansible_client --count 3  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
+  iocage start cd31c2a2 d254f889 158ef36d
+
+**The variable iocage_tags**
 
 The inventory plugin composes the variable *iocage_tags* ::
 
