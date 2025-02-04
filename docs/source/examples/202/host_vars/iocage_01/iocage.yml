@@ -22,8 +22,8 @@ clones:
   - {name: test_101, clone_from: ansible_client}
   - {name: test_102, clone_from: ansible_client}
   - {name: test_103, clone_from: ansible_client}
-
 start: [test_101, test_102, test_103]
+swarms: {}
 
 # ansible client template
 
