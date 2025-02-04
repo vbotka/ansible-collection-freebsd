@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Update inventory plugin iocage.
+* Upgrade inventory plugin iocage. Add option hooks_results.
 * Upgrade role postinstall to 2.6.19
 * The playbooks pb-iocage-template.yml and
   pb-iocage-ansible-clients.yml moved from the examples to playbooks.
