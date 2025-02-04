@@ -5,6 +5,26 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.5.2
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Upgrade inventory plugin iocage. Add option hooks_results.
+* Upgrade role postinstall to 2.6.19
+* The playbooks pb-iocage-template.yml and
+  pb-iocage-ansible-clients.yml moved from the examples to playbooks.
+* Update examples: 200, 013
+* Add examples: 202,203
+
+
 0.5.1
 =====
 

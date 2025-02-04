@@ -2,7 +2,7 @@
 - name: Configure /etc/rc.conf
   block:
 
-    - name: Configure iocage_enable /etc/rc.conf
+    - name: "Rcconf: Configure iocage_enable /etc/rc.conf"
       register: out
       ansible.builtin.lineinfile:
         path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/etc/rc.conf"
@@ -13,7 +13,7 @@
       loop_control:
         label: "{{ item.name }}"
 
-    - name: Configure sshd_enable /etc/rc.conf
+    - name: "Rcconf: Configure sshd_enable /etc/rc.conf"
       register: out
       ansible.builtin.lineinfile:
         path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/etc/rc.conf"
@@ -24,7 +24,7 @@
       loop_control:
         label: "{{ item.name }}"
 
-    - name: "Debug configure sshd debug2={{ debug2 }}"
+    - name: "Rcconf: Debug configure sshd debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out

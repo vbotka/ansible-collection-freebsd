@@ -1,0 +1,27 @@
+- name: Create clones from template
+  register: out
+  vbotka.freebsd.iocage:
+    state: cloned
+    clone_from: "{{ item.clone_from }}"
+    name: "{{ item.name }}"
+    properties: "{{ [properties, item.properties|d({})] | combine }}"
+  loop: "{{ clones }}"
+  loop_control:
+    label: "{{ item.name }} {{ item.clone_from }}"
+
+- name: "Debug clones from template debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out
+
+- name: Start clones
+  register: out
+  vbotka.freebsd.iocage:
+    state: started
+    name: "{{ item }}"
+  loop: "{{ start }}"
+
+- name: "Debug start clones debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

@@ -1,0 +1,51 @@
+- name: Create and start jails. Optionally stop and destroy jails.
+  hosts: iocage
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    debug2: false
+    dry_run: false
+
+    swarm: false
+    swarm_destroy: false
+    clone: false
+    clone_destroy: false
+
+    _tags: "{{ dict(iocage_jails.keys()
+                    | zip(iocage_jails.values()
+                          | map(attribute='properties.notes')
+                          | map('split')
+                          | map('map', 'split', '=')
+                          | map('community.general.dict'))) }}"
+    _started: "{{ iocage_jails | dict2items
+                               | selectattr('value.state', 'eq', 'up')
+                               | map(attribute='key') }}"
+
+  tasks:
+
+    - name: Create and start swarms
+      when: swarm | bool
+      tags: swarm
+      ansible.builtin.import_tasks: pb-iocage-ansible-clients/swarm.yml
+
+    - name: Stop and destroy swarms
+      when: swarm_destroy | bool
+      tags: swarm_destroy
+      ansible.builtin.import_tasks: pb-iocage-ansible-clients/swarm_destroy.yml
+
+    - name: Create and start clones
+      when: clone | bool
+      tags: clone
+      ansible.builtin.import_tasks: pb-iocage-ansible-clients/clone.yml
+
+    - name: Stop and destroy clones
+      when: clone_destroy | bool
+      tags: clone_destroy
+      ansible.builtin.import_tasks: pb-iocage-ansible-clients/clone_destroy.yml
+
+    - name: Display iocage_jails
+      when: debug | bool or debug2 | bool
+      tags: list
+      ansible.builtin.import_tasks: pb-iocage-ansible-clients/list.yml

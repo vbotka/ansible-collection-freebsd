@@ -1,0 +1,3 @@
+plugin: ansible.builtin.constructed
+groups:
+    test: inventory_hostname.startswith('test')

@@ -1,0 +1,27 @@
+- name: Stop clones
+  register: out
+  vbotka.freebsd.iocage:
+    state: stopped
+    name: "{{ item.name }}"
+  loop: "{{ clones }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: "Debug stop clones debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out
+
+- name: Destroy clones
+  register: out
+  vbotka.freebsd.iocage:
+    state: absent
+    name: "{{ item.name }}"
+  loop: "{{ clones }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: "Debug destroy clones debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

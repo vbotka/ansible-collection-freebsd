@@ -1,7 +1,7 @@
 .. _example_200:
 
-200 Create Anible client templates and clone Ansible client jails.
-------------------------------------------------------------------
+200 Create Ansible client templates and clone Ansible client jails.
+-------------------------------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2
@@ -15,31 +15,21 @@ Tree
    .
    ├── ansible.cfg
    ├── files
-   │   └── pk_admins.txt
+   │   └── pk_admins.txt
    ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 03_constructed.yml
+   │   ├── 01_iocage.yml
+   │   ├── 02_iocage.yml
+   │   └── 03_constructed.yml
    ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
+   │   ├── iocage_01
+   │   │   └── iocage.yml
+   │   └── iocage_02
+   │       └── iocage.yml
    ├── iocage-hosts.ini
    ├── pb-iocage-ansible-clients.yml
-   ├── pb-iocage-template.yml
-   ├── pb-test-01.yml
-   └── tasks
-       ├── create.yml
-       ├── pkg.yml
-       ├── pk.yml
-       ├── rc_conf.yml
-       ├── setup.yml
-       ├── start.yml
-       ├── stop.yml
-       ├── sudo.yml
-       ├── template.yml
-       └── user.yml
+   ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
+   ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
+   └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
@@ -54,9 +44,6 @@ Synopsis
 .. index:: single: module ansible.posix.authorized; Example 200
 .. index:: single: module ansible.builtin.lineinfile; Example 200
 .. index:: single: sudoers; Example 200
-.. index:: single: ; Example 200
-.. index:: single: ; Example 200
-.. index:: single: ; Example 200
 
 * On two iocage hosts:
 
@@ -87,8 +74,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* module *vbotka.freebsd.iocage*
-* inventory plugin *vbotka.freebsd.iocage*
+* `module vbotka.freebsd.iocage`_
+* `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
 * activated *iocage*
 * fetched releases
@@ -126,9 +113,16 @@ host_vars/iocage_02/iocage.yml
    * The user *act_user* will serve as Ansible *remote_user*.
    * The file *act_pk* provides the public keys allowed to ssh to *act_user*.
 	       
-.. warning:: The user *act_user* must exist on the *iocage*
-             host. Otherwise, the module *ansible.posix.authorized_key*
-             will crash. See *tasks/pk.yml*
+.. warning::
+
+   * The user *act_user* must exist on the *iocage* host. Otherwise,
+     the module *ansible.posix.authorized_key* will crash. See
+     *pb-iocage-template/pk.yml*
+
+   * The file *files/pk_admins.txt* was sanitized. Fit the public keys to your needs ::
+
+       shell> cat files/pk_admins.txt 
+       ssh-rsa <sanitized> admin@controller
 	       
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -219,3 +213,13 @@ Playbook output
 	       
 .. literalinclude:: out/out-08.txt
     :language: bash
+
+.. hint::
+
+   The below command stops and destroys the cloned jails ::
+
+     ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini -t destroy -e destroy=true
+
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
