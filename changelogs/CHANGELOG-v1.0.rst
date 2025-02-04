@@ -5,6 +5,20 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.5.5
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 0.5.4
 =====
 
@@ -17,6 +31,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update galaxy.yml
 
 
 0.5.3
