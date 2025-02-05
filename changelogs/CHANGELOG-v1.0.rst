@@ -17,6 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs index.
+* Upgrade role vbotka.freebsd_postinstall to 2.6.20
+* Upgrade role vbotka.ansible_lib to 2.6.4
 
 
 0.5.4

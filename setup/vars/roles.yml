@@ -9,7 +9,7 @@ bsd_roles:
     name: lib
     scm: git
     src: https://github.com/vbotka/ansible-lib
-    version: 2.6.3
+    version: 2.6.4
   - galaxy: vbotka.ansible_lint
     name: ansible_lint
     scm: git
@@ -129,7 +129,7 @@ bsd_roles:
     name: postinstall
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-postinstall
-    version: 2.6.19
+    version: 2.6.20
   - galaxy: vbotka.freebsd_poudriere
     name: poudriere
     scm: git
