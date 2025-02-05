@@ -138,6 +138,9 @@ root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
+.. index:: single: variable iocage_ip4_dict; Example 018
+.. index:: single: iocage_ip4_dict; Example 018
+
 .. literalinclude:: out/out-06.txt
     :language: yaml
 

@@ -38,6 +38,7 @@ Synopsis
 .. index:: single: ansible_client; Example 202
 .. index:: single: DHCP; Example 202
 .. index:: single: dhclient; Example 202
+.. index:: single: dhclient-exit-hooks; Example 202
 .. index:: single: inventory vbotka.freebsd.iocage; Example 202
 .. index:: single: module vbotka.freebsd.iocage; Example 202
 .. index:: single: module community.general.pkgng; Example 202
@@ -45,8 +46,10 @@ Synopsis
 .. index:: single: module ansible.builtin.lineinfile; Example 202
 .. index:: single: playbook pb-iocage-template.yml; Example 202
 .. index:: single: playbook pb-iocage-ansible-clients.yml; Example 202
-.. index:: single: option hooks; Example 202
-.. index:: single: hooks; Example 202
+.. index:: single: option hooks_results; Example 202
+.. index:: single: hooks_results; Example 202
+.. index:: single: property notes; Example 202
+.. index:: single: notes; Example 202
 .. index:: single: sudoers; Example 202
 .. index:: single: variable iocage_hooks; Example 202
 .. index:: single: iocage_hooks; Example 202

@@ -45,10 +45,14 @@ Synopsis
 .. index:: single: playbook pb-iocage-ansible-clients.yml; Example 203
 .. index:: single: option get_properties; Example 203
 .. index:: single: get_properties; Example 203
-.. index:: single: option hooks; Example 203
-.. index:: single: hooks; Example 203
+.. index:: single: option hooks_results; Example 203
+.. index:: single: hooks_results; Example 203
+.. index:: single: property notes; Example 203
+.. index:: single: notes; Example 203
 .. index:: single: variable iocage_hooks; Example 203
 .. index:: single: iocage_hooks; Example 203
+.. index:: single: variable iocage_properties; Example 203
+.. index:: single: iocage_properties; Example 203
 .. index:: single: variable iocage_tags; Example 203
 .. index:: single: iocage_tags; Example 203
 .. index:: single: option iocage --short; Example 203
