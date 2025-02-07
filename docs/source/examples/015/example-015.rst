@@ -69,6 +69,9 @@ Playbook output
 Cache
 ^^^^^
 
+.. index:: single: variable iocage_ip4_dict; Example 015
+.. index:: single: iocage_ip4_dict; Example 015
+
 Take a look at the cache ::
 
   shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_7eb74

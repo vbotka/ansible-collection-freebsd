@@ -1,0 +1,22 @@
+- name: Test filter vbotka.freebsd.iocage
+  hosts: localhost
+
+  vars_files:
+    - iocage_datasets.yml
+
+  vars:
+
+    result: "{{ iocage_dict | vbotka.freebsd.iocage }}"
+    jails: "{{ iocage_jails | vbotka.freebsd.iocage('jails') }}"
+    releases: "{{ iocage_releases | vbotka.freebsd.iocage('releases') }}"
+
+  tasks:
+
+    - debug:
+        var: result
+
+    - debug:
+        var: jails
+
+    - debug:
+        var: releases

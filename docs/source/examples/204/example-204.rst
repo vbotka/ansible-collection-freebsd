@@ -1,13 +1,39 @@
-.. _example_203:
+.. _example_204:
 
-203 Create DHCP jails from template. Auto UUID, iocage_tags.
-------------------------------------------------------------
+204 Create DHCP jails from template v2. Auto UUID, iocage_tags.
+---------------------------------------------------------------
 
-Extending example 202.
+| Extending example :ref:`example_203`
 
 .. contents:: Table of Contents
    :depth: 2
 
+Use case
+^^^^^^^^
+
+| Instead of the module *vbotka.freebsd.iocage* create the variable *iocage_jails* using the `filter vbotka.freebsd.iocage`_
+
+.. literalinclude:: tasks/iocage_jails.yml
+    :language: yaml
+
+**Test filter vbotka.freebsd.iocage**
+
+Given the input *vars/iocage_datasets.yml*
+
+.. literalinclude:: vars/iocage_datasets.yml
+    :language: yaml
+
+The below playbook *pb-test-02.yml*
+
+.. literalinclude:: pb-test-02.yml
+    :language: yaml
+
+gives
+
+.. literalinclude:: out/out-01.txt
+    :language: yaml
+
+	       
 Tree
 ^^^^
 
@@ -29,48 +55,53 @@ Tree
    │   └── iocage_02
    │       └── iocage.yml
    ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
-   ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
-   └── pb-test-01.yml
+   ├── pb-iocage-ansible-clients-v2.yml
+   ├── pb-test-01.yml
+   ├── pb-test-02.yml
+   ├── tasks
+   │   ├── iocage_jails.yml
+   │   ├── swarm_destroy.yml
+   │   └── swarm.yml
+   └── vars
+       └── iocage_datasets.yml
 
 Synopsis
 ^^^^^^^^
 
-.. index:: single: template ansible_client; Example 203
-.. index:: single: ansible_client; Example 203
-.. index:: single: DHCP; Example 203
-.. index:: single: inventory vbotka.freebsd.iocage; Example 203
-.. index:: single: module vbotka.freebsd.iocage; Example 203
-.. index:: single: module ansible.builtin.command; Example 203
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 203
-.. index:: single: option get_properties; Example 203
-.. index:: single: get_properties; Example 203
-.. index:: single: option hooks_results; Example 203
-.. index:: single: hooks_results; Example 203
-.. index:: single: property notes; Example 203
-.. index:: single: notes; Example 203
-.. index:: single: variable iocage_hooks; Example 203
-.. index:: single: iocage_hooks; Example 203
-.. index:: single: variable iocage_properties; Example 203
-.. index:: single: iocage_properties; Example 203
-.. index:: single: variable iocage_tags; Example 203
-.. index:: single: iocage_tags; Example 203
-.. index:: single: option iocage --short; Example 203
-.. index:: single: option iocage --template; Example 203
+.. index:: single: template ansible_client; Example 204
+.. index:: single: ansible_client; Example 204
+.. index:: single: DHCP; Example 204
+.. index:: single: filter vbotka.freebsd.iocage; Example 204
+.. index:: single: inventory vbotka.freebsd.iocage; Example 204
+.. index:: single: module ansible.builtin.command; Example 204
+.. index:: single: playbook pb-iocage-ansible-clients-v2.yml; Example 204
+.. index:: single: option get_properties; Example 204
+.. index:: single: get_properties; Example 204
+.. index:: single: option hooks_results; Example 204
+.. index:: single: hooks_results; Example 204
+.. index:: single: property notes; Example 204
+.. index:: single: notes; Example 204
+.. index:: single: variable iocage_jails; Example 204
+.. index:: single: iocage_jails; Example 204
+.. index:: single: variable iocage_hooks; Example 204
+.. index:: single: iocage_hooks; Example 204
+.. index:: single: variable iocage_properties; Example 204
+.. index:: single: iocage_properties; Example 204
+.. index:: single: variable iocage_tags; Example 204
+.. index:: single: iocage_tags; Example 204
+.. index:: single: option iocage --short; Example 204
+.. index:: single: option iocage --template; Example 204
 
 * On two iocage hosts:
 
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-ansible-clients.yml*, use the module:
-
-  * *vbotka.freebsd.iocage* to:
-
-    * create facts only
+  In the playbook *pb-iocage-ansible-clients-v2.yml*, use the module:
 
   * *ansible.builtin.command* to:
 
+    * create variable iocage_jails
     * create jails
     * start jails
     * optionally stop and destroy the jails.
@@ -83,50 +114,10 @@ Synopsis
   * display basic configuration of the jails.
 
 
-**Automatically generated UUID**
-
-In this example, the names of the jails are automatically generated UUID. At each iocage host three
-jails will be created from the template *ansible_client* ::
-
-  swarms:
-    sw_01:
-      count: 3
-      template: ansible_client
-
-The module *vbotka.freebsd.iocage* doesn't work with multiple names. We will use
-*ansible.builtin.command* instead. Such a task is not idempotent anyway if the UUID is generated
-automatically. Example of the commands ::
-
-  iocage create --short --template ansible_client --count 3  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
-  iocage start cd31c2a2 d254f889 158ef36d
-
-**The variable iocage_tags**
-
-The inventory plugin composes the variable *iocage_tags* ::
-
-  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
-
-For example ::
-
-  iocage_tags:
-    vmm: iocage_01
-    swarm: sw_01
-
-This variable is used to create groups ::
-
-  keyed_groups:
-  - prefix: swarm
-    key: iocage_tags.swarm
-  - prefix: vmm
-    key: iocage_tags.vmm
-  
-This is the difference from the example :ref:`example_202`
-
-
 Requirements
 ^^^^^^^^^^^^
 
-* `module vbotka.freebsd.iocage`_
+* `filter vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
 * activated *iocage*
@@ -186,10 +177,10 @@ Inventory *iocage-hosts.ini*
 .. literalinclude:: iocage-hosts.ini
     :language: ini
 
-Playbook *pb-iocage-ansible-clients.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook *pb-iocage-ansible-clients-v2.yml*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-iocage-ansible-clients.yml
+.. literalinclude:: pb-iocage-ansible-clients-v2.yml
     :language: yaml
 
 Playbook output
@@ -256,12 +247,12 @@ Playbook output
 
    The below command stops and destroys the jails in *swarms* ::
 
-     ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
-                                                    -t swarm_destroy \
-						    -e swarm_destroy=true
+     ansible-playbook pb-iocage-ansible-clients-v2.yml -i iocage-hosts.ini \
+                                                       -t swarm_destroy \
+                                                       -e swarm_destroy=true
 
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/iocage/iocage/

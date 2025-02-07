@@ -1,0 +1,101 @@
+---
+- name: Create swarms
+  vars:
+    cmd_create: >
+      iocage create
+      --short
+      --template {{ item.value.template }}
+      --count {{ _count }}
+      {{ _properties }}
+    _count: "{{ item.value.count - _tags | dict2items
+                                         | selectattr('value.swarm', 'eq', item.key)
+                                         | length }}"
+    _properties: >
+      {% for k, v in properties.items() %}
+      {%- if k == 'notes' %}
+      notes="{{ v }} swarm={{ item.key }}"
+      {%- else %}
+      {{ k }}={{ v }}
+      {%- endif %}
+      {%- endfor %}
+  block:
+
+    - name: Set iocage_jails
+      ansible.builtin.import_tasks: tasks/iocage_jails.yml
+
+    - name: Debug iocage_jails
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: iocage_jails
+
+    - name: Debug _tags
+      when: debug | bool
+      ansible.builtin.debug:
+        var: _tags
+
+    - name: Debug cmd_create
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_create }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Create swarms
+      when:
+        - not dry_run | bool
+        - _count | int > 0
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_create }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Debug create swarms
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out
+
+- name: Start swarms
+  vars:
+    cmd_start: >
+      iocage start
+      {{ _jails | join(' ') }}
+    _jails: "{{ _tags | dict2items
+                      | selectattr('value.swarm', 'eq', item.key)
+                      | map(attribute='key')
+                      | difference(_started) }} "
+  block:
+
+    - name: Set iocage_jails
+      ansible.builtin.import_tasks: tasks/iocage_jails.yml
+
+    - name: Debug iocage_jails
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: iocage_jails
+
+    - name: Debug cmd_start
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_start }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Start swarms
+      when:
+        - not dry_run | bool
+        - _jails | length > 0
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_start }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Debug start swarms
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out

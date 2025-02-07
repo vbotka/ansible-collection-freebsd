@@ -11,6 +11,9 @@ Extending example 010.
 Synopsis
 ^^^^^^^^
 
+.. index:: single: variable iocage_properties; Example 012
+.. index:: single: iocage_properties; Example 012
+
 Enable and display *iocage_properties*.
 
 Inventory *iocage.yml*

@@ -24,5 +24,8 @@ Playbook *pb-vars-all.yml*
 Playbook output
 ^^^^^^^^^^^^^^^
 
+.. index:: single: variable iocage_ip4_dict; Example 011
+.. index:: single: iocage_ip4_dict; Example 011
+
 .. literalinclude:: out/out-01.txt
     :language: bash

@@ -5,6 +5,25 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.5.5
+=====
+
+Release Summary
+---------------
+Maintenance update incl. updated docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs index.
+* Upgrade role vbotka.freebsd_postinstall to 2.6.20
+* Upgrade role vbotka.ansible_lib to 2.6.4
+* Upgrade filter vbotka.freebsd.iocage. Add option dataset.
+* Add docs examples: 204
+
+
 0.5.4
 =====
 
@@ -17,6 +36,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update galaxy.yml
 
 
 0.5.3
