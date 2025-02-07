@@ -1,0 +1,27 @@
+---
+- name: Get iocage list of jails
+  register: out
+  ansible.builtin.command: iocage list --long
+
+- name: Set dictionary iocage_jails
+  ansible.builtin.set_fact:
+    iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+
+- name: Get properties of iocage jails
+  register: out
+  ansible.builtin.command: "iocage get --all {{ item }}"
+  loop: "{{ iocage_jails.keys() }}"
+
+- name: Set dictionary iocage_jails_properties
+  vars:
+    _keys: "{{ out.results | map(attribute='item') }}"
+    _vals: "{{ out.results | map(attribute='stdout_lines')
+                           | map('map', 'split', ':', 1)
+                           | map('community.general.dict')
+                           | map('community.general.dict_kv', 'properties') }}"
+  ansible.builtin.set_fact:
+    iocage_jails_properties: "{{ dict(_keys | zip(_vals))  }}"
+
+- name: Combine iocage_jails and iocage_jails_properties
+  ansible.builtin.set_fact:
+    iocage_jails: "{{ [iocage_jails, iocage_jails_properties] | combine(recursive=true) }}"

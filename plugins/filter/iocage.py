@@ -3,8 +3,7 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
-from __future__ import (absolute_import, division, print_function)
-__metaclass__ = type
+from __future__ import annotations
 
 DOCUMENTATION = r"""
 name: iocage
@@ -15,23 +14,31 @@ description: This filter parses iocage list output.
 options:
   _input:
     description:
-      - A dictionary of iocage list outputs.
-    type: dictionary
-    elements: string
+      - Either a dictionary of iocage list outputs or a string of a single iocage list output.
+      - If the option dataset is None the type of the input must be a dictionary.
+      - Otherwise, the type of the input must be a string.
     required: true
+  dataset:
+    description:
+      - Type of the iocage dataset.
+    type: str
+    choices: [jails, plugins, releases, templates]
+    version_added: "0.5.5"
 """
 
 EXAMPLES = r"""
-# Put output of the commands into the keys:
-# jail: <iocage list --long>
-# plugins: <iocage list --plugins>
-# releases: <iocage list --release --header>
-# templates: <iocage list --template --long>
+---
+# By default a dictionary is expected on the input.
+# Put commands output into the keys:
+#   jails: <iocage list --long>
+#   plugins: <iocage list --plugins>
+#   releases: <iocage list --release --header>
+#   templates: <iocage list --template --long>
+# The dictionary can be incomplete. Select datasets you want to parse. For example, jails and releases
 
-# Select keys you want to parse. For example, jails and releases
 ansible_local:
   iocage:
-    jails: |-
+    jails: |
       +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
       | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
       +======+================+======+=======+======+=================+===================+=====+================+==========+
@@ -39,7 +46,7 @@ ansible_local:
       +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
       | None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
       +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-    releases: |-
+    releases: |
       14.1-RELEASE
 
 result: "{{ ansible_local.iocage | vbotka.freebsd.iocage }}"
@@ -80,12 +87,73 @@ result:
       type: jail
   releases:
     - 14.1-RELEASE
+---
+# The type of the input must be a string if the option dataset is not None.
+# For example, the output of the command 'iocage list --long'
+
+iocage_jails: |
+  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+  | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
+  +======+================+======+=======+======+=================+===================+=====+================+==========+
+  | None | ansible_client | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -              | no       |
+  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+  | None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
+  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+
+jails:: "{{ iocage_jails | vbotka.freebsd.iocage('jails') }}"
+
+jails:
+    ansible_client:
+        basejail: 'no'
+        boot: 'off'
+        ip4: 10.1.0.199
+        ip4_dict:
+            ip4:
+              - ifc: em0
+                ip: 10.1.0.199
+                mask: '24'
+            msg: ''
+        ip6: '-'
+        jid: None
+        release: 14.1-RELEASE-p6
+        state: down
+        template: '-'
+        type: jail
+    test_111:
+        basejail: 'no'
+        boot: 'off'
+        ip4: 10.1.0.111
+        ip4_dict:
+            ip4:
+              - ifc: em0
+                ip: 10.1.0.111
+                mask: '24'
+            msg: ''
+        ip6: '-'
+        jid: None
+        release: 14.1-RELEASE-p6
+        state: down
+        template: ansible_client
+        type: jail
+---
+# The type of the input must be a string if the option dataset is not None.
+# For example, the output of the command 'iocage list --release'
+
+iocage_releases: |
+  14.1-RELEASE
+
+releases: "{{ iocage_releases | vbotka.freebsd.iocage('releases') }}"
+
+releases:
+  - 14.1-RELEASE
 """
 
 RETURN = r"""
 _value:
-  description: The dictionary of the iocage lists.
-  type: dictionary
+  description:
+    - A dictionary of all iocage C(datasets) present on the input if the option O(dataset) is V(None).
+    - A dictionary of the iocage C(dataset) if the option O(dataset) is V(jails), V(plugins), or V(templates).
+    - A list of the fetched C(releases) if the option O(dataset) is V(releases).
 """
 
 import re
@@ -116,6 +184,9 @@ def _parse_ip4(ip4):
 
 
 def _get_jails(data):
+    """ Parse the output of 'iocage list --long', or
+                            'iocage list --long --template'
+    """
 
     result = {}
 
@@ -148,6 +219,8 @@ def _get_jails(data):
 
 
 def _get_plugins(data):
+    """ Parse the output of 'iocage list --plugins'
+    """
 
     result = {}
 
@@ -181,12 +254,16 @@ def _get_plugins(data):
 
 
 def _get_releases(data):
+    """ Parse the output of 'ocage list --release --header'
+    """
+
     result = data.splitlines()
     return result
 
 
-def iocage(data):
-    """parse dictionary of iocage lists"""
+def iocage(data, dataset=None):
+    """ Parse iocage dataset(s)
+    """
 
     results = {}
     fnc_dict = {'jails': _get_jails,
@@ -194,10 +271,14 @@ def iocage(data):
                 'releases': _get_releases,
                 'templates': _get_jails}
 
-    for d in fnc_dict:
-        if d in data:
-            list = data[d]
-            results[d] = fnc_dict[d](list)
+    if dataset:
+        if dataset in fnc_dict:
+            results = fnc_dict[dataset](data)
+    else:
+        for d in fnc_dict:
+            if d in data:
+                list = data[d]
+                results[d] = fnc_dict[d](list)
 
     return results
 

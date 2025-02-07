@@ -31,3 +31,4 @@ Examples
    201 Display iocage lists. <examples/201/example-201.rst>
    202 DHCP Ansible client templates. <examples/202/example-202.rst>
    203 DHCP, Auto UUID, iocage_tags. <examples/203/example-203>
+   204 DHCP, Auto UUID, iocage_tags v2. <examples/204/example-204>

@@ -1,0 +1,33 @@
+(env) > ansible-playbook pb-test-01.yml -i hosts
+
+PLAY [Connect to the group test.] *************************************************************
+
+TASK [ansible.builtin.command] ****************************************************************
+changed: [824cdb51]
+changed: [16ed61e2]
+changed: [58fc3c05]
+changed: [1349277e]
+changed: [5d599b2c]
+changed: [6d98c114]
+
+TASK [ansible.builtin.debug] ******************************************************************
+ok: [16ed61e2] => 
+    msg: 'ansible_host=10.1.0.244 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
+ok: [58fc3c05] => 
+    msg: 'ansible_host=10.1.0.136 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
+ok: [824cdb51] => 
+    msg: 'ansible_host=10.1.0.115 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
+ok: [1349277e] => 
+    msg: 'ansible_host=10.1.0.156 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
+ok: [5d599b2c] => 
+    msg: 'ansible_host=10.1.0.184 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
+ok: [6d98c114] => 
+    msg: 'ansible_host=10.1.0.183 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
+
+PLAY RECAP ************************************************************************************
+1349277e: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+16ed61e2: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+58fc3c05: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+5d599b2c: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+6d98c114: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+824cdb51: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
