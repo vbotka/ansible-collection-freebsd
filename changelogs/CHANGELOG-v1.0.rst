@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Maintenance update.
+Maintenance update incl. updated docs.
 
 Major Changes
 -------------
