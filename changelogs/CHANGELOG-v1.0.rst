@@ -5,6 +5,20 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.5.6
+=====
+
+Release Summary
+---------------
+Maintenance update incl. updated docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 0.5.5
 =====
 
