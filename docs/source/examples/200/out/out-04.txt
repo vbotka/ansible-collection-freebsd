@@ -1,4 +1,7 @@
-(env) > ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini -e debug=true
+(env) > ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
+                                                       -t clone \
+						       -e clone=true \
+                                                       -e debug=true
 
 PLAY [Create, start, and optionally destroy clones.] *******************************************
 

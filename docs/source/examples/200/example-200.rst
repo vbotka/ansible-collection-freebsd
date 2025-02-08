@@ -26,10 +26,17 @@ Tree
    │   └── iocage_02
    │       └── iocage.yml
    ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients.yml
+   ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
+   ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
    ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
    ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
    └── pb-test-01.yml
+
+
+Use case
+^^^^^^^^
+
+Create templates for Ansible clients. 
 
 Synopsis
 ^^^^^^^^
