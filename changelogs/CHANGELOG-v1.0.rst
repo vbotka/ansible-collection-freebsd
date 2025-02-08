@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add docs examples: 205
 
 
 0.5.5
