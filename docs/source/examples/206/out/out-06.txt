@@ -1,0 +1,39 @@
+(env) > ansible-playbook pb-test-01.yml -i hosts
+
+PLAY [swarm_sw_01] ****************************************************************************
+
+TASK [ansible.builtin.command] ****************************************************************
+changed: [test_111]
+changed: [e3c34e4f]
+changed: [7509aed0]
+
+TASK [ansible.builtin.debug] ******************************************************************
+ok: [7509aed0] => 
+    msg: |-
+        out.stdout: 7509aed0
+        ansible_host: 10.1.0.156
+        iocage_hooks: ['10.1.0.156']
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_02
+ok: [e3c34e4f] => 
+    msg: |-
+        out.stdout: e3c34e4f
+        ansible_host: 10.1.0.243
+        iocage_hooks: ['10.1.0.243']
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_02
+ok: [test_111] => 
+    msg: |-
+        out.stdout: test-111
+        ansible_host: 10.1.0.111
+        iocage_hooks: ['-']
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_02
+
+PLAY RECAP ************************************************************************************
+7509aed0: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+e3c34e4f: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+test_111: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

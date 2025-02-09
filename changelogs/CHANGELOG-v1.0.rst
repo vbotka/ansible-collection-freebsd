@@ -17,7 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
-* Add docs examples: 205
+* Add docs examples: 205, 206
+* Update examples: 200, 202, and 203.
+* Update playbook pb-iocage-ansible-clients.yml
 
 
 0.5.5

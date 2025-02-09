@@ -1,22 +1,21 @@
 - name: Create swarms
   vars:
+    _notes: '"{{ [properties.notes | d(""),
+                  item.value.properties.notes | d(""),
+                  "swarm=" ~ item.key] | join(" ") }}"'
+    _properties: '{{ [properties | d({}),
+                      item.value.properties | d({}),
+                      {"notes": _notes}] | combine(recursive=true) }}'
+    _count: "{{ item.value.count - _tags | dict2items
+                                         | selectattr('value.swarm', 'eq', item.key)
+                                         | length }}"
     cmd_create: >
       iocage create
       --short
       --template {{ item.value.template }}
       --count {{ _count }}
-      {{ _properties }}
-    _count: "{{ item.value.count - _tags | dict2items
-                                         | selectattr('value.swarm', 'eq', item.key)
-                                         | length }}"
-    _properties: >
-      {% for k, v in properties.items() %}
-      {%- if k == 'notes' %}
-      notes="{{ v }} swarm={{ item.key }}"
-      {%- else %}
-      {{ k }}={{ v }}
-      {%- endif %}
-      {%- endfor %}
+      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+
   block:
 
     - name: Get iocage facts

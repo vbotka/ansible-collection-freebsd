@@ -33,3 +33,4 @@ Examples
    203 DHCP, Auto UUID, iocage_tags. <examples/203/example-203>
    204 DHCP, Auto UUID, iocage_tags v2. <examples/204/example-204>
    205 DHCP Ansible client templates v2. <examples/205/example-205.rst>
+   206 DHCP and fixed IP Ansible clients. <examples/206/example-206.rst>

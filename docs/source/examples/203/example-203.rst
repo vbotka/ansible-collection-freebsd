@@ -34,13 +34,13 @@ The inventory plugin composes the variable *iocage_tags* ::
 
   iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
 
-For example ::
+For example, ::
 
   iocage_tags:
     vmm: iocage_01
     swarm: sw_01
 
-This variable is used to create groups ::
+This option is used to create groups from *iocage_tags* ::
 
   keyed_groups:
   - prefix: swarm

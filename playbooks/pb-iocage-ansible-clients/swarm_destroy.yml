@@ -1,11 +1,11 @@
 - name: Stop and destroy swarms
   vars:
-    cmd_stop: "iocage stop {{ _jails_started | join(' ') }}"
-    cmd_destroy: "iocage destroy --force {{ _swarm_exist | join(' ') }}"
     _swarm_exist: "{{ _tags | dict2items
                             | selectattr('value.swarm', 'eq', item.key)
                             | map(attribute='key') }}"
     _jails_started: "{{ _swarm_exist | intersect(_started) }}"
+    cmd_stop: "iocage stop {{ _jails_started | join(' ') }}"
+    cmd_destroy: "iocage destroy --force {{ _swarm_exist | join(' ') }}"
   block:
 
     - name: Get iocage facts

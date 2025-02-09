@@ -12,7 +12,7 @@ Extending example :ref:`example_202`.
 Use case
 ^^^^^^^^
 
-Create ansible client template at 3 iocage hosts.
+Create template *ansible_client* at 3 iocage hosts.
 	   
 Tree
 ^^^^
