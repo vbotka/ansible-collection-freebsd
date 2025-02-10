@@ -1,20 +1,14 @@
 ---
-- name: Set template
-  block:
+- name: "Template: Set template."
+  register: out
+  changed_when: false
+  ansible.builtin.command: "iocage set template=1 {{ item.key }}"
+  loop: "{{ templates | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
 
-    - name: "Template: Set template"
-      register: out
-      vbotka.freebsd.iocage:
-        state: set
-        name: "{{ item.name }}"
-        properties:
-          template: true
-      loop: "{{ jails }}"
-      loop_control:
-        label: "{{ item.name }}"
-
-    - name: "Template: Debug set template debug2={{ debug2 }}"
-      when: debug2 | d(false) | bool
-      tags: template_start
-      ansible.builtin.debug:
-        var: out
+- name: "Template: Debug set template debug2={{ debug2 }}"
+  when: debug2 | bool
+  tags: template_start
+  ansible.builtin.debug:
+    var: out

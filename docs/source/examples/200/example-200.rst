@@ -167,10 +167,16 @@ Playbook *pb-iocage-ansible-clients.yml*
 .. literalinclude:: pb-iocage-ansible-clients.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Clone jails
+^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
+    :language: bash
+
+List jails
+^^^^^^^^^^
+
+.. literalinclude:: out/out-09.txt
     :language: bash
 
 List jails at iocage_01
@@ -225,7 +231,9 @@ Playbook output
 
    The below command stops and destroys the cloned jails ::
 
-     ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini -t destroy -e destroy=true
+     ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
+                                                    -t clone_destroy \
+						    -e clone_destroy=true
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/

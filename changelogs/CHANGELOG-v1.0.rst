@@ -5,12 +5,12 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-0.5.6
+0.6.0
 =====
 
 Release Summary
 ---------------
-Maintenance update incl. updated docs.
+Minor release. Update playbooks.
 
 Major Changes
 -------------
@@ -22,6 +22,12 @@ Minor Changes
 * Update playbook pb-iocage-ansible-clients.yml
   - Add debug2 tasks.
   - Use json_query instead selectattr.
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Updated playbook pb-iocage-template use dictionary templates
+* Updated playbook pb-iocage-ansible-clients use dictionaries clones
+
 
 0.5.5
 =====
