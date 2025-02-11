@@ -13,7 +13,7 @@ Use case
 
 | Instead of the module *vbotka.freebsd.iocage* create the variable *iocage_jails* using the `filter vbotka.freebsd.iocage`_
 
-.. literalinclude:: tasks/iocage_jails.yml
+.. literalinclude:: pb-iocage-ansible-clients/iocage_jails.yml
     :language: yaml
 
 **Test filter vbotka.freebsd.iocage**
@@ -55,13 +55,13 @@ Tree
    │   └── iocage_02
    │       └── iocage.yml
    ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients-v2.yml
-   ├── pb-test-01.yml
-   ├── pb-test-02.yml
-   ├── tasks
+   ├── pb-iocage-ansible-clients
    │   ├── iocage_jails.yml
    │   ├── swarm_destroy.yml
    │   └── swarm.yml
+   ├── pb-iocage-ansible-clients-v2.yml
+   ├── pb-test-01.yml
+   ├── pb-test-02.yml
    └── vars
        └── iocage_datasets.yml
 

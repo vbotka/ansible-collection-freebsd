@@ -13,8 +13,8 @@ properties:
   vnet: 1
   notes: "vmm={{ inventory_hostname }}"
 
-jails:
-  - name: ansible_client
+templates:
+  ansible_client:
     release: 14.1-RELEASE
     properties:
       ip4_addr: 'em0|10.1.0.199/24'
