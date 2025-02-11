@@ -34,12 +34,11 @@ potential explicit error handling. Let the option *compose* pick what is needed 
 In this example, one jail with fixed IP will be created from the template *ansible_client* ::
 
   clones:
-    - name: test_111
+    test_111:
       clone_from: ansible_client
       properties:
-        ip4_addr: 'em0|10.1.0.111/24'
-	vmm: iocage_02
-	swarm: sw_01
+        ip4_addr: "em0|10.1.0.111/24"
+        notes: "swarm=sw_01"
 
 **Automatically generated UUID**
 
@@ -47,11 +46,18 @@ Two DHCP jails with generated UUID will be created from the template *ansible_cl
 
   swarms:
     sw_01:
-      count: 2
+      count: 3
       template: ansible_client
+      properties:
+        bpf: 1
+        dhcp: 1
+        vnet: 1
 
+.. note:: The clone *test_111* belongs to the swarm *sw_01*. Set *count: 3* to create two more jails
+          in the swarm *sw_01*.
+	
 The module *vbotka.freebsd.iocage* doesn't work with multiple names. We will use
-*ansible.builtin.command* instead. Such a task is not idempotent anyway if the UUID is generated
+*ansible.builtin.command* instead. Anyway, such a task is not idempotent if the UUID is generated
 automatically. Example of the commands ::
 
   iocage create --short --template ansible_client --count 2  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 swarm=sw_01"
@@ -259,6 +265,7 @@ Playbook output
    The below command stops and destroys the jails in *swarms* ::
 
      ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
+                                                    -l iocage_02 \
                                                     -t swarm_destroy \
 						    -e swarm_destroy=true
 

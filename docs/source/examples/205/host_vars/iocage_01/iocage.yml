@@ -5,8 +5,8 @@ freebsd_iocage_pool: pool2
 freebsd_iocage_pool_mount: /mnt/pool2
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
-jails:
-  - name: ansible_client
+templates:
+  ansible_client:
     release: 13.4-RELEASE
     properties:
       ip4_addr: 'vnet0|10.1.0.198/24'

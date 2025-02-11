@@ -7,8 +7,8 @@ freebsd_iocage_pool: zroot
 freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
-jails:
-  - name: ansible_client
+templates:
+  ansible_client:
     release: 14.2-RELEASE
     properties:
       ip4_addr: 'ue0|10.1.0.197/24'
