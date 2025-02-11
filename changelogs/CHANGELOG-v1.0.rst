@@ -10,10 +10,12 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Minor release. Update playbooks.
+Minor release incl docs update.
 
 Major Changes
 -------------
+* Upgrade inventory iocage.
+* Update playbooks.
 
 Minor Changes
 -------------
@@ -136,7 +138,7 @@ Minor Changes
 
 Bugfixes
 --------
-#9538 Inventory iocage fails when DHCP is enbled.
+#9538 Inventory iocage fails when DHCP is enabled.
 
 Breaking Changes / Porting Guide
 --------------------------------
@@ -246,7 +248,7 @@ Minor Changes
 
 Release Summary
 ---------------
-Maintenance udpate.
+Maintenance update.
 
 Major Changes
 -------------
@@ -282,7 +284,7 @@ Breaking Changes / Porting Guide
 
 Release Summary
 ---------------
-Maintenance udpate.
+Maintenance update.
 
 Major Changes
 -------------
@@ -579,7 +581,7 @@ Minor Changes
 * Update README.
 * Update module iocage.yml
 * Remove setup/vars/roles.yml.bak
-* Rmove plugins/inventory/__pycache__/iocage.cpython-312.pyc
+* Remove plugins/inventory/__pycache__/iocage.cpython-312.pyc
 
 
 0.2.1
