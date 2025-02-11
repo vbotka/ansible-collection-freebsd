@@ -1,6 +1,7 @@
 ---
 - name: Get iocage list of jails
   register: out
+  changed_when: false
   ansible.builtin.command: iocage list --long
 
 - name: Set dictionary iocage_jails
@@ -9,6 +10,7 @@
 
 - name: Get properties of iocage jails
   register: out
+  changed_when: false
   ansible.builtin.command: "iocage get --all {{ item }}"
   loop: "{{ iocage_jails.keys() }}"
 

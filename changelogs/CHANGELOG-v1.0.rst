@@ -5,6 +5,32 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.0
+=====
+
+Release Summary
+---------------
+Minor release incl docs update.
+
+Major Changes
+-------------
+* Upgrade inventory iocage.
+* Update playbooks.
+
+Minor Changes
+-------------
+* Add docs examples: 205, 206
+* Update examples: 200, 202, 203, and 204.
+* Update playbook pb-iocage-ansible-clients.yml
+  - Add debug2 tasks.
+  - Use json_query instead selectattr.
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Updated playbook pb-iocage-template use dictionary templates
+* Updated playbook pb-iocage-ansible-clients use dictionaries clones
+
+
 0.5.5
 =====
 
@@ -112,7 +138,7 @@ Minor Changes
 
 Bugfixes
 --------
-#9538 Inventory iocage fails when DHCP is enbled.
+#9538 Inventory iocage fails when DHCP is enabled.
 
 Breaking Changes / Porting Guide
 --------------------------------
@@ -222,7 +248,7 @@ Minor Changes
 
 Release Summary
 ---------------
-Maintenance udpate.
+Maintenance update.
 
 Major Changes
 -------------
@@ -258,7 +284,7 @@ Breaking Changes / Porting Guide
 
 Release Summary
 ---------------
-Maintenance udpate.
+Maintenance update.
 
 Major Changes
 -------------
@@ -555,7 +581,7 @@ Minor Changes
 * Update README.
 * Update module iocage.yml
 * Remove setup/vars/roles.yml.bak
-* Rmove plugins/inventory/__pycache__/iocage.cpython-312.pyc
+* Remove plugins/inventory/__pycache__/iocage.cpython-312.pyc
 
 
 0.2.1

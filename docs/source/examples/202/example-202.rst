@@ -3,8 +3,43 @@
 202 Create Ansible client templates and clone DHCP Ansible client jails.
 ------------------------------------------------------------------------
 
+Extending example :ref:`example_200`.
+
 .. contents:: Table of Contents
    :depth: 2
+
+Use case
+^^^^^^^^
+
+In this example, the jails get the IP addresses by DHCP. The *dhclient-exit-hooks* ::
+
+  shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
+  case "$reason" in
+      "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+      echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+      ;;
+  esac
+
+create files. For example, ::
+
+  shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b 
+  10.1.0.130
+  
+The inventory plugin reads the files, created by the hooks, and uses the IP addresses to compose
+*ansible_host* ::
+
+  shell> cat hosts/01_iocage.yml 
+  plugin: vbotka.freebsd.iocage
+  ...
+  hooks_results:
+    - /var/db/dhclient-hook.address.epair0b
+  compose:
+    ansible_host: iocage_hooks.0
+
+Default to *iocage_ip4* if the hook is not available ::
+
+  compose:
+    ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
 Tree
 ^^^^
@@ -81,39 +116,6 @@ Synopsis
 
   * connect created jails
   * display basic configuration of the jails.
-
-In this example, the jails get the IP addresses by DHCP. The *dhclient-exit-hooks* ::
-
-  shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
-  case "$reason" in
-      "BOUND"|"REBIND"|"REBOOT"|"RENEW")
-      echo $new_ip_address > /var/db/dhclient-hook.address.$interface
-      ;;
-  esac
-
-create files. For example, ::
-
-  shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b 
-  10.1.0.130
-  
-The inventory plugin reads the files, created by the hooks, and uses the IP addresses to compose
-*ansible_host* ::
-
-  shell> cat hosts/01_iocage.yml 
-  plugin: vbotka.freebsd.iocage
-  ...
-  hooks_results:
-    - /var/db/dhclient-hook.address.epair0b
-  compose:
-    ansible_host: iocage_hooks.0
-
-Default to *iocage_ip4* if the hook is not available ::
-
-  compose:
-    ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
-
-
-This is the difference from :ref:`example_200`
 
 
 Requirements

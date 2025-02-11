@@ -1,38 +1,35 @@
 - name: Create swarms
   vars:
+    _notes: '"{{ [properties.notes | d(""),
+                  item.value.properties.notes | d(""),
+                  "swarm=" ~ item.key] | join(" ") }}"'
+    _properties: '{{ [properties | d({}),
+                      item.value.properties | d({}),
+                      {"notes": _notes}] | combine(recursive=true) }}'
+    _query: '[?value.swarm==`{{ item.key }}`].key'
+    _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
     cmd_create: >
       iocage create
       --short
       --template {{ item.value.template }}
       --count {{ _count }}
-      {{ _properties }}
-    _count: "{{ item.value.count - _tags | dict2items
-                                         | selectattr('value.swarm', 'eq', item.key)
-                                         | length }}"
-    _properties: >
-      {% for k, v in properties.items() %}
-      {%- if k == 'notes' %}
-      notes="{{ v }} swarm={{ item.key }}"
-      {%- else %}
-      {{ k }}={{ v }}
-      {%- endif %}
-      {%- endfor %}
+      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+
   block:
 
     - name: Get iocage facts
       vbotka.freebsd.iocage:
 
-    - name: Debug iocage_jails
+    - name: "Debug iocage_jails and _tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
-        var: iocage_jails
+        msg: |
+          iocage_jails:
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+          _tags:
+            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
 
-    - name: Debug _tags
-      when: debug | bool
-      ansible.builtin.debug:
-        var: _tags
-
-    - name: Debug cmd_create
+    - name: "Debug cmd_create debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         msg: "{{ cmd_create }}"
@@ -51,31 +48,35 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Debug create swarms
+    - name: "Debug create swarms debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         var: out
 
 - name: Start swarms
   vars:
+    _query: '[?value.swarm==`{{ item.key }}`].key'
+    _jails: "{{ _tags | dict2items | community.general.json_query(_query) | difference(_started) }}"
     cmd_start: >
       iocage start
       {{ _jails | join(' ') }}
-    _jails: "{{ _tags | dict2items
-                      | selectattr('value.swarm', 'eq', item.key)
-                      | map(attribute='key')
-                      | difference(_started) }} "
+
   block:
 
     - name: Get iocage facts
       vbotka.freebsd.iocage:
 
-    - name: Debug iocage_jails
+    - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
-        var: iocage_jails
+        msg: |
+          iocage_jails:
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+          _started: {{ _started }}
+          _tags:
+            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
 
-    - name: Debug cmd_start
+    - name: "Debug cmd_start debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         msg: "{{ cmd_start }}"
@@ -94,7 +95,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Debug start swarms
+    - name: "Debug start swarms debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         var: out

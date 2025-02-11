@@ -1,0 +1,19 @@
+- hosts: swarm_sw_01
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
+  tasks:
+
+    - ansible.builtin.command: hostname
+      register: out
+
+    - ansible.builtin.debug:
+        msg: |
+          out.stdout: {{ out.stdout }}
+          ansible_host: {{ ansible_host }}
+          iocage_hooks: {{ iocage_hooks }}
+          iocage_tags:
+            {{ iocage_tags | to_nice_yaml(2) | indent(2) }}

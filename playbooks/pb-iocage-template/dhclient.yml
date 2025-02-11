@@ -1,15 +1,18 @@
 ---
-- name: Configure dhclient
-  block:
+- name: "Dhclient: Configure hooks."
+  register: out
+  ansible.builtin.copy:
+    dest: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/root/etc/{{ item.1.key }}"
+    content: "{{ item.1.value }}"
+    owner: root
+    group: wheel
+    mode: "0644"
+    backup: true
+  loop: "{{ templates | dict2items | subelements('value.dhclient') }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.key }}"
 
-    - name: "Dhclient: Configure hooks"
-      ansible.builtin.copy:
-        dest: "{{ freebsd_iocage_mount }}/jails/{{ item.0.name }}/root/etc/{{ item.1.key }}"
-        content: "{{ item.1.value }}"
-        owner: root
-        group: wheel
-        mode: "0644"
-        backup: true
-      loop: "{{ jails | subelements('dhclient') }}"
-      loop_control:
-        label: "{{ item.0.name }} {{ item.1.key }}"
+- name: "Dhclient: Debug configure hooks debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

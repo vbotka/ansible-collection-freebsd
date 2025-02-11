@@ -2,10 +2,10 @@
   register: out
   vbotka.freebsd.iocage:
     state: stopped
-    name: "{{ item.name }}"
-  loop: "{{ clones }}"
+    name: "{{ item.key }}"
+  loop: "{{ clones | dict2items }}"
   loop_control:
-    label: "{{ item.name }}"
+    label: "{{ item.key }}"
 
 - name: "Debug stop clones debug2={{ debug2 }}"
   when: debug2 | bool
@@ -16,10 +16,10 @@
   register: out
   vbotka.freebsd.iocage:
     state: absent
-    name: "{{ item.name }}"
-  loop: "{{ clones }}"
+    name: "{{ item.key }}"
+  loop: "{{ clones | dict2items }}"
   loop_control:
-    label: "{{ item.name }}"
+    label: "{{ item.key }}"
 
 - name: "Debug destroy clones debug2={{ debug2 }}"
   when: debug2 | bool

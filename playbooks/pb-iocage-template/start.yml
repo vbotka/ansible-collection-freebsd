@@ -1,33 +1,43 @@
 ---
-- name: "Start: Set list of already started basejails"
+- name: Set iocage_jails
+  when: iocage_jails is undefined
+  block:
+
+    - name: "Start: Get iocage list of jails."
+      register: out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
+    - name: "Start: Set dictionary iocage_jails"
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+
+- name: "Start: Display iocage_jails debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: iocage_jails
+
+- name: "Start: Set list of already started templates"
   ansible.builtin.set_fact:
     jails_started: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
                                     | map(attribute='key') }}"
 
-- name: "Start: Reject already started jails"
-  ansible.builtin.set_fact:
-    _jails: "{{ jails | rejectattr('name', 'in' , jails_started) }}"
-
 - name: "Start: Display already started jails debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
-    msg: |-
-      jails already started: {{ jails_started }}
-      jails to start: {{ _jails | map(attribute='name') }}
+    var: jails_started
 
-- name: Start jails
+- name: Start created templates
   when: _jails | length > 0
+  vars:
+    _jails: "{{ templates | difference(jails_started) }}"
   block:
 
     - name: "Start: Start jails"
       register: out
-      vbotka.freebsd.iocage:
-        state: started
-        name: "{{ item.name }}"
-      loop: "{{ _jails }}"
-      loop_control:
-        label: "{{ item.name }}"
+      changed_when: false
+      ansible.builtin.command: "iocage start {{ _jails | join(' ') }}"
 
     - name: "Start: Debug start jails debug2={{ debug2 }}"
       when: debug2 | bool

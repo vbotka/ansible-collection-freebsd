@@ -1,17 +1,14 @@
 ---
-- name: Configure sudo
-  block:
+- name: "Sudo: Configure sudo."
+  register: out
+  ansible.builtin.lineinfile:
+    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/usr/local/etc/sudoers"
+    line: "{{ act_user }} ALL=(ALL) NOPASSWD: ALL"
+  loop: "{{ templates | dict2items }}"
+  loop_control:
+    label: "{{ item.key }} {{ act_user }}"
 
-    - name: "Sudo: Configure sudo"
-      register: out
-      ansible.builtin.lineinfile:
-        path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/usr/local/etc/sudoers"
-        line: "{{ act_user }} ALL=(ALL) NOPASSWD: ALL"
-      loop: "{{ jails }}"
-      loop_control:
-        label: "{{ item.name }} {{ act_user }}"
-
-    - name: "Sudo: Debug configure sudo debug2={{ debug2 }}"
-      when: debug2 | bool
-      ansible.builtin.debug:
-        var: out
+- name: "Sudo: Debug configure sudo debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

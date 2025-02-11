@@ -1,34 +1,31 @@
 ---
-- name: Configure public keys
-  block:
+- name: "Pk: Configure public keys"
+  register: out
+  ansible.posix.authorized_key:
+    user: "{{ act_user }}"
+    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/home/{{ act_user }}/.ssh/authorized_keys"
+    key: "{{ lookup('file', act_pk) }}"
+  loop: "{{ templates | dict2items }}"
+  loop_control:
+    label: "{{ item.key }} {{ act_user }}"
 
-    - name: "Pk: Configure public keys"
-      register: out
-      ansible.posix.authorized_key:
-        user: "{{ act_user }}"
-        path: "{{ freebsd_iocage_mount }}/jails/{{ item.name }}/root/home/{{ act_user }}/.ssh/authorized_keys"
-        key: "{{ lookup('file', act_pk) }}"
-      loop: "{{ jails }}"
-      loop_control:
-        label: "{{ item.name }} {{ act_user }}"
+- name: "Pk: Debug configure public keys debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out
 
-    - name: "Pk: Debug configure public keys debug2={{ debug2 }}"
-      when: debug2 | bool
-      ansible.builtin.debug:
-        var: out
+- name: "Pk: Chown .ssh"
+  register: out
+  changed_when: false
+  vbotka.freebsd.iocage:
+    state: exec
+    name: "{{ item.key }}"
+    cmd: "chown -R {{ act_user }}:{{ act_user }} /home/{{ act_user }}/.ssh"
+  loop: "{{ templates | dict2items }}"
+  loop_control:
+    label: "{{ item.key }} {{ act_user }}"
 
-    - name: "Pk: Chown .ssh"
-      register: out
-      vbotka.freebsd.iocage:
-        state: exec
-        name: "{{ item.name }}"
-        cmd: "chown -R {{ act_user }}:{{ act_user }} /home/{{ act_user }}/.ssh"
-      loop: "{{ jails }}"
-      loop_control:
-        label: "{{ item.name }} {{ act_user }}"
-      changed_when: false
-
-    - name: "Pk: Debug chown .ssh debug2={{ debug2 }}"
-      when: debug2 | bool
-      ansible.builtin.debug:
-        var: out
+- name: "Pk: Debug chown .ssh debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

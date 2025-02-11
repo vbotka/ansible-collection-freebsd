@@ -1,13 +1,19 @@
 - name: Create clones from template
   register: out
+  vars:
+    _notes: '{{ [properties.notes | d(""),
+                 item.value.properties.notes | d("")] | join(" ") }}'
+    _properties: "{{ [properties | d({}),
+                      item.value.properties | d({}),
+                      {'notes': _notes}] | combine(recursive=true) }}"
   vbotka.freebsd.iocage:
     state: cloned
-    clone_from: "{{ item.clone_from }}"
-    name: "{{ item.name }}"
-    properties: "{{ [properties, item.properties|d({})] | combine }}"
-  loop: "{{ clones }}"
+    clone_from: "{{ item.value.clone_from }}"
+    name: "{{ item.key }}"
+    properties: "{{ _properties }}"
+  loop: "{{ clones | dict2items }}"
   loop_control:
-    label: "{{ item.name }} {{ item.clone_from }}"
+    label: "{{ item.key }} {{ item.value.clone_from }}"
 
 - name: "Debug clones from template debug2={{ debug2 }}"
   when: debug2 | bool
@@ -25,3 +31,9 @@
   when: debug2 | bool
   ansible.builtin.debug:
     var: out
+
+# Note
+#
+# The string _notes is not quoted (compare with swarm.yml) because the module vbotka.freebsd.iocage
+# quotes the properties values. See the function _props_to_str in
+# https://github.com/vbotka/ansible-collection-freebsd/blob/master/plugins/modules/iocage.py
