@@ -1,4 +1,4 @@
-(env) > ansible-playbook -i iocage.yml pb-vars-all.yml -l test_113
+(env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_113
 
 PLAY [all] *********************************************************************
 

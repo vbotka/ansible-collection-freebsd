@@ -8,6 +8,23 @@ Extending example 010.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: DHCP; Example 018
+.. index:: single: module vbotka.freebsd.iocage; Example 018
+.. index:: single: inventory vbotka.freebsd.iocage; Example 018
+.. index:: single: option sudo; Example 018
+.. index:: single: sudo; Example 018
+.. index:: single: option sudo_preserve_env; Example 018
+.. index:: single: sudo_preserve_env; Example 018
+.. index:: single: sudoers; Example 018
+.. index:: single: SETENV; Example 018
+.. index:: single: variable iocage_ip4_dict; Example 018
+.. index:: single: iocage_ip4_dict; Example 018
+
+Use case
+^^^^^^^^
+
+Use DHCP to configure the interfaces.
+
 Tree
 ^^^^
 
@@ -29,20 +46,6 @@ Tree
 Synopsis
 ^^^^^^^^
 
-.. index:: single: DHCP; Example 018
-.. index:: single: module vbotka.freebsd.iocage; Example 018
-.. index:: single: inventory vbotka.freebsd.iocage; Example 018
-.. index:: single: option compose; Example 018
-.. index:: single: compose; Example 018
-.. index:: single: option sudo; Example 018
-.. index:: single: sudo; Example 018
-.. index:: single: option sudo_preserve_env; Example 018
-.. index:: single: sudo_preserve_env; Example 018
-.. index:: single: sudoers; Example 018
-.. index:: single: SETENV; Example 018
-
-Use DHCP to configure the interfaces.
-
 * On two iocage hosts:
 
   * iocage_01
@@ -61,6 +64,12 @@ Use DHCP to configure the interfaces.
   * create the inventory groups and compose variables
   * display the hosts and composed variables in the group *test*
 
+Requirements
+^^^^^^^^^^^^
+
+* `inventory plugin vbotka.freebsd.iocage`_
+* jails *ansible_client* created in :ref:`example_010`
+
 Jails at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
@@ -72,11 +81,11 @@ Jails at iocage_02
 
 .. literalinclude:: out/out-02.txt
     :language: bash
-    
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
     :language: ini
 
 host_vars/iocage_01/iocage.yml
@@ -90,6 +99,12 @@ host_vars/iocage_02/iocage.yml
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml
+    
+Inventory *iocage-hosts.ini*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: ini
 
 Playbook *pb-iocage-clone-list.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,9 +152,6 @@ root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
        
 Display inventory
 ^^^^^^^^^^^^^^^^^
-
-.. index:: single: variable iocage_ip4_dict; Example 018
-.. index:: single: iocage_ip4_dict; Example 018
 
 .. literalinclude:: out/out-06.txt
     :language: yaml

@@ -8,6 +8,18 @@ Extending example 016.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: inventory community.general.iocage; Example 017
+.. index:: single: playbook pb-iocage-obsolete.yml; Example 017
+.. index:: single: option compose; Example 017
+.. index:: single: compose; Example 017
+.. index:: single: option groups; Example 017
+
+Use case
+^^^^^^^^
+
+Use the `inventory plugin community.general.iocage`_ instead of the `inventory plugin
+vbotka.freebsd.iocage`_.
+
 Tree
 ^^^^
 
@@ -20,14 +32,11 @@ Tree
    │   ├── 01_iocage.yml
    │   ├── 02_iocage.yml
    │   └── 03_constructed.yml
-   ├── pb-obsolete.yml
+   ├── pb-iocage-obsolete.yml
    └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
-
-.. index:: single: inventory community.general.iocage; Example 017
-.. index:: single: playbook pb-obsolete.yml; Example 017
 
 The inventory plugin *community.general.iocage* should provide the same functionality.
 
@@ -38,9 +47,9 @@ The inventory plugin *community.general.iocage* should provide the same function
    *community.general.iocage* provides the same functionality compare
    the hash from *setup/vars/chcksum.yml* with the
    *community.general.iocage* hash. Run the included playbook
-   *pb-obsolete.yml* ::
+   *pb-iocage-obsolete.yml* ::
 
-     shell> ansible-playbook pb-obsolete.yml
+     shell> ansible-playbook pb-iocage-obsolete.yml
 
    If the versions are different you'll see a warning similar to this one ::
 
@@ -62,7 +71,7 @@ The inventory plugin *community.general.iocage* should provide the same function
 
      shell> ANSIBLE_DISPLAY_OK_HOSTS=false \
             ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-	    ansible-playbook pb-obsolete.yml
+	    ansible-playbook pb-iocage-obsolete.yml
 
      PLAY [Test inventory plugin version.] ****************************************
 
@@ -77,6 +86,12 @@ Notes
    * See ::
 
        shell> ansible-doc -t inventory community.general.iocage
+
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
 
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,3 +124,7 @@ Playbook output
 
 .. literalinclude:: out/out-01.txt
     :language: bash
+
+
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _inventory plugin community.general.iocage: https://docs.ansible.com/ansible/latest/collections/community/general/iocage_inventory.html

@@ -8,6 +8,31 @@ Extending example 010.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: module vbotka.freebsd.iocage; Example 013
+.. index:: single: inventory vbotka.freebsd.iocage; Example 013
+.. index:: single: property notes; Example 013
+.. index:: single: notes; Example 013
+.. index:: single: variable iocage_tags; Example 013
+.. index:: single: iocage_tags; Example 013
+.. index:: single: option compose; Example 013
+.. index:: single: compose; Example 013
+.. index:: single: option keyed_groups; Example 013
+.. index:: single: keyed_groups; Example 013
+.. index:: single: option get_properties; Example 013
+.. index:: single: get_properties; Example 013
+.. index:: single: variable iocage_properties; Example 013
+.. index:: single: iocage_properties; Example 013
+.. index:: single: variable iocage_tags; Example 013
+.. index:: single: iocage_tags; Example 013
+
+Use case
+^^^^^^^^
+
+Use the property *notes* to create tags:
+
+  * Add the property ``notes: "vmm={{ inventory_hostname }}"``
+  * In the inventory plugin, compose the variable *iocage_tags*
+  * In the inventory plugin, create groups *vmm_\** from the attribute iocage_tags.vmm*
 
 Tree
 ^^^^
@@ -32,20 +57,8 @@ Tree
    ├── pb-iocage-clone.yml
    └── pb-test.yml
 
-
 Synopsis
 ^^^^^^^^
-
-.. index:: single: property notes; Example 013
-.. index:: single: notes; Example 013
-.. index:: single: variable iocage_tags; Example 013
-.. index:: single: iocage_tags; Example 013
-
-* Use the property *notes* to create tags:
-
-  * Add the property ``notes: "vmm={{ inventory_hostname }}"``
-  * In the inventory plugin, compose the variable *iocage_tags*
-  * In the inventory plugin, create groups *vmm_\** from the attribute iocage_tags.vmm*
 
 * On two iocage hosts:
 
@@ -73,12 +86,8 @@ Synopsis
   * display hosts, composed variables, and groups.
   * comment on hosts potentially overriding each other silently.
 
-
 Requirements
 ^^^^^^^^^^^^
-
-.. index:: single: module vbotka.freebsd.iocage; Example 013
-.. index:: single: inventory vbotka.freebsd.iocage; Example 013
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
@@ -86,13 +95,14 @@ Requirements
 * activated `binary iocage`_
 * fetched releases.
 
-hosts/01_iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. index:: single: option get_properties; Example 013
-.. index:: single: get_properties; Example 013
-.. index:: single: variable iocage_properties; Example 013
-.. index:: single: iocage_properties; Example 013
+.. literalinclude:: ansible.cfg
+    :language: ini
+
+hosts/01_iocage.yml
+^^^^^^^^^^^^^^^^^^^
 
 Enable ``get_properties: True`` to create the dictionary *iocage_properties*. Then, the dictionary
 *iocage_tags* can be created from *iocage_properties.notes*
@@ -102,7 +112,7 @@ Enable ``get_properties: True`` to create the dictionary *iocage_properties*. Th
     :emphasize-lines: 6,12,21
 
 hosts/02_iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 Enable `'get_properties: True'`
 
@@ -118,9 +128,6 @@ host_vars/iocage_01/iocage.yml
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. index:: single: variable iocage_tags; Example 013
-.. index:: single: iocage_tags; Example 013
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml

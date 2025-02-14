@@ -6,6 +6,20 @@
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: playbook pb-iocage-fetch-base-clone.yml; Example 100
+.. index:: single: playbook pb-iocage-list.yml; Example 100
+.. index:: single: module ansible.builtin.add_host; Example 100
+.. index:: single: role vbotka.freebsd.iocage; Example 100
+.. index:: single: tasks runner.yml; Example 100
+.. index:: single: variable freebsd_iocage_runner_cmd; Example 100
+.. index:: single: variable freebsd_iocage_runner_exec; Example 100
+
+Use case
+^^^^^^^^
+
+Fetch releases, create basejails, clone from the basejails, and start the jails. Create and display
+the inventory. Use the `role vbotka.freebsd.iocage`_ instead of the :ref:`ug_plugins`.
+
 Tree
 ^^^^
 
@@ -26,11 +40,6 @@ Tree
 
 Synopsis
 ^^^^^^^^
-
-.. index:: single: role vbotka.freebsd.iocage; Example 100
-
-This example demonstrates a functionality similar to that of :ref:`example_010`. But, the `role
-vbotka.freebsd.iocage`_ is used instead of the plugins.
 
 * On two iocage hosts:
 
@@ -63,6 +72,9 @@ Requirements
 
 Notes
 ^^^^^
+
+* This example demonstrates a functionality similar to that of :ref:`example_010`.
+* The `role vbotka.freebsd.iocage`_ is preinstalled in this collection.
 
 .. seealso::
 

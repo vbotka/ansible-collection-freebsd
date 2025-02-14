@@ -8,6 +8,16 @@ Extending example 100.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: custom facts; Example 101
+.. index:: single: filter vbotka.freebsd.iocage; Example 101
+.. index:: single: role vbotka.freebsd.iocage; Example 101
+
+Use case
+^^^^^^^^
+
+Create custom facts to provide a dictionary of iocage datasets lists. Use the `filter
+vbotka.freebsd.iocage`_ to parse them.
+
 Tree
 ^^^^
 
@@ -28,16 +38,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-.. index:: single: custom facts; Example 101
-.. index:: single: filter vbotka.freebsd.iocage; Example 101
-.. index:: single: role vbotka.freebsd.iocage; Example 101
-
 * On two iocage hosts:
 
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage.yml*:
+  In the playbook *pb-iocage.yml* use the `role vbotka.freebsd.iocage`_ to:
 
   * create custom facts scripts.
 
@@ -49,20 +55,18 @@ Synopsis
   * display the hosts and composed variables in the group *test*
   * display all groups.
 
-
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
 * `filter vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
-
+* root privilege on the iocage hosts.
+* jails created in previous examples.
 
 Notes
 ^^^^^
 
 * See `Adding custom facts <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts>`_
-
 	       
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,12 +86,6 @@ Configuration *ansible.cfg*
 .. literalinclude:: ansible.cfg
     :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-    :language: ini
-
 host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -99,6 +97,12 @@ host_vars/iocage_02/iocage.yml
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml
+
+Inventory *iocage-hosts.ini*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: ini
 
 Playbook *pb-iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^

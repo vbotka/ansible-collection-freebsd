@@ -8,6 +8,30 @@ Extending example :ref:`example_203`.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: template ansible_client; Example 206
+.. index:: single: ansible_client; Example 206
+.. index:: single: DHCP; Example 206
+.. index:: single: inventory vbotka.freebsd.iocage; Example 206
+.. index:: single: module vbotka.freebsd.iocage; Example 206
+.. index:: single: module ansible.builtin.command; Example 206
+.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 206
+.. index:: single: option compose; Example 206
+.. index:: single: compose; Example 206
+.. index:: single: option get_properties; Example 206
+.. index:: single: get_properties; Example 206
+.. index:: single: option hooks_results; Example 206
+.. index:: single: hooks_results; Example 206
+.. index:: single: property notes; Example 206
+.. index:: single: notes; Example 206
+.. index:: single: variable iocage_hooks; Example 206
+.. index:: single: iocage_hooks; Example 206
+.. index:: single: variable iocage_properties; Example 206
+.. index:: single: iocage_properties; Example 206
+.. index:: single: variable iocage_tags; Example 206
+.. index:: single: iocage_tags; Example 206
+.. index:: single: option iocage --short; Example 206
+.. index:: single: option iocage --template; Example 206
+
 Use case
 ^^^^^^^^
 
@@ -104,28 +128,6 @@ Tree
 Synopsis
 ^^^^^^^^
 
-.. index:: single: template ansible_client; Example 206
-.. index:: single: ansible_client; Example 206
-.. index:: single: DHCP; Example 206
-.. index:: single: inventory vbotka.freebsd.iocage; Example 206
-.. index:: single: module vbotka.freebsd.iocage; Example 206
-.. index:: single: module ansible.builtin.command; Example 206
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 206
-.. index:: single: option get_properties; Example 206
-.. index:: single: get_properties; Example 206
-.. index:: single: option hooks_results; Example 206
-.. index:: single: hooks_results; Example 206
-.. index:: single: property notes; Example 206
-.. index:: single: notes; Example 206
-.. index:: single: variable iocage_hooks; Example 206
-.. index:: single: iocage_hooks; Example 206
-.. index:: single: variable iocage_properties; Example 206
-.. index:: single: iocage_properties; Example 206
-.. index:: single: variable iocage_tags; Example 206
-.. index:: single: iocage_tags; Example 206
-.. index:: single: option iocage --short; Example 206
-.. index:: single: option iocage --template; Example 206
-
 * On one iocage hosts:
 
   * iocage_02
@@ -159,7 +161,6 @@ Requirements
 * activated *iocage*
 * fetched releases
 * templates created in example 205
-
 
 Notes
 ^^^^^

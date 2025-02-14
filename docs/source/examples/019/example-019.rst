@@ -8,6 +8,26 @@ Extending example 016.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: option use_vars_plugins; Example 019
+.. index:: single: use_vars_plugins; Example 019
+.. index:: single: inventory vbotka.freebsd.iocage; Example 019
+.. index:: single: inventory ansible.builtin.constructed; Example 019
+.. index:: single: option compose; Example 019
+.. index:: single: compose; Example 019
+.. index:: single: option groups; Example 019
+.. index:: single: groups; Example 019
+.. index:: single: vars plugin ansible.builtin.host_group_vars; Example 019
+
+Use case
+^^^^^^^^
+
+The option `use_vars_plugins`_, responsible for reading *host_vars* and *group_vars* directories, is
+not available in the `inventory plugin vbotka.freebsd.iocage`_ because the `constructed fragment`_
+doesn't provide it.
+
+* Use the inventory plugin `ansible.builtin.constructed`_ to read *group_vars*.
+* Use the variable *region* to create the groups *region_EU* and *region_US*.
+
 Tree
 ^^^^
 
@@ -31,26 +51,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-.. index:: single: option use_vars_plugins; Example 019
-.. index:: single: use_vars_plugins; Example 019
-.. index:: single: inventory vbotka.freebsd.iocage; Example 019
-.. index:: single: inventory ansible.builtin.constructed; Example 019
-
-* The option `use_vars_plugins`_, responsible for reading *host_vars* and *group_vars* directories, is
-  not available in the `inventory plugin vbotka.freebsd.iocage`_ because the `constructed fragment`_
-  doesn't provide it.
-
-* Use the inventory plugin `ansible.builtin.constructed`_ to read *group_vars*. Use the variable
-  *region* to create the groups *region_EU* and *region_US*.
-
-* The *iocage* plugin gets the jails(hosts):
+* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(hosts):
 
   * *test_101:103* from the host *iocage_01* 
   * *test_111:113* from the host *iocage_02* 
 
   and creates inventory groups *test_01* and *test_02*
 
-* The *constructed* plugin creates inventory groups:
+* The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
   * *test* including all hosts starting *'test'*
   * *test_up* including running hosts starting ‘test’
@@ -61,8 +69,6 @@ Notes
 ^^^^^
 
    * The inventory files in *hosts* are evaluated in alphabetical order.
-
-.. index:: single: vars plugin ansible.builtin.host_group_vars; Example 019
 
 .. seealso::
 

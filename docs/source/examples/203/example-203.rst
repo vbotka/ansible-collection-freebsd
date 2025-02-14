@@ -8,29 +8,53 @@ Extending example :ref:`example_202`.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: template ansible_client; Example 203
+.. index:: single: ansible_client; Example 203
+.. index:: single: DHCP; Example 203
+.. index:: single: inventory vbotka.freebsd.iocage; Example 203
+.. index:: single: module vbotka.freebsd.iocage; Example 203
+.. index:: single: module ansible.builtin.command; Example 203
+.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 203
+.. index:: single: option compose; Example 203
+.. index:: single: compose; Example 203
+.. index:: single: option get_properties; Example 203
+.. index:: single: get_properties; Example 203
+.. index:: single: option hooks_results; Example 203
+.. index:: single: hooks_results; Example 203
+.. index:: single: property notes; Example 203
+.. index:: single: notes; Example 203
+.. index:: single: variable iocage_hooks; Example 203
+.. index:: single: iocage_hooks; Example 203
+.. index:: single: variable iocage_properties; Example 203
+.. index:: single: iocage_properties; Example 203
+.. index:: single: variable iocage_tags; Example 203
+.. index:: single: iocage_tags; Example 203
+.. index:: single: option iocage --short; Example 203
+.. index:: single: option iocage --template; Example 203
+
 Use case
 ^^^^^^^^
 
 **Automatically generated UUID**
 
-In this example, the names of the jails are automatically generated UUID. At each iocage host three
-jails will be created from the template *ansible_client* ::
+Generate automatically the jails UUID names. At each iocage host three jails will be created from
+the template *ansible_client* ::
 
   swarms:
     sw_01:
       count: 3
       template: ansible_client
 
-The module *vbotka.freebsd.iocage* doesn't work with multiple names. We will use
-*ansible.builtin.command* instead. Such a task is not idempotent anyway if the UUID is generated
-automatically. Example of the commands ::
+The module *vbotka.freebsd.iocage* doesn't work with multiple names. Use *ansible.builtin.command*
+instead. If the UUID is generated automatically such a task is not idempotent anyway. Example of the
+commands ::
 
   iocage create --short --template ansible_client --count 3  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
   iocage start cd31c2a2 d254f889 158ef36d
 
 **The variable iocage_tags**
 
-The inventory plugin composes the variable *iocage_tags* ::
+In the inventory plugin, compose the variable *iocage_tags* ::
 
   iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
 
@@ -40,7 +64,7 @@ For example, ::
     vmm: iocage_01
     swarm: sw_01
 
-This option is used to create groups from *iocage_tags* ::
+Create groups from *iocage_tags* ::
 
   keyed_groups:
   - prefix: swarm
@@ -75,28 +99,6 @@ Tree
 
 Synopsis
 ^^^^^^^^
-
-.. index:: single: template ansible_client; Example 203
-.. index:: single: ansible_client; Example 203
-.. index:: single: DHCP; Example 203
-.. index:: single: inventory vbotka.freebsd.iocage; Example 203
-.. index:: single: module vbotka.freebsd.iocage; Example 203
-.. index:: single: module ansible.builtin.command; Example 203
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 203
-.. index:: single: option get_properties; Example 203
-.. index:: single: get_properties; Example 203
-.. index:: single: option hooks_results; Example 203
-.. index:: single: hooks_results; Example 203
-.. index:: single: property notes; Example 203
-.. index:: single: notes; Example 203
-.. index:: single: variable iocage_hooks; Example 203
-.. index:: single: iocage_hooks; Example 203
-.. index:: single: variable iocage_properties; Example 203
-.. index:: single: iocage_properties; Example 203
-.. index:: single: variable iocage_tags; Example 203
-.. index:: single: iocage_tags; Example 203
-.. index:: single: option iocage --short; Example 203
-.. index:: single: option iocage --template; Example 203
 
 * On two iocage hosts:
 
@@ -137,7 +139,7 @@ Requirements
 Notes
 ^^^^^
 
-Templates created in :ref:`example_202` are used in this example
+* Templates created in :ref:`example_202` are used in this example
 
 .. seealso::
 

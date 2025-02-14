@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs examples.
 
 
 0.6.0

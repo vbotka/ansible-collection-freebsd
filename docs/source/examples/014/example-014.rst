@@ -8,13 +8,53 @@ Extending example 010.
 .. contents:: Table of Contents
    :depth: 2
 
-Synopsis
+.. index:: single: inventory vbotka.freebsd.iocage; Example 014
+.. index:: single: option compose; Example 014
+.. index:: single: compose; Example 014
+.. index:: single: option keyed_groups; Example 014
+.. index:: single: keyed_groups; Example 014
+.. index:: single: option cache; Example 014
+.. index:: single: cache; Example 014
+.. index:: single: option cache_plugin; Example 014
+.. index:: single: cache_plugin; Example 014
+.. index:: single: option cache_prefix; Example 014
+.. index:: single: cache_prefix; Example 014
+.. index:: single: variable iocage_ip4_dict; Example 014
+.. index:: single: iocage_ip4_dict; Example 014
+
+Use case
 ^^^^^^^^
 
-.. index:: single: cache; Example 014
-.. index:: single: cache_plugin; Example 014
-
 Enable and test inventory cache.
+
+Tree
+^^^^
+
+::
+
+   shell> tree .
+   .
+   ├── ansible.cfg
+   ├── iocage.yml
+   └── pb-vars-ip4.yml
+
+Requirements
+^^^^^^^^^^^^
+
+* `inventory plugin vbotka.freebsd.iocage`_
+* jails created in :ref:`example_010`
+
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
+
+Inventory iocage.yml
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.yml
+    :language: yaml
 
 Playbook *pb-vars-ip4.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,9 +111,6 @@ the cache immediately
 Cache
 ^^^^^
 
-.. index:: single: variable iocage_ip4_dict; Example 014
-.. index:: single: iocage_ip4_dict; Example 014
-
 Take a look at the cache ::
 
   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_6a9dd
@@ -83,4 +120,5 @@ Take a look at the cache ::
 
 
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _Inventory plugins: https://docs.ansible.com/ansible/latest/plugins/inventory.html#inventory-plugins

@@ -8,10 +8,32 @@ Extending example :ref:`example_200`.
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: template ansible_client; Example 202
+.. index:: single: ansible_client; Example 202
+.. index:: single: DHCP; Example 202
+.. index:: single: dhclient; Example 202
+.. index:: single: dhclient-exit-hooks; Example 202
+.. index:: single: inventory vbotka.freebsd.iocage; Example 202
+.. index:: single: module vbotka.freebsd.iocage; Example 202
+.. index:: single: module community.general.pkgng; Example 202
+.. index:: single: module ansible.posix.authorized; Example 202
+.. index:: single: module ansible.builtin.lineinfile; Example 202
+.. index:: single: playbook pb-iocage-template.yml; Example 202
+.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 202
+.. index:: single: option compose; Example 202
+.. index:: single: compose; Example 202
+.. index:: single: option hooks_results; Example 202
+.. index:: single: hooks_results; Example 202
+.. index:: single: property notes; Example 202
+.. index:: single: notes; Example 202
+.. index:: single: sudoers; Example 202
+.. index:: single: variable iocage_hooks; Example 202
+.. index:: single: iocage_hooks; Example 202
+
 Use case
 ^^^^^^^^
 
-In this example, the jails get the IP addresses by DHCP. The *dhclient-exit-hooks* ::
+Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook::
 
   shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
   case "$reason" in
@@ -20,12 +42,12 @@ In this example, the jails get the IP addresses by DHCP. The *dhclient-exit-hook
       ;;
   esac
 
-create files. For example, ::
+creates files. For example, ::
 
   shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b 
   10.1.0.130
   
-The inventory plugin reads the files, created by the hooks, and uses the IP addresses to compose
+Read the files, created by the hooks, and uses the IP addresses to compose the variable
 *ansible_host* ::
 
   shell> cat hosts/01_iocage.yml 
@@ -69,27 +91,6 @@ Tree
 Synopsis
 ^^^^^^^^
 
-.. index:: single: template ansible_client; Example 202
-.. index:: single: ansible_client; Example 202
-.. index:: single: DHCP; Example 202
-.. index:: single: dhclient; Example 202
-.. index:: single: dhclient-exit-hooks; Example 202
-.. index:: single: inventory vbotka.freebsd.iocage; Example 202
-.. index:: single: module vbotka.freebsd.iocage; Example 202
-.. index:: single: module community.general.pkgng; Example 202
-.. index:: single: module ansible.posix.authorized; Example 202
-.. index:: single: module ansible.builtin.lineinfile; Example 202
-.. index:: single: playbook pb-iocage-template.yml; Example 202
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 202
-.. index:: single: option hooks_results; Example 202
-.. index:: single: hooks_results; Example 202
-.. index:: single: property notes; Example 202
-.. index:: single: notes; Example 202
-.. index:: single: sudoers; Example 202
-.. index:: single: variable iocage_hooks; Example 202
-.. index:: single: iocage_hooks; Example 202
-
-
 * On two iocage hosts:
 
   * iocage_01
@@ -117,7 +118,6 @@ Synopsis
   * connect created jails
   * display basic configuration of the jails.
 
-
 Requirements
 ^^^^^^^^^^^^
 
@@ -129,6 +129,11 @@ Requirements
 
 Notes
 ^^^^^
+
+* The option *hooks_results* expects the *poolname* of a jail to be mounted to */poolname*. For
+  example, if you activate the pool *zroot* this plugin expects to find the *hooks_results* items
+  in the path */zroot/iocage/jails/<name>/root*. If you mount the *poolname* to a different path
+  the easiest remedy is to create a symlink.
 
 .. seealso::
 
@@ -146,6 +151,14 @@ host_vars/iocage_01/iocage.yml
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
     :language: yaml
+
+.. hint::
+
+   The option *hooks_results* expects the *pool* to be mounted to */pool*. In the above *host_vars*
+   the pool *pool2* is mounted to */mnt/pool2*. For *hooks_results* to work properly, create symlink
+   in the root directory ::
+
+     pool2 -> /mnt/pool2
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
