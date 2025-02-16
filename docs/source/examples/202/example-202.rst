@@ -1,7 +1,7 @@
 .. _example_202:
 
-202 Create Ansible client templates and clone DHCP Ansible client jails.
-------------------------------------------------------------------------
+202 Create Ansible client templates and clone DHCP Ansible client jails
+-----------------------------------------------------------------------
 
 Extending example :ref:`example_200`.
 

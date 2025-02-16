@@ -17,20 +17,12 @@
   ansible.builtin.debug:
     var: iocage_jails
 
-- name: "Start: Set list of already started templates"
-  ansible.builtin.set_fact:
-    jails_started: "{{ iocage_jails | dict2items
-                                    | selectattr('value.state', 'eq', 'up')
-                                    | map(attribute='key') }}"
-
-- name: "Start: Display already started jails debug={{ debug }}"
-  when: debug | bool
-  ansible.builtin.debug:
-    var: jails_started
-
 - name: Start created templates
   when: _jails | length > 0
   vars:
+    jails_started: "{{ iocage_jails | dict2items
+                                    | selectattr('value.state', 'eq', 'up')
+                                    | map(attribute='key') }}"
     _jails: "{{ templates | difference(jails_started) }}"
   block:
 

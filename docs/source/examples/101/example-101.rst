@@ -1,7 +1,7 @@
 .. _example_101:
 
-101 Create custom facts.
-------------------------
+101 Create custom facts
+-----------------------
 
 Extending example 100.
 

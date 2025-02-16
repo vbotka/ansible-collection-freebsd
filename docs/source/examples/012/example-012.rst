@@ -1,7 +1,7 @@
 .. _example_012:
 
-012 Display iocage_properties.
-------------------------------
+012 Display iocage_properties
+-----------------------------
 
 Extending example 010.
 

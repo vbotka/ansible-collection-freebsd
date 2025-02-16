@@ -47,8 +47,8 @@
       import_tasks: pb-iocage-template/dhclient.yml
 
     - name: Configure /etc/rc.conf
-      when: act_rcconf | bool
-      tags: rc_conf
+      when: act_rcconf | length > 0
+      tags: rcconf
       import_tasks: pb-iocage-template/rc_conf.yml
 
     - name: Stop jails

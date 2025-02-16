@@ -1,31 +1,38 @@
 ---
-- name: "Pk: Configure public keys"
-  register: out
-  ansible.posix.authorized_key:
-    user: "{{ act_user }}"
-    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/home/{{ act_user }}/.ssh/authorized_keys"
-    key: "{{ lookup('file', act_pk) }}"
-  loop: "{{ templates | dict2items }}"
-  loop_control:
-    label: "{{ item.key }} {{ act_user }}"
+- name: Configure public keys
+  vars:
+    _act_user: "{{ item.value.act_user | d(act_user) }}"
+    _act_pk: "{{ item.value.act_pk | d(act_pk) }}"
+  block:
 
-- name: "Pk: Debug configure public keys debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out
+    - name: "Pk: Configure public keys"
+      register: out
+      ansible.posix.authorized_key:
+        user: "{{ _act_user }}"
+        path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/home/{{ _act_user }}/.ssh/authorized_keys"
+        key: "{{ lookup('file', _act_pk) }}"
+        exclusive: true
+      loop: "{{ templates | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ _act_user }}"
 
-- name: "Pk: Chown .ssh"
-  register: out
-  changed_when: false
-  vbotka.freebsd.iocage:
-    state: exec
-    name: "{{ item.key }}"
-    cmd: "chown -R {{ act_user }}:{{ act_user }} /home/{{ act_user }}/.ssh"
-  loop: "{{ templates | dict2items }}"
-  loop_control:
-    label: "{{ item.key }} {{ act_user }}"
+    - name: "Pk: Debug configure public keys debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
 
-- name: "Pk: Debug chown .ssh debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out
+    - name: "Pk: Chown .ssh"
+      register: out
+      changed_when: false
+      vbotka.freebsd.iocage:
+        state: exec
+        name: "{{ item.key }}"
+        cmd: "chown -R {{ _act_user }}:{{ _act_user }} /home/{{ _act_user }}/.ssh"
+      loop: "{{ templates | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ _act_user }}"
+
+    - name: "Pk: Debug chown .ssh debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

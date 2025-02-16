@@ -1,7 +1,7 @@
 .. _example_014:
 
-014 Inventory cache.
---------------------
+014 Inventory cache
+-------------------
 
 Extending example 010.
 

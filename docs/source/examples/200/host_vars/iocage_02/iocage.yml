@@ -8,15 +8,25 @@ freebsd_iocage_pool: zroot
 freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
-properties:
-  notes: "vmm={{ inventory_hostname }}"
-
 templates:
   ansible_client:
     release: 14.1-RELEASE
     properties:
       ip4_addr: 'em0|10.1.0.199/24'
     dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
+
+# ansible client template defaults
+act_pkg:
+  - security/sudo
+  - lang/python311
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  iocage_enable: '"YES"'
+  sshd_enable: '"YES"'
+act_dhclient: {}
 
 clones:
   test_111:
@@ -32,14 +42,8 @@ clones:
     properties:
       ip4_addr: 'em0|10.1.0.113/24'
 
-start: [test_111, test_112, test_113]
+# clones default properties
+properties:
+  notes: "vmm={{ inventory_hostname }}"
 
-# ansible client template
-act_pkg:
-  - security/sudo
-  - lang/python311
-act_user: admin
-act_pk: pk_admins.txt
-act_sudo: true
-act_rcconf: true
-act_dhclient: {}
+start: "{{ clones.keys() }}"

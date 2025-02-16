@@ -1,7 +1,7 @@
 .. _example_200:
 
-200 Create Ansible client templates and clone Ansible client jails.
--------------------------------------------------------------------
+200 Create Ansible client templates and clone Ansible client jails
+------------------------------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2

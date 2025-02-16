@@ -1,7 +1,7 @@
 .. _example_015:
 
-015 Multiple inventory cache.
------------------------------
+015 Multiple inventory cache
+----------------------------
 
 Extending example 014.
 

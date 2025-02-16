@@ -1,12 +1,15 @@
 ---
 - name: "Sudo: Configure sudo."
   register: out
+  vars:
+    _act_user: "{{ item.value.act_user | d(act_user) }}"
   ansible.builtin.lineinfile:
     path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/usr/local/etc/sudoers"
-    line: "{{ act_user }} ALL=(ALL) NOPASSWD: ALL"
+    line: "{{ _act_user }} ALL=(ALL) NOPASSWD: ALL"
+    backup: true
   loop: "{{ templates | dict2items }}"
   loop_control:
-    label: "{{ item.key }} {{ act_user }}"
+    label: "{{ item.key }} {{ _act_user }}"
 
 - name: "Sudo: Debug configure sudo debug2={{ debug2 }}"
   when: debug2 | bool

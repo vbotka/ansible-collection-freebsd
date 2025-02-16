@@ -1,7 +1,7 @@
 .. _example_206:
 
-206 Create DHCP and fixed IP jails from template.
--------------------------------------------------
+206 Create DHCP and fixed IP jails from template
+------------------------------------------------
 
 Extending example :ref:`example_203`.
 

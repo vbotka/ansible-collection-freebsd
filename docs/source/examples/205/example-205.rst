@@ -1,7 +1,7 @@
 .. _example_205:
 
-205 Create Ansible client templates v2.
----------------------------------------
+205 Create Ansible client templates v2
+--------------------------------------
 
 Extending example :ref:`example_202`.
 

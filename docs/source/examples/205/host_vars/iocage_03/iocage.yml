@@ -13,15 +13,18 @@ templates:
     properties:
       ip4_addr: 'ue0|10.1.0.197/24'
     dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
 
-# ansible client template
+# ansible client template defaults
 act_pkg:
   - security/sudo
   - lang/python311
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
-act_rcconf: true
+act_rcconf:
+  iocage_enable: '"YES"'
+  sshd_enable: '"YES"'
 act_dhclient:
   dhclient-exit-hooks: |
     case "$reason" in

@@ -1,7 +1,7 @@
 .. _example_013:
 
-013 Tags and custom groups.
----------------------------
+013 Tags and custom groups
+--------------------------
 
 Extending example 010.
 
@@ -22,8 +22,6 @@ Extending example 010.
 .. index:: single: get_properties; Example 013
 .. index:: single: variable iocage_properties; Example 013
 .. index:: single: iocage_properties; Example 013
-.. index:: single: variable iocage_tags; Example 013
-.. index:: single: iocage_tags; Example 013
 
 Use case
 ^^^^^^^^
@@ -32,7 +30,7 @@ Use the property *notes* to create tags:
 
   * Add the property ``notes: "vmm={{ inventory_hostname }}"``
   * In the inventory plugin, compose the variable *iocage_tags*
-  * In the inventory plugin, create groups *vmm_\** from the attribute iocage_tags.vmm*
+  * In the inventory plugin, create groups *vmm_\** from the attribute *iocage_tags.vmm*
 
 Tree
 ^^^^

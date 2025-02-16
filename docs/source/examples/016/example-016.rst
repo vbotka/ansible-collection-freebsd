@@ -1,7 +1,7 @@
 .. _example_016:
 
-016 Multiple inventory constructed.
------------------------------------
+016 Multiple inventory constructed
+----------------------------------
 
 Extending example 015.
 

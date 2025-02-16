@@ -1,7 +1,7 @@
 .. _example_201:
 
-201 Display iocage lists and dictionaries.
-------------------------------------------
+201 Display iocage lists and dictionaries
+-----------------------------------------
 
 Extending example 200.
 

@@ -1,7 +1,7 @@
 .. _example_203:
 
-203 Create DHCP jails from template. Auto UUID, iocage_tags.
-------------------------------------------------------------
+203 Create DHCP jails from template. Auto UUID, iocage_tags
+-----------------------------------------------------------
 
 Extending example :ref:`example_202`.
 
