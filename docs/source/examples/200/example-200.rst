@@ -16,9 +16,16 @@
 .. index:: single: module ansible.posix.authorized; Example 200
 .. index:: single: module ansible.builtin.lineinfile; Example 200
 .. index:: single: sudoers; Example 200
+
 .. index:: single: option compose; Example 200
 .. index:: single: compose; Example 200
 .. index:: single: option groups; Example 200
+
+.. index:: single: act_pkg; Example 200
+.. index:: single: act_user; Example 200
+.. index:: single: act_pk; Example 200
+.. index:: single: act_sudo; Example 200
+.. index:: single: act_rcconf; Example 200
 
 Use case
 ^^^^^^^^

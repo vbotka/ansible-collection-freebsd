@@ -21,6 +21,13 @@ Extending example :ref:`example_202`.
 .. index:: single: property notes; Example 205
 .. index:: single: notes; Example 205
 
+.. index:: single: act_dhclient; Example 205
+.. index:: single: act_pkg; Example 205
+.. index:: single: act_user; Example 205
+.. index:: single: act_pk; Example 205
+.. index:: single: act_sudo; Example 205
+.. index:: single: act_rcconf; Example 205
+
 Use case
 ^^^^^^^^
 

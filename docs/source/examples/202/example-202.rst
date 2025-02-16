@@ -20,6 +20,7 @@ Extending example :ref:`example_200`.
 .. index:: single: module ansible.builtin.lineinfile; Example 202
 .. index:: single: playbook pb-iocage-template.yml; Example 202
 .. index:: single: playbook pb-iocage-ansible-clients.yml; Example 202
+
 .. index:: single: option compose; Example 202
 .. index:: single: compose; Example 202
 .. index:: single: option hooks_results; Example 202
@@ -29,6 +30,13 @@ Extending example :ref:`example_200`.
 .. index:: single: sudoers; Example 202
 .. index:: single: variable iocage_hooks; Example 202
 .. index:: single: iocage_hooks; Example 202
+
+.. index:: single: act_dhclient; Example 202
+.. index:: single: act_pkg; Example 202
+.. index:: single: act_user; Example 202
+.. index:: single: act_pk; Example 202
+.. index:: single: act_sudo; Example 202
+.. index:: single: act_rcconf; Example 202
 
 Use case
 ^^^^^^^^
