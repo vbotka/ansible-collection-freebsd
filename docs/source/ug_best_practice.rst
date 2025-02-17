@@ -3,6 +3,9 @@
 Best Practice
 *************
 
+.. contents:: Table of Contents
+   :depth: 3
+
 Topics:
 
 * The *iocage* binary is very complex.
@@ -48,3 +51,8 @@ Use cases:
 * Root is needed at iocage hosts to list the DHCP address.
 
   See the options *sudo* and *sudo_preserve_env* of the inventory plugin *iocage*
+
+iocage tags
+-----------
+
+TBD

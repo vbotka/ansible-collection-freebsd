@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Update docs.
+Update playbook pb-iocage-template and update docs.
 
 Major Changes
 -------------
@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update playbook pb-iocage-template.yml
-* Update docs examples.
+* Update docs examples and playbooks.
 
 Breaking Changes / Porting Guide
 --------------------------------
