@@ -1,13 +1,15 @@
 ---
 - name: "User: Create user"
   register: out
+  vars:
+    _act_user: "{{ item.value.act_user | d(act_user) }}"
   vbotka.freebsd.iocage:
     state: exec
     name: "{{ item.key }}"
-    cmd: "pw useradd -n {{ act_user }} -s /bin/sh -m"
+    cmd: "pw useradd -n {{ _act_user }} -s /bin/sh -m"
   loop: "{{ templates | dict2items }}"
   loop_control:
-    label: "{{ item.key }} {{ act_user }}"
+    label: "{{ item.key }} {{ _act_user }}"
   failed_when: not out.stderr | d('exists', true) is search('exists')
 
 - name: "User: Debug create user debug2={{ debug2 }}"

@@ -12,10 +12,10 @@ Examples
    :maxdepth: 1
    :caption: Table of Contents
 
-   001 Debug vars. Install iocage. <examples/001/example-001.rst>
-   002 Activate iocage. <examples/002/example-002.rst>
-   003 Audit iocage hosts. <examples/003/example-003.rst>
-   010 Clone basejails. Create inventory. <examples/010/example-010.rst>
+   001 Debug vars and install iocage <examples/001/example-001.rst>
+   002 Activate iocage <examples/002/example-002.rst>
+   003 Audit iocage hosts <examples/003/example-003.rst>
+   010 Clone jails and create inventory <examples/010/example-010.rst>
    examples/011/example-011
    examples/012/example-012
    examples/013/example-013
@@ -25,12 +25,12 @@ Examples
    017 community.general.iocage <examples/017/example-017>
    examples/018/example-018
    examples/019/example-019
-   100 Clone jails. Create inventory. <examples/100/example-100.rst>
+   100 Clone jails and create inventory <examples/100/example-100.rst>
    examples/101/example-101
-   200 Ansible client templates. <examples/200/example-200.rst>
-   201 Display iocage lists. <examples/201/example-201.rst>
-   202 DHCP Ansible client templates. <examples/202/example-202.rst>
-   203 DHCP, Auto UUID, iocage_tags. <examples/203/example-203>
-   204 DHCP, Auto UUID, iocage_tags v2. <examples/204/example-204>
-   205 DHCP Ansible client templates v2. <examples/205/example-205.rst>
-   206 DHCP and fixed IP Ansible clients. <examples/206/example-206.rst>
+   200 Ansible client templates <examples/200/example-200.rst>
+   201 Display iocage lists <examples/201/example-201.rst>
+   202 DHCP Ansible client templates <examples/202/example-202.rst>
+   203 DHCP, Auto UUID, iocage_tags <examples/203/example-203>
+   204 DHCP, Auto UUID, iocage_tags v2 <examples/204/example-204>
+   205 DHCP Ansible client templates v2 <examples/205/example-205.rst>
+   206 DHCP and fixed IP Ansible clients <examples/206/example-206.rst>

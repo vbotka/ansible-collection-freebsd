@@ -1,10 +1,17 @@
-.. _ug_playbooks_bsd:
+.. _ug_playbooks:
 
 Playbooks
 *********
 
-* pb-iocage-ansible-clients.yml
-* pb-iocage-template.yml
+.. toctree::
+   :maxdepth: 1
+   :caption: Table of Contents
+
+   playbooks/pb-iocage-template
+   playbooks/pb-iocage-ansible-clients
+
+Other playbooks
+---------------
 
 * pb_freebsd_custom_img.yml
 * pb_install_repos_from_git.yml

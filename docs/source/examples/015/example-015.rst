@@ -1,12 +1,31 @@
 .. _example_015:
 
-015 Multiple inventory cache.
------------------------------
+015 Multiple inventory cache
+----------------------------
 
 Extending example 014.
 
 .. contents:: Table of Contents
    :depth: 2
+
+.. index:: single: inventory vbotka.freebsd.iocage; Example 015
+.. index:: single: option compose; Example 015
+.. index:: single: compose; Example 015
+.. index:: single: option keyed_groups; Example 015
+.. index:: single: keyed_groups; Example 015
+.. index:: single: option cache; Example 015
+.. index:: single: cache; Example 015
+.. index:: single: option cache_plugin; Example 015
+.. index:: single: cache_plugin; Example 015
+.. index:: single: option cache_prefix; Example 015
+.. index:: single: cache_prefix; Example 015
+.. index:: single: variable iocage_ip4_dict; Example 015
+.. index:: single: iocage_ip4_dict; Example 015
+
+Use case
+^^^^^^^^
+
+Enabled cache in multiple inventory files.
 
 Tree
 ^^^^
@@ -21,16 +40,20 @@ Tree
    │   └── 02_iocage.yml
    └── pb-vars-ip4.yml
 
-Synopsis
-^^^^^^^^
+Requirements
+^^^^^^^^^^^^
 
-Cache enabled in multiple inventory files.
+* `inventory plugin vbotka.freebsd.iocage`_
+* jails created in :ref:`example_010`
+
+Configuration *ansible.cfg*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
 
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. index:: single: cache; Example 015
-.. index:: single: cache_prefix; Example 015
 
 Set unique *cache_prefix*
 
@@ -69,9 +92,6 @@ Playbook output
 Cache
 ^^^^^
 
-.. index:: single: variable iocage_ip4_dict; Example 015
-.. index:: single: iocage_ip4_dict; Example 015
-
 Take a look at the cache ::
 
   shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_7eb74
@@ -85,3 +105,6 @@ Take a look at the cache ::
 
 .. literalinclude:: out/out-03.txt
     :language: json
+
+
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

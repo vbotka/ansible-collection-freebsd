@@ -1,15 +1,12 @@
 ---
-- name: Set iocage_jails
-  block:
+- name: "Pkg: Get iocage list of jails."
+  register: out
+  changed_when: false
+  ansible.builtin.command: iocage list --long
 
-    - name: "Pkg: Get iocage list of jails."
-      register: out
-      changed_when: false
-      ansible.builtin.command: iocage list --long
-
-    - name: "Pkg: Set dictionary iocage_jails"
-      ansible.builtin.set_fact:
-        iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+- name: "Pkg: Set dictionary iocage_jails"
+  ansible.builtin.set_fact:
+    iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
 
 - name: "Pkg: Display iocage_jails debug={{ debug }}"
   when: debug | bool
@@ -18,10 +15,12 @@
 
 - name: "Pkg: Install packages"
   register: out
+  vars:
+    _act_pkg: "{{ item.value.act_pkg | d(act_pkg) }}"
   community.general.pkgng:
     use_globs: false
     jail: "{{ iocage_jails[item.key]['jid'] }}"
-    name: "{{ act_pkg }}"
+    name: "{{ _act_pkg }}"
   loop: "{{ templates | dict2items }}"
   loop_control:
     label: "{{ item.key }}"

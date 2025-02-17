@@ -1,12 +1,28 @@
 .. _example_201:
 
-201 Display iocage lists and dictionaries.
-------------------------------------------
+201 Display iocage lists and dictionaries
+-----------------------------------------
 
 Extending example 200.
 
 .. contents:: Table of Contents
    :depth: 2
+
+.. index:: single: playbook pb-iocage-display-lists.yml; Example 201
+.. index:: single: module vbotka.freebsd.iocage; Example 201
+.. index:: single: variable iocage_jails; Example 201
+.. index:: single: iocage_jails; Example 201
+.. index:: single: variable iocage_plugins; Example 201
+.. index:: single: iocage_plugins; Example 201
+.. index:: single: variable iocage_releases; Example 201
+.. index:: single: iocage_releases; Example 201
+.. index:: single: variable iocage_templates; Example 201
+.. index:: single: iocage_templates; Example 201
+
+Use case
+^^^^^^^^
+
+Create and display *iocage* lists and dictionaries.
 
 Tree
 ^^^^
@@ -22,16 +38,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-.. index:: single: playbook pb-iocage-display-lists.yml; Example 201
-.. index:: single: module vbotka.freebsd.iocage; Example 201
-
 * On two iocage hosts:
 
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-display-lists.yml*, use the module
-  *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage-display-lists.yml*, use the `module vbotka.freebsd.iocage`_ to:
 
   * create and display *iocage* lists and dictionaries.
 
@@ -113,3 +125,6 @@ Playbook output
 
 .. literalinclude:: out/out-01.txt
     :language: bash
+
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/

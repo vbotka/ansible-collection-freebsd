@@ -1,17 +1,44 @@
 .. _example_204:
 
-204 Create DHCP jails from template v2. Auto UUID, iocage_tags.
----------------------------------------------------------------
+204 Create DHCP jails from template v2. Auto UUID, iocage_tags
+--------------------------------------------------------------
 
-| Extending example :ref:`example_203`
+Extending example :ref:`example_203`
 
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: template ansible_client; Example 204
+.. index:: single: ansible_client; Example 204
+.. index:: single: DHCP; Example 204
+.. index:: single: filter vbotka.freebsd.iocage; Example 204
+.. index:: single: inventory vbotka.freebsd.iocage; Example 204
+.. index:: single: module ansible.builtin.command; Example 204
+.. index:: single: playbook pb-iocage-ansible-clients-v2.yml; Example 204
+.. index:: single: option get_properties; Example 204
+.. index:: single: get_properties; Example 204
+.. index:: single: option hooks_results; Example 204
+.. index:: single: hooks_results; Example 204
+.. index:: single: option compose; Example 204
+.. index:: single: compose; Example 204
+.. index:: single: option groups; Example 204
+.. index:: single: property notes; Example 204
+.. index:: single: notes; Example 204
+.. index:: single: variable iocage_jails; Example 204
+.. index:: single: iocage_jails; Example 204
+.. index:: single: variable iocage_hooks; Example 204
+.. index:: single: iocage_hooks; Example 204
+.. index:: single: variable iocage_properties; Example 204
+.. index:: single: iocage_properties; Example 204
+.. index:: single: variable iocage_tags; Example 204
+.. index:: single: iocage_tags; Example 204
+.. index:: single: option iocage --short; Example 204
+.. index:: single: option iocage --template; Example 204
+
 Use case
 ^^^^^^^^
 
-| Instead of the module *vbotka.freebsd.iocage* create the variable *iocage_jails* using the `filter vbotka.freebsd.iocage`_
+Instead of the module *vbotka.freebsd.iocage* create the variable *iocage_jails* using the `filter vbotka.freebsd.iocage`_
 
 .. literalinclude:: pb-iocage-ansible-clients/iocage_jails.yml
     :language: yaml
@@ -67,30 +94,6 @@ Tree
 
 Synopsis
 ^^^^^^^^
-
-.. index:: single: template ansible_client; Example 204
-.. index:: single: ansible_client; Example 204
-.. index:: single: DHCP; Example 204
-.. index:: single: filter vbotka.freebsd.iocage; Example 204
-.. index:: single: inventory vbotka.freebsd.iocage; Example 204
-.. index:: single: module ansible.builtin.command; Example 204
-.. index:: single: playbook pb-iocage-ansible-clients-v2.yml; Example 204
-.. index:: single: option get_properties; Example 204
-.. index:: single: get_properties; Example 204
-.. index:: single: option hooks_results; Example 204
-.. index:: single: hooks_results; Example 204
-.. index:: single: property notes; Example 204
-.. index:: single: notes; Example 204
-.. index:: single: variable iocage_jails; Example 204
-.. index:: single: iocage_jails; Example 204
-.. index:: single: variable iocage_hooks; Example 204
-.. index:: single: iocage_hooks; Example 204
-.. index:: single: variable iocage_properties; Example 204
-.. index:: single: iocage_properties; Example 204
-.. index:: single: variable iocage_tags; Example 204
-.. index:: single: iocage_tags; Example 204
-.. index:: single: option iocage --short; Example 204
-.. index:: single: option iocage --template; Example 204
 
 * On two iocage hosts:
 

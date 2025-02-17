@@ -1,13 +1,32 @@
 .. _example_205:
 
-205 Create Ansible client templates v2.
----------------------------------------
+205 Create Ansible client templates v2
+--------------------------------------
 
 Extending example :ref:`example_202`.
 
-
 .. contents:: Table of Contents
    :depth: 2
+
+.. index:: single: template ansible_client; Example 205
+.. index:: single: ansible_client; Example 205
+.. index:: single: DHCP; Example 205
+.. index:: single: dhclient; Example 205
+.. index:: single: dhclient-exit-hooks; Example 205
+.. index:: single: module vbotka.freebsd.iocage; Example 205
+.. index:: single: module community.general.pkgng; Example 205
+.. index:: single: module ansible.posix.authorized; Example 205
+.. index:: single: module ansible.builtin.lineinfile; Example 205
+.. index:: single: playbook pb-iocage-template.yml; Example 205
+.. index:: single: property notes; Example 205
+.. index:: single: notes; Example 205
+
+.. index:: single: act_dhclient; Example 205
+.. index:: single: act_pkg; Example 205
+.. index:: single: act_user; Example 205
+.. index:: single: act_pk; Example 205
+.. index:: single: act_sudo; Example 205
+.. index:: single: act_rcconf; Example 205
 
 Use case
 ^^^^^^^^
@@ -37,19 +56,6 @@ Tree
 
 Synopsis
 ^^^^^^^^
-
-.. index:: single: template ansible_client; Example 205
-.. index:: single: ansible_client; Example 205
-.. index:: single: DHCP; Example 205
-.. index:: single: dhclient; Example 205
-.. index:: single: dhclient-exit-hooks; Example 205
-.. index:: single: module vbotka.freebsd.iocage; Example 205
-.. index:: single: module community.general.pkgng; Example 205
-.. index:: single: module ansible.posix.authorized; Example 205
-.. index:: single: module ansible.builtin.lineinfile; Example 205
-.. index:: single: playbook pb-iocage-template.yml; Example 205
-.. index:: single: property notes; Example 205
-.. index:: single: notes; Example 205
 
 * On two iocage hosts:
 

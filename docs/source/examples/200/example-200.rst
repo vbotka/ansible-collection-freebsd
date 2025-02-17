@@ -1,10 +1,36 @@
 .. _example_200:
 
-200 Create Ansible client templates and clone Ansible client jails.
--------------------------------------------------------------------
+200 Create Ansible client templates and clone Ansible client jails
+------------------------------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2
+
+.. index:: single: template ansible_client; Example 200
+.. index:: single: ansible_client; Example 200
+.. index:: single: playbook pb-iocage-template.yml; Example 200
+.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 200
+.. index:: single: inventory vbotka.freebsd.iocage; Example 200
+.. index:: single: module vbotka.freebsd.iocage; Example 200
+.. index:: single: module community.general.pkgng; Example 200
+.. index:: single: module ansible.posix.authorized; Example 200
+.. index:: single: module ansible.builtin.lineinfile; Example 200
+.. index:: single: sudoers; Example 200
+
+.. index:: single: option compose; Example 200
+.. index:: single: compose; Example 200
+.. index:: single: option groups; Example 200
+
+.. index:: single: act_pkg; Example 200
+.. index:: single: act_user; Example 200
+.. index:: single: act_pk; Example 200
+.. index:: single: act_sudo; Example 200
+.. index:: single: act_rcconf; Example 200
+
+Use case
+^^^^^^^^
+
+Create templates for Ansible clients. 
 
 Tree
 ^^^^
@@ -32,25 +58,8 @@ Tree
    ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
    └── pb-test-01.yml
 
-
-Use case
-^^^^^^^^
-
-Create templates for Ansible clients. 
-
 Synopsis
 ^^^^^^^^
-
-.. index:: single: template ansible_client; Example 200
-.. index:: single: ansible_client; Example 200
-.. index:: single: playbook pb-iocage-template.yml; Example 200
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 200
-.. index:: single: inventory vbotka.freebsd.iocage; Example 200
-.. index:: single: module vbotka.freebsd.iocage; Example 200
-.. index:: single: module community.general.pkgng; Example 200
-.. index:: single: module ansible.posix.authorized; Example 200
-.. index:: single: module ansible.builtin.lineinfile; Example 200
-.. index:: single: sudoers; Example 200
 
 * On two iocage hosts:
 

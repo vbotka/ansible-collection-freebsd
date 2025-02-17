@@ -5,35 +5,24 @@ freebsd_iocage_pool: pool2
 freebsd_iocage_pool_mount: /mnt/pool2
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
-properties:
-  bpf: 1
-  dhcp: 1
-  vnet: 1
-  notes: "vmm={{ inventory_hostname }}"
-
 templates:
   ansible_client:
     release: 13.4-RELEASE
     properties:
       ip4_addr: 'vnet0|10.1.0.198/24'
     dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
 
-clones:
-  test_101: {clone_from: ansible_client}
-  test_102: {clone_from: ansible_client}
-  test_103: {clone_from: ansible_client}
-start: [test_101, test_102, test_103]
-swarms: {}
-
-# ansible client template
-
+# ansible client template defaults
 act_pkg:
   - security/sudo
   - lang/python39
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
-act_rcconf: true
+act_rcconf:
+  iocage_enable: '"YES"'
+  sshd_enable: '"YES"'
 act_dhclient:
   dhclient-enter-hooks: |
     echo "dhclient-enter-hooks: $interface $reason new_ip_address=$new_ip_address" >> /var/log/dhclient-hook.log
@@ -46,3 +35,17 @@ act_dhclient:
         echo $new_ip_address > /var/db/dhclient-hook.address.$interface
         ;;
     esac
+
+clones:
+  test_101: {clone_from: ansible_client}
+  test_102: {clone_from: ansible_client}
+  test_103: {clone_from: ansible_client}
+start: "{{ clones.keys() }}"
+swarms: {}
+
+# clones default properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  notes: "vmm={{ inventory_hostname }}"

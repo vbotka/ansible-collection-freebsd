@@ -5,6 +5,26 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.1
+=====
+
+Release Summary
+---------------
+Update playbook pb-iocage-template and update docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update playbook pb-iocage-template.yml
+* Update docs examples and playbooks.
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Updated playbook pb-iocage-template uses dictionary clones.
+
+
 0.6.0
 =====
 
@@ -27,8 +47,8 @@ Minor Changes
 
 Breaking Changes / Porting Guide
 --------------------------------
-* Updated playbook pb-iocage-template use dictionary templates
-* Updated playbook pb-iocage-ansible-clients use dictionaries clones
+* Updated playbook pb-iocage-template use dictionary templates.
+* Updated playbook pb-iocage-ansible-clients use dictionaries clones.
 
 
 0.5.5

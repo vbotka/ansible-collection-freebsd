@@ -1,20 +1,19 @@
 ---
-- name: "Rcconf: Configure iocage_enable /etc/rc.conf"
+- name: "Rcconf: Configure /etc/rc.conf"
+  register: out
   ansible.builtin.lineinfile:
-    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/etc/rc.conf"
-    regex: ^\s*iocage_enable\s*=(.*)$
-    line: iocage_enable="YES"
+    path: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/root/etc/rc.conf"
+    regex: '^\s*{{ item.1.key }}\s*=(.*)$'
+    line: '{{ item.1.key }}={{ item.1.value }}'
+    owner: root
+    group: wheel
+    mode: "0644"
     backup: true
-  loop: "{{ templates | dict2items }}"
+  loop: "{{ templates | dict2items | subelements('value.rcconf') }}"
   loop_control:
-    label: "{{ item.key }}"
+    label: "{{ item.0.key }} {{ item.1.key }} {{ item.1.value }}"
 
-- name: "Rcconf: Configure sshd_enable /etc/rc.conf"
-  ansible.builtin.lineinfile:
-    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/etc/rc.conf"
-    regex: ^\s*sshd_enable\s*=(.*)$
-    line: sshd_enable="YES"
-    backup: true
-  loop: "{{ templates | dict2items }}"
-  loop_control:
-    label: "{{ item.key }}"
+- name: "Rcconf: Debug configure /etc/rc.conf debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

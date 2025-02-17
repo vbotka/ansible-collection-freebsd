@@ -6,6 +6,19 @@
 .. contents:: Table of Contents
    :depth: 2
 
+.. index:: single: module vbotka.freebsd.iocage; Example 010
+.. index:: single: inventory vbotka.freebsd.iocage; Example 010
+.. index:: single: option compose; Example 010
+.. index:: single: compose; Example 010
+.. index:: single: option keyed_groups; Example 010
+.. index:: single: keyed_groups; Example 010
+
+Use case
+^^^^^^^^
+
+Fetch releases, create basejails, clone from the basejails, and start the jails. Use the `inventory
+plugin vbotka.freebsd.iocage`_ to create inventory. Display the created inventory.
+
 Tree
 ^^^^
 
@@ -50,9 +63,6 @@ Synopsis
 
 Requirements
 ^^^^^^^^^^^^
-
-.. index:: single: module vbotka.freebsd.iocage; Example 010
-.. index:: single: inventory vbotka.freebsd.iocage; Example 010
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_

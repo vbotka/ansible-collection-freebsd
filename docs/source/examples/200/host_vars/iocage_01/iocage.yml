@@ -6,17 +6,25 @@ freebsd_iocage_pool: pool2
 freebsd_iocage_pool_mount: /mnt/pool2
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
-properties:
-  vnet: 'on'
-  defaultrouter: 10.1.0.10
-  notes: "vmm={{ inventory_hostname }}"
-
 templates:
   ansible_client:
     release: 13.4-RELEASE
     properties:
       ip4_addr: 'vnet0|10.1.0.198/24'
     dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
+
+# ansible client template defaults
+act_pkg:
+  - security/sudo
+  - lang/python39
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  iocage_enable: '"YES"'
+  sshd_enable: '"YES"'
+act_dhclient: {}
 
 clones:
   test_101:
@@ -32,14 +40,10 @@ clones:
     properties:
       ip4_addr: 'vnet0|10.1.0.103/24'
 
-start: [test_101, test_102, test_103]
+# clones default properties
+properties:
+  vnet: 'on'
+  defaultrouter: 10.1.0.10
+  notes: "vmm={{ inventory_hostname }}"
 
-# ansible client template
-act_pkg:
-  - security/sudo
-  - lang/python39
-act_user: admin
-act_pk: pk_admins.txt
-act_sudo: true
-act_rcconf: true
-act_dhclient: {}
+start: "{{ clones.keys() }}"
