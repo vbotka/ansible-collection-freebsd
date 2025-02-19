@@ -17,9 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-
-Breaking Changes / Porting Guide
---------------------------------
+* Add docs chapter "iocage tags".
 
 
 0.6.1

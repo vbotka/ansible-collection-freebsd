@@ -114,15 +114,14 @@ The dictionary *properties* keeps the default properties for both options. For e
     vnet: 1
     notes: "vmm={{ inventory_hostname }}"
 
+.. seealso::
+
+   :ref:`ug_bp_iocage_tags`
+
 .. hint::
 
    Take a look at Index and search ``playbook pb-iocage-ansible-client.yml`` to see what examples
    are available.
-
-iocage tags
-^^^^^^^^^^^
-
-TBD
 
 Workflow
 ^^^^^^^^
