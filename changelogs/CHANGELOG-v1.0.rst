@@ -5,6 +5,21 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.2
+=====
+
+Release Summary
+---------------
+Update docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add docs chapter "iocage tags".
+
+
 0.6.1
 =====
 

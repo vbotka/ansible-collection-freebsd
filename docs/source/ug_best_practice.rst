@@ -14,45 +14,15 @@ Topics:
 
 * For use cases not covered by the module, use the *runner* tasks from the role *iocage*.
 
-Installation:
 
-* Install the package or port *sysutils/iocage*; (role:pkg)
+.. _ug_bp_installation:
+.. include:: ug_bp_installation.rst
 
-* Activate the *iocage* binary; (role:activate)
+.. _ug_bp_workflow:
+.. include:: ug_bp_workflow.rst
 
-* Configure *iocage*; (role:conf)
+.. _ug_bp_usecases:
+.. include:: ug_bp_usecases.rst
 
-* Audit the installation; (role:sanity)
-
-* Configure rc.conf and start/restart/stop/enable/disable *iocage*; (role:rcconf)
-
-Workflow:
-
-* Fetch release(s) and create basejail(s); (role:runner or module)
-
-* Create template(s); (role:data, role:runner, role:clean or module)
-
-* Clone and start jails; (role:runner or module)
-
-* Create dynamic inventory; (role:stat and *ansible.builtin.add_host* or inventory plugin)
-
-* Manage the jails by Ansible; (playbooks)
-
-
-Use cases:
-
-* No root at iocage hosts.
-
-  A user doesn't have root access at iocage host. Unprivileged access
-  is sufficient to run *'iocage list ...'* and create dynamic
-  inventory. This user then manages the jails with escalated privilege
-  (root). See example 031.
-
-* Root is needed at iocage hosts to list the DHCP address.
-
-  See the options *sudo* and *sudo_preserve_env* of the inventory plugin *iocage*
-
-iocage tags
------------
-
-TBD
+.. _ug_bp_iocage_tags:
+.. include:: ug_bp_iocage_tags.rst
