@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade roles: pf,
 
 
 0.6.2
