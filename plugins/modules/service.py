@@ -40,10 +40,8 @@ options:
     default: False
 notes:
   - Supports C(check_mode).
-
   - Set environment C(ANSIBLE_DEBUG=true) to enable the debug output. See RETURN
     VALUES C(module_args) in the registered output of the module.
-
   - To parse C(stdout) of C(rcvar) use the filter community.general.jc('ini').
 seealso:
   - name: man service
