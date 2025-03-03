@@ -37,7 +37,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Create swarms
+    - name: Create swarms # noqa: no-changed-when
       when:
         - not dry_run | bool
         - _count | int > 0
@@ -84,7 +84,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Start swarms
+    - name: Start swarms # noqa: no-changed-when
       when:
         - not dry_run | bool
         - _jails | length > 0
