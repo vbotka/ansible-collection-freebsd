@@ -55,6 +55,7 @@ seealso:
 '''
 
 EXAMPLES = r'''
+---
 - name: Get the apcupsd ON/OFF knob value.
   register: out
   vbotka.freebsd.service:
@@ -73,6 +74,7 @@ EXAMPLES = r'''
         apcupsd_enable="NO"
         #   (default: "")
 
+---
 - name: Status returns rc=1 when apcupsd is not running.
   register: out
   failed_when: out.rc > 1
@@ -91,6 +93,7 @@ EXAMPLES = r'''
     stdout: |-
         apcupsd is not running.
 
+---
 - name: Command returns rc=1 when apcupsd does not exist.
   register: out
   failed_when: out.rc > 1
@@ -110,6 +113,7 @@ EXAMPLES = r'''
         apcupsd does not exist in /etc/rc.d or the local startup
         directories (/usr/local/etc/rc.d), or is not executable
 
+---
 - name: Start apcupsd.
   register: out
   vbotka.freebsd.service:
@@ -125,6 +129,7 @@ EXAMPLES = r'''
     stdout: |-
         Starting apcupsd.
 
+---
 - name: List services that are enabled.
   register: out
   vbotka.freebsd.service:
@@ -143,6 +148,7 @@ EXAMPLES = r'''
         /etc/rc.d/cleanvar
         ...
 
+---
 - name: Get sshd_enable values from the jails.
   register: out
   vbotka.freebsd.service:
@@ -215,7 +221,6 @@ def run_module():
     list_enabled = p['list_enabled']
 
     cmd = f"{service_path}"
-
     if jail:
         cmd += f" -j {jail}"
 
@@ -223,7 +228,7 @@ def run_module():
     if list_enabled:
         cmd += " -e"
         if module.check_mode:
-            module.exit_json(changed=True, msg=f"Command \"{cmd}\" will be executed.")
+            module.exit_json(changed=True, msg=f"In check mode, command \"{cmd}\" would have run.")
         rc, out, err = module.run_command(to_bytes(cmd, errors='surrogate_or_strict'),
                                           errors='surrogate_or_strict')
         if rc != 0:
@@ -249,7 +254,7 @@ def run_module():
             module.fail_json(msg=f"Command is required for script {script}.")
         cmd += f" {script} {command}"
         if module.check_mode:
-            module.exit_json(changed=True, msg=f"Command \"{cmd}\" will be executed.")
+            module.exit_json(changed=True, msg=f"In check mode, command \"{cmd}\" would have run.")
         rc, out, err = module.run_command(to_bytes(cmd, errors='surrogate_or_strict'),
                                           errors='surrogate_or_strict')
         if rc != 0:

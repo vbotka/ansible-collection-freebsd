@@ -51,7 +51,7 @@ ansible_local:
 
 result: "{{ ansible_local.iocage | vbotka.freebsd.iocage }}"
 
-result:
+# result:
   jails:
     ansible_client:
       basejail: 'no'
@@ -87,6 +87,7 @@ result:
       type: jail
   releases:
     - 14.1-RELEASE
+
 ---
 # The type of the input must be a string if the option dataset is not None.
 # For example, the output of the command 'iocage list --long'
@@ -102,7 +103,7 @@ iocage_jails: |
 
 jails:: "{{ iocage_jails | vbotka.freebsd.iocage('jails') }}"
 
-jails:
+# jails:
     ansible_client:
         basejail: 'no'
         boot: 'off'
@@ -135,6 +136,7 @@ jails:
         state: down
         template: ansible_client
         type: jail
+
 ---
 # The type of the input must be a string if the option dataset is not None.
 # For example, the output of the command 'iocage list --release'
@@ -144,7 +146,7 @@ iocage_releases: |
 
 releases: "{{ iocage_releases | vbotka.freebsd.iocage('releases') }}"
 
-releases:
+# releases:
   - 14.1-RELEASE
 """
 
