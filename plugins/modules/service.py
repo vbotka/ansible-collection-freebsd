@@ -42,9 +42,10 @@ options:
     default: False
 notes:
   - Supports C(check_mode).
+  - To parse C(stdout) of C(rcvar) use the filter community.general.jc('ini').
   - Set environment C(ANSIBLE_DEBUG=true) to enable the debug output. See RETURN
     VALUES C(module_args) in the registered output of the module.
-  - To parse C(stdout) of C(rcvar) use the filter community.general.jc('ini').
+  - Options C(-l), C(-R), C(-r), and C(-v) are not implemented.
 seealso:
   - name: man service
     description: service -- control (start/stop/etc.) or list system services
