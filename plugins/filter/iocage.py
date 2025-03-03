@@ -51,7 +51,60 @@ ansible_local:
 
 result: "{{ ansible_local.iocage | vbotka.freebsd.iocage }}"
 
-# result:
+gives:
+  result:
+    jails:
+      ansible_client:
+        basejail: 'no'
+        boot: 'off'
+        ip4: 10.1.0.199
+        ip4_dict:
+          ip4:
+            - ifc: em0
+              ip: 10.1.0.199
+              mask: '24'
+          msg: ''
+        ip6: '-'
+        jid: None
+        release: 14.1-RELEASE-p6
+        state: down
+        template: '-'
+        type: jail
+      test_111:
+        basejail: 'no'
+        boot: 'off'
+        ip4: 10.1.0.111
+        ip4_dict:
+          ip4:
+            - ifc: em0
+              ip: 10.1.0.111
+              mask: '24'
+          msg: ''
+        ip6: '-'
+        jid: None
+        release: 14.1-RELEASE-p6
+        state: down
+        template: ansible_client
+        type: jail
+    releases:
+      - 14.1-RELEASE
+
+---
+# The type of the input must be a string if the option dataset is not None.
+# For example, the output of the command 'iocage list --long'
+
+iocage_jails: |
+  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+  | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
+  +======+================+======+=======+======+=================+===================+=====+================+==========+
+  | None | ansible_client | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -              | no       |
+  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+  | None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
+  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+
+jails: "{{ iocage_jails | vbotka.freebsd.iocage('jails') }}"
+
+gives:
   jails:
     ansible_client:
       basejail: 'no'
@@ -85,57 +138,6 @@ result: "{{ ansible_local.iocage | vbotka.freebsd.iocage }}"
       state: down
       template: ansible_client
       type: jail
-  releases:
-    - 14.1-RELEASE
-
----
-# The type of the input must be a string if the option dataset is not None.
-# For example, the output of the command 'iocage list --long'
-
-iocage_jails: |
-  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-  | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
-  +======+================+======+=======+======+=================+===================+=====+================+==========+
-  | None | ansible_client | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -              | no       |
-  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-  | None | test_111       | off  | down  | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
-  +------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-
-jails:: "{{ iocage_jails | vbotka.freebsd.iocage('jails') }}"
-
-# jails:
-    ansible_client:
-        basejail: 'no'
-        boot: 'off'
-        ip4: 10.1.0.199
-        ip4_dict:
-            ip4:
-              - ifc: em0
-                ip: 10.1.0.199
-                mask: '24'
-            msg: ''
-        ip6: '-'
-        jid: None
-        release: 14.1-RELEASE-p6
-        state: down
-        template: '-'
-        type: jail
-    test_111:
-        basejail: 'no'
-        boot: 'off'
-        ip4: 10.1.0.111
-        ip4_dict:
-            ip4:
-              - ifc: em0
-                ip: 10.1.0.111
-                mask: '24'
-            msg: ''
-        ip6: '-'
-        jid: None
-        release: 14.1-RELEASE-p6
-        state: down
-        template: ansible_client
-        type: jail
 
 ---
 # The type of the input must be a string if the option dataset is not None.
@@ -146,8 +148,9 @@ iocage_releases: |
 
 releases: "{{ iocage_releases | vbotka.freebsd.iocage('releases') }}"
 
-# releases:
-  - 14.1-RELEASE
+gives:
+  releases:
+    - 14.1-RELEASE
 """
 
 RETURN = r"""
@@ -256,7 +259,7 @@ def _get_plugins(data):
 
 
 def _get_releases(data):
-    """ Parse the output of 'ocage list --release --header'
+    """ Parse the output of 'iocage list --release --header'
     """
 
     result = data.splitlines()
