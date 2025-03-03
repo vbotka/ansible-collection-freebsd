@@ -17,10 +17,12 @@ options:
   script:
     description:
       - rc.d script name.
+      - This option is required if O(list_enabled) is V(False) (default).
     type: str
   command:
     description:
       - rc.d script command.
+      - This option is required if O(script) is required.
     type: str
   env:
     description:
@@ -176,6 +178,24 @@ EXAMPLES = r'''
       sshd_enable: 'YES'
     149:
       sshd_enable: 'YES'
+
+---
+- name: Option script is required if list_enabled=false (default).
+  vbotka.freebsd.service:
+    list_enabled: false
+
+# fatal: [test_23]: FAILED! =>
+#   changed: false
+#   msg: Script is required.
+
+---
+- name: Option command is required if script is required.
+  vbotka.freebsd.service:
+    script: sshd
+
+# fatal: [test_23]: FAILED! =>
+#   changed: false
+#   msg: Command is required for script sshd.
 '''
 
 RETURN = r'''
