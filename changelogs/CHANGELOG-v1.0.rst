@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add module vbotka.freebsd.service
 * Upgrade roles: pf,
 
 
