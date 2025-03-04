@@ -11,12 +11,10 @@
                                   | selectattr('value.state', 'eq', 'up')
                                   | map(attribute='value.jid') }}"
     jail_rcvar: "{{ dict(keys | zip(vals)) }}"
-    keys: "{{ service_out.results
-              | map(attribute='item') }}"
-    vals: "{{ service_out.results
-              | map(attribute='stdout')
-              | map('community.general.jc', 'ini') }}"                                    
-    
+    keys: "{{ service_out.results | map(attribute='item') }}"
+    vals: "{{ service_out.results | map(attribute='stdout')
+                                  | map('community.general.jc', 'ini') }}"
+
   tasks:
 
     - name: Get iocage list of jails
