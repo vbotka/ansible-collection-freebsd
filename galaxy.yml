@@ -1,7 +1,7 @@
 ---
 name: freebsd
 namespace: vbotka
-version: 0.6.3
+version: 0.6.4
 readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
