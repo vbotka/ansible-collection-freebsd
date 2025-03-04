@@ -1,0 +1,7 @@
+(env) > ansible-inventory -i hosts --graph
+@all:
+  |--@ungrouped:
+  |--@up:
+  |  |--afa9e515
+  |  |--c1670497
+  |  |--test_111

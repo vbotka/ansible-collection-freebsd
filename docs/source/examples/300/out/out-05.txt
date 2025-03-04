@@ -1,0 +1,27 @@
+(env) > ansible-playbook pb-test-03.yml -i iocage-hosts.ini -l iocage_02
+
+PLAY [Test module vbotka.freebsd.service. Set dictionary jail_service_enabled.] ****************
+
+TASK [Get iocage list of jails] ****************************************************************
+ok: [iocage_02]
+
+TASK [Jails service list enabled] **************************************************************
+changed: [iocage_02] => (item=149)
+changed: [iocage_02] => (item=148)
+changed: [iocage_02] => (item=147)
+
+TASK [ansible.builtin.debug] *******************************************************************
+skipping: [iocage_02]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_02] => 
+    jail_service_enabled | to_yaml: |-
+        '147': [cleanvar, cleartmp, cron, motd, newsyslog, os-release, sshd, syslogd, utx,
+          virecover]
+        '148': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
+          sshd, syslogd, utx, virecover]
+        '149': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
+          sshd, syslogd, utx, virecover]
+
+PLAY RECAP *************************************************************************************
+iocage_02: ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0

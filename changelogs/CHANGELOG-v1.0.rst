@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Update docs.
+Add module vbotka.freebsd.service. Update docs.
 
 Major Changes
 -------------
@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Add module vbotka.freebsd.service
-* Upgrade roles: pf,
+* Upgrade role pf.
 
 
 0.6.2
