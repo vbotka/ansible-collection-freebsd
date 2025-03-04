@@ -21,11 +21,14 @@ dependencies:
 build_ignore:
   - TODO
   - ATTIC
+  - dest
   - playbooks/sensitive
-  - '.git/'
-  - '.gitignore'
+  - '.ansible'
   - '.ansible-lint'
   - '.ansible-lint.local'
+  - '.git'
+  - '.github'
+  - '.gitignore'
   - '.readthedocs.yaml'
   - '.yamllint'
   - '*.orig'
