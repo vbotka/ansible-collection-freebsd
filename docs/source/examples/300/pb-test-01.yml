@@ -1,0 +1,21 @@
+- name: Test module vbotka.freebsd.service. Get running jails sshd rcvar.
+  hosts: up
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    sshd_rcvar: "{{ out.stdout | community.general.jc('ini') }}"
+    
+  tasks:
+
+    - vbotka.freebsd.service:
+        script: sshd
+        command: rcvar
+      register: out
+
+    - ansible.builtin.debug:
+        var: out.stdout
+
+    - ansible.builtin.debug:
+        var: sshd_rcvar

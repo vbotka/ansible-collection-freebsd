@@ -29,7 +29,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Stop swarms
+    - name: Stop swarms # noqa: no-changed-when
       when:
         - not dry_run | d(true) | bool
         - _jails_started | length > 0
@@ -53,7 +53,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Destroy swarms
+    - name: Destroy swarms # noqa: no-changed-when
       when:
         - not dry_run | d(true) | bool
         - _swarm_exist | length > 0

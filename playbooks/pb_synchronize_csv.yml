@@ -88,12 +88,12 @@
 
         - name: Display debug
           vars:
-            query: "[?dest == '{{ inventory_hostname }}']"
+            _query: "[?dest == '{{ inventory_hostname }}']"
           ansible.builtin.debug:
             msg: |
               rsync {{ item.file }}
               from {{ item.src }} to {{ inventory_hostname }}
-          loop: "{{ my_list | json_query(query) }}"
+          loop: "{{ my_list | json_query(_query) }}"
 
         - name: End host
           ansible.builtin.meta: end_host
@@ -103,7 +103,7 @@
 
         - name: Rsync
           vars:
-            query: "[?dest == '{{ inventory_hostname }}']"
+            _query: "[?dest == '{{ inventory_hostname }}']"
           register: my_result
           delegate_to: "{{ item.src }}"
           ansible.posix.synchronize:
@@ -133,7 +133,7 @@
             times: "{{ my_times | d(omit) }}"
             use_ssh_args: "{{ my_use_ssh_args | d(omit) }}"
             verify_host: "{{ my_verify_host | d(omit) }}"
-          loop: "{{ my_list | json_query(query) }}"
+          loop: "{{ my_list | json_query(_query) }}"
 
       rescue:
 

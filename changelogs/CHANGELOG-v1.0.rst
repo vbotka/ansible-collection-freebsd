@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.3
+=====
+
+Release Summary
+---------------
+Add module vbotka.freebsd.service. Update docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add module vbotka.freebsd.service
+* Upgrade role pf.
+
+
 0.6.2
 =====
 

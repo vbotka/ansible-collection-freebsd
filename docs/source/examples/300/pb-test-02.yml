@@ -1,0 +1,52 @@
+- name: Test module vbotka.freebsd.service. Set dictionary jail_rcvar.
+  hosts: iocage
+  remote_user: admin
+
+  vars:
+
+    debug: false
+    ansible_python_interpreter: auto_silent
+    iocage_jails: "{{ iocage_list_out.stdout | vbotka.freebsd.iocage('jails') }}"
+    iocage_jids: "{{ iocage_jails | dict2items
+                                  | selectattr('value.state', 'eq', 'up')
+                                  | map(attribute='value.jid') }}"
+    jail_rcvar: "{{ dict(keys | zip(vals)) }}"
+    keys: "{{ service_out.results
+              | map(attribute='item') }}"
+    vals: "{{ service_out.results
+              | map(attribute='stdout')
+              | map('community.general.jc', 'ini') }}"                                    
+    
+  tasks:
+
+    - name: Get iocage list of jails
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+      register: iocage_list_out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
+    - ansible.builtin.debug:
+        var: iocage_list_out
+      when: debug | bool
+
+    - ansible.builtin.debug:
+        var: iocage_jails | to_yaml
+
+    - ansible.builtin.debug:
+        var: iocage_jids | to_yaml
+
+    - name: Jails service sshd rcvar
+      register: service_out
+      vbotka.freebsd.service:
+        jail: "{{ item }}"
+        script: sshd
+        command: rcvar
+      loop: "{{ iocage_jids }}"
+
+    - ansible.builtin.debug:
+        var: service_out
+      when: debug | bool
+
+    - ansible.builtin.debug:
+        var: jail_rcvar
