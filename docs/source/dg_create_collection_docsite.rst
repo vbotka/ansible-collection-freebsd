@@ -9,7 +9,7 @@ For example, given the collection is installed in the directory ::
 
   ~/.ansible/collections/ansible_collections/vbotka/freebsd/
 
-Create the collection docsite
+Create the collection docsite in this directory
 
 .. code:: bash
 
