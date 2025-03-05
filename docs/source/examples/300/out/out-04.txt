@@ -1,16 +1,56 @@
-(env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini -l iocage_02
+(env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
 
-PLAY [Test module vbotka.freebsd.service. Set dictionary jail_rcvar.] **************************
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_rcvar.] ***************************
 
-TASK [Get iocage list of jails] ****************************************************************
+TASK [Get iocage list of jails.] ***************************************************************
 ok: [iocage_02]
 
 TASK [ansible.builtin.debug] *******************************************************************
-skipping: [iocage_02]
+ok: [iocage_02] =>
+    iocage_list_out:
+        ansible_facts:
+            discovered_interpreter_python: /usr/local/bin/python3.11
+        changed: false
+        cmd:
+        - iocage
+        - list
+        - --long
+        delta: '0:00:02.680638'
+        end: '2025-03-05 04:08:37.508761'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2025-03-05 04:08:34.828123'
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
+            +=====+==========+======+=======+======+=================+====================+=====+================+==========+
+            | 149 | afa9e515 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.122 | -   | ansible_client | no       |
+            +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | 148 | c1670497 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.135 | -   | ansible_client | no       |
+            +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | 147 | test_111 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24  | -   | ansible_client | no       |
+            +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+        stdout_lines:
+        - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+        - '| JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         |
+            IP6 |    TEMPLATE    | BASEJAIL |'
+        - +=====+==========+======+=======+======+=================+====================+=====+================+==========+
+        - '| 149 | afa9e515 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.122
+            | -   | ansible_client | no       |'
+        - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+        - '| 148 | c1670497 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.135
+            | -   | ansible_client | no       |'
+        - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+        - '| 147 | test_111 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24  |
+            -   | ansible_client | no       |'
+        - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 TASK [ansible.builtin.debug] *******************************************************************
-ok: [iocage_02] => 
-    iocage_jails | to_yaml: |-
+ok: [iocage_02] =>
+    jails | to_yaml: |-
         afa9e515:
           basejail: 'no'
           boot: 'off'
@@ -56,20 +96,100 @@ ok: [iocage_02] =>
 
 TASK [ansible.builtin.debug] *******************************************************************
 ok: [iocage_02] => 
-    iocage_jids | to_yaml: |-
+    jids | to_yaml: |-
         ['149', '148', '147']
 
-TASK [Jails service sshd rcvar] ****************************************************************
+TASK [Jails service sshd rcvar.] ***************************************************************
 changed: [iocage_02] => (item=149)
 changed: [iocage_02] => (item=148)
 changed: [iocage_02] => (item=147)
 
 TASK [ansible.builtin.debug] *******************************************************************
-skipping: [iocage_02]
+ok: [iocage_02] =>
+    service_out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    command: rcvar
+                    env: null
+                    jail: '149'
+                    list_enabled: false
+                    script: sshd
+            item: '149'
+            rc: 0
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="YES"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="YES"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    command: rcvar
+                    env: null
+                    jail: '148'
+                    list_enabled: false
+                    script: sshd
+            item: '148'
+            rc: 0
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="YES"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="YES"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    command: rcvar
+                    env: null
+                    jail: '147'
+                    list_enabled: false
+                    script: sshd
+            item: '147'
+            rc: 0
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="YES"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="YES"
+            - '#   (default: "")'
+            - ''
+        skipped: false
 
 TASK [ansible.builtin.debug] *******************************************************************
-ok: [iocage_02] => 
-    jail_rcvar:
+ok: [iocage_02] =>
+    jid_rcvar:
         '147':
             sshd_enable: 'YES'
         '148':
@@ -78,4 +198,4 @@ ok: [iocage_02] =>
             sshd_enable: 'YES'
 
 PLAY RECAP *************************************************************************************
-iocage_02: ok=5    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+iocage_02: ok=7    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

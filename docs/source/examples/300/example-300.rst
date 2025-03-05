@@ -39,8 +39,8 @@ Synopsis
 ^^^^^^^^
 
 * Playbook  pb-test-01.yml: display sshd rcvar on all running jails.
-* Playbook  pb-test-02.yml: display sshd rcvar on jails running at iocage host.
-* Playbook  pb-test-03.yml: display enabled services on jails running at iocage host.
+* Playbook  pb-test-02.yml: display sshd rcvar on jails running at the iocage host.
+* Playbook  pb-test-03.yml: display enabled services on jails running at the iocage host.
 
 
 Requirements
@@ -49,11 +49,13 @@ Requirements
 * `module vbotka.freebsd.service`_
 * `filter vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* running jails at iocage_02.
+* running jails at the iocage host.
 
 
 Notes
 ^^^^^
+
+* Jail name doesn't work in iocage jails. Use JID instead.
 
 .. seealso::
 
@@ -114,8 +116,8 @@ Playbook *pb-test-02.yml*
 .. literalinclude:: pb-test-02.yml
     :language: yaml
 
-Playbook output. Set dictionary jail_rcvar.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output. Set dictionary jid_rcvar.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-04.txt
     :language: yaml
@@ -126,8 +128,8 @@ Playbook *pb-test-03.yml*
 .. literalinclude:: pb-test-03.yml
     :language: yaml
 
-Playbook output. Set dictionary jail_service_enabled.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output. Set dictionary jid_service_enabled.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-05.txt
     :language: yaml

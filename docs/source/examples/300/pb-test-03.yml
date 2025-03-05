@@ -1,4 +1,4 @@
-- name: Test module vbotka.freebsd.service. Set dictionary jail_service_enabled.
+- name: Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.
   hosts: iocage
   remote_user: admin
 
@@ -6,11 +6,11 @@
 
     debug: false
     ansible_python_interpreter: auto_silent
-    iocage_jails: "{{ iocage_list_out.stdout | vbotka.freebsd.iocage('jails') }}"
-    iocage_jids: "{{ iocage_jails | dict2items
-                                  | selectattr('value.state', 'eq', 'up')
-                                  | map(attribute='value.jid') }}"
-    jail_service_enabled: "{{ dict(keys | zip(vals)) }}"
+    jails: "{{ iocage_list_out.stdout | vbotka.freebsd.iocage('jails') }}"
+    jids: "{{ jails | dict2items
+                    | selectattr('value.state', 'eq', 'up')
+                    | map(attribute='value.jid') }}"
+    jid_service_enabled: "{{ dict(keys | zip(vals)) }}"
     keys: "{{ service_out.results | map(attribute='item') }}"
     vals: "{{ service_out.results | map(attribute='stdout_lines')
                                   | map('map', 'basename') }}"
@@ -29,11 +29,11 @@
       vbotka.freebsd.service:
         jail: "{{ item }}"
         list_enabled: true
-      loop: "{{ iocage_jids }}"
+      loop: "{{ jids }}"
 
     - ansible.builtin.debug:
         var: service_out
       when: debug | bool
 
     - ansible.builtin.debug:
-        var: jail_service_enabled | to_yaml
+        var: jid_service_enabled | to_yaml

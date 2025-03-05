@@ -9,7 +9,8 @@
     
   tasks:
 
-    - vbotka.freebsd.service:
+    - name: Get sshd rcvar.
+      vbotka.freebsd.service:
         script: sshd
         command: rcvar
       register: out
