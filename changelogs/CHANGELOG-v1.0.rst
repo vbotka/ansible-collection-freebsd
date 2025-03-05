@@ -10,12 +10,19 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Maintenance incl. docs update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Update module iocage
+* Update docs DG Create Collection Docsite.
+* Fix link in example 300
+* Fix module service documentation.
+* Update build_ignore in galaxy.yml
+* Update README.
 
 
 0.6.3
