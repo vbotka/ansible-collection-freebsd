@@ -33,7 +33,7 @@ options:
     description:
       - Perform the given actions under the named jail.
       - The O(jail) value can be either a jail ID or a jail name.
-      - Jail name doesn't work in c(iocage) jails. Use JID.
+      - Jail name doesn't work in C(iocage) jails. Use JID.
     type: str
   list_enabled:
     description:
