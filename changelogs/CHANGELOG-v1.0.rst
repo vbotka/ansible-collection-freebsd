@@ -5,6 +5,25 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.5
+=====
+
+Release Summary
+---------------
+Upgrade module service incl. docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+* Upgrade module service; Add option synopsis; Parse rcvar and status output and
+  return the results.
+* Update docs example 300.
+* Upgrade role pf to 2.7.3
+
+
 0.6.4
 =====
 

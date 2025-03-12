@@ -1,0 +1,66 @@
+shell> ansible-playbook pb-test-05.yml -i iocage-hosts.ini -l iocage_02
+
+PLAY [Test module vbotka.freebsd.service. Get script commands synopsis.] ***********************
+
+TASK [Get iocage list of jails] ****************************************************************
+ok: [iocage_02]
+
+TASK [Jails sshd commands synopsis] ************************************************************
+changed: [iocage_02]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_02] => 
+    script_commands:
+        changed: true
+        failed: false
+        rc: 0
+        stderr: |-
+            Usage: /etc/rc.d/sshd [fast|force|one|quiet]
+                                  (start|stop|restart|rcvar|enable|disable|delete|enabled|describe|
+                                   extracommands|configtest|keygen|reload|status|poll)
+        stderr_lines:
+        - 'Usage: /etc/rc.d/sshd [fast|force|one|quiet]
+                                 (start|stop|restart|rcvar|enable|disable|delete|enabled|describe|
+                                 extracommands|configtest|keygen|reload|status|poll)'
+        stdout: ''
+        stdout_lines: []
+        synopsis:
+            cmds:
+            - start
+            - stop
+            - restart
+            - rcvar
+            - enable
+            - disable
+            - delete
+            - enabled
+            - describe
+            - extracommands
+            - configtest
+            - keygen
+            - reload
+            - status
+            - poll
+            prefix:
+            - fast
+            - force
+            - one
+            - quiet
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_02] => 
+    commands | to_yaml: |-
+        [start, stop, restart, rcvar, enable, disable, delete, enabled, describe, extracommands,
+          configtest, keygen, reload, status, poll, faststart, faststop, fastrestart, fastrcvar,
+          fastenable, fastdisable, fastdelete, fastenabled, fastdescribe, fastextracommands,
+          fastconfigtest, fastkeygen, fastreload, faststatus, fastpoll, forcestart, forcestop,
+          forcerestart, forcercvar, forceenable, forcedisable, forcedelete, forceenabled,
+          forcedescribe, forceextracommands, forceconfigtest, forcekeygen, forcereload, forcestatus,
+          forcepoll, onestart, onestop, onerestart, onercvar, oneenable, onedisable, onedelete,
+          oneenabled, onedescribe, oneextracommands, oneconfigtest, onekeygen, onereload,
+          onestatus, onepoll, quietstart, quietstop, quietrestart, quietrcvar, quietenable,
+          quietdisable, quietdelete, quietenabled, quietdescribe, quietextracommands, quietconfigtest,
+          quietkeygen, quietreload, quietstatus, quietpoll]
+
+PLAY RECAP *************************************************************************************
+iocage_02: ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

@@ -8,19 +8,19 @@ changed: [test_111]
 changed: [afa9e515]
 
 TASK [ansible.builtin.debug] ******************************************************************
-ok: [afa9e515] => 
+ok: [afa9e515] =>
     out.stdout: |-
         # sshd : Secure Shell Daemon
         #
         sshd_enable="YES"
         #   (default: "")
-ok: [c1670497] => 
+ok: [c1670497] =>
     out.stdout: |-
         # sshd : Secure Shell Daemon
         #
         sshd_enable="YES"
         #   (default: "")
-ok: [test_111] => 
+ok: [test_111] =>
     out.stdout: |-
         # sshd : Secure Shell Daemon
         #
@@ -38,7 +38,18 @@ ok: [c1670497] =>
     sshd_rcvar:
         sshd_enable: 'YES'
 
+TASK [ansible.builtin.debug] ******************************************************************
+ok: [afa9e515] =>
+    out.rcvar:
+        sshd_enable: '"YES"'
+ok: [c1670497] =>
+    out.rcvar:
+        sshd_enable: '"YES"'
+ok: [test_111] =>
+    out.rcvar:
+        sshd_enable: '"YES"'
+
 PLAY RECAP ************************************************************************************
-afa9e515: ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-c1670497: ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_111: ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+afa9e515: ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+c1670497: ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+test_111: ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
