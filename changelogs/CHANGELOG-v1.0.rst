@@ -5,6 +5,19 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.6
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 0.6.5
 =====
 
@@ -17,7 +30,6 @@ Major Changes
 
 Minor Changes
 -------------
-
 * Upgrade module service; Add option synopsis; Parse rcvar and status output and
   return the results.
 * Update docs example 300.
