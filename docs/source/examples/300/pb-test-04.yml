@@ -1,0 +1,38 @@
+- name: Test module vbotka.freebsd.service. Set dictionary jid_service_status.
+  hosts: iocage
+  remote_user: admin
+
+  vars:
+
+    debug: false
+    ansible_python_interpreter: auto_silent
+    jails: "{{ iocage_list_out.stdout | vbotka.freebsd.iocage('jails') }}"
+    jids: "{{ jails | dict2items
+                    | selectattr('value.state', 'eq', 'up')
+                    | map(attribute='value.jid') }}"
+    jid_service_status: "{{ dict(service_out.results
+                                 | community.general.json_query('[].[item, status]')) }}"
+
+  tasks:
+
+    - name: Get iocage list of jails
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+      register: iocage_list_out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
+    - name: Jails sshd status
+      register: service_out
+      vbotka.freebsd.service:
+        jail: "{{ item }}"
+        script: sshd
+        command: status
+      loop: "{{ jids }}"
+
+    - ansible.builtin.debug:
+        var: service_out
+      when: debug | bool
+
+    - ansible.builtin.debug:
+        var: jid_service_status | to_nice_yaml

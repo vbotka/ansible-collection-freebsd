@@ -32,15 +32,24 @@ Tree
    ├── iocage-hosts.ini
    ├── pb-test-01.yml
    ├── pb-test-02.yml
-   └── pb-test-03.yml
+   ├── pb-test-03.yml
+   ├── pb-test-04.yml
+   ├── pb-test-05.yml
+   └── pb-test-06.yml
 
 
 Synopsis
 ^^^^^^^^
 
 * Playbook  pb-test-01.yml: display sshd rcvar on all running jails.
-* Playbook  pb-test-02.yml: display sshd rcvar on jails running at the iocage host.
-* Playbook  pb-test-03.yml: display enabled services on jails running at the iocage host.
+
+At iocage_02 jails:
+
+  * Playbook pb-test-02.yml: display sshd rcvar.
+  * Playbook pb-test-03.yml: display enabled services.
+  * Playbook pb-test-04.yml: display sshd status.
+  * Playbook pb-test-05.yml: display sshd commands synopsis.
+  * Playbook pb-test-06.yml: display sendmail rcvars.
 
 
 Requirements
@@ -128,10 +137,46 @@ Playbook *pb-test-03.yml*
 .. literalinclude:: pb-test-03.yml
     :language: yaml
 
-Playbook output. Set dictionary jid_service_enabled.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output. Display enabled services.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-05.txt
+    :language: yaml
+
+Playbook *pb-test-04.yml*
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-04.yml
+    :language: yaml
+
+Playbook output. Display sshd status.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-06.txt
+    :language: yaml
+
+Playbook *pb-test-05.yml*
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-05.yml
+    :language: yaml
+
+Playbook output. Display sshd commands synopsis.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-07.txt
+    :language: yaml
+
+Playbook *pb-test-06.yml*
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-06.yml
+    :language: yaml
+
+Playbook output. Display sendmail rcvars.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-08.txt
     :language: yaml
 
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/

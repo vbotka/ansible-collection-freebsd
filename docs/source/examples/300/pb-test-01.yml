@@ -20,3 +20,6 @@
 
     - ansible.builtin.debug:
         var: sshd_rcvar
+
+    - ansible.builtin.debug:
+        var: out.rcvar

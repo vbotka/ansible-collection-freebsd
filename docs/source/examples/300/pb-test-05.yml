@@ -1,0 +1,38 @@
+- name: Test module vbotka.freebsd.service. Get script commands synopsis.
+  hosts: iocage
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    jails: "{{ iocage_list_out.stdout | vbotka.freebsd.iocage('jails') }}"
+    jids: "{{ jails | dict2items
+                    | selectattr('value.state', 'eq', 'up')
+                    | map(attribute='value.jid') }}"
+
+    commands: "{{ script_commands.synopsis.cmds +
+                  script_commands.synopsis.prefix
+                  | product(script_commands.synopsis.cmds)
+                  | map('join') }}"
+
+  tasks:
+
+    - name: Get iocage list of jails
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+      register: iocage_list_out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
+    - name: Jails sshd commands synopsis
+      register: script_commands
+      vbotka.freebsd.service:
+        jail: "{{ jids.0 }}"
+        script: sshd
+        synopsis: true
+
+    - ansible.builtin.debug:
+        var: script_commands
+
+    - ansible.builtin.debug:
+        var: commands | to_yaml

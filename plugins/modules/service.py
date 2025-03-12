@@ -40,6 +40,12 @@ options:
       - List enabled services.
     type: bool
     default: False
+  synopsis:
+    description:
+      - Get script commands synopsis.
+    type: bool
+    default: False
+    version_added: 0.6.5
 notes:
   - Supports C(check_mode).
   - To parse C(stdout) of C(rcvar) use the filter community.general.jc('ini').
@@ -57,23 +63,31 @@ seealso:
 
 EXAMPLES = r'''
 ---
-- name: Get the apcupsd ON/OFF knob value.
+- name: Get the sshd ON/OFF knob value.
   register: out
   vbotka.freebsd.service:
-    script: apcupsd
+    script: sshd
     command: rcvar
 
   out:
     changed: true
     failed: false
     rc: 0
+    rcvar:
+      sshd_enable: '"YES"'
     stderr: ''
     stderr_lines: []
     stdout: |-
-        # apcupsd
+        # sshd : Secure Shell Daemon
         #
-        apcupsd_enable="NO"
+        sshd_enable="YES"
         #   (default: "")
+    stdout_lines:
+      - '# sshd : Secure Shell Daemon'
+      - '#'
+      - sshd_enable="YES"
+      - '#   (default: "")'
+      - ''
 
 ---
 - name: Status returns rc=1 when apcupsd is not running.
@@ -150,6 +164,48 @@ EXAMPLES = r'''
         ...
 
 ---
+- name: Git script sshd commands synopsis.
+  register: out
+  vbotka.freebsd.service:
+    script: sshd
+    synoposis: true
+
+  out:
+    changed: true
+    failed: false
+    rc: 0
+    stderr: |-
+        Usage: /etc/rc.d/sshd [fast|force|one|quiet] \
+                              (start|stop|restart|rcvar|enable|disable|delete|enabled|describe|extracommands|configtest|keygen|reload|status|poll)
+    stderr_lines:
+      - 'Usage: /etc/rc.d/sshd [fast|force|one|quiet] \
+                               (start|stop|restart|rcvar|enable|disable|delete|enabled|describe|extracommands|configtest|keygen|reload|status|poll)'
+    stdout: ''
+    stdout_lines: []
+    synopsis:
+      cmds:
+        - start
+        - stop
+        - restart
+        - rcvar
+        - enable
+        - disable
+        - delete
+        - enabled
+        - describe
+        - extracommands
+        - configtest
+        - keygen
+        - reload
+        - status
+        - poll
+      prefix:
+        - fast
+        - force
+        - one
+        - quiet
+
+---
 - name: Get sshd_enable values from the jails.
   register: out
   vbotka.freebsd.service:
@@ -206,6 +262,7 @@ module_args:
   type: dict
 '''
 
+import itertools
 import json
 
 from ansible.module_utils.basic import AnsibleModule
@@ -213,8 +270,43 @@ from ansible.module_utils._text import to_bytes
 
 
 def _command_fail(module, label, cmd, rc, stdout, stderr):
-    '''Command fail. Create output and terminate module.'''
+    '''Command fail. Create output and terminate module.
+    '''
     module.fail_json(msg=f"{label}", rc=rc, stdout=f"{stdout}", stderr=f"{stderr}")
+
+
+def _command_output_parse(script, command, out):
+    '''Parse command output.
+    '''
+    if command == 'rcvar':
+        lines = out.splitlines()
+        return {k: v for i in lines if i and not i.startswith('#') for k, v in [i.split('=')]}
+
+    if command == 'status':
+        if out.startswith(script + ' is not running'):
+            return 'stopped'
+        if out.startswith(script + ' is running'):
+            return 'running'
+        else:
+            return 'unknown'
+    return 'Not parsed. See module vbotka.freebsd.service.py'
+
+
+def _script_commands_parse(module, script_path, out):
+    '''Parse script commands. Expecting out form
+       Usage: /etc/rc.d/sshd [fast|force|one|quiet](start|stop|restart)
+    '''
+    line = out.splitlines()
+    if len(line) > 1:
+        module.fail_json(msg=f"Expecting a single line output from {script_path}.")
+    arr = line[0].split(' ')
+    # TODO: test arr items
+    synopsis = arr[2].split('](')
+    prefix = synopsis[0][1:].split('|')
+    cmds = synopsis[1][:-1].split('|')
+    commands = cmds.copy()
+    commands.extend((''.join(c) for c in itertools.product(prefix, cmds)))
+    return (commands, cmds, prefix)
 
 
 def run_module():
@@ -224,7 +316,8 @@ def run_module():
         command=dict(type='str'),
         env=dict(type='dict'),
         jail=dict(type='str'),
-        list_enabled=dict(type='bool', default=False),)
+        list_enabled=dict(type='bool', default=False),
+        synopsis=dict(type='bool', default=False),)
 
     module = AnsibleModule(argument_spec=module_args, supports_check_mode=True)
 
@@ -238,6 +331,7 @@ def run_module():
     env = p['env']
     jail = p['jail']
     list_enabled = p['list_enabled']
+    synopsis = p['synopsis']
 
     cmd = f"{service_path}"
     if jail:
@@ -265,28 +359,60 @@ def run_module():
     # Run rc.d script.
     if script is None:
         module.fail_json(msg="Script is required.")
-    else:
-        if env:
-            _env = ' '.join((f"-E {k}={v}" for k, v in env.items()))
-            cmd += f" {_env}"
-        if command is None:
-            module.fail_json(msg=f"Command is required for script {script}.")
-        cmd += f" {script} {command}"
-        if module.check_mode:
-            module.exit_json(changed=True, msg=f"In check mode, command \"{cmd}\" would have run.")
-        rc, out, err = module.run_command(to_bytes(cmd, errors='surrogate_or_strict'),
-                                          errors='surrogate_or_strict')
-        if rc != 0:
-            _command_fail(module, "Command failed.", cmd, rc, out, err)
-        else:
-            result = dict(changed=True,
-                          rc=rc,
-                          stdout=out,
-                          stderr=err,
-                          )
+
+    script_path = module.get_bin_path(f"/etc/rc.d/{script}", True)
+    if not script_path:
+        script_path = module.get_bin_path(f"/usr/local/etc/rc.d/{script}", True)
+        if not script_path:
+            module.fail_json(msg=f"Script {script} not found.")
+
+    if env:
+        _env = ' '.join((f"-E {k}={v}" for k, v in env.items()))
+        cmd += f" {_env}"
+
+    rc, out, err = module.run_command(to_bytes(script_path, errors='surrogate_or_strict'),
+                                      errors='surrogate_or_strict')
+    if rc > 1:
+        _command_fail(module, "Command failed.", script_path, rc, out, err)
+
+    commands, cmds, prefix = _script_commands_parse(module, script_path, err)
+
+    if synopsis:
+        result = dict(changed=True,
+                      rc=0,
+                      stdout=out,
+                      stderr=err,
+                      synopsis=dict(prefix=prefix,
+                                    cmds=cmds)
+                      )
         if module._debug:
             result['module_args'] = f"{(json.dumps(module.params, indent=2))}"
         module.exit_json(**result)
+
+    if command is None:
+        module.fail_json(msg=f"Command is required for script {script}.")
+
+    if command not in commands:
+        module.fail_json(msg=f"Command {command} not in {commands} for {script_path}.")
+
+    cmd += f" {script} {command}"
+    if module.check_mode:
+        module.exit_json(changed=True, msg=f"In check mode, command \"{cmd}\" would have run.")
+    rc, out, err = module.run_command(to_bytes(cmd, errors='surrogate_or_strict'),
+                                      errors='surrogate_or_strict')
+    if rc != 0:
+        _command_fail(module, "Command failed.", cmd, rc, out, err)
+    else:
+        result = dict(changed=True,
+                      rc=rc,
+                      stdout=out,
+                      stderr=err,
+                      )
+        result[command] = _command_output_parse(script, command, out)
+
+    if module._debug:
+        result['module_args'] = f"{(json.dumps(module.params, indent=2))}"
+    module.exit_json(**result)
 
 
 def main():
