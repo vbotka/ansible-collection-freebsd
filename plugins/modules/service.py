@@ -47,8 +47,11 @@ options:
     default: False
     version_added: 0.6.5
 notes:
+  - Commands C(rcvar) and C(status) return parsed output.
   - Supports C(check_mode).
-  - To parse C(stdout) of C(rcvar) use the filter community.general.jc('ini').
+  - The module always returns C(changed=False).
+  - The module ignores C(rc=1). For example, the binary C(service) returns
+    C(rc=1) for C(status not running). This is not an error in this module.
   - Set environment C(ANSIBLE_DEBUG=true) to enable the debug output. See RETURN
     VALUES C(module_args) in the registered output of the module.
   - Options C(-l), C(-R), C(-r), and C(-v) are not implemented.
@@ -168,7 +171,7 @@ EXAMPLES = r'''
   register: out
   vbotka.freebsd.service:
     script: sshd
-    synoposis: true
+    synopsis: true
 
   out:
     changed: true
@@ -347,7 +350,7 @@ def run_module():
         if rc != 0:
             _command_fail(module, "Command failed.", cmd, rc, out, err)
         else:
-            result = dict(changed=True,
+            result = dict(changed=False,
                           rc=rc,
                           stdout='\n'.join(sorted(out.splitlines())),
                           stderr=err,
@@ -372,14 +375,15 @@ def run_module():
 
     rc, out, err = module.run_command(to_bytes(script_path, errors='surrogate_or_strict'),
                                       errors='surrogate_or_strict')
+    # A script without any argument returns rc=1
     if rc > 1:
         _command_fail(module, "Command failed.", script_path, rc, out, err)
 
     commands, cmds, prefix = _script_commands_parse(module, script_path, err)
 
     if synopsis:
-        result = dict(changed=True,
-                      rc=0,
+        result = dict(changed=False,
+                      rc=0,  # We ignore rc=1. No argument is not an error here.
                       stdout=out,
                       stderr=err,
                       synopsis=dict(prefix=prefix,
@@ -400,11 +404,12 @@ def run_module():
         module.exit_json(changed=True, msg=f"In check mode, command \"{cmd}\" would have run.")
     rc, out, err = module.run_command(to_bytes(cmd, errors='surrogate_or_strict'),
                                       errors='surrogate_or_strict')
-    if rc != 0:
+    # The binary service returns rc=1 if status is 'not running'.
+    if rc > 1:
         _command_fail(module, "Command failed.", cmd, rc, out, err)
     else:
-        result = dict(changed=True,
-                      rc=rc,
+        result = dict(changed=False,
+                      rc=0,  # We ignore rc=1. Status 'not running' is not an error here.
                       stdout=out,
                       stderr=err,
                       )

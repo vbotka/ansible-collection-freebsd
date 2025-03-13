@@ -10,13 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Update module service.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
-
+* Update module service. Always return changed=False. Ignore rc=1.
 
 0.6.5
 =====
