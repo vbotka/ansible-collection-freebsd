@@ -1,0 +1,74 @@
+- name: Test module vbotka.freebsd.service. Start apcupsd.
+  hosts: iocage_03
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    start_cmd: "{{ rcvar.rcvar.apcupsd_enable | bool | ternary('start', 'onestart') }}"
+    
+  tasks:
+
+    - name: Get apcupsd rcvar.
+      register: rcvar
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: rcvar
+
+    - ansible.builtin.debug:
+        msg: |
+          rcvar.rcvar: {{ rcvar.rcvar }}
+          start_cmd: {{ start_cmd }}
+
+      # 500ms is enough to complete 'service apcupsd (one)start'.
+      # The status before and after the command are different and dictionary status is returned.
+      # As a result, the module returns 'changed: true'
+    - name: Start apcupsd. By default wait 500ms to complete the command.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: "{{ start_cmd }}"
+
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Get apcupsd status.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: status
+
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Stop apcupsd. By default wait 500ms to complete the command.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: stop
+
+    - ansible.builtin.debug:
+        var: out
+
+      # 200ms is not enough to complete 'service apcupsd (one)start'.
+      # The status before and after the command do not change and are not returned.
+      # As a result, the module returns 'changed: false'
+      # The service apcupsd is started. See the next status.
+    - name: Start apcupsd. Wait 200ms to complete the command.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: "{{ start_cmd }}"
+        wait: 0.2
+
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Get apcupsd status.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: status
+
+    - ansible.builtin.debug:
+        var: out

@@ -35,7 +35,8 @@ Tree
    ├── pb-test-03.yml
    ├── pb-test-04.yml
    ├── pb-test-05.yml
-   └── pb-test-06.yml
+   ├── pb-test-06.yml
+   └── pb-test-07.yml
 
 
 Synopsis
@@ -45,11 +46,15 @@ Synopsis
 
 At iocage_02 jails:
 
-  * Playbook pb-test-02.yml: display sshd rcvar.
-  * Playbook pb-test-03.yml: display enabled services.
-  * Playbook pb-test-04.yml: display sshd status.
-  * Playbook pb-test-05.yml: display sshd commands synopsis.
-  * Playbook pb-test-06.yml: display sendmail rcvars.
+  * Playbook pb-test-02.yml: Display sshd rcvar.
+  * Playbook pb-test-03.yml: Display enabled services.
+  * Playbook pb-test-04.yml: Display sshd status.
+  * Playbook pb-test-05.yml: Display sshd commands synopsis.
+  * Playbook pb-test-06.yml: Display sendmail rcvars.
+
+At iocage_03:
+
+  * Playbook pb-test-07.yml: Start apcupsd.
 
 
 Requirements
@@ -177,6 +182,18 @@ Playbook output. Display sendmail rcvars.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-08.txt
+    :language: yaml
+
+Playbook *pb-test-07.yml*
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-07.yml
+    :language: yaml
+
+Playbook output. Start apcupsd.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-09.txt
     :language: yaml
 
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/

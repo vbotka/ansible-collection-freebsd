@@ -22,6 +22,6 @@ ok: [c1670497] =>
         sendmail_msp_queue_enable: '"NO"'
 
 PLAY RECAP ************************************************************************************
-afa9e515: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-c1670497: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_111: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+afa9e515: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+c1670497: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+test_111: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

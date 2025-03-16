@@ -1,4 +1,4 @@
-shell> ansible-playbook pb-test-04.yml -i iocage-hosts.ini -l iocage_02
+(env) > ansible-playbook pb-test-04.yml -i iocage-hosts.ini -l iocage_02
 
 PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_status.] ******************
 
@@ -6,9 +6,9 @@ TASK [Get iocage list of jails] ************************************************
 ok: [iocage_02]
 
 TASK [Jails sshd status] ***********************************************************************
-changed: [iocage_02] => (item=149)
-changed: [iocage_02] => (item=148)
-changed: [iocage_02] => (item=147)
+ok: [iocage_02] => (item=149)
+ok: [iocage_02] => (item=148)
+ok: [iocage_02] => (item=147)
 
 TASK [ansible.builtin.debug] *******************************************************************
 skipping: [iocage_02]
@@ -21,4 +21,4 @@ ok: [iocage_02] =>
         '149': running
 
 PLAY RECAP *************************************************************************************
-iocage_02: ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+iocage_02: ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
