@@ -5,6 +5,27 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.6
+=====
+
+Release Summary
+---------------
+Update module service incl. the docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs.
+  Add pb-test-06.yml and pb-test-07.yml to example 300
+* Update module service.
+  Update DOCS.
+  Add option 'wait' to complete a command.
+  Always return changed=False in check_mode.
+  Return 'state' for commands that change results of 'status' or 'enabled'
+
+
 0.6.5
 =====
 
@@ -17,7 +38,6 @@ Major Changes
 
 Minor Changes
 -------------
-
 * Upgrade module service; Add option synopsis; Parse rcvar and status output and
   return the results.
 * Update docs example 300.

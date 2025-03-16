@@ -15,12 +15,12 @@ ok: [iocage_02] =>
         - iocage
         - list
         - --long
-        delta: '0:00:02.680638'
-        end: '2025-03-05 04:08:37.508761'
+        delta: '0:00:02.578361'
+        end: '2025-03-14 08:20:55.036138'
         failed: false
         msg: ''
         rc: 0
-        start: '2025-03-05 04:08:34.828123'
+        start: '2025-03-14 08:20:52.457777'
         stderr: ''
         stderr_lines: []
         stdout: |-
@@ -95,23 +95,23 @@ ok: [iocage_02] =>
           type: jail
 
 TASK [ansible.builtin.debug] *******************************************************************
-ok: [iocage_02] => 
+ok: [iocage_02] =>
     jids | to_yaml: |-
         ['149', '148', '147']
 
 TASK [Jails service sshd rcvar.] ***************************************************************
-changed: [iocage_02] => (item=149)
-changed: [iocage_02] => (item=148)
-changed: [iocage_02] => (item=147)
+ok: [iocage_02] => (item=149)
+ok: [iocage_02] => (item=148)
+ok: [iocage_02] => (item=147)
 
 TASK [ansible.builtin.debug] *******************************************************************
 ok: [iocage_02] =>
     service_out:
-        changed: true
+        changed: false
         msg: All items completed
         results:
         -   ansible_loop_var: item
-            changed: true
+            changed: false
             failed: false
             invocation:
                 module_args:
@@ -120,8 +120,12 @@ ok: [iocage_02] =>
                     jail: '149'
                     list_enabled: false
                     script: sshd
+                    synopsis: false
+                    wait: 0.5
             item: '149'
             rc: 0
+            rcvar:
+                sshd_enable: '"YES"'
             stderr: ''
             stderr_lines: []
             stdout: |-
@@ -136,7 +140,7 @@ ok: [iocage_02] =>
             - '#   (default: "")'
             - ''
         -   ansible_loop_var: item
-            changed: true
+            changed: false
             failed: false
             invocation:
                 module_args:
@@ -145,8 +149,12 @@ ok: [iocage_02] =>
                     jail: '148'
                     list_enabled: false
                     script: sshd
+                    synopsis: false
+                    wait: 0.5
             item: '148'
             rc: 0
+            rcvar:
+                sshd_enable: '"YES"'
             stderr: ''
             stderr_lines: []
             stdout: |-
@@ -161,7 +169,7 @@ ok: [iocage_02] =>
             - '#   (default: "")'
             - ''
         -   ansible_loop_var: item
-            changed: true
+            changed: false
             failed: false
             invocation:
                 module_args:
@@ -170,8 +178,12 @@ ok: [iocage_02] =>
                     jail: '147'
                     list_enabled: false
                     script: sshd
+                    synopsis: false
+                    wait: 0.5
             item: '147'
             rc: 0
+            rcvar:
+                sshd_enable: '"YES"'
             stderr: ''
             stderr_lines: []
             stdout: |-
@@ -198,4 +210,4 @@ ok: [iocage_02] =>
             sshd_enable: 'YES'
 
 PLAY RECAP *************************************************************************************
-iocage_02: ok=7    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+iocage_02: ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

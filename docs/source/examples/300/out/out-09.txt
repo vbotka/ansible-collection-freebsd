@@ -1,0 +1,112 @@
+(env) > ansible-playbook pb-test-07.yml -i iocage-hosts.ini
+
+PLAY [Test module vbotka.freebsd.service. Start apcupsd.] **************************************
+
+TASK [Get apcupsd rcvar.] **********************************************************************
+ok: [iocage_03]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_03] => 
+    msg: |-
+        rcvar.rcvar: {'apcupsd_enable': '"NO"'}
+        start_cmd: onestart
+
+TASK [Start apcupsd. By default wait 500ms to complete the command.] ***************************
+changed: [iocage_03]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_03] => 
+    out:
+        changed: true
+        failed: false
+        onestart: Starting apcupsd.
+        rc: 0
+        state:
+            post: |-
+                apcupsd is running as pid 6203.
+            pre: |-
+                apcupsd is not running.
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Starting apcupsd.
+        stdout_lines:
+        - Starting apcupsd.
+
+TASK [Get apcupsd status.] *********************************************************************
+ok: [iocage_03]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_03] => 
+    out:
+        changed: false
+        failed: false
+        rc: 0
+        status: running
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            apcupsd is running as pid 6203.
+        stdout_lines:
+        - apcupsd is running as pid 6203.
+
+TASK [Stop apcupsd. By default wait 500ms to complete the command.] ****************************
+changed: [iocage_03]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_03] => 
+    out:
+        changed: true
+        failed: false
+        rc: 0
+        state:
+            post: |-
+                apcupsd is not running.
+            pre: |-
+                apcupsd is running as pid 6203.
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Stopping apcupsd.
+            Waiting for PIDS: 6203.
+        stdout_lines:
+        - Stopping apcupsd.
+        - 'Waiting for PIDS: 6203.'
+        stop: 'Waiting for PIDS: 6203'
+
+TASK [Start apcupsd. Wait 200ms to complete the command.] **************************************
+ok: [iocage_03]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_03] => 
+    out:
+        changed: false
+        failed: false
+        onestart: Starting apcupsd.
+        rc: 0
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Starting apcupsd.
+        stdout_lines:
+        - Starting apcupsd.
+
+TASK [Get apcupsd status.] *********************************************************************
+ok: [iocage_03]
+
+TASK [ansible.builtin.debug] *******************************************************************
+ok: [iocage_03] => 
+    out:
+        changed: false
+        failed: false
+        rc: 0
+        status: running
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            apcupsd is running as pid 6277.
+        stdout_lines:
+        - apcupsd is running as pid 6277.
+
+PLAY RECAP *************************************************************************************
+iocage_03: ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
