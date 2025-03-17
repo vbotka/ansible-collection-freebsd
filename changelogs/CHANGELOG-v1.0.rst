@@ -16,6 +16,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs.
+  Update index in example 300.
 
 
 0.6.6

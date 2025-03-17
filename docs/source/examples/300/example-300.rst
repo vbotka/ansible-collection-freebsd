@@ -7,6 +7,7 @@
    :depth: 2
 
 .. index:: single: module vbotka.freebsd.service; Example 300
+.. index:: single: vbotka.freebsd.service; Example 300
 .. index:: single: module community.general.ini; Example 300
 .. index:: single: filter vbotka.freebsd.iocage; Example 300
 .. index:: single: inventory vbotka.freebsd.iocage; Example 300
