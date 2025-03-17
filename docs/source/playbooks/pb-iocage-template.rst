@@ -17,7 +17,7 @@ pb-iocage-template
 Synopsis
 ^^^^^^^^
 
-This playbook creates templates from the dictionary *templates*. For example,
+This playbook creates `iocage templates`_ from the dictionary *templates*. For example,
 
 .. code-block:: yaml
 
@@ -226,3 +226,4 @@ After the reconfiguration stop the jail and convert it to the template manually
 .. _Setting a remote user: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
 .. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script(8)
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _iocage templates: https://iocage.readthedocs.io/en/latest/templates.html

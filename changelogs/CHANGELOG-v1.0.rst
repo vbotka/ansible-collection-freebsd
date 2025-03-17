@@ -17,8 +17,9 @@ Major Changes
 Minor Changes
 -------------
 * Update docs.
-  Update index in example 300.
-  Update plugins.
+  Update UG index in example 300.
+  Update UG chanpter plugins.
+  Update UG playbook pb-iocage-template.
 
 
 0.6.6
