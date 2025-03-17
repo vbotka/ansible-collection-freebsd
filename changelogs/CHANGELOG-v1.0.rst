@@ -18,6 +18,7 @@ Minor Changes
 -------------
 * Update docs.
   Update index in example 300.
+  Update plugins.
 
 
 0.6.6
