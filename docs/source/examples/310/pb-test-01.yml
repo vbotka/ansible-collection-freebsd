@@ -1,0 +1,11 @@
+- name: Test role vbotka.freebsd.postinstall. Audit Ansible clients.
+  hosts: up
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
+  roles:
+
+    - vbotka.freebsd.postinstall

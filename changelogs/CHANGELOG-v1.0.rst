@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Update docs.
+  Add UG example 310. Audit Ansible clients.Use role vbotka.freebsd.postinstall
   Update UG index in example 300.
   Update UG chanpter plugins.
   Update UG playbook pb-iocage-template.
