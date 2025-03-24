@@ -18,6 +18,7 @@ Introduction
   * `inventory plugin vbotka.freebsd.iocage`_
   * `filter vbotka.freebsd.iocage`_
   * `role vbotka.freebsd.iocage`_
+  * `role vbotka.freebsd.postinstall`_
   * various :ref:`ug_playbooks`
 
 .. seealso::
@@ -57,4 +58,6 @@ Introduction
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
+
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
