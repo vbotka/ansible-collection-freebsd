@@ -1,1 +1,10 @@
-(env) > ansible-playbook pb-test-01.yml -i hosts
+(env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+@all:
+  |--@ungrouped:
+  |--@up:
+  |  |--afa9e515
+  |  |--c1670497
+  |  |--test_111
+  |--@iocage:
+  |  |--iocage_01
+  |  |--iocage_02

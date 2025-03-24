@@ -10,12 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Include role vbotka.freebsd.postinstall. Add example 310.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Include role vbotka.freebsd.postinstall
 * Update docs.
   Add UG example 310. Audit Ansible clients.Use role vbotka.freebsd.postinstall
   Update UG index in example 300.

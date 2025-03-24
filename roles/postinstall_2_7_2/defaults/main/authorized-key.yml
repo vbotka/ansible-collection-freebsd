@@ -1,0 +1,19 @@
+---
+fp_authorized_key: false
+fp_authorized_key_debug: false
+fp_authorized_key_conf: []
+
+fp_authorized_key_sanity_quiet: true
+
+# If False, group keys by user and install string of keys
+fp_authorized_key_install_individually: true
+
+# See module authorized_key parameters
+# fp_authorized_key_comment: ""
+# fp_authorized_key_install_exclusive: false
+# fp_authorized_key_follow: false
+# fp_authorized_key_manage_dir: true
+# fp_authorized_key_path: ""
+# fp_authorized_key_state: present
+# fp_authorized_key_key_options: ""
+# fp_authorized_key_validate_certs: true

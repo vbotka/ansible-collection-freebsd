@@ -1,0 +1,12 @@
+- name: Install packages in jails.
+  hosts: up
+  gather_facts: true
+  remote_user: admin
+  become: true
+    
+  tasks:
+
+    - name: Install packages
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.postinstall
+        tasks_from: packages.yml

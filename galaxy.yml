@@ -17,6 +17,7 @@ homepage: https://github.com/vbotka/ansible-collection-freebsd/wiki/
 issues: https://github.com/vbotka/ansible-collection-freebsd/issues/
 dependencies:
   ansible.posix: "*"
+  ansible.utils: "*"
   community.general: "*"
 build_ignore:
   - TODO

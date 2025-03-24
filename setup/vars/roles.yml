@@ -129,7 +129,7 @@ bsd_roles:
     name: postinstall
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-postinstall
-    version: 2.6.20
+    version: 2.7.2
   - galaxy: vbotka.freebsd_poudriere
     name: poudriere
     scm: git
