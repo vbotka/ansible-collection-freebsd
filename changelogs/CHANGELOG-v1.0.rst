@@ -5,6 +5,26 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.7
+=====
+
+Release Summary
+---------------
+Include role vbotka.freebsd.postinstall. Add example 310.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Include role vbotka.freebsd.postinstall
+* Update docs.
+  Add UG example 310. Audit Ansible clients.Use role vbotka.freebsd.postinstall
+  Update UG index in example 300.
+  Update UG chanpter plugins.
+  Update UG playbook pb-iocage-template.
+
+
 0.6.6
 =====
 

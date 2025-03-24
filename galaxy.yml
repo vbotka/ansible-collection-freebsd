@@ -1,7 +1,7 @@
 ---
 name: freebsd
 namespace: vbotka
-version: 0.6.6
+version: 0.6.7
 readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
@@ -17,6 +17,7 @@ homepage: https://github.com/vbotka/ansible-collection-freebsd/wiki/
 issues: https://github.com/vbotka/ansible-collection-freebsd/issues/
 dependencies:
   ansible.posix: "*"
+  ansible.utils: "*"
   community.general: "*"
 build_ignore:
   - TODO

@@ -1,0 +1,51 @@
+ansible_python_interpreter: auto_silent
+
+freebsd_install_method: packages
+freebsd_install_retries: 3
+freebsd_install_delay: 5
+
+# Ansible client template defaults
+act_pkg:
+  - security/sudo
+  - lang/python311
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  iocage_enable: '"YES"'
+  sshd_enable: '"YES"'
+act_dhclient:
+  dhclient-exit-hooks: |
+    case "$reason" in
+        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+        ;;
+    esac
+
+# Install packages
+fp_packages:
+  - {list: custom, enabled: true}
+pkg_dict_amd64_dict:
+  custom: "{{ act_pkg }}"
+fp_pkg_use_globs: false
+fp_pkg_cached: true
+fp_install_delegate: "{{ iocage_tags.vmm }}"
+fp_pkg_jail: "{{ iocage_jid }}"
+
+# Create user
+fp_users_conf:
+  - name: "{{ act_user }}"
+    shell: /bin/sh
+
+# Configure public keys
+fp_authorized_key_conf:
+  - user: "{{ act_user }}"
+    key: "{{ lookup('file', act_pk) }}"
+
+# Configure sudo
+fp_sudoers_conf:
+  - key: "{{ act_user }}"
+    value: "ALL=(ALL) NOPASSWD: ALL"
+
+# Configure dhclient hooks
+fp_dhclient_hooks: "{{ act_dhclient }}"

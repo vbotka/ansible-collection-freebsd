@@ -55,7 +55,7 @@ creates files. For example, ::
   shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b 
   10.1.0.130
   
-Read the files, created by the hooks, and uses the IP addresses to compose the variable
+Read the files, created by the hooks, and use the IP addresses to compose the variable
 *ansible_host* ::
 
   shell> cat hosts/01_iocage.yml 

@@ -1,2 +1,4 @@
 ---
-bsd_roles_install: [iocage]
+bsd_roles_install:
+  - iocage
+  - postinstall

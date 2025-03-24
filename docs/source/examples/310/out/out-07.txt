@@ -1,0 +1,92 @@
+(env) > ansible-playbook pb-test-01.yml \
+        -i hosts -i iocage-hosts.ini \                                            
+        -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
+        -e @extra-vars.yml
+
+PLAY [Test role vbotka.freebsd.postinstall.] **************************************************************
+
+TASK [Gathering Facts] ************************************************************************************
+ok: [afa9e515]
+ok: [test_111]
+ok: [c1670497]
+
+TASK [vbotka.freebsd.postinstall : Sanity: Unknown run tags] **********************************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Dhclient: Create hooks.] ***********************************************
+ok: [afa9e515] => (item=dhclient-exit-hooks)
+ok: [c1670497] => (item=dhclient-exit-hooks)
+ok: [test_111] => (item=dhclient-exit-hooks)
+
+TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] **************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] **********
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Packages: Installation by pkgng required when fp_install_delegate] *****
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Packages: Required variable fp_pkg_jail when fp_install_delegate] ******
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] ********************************************
+included: ../roles/postinstall/tasks/packages-install.yml for afa9e515, c1670497, test_111 => (item=custom)
+
+TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ************************
+ok: [test_111 -> iocage_02(10.1.0.73)]
+ok: [c1670497 -> iocage_02(10.1.0.73)]
+ok: [afa9e515 -> iocage_02(10.1.0.73)]
+
+TASK [vbotka.freebsd.postinstall : Users: Manage user accounts] *******************************************
+ok: [c1670497] => (item=None)
+ok: [afa9e515] => (item=None)
+ok: [c1670497]
+ok: [afa9e515]
+ok: [test_111] => (item=None)
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Authorized-key: Get passwd] ********************************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Authorized-key: Set local_list_users] **********************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Authorized-key: Sanity: All users exist.] ******************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.postinstall : Authorized-key: Configure authorized keys individually] ****************
+ok: [test_111] => (item=admin)
+ok: [afa9e515] => (item=admin)
+ok: [c1670497] => (item=admin)
+
+TASK [vbotka.freebsd.postinstall : Sudoers: Configure /usr/local/etc/sudoers] *****************************
+ok: [test_111] => (item={'key': 'admin', 'value': 'ALL=(ALL) NOPASSWD: ALL'})
+ok: [afa9e515] => (item={'key': 'admin', 'value': 'ALL=(ALL) NOPASSWD: ALL'})
+ok: [c1670497] => (item={'key': 'admin', 'value': 'ALL=(ALL) NOPASSWD: ALL'})
+
+PLAY RECAP ************************************************************************************************
+afa9e515: ok=16   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0
+c1670497: ok=16   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0
+test_111: ok=16   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0
