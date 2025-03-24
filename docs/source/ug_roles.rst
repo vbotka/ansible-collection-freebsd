@@ -10,9 +10,10 @@ Roles
 Installed roles
 ---------------
 
-This collection is shipped with one role:
+This collection is shipped with the roles:
 
 * `vbotka.freebsd.iocage <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/>`_
+* `vbotka.freebsd.postinstall <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/>`_
 
 
 Documented roles
@@ -20,7 +21,6 @@ Documented roles
 
 Some tested roles were documented at `readtthedocs.io <https://rtfd.io/>`_
 
-* `freebsd_postinstall <https://ansible-freebsd-postinstall.readthedocs.io/en/latest/>`_
 * `freebsd_poudriere <https://ansible-freebsd-poudriere.readthedocs.io/en/latest/>`_
 * `freebsd_custom_image <https://ansible-freebsd-custom-image.readthedocs.io/en/latest/>`_
 * `freebsd_wpa_cli <https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/>`_

@@ -3,7 +3,7 @@
 vbotka.freebsd
 **************
 
-Collection version 0.6.7
+Collection version 0.6.8
 
 | This `collection <https://galaxy.ansible.com/vbotka/freebsd/>`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-collection-freebsd/issues/>`_.
@@ -25,6 +25,7 @@ Plugins:
 Roles:
 
 * `role vbotka.freebsd.iocage`_
+* `role vbotka.freebsd.postinstall`_
 
 Documentation
 #############
@@ -66,6 +67,9 @@ Indices and tables
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
+
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
+
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
