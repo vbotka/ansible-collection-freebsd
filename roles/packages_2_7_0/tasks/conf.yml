@@ -1,0 +1,94 @@
+---
+- name: "Conf: Debug pkg_debug={{ pkg_debug }}"
+  when: pkg_debug | bool
+  vars:
+    msg: |-
+      pkg_owner: {{ pkg_owner }}
+      pkg_group: {{ pkg_group }}
+      pkg_backup_conf: {{ pkg_backup_conf }}
+      pkg_default_repo_template: {{ pkg_default_repo_template }}
+      pkg_default_repo_conf:
+        {{ pkg_default_repo_conf | to_nice_yaml(indent=2) | indent(2) }}
+      pkg_repos_template: {{ pkg_repos_template }}
+      pkg_repos_conf:
+        {{ pkg_repos_conf | to_nice_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Conf: Configure /etc/pkg/FreeBSD.conf"
+  ansible.builtin.template:
+    src: "{{ pkg_default_repo_template }}"
+    dest: /etc/pkg/FreeBSD.conf
+    owner: "{{ pkg_owner }}"
+    group: "{{ pkg_group }}"
+    mode: "0644"
+    backup: "{{ pkg_backup_conf }}"
+  loop: "{{ pkg_default_repo_conf }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Create repos in /usr/local/etc/pkg/repos/
+  when: pkg_repos_conf | length > 0
+  block:
+
+    - name: "Conf: Create directories"
+      ansible.builtin.file:
+        state: directory
+        path: "{{ item }}"
+        owner: "{{ pkg_owner }}"
+        group: "{{ pkg_group }}"
+        mode: "0755"
+      loop:
+        - /usr/local/etc/pkg
+        - /usr/local/etc/pkg/repos
+
+    - name: "Conf: Configure /usr/local/etc/pkg/repos"
+      register: out
+      ansible.builtin.template:
+        src: "{{ pkg_repos_template }}"
+        dest: /usr/local/etc/pkg/repos/{{ item.name }}.conf
+        owner: "{{ pkg_owner }}"
+        group: "{{ pkg_group }}"
+        mode: "0644"
+        backup: "{{ pkg_backup_conf }}"
+      loop: "{{ pkg_repos_conf }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "Conf: Debug repos pkg_debug2={{ pkg_debug2 }}"
+      when: pkg_debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Conf: Create my_repos list"
+      ansible.builtin.set_fact:
+        my_repos: "{{ out.results | map(attribute='dest') }}"
+
+    - name: "Conf: Debug my_repos pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: my_repos
+
+- name: Remove repos in /usr/local/etc/pkg/repos/ not listed in pkg_repos_conf
+  when: pkg_repos_conf_clean | bool
+  block:
+
+    - name: "Conf: Find repos"
+      register: out
+      ansible.builtin.find:
+        paths: /usr/local/etc/pkg/repos
+        patterns: '*.conf'
+        file_type: file
+
+    - name: "Conf: Debug repos pkg_debug2={{ pkg_debug2 }}"
+      when: pkg_debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Conf: Remove repos not listed in pkg_repos_conf"
+      ansible.builtin.file:
+        state: absent
+        path: "{{ item }}"
+      loop: "{{ out.files | map(attribute='path') | difference(my_repos) }}"
+
+# EOF

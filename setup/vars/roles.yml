@@ -109,7 +109,7 @@ bsd_roles:
     name: packages
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-packages
-    version: 2.6.6
+    version: 2.7.0
   - galaxy: vbotka.freebsd_pf
     name: pf
     scm: git
