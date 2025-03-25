@@ -12,6 +12,14 @@ Release Summary
 ---------------
 Include role vbotka.freebsd.packages. Add example 311.
 
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Docs. Rename example 100 to 312
+* Docs. Rename example 101 to 030
+
 
 0.6.8
 =====

@@ -34,10 +34,10 @@ Tree
    ├── group_vars
    │   └── all
    │       └── ansible-client.yml
-   ├── iocage-hosts.ini
    ├── hosts
    │   ├── 02_iocage.yml
    │   └── 99_constructed.yml
+   ├── iocage-hosts.ini
    ├── pb-test-01.yml
    ├── pb-test-02.yml
    └── pb-test-03.yml

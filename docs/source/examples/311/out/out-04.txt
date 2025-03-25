@@ -1,0 +1,90 @@
+PLAY [Test role vbotka.freebsd.packages.] *****************************************************
+
+TASK [Gathering Facts] ************************************************************************
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] ********************************
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ***********************************
+ok: [test_111] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Debug pkg_debug=true] *****************************************
+ok: [test_111] => 
+    msg: |-
+        pkg_role_version: 2.7.0
+        pkg_version_community_general: 9.3.0
+
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.1
+        ansible_distribution_release: 14.1-RELEASE
+        ansible_python_version: 3.11.11
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_02"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: UNDEFINED
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 10
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: UNDEFINED
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_repos_template: repo.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [security/sudo, lang/python311, ports-mgmt/pkg]
+
+        pkg_list_deinstall:
+          []
+
+PLAY RECAP ************************************************************************************
+test_111: ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

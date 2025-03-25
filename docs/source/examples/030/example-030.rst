@@ -1,16 +1,16 @@
-.. _example_101:
+.. _example_030:
 
-101 Create custom facts
+030 Create custom facts
 -----------------------
 
-Extending example 100.
+Extending example 312.
 
 .. contents:: Table of Contents
    :depth: 2
 
-.. index:: single: custom facts; Example 101
-.. index:: single: filter vbotka.freebsd.iocage; Example 101
-.. index:: single: role vbotka.freebsd.iocage; Example 101
+.. index:: single: custom facts; Example 030
+.. index:: single: filter vbotka.freebsd.iocage; Example 030
+.. index:: single: role vbotka.freebsd.iocage; Example 030
 
 Use case
 ^^^^^^^^

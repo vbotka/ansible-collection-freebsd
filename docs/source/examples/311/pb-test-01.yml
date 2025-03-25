@@ -1,0 +1,9 @@
+- name: Test role vbotka.freebsd.packages.
+  hosts: up
+  gather_facts: true
+  remote_user: admin
+  become: true
+    
+  roles:
+
+    - vbotka.freebsd.packages
