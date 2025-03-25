@@ -5,6 +5,14 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.9
+=====
+
+Release Summary
+---------------
+Include role vbotka.freebsd.packages. Add example 311.
+
+
 0.6.8
 =====
 
