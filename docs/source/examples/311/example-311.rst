@@ -33,16 +33,21 @@ Tree
    │   ├── 02_iocage.yml
    │   └── 99_constructed.yml
    ├── iocage-hosts.ini
-   └── pb-test-01.yml
+   ├── pb-test-01.yml
+   └── pb-test-02.yml
 
 
 Synopsis
 ^^^^^^^^
 
-* Playbook pb-test-01.yml:
+* In the playbook pb-test-01.yml at the jails:
 
   * display variables
   * install packages
+  * audit installed packages
+
+* In the playbook pb-test-02.yml at an iocage host:
+
   * audit installed packages
 
 
@@ -59,8 +64,8 @@ Notes
   `community.general.pkgng`_ if the jail was created by *iocage*. Use JID
   instead.
 
-* The below plays run at the jails. The inventory *iocage-hosts.ini* is needed
-  when a task is delegated to an iocage host.
+* The play *pb-test-01.yml* runs at the jails. The inventory *iocage-hosts.ini*
+  is needed when a task is delegated to an iocage host.
 
 * The public key in *files/pk_admins.txt* is sanitized.
 
@@ -191,6 +196,13 @@ There are no installed packages with known vulnerabilities ::
 					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
 .. literalinclude:: out/out-08.txt
+    :language: yaml
+
+
+Playbook *pb-test-02.yml*
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-02.yml
     :language: yaml
 
 

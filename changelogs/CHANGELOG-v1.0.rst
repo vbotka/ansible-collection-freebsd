@@ -10,17 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Include role vbotka.freebsd.
+Include role vbotka.freebsd.config_light
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
-* Update docs
-  Add example 311.
-  Rename example 100 to 312
-  Rename example 101 to 030
+* Update docs example 311
 
 
 0.6.10
