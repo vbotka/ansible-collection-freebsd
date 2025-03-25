@@ -15,18 +15,7 @@ Collection version 0.6.11
 Included content
 ################
 
-Plugins:
-
-* `module vbotka.freebsd.iocage`_
-* `module vbotka.freebsd.service`_
-* `inventory plugin vbotka.freebsd.iocage`_
-* `filter vbotka.freebsd.iocage`_
-
-Roles:
-
-* `role vbotka.freebsd.iocage`_
-* `role vbotka.freebsd.packages`_
-* `role vbotka.freebsd.postinstall`_
+.. include:: included_content.rst
 
 Documentation
 #############

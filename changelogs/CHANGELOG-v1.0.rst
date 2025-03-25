@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update docs example 311
-
+  Add included_content.rst
 
 0.6.10
 ======
