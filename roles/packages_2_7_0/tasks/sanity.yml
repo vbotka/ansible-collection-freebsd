@@ -1,0 +1,21 @@
+---
+- name: "Sanity: Test collection community_general minimal version {{ pkg_version_community_general }}"
+  when: pkg_sanity_version_community_general | bool
+  vars:
+    _version: "{{ lookup('community.general.collection_version', 'community.general') }}"
+  ansible.builtin.assert:
+    that: _version is version(pkg_version_community_general, '>=')
+    quiet: true
+    fail_msg: >
+      [ERR] community_general minimal version is {{ pkg_version_community_general }}
+      Found {{ _version }}
+
+- name: "Sanity: Required variable pkg_jail when pkg_delegate"
+  when: pkg_delegate | length > 0
+  ansible.builtin.assert:
+    quiet: true
+    that: pkg_jail is defined
+    fail_msg: |
+      [ERR] Variable pkg_jail is required to delegate to {{ pkg_delegate }}
+
+# EOF

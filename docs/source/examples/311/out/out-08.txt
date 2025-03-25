@@ -1,0 +1,35 @@
+PLAY [Test role vbotka.freebsd.packages.] *****************************************************
+
+TASK [Gathering Facts] ************************************************************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] ********************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ***********************************
+
+  ...
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ******************************************
+ok: [test_111]
+ok: [afa9e515]
+ok: [c1670497]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] *************************
+ok: [afa9e515] => 
+    pkg_audit:
+        afa9e515:
+            pkg_count: 0
+        c1670497:
+            pkg_count: 0
+        test_111:
+            pkg_count: 0
+
+PLAY RECAP ************************************************************************************
+afa9e515: ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+c1670497: ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_111: ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

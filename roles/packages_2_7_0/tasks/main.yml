@@ -1,0 +1,53 @@
+---
+# tasks for freebsd_packages
+
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
+  tags: [pkg_vars, always]
+
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: pkg_sanity | bool
+  tags: pkg_sanity
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: pkg_debug | bool
+  tags: pkg_debug
+
+- name: Import conf.yml
+  ansible.builtin.import_tasks: conf.yml
+  tags: pkg_conf
+
+- name: Install and delete packages
+  when: freebsd_install_method | lower == 'packages'
+  module_defaults:
+    community.general.pkgng:
+      annotation: "{{ pkg_annotation | d(omit) }}"
+      autoremove: "{{ pkg_autoremove | d(omit) | bool }}"
+      cached: "{{ pkg_cached | d(omit) | bool }}"
+      chroot: "{{ pkg_chroot | d(omit) }}"
+      ignore_osver: "{{ pkg_ignore_osver | d(omit) | bool }}"
+      jail: "{{ pkg_jail | d(omit) }}"
+      pkgsite: "{{ pkg_pkgsite | d(omit) }}"
+      rootdir: "{{ pkg_rootdir | d(omit) }}"
+      state: "{{ pkg_state | d(omit) }}"
+      use_globs: "{{ pkg_use_globs | d(omit) | bool }}"
+  block:
+
+    - name: Import pkg_delete.yml
+      ansible.builtin.import_tasks: pkg_delete.yml
+      when: pkg_list_deinstall | length > 0
+      tags: pkg_delete
+
+    - name: Import pkg_install.yml
+      ansible.builtin.import_tasks: pkg_install.yml
+      when: (pkg_dict_all | bool) or (pkg_dict_select | length > 0) or (pkg_list | length > 0)
+      tags: pkg_install
+
+- name: Import stat.yml
+  ansible.builtin.import_tasks: stat.yml
+  when: pkg_stat | bool
+  tags: pkg_stat
+
+# EOF

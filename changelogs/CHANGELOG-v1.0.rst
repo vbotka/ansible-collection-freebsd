@@ -5,6 +5,24 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.9
+=====
+
+Release Summary
+---------------
+Include role vbotka.freebsd.packages.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs
+  * Add example 311.
+  * Rename example 100 to 312
+  * Rename example 101 to 030
+
+
 0.6.8
 =====
 

@@ -1,0 +1,12 @@
+ansible_python_interpreter: auto_silent
+
+freebsd_install_method: packages
+freebsd_install_retries: 3
+freebsd_install_delay: 5
+
+pkg_delegate: "{{ iocage_tags.vmm }}"
+pkg_jail: "{{ iocage_jid }}"
+pkg_list:
+  - security/sudo
+  - lang/python311
+  - ports-mgmt/pkg

@@ -1,0 +1,31 @@
+PLAY [Test role vbotka.freebsd.packages.] *****************************************************
+
+TASK [Gathering Facts] ************************************************************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] ********************************
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0]
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] *********
+ok: [afa9e515]
+ok: [c1670497]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] **********************
+ok: [test_111 -> iocage_02(10.1.0.73)]
+ok: [afa9e515 -> iocage_02(10.1.0.73)]
+ok: [c1670497 -> iocage_02(10.1.0.73)]
+
+PLAY RECAP ************************************************************************************
+afa9e515: ok=5    changed=0    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
+c1670497: ok=5    changed=0    unreachable=0    failed=0    skipped=36   rescued=0    ignored=0   
+test_111: ok=5    changed=0    unreachable=0    failed=0    skipped=36   rescued=0    ignored=0

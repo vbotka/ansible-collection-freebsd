@@ -1,0 +1,50 @@
+PLAY [Test role vbotka.freebsd.packages.] *****************************************************
+
+TASK [Gathering Facts] ************************************************************************
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] ********************************
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ***********************************
+ok: [test_111] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Packages_install: Debug list pkg_list pkg_debug=true] *********
+ok: [test_111] => 
+    pkg_list:
+    - security/sudo
+    - lang/python311
+    - ports-mgmt/pkg
+
+TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] **********************
+ok: [test_111 -> iocage_02(10.1.0.73)]
+
+TASK [vbotka.freebsd.packages : Packages_install: Debug result pkg_debug=true] ****************
+ok: [test_111] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+
+PLAY RECAP ************************************************************************************
+test_111: ok=6    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0

@@ -1,0 +1,61 @@
+---
+- name: "Debug pkg_debug={{ pkg_debug }}"
+  vars:
+    msg: |-
+      pkg_role_version: {{ pkg_role_version }}
+      pkg_version_community_general: {{ pkg_version_community_general }}
+
+      ansible_architecture: {{ ansible_architecture }}
+      ansible_os_family: {{ ansible_os_family }}
+      ansible_distribution: {{ ansible_distribution }}
+      ansible_distribution_major_version: {{ ansible_distribution_major_version }}
+      ansible_distribution_version: {{ ansible_distribution_version }}
+      ansible_distribution_release: {{ ansible_distribution_release }}
+      ansible_python_version: {{ ansible_python_version }}
+
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+
+      pkg_sanity: {{ pkg_sanity }}
+      pkg_sanity_version_community_general: {{ pkg_sanity_version_community_general }}
+      pkg_stat: {{ pkg_stat }}
+      pkg_audit_enable: {{ pkg_audit_enable }}
+      pkg_backup_conf: {{ pkg_backup_conf }}
+      pkg_dryrun: {{ pkg_dryrun }}
+      pkg_install_individually: {{ pkg_install_individually }}
+      pkg_delegate: "{{ pkg_delegate }}"
+
+      pkg_owner: {{ pkg_owner }}
+      pkg_group: {{ pkg_group }}
+      pkg_annotation: {{ pkg_annotation | d('UNDEFINED') }}
+      pkg_autoremove: {{ pkg_autoremove | d('UNDEFINED') }}
+      pkg_cached: {{ pkg_cached | d('UNDEFINED') }}
+      pkg_chroot: {{ pkg_chroot | d('UNDEFINED') }}
+      pkg_ignore_osver: {{ pkg_ignore_osver | d('UNDEFINED') }}
+      pkg_jail: {{ pkg_jail | d('UNDEFINED') }}
+      pkg_pkgsite: {{ pkg_pkgsite | d('UNDEFINED') }}
+      pkg_rootdir: {{ pkg_rootdir | d('UNDEFINED') }}
+      pkg_state: {{ pkg_state | d('UNDEFINED') }}
+      pkg_use_globs: {{ pkg_use_globs | d('UNDEFINED') }}
+
+      pkg_default_repo_template: {{ pkg_default_repo_template }}
+      pkg_default_repo_conf:
+        {{ pkg_default_repo_conf | to_yaml(indent=2) | indent(2) }}
+      pkg_repos_template: {{ pkg_repos_template }}
+      pkg_repos_conf_clean: {{ pkg_repos_conf_clean }}
+      pkg_repos_conf:
+        {{ pkg_repos_conf | to_yaml(indent=2) | indent(2) }}
+      pkg_dict_all: {{ pkg_dict_all }}
+      pkg_dict_select:
+        {{ pkg_dict_select | to_nice_yaml(indent=2) | indent(2) }}
+      pkg_dict:
+        {{ pkg_dict | to_nice_yaml(indent=2) | indent(2) }}
+      pkg_list:
+        {{ pkg_list | to_yaml(indent=2) | indent(2) }}
+      pkg_list_deinstall:
+        {{ pkg_list_deinstall | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF

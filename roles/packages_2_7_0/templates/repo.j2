@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+
+{{ item.name }}: {
+{% for conf in item.conf %}
+  {{ conf.key }}: {{ conf.value }}{% if not loop.last %},{% endif %}
+
+{% endfor %}
+}
+# EOF

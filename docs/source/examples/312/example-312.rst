@@ -1,18 +1,18 @@
-.. _example_100:
+.. _example_312:
 
-100 Clone jails and create inventory (role)
+312 Clone jails and create inventory (role)
 -------------------------------------------
 
 .. contents:: Table of Contents
    :depth: 2
 
-.. index:: single: playbook pb-iocage-fetch-base-clone.yml; Example 100
-.. index:: single: playbook pb-iocage-list.yml; Example 100
-.. index:: single: module ansible.builtin.add_host; Example 100
-.. index:: single: role vbotka.freebsd.iocage; Example 100
-.. index:: single: tasks runner.yml; Example 100
-.. index:: single: variable freebsd_iocage_runner_cmd; Example 100
-.. index:: single: variable freebsd_iocage_runner_exec; Example 100
+.. index:: single: playbook pb-iocage-fetch-base-clone.yml; Example 312
+.. index:: single: playbook pb-iocage-list.yml; Example 312
+.. index:: single: module ansible.builtin.add_host; Example 312
+.. index:: single: role vbotka.freebsd.iocage; Example 312
+.. index:: single: tasks runner.yml; Example 312
+.. index:: single: variable freebsd_iocage_runner_cmd; Example 312
+.. index:: single: variable freebsd_iocage_runner_exec; Example 312
 
 Use case
 ^^^^^^^^

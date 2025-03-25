@@ -1,4 +1,5 @@
 ---
 bsd_roles_install:
   - iocage
+  - packages
   - postinstall
