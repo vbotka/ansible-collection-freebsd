@@ -21,6 +21,7 @@ This collection is shipped with:
 * [filter vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - parse iocage lists.
 * [inventory plugin vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
 * [role vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - install and configure iocage.
+* [role vbotka.freebsd.packages](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/) - configure repos and install packages.
 * [role vbotka.freebsd.postinstall](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/) - postinstall configuration.
 * various playbooks
 
