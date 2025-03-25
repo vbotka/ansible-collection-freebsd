@@ -18,9 +18,9 @@ Major Changes
 Minor Changes
 -------------
 * Update docs
-  * Add example 311.
-  * Rename example 100 to 312
-  * Rename example 101 to 030
+  Add example 311.
+  Rename example 100 to 312
+  Rename example 101 to 030
 
 
 0.6.10
@@ -44,9 +44,9 @@ Major Changes
 Minor Changes
 -------------
 * Update docs
-  * Add example 311.
-  * Rename example 100 to 312
-  * Rename example 101 to 030
+  Add example 311.
+  Rename example 100 to 312
+  Rename example 101 to 030
 
 
 0.6.8
@@ -204,8 +204,8 @@ Minor Changes
 * Add docs examples: 205, 206
 * Update examples: 200, 202, 203, and 204.
 * Update playbook pb-iocage-ansible-clients.yml
-  - Add debug2 tasks.
-  - Use json_query instead selectattr.
+  Add debug2 tasks.
+  Use json_query instead selectattr.
 
 Breaking Changes / Porting Guide
 --------------------------------
