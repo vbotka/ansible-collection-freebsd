@@ -13,6 +13,7 @@ Installed roles
 This collection is shipped with the roles:
 
 * `vbotka.freebsd.iocage <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/>`_
+* `vbotka.freebsd.packages <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/>`_
 * `vbotka.freebsd.postinstall <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/>`_
 
 
