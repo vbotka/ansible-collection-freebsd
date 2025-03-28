@@ -1,5 +1,5 @@
 ---
-bsd_plugins_all_no: 2
+bsd_plugins_all_no: 3
 bsd_plugins_all:
   inventory:
     iocage: preinstalled in distfiles

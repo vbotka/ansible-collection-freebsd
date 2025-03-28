@@ -19,7 +19,10 @@ Minor Changes
 -------------
 * Update docs example 311
   Add included_content.rst
+* Fix setup. Count all plugins.
+* Add module ucl
 
+  
 0.6.10
 ======
 

@@ -20,6 +20,6 @@
     backup: true
     content: |
       ---
-      bsd_plugins_all_no: {{ bsd_plugins_all | length }}
+      bsd_plugins_all_no: {{ bsd_plugins_all.values() | map('length') | sum  }}
       bsd_plugins_all:
         {{ bsd_plugins_all | to_nice_yaml(indent=2) | indent(2) }}
