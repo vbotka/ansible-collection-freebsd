@@ -8,6 +8,7 @@ bsd_plugins:
     ucl:
       branch: release
       url: https://raw.githubusercontent.com/vbotka/ansible-ucl
+      patch: module-ucl.patch
   inventory:
     iocage:
       branch: release

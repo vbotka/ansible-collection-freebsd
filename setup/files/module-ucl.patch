@@ -1,0 +1,66 @@
+diff --git a/setup/distfiles/modules/ucl.py b/setup/distfiles/modules/ucl.py
+index c1fdc65..b30487b 100644
+--- a/setup/distfiles/modules/ucl.py
++++ b/setup/distfiles/modules/ucl.py
+@@ -163,23 +163,23 @@ author: "Vladimir Botka (@vbotka)"
+ 
+ EXAMPLES = r'''
+ - name: Get FreeBSD repository of packages
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /etc/pkg/FreeBSD.conf
+     upath: freebsd.url
+ 
+ - name: Get configuration of packages in YAML format
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /etc/pkg/FreeBSD.conf
+     lang: yaml
+ 
+ - name: Set repo with latest versions of packages
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /etc/pkg/FreeBSD.conf
+     upath: freebsd.url
+     value: "pkg+http://pkg.FreeBSD.org/${ABI}/latest"
+ 
+ - name: Merge new value to upath in path. Set executable.
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /foo/bar.conf
+     upath: rootkey.subkey.key
+     value: newvalue
+@@ -188,7 +188,7 @@ EXAMPLES = r'''
+ 
+ - name: Merge new value to upath in path. Set executable by
+         environment on remote node.
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /foo/bar.conf
+     upath: rootkey.subkey.key
+     value: newvalue
+@@ -197,21 +197,21 @@ EXAMPLES = r'''
+     ANSIBLE_UCLCMD: /usr/local/bin/uclcmd
+ 
+ - name: Merge value from the UCL file on remote node to upath in path
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /foo/bar.conf
+     upath: rootkey.subkey.key
+     ipath: merge.ucl
+     merge: yes
+ 
+ - name: Merge value from the UCL file on controller to upath in path
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /foo/bar.conf
+     upath: rootkey.subkey.key
+     icontent: "{{ lookup('file', 'merge.ucl') }}"
+     merge: yes
+ 
+ - name: Remove upath rootkey.subkey.key from path
+-  ucl:
++  vbotka.freebsd.ucl:
+     path: /foo/bar.conf
+     upath: rootkey.subkey.key
+     state: absent
