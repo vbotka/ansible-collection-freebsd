@@ -7,7 +7,8 @@ Examples
 :010-019: Module and Inventory plugin vbotka.freebsd.iocage
 :030:     Filter vbotka.freebsd.iocage
 :200-:    Ansible client
-:300-:    Module vbotka.freebsd.service
+:300:     Module vbotka.freebsd.service
+:301:     Module vbotka.freebsd.ucl
 :310:     Role vbotka.freebsd.postinstall
 :311:     Role vbotka.freebsd.packages
 :312:     Role vbotka.freebsd.iocage
@@ -38,6 +39,7 @@ Examples
    205 DHCP Ansible client templates v2 <examples/205/example-205.rst>
    206 DHCP and fixed IP Ansible clients <examples/206/example-206.rst>
    examples/300/example-300
+   examples/301/example-301
    310 Configure and audit Ansible clients <examples/310/example-310.rst>
    311 Install and audit packages <examples/311/example-311.rst>
    312 Clone jails and create inventory <examples/312/example-312.rst>

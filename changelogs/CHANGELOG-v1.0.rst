@@ -17,10 +17,12 @@ Major Changes
 
 Minor Changes
 -------------
-* Update docs example 311
-  Add included_content.rst
-* Fix setup. Count all plugins.
 * Add module ucl
+* Update docs
+  Add included_content.rst, ug_module_ucl.rst
+  Add example 301
+  Update example 311
+* Fix setup. Count all plugins.
 
   
 0.6.10

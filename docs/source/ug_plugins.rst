@@ -12,6 +12,9 @@ Plugins
 .. _ug_module_service:
 .. include::  ug_module_service.rst
 
+.. _ug_module_ucl:
+.. include::  ug_module_ucl.rst
+
 .. _ug_inventory_iocage:
 .. include::  ug_inventory_iocage.rst
 
