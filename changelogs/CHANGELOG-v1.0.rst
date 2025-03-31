@@ -21,7 +21,7 @@ Minor Changes
 * Update docs
   Add included_content.rst, ug_module_ucl.rst
   Add example 301
-  Update example 311
+  Update examples: 206, 311
 * Fix setup. Count all plugins.
 
   
