@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+# Format: myuser|smtp.gmail.com:mypassword
+{% for item in cl_dma_authconf %}
+{{ item }}
+{% endfor %}
+# EOF

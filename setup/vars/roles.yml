@@ -39,7 +39,7 @@ bsd_roles:
     name: config_light
     scm: git
     src: https://github.com/vbotka/ansible-config-light
-    version: 2.6.7
+    version: 2.7.0
   - galaxy: vbotka.freebsd_bash
     name: bash
     scm: git

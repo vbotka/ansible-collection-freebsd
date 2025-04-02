@@ -1,0 +1,98 @@
+postfix_freebsd:
+  template: handlers-auto1.yml.j2
+  handlers:
+
+    - handler: enable and start postfix
+      module: service
+      params:
+        - 'name: postfix'
+        - 'state: started'
+        - 'enabled: true'
+
+    - handler: disable and stop postfix
+      module: service
+      params:
+        - 'name: postfix'
+        - 'state: stopped'
+        - 'enabled: false'
+
+    - handler: reload postfix
+      module: service
+      params:
+        - 'name: postfix'
+        - 'state: reloaded'
+      conditions:
+        - '- cl_service_postfix_enable|bool'
+
+    - handler: restart postfix
+      module: service
+      params:
+        - 'name: postfix'
+        - 'state: restarted'
+      conditions:
+        - '- cl_service_postfix_enable|bool'
+
+    - handler: postfix check
+      module: command
+      params:
+        - 'cmd: /usr/local/sbin/postfix check'
+
+    - handler: newaliases
+      module: command
+      params:
+        - 'cmd: /usr/bin/newaliases'
+
+#    - handler: 'postmap smtp sasl passwords'
+#      module: command
+#      params:
+#        - 'cmd: /usr/local/sbin/postmap {{ postfix_main_cf_smtp_sasl_password_maps }}'
+
+#    - handler: 'postmap virtual aliases'
+#      module: command
+#      params:
+#        - cmd: /usr/local/sbin/postmap {{ postfix_virtual }}'
+sendmail_freebsd:
+  template: handlers-auto1.yml.j2
+  handlers:
+
+    - handler: enable and start sendmail
+      module: service
+      params:
+        - 'name: sendmail'
+        - 'state: started'
+        - 'enabled: true'
+
+    - handler: disable and stop sendmail
+      module: service
+      params:
+        - 'name: sendmail'
+        - 'state: stopped'
+        - 'enabled: false'
+
+    - handler: reload sendmail
+      module: service
+      params:
+        - 'name: sendmail'
+        - 'state: reloaded'
+      conditions:
+        - '- cl_service_sendmail_enable|bool'
+
+    - handler: restart sendmail
+      module: service
+      params:
+        - 'name: sendmail'
+        - 'state: restarted'
+      conditions:
+        - '- cl_service_sendmail_enable|bool'
+
+    - handler: start sendmail
+      module: service
+      params:
+        - 'name: sendmail'
+        - 'state: started'
+
+    - handler: stop sendmail
+      module: service
+      params:
+        - 'name: sendmail'
+        - 'state: stopped'

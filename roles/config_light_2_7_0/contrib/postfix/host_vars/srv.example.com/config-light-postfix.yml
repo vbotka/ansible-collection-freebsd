@@ -1,0 +1,40 @@
+---
+
+# 28.4.2. Replace the Default MTA
+# https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/mail-changingmta.html
+
+cl_myhostname: srv.example.com
+
+# conf-light/files.d/mailer-conf
+# Execute the Postfix sendmail program, named /usr/local/sbin/sendmail
+cl_mailerconf:
+  - sendmail      /usr/local/sbin/sendmail
+  - send-mail     /usr/local/sbin/sendmail
+  - mailq         /usr/local/sbin/sendmail
+  - newaliases    /usr/local/sbin/sendmail
+
+# conf-light/files.d/rc-rconf
+cl_rcconf_postfix_enable: "YES"
+cl_rcconf_sendmail_enable: "NO"
+cl_rcconf_sendmail_submit_enable: "NO"
+cl_rcconf_sendmail_outbound_enable: "NO"
+cl_rcconf_sendmail_msp_queue_enable: "NO"
+
+# conf-light/files.d/periodic-conf
+cl_periodicconf_daily_clean_hoststat_enable: "NO"
+cl_periodicconf_daily_status_mail_rejects_enable: "NO"
+cl_periodicconf_daily_status_include_submit_mailq: "NO"
+cl_periodicconf_daily_submit_queuerun: "NO"
+
+# Services
+cl_service_sendmail_enable: false
+cl_service_sendmail_state: stopped
+cl_service_postfix_enable: true
+cl_service_postfix_state: started
+
+# If you are using SASL, you need to make sure that postfix has access
+# to read the sasldb file.  This is accomplished by adding postfix to
+# group mail and making the /usr/local/etc/sasldb* file(s) readable by
+# group mail (this should be the default for new installs).
+
+# EOF

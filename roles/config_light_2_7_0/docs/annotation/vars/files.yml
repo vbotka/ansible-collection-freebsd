@@ -1,0 +1,25 @@
+---
+
+task_files_synopsis: |
+  Manage files.
+
+task_files_description: |
+  Iterate ``cl_files_order`` (6) and include tasks with particular modules.
+
+task_files_lines: 3,6
+
+task_files_seealso:
+  handlers: []
+  templates: []
+  others:
+    - See :ref:`ug_variables_files` *Order of options*
+
+task_files_note: []
+
+task_files_hint:
+  - Customize the list ``cl_files_order`` and fit the order of the options to your needs.
+
+task_files_warning: []
+
+# EOF
+...

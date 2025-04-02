@@ -1,0 +1,42 @@
+---
+- name: "Files-blockinfile: Debug blocks in cl_files.values() cl_debug={{ cl_debug }}"
+  when: cl_debug | bool
+  ansible.builtin.debug:
+    msg: "{{ cl_files.values() | selectattr('blocks', 'defined') | list }}"
+
+- name: "Files-blockinfile: Blockinfile."
+  register: cl_results_blocks
+  notify: "{{ item.0.handlers | d(omit) }}"
+  ansible.builtin.blockinfile:
+    path: "{{ item.0.path }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.1.marker }}"
+    block: "{{ item.1.block }}"
+    state: "{{ item.1.state|d(omit) }}"
+    insertafter: "{{ item.1.insertafter | d(omit) }}"
+    insertbefore: "{{ item.1.insertbefore | d(omit) }}"
+    marker_begin: "{{ item.1.marker_begin | d(omit) }}"
+    marker_end: "{{ item.1.marker_end | d(omit) }}"
+    owner: "{{ item.0.owner | d(omit) }}"
+    group: "{{ item.0.group | d(omit) }}"
+    mode: "{{ item.0.mode | d(omit) }}"
+    attributes: "{{ item.0.attributes | d(omit) }}"
+    create: "{{ item.0.create | d(omit) }}"
+    validate: "{{ item.0.validate | d(omit) }}"
+    # backup: "{{ cl_backup }}"
+  loop: "{{ cl_files.values() | list | subelements('blocks', skip_missing=true) }}"
+  loop_control:
+    label: "{{ item.0.path }} {{ item.1.marker }}"
+
+- name: Debug
+  when: cl_debug | bool
+  block:
+
+    - name: "Files-blockinfile: Debug cl_results_blocks."
+      ansible.builtin.debug:
+        var: cl_results_blocks
+
+    - name: "Files-blockinfile: Debug changed blocks paths."
+      ansible.builtin.debug:
+        msg: "{{ cl_results_blocks.results | d([]) | json_query('[?changed].invocation.module_args.path') }}"
+
+# EOF
