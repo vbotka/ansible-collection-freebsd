@@ -1,9 +1,8 @@
-.. _ug_pb-iocage-template:
-
 pb-iocage-template
 ------------------
 
 .. contents:: Table of Contents
+   :local:
    :depth: 3
 
 .. index:: single: playbook pb-iocage-template.yml; pb-iocage-template

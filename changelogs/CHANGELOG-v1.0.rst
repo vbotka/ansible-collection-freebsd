@@ -22,6 +22,7 @@ Minor Changes
   Add included_content.rst, ug_module_ucl.rst
   Add example 301
   Update examples: 206, 311
+  Update local TOC.
 * Fix setup. Count all plugins.
 
   

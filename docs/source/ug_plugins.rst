@@ -4,7 +4,7 @@ Plugins
 *******
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
 
 .. _ug_module_iocage:
 .. include::  ug_module_iocage.rst
