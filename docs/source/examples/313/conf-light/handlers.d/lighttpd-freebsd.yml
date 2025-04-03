@@ -1,0 +1,42 @@
+lighttpd_freebsd:
+
+  template: handlers-auto3.yml.j2
+  handlers:
+
+    - handler: Start lighttpd
+      listen: start lighttpd
+      module: vbotka.freebsd.service
+      params:
+        - 'script: lighttpd'
+        - 'command: start'
+
+    - handler: Stop lighttpd
+      listen: stop lighttpd
+      module: vbotka.freebsd.service
+      params:
+        - 'script: lighttpd'
+        - 'command: stop'
+
+    - handler: Reload lighttpd
+      listen: reload lighttpd
+      module: vbotka.freebsd.service
+      params:
+        - 'script: lighttpd'
+        - 'command: reload'
+      conditions:
+        - '- cl_service_lighttpd_enable | bool'
+
+    - handler: Restart lighttpd
+      listen: restart lighttpd
+      module: vbotka.freebsd.service
+      params:
+        - 'script: lighttpd'
+        - 'command: restart'
+      conditions:
+        - '- cl_service_lighttpd_enable | bool'
+
+    - handler: Lighttpd check
+      listen: lighttpd check
+      module: ansible.builtin.command
+      params:
+        - 'cmd: /usr/local/sbin/lighttpd -t'

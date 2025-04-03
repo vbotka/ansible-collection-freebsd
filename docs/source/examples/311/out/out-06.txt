@@ -61,14 +61,14 @@ ok: [test_111] =>
         pkg_group: wheel
         pkg_annotation: UNDEFINED
         pkg_autoremove: UNDEFINED
-        pkg_cached: UNDEFINED
+        pkg_cached: True
         pkg_chroot: UNDEFINED
         pkg_ignore_osver: UNDEFINED
         pkg_jail: 10
         pkg_pkgsite: UNDEFINED
         pkg_rootdir: UNDEFINED
         pkg_state: UNDEFINED
-        pkg_use_globs: UNDEFINED
+        pkg_use_globs: False
 
         pkg_default_repo_template: repo.j2
         pkg_default_repo_conf:
@@ -125,14 +125,8 @@ ok: [test_111] =>
         msg: package(s) already present
         stderr: ''
         stderr_lines: []
-        stdout: |-
-            Updating FreeBSD repository catalogue...
-            FreeBSD repository is up to date.
-            All repositories are up to date.
-        stdout_lines:
-        - Updating FreeBSD repository catalogue...
-        - FreeBSD repository is up to date.
-        - All repositories are up to date.
+        stdout: ''
+        stdout_lines: []
 
 PLAY RECAP ************************************************************************************
 test_111: ok=10   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0

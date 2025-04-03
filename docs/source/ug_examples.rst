@@ -12,6 +12,7 @@ Examples
 :310:     Role vbotka.freebsd.postinstall
 :311:     Role vbotka.freebsd.packages
 :312:     Role vbotka.freebsd.iocage
+:313:     Role vbotka.freebsd.config_light
 
 .. toctree::
    :maxdepth: 1
@@ -43,3 +44,4 @@ Examples
    310 Configure and audit Ansible clients <examples/310/example-310.rst>
    311 Install and audit packages <examples/311/example-311.rst>
    312 Clone jails and create inventory <examples/312/example-312.rst>
+   313 Install and configure lighttpd <examples/313/example-313.rst>

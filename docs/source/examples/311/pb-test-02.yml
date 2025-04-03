@@ -1,8 +1,6 @@
 - name: Test role vbotka.freebsd.packages.
   hosts: iocage
   gather_facts: true
-  remote_user: admin
-  become: true
     
   roles:
 

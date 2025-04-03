@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Include role vbotka.freebsd.config_light
+Include role config_light and module ucl. Update docs.
 
 Major Changes
 -------------
@@ -18,9 +18,10 @@ Major Changes
 Minor Changes
 -------------
 * Add module ucl
+* Add role config_light
 * Update docs
   Add included_content.rst, ug_module_ucl.rst
-  Add example 301
+  Add examples: 301, 313
   Update examples: 206, 311
   Update local TOC.
 * Fix setup. Count all plugins.

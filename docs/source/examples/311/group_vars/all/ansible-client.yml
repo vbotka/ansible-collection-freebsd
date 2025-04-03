@@ -6,6 +6,8 @@ freebsd_install_delay: 5
 
 pkg_delegate: "{{ iocage_tags.vmm }}"
 pkg_jail: "{{ iocage_jid }}"
+pkg_use_globs: false
+pkg_cached: true
 pkg_list:
   - security/sudo
   - lang/python311

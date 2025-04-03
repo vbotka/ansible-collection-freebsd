@@ -1,0 +1,8 @@
+lighttpd-index:
+  path: "{{ cl_lighttpd_server_document_root }}/index.html"
+  owner: "{{ cl_lighttpd_server_username }}"
+  group: "{{ cl_lighttpd_server_groupname }}"
+  create: true
+  mode: "0644"
+  lines:
+    - line: <html><body><h1>Lighttpd works!</h1></body></html>

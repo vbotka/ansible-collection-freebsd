@@ -1,0 +1,77 @@
+PLAY [Test role vbotka.freebsd.config_light] ************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [test_111]
+ok: [59a3f932]
+ok: [0ed0d0ca]
+
+TASK [vbotka.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/packagesd.0ed0d0ca] ***
+ok: [test_111 -> localhost]
+ok: [59a3f932 -> localhost]
+ok: [0ed0d0ca -> localhost]
+
+TASK [vbotka.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/packagesd.0ed0d0ca to cl_packagesd_items] ***
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-packages: Combine cl_packages with cl_packagesd_items.] ****************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/statesd.0ed0d0ca] ***
+ok: [0ed0d0ca -> localhost]
+ok: [59a3f932 -> localhost]
+ok: [test_111 -> localhost]
+
+TASK [vbotka.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/statesd.0ed0d0ca to cl_statessd_items] ***
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-states: Combine cl_statess with cl_statesd_items.] *********************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/servicesd.0ed0d0ca] ***
+ok: [59a3f932 -> localhost]
+ok: [test_111 -> localhost]
+ok: [0ed0d0ca -> localhost]
+
+TASK [vbotka.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/servicesd.0ed0d0ca to cl_cervicesd_items] ***
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-services: Combine cl_services with cl_servicesd_items.] ****************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/filesd.0ed0d0ca] ***
+ok: [test_111 -> localhost]
+ok: [0ed0d0ca -> localhost]
+ok: [59a3f932 -> localhost]
+
+TASK [vbotka.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/filesd.0ed0d0ca to cl_filesd_items] ***
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-files: Combine cl_files with cl_filesd_items.] *************************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Sanity: Data directories must exist.] ***************************************************
+ok: [0ed0d0ca -> localhost]
+
+TASK [vbotka.config_light : Sanity: Supported modules for packages.] ************************************************
+ok: [0ed0d0ca -> localhost]
+
+PLAY RECAP **********************************************************************************************************
+0ed0d0ca: ok=15   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+59a3f932: ok=13   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+test_111: ok=13   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0
