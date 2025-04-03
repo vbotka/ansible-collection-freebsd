@@ -32,6 +32,10 @@ Some tested roles are documented at `readtthedocs.io`_
 * `freebsd_poudriere`_
 * `freebsd_wpa_cli`_
 
+.. hint::
+
+   See pre-configured roles in ``setup/vars/roles.yml``. Feel free to contribute other roles.
+
 
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
