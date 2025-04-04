@@ -1,4 +1,4 @@
 ---
-bsd_plugins_install:
+install:
   modules: [iocage, ucl]
   inventory: [iocage]

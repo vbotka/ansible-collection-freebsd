@@ -26,7 +26,13 @@ Minor Changes
   Update local TOC.
 * Fix setup. Count all plugins.
 
-  
+Breaking Changes / Porting Guide
+--------------------------------
+* Update setup
+  Renamed vars-files and variables.
+  Changed structures.
+
+
 0.6.10
 ======
 

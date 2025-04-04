@@ -1,8 +1,0 @@
----
-bsd_plugins_all_no: 3
-bsd_plugins_all:
-  inventory:
-    iocage: preinstalled in distfiles
-  modules:
-    iocage: https://raw.githubusercontent.com/vbotka/ansible-iocage
-    ucl: https://raw.githubusercontent.com/vbotka/ansible-ucl

@@ -1,0 +1,13 @@
+---
+patch:
+  modules:
+    iocage:
+      current: module-iocage.current.patch
+      release: module-iocage.release.patch
+    ucl:
+      current: module-ucl.current.patch
+      release: module-ucl.release.patch
+  inventory:
+    iocage:
+      current: inventory-iocage.current.patch
+      release: inventory-iocage.release.patch

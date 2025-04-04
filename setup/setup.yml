@@ -22,9 +22,11 @@
 
   vars_files:
     - setup.yml
+    - branch.yml
     - checksum.yml
+    - patch.yml
     - plugins.yml
-    - plugins_install.yml
+    - install.yml
     - roles.yml
     - roles_install.yml
 
