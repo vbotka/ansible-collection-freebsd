@@ -1,8 +1,0 @@
----
-hostname_freebsd:
-  template: handlers-auto1.yml.j2
-  handlers:
-    - handler: set hostname
-      module: command
-      params:
-        - "cmd: /bin/hostname {{ rc_conf_hostname }}"

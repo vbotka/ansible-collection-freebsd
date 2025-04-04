@@ -1,5 +1,0 @@
----
-postfix:
-  name: postfix
-  state: "{{ cl_service_postfix_state }}"
-  enabled: "{{ cl_service_postfix_enable }}"
