@@ -1,0 +1,39 @@
+---
+- name: "Vars: Debug cl_debug={{ cl_debug }}"
+  when: cl_debug | bool
+  vars:
+    msg: |-
+      cl_packagesd_dir: {{ cl_packagesd_dir }}
+      cl_statesd_dir: {{ cl_statesd_dir }}
+      cl_servicesd_dir: {{ cl_servicesd_dir }}
+      cl_filesd_dir: {{ cl_filesd_dir }}
+
+      cl_dira: {{ cl_dira }}
+      cl_packagesd: {{ cl_packagesd }}
+      cl_statesd: {{ cl_statesd }}
+      cl_servicesd: {{ cl_servicesd }}
+      cl_filesd: {{ cl_filesd }}
+
+      cl_all_delete: {{ cl_all_delete }}
+      cl_packagesd_delete: {{ cl_packagesd_delete }}
+      cl_servicesd_delete: {{ cl_servicesd_delete }}
+      cl_filesd_delete: {{ cl_filesd_delete }}
+      cl_statesd_delete: {{ cl_statesd_delete }}
+
+      cl_assemble_validate: {{ cl_assemble_validate | d(omit, true) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Vars: Packages."
+  ansible.builtin.import_tasks: vars-packages.yml
+
+- name: "Vars: States."
+  ansible.builtin.import_tasks: vars-states.yml
+
+- name: "Vars: Services."
+  ansible.builtin.import_tasks: vars-services.yml
+
+- name: "Vars: Files."
+  ansible.builtin.import_tasks: vars-files.yml
+
+# EOF

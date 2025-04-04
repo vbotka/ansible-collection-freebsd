@@ -1,0 +1,27 @@
+---
+- name: "Files-delete-backup: Delete backup files that did not change."
+  when:
+    - cl_backup | bool
+    - not ansible_check_mode
+  changed_when: false
+  ansible.builtin.file:
+    state: absent
+    path: "{{ item }}_{{ cl_timestamp }}.bak"
+  loop: "{{ cl_files.values() | list |
+            json_query('[].path') |
+            difference(cl_results_copy.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique |
+            difference(cl_results_template.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique |
+            difference(cl_results_lines.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique |
+            difference(cl_results_blocks.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique |
+            difference(cl_results_inifile.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique |
+            difference(cl_results_ucl.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique |
+            difference(cl_results_patch.results | d([]) |
+            json_query('[?changed].invocation.module_args.path')) | unique }}"
+
+# EOF

@@ -1,0 +1,329 @@
+---
+mytasks:
+  - file: main.yml
+    link: main.yml
+    path: tasks/main.yml
+    synopsis: |
+      Main task.
+    description: |
+      Import tasks if enabled.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: setup.yml
+    link: setup.yml
+    path: tasks/setup.yml
+    synopsis: |
+      Configure setup.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: vars-handlers.yml
+    link: vars-handlers.yml
+    path: tasks/vars-handlers.yml
+    synopsis: |
+      Configure vars-handlers.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: vars.yml
+    link: vars.yml
+    path: tasks/vars.yml
+    synopsis: |
+      Configure vars.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: vars-packages.yml
+    link: vars-packages.yml
+    path: tasks/vars-packages.yml
+    synopsis: |
+      Configure vars-packages.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: vars-states.yml
+    link: vars-states.yml
+    path: tasks/vars-states.yml
+    synopsis: |
+      Configure vars-states.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: vars-services.yml
+    link: vars-services.yml
+    path: tasks/vars-services.yml
+    synopsis: |
+      Configure vars-services.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: vars-files.yml
+    link: vars-files.yml
+    path: tasks/vars-files.yml
+    synopsis: |
+      Configure vars-files.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: sanity.yml
+    link: sanity.yml
+    path: tasks/sanity.yml
+    synopsis: |
+      Configure sanity.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: debug.yml
+    link: debug.yml
+    path: tasks/debug.yml
+    synopsis: |
+      Configure debug.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: packages.yml
+    link: packages.yml
+    path: tasks/packages.yml
+    synopsis: |
+      Configure packages.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: states.yml
+    link: states.yml
+    path: tasks/states.yml
+    synopsis: |
+      Configure states.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files.yml
+    link: files.yml
+    path: tasks/files.yml
+    synopsis: |
+      Manage files.
+
+    description: |
+      Iterate ``cl_files_order`` (6) and include tasks with particular modules.
+
+    lines: 3,6
+    seealso: {'handlers': [], 'templates': [], 'others': ['See :ref:`ug_variables_files` *Order of options*']}
+    notes: []
+    hints: ['Customize the list ``cl_files_order`` and fit the order of the options to your needs.']
+    warnings: []
+
+  - file: files-blockinfile.yml
+    link: files-blockinfile.yml
+    path: tasks/files-blockinfile.yml
+    synopsis: |
+      Configure files-blockinfile.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-copy.yml
+    link: files-copy.yml
+    path: tasks/files-copy.yml
+    synopsis: |
+      Configure files-copy.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-create-backup.yml
+    link: files-create-backup.yml
+    path: tasks/files-create-backup.yml
+    synopsis: |
+      Configure files-create-backup.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-delete-backup.yml
+    link: files-delete-backup.yml
+    path: tasks/files-delete-backup.yml
+    synopsis: |
+      Configure files-delete-backup.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-inifile.yml
+    link: files-inifile.yml
+    path: tasks/files-inifile.yml
+    synopsis: |
+      Configure files-inifile.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-lineinfile.yml
+    link: files-lineinfile.yml
+    path: tasks/files-lineinfile.yml
+    synopsis: |
+      Configure files-lineinfile.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-markers.yml
+    link: files-markers.yml
+    path: tasks/files-markers.yml
+    synopsis: |
+      Configure files-markers.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: mark-block.yml
+    link: mark-block.yml
+    path: tasks/fn/mark-block.yml
+    synopsis: |
+      Configure mark-block.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-patch.yml
+    link: files-patch.yml
+    path: tasks/files-patch.yml
+    synopsis: |
+      Configure files-patch.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-template.yml
+    link: files-template.yml
+    path: tasks/files-template.yml
+    synopsis: |
+      Configure files-template.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: files-ucl.yml
+    link: files-ucl.yml
+    path: tasks/files-ucl.yml
+    synopsis: |
+      Configure files-ucl.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: services.yml
+    link: services.yml
+    path: tasks/services.yml
+    synopsis: |
+      Configure services.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+...

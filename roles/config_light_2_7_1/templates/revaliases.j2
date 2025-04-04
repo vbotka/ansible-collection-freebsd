@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+# Format: local_account:outgoing_address:mailhub
+{% for item in cl_ssmtp_revaliases %}
+{{ item }}
+{% endfor %}
+# EOF

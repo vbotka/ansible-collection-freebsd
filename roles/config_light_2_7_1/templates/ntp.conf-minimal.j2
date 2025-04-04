@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+{% for option in fp_ntp_config_options %}
+{{ option }}
+{% endfor %}
+{% for pool in fp_ntp_config_pool %}
+pool {{ pool }}
+{% endfor %}
+{% for restrict in fp_ntp_config_restrict %}
+restrict {{ restrict }}
+{% endfor %}
+{% if fp_ntp_config_leapfile %}
+leapfile {{ fp_ntp_config_leapfile }}
+{% endif %}

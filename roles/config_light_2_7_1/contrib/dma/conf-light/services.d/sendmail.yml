@@ -1,0 +1,5 @@
+---
+sendmail:
+  name: sendmail
+  state: "{{ cl_service_sendmail_state }}"
+  enabled: "{{ cl_service_sendmail_enable|bool }}"

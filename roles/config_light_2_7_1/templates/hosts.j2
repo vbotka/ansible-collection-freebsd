@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+{{ cl_hosts_localhost_IPv6 }}	localhost localhost.{{ cl_domain }}
+{{ cl_hosts_localhost_IPv4 }}	localhost localhost.{{ cl_domain }}
+
+{% for item in cl_hosts %}
+{{ item.ip }}    {{ item.fqdn }} {{ item.hostname|default('') }}
+{% endfor %}
+
+# EOF
