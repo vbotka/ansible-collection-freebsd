@@ -6,7 +6,8 @@
 Extending example 010.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: variable iocage_properties; Example 012
 .. index:: single: iocage_properties; Example 012

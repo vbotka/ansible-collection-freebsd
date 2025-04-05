@@ -4,7 +4,8 @@
 ---------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: module vbotka.freebsd.service; Example 300
 .. index:: single: vbotka.freebsd.service; Example 300

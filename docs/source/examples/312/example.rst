@@ -4,7 +4,8 @@
 -------------------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: playbook pb-iocage-fetch-base-clone.yml; Example 312
 .. index:: single: playbook pb-iocage-list.yml; Example 312

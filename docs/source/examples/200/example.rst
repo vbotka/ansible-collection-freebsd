@@ -1,75 +1,37 @@
-.. _example_202:
+.. _example_200:
 
-202 Create Ansible client templates and clone DHCP Ansible client jails
------------------------------------------------------------------------
-
-Extending example :ref:`example_200`.
+200 Create Ansible client templates and clone Ansible client jails
+------------------------------------------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
-.. index:: single: template ansible_client; Example 202
-.. index:: single: ansible_client; Example 202
-.. index:: single: DHCP; Example 202
-.. index:: single: dhclient; Example 202
-.. index:: single: dhclient-exit-hooks; Example 202
-.. index:: single: inventory vbotka.freebsd.iocage; Example 202
-.. index:: single: module vbotka.freebsd.iocage; Example 202
-.. index:: single: module community.general.pkgng; Example 202
-.. index:: single: module ansible.posix.authorized; Example 202
-.. index:: single: module ansible.builtin.lineinfile; Example 202
-.. index:: single: playbook pb-iocage-template.yml; Example 202
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 202
+.. index:: single: template ansible_client; Example 200
+.. index:: single: ansible_client; Example 200
+.. index:: single: playbook pb-iocage-template.yml; Example 200
+.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 200
+.. index:: single: inventory vbotka.freebsd.iocage; Example 200
+.. index:: single: module vbotka.freebsd.iocage; Example 200
+.. index:: single: module community.general.pkgng; Example 200
+.. index:: single: module ansible.posix.authorized; Example 200
+.. index:: single: module ansible.builtin.lineinfile; Example 200
+.. index:: single: sudoers; Example 200
 
-.. index:: single: option compose; Example 202
-.. index:: single: compose; Example 202
-.. index:: single: option hooks_results; Example 202
-.. index:: single: hooks_results; Example 202
-.. index:: single: property notes; Example 202
-.. index:: single: notes; Example 202
-.. index:: single: sudoers; Example 202
-.. index:: single: variable iocage_hooks; Example 202
-.. index:: single: iocage_hooks; Example 202
+.. index:: single: option compose; Example 200
+.. index:: single: compose; Example 200
+.. index:: single: option groups; Example 200
 
-.. index:: single: act_dhclient; Example 202
-.. index:: single: act_pkg; Example 202
-.. index:: single: act_user; Example 202
-.. index:: single: act_pk; Example 202
-.. index:: single: act_sudo; Example 202
-.. index:: single: act_rcconf; Example 202
+.. index:: single: act_pkg; Example 200
+.. index:: single: act_user; Example 200
+.. index:: single: act_pk; Example 200
+.. index:: single: act_sudo; Example 200
+.. index:: single: act_rcconf; Example 200
 
 Use case
 ^^^^^^^^
 
-Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook::
-
-  shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
-  case "$reason" in
-      "BOUND"|"REBIND"|"REBOOT"|"RENEW")
-      echo $new_ip_address > /var/db/dhclient-hook.address.$interface
-      ;;
-  esac
-
-creates files. For example, ::
-
-  shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b 
-  10.1.0.130
-  
-Read the files, created by the hooks, and use the IP addresses to compose the variable
-*ansible_host* ::
-
-  shell> cat hosts/01_iocage.yml 
-  plugin: vbotka.freebsd.iocage
-  ...
-  hooks_results:
-    - /var/db/dhclient-hook.address.epair0b
-  compose:
-    ansible_host: iocage_hooks.0
-
-Default to *iocage_ip4* if the hook is not available ::
-
-  compose:
-    ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+Create templates for Ansible clients. 
 
 Tree
 ^^^^
@@ -91,6 +53,7 @@ Tree
    │   └── iocage_02
    │       └── iocage.yml
    ├── iocage-hosts.ini
+   ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
    ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
    ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
    ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
@@ -111,7 +74,6 @@ Synopsis
   * community.general.pkgng to install packages.
   * ansible.posix.authorized_key to configure public keys.
   * ansible.builtin.lineinfile to configure /etc/rc.conf and /usr/local/etc/sudoers
-  * configure dhclient hooks.
 
   In the playbook *pb-iocage-ansible-clients.yml*, use the module *vbotka.freebsd.iocage* to:
 
@@ -138,15 +100,11 @@ Requirements
 Notes
 ^^^^^
 
-* The option *hooks_results* expects the *poolname* of a jail to be mounted to */poolname*. For
-  example, if you activate the pool *zroot* this plugin expects to find the *hooks_results* items
-  in the path */zroot/iocage/jails/<name>/root*. If you mount the *poolname* to a different path
-  the easiest remedy is to create a symlink.
-
 .. seealso::
 
-   * `man dhclient-script <https://man.freebsd.org/cgi/man.cgi?dhclient-script>`_
    * `Using Templates <https://iocage.readthedocs.io/en/latest/templates.html>`_
+   * `Connection methods and details <https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html>`_
+   * `Understanding privilege escalation: become <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#become>`_
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -160,14 +118,6 @@ host_vars/iocage_01/iocage.yml
 .. literalinclude:: host_vars/iocage_01/iocage.yml
     :language: yaml
 
-.. hint::
-
-   The option *hooks_results* expects the *pool* to be mounted to */pool*. In the above *host_vars*
-   the pool *pool2* is mounted to */mnt/pool2*. For *hooks_results* to work properly, create symlink
-   in the root directory ::
-
-     pool2 -> /mnt/pool2
-
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -176,9 +126,6 @@ host_vars/iocage_02/iocage.yml
 
 .. note::
 
-   The variables *act_\** are used to configure *ansible_client* template
-
-   * The dhclient hooks *act_dhclient* will be created in */etc*.
    * The user *act_user* will be created in the template.
    * The user *act_user* will serve as Ansible *remote_user*.
    * The file *act_pk* provides the public keys allowed to ssh to *act_user*.
@@ -230,10 +177,16 @@ Playbook *pb-iocage-ansible-clients.yml*
 .. literalinclude:: pb-iocage-ansible-clients.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Clone jails
+^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
+    :language: bash
+
+List jails
+^^^^^^^^^^
+
+.. literalinclude:: out/out-09.txt
     :language: bash
 
 List jails at iocage_01

@@ -4,7 +4,8 @@
 ------------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: role vbotka.freebsd.config_light; Example 313
 .. index:: single: vbotka.freebsd.config_light; Example 313

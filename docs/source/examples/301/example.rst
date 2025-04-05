@@ -4,7 +4,8 @@
 -----------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: module vbotka.freebsd.ucl; Example 301
 .. index:: single: vbotka.freebsd.ucl; Example 301

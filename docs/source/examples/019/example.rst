@@ -6,7 +6,8 @@
 Extending example 016.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: option use_vars_plugins; Example 019
 .. index:: single: use_vars_plugins; Example 019

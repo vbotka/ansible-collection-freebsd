@@ -6,7 +6,8 @@
 Extending example 016.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: inventory community.general.iocage; Example 017
 .. index:: single: playbook pb-iocage-obsolete.yml; Example 017

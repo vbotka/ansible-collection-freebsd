@@ -4,7 +4,8 @@
 -----------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: role vbotka.freebsd.postinstall; Example 310
 .. index:: single: audit ansible_client; Example 310

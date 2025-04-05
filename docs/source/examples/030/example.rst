@@ -6,7 +6,8 @@
 Extending example 312.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: custom facts; Example 030
 .. index:: single: filter vbotka.freebsd.iocage; Example 030

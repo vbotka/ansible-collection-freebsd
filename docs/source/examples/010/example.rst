@@ -4,7 +4,8 @@
 --------------------------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: module vbotka.freebsd.iocage; Example 010
 .. index:: single: inventory vbotka.freebsd.iocage; Example 010

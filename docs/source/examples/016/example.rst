@@ -6,7 +6,8 @@
 Extending example 015.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: inventory ansible.builtin.constructed; Example 016
 .. index:: single: option compose; Example 016

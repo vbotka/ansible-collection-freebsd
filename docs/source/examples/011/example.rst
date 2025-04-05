@@ -6,7 +6,8 @@
 Extending example 010.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: variables iocage_*; Example 011
 .. index:: single: option compose; Example 011

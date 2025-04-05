@@ -4,7 +4,8 @@
 --------------------------------------
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 Tree
 ^^^^

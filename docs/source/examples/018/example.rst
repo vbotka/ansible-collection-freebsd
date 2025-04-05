@@ -6,7 +6,8 @@
 Extending example 010.
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: DHCP; Example 018
 .. index:: single: module vbotka.freebsd.iocage; Example 018

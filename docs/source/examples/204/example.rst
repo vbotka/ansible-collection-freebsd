@@ -6,7 +6,8 @@
 Extending example :ref:`example_203`
 
 .. contents:: Table of Contents
-   :depth: 2
+   :local:
+   :depth: 1
 
 .. index:: single: template ansible_client; Example 204
 .. index:: single: ansible_client; Example 204
