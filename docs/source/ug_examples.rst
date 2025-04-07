@@ -28,7 +28,7 @@ Examples
    examples/014/example.rst
    examples/015/example.rst
    examples/016/example.rst
-   017 Inventory plugin community.general.iocage <examples/017/example.rst>
+   examples/017/example.rst
    examples/018/example.rst
    examples/019/example.rst
    examples/030/example.rst

@@ -16,10 +16,8 @@
     cg_latest: "{{ cg_dict | dict2items | sort(attribute='key') | last }}"
     cg_latest_version: "{{ cg_latest.key }}"
     cg_latest_path: "{{ cg_latest.value }}"
-#   cg_latest_hash_cmd: "sha512sum {{ cg_latest_path }}/community/general/plugins/inventory/iocage.py"
-#   cg_latest_hash: "sha512:{{ lookup('pipe', cg_latest_hash_cmd) | split | first }}"
-    cg_latest_file: "{{ cg_latest_path }}/community/general/plugins/inventory/iocage.py"
-    cg_latest_hash: "{{ lookup('file', cg_latest_file) | hash('sha512')  }}"
+    cg_latest_hash_cmd: "sha512sum {{ cg_latest_path }}/community/general/plugins/inventory/iocage.py"
+    cg_latest_hash: "sha512:{{ lookup('pipe', cg_latest_hash_cmd) | split | first }}"
     cg_latest_hash_short: "{{ (cg_latest_hash | split(':') | last)[:8] }}"
 
     vf_collections: "{{ collections

@@ -1,7 +1,7 @@
 .. _example_017:
 
-017 Inventory plugin community.general.iocage
----------------------------------------------
+017 community.general.iocage
+----------------------------
 
 Extending example 016.
 
