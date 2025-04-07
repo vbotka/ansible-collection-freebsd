@@ -18,8 +18,10 @@ This collection is shipped with:
 
 * [module vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
 * [module vbotka.freebsd.service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/) - control or list system services.
+* [module vbotka.freebsd.ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/) - CRUD-like interface to managing UCL files.
 * [filter vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - parse iocage lists.
 * [inventory plugin vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
+* [role vbotka.freebsd.config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_ligth/) -  install packages, configure files, services, and handlers.
 * [role vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - install and configure iocage.
 * [role vbotka.freebsd.packages](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/) - configure repos and install packages.
 * [role vbotka.freebsd.postinstall](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/) - postinstall configuration.
