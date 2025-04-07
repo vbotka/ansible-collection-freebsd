@@ -192,7 +192,7 @@ EXAMPLES = r'''
     path: /foo/bar.conf
     upath: rootkey.subkey.key
     value: newvalue
-    merge: yes
+    merge: true
     executable: /usr/local/bin/uclcmd
 
 - name: Merge new value to upath in path. Set executable by environment on
@@ -201,7 +201,7 @@ EXAMPLES = r'''
     path: /foo/bar.conf
     upath: rootkey.subkey.key
     value: newvalue
-    merge: yes
+    merge: true
   environment:
     ANSIBLE_UCLCMD: /usr/local/bin/uclcmd
 
@@ -210,14 +210,14 @@ EXAMPLES = r'''
     path: /foo/bar.conf
     upath: rootkey.subkey.key
     ipath: merge.ucl
-    merge: yes
+    merge: true
 
 - name: Merge value from the UCL file on controller to upath in path
   vbotka.freebsd.ucl:
     path: /foo/bar.conf
     upath: rootkey.subkey.key
     icontent: "{{ lookup('file', 'merge.ucl') }}"
-    merge: yes
+    merge: true
 
 - name: Remove upath rootkey.subkey.key from path
   vbotka.freebsd.ucl:

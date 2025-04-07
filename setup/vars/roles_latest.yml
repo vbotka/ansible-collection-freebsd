@@ -1,6 +1,6 @@
 ---
-roles_no: 36
-roles:
+bsd_roles_no: 36
+bsd_roles:
   - galaxy: vbotka.ansible
     name: ansible
     scm: git

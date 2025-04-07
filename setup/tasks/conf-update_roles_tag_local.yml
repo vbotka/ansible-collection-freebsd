@@ -13,7 +13,7 @@
       set -o pipefail &&
       cd {{ bsd_roles_dir }}/{{ item.galaxy }} &&
       git tag --list | sort -V | tail -1
-  loop: "{{ roles }}"
+  loop: "{{ bsd_roles }}"
   loop_control:
     label: "{{ bsd_roles_dir }}/{{ item.galaxy }}"
 
@@ -49,13 +49,13 @@
   ansible.builtin.debug:
     var: roles | zip(roles_tag) | map('combine')
 
-- name: Update roles_tag in vars/roles_tag.yml
+- name: Update vars/roles_latest.yml
   ansible.builtin.copy:
     dest: vars/roles_latest.yml
     mode: '664'
     backup: true
     content: |
       ---
-      roles_no: {{ roles | length }}
-      roles:
-        {{ roles | zip(roles_tag) | map('combine') | to_nice_yaml(indent=2) | indent(2) }}
+      bsd_roles_no: {{ bsd_roles | length }}
+      bsd_roles:
+        {{ bsd_roles | zip(roles_tag) | map('combine') | to_nice_yaml(indent=2) | indent(2) }}
