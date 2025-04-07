@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update galaxy.yml; Do not distribute roles/\*/docs"
+* Update module ucl.py
 
 
 0.6.11
