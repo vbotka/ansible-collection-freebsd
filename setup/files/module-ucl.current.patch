@@ -1,8 +1,8 @@
 diff --git a/setup/distfiles/modules/ucl.py b/setup/distfiles/modules/ucl.py
-index c1fdc65..b30487b 100644
+index 4811e7a..eb0f066 100644
 --- a/setup/distfiles/modules/ucl.py
 +++ b/setup/distfiles/modules/ucl.py
-@@ -163,23 +163,23 @@ author: "Vladimir Botka (@vbotka)"
+@@ -172,23 +172,23 @@ author: "Vladimir Botka (@vbotka)"
  
  EXAMPLES = r'''
  - name: Get FreeBSD repository of packages
@@ -30,16 +30,16 @@ index c1fdc65..b30487b 100644
      path: /foo/bar.conf
      upath: rootkey.subkey.key
      value: newvalue
-@@ -188,7 +188,7 @@ EXAMPLES = r'''
+@@ -197,7 +197,7 @@ EXAMPLES = r'''
  
- - name: Merge new value to upath in path. Set executable by
-         environment on remote node.
+ - name: Merge new value to upath in path. Set executable by environment on
+         remote node.
 -  ucl:
 +  vbotka.freebsd.ucl:
      path: /foo/bar.conf
      upath: rootkey.subkey.key
      value: newvalue
-@@ -197,21 +197,21 @@ EXAMPLES = r'''
+@@ -206,21 +206,21 @@ EXAMPLES = r'''
      ANSIBLE_UCLCMD: /usr/local/bin/uclcmd
  
  - name: Merge value from the UCL file on remote node to upath in path

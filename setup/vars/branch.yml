@@ -1,7 +1,7 @@
 ---
 branch:
   modules:
-    iocage: current
-    ucl: current
+    iocage: release
+    ucl: release
   inventory:
     iocage: release
