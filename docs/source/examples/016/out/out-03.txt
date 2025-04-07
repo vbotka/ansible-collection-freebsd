@@ -18,13 +18,13 @@ ok: [test_113] =>
 
 TASK [debug] **********************************************************************************
 ok: [test_101] => 
-    msg: |-
-        all: ['ansible_client', 'test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
-        ungrouped: ['ansible_client']
-        test_01: ['test_101', 'test_102', 'test_103']
-        test_02: ['test_111', 'test_112', 'test_113']
-        test: ['test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
-	test_up: ['test_102', 'test_103', 'test_112', 'test_113']
+  msg: |-
+    all: ['ansible_client', 'test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
+    ungrouped: ['ansible_client']
+    test_01: ['test_101', 'test_102', 'test_103']
+    test_02: ['test_111', 'test_112', 'test_113']
+    test: ['test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
+    test_up: ['test_102', 'test_103', 'test_112', 'test_113']
 
 PLAY RECAP ************************************************************************************
 test_101: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

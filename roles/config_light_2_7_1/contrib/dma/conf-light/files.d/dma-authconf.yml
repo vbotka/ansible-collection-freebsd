@@ -1,0 +1,9 @@
+---
+dma_authconf:
+  path: /usr/local/etc/dma/auth.conf
+  force: true
+  owner: root
+  group: mail
+  mode: "0640"
+  template:
+    path: dma-auth.conf.j2

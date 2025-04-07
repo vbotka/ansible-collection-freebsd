@@ -1,12 +1,11 @@
 ---
-
 - name: "Create plugins distfiles directories."
   tags: plugins_distfiles_dirs
   ansible.builtin.file:
     path: "distfiles/{{ item.key }}"
     mode: "{{ plugins_dir_mode }}"
     state: directory
-  loop: "{{ bsd_plugins_install | dict2items }}"
+  loop: "{{ plugins_install | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
 
@@ -16,25 +15,25 @@
     path: "{{ collection_dir }}/plugins/{{ item.key }}"
     mode: "{{ plugins_dir_mode }}"
     state: directory
-  loop: "{{ bsd_plugins_install | dict2items }}"
+  loop: "{{ plugins_install | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
 
 - name: "Download distfiles."
-  when: url != 'preinstalled in distfiles'
+  when: _url != 'preinstalled in distfiles'
   tags: plugins_distfiles
   vars:
-    branch: "{{ bsd_plugins[item.0.key][item.1].branch }}"
-    url: "{{ bsd_plugins[item.0.key][item.1].url }}"
+    _branch: "{{ branch[item.0.key][item.1] }}"
+    _url: "{{ plugins[item.0.key][item.1] }}"
   register: result
   ansible.builtin.get_url:
-    url: "{{ url }}/{{ branch }}/{{ item.1 }}.py"
-    checksum: "{{ checksum[item.0.key][item.1][branch] }}"
+    url: "{{ _url }}/{{ _branch }}/{{ item.1 }}.py"
+    checksum: "{{ checksum[item.0.key][item.1][_branch] }}"
     dest: "distfiles/{{ item.0.key }}/{{ item.1 }}.py"
     mode: "{{ plugins_file_mode }}"
-  loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+  loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
-    label: "{{ item.0.key }} {{ item.1 }} {{ branch }}"
+    label: "{{ item.0.key }} {{ item.1 }} {{ _branch }}"
 
 - name: "Install plugins (not idempotent if patch exists)."
   tags: plugins_install
@@ -43,20 +42,23 @@
     src: "distfiles/{{ item.0.key }}/{{ item.1 }}.py"
     dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
     mode: "{{ plugins_file_mode }}"
-  loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+  loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1 }}"
 
 - name: "Patch plugins (not idempotent if patch exists)."
-  when: bsd_plugins[item.0.key][item.1].patch is defined
+  when: _patch is defined
   tags: plugins_patch
+  vars:
+    _branch: "{{ branch[item.0.key][item.1] }}"
+    _patch: "{{ patch[item.0.key][item.1][_branch] }}"
   register: result
   ansible.posix.patch:
-    src: "files/{{ bsd_plugins[item.0.key][item.1].patch }}"
+    src: "files/{{ patch[item.0.key][item.1][_branch] }}"
     dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
-  loop: "{{ bsd_plugins_install | dict2items | subelements('value') }}"
+  loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
-    label: "{{ item.0.key }} {{ item.1 }}"
+    label: "{{ item.0.key }} {{ item.1 }} {{ _patch }}"
 
 - name: "Debug result debug2={{ debug2 }}"
   when: debug2 | bool

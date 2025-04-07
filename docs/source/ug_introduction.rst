@@ -11,16 +11,9 @@ Introduction
 
   * `community.general`_
 
-* The collection is shipped with:
+The collection is shipped with:
 
-  * `module vbotka.freebsd.iocage`_
-  * `module vbotka.freebsd.service`_
-  * `inventory plugin vbotka.freebsd.iocage`_
-  * `filter vbotka.freebsd.iocage`_
-  * `role vbotka.freebsd.iocage`_
-  * `role vbotka.freebsd.packages`_
-  * `role vbotka.freebsd.postinstall`_
-  * various :ref:`ug_playbooks`
+.. include:: included_content.rst
 
 .. seealso::
 

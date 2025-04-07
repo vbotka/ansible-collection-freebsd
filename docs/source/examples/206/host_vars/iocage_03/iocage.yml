@@ -1,0 +1,24 @@
+ansible_python_interpreter: /usr/local/bin/python3.11
+
+freebsd_iocage_runner_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+properties:
+  notes: "vmm={{ inventory_hostname }}"
+
+clones:
+  test_113:
+    clone_from: ansible_client
+    properties:
+      ip4_addr: "ue0|10.1.0.113/24"
+      notes: "swarm=sw_01"
+start: [test_113]
+
+swarms:
+  sw_01:
+    count: 3
+    template: ansible_client
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1

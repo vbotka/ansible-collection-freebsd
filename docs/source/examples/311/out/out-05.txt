@@ -21,11 +21,11 @@ ok: [c1670497]
 ok: [test_111]
 
 TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] **********************
-ok: [test_111 -> iocage_02(10.1.0.73)]
-ok: [afa9e515 -> iocage_02(10.1.0.73)]
-ok: [c1670497 -> iocage_02(10.1.0.73)]
+changed: [test_111 -> iocage_02(10.1.0.73)]
+changed: [afa9e515 -> iocage_02(10.1.0.73)]
+changed: [c1670497 -> iocage_02(10.1.0.73)]
 
 PLAY RECAP ************************************************************************************
-afa9e515: ok=5    changed=0    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
-c1670497: ok=5    changed=0    unreachable=0    failed=0    skipped=36   rescued=0    ignored=0   
-test_111: ok=5    changed=0    unreachable=0    failed=0    skipped=36   rescued=0    ignored=0
+afa9e515: ok=5    changed=1    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
+c1670497: ok=5    changed=1    unreachable=0    failed=0    skipped=36   rescued=0    ignored=0   
+test_111: ok=5    changed=1    unreachable=0    failed=0    skipped=36   rescued=0    ignored=0

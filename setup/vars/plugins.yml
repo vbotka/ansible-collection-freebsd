@@ -1,15 +1,8 @@
 ---
-bsd_plugins:
-  modules:
-    iocage:
-      branch: current
-      url: https://raw.githubusercontent.com/vbotka/ansible-iocage
-      patch: module-iocage.patch
-    ucl:
-      branch: release
-      url: https://raw.githubusercontent.com/vbotka/ansible-ucl
+plugins_no: 3
+plugins:
   inventory:
-    iocage:
-      branch: release
-      url: preinstalled in distfiles
-      patch: inventory-iocage.patch
+    iocage: preinstalled in distfiles
+  modules:
+    iocage: https://raw.githubusercontent.com/vbotka/ansible-iocage
+    ucl: https://raw.githubusercontent.com/vbotka/ansible-ucl

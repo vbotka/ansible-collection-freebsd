@@ -1,0 +1,17 @@
+cl_sanity: false
+cl_setup: false
+cl_install: false
+cl_backup: true
+
+cl_dird_group: adm
+cl_dird_dmode: "0770"
+cl_dird: "{{ playbook_dir }}/conf-light"
+
+cl_dira_group: adm
+cl_dira_dmode: "0770"
+cl_dira_fmode: "0660"
+
+cl_handlers_dir_group: adm
+
+install_delay: "{{ freebsd_install_delay }}"
+install_retries: "{{ freebsd_install_retries }}"

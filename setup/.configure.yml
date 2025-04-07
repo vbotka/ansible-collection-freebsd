@@ -24,10 +24,8 @@
     - configure.yml
     - checksum.yml
     - plugins.yml
-    - plugins_all.yml
     - plugins_install.yml
     - roles.yml
-    - roles_all.yml
     - roles_install.yml
 
   vars:
@@ -42,16 +40,6 @@
       ansible.builtin.assert:
         that: i_know_what_i_am_doing | d(false) | bool
         fail_msg: Confirm that you know what you are doing.
-
-    - name: Write all roles dictionary to vars/roles_all.yml
-      when: create_roles_all | d(false) | bool
-      tags: create_roles_all
-      ansible.builtin.import_tasks: tasks/conf-create_roles_all.yml
-
-    - name: Write all plugins dictionary to vars/plugins_all.yml
-      when: create_plugins_all | d(false) | bool
-      tags: create_plugins_all
-      ansible.builtin.import_tasks: tasks/conf-create_plugins_all.yml
 
     - name: Update roles tag in vars/roles.yml from local repos
       when: update_roles_tag_local | d(false) | bool

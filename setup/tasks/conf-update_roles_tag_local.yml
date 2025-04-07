@@ -24,37 +24,38 @@
 
 - name: "Set bsd_roles_tag"
   ansible.builtin.set_fact:
-    bsd_roles_tag: "{{ out.results | map(attribute='stdout')
-                                   | map('community.general.dict_kv', 'version') }}"
+    roles_tag: "{{ out.results | map(attribute='stdout')
+                               | map('community.general.dict_kv', 'version') }}"
 
-- name: "Debug bsd_roles_tag debug={{ debug }}"
+- name: "Debug roles_tag debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
-    var: bsd_roles_tag
+    var: roles_tag
 
-- name: "Assert bsd_roles_tag not empty"
+- name: "Assert roles_tag not empty"
   ansible.builtin.assert:
     quiet: "{{ assert_quiet }}"
-    that: bsd_roles_tag | selectattr('version') | length == bsd_roles_tag | length
-    fail_msg: "[ERR] Empty version(s) in bsd_roles_tag."
+    that: roles_tag | selectattr('version') | length == roles_tag | length
+    fail_msg: "[ERR] Empty version(s) in roles_tag."
 
 - name: "Assert bsd_roles_tag valid versions"
   ansible.builtin.assert:
     quiet: "{{ assert_quiet }}"
-    that: bsd_roles_tag | selectattr('version', 'version', '0.0', '>') | length == bsd_roles_tag | length
-    fail_msg: "[ERR] Not a valid version(s) in bsd_roles_tag."
+    that: roles_tag | selectattr('version', 'version', '0.0', '>') | length == roles_tag | length
+    fail_msg: "[ERR] Not valid version(s) in roles_tag."
 
-- name: "Debug bsd_roles debug={{ debug }}"
+- name: "Debug roles debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
-    var: bsd_roles | zip(bsd_roles_tag) | map('combine')
+    var: roles | zip(roles_tag) | map('combine')
 
-- name: Update roles tag in vars/roles.yml
+- name: Update vars/roles_latest.yml
   ansible.builtin.copy:
-    dest: vars/roles.yml
+    dest: vars/roles_latest.yml
     mode: '664'
     backup: true
     content: |
       ---
+      bsd_roles_no: {{ bsd_roles | length }}
       bsd_roles:
-        {{ bsd_roles | zip(bsd_roles_tag) | map('combine') | to_nice_yaml(indent=2) | indent(2) }}
+        {{ bsd_roles | zip(roles_tag) | map('combine') | to_nice_yaml(indent=2) | indent(2) }}

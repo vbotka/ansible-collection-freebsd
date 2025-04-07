@@ -3,12 +3,14 @@
 Playbooks
 *********
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Table of Contents
+.. contents:: Table of Contents
+   :local:
+   :depth: 1
 
-   playbooks/pb-iocage-template
-   playbooks/pb-iocage-ansible-clients
+.. _ug_pb-iocage-template:
+.. include:: playbooks/pb-iocage-template.rst
+.. _ug_pb-iocage-ansible-client:
+.. include:: playbooks/pb-iocage-ansible-clients.rst
 
 Other playbooks
 ---------------

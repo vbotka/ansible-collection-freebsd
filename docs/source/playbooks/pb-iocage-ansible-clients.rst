@@ -1,9 +1,8 @@
-.. _ug_pb-iocage-ansible-client:
-
 pb-iocage-ansible-clients
 -------------------------
 
 .. contents:: Table of Contents
+   :local:
    :depth: 3
 
 .. index:: single: playbook pb-iocage-ansible-clients.yml; pb-iocage-ansible-clients

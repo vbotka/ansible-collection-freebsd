@@ -1,0 +1,22 @@
+---
+
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Read data
+      include_vars: examples/examples.yml
+
+    - name: Create source example-freebsd-postfix.rst
+      template:
+        src: examples/example-freebsd-postfix.rst.j2
+        dest: source/example-freebsd-postfix.inc.rst
+
+    - name: Create source example-armbian-ssmtp.rst
+      template:
+        src: examples/example-armbian-ssmtp.rst.j2
+        dest: source/example-armbian-ssmtp.inc.rst
+
+# EOF
+...

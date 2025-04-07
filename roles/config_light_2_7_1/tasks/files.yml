@@ -1,0 +1,9 @@
+---
+- name: "Files: Manage files."
+  ansible.builtin.include_tasks:
+    file: files-{{ fitem }}.yml
+  loop: "{{ cl_files_order }}"
+  loop_control:
+    loop_var: fitem
+
+# EOF

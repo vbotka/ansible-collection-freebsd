@@ -1,0 +1,7 @@
+---
+branch:
+  modules:
+    iocage: release
+    ucl: current
+  inventory:
+    iocage: release

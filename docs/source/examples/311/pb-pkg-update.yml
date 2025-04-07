@@ -1,0 +1,17 @@
+- name: Upgrade package ports-mgmt/pkg
+  hosts: iocage
+  gather_facts: true
+    
+  tasks:
+
+    - name: Upgrade package ports-mgmt/pkg
+      register: out
+      community.general.pkgng:
+        name: ports-mgmt/pkg
+        state: latest
+        use_globs: false
+
+    - name: Debug
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: out

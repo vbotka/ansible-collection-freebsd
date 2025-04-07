@@ -1,0 +1,57 @@
+---
+postfix_freebsd:
+  template: handlers-auto1.yml.j2
+  handlers:
+    - handler: Start postfix
+      listen: start postfix
+      module: vbotka.freebsd.service
+      params:
+        - "script: postfix"
+        - "command: start"
+
+    - handler: Stop postfix
+      listen: stop postfix
+      module: vbotka.freebsd.service
+      params:
+        - "script: postfix"
+        - "command: stop"
+
+    - handler: Reload postfix
+      listen: reload postfix
+      module: vbotka.freebsd.service
+      params:
+        - "script: postfix"
+        - "command: reload"
+      conditions:
+        - "- cl_service_postfix_enable | bool"
+
+    - handler: Restart postfix
+      listen: restart postfix
+      module: vbotka.freebsd.service
+      params:
+        - "script: postfix"
+        - "command: restart"
+      conditions:
+        - "- cl_service_postfix_enable | bool"
+
+    - handler: Postfix check
+      listen: postfix check
+      module: command
+      params:
+        - "cmd: /usr/local/sbin/postfix check"
+
+    - handler: Newaliases
+      listen: newaliases
+      module: command
+      params:
+        - "cmd: /usr/bin/newaliases"
+
+#    - handler: 'postmap smtp sasl passwords'
+#      module: command
+#      params:
+#        - 'cmd: /usr/local/sbin/postmap {{ postfix_main_cf_smtp_sasl_password_maps }}'
+
+#    - handler: 'postmap virtual aliases'
+#      module: command
+#      params:
+#        - cmd: /usr/local/sbin/postmap {{ postfix_virtual }}'

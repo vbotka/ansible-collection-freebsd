@@ -1,0 +1,167 @@
+PLAY [Test role vbotka.freebsd.config_light] ************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars: Debug cl_debug=true] **************************************************************
+ok: [test_111] => 
+
+    ...
+
+TASK [vbotka.config_light : Debug: Config Light.] *******************************************************************
+ok: [test_111] => 
+    msg: |-
+        cl_role_version: 2.7.0
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.1
+        ansible_distribution_release: 14.1-RELEASE
+        ansible_python_version: 3.11.11
+
+        cl_supported_linux_family: ['Debian', 'RedHat']
+        cl_supported_modules_pkg: ['apt', 'package', 'pkgng', 'snap', 'yum']
+        cl_collections:
+          - ansible.posix
+          - community.general
+          - vbotka.freebsd
+
+
+        cl_sanity: False
+        cl_sanity_quiet: True
+        cl_sanity_collections: False
+        cl_sanity_modules_pkg: True
+        cl_sanity_yamllint: False
+
+        cl_setup: False
+        cl_install: False
+        cl_backup: True
+        cl_copyfile_delete: False
+        cl_template_delete: False
+
+        cl_handlers:
+          {}
+
+        cl_packages:
+          lighttpd:
+            module: pkgng
+            name:
+            - www/lighttpd
+
+        cl_services:
+          lighttpd:
+            enabled: true
+            name: lighttpd
+            state: start
+
+        cl_files:
+          lighttpd-index:
+            create: true
+            group: www
+            lines:
+            - line: <html><body><h1>Lighttpd works!</h1></body></html>
+            mode: '0644'
+            owner: www
+            path: /usr/local/www/lighttpd/index.html
+          lighttpd-lighttpdconf:
+            assignment: ' = '
+            create: true
+            dict:
+            - key: server.port
+              value: '"80"'
+            - key: server.use-ipv6
+              value: '"disable"'
+            - key: server.username
+              value: '"www"'
+            - key: server.groupname
+              value: '"www"'
+            - key: server.document-root
+              value: '"/usr/local/www/lighttpd"'
+            group: wheel
+            handlers:
+            - reload lighttpd
+            mode: '0644'
+            owner: root
+            path: /usr/local/etc/lighttpd/lighttpd.conf
+          lighttpd_rcconf:
+            assignment: '='
+            create: true
+            dict:
+            - key: lighttpd_enable
+              value: '"YES"'
+            group: wheel
+            handlers:
+            - reload lighttpd
+            mode: '0644'
+            owner: root
+            path: /etc/rc.conf
+
+        cl_states:
+          lighttpd_server_document_root:
+            group: www
+            mode: '0750'
+            owner: www
+            path: /usr/local/www/lighttpd
+            state: directory
+
+
+        cl_dird: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light
+        cl_dird_owner: UNDEFINED
+        cl_dird_group: adm
+        cl_dird_dmode: 0770
+
+        cl_handlersd_dir: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/handlers.d
+        cl_packagesd_dir: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/packages.d
+        cl_servicesd_dir: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/services.d
+        cl_filesd_dir: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/files.d
+        cl_statesd_dir: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/states.d
+
+        cl_dira: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble
+        cl_dira_owner: UNDEFINED
+        cl_dira_group: adm
+        cl_dira_dmode: 0770
+        cl_dira_fmode: 0660
+        cl_assemble_regexp: ^(.*)[^~]$
+
+        cl_handlersd: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/handlersd
+        cl_handlers_delete_all: False
+        cl_handlers_delete: False
+        cl_handlers_create: True
+
+        cl_packagesd: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/packagesd.test_111
+        cl_servicesd: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/servicesd.test_111
+        cl_filesd: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/filesd.test_111
+        cl_statesd: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/statesd.test_111
+        cl_all_delete: False
+        cl_packagesd_delete: False
+        cl_servicesd_delete: False
+        cl_filesd_delete: False
+        cl_statesd_delete: False
+
+        cl_yamllint: yamllint
+        cl_assemble_validate: yamllint -d '{"extends": "default", "rules": {"line-length": {"level": "warning"}}}' %s
+        cl_handlers_validate: yamllint -d '{"extends": "default", "rules": {"line-length": {"level": "warning"}}}' %s
+
+        cl_files_order:
+          - copy
+          - template
+          - markers
+          - create-backup
+          - patch
+          - lineinfile
+          - blockinfile
+          - inifile
+          - ucl
+          - delete-backup
+
+
+        install_retries: 3
+        install_delay: 5
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        cl_rcconfd: False
+        cl_rcconfd_dir: /etc/rc.conf.d
+
+PLAY RECAP **********************************************************************************************************
+test_111: ok=19   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0

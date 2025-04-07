@@ -4,7 +4,8 @@ Best Practice
 *************
 
 .. contents:: Table of Contents
-   :depth: 3
+   :local:
+   :depth: 2
 
 Topics:
 

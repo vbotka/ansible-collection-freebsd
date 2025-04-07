@@ -4,6 +4,11 @@ iocage tags
 .. index:: single: variable iocage_tags; iocage tags
 .. index:: single: iocage_tags; iocage tags
 
+.. contents:: Table of Contents
+   :local:
+   :depth: 2
+
+
 An iocage tag is a key-value pair applied to a jail to hold metadata about that jail. Each tag is a
 label consisting of a key and an optional value. The iocage tags are stored in the dictionary
 *iocage_tags*.

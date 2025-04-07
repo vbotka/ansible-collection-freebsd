@@ -1,0 +1,27 @@
+- name: Test module vbotka.freebsd.ucl
+  hosts: iocage
+    
+  tasks:
+
+    - name: Install devel/uclcmd
+      when: install | d(false) | bool
+      community.general.pkgng:
+        name: devel/uclcmd
+        use_globs: false
+
+    - name: Get /etc/pkg/FreeBSD.conf
+      register: out
+      vbotka.freebsd.ucl:
+        path: /etc/pkg/FreeBSD.conf
+
+    - ansible.builtin.debug:
+        var: out.stdout
+
+    - name: Get FreeBSD repository url.
+      register: out
+      vbotka.freebsd.ucl:
+        path: /etc/pkg/FreeBSD.conf
+        upath: FreeBSD.url
+
+    - ansible.builtin.debug:
+        var: out.stdout

@@ -1,0 +1,33 @@
+PLAY [Test role vbotka.freebsd.config_light] ************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/packagesd.0ed0d0ca] ***
+ok: [59a3f932 -> localhost]
+ok: [0ed0d0ca -> localhost]
+ok: [test_111 -> localhost]
+
+    ...
+
+TASK [vbotka.config_light : Packages: Select lists.] ****************************************************************
+ok: [59a3f932]
+ok: [0ed0d0ca]
+ok: [test_111]
+
+TASK [vbotka.config_light : Packages: Create list defaulted to module package.] *************************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : Packages: Manage FreeBSD packages.] *****************************************************
+ok: [test_111 -> iocage_02(10.1.0.73)] => (item=['www/lighttpd'])
+ok: [0ed0d0ca -> iocage_02(10.1.0.73)] => (item=['www/lighttpd'])
+ok: [59a3f932 -> iocage_02(10.1.0.73)] => (item=['www/lighttpd'])
+
+PLAY RECAP **********************************************************************************************************
+0ed0d0ca: ok=16   changed=0    unreachable=0    failed=0    skipped=24   rescued=0    ignored=0   
+59a3f932: ok=16   changed=0    unreachable=0    failed=0    skipped=24   rescued=0    ignored=0   
+test_111: ok=16   changed=0    unreachable=0    failed=0    skipped=24   rescued=0    ignored=0

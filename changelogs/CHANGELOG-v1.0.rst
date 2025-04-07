@@ -5,6 +5,34 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.6.11
+======
+
+Release Summary
+---------------
+Include role config_light and module ucl. Update docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add module ucl
+* Add role config_light
+* Update docs
+  Add included_content.rst, ug_module_ucl.rst
+  Add examples: 301, 313
+  Update examples: 017, 206, 311
+  Update local TOC.
+* Update setup.
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Update setup
+  Renamed vars-files and variables.
+  Changed structures.
+
+
 0.6.10
 ======
 
@@ -18,7 +46,7 @@ Update README and docs.
 
 Release Summary
 ---------------
-Include role vbotka.freebsd.packages.
+Include role vbotka.freebsd.packages
 
 Major Changes
 -------------
@@ -26,9 +54,9 @@ Major Changes
 Minor Changes
 -------------
 * Update docs
-  * Add example 311.
-  * Rename example 100 to 312
-  * Rename example 101 to 030
+  Add example 311.
+  Rename example 100 to 312
+  Rename example 101 to 030
 
 
 0.6.8
@@ -186,8 +214,8 @@ Minor Changes
 * Add docs examples: 205, 206
 * Update examples: 200, 202, 203, and 204.
 * Update playbook pb-iocage-ansible-clients.yml
-  - Add debug2 tasks.
-  - Use json_query instead selectattr.
+  Add debug2 tasks.
+  Use json_query instead selectattr.
 
 Breaking Changes / Porting Guide
 --------------------------------
