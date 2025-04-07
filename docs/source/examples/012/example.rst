@@ -28,11 +28,11 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── iocage.yml
-   └── pb-vars-properties.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── iocage.yml
+  └── pb-vars-properties.yml
 
 Requirements
 ^^^^^^^^^^^^
@@ -61,11 +61,11 @@ Playbook *pb-vars-properties.yml*
 .. literalinclude:: pb-vars-properties.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display iocage_properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

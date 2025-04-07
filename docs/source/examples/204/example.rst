@@ -39,7 +39,8 @@ Extending example :ref:`example_203`
 Use case
 ^^^^^^^^
 
-Instead of the module *vbotka.freebsd.iocage* create the variable *iocage_jails* using the `filter vbotka.freebsd.iocage`_
+Instead of the `module vbotka.freebsd.iocage`_ create the variable *iocage_jails*
+using the `filter vbotka.freebsd.iocage`_
 
 .. literalinclude:: pb-iocage-ansible-clients/iocage_jails.yml
     :language: yaml
@@ -101,22 +102,21 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-ansible-clients-v2.yml*, use the module:
+  In the playbook *pb-iocage-ansible-clients-v2.yml*, use:
 
-  * *ansible.builtin.command* to:
+  * module *ansible.builtin.command* to:
 
-    * create variable iocage_jails
+    * create variable *iocage_jails*
     * create jails
     * start jails
-    * optionally stop and destroy the jails.
+    * optionally, stop and destroy the jails.
   
 * On all created jails:
 
   In the playbook *pb-test-01.yml*:
 
-  * connect created jails
-  * display basic configuration of the jails.
-
+  * connect to the created jails
+  * display the basic jails' configuration.
 
 Requirements
 ^^^^^^^^^^^^
@@ -126,18 +126,16 @@ Requirements
 * root privilege on the iocage hosts
 * activated *iocage*
 * fetched releases
-* templates created in example 202
-
+* templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-Templates created in :ref:`example_202` are used in this example
+Templates created in :ref:`example_202` are used in this example.
 
 .. seealso::
 
    * `binary iocage`_
-
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -187,8 +185,8 @@ Playbook *pb-iocage-ansible-clients-v2.yml*
 .. literalinclude:: pb-iocage-ansible-clients-v2.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - create and start the jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
     :language: bash
@@ -221,7 +219,7 @@ Inventory *hosts/02_iocage.yml*
 
 .. note::
 
-   The option `"get_properties: True"` is needed to get the dictionary `iocage_properties`
+   The option ``get_properties: True`` is needed to get the dictionary *iocage_properties*.
 
 Inventory *hosts/03_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,7 +243,7 @@ Playbook output
 ^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-08.txt
-    :language: bash
+    :language: yaml
 
 .. hint::
 
@@ -255,7 +253,7 @@ Playbook output
                                                        -t swarm_destroy \
                                                        -e swarm_destroy=true
 
-
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

@@ -78,25 +78,25 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── group_vars
-   │   └── all
-   │       └── iocage.yml
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 03_constructed.yml
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
-   ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
-   └── pb-test-01.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 03_constructed.yml
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
+  ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
+  └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
@@ -106,13 +106,13 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-ansible-clients.yml*, use the module:
+  In the playbook *pb-iocage-ansible-clients.yml*, use:
 
-  * *vbotka.freebsd.iocage* to:
+  * `module vbotka.freebsd.iocage`_ to:
 
     * create facts only
 
-  * *ansible.builtin.command* to:
+  * module *ansible.builtin.command* to:
 
     * create jails
     * start jails
@@ -122,9 +122,8 @@ Synopsis
 
   In the playbook *pb-test-01.yml*:
 
-  * connect created jails
+  * connect to the created jails
   * display basic configuration of the jails.
-
 
 Requirements
 ^^^^^^^^^^^^
@@ -134,18 +133,16 @@ Requirements
 * root privilege on the iocage hosts
 * activated *iocage*
 * fetched releases
-* templates created in example 202
-
+* templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-* Templates created in :ref:`example_202` are used in this example
+* Templates created in :ref:`example_202` are used in this example.
 
 .. seealso::
 
    * `binary iocage`_
-
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,7 +250,7 @@ Playbook output
 ^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-08.txt
-    :language: bash
+    :language: yaml
 
 .. hint::
 
@@ -264,7 +261,7 @@ Playbook output
 						    -e swarm_destroy=true
 
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/iocage/iocage/

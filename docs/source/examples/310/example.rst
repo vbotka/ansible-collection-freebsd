@@ -11,61 +11,56 @@
 .. index:: single: audit ansible_client; Example 310
 .. index:: single: display_skipped_hosts; Example 310
 
-
 Use case
 ^^^^^^^^
 
 Audit basic configuration of Ansible clients using the role
 `vbotka.freebsd.postinstall`_. The role is idempotent. Successful result means
-no changes are reported.  Implement the same configuration like the example
-:ref:`example_202`
-
+no changes are reported. Implement the same configuration as the example
+:ref:`example_202`.
 
 Tree
 ^^^^
 
-.. code:: bash
+::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── extra-vars.yml
-   ├── files
-   │   └── pk_admins.txt
-   ├── group_vars
-   │   └── all
-   │       └── ansible-client.yml
-   ├── hosts
-   │   ├── 02_iocage.yml
-   │   └── 99_constructed.yml
-   ├── iocage-hosts.ini
-   ├── pb-test-01.yml
-   ├── pb-test-02.yml
-   └── pb-test-03.yml
-
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── extra-vars.yml
+  ├── files
+  │   └── pk_admins.txt
+  ├── group_vars
+  │   └── all
+  │       └── ansible-client.yml
+  ├── hosts
+  │   ├── 02_iocage.yml
+  │   └── 99_constructed.yml
+  ├── iocage-hosts.ini
+  ├── pb-test-01.yml
+  ├── pb-test-02.yml
+  └── pb-test-03.yml
 
 Synopsis
 ^^^^^^^^
 
-* Playbook pb-test-01.yml: Test the role does nothing by default.
+On all running jails:
 
-* Playbook pb-test-02.yml: Install packages using the module *community.general.pkgng*
-* Playbook pb-test-03.yml: Install packages importing *vbotka.freebsd.postinstall*
+* playbook *pb-test-01.yml*: test the role does nothing by default
+* playbook *pb-test-02.yml*: install packages using the module *community.general.pkgng*
+* playbook *pb-test-03.yml*: Install packages importing *vbotka.freebsd.postinstall*.
+* playbook *pb-test-01.yml*:
 
-* Playbook pb-test-01.yml:
-
-  * Install packages
-  * Create user
-  * Configure public keys
-  * Configure sudo
-  * Configure dhclient
-
+  * install packages
+  * create user
+  * configure public keys
+  * configure sudo
+  * configure dhclient.
 
 Requirements
 ^^^^^^^^^^^^
 
 * running jails at the iocage host.
-
 
 Notes
 ^^^^^
@@ -91,13 +86,11 @@ Notes
 
    Please make sure the versions are the same before you switch between them.
 
-
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
     :language: bash
-
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -107,20 +100,17 @@ Do not display skipped hosts. See the option `display_skipped_hosts`_
 .. literalinclude:: ansible.cfg
     :language: ini
 
-
 Inventory hosts/02_iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: ini
 
-
 Inventory hosts/99_constructed.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/99_constructed.yml
     :language: ini
-
 
 Variables group_vars/all/ansible-client.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,13 +122,11 @@ Variables group_vars/all/ansible-client.yml
 
    The `default variables`_ of the role `vbotka.freebsd.postinstall`_
 
-
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
     :language: bash
-
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,8 +134,7 @@ Playbook *pb-test-01.yml*
 .. literalinclude:: pb-test-01.yml
     :language: yaml
 
-
-Playbook output. By default do nothing.
+Playbook output - by default do nothing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
@@ -163,14 +150,13 @@ Use the module `community.general.pkgng`_ to demonstrate the installation in a j
     :language: yaml
 
 
-Playbook output. Install packages.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - install packages by community.general.pkgng
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install packages*.
 
 .. literalinclude:: out/out-05.txt
     :language: yaml
-
 
 Playbook *pb-test-03.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,9 +166,8 @@ Use the imported tasks *packages.yml* from the role `vbotka.freebsd.postinstall`
 .. literalinclude:: pb-test-03.yml
     :language: yaml
 
-
-Playbook output. Import vbotka.freebsd_postinstall packages.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - import vbotka.freebsd_postinstall packages.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-06.txt
     :language: yaml
@@ -246,7 +231,7 @@ Optionally, disable the option `display_ok_hosts`_
     :language: text
 
 
-The above plays show that depending on a use case it's possible to:
+The above plays show that, depending on a use case, it's possible to:
 
 * Use tags to select tasks groups from the role.
 * Import selected tasks groups from the role.

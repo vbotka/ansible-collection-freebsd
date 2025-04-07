@@ -26,18 +26,18 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── pb-iocage-fetch-base-clone.yml
-   ├── pb-iocage-list.yml
-   └── pb-test-01.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── pb-iocage-fetch-base-clone.yml
+  ├── pb-iocage-list.yml
+  └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
@@ -56,7 +56,7 @@ Synopsis
   In the playbook *pb-iocage-list.yml*, use the `role vbotka.freebsd.iocage`_ to:
 
   * create the lists of bases and jails
-  * optionally display the lists.
+  * optionally, display the lists.
 
   In the playbook *pb-test-01.yml*:
 
@@ -79,10 +79,10 @@ Notes
 
 .. seealso::
 
-   * `Fetch a Release <https://iocage.readthedocs.io/en/latest/basic-use.html#fetch-a-release>`_
-   * `Create a Jail <https://iocage.readthedocs.io/en/latest/basic-use.html#create-a-jail>`_
-   * `Start, Stop, or Restart a Jail <https://iocage.readthedocs.io/en/latest/basic-use.html#start-stop-or-restart-a-jail>`_
-   * `Listing Jails <https://iocage.readthedocs.io/en/latest/basic-use.html#listing-jails>`_
+   * `Fetch a Release`_
+   * `Create a Jail`_
+   * `Start, Stop, or Restart a Jail`_
+   * `Listing Jails`_
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -152,22 +152,27 @@ Playbook *pb-iocage-list.yml*
 .. literalinclude:: pb-iocage-list.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display iocage_jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-05.txt
-    :language: bash
+    :language: yaml
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
     :language: yaml
+    :emphasize-lines: 1,4,31
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - create and use group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-06.txt
-    :language: bash
+    :language: yaml
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _Fetch a Release: https://iocage.readthedocs.io/en/latest/basic-use.html#fetch-a-release
+.. _Create a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#create-a-jail
+.. _Start, Stop, or Restart a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#start-stop-or-restart-a-jail
+.. _Listing Jails: https://iocage.readthedocs.io/en/latest/basic-use.html#listing-jails

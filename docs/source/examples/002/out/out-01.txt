@@ -1,9 +1,3 @@
-(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                       -l iocage_02 \
-				       -t freebsd_iocage_activate \
-				       -e freebsd_iocage_activate=true \
-				       -e freebsd_iocage_debug=true
-
 PLAY [iocage] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************

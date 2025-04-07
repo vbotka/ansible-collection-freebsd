@@ -53,11 +53,13 @@ Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the
 
 creates files. For example, ::
 
-  shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b 
+  shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b
   10.1.0.130
   
 Read the files, created by the hooks, and use the IP addresses to compose the variable
-*ansible_host* ::
+*ansible_host*
+
+.. code-block:: yaml
 
   shell> cat hosts/01_iocage.yml 
   plugin: vbotka.freebsd.iocage
@@ -67,7 +69,9 @@ Read the files, created by the hooks, and use the IP addresses to compose the va
   compose:
     ansible_host: iocage_hooks.0
 
-Default to *iocage_ip4* if the hook is not available ::
+Default to *iocage_ip4* if the hook is not available
+
+.. code-block:: yaml
 
   compose:
     ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
@@ -134,7 +138,7 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
 * activated *iocage*
-* fetched releases
+* fetched releases.
 
 Notes
 ^^^^^
@@ -163,9 +167,10 @@ host_vars/iocage_01/iocage.yml
 
 .. hint::
 
-   The option *hooks_results* expects the *pool* to be mounted to */pool*. In the above *host_vars*
-   the pool *pool2* is mounted to */mnt/pool2*. For *hooks_results* to work properly, create symlink
-   in the root directory ::
+   The option ``hooks_results`` expects the ``pool`` to be mounted to
+   ``/pool``. In the above *host_vars* the pool ``pool2`` is mounted to
+   ``/mnt/pool2``. For ``hooks_results`` to work properly, create symlink in the
+   root directory ::
 
      pool2 -> /mnt/pool2
 
@@ -231,8 +236,8 @@ Playbook *pb-iocage-ansible-clients.yml*
 .. literalinclude:: pb-iocage-ansible-clients.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - clone and start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
     :language: bash
@@ -254,6 +259,15 @@ Inventory *hosts/01_iocage.yml*
 
 .. literalinclude:: hosts/01_iocage.yml
     :language: yaml
+
+.. hint::
+
+   The option ``hooks_results`` expects the ``pool`` to be mounted to
+   ``/pool``. In this example the pool ``pool2`` is mounted to
+   ``/mnt/pool2``. For ``hooks_results`` to work properly, create symlink in the
+   root directory ::
+
+     pool2 -> /mnt/pool2
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -294,5 +308,5 @@ Playbook output
 						    -e clone_destroy=true
 
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

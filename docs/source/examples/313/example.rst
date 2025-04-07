@@ -11,60 +11,55 @@
 .. index:: single: vbotka.freebsd.config_light; Example 313
 .. index:: single: lighttpd; Example 313
 
-
 Use case
 ^^^^^^^^
 
 Install and configure `lighttpd`_ in Ansible clients using the role
-`vbotka.freebsd.config_light`_
-
+`vbotka.freebsd.config_light`_.
 
 Tree
 ^^^^
 
-.. code:: bash
+::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── conf-light/
-   │   ├── files.d
-   │   │   ├── lighttpd-index.yml
-   │   │   ├── lighttpd-lighttpdconf.yml
-   │   │   └── lighttpd-rcconf.yml
-   │   ├── handlers.d
-   │   │   └── lighttpd-freebsd.yml
-   │   ├── packages.d
-   │   │   └── lighttpd.yml
-   │   ├── services.d
-   │   │   └── lighttpd.yml
-   │   └── states.d
-   │       └── lighttpd-server-document-root.yml
-   ├── group_vars
-   │   └── all
-   │       ├── cl-common.yml
-   │       ├── cl-lighttpd.yml
-   │       └── common.yml
-   ├── hosts
-   │   ├── 02_iocage.yml
-   │   └── 99_constructed.yml
-   ├── iocage-hosts.ini
-   └── pb.yml
-
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── conf-light/
+  │   ├── files.d
+  │   │   ├── lighttpd-index.yml
+  │   │   ├── lighttpd-lighttpdconf.yml
+  │   │   └── lighttpd-rcconf.yml
+  │   ├── handlers.d
+  │   │   └── lighttpd-freebsd.yml
+  │   ├── packages.d
+  │   │   └── lighttpd.yml
+  │   ├── services.d
+  │   │   └── lighttpd.yml
+  │   └── states.d
+  │       └── lighttpd-server-document-root.yml
+  ├── group_vars
+  │   └── all
+  │       ├── cl-common.yml
+  │       ├── cl-lighttpd.yml
+  │       └── common.yml
+  ├── hosts
+  │   ├── 02_iocage.yml
+  │   └── 99_constructed.yml
+  ├── iocage-hosts.ini
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-In the playbook pb.yml at the jails install and configure `lighttpd`_.
-
+In the playbook *pb.yml* at the jails install and configure `lighttpd`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * Running jails at the iocage host.
-
-* Updated FreeBSD repository catalogue. See the playbook *pb-pkg-update.yml* in :ref:`example_311`
-
+* Updated FreeBSD repository catalogue. See the playbook *pb-pkg-update.yml* in
+  :ref:`example_311`
 
 Notes
 ^^^^^
@@ -92,8 +87,8 @@ Notes
         - www/lighttpd
 
 * The playbook *pb-pkg-update.yml* in :ref:`example_311` updates the
-  repositories. Use the `cached`_ local package base instead of fetching an
-  updated one ::
+  repositories. Then, use the `cached`_ local package base instead of fetching
+  an updated one ::
 
     freebsd_pkgng_cached: true
 
@@ -123,7 +118,6 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-01.txt
     :language: bash
-
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -196,7 +190,7 @@ Playbook pb.yml
     :caption:
 
 
-Playbook output. Setup.
+Playbook output - setup
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
@@ -210,7 +204,7 @@ Playbook output. Setup.
 
    * The tasks *vars* are tagged ``always``
 
-Playbook output. Sanity.
+Playbook output - sanity
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
@@ -220,7 +214,7 @@ Playbook output. Sanity.
 .. literalinclude:: out/out-05.txt
     :language: yaml
 
-Playbook output. Debug.
+Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Enable debug and limit the inventory to one jail *test_111*. The
@@ -234,7 +228,7 @@ repeated output of *Vars-\** was removed.
     :language: yaml
 
 
-Playbook output. Install packages.
+Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory *iocage-hosts.ini* is needed to delegate the tasks
@@ -248,7 +242,7 @@ The inventory *iocage-hosts.ini* is needed to delegate the tasks
     :language: yaml
 
 
-Playbook output. Files states.
+Playbook output - files states
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
@@ -259,7 +253,7 @@ Playbook output. Files states.
     :language: yaml
 
 
-Playbook output. Files.
+Playbook output - files
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
@@ -270,7 +264,7 @@ Playbook output. Files.
     :language: yaml
 
 
-Playbook output. Services.
+Playbook output - services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash

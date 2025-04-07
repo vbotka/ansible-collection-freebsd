@@ -19,36 +19,36 @@ Use case
 ^^^^^^^^
 
 Use the inventory plugin `ansible.builtin.constructed`_ after the two `inventory plugin
-vbotka.freebsd.iocage`_ configuration files.
+vbotka.freebsd.iocage`_ configuration files to create inventory groups.
 
 Tree
 ^^^^
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 99_constructed.yml
-   └── pb-test.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 99_constructed.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* The *iocage* plugin gets the jails(hosts):
+* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(hosts):
 
   * *test_101:103* from the host *iocage_01* 
   * *test_111:113* from the host *iocage_02* 
 
-  and creates inventory groups *test_01* and *test_02*
+  and creates the inventory groups *test_01* and *test_02*.
 
-* The *constructed* plugin creates inventory groups:
+* The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
-  * *test* including all hosts starting *'test'*
-  * *test_up* including running hosts starting *'test'*
+  * *test* comprising hosts starting *'test'*
+  * *test_up* comprising running hosts starting *'test'*.
 
 Requirements
 ^^^^^^^^^^^^
@@ -106,11 +106,11 @@ Playbook *pb-test.yml*
 .. literalinclude:: pb-test.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+    :language: yaml
 
 
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

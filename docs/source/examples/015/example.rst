@@ -33,13 +33,13 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   └── 02_iocage.yml
-   └── pb-vars-ip4.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   └── 02_iocage.yml
+  └── pb-vars-ip4.yml
 
 Requirements
 ^^^^^^^^^^^^
@@ -83,7 +83,7 @@ Playbook output
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 .. note::
 
@@ -93,7 +93,7 @@ Playbook output
 Cache
 ^^^^^
 
-Take a look at the cache ::
+Look at the cache ::
 
   shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_7eb74
 

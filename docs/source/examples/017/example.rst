@@ -18,37 +18,37 @@ Extending example 016.
 Use case
 ^^^^^^^^
 
-Use the `inventory plugin community.general.iocage`_ instead of the `inventory plugin
-vbotka.freebsd.iocage`_.
+Use the `inventory plugin community.general.iocage`_ instead of the `inventory
+plugin vbotka.freebsd.iocage`_.
 
 Tree
 ^^^^
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 03_constructed.yml
-   ├── pb-iocage-obsolete.yml
-   └── pb-test.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 03_constructed.yml
+  ├── pb-iocage-obsolete.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-The inventory plugin *community.general.iocage* should provide the same functionality.
+The `inventory plugin community.general.iocage`_ should provide the same
+functionality.
 
 .. warning::
 
-   The inventory plugin *community.general.iocage* may differ from
-   *vbotka.freebsd.iocage*. If you want be sure
-   *community.general.iocage* provides the same functionality compare
-   the hash from *setup/vars/chcksum.yml* with the
-   *community.general.iocage* hash. Run the included playbook
-   *pb-iocage-obsolete.yml* ::
+   The inventory plugin ``community.general.iocage`` may differ from
+   ``vbotka.freebsd.iocage``. If you want be sure ``community.general.iocage``
+   provides the same functionality compare the hash from
+   *setup/vars/chcksum.yml* with the ``community.general.iocage`` hash. Run the
+   included playbook *pb-iocage-obsolete.yml* ::
 
      shell> ansible-playbook pb-iocage-obsolete.yml
 
@@ -120,11 +120,11 @@ Playbook *pb-test.yml*
 .. literalinclude:: pb-test.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

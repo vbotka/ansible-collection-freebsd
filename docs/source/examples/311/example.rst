@@ -12,58 +12,59 @@
 .. index:: single: audit ansible_client; Example 311
 .. index:: single: display_skipped_hosts; Example 311
 
-
 Use case
 ^^^^^^^^
 
 Install packages in Ansible clients using the role
 `vbotka.freebsd.packages`_. Audit installed packages.
 
-
 Tree
 ^^^^
 
-.. code:: bash
+::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── group_vars
-   │   └── all
-   │       └── ansible-client.yml
-   ├── hosts
-   │   ├── 02_iocage.yml
-   │   └── 99_constructed.yml
-   ├── iocage-hosts.ini
-   ├── pb-pkg-update.yml
-   ├── pb-test-01.yml
-   └── pb-test-02.yml
-
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── ansible-client.yml
+  ├── hosts
+  │   ├── 02_iocage.yml
+  │   └── 99_constructed.yml
+  ├── iocage-hosts.ini
+  ├── pb-pkg-update.yml
+  ├── pb-test-01.yml
+  └── pb-test-02.yml
 
 Synopsis
 ^^^^^^^^
 
-* In the playbook *pb-pkg-update.yml* at the group *iocage*:
+On the *iocage* host:
+
+* playbook *pb-pkg-update.yml*:
 
   * upgrade the package *ports-mgmt/pkg*
-  * update FreeBSD repository catalogue (default `cached`_ = false)
+  * update FreeBSD repository catalogue (default `cached`_ = false).
 
-* In the playbook *pb-test-01.yml* at the jails:
+On all running jails:
+    
+* playbook *pb-test-01.yml*:
 
   * display variables
   * install packages
-  * audit installed packages
+  * audit installed packages.
 
-* In the playbook *pb-test-02.yml* at an iocage host:
+On the *iocage* host:
 
-  * audit installed packages
+* playbook *pb-test-02.yml*:
 
+  * audit installed packages.
 
 Requirements
 ^^^^^^^^^^^^
 
 * running jails at the iocage host.
-
 
 Notes
 ^^^^^
@@ -90,7 +91,7 @@ Notes
       - lang/python311
       - ports-mgmt/pkg
 
-* The playbook *pb-pkg-update.yml* updates the repositories. Use the
+* The playbook *pb-pkg-update.yml* updates the repositories. Then, use the
   `cached`_ local package base instead of fetching an updated one ::
 
     pkg_cached: true
@@ -107,13 +108,11 @@ Notes
 
    Please make sure the versions are the same before you switch between them.
 
-
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
     :language: bash
-
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,13 +122,11 @@ Do not display skipped hosts. See the option `display_skipped_hosts`_
 .. literalinclude:: ansible.cfg
     :language: ini
 
-
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
     :language: ini
-
 
 Playbook pb-pkg-update.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,9 +134,8 @@ Playbook pb-pkg-update.yml
 .. literalinclude:: pb-pkg-update.yml
     :language: yaml
 
-
-Playbook output. Upgrade package ports-mgmt/pkg
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - upgrade package ports-mgmt/pkg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the inventory to one host *iocage_02* ::
 
@@ -148,13 +144,11 @@ Limit the inventory to one host *iocage_02* ::
 .. literalinclude:: out/out-10.txt
     :language: yaml
 
-
 Inventory hosts/02_iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: ini
-
 
 Inventory hosts/99_constructed.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,13 +156,11 @@ Inventory hosts/99_constructed.yml
 .. literalinclude:: hosts/99_constructed.yml
     :language: ini
 
-
 Variables group_vars/all/ansible-client.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
     :language: yaml
-
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -176,15 +168,13 @@ Display inventory
 .. literalinclude:: out/out-03.txt
     :language: bash
 
-
 Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
     :language: yaml
 
-
-Playbook output. Display variables.
+Playbook output - display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the inventory to one jail *test_111* ::
@@ -196,8 +186,7 @@ Limit the inventory to one jail *test_111* ::
 .. literalinclude:: out/out-04.txt
     :language: yaml
 
-
-Playbook output. Install packages.
+Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install list pkg_list* ::
@@ -211,9 +200,8 @@ The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install list p
 
    Optionally, do not display OK hosts. See `display_ok_hosts`_
 
-
-Playbook output. Install packages. Enable debug.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - install packages and enable debug
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Enable debug and limit the inventory to one jail *test_111* ::
 
@@ -223,8 +211,7 @@ Enable debug and limit the inventory to one jail *test_111* ::
 .. literalinclude:: out/out-06.txt
     :language: yaml
 
-
-Playbook output. Audit installed packages.
+Playbook output - audit installed packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no installed packages with known vulnerabilities ::
@@ -236,16 +223,14 @@ There are no installed packages with known vulnerabilities ::
 .. literalinclude:: out/out-08.txt
     :language: yaml
 
-
 Playbook pb-test-02.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
     :language: yaml
 
-
-Playbook output. Audit installed packages at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - audit installed packages at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are 9 packages with known vulnerabilities ::
 

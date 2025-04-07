@@ -7,39 +7,45 @@
    :local:
    :depth: 1
 
+.. index:: single: role vbotka.freebsd.iocage; Example 002
+.. index:: single: iocage activate; Example 002
+
+Use case
+^^^^^^^^
+
+Use the `role vbotka.freebsd.iocage`_ to activate `iocage`_.
+
 Tree
 ^^^^
 
 ::
 
-   shell> tree
-   .
-   ├── ansible.cfg
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   └── pb-iocage.yml
+  shell> tree
+  .
+  ├── ansible.cfg
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  └── pb-iocage.yml
 
 Synopsis
 ^^^^^^^^
 
 * On the iocage host *iocage_02*
   
-  In the playbook *pb-iocage.yml*, use the role *vbotka.freebsd.iocage* to:
+  In the playbook *pb-iocage.yml*, use the `role vbotka.freebsd.iocage`_ to:
 
-  * activate *iocage*
+  * activate `iocage`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-.. index:: single: role vbotka.freebsd.iocage; Example 002
-
 * `role vbotka.freebsd.iocage`_
 * root privilege on the *iocage* hosts
-* Binary *iocage*
+* binary `iocage`_.
 
 Notes
 ^^^^^
@@ -50,7 +56,7 @@ Notes
 
 .. seealso::
 
-   * `Activate iocage <https://iocage.readthedocs.io/en/latest/basic-use.html#activate-iocage>`_
+   * `Activate iocage`_
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,7 +85,6 @@ host_vars/iocage_02/iocage.yml
 .. note::
 
    * The activation will be skipped if the directory *freebsd_iocage_mount* exists.
-
    * The variable *freebsd_iocage_mount* is declared in *defaults/main/main.yml* ::
 
        freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
@@ -94,9 +99,21 @@ Playbook *pb-iocage.yml*
 Playbook output - display debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
+
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                          -l iocage_02 \
+                                          -t freebsd_iocage_activate \
+                                          -e freebsd_iocage_activate=true \
+                                          -e freebsd_iocage_debug=true
+
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 .. note:: This *debug* shows the *result* of already activated *iocage*.
 
+
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _iocage: https://iocage.readthedocs.io/en/latest/index.html
+.. _iocage - A FreeBSD Jail Manager: https://iocage.readthedocs.io/en/latest/index.html
+.. _Activate iocage: https://iocage.readthedocs.io/en/latest/basic-use.html#activate-iocage

@@ -31,18 +31,18 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── iocage.yml
-   ├── pb-iocage-clone-list.yml
-   └── pb-test.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── iocage.yml
+  ├── pb-iocage-clone-list.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -63,7 +63,7 @@ Synopsis
   In the playbook *pb-test.yml*, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
-  * display the hosts and composed variables in the group *test*
+  * display the hosts and composed variables in the group *test*.
 
 Requirements
 ^^^^^^^^^^^^
@@ -185,7 +185,7 @@ The jails are stopped.
 .. literalinclude:: out/out-09.txt
     :language: bash
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/iocage/iocage/

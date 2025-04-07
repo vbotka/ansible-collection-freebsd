@@ -38,23 +38,23 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   └── 02_iocage.yml
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── pb-all.yml
-   ├── pb-ansible-client.yml
-   ├── pb-iocage-base.yml
-   ├── pb-iocage-clone.yml
-   └── pb-test.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   └── 02_iocage.yml
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── pb-all.yml
+  ├── pb-ansible-client.yml
+  ├── pb-iocage-base.yml
+  ├── pb-iocage-clone.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -80,9 +80,9 @@ Synopsis
 
   use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
-  * create the inventory groups and compose variables.
+  * create the inventory groups and compose variables
   * create the dictionary *iocage_tags* from *iocage_properties.notes*
-  * display hosts, composed variables, and groups.
+  * display hosts, composed variables, and groups
   * comment on hosts potentially overriding each other silently.
 
 Requirements
@@ -140,11 +140,11 @@ Playbook *pb-iocage-base.yml*
 .. literalinclude:: pb-iocage-base.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - create basejails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 Playbook *pb-iocage-clone.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -152,11 +152,11 @@ Playbook *pb-iocage-clone.yml*
 .. literalinclude:: pb-iocage-clone.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - clone jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+    :language: yaml
 
 Playbook *pb-all.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -164,11 +164,11 @@ Playbook *pb-all.yml*
 .. literalinclude:: pb-all.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+    :language: yaml
 
 .. note::
 
@@ -176,7 +176,7 @@ Playbook output
 
    * The jail *ansible_client* from *iocage_02* overrides the one from *iocage_01*
 
-   * See the special variable `groups <https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups>`_
+   * See the special variable `groups`_
 
 Playbook *pb-ansible-client.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,18 +184,18 @@ Playbook *pb-ansible-client.yml*
 .. literalinclude:: pb-ansible-client.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display iocage_tags and group_names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+    :language: yaml
 
 .. note::
 
    * The structure of the inventory hosts and groups is flat. The jail(host) *ansible-client* in all
      groups is the same.
 
-   * See the special variable `group_names <https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names>`_
+   * See the special variable `group_names`_
 
 .. warning:: There are no internal checks of the hosts overriding each other. The consistency is up to you.
 
@@ -205,13 +205,16 @@ Playbook *pb-test.yml*
 .. literalinclude:: pb-test.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display all jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+    :language: yaml
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/iocage/iocage/
+.. _groups:  https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups
+.. _group_names: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names

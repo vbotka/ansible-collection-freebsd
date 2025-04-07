@@ -17,26 +17,27 @@
 Use case
 ^^^^^^^^
 
-Fetch releases, create basejails, clone from the basejails, and start the jails. Use the `inventory
-plugin vbotka.freebsd.iocage`_ to create inventory. Display the created inventory.
+Fetch releases, create basejails, clone from the basejails, and start the
+jails. Use the `inventory plugin vbotka.freebsd.iocage`_ to create
+inventory. Display the created inventory.
 
 Tree
 ^^^^
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── iocage.yml
-   ├── pb-iocage-fetch-base-clone-list.yml
-   └── pb-test-01.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── iocage.yml
+  ├── pb-iocage-fetch-base-clone-list.yml
+  └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
@@ -75,10 +76,10 @@ Notes
 
 .. seealso::
 
-   * `Fetch a Release <https://iocage.readthedocs.io/en/latest/basic-use.html#fetch-a-release>`_
-   * `Create a Jail <https://iocage.readthedocs.io/en/latest/basic-use.html#create-a-jail>`_
-   * `Start, Stop, or Restart a Jail <https://iocage.readthedocs.io/en/latest/basic-use.html#start-stop-or-restart-a-jail>`_
-   * `Listing Jails <https://iocage.readthedocs.io/en/latest/basic-use.html#listing-jails>`_
+   * `Fetch a Release`_
+   * `Create a Jail`_
+   * `Start, Stop, or Restart a Jail`_
+   * `Listing Jails`_
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,9 +137,8 @@ Inventory *iocage.yml*
 
 .. seealso::
 
-   * `Inventory plugin ansible.builtin.constructed <https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory>`_
-
-   * `Enabling inventory cache plugins <https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins>`_
+   * `Inventory plugin ansible.builtin.constructed`_
+   * `Enabling inventory cache plugins`_
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,13 +146,20 @@ Playbook *pb-test-01.yml*
 .. literalinclude:: pb-test-01.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-02.txt
-    :language: bash
+    :language: yaml
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/iocage/iocage/
+.. _Inventory plugin ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory
+.. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
+.. _Fetch a Release: https://iocage.readthedocs.io/en/latest/basic-use.html#fetch-a-release
+.. _Create a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#create-a-jail
+.. _Start, Stop, or Restart a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#start-stop-or-restart-a-jail
+.. _Listing Jails: https://iocage.readthedocs.io/en/latest/basic-use.html#listing-jails

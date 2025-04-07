@@ -1,7 +1,7 @@
 .. _example_200:
 
-200 Create Ansible client templates and clone Ansible client jails
-------------------------------------------------------------------
+200 Create Ansible client templates and clone jails
+---------------------------------------------------
 
 .. contents:: Table of Contents
    :local:
@@ -38,26 +38,26 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── files
-   │   └── pk_admins.txt
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 03_constructed.yml
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
-   ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
-   ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
-   ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
-   └── pb-test-01.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── files
+  │   └── pk_admins.txt
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 03_constructed.yml
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
+  ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
+  ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
+  ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
+  └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
@@ -95,16 +95,16 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
 * activated *iocage*
-* fetched releases
+* fetched releases.
 
 Notes
 ^^^^^
 
 .. seealso::
 
-   * `Using Templates <https://iocage.readthedocs.io/en/latest/templates.html>`_
-   * `Connection methods and details <https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html>`_
-   * `Understanding privilege escalation: become <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#become>`_
+   * `Using Templates`_
+   * `Connection methods and details`_
+   * `Understanding privilege escalation`_
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -246,5 +246,8 @@ Playbook output
 						    -e clone_destroy=true
 
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _Using Templates: https://iocage.readthedocs.io/en/latest/templates.html
+.. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
+.. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#become

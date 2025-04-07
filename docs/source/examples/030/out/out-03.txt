@@ -1,8 +1,3 @@
-(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                       -t freebsd_iocage_debug \
-                                       -e freebsd_iocage_debug=true \
-        | grep version
-
         freebsd_iocage_role_version: 0.5.0
         ansible_distribution_major_version: 13
         ansible_distribution_version: 13.1

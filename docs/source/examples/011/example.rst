@@ -9,11 +9,13 @@ Extending example 010.
    :local:
    :depth: 1
 
-.. index:: single: variables iocage_*; Example 011
-.. index:: single: option compose; Example 011
 .. index:: single: compose; Example 011
-.. index:: single: option keyed_groups; Example 011
+.. index:: single: iocage_ip4_dict; Example 011
 .. index:: single: keyed_groups; Example 011
+.. index:: single: option compose; Example 011
+.. index:: single: option keyed_groups; Example 011
+.. index:: single: variable iocage_ip4_dict; Example 011
+.. index:: single: variables iocage_*; Example 011
 
 Use case
 ^^^^^^^^
@@ -25,11 +27,11 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── iocage.yml
-   └── pb-vars-all.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── iocage.yml
+  └── pb-vars-all.yml
 
 Synopsis
 ^^^^^^^^
@@ -61,14 +63,11 @@ Playbook *pb-vars-all.yml*
 .. literalinclude:: pb-vars-all.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
-
-.. index:: single: variable iocage_ip4_dict; Example 011
-.. index:: single: iocage_ip4_dict; Example 011
+Playbook output - display iocage_* vars
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

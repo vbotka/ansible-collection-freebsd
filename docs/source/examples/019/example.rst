@@ -34,20 +34,20 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   ├── 99_constructed.yml
-   │   └── group_vars
-   │       ├── test_01
-   │       │   └── region.yml
-   │       └── test_02
-   │           └── region.yml
-   ├── pb-test-all.yml
-   └── pb-test-US.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   ├── 99_constructed.yml
+  │   └── group_vars
+  │       ├── test_01
+  │       │   └── region.yml
+  │       └── test_02
+  │           └── region.yml
+  ├── pb-test-all.yml
+  └── pb-test-US.yml
 
 Synopsis
 ^^^^^^^^
@@ -69,7 +69,8 @@ Synopsis
 Notes
 ^^^^^
 
-   * The inventory files in *hosts* are evaluated in alphabetical order.
+   * The inventory files in the directory *hosts* are evaluated in alphabetical
+     order.
 
 .. seealso::
 
@@ -148,7 +149,7 @@ Playbook output
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+    :language: yaml
 
 Playbook *pb-test-US.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,7 +163,7 @@ Playbook output
 Limit the US region to running hosts
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+    :language: yaml
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

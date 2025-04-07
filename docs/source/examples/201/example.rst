@@ -108,10 +108,8 @@ Inventory iocage-hosts.ini
 
 .. note::
 
-   * The escalation *become=true* is not necessary.
-
-   * *root* is not needed to run *'iocage list ...'* when DHCP isn't used.
-
+   * The escalation ``become=true`` is not necessary.
+   * *root* is not needed to run ``iocage list ...`` when DHCP isn't used.
    * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
      hosts and creates the variables *iocage_\**
 	       
@@ -125,7 +123,7 @@ Playbook output
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/iocage/
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
