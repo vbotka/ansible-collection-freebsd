@@ -170,10 +170,10 @@ Inventory hosts/
 ^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: ini
+    :language: yaml
     :caption:
 .. literalinclude:: hosts/99_constructed.yml
-    :language: ini
+    :language: yaml
     :caption:
 
 Display inventory
