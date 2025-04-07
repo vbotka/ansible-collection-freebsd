@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update galaxy.yml; Do not distribute roles/\*/docs"
 
 
 0.6.11

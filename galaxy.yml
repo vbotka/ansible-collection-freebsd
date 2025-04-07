@@ -23,6 +23,7 @@ build_ignore:
   - TODO
   - ATTIC
   - dest
+  - roles/*/docs
   - playbooks/sensitive
   - '.ansible'
   - '.ansible-lint'
