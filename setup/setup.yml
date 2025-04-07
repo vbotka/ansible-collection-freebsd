@@ -26,7 +26,7 @@
     - checksum.yml
     - patch.yml
     - plugins.yml
-    - install.yml
+    - plugins_install.yml
     - roles.yml
     - roles_install.yml
 

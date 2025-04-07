@@ -5,7 +5,7 @@
     path: "distfiles/{{ item.key }}"
     mode: "{{ plugins_dir_mode }}"
     state: directory
-  loop: "{{ install | dict2items }}"
+  loop: "{{ plugins_install | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
 
@@ -15,7 +15,7 @@
     path: "{{ collection_dir }}/plugins/{{ item.key }}"
     mode: "{{ plugins_dir_mode }}"
     state: directory
-  loop: "{{ install | dict2items }}"
+  loop: "{{ plugins_install | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
 
@@ -31,7 +31,7 @@
     checksum: "{{ checksum[item.0.key][item.1][_branch] }}"
     dest: "distfiles/{{ item.0.key }}/{{ item.1 }}.py"
     mode: "{{ plugins_file_mode }}"
-  loop: "{{ install | dict2items | subelements('value') }}"
+  loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1 }} {{ _branch }}"
 
@@ -42,7 +42,7 @@
     src: "distfiles/{{ item.0.key }}/{{ item.1 }}.py"
     dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
     mode: "{{ plugins_file_mode }}"
-  loop: "{{ install | dict2items | subelements('value') }}"
+  loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1 }}"
 
@@ -56,7 +56,7 @@
   ansible.posix.patch:
     src: "files/{{ patch[item.0.key][item.1][_branch] }}"
     dest: "{{ collection_dir }}/plugins/{{ item.0.key }}/{{ item.1 }}.py"
-  loop: "{{ install | dict2items | subelements('value') }}"
+  loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1 }} {{ _patch }}"
 

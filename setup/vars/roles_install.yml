@@ -1,5 +1,5 @@
 ---
-bsd_roles_install:
+roles_install:
   - config_light
   - iocage
   - packages

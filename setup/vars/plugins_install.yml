@@ -1,4 +1,4 @@
 ---
-install:
+plugins_install:
   modules: [iocage, ucl]
   inventory: [iocage]

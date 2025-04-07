@@ -24,7 +24,7 @@ Minor Changes
   Add examples: 301, 313
   Update examples: 017, 206, 311
   Update local TOC.
-* Fix setup. Count all plugins.
+* Update setup.
 
 Breaking Changes / Porting Guide
 --------------------------------

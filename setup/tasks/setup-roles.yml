@@ -6,8 +6,8 @@
     path: "{{ collection_dir }}/roles/{{ item.name }}_{{ item.version | replace('.', '_') }}"
     mode: "{{ roles_dir_mode }}"
     state: directory
-  loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
-               | selectattr('name', 'in', bsd_roles_install) }}"
+  loop: "{{ roles | selectattr('name', 'in', roles_install)
+                  | selectattr('scm', 'eq', 'git') }}"
   loop_control:
     label: "{{ item.name }} {{ item.galaxy }} {{ item.version }}"
 
@@ -21,8 +21,8 @@
     version: "{{ item.version }}"
     single_branch: true
     verify_commit: true
-  loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
-               | selectattr('name', 'in', bsd_roles_install) }}"
+  loop: "{{ roles | selectattr('name', 'in', roles_install)
+                  | selectattr('scm', 'eq', 'git') }}"
   loop_control:
     label: "{{ item.name }} {{ item.galaxy }} {{ item.version }}"
 
@@ -39,8 +39,8 @@
     dest: "../roles/{{ item.name }}"
     state: link
     force: true
-  loop: "{{ bsd_roles | selectattr('scm', 'eq', 'git')
-               | selectattr('name', 'in', bsd_roles_install) }}"
+  loop: "{{ roles | selectattr('name', 'in', roles_install)
+                  | selectattr('scm', 'eq', 'git') }}"
   loop_control:
     label: "{{ item.name }} {{ item.version }}"
 
@@ -50,8 +50,10 @@
   ansible.builtin.file:
     state: absent
     dest: "{{ collection_dir }}/roles/{{ item.0 }}/{{ item.1 }}"
-  loop: "{{ result.results | d([]) | selectattr('changed') | map(attribute='item.name')
-                    | product(clean_role_files) }}"
+  loop: "{{ result.results | d([])
+                           | selectattr('changed')
+                           | map(attribute='item.name')
+                           | product(clean_role_files) }}"
   loop_control:
     label: "{{ item.0 }}/{{ item.1 }}"
 
