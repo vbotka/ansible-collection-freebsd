@@ -20,6 +20,7 @@ Minor Changes
 * Update galaxy.yml; Do not distribute roles/\*/docs"
 * Update module ucl.py
 * Fix docs pygments.
+* Add role rsnapshot.
 
 
 0.6.11

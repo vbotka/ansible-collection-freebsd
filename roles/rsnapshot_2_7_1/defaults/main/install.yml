@@ -1,0 +1,16 @@
+---
+rsnapshot_install: true
+
+freebsd_install_method: packages
+# freebsd_install_method: ports
+freebsd_use_packages: true
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+freebsd_cached: false
+freebsd_state: present
+freebsd_use_globs: false
+
+linux_install_retries: 10
+linux_install_delay: 5
+
+# EOF

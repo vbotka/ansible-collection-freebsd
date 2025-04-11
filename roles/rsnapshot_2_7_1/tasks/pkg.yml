@@ -1,0 +1,39 @@
+---
+- name: FreeBSD
+  when: ansible_os_family == 'FreeBSD'
+  block:
+
+    - name: "Pkg: Install packages FreeBSD"
+      when: freebsd_install_method | lower == 'packages'
+      community.general.pkgng:
+        name: "{{ rsnapshot_packages }}"
+        cached: "{{ freebsd_cached }}"
+        state: "{{ freebsd_state }}"
+        use_globs: "{{ freebsd_use_globs }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Pkg: Install ports FreeBSD"
+      when: freebsd_install_method | lower == 'ports'
+      community.general.portinstall:
+        name: "{{ item }}"
+        use_packages: "{{ freebsd_use_packages }}"
+      loop: "{{ rsnapshot_packages }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+- name: "Pkg: Install packages Linux"
+  when: ansible_os_family in rsnapshot_supported_linux_family
+  ansible.builtin.package:
+    name: "{{ item }}"
+  loop: "{{ rsnapshot_packages }}"
+  register: result
+  retries: "{{ linux_install_retries }}"
+  until: result is succeeded
+  delay: "{{ linux_install_delay }}"
+
+# EOF

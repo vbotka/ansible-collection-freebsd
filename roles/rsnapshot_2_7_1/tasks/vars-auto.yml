@@ -1,0 +1,44 @@
+---
+- name: "Vars-auto: Debug rsnapshot_debug2={{ rsnapshot_debug2 }}"
+  when: rsnapshot_debug2 | bool
+  ansible.builtin.debug:
+    msg: |
+      rsnapshot_conf_vars:
+        {{ rsnapshot_conf_vars | to_nice_yaml(indent=2) | indent(2) }}
+
+- name: "Vars-auto: Collect configuration vars"
+  vars:
+    _deny: [exclude]
+    _vars: "{{ rsnapshot_conf_vars | difference(_deny)
+                                   | map('split', ',')
+                                   | map('join', '_') | sort }}"
+    _pattern: "^({{ ['rsnapshot'] | product(_vars) | map('join', '_') | join('|') }})$"
+    _vars_found: "{{ q('varnames', _pattern) }}"
+    _conf_vals: "{{ q('vars', *q('varnames', _pattern)) }}"
+    _conf_vars: "{{ _vars_found | map('split', '_', 1) | map('last') }}"
+  block:
+
+    - name: "Vars-auto: Debug rsnapshot_debug2={{ rsnapshot_debug2 }}"
+      when: rsnapshot_debug2 | bool
+      ansible.builtin.debug:
+        msg: |
+          _vars:
+            {{ _vars | to_nice_yaml(indent=2) | indent(2) }}"
+          _pattern: {{ _pattern }}
+          _vars_found:
+            {{ _vars_found | to_nice_yaml(indent=2) | indent(2) }}"
+          _conf_vals:
+            {{ _conf_vals | to_nice_yaml(indent=2) | indent(2) }}"
+          _conf_vars:
+            {{ _conf_vars | to_nice_yaml(indent=2) | indent(2) }}"
+
+    - name: "Vars-auto: set rsnapshot_conf_dict"
+      ansible.builtin.set_fact:
+        rsnapshot_conf_dict: "{{ dict(_conf_vars | zip(_conf_vals)) }}"
+
+    - name: "Vars-auto: Debug rsnapshot_conf_dict rsnapshot_debug={{ rsnapshot_debug }}"
+      when: rsnapshot_debug | bool
+      ansible.builtin.debug:
+        var: rsnapshot_conf_dict
+
+# EOF
