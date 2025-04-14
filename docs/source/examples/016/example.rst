@@ -68,49 +68,49 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
   
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
+   :language: yaml
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
+   :language: yaml
 
 Inventory *hosts/99_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
+   :language: yaml
 	       
 Playbook *pb-test.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

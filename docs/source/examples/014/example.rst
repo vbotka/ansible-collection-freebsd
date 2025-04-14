@@ -55,7 +55,7 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -63,8 +63,8 @@ Inventory *iocage.yml*
 Enable cache
 
 .. literalinclude:: iocage.yml
-    :language: yaml
-    :emphasize-lines: 7-11
+   :language: yaml
+   :emphasize-lines: 7-11
 
 .. hint::
 
@@ -84,7 +84,7 @@ Playbook *pb-vars-ip4.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-ip4.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - cache disabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,8 +94,8 @@ Playbook output - cache disabled
 | (The cache is disabled in *iocage.yml*. *cache=False*)
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
-    :emphasize-lines: 5,7
+   :language: bash
+   :emphasize-lines: 5,7
 
 Playbook output - cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,8 +104,8 @@ If the cache is enabled the inventory and variables are provided by
 the cache immediately
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
-    :emphasize-lines: 5,7
+   :language: bash
+   :emphasize-lines: 5,7
 
 Cache
 ^^^^^
@@ -115,7 +115,7 @@ Look at the cache ::
   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_6a9dd
 
 .. literalinclude:: out/out-03.txt
-    :language: json
+   :language: json
 
 
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins

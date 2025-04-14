@@ -1,0 +1,23 @@
+PLAY [Test role vbotka.freebsd.config_light] ************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [test_111]
+ok: [0ed0d0ca]
+ok: [59a3f932]
+
+TASK [vbotka.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/packagesd.0ed0d0ca] ***
+ok: [59a3f932 -> localhost]
+ok: [0ed0d0ca -> localhost]
+ok: [test_111 -> localhost]
+
+    ...
+
+TASK [vbotka.config_light : States: Apply file states.] *************************************************************
+ok: [59a3f932] => (item=/usr/local/www/lighttpd)
+ok: [0ed0d0ca] => (item=/usr/local/www/lighttpd)
+ok: [test_111] => (item=/usr/local/www/lighttpd)
+
+PLAY RECAP **********************************************************************************************************
+0ed0d0ca: ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+59a3f932: ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+test_111: ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0

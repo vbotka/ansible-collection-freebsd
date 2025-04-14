@@ -1,67 +1,69 @@
 (env) > ansible-playbook pb-all.yml -i hosts
 
-PLAY [all] ******************************************************************************************
+PLAY [all] **********************************************************************************************************
 
-TASK [debug] ****************************************************************************************
+TASK [debug] ********************************************************************************************************
 ok: [ansible_client] => 
-  msg: |-
-    inventory_hostname: ansible_client
-    ansible_host: 10.1.0.199
-    release: 14.1
-    iocage_tags: {'vmm': 'iocage_02'}
+    msg: |-
+        inventory_hostname: ansible_client
+        ansible_host: 10.1.0.199
+        release: 14.2
+        iocage_tags: {'vmm': 'iocage_02'}
 ok: [test_101] => 
-  msg: |-
-    inventory_hostname: test_101
-    ansible_host: 10.1.0.101
-    release: 13.4
-    iocage_tags: {'vmm': 'iocage_01'}
-ok: [test_102] => 
-  msg: |-
-    inventory_hostname: test_102
-    ansible_host: 10.1.0.102
-    release: 13.4
-    iocage_tags: {'vmm': 'iocage_01'}
+    msg: |-
+        inventory_hostname: test_101
+        ansible_host: 10.1.0.101
+        release: 13.5
+        iocage_tags: {'vmm': 'iocage_01'}
 ok: [test_103] => 
-  msg: |-
-    inventory_hostname: test_103
-    ansible_host: 10.1.0.103
-    release: 13.4
-    iocage_tags: {'vmm': 'iocage_01'}
+    msg: |-
+        inventory_hostname: test_103
+        ansible_host: 10.1.0.103
+        release: 13.5
+        iocage_tags: {'vmm': 'iocage_01'}
+ok: [test_102] =>
+    msg: |-
+        inventory_hostname: test_102
+        ansible_host: 10.1.0.102
+        release: 13.5
+        iocage_tags: {'vmm': 'iocage_01'}
 ok: [test_111] => 
-  msg: |-
-    inventory_hostname: test_111
-    ansible_host: 10.1.0.111
-    release: 14.1
-    iocage_tags: {'vmm': 'iocage_02'}
+    msg: |-
+        inventory_hostname: test_111
+        ansible_host: 10.1.0.111
+        release: 14.2
+        iocage_tags: {'vmm': 'iocage_02'}
 ok: [test_112] => 
-  msg: |-
-    inventory_hostname: test_112
-    ansible_host: 10.1.0.112
-    release: 14.1
-    iocage_tags: {'vmm': 'iocage_02'}
+    msg: |-
+        inventory_hostname: test_112
+        ansible_host: 10.1.0.112
+        release: 14.2
+        iocage_tags: {'vmm': 'iocage_02'}
 ok: [test_113] => 
-  msg: |-
-    inventory_hostname: test_113
-    ansible_host: 10.1.0.113
-    release: 14.1
-    iocage_tags: {'vmm': 'iocage_02'}
+    msg: |-
+        inventory_hostname: test_113
+        ansible_host: 10.1.0.113
+        release: 14.2
+        iocage_tags: {'vmm': 'iocage_02'}
 
-TASK [debug] ****************************************************************************************
+TASK [debug] ********************************************************************************************************
 ok: [ansible_client] => 
-  msg: |-
-    groups:
-      all: [ansible_client, test_101, test_102, test_103, test_111, test_112, test_113]
-      distro_01_13_4_RELEASE_p2: [ansible_client, test_101, test_102, test_103]
-      distro_02_14_1_RELEASE_p6: [ansible_client, test_111, test_112, test_113]
-      state_01_down: [ansible_client, test_101, test_102, test_103]
-      state_02_down: [ansible_client, test_111, test_112, test_113]
-      test_01: [test_101, test_102, test_103]
-      test_02: [test_111, test_112, test_113]
-      ungrouped: []
-      vmm_iocage_01: [ansible_client, test_101, test_102, test_103]
-      vmm_iocage_02: [ansible_client, test_111, test_112, test_113]
+    msg: |-
+        groups:
+          all: [ansible_client, test_101, test_102, test_103, test_111, test_112, test_113]
+          distro_01_13_5_RELEASE_p1: [ansible_client, test_101, test_102, test_103]
+          distro_02_14_2_RELEASE_p3: [ansible_client, test_111, test_112, test_113]
+          state_01_down: [ansible_client, test_101, test_102]
+          state_01_up: [test_103]
+          state_02_down: [ansible_client, test_111, test_112]
+          state_02_up: [test_113]
+          test_01: [test_101, test_102, test_103]
+          test_02: [test_111, test_112, test_113]
+          ungrouped: []
+          vmm_iocage_01: [ansible_client, test_101, test_102, test_103]
+          vmm_iocage_02: [ansible_client, test_111, test_112, test_113]
 
-PLAY RECAP ******************************************************************************************
+PLAY RECAP **********************************************************************************************************
 ansible_client: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_101      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_102      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

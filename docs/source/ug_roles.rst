@@ -16,6 +16,7 @@ This collection is shipped with the roles:
 * `vbotka.freebsd.iocage`_
 * `vbotka.freebsd.packages`_
 * `vbotka.freebsd.postinstall`_
+* `vbotka.freebsd.rsnapshot`_
 
 
 Documented roles
@@ -34,13 +35,17 @@ Some tested roles are documented at `readtthedocs.io`_
 
 .. hint::
 
-   See pre-configured roles in ``setup/vars/roles.yml``. Feel free to contribute other roles.
+   * See pre-configured roles in ``setup/vars/roles.yml``.
+   * See the README of the roles when not documented at `readtthedocs.io`_
+   * See the ``Index`` what examples are available.
+   * Feel free to contribute other roles.
 
 
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
+.. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
 
 .. _readtthedocs.io: https://rtfd.io/
 

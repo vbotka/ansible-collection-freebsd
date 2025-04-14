@@ -73,43 +73,43 @@ List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
+   :language: yaml
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
 
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook *pb-iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,7 +122,7 @@ Playbook output - display versions
           | grep version
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+   :language: yaml
 
 Create custom fact scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,25 +134,25 @@ Create custom fact scripts
 					 -e freebsd_iocage_facts=true
 
 .. literalinclude:: out/out-04.txt
-    :language: yaml
+   :language: yaml
 
 Display custom fact script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-05.txt
-    :language: python
+   :language: python
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output - Display custom facts
+Playbook output - display custom facts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-06.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

@@ -1,0 +1,18 @@
+(env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+@all:
+  |--@ungrouped:
+  |--@up:
+  |  |--0ed0d0ca
+  |  |--59a3f932
+  |  |--test_111
+  |--@swarm_sw_01:
+  |  |--0ed0d0ca
+  |  |--59a3f932
+  |  |--test_111
+  |--@vmm_iocage_02:
+  |  |--0ed0d0ca
+  |  |--59a3f932
+  |  |--test_111
+  |--@iocage:
+  |  |--iocage_01
+  |  |--iocage_02

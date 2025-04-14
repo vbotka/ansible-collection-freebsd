@@ -1,0 +1,76 @@
+PLAY [Test role vbotka.freebsd.rsnapshot] *****************************************************
+
+TASK [Gathering Facts] ************************************************************************
+ok: [test_111]
+
+TASK [vbotka.rsnapshot : Vars: Set variables for al_include_os_vars_path] *********************
+ok: [test_111]
+
+TASK [Vars: Include OS vars] ******************************************************************
+included: vbotka.ansible_lib for test_111
+
+TASK [vbotka.ansible_lib : Al_include_os_vars_path: Vars from /export/home/vlado.config/.ansible/roles/vbotka.rsnapshot/vars/defaults] ***
+ok: [test_111]
+
+TASK [vbotka.rsnapshot : Vars: Create template specific vars.] ********************************
+included: /export/home/vlado.config/.ansible/roles/vbotka.rsnapshot/tasks/vars-auto.yml for test_111
+
+TASK [vbotka.rsnapshot : Vars-auto: set rsnapshot_conf_dict] **********************************
+ok: [test_111]
+
+TASK [vbotka.rsnapshot : Vars-auto: Debug rsnapshot_conf_dict rsnapshot_debug=true] ***********
+ok: [test_111] => 
+    rsnapshot_conf_dict:
+        cmd_cp: /bin/cp
+        cmd_logger: /usr/bin/logger
+        cmd_rm: /bin/rm
+        cmd_rsync: /usr/local/bin/rsync
+        cmd_ssh: /usr/bin/ssh
+        config_version: '1.2'
+        link_dest: '1'
+        lockfile: /var/run/rsnapshot.pid
+        logfile: /var/log/rsnapshot
+        loglevel: '3'
+        no_create_root: '0'
+        retain_daily: '7'
+        retain_hourly: '6'
+        retain_monthly: '3'
+        retain_weekly: '4'
+        snapshot_root: /export/backup/snapshots
+        verbose: '2'
+
+TASK [vbotka.rsnapshot : Debug] ***************************************************************
+ok: [test_111] => 
+    msg: |-
+        rsnapshot_role_version: 2.7.2
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.1
+        ansible_distribution_release: 14.1-RELEASE
+        ansible_python_version: 3.11.11
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
+
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
+
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot-auto.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-auto-test.conf.j2
+
+PLAY RECAP ************************************************************************************
+test_111: ok=8    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0

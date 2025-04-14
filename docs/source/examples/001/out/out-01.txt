@@ -1,98 +1,98 @@
-(env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                       -l iocage_02 \
-				       -t freebsd_iocage_debug \
-				       -e freebsd_iocage_debug=true
+PLAY [iocage] *******************************************************************************************************
 
-PLAY [iocage] ******************************************************************
-
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] **********************************************************************************************
 ok: [iocage_02]
 
-TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] **********
+TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] ***********************************************
 ok: [iocage_02] => 
-  msg: |-
-    freebsd_iocage_role_version: 0.3.0
-  
-    ansible_architecture: amd64
-    ansible_os_family: FreeBSD
-    ansible_distribution: FreeBSD
-    ansible_distribution_major_version: 14
-    ansible_distribution_version: 14.1
-    ansible_distribution_release: 14.1-RELEASE
-    ansible_python_version: 3.11.9
-  
-    freebsd_install_method: packages
-    freebsd_use_packages: True
-    freebsd_install_retries: 10
-    freebsd_install_delay: 5
-  
-    freebsd_iocage_install: True
-    freebsd_iocage_packages:
-      - sysutils/iocage
-  
-    freebsd_iocage_enable: True
-    freebsd_iocage_start: False
-    freebsd_iocage_restart: False
-    freebsd_iocage_stop: False
-  
-    freebsd_iocage_backup_conf: False
-    freebsd_iocage_assert_quiet: True
-  
-    freebsd_iocage_pool: zroot
-    freebsd_iocage_pool_mount: /mnt/zroot
-    freebsd_iocage_mount: /mnt/zroot/iocage
-  
-    freebsd_iocage_activate: False
-    freebsd_iocage_activate_fatal: True
-  
-    freebsd_iocage_sanity: True
-    freebsd_iocage_sanity_service: True
-    freebsd_iocage_sanity_env: True
-    freebsd_iocage_sanity_fdesc: True
-    freebsd_iocage_sanity_kernel: True
-    freebsd_iocage_sanity_kernel_sctp: False
-    freebsd_iocage_sanity_loader: True
-    freebsd_iocage_sanity_injail: True
-    freebsd_iocage_sanity_zfs: True
-    freebsd_iocage_sanity_zfs_pool_exists: True
-    freebsd_iocage_sanity_zfs_pool_active: False
-  
-    freebsd_iocage_lang: en_US.UTF-8
-    freebsd_iocage_env:
-      CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
-  
-    freebsd_iocage_sysctl_update:
-      {}
-  
-    freebsd_iocage_defaults_override_int: False
-    freebsd_iocage_defaults_override_bool: False
-    freebsd_iocage_defaults_update:
-      {}
-  
-    freebsd_iocage_data: False
-    freebsd_iocage_data_mount_enable: False
-    freebsd_iocage_data_fstab: False
-    freebsd_iocage_data_root: zroot/iocage-data
-    freebsd_iocage_data_mount: /mnt/zroot/iocage-data
-    freebsd_iocage_data_dir: mnt
-    freebsd_iocage_data_jails:
-      {}
-  
-    freebsd_iocage_stat: False
-    freebsd_iocage_stat_fatal: True
-  
-    freebsd_iocage_runner: False
-    freebsd_iocage_runner_fatal: True
-    freebsd_iocage_runner_env:
-      {}
-  
-    freebsd_iocage_runner_exec:
-    freebsd_iocage_runner_cmd:
-      {}
-  
-    freebsd_iocage_clean: False
-    freebsd_iocage_clean_jails:
-      {}
+    msg: |-
+        freebsd_iocage_role_version: 0.5.0
 
-PLAY RECAP *********************************************************************
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.11
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+
+        freebsd_iocage_install: True
+        freebsd_iocage_packages:
+          - sysutils/iocage
+
+        freebsd_iocage_enable: True
+        freebsd_iocage_start: False
+        freebsd_iocage_restart: False
+        freebsd_iocage_stop: False
+
+        freebsd_iocage_backup_conf: False
+        freebsd_iocage_assert_quiet: True
+
+        freebsd_iocage_pool: zroot
+        freebsd_iocage_pool_mount: /mnt/zroot
+        freebsd_iocage_mount: /mnt/zroot/iocage
+
+        freebsd_iocage_activate: False
+        freebsd_iocage_activate_fatal: True
+
+        freebsd_iocage_sanity: True
+        freebsd_iocage_sanity_service: True
+        freebsd_iocage_sanity_env: True
+        freebsd_iocage_sanity_fdesc: True
+        freebsd_iocage_sanity_kernel: True
+        freebsd_iocage_sanity_kernel_sctp: False
+        freebsd_iocage_sanity_loader: True
+        freebsd_iocage_sanity_injail: True
+        freebsd_iocage_sanity_zfs: True
+        freebsd_iocage_sanity_zfs_pool_exists: True
+        freebsd_iocage_sanity_zfs_pool_active: False
+
+        freebsd_iocage_lang: en_US.UTF-8
+        freebsd_iocage_env:
+          CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+
+        freebsd_iocage_sysctl_update:
+          {}
+
+        freebsd_iocage_defaults_override_int: False
+        freebsd_iocage_defaults_override_bool: False
+        freebsd_iocage_defaults_update:
+          {}
+
+        freebsd_iocage_data: False
+        freebsd_iocage_data_mount_enable: False
+        freebsd_iocage_data_fstab: False
+        freebsd_iocage_data_root: zroot/iocage-data
+        freebsd_iocage_data_mount: /mnt/zroot/iocage-data
+        freebsd_iocage_data_dir: mnt
+        freebsd_iocage_data_jails:
+          {}
+
+        freebsd_iocage_stat: False
+        freebsd_iocage_stat_fatal: True
+
+        freebsd_iocage_runner: False
+        freebsd_iocage_runner_fatal: True
+        freebsd_iocage_runner_env:
+          {}
+
+        freebsd_iocage_runner_exec:
+        freebsd_iocage_runner_cmd:
+          {}
+
+        freebsd_iocage_clean: False
+        freebsd_iocage_clean_jails:
+          {}
+
+
+        freebsd_iocage_facts: False
+        freebsd_iocage_facts_scripts:
+          - iocage.fact
+
+PLAY RECAP **********************************************************************************************************
 iocage_02: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

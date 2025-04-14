@@ -44,7 +44,7 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^

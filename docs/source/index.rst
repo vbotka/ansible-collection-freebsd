@@ -5,11 +5,11 @@ vbotka.freebsd
 
 Collection version 0.6.12
 
-| This `collection <https://galaxy.ansible.com/vbotka/freebsd/>`_ and the documentation is work in progress.
+| This `collection <https://galaxy.ansible.com/vbotka/freebsd>`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-collection-freebsd/issues/>`_.
 | `Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_.
 
-| Ansible Galaxy: `vbotka.freebsd <https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/>`_
+| Ansible Galaxy: `vbotka.freebsd <https://galaxy.ansible.com/vbotka/freebsd>`_
 | GitHub: `ansible-collection-freebsd <https://github.com/vbotka/ansible-collection-freebsd/>`_
 
 Included content

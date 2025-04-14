@@ -51,7 +51,7 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,8 +59,8 @@ Inventory *hosts/01_iocage.yml*
 Set unique *cache_prefix*
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
-    :emphasize-lines: 7-11
+   :language: yaml
+   :emphasize-lines: 7-11
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -68,8 +68,8 @@ Inventory *hosts/02_iocage.yml*
 Set unique *cache_prefix*
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :emphasize-lines: 7-11
+   :language: yaml
+   :emphasize-lines: 7-11
 
 .. warning:: Common *cache_prefix* would make the cache files to override each other repeatedly.
 
@@ -77,13 +77,13 @@ Playbook *pb-vars-ip4.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-ip4.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
+   :language: yaml
 
 .. note::
 
@@ -95,17 +95,17 @@ Cache
 
 Look at the cache ::
 
-  shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_7eb74
+  shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_cbc1a
 
 .. literalinclude:: out/out-02.txt
-    :language: json
+   :language: json
 
 ::
 
-  shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_5a95f
+  shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a
 
 .. literalinclude:: out/out-03.txt
-    :language: json
+   :language: json
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

@@ -82,50 +82,50 @@ List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
   
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
+   :language: yaml
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
+   :language: yaml
 
 Inventory *hosts/99_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
-    :emphasize-lines: 2
+   :language: yaml
+   :emphasize-lines: 2
 
 *hosts/group_vars/test_01/region.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/group_vars/test_01/region.yml
-    :language: yaml
+   :language: yaml
 
 *hosts/group_vars/test_02/region.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/group_vars/test_02/region.yml
-    :language: yaml
+   :language: yaml
 
 .. hint::
 
@@ -143,27 +143,27 @@ Playbook *pb-test-all.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - list groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+   :language: yaml
 
 Playbook *pb-test-US.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-US.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - US running hosts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the US region to running hosts
 
 .. literalinclude:: out/out-04.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

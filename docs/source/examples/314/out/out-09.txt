@@ -1,0 +1,90 @@
+PLAY [Test role vbotka.freebsd.config_light] ************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [59a3f932]
+ok: [test_111]
+ok: [0ed0d0ca]
+
+TASK [vbotka.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/313/conf-light/assemble/packagesd.0ed0d0ca] ***
+ok: [59a3f932 -> localhost]
+ok: [test_111 -> localhost]
+ok: [0ed0d0ca -> localhost]
+
+    ...
+
+TASK [vbotka.config_light : Files: Manage files.] *******************************************************************
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-copy.yml for 0ed0d0ca, 59a3f932, test_111 => (item=copy)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-template.yml for 0ed0d0ca, 59a3f932, test_111 => (item=template)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-markers.yml for 0ed0d0ca, 59a3f932, test_111 => (item=markers)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-create-backup.yml for 0ed0d0ca, 59a3f932, test_111 => (item=create-backup)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-patch.yml for 0ed0d0ca, 59a3f932, test_111 => (item=patch)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-lineinfile.yml for 0ed0d0ca, 59a3f932, test_111 => (item=lineinfile)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-blockinfile.yml for 0ed0d0ca, 59a3f932, test_111 => (item=blockinfile)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-inifile.yml for 0ed0d0ca, 59a3f932, test_111 => (item=inifile)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-ucl.yml for 0ed0d0ca, 59a3f932, test_111 => (item=ucl)
+included: /export/home/vlado.config/.ansible/roles/vbotka.config_light/tasks/files-delete-backup.yml for 0ed0d0ca, 59a3f932, test_111 => (item=delete-backup)
+
+TASK [vbotka.config_light : File-create-backup: Create time-stamp.] *************************************************
+ok: [0ed0d0ca]
+ok: [59a3f932]
+ok: [test_111]
+
+TASK [vbotka.config_light : File-create-backup: Stat cl_files.] *****************************************************
+ok: [0ed0d0ca] => (item=/usr/local/www/lighttpd/index.html)
+ok: [test_111] => (item=/usr/local/www/lighttpd/index.html)
+ok: [59a3f932] => (item=/usr/local/www/lighttpd/index.html)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [59a3f932] => (item=/etc/rc.conf)
+ok: [test_111] => (item=/etc/rc.conf)
+ok: [0ed0d0ca] => (item=/etc/rc.conf)
+
+TASK [vbotka.config_light : File-create-backup: Create backup files.] ***********************************************
+ok: [test_111] => (item=/usr/local/www/lighttpd/index.html)
+ok: [0ed0d0ca] => (item=/usr/local/www/lighttpd/index.html)
+ok: [59a3f932] => (item=/usr/local/www/lighttpd/index.html)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [test_111] => (item=/etc/rc.conf)
+ok: [0ed0d0ca] => (item=/etc/rc.conf)
+ok: [59a3f932] => (item=/etc/rc.conf)
+
+TASK [vbotka.config_light : Files-lineinfile: Lineinfile lines.] ****************************************************
+changed: [test_111] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
+changed: [59a3f932] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
+changed: [0ed0d0ca] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
+
+TASK [vbotka.config_light : Files-lineinfile: Lineinfile dict.] *****************************************************
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
+ok: [test_111] => (item=/etc/rc.conf lighttpd_enable)
+ok: [59a3f932] => (item=/etc/rc.conf lighttpd_enable)
+ok: [0ed0d0ca] => (item=/etc/rc.conf lighttpd_enable)
+
+TASK [vbotka.config_light : Files-delete-backup: Delete backup files that did not change.] **************************
+ok: [test_111] => (item=/etc/rc.conf)
+ok: [59a3f932] => (item=/etc/rc.conf)
+ok: [0ed0d0ca] => (item=/etc/rc.conf)
+ok: [test_111] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [59a3f932] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [0ed0d0ca] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+
+PLAY RECAP **********************************************************************************************************
+0ed0d0ca: ok=29   changed=1    unreachable=0    failed=0    skipped=44   rescued=0    ignored=0   
+59a3f932: ok=29   changed=1    unreachable=0    failed=0    skipped=44   rescued=0    ignored=0   
+test_111: ok=29   changed=1    unreachable=0    failed=0    skipped=44   rescued=0    ignored=0

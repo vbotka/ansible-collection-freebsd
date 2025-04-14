@@ -75,61 +75,61 @@ Jails at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
+   :language: yaml
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
     
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook *pb-iocage-clone-list.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-clone-list.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - clone, start, and list
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+   :language: bash
 	       
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -138,8 +138,8 @@ Enable *"sudo: true"*. Otherwise, *iocage* will complain *"DHCP (running -- addr
 root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
 
 .. literalinclude:: iocage.yml
-    :language: yaml
-    :emphasize-lines: 4,5
+   :language: yaml
+   :emphasize-lines: 4,5
 
 .. hint::
 
@@ -155,35 +155,35 @@ Display inventory
 ^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-06.txt
-    :language: yaml
+   :language: yaml
 
 Playbook *pb-test.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - list some iocage_* vars
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-07.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the jails are stopped the IP4 tab says: *"DHCP (not running)"*.
+If a jail is stopped the IP4 tab says: *"DHCP (not running)"*.
 
 .. literalinclude:: out/out-08.txt
-    :language: bash
+   :language: bash
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - list some iocage_* vars
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The jails are stopped.
+Some jails are stopped.
 
 .. literalinclude:: out/out-09.txt
-    :language: bash
+   :language: bash
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

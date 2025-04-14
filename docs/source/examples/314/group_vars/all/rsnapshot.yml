@@ -1,0 +1,20 @@
+rsnapshot_install: false
+
+rsnapshot_config_template: rsnapshot-auto.conf.j2
+rsnapshot_snapshot_root: /export/backup/snapshots
+rsnapshot_no_create_root: '0'
+
+rsnapshot_backup_points:
+  - {dir: /etc/, host: localhost/}
+  - {dir: /usr/local/etc/, host: localhost/}
+
+rsnapshot_backup_points_test:
+  - {dir: /scratch/rsnapshot-test/, host: localhost/}
+
+rsnapshot_exclude:
+  - regex: '.git/'
+  - regex: '.#*'
+
+rsnapshot_test: true
+rsnapshot_config_template_test: rsnapshot-auto-test.conf.j2
+rsnapshot_snapshot_root_test: /export/backup/snapshots-test

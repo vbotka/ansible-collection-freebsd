@@ -65,7 +65,7 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,13 +83,13 @@ host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
+   :language: yaml
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
 
 .. seealso:: `Setting the Python interpreter <https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter>`_
 
@@ -97,15 +97,22 @@ Playbook *pb-iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-    :language: yaml
+   :language: yaml
 
 .. seealso:: `Ansible playbooks <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html>`_
 
 Playbook output - display debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
+
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                       -l iocage_02 \
+                                       -t freebsd_iocage_debug \
+                                       -e freebsd_iocage_debug=true
+
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
 
 .. seealso:: `ansible-playbook <https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html>`_
 
@@ -120,7 +127,7 @@ Playbook output - install iocage
                                          -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-02.txt
-    :language: yaml
+   :language: yaml
 
 .. note:: This *debug* shows the *result* of already installed package.
 

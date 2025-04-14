@@ -1,11 +1,11 @@
 ansible_python_interpreter: /usr/local/bin/python3.11
 
 fetch:
-  - 14.1-RELEASE
+  - 14.2-RELEASE
 
 basejails:
   - name: ansible_client
-    release: 14.1-RELEASE
+    release: 14.2-RELEASE
 
 clones:
   - name: test_111
