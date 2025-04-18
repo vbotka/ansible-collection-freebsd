@@ -4,6 +4,26 @@
 
 # TODO: Sanity. 1) ethname installed. 2) MAC(s) are unique.
 
+- name: "Ethname: Debug fn_debug={{ fn_debug }}"
+  when: fn_debug | bool
+  tags: fn_ethname_debug
+  vars:
+    msg: |-
+      fn_ethname: {{ fn_ethname }}
+      fn_ethname_enable: {{ fn_ethname_enable }}
+      fn_ethname_cmd_enable: {{ fn_ethname_cmd_enable }}
+      fn_ethname_cmd: {{ fn_ethname_cmd }}
+      fn_ethname_install: {{ fn_ethname_install }}
+      fn_ethname_pkg:
+        {{ fn_ethname_pkg | to_nice_yaml(indent=2) | indent(2) }}
+      fn_ethname_names: {{ fn_ethname_names }}
+      fn_ethname_name_mac:
+        {{ fn_ethname_name_mac | to_nice_yaml(indent=2) | indent(2) }}
+      fn_ethname_name_mac_remove:
+        {{ fn_ethname_name_mac_remove | to_nice_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
 - name: "Ethname: Install packages."
   when: fn_ethname_install | bool
   tags: fn_ethname_install
@@ -43,24 +63,7 @@
         name: ethname_names
         value: "{{ fn_ethname_names | join(' ') }}"
 
-    - name: "Ethname: Remove ethname_enable from {{ _path }}"
-      when: fn_ethname_names | length == 0
-      community.general.sysrc:
-        name: ethname_names
-        state: absent
-
-- name: Configure ethname_names
-  notify: restart ethname
-  tags: fn_ethname_names
-  block:
-
-    - name: "Ethname: Set ethname_enable=YES in {{ _path }}"
-      when: fn_ethname_names | length > 0
-      community.general.sysrc:
-        name: ethname_names
-        value: "{{ fn_ethname_names | join(' ') }}"
-
-    - name: "Ethname: Remove ethname_enable from {{ _path }}"
+    - name: "Ethname: Remove ethname_names from {{ _path }}"
       when: fn_ethname_names | length == 0
       community.general.sysrc:
         name: ethname_names
@@ -83,7 +86,7 @@
         value: "{{ item.value }}"
       loop: "{{ fn_ethname_name_mac | dict2items }}"
 
-- name: "Ethname: service ethname {{ fn_ethname_cmd }}"
+- name: "Ethname: service ethname <fn_ethname_cmd>"
   when: fn_ethname_cmd_enable | bool
   tags: fn_ethname_cmd
   vbotka.freebsd.service:

@@ -1,5 +1,5 @@
 ---
-- name: "FreeBSD Network Debug fn_debug={{ fn_debug }}"
+- name: "FreeBSD Network Debug"
   vars:
     msg: |-
       fn_role_version {{ fn_role_version }}
@@ -28,10 +28,6 @@
       fn_static_routes_list: {{ fn_static_routes_list }}
       fn_static_routes:
         {{ fn_static_routes | to_yaml(indent=2) | indent(2) }}
-      fn_defaultrouter_dynamic: {{ fn_defaultrouter_dynamic }}
-      fn_ipv6_defaultrouter_dynamic: {{ fn_ipv6_defaultrouter_dynamic }}
-      fn_ipv6_activate_all_interfaces_dynamic: {{ fn_ipv6_activate_all_interfaces_dynamic }}
-
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 

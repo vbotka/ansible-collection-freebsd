@@ -14,6 +14,8 @@ Examples
 :312:     `Role vbotka.freebsd.iocage`_
 :313:     `Role vbotka.freebsd.config_light`_
 :314:     `Role vbotka.freebsd.rsnapshot`_
+:315:     `Role vbotka.freebsd.network`_
+
 
 .. toctree::
    :maxdepth: 1
@@ -47,6 +49,7 @@ Examples
    312 Clone jails and create inventory <examples/312/example.rst>
    313 Install and configure lighttpd <examples/313/example.rst>
    314 Install and configure rsnapshot <examples/314/example.rst>
+   315 Configure network <examples/315/example.rst>
 
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
@@ -58,6 +61,7 @@ Examples
 
 .. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
 .. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/

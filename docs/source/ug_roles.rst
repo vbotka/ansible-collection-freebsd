@@ -7,22 +7,25 @@ Roles
    :local:
 
 
-Installed roles
----------------
+Included roles
+--------------
 
 This collection is shipped with the roles:
 
 * `vbotka.freebsd.config_light`_
 * `vbotka.freebsd.iocage`_
+* `vbotka.freebsd.network`_
 * `vbotka.freebsd.packages`_
 * `vbotka.freebsd.postinstall`_
 * `vbotka.freebsd.rsnapshot`_
 
+.. seealso:: The list of included roles in ``setup/vars/roles_install.yml``
 
-Documented roles
-----------------
 
-Some tested roles are documented at `readtthedocs.io`_
+Documented standalone roles
+---------------------------
+
+Some standalone roles are documented at `readtthedocs.io`_
 
 * `ansible`_
 * `ansible_runner`_
@@ -43,6 +46,7 @@ Some tested roles are documented at `readtthedocs.io`_
 
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/

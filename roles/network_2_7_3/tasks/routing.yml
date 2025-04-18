@@ -3,7 +3,6 @@
 # https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-routing
 
 - name: Set/Remove defaultrouter
-  when: not fn_defaultrouter_dynamic | bool
   tags: fn_defaultrouter
   block:
 

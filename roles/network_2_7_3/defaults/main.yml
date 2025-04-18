@@ -1,11 +1,9 @@
 ---
 # defaults for freebsd_network
-fn_role_version: 2.7.0
+fn_role_version: 2.7.3
 
 fn_debug: false
 fn_backup_conf: false
-
-fn_gateway_enable: false
 
 # rc.conf.d - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -26,8 +24,9 @@ fn_cloned_interfaces_present: "{{ fn_cloned_interfaces |
                                   community.general.json_query('[?&(state || `present`) == `present`]') }}"
 fn_cloned_interfaces_list: "{{ fn_cloned_interfaces_present | map(attribute='interface') | join(' ') }}"
 
-# route - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# routing - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+fn_gateway_enable: false
 fn_defaultrouter: ""
 
 # To enable routing, set the sysctl(8) variable net.inet.ip.forwarding
@@ -37,12 +36,6 @@ fn_static_routes: [] # default state=present
 fn_static_routes_present: "{{ fn_static_routes |
                               community.general.json_query('[?&(state || `present`) == `present`]') }}"
 fn_static_routes_list: "{{ fn_static_routes_present | map(attribute='name') | join(' ') }}"
-
-# dynamic configuration by a cloud provider - - - - - - - - - - - - - - - - - - - - - - -
-
-fn_defaultrouter_dynamic: false
-fn_ipv6_defaultrouter_dynamic: false
-fn_ipv6_activate_all_interfaces_dynamic: false
 
 # ethname - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -63,5 +56,11 @@ fn_pkg_install_retries: 3
 fn_pkg_install_delay: 5
 # fn_pkg_cached: false
 # fn_pkg_use_globs: false
+
+# dynamic configuration by a cloud provider - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_defaultrouter_dynamic: false
+fn_ipv6_defaultrouter_dynamic: false
+fn_ipv6_activate_all_interfaces_dynamic: false
 
 # EOF

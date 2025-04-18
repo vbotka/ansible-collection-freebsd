@@ -105,7 +105,7 @@ bsd_roles:
     name: network
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-network
-    version: 2.7.0
+    version: 2.7.3
   - galaxy: vbotka.freebsd_packages
     name: packages
     scm: git
