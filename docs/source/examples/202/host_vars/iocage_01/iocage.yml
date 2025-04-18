@@ -7,8 +7,9 @@ freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
 templates:
   ansible_client:
-    release: 13.4-RELEASE
+    release: 13.5-RELEASE
     properties:
+      vnet: 'on'
       ip4_addr: 'vnet0|10.1.0.198/24'
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"

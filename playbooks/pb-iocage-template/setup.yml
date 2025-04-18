@@ -13,7 +13,7 @@
   ansible.builtin.debug:
     var: iocage_templates
 
-- name: End host if all templates already created
+- name: End host if all templates already created.
   when: templates | difference(iocage_templates) | length == 0
   block:
 

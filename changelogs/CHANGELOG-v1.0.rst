@@ -5,15 +5,16 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-0.6.12
+0.7.0
 ======
 
 Release Summary
 ---------------
-Maintenance update.
+Major release. Tested with 13.5 and 14.2
 
 Major Changes
 -------------
+* Docs examples updated with 13.5 and 14.2
 
 Minor Changes
 -------------

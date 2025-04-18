@@ -1,18 +1,10 @@
-(env) > ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
-                                                       -t list \
-						       -e debug=true
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-PLAY [Create and start jails. Optionally stop and destroy jails.] ******************************
-
-TASK [Get iocage facts] ************************************************************************
+TASK [Get iocage facts] ********************************************************
 ok: [iocage_01]
 ok: [iocage_02]
 
-TASK [Display iocage_jails dictionary debug2=False] ********************************************
-skipping: [iocage_01]
-skipping: [iocage_02]
-
-TASK [Display iocage_jails keys debug=true] ****************************************************
+TASK [Display iocage_jails keys debug=true] ************************************
 ok: [iocage_01] => 
     iocage_jails.keys():
     - test_101
@@ -24,6 +16,6 @@ ok: [iocage_02] =>
     - test_112
     - test_113
 
-PLAY RECAP *************************************************************************************
+PLAY RECAP *********************************************************************
 iocage_01: ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 iocage_02: ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0

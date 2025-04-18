@@ -1,5 +1,5 @@
 ---
-- name: Set iocage_jails
+- name: Set iocage_jails.
   when: iocage_jails is undefined
   block:
 
@@ -17,7 +17,7 @@
   ansible.builtin.debug:
     var: iocage_jails
 
-- name: Stop created templates
+- name: Stop created templates.
   when: _jails | length > 0
   vars:
     jails_started: "{{ iocage_jails | dict2items
@@ -26,7 +26,7 @@
     _jails: "{{ templates | intersect(jails_started) }}"
   block:
 
-    - name: "Stop: Stop jails"
+    - name: "Stop: Stop jails."
       register: out
       changed_when: false
       ansible.builtin.command: "iocage stop {{ _jails | join(' ') }}"

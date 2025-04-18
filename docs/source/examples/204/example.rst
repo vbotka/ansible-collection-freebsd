@@ -68,31 +68,31 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── group_vars
-   │   └── all
-   │       └── iocage.yml
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 03_constructed.yml
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients
-   │   ├── iocage_jails.yml
-   │   ├── swarm_destroy.yml
-   │   └── swarm.yml
-   ├── pb-iocage-ansible-clients-v2.yml
-   ├── pb-test-01.yml
-   ├── pb-test-02.yml
-   └── vars
-       └── iocage_datasets.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 03_constructed.yml
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── pb-iocage-ansible-clients
+  │   ├── iocage_jails.yml
+  │   ├── swarm_destroy.yml
+  │   └── swarm.yml
+  ├── pb-iocage-ansible-clients-v2.yml
+  ├── pb-test-01.yml
+  ├── pb-test-02.yml
+  └── vars
+      └── iocage_datasets.yml
 
 Synopsis
 ^^^^^^^^
@@ -141,81 +141,88 @@ List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 group_vars/all/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/iocage.yml
-    :language: yaml
+   :language: yaml
 
 host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
+   :language: yaml
 
 host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
 	       
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook *pb-iocage-ansible-clients-v2.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-ansible-clients-v2.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output - create and start the jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - create and start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-iocage-ansible-clients-v2.yml -i iocage-hosts.ini \
+                                                            -t swarm \
+                                                            -e swarm=true \
+                                                            -e debug=true
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: yaml
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+   :language: bash
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-06.txt
-    :language: bash
+   :language: bash
 	       
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
-    :emphasize-lines: 4,9
+   :language: yaml
+   :emphasize-lines: 4,9
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :emphasize-lines: 6,11
+   :language: yaml
+   :emphasize-lines: 6,11
 
 .. note::
 
@@ -225,25 +232,25 @@ Inventory *hosts/03_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/03_constructed.yml
-    :language: yaml
+   :language: yaml
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-07.txt
-    :language: bash
+   :language: bash
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display *iocage_tags*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-08.txt
-    :language: yaml
+   :language: yaml
 
 .. hint::
 

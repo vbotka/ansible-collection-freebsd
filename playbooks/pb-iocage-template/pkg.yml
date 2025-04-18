@@ -13,7 +13,7 @@
   ansible.builtin.debug:
     var: iocage_jails
 
-- name: "Pkg: Install packages"
+- name: "Pkg: Install packages."
   register: out
   vars:
     _act_pkg: "{{ item.value.act_pkg | d(act_pkg) }}"

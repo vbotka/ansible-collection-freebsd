@@ -1,5 +1,5 @@
 ---
-- name: "User: Create user"
+- name: "User: Create user."
   register: out
   vars:
     _act_user: "{{ item.value.act_user | d(act_user) }}"

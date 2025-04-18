@@ -1,16 +1,16 @@
 (env) > ansible-playbook pb-test-01.yml -i hosts
 
-PLAY [Connect to the group test.] *************************************************************
+PLAY [Connect to the group test.] **********************************************
 
-TASK [ansible.builtin.command] ****************************************************************
+TASK [ansible.builtin.command] *************************************************
 changed: [test_102]
 changed: [test_101]
 changed: [test_103]
-changed: [test_112]
 changed: [test_111]
+changed: [test_112]
 changed: [test_113]
 
-TASK [ansible.builtin.debug] ******************************************************************
+TASK [ansible.builtin.debug] ***************************************************
 ok: [test_101] => 
     msg: ansible_host=10.1.0.130 iocage_hooks=['10.1.0.130']
 ok: [test_102] => 
@@ -24,7 +24,7 @@ ok: [test_112] =>
 ok: [test_113] => 
     msg: ansible_host=10.1.0.231 iocage_hooks=['10.1.0.231']
 
-PLAY RECAP ************************************************************************************
+PLAY RECAP *********************************************************************
 test_101: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 test_102: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 test_103: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

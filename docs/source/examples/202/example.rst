@@ -42,7 +42,7 @@ Extending example :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook::
+Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook ::
 
   shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
   case "$reason" in
@@ -81,25 +81,25 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── files
-   │   └── pk_admins.txt
-   ├── hosts
-   │   ├── 01_iocage.yml
-   │   ├── 02_iocage.yml
-   │   └── 03_constructed.yml
-   ├── host_vars
-   │   ├── iocage_01
-   │   │   └── iocage.yml
-   │   └── iocage_02
-   │       └── iocage.yml
-   ├── iocage-hosts.ini
-   ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
-   ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
-   ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
-   └── pb-test-01.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── files
+  │   └── pk_admins.txt
+  ├── hosts
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 03_constructed.yml
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
+  ├── iocage-hosts.ini
+  ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
+  ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
+  ├── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
+  └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
@@ -157,13 +157,13 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 host_vars/iocage_01/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
+   :language: yaml
 
 .. hint::
 
@@ -178,7 +178,7 @@ host_vars/iocage_02/iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
 
 .. note::
 
@@ -204,61 +204,67 @@ Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook *pb-iocage-template.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-template.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 Playbook *pb-iocage-ansible-clients.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-ansible-clients.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
+                                                         -t clone \
+							 -e clone=true
+
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: yaml
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+   :language: bash
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-06.txt
-    :language: bash
+   :language: bash
 	       
 Inventory *hosts/01_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
+   :language: yaml
 
 .. hint::
 
@@ -267,37 +273,37 @@ Inventory *hosts/01_iocage.yml*
    ``/mnt/pool2``. For ``hooks_results`` to work properly, create symlink in the
    root directory ::
 
-     pool2 -> /mnt/pool2
+     /pool2 -> /mnt/pool2
 
 Inventory *hosts/02_iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
+   :language: yaml
 
 Inventory *hosts/03_constructed.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/03_constructed.yml
-    :language: yaml
+   :language: yaml
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-07.txt
-    :language: bash
+   :language: bash
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display list *iocage_hooks*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	       
 .. literalinclude:: out/out-08.txt
-    :language: bash
+   :language: yaml
 
 .. hint::
 

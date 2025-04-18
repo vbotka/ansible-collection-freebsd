@@ -1,80 +1,80 @@
 (env) > ansible-playbook pb-test-01.yml -i hosts
 
-PLAY [Connect to the group test.] *************************************************************
+PLAY [Connect to the group test.] **********************************************
 
-TASK [Gathering Facts] ************************************************************************
+TASK [Gathering Facts] *********************************************************
+ok: [test_102]
 ok: [test_103]
 ok: [test_101]
 ok: [test_112]
-ok: [test_102]
 ok: [test_111]
 ok: [test_113]
 
-TASK [ansible.builtin.command] ****************************************************************
+TASK [ansible.builtin.command] *************************************************
 changed: [test_102]
+changed: [test_111]
+changed: [test_112]
 changed: [test_103]
 changed: [test_101]
-changed: [test_112]
-changed: [test_111]
 changed: [test_113]
 
-TASK [ansible.builtin.debug] ******************************************************************
+TASK [ansible.builtin.debug] ***************************************************
 ok: [test_101] => 
-  msg: |-
-    test-101 test_101 34333834-3734-5a43-3331-313342464631 /usr/local/bin/python3.9
+    msg: |-
+        test-101 test_101 34333834-3734-5a43-3331-313342464631 /usr/local/bin/python3.11
 ok: [test_102] => 
-  msg: |-
-    test-102 test_102 34333834-3734-5a43-3331-313342464631 /usr/local/bin/python3.9
+    msg: |-
+        test-102 test_102 34333834-3734-5a43-3331-313342464631 /usr/local/bin/python3.11
 ok: [test_103] => 
-  msg: |-
-    test-103 test_103 34333834-3734-5a43-3331-313342464631 /usr/local/bin/python3.9
+    msg: |-
+        test-103 test_103 34333834-3734-5a43-3331-313342464631 /usr/local/bin/python3.11
 ok: [test_111] => 
-  msg: |-
-    test-111 test_111 ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403 /usr/local/bin/python3.11
+    msg: |-
+        test-111 test_111 ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403 /usr/local/bin/python3.11
 ok: [test_112] => 
-  msg: |-
-    test-112 test_112 ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403 /usr/local/bin/python3.11
+    msg: |-
+        test-112 test_112 ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403 /usr/local/bin/python3.11
 ok: [test_113] => 
-  msg: |-
-    test-113 test_113 ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403 /usr/local/bin/python3.11
+    msg: |-
+        test-113 test_113 ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403 /usr/local/bin/python3.11
 
-TASK [ansible.builtin.command] ****************************************************************
+TASK [ansible.builtin.command] *************************************************
 changed: [test_101]
-changed: [test_111]
-changed: [test_112]
-changed: [test_103]
 changed: [test_102]
-changed: [test_113]
-
-TASK [ansible.builtin.command] ****************************************************************
-changed: [test_101]
 changed: [test_103]
-changed: [test_102]
 changed: [test_111]
 changed: [test_112]
 changed: [test_113]
 
-TASK [ansible.builtin.debug] ******************************************************************
+TASK [ansible.builtin.command] *************************************************
+changed: [test_101]
+changed: [test_103]
+changed: [test_102]
+changed: [test_111]
+changed: [test_112]
+changed: [test_113]
+
+TASK [ansible.builtin.debug] ***************************************************
 ok: [test_101] => 
-  msg: |-
-    test-101 admin root
+    msg: |-
+        test-101 admin root
 ok: [test_102] => 
-  msg: |-
-    test-102 admin root
+    msg: |-
+        test-102 admin root
 ok: [test_103] => 
-  msg: |-
-    test-103 admin root
+    msg: |-
+        test-103 admin root
 ok: [test_111] => 
-  msg: |-
-    test-111 admin root
+    msg: |-
+        test-111 admin root
 ok: [test_112] => 
-  msg: |-
-    test-112 admin root
+    msg: |-
+        test-112 admin root
 ok: [test_113] => 
-  msg: |-
-    test-113 admin root
+    msg: |-
+        test-113 admin root
 
-PLAY RECAP ************************************************************************************
+PLAY RECAP *********************************************************************
 test_101: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 test_102: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 test_103: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

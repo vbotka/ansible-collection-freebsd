@@ -1,11 +1,11 @@
 ---
-- name: Configure public keys
+- name: Configure public keys.
   vars:
     _act_user: "{{ item.value.act_user | d(act_user) }}"
     _act_pk: "{{ item.value.act_pk | d(act_pk) }}"
   block:
 
-    - name: "Pk: Configure public keys"
+    - name: "Pk: Configure public keys."
       register: out
       ansible.posix.authorized_key:
         user: "{{ _act_user }}"

@@ -30,11 +30,11 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── iocage-hosts.ini
-   └── pb-iocage-display-lists.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── iocage-hosts.ini
+  └── pb-iocage-display-lists.yml
 
 Synopsis
 ^^^^^^^^
@@ -92,19 +92,19 @@ Lists at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 Lists at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 .. note::
 
@@ -117,13 +117,13 @@ Playbook *pb-iocage-display-lists.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-display-lists.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

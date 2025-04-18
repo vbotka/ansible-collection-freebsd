@@ -1,19 +1,17 @@
-(env) > ansible-inventory -i hosts --graph
 @all:
   |--@ungrouped:
   |--@swarm_sw_01:
-  |  |--16ed61e2
-  |  |--58fc3c05
-  |  |--824cdb51
-  |  |--1349277e
-  |  |--5d599b2c
-  |  |--6d98c114
+  |  |--30e17bd6
+  |  |--3da6d58b
+  |  |--c3f8ba97
+  |  |--1bf7ee11
+  |  |--883b8be9
+  |  |--9ccb517d
   |--@vmm_iocage_01:
-  |  |--16ed61e2
-  |  |--58fc3c05
-  |  |--824cdb51
+  |  |--30e17bd6
+  |  |--3da6d58b
+  |  |--c3f8ba97
   |--@vmm_iocage_02:
-  |  |--1349277e
-  |  |--5d599b2c
-  |  |--6d98c114
-  
+  |  |--1bf7ee11
+  |  |--883b8be9
+  |  |--9ccb517d
