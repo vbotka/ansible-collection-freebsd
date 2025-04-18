@@ -1,0 +1,93 @@
+---
+# ethname MAC-based network name pinning
+# https://forums.freebsd.org/threads/how-to-associate-an-interface-name-with-its-mac.89337/
+
+# TODO: Sanity. 1) ethname installed. 2) MAC(s) are unique.
+
+- name: "Ethname: Install packages."
+  when: fn_ethname_install | bool
+  tags: fn_ethname_install
+  community.general.pkgng:
+    name: "{{ fn_ethname_pkg }}"
+    cached: "{{ fn_pkg_cached | d(omit) | bool }}"
+    use_globs: "{{ fn_pkg_use_globs | d(false) | bool }}"
+  register: result
+  until: result is succeeded
+  retries: "{{ fn_pkg_install_retries }}"
+  delay: "{{ fn_pkg_install_delay }}"
+
+- name: Enable ethname
+  tags: fn_ethname_enable
+  block:
+
+    - name: "Ethname: Set ethname_enable=YES in {{ _path }}"
+      when: fn_ethname_enable | bool
+      community.general.sysrc:
+        name: ethname_enable
+        value: "YES"
+
+    - name: "Ethname: Remove ethname_enable from {{ _path }}"
+      when: not fn_ethname_enable | bool
+      community.general.sysrc:
+        name: ethname_enable
+        state: absent
+
+- name: Configure ethname_names
+  notify: restart ethname
+  tags: fn_ethname_names
+  block:
+
+    - name: "Ethname: Set ethname_names in {{ _path }}"
+      when: fn_ethname_names | length > 0
+      community.general.sysrc:
+        name: ethname_names
+        value: "{{ fn_ethname_names | join(' ') }}"
+
+    - name: "Ethname: Remove ethname_enable from {{ _path }}"
+      when: fn_ethname_names | length == 0
+      community.general.sysrc:
+        name: ethname_names
+        state: absent
+
+- name: Configure ethname_names
+  notify: restart ethname
+  tags: fn_ethname_names
+  block:
+
+    - name: "Ethname: Set ethname_enable=YES in {{ _path }}"
+      when: fn_ethname_names | length > 0
+      community.general.sysrc:
+        name: ethname_names
+        value: "{{ fn_ethname_names | join(' ') }}"
+
+    - name: "Ethname: Remove ethname_enable from {{ _path }}"
+      when: fn_ethname_names | length == 0
+      community.general.sysrc:
+        name: ethname_names
+        state: absent
+
+- name: Configure ethname_*_mac
+  notify: restart ethname
+  tags: fn_ethname_name_mac
+  block:
+
+    - name: "Ethname: Remove ethname_*_mac from {{ _path }}"
+      community.general.sysrc:
+        name: "ethname_{{ item }}_mac"
+        state: absent
+      loop: "{{ fn_ethname_name_mac_remove }}"
+
+    - name: "Ethname: Set ethname_*_mac in {{ _path }}"
+      community.general.sysrc:
+        name: "ethname_{{ item.key }}_mac"
+        value: "{{ item.value }}"
+      loop: "{{ fn_ethname_name_mac | dict2items }}"
+
+- name: "Ethname: service ethname {{ fn_ethname_cmd }}"
+  when: fn_ethname_cmd_enable | bool
+  tags: fn_ethname_cmd
+  vbotka.freebsd.service:
+    script: ethname
+    command: "{{ fn_ethname_cmd }}"
+
+# EOF

@@ -1,0 +1,64 @@
+---
+# Gateways and Routes
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-routing
+
+- name: Set/Remove defaultrouter
+  when: not fn_defaultrouter_dynamic | bool
+  tags: fn_defaultrouter
+  block:
+
+    - name: "Routing: Set defaultrouter in {{ _path }}"
+      when: fn_defaultrouter | length > 0
+      community.general.sysrc:
+        name: defaultrouter
+        value: "{{ fn_defaultrouter }}"
+
+    - name: "Routing: Remove defaultrouter from {{ _path }}"
+      when: fn_defaultrouter | length == 0
+      community.general.sysrc:
+        name: defaultrouter
+        state: absent
+
+- name: Set/Remove gateway_enable
+  tags: fn_gateway_enable
+  block:
+
+    - name: "Routing: Set gateway_enable=YES in {{ _path }}"
+      when: fn_gateway_enable | bool
+      community.general.sysrc:
+        name: gateway_enable
+        value: "YES"
+      # To enable routing, set the sysctl variable net.inet.ip.forwarding to 1
+      # To disable routing, reset variable net.inet.ip.forwarding to 0
+
+    - name: "Routing: Remove gateway_enable from {{ _path }}"
+      when: not fn_gateway_enable | bool
+      community.general.sysrc:
+        name: gateway_enable
+        state: absent
+
+- name: Set/Remove static routes
+  tags: fn_static_routes
+  block:
+
+    - name: "Routing: Configure list of static routes in {{ _path }}"
+      when: fn_static_routes_list | length > 0
+      community.general.sysrc:
+        name: static_routes
+        value: "{{ fn_static_routes_list }}"
+
+    - name: "Routing: Remove list of static routes from {{ _path }}"
+      when: fn_static_routes_list | length == 0
+      community.general.sysrc:
+        name: static_routes
+        state: absent
+
+- name: "Routing: Configure static routes in {{ _path }}"
+  tags: fn_route
+  community.general.sysrc:
+    name: "route_{{ item.name }}"
+    value: "{{ item.route }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_static_routes }}"
+
+# EOF

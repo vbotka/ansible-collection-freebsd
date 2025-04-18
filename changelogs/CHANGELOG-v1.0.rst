@@ -14,14 +14,14 @@ Major release. Tested with 13.5 and 14.2
 
 Major Changes
 -------------
-* Docs examples updated with 13.5 and 14.2
+* Docs examples updated to 13.5 and 14.2
 
 Minor Changes
 -------------
 * Update galaxy.yml; Do not distribute roles/\*/docs"
 * Update module ucl.py
 * Fix docs pygments.
-* Add role rsnapshot.
+* Add roles: network, rsnapshot.
 * Update module service:
   _parse_command_output returns 'void' when stdout is empty.
 

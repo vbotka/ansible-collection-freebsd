@@ -2,6 +2,7 @@
 roles_install:
   - config_light
   - iocage
+  - network
   - packages
   - postinstall
   - rsnapshot
