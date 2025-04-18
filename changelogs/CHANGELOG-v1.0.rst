@@ -22,6 +22,8 @@ Minor Changes
 * Update module ucl.py
 * Fix docs pygments.
 * Add role rsnapshot.
+* Update module service:
+  _parse_command_output returns 'void' when stdout is empty.
 
 
 0.6.11

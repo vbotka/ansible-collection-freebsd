@@ -383,17 +383,21 @@ def _parse_command_output(script, command, rc, out, err):
 
     if command.endswith('start'):
         lines = data.splitlines()
-        if len(lines) > 1:
-            return lines[1][:-1]
-        else:
+        if len(lines) == 0:
+            return 'void'
+        elif len(lines) == 1:
             return lines[0]
+        else:
+            return lines[1][:-1]
 
     if command.endswith('stop'):
         lines = data.splitlines()
-        if len(lines) > 1:
-            return lines[1][:-1]
-        else:
+        if len(lines) == 0:
+            return 'void'
+        elif len(lines) == 1:
             return lines[0]
+        else:
+            return lines[1][:-1]
 
     return 'Not parsed.'
 
