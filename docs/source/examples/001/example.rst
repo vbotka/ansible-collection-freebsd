@@ -89,9 +89,9 @@ Playbook output - display debug
 .. code-block:: bash
 
    (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                       -l iocage_02 \
-                                       -t freebsd_iocage_debug \
-                                       -e freebsd_iocage_debug=true
+                                          -l iocage_02 \
+                                          -t freebsd_iocage_debug \
+                                          -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
