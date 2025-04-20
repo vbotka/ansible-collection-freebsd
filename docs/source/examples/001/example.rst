@@ -24,11 +24,6 @@ Tree
   shell> tree
   .
   ├── ansible.cfg
-  ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   └── iocage_02
-  │       └── iocage.yml
   ├── iocage-hosts.ini
   └── pb-iocage.yml
 
@@ -78,20 +73,7 @@ Inventory *iocage-hosts.ini*
    * `How to build your inventory`_
    * `Connection methods and details`_
    * `Understanding privilege escalation`_
-
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_01/iocage.yml
-   :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
-
-.. seealso:: `Setting the Python interpreter <https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter>`_
+   * `Setting the Python interpreter`_
 
 Playbook *pb-iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -138,3 +120,4 @@ Playbook output - install iocage
 .. _How to build your inventory: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html
 .. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
 .. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
+.. _Setting the Python interpreter: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter
