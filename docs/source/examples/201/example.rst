@@ -119,8 +119,8 @@ Playbook *pb-iocage-display-lists.yml*
 .. literalinclude:: pb-iocage-display-lists.yml
    :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - disply iocage lists
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

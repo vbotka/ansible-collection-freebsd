@@ -15,7 +15,7 @@ Extending example :ref:`example_203`.
 .. index:: single: inventory vbotka.freebsd.iocage; Example 206
 .. index:: single: module vbotka.freebsd.iocage; Example 206
 .. index:: single: module ansible.builtin.command; Example 206
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 206
+.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 206
 .. index:: single: option compose; Example 206
 .. index:: single: compose; Example 206
 .. index:: single: option get_properties; Example 206
@@ -143,8 +143,8 @@ Tree
   │   └── iocage_02
   │       └── iocage.yml
   ├── iocage-hosts.ini
-  ├── pb-iocage-ansible-clients -> ../../../../playbooks/pb-iocage-ansible-clients
-  ├── pb-iocage-ansible-clients.yml -> ../../../../playbooks/pb-iocage-ansible-clients.yml
+  ├── pb_iocage_ansible_clients -> ../../../../playbooks/pb_iocage_ansible_clients
+  ├── pb_iocage_ansible_clients.yml -> ../../../../playbooks/pb_iocage_ansible_clients.yml
   └── pb-test-01.yml
 
 Synopsis
@@ -154,7 +154,7 @@ Synopsis
 
   * iocage_02
 
-  In the playbook *pb-iocage-ansible-clients.yml*, use:
+  In the playbook *pb_iocage_ansible_clients.yml*, use:
 
   * `module vbotka.freebsd.iocage`_ to:
 
@@ -229,12 +229,6 @@ Inventory *iocage-hosts.ini*
 .. literalinclude:: iocage-hosts.ini
     :language: ini
 
-Playbook *pb-iocage-ansible-clients.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-iocage-ansible-clients.yml
-    :language: yaml
-
 Create and start clones
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -286,7 +280,7 @@ Playbook output
 
    The below command stops and destroys the jails in *swarms* ::
 
-     ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
+     ansible-playbook pb_iocage_ansible_clients.yml -i iocage-hosts.ini \
                                                     -l iocage_02 \
                                                     -t swarm_destroy \
 						    -e swarm_destroy=true

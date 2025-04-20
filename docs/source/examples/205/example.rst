@@ -24,7 +24,7 @@ Extending example :ref:`example_202`.
 .. index:: single: module community.general.pkgng; Example 205
 .. index:: single: module vbotka.freebsd.iocage; Example 205
 .. index:: single: notes; Example 205
-.. index:: single: playbook pb-iocage-template.yml; Example 205
+.. index:: single: playbook pb_iocage_template.yml; Example 205
 .. index:: single: property notes; Example 205
 .. index:: single: template ansible_client; Example 205
 
@@ -51,8 +51,6 @@ Tree
   │   └── iocage_03
   │       └── iocage.yml
   ├── iocage-hosts.ini
-  ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
-  └── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
 
 Synopsis
 ^^^^^^^^
@@ -87,7 +85,7 @@ host_vars/iocage_03/iocage.yml
 .. warning::
 
    * The user *act_user* must exist on the *iocage* host. Otherwise, the module
-     *ansible.posix.authorized_key* will crash. See *pb-iocage-template/pk.yml*
+     *ansible.posix.authorized_key* will crash. See *pb_iocage_template/pk.yml*
 
    * The file *files/pk_admins.txt* was sanitized. Fit the public keys to your needs ::
 
@@ -99,12 +97,6 @@ Inventory *iocage-hosts.ini*
 
 .. literalinclude:: iocage-hosts.ini
     :language: ini
-
-Playbook *pb-iocage-template.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-iocage-template.yml
-    :language: yaml
 
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

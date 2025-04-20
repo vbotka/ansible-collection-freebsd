@@ -1,7 +1,7 @@
 .. _example_001:
 
-001 Debug variables and install iocage
---------------------------------------
+001 Install iocage
+------------------
 
 .. contents:: Table of Contents
    :local:

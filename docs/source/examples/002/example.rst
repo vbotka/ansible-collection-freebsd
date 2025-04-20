@@ -96,8 +96,8 @@ Playbook *pb-iocage.yml*
 .. literalinclude:: pb-iocage.yml
    :language: yaml
 
-Playbook output - display debug
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - display result
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
