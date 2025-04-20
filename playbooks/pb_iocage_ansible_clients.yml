@@ -28,24 +28,24 @@
     - name: Create and start swarms
       when: swarm | bool
       tags: swarm
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/swarm.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients/swarm.yml
 
     - name: Stop and destroy swarms
       when: swarm_destroy | bool
       tags: swarm_destroy
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/swarm_destroy.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients/swarm_destroy.yml
 
     - name: Create and start clones
       when: clone | bool
       tags: clone
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/clone.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients/clone.yml
 
     - name: Stop and destroy clones
       when: clone_destroy | bool
       tags: clone_destroy
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/clone_destroy.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients/clone_destroy.yml
 
     - name: Display iocage_jails
       when: debug | bool or debug2 | bool
       tags: list
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/list.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients/list.yml

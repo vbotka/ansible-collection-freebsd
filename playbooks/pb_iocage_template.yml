@@ -11,50 +11,50 @@
 
     - name: Setup
       tags: [always, setup]
-      ansible.builtin.import_tasks: pb-iocage-template/setup.yml
+      ansible.builtin.import_tasks: pb_iocage_template/setup.yml
 
     - name: Create jails
       tags: create
-      ansible.builtin.import_tasks: pb-iocage-template/create.yml
+      ansible.builtin.import_tasks: pb_iocage_template/create.yml
 
     - name: Start jails
       tags: start
-      ansible.builtin.import_tasks: pb-iocage-template/start.yml
+      ansible.builtin.import_tasks: pb_iocage_template/start.yml
 
     - name: Install packages
       when: act_pkg | length > 0
       tags: pkg
-      ansible.builtin.import_tasks: pb-iocage-template/pkg.yml
+      ansible.builtin.import_tasks: pb_iocage_template/pkg.yml
 
     - name: Create user
       when: act_user | length > 0
       tags: user
-      ansible.builtin.import_tasks: pb-iocage-template/user.yml
+      ansible.builtin.import_tasks: pb_iocage_template/user.yml
 
     - name: Configure public keys
       when: act_pk | length > 0
       tags: pk
-      ansible.builtin.import_tasks: pb-iocage-template/pk.yml
+      ansible.builtin.import_tasks: pb_iocage_template/pk.yml
 
     - name: Configure sudo
       when: act_sudo | bool
       tags: sudo
-      ansible.builtin.import_tasks: pb-iocage-template/sudo.yml
+      ansible.builtin.import_tasks: pb_iocage_template/sudo.yml
 
     - name: Configure dhclient
       when: act_dhclient | length > 0
       tags: dhclient
-      ansible.builtin.import_tasks: pb-iocage-template/dhclient.yml
+      ansible.builtin.import_tasks: pb_iocage_template/dhclient.yml
 
     - name: Configure /etc/rc.conf
       when: act_rcconf | length > 0
       tags: rcconf
-      ansible.builtin.import_tasks: pb-iocage-template/rc_conf.yml
+      ansible.builtin.import_tasks: pb_iocage_template/rc_conf.yml
 
     - name: Stop jails
       tags: stop
-      ansible.builtin.import_tasks: pb-iocage-template/stop.yml
+      ansible.builtin.import_tasks: pb_iocage_template/stop.yml
 
     - name: Convert jails to templates
       tags: template
-      ansible.builtin.import_tasks: pb-iocage-template/template.yml
+      ansible.builtin.import_tasks: pb_iocage_template/template.yml

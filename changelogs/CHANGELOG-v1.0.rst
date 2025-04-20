@@ -23,6 +23,7 @@ Minor Changes
 * Fix docs pygments.
 * Update module service:
   _parse_command_output returns 'void' when stdout is empty.
+* Update playbooks. Replace dash by undescore in files and directories.
 * Add roles: network, rsnapshot.
 * Add playbook pb_iocage_destroy_all_jails.yml
 
