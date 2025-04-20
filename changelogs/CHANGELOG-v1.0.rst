@@ -21,9 +21,10 @@ Minor Changes
 * Update galaxy.yml; Do not distribute roles/\*/docs"
 * Update module ucl.py
 * Fix docs pygments.
-* Add roles: network, rsnapshot.
 * Update module service:
   _parse_command_output returns 'void' when stdout is empty.
+* Add roles: network, rsnapshot.
+* Add playbook pb_iocage_destroy_all_jails.yml
 
 
 0.6.11

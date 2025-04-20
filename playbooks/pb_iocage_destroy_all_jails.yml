@@ -1,0 +1,99 @@
+- name: Destroy all jails.
+  hosts: iocage
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    vbotka_freebsd_batch: "{{ lookup('ansible.builtin.env', 'VBOTKA_FREEBSD_BATCH') | default(false, true) }}"
+    all_jails: "{{ iocage_jails.keys() }}"
+    running_jails: "{{ iocage_jails | dict2items
+                                    | selectattr('value.state', 'eq', 'up')
+                                    | map(attribute='key') }}"
+
+  tasks:
+
+    - name: Not in a batch. Confirm to proceed.
+      when:
+        - not ansible_check_mode
+        - not vbotka_freebsd_batch | bool
+      run_once: true
+      block:
+
+        - name: Confirm to proceed.
+          register: out
+          ansible.builtin.pause:
+            prompt: >
+              All jails on {{ ansible_play_hosts | join(', ') }} will be destroyed.
+              Do you want to proceed? [y/n]
+
+        - name: End play.
+          when: out.user_input | lower != 'y'
+          ansible.builtin.meta: end_play
+
+    - name: Set iocage_jails
+      block:
+
+        - name: "Get iocage list of jails."
+          register: out
+          changed_when: false
+          check_mode: false
+          ansible.builtin.command: iocage list --long
+
+        - name: "Set dictionary iocage_jails"
+          ansible.builtin.set_fact:
+            iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+
+        - name: "Debug iocage_jails debug={{ debug }}"
+          when: debug | bool
+          ansible.builtin.debug:
+            var: iocage_jails
+
+      rescue:
+
+        - name: "Set iocage_jails failed."
+          ansible.builtin.debug:
+            msg: |
+              {{ ansible_failed_task }}
+              {{ ansible_failed_result }}
+
+        - name: "End of the host."
+          ansible.builtin.meta: end_host
+
+    - name: Stop running jails.
+      when: running_jails | length > 0
+      block:
+
+        - name: "Stop running jails."
+          changed_when: false
+          ansible.builtin.command: "iocage stop -f {{ running_jails | join(' ') }}"
+
+      rescue:
+
+        - name: "Stop running jails failed."
+          ansible.builtin.debug:
+            msg: |
+              {{ ansible_failed_task }}
+              {{ ansible_failed_result }}
+
+        - name: "End of the host."
+          ansible.builtin.meta: end_host
+
+    - name: Destroy all jails.
+      when: all_jails | length > 0
+      block:
+
+        - name: "Destroy all jails."
+          changed_when: false
+          ansible.builtin.command: "iocage destroy -f {{ all_jails | join(' ') }}"
+
+      rescue:
+
+        - name: "Destroy all jails failed."
+          ansible.builtin.debug:
+            msg: |
+              {{ ansible_failed_task }}
+              {{ ansible_failed_result }}
+
+        - name: "End of the host."
+          ansible.builtin.meta: end_host
