@@ -101,14 +101,28 @@ Playbook *pb-iocage.yml*
 Playbook output - test sanity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
+
+  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                         -l iocage_02 \
+					 -t freebsd_iocage_sanity
+
 .. literalinclude:: out/out-01.txt
-   :language: bash
+   :language: yaml
 
 Playbook output - test sanity quietly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
+
+  (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
+          ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
+	  ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+	                                 -l iocage_02 \
+                                         -t freebsd_iocage_sanity
+
 .. literalinclude:: out/out-02.txt
-   :language: bash
+   :language: yaml
 
 .. seealso::
 
