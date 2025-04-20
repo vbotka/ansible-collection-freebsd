@@ -57,28 +57,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
-
-  * iocage_01
-  * iocage_02
-  * iocage_03
-
-  In the playbook *pb-iocage-template.yml*, use:
-
-  * `module vbotka.freebsd.iocage`_ to create, start, stop, and convert jails to templates
-  * vbotka.freebsd.iocage exec to create a user and set .ssh ownership
-  * community.general.pkgng to install packages
-  * ansible.posix.authorized_key to configure public keys
-  * ansible.builtin.lineinfile to configure /etc/rc.conf and /usr/local/etc/sudoers
-  * configure dhclient hooks.
-
-Requirements
-^^^^^^^^^^^^
-
-* `module vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
-* activated *iocage*
-* fetched releases
+* The only difference between the examples 202. and 205. is the third host
+  iocage_03. This example creates the templates only.
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -126,11 +106,11 @@ Playbook *pb-iocage-template.yml*
 .. literalinclude:: pb-iocage-template.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
