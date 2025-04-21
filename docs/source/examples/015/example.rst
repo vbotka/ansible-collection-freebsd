@@ -3,7 +3,7 @@
 015 Multiple inventory cache
 ----------------------------
 
-Extending example 014.
+Extending example :ref:`example_014`.
 
 .. contents:: Table of Contents
    :local:
@@ -53,22 +53,19 @@ Configuration *ansible.cfg*
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 Set unique *cache_prefix*
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
-   :emphasize-lines: 7-11
-
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Set unique *cache_prefix*
+   :caption:
+   :emphasize-lines: 5-9
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
+   :caption:
    :emphasize-lines: 7-11
 
 .. warning:: Common *cache_prefix* would make the cache files to override each other repeatedly.
@@ -79,8 +76,12 @@ Playbook *pb-vars-ip4.yml*
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display iocage_ip4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-vars-ip4.yml -i hosts
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

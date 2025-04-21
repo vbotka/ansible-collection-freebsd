@@ -1,4 +1,3 @@
-shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
 #!/usr/local/bin/python
 
 import json

@@ -1,6 +1,5 @@
 - hosts: iocage
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
 
   tasks:
 

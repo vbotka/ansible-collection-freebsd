@@ -3,7 +3,7 @@
 016 Multiple inventory constructed
 ----------------------------------
 
-Extending example 015.
+Extending example :ref:`example_015`.
 
 .. contents:: Table of Contents
    :local:
@@ -73,32 +73,38 @@ Configuration *ansible.cfg*
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
    :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-02.txt
    :language: bash
   
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
+   :caption:
 
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
-
-Inventory *hosts/99_constructed.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
+   :caption:
 	       
 Playbook *pb-test.yml*
 ^^^^^^^^^^^^^^^^^^^^^^

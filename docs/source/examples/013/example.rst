@@ -3,7 +3,7 @@
 013 Tags and custom groups
 --------------------------
 
-Extending example 010.
+Extending example :ref:`example_010`.
 
 .. contents:: Table of Contents
    :local:
@@ -100,39 +100,41 @@ Configuration *ansible.cfg*
 .. literalinclude:: ansible.cfg
    :language: ini
 
-hosts/01_iocage.yml
-^^^^^^^^^^^^^^^^^^^
+Inventory *iocage-hosts.ini*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+   :language: ini
+
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 Enable ``get_properties: True`` to create the dictionary *iocage_properties*. Then, the dictionary
 *iocage_tags* can be created from *iocage_properties.notes*
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
-   :emphasize-lines: 6,12,21
-
-hosts/02_iocage.yml
-^^^^^^^^^^^^^^^^^^^
-
-Enable `'get_properties: True'`
+   :caption:
+   :emphasize-lines: 4,10,19
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
+   :caption:
    :emphasize-lines: 6,12,21
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
+   :caption:
 
-.. note:: The structure of *notes* is up to you. If you change it fit the declaration of
-          *iocage_tags* in the inventory.
+.. note:: The structure of the *notes* is up to you. If you change it fit the
+          declaration of *iocage_tags* in the inventory.
 
 Playbook *pb-iocage-base.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -142,6 +144,10 @@ Playbook *pb-iocage-base.yml*
 
 Playbook output - create basejails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-iocage-base.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -155,6 +161,10 @@ Playbook *pb-iocage-clone.yml*
 Playbook output - clone jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-iocage-clone.yml -i iocage-hosts.ini
+
 .. literalinclude:: out/out-02.txt
    :language: yaml
 
@@ -166,6 +176,10 @@ Playbook *pb-all.yml*
 
 Playbook output - display variables and groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-all.yml -i hosts
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -184,6 +198,10 @@ Playbook *pb-ansible-client.yml*
 
 Playbook output - display iocage_tags and group_names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-ansible-client.yml -i hosts
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -204,6 +222,10 @@ Playbook *pb-test.yml*
 
 Playbook output - display all jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

@@ -126,17 +126,16 @@ Inventory *iocage-hosts.ini*
 .. literalinclude:: iocage-hosts.ini
    :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
+   :caption:
 
 Playbook *pb-iocage-fetch-base-clone-list.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -147,17 +146,29 @@ Playbook *pb-iocage-fetch-base-clone-list.yml*
 Playbook output - fetch, create, clone, and list
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage-hosts.ini
+
 .. literalinclude:: out/out-01.txt
    :language: bash
 
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-04.txt
    :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -184,10 +195,14 @@ Playbook *pb-test-01.yml*
 
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i iocage.yml
+
 .. literalinclude:: out/out-02.txt
    :language: yaml
-   :emphasize-lines: 32-37
+   :emphasize-lines: 30-35
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

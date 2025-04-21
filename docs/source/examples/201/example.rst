@@ -3,7 +3,7 @@
 201 Display iocage lists and dictionaries
 -----------------------------------------
 
-Extending example 200.
+Extending example :ref:`example_200`.
 
 .. contents:: Table of Contents
    :local:

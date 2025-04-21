@@ -3,7 +3,7 @@
 011 Display variables iocage_*
 ------------------------------
 
-Extending example 010.
+Extending example :ref:`example_010`.
 
 .. contents:: Table of Contents
    :local:
@@ -65,6 +65,10 @@ Playbook *pb-vars-all.yml*
 
 Playbook output - display iocage_* vars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

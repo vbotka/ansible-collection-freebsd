@@ -3,7 +3,7 @@
 014 Inventory cache
 -------------------
 
-Extending example 010.
+Extending example :ref:`example_010`.
 
 .. contents:: Table of Contents
    :local:
@@ -93,9 +93,15 @@ Playbook output - cache disabled
 | *cache* is disabled.
 | (The cache is disabled in *iocage.yml*. *cache=False*)
 
+::
+
+  (env) > date +%r; \
+          ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+          ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
+
 .. literalinclude:: out/out-01.txt
    :language: bash
-   :emphasize-lines: 5,7
+   :emphasize-lines: 1,3
 
 Playbook output - cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -103,9 +109,15 @@ Playbook output - cache enabled
 If the cache is enabled the inventory and variables are provided by
 the cache immediately
 
+::
+
+  (env) > date +%r; \
+          ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+          ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
+
 .. literalinclude:: out/out-02.txt
    :language: bash
-   :emphasize-lines: 5,7
+   :emphasize-lines: 1,3
 
 Cache
 ^^^^^

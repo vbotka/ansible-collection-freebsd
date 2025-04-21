@@ -74,17 +74,16 @@ Inventory *iocage-hosts.ini*
 .. literalinclude:: iocage-hosts.ini
    :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
+   :caption:
 
 .. note::
 

@@ -3,7 +3,7 @@
 019 Inventory option use_vars_plugins
 -------------------------------------
 
-Extending example 016.
+Extending example :ref:`example_016`.
 
 .. contents:: Table of Contents
    :local:
@@ -81,11 +81,19 @@ Notes
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
    :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -96,36 +104,32 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
   
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
-
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
-
-Inventory *hosts/99_constructed.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
+   :caption:
    :emphasize-lines: 2
 
-*hosts/group_vars/test_01/region.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
 
 .. literalinclude:: hosts/group_vars/test_01/region.yml
    :language: yaml
-
-*hosts/group_vars/test_02/region.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: hosts/group_vars/test_02/region.yml
    :language: yaml
+   :caption:
 
 .. hint::
 
@@ -148,6 +152,10 @@ Playbook *pb-test-all.yml*
 Playbook output - list groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  env) > ansible-playbook pb-test-all.yml -i hosts
+
 .. literalinclude:: out/out-03.txt
    :language: yaml
 
@@ -161,6 +169,10 @@ Playbook output - US running hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the US region to running hosts
+
+::
+
+  (env) > ansible-playbook pb-test-US.yml -i hosts -l test_up
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

@@ -1,8 +1,7 @@
-(env) > ansible-playbook pb-iocage-clone.yml -i iocage-hosts.ini
 
-PLAY [iocage] *******************************************************************************************************
+PLAY [iocage] ******************************************************************
 
-TASK [Clone from basejail] ******************************************************************************************
+TASK [Clone from basejail] *****************************************************
 changed: [iocage_01] => (item=test_101 ansible_client)
 changed: [iocage_01] => (item=test_102 ansible_client)
 changed: [iocage_02] => (item=test_111 ansible_client)
@@ -10,11 +9,7 @@ changed: [iocage_01] => (item=test_103 ansible_client)
 changed: [iocage_02] => (item=test_112 ansible_client)
 changed: [iocage_02] => (item=test_113 ansible_client)
 
-TASK [Debug] ********************************************************************************************************
-skipping: [iocage_01]
-skipping: [iocage_02]
-
-TASK [Display lists of bases, plugins, templates, and jails.] *******************************************************
+TASK [Display lists of bases, plugins, templates, and jails.] ******************
 ok: [iocage_01] => 
     msg: |-
         releases: ['13.3-RELEASE', '13.4-RELEASE', '13.5-RELEASE']
@@ -28,6 +23,7 @@ ok: [iocage_02] =>
         templates: []
         jails: ['ansible_client', 'test_111', 'test_112', 'test_113']
 
-PLAY RECAP **********************************************************************************************************
-iocage_01: ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-iocage_02: ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_01                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

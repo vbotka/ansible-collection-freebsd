@@ -3,7 +3,7 @@
 012 Display iocage_properties
 -----------------------------
 
-Extending example 010.
+Extending example :ref:`example_010`.
 
 .. contents:: Table of Contents
    :local:
@@ -63,6 +63,10 @@ Playbook *pb-vars-properties.yml*
 
 Playbook output - display iocage_properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-01.txt
     :language: yaml

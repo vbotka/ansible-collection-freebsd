@@ -1,23 +1,23 @@
-(env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_113
 
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
 ok: [test_113] => 
-  msg: |-
-    inventory_hostname: test_113
-    ansible_host: 10.1.0.113
+    msg: |-
+        inventory_hostname: test_113
+        ansible_host: 10.1.0.113
 
-    iocage_jid: 1
-    iocage_boot: off
-    iocage_state: up
-    iocage_type: jail
-    iocage_release: 14.2-RELEASE-p3
-    iocage_ip4_dict: {'ip4': [{'ifc': 'em0', 'ip': '10.1.0.113', 'mask': '24'}], 'msg': ''}
-    iocage_ip4: 10.1.0.113
-    iocage_ip6: -
-    iocage_template: ansible_client
-    iocage_basejail: yes
+        iocage_jid: 27
+        iocage_boot: off
+        iocage_state: up
+        iocage_type: jail
+        iocage_release: 14.2-RELEASE-p3
+        iocage_ip4_dict: {'ip4': [{'ifc': 'em0', 'ip': '10.1.0.113', 'mask': '24'}], 'msg': ''}
+        iocage_ip4: 10.1.0.113
+        iocage_ip6: -
+        iocage_template: ansible_client
+        iocage_basejail: yes
 
 PLAY RECAP *********************************************************************
-test_113: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

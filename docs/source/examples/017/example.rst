@@ -3,7 +3,7 @@
 017 community.general.iocage
 ----------------------------
 
-Extending example 016.
+Extending example :ref:`example_016`.
 
 .. contents:: Table of Contents
    :local:
@@ -94,25 +94,22 @@ Configuration *ansible.cfg*
 .. literalinclude:: ansible.cfg
     :language: ini
 
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
     :language: yaml
+    :caption:
     :emphasize-lines: 1
-
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: yaml
+    :caption:
     :emphasize-lines: 1
-
-Inventory *hosts/03_constructed.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/03_constructed.yml
     :language: yaml
+    :caption:
 	       
 Playbook *pb-test.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -122,6 +119,10 @@ Playbook *pb-test.yml*
 
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-01.txt
     :language: yaml

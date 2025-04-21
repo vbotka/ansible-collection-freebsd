@@ -3,7 +3,7 @@
 030 Create custom facts
 -----------------------
 
-Extending example 312.
+Extending example :ref:`example_312`.
 
 .. contents:: Table of Contents
    :local:
@@ -72,11 +72,19 @@ Notes
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
    :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -87,17 +95,16 @@ Configuration *ansible.cfg*
 .. literalinclude:: ansible.cfg
    :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
+   :caption:
 
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,7 +121,7 @@ Playbook *pb-iocage.yml*
 Playbook output - display versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+::
 
   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
                                          -t freebsd_iocage_debug \
@@ -127,7 +134,7 @@ Playbook output - display versions
 Create custom fact scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+::
 
   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
                                          -t freebsd_iocage_facts \
@@ -138,6 +145,10 @@ Create custom fact scripts
 
 Display custom fact script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
 
 .. literalinclude:: out/out-05.txt
    :language: python
@@ -150,7 +161,11 @@ Playbook *pb-test-01.yml*
 
 Playbook output - display custom facts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+
 .. literalinclude:: out/out-06.txt
    :language: yaml
 
