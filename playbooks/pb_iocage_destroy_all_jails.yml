@@ -1,6 +1,6 @@
 - name: Destroy all jails.
   hosts: iocage
-  environment: "{{ freebsd_iocage_runner_env | d({}) }}"
+  environment: "{{ iocage_env | d({}) }}"
 
   vars:
 

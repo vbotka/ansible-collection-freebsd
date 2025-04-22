@@ -64,23 +64,20 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
     :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
     :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml
-
-host_vars/iocage_03/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :caption:
 
 .. literalinclude:: host_vars/iocage_03/iocage.yml
     :language: yaml
+    :caption:
 	       
 .. warning::
 
@@ -101,11 +98,19 @@ Inventory *iocage-hosts.ini*
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini -l iocage_03
+
 .. literalinclude:: out/out-01.txt
     :language: yaml
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
     :language: bash
@@ -113,11 +118,19 @@ List templates at iocage_01
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -lt
+
 .. literalinclude:: out/out-03.txt
     :language: bash
 
 List templates at iocage_03
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_03]# iocage list -lt
 
 .. literalinclude:: out/out-04.txt
     :language: bash

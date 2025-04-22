@@ -1,6 +1,5 @@
 - hosts: iocage
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+  environment: "{{ iocage_env | d({}) }}"
 
   tasks:
 

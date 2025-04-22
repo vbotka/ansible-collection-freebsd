@@ -2,7 +2,9 @@
 - name: Configure public keys.
   vars:
     _act_user: "{{ item.value.act_user | d(act_user) }}"
-    _act_pk: "{{ item.value.act_pk | d(act_pk) }}"
+    _act_pk_dir_default: "{{ lookup('env', 'PWD') }}/files"
+    _act_pk_dir: "{{ act_pk_dir | d(_act_pk_dir_default) }}"
+    _act_pk: "{{ _act_pk_dir }}/{{ item.value.act_pk | d(act_pk) }}"
   block:
 
     - name: "Pk: Configure public keys."

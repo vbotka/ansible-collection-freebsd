@@ -1,4 +1,3 @@
-(env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini
 
 PLAY [Create Ansible client templates.] ****************************************
 
@@ -10,56 +9,13 @@ TASK [Setup: Set dictionary iocage_templates] **********************************
 ok: [iocage_01]
 ok: [iocage_02]
 
-TASK [Create: Create templates.] ***********************************************
-changed: [iocage_01] => (item=ansible_client 13.5-RELEASE)
-changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
-
-TASK [Start: Start jails] ******************************************************
-ok: [iocage_02]
-ok: [iocage_01]
-
-TASK [Pkg: Get iocage list of jails.] ******************************************
-ok: [iocage_01]
-ok: [iocage_02]
-
-TASK [Pkg: Set dictionary iocage_jails] ****************************************
-ok: [iocage_01]
-ok: [iocage_02]
-
-TASK [Pkg: Install packages] ***************************************************
-changed: [iocage_02] => (item=ansible_client)
-changed: [iocage_01] => (item=ansible_client)
-
-TASK [User: Create user] *******************************************************
-changed: [iocage_01] => (item=ansible_client admin)
-changed: [iocage_02] => (item=ansible_client admin)
-
-TASK [Pk: Configure public keys] ***********************************************
-changed: [iocage_01] => (item=ansible_client admin)
-changed: [iocage_02] => (item=ansible_client admin)
-
-TASK [Pk: Chown .ssh] **********************************************************
-ok: [iocage_01] => (item=ansible_client admin)
-ok: [iocage_02] => (item=ansible_client admin)
-
-TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_01] => (item=ansible_client admin)
-changed: [iocage_02] => (item=ansible_client admin)
-
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_01] => (item=ansible_client iocage_enable "YES")
-changed: [iocage_02] => (item=ansible_client iocage_enable "YES")
-changed: [iocage_01] => (item=ansible_client sshd_enable "YES")
-changed: [iocage_02] => (item=ansible_client sshd_enable "YES")
-
-TASK [Stop: Stop jails] ********************************************************
-ok: [iocage_01]
-ok: [iocage_02]
-
-TASK [Template: Set template.] *************************************************
-ok: [iocage_01] => (item=ansible_client)
-ok: [iocage_02] => (item=ansible_client)
+TASK [Setup: All templates already created.] ***********************************
+ok: [iocage_01] => 
+    msg: All templates already created. End host.
+ok: [iocage_02] => 
+    msg: All templates already created. End host.
 
 PLAY RECAP *********************************************************************
-iocage_01: ok=14   changed=6    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0
-iocage_02: ok=14   changed=6    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0
+iocage_01                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

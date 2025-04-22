@@ -1,8 +1,3 @@
-ansible_python_interpreter: /usr/local/bin/python3.11
-
-freebsd_iocage_runner_env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
-
 freebsd_iocage_pool: zroot
 freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
@@ -35,3 +30,6 @@ clones:
 
 start:
   - test_113
+
+iocage_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

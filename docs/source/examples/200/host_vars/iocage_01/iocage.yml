@@ -1,7 +1,3 @@
----
-ansible_python_interpreter: /usr/local/bin/python3.9
-ansible_become_password: admin
-
 freebsd_iocage_pool: pool2
 freebsd_iocage_pool_mount: /mnt/pool2
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
@@ -49,3 +45,6 @@ properties:
   notes: "vmm={{ inventory_hostname }}"
 
 start: "{{ clones.keys() }}"
+
+# In production, put the password into the vault.
+ansible_become_password: admin

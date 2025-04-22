@@ -1,8 +1,3 @@
-ansible_python_interpreter: /usr/local/bin/python3.11
-
-freebsd_iocage_runner_env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
-
 properties:
   notes: "vmm={{ inventory_hostname }}"
 
@@ -22,3 +17,6 @@ swarms:
       bpf: 1
       dhcp: 1
       vnet: 1
+
+iocage_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

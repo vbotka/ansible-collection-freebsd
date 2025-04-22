@@ -91,13 +91,63 @@ Notes
 Lists at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -r
+
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+::
+
+  [iocage_01]# iocage list -P
+
 .. literalinclude:: out/out-02.txt
+   :language: bash
+
+::
+
+  [iocage_01]# iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+
+::
+
+  [iocage_01]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
    :language: bash
 
 Lists at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-03.txt
+::
+
+  [iocage_02]# iocage list -r
+
+.. literalinclude:: out/out-05.txt
+   :language: bash
+
+::
+
+  [iocage_02]# iocage list -P
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+
+::
+
+  [iocage_02]# iocage list -lt
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+
+::
+
+  [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-08.txt
    :language: bash
 
 Inventory iocage-hosts.ini
@@ -119,10 +169,14 @@ Playbook *pb-iocage-display-lists.yml*
 .. literalinclude:: pb-iocage-display-lists.yml
    :language: yaml
 
-Playbook output - disply iocage lists
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - display iocage lists
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-01.txt
+::
+
+  (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage-hosts.ini
+
+.. literalinclude:: out/out-09.txt
    :language: yaml
 
 

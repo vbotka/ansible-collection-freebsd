@@ -19,7 +19,7 @@
   block:
 
     - name: Set iocage_jails
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/iocage_jails.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients_v2/iocage_jails.yml
 
     - name: "Debug iocage_jails and _tags debug2={{ debug2 }}"
       when: debug2 | bool
@@ -65,7 +65,7 @@
   block:
 
     - name: Set iocage_jails
-      ansible.builtin.import_tasks: pb-iocage-ansible-clients/iocage_jails.yml
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients_v2/iocage_jails.yml
 
     - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
       when: debug2 | bool

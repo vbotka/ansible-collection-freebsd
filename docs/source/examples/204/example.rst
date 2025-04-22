@@ -84,7 +84,7 @@ Tree
   │   └── iocage_02
   │       └── iocage.yml
   ├── iocage-hosts.ini
-  ├── pb_iocage_ansible_clients
+  ├── pb_iocage_ansible_clients_v2
   │   ├── iocage_jails.yml
   │   ├── swarm_destroy.yml
   │   └── swarm.yml
@@ -102,7 +102,7 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb_iocage_ansible_clients-v2.yml*, use:
+  In the playbook *pb_iocage_ansible_clients_v2.yml*, use:
 
   * module *ansible.builtin.command* to:
 
@@ -124,8 +124,6 @@ Requirements
 * `filter vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
-* activated *iocage*
-* fetched releases
 * templates created in :ref:`example_202`
 
 Notes
@@ -140,11 +138,19 @@ Templates created in :ref:`example_202` are used in this example.
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -lt
+
 .. literalinclude:: out/out-02.txt
    :language: bash
 
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -155,23 +161,23 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-group_vars/all/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/iocage.yml
    :language: yaml
+   :caption:
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
+   :caption:
 	       
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -190,10 +196,11 @@ Playbook output - create and start jails
 
 ::
 
-  (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml -i iocage-hosts.ini \
-                                                            -t swarm \
-                                                            -e swarm=true \
-                                                            -e debug=true
+  (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml \
+                           -i iocage-hosts.ini \
+                           -t swarm \
+                           -e swarm=true \
+                           -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -201,41 +208,50 @@ Playbook output - create and start jails
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-05.txt
    :language: bash
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-06.txt
    :language: bash
 	       
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
+   :caption:
    :emphasize-lines: 4,9
-
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
+   :caption:
    :emphasize-lines: 6,11
+
+.. literalinclude:: hosts/03_constructed.yml
+   :language: yaml
+   :caption:
 
 .. note::
 
    The option ``get_properties: True`` is needed to get the dictionary *iocage_properties*.
 
-Inventory *hosts/03_constructed.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/03_constructed.yml
-   :language: yaml
-
 Display inventory
 ^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
    :language: bash
@@ -248,7 +264,11 @@ Playbook *pb-test-01.yml*
 
 Playbook output - display *iocage_tags*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i hosts
+
 .. literalinclude:: out/out-08.txt
    :language: yaml
 
@@ -256,9 +276,10 @@ Playbook output - display *iocage_tags*
 
    The below command stops and destroys the jails in *swarms* ::
 
-     ansible-playbook pb_iocage_ansible_clients_v2.yml -i iocage-hosts.ini \
-                                                       -t swarm_destroy \
-                                                       -e swarm_destroy=true
+     ansible-playbook pb_iocage_ansible_clients_v2.yml \
+                      -i iocage-hosts.ini \
+                      -t swarm_destroy \
+                      -e swarm_destroy=true
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

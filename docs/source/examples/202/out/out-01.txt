@@ -1,4 +1,3 @@
-(env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini
 
 PLAY [Create Ansible client templates.] ****************************************
 
@@ -14,7 +13,7 @@ TASK [Create: Create templates.] ***********************************************
 changed: [iocage_01] => (item=ansible_client 13.5-RELEASE)
 changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
 
-TASK [Start: Start jails] ******************************************************
+TASK [Start: Start jails.] *****************************************************
 ok: [iocage_02]
 ok: [iocage_01]
 
@@ -26,15 +25,15 @@ TASK [Pkg: Set dictionary iocage_jails] ****************************************
 ok: [iocage_01]
 ok: [iocage_02]
 
-TASK [Pkg: Install packages] ***************************************************
+TASK [Pkg: Install packages.] **************************************************
 changed: [iocage_02] => (item=ansible_client)
 changed: [iocage_01] => (item=ansible_client)
 
-TASK [User: Create user] *******************************************************
+TASK [User: Create user.] ******************************************************
 changed: [iocage_01] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
-TASK [Pk: Configure public keys] ***********************************************
+TASK [Pk: Configure public keys.] **********************************************
 changed: [iocage_01] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
@@ -47,18 +46,18 @@ changed: [iocage_01] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
 TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_01] => (item=ansible_client dhclient-enter-hooks)
 changed: [iocage_02] => (item=ansible_client dhclient-enter-hooks)
-changed: [iocage_01] => (item=ansible_client dhclient-exit-hooks)
+changed: [iocage_01] => (item=ansible_client dhclient-enter-hooks)
 changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
+changed: [iocage_01] => (item=ansible_client dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_01] => (item=ansible_client iocage_enable "YES")
 changed: [iocage_02] => (item=ansible_client iocage_enable "YES")
-changed: [iocage_01] => (item=ansible_client sshd_enable "YES")
+changed: [iocage_01] => (item=ansible_client iocage_enable "YES")
 changed: [iocage_02] => (item=ansible_client sshd_enable "YES")
+changed: [iocage_01] => (item=ansible_client sshd_enable "YES")
 
-TASK [Stop: Stop jails] ********************************************************
+TASK [Stop: Stop jails.] *******************************************************
 ok: [iocage_01]
 ok: [iocage_02]
 
@@ -67,5 +66,6 @@ ok: [iocage_01] => (item=ansible_client)
 ok: [iocage_02] => (item=ansible_client)
 
 PLAY RECAP *********************************************************************
-iocage_01: ok=15   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0
-iocage_02: ok=15   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0
+iocage_01                  : ok=15   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
+iocage_02                  : ok=15   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
+

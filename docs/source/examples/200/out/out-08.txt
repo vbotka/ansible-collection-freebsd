@@ -1,21 +1,20 @@
-(env) > ansible-playbook pb-test-01.yml -i hosts
 
 PLAY [Connect to the group test.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_102]
-ok: [test_103]
 ok: [test_101]
-ok: [test_112]
+ok: [test_103]
+ok: [test_102]
 ok: [test_111]
+ok: [test_112]
 ok: [test_113]
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_102]
-changed: [test_111]
-changed: [test_112]
-changed: [test_103]
 changed: [test_101]
+changed: [test_102]
+changed: [test_103]
+changed: [test_112]
+changed: [test_111]
 changed: [test_113]
 
 TASK [ansible.builtin.debug] ***************************************************
@@ -40,10 +39,10 @@ ok: [test_113] =>
 
 TASK [ansible.builtin.command] *************************************************
 changed: [test_101]
-changed: [test_102]
 changed: [test_103]
-changed: [test_111]
+changed: [test_102]
 changed: [test_112]
+changed: [test_111]
 changed: [test_113]
 
 TASK [ansible.builtin.command] *************************************************
@@ -75,9 +74,10 @@ ok: [test_113] =>
         test-113 admin root
 
 PLAY RECAP *********************************************************************
-test_101: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_102: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_103: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_111: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_112: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_113: ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+test_101                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_102                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_103                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_111                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

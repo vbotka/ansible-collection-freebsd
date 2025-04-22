@@ -21,5 +21,5 @@ clones:
     properties:
       ip4_addr: 'em0|10.1.0.113/24'
 
-freebsd_iocage_runner_env:
+iocage_env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

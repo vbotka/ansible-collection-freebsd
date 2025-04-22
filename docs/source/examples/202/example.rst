@@ -20,7 +20,7 @@ Extending example :ref:`example_200`.
 .. index:: single: module ansible.posix.authorized; Example 202
 .. index:: single: module ansible.builtin.lineinfile; Example 202
 .. index:: single: playbook pb_iocage_template.yml; Example 202
-.. index:: single: playbook pb-iocage-ansible-clients.yml; Example 202
+.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 202
 
 .. index:: single: option compose; Example 202
 .. index:: single: compose; Example 202
@@ -106,16 +106,16 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb_iocage_template.yml*, use the modules:
+  In the playbook `vbotka.freebsd.pb_iocage_template`_, use the modules:
 
   * vbotka.freebsd.iocage to create, start, stop, and convert jails to templates.
   * vbotka.freebsd.iocage exec to create a user and set .ssh ownership.
   * community.general.pkgng to install packages.
   * ansible.posix.authorized_key to configure public keys.
   * ansible.builtin.lineinfile to configure /etc/rc.conf and /usr/local/etc/sudoers
-  * configure dhclient hooks.
+  * **configure dhclient hooks**.
 
-  In the playbook *pb-iocage-ansible-clients.yml*, use the module *vbotka.freebsd.iocage* to:
+  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients`_, use the `module vbotka.freebsd.iocage`_ to:
 
   * create jails from the Ansible client templates
   * start all jails
@@ -131,6 +131,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* playbook `vbotka.freebsd.pb_iocage_template`_
+* playbook `vbotka.freebsd.pb_iocage_ansible_clients`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
@@ -156,11 +158,13 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
    :language: yaml
+   :caption:
+   :emphasize-lines: 24-35
 
 .. hint::
 
@@ -171,11 +175,22 @@ host_vars/iocage_01/iocage.yml
 
      pool2 -> /mnt/pool2
 
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
+   :caption:
+   :emphasize-lines: 23-34
+
+.. hint::
+
+   The minimal required hook is ::
+
+     act_dhclient:
+       dhclient-exit-hooks: |
+         case "$reason" in
+             "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+             echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+             ;;
+         esac
 
 .. note::
 
@@ -206,17 +221,29 @@ Inventory *iocage-hosts.ini*
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage-hosts.ini
+
 .. literalinclude:: out/out-01.txt
    :language: yaml
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -lt
+
 .. literalinclude:: out/out-02.txt
    :language: bash
 
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -226,9 +253,10 @@ Playbook output - clone and start jails
 
 ::
 
-  (env) > ansible-playbook pb_iocage_ansible_clients.yml -i iocage-hosts.ini \
-                                                         -t clone \
-							 -e clone=true
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                           -i iocage-hosts.ini \
+                           -t clone \
+                           -e clone=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -236,44 +264,53 @@ Playbook output - clone and start jails
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-05.txt
    :language: bash
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-06.txt
    :language: bash
 	       
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
+   :caption:
 
 .. hint::
 
    The option ``hooks_results`` expects the ``pool`` to be mounted to
-   ``/pool``. In this example the pool ``pool2`` is mounted to
+   ``/pool``. In this example, the pool ``pool2`` is mounted to
    ``/mnt/pool2``. For ``hooks_results`` to work properly, create symlink in the
    root directory ::
 
      /pool2 -> /mnt/pool2
 
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
-
-Inventory *hosts/03_constructed.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :caption:
 
 .. literalinclude:: hosts/03_constructed.yml
    :language: yaml
+   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
    :language: bash
@@ -286,7 +323,11 @@ Playbook *pb-test-01.yml*
 
 Playbook output - display list *iocage_hooks*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i hosts
+
 .. literalinclude:: out/out-08.txt
    :language: yaml
 
@@ -294,10 +335,12 @@ Playbook output - display list *iocage_hooks*
 
    The below command stops and destroys the cloned jails ::
 
-     ansible-playbook pb_iocage_ansible_clients.yml -i iocage-hosts.ini \
-                                                    -t clone_destroy \
-						    -e clone_destroy=true
+     ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                      -i iocage-hosts.ini \
+                      -t clone_destroy \
+                      -e clone_destroy=true
 
-
+.. _vbotka.freebsd.pb_iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
