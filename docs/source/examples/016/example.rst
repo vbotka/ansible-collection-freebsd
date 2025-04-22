@@ -115,6 +115,10 @@ Playbook *pb-test.yml*
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-test.yml -i hosts
+
 .. literalinclude:: out/out-03.txt
    :language: yaml
 

@@ -1,13 +1,13 @@
-(env) > ansible-playbook pb-test-01.yml -i hosts
 
-PLAY [Test role vbotka.freebsd.postinstall.] **************************************************
+PLAY [Test role vbotka.freebsd.postinstall.] ***********************************
 
-TASK [Gathering Facts] ************************************************************************
-ok: [afa9e515]
-ok: [c1670497]
+TASK [Gathering Facts] *********************************************************
+ok: [test_113]
+ok: [test_112]
 ok: [test_111]
 
-PLAY RECAP ************************************************************************************
-afa9e515: ok=2    changed=0    unreachable=0    failed=0    skipped=305  rescued=0    ignored=0
-c1670497: ok=2    changed=0    unreachable=0    failed=0    skipped=305  rescued=0    ignored=0
-test_111: ok=2    changed=0    unreachable=0    failed=0    skipped=305  rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=305  rescued=0    ignored=0   
+test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=305  rescued=0    ignored=0   
+test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=305  rescued=0    ignored=0   
+

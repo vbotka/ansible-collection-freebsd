@@ -1,5 +1,3 @@
-ansible_python_interpreter: auto_silent
-
 freebsd_install_method: packages
 freebsd_install_retries: 3
 freebsd_install_delay: 5

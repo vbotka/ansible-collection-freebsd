@@ -1,12 +1,13 @@
-PLAY [Test role vbotka.freebsd.packages.] *****************************************************
 
-TASK [Gathering Facts] ************************************************************************
+PLAY [Test role vbotka.freebsd.packages.] **************************************
+
+TASK [Gathering Facts] *********************************************************
 ok: [test_111]
 
-TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] ********************************
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
 ok: [test_111]
 
-TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ***********************************
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
 ok: [test_111] => 
     msg: |-
         ansible_architecture: amd64
@@ -24,13 +25,13 @@ ok: [test_111] =>
         pkg_dict_select:
           []
 
-TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0]
+TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
 ok: [test_111]
 
-TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] *********
+TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
 ok: [test_111]
 
-TASK [vbotka.freebsd.packages : Debug pkg_debug=true] *****************************************
+TASK [vbotka.freebsd.packages : Debug pkg_debug=true] **************************
 ok: [test_111] => 
     msg: |-
         pkg_role_version: 2.7.0
@@ -40,8 +41,8 @@ ok: [test_111] =>
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
         ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.1
-        ansible_distribution_release: 14.1-RELEASE
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
         ansible_python_version: 3.11.11
 
         freebsd_install_method: packages
@@ -64,7 +65,7 @@ ok: [test_111] =>
         pkg_cached: True
         pkg_chroot: UNDEFINED
         pkg_ignore_osver: UNDEFINED
-        pkg_jail: 10
+        pkg_jail: 60
         pkg_pkgsite: UNDEFINED
         pkg_rootdir: UNDEFINED
         pkg_state: UNDEFINED
@@ -92,7 +93,7 @@ ok: [test_111] =>
         pkg_list_deinstall:
           []
 
-TASK [vbotka.freebsd.packages : Conf: Debug pkg_debug=true] ***********************************
+TASK [vbotka.freebsd.packages : Conf: Debug pkg_debug=true] ********************
 ok: [test_111] => 
     msg: |-
         pkg_owner: root
@@ -106,17 +107,17 @@ ok: [test_111] =>
         pkg_repos_conf:
           []
 
-TASK [vbotka.freebsd.packages : Packages_install: Debug list pkg_list pkg_debug=true] *********
+TASK [vbotka.freebsd.packages : Packages_install: Debug list pkg_list pkg_debug=true] ***
 ok: [test_111] => 
     pkg_list:
     - security/sudo
     - lang/python311
     - ports-mgmt/pkg
 
-TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] **********************
+TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
 ok: [test_111 -> iocage_02(10.1.0.73)]
 
-TASK [vbotka.freebsd.packages : Packages_install: Debug result pkg_debug=true] ****************
+TASK [vbotka.freebsd.packages : Packages_install: Debug result pkg_debug=true] ***
 ok: [test_111] => 
     result:
         attempts: 1
@@ -128,5 +129,6 @@ ok: [test_111] =>
         stdout: ''
         stdout_lines: []
 
-PLAY RECAP ************************************************************************************
-test_111: ok=10   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+test_111                   : ok=10   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0   
+

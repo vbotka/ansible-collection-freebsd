@@ -1,18 +1,69 @@
-ansible_python_interpreter: auto_silent
 
-freebsd_install_method: packages
-freebsd_install_retries: 3
-freebsd_install_delay: 5
+PLAY [Upgrade package ports-mgmt/pkg] ******************************************
 
-fp_packages:
-  - {list: custom, enabled: true}
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
 
-pkg_dict_amd64_dict:
-  custom:
-    - security/sudo
-    - lang/python311
+TASK [Upgrade package ports-mgmt/pkg] ******************************************
+changed: [iocage_02]
 
-fp_pkg_use_globs: false
-fp_pkg_cached: true
-fp_install_delegate: "{{ iocage_tags.vmm }}"
-fp_pkg_jail: "{{ iocage_jid }}"
+TASK [Debug] *******************************************************************
+ok: [iocage_02] => 
+    out:
+        changed: true
+        failed: false
+        msg: upgraded 1 package
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Updating FreeBSD repository catalogue...
+            Fetching data.pkg: .......... done
+            Processing entries: .......... done
+            Fetching provides database: .......... done
+            Extracting database....success
+            FreeBSD repository update completed. 35950 packages processed.
+            All repositories are up to date.
+            New version of pkg detected; it needs to be installed first.
+            The following 1 package(s) will be affected (of 0 checked):
+
+            Installed packages to be UPGRADED:
+                    pkg: 1.21.3 -> 2.1.0 [FreeBSD]
+
+            Number of packages to be upgraded: 1
+
+            12 MiB to be downloaded.
+            [1/1] Fetching pkg-2.1.0.pkg: .......... done
+            Checking integrity... done (0 conflicting)
+            [1/1] Upgrading pkg from 1.21.3 to 2.1.0...
+            [1/1] Extracting pkg-2.1.0: .......... done
+            You may need to manually remove /usr/local/etc/pkg.conf if it is no longer needed.
+            Checking integrity... done (0 conflicting)
+            Your packages are up to date.
+        stdout_lines:
+        - Updating FreeBSD repository catalogue...
+        - 'Fetching data.pkg: .......... done'
+        - 'Processing entries: .......... done'
+        - 'Fetching provides database: .......... done'
+        - Extracting database....success
+        - FreeBSD repository update completed. 35950 packages processed.
+        - All repositories are up to date.
+        - New version of pkg detected; it needs to be installed first.
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'Installed packages to be UPGRADED:'
+        - "\tpkg: 1.21.3 -> 2.1.0 [FreeBSD]"
+        - ''
+        - 'Number of packages to be upgraded: 1'
+        - ''
+        - 12 MiB to be downloaded.
+        - '[1/1] Fetching pkg-2.1.0.pkg: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[1/1] Upgrading pkg from 1.21.3 to 2.1.0...'
+        - '[1/1] Extracting pkg-2.1.0: .......... done'
+        - You may need to manually remove /usr/local/etc/pkg.conf if it is no longer needed.
+        - Checking integrity... done (0 conflicting)
+        - Your packages are up to date.
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

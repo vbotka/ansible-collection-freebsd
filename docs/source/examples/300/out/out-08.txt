@@ -1,27 +1,27 @@
-shell> ansible-playbook pb-test-06.yml -i hosts
 
-PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] ***************
+PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] ***
 
-TASK [Get sshd rcvar(s).] *********************************************************************
-changed: [test_111]
-changed: [afa9e515]
-changed: [c1670497]
+TASK [Get sendmail rcvar(s).] **************************************************
+ok: [test_112]
+ok: [test_111]
+ok: [test_113]
 
-TASK [ansible.builtin.debug] ******************************************************************
-ok: [afa9e515] => 
-    out.rcvar:
-        sendmail_enable: '"NO"'
-        sendmail_msp_queue_enable: '"NO"'
+TASK [ansible.builtin.debug] ***************************************************
 ok: [test_111] => 
     out.rcvar:
         sendmail_enable: '"NO"'
         sendmail_msp_queue_enable: '"NO"'
-ok: [c1670497] => 
+ok: [test_112] => 
+    out.rcvar:
+        sendmail_enable: '"NO"'
+        sendmail_msp_queue_enable: '"NO"'
+ok: [test_113] => 
     out.rcvar:
         sendmail_enable: '"NO"'
         sendmail_msp_queue_enable: '"NO"'
 
-PLAY RECAP ************************************************************************************
-afa9e515: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-c1670497: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_111: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+test_111                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

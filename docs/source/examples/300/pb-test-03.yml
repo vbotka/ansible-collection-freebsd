@@ -5,7 +5,6 @@
   vars:
 
     debug: false
-    ansible_python_interpreter: auto_silent
     jails: "{{ iocage_list_out.stdout | vbotka.freebsd.iocage('jails') }}"
     jids: "{{ jails | dict2items
                     | selectattr('value.state', 'eq', 'up')
