@@ -1,4 +1,5 @@
-- hosts: iocage
+- name: Iocage fetch releases, create basejail, clone and start jails.
+  hosts: iocage
   environment: "{{ iocage_env | d({}) }}"
 
   tasks:

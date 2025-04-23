@@ -1,4 +1,5 @@
-- hosts: iocage
+- name: Iocage fetch releases, create basejail, and clone jails.
+  hosts: iocage
 
   vars:
 

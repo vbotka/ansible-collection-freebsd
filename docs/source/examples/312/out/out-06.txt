@@ -1,10 +1,5 @@
-(env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
 
-PLAY [iocage] ******************************************************************
-
-TASK [vbotka.freebsd.iocage : Runner: Debug. freebsd_iocage_debug=False] *******
-skipping: [iocage_01]
-skipping: [iocage_02]
+PLAY [Iocage list datasets.] ***************************************************
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
 ok: [iocage_01]
@@ -16,34 +11,19 @@ ok: [iocage_02]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
 changed: [iocage_01] => (item=iocage list -rh)
-changed: [iocage_01] => (item=iocage list -lh)
 changed: [iocage_02] => (item=iocage list -rh)
+changed: [iocage_01] => (item=iocage list -lh)
 changed: [iocage_01] => (item=iocage list -Ph)
-changed: [iocage_01] => (item=iocage list -th)
 changed: [iocage_02] => (item=iocage list -lh)
+changed: [iocage_01] => (item=iocage list -th)
 changed: [iocage_02] => (item=iocage list -Ph)
 changed: [iocage_02] => (item=iocage list -th)
-
-TASK [vbotka.freebsd.iocage : Runner: Debug run listed commands. freebsd_iocage_debug=False] ***
-skipping: [iocage_01]
-skipping: [iocage_02]
-
-TASK [Debug] *******************************************************************
-skipping: [iocage_01]
-skipping: [iocage_02]
 
 TASK [Set lists] ***************************************************************
 ok: [iocage_01]
 ok: [iocage_02]
 
-TASK [Display lists] ***********************************************************
-skipping: [iocage_01]
-skipping: [iocage_02]
-
 PLAY [Create group test] *******************************************************
-
-TASK [Debug] *******************************************************************
-skipping: [iocage_01]
 
 TASK [Create inventory group test] *********************************************
 changed: [iocage_01] => (item=test_101)
@@ -57,51 +37,52 @@ PLAY [Use group test] **********************************************************
 
 TASK [debug] *******************************************************************
 ok: [test_101] => 
-  msg: |-
-    inventory_hostname: test_101
-    ansible_host: 10.1.0.101
-    release: 13.4-RELEASE-p2
+    msg: |-
+        inventory_hostname: test_101
+        ansible_host: 10.1.0.101
+        release: 13.5-RELEASE-p1
 ok: [test_102] => 
-  msg: |-
-    inventory_hostname: test_102
-    ansible_host: 10.1.0.102
-    release: 13.4-RELEASE-p2
+    msg: |-
+        inventory_hostname: test_102
+        ansible_host: 10.1.0.102
+        release: 13.5-RELEASE-p1
 ok: [test_103] => 
-  msg: |-
-    inventory_hostname: test_103
-    ansible_host: 10.1.0.103
-    release: 13.4-RELEASE-p2
+    msg: |-
+        inventory_hostname: test_103
+        ansible_host: 10.1.0.103
+        release: 13.5-RELEASE-p1
 ok: [test_111] => 
-  msg: |-
-    inventory_hostname: test_111
-    ansible_host: 10.1.0.111
-    release: 14.1-RELEASE-p6
+    msg: |-
+        inventory_hostname: test_111
+        ansible_host: 10.1.0.111
+        release: 14.2-RELEASE-p3
 ok: [test_112] => 
-  msg: |-
-    inventory_hostname: test_112
-    ansible_host: 10.1.0.112
-    release: 14.1-RELEASE-p6
+    msg: |-
+        inventory_hostname: test_112
+        ansible_host: 10.1.0.112
+        release: 14.2-RELEASE-p3
 ok: [test_113] => 
-  msg: |-
-    inventory_hostname: test_113
-    ansible_host: 10.1.0.113
-    release: 14.1-RELEASE-p6
+    msg: |-
+        inventory_hostname: test_113
+        ansible_host: 10.1.0.113
+        release: 14.2-RELEASE-p3
 
 TASK [debug] *******************************************************************
 ok: [test_101] => 
-  msg: |-
-    groups:
-      all: [test_101, test_102, test_103, test_111, test_112, test_113, iocage_01, iocage_02]
-      iocage: [iocage_01, iocage_02]
-      test: [test_101, test_102, test_103, test_111, test_112, test_113]
-      ungrouped: []
+    msg: |-
+        groups:
+          all: [test_101, test_102, test_103, test_111, test_112, test_113, iocage_01, iocage_02]
+          iocage: [iocage_01, iocage_02]
+          test: [test_101, test_102, test_103, test_111, test_112, test_113]
+          ungrouped: []
 
 PLAY RECAP *********************************************************************
-iocage_01: ok=5    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
-iocage_02: ok=4    changed=1    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
-test_101 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_102 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_103 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_01                  : ok=5    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+iocage_02                  : ok=4    changed=1    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+test_101                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_102                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_103                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -10,6 +10,13 @@
     running_jails: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
                                     | map(attribute='key') }}"
+    templates: "{{ iocage_jails | dict2items
+                                | selectattr('value.template', 'eq', '-')
+                                | map(attribute='key') }}"
+    clones: "{{ iocage_jails | dict2items
+                             | selectattr('value.template', 'in', templates)
+                             | map(attribute='key') }}"
+    solitair: "{{ all_jails | difference(templates) | difference(clones) }}"
 
   tasks:
 
@@ -79,17 +86,36 @@
         - name: "End of the host."
           ansible.builtin.meta: end_host
 
-    - name: Destroy all jails.
-      when: all_jails | length > 0
+    - name: Destroy templates recursively.
+      when: templates | length > 0
       block:
 
-        - name: "Destroy all jails."
+        - name: "Destroy templates recursively."
           changed_when: false
-          ansible.builtin.command: "iocage destroy -f {{ all_jails | join(' ') }}"
+          ansible.builtin.command: "iocage destroy -f -R {{ templates | join(' ') }}"
 
       rescue:
 
-        - name: "Destroy all jails failed."
+        - name: "Destroy templates recursively failed."
+          ansible.builtin.debug:
+            msg: |
+              {{ ansible_failed_task }}
+              {{ ansible_failed_result }}
+
+        - name: "End of the host."
+          ansible.builtin.meta: end_host
+
+    - name: Destroy solitair jails.
+      when: solitair | length > 0
+      block:
+
+        - name: "Destroy solitair jails."
+          changed_when: false
+          ansible.builtin.command: "iocage destroy -f {{ solitair | join(' ') }}"
+
+      rescue:
+
+        - name: "Destroy solitair jails failed."
           ansible.builtin.debug:
             msg: |
               {{ ansible_failed_task }}

@@ -143,8 +143,8 @@ Playbook *pb-iocage-fetch-base-clone-list.yml*
 .. literalinclude:: pb-iocage-fetch-base-clone-list.yml
    :language: yaml
 
-Playbook output - fetch, create, clone, and list
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - fetch, create, clone, and start
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
