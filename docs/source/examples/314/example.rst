@@ -91,6 +91,12 @@ Do not display skipped hosts. See the option `display_skipped_hosts`_
 .. literalinclude:: ansible.cfg
     :language: ini
 
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: ini
+
 group_vars
 ^^^^^^^^^^
 
@@ -116,12 +122,6 @@ host_vars
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml
     :caption:
-
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-    :language: ini
 
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^

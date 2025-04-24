@@ -1,3 +1,4 @@
+
 PLAY [Test role vbotka.freebsd.network] ****************************************
 
 TASK [Gathering Facts] *********************************************************
@@ -40,5 +41,6 @@ TASK [vbotka.freebsd.network : Ethname: service ethname <fn_ethname_cmd>] ******
 ok: [iocage_03]
 
 PLAY RECAP *********************************************************************
-iocage_02: ok=6    changed=0    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0
-iocage_03: ok=10   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0
+iocage_02                  : ok=6    changed=0    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
+iocage_03                  : ok=10   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+

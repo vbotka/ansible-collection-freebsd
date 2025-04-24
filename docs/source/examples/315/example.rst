@@ -77,9 +77,9 @@ Playbook pb.yml
 Playbook output - configure network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: bash
+::
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
     :language: bash
