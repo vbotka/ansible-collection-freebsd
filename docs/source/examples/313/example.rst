@@ -58,7 +58,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In the playbook *pb.yml* at the jails install and configure `lighttpd`_.
+* In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ create and start jails.
+* In the playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ update repositories.
+* In the playbook *pb.yml* at the jails install and configure `lighttpd`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -96,7 +98,7 @@ Notes
 
     freebsd_pkgng_cached: true
 
-* The *handlers* and *setup* directories, and files are group-writable ::
+* The directories *handlers* and *setup*, and files are group-writable ::
 
     cl_dird_group: adm
     cl_dird_dmode: "0770"
@@ -152,6 +154,12 @@ host_vars
     :language: yaml
     :caption:
 
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: ini
+
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -166,16 +174,6 @@ Create and start jails
 .. literalinclude:: out/out-11.txt
     :language: bash
 
-Update repos
-^^^^^^^^^^^^
-
-::
-
-  ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
-
-.. literalinclude:: out/out-12.txt
-    :language: bash
-
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -186,8 +184,38 @@ List jails at iocage_02
 .. literalinclude:: out/out-01.txt
     :language: bash
 
-Configuration conf-light/
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
+
+.. literalinclude:: hosts/02_iocage.yml
+    :language: yaml
+    :caption:
+.. literalinclude:: hosts/99_constructed.yml
+    :language: yaml
+    :caption:
+
+Display inventory
+^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+
+.. literalinclude:: out/out-02.txt
+    :language: bash
+
+Update repos
+^^^^^^^^^^^^
+
+::
+
+  ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
+
+.. literalinclude:: out/out-12.txt
+    :language: bash
+
+Configuration conf-light
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: conf-light/files.d/lighttpd-index.yml
     :language: yaml
@@ -211,40 +239,14 @@ Configuration conf-light/
     :language: yaml
     :caption:
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-    :language: yaml
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :caption:
-.. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
-    :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
-
-::
-
-  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
-
-.. literalinclude:: out/out-02.txt
-    :language: bash
-
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
     :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - install and configure lighttpd
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory *iocage-hosts.ini* is needed to delegate the tasks 'Manage FreeBSD
 packages' from the jails to their iocage hosts.
@@ -293,7 +295,7 @@ Open the page in a browser. For example, http://10.1.0.111/. The content should 
 .. _Ansible role Config Light: https://ansible-config-light.readthedocs.io/en/latest/index.html
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.config_light: https://galaxy.ansible.com/ui/standalone/roles/vbotka/config_light/
-.. _vbotka.freebsd.pb_iocage_start_all_jails: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_start_all_jails.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
 .. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/

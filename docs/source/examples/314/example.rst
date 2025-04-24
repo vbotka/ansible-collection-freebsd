@@ -14,7 +14,8 @@
 Use case
 ^^^^^^^^
 
-Install and configure `rsnapshot`_ in Ansible clients using the role `vbotka.freebsd.rsnapshot`_
+Create 3 jails (Ansible clients) at iocage host. Install and configure
+`rsnapshot`_ in Ansible clients using the role `vbotka.freebsd.rsnapshot`_.
 
 Tree
 ^^^^
@@ -26,26 +27,28 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
+  │       ├── ansible-client.yml
   │       ├── common.yml
   │       └── rsnapshot.yml
   ├── hosts
   │   ├── 02_iocage.yml
   │   └── 99_constructed.yml
   ├── iocage-hosts.ini
+  ├── pb-install.yml
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
+* In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ create and start jails.
+* In the playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ update repositories.
 * In the playbook *pb-install.yml* install `rsnapshot`_ on running jails.
 * In the playbook *pb.yml* configure `rsnapshot`_ on running jails.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Running jails at the iocage host.
-* Updated FreeBSD repository catalogue. See the playbook *pb-pkg-update.yml* in
-  :ref:`example_311`
+* Templates created in :ref:`example_205`
 
 Notes
 ^^^^^
@@ -70,21 +73,15 @@ Notes
     rsnapshot_packages:
       - sysutils/rsnapshot
 
-* The playbook *pb-pkg-update.yml* in :ref:`example_311` updates the
+* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the
   repositories. Then, use the `cached`_ local package base instead of fetching
   an updated one ::
 
-    freebsd_pkgn_cached: true
+    freebsd_pkgng_cached: true
     
 .. seealso::
 
    * module `community.general.pkgng`_
-
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: out/out-01.txt
-    :language: bash
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,8 +91,12 @@ Do not display skipped hosts. See the option `display_skipped_hosts`_
 .. literalinclude:: ansible.cfg
     :language: ini
 
-Configuration group_vars/all/
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/ansible-client.yml
+    :language: yaml
+    :caption:
 
 .. literalinclude:: group_vars/all/common.yml
     :language: yaml
@@ -105,8 +106,49 @@ Configuration group_vars/all/
     :language: yaml
     :caption:
 
-Inventory hosts/
-^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_01/iocage.yml
+    :language: yaml
+    :caption:
+
+.. literalinclude:: host_vars/iocage_02/iocage.yml
+    :language: yaml
+    :caption:
+
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: ini
+
+Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                           -i iocage-hosts.ini \
+                           -l iocage_02 \
+                           -t swarm \
+                           -e swarm=true
+
+.. literalinclude:: out/out-11.txt
+    :language: bash
+	       
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
+    :language: bash
+
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: yaml
@@ -118,7 +160,23 @@ Inventory hosts/
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-03.txt
+::
+
+  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+
+.. literalinclude:: out/out-02.txt
+    :language: bash
+
+Update repos
+^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml \
+                           -i iocage-hosts.ini \
+			   -l iocage_02
+
+.. literalinclude:: out/out-12.txt
     :language: bash
 
 Playbook pb-install.yml
@@ -137,33 +195,44 @@ packages' to the iocage hosts.
 
    (env) > ansible-playbook pb-install.yml -i hosts -i iocage-hosts.ini
 
-.. literalinclude:: out/out-07.txt
-    :language: yaml
+.. literalinclude:: out/out-03.txt
+    :language: bash
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: yaml
+    :language: bash
 
 Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Enable debug and limit the inventory to one jail *test_111*.
+::
 
-.. code:: bash
+  (env) > ansible-playbook pb.yml -i hosts -t rsnapshot_debug -e rsnapshot_debug=true
 
-   (env) > ansible-playbook pb.yml -i hosts -l test_111 -t rsnapshot_debug -e rsnapshot_debug=true
+.. literalinclude:: out/out-04.txt
+    :language: bash
 
-.. literalinclude:: out/out-06.txt
-    :language: yaml
+Playbook output - configure rsnapshot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb.yml -i hosts
+
+.. literalinclude:: out/out-05.txt
+    :language: bash
 
 Results
 ^^^^^^^
 
+TBD
      
 .. _rsnapshot: https://rsnapshot.org/
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsanpshot/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml/
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
 .. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
 .. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
