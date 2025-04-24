@@ -1,5 +1,3 @@
-ansible_python_interpreter: /usr/local/bin/python3.9
-
 freebsd_iocage_pool: pool2
 freebsd_iocage_pool_mount: /mnt/pool2
 

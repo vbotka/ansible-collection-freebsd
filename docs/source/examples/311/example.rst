@@ -111,8 +111,12 @@ Notes
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -120,68 +124,72 @@ Configuration ansible.cfg
 Do not display skipped hosts. See the option `display_skipped_hosts`_
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook pb-pkg-update.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-pkg-update.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - upgrade package ports-mgmt/pkg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the inventory to one host *iocage_02* ::
 
-    (env) > ansible-playbook pb-pkg-update.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
+   (env) > ansible-playbook pb-pkg-update.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
 
-.. literalinclude:: out/out-10.txt
-    :language: yaml
+.. literalinclude:: out/out-02.txt
+   :language: yaml
 
-Inventory hosts/02_iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: ini
-
-Inventory hosts/99_constructed.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :language: ini
+   :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-    :language: ini
+   :language: ini
+   :caption:
 
-Variables group_vars/all/ansible-client.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the inventory to one jail *test_111* ::
 
-    (env) > ansible-playbook pb-test-01.yml -i hosts -l test_111 \
-                                            -t pkg_debug \
-					    -e pkg_debug=true
+   (env) > ansible-playbook pb-test-01.yml -i hosts -l test_111 \
+                                           -t pkg_debug \
+                                           -e pkg_debug=true
 
 .. literalinclude:: out/out-04.txt
     :language: yaml
@@ -220,7 +228,7 @@ There are no installed packages with known vulnerabilities ::
                                            -t pkg_stat \
 					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-07.txt
     :language: yaml
 
 Playbook pb-test-02.yml
@@ -238,7 +246,7 @@ There are 9 packages with known vulnerabilities ::
                                            -t pkg_stat \
 					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-08.txt
     :language: yaml
 
 

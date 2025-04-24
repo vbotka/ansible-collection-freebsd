@@ -1,5 +1,3 @@
-ansible_python_interpreter: auto_silent
-
 freebsd_install_method: packages
 freebsd_install_retries: 3
 freebsd_install_delay: 5
@@ -12,8 +10,8 @@ act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
 act_rcconf:
-  iocage_enable: '"YES"'
-  sshd_enable: '"YES"'
+  iocage_enable: "YES"
+  sshd_enable: "YES"
 act_dhclient:
   dhclient-exit-hooks: |
     case "$reason" in

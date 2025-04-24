@@ -1,8 +1,3 @@
-ansible_python_interpreter: /usr/local/bin/python3.11
-
-iocage_env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
-
 properties:
   bpf: 1
   dhcp: 1
@@ -12,3 +7,6 @@ clones:
   - {name: test_111, clone_from: ansible_client}
   - {name: test_112, clone_from: ansible_client}
   - {name: test_113, clone_from: ansible_client}
+
+iocage_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

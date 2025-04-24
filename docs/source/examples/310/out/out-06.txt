@@ -1,46 +1,46 @@
-(env) > ansible-playbook pb-test-03.yml -i hosts -i iocage-hosts.ini 
 
-PLAY [Install packages in jails.] ********************************************************************************
+PLAY [Install packages in jails.] **********************************************
 
-TASK [Gathering Facts] *******************************************************************************************
+TASK [Gathering Facts] *********************************************************
 ok: [test_111]
-ok: [c1670497]
-ok: [afa9e515]
+ok: [test_112]
+ok: [test_113]
 
-TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] *********************
-ok: [afa9e515]
-ok: [c1670497]
+TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] **
-ok: [afa9e515]
-ok: [c1670497]
+TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] *****************
-ok: [afa9e515]
-ok: [c1670497]
+TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
-TASK [vbotka.freebsd.postinstall : Packages: Installation by pkgng required when fp_install_delegate] ************
-ok: [afa9e515]
-ok: [c1670497]
+TASK [vbotka.freebsd.postinstall : Packages: Installation by pkgng required when fp_install_delegate] ***
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
-TASK [vbotka.freebsd.postinstall : Packages: Required variable fp_pkg_jail when fp_install_delegate] *************
-ok: [afa9e515]
-ok: [c1670497]
+TASK [vbotka.freebsd.postinstall : Packages: Required variable fp_pkg_jail when fp_install_delegate] ***
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] ***************************************************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for afa9e515, c1670497, test_111 => (item=custom)
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for test_111, test_112, test_113 => (item=custom)
 
-TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] *******************************
+TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ***
+ok: [test_113 -> iocage_02(10.1.0.73)]
 ok: [test_111 -> iocage_02(10.1.0.73)]
-ok: [afa9e515 -> iocage_02(10.1.0.73)]
-ok: [c1670497 -> iocage_02(10.1.0.73)]
+ok: [test_112 -> iocage_02(10.1.0.73)]
 
-PLAY RECAP *******************************************************************************************************
-afa9e515: ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
-c1670497: ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
-test_111: ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+test_111                   : ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+test_112                   : ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+test_113                   : ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

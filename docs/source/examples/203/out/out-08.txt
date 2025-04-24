@@ -1,33 +1,33 @@
-(env) > ansible-playbook pb-test-01.yml -i hosts
 
-PLAY [Connect to the group test.] *************************************************************
+PLAY [Connect to the group test.] **********************************************
 
-TASK [ansible.builtin.command] ****************************************************************
-changed: [158ef36d]
-changed: [cd31c2a2]
-changed: [d254f889]
-changed: [2746353a]
-changed: [08daa493]
-changed: [83707231]
+TASK [ansible.builtin.command] *************************************************
+changed: [0cf02b80]
+changed: [fa394b3d]
+changed: [4af7c5ee]
+changed: [663309f0]
+changed: [79cae6c5]
+changed: [e092710f]
 
-TASK [ansible.builtin.debug] ******************************************************************
-ok: [158ef36d] => 
-    msg: 'ansible_host=10.1.0.115 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
-ok: [cd31c2a2] => 
-    msg: 'ansible_host=10.1.0.142 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
-ok: [d254f889] => 
-    msg: 'ansible_host=10.1.0.137 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
-ok: [08daa493] => 
-    msg: 'ansible_host=10.1.0.114 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
-ok: [2746353a] => 
-    msg: 'ansible_host=10.1.0.187 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
-ok: [83707231] => 
-    msg: 'ansible_host=10.1.0.233 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
+TASK [ansible.builtin.debug] ***************************************************
+ok: [0cf02b80] => 
+    msg: 'ansible_host=10.1.0.199 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
+ok: [4af7c5ee] => 
+    msg: 'ansible_host=10.1.0.206 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
+ok: [fa394b3d] => 
+    msg: 'ansible_host=10.1.0.150 iocage_tags={''vmm'': ''iocage_01'', ''swarm'': ''sw_01''}'
+ok: [663309f0] => 
+    msg: 'ansible_host=10.1.0.194 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
+ok: [79cae6c5] => 
+    msg: 'ansible_host=10.1.0.228 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
+ok: [e092710f] => 
+    msg: 'ansible_host=10.1.0.148 iocage_tags={''vmm'': ''iocage_02'', ''swarm'': ''sw_01''}'
 
-PLAY RECAP ************************************************************************************
-08daa493: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-158ef36d: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-2746353a: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-83707231: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-cd31c2a2: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-d254f889: ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+0cf02b80                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4af7c5ee                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+663309f0                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+79cae6c5                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e092710f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+fa394b3d                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -5,5 +5,4 @@
   become: true
 
   roles:
-
-    - vbotka.config_light
+    - vbotka.freebsd.config_light

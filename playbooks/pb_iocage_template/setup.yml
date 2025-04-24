@@ -1,0 +1,25 @@
+---
+- name: "Setup: Get iocage list of templates."
+  register: out
+  changed_when: false
+  ansible.builtin.command: iocage list --long --template
+
+- name: "Setup: Set dictionary iocage_templates"
+  ansible.builtin.set_fact:
+    iocage_templates: "{{ out.stdout | vbotka.freebsd.iocage('templates') }}"
+
+- name: "Setup: Display iocage_templates debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: iocage_templates
+
+- name: End host if all templates already created.
+  when: templates | difference(iocage_templates) | length == 0
+  block:
+
+    - name: "Setup: All templates already created."
+      ansible.builtin.debug:
+        msg: All templates already created. End host.
+
+    - name: "Setup: End host."
+      ansible.builtin.meta: end_host

@@ -1,6 +1,7 @@
-PLAY [Test module vbotka.freebsd.ucl] **********************************************************
 
-TASK [Disable FreeBSD repository.] *************************************************************
+PLAY [Test module vbotka.freebsd.ucl] ******************************************
+
+TASK [Disable FreeBSD repository.] *********************************************
 --- before: /etc/pkg/FreeBSD.conf (content)
 +++ after: /etc/pkg/FreeBSD.conf (content)
 @@ -1 +1 @@
@@ -9,5 +10,6 @@ TASK [Disable FreeBSD repository.] *********************************************
 
 changed: [iocage_03]
 
-PLAY RECAP *************************************************************************************
-iocage_03: ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_03                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,17 +1,16 @@
-(env) > ansible-playbook pb-test-03.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
 
-PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.] *****************
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.] ***
 
-TASK [Get iocage list of jails] ****************************************************************
+TASK [Get iocage list of jails] ************************************************
 ok: [iocage_02]
 
-TASK [Jails service list enabled] **************************************************************
-ok: [iocage_02] => (item=149)
-ok: [iocage_02] => (item=148)
-ok: [iocage_02] => (item=147)
+TASK [Jails service list enabled] **********************************************
+ok: [iocage_02] => (item=60)
+ok: [iocage_02] => (item=61)
+ok: [iocage_02] => (item=62)
 
-TASK [ansible.builtin.debug] *******************************************************************
-ok: [iocage_02] =>
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_02] => 
     service_out:
         changed: false
         msg: All items completed
@@ -23,12 +22,12 @@ ok: [iocage_02] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '149'
+                    jail: '60'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '149'
+            item: '60'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -44,6 +43,7 @@ ok: [iocage_02] =>
                 /etc/rc.d/sshd
                 /etc/rc.d/syslogd
                 /etc/rc.d/utx
+                /etc/rc.d/var_run
                 /etc/rc.d/virecover
             stdout_lines:
             - /etc/rc.d/cleanvar
@@ -57,6 +57,7 @@ ok: [iocage_02] =>
             - /etc/rc.d/sshd
             - /etc/rc.d/syslogd
             - /etc/rc.d/utx
+            - /etc/rc.d/var_run
             - /etc/rc.d/virecover
         -   ansible_loop_var: item
             changed: false
@@ -65,12 +66,12 @@ ok: [iocage_02] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '148'
+                    jail: '61'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '148'
+            item: '61'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -86,6 +87,7 @@ ok: [iocage_02] =>
                 /etc/rc.d/sshd
                 /etc/rc.d/syslogd
                 /etc/rc.d/utx
+                /etc/rc.d/var_run
                 /etc/rc.d/virecover
             stdout_lines:
             - /etc/rc.d/cleanvar
@@ -99,6 +101,7 @@ ok: [iocage_02] =>
             - /etc/rc.d/sshd
             - /etc/rc.d/syslogd
             - /etc/rc.d/utx
+            - /etc/rc.d/var_run
             - /etc/rc.d/virecover
         -   ansible_loop_var: item
             changed: false
@@ -107,12 +110,12 @@ ok: [iocage_02] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '147'
+                    jail: '62'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '147'
+            item: '62'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -120,35 +123,42 @@ ok: [iocage_02] =>
                 /etc/rc.d/cleanvar
                 /etc/rc.d/cleartmp
                 /etc/rc.d/cron
+                /etc/rc.d/ip6addrctl
                 /etc/rc.d/motd
+                /etc/rc.d/netif
                 /etc/rc.d/newsyslog
                 /etc/rc.d/os-release
                 /etc/rc.d/sshd
                 /etc/rc.d/syslogd
                 /etc/rc.d/utx
+                /etc/rc.d/var_run
                 /etc/rc.d/virecover
             stdout_lines:
             - /etc/rc.d/cleanvar
             - /etc/rc.d/cleartmp
             - /etc/rc.d/cron
+            - /etc/rc.d/ip6addrctl
             - /etc/rc.d/motd
+            - /etc/rc.d/netif
             - /etc/rc.d/newsyslog
             - /etc/rc.d/os-release
             - /etc/rc.d/sshd
             - /etc/rc.d/syslogd
             - /etc/rc.d/utx
+            - /etc/rc.d/var_run
             - /etc/rc.d/virecover
         skipped: false
 
-TASK [ansible.builtin.debug] *******************************************************************
-ok: [iocage_02] =>
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_02] => 
     jid_service_enabled | to_yaml: |-
-        '147': [cleanvar, cleartmp, cron, motd, newsyslog, os-release, sshd, syslogd, utx,
-          virecover]
-        '148': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
-          sshd, syslogd, utx, virecover]
-        '149': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
-          sshd, syslogd, utx, virecover]
+        '60': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+        '61': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+        '62': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
 
-PLAY RECAP *************************************************************************************
-iocage_02: ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

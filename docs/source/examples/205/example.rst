@@ -24,7 +24,7 @@ Extending example :ref:`example_202`.
 .. index:: single: module community.general.pkgng; Example 205
 .. index:: single: module vbotka.freebsd.iocage; Example 205
 .. index:: single: notes; Example 205
-.. index:: single: playbook pb-iocage-template.yml; Example 205
+.. index:: single: playbook pb_iocage_template.yml; Example 205
 .. index:: single: property notes; Example 205
 .. index:: single: template ansible_client; Example 205
 
@@ -50,35 +50,13 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_03
   │       └── iocage.yml
-  ├── iocage-hosts.ini
-  ├── pb-iocage-template -> ../../../../playbooks/pb-iocage-template
-  └── pb-iocage-template.yml -> ../../../../playbooks/pb-iocage-template.yml
+  └── iocage-hosts.ini
 
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
-
-  * iocage_01
-  * iocage_02
-  * iocage_03
-
-  In the playbook *pb-iocage-template.yml*, use:
-
-  * `module vbotka.freebsd.iocage`_ to create, start, stop, and convert jails to templates
-  * vbotka.freebsd.iocage exec to create a user and set .ssh ownership
-  * community.general.pkgng to install packages
-  * ansible.posix.authorized_key to configure public keys
-  * ansible.builtin.lineinfile to configure /etc/rc.conf and /usr/local/etc/sudoers
-  * configure dhclient hooks.
-
-Requirements
-^^^^^^^^^^^^
-
-* `module vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
-* activated *iocage*
-* fetched releases
+* The only difference between the examples 202. and 205. is the third host
+  iocage_03. This example creates the templates only.
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,28 +64,25 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
     :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
     :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
     :language: yaml
-
-host_vars/iocage_03/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :caption:
 
 .. literalinclude:: host_vars/iocage_03/iocage.yml
     :language: yaml
+    :caption:
 	       
 .. warning::
 
    * The user *act_user* must exist on the *iocage* host. Otherwise, the module
-     *ansible.posix.authorized_key* will crash. See *pb-iocage-template/pk.yml*
+     *ansible.posix.authorized_key* will crash. See *pb_iocage_template/pk.yml*
 
    * The file *files/pk_admins.txt* was sanitized. Fit the public keys to your needs ::
 
@@ -120,20 +95,22 @@ Inventory *iocage-hosts.ini*
 .. literalinclude:: iocage-hosts.ini
     :language: ini
 
-Playbook *pb-iocage-template.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-iocage-template.yml
-    :language: yaml
+::
 
-Playbook output
-^^^^^^^^^^^^^^^
+  (env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini -l iocage_03
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+    :language: yaml
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
     :language: bash
@@ -141,11 +118,19 @@ List templates at iocage_01
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -lt
+
 .. literalinclude:: out/out-03.txt
     :language: bash
 
 List templates at iocage_03
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_03]# iocage list -lt
 
 .. literalinclude:: out/out-04.txt
     :language: bash

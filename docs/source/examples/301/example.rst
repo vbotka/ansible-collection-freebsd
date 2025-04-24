@@ -73,9 +73,9 @@ Playbook *pb-test-01.yml*
 Playbook output - get FreeBSD.url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: bash
+::
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+  (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
 	       
 .. literalinclude:: out/out-01.txt
     :language: yaml
@@ -90,9 +90,9 @@ Playbook *pb-test-02.yml*
 Playbook output - disable FreeBSD repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: bash
+::
 
-   (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini --check --diff
+  (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini --check --diff
 	       
 .. literalinclude:: out/out-02.txt
     :language: bash

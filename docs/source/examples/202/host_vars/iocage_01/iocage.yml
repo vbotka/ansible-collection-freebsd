@@ -1,14 +1,12 @@
-ansible_python_interpreter: /usr/local/bin/python3.9
-ansible_become_password: admin
-
 freebsd_iocage_pool: pool2
 freebsd_iocage_pool_mount: /mnt/pool2
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
 templates:
   ansible_client:
-    release: 13.4-RELEASE
+    release: 13.5-RELEASE
     properties:
+      vnet: 'on'
       ip4_addr: 'vnet0|10.1.0.198/24'
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
@@ -49,3 +47,6 @@ properties:
   dhcp: 1
   vnet: 1
   notes: "vmm={{ inventory_hostname }}"
+
+# In production, put the password into the vault.
+ansible_become_password: admin

@@ -66,25 +66,24 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
 .. note::
 
@@ -96,19 +95,33 @@ Playbook *pb-iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - test sanity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
+
+  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                         -l iocage_02 \
+					 -t freebsd_iocage_sanity
+
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
 
 Playbook output - test sanity quietly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: bash
+
+  (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
+          ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
+	  ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+	                                 -l iocage_02 \
+                                         -t freebsd_iocage_sanity
+
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: yaml
 
 .. seealso::
 

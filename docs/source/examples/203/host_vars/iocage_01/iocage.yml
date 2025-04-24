@@ -1,2 +1,2 @@
-ansible_python_interpreter: /usr/local/bin/python3.9
+# In production, put the password into the vault.
 ansible_become_password: admin

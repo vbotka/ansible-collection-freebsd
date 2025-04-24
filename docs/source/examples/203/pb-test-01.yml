@@ -1,7 +1,7 @@
 - name: Connect to the group test.
   hosts: swarm_sw_01
-  remote_user: admin
   gather_facts: false
+  remote_user: admin
 
   vars:
 

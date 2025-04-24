@@ -1,0 +1,5 @@
+- name: Debug
+  ansible.builtin.debug:
+    msg: |
+      vars:
+        {{ vars | to_nice_yaml(indent=2) | indent(2) }}

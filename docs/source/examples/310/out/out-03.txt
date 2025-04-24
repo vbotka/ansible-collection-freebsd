@@ -1,10 +1,9 @@
-(env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 @all:
   |--@ungrouped:
   |--@up:
-  |  |--afa9e515
-  |  |--c1670497
   |  |--test_111
+  |  |--test_112
+  |  |--test_113
   |--@iocage:
   |  |--iocage_01
   |  |--iocage_02

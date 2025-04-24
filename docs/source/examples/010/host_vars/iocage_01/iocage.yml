@@ -1,13 +1,10 @@
-ansible_python_interpreter: /usr/local/bin/python3.9
-ansible_become_password: admin
-
 fetch:
-  - 13.3-RELEASE
   - 13.4-RELEASE
+  - 13.5-RELEASE
 
 basejails:
   - name: ansible_client
-    release: 13.4-RELEASE
+    release: 13.5-RELEASE
 
 clones:
   - name: test_101
@@ -31,3 +28,6 @@ clones:
 
 start:
   - test_103
+
+# In production, put the password into the vault.
+ansible_become_password: admin

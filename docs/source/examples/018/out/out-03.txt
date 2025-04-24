@@ -1,5 +1,3 @@
-(env) > ansible-playbook pb-iocage-clone-list.yml -i iocage-hosts.ini
-
 PLAY [iocage] **********************************************************************************
 
 TASK [Clone basejail.] *************************************************************************
@@ -23,17 +21,18 @@ ok: [iocage_01]
 ok: [iocage_02]
 
 TASK [Display jails.] **************************************************************************
-ok: [iocage_01] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'yes'
-  ...
-
+ok: [iocage_01] =>
+    msg: |-
+        ansible_client - vnet0|10.1.0.198/24 13.5-RELEASE-p1 down
+        test_101 123 epair0b|10.1.0.130 13.5-RELEASE-p1 up
+        test_102 124 epair0b|10.1.0.245 13.5-RELEASE-p1 up
+        test_103 125 epair0b|10.1.0.180 13.5-RELEASE-p1 up
 ok: [iocage_02] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'yes'
-  ...
+    msg: |-
+        ansible_client None em0|10.1.0.199/24 14.2-RELEASE-p3 down
+        test_111 2 epair0b|10.1.0.174 14.2-RELEASE-p3 up
+        test_112 3 epair0b|10.1.0.147 14.2-RELEASE-p3 up
+        test_113 4 epair0b|10.1.0.231 14.2-RELEASE-p3 up
 
 PLAY RECAP *************************************************************************************
 iocage_01: ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

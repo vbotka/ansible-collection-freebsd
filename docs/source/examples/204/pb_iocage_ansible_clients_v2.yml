@@ -1,0 +1,37 @@
+---
+- name: Create and start jails. Optionally stop and destroy jails.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    debug2: false
+    dry_run: false
+
+    swarm: false
+    swarm_destroy: false
+    clone: false
+    clone_destroy: false
+
+    _tags: "{{ dict(iocage_jails.keys()
+                    | zip(iocage_jails.values()
+                          | map(attribute='properties.notes')
+                          | map('split')
+                          | map('map', 'split', '=')
+                          | map('community.general.dict'))) }}"
+    _started: "{{ iocage_jails | dict2items
+                               | selectattr('value.state', 'eq', 'up')
+                               | map(attribute='key') }}"
+
+  tasks:
+
+    - name: Create and start swarms
+      when: swarm | bool
+      tags: swarm
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients_v2/swarm.yml
+
+    - name: Stop and destroy swarms
+      when: swarm_destroy | bool
+      tags: swarm_destroy
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients_v2/swarm_destroy.yml

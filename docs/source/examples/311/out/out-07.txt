@@ -1,0 +1,83 @@
+
+PLAY [Test role vbotka.freebsd.packages.] **************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [test_112]
+ok: [test_113]
+ok: [test_111]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [test_111]
+ok: [test_112]
+ok: [test_113]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [test_111] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [test_112] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [test_113] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+ok: [test_112]
+ok: [test_111]
+ok: [test_113]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
+ok: [test_111] => 
+    pkg_audit:
+        test_111:
+            pkg_count: 0
+        test_112:
+            pkg_count: 0
+        test_113:
+            pkg_count: 0
+
+PLAY RECAP *********************************************************************
+test_111                   : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

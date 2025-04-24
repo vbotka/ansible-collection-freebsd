@@ -3,7 +3,7 @@
 201 Display iocage lists and dictionaries
 -----------------------------------------
 
-Extending example 200.
+Extending example :ref:`example_200`.
 
 .. contents:: Table of Contents
    :local:
@@ -30,11 +30,11 @@ Tree
 
 ::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── iocage-hosts.ini
-   └── pb-iocage-display-lists.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── iocage-hosts.ini
+  └── pb-iocage-display-lists.yml
 
 Synopsis
 ^^^^^^^^
@@ -91,20 +91,70 @@ Notes
 Lists at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -r
+
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+::
+
+  [iocage_01]# iocage list -P
+
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
+
+::
+
+  [iocage_01]# iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+
+::
+
+  [iocage_01]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
 
 Lists at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-03.txt
-    :language: bash
+::
+
+  [iocage_02]# iocage list -r
+
+.. literalinclude:: out/out-05.txt
+   :language: bash
+
+::
+
+  [iocage_02]# iocage list -P
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+
+::
+
+  [iocage_02]# iocage list -lt
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+
+::
+
+  [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-08.txt
+   :language: bash
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 .. note::
 
@@ -117,13 +167,17 @@ Playbook *pb-iocage-display-lists.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-display-lists.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - display iocage lists
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-01.txt
-    :language: yaml
+::
+
+  (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage-hosts.ini
+
+.. literalinclude:: out/out-09.txt
+   :language: yaml
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

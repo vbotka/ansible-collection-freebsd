@@ -1,36 +1,17 @@
-(env) > ansible-playbook pb-test-02.yml -i hosts -i iocage-hosts.ini
 
-PLAY [Install packages in jails.] *************************************************************
+PLAY [Install packages in jails.] **********************************************
 
-TASK [Gathering Facts] ************************************************************************
+TASK [Gathering Facts] *********************************************************
 ok: [test_111]
-ok: [c1670497]
-ok: [afa9e515]
+ok: [test_113]
+ok: [test_112]
 
-TASK [Install packages] ***********************************************************************
+TASK [Install packages] ********************************************************
+ok: [test_112 -> iocage_02(10.1.0.73)]
 ok: [test_111 -> iocage_02(10.1.0.73)]
-ok: [c1670497 -> iocage_02(10.1.0.73)]
-ok: [afa9e515 -> iocage_02(10.1.0.73)]
+ok: [test_113 -> iocage_02(10.1.0.73)]
 
-TASK [ansible.builtin.debug] ******************************************************************
-ok: [afa9e515] => 
-    out:
-        changed: false
-        failed: false
-        msg: package(s) already present
-        stderr: ''
-        stderr_lines: []
-        stdout: ''
-        stdout_lines: []
-ok: [c1670497] => 
-    out:
-        changed: false
-        failed: false
-        msg: package(s) already present
-        stderr: ''
-        stderr_lines: []
-        stdout: ''
-        stdout_lines: []
+TASK [ansible.builtin.debug] ***************************************************
 ok: [test_111] => 
     out:
         changed: false
@@ -40,8 +21,27 @@ ok: [test_111] =>
         stderr_lines: []
         stdout: ''
         stdout_lines: []
+ok: [test_112] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [test_113] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
 
-PLAY RECAP ************************************************************************************
-afa9e515: ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-c1670497: ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_111: ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+test_111                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

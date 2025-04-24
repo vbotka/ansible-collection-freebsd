@@ -1,0 +1,8 @@
+lighttpd_lighttpd_annotated_conf:
+  path: /usr/local/etc/lighttpd/lighttpd.annotated.conf
+  lines:
+    - {regexp: '^\s*server.document-root\s*=.*$', state: absent}
+    - {regexp: '^\s*server.username\s*=.*$', state: absent}
+    - {regexp: '^\s*server.groupname\s*=.*$', state: absent}
+  handlers:
+    - reload lighttpd

@@ -16,8 +16,8 @@
                     "msg": ""
                 },
                 "iocage_ip6": "-",
-                "iocage_jid": "-",
-                "iocage_release": "13.4-RELEASE-p2",
+                "iocage_jid": "None",
+                "iocage_release": "13.5-RELEASE-p1",
                 "iocage_state": "down",
                 "iocage_template": "-",
                 "iocage_type": "jail"
@@ -37,8 +37,8 @@
                     "msg": ""
                 },
                 "iocage_ip6": "-",
-                "iocage_jid": "-",
-                "iocage_release": "13.4-RELEASE-p2",
+                "iocage_jid": "None",
+                "iocage_release": "13.5-RELEASE-p1",
                 "iocage_state": "down",
                 "iocage_template": "ansible_client",
                 "iocage_type": "jail"
@@ -58,8 +58,8 @@
                     "msg": ""
                 },
                 "iocage_ip6": "-",
-                "iocage_jid": "-",
-                "iocage_release": "13.4-RELEASE-p2",
+                "iocage_jid": "None",
+                "iocage_release": "13.5-RELEASE-p1",
                 "iocage_state": "down",
                 "iocage_template": "ansible_client",
                 "iocage_type": "jail"
@@ -79,9 +79,9 @@
                     "msg": ""
                 },
                 "iocage_ip6": "-",
-                "iocage_jid": "-",
-                "iocage_release": "13.4-RELEASE-p2",
-                "iocage_state": "down",
+                "iocage_jid": "122",
+                "iocage_release": "13.5-RELEASE-p1",
+                "iocage_state": "up",
                 "iocage_template": "ansible_client",
                 "iocage_type": "jail"
             }

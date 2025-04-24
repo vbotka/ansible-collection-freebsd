@@ -1,11 +1,9 @@
-ansible_python_interpreter: /usr/local/bin/python3.11
-
 properties:
   notes: "vmm={{ inventory_hostname }}"
 
 basejails:
   - name: ansible_client
-    release: 14.1-RELEASE
+    release: 14.2-RELEASE
     properties:
       ip4_addr: 'em0|10.1.0.199/24'
 
@@ -22,3 +20,6 @@ clones:
     clone_from: ansible_client
     properties:
       ip4_addr: 'em0|10.1.0.113/24'
+
+iocage_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

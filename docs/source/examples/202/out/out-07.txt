@@ -1,4 +1,3 @@
-(env) > ansible-inventory -i hosts --graph
 @all:
   |--@ungrouped:
   |--@test_01:

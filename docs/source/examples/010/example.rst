@@ -74,6 +74,39 @@ Requirements
 Notes
 ^^^^^
 
+The fetching of a release is a quite time-consuming procedure. Optionally, fetch
+the releases manually before you run the play. For example,
+
+.. code-block:: bash
+
+  [iocage_02]# iocage fetch
+  [0] 13.4-RELEASE
+  [1] 13.5-RELEASE
+  [2] 14.1-RELEASE (EOL)
+  [3] 14.2-RELEASE
+
+  Type the number of the desired RELEASE
+  Press [Enter] to fetch the default selection: (14.2-RELEASE)
+  Type EXIT to quit: 3
+  Fetching: 14.2-RELEASE
+
+  Extracting: base.txz...
+  Extracting: lib32.txz...
+  Extracting: src.txz...
+
+  * Updating 14.2-RELEASE to the latest patch level...
+  Looking up update.FreeBSD.org mirrors... 3 mirrors found.
+  Fetching metadata signature for 14.2-RELEASE from update2.freebsd.org... done.
+  Fetching metadata index... done.
+  Inspecting system... done.
+  Preparing to download files... done.
+  The following files will be removed as part of updating to
+  14.2-RELEASE-p3:
+  /etc/ssl/certs/08063a00.0
+  /etc/ssl/certs/18856ac4.0
+  /etc/ssl/certs/57bcb2da.0
+  ...
+
 .. seealso::
 
    * `Fetch a Release`_
@@ -85,55 +118,69 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
 Playbook *pb-iocage-fetch-base-clone-list.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-fetch-base-clone-list.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - fetch, create, clone, and start
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 	       
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
 
+The jails at *iocage_02*
+
 .. literalinclude:: iocage.yml
-    :language: yaml
+   :language: yaml
+   :emphasize-lines: 2
 
 .. seealso::
 
@@ -144,13 +191,18 @@ Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i iocage.yml
+
 .. literalinclude:: out/out-02.txt
-    :language: yaml
+   :language: yaml
+   :emphasize-lines: 30-35
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

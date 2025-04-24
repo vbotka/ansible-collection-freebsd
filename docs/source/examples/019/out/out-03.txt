@@ -1,24 +1,22 @@
-(env) > ansible-playbook pb-test-all.yml -i hosts
+PLAY [all] *********************************************************************
 
-PLAY [all] ******************************************************************************************
-
-TASK [debug] ****************************************************************************************
+TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     iocage_ip4: 10.1.0.199
 ok: [test_101] => 
-    iocage_ip4: 10.1.0.101
+    iocage_ip4: '-'
 ok: [test_102] => 
     iocage_ip4: 10.1.0.245
 ok: [test_103] => 
-    iocage_ip4: 10.1.0.103
+    iocage_ip4: 10.1.0.180
 ok: [test_111] => 
-    iocage_ip4: 10.1.0.111
+    iocage_ip4: '-'
 ok: [test_112] => 
     iocage_ip4: 10.1.0.147
 ok: [test_113] => 
-    iocage_ip4: 10.1.0.113
+    iocage_ip4: 10.1.0.231
 
-TASK [debug] ****************************************************************************************
+TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: |-
         all: ['ansible_client', 'test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
@@ -30,7 +28,7 @@ ok: [ansible_client] =>
         test_up: ['test_102', 'test_103', 'test_112', 'test_113']
         region_EU: ['test_111', 'test_112', 'test_113']
 
-PLAY RECAP ******************************************************************************************
+PLAY RECAP *********************************************************************
 ansible_client: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 test_101      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 test_102      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

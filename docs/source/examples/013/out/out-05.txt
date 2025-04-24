@@ -1,24 +1,24 @@
-(env) > ansible-playbook pb-ansible-client.yml -i hosts
 
-PLAY [ansible_client] *******************************************************************************
+PLAY [ansible_client] **********************************************************
 
-TASK [debug] ****************************************************************************************
+TASK [debug] *******************************************************************
 ok: [ansible_client] => 
-  msg: |-
-    inventory_hostname: ansible_client
-    ansible_host: 10.1.0.199
-    release: 14.1
-  
-    iocage_tags:
-      vmm: iocage_02
-  
-    group_names:
-      - distro_01_13_4_RELEASE_p2
-      - distro_02_14_1_RELEASE_p6
-      - state_01_down
-      - state_02_down
-      - vmm_iocage_01
-      - vmm_iocage_02
+    msg: |-
+        inventory_hostname: ansible_client
+        ansible_host: 10.1.0.199
+        release: 14.2
 
-PLAY RECAP ******************************************************************************************
-ansible_client: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+        iocage_tags:
+          vmm: iocage_02
+
+        group_names:
+          - distro_01_13_5_RELEASE_p1
+          - distro_02_14_2_RELEASE_p3
+          - state_01_down
+          - state_02_down
+          - vmm_iocage_01
+          - vmm_iocage_02
+
+PLAY RECAP *********************************************************************
+ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

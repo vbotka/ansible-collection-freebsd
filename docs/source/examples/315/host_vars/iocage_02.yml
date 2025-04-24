@@ -1,0 +1,6 @@
+fn_gateway_enable: true
+fn_defaultrouter: 10.1.0.10
+
+fn_interfaces:
+  - {interface: em0, options: inet 10.1.0.73 netmask 255.255.255.0}
+  - {interface: em1, options: inet 10.1.0.83 netmask 255.255.255.0}

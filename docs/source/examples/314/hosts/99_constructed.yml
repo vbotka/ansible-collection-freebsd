@@ -1,0 +1,8 @@
+plugin: ansible.builtin.constructed
+groups:
+  up: iocage_state == 'up'
+keyed_groups:
+  - prefix: swarm
+    key: iocage_tags.swarm
+  - prefix: vmm
+    key: iocage_tags.vmm

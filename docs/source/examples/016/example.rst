@@ -3,7 +3,7 @@
 016 Multiple inventory constructed
 ----------------------------------
 
-Extending example 015.
+Extending example :ref:`example_015`.
 
 .. contents:: Table of Contents
    :local:
@@ -68,49 +68,59 @@ Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
   
-Inventory *hosts/01_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
-Inventory *hosts/02_iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-
-Inventory *hosts/99_constructed.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :language: yaml
+   :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 	       
 Playbook *pb-test.yml*
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-test.yml -i hosts
+
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

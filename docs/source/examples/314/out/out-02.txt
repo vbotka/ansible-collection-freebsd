@@ -1,0 +1,17 @@
+@all:
+  |--@ungrouped:
+  |--@up:
+  |  |--9c61e7e2
+  |  |--d770d5af
+  |  |--ed8dd59a
+  |--@swarm_sw_01:
+  |  |--9c61e7e2
+  |  |--d770d5af
+  |  |--ed8dd59a
+  |--@vmm_iocage_02:
+  |  |--9c61e7e2
+  |  |--d770d5af
+  |  |--ed8dd59a
+  |--@iocage:
+  |  |--iocage_01
+  |  |--iocage_02

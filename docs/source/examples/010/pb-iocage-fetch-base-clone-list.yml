@@ -1,6 +1,6 @@
-- hosts: iocage
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+- name: Iocage fetch releases, create basejail, clone and start jails.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
 
   tasks:
 
@@ -18,6 +18,8 @@
         release: "{{ item.release }}"
         properties: "{{ item.properties | d(omit) }}"
       loop: "{{ basejails }}"
+      loop_control:
+        label: "{{ item.name }} {{ item.release }}"
 
     - name: Clone from basejail
       tags: clone
@@ -27,6 +29,8 @@
         name: "{{ item.name }}"
         properties: "{{ item.properties | d(omit) }}"
       loop: "{{ clones }}"
+      loop_control:
+        label: "{{ item.name }} {{ item.clone_from }}"
 
     - name: Start clones
       tags: start

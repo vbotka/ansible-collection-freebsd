@@ -1,4 +1,2 @@
-ansible_python_interpreter: /usr/local/bin/python3.11
-
-freebsd_iocage_runner_env:
+iocage_env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

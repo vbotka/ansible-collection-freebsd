@@ -32,10 +32,9 @@ __metaclass__ = type
 
 DOCUMENTATION = r'''
 module: ucl
-
 short_description: Manage FreeBSD UCL config files
-
-description: A CRUD-like interface to managing UCL files.
+description: A CRUD-like interface for managing UCL files.
+version_added: '0.6.11'
 
 attributes:
   check_mode:
@@ -46,6 +45,7 @@ attributes:
 extends_documentation_fragment:
   - files
   - validate
+  - community.general.attributes
 
 options:
   path:
@@ -163,7 +163,7 @@ seealso:
   - name: Source code libucl
     description: UCL library
     link: https://github.com/vstakhov/libucl/
-  - name: Source code libucl
+  - name: Source code libucl macros
     description: Macros support
     link: https://github.com/vstakhov/libucl/#macros-support
 

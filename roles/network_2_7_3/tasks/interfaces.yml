@@ -1,0 +1,42 @@
+---
+# TODO: Remove items from /etc/rc.conf if state not present.
+
+- name: "Interfaces: Configure wlans in {{ _path }}"
+  notify: restart netif
+  tags: fn_wlans
+  community.general.sysrc:
+    name: "wlans_{{ item.device }}"
+    value: "{{ item.interface }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_wlans }}"
+
+- name: "Interfaces: Configure interfaces create_args in {{ _path }}"
+  notify: restart netif
+  tags: fn_create_args
+  community.general.sysrc:
+    name: "create_args_{{ item.interface }}"
+    value: "{{ item.create }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_interfaces | selectattr('create', 'defined') }}"
+
+- name: "Interfaces: Configure interfaces options in {{ _path }}"
+  notify: restart netif
+  tags: fn_ifconfig
+  community.general.sysrc:
+    name: "ifconfig_{{ item.interface }}"
+    value: "{{ item.options }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_interfaces | selectattr('options', 'defined') }}"
+
+- name: "Interfaces: Configure interface aliases in {{ _path }}"
+  notify: restart netif
+  tags: fn_aliases_ifconfig
+  community.general.sysrc:
+    name: "ifconfig_{{ item.0.interface }}_{{ item.1.alias }}"
+    value: "{{ item.1.options }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_aliases | subelements('aliases') }}"
+  loop_control:
+    label: "{{ item.0.interface }} {{ item.1.alias }} {{ item.1.options }}"
+
+# EOF

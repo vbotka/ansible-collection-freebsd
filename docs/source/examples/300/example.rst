@@ -78,6 +78,10 @@ Notes
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
     :language: bash
 
@@ -87,20 +91,21 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
     :language: ini
 
-Inventory hosts/02_iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: yaml
-
-Inventory hosts/99_constructed.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/99_constructed.yml
     :language: yaml
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-02.txt
     :language: bash
@@ -124,6 +129,10 @@ The key and value of *rcvar* is returned in 1) the attribute *rcvar* of the
 registered variable *out.rcvar* and in 2) the *stdout*. Usually, you'll use the
 first option. The second option shows how to use *community.general.jc*.
 
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i hosts
+
 .. literalinclude:: out/out-03.txt
     :language: yaml
 
@@ -135,7 +144,11 @@ Playbook *pb-test-02.yml*
 
 Playbook output - create dictionary jid_rcvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
+
 .. literalinclude:: out/out-04.txt
     :language: yaml
 
@@ -147,6 +160,10 @@ Playbook *pb-test-03.yml*
 
 Playbook output - display enabled services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-test-03.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
 	       
 .. literalinclude:: out/out-05.txt
     :language: yaml
@@ -160,6 +177,10 @@ Playbook *pb-test-04.yml*
 Playbook output - display sshd status
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-test-04.yml -i iocage-hosts.ini -l iocage_02
+
 .. literalinclude:: out/out-06.txt
     :language: yaml
 
@@ -171,6 +192,10 @@ Playbook *pb-test-05.yml*
 
 Playbook output - display sshd commands synopsis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-test-05.yml -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-07.txt
     :language: yaml
@@ -184,6 +209,10 @@ Playbook *pb-test-06.yml*
 Playbook output - display sendmail rcvars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  shell> ansible-playbook pb-test-06.yml -i hosts
+
 .. literalinclude:: out/out-08.txt
     :language: yaml
 
@@ -195,6 +224,10 @@ Playbook *pb-test-07.yml*
 
 Playbook output - start apcupsd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb-test-07.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-09.txt
     :language: yaml

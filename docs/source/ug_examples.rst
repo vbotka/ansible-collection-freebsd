@@ -4,15 +4,18 @@ Examples
 ********
 
 :001-003: Manage *iocage* on the remote host
-:010-019: Module and Inventory plugin vbotka.freebsd.iocage
-:030:     Filter vbotka.freebsd.iocage
+:010-019: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
+:030:     `Filter vbotka.freebsd.iocage`_
 :200-:    Ansible client
-:300:     Module vbotka.freebsd.service
-:301:     Module vbotka.freebsd.ucl
-:310:     Role vbotka.freebsd.postinstall
-:311:     Role vbotka.freebsd.packages
-:312:     Role vbotka.freebsd.iocage
-:313:     Role vbotka.freebsd.config_light
+:300:     `Module vbotka.freebsd.service`_
+:301:     `Module vbotka.freebsd.ucl`_
+:310:     `Role vbotka.freebsd.postinstall`_
+:311:     `Role vbotka.freebsd.packages`_
+:312:     `Role vbotka.freebsd.iocage`_
+:313:     `Role vbotka.freebsd.config_light`_
+:314:     `Role vbotka.freebsd.rsnapshot`_
+:315:     `Role vbotka.freebsd.network`_
+
 
 .. toctree::
    :maxdepth: 1
@@ -45,3 +48,20 @@ Examples
    311 Install and audit packages <examples/311/example.rst>
    312 Clone jails and create inventory <examples/312/example.rst>
    313 Install and configure lighttpd <examples/313/example.rst>
+   314 Install and configure rsnapshot <examples/314/example.rst>
+   315 Configure network <examples/315/example.rst>
+
+
+.. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
+.. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
+.. _Module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
+
+.. _Inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
+
+.. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
+.. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
+.. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
+.. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
+.. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/

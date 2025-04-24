@@ -1,8 +1,3 @@
-ansible_python_interpreter: /usr/local/bin/python3.11
-
-freebsd_iocage_runner_env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
-
 freebsd_iocage_pool: zroot
 freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
@@ -11,11 +6,11 @@ properties:
   notes: "vmm={{ inventory_hostname }}"
 
 fetch:
-  - 14.1-RELEASE
+  - 14.2-RELEASE
 
 basejails:
   - name: ansible_client
-    release: 14.1-RELEASE
+    release: 14.2-RELEASE
     properties:
       ip4_addr: 'em0|10.1.0.199/24'
 
@@ -35,3 +30,9 @@ clones:
 
 start:
   - test_113
+
+iocage_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+
+# Required by the role vbotka.freebsd.iocage
+freebsd_iocage_runner_env: "{{ iocage_env }}"

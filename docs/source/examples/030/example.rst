@@ -3,7 +3,7 @@
 030 Create custom facts
 -----------------------
 
-Extending example 312.
+Extending example :ref:`example_312`.
 
 .. contents:: Table of Contents
    :local:
@@ -72,49 +72,56 @@ Notes
 List all jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_01]# iocage list -l
+
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 List all jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  [iocage_02]# iocage list -l
+
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 Configuration *ansible.cfg*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
-host_vars/iocage_01/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
-
-host_vars/iocage_02/iocage.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook *pb-iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+::
 
   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
                                          -t freebsd_iocage_debug \
@@ -122,37 +129,45 @@ Playbook output - display versions
           | grep version
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+   :language: yaml
 
 Create custom fact scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+::
 
   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
                                          -t freebsd_iocage_facts \
 					 -e freebsd_iocage_facts=true
 
 .. literalinclude:: out/out-04.txt
-    :language: yaml
+   :language: yaml
 
 Display custom fact script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
+
 .. literalinclude:: out/out-05.txt
-    :language: python
+   :language: python
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
-Playbook output - Display custom facts
+Playbook output - display custom facts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	       
+
+::
+
+  (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+
 .. literalinclude:: out/out-06.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

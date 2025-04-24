@@ -1,0 +1,71 @@
+---
+- name: Stop and destroy swarms
+  vars:
+    _query: '[?value.swarm==`{{ item.key }}`].key'
+    _swarm_exist: "{{ _tags | dict2items | community.general.json_query(_query) }}"
+    _jails_started: "{{ _swarm_exist | intersect(_started) }}"
+    cmd_stop: "iocage stop {{ _jails_started | join(' ') }}"
+    cmd_destroy: "iocage destroy --force {{ _swarm_exist | join(' ') }}"
+
+  block:
+
+    - name: Set iocage_jails
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients_v2/iocage_jails.yml
+
+    - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        msg: |
+          iocage_jails:
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+          _started: {{ _started }}
+          _tags:
+            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: "Debug cmd_stop debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_stop }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Stop swarms
+      when:
+        - not dry_run | d(true) | bool
+        - _jails_started | length > 0
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_stop }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: "Debug stop swarms debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Debug cmd_destroy debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_destroy }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Destroy swarms
+      when:
+        - not dry_run | d(true) | bool
+        - _swarm_exist | length > 0
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_destroy }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: "Debug destroy swarms debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out

@@ -5,13 +5,13 @@
   vars:
 
     debug: false
-    collections: "{{ out.stdout | from_yaml }}" 
+    my_collections: "{{ out.stdout | from_yaml }}"
 
-    cg_collections: "{{ collections
+    cg_collections: "{{ my_collections
                         | dict2items | selectattr('value', 'contains', 'community.general')
                         | items2dict }}"
     cg_paths: "{{ cg_collections.keys() }}"
-    cg_versions: "{{ cg_paths | map('extract', collections, ['community.general', 'version']) }}"
+    cg_versions: "{{ cg_paths | map('extract', my_collections, ['community.general', 'version']) }}"
     cg_dict: "{{ dict(cg_versions | zip(cg_paths)) }}"
     cg_latest: "{{ cg_dict | dict2items | sort(attribute='key') | last }}"
     cg_latest_version: "{{ cg_latest.key }}"
@@ -20,11 +20,11 @@
     cg_latest_hash: "sha512:{{ lookup('pipe', cg_latest_hash_cmd) | split | first }}"
     cg_latest_hash_short: "{{ (cg_latest_hash | split(':') | last)[:8] }}"
 
-    vf_collections: "{{ collections
+    vf_collections: "{{ my_collections
                         | dict2items | selectattr('value', 'contains', 'vbotka.freebsd')
                         | items2dict }}"
     vf_paths: "{{ vf_collections.keys() }}"
-    vf_versions: "{{ vf_paths | map('extract', collections, ['vbotka.freebsd', 'version']) }}"
+    vf_versions: "{{ vf_paths | map('extract', my_collections, ['vbotka.freebsd', 'version']) }}"
     vf_dict: "{{ dict(vf_versions | zip(vf_paths)) }}"
     vf_latest: "{{ vf_dict | dict2items | sort(attribute='key') | last }}"
     vf_latest_version: "{{ vf_latest.key }}"

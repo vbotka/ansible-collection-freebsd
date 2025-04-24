@@ -1,0 +1,67 @@
+- name: Update repos.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    running_jails_jid: "{{ iocage_jails | dict2items
+                                        | selectattr('value.state', 'eq', 'up')
+                                        | map(attribute='value.jid') }}"
+
+  tasks:
+
+    - name: Set iocage_jails
+      block:
+
+        - name: "Get iocage list of jails."
+          register: out
+          changed_when: false
+          check_mode: false
+          ansible.builtin.command: iocage list --long
+
+        - name: "Set dictionary iocage_jails"
+          ansible.builtin.set_fact:
+            iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+
+        - name: "Debug iocage_jails debug={{ debug }}"
+          when: debug | bool
+          ansible.builtin.debug:
+            var: iocage_jails
+
+      rescue:
+
+        - name: "Set iocage_jails failed."
+          ansible.builtin.debug:
+            msg: |
+              {{ ansible_failed_task }}
+              {{ ansible_failed_result }}
+
+        - name: "End of the host."
+          ansible.builtin.meta: end_host
+
+    - name: Update repos.
+      when: running_jails_jid | length > 0
+      block:
+
+        - name: "Update repos."
+          register: out
+          changed_when: false
+          ansible.builtin.command: "pkg -j {{ item }} update"
+          loop: "{{ running_jails_jid }}"
+
+        - name: "Debug update repos debug={{ debug }}"
+          when: debug | bool
+          ansible.builtin.debug:
+            var: out
+
+      rescue:
+
+        - name: "Update failed."
+          ansible.builtin.debug:
+            msg: |
+              {{ ansible_failed_task }}
+              {{ ansible_failed_result }}
+
+        - name: "End of the host."
+          ansible.builtin.meta: end_host

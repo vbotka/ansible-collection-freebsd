@@ -1,35 +1,233 @@
-PLAY [Test role vbotka.freebsd.packages.] *****************************************************
 
-TASK [Gathering Facts] ************************************************************************
-ok: [afa9e515]
-ok: [c1670497]
-ok: [test_111]
+PLAY [Test role vbotka.freebsd.packages.] **************************************
 
-TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] ********************************
-ok: [afa9e515]
-ok: [c1670497]
-ok: [test_111]
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
 
-TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ***********************************
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [iocage_02]
 
-  ...
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [iocage_02] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
 
-TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ******************************************
-ok: [test_111]
-ok: [afa9e515]
-ok: [c1670497]
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
 
-TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] *************************
-ok: [afa9e515] => 
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
+ok: [iocage_02] => 
     pkg_audit:
-        afa9e515:
-            pkg_count: 0
-        c1670497:
-            pkg_count: 0
-        test_111:
-            pkg_count: 0
+        iocage_02:
+            packages:
+                cups:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.4.11
+                        cve:
+                        - CVE-2024-47176
+                        - CVE-2024-47175
+                        - CVE-2024-47076
+                        description: cups-filters -- remote code execution
+                        url: https://vuxml.FreeBSD.org/freebsd/24375796-7cbc-11ef-a3a9-001cc0382b2f.html
+                    reverse dependencies:
+                    - gtk3
+                    version: 2.4.10_1
+                emacs-nox:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 30.1,3
+                        cve:
+                        - CVE-2025-1244
+                        description: Emacs -- Arbitrary code execution vulnerability
+                        url: https://vuxml.FreeBSD.org/freebsd/e60e538f-e795-4a00-b475-cc85a7546e00.html
+                    reverse dependencies: []
+                    version: 29.4,3
+                expat:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.6.3
+                        cve:
+                        - CVE-2024-45492
+                        - CVE-2024-45491
+                        - CVE-2024-45490
+                        description: expat -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/ca5f3bbc-7a62-11ef-9533-f875a43e1796.html
+                    reverse dependencies:
+                    - mesa-dri
+                    - xorg-server
+                    - nvidia-driver-304
+                    - mesa-libs
+                    - git
+                    - py311-iocage
+                    - apache24
+                    - mod_php83
+                    - apr
+                    - dbus-glib
+                    - avahi-app
+                    - cups
+                    - gtk3
+                    - fontconfig
+                    - ffmpeg
+                    - libass
+                    - librsvg2-rust
+                    - pango
+                    - cairo
+                    - libXft
+                    - dbus
+                    - at-spi2-core
+                    - colord
+                    - polkit
+                    - wayland
+                    - libva
+                    - vulkan-loader
+                    - libplacebo
+                    - libxkbcommon
+                    version: 2.6.2
+                git:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.48.1
+                        cve:
+                        - CVE-2024-52006
+                        - CVE-2024-50349
+                        description: git -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/3445e4b6-d2b8-11ef-9ff3-43c2b5d6c4c8.html
+                    reverse dependencies:
+                    - py311-iocage
+                    version: 2.46.0
+                openssl:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.0.15_1,1
+                        cve:
+                        - CVE-2024-9143
+                        description: OpenSSL -- OOB memory access vulnerability
+                        url: https://vuxml.FreeBSD.org/freebsd/c6f4177c-8e29-11ef-98e7-84a93843eb75.html
+                    reverse dependencies:
+                    - ssmtp
+                    - mod_php83
+                    - acme-tiny
+                    - git
+                    - py311-iocage
+                    - wget
+                    - rsync
+                    - rsnapshot
+                    - apache24
+                    - apr
+                    - curl
+                    - rust
+                    - libevent
+                    - avahi-app
+                    - cups
+                    - gtk3
+                    - ruby
+                    - portupgrade
+                    - ruby32-bdb
+                    - p5-Net-SSLeay
+                    - p5-IO-Socket-SSL
+                    - libssh2
+                    - db18
+                    - py311-cryptography
+                    - py311-dnspython
+                    - py311-aioquic
+                    - py311-service-identity
+                    - py311-certbot
+                    - py311-openssl
+                    - py311-acme
+                    - py311-josepy
+                    - py311-ansible-core
+                    - py311-ansible-lint
+                    - py311-ansible-compat
+                    - py311-ansible
+                    - py311-ansible-runner
+                    version: 3.0.14,1
+                py311-Jinja2:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.1.4
+                        cve:
+                        - CVE-2024-34064
+                        description: Jinja2 -- Vulnerable to HTML attribute injection
+                            when passing user input as keys to xmlattr filter
+                        url: https://vuxml.FreeBSD.org/freebsd/04c9c3f8-5ed3-11ef-8262-b0416f0c4c67.html
+                    reverse dependencies:
+                    - py311-ansible-core
+                    - py311-ansible-lint
+                    - py311-ansible-compat
+                    - py311-ansible
+                    - py311-ansible-runner
+                    version: 3.1.3
+                py311-configobj:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - <= 5.0.8
+                        cve:
+                        - CVE-2023-26112
+                        description: Configobj -- Regular Expression Denial of Service
+                            attack
+                        url: https://vuxml.FreeBSD.org/freebsd/46419e8c-65d9-11ef-ac06-b0416f0c4c67.html
+                    reverse dependencies:
+                    - py311-certbot
+                    version: 5.0.8
+                rsync:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.4.0
+                        cve:
+                        - CVE-2024-12747
+                        - CVE-2024-12088
+                        - CVE-2024-12087
+                        - CVE-2024-12086
+                        - CVE-2024-12085
+                        - CVE-2024-12084
+                        description: rsync -- Multiple security fixes
+                        url: https://vuxml.FreeBSD.org/freebsd/163edccf-d2ba-11ef-b10e-589cfc10a551.html
+                    reverse dependencies:
+                    - rsnapshot
+                    version: 3.3.0
+                xorg-server:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 21.1.16,1
+                        cve:
+                        - CVE-2025-26601
+                        - CVE-2025-26600
+                        - CVE-2025-26599
+                        - CVE-2025-26598
+                        - CVE-2025-26597
+                        - CVE-2025-26596
+                        - CVE-2025-26595
+                        - CVE-2025-26594
+                        description: xorg server -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/f4297478-fa62-11ef-b597-001fc69cd6dc.html
+                    reverse dependencies:
+                    - nvidia-driver-304
+                    version: 21.1.14,1
+            pkg_count: 9
 
-PLAY RECAP ************************************************************************************
-afa9e515: ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-c1670497: ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111: ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

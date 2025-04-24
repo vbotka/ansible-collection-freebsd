@@ -1,21 +1,12 @@
-(env) > ansible-playbook pb-iocage-ansible-clients.yml -i iocage-hosts.ini \
-                                                       -l iocage_02 \
-						       -t clone \
-						       -e clone=true
 
-PLAY [Create and start jails. Optionally stop and destroy jails.] ******************************
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Create clones from template] *************************************************************
+TASK [Create clones from template] *********************************************
 changed: [iocage_02] => (item=test_111 ansible_client)
 
-TASK [Debug clones from template debug2=False] *************************************************
-skipping: [iocage_02]
-
-TASK [Start clones] ****************************************************************************
+TASK [Start clones] ************************************************************
 changed: [iocage_02] => (item=test_111)
 
-TASK [Debug start clones debug2=False] *********************************************************
-skipping: [iocage_02]
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 
-PLAY RECAP *************************************************************************************
-iocage_02: ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0

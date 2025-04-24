@@ -5,6 +5,32 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.0
+======
+
+Release Summary
+---------------
+Major release. Tested with 13.5 and 14.2
+
+Major Changes
+-------------
+* Docs examples updated to 13.5 and 14.2
+
+Minor Changes
+-------------
+* Update galaxy.yml; Do not distribute roles/\*/docs"
+* Update module ucl.py
+* Fix docs pygments.
+* Update module service:
+  _parse_command_output returns 'void' when stdout is empty.
+* Update playbooks. Replace dash by undescore in files and directories.
+* Add roles: info, network, rsnapshot
+* Add playbooks:
+  pb_iocage_destroy_all_jails.yml
+  pb_iocage_start_all_jails.yml
+  pb_iocage_update_repos.yml
+
+
 0.6.11
 ======
 

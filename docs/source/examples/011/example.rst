@@ -3,7 +3,7 @@
 011 Display variables iocage_*
 ------------------------------
 
-Extending example 010.
+Extending example :ref:`example_010`.
 
 .. contents:: Table of Contents
    :local:
@@ -20,7 +20,7 @@ Extending example 010.
 Use case
 ^^^^^^^^
 
-Display all variables *iocage_\** created by the `inventory plugin vbotka.freebsd.iocage`_ plugin.
+Display all variables *iocage_\** created by the `inventory plugin vbotka.freebsd.iocage`_.
 
 Tree
 ^^^^
@@ -49,25 +49,29 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 	       
 Inventory *iocage.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage.yml
-    :language: yaml
+   :language: yaml
 
 Playbook *pb-vars-all.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-all.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display iocage_* vars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
+  (env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_113
+
 .. literalinclude:: out/out-01.txt
-    :language: yaml
+   :language: yaml
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

@@ -1,7 +1,3 @@
-(env) > date +%r; \
-        ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-        ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
-
 13:49:31
 
 PLAY [all] ************************************************************ 13:49:35

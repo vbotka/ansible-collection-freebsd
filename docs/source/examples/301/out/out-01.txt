@@ -1,9 +1,10 @@
-PLAY [Test module vbotka.freebsd.ucl] **********************************************************
 
-TASK [Get /etc/pkg/FreeBSD.conf] ***************************************************************
+PLAY [Test module vbotka.freebsd.ucl] ******************************************
+
+TASK [Get /etc/pkg/FreeBSD.conf] ***********************************************
 ok: [iocage_03]
 
-TASK [ansible.builtin.debug] *******************************************************************
+TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_03] => 
     out.stdout: |-
         FreeBSD {
@@ -14,13 +15,14 @@ ok: [iocage_03] =>
             enabled = true;
         }
 
-TASK [Get FreeBSD repository url] **************************************************************
+TASK [Get FreeBSD repository url.] *********************************************
 ok: [iocage_03]
 
-TASK [ansible.builtin.debug] *******************************************************************
+TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_03] => 
     out.stdout: |-
         "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly"
 
-PLAY RECAP *************************************************************************************
-iocage_03: ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_03                  : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

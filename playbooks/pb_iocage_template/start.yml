@@ -1,0 +1,37 @@
+---
+- name: Set iocage_jails.
+  when: iocage_jails is undefined
+  block:
+
+    - name: "Start: Get iocage list of jails."
+      register: out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
+    - name: "Start: Set dictionary iocage_jails"
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+
+- name: "Start: Display iocage_jails debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: iocage_jails
+
+- name: Start created templates.
+  when: _jails | length > 0
+  vars:
+    jails_started: "{{ iocage_jails | dict2items
+                                    | selectattr('value.state', 'eq', 'up')
+                                    | map(attribute='key') }}"
+    _jails: "{{ templates | difference(jails_started) }}"
+  block:
+
+    - name: "Start: Start jails."
+      register: out
+      changed_when: false
+      ansible.builtin.command: "iocage start {{ _jails | join(' ') }}"
+
+    - name: "Start: Debug start jails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

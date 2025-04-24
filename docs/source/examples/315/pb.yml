@@ -1,0 +1,6 @@
+- name: Test role vbotka.freebsd.network
+  hosts: iocage
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.network

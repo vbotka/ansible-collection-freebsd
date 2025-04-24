@@ -1,0 +1,19 @@
+---
+- name: "Vars: Include OS vars."
+  block:
+
+    - name: "Vars: Set variables for al_include_os_vars_path"
+      ansible.builtin.set_fact:
+        al_os_vars_path: "{{ role_path }}"
+
+    - name: "Vars: Include OS vars"
+      ansible.builtin.include_role:
+        name: vbotka.ansible_lib
+        tasks_from: al_include_os_vars_path
+
+- name: "Vars: Create template specific vars."
+  when: rsnapshot_config_template in rsnapshot_config_template_vars
+  ansible.builtin.include_tasks:
+    file: "{{ rsnapshot_config_template_vars[rsnapshot_config_template] }}"
+
+# EOF

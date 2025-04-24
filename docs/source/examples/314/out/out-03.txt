@@ -1,0 +1,18 @@
+
+PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ed8dd59a]
+ok: [d770d5af]
+ok: [9c61e7e2]
+
+TASK [Manage FreeBSD packages] *************************************************
+changed: [ed8dd59a -> iocage_02(10.1.0.73)]
+changed: [9c61e7e2 -> iocage_02(10.1.0.73)]
+changed: [d770d5af -> iocage_02(10.1.0.73)]
+
+PLAY RECAP *********************************************************************
+9c61e7e2                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+d770d5af                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+ed8dd59a                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

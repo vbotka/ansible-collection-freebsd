@@ -1,4 +1,5 @@
-- hosts: iocage
+- name: Iocage list datasets.
+  hosts: iocage
 
   vars:
 
