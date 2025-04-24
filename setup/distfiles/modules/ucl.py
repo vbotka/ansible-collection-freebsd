@@ -45,7 +45,7 @@ attributes:
 extends_documentation_fragment:
   - files
   - validate
-  - community.general.attributes
+  - backup
 
 options:
   path:

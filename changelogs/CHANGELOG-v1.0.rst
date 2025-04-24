@@ -5,6 +5,14 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.1
+======
+
+Release Summary
+---------------
+Fix module ucl documentation.
+
+
 0.7.0
 ======
 
