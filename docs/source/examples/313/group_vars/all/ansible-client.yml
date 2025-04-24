@@ -1,0 +1,11 @@
+properties:
+  notes: "vmm={{ inventory_hostname }}"
+
+swarms:
+  sw_01:
+    count: 3
+    template: ansible_client
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1

@@ -1,4 +1,4 @@
-lighttpd-lighttpdconf:
+lighttpd_lighttpd_conf:
   path: /usr/local/etc/lighttpd/lighttpd.conf
   create: true
   owner: root

@@ -42,8 +42,8 @@ changed: [iocage_02] => (item=ansible_client admin)
 changed: [iocage_03] => (item=ansible_client admin)
 
 TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_01] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
+changed: [iocage_01] => (item=ansible_client admin)
 changed: [iocage_03] => (item=ansible_client admin)
 
 TASK [Pk: Chown .ssh] **********************************************************
@@ -57,17 +57,17 @@ changed: [iocage_02] => (item=ansible_client admin)
 changed: [iocage_03] => (item=ansible_client admin)
 
 TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_02] => (item=ansible_client dhclient-enter-hooks)
 changed: [iocage_01] => (item=ansible_client dhclient-enter-hooks)
-changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
+changed: [iocage_02] => (item=ansible_client dhclient-enter-hooks)
 changed: [iocage_01] => (item=ansible_client dhclient-exit-hooks)
+changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
 changed: [iocage_03] => (item=ansible_client dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
 changed: [iocage_01] => (item=ansible_client iocage_enable "YES")
 changed: [iocage_02] => (item=ansible_client iocage_enable "YES")
-changed: [iocage_02] => (item=ansible_client sshd_enable "YES")
 changed: [iocage_01] => (item=ansible_client sshd_enable "YES")
+changed: [iocage_02] => (item=ansible_client sshd_enable "YES")
 changed: [iocage_03] => (item=ansible_client iocage_enable "YES")
 changed: [iocage_03] => (item=ansible_client sshd_enable "YES")
 

@@ -1,4 +1,4 @@
-- name: Destroy all jails.
+- name: Start all jails.
   hosts: iocage
   environment: "{{ iocage_env | d({}) }}"
 
@@ -13,10 +13,7 @@
     templates: "{{ iocage_jails | dict2items
                                 | selectattr('value.template', 'eq', '-')
                                 | map(attribute='key') }}"
-    clones: "{{ iocage_jails | dict2items
-                             | selectattr('value.template', 'in', templates)
-                             | map(attribute='key') }}"
-    solitaire: "{{ all_jails | difference(templates) | difference(clones) }}"
+    start_jails: "{{ all_jails | difference(templates) | difference(running_jails) }}"
 
   tasks:
 
@@ -31,7 +28,7 @@
           register: out
           ansible.builtin.pause:
             prompt: >
-              All jails on {{ ansible_play_hosts | join(', ') }} will be destroyed.
+              All jails on {{ ansible_play_hosts | join(', ') }} will be started.
               Do you want to proceed? [y/n]
 
         - name: End play.
@@ -67,55 +64,17 @@
         - name: "End of the host."
           ansible.builtin.meta: end_host
 
-    - name: Stop running jails.
-      when: running_jails | length > 0
+    - name: Start all jails.
+      when: start_jails | length > 0
       block:
 
-        - name: "Stop running jails."
+        - name: "Start all jails."
           changed_when: false
-          ansible.builtin.command: "iocage stop -f {{ running_jails | join(' ') }}"
+          ansible.builtin.command: "iocage start {{ start_jails | join(' ') }}"
 
       rescue:
 
-        - name: "Stop running jails failed."
-          ansible.builtin.debug:
-            msg: |
-              {{ ansible_failed_task }}
-              {{ ansible_failed_result }}
-
-        - name: "End of the host."
-          ansible.builtin.meta: end_host
-
-    - name: Destroy templates recursively.
-      when: templates | length > 0
-      block:
-
-        - name: "Destroy templates recursively."
-          changed_when: false
-          ansible.builtin.command: "iocage destroy -f -R {{ templates | join(' ') }}"
-
-      rescue:
-
-        - name: "Destroy templates recursively failed."
-          ansible.builtin.debug:
-            msg: |
-              {{ ansible_failed_task }}
-              {{ ansible_failed_result }}
-
-        - name: "End of the host."
-          ansible.builtin.meta: end_host
-
-    - name: Destroy solitaire jails.
-      when: solitaire | length > 0
-      block:
-
-        - name: "Destroy solitaire jails."
-          changed_when: false
-          ansible.builtin.command: "iocage destroy -f {{ solitaire | join(' ') }}"
-
-      rescue:
-
-        - name: "Destroy solitaire jails failed."
+        - name: "Start all jails failed."
           ansible.builtin.debug:
             msg: |
               {{ ansible_failed_task }}

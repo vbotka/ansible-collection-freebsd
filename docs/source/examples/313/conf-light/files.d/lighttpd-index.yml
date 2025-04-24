@@ -1,4 +1,4 @@
-lighttpd-index:
+lighttpd_index:
   path: "{{ cl_lighttpd_server_document_root }}/index.html"
   owner: "{{ cl_lighttpd_server_username }}"
   group: "{{ cl_lighttpd_server_groupname }}"

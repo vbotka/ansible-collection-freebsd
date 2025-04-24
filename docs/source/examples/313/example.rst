@@ -14,8 +14,8 @@
 Use case
 ^^^^^^^^
 
-Install and configure `lighttpd`_ in Ansible clients using the role
-`vbotka.freebsd.config_light`_.
+Create 3 jails (Ansible clients) at iocage host. Install and configure
+`lighttpd`_ in Ansible clients using the role `vbotka.freebsd.config_light`_.
 
 Tree
 ^^^^
@@ -28,8 +28,8 @@ Tree
   ├── conf-light/
   │   ├── files.d
   │   │   ├── lighttpd-index.yml
-  │   │   ├── lighttpd-lighttpdconf.yml
-  │   │   └── lighttpd-rcconf.yml
+  │   │   ├── lighttpd-lighttpd-annotated-conf.yml
+  │   │   └── lighttpd-lighttpd-conf.yml
   │   ├── handlers.d
   │   │   └── lighttpd-freebsd.yml
   │   ├── packages.d
@@ -40,12 +40,18 @@ Tree
   │       └── lighttpd-server-document-root.yml
   ├── group_vars
   │   └── all
+  │       ├── ansible-client.yml
   │       ├── cl-common.yml
   │       ├── cl-lighttpd.yml
   │       └── common.yml
   ├── hosts
   │   ├── 02_iocage.yml
   │   └── 99_constructed.yml
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   └── iocage_02
+  │       └── iocage.yml
   ├── iocage-hosts.ini
   └── pb.yml
 
@@ -57,9 +63,7 @@ In the playbook *pb.yml* at the jails install and configure `lighttpd`_.
 Requirements
 ^^^^^^^^^^^^
 
-* Running jails at the iocage host.
-* Updated FreeBSD repository catalogue. See the playbook *pb-pkg-update.yml* in
-  :ref:`example_311`
+* Templates created in :ref:`example_205`
 
 Notes
 ^^^^^
@@ -86,7 +90,7 @@ Notes
       name:
         - www/lighttpd
 
-* The playbook *pb-pkg-update.yml* in :ref:`example_311` updates the
+* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the
   repositories. Then, use the `cached`_ local package base instead of fetching
   an updated one ::
 
@@ -113,12 +117,6 @@ Notes
    * documentation `Ansible role Config Light`_
    * module `community.general.pkgng`_
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: out/out-01.txt
-    :language: bash
-
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -126,12 +124,11 @@ Do not display skipped hosts. See the option `display_skipped_hosts`_
 
 .. literalinclude:: ansible.cfg
     :language: ini
-    :caption:
 
-Configuration group_vars/all/
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/common.yml
+.. literalinclude:: group_vars/all/ansible-client.yml
     :language: yaml
     :caption:
 .. literalinclude:: group_vars/all/cl-common.yml
@@ -140,6 +137,54 @@ Configuration group_vars/all/
 .. literalinclude:: group_vars/all/cl-lighttpd.yml
     :language: yaml
     :caption:
+.. literalinclude:: group_vars/all/common.yml
+    :language: yaml
+    :caption:
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_01/iocage.yml
+    :language: yaml
+    :caption:
+
+.. literalinclude:: host_vars/iocage_02/iocage.yml
+    :language: yaml
+    :caption:
+
+Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                           -i iocage-hosts.ini \
+                           -l iocage_02 \
+                           -t swarm \
+                           -e swarm=true
+
+.. literalinclude:: out/out-11.txt
+    :language: bash
+
+Update repos
+^^^^^^^^^^^^
+
+::
+
+  ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
+
+.. literalinclude:: out/out-12.txt
+    :language: bash
+
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
+    :language: bash
 
 Configuration conf-light/
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -147,10 +192,10 @@ Configuration conf-light/
 .. literalinclude:: conf-light/files.d/lighttpd-index.yml
     :language: yaml
     :caption:
-.. literalinclude:: conf-light/files.d/lighttpd-lighttpdconf.yml
+.. literalinclude:: conf-light/files.d/lighttpd-lighttpd-annotated-conf.yml
     :language: yaml
     :caption:
-.. literalinclude:: conf-light/files.d/lighttpd-rcconf.yml
+.. literalinclude:: conf-light/files.d/lighttpd-lighttpd-conf.yml
     :language: yaml
     :caption:
 .. literalinclude:: conf-light/handlers.d/lighttpd-freebsd.yml
@@ -166,8 +211,14 @@ Configuration conf-light/
     :language: yaml
     :caption:
 
-Inventory hosts/
-^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: yaml
+
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
     :language: yaml
@@ -179,7 +230,11 @@ Inventory hosts/
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-03.txt
+::
+
+  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+
+.. literalinclude:: out/out-02.txt
     :language: bash
 
 Playbook pb.yml
@@ -187,89 +242,16 @@ Playbook pb.yml
 
 .. literalinclude:: pb.yml
     :language: yaml
-    :caption:
 
+Playbook output
+^^^^^^^^^^^^^^^
 
-Playbook output - setup
-^^^^^^^^^^^^^^^^^^^^^^^
+The inventory *iocage-hosts.ini* is needed to delegate the tasks 'Manage FreeBSD
+packages' from the jails to their iocage hosts.
 
-.. code:: bash
+::
 
-   (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
-
-.. literalinclude:: out/out-04.txt
-    :language: yaml
-
-.. note::
-
-   * The tasks *vars* are tagged ``always``
-
-Playbook output - sanity
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-   (env) > ansible-playbook pb.yml -i hosts -t cl_sanity -e cl_sanity=true
-
-.. literalinclude:: out/out-05.txt
-    :language: yaml
-
-Playbook output - debug
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Enable debug and limit the inventory to one jail *test_111*. The
-repeated output of *Vars-\** was removed.
-
-.. code:: bash
-
-   (env) > ansible-playbook pb.yml -i hosts -l test_111 -t cl_debug -e cl_debug=true
-
-.. literalinclude:: out/out-06.txt
-    :language: yaml
-
-
-Playbook output - install packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The inventory *iocage-hosts.ini* is needed to delegate the tasks
-'Manage FreeBSD packages' to the iocage hosts.
-
-.. code:: bash
-
-   (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini -t cl_packages -e cl_install=true
-
-.. literalinclude:: out/out-07.txt
-    :language: yaml
-
-
-Playbook output - files states
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-   (env) > ansible-playbook pb.yml -i hosts -t cl_states
-
-.. literalinclude:: out/out-08.txt
-    :language: yaml
-
-
-Playbook output - files
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-   (env) > ansible-playbook pb.yml -i hosts -t cl_files
-
-.. literalinclude:: out/out-09.txt
-    :language: yaml
-
-
-Playbook output - services
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-   (env) > ansible-playbook pb.yml -i hosts -t cl_services
+  (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-10.txt
     :language: yaml
@@ -281,14 +263,6 @@ Results
 Open the page in a browser. For example, http://10.1.0.111/. The content should be ::
 
   Lighttpd works!
-
-.. hint::
-
-   If you know what you are doing skip the above selection of particular tags
-   and run the complete role at once ::
-
-     (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini \
-                                     -e cl_setup=true -e cl_sanity=true -e cl_install=true
 
 .. note::
 
@@ -319,6 +293,8 @@ Open the page in a browser. For example, http://10.1.0.111/. The content should 
 .. _Ansible role Config Light: https://ansible-config-light.readthedocs.io/en/latest/index.html
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.config_light: https://galaxy.ansible.com/ui/standalone/roles/vbotka/config_light/
+.. _vbotka.freebsd.pb_iocage_start_all_jails: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_start_all_jails.yml/
+.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html

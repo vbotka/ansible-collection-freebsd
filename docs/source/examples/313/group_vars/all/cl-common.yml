@@ -1,8 +1,3 @@
-cl_sanity: false
-cl_setup: false
-cl_install: false
-cl_backup: true
-
 cl_dird_group: adm
 cl_dird_dmode: "0770"
 cl_dird: "{{ playbook_dir }}/conf-light"

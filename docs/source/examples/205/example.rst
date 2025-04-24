@@ -50,7 +50,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_03
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  └── iocage-hosts.ini
 
 Synopsis
 ^^^^^^^^

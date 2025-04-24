@@ -25,7 +25,10 @@ Minor Changes
   _parse_command_output returns 'void' when stdout is empty.
 * Update playbooks. Replace dash by undescore in files and directories.
 * Add roles: network, rsnapshot.
-* Add playbook pb_iocage_destroy_all_jails.yml
+* Add playbooks:
+  pb_iocage_destroy_all_jails.yml
+  pb_iocage_start_all_jails.yml
+  pb_iocage_update_repos.yml
 
 
 0.6.11
