@@ -5,8 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.4
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 0.7.3
-======
+=====
 
 Release Summary
 ---------------
@@ -14,7 +28,7 @@ Update role network.
 
 
 0.7.2
-======
+=====
 
 Release Summary
 ---------------
@@ -22,7 +36,7 @@ Remove role info.
 
 
 0.7.1
-======
+=====
 
 Release Summary
 ---------------
@@ -30,7 +44,7 @@ Fix module ucl documentation.
 
 
 0.7.0
-======
+=====
 
 Release Summary
 ---------------
