@@ -5,6 +5,14 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.3
+======
+
+Release Summary
+---------------
+Update role network.
+
+
 0.7.2
 ======
 
