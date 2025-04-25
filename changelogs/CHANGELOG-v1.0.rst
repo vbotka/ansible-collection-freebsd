@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-
+* Update .gitignore tests/output
 
 0.7.3
 =====
