@@ -36,16 +36,10 @@ short_description: Manage FreeBSD UCL config files
 description: A CRUD-like interface for managing UCL files.
 version_added: '0.6.11'
 
-attributes:
-  check_mode:
-    support: full
-  diff_mode:
-    support: full
-
 extends_documentation_fragment:
-  - files
-  - validate
-  - backup
+  - ansible.builtin.files
+  - ansible.builtin.validate
+  - ansible.builtin.backup
 
 options:
   path:
