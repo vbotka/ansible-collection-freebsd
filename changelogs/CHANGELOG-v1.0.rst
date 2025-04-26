@@ -17,7 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Update module ucl
 * Update .gitignore tests/output
+
 
 0.7.3
 =====
