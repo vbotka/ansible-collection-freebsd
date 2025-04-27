@@ -5,7 +5,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/vbotka/ansible-collection-freebsd)](https://codecov.io/gh/vbotka/ansible-collection-freebsd)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-collection-freebsd)](https://github.com/vbotka/ansible-collection-freebsd/tags)
 
-[Ansible collection vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+[Ansible collection vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd)
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-collection-freebsd/issues).
 
