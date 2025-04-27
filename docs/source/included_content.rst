@@ -4,7 +4,7 @@ Plugins:
 * `module vbotka.freebsd.iocage`_
 * `module vbotka.freebsd.service`_
 * `module vbotka.freebsd.ucl`_
-* `inventory plugin vbotka.freebsd.iocage`_
+* `inventory vbotka.freebsd.iocage`_
 * `filter vbotka.freebsd.iocage`_
 
 Roles:
@@ -23,7 +23,7 @@ Various :ref:`ug_playbooks`.
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 .. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
 
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 
 .. _role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
