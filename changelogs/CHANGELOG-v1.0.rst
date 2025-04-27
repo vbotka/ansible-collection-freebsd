@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs examples: 313
 
 
 0.7.4

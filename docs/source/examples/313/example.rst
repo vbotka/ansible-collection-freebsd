@@ -245,6 +245,18 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
     :language: yaml
 
+Playbook output - setup
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Assemble data and create handlers.
+
+::
+
+  (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
+
+.. literalinclude:: out/out-03.txt
+    :language: yaml
+
 Playbook output - install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
