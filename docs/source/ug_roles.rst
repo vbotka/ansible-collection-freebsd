@@ -22,19 +22,12 @@ This collection is shipped with the roles:
 .. seealso:: The list of included roles in ``setup/vars/roles_install.yml``
 
 
-Documented standalone roles
----------------------------
+Documented roles
+----------------
 
-Some standalone roles are documented at `readtthedocs.io`_
+Some roles are documented at `readtthedocs.io`_
 
-* `ansible`_
-* `ansible_runner`_
-* `apache`_
-* `config_light`_
-* `freebsd_custom_image`_
-* `freebsd_postinstall`_
-* `freebsd_poudriere`_
-* `freebsd_wpa_cli`_
+.. include:: roles_documented.rst
 
 .. hint::
 
@@ -53,11 +46,3 @@ Some standalone roles are documented at `readtthedocs.io`_
 
 .. _readtthedocs.io: https://rtfd.io/
 
-.. _ansible: https://ansible-ansible.readthedocs.io/en/latest/
-.. _ansible_runner: https://ansible-runner-role.readthedocs.io/en/latest/
-.. _apache: https://ansible-apache.readthedocs.io/en/latest/
-.. _config_light: https://ansible-config-light.readthedocs.io/en/latest/
-.. _freebsd_custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
-.. _freebsd_postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
-.. _freebsd_poudriere: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/
-.. _freebsd_wpa_cli: https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/
