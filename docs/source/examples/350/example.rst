@@ -1,15 +1,15 @@
-.. _example_314:
+.. _example_350:
 
-314 Role vbotka.freebsd.rsnapshot
+350 Role vbotka.freebsd.rsnapshot
 ---------------------------------
 
 .. contents:: Table of Contents
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.rsnapshot; Example 314
-.. index:: single: vbotka.freebsd.rsnapshot; Example 314
-.. index:: single: rsnapshot; Example 314
+.. index:: single: role vbotka.freebsd.rsnapshot; Example 350
+.. index:: single: vbotka.freebsd.rsnapshot; Example 350
+.. index:: single: rsnapshot; Example 350
 
 Use case
 ^^^^^^^^

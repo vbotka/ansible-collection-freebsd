@@ -1,16 +1,16 @@
-.. _example_311:
+.. _example_320:
 
-311 Role vbotka.freebsd.packages
+320 Role vbotka.freebsd.packages
 --------------------------------
 
 .. contents:: Table of Contents
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.packages; Example 311
-.. index:: single: vbotka.freebsd.packages; Example 311
-.. index:: single: audit ansible_client; Example 311
-.. index:: single: display_skipped_hosts; Example 311
+.. index:: single: role vbotka.freebsd.packages; Example 320
+.. index:: single: vbotka.freebsd.packages; Example 320
+.. index:: single: audit ansible_client; Example 320
+.. index:: single: display_skipped_hosts; Example 320
 
 Use case
 ^^^^^^^^
@@ -75,7 +75,7 @@ Notes
 
     pkg_jail: "{{ iocage_jid }}"
 
-* The play *pb-test-01.yml* runs at the jails. The inventory *iocage-hosts.ini*
+  The play *pb-test-01.yml* runs at the jails. The inventory *iocage-hosts.ini*
   is needed when a task is delegated to an iocage host ::
 
     pkg_delegate: "{{ iocage_tags.vmm }}"

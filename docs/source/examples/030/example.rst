@@ -3,7 +3,7 @@
 030 Create custom facts
 -----------------------
 
-Extending example :ref:`example_312`.
+Extending example :ref:`example_330`.
 
 .. contents:: Table of Contents
    :local:

@@ -1,15 +1,15 @@
-.. _example_313:
+.. _example_340:
 
-313 Role vbotka.freebsd.config_light
+340 Role vbotka.freebsd.config_light
 ------------------------------------
 
 .. contents:: Table of Contents
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.config_light; Example 313
-.. index:: single: vbotka.freebsd.config_light; Example 313
-.. index:: single: lighttpd; Example 313
+.. index:: single: role vbotka.freebsd.config_light; Example 340
+.. index:: single: vbotka.freebsd.config_light; Example 340
+.. index:: single: lighttpd; Example 340
 
 Use case
 ^^^^^^^^

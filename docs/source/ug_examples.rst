@@ -10,11 +10,11 @@ Examples
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
 :310:     `Role vbotka.freebsd.postinstall`_
-:311:     `Role vbotka.freebsd.packages`_
-:312:     `Role vbotka.freebsd.iocage`_
-:313:     `Role vbotka.freebsd.config_light`_
-:314:     `Role vbotka.freebsd.rsnapshot`_
-:315:     `Role vbotka.freebsd.network`_
+:320:     `Role vbotka.freebsd.packages`_
+:330:     `Role vbotka.freebsd.iocage`_
+:340:     `Role vbotka.freebsd.config_light`_
+:350:     `Role vbotka.freebsd.rsnapshot`_
+:360:     `Role vbotka.freebsd.network`_
 
 
 .. toctree::
@@ -45,11 +45,11 @@ Examples
    examples/300/example.rst
    examples/301/example.rst
    310 Configure and audit Ansible clients <examples/310/example.rst>
-   311 Install and audit packages <examples/311/example.rst>
-   312 Clone jails and create inventory <examples/312/example.rst>
-   313 Install and configure lighttpd <examples/313/example.rst>
-   314 Install and configure rsnapshot <examples/314/example.rst>
-   315 Configure network <examples/315/example.rst>
+   320 Install and audit packages <examples/320/example.rst>
+   330 Clone jails and create inventory <examples/330/example.rst>
+   340 Install and configure lighttpd <examples/340/example.rst>
+   350 Install and configure rsnapshot <examples/350/example.rst>
+   360 Configure network <examples/360/example.rst>
 
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

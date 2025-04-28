@@ -1,15 +1,15 @@
-.. _example_315:
+.. _example_360:
 
-315 Role vbotka.freebsd.network
+360 Role vbotka.freebsd.network
 -------------------------------
 
 .. contents:: Table of Contents
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.network; Example 315
-.. index:: single: vbotka.freebsd.network; Example 315
-.. index:: single: network; Example 315
+.. index:: single: role vbotka.freebsd.network; Example 360
+.. index:: single: vbotka.freebsd.network; Example 360
+.. index:: single: network; Example 360
 
 Use case
 ^^^^^^^^
