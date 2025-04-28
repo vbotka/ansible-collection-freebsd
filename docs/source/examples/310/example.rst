@@ -17,7 +17,7 @@ Use case
 Audit basic configuration of Ansible clients using the role
 `vbotka.freebsd.postinstall`_. The role is idempotent. Successful result means
 no changes are reported. Implement the same configuration as the example
-:ref:`example_202`.
+:ref:`example_200`.
 
 Tree
 ^^^^
