@@ -1,0 +1,22 @@
+# role network
+fn_gateway_enable: true
+fn_defaultrouter: 10.1.0.10
+
+fn_cloned_interfaces:
+  - interface: lagg0
+fn_interfaces:
+  - {interface: em0, options: up}
+  - {interface: ue0, options: up}
+  - {interface: ue1, options: up}
+  - {interface: lagg0, options: 'laggproto loadbalance laggport em0 laggport ue0 laggport ue1 10.1.0.17/24'}
+
+# role postinstall
+fp_resolvconf: true
+
+fp_resolvconf_conf_clean: false
+fp_resolvconf_conf:
+  - {key: resolvconf, value: "NO"}
+
+fp_resolv_conf_clean: false
+fp_resolv_conf:
+  - {key: nameserver, value: 10.1.0.1}

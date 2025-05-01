@@ -17,7 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Update docs examples: 313
+* Add docs examples: 361
+* Update docs examples: 330
 
 
 0.7.4

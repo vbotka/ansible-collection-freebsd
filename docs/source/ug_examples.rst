@@ -9,12 +9,12 @@ Examples
 :200-:    Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
-:310:     `Role vbotka.freebsd.postinstall`_
-:320:     `Role vbotka.freebsd.packages`_
-:330:     `Role vbotka.freebsd.iocage`_
-:340:     `Role vbotka.freebsd.config_light`_
-:350:     `Role vbotka.freebsd.rsnapshot`_
-:360:     `Role vbotka.freebsd.network`_
+:310-:     `Role vbotka.freebsd.postinstall`_
+:320-:     `Role vbotka.freebsd.packages`_
+:330-:     `Role vbotka.freebsd.iocage`_
+:340-:     `Role vbotka.freebsd.config_light`_
+:350-:     `Role vbotka.freebsd.rsnapshot`_
+:360-:     `Role vbotka.freebsd.network`_
 
 
 .. toctree::
@@ -50,6 +50,7 @@ Examples
    340 Install and configure lighttpd <examples/340/example.rst>
    350 Install and configure rsnapshot <examples/350/example.rst>
    360 Configure network <examples/360/example.rst>
+   361 Configure loadbalance <examples/361/example.rst>
 
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

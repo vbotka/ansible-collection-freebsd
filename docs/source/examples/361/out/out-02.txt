@@ -1,0 +1,30 @@
+
+PLAY [Test role vbotka.freebsd.network] ****************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_03]
+
+TASK [vbotka.freebsd_network : Interfaces: Configure interfaces options in /etc/rc.conf] ***
+changed: [iocage_03] => (item={'interface': 'em0', 'options': 'up'})
+changed: [iocage_03] => (item={'interface': 'ue0', 'options': 'up'})
+changed: [iocage_03] => (item={'interface': 'ue1', 'options': 'up'})
+changed: [iocage_03] => (item={'interface': 'lagg0', 'options': 'laggproto loadbalance laggport em0 laggport ue0 laggport ue1 10.1.0.17/24'})
+
+TASK [vbotka.freebsd_network : Cloned-interfaces: Configure cloned_interfaces in /etc/rc.conf] ***
+changed: [iocage_03]
+
+TASK [vbotka.freebsd_network : Routing: Set defaultrouter in /etc/rc.conf] *****
+ok: [iocage_03]
+
+TASK [vbotka.freebsd_network : Routing: Set gateway_enable=YES in /etc/rc.conf] ***
+ok: [iocage_03]
+
+TASK [vbotka.freebsd_network : Routing: Remove list of static routes from /etc/rc.conf] ***
+ok: [iocage_03]
+
+RUNNING HANDLER [vbotka.freebsd_network : Restart netif and routing] ***********
+changed: [iocage_03]
+
+PLAY RECAP *********************************************************************
+iocage_03                  : ok=7    changed=3    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
+
