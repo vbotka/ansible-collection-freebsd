@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_network
-fn_role_version: 2.7.3
+fn_role_version: 2.7.5
 
 fn_debug: false
 fn_backup_conf: false

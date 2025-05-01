@@ -1,0 +1,40 @@
+---
+# Bridging
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-bridging
+# Link Aggregation and Failover
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-aggregation
+# Common Address Redundancy Protocol (CARP)
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#carp
+# Managing Jails
+# https://docs.freebsd.org/en/books/handbook/jails/#jail-managers-and-containers
+
+- name: "Cloned-interfaces: Configure cloned_interfaces in {{ _path }}"
+  when: fn_cloned_interfaces_list | length > 0
+  community.general.sysrc:
+    name: cloned_interfaces
+    value: "{{ fn_cloned_interfaces_list }}"
+
+- name: "Cloned-interfaces: Remove cloned_interfaces from {{ _path }}"
+  when: fn_cloned_interfaces_list | length == 0
+  community.general.sysrc:
+    name: cloned_interfaces
+    state: absent
+
+- name: "Cloned-interfaces: Configure create_args in {{ _path }}"
+  tags: fn_cloned_create_args
+  community.general.sysrc:
+    name: "create_args_{{ item.interface }}"
+    value: "{{ item.create }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_cloned_interfaces_present | selectattr('create', 'defined') }}"
+
+- name: "Cloned-interfaces: Configure interfaces options in {{ _path }}"
+  tags: fn_cloned_ifconfig
+  community.general.sysrc:
+    name: "ifconfig_{{ item.interface }}"
+    value: "{{ item.options }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_cloned_interfaces_present | selectattr('options', 'defined') }}"
+
+# TODO: Remove options and create_args from /etc/rc.conf
+# EOF

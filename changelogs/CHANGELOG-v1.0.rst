@@ -14,6 +14,7 @@ Maintenance update.
 
 Major Changes
 -------------
+* Update roles: network 2.7.5, postinstall 2.7.3
 
 Minor Changes
 -------------

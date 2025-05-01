@@ -105,7 +105,7 @@ bsd_roles:
     name: network
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-network
-    version: 2.7.4
+    version: 2.7.5
   - galaxy: vbotka.freebsd_packages
     name: packages
     scm: git
@@ -130,7 +130,7 @@ bsd_roles:
     name: postinstall
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-postinstall
-    version: 2.7.2
+    version: 2.7.3
   - galaxy: vbotka.freebsd_poudriere
     name: poudriere
     scm: git

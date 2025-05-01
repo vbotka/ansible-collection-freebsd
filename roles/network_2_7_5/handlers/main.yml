@@ -1,6 +1,10 @@
 ---
 # handlers for freebsd_network
 
+- name: Restart netif and routing # noqa: command-instead-of-module no-changed-when
+  listen: restart netif and routing
+  ansible.builtin.shell: 'service netif restart && service routing restart'
+
 - name: Restart netif
   listen: restart netif
   vbotka.freebsd.service:

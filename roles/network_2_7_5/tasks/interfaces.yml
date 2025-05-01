@@ -2,7 +2,6 @@
 # TODO: Remove items from /etc/rc.conf if state not present.
 
 - name: "Interfaces: Configure wlans in {{ _path }}"
-  notify: restart netif
   tags: fn_wlans
   community.general.sysrc:
     name: "wlans_{{ item.device }}"
@@ -11,7 +10,6 @@
   loop: "{{ fn_wlans }}"
 
 - name: "Interfaces: Configure interfaces create_args in {{ _path }}"
-  notify: restart netif
   tags: fn_create_args
   community.general.sysrc:
     name: "create_args_{{ item.interface }}"
@@ -20,8 +18,7 @@
   loop: "{{ fn_interfaces | selectattr('create', 'defined') }}"
 
 - name: "Interfaces: Configure interfaces options in {{ _path }}"
-  notify: restart netif
-  tags: fn_ifconfig
+  tags: fn_ifconfig_interface
   community.general.sysrc:
     name: "ifconfig_{{ item.interface }}"
     value: "{{ item.options }}"
@@ -29,8 +26,7 @@
   loop: "{{ fn_interfaces | selectattr('options', 'defined') }}"
 
 - name: "Interfaces: Configure interface aliases in {{ _path }}"
-  notify: restart netif
-  tags: fn_aliases_ifconfig
+  tags: fn_ifconfig_aliases
   community.general.sysrc:
     name: "ifconfig_{{ item.0.interface }}_{{ item.1.alias }}"
     value: "{{ item.1.options }}"

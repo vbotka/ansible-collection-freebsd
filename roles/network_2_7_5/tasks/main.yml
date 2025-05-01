@@ -13,34 +13,22 @@
   module_defaults:
     community.general.sysrc:
       path: "{{ _path }}"
-  tags: fn_netif
   block:
 
     - name: Interfaces
+      notify: restart netif and routing
       tags: fn_interfaces
       ansible.builtin.import_tasks: interfaces.yml
 
     - name: Cloned interfaces
+      notify: restart netif and routing
       tags: fn_cloned_interfaces
       ansible.builtin.import_tasks: cloned-interfaces.yml
 
-# - ansible.builtin.import_tasks: vlans.yml
-#   tags: fn_vlans
-
-# - ansible.builtin.import_tasks: ipv6.yml
-#   tags: fn_ipv6
-
-
-- name: Routing
-  vars:
-    _rcconfd_path: "{{ fn_rcconfd_dir }}/routing"
-    _path: "{{ fn_rcconfd | bool | ternary(_rcconfd_path, '/etc/rc.conf') }}"
-  module_defaults:
-    community.general.sysrc:
-      path: "{{ _path }}"
-  notify: restart routing
-  tags: fn_routing
-  ansible.builtin.import_tasks: routing.yml
+    - name: Routing
+      notify: restart routing
+      tags: fn_routing
+      ansible.builtin.import_tasks: routing.yml
 
 - name: Ethname
   when: fn_ethname | bool
@@ -52,5 +40,11 @@
       path: "{{ _path }}"
   tags: fn_ethname
   ansible.builtin.import_tasks: ethname.yml
+
+# - ansible.builtin.import_tasks: vlans.yml
+#   tags: fn_vlans
+
+# - ansible.builtin.import_tasks: ipv6.yml
+#   tags: fn_ipv6
 
 # EOF
