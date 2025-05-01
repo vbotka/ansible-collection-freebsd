@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Add docs examples: 361
 * Update docs examples: 330
+* Fix playbooks lint errors: run-once
 
 
 0.7.4
