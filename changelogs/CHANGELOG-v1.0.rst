@@ -14,12 +14,13 @@ Maintenance update.
 
 Major Changes
 -------------
-* Update roles: network 2.7.5, postinstall 2.7.3
 
 Minor Changes
 -------------
+* Add role: pf 2.7.4
+* Update roles: network 2.7.5, postinstall 2.7.3
 * Add docs examples: 361
-* Update docs examples: 330
+* Update docs examples: 202, 203, 330
 * Fix playbooks lint errors: run-once
 
 
