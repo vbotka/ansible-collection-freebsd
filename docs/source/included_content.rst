@@ -13,6 +13,7 @@ Roles:
 * `role vbotka.freebsd.iocage`_
 * `role vbotka.freebsd.network`_
 * `role vbotka.freebsd.packages`_
+* `role vbotka.freebsd.pf`_
 * `role vbotka.freebsd.postinstall`_
 * `role vbotka.freebsd.rsnapshot`_
 
@@ -30,5 +31,6 @@ Various :ref:`ug_playbooks`.
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
+.. _Role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
 .. _role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
