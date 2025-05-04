@@ -1,7 +1,7 @@
 .. _example_360:
 
-360 Role vbotka.freebsd.network
--------------------------------
+360 Configure NICs
+------------------
 
 .. contents:: Table of Contents
    :local:
@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Configure network using the role `vbotka.freebsd.network`_
+Configure NICs using the role `vbotka.freebsd.network`_
 
 Tree
 ^^^^

@@ -1,0 +1,34 @@
+# Ansible managed
+# template: default2-pf.conf.j2
+
+# MACROS
+ext_if = "em0"
+localnet = "10.1.0.0/24"
+logall = "log"
+icmp_types = "{ echoreq, unreach }"
+icmp6_types = "{ echoreq, unreach }"
+
+# TABLES
+table <sshabuse> persist
+
+# OPTIONS
+set skip on lo0
+set block-policy return
+set loginterface $ext_if
+
+# NORMALIZATION
+scrub in on $ext_if all fragment reassemble
+
+# TRANSLATION
+nat on $ext_if from $localnet to any -> ($ext_if)
+
+# FILTERING
+antispoof for $ext_if
+anchor "blacklistd/*" in on $ext_if
+anchor "f2b/*"
+block $logall all
+pass inet proto icmp icmp-type $icmp_types
+pass inet6 proto icmp6 icmp6-type $icmp6_types
+pass from { self, $localnet } to any keep state
+
+# EOF

@@ -50,8 +50,9 @@ Examples
    330 Clone jails and create inventory <examples/330/example.rst>
    340 Install and configure lighttpd <examples/340/example.rst>
    350 Install and configure rsnapshot <examples/350/example.rst>
-   360 Configure network <examples/360/example.rst>
-   361 Configure loadbalance <examples/361/example.rst>
+   examples/360/example.rst
+   examples/361/example.rst
+   examples/370/example.rst
 
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

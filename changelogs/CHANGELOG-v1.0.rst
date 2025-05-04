@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Maintenance update.
+Maintenance update. Add role pf.
 
 Major Changes
 -------------
@@ -19,7 +19,7 @@ Minor Changes
 -------------
 * Add role: pf 2.7.4
 * Update roles: network 2.7.5, postinstall 2.7.3
-* Add docs examples: 361
+* Add docs examples: 361, 370
 * Update docs examples: 202, 203, 330
 * Fix playbooks lint errors: run-once
 
