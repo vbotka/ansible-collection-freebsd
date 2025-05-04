@@ -45,6 +45,12 @@ Notes
 
 TBD
 
+.. note::
+
+   | `vbotka.freebsd.network`_ is the role **network** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
+   | Please make sure the versions are the same before you switch between them.
+
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -85,4 +91,7 @@ Playbook output - configure network
     :language: bash
 
      
-.. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
+.. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network
+.. _vbotka.freebsd_network: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network
+.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289

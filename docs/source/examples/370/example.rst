@@ -61,6 +61,12 @@ Notes
 
 TBD
 
+.. note::
+
+   | `vbotka.freebsd.pf`_ is the role **pf** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd_pf`_ is the role **freebsd_pf** in the namespace `vbotka`_.
+   | Please make sure the versions are the same before you switch between them.
+
 .. seealso::
 
    * FreeBSD Handbook `Firewalls`_
@@ -151,5 +157,8 @@ pf status
     :language: bash
 
      
-.. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
+.. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
+.. _vbotka.freebsd_pf: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_pf
+.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
 .. _Firewalls: https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-intro

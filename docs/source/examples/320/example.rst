@@ -96,17 +96,15 @@ Notes
 
     pkg_cached: true
 
+.. note::
+
+   | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
+   | Please make sure the versions are the same before you switch between them.
+
 .. seealso::
 
    * module `community.general.pkgng`_
-   * role `vbotka.freebsd_packages`_
-
-.. warning::
-
-   * `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_
-   * `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_
-
-   Please make sure the versions are the same before you switch between them.
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
