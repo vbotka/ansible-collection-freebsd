@@ -25,6 +25,7 @@ This collection is shipped with:
 * [role vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - install and configure iocage.
 * [role vbotka.freebsd.network](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/) - configure network.
 * [role vbotka.freebsd.packages](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/) - configure repos and install packages.
+* [role vbotka.freebsd.pf](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/) - configure pf.
 * [role vbotka.freebsd.postinstall](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/) - postinstall configuration.
 * [role vbotka.freebsd.rsnapshot](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/) - install and configure rsnapshot.
 * various playbooks
