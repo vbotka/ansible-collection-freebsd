@@ -1,0 +1,34 @@
+Status: Enabled for 0 days 00:05:12           Debug: Urgent
+
+Interface Stats for em0               IPv4             IPv6
+  Bytes In                           25754                0
+  Bytes Out                          20692                0
+  Packets In
+    Passed                             110                0
+    Blocked                              3                0
+  Packets Out
+    Passed                              80                0
+    Blocked                              0                0
+
+State Table                          Total             Rate
+  current entries                        5               
+  searches                             215            0.7/s
+  inserts                               17            0.1/s
+  removals                              12            0.0/s
+Counters
+  match                                 20            0.1/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                              0            0.0/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  map-failed                             0            0.0/s

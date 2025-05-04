@@ -4,5 +4,6 @@ roles_install:
   - iocage
   - network
   - packages
+  - pf
   - postinstall
   - rsnapshot

@@ -20,7 +20,7 @@
 
   tasks:
 
-    - name: Not in a batch. Confirm to proceed.
+    - name: Not in a batch. Confirm to proceed. # noqa: run-once
       when:
         - not ansible_check_mode
         - not vbotka_freebsd_batch | bool

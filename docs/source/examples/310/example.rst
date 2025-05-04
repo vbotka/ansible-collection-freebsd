@@ -17,7 +17,7 @@ Use case
 Audit basic configuration of Ansible clients using the role
 `vbotka.freebsd.postinstall`_. The role is idempotent. Successful result means
 no changes are reported. Implement the same configuration as the example
-:ref:`example_202`.
+:ref:`example_200`.
 
 Tree
 ^^^^
@@ -74,17 +74,15 @@ Notes
 
 * The public key in *files/pk_admins.txt* is sanitized.
 
+.. note::
+
+   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
+   | Please make sure the versions are the same before you switch between them.
+
 .. seealso::
 
-   * role `vbotka.freebsd_postinstall`_
    * documentation `Ansible role FreeBSD postinstall`_
-
-.. warning::
-
-   * `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_
-   * `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_
-
-   Please make sure the versions are the same before you switch between them.
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^

@@ -9,12 +9,13 @@ Examples
 :200-:    Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
-:310:     `Role vbotka.freebsd.postinstall`_
-:311:     `Role vbotka.freebsd.packages`_
-:312:     `Role vbotka.freebsd.iocage`_
-:313:     `Role vbotka.freebsd.config_light`_
-:314:     `Role vbotka.freebsd.rsnapshot`_
-:315:     `Role vbotka.freebsd.network`_
+:310-:     `Role vbotka.freebsd.postinstall`_
+:320-:     `Role vbotka.freebsd.packages`_
+:330-:     `Role vbotka.freebsd.iocage`_
+:340-:     `Role vbotka.freebsd.config_light`_
+:350-:     `Role vbotka.freebsd.rsnapshot`_
+:360-:     `Role vbotka.freebsd.network`_
+:370-:     `Role vbotka.freebsd.pf`_
 
 
 .. toctree::
@@ -45,11 +46,13 @@ Examples
    examples/300/example.rst
    examples/301/example.rst
    310 Configure and audit Ansible clients <examples/310/example.rst>
-   311 Install and audit packages <examples/311/example.rst>
-   312 Clone jails and create inventory <examples/312/example.rst>
-   313 Install and configure lighttpd <examples/313/example.rst>
-   314 Install and configure rsnapshot <examples/314/example.rst>
-   315 Configure network <examples/315/example.rst>
+   320 Install and audit packages <examples/320/example.rst>
+   330 Clone jails and create inventory <examples/330/example.rst>
+   340 Install and configure lighttpd <examples/340/example.rst>
+   350 Install and configure rsnapshot <examples/350/example.rst>
+   examples/360/example.rst
+   examples/361/example.rst
+   examples/370/example.rst
 
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
@@ -63,5 +66,6 @@ Examples
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
+.. _Role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
 .. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
