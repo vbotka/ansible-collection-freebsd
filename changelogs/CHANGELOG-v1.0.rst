@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add role custom_image
 * Update README.
 
 
