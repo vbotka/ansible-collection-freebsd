@@ -1,0 +1,18 @@
+---
+# Create mountpoints by module file
+cimage_mount_points_create: false
+
+# Mount image
+cimage_mount_dir: /export/images/FreeBSD/live
+
+# cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
+cimage_mount_file: ""
+cimage_mount_mode: "0755"
+cimage_mount_points:
+  - partition: s2a
+    fstype: ufs
+    mountpoint: /mnt3
+
+# This mountpoint is the root of the tree that shall be customized. There can be more partitions
+# mounted to different mountpoints from single image.
+cimage_mount_path: /mnt3

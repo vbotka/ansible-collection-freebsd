@@ -1,0 +1,23 @@
+---
+- name: "Rcconf: Debug cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  vars:
+    msg: |-
+      cimage_rcconf_backup: {{ cimage_rcconf_backup }}
+      cimage_rcconf_data:
+        {{ cimage_rcconf_data | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Rcconf: Configure {{ cimage_mount_path ~ '/etc/rc.conf' }}"
+  ansible.builtin.lineinfile:
+    dest: "{{ cimage_mount_path }}/etc/rc.conf"
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
+    line: "{{ item.key }}={{ item.value }}"
+    owner: root
+    group: wheel
+    mode: "0644"
+    backup: "{{ cimage_rcconf_backup }}"
+  loop: "{{ cimage_rcconf_data }}"
+
+# EOF

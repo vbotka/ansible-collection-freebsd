@@ -1,0 +1,45 @@
+---
+- name: "Umount: Debug cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  vars:
+    msg: |-
+      cimage_mount_points:
+      {{ cimage_mount_points | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Umount: Unmount"
+  register: result
+  ansible.posix.mount:
+    path: "{{ item.mountpoint }}"
+    state: unmounted
+    fstab: /tmp/tmp.fstab # Note 1.
+  loop: "{{ cimage_mount_points }}"
+  loop_control:
+    label: "{{ item.mountpoint }}"
+
+- name: "Umount: Debug unmount results cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  ansible.builtin.debug:
+    var: result
+
+- name: "Umount: Detach memory disk" # noqa: var-naming[no-role-prefix]
+  vars:
+    al_mdconfig_file: "{{ cimage_mount_dir }}/{{ cimage_mount_file }}"
+    al_mdconfig_state: absent
+  ansible.builtin.include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_mdconfig.yml
+
+- name: "Umount: Debug detach memory disk cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  ansible.builtin.debug:
+    var: al_mdconfig_devs
+
+# Notes
+#
+# Note 1: It's not possible to mount a device without touching fstab. Temporary fstab is a
+# workaround.
+# See https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
+
+# EOF

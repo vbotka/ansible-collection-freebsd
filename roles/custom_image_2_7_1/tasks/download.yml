@@ -1,0 +1,97 @@
+---
+- name: "Download: Debug cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  vars:
+    msg: |-
+      cimage_download:
+        {{ cimage_download | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_dir: {{ cimage_dir }}
+      cimage_owner: {{ cimage_owner | d('UNDEFINED') }}
+      cimage_group: {{ cimage_group | d('UNDEFINED') }}
+      cimage_mode: {{ cimage_mode | d('UNDEFINED') }}
+      cimage_mode_dir: {{ cimage_mode_dir | d('UNDEFINED') }}
+      cimage_get_checksums: {{ cimage_get_checksums }}
+      cimage_get_images: {{ cimage_get_images }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Download: Create directory {{ cimage_dir }}"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ cimage_dir }}"
+    owner: "{{ cimage_owner | d(omit) }}"
+    group: "{{ cimage_group | d(omit) }}"
+    mode: "{{ cimage_mode_dir | d(omit) }}"
+
+- name: Checksums
+  when: cimage_get_checksums | bool
+  block:
+
+    - name: "Download: Get checksums"
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+      ansible.builtin.get_url:
+        url: "{{ [item.site, item.checksum] | community.general.path_join }}"
+        dest: "{{ [cimage_dir, item.checksum] | community.general.path_join }}"
+        owner: "{{ cimage_owner | d(omit) }}"
+        group: "{{ cimage_group | d(omit) }}"
+        mode: "{{ cimage_mode | d(omit) }}"
+      loop: "{{ cimage_download }}"
+      loop_control:
+        label: "{{ item.checksum }}"
+
+    - name: "Download: Read checksums"
+      changed_when: false
+      check_mode: false
+      ansible.builtin.command:
+        cmd: >
+          cat {{ [cimage_dir, item.checksum] | community.general.path_join }}
+      register: cresult
+      loop: "{{ cimage_download }}"
+      loop_control:
+        label: "{{ item.checksum }}"
+
+    - name: "Download: Debug checksums cimage_debug={{ cimage_debug }}"
+      when:
+        - cimage_debug | bool
+        - cresult.results[ansible_loop.index0].stdout is defined
+      vars:
+        algorithm: "{{ cresult.results[ansible_loop.index0].stdout | split | first | lower }}"
+        checksum: "{{ cresult.results[ansible_loop.index0].stdout | split | last }}"
+      ansible.builtin.debug:
+        msg: "{{ algorithm }}:{{ checksum }}"
+      loop: "{{ cimage_download }}"
+      loop_control:
+        label: "{{ item.image }}"
+        extended: true
+
+- name: Images
+  when: cimage_get_images | bool
+  block:
+
+    - name: "Download: Get images"
+      when: cresult.results[ansible_loop.index0].stdout is defined
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+      vars:
+        algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split() | first | lower }}"
+        checksum: "{{ cresult.results[ansible_loop.index0].stdout.split() | last }}"
+      ansible.builtin.get_url:
+        url: "{{ [item.site, item.image] | community.general.path_join }}"
+        dest: "{{ [cimage_dir, item.image] | community.general.path_join }}"
+        checksum: "{{ algorithm }}:{{ checksum }}"
+        owner: "{{ cimage_owner | d(omit) }}"
+        group: "{{ cimage_group | d(omit) }}"
+        mode: "{{ cimage_mode | d(omit) }}"
+      register: out
+      loop: "{{ cimage_download }}"
+      loop_control:
+        label: "{{ item.image }}"
+        extended: true
+
+    - name: "Download: Debug images cimage_debug={{ cimage_debug }}"
+      when: cimage_debug | bool
+      ansible.builtin.debug:
+        var: out
+
+# EOF

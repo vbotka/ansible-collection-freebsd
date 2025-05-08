@@ -1,0 +1,21 @@
+---
+- name: "Unpack: Unpack images"
+  when: extension in cimage_unpack_ext
+  vars:
+    dest: "{{ item.image | splitext | first }}"
+    extension: "{{ item.image | splitext | last }}"
+  ansible.builtin.command:
+    cmd: "{{ cimage_unpack_cmd[extension] }} {{ item.image }}"
+    creates: "{{ dest }}"
+    chdir: "{{ cimage_dir }}"
+  register: uresult
+  loop: "{{ cimage_download }}"
+  loop_control:
+    label: "{{ item.image }}"
+
+- name: "Unpack: Debug unpack cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  ansible.builtin.debug:
+    var: uresult
+
+# EOF

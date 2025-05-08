@@ -1,0 +1,17 @@
+---
+cimage_get_images: true
+cimage_get_checksums: true
+cimage_download: []
+# cimage_download:
+#   - site: https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/13.0
+#     image: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20210107-f2b794e1e90-255641.img.xz
+#     checksum: CHECKSUM.SHA512-FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20210107-f2b794e1e90-255641
+#   - site: https://download.freebsd.org/ftp/releases/ISO-IMAGES/12.2
+#     image: FreeBSD-12.2-STABLE-arm-armv6-RPI-B-20210107-r368787.img.xz
+#     checksum: CHECKSUM.SHA512-FreeBSD-12.2-STABLE-arm-armv6-RPI-B-20210107-r368787
+
+cimage_dir: /export/images/FreeBSD/unsorted
+# cimage_owner:
+# cimage_group:
+# cimage_mode:
+# cimage_mode_dir:
