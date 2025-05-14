@@ -1,6 +1,0 @@
----
-wpasup_conf:
-  state: link
-  force: true
-  path: "{{ cimage_mount_path }}/etc/wpa_supplicant.conf"
-  src: wpa_supplicant.conf.wlan0

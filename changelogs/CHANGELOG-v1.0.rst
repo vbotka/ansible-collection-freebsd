@@ -17,8 +17,11 @@ Major Changes
 
 Minor Changes
 -------------
-* Add role custom_image
-* Update README.
+* Added role custom_image 2.7.3
+* Updated README.
+* Updated roles:
+  config-light 2.7.2
+  postinstall 2.7.5
 
 
 0.7.5

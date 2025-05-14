@@ -1,7 +1,0 @@
----
-snap_deinstall_list2:
-  module: apt
-  state: absent
-  purge: true
-  name:
-    - snapd

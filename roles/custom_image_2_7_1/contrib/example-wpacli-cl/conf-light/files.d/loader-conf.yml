@@ -1,9 +1,0 @@
----
-loader_conf:
-  path: "{{ cimage_mount_path }}/boot/loader.conf"
-  force: true
-  owner: root
-  group: wheel
-  mode: "0644"
-  template:
-    path: loader.conf.j2

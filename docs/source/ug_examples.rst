@@ -9,14 +9,25 @@ Examples
 :200-:    Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
-:310-:     `Role vbotka.freebsd.postinstall`_
-:320-:     `Role vbotka.freebsd.packages`_
-:330-:     `Role vbotka.freebsd.iocage`_
-:340-:     `Role vbotka.freebsd.config_light`_
-:350-:     `Role vbotka.freebsd.rsnapshot`_
-:360-:     `Role vbotka.freebsd.network`_
-:370-:     `Role vbotka.freebsd.pf`_
+:310-:    `Role vbotka.freebsd.postinstall`_
+:320-:    `Role vbotka.freebsd.packages`_
+:330-:    `Role vbotka.freebsd.iocage`_
+:340-:    `Role vbotka.freebsd.config_light`_
+:350-:    `Role vbotka.freebsd.rsnapshot`_
+:360-:    `Role vbotka.freebsd.network`_
+:370-:    `Role vbotka.freebsd.pf`_
+:380-:    `Role vbotka.freebsd.custom_image`_
 
+Notes
+=====
+
+* All examples comprise additional files not shown in the files' tree. You might want to look them
+  over for more details.
+
+* Most examples comprise *batch.sh* that runs the commands and creates the output.
+
+* Most plays in *batch.sh* are idempotent. The output of the tasks in the examples may show *ok*
+  instead of *changed*.
 
 .. toctree::
    :maxdepth: 1
@@ -53,19 +64,21 @@ Examples
    examples/360/example.rst
    examples/361/example.rst
    examples/370/example.rst
+   examples/380/example.rst
 
 
-.. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
-.. _Module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
+.. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
+.. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service
+.. _Module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl
 
-.. _Inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
+.. _Inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
+.. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage
 
-.. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
-.. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
-.. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
-.. _Role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
-.. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
+.. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
+.. _Role vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
+.. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage
+.. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network
+.. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages
+.. _Role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
+.. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot
