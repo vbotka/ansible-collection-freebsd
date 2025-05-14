@@ -1,0 +1,66 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Debug cimage_debug={ cimage_debug }}] ******
+ok: [iocage_02] => 
+    msg: |-
+        cimage_role_version: 2.7.3
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.11
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        cimage_sanity: False
+        cimage_sanity_quiet: True
+        cimage_download: False
+        cimage_unpack: False
+        cimage_mount: True
+        cimage_install: False
+        cimage_umount: True
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        cimage_get_images: True
+        cimage_get_checksums: True
+        cimage_dir: /export/images/FreeBSD
+        cimage_owner: UNDEFINED
+        cimage_group: UNDEFINED
+        cimage_mode: UNDEFINED
+        cimage_mode_dir: UNDEFINED
+        cimage_download_images:
+          - checksum: CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B
+            image: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz
+            site: https://download.freebsd.org/releases/arm/armv6/ISO-IMAGES/13.5
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        cimage_unpack_cmd:
+          .xz: unxz --keep
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        cimage_mount_path: /mnt3
+        cimage_mount_file: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img
+        cimage_mount_mode: 0755
+        cimage_mount_points_create: False
+        cimage_mount_points:
+          - {fstype: ufs, mountpoint: /mnt3, partition: s2a}
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        cimage_pkgng_rootdir: /mnt3
+        cimage_pkgng_use_globs: False
+        cimage_pkgng_chroot: UNDEFINED
+        cimage_pkgng_cached: UNDEFINED
+        cimage_pkgng_ignore_osver: UNDEFINED
+        cimage_pkgng_pkgsite: UNDEFINED
+        cimage_packages:
+          []
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

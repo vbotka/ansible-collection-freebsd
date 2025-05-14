@@ -1,0 +1,12 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Unpack: Unpack images] *********************
+ok: [iocage_02] => (item=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz)
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

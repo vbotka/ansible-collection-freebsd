@@ -91,7 +91,7 @@ host_vars
     :caption:
 
 Playbook pb.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
     :language: yaml

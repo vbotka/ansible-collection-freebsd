@@ -1,0 +1,6 @@
+- name: Test role vbotka.freebsd.custom_image
+  hosts: iocage
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.custom_image

@@ -1,0 +1,216 @@
+.. _example_380:
+
+380 Configure custom image
+--------------------------
+
+.. contents:: Table of Contents
+   :local:
+   :depth: 1
+
+.. index:: single: role vbotka.freebsd.custom_image; Example 380
+.. index:: single: vbotka.freebsd.custom_image; Example 380
+
+Use case
+^^^^^^^^
+
+Use the role `vbotka.freebsd.custom_image`_ to configure a custom image.
+
+Tree
+^^^^
+
+::
+
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── vault.yml
+  ├── host_vars
+  │   └── iocage_02.yml
+  ├── iocage-hosts.ini
+  └── pb.yml
+
+Synopsis
+^^^^^^^^
+
+* Use the playbook *pb.yml* at *iocage_02* to customize FreeBSD image:
+
+  * configure wireless adapter `RTL8188EU`_
+  * configure wpa_supplicant
+  * connect to AP
+    
+Requirements
+^^^^^^^^^^^^
+
+* root privilege on the iocage host.
+
+Notes
+^^^^^
+
+TBD
+
+.. note::
+
+   | `vbotka.freebsd.custom_image`_ is the role **custom_image** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd_custom_image`_ is the role **freebsd_custom_image** in the namespace `vbotka`_.
+   | Please make sure the versions are the same before you switch between them.
+
+.. seealso::
+
+   * `Get FreeBSD`_
+   * `Memory Disks`_
+   * `Wireless Networks`_
+
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+    :language: ini
+
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage-hosts.ini
+    :language: ini
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_02.yml
+    :language: yaml
+    :caption:
+
+.. note:: The default values of ``cimage_download`` and ``cimage_unpack`` are ``true``. Set them to
+          ``false`` and enable them when needed.
+
+.. hint:: Put the variables ``my_access_point`` and ``my_password`` into an `vault`_ file. For
+          example, ``group_vars/all/vault.yml``
+
+Playbook pb.yml
+^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb.yml
+    :language: yaml
+
+Playbook output - debug
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
+                                  -t cimage_debug -e cimage_debug=true
+
+.. literalinclude:: out/out-01.txt
+    :language: bash
+
+Playbook output - download images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
+                                  -t cimage_download -e cimage_download=true
+
+.. literalinclude:: out/out-02.txt
+    :language: bash
+
+Playbook output - unpack images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
+                                  -t cimage_unpack -e cimage_unpack=true
+
+.. literalinclude:: out/out-03.txt
+    :language: bash
+
+Playbook output - mount image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_mount
+
+.. literalinclude:: out/out-04.txt
+    :language: bash
+
+Playbook output - customize image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_customize
+
+.. literalinclude:: out/out-05.txt
+    :language: bash
+
+Playbook output - umount image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_umount
+
+.. literalinclude:: out/out-06.txt
+    :language: bash
+
+Playbook output - mount, customize, and umount image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The play is not idempotent when the image is unmounted. The default is ``cimage_umount=true``. In
+this case, at least 3 tasks are *changed*. The image is mounted, unmounted, and the memory disk is
+detached.
+
+::
+
+  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02
+
+.. literalinclude:: out/out-07.txt
+    :language: bash
+
+Write the image file to USB
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  shell> dd if=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img of=/dev/sdb bs=1M conv=sync status=progress
+  5348786176 bytes (5.3 GB, 5.0 GiB) copied, 154 s, 34.7 MB/s
+  5120+0 records in
+  5120+0 records out
+  5368709120 bytes (5.4 GB, 5.0 GiB) copied, 154.648 s, 34.7 MB/s
+
+.. note:: Linux was used to write the image. In FreeBSD, use ``bs=1m``
+ 
+.. seealso::
+
+   * `Writing an Image File to USB`_
+   * `Best microSD Cards for Raspberry Pi 2025`_
+
+Result
+^^^^^^
+
+MACs are sanitized.
+
+::
+
+  (env) > ssh freebsd@10.1.0.16 dmesg
+
+.. literalinclude:: out/out-08.txt
+    :language: bash
+
+     
+.. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
+.. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_custom_image
+.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
+
+.. _Get FreeBSD: https://www.freebsd.org/where
+.. _Memory Disks: https://docs.freebsd.org/en/books/handbook/disks/#disks-virtual
+.. _Wireless Networks: https://docs.freebsd.org/en/books/handbook/network/#network-wireless
+.. _Writing an Image File to USB: https://docs.freebsd.org/en/books/handbook/bsdinstall/#bsdinstall-usb
+
+.. _vault: https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html#encrypting-files-with-ansible-vault
+.. _RTL8188EU: https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html
+.. _Best microSD Cards for Raspberry Pi 2025: https://www.tomshardware.com/best-picks/raspberry-pi-microsd-cards

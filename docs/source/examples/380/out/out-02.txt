@@ -1,0 +1,21 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Download: Create directory /export/images/FreeBSD] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Download: Get checksums] *******************
+ok: [iocage_02] => (item=CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B)
+
+TASK [vbotka.freebsd.custom_image : Download: Read checksums] ******************
+ok: [iocage_02] => (item=CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B)
+
+TASK [vbotka.freebsd.custom_image : Download: Get images] **********************
+ok: [iocage_02] => (item=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz)
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=5    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+

@@ -5,6 +5,25 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.6
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Added role custom_image 2.7.3
+* Updated README.
+* Updated roles:
+  config-light 2.7.2
+  postinstall 2.7.5
+
+
 0.7.5
 =====
 
