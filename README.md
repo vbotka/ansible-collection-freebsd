@@ -14,21 +14,28 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Included content
 
-This collection is shipped with:
+This collection is shipped with
+
+plugins:
 
 * [module vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
 * [module vbotka.freebsd.service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/) - control or list system services.
 * [module vbotka.freebsd.ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/) - CRUD-like interface for managing UCL files.
 * [filter vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - parse iocage lists.
-* [inventory plugin vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
-* [role vbotka.freebsd.config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_ligth/) -  install packages, configure files, services, and handlers.
+* [inventory vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
+
+roles:
+
+* [role vbotka.freebsd.config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_ligth/) - install packages, configure files, services, and handlers.
+* [role vbotka.freebsd.custom_image](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/) - download, mount, and customize system images.
 * [role vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - install and configure iocage.
 * [role vbotka.freebsd.network](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/) - configure network.
 * [role vbotka.freebsd.packages](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/) - configure repos and install packages.
 * [role vbotka.freebsd.pf](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/) - configure pf.
 * [role vbotka.freebsd.postinstall](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/) - postinstall configuration.
 * [role vbotka.freebsd.rsnapshot](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/) - install and configure rsnapshot.
-* various playbooks
+
+various [playbooks](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/?showing=playbook).
 
 
 ## Documentation
