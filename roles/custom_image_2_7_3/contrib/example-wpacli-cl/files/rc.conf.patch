@@ -1,0 +1,12 @@
+--- rc.conf.orig	2019-01-06 23:53:26.848957000 +0100
++++ rc.conf	2019-01-06 23:55:58.354651000 +0100
+@@ -133,6 +133,9 @@
+ wpa_supplicant_program="/usr/sbin/wpa_supplicant"
+ wpa_supplicant_flags="-s"	# Extra flags to pass to wpa_supplicant
+ wpa_supplicant_conf_file="/etc/wpa_supplicant.conf"
++wpa_cli_program="/usr/sbin/wpa_cli"
++wpa_cli_ctrl_interface="/var/run/wpa_supplicant"
++wpa_cli_action_file="/root/bin/wpa_action.sh"
+ #
+ firewall_enable="NO"		# Set to YES to enable firewall functionality
+ firewall_script="/etc/rc.firewall" # Which script to run to set up the firewall

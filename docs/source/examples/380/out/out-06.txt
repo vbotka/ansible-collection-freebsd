@@ -1,0 +1,33 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Umount: Unmount] ***************************
+changed: [iocage_02] => (item=/mnt3)
+
+TASK [Umount: Detach memory disk] **********************************************
+included: vbotka.ansible_lib for iocage_02
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks] *********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary] ***
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Parse memory disks] ********************
+ok: [iocage_02] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	)
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Detach memory disk] ********************
+changed: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Remove memory disk from dictionary] ****
+ok: [iocage_02]
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=9    changed=2    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+

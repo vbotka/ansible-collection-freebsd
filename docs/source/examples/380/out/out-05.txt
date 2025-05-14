@@ -1,0 +1,27 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Customize image.] **************************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/loaderconf.yml for iocage_02 => (item=loaderconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/wpasupconf.yml for iocage_02 => (item=wpasupconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/rcconf.yml for iocage_02 => (item=rcconf)
+
+TASK [vbotka.freebsd.custom_image : Loaderconf: Configure /mnt3/boot/loader.conf] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Wpasupconf: Configure /mnt3/etc/wpasupplicant.conf] ***
+ok: [iocage_02] => (item=wlan0)
+
+TASK [vbotka.freebsd.custom_image : Wpasupconf: Link to /etc/wpa_supplicant.conf.wlan0] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Rcconf: Configure /mnt3/etc/rc.conf] *******
+ok: [iocage_02] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
+ok: [iocage_02] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=8    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+

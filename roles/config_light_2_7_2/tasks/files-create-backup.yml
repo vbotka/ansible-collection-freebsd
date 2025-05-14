@@ -1,0 +1,32 @@
+---
+- name: "File-create-backup: Create time-stamp."
+  ansible.builtin.set_fact:
+    cl_timestamp: "{{ '%Y-%m-%d_%H_%M_%S' | strftime }}"
+
+- name: "File-create-backup: Stat cl_files."
+  register: result
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  loop: "{{ cl_files.values() | map(attribute='path') | list | unique }}"
+  loop_control:
+    label: "{{ item }}"
+
+- name: "File-create-backup: Debug result cl_debug={{ cl_debug }}"
+  when: cl_debug | bool
+  ansible.builtin.debug:
+    var: result
+
+- name: "File-create-backup: Create backup files."
+  when: item.stat.exists
+  changed_when: false
+  ansible.builtin.copy:
+    remote_src: true
+    src: "{{ item.item }}"
+    dest: "{{ item.item }}_{{ cl_timestamp }}.bak"
+    mode: preserve
+  loop: "{{ result.results }}"
+  loop_control:
+
+    label: "{{ item.item }}"
+
+# EOF

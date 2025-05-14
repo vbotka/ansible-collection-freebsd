@@ -1,0 +1,22 @@
+---
+
+template_wpa_supplicant.conf_synopsis: |
+  Create wpa_supplicant.conf
+
+template_wpa_supplicant.conf_description: |
+  The attribute *conf* is a list. For example,
+
+  .. code-block:: yaml
+
+     cimage_wpasupconf_data:
+       - dev: wlan0
+         network:
+           - conf:
+               - { key: ssid, value: '"my_access_point"' }
+               - { key: psk, value: '"my_password"' }
+               - { key: disabled, value: 0 }
+
+template_wpa_supplicant.conf_note: |
+
+  - "Some values must be double-quoted."
+  - "See https://wiki.archlinux.org/title/wpa_supplicant"

@@ -1,0 +1,15 @@
+---
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+
+cimage_pkgng_rootdir: "{{ cimage_mount_path }}"
+cimage_pkgng_use_globs: false
+
+# Declare when needed
+# cimage_pkgng_chroot
+# cimage_pkgng_cached
+# cimage_pkgng_ignore_osver
+# cimage_pkgng_pkgsite
+
+cimage_packages: []
+# - shells/bash

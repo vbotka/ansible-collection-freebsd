@@ -1,0 +1,9 @@
+---
+wpa_cli:
+  path: "{{ bsd_cimage_mount_path }}/etc/rc.d/wpa_cli"
+  force: true
+  owner: root
+  group: wheel
+  mode: "0555"
+  template:
+    path: wpa_cli.j2

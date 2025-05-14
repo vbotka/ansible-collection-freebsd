@@ -1,0 +1,75 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [Mount: Attach memory disk] ***********************************************
+included: vbotka.ansible_lib for iocage_02
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks] *********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary] ***
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Attach memory disk] ********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Add memory disk to dictionary] *********
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Mount: Set variable cimage_mount_dev] ******
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Mount: Mount partitions md0] ***************
+changed: [iocage_02] => (item={'partition': 's2a', 'fstype': 'ufs', 'mountpoint': '/mnt3'})
+
+TASK [vbotka.freebsd.custom_image : Customize image.] **************************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/loaderconf.yml for iocage_02 => (item=loaderconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/wpasupconf.yml for iocage_02 => (item=wpasupconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/rcconf.yml for iocage_02 => (item=rcconf)
+
+TASK [vbotka.freebsd.custom_image : Loaderconf: Configure /mnt3/boot/loader.conf] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Wpasupconf: Configure /mnt3/etc/wpasupplicant.conf] ***
+ok: [iocage_02] => (item=wlan0)
+
+TASK [vbotka.freebsd.custom_image : Wpasupconf: Link to /etc/wpa_supplicant.conf.wlan0] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.custom_image : Rcconf: Configure /mnt3/etc/rc.conf] *******
+ok: [iocage_02] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
+ok: [iocage_02] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+
+TASK [vbotka.freebsd.custom_image : Umount: Unmount] ***************************
+changed: [iocage_02] => (item=/mnt3)
+
+TASK [Umount: Detach memory disk] **********************************************
+included: vbotka.ansible_lib for iocage_02
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks] *********************
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary] ***
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Parse memory disks] ********************
+ok: [iocage_02] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	)
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Detach memory disk] ********************
+changed: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_mdconfig: Remove memory disk from dictionary] ****
+ok: [iocage_02]
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=24   changed=3    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+

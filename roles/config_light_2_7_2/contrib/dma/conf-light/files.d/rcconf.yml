@@ -1,0 +1,8 @@
+---
+rcconf:
+  path: /etc/rc.conf
+  create: true
+  owner: root
+  group: wheel
+  mode: "0644"
+  lines: "{{ cl_rcconf_dma_lines }}"

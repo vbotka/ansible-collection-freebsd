@@ -1,0 +1,43 @@
+---
+# tasks for freebsd_custom_image
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: cimage_debug | bool
+  tags: cimage_debug
+
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: cimage_sanity | bool
+  tags: cimage_sanity
+
+- name: Import download.yml
+  ansible.builtin.import_tasks: download.yml
+  when: cimage_download | bool
+  tags: cimage_download
+
+- name: Import unpack.yml
+  ansible.builtin.import_tasks: unpack.yml
+  when: cimage_unpack | bool
+  tags: cimage_unpack
+
+- name: Import mount.yml
+  ansible.builtin.import_tasks: mount.yml
+  when: cimage_mount | bool
+  tags: cimage_mount
+
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
+  when: cimage_install | bool
+  tags: cimage_packages
+
+- name: Import customize.yml
+  ansible.builtin.import_tasks: customize.yml
+  tags: cimage_customize
+
+- name: Import umount.yml
+  ansible.builtin.import_tasks: umount.yml
+  when: cimage_umount | bool
+  tags: cimage_umount
+
+# EOF

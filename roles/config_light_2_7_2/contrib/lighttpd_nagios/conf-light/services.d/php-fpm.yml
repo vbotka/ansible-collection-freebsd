@@ -1,0 +1,5 @@
+---
+php_fpm:
+  name: php-fpm
+  state: "{{ cl_service_php_fpm_state }}"
+  enabled: "{{ cl_service_php_fpm_enable }}"
