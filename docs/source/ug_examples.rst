@@ -17,17 +17,17 @@ Examples
 :360-:    `Role vbotka.freebsd.network`_
 :370-:    `Role vbotka.freebsd.pf`_
 :380-:    `Role vbotka.freebsd.custom_image`_
+:390-:    `Role vbotka.freebsd.poudriere`_
 
-Notes
-=====
+**Notes:**
 
 * All examples comprise additional files not shown in the files' tree. You might want to look them
   over for more details.
 
 * Most examples comprise *batch.sh* that runs the commands and creates the output.
 
-* Most plays in *batch.sh* are idempotent. The output of the tasks in the examples may show *ok*
-  instead of *changed*.
+* Most plays in *batch.sh* are idempotent. If it has already been run, the output of the tasks in
+  the examples may show *ok* instead of expected *changed*.
 
 .. toctree::
    :maxdepth: 1
@@ -65,6 +65,7 @@ Notes
    examples/361/example.rst
    examples/370/example.rst
    examples/380/example.rst
+   examples/390/example.rst
 
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
@@ -81,4 +82,5 @@ Notes
 .. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages
 .. _Role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
 .. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _Role vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot

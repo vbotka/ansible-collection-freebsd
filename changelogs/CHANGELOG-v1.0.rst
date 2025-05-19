@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Added dest/collection_docsite.sh
-* Updated docs.
+* Updated docs. Added example 390.
 * Updated README.
 
 
