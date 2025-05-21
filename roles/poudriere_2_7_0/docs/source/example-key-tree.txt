@@ -1,0 +1,8 @@
+shell> tree /usr/local/etc/ssl/
+usr/local/etc/ssl/
+├── certs
+├── crt
+│   └── build.example.com-sk.crt
+├── csr
+└── private
+    └── build.example.com-sk.key

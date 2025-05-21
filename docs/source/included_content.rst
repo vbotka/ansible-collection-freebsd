@@ -16,6 +16,7 @@ Roles:
 * `role vbotka.freebsd.packages`_
 * `role vbotka.freebsd.pf`_
 * `role vbotka.freebsd.postinstall`_
+* `role vbotka.freebsd.poudriere`_
 * `role vbotka.freebsd.rsnapshot`_
 
 Various :ref:`ug_playbooks`.
@@ -35,4 +36,5 @@ Various :ref:`ug_playbooks`.
 .. _role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages
 .. _role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
 .. _role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _role vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot

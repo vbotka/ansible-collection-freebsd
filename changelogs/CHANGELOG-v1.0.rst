@@ -17,7 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Updated roles: postinstall 2.7.6
+* Added role poudriere 2.7.0
+* Updated role postinstall 2.7.6
 * Added dest/collection_docsite.sh
 * Updated docs. Added example 390.
 * Updated README.
