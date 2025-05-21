@@ -4,10 +4,10 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd_poudriere : Pkg: Install poudriere packages] **************
+TASK [vbotka.freebsd.poudriere : Pkg: Install poudriere packages] **************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd_poudriere : Pkg: Install packages to create certificate] ***
+TASK [vbotka.freebsd.poudriere : Pkg: Install packages to create certificate] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************

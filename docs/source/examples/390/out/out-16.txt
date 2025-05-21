@@ -4,7 +4,7 @@ PLAY [Role vbotka.freebsd.postinstall] *****************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd_postinstall : Sanity: Unknown run tags] *******************
+TASK [vbotka.freebsd.postinstall : Sanity: Unknown run tags] *******************
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************
