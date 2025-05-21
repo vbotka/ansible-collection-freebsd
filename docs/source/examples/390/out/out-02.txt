@@ -1,5 +1,5 @@
 
-PLAY [Test role vbotka.freebsd.poudriere] **************************************
+PLAY [Role vbotka.freebsd.poudriere] *******************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]

@@ -1,0 +1,11 @@
+/usr/local/etc/poudriere.d/pkglist
+├── arm
+│   ├── All
+│   ├── ansible
+│   └── minimal
+└── arm.enabled
+    ├── All
+    ├── ansible -> /usr/local/etc/poudriere.d/pkglist/arm/ansible
+    └── minimal -> /usr/local/etc/poudriere.d/pkglist/arm/minimal
+
+3 directories, 6 files

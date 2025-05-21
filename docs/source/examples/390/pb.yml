@@ -1,6 +1,6 @@
-- name: Test role vbotka.freebsd.poudriere
+- name: Role vbotka.freebsd.poudriere
   hosts: build
   gather_facts: true
 
   roles:
-    - vbotka.freebsd_poudriere
+    - vbotka.freebsd.poudriere

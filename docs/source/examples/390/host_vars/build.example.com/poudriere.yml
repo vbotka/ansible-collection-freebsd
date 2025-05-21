@@ -49,3 +49,7 @@ poudriere_make_conf:
   - "DEFAULT_VERSIONS+=\t\temacs=nox"
   - "DEFAULT_VERSIONS+=\t\tphp=8.3"
   - "DEFAULT_VERSIONS+=\t\tssl=openssl"
+
+# pkglist
+poudriere_pkglist_all: true
+pkglist_enable_arm: [ansible, minimal]

@@ -1,5 +1,5 @@
 
-PLAY [Test role vbotka.freebsd.poudriere] **************************************
+PLAY [Role vbotka.freebsd.poudriere] *******************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
@@ -116,7 +116,7 @@ ok: [build.example.com] =>
           ZROOTFS: /poudriere
 
         poudriere_pkglist_dir: /usr/local/etc/poudriere.d/pkglist
-        poudriere_pkglist_all: False
+        poudriere_pkglist_all: True
         poudriere_pkg_arch: [arm]
 
         poudriere_make_file: /usr/local/etc/poudriere.d/make.conf

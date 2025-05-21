@@ -4,12 +4,10 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd_poudriere : Dirs: Create SSL directories] *****************
-ok: [build.example.com] => (item=/usr/local/etc/ssl)
-ok: [build.example.com] => (item=/usr/local/etc/ssl/crt)
-ok: [build.example.com] => (item=/usr/local/etc/ssl/csr)
+TASK [vbotka.freebsd_poudriere : Key: Generate signing key /usr/local/etc/ssl/private/build.example.com-sk.key] ***
+ok: [build.example.com]
 
-TASK [vbotka.freebsd_poudriere : Dirs: Create SSL directory /usr/local/etc/ssl/private mode=0700] ***
+TASK [vbotka.freebsd_poudriere : Key: Generate signing crt /usr/local/etc/ssl/crt/build.example.com-sk.crt] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************
