@@ -1,23 +1,23 @@
 # Ansible managed 
 
-ZPOOL=zroot
-NO_ZFS=no
-ZROOTFS=/poudriere
-FREEBSD_HOST=https://download.freebsd.org
-RESOLV_CONF=/etc/resolv.conf
 BASEFS=/usr/local/poudriere
-SVN_HOST=svn.FreeBSD.org
+BUILDER_HOSTNAME=build
+CHECK_CHANGED_DEPS=yes
+CHECK_CHANGED_OPTIONS=verbose
+DISTFILES_CACHE=/usr/ports/distfiles
+FREEBSD_HOST=https://download.freebsd.org
+NOLINUX=yes
+NO_ZFS=no
+PKG_REPO_SIGNING_KEY=/usr/local/etc/ssl/private/build.example.com-sk.key
 POUDRIERE_DATA=/usr/local/poudriere/data
+PRESERVE_TIMESTAMP=yes
+RESOLV_CONF=/etc/resolv.conf
+SVN_HOST=svn.FreeBSD.org
+URL_BASE=http://build.example.com
+USE_COLORS=yes
 USE_PORTLINT=no
 USE_TMPFS=no
-DISTFILES_CACHE=/usr/ports/distfiles
-PKG_REPO_SIGNING_KEY=/usr/local/etc/ssl/private/build.example.com-sk.key
-URL_BASE=http://build.example.com
-CHECK_CHANGED_OPTIONS=verbose
-CHECK_CHANGED_DEPS=yes
-NOLINUX=yes
-USE_COLORS=yes
-PRESERVE_TIMESTAMP=yes
-BUILDER_HOSTNAME=build
+ZPOOL=zroot
+ZROOTFS=/poudriere
 
 # EOF

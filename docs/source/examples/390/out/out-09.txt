@@ -1,9 +1,10 @@
 
 PLAY [Role vbotka.freebsd.poudriere] *******************************************
 
-TASK [vbotka.freebsd.poudriere : Pkglists: Create packages lists] **************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudriere/tasks/pkglist.yml for build.example.com => (item=arm)
+TASK [vbotka.freebsd_poudriere : Pkglists: Create package lists.] **************
+included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_poudriere/tasks/pkglist.yml for build.example.com => (item=amd64)
+included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_poudriere/tasks/pkglist.yml for build.example.com => (item=arm)
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=20   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+build.example.com          : ok=25   changed=0    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0   
 

@@ -4,7 +4,7 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Make: Configure /usr/local/etc/poudriere.d/make.conf] ***
+TASK [vbotka.freebsd_poudriere : Make: Configure /usr/local/etc/poudriere.d/make.conf] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************

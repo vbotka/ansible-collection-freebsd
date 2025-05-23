@@ -4,31 +4,48 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Pkglists: Create packages lists] **************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudriere/tasks/pkglist.yml for build.example.com => (item=arm)
+TASK [vbotka.freebsd_poudriere : Pkglists: Create package lists.] **************
+included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_poudriere/tasks/pkglist.yml for build.example.com => (item=amd64)
+included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_poudriere/tasks/pkglist.yml for build.example.com => (item=arm)
 
-TASK [vbotka.freebsd.poudriere : Pkglist: Set variables for arm] ***************
+TASK [vbotka.freebsd_poudriere : Pkglist: Assert all items in _pkglist_enable are available in _pkg_dict] ***
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Pkglist: Assert all items in _pkglist_enable are available in _pkg_dict] ***
+TASK [vbotka.freebsd_poudriere : Pkglist: Create directories.] *****************
+ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64)
+ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64.enabled)
+
+TASK [vbotka.freebsd_poudriere : Pkglist: Create packages lists in /usr/local/etc/poudriere.d/pkglist/amd64] ***
+ok: [build.example.com] => (item=ansible)
+ok: [build.example.com] => (item=minimal)
+
+TASK [vbotka.freebsd_poudriere : Pkglist: Link enabled lists to /usr/local/etc/poudriere.d/pkglist/amd64.enabled] ***
+ok: [build.example.com] => (item=ansible)
+ok: [build.example.com] => (item=minimal)
+
+TASK [vbotka.freebsd_poudriere : Pkglist: Create lists of all packages.] *******
+ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64/All)
+ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64.enabled/All)
+
+TASK [vbotka.freebsd_poudriere : Pkglist: Assert all items in _pkglist_enable are available in _pkg_dict] ***
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Pkglist: Create directories] ******************
+TASK [vbotka.freebsd_poudriere : Pkglist: Create directories.] *****************
 ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm)
 ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm.enabled)
 
-TASK [vbotka.freebsd.poudriere : Pkglist: Create packages lists in /usr/local/etc/poudriere.d/pkglist/arm] ***
+TASK [vbotka.freebsd_poudriere : Pkglist: Create packages lists in /usr/local/etc/poudriere.d/pkglist/arm] ***
 ok: [build.example.com] => (item=ansible)
 ok: [build.example.com] => (item=minimal)
 
-TASK [vbotka.freebsd.poudriere : Pkglist: Link enabled lists to /usr/local/etc/poudriere.d/pkglist/arm.enabled] ***
+TASK [vbotka.freebsd_poudriere : Pkglist: Link enabled lists to /usr/local/etc/poudriere.d/pkglist/arm.enabled] ***
 ok: [build.example.com] => (item=ansible)
 ok: [build.example.com] => (item=minimal)
 
-TASK [vbotka.freebsd.poudriere : Pkglist: Create lists of all packages] ********
+TASK [vbotka.freebsd_poudriere : Pkglist: Create lists of all packages.] *******
 ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm/All)
 ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm.enabled/All)
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=8    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+build.example.com          : ok=13   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

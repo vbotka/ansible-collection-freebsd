@@ -1,5 +1,5 @@
-Result - SSL certificate and key
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Result - SSL certificate and signing key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 

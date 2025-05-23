@@ -4,10 +4,10 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Key: Generate signing key /usr/local/etc/ssl/private/build.example.com-sk.key] ***
+TASK [vbotka.freebsd_poudriere : Key: Generate signing key /usr/local/etc/ssl/private/build.example.com-sk.key] ***
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Key: Generate signing crt /usr/local/etc/ssl/crt/build.example.com-sk.crt] ***
+TASK [vbotka.freebsd_poudriere : Key: Generate signing crt /usr/local/etc/ssl/crt/build.example.com-sk.crt] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************

@@ -1,10 +1,9 @@
 ---
-pkg_dict_arm:
+pkg_dict_amd64:
   - pkglist: ansible
     packages:
       - sysutils/ansible
-      # - sysutils/py-ansible-lint
-      # - sysutils/py-ansible-runner
+      - sysutils/py-ansible-runner
   - pkglist: minimal
     packages:
       - devel/git
@@ -12,6 +11,15 @@ pkg_dict_arm:
       - ports-mgmt/portmaster
       - ports-mgmt/pkg
       - shells/bash
-      # - ftp/wget
-      # - net/rsync
-      # - archivers/gtar
+      - ftp/wget
+      - net/rsync
+      - archivers/gtar
+
+pkg_dict_arm:
+  - pkglist: ansible
+    packages:
+      - sysutils/ansible
+  - pkglist: minimal
+    packages:
+      - ports-mgmt/pkg
+      - shells/bash

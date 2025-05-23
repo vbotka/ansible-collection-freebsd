@@ -1,7 +1,7 @@
 .. _example_390:
 
-390 Build arm packages
-----------------------
+390 Build packages
+------------------
 
 .. contents:: Table of Contents
    :local:
@@ -12,6 +12,10 @@
 .. index:: single: Poudriere; Example 390
 .. index:: single: QEMU; Example 390
 .. index:: single: ARM; Example 390
+.. index:: single: armv6; Example 390
+.. index:: single: armv7; Example 390
+.. index:: single: aarch64; Example 390
+.. index:: single: amd64; Example 390
 
 Use case
 ^^^^^^^^
@@ -56,7 +60,7 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+* Building ARM (armv6, armv7, and aarch64) packages on amd64 needs `QEMU`_
 
 .. seealso::
 
@@ -128,7 +132,7 @@ Results
 .. toctree::
    :maxdepth: 1
 
-   SSL certificate and key <result_tree_ssl>
+   SSL certificate and signing key <result_tree_ssl>
    poudriere.conf <result_conf>
    package lists <result_pkglist>
    make.conf <result_make>
@@ -154,17 +158,11 @@ Build packages
 .. toctree::
    :maxdepth: 1
 
-   qemu_list
    create_jails
    create_ports
-
-Build aarch64 ports listed in the file minimal
-""""""""""""""""""""""""""""""""""""""""""""""
-
-::
-
-   shell> poudriere bulk -j 142aarch64 -z devel -f /usr/local/etc/poudriere.d/pkglist/arm/minimal
-   
+   build-142amd64-minimal
+   qemu_list
+   build-142aarch64-minimal
 
 .. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere

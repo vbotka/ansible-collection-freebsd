@@ -4,17 +4,17 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Poudriere Debug] ******************************
+TASK [vbotka.freebsd_poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
-        poudriere_role_version: 2.7.0
+        poudriere_role_version: 2.7.1
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
         ansible_distribution_major_version: 14
         ansible_distribution_version: 14.2
         ansible_distribution_release: 14.2-RELEASE-p1
-        ansible_python_version: 3.11.11
+        ansible_python_version: 3.11.12
 
         freebsd_install_method: packages
         freebsd_use_packages: True
@@ -117,16 +117,16 @@ ok: [build.example.com] =>
 
         poudriere_pkglist_dir: /usr/local/etc/poudriere.d/pkglist
         poudriere_pkglist_all: True
-        poudriere_pkg_arch: [arm]
+        poudriere_pkg_arch: [amd64, arm]
 
         poudriere_make_file: /usr/local/etc/poudriere.d/make.conf
         poudriere_make_conf:
-          - "OPTIONS_UNSET+=\t\t\tDOCS NLS X11 EXAMPLES"
-          - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
-          - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
           - "DEFAULT_VERSIONS+=\t\temacs=nox"
           - "DEFAULT_VERSIONS+=\t\tphp=8.3"
           - "DEFAULT_VERSIONS+=\t\tssl=openssl"
+          - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
+          - "OPTIONS_UNSET+=\t\t\tDOCS NLS X11 EXAMPLES"
+          - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
 
 PLAY RECAP *********************************************************************
 build.example.com          : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

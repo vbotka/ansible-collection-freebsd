@@ -4,10 +4,10 @@ PLAY [Role vbotka.freebsd.poudriere] *******************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Conf: Create directories] *********************
+TASK [vbotka.freebsd_poudriere : Conf: Create directories.] ********************
 ok: [build.example.com] => (item=/usr/ports/distfiles)
 
-TASK [vbotka.freebsd.poudriere : Conf: Configure /usr/local/etc/poudriere.conf] ***
+TASK [vbotka.freebsd_poudriere : Conf: Configure /usr/local/etc/poudriere.conf] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************
