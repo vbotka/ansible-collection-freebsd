@@ -1,0 +1,54 @@
+---
+# tasks freebsd_poudriere
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: poudriere_debug | bool
+  tags: poudriere_debug
+
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: poudriere_sanity | bool
+  tags: poudriere_sanity
+
+- name: Import pkg.yml
+  ansible.builtin.import_tasks: pkg.yml
+  when: poudriere_install | bool
+  tags: poudriere_pkg
+
+- name: Import dirs.yml
+  ansible.builtin.import_tasks: dirs.yml
+  when: poudriere_dirs | bool
+  tags: poudriere_dirs
+
+- name: Import key.yml
+  ansible.builtin.import_tasks: key.yml
+  when: poudriere_key | bool
+  tags: poudriere_key
+
+- name: Import cert.yml
+  ansible.builtin.import_tasks: cert.yml
+  when: poudriere_cert | bool
+  tags: poudriere_cert
+
+- name: Import conf.yml
+  ansible.builtin.import_tasks: conf.yml
+  when: poudriere_conf | bool
+  tags: poudriere_conf
+
+- name: Import pkglists.yml
+  ansible.builtin.import_tasks: pkglists.yml
+  when: poudriere_pkglists | bool
+  tags: poudriere_pkglists
+
+- name: Import options.yml
+  ansible.builtin.import_tasks: options.yml
+  when: poudriere_options | bool
+  tags: poudriere_options
+
+- name: Import make.yml
+  ansible.builtin.import_tasks: make.yml
+  when: poudriere_make | bool
+  tags: poudriere_make
+
+# EOF

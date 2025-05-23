@@ -7,4 +7,5 @@ roles_install:
   - packages
   - pf
   - postinstall
+  - poudriere
   - rsnapshot

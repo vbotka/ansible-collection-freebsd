@@ -3,11 +3,11 @@
 *.orig
 *.sanitized
 __pycache__/
-build
-dest
 .ansible
 .galaxy_install_info
 .vagrant
+build
+dest
 vagrant*
 pk_admins.txt.san
 vars/main.yml

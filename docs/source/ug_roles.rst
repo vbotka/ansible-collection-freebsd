@@ -6,7 +6,6 @@ Roles
 .. contents:: Table of Contents
    :local:
 
-
 Included roles
 --------------
 
@@ -19,10 +18,10 @@ This collection is shipped with the roles:
 * `vbotka.freebsd.packages`_
 * `vbotka.freebsd.pf`_
 * `vbotka.freebsd.postinstall`_
+* `vbotka.freebsd.poudriere`_
 * `vbotka.freebsd.rsnapshot`_
 
 .. seealso:: The list of included roles in ``setup/vars/roles_install.yml``
-
 
 Documented roles
 ----------------
@@ -38,7 +37,6 @@ Some roles are documented at `readtthedocs.io`_
    * See the ``Index`` what examples are available.
    * Feel free to contribute other roles.
 
-
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage
@@ -46,6 +44,7 @@ Some roles are documented at `readtthedocs.io`_
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot
 
 .. _readtthedocs.io: https://rtfd.io
