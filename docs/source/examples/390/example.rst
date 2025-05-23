@@ -100,6 +100,11 @@ host_vars
    :language: yaml
    :caption: host_vars/build.example.com/pkg_dict.yml
 
+.. seealso::
+
+   The variables ``pkdict_*.yml`` in the directory `defaults/main`_ of the role
+   `vbotka.freebsd_postinstall`_.
+
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
    :language: yaml
    :caption: host_vars/build.example.com/fp_qemu.yml
@@ -178,3 +183,6 @@ Build packages
 .. _Building Packages Through Emulation: https://wiki.freebsd.org/Ports/BuildingPackagesThroughEmulation
 .. _Building ARM Packages with Poudriere: https://forums.freebsd.org/threads/building-arm-packages-with-poudriere-the-simple-way.52994
 .. _Export data: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-export.html#export-data
+
+.. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
