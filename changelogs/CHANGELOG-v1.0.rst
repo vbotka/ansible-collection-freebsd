@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.9
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Updated roles: postinstall 2.7.7, poudriere 2.7.2
+* Updated docs. Updated example 390.
+
+
 0.7.8
 =====
 
