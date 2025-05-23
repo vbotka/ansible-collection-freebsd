@@ -135,7 +135,7 @@ bsd_roles:
     name: poudriere
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-poudriere
-    version: 2.7.0
+    version: 2.7.1
   - galaxy: vbotka.freebsd_redis
     name: redis
     scm: git
