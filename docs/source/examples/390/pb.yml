@@ -3,4 +3,4 @@
   gather_facts: true
 
   roles:
-    - vbotka.freebsd_poudriere
+    - vbotka.freebsd.poudriere

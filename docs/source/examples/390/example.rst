@@ -50,7 +50,7 @@ Synopsis
   * in the playbook *pb-postinstall.yml*, use the role `vbotka.freebsd.postinstall`_ to install and
     configure `QEMU`_.
 
-  * build **arm** packages.
+  * build packages.
     
 Requirements
 ^^^^^^^^^^^^
@@ -60,7 +60,7 @@ Requirements
 Notes
 ^^^^^
 
-* Building ARM (armv6, armv7, and aarch64) packages on amd64 needs `QEMU`_
+* Building ARM (armv6, armv7, and aarch64) packages on amd64 needs `QEMU`_.
 
 .. seealso::
 
@@ -81,39 +81,37 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory build-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: build-hosts.ini
-    :language: ini
+   :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/build.example.com/poudriere.yml
-    :language: yaml
-    :caption: host_vars/build.example.com/poudriere.yml
+   :language: yaml
+   :caption: host_vars/build.example.com/poudriere.yml
 
 .. literalinclude:: host_vars/build.example.com/pkg_dict.yml
-    :language: yaml
-    :caption: host_vars/build.example.com/pkg_dict.yml
+   :language: yaml
+   :caption: host_vars/build.example.com/pkg_dict.yml
 
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
-    :language: yaml
-    :caption: host_vars/build.example.com/fp_qemu.yml
+   :language: yaml
+   :caption: host_vars/build.example.com/fp_qemu.yml
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: yaml
-
-Playbook output
-^^^^^^^^^^^^^^^
+   :language: yaml
 
 .. toctree::
+   :caption: Playbook output
    :maxdepth: 1
 
    debug <pb_out_debug>
@@ -126,10 +124,8 @@ Playbook output
    customize make <pb_out_make>
    all tasks <pb_out_all>
 
-Results
-^^^^^^^
-
 .. toctree::
+   :caption: Results
    :maxdepth: 1
 
    SSL certificate and signing key <result_tree_ssl>
@@ -141,12 +137,10 @@ Playbook pb-postinstall.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-postinstall.yml
-    :language: yaml
-
-Playbook output
-^^^^^^^^^^^^^^^
+   :language: yaml
 
 .. toctree::
+   :caption: Playbook output
    :maxdepth: 1
 
    install QEMU <qemu_install>
@@ -164,6 +158,10 @@ Build packages
    qemu_list
    build-142aarch64-minimal
 
+.. seealso::
+
+   * `Export data`_ how to configure apache24.
+   
 .. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
@@ -171,7 +169,7 @@ Build packages
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
 
 .. _poudriere: https://github.com/freebsd/poudriere
-.. _Building Packages with Poudriere: https://docs.freebsd.org/en_US.ISO8859-1/books/handbook/ports-poudriere.html
+.. _Building Packages with Poudriere: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
 .. _QEMU: https://docs.freebsd.org/en/books/handbook/virtualization/#qemu-virtualization-host-guest
 .. _Ansible role FreeBSD Poudriere: https://ansible-freebsd-poudriere.readthedocs.io
 
@@ -179,3 +177,4 @@ Build packages
 .. _FreeBSD ARM: https://wiki.freebsd.org/arm
 .. _Building Packages Through Emulation: https://wiki.freebsd.org/Ports/BuildingPackagesThroughEmulation
 .. _Building ARM Packages with Poudriere: https://forums.freebsd.org/threads/building-arm-packages-with-poudriere-the-simple-way.52994
+.. _Export data: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-export.html#export-data
