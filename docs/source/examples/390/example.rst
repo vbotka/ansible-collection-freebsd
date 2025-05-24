@@ -160,6 +160,7 @@ Build packages
    create_jails
    create_ports
    build-142amd64-minimal
+   build-142amd64-All
    qemu_list
    build-142aarch64-minimal
 
