@@ -1,23 +1,23 @@
 
 Plugins:
 
-* `module vbotka.freebsd.iocage`_
-* `module vbotka.freebsd.service`_
-* `module vbotka.freebsd.ucl`_
-* `inventory vbotka.freebsd.iocage`_
-* `filter vbotka.freebsd.iocage`_
+* `module vbotka.freebsd.iocage`_ - iocage jail handling.
+* `module vbotka.freebsd.service`_ - control or list system services.
+* `module vbotka.freebsd.ucl`_ - CRUD-like interface for managing UCL files.
+* `inventory vbotka.freebsd.iocage`_ - parse iocage lists.
+* `filter vbotka.freebsd.iocage`_ - iocage inventory source.
 
 Roles:
 
-* `role vbotka.freebsd.config_light`_
-* `role vbotka.freebsd.custom_image`_
-* `role vbotka.freebsd.iocage`_
-* `role vbotka.freebsd.network`_
-* `role vbotka.freebsd.packages`_
-* `role vbotka.freebsd.pf`_
-* `role vbotka.freebsd.postinstall`_
-* `role vbotka.freebsd.poudriere`_
-* `role vbotka.freebsd.rsnapshot`_
+* `role vbotka.freebsd.config_light`_ - install packages, configure files, services, and handlers.
+* `role vbotka.freebsd.custom_image`_ - download, mount, and customize system images.
+* `role vbotka.freebsd.iocage`_ - install and configure iocage.
+* `role vbotka.freebsd.network`_ - configure network.
+* `role vbotka.freebsd.packages`_ - configure repos and install packages.
+* `role vbotka.freebsd.pf`_ - configure pf.
+* `role vbotka.freebsd.postinstall`_ - postinstall configuration.
+* `role vbotka.freebsd.poudriere`_ - install and configure Poudriere build system.
+* `role vbotka.freebsd.rsnapshot`_ - install and configure rsnapshot.
 
 Various :ref:`ug_playbooks`.
 
