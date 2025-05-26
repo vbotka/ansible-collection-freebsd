@@ -62,7 +62,6 @@ gives
 .. literalinclude:: out/out-01.txt
     :language: yaml
 
-	       
 Tree
 ^^^^
 
@@ -97,7 +96,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
@@ -111,7 +110,7 @@ Synopsis
     * start jails
     * optionally, stop and destroy the jails.
   
-* On all created jails:
+* At all created jails:
 
   In the playbook *pb-test-01.yml*:
 
@@ -198,9 +197,7 @@ Playbook output - create and start jails
 
   (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml \
                            -i iocage-hosts.ini \
-                           -t swarm \
-                           -e swarm=true \
-                           -e debug=true
+                           -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -278,8 +275,7 @@ Playbook output - display *iocage_tags*
 
      ansible-playbook pb_iocage_ansible_clients_v2.yml \
                       -i iocage-hosts.ini \
-                      -t swarm_destroy \
-                      -e swarm_destroy=true
+		      -t swarm_destroy -e swarm_destroy=true
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
