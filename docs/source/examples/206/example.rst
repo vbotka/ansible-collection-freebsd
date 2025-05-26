@@ -145,7 +145,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On one iocage host:
+* At one iocage host:
 
   * iocage_02
 
@@ -161,7 +161,7 @@ Synopsis
     * create two DHCP jails with generated UUID
     * start the jails
   
-* On all created jails:
+* At all created jails:
 
   In the playbook *pb-test-01.yml*:
 
