@@ -36,26 +36,24 @@ Extending example :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage`_ configuration file, use the
-option *hooks_results* to get the DHCP IP address. This option is common for all
-jails in this example
+In the `inventory plugin vbotka.freebsd.iocage`_ configuration file, use the option *hooks_results*
+to get the DHCP IP address. This option is common for all jails in this example
 
 .. code-block:: yaml
 
    hooks_results:
      - /var/db/dhclient-hook.address.epair0b
 
-It will silently fail in jails with fixed IP addresses. If the item fails the
-result is a dash character '-'
+It will silently fail in jails with fixed IP addresses. If the item fails the result is a dash
+character '-'
 
 .. code-block:: yaml
 
    iocage_hooks:
      - '-'
 
-This use-case demonstrates the advantage of silently ignoring failed items over
-the potential explicit error handling. Let the option *compose* pick what is
-needed
+This use-case demonstrates the advantage of silently ignoring failed items over the potential
+explicit error handling. Let the option *compose* pick what is needed
 
 .. code-block:: yaml
 
@@ -64,8 +62,7 @@ needed
 
 **Fixed IP**
 
-One jail with fixed IP will be created from the template *ansible_client* in
-this example
+One jail with fixed IP will be created from the template *ansible_client* in this example
 
 .. code-block:: yaml
 
@@ -237,10 +234,8 @@ Create and start clones
 ::
 
   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
-                           -l iocage_02 \
-                           -t clone \
-                           -e clone=true
+                           -i iocage-hosts.ini -l iocage_02 \
+                           -t clone -e clone=true
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -251,11 +246,8 @@ Create and start swarms
 ::
 
   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
-                           -l iocage_02 \
-                           -t swarm \
-                           -e swarm=true \
-                           -e debug=true
+                           -i iocage-hosts.ini -l iocage_02 \
+                           -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -313,10 +305,8 @@ Playbook output
    The below command stops and destroys the jails in *swarms* ::
 
      ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                      -i iocage-hosts.ini \
-                      -l iocage_02 \
-                      -t swarm_destroy \
-                      -e swarm_destroy=true
+                      -i iocage-hosts.ini -l iocage_02 \
+                      -t swarm_destroy -e swarm_destroy=true
 
 
 .. _vbotka.freebsd.pb_iocage_ansible_clients: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/

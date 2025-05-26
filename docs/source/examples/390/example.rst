@@ -171,6 +171,7 @@ Build packages
 .. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
 
@@ -186,4 +187,3 @@ Build packages
 .. _Export data: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-export.html#export-data
 
 .. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/

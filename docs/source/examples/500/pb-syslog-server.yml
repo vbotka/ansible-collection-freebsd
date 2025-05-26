@@ -1,0 +1,12 @@
+- name: Create syslog server.
+  hosts: syslog_server
+  gather_facts: true
+
+  vars:
+
+    test_var: test_var
+
+  tasks:
+
+    - debug:
+        var: test_var

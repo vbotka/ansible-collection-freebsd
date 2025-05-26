@@ -3,13 +3,13 @@
 vbotka.freebsd
 **************
 
-| `vbotka.freebsd`_
-| |release|
+|release|
 
 | This `collection`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues`_.
 | `Contributions are welcome`_.
 
+| Ansible Galaxy: `vbotka.freebsd`_
 | GitHub: `ansible-collection-freebsd`_
 
 Included content
