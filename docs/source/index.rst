@@ -3,7 +3,7 @@
 vbotka.freebsd
 **************
 
-|release|
+version |release|
 
 | This `collection`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues`_.
