@@ -4,9 +4,9 @@ Examples
 ********
 
 :001-003: Manage *iocage*
-:010-019: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
+:010-020: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
 :030:     `Filter vbotka.freebsd.iocage`_
-:200-:    Ansible client
+:200-206: Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
 :310-:    `Role vbotka.freebsd.postinstall`_
@@ -52,6 +52,7 @@ Examples
    examples/017/example.rst
    examples/018/example.rst
    examples/019/example.rst
+   examples/020/example.rst
    examples/030/example.rst
 
 .. toctree::

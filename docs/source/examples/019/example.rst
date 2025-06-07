@@ -78,8 +78,8 @@ Notes
    * The `vars plugin ansible.builtin.host_group_vars`_
    * :ref:`example_016`
 
-List all jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -88,8 +88,8 @@ List all jails at iocage_01
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List all jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 

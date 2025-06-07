@@ -1,0 +1,13 @@
+
+PLAY [Test group swarm_db] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [db1] => 
+    iocage_properties.host_hostuuid: 6bcfc0e1
+ok: [db2] => 
+    iocage_properties.host_hostuuid: 72685ea6
+
+PLAY RECAP *********************************************************************
+db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

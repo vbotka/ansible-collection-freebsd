@@ -17,7 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
-Updated docs: Updated example 390.
+* Updated docs.
+* Added example 020
+* Updated example 019, 390.
 
 
 0.7.9

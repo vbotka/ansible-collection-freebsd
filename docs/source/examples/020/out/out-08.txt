@@ -1,0 +1,17 @@
+
+PLAY [Destroy swarms.] *********************************************************
+
+TASK [Stop swarms.] ************************************************************
+changed: [iocage_02] => (item=www_prod)
+changed: [iocage_02] => (item=www_devel)
+changed: [iocage_03] => (item=db)
+
+TASK [Destroy swarms.] *********************************************************
+changed: [iocage_02] => (item=www_prod)
+changed: [iocage_03] => (item=db)
+changed: [iocage_02] => (item=www_devel)
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_03                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+
