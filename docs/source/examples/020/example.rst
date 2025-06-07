@@ -133,7 +133,8 @@ host_vars
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-The value of the iocage tag *alias* is used as the inventory alias.
+The value of the iocage tag *alias* is used as the inventory alias. If the `iocage list is slow`_ use
+the cache.
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
@@ -248,3 +249,4 @@ Destroy the swarms if you don't need them.
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _iocage property notes: https://iocage.readthedocs.io/en/latest/basic-use.html?highlight=properties#set-jail-property
 .. _Set Jail Property: https://iocage.readthedocs.io/en/latest/basic-use.html?highlight=properties#set-jail-property
+.. _iocage list is slow: https://forums.freebsd.org/threads/freebsd-13-1-extremally-slow.86723
