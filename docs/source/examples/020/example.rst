@@ -139,17 +139,16 @@ the cache.
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 14
+   :emphasize-lines: 10
 
 .. literalinclude:: hosts/03_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 14
+   :emphasize-lines: 10
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 2
 
 Playbook *pb-iocage-swarms-create.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
