@@ -237,7 +237,7 @@ Destroy the swarms if you don't need them.
 
 ::
 
-  env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
+  (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: bash
