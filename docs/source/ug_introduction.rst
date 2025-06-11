@@ -3,12 +3,14 @@
 Introduction
 ************
 
-* Supported systems: `FreeBSD Supported Production Releases`_
+.. index:: single: Managing BSD hosts with Ansible; Introduction
+.. index:: single: result_format; Introduction
+.. index:: single: venv — Creation of virtual environments; Introduction
 
+* Supported systems: `FreeBSD Supported Production Releases`_
 * Requirements:
 
   * `ansible.posix`_
-
   * `community.general`_
 
 The collection is shipped with:
