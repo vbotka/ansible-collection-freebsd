@@ -94,11 +94,11 @@ host_vars
 
 .. literalinclude:: host_vars/build.example.com/poudriere.yml
    :language: yaml
-   :caption: host_vars/build.example.com/poudriere.yml
+   :caption:
 
 .. literalinclude:: host_vars/build.example.com/pkg_dict.yml
    :language: yaml
-   :caption: host_vars/build.example.com/pkg_dict.yml
+   :caption:
 
 .. seealso::
 
@@ -107,7 +107,7 @@ host_vars
 
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
    :language: yaml
-   :caption: host_vars/build.example.com/fp_qemu.yml
+   :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^

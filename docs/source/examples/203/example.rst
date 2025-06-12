@@ -185,8 +185,8 @@ host_vars
    :language: yaml
    :caption:
 	       
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
@@ -204,6 +204,7 @@ Playbook output - create and start swarms
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
+   :force:
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -254,13 +255,13 @@ Display inventory
   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
-    :language: bash
+   :language: bash
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display *iocage_tags*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -271,6 +272,7 @@ Playbook output - display *iocage_tags*
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
+   :force:
 
 .. hint::
 

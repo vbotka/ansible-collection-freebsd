@@ -44,12 +44,15 @@ Use case
 
 Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook ::
 
-  shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
-  case "$reason" in
-      "BOUND"|"REBIND"|"REBOOT"|"RENEW")
-      echo $new_ip_address > /var/db/dhclient-hook.address.$interface
-      ;;
-  esac
+   shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
+
+.. code-block:: bash
+
+   case "$reason" in
+       "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+       echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+       ;;
+   esac
 
 creates files. For example, ::
 
@@ -57,24 +60,26 @@ creates files. For example, ::
   10.1.0.130
   
 Read the files, created by the hooks, and use the IP addresses to compose the variable
-*ansible_host*
-
-.. code-block:: yaml
+*ansible_host* ::
 
   shell> cat hosts/01_iocage.yml 
-  plugin: vbotka.freebsd.iocage
-  ...
-  hooks_results:
-    - /var/db/dhclient-hook.address.epair0b
-  compose:
-    ansible_host: iocage_hooks.0
 
-Default to *iocage_ip4* if the hook is not available
+.. code-block:: yaml
+   :force:
+
+   plugin: vbotka.freebsd.iocage
+   ...
+   hooks_results:
+     - /var/db/dhclient-hook.address.epair0b
+   compose:
+     ansible_host: iocage_hooks.0
+
+The varaible *ansible_host* defaults to *iocage_ip4* if the hook is not available
 
 .. code-block:: yaml
 
-  compose:
-    ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+   compose:
+     ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
 Tree
 ^^^^
@@ -227,6 +232,7 @@ Playbook output - create templates
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
+   :force:
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -260,6 +266,7 @@ Playbook output - clone and start jails
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
+   :force:
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -315,8 +322,8 @@ Display inventory
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -330,6 +337,7 @@ Playbook output - display list *iocage_hooks*
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
+   :force:
 
 .. hint::
 

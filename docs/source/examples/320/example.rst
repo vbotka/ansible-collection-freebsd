@@ -145,16 +145,17 @@ Limit the inventory to one host *iocage_02* ::
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
+   :force:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: ini
+   :language: yaml
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: ini
+   :language: yaml
    :caption:
 
 group_vars
@@ -190,7 +191,8 @@ Limit the inventory to one jail *test_111* ::
                                            -e pkg_debug=true
 
 .. literalinclude:: out/out-04.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -200,7 +202,8 @@ The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install list p
    (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-05.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 .. hint::
 
@@ -215,7 +218,8 @@ Enable debug and limit the inventory to one jail *test_111* ::
                                            -e pkg_debug=true
 
 .. literalinclude:: out/out-06.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 Playbook output - audit installed packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -227,13 +231,14 @@ There are no installed packages with known vulnerabilities ::
 					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
 .. literalinclude:: out/out-07.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 Playbook pb-test-02.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - audit installed packages at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,7 +250,8 @@ There are 9 packages with known vulnerabilities ::
 					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
 .. literalinclude:: out/out-08.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/

@@ -79,7 +79,7 @@ Playbook output - get FreeBSD.url
 	       
 .. literalinclude:: out/out-01.txt
     :language: yaml
-
+    :force:
 
 Playbook *pb-test-02.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -95,7 +95,8 @@ Playbook output - disable FreeBSD repository
   (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini --check --diff
 	       
 .. literalinclude:: out/out-02.txt
-    :language: bash
+    :language: yaml
+    :force:
 
 
 .. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/

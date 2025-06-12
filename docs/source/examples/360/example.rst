@@ -55,30 +55,30 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_03.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - configure network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -88,7 +88,8 @@ Playbook output - configure network
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
+   :force:
 
      
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network

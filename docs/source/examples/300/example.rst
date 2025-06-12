@@ -135,6 +135,7 @@ first option. The second option shows how to use *community.general.jc*.
 
 .. literalinclude:: out/out-03.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-02.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -151,6 +152,7 @@ Playbook output - create dictionary jid_rcvar
 
 .. literalinclude:: out/out-04.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-03.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -167,6 +169,7 @@ Playbook output - display enabled services
 	       
 .. literalinclude:: out/out-05.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-04.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -183,6 +186,7 @@ Playbook output - display sshd status
 
 .. literalinclude:: out/out-06.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-05.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -199,6 +203,7 @@ Playbook output - display sshd commands synopsis
 
 .. literalinclude:: out/out-07.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-06.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -215,6 +220,7 @@ Playbook output - display sendmail rcvars
 
 .. literalinclude:: out/out-08.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-07.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -231,6 +237,7 @@ Playbook output - start apcupsd
 
 .. literalinclude:: out/out-09.txt
     :language: yaml
+    :force:
 
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

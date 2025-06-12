@@ -125,40 +125,40 @@ Configuration ansible.cfg
 Do not display skipped hosts. See the option `display_skipped_hosts`_
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: group_vars/all/cl-common.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: group_vars/all/cl-lighttpd.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: group_vars/all/common.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -172,7 +172,7 @@ Create and start jails
                            -e swarm=true
 
 .. literalinclude:: out/out-11.txt
-    :language: bash
+   :language: bash
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,17 +182,17 @@ List jails at iocage_02
   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -202,7 +202,7 @@ Display inventory
   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 Update repos
 ^^^^^^^^^^^^
@@ -212,38 +212,39 @@ Update repos
   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-12.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Configuration conf-light
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: conf-light/files.d/lighttpd-index.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/files.d/lighttpd-lighttpd-annotated-conf.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/files.d/lighttpd-lighttpd-conf.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/handlers.d/lighttpd-freebsd.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/packages.d/lighttpd.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/services.d/lighttpd.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/states.d/lighttpd-server-document-root.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - setup
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -255,7 +256,8 @@ Assemble data and create handlers.
   (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
 
 .. literalinclude:: out/out-03.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 Playbook output - install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -268,8 +270,8 @@ packages' from the jails to their iocage hosts.
   (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-10.txt
-    :language: yaml
-
+   :language: yaml
+   :force:
 
 Results
 ^^^^^^^

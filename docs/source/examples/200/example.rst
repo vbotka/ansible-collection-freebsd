@@ -186,6 +186,7 @@ Playbook output - clone and start jails
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
+   :force:
 
 Playbook output - list jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -199,6 +200,7 @@ Playbook output - list jails
 
 .. literalinclude:: out/out-09.txt
    :language: yaml
+   :force:
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,8 +247,8 @@ Display inventory
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -260,6 +262,7 @@ Playbook output - display test vars
 	       
 .. literalinclude:: out/out-08.txt
    :language: yaml
+   :force:
 
 .. hint::
 

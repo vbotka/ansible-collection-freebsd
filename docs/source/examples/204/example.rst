@@ -43,24 +43,25 @@ Instead of the `module vbotka.freebsd.iocage`_ create the variable *iocage_jails
 using the `filter vbotka.freebsd.iocage`_
 
 .. literalinclude:: pb_iocage_ansible_clients_v2/iocage_jails.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
 **Test filter vbotka.freebsd.iocage**
 
 Given the input *vars/iocage_datasets.yml*
 
 .. literalinclude:: vars/iocage_datasets.yml
-    :language: yaml
+   :language: yaml
 
 The below playbook *pb-test-02.yml*
 
 .. literalinclude:: pb-test-02.yml
-    :language: yaml
+   :language: yaml
 
 gives
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
+   :language: yaml
 
 Tree
 ^^^^
@@ -178,14 +179,14 @@ host_vars
    :language: yaml
    :caption:
 	       
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
 
-Playbook *pb_iocage_ansible_clients_v2.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb_iocage_ansible_clients_v2.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb_iocage_ansible_clients_v2.yml
    :language: yaml
@@ -201,6 +202,7 @@ Playbook output - create and start jails
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
+   :force:
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,8 +255,8 @@ Display inventory
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -268,6 +270,7 @@ Playbook output - display *iocage_tags*
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
+   :force:
 
 .. hint::
 
