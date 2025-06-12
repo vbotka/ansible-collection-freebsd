@@ -5,8 +5,8 @@
 
     - debug:
         msg: |
-          {{ iocage_properties.host_hostuuid }}
-          {{ iocage_tags | to_yaml }}
+          {{ iocage_properties.host_hostuuid | d('UNDEFINED') }}
+          {{ iocage_tags | d({}) | to_yaml }}
 
     - debug:
         msg: |

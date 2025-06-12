@@ -4,8 +4,8 @@ Plugins:
 * `module vbotka.freebsd.iocage`_ - iocage jail handling.
 * `module vbotka.freebsd.service`_ - control or list system services.
 * `module vbotka.freebsd.ucl`_ - CRUD-like interface for managing UCL files.
-* `inventory vbotka.freebsd.iocage`_ - parse iocage lists.
-* `filter vbotka.freebsd.iocage`_ - iocage inventory source.
+* `inventory vbotka.freebsd.iocage`_ - iocage inventory source.
+* `filter vbotka.freebsd.iocage`_ - parse iocage lists.
 
 Roles:
 
