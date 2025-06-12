@@ -13,8 +13,8 @@ Topics:
 
 * The *iocage* module can't cover all use-cases. The maintenance of such complexity wouldn't be efficient.
 
-* For use cases not covered by the module, use the *runner* tasks from the role *iocage*.
-
+* For use cases not covered by the module, use the *runner* tasks from the role *iocage*. Use the
+  module *command* if not idempotent. For example, if using the option *--count*.
 
 .. _ug_bp_installation:
 .. include:: ug_bp_installation.rst
