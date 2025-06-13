@@ -1,3 +1,5 @@
+.. _ug_module_service:
+
 Module vbotka.freebsd.service
 -----------------------------
 

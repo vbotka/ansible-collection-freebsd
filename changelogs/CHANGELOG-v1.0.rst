@@ -17,9 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
-* Updated docs.
+* Updated docs. Updated examples.
 * Added example 020
-* Updated example 019, 390.
+* Added chapters ug_inventory_iocage_*.rst
 
 
 0.7.9
