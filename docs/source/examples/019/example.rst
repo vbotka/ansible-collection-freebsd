@@ -69,8 +69,7 @@ Synopsis
 Notes
 ^^^^^
 
-   * The inventory files in the directory *hosts* are evaluated in alphabetical
-     order.
+* The inventory files in the directory *hosts* are evaluated in alphabetical order.
 
 .. seealso::
 
@@ -143,8 +142,8 @@ group_vars
    * The **playbook** *group_vars* and *host_vars* will be silently ignored.
    * See `Variable precedence. Where should I put a variable?`_
 
-Playbook *pb-test-all.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-all.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
    :language: yaml
@@ -158,9 +157,10 @@ Playbook output - list groups
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
+   :force:
 
-Playbook *pb-test-US.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-US.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-US.yml
    :language: yaml
@@ -176,6 +176,7 @@ Limit the US region to running hosts
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
+   :force:
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

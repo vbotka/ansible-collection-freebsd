@@ -58,14 +58,14 @@ Notes
 
    * `Activate iocage`_
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
@@ -88,9 +88,8 @@ host_vars
 
        freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
-
-Playbook *pb-iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage.yml
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
    :language: yaml
@@ -108,6 +107,7 @@ Playbook output - display result
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
+   :force:
 
 .. note:: This *debug* shows the *result* of already activated *iocage*.
 

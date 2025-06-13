@@ -77,8 +77,7 @@ Requirements
 Notes
 ^^^^^
 
-   * The inventory files in the directory *hosts* are evaluated in alphabetical
-     order.
+* The inventory files in the directory *hosts* are evaluated in alphabetical order.
 
 .. seealso::
 
@@ -150,8 +149,8 @@ the cache.
    :language: yaml
    :caption:
 
-Playbook *pb-iocage-swarms-create.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-swarms-create.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-swarms-create.yml
    :language: yaml
@@ -164,7 +163,8 @@ Playbook output - Create swarms
   env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-03.txt
-   :language: bash
+   :language: yaml
+   :force:
 
 .. hint::
 
@@ -192,8 +192,8 @@ List jails at iocage_03
 .. literalinclude:: out/out-05.txt
    :language: bash
 
-Playbook *pb-test-all.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-all.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
    :language: yaml
@@ -207,9 +207,10 @@ Playbook output - all groups
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
+   :force:
 
-Playbook *pb-test-db.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-db.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-db.yml
    :language: yaml
@@ -223,9 +224,10 @@ Playbook output - group swarm_db
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
+   :force:
 
-Playbook *pb-iocage-swarms-destroy.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-swarms-destroy.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-swarms-destroy.yml
    :language: yaml
@@ -240,7 +242,8 @@ Destroy the swarms if you don't need them.
   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
 
 .. literalinclude:: out/out-08.txt
-   :language: bash
+   :language: yaml
+   :force:
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

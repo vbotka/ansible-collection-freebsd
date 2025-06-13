@@ -97,8 +97,8 @@ automatically. Example of the commands
 
 .. code-block:: bash
 
-   iocage create --short --template ansible_client --count 2  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 swarm=sw_01"
-   iocage start cd31c2a2 d254f889
+   shell> iocage create --short --template ansible_client --count 2  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 swarm=sw_01"
+   shell> iocage start cd31c2a2 d254f889
 
 **The variable iocage_tags**
 
@@ -222,8 +222,8 @@ host_vars
    :language: yaml
    :caption:
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
@@ -238,7 +238,8 @@ Create and start clones
                            -t clone -e clone=true
 
 .. literalinclude:: out/out-02.txt
-   :language: bash
+   :language: yaml
+   :force:
 
 Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -250,7 +251,8 @@ Create and start swarms
                            -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-03.txt
-   :language: bash
+   :language: yaml
+   :force:
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -284,8 +286,8 @@ Display inventory
 .. literalinclude:: out/out-05.txt
    :language: bash
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -298,7 +300,8 @@ Playbook output
   (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-06.txt
-   :language: bash
+   :language: yaml
+   :force:
 
 .. hint::
 

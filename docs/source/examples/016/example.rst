@@ -64,14 +64,14 @@ Notes
 * The `inventory plugin vbotka.freebsd.iocage`_ doesn't provide the option `use_vars_plugins`_.
 * See :ref:`example_019`.
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-List all jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -80,8 +80,8 @@ List all jails at iocage_01
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List all jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -97,7 +97,6 @@ Inventory hosts
    :language: yaml
    :caption:
 
-
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
@@ -106,8 +105,8 @@ Inventory hosts
    :language: yaml
    :caption:
 	       
-Playbook *pb-test.yml*
-^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
    :language: yaml
@@ -121,6 +120,7 @@ Playbook output - display groups
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
+   :force:
 
 
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

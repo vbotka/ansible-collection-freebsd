@@ -62,14 +62,14 @@ Notes
    * See the tasks *roles/iocage/tasks/sanity.yml*
    * See the default variables *roles/iocage/main/sanity.yml*
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
@@ -91,8 +91,8 @@ host_vars
 
      freebsd_iocage_sanity_zfs_pool_active: false
 
-Playbook *pb-iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage.yml
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
    :language: yaml
@@ -108,6 +108,7 @@ Playbook output - test sanity
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
+   :force:
 
 Playbook output - test sanity quietly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,6 +123,7 @@ Playbook output - test sanity quietly
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
+   :force:
 
 .. seealso::
 
