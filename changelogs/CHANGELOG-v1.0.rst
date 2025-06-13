@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade iventory iocage. Added options inventory_hostname_tag and
+  inventory_hostname_required.
 * Updated docs. Updated examples.
 * Added example 020
 * Added chapters ug_inventory_iocage_*.rst
