@@ -82,7 +82,7 @@ options:
     version_added: 0.6.0
   inventory_hostname_tag:
     description:
-      - The name of the tag in the C(iocage properties notes) that contains the jails name.
+      - The name of the tag in the C(iocage properties notes) that contains the jails alias.
       - By default, the C(iocage list -l) column C(NAME) is used to name the jail.
       - This option requires the notes format C("t1=v1 t2=v2 ...")
       - The option O(get_properties) must be enabled.
@@ -94,7 +94,6 @@ options:
     type: bool
     default: false
     version_added: 0.7.10
-
 notes:
   - You might want to test the command C(ssh user@host iocage list -l) on
     the controller before using this inventory plugin with O(user) specified
@@ -378,14 +377,14 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         # Requires the notes format "t1=v1 t2=v2 ..."
         if inventory_hostname_tag:
             if not get_properties:
-                raise AnsibleError('Jail properties are needed. Enable get_properties')
+                raise AnsibleError('Jail properties are needed to use inventory_hostname_tag. Enable get_properties')
             update = {}
             for hostname, host_vars in results['_meta']['hostvars'].items():
                 tags = dict(tag.split('=', 1) for tag in host_vars['iocage_properties']['notes'].split() if '=' in tag)
                 if inventory_hostname_tag in tags:
                     update[hostname] = tags[inventory_hostname_tag]
                 elif inventory_hostname_required:
-                    raise AnsibleError(f'Mandatory tag {inventory_hostname_tag} is missing in the properties notes.')
+                    raise AnsibleError(f'Mandatory tag {inventory_hostname_tag!r} is missing in the properties notes.')
             for hostname, alias in update.items():
                 results['_meta']['hostvars'][alias] = results['_meta']['hostvars'].pop(hostname)
 

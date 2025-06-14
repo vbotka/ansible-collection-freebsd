@@ -1,7 +1,9 @@
 Tags
 ^^^^
 
-Quoting `man iocage`_: ::
+Quoting `man iocage`_:
+
+.. code-block:: text
 
    PROPERTIES
    ...
@@ -10,12 +12,14 @@ Quoting `man iocage`_: ::
          Default: none
          Source: local
 
-We will use the format `notes="tag1=value1 tag2=value2 ..."`.
+We will use the format ``notes="tag1=value1 tag2=value2 ..."``.
 
-.. note:: The iocage tags has nothing to do with the `Ansible tags`_.
+.. note:: The iocage tags have nothing to do with the `Ansible tags`_.
 
+As root at the iocage host, set *notes*. For example,
 
-As root at the iocage host, set *notes*. For example, ::
+.. code-block:: console
+   :emphasize-lines: 1,3,5
 
    shell> iocage set notes="vmm=iocage_02 project=foo" srv_1
    notes: none -> vmm=iocage_02 project=foo
@@ -24,14 +28,17 @@ As root at the iocage host, set *notes*. For example, ::
    shell> iocage set notes="vmm=iocage_02 project=bar" srv_3
    notes: none -> vmm=iocage_02 project=bar
 
-Update the inventory configuration. Compose a dictionary *iocage_tags* and create groups. The
-properties are required ::
+Update the inventory configuration. Compose a dictionary ``iocage_tags`` and create groups. The
+properties are required. Enable the parameter ``get_properties``
+
+.. code-block:: console
 
    shell> cat hosts/02_iocage.yml
 
 .. code-block:: yaml
+   :emphasize-lines: 4,9
 
-   plugin: community.general.iocage
+   plugin: vbotka.freebsd.iocage
    host: 10.1.0.73
    user: admin
    get_properties: true
@@ -46,7 +53,9 @@ properties are required ::
      - prefix: project
        key: iocage_tags.project
 
-Display tags and groups. Create a playbook ::
+Display tags and groups. Create a playbook
+
+.. code-block:: console
 
    shell> cat pb-test-groups.yml
 
@@ -71,7 +80,9 @@ Display tags and groups. Create a playbook ::
 	   {% endfor %}
 	 run_once: true
 
-Run the playbook ::
+Run the playbook
+
+.. code-block:: console
 
    shell> ansible-playbook -i hosts/02_iocage.yml pb-test-groups.yml
 
