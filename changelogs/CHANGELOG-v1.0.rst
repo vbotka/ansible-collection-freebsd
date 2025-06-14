@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Updated docs.
 
 
 0.7.10
