@@ -10,4 +10,4 @@ Build amd64 ports listed in the file minimal
 .. image:: poudriere-log-bulk-142amd64-devel-minimal.png
     :width: 100%
     :align: center
-    :alt: alternate text
+    :alt: poudriere-log-bulk-142amd64-devel-minimal.png

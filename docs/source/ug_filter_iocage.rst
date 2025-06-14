@@ -1,3 +1,5 @@
+.. _ug_filter_iocage:
+
 Filter vbotka.freebsd.iocage
 ----------------------------
 

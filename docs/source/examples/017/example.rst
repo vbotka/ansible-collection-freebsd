@@ -88,8 +88,8 @@ Notes
 
        shell> ansible-doc -t inventory community.general.iocage
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
     :language: ini
@@ -111,8 +111,8 @@ Inventory hosts
     :language: yaml
     :caption:
 	       
-Playbook *pb-test.yml*
-^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
     :language: yaml
@@ -126,6 +126,7 @@ Playbook output - display groups
 
 .. literalinclude:: out/out-01.txt
     :language: yaml
+    :force:
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

@@ -43,26 +43,26 @@ Instead of the `module vbotka.freebsd.iocage`_ create the variable *iocage_jails
 using the `filter vbotka.freebsd.iocage`_
 
 .. literalinclude:: pb_iocage_ansible_clients_v2/iocage_jails.yml
-    :language: yaml
+   :language: yaml
+   :caption:
 
 **Test filter vbotka.freebsd.iocage**
 
 Given the input *vars/iocage_datasets.yml*
 
 .. literalinclude:: vars/iocage_datasets.yml
-    :language: yaml
+   :language: yaml
 
 The below playbook *pb-test-02.yml*
 
 .. literalinclude:: pb-test-02.yml
-    :language: yaml
+   :language: yaml
 
 gives
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
+   :language: yaml
 
-	       
 Tree
 ^^^^
 
@@ -97,7 +97,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
@@ -111,7 +111,7 @@ Synopsis
     * start jails
     * optionally, stop and destroy the jails.
   
-* On all created jails:
+* At all created jails:
 
   In the playbook *pb-test-01.yml*:
 
@@ -179,14 +179,14 @@ host_vars
    :language: yaml
    :caption:
 	       
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
 
-Playbook *pb_iocage_ansible_clients_v2.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb_iocage_ansible_clients_v2.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb_iocage_ansible_clients_v2.yml
    :language: yaml
@@ -198,12 +198,11 @@ Playbook output - create and start jails
 
   (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml \
                            -i iocage-hosts.ini \
-                           -t swarm \
-                           -e swarm=true \
-                           -e debug=true
+                           -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
+   :force:
 
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,8 +255,8 @@ Display inventory
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -271,6 +270,7 @@ Playbook output - display *iocage_tags*
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
+   :force:
 
 .. hint::
 
@@ -278,8 +278,7 @@ Playbook output - display *iocage_tags*
 
      ansible-playbook pb_iocage_ansible_clients_v2.yml \
                       -i iocage-hosts.ini \
-                      -t swarm_destroy \
-                      -e swarm_destroy=true
+		      -t swarm_destroy -e swarm_destroy=true
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

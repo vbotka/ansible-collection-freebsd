@@ -17,9 +17,8 @@
 Use case
 ^^^^^^^^
 
-Fetch releases, create basejails, clone from the basejails, and start the
-jails. Use the `inventory plugin vbotka.freebsd.iocage`_ to create
-inventory. Display the created inventory.
+Fetch releases, create basejails, clone from the basejails, and start the jails. Use the `inventory
+plugin vbotka.freebsd.iocage`_ to create inventory. Display the created inventory.
 
 Tree
 ^^^^
@@ -74,8 +73,8 @@ Requirements
 Notes
 ^^^^^
 
-The fetching of a release is a quite time-consuming procedure. Optionally, fetch
-the releases manually before you run the play. For example,
+The fetching of a release is a quite time-consuming procedure. Optionally, fetch the releases
+manually before you run the play. For example,
 
 .. code-block:: bash
 
@@ -114,14 +113,14 @@ the releases manually before you run the play. For example,
    * `Start, Stop, or Restart a Jail`_
    * `Listing Jails`_
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
@@ -137,8 +136,8 @@ host_vars
    :language: yaml
    :caption:
 
-Playbook *pb-iocage-fetch-base-clone-list.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-fetch-base-clone-list.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-fetch-base-clone-list.yml
    :language: yaml
@@ -151,10 +150,11 @@ Playbook output - fetch, create, clone, and start
   (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: bash
+   :language: yaml
+   :force:
 
-List all jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -163,8 +163,8 @@ List all jails at iocage_01
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-List all jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -173,8 +173,8 @@ List all jails at iocage_02
 .. literalinclude:: out/out-03.txt
    :language: bash
 	       
-Inventory *iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.yml
+^^^^^^^^^^^^^^^^^^^^
 
 The jails at *iocage_02*
 
@@ -187,8 +187,8 @@ The jails at *iocage_02*
    * `Inventory plugin ansible.builtin.constructed`_
    * `Enabling inventory cache plugins`_
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -202,6 +202,7 @@ Playbook output - display groups
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
+   :force:
    :emphasize-lines: 30-35
 
 

@@ -89,39 +89,39 @@ Configuration ansible.cfg
 Do not display skipped hosts. See the option `display_skipped_hosts`_
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: group_vars/all/common.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: group_vars/all/rsnapshot.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -135,7 +135,8 @@ Create and start jails
                            -e swarm=true
 
 .. literalinclude:: out/out-11.txt
-    :language: bash
+   :language: yaml
+   :force:
 	       
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,17 +146,17 @@ List jails at iocage_02
   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 .. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -165,7 +166,8 @@ Display inventory
   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
+   :force:
 
 Update repos
 ^^^^^^^^^^^^
@@ -177,13 +179,14 @@ Update repos
 			   -l iocage_02
 
 .. literalinclude:: out/out-12.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook pb-install.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-install.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -196,13 +199,14 @@ packages' to the iocage hosts.
    (env) > ansible-playbook pb-install.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: bash
+   :language: bash
 
 Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,7 +216,8 @@ Playbook output - debug
   (env) > ansible-playbook pb.yml -i hosts -t rsnapshot_debug -e rsnapshot_debug=true
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - configure rsnapshot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -222,7 +227,8 @@ Playbook output - configure rsnapshot
   (env) > ansible-playbook pb.yml -i hosts
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Results
 ^^^^^^^

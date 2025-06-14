@@ -1,0 +1,17 @@
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.17
+user: admin
+cache: true
+cache_plugin: ansible.builtin.jsonfile
+cache_connection: /var/tmp/inventory_cache
+cache_timeout: 3600
+cache_prefix: iocage_03_
+get_properties: true
+inventory_hostname_tag: alias
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes | split
+                                            | select('match', '^.*=.*$')
+                                            | map('split', '='))

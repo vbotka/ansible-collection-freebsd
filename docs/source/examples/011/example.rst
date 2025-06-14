@@ -51,14 +51,14 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 	       
-Inventory *iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.yml
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage.yml
    :language: yaml
 
-Playbook *pb-vars-all.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-vars-all.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-all.yml
    :language: yaml
@@ -72,6 +72,7 @@ Playbook output - display iocage_* vars
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
+   :force:
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

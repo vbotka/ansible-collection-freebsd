@@ -1,3 +1,5 @@
+.. _ug_module_ucl:
+
 Module vbotka.freebsd.ucl
 -------------------------
 

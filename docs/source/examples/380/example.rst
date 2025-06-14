@@ -66,20 +66,20 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. note:: The default values of ``cimage_download`` and ``cimage_unpack`` are ``true``. Set them to
           ``false`` and enable them when needed.
@@ -91,7 +91,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,7 +102,8 @@ Playbook output - debug
                                   -t cimage_debug -e cimage_debug=true
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - download images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +114,8 @@ Playbook output - download images
                                   -t cimage_download -e cimage_download=true
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - unpack images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -124,7 +126,8 @@ Playbook output - unpack images
                                   -t cimage_unpack -e cimage_unpack=true
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - mount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,7 +137,8 @@ Playbook output - mount image
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_mount
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - customize image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -144,7 +148,8 @@ Playbook output - customize image
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_customize
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,7 +159,8 @@ Playbook output - umount image
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_umount
 
 .. literalinclude:: out/out-06.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - mount, customize, and umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -168,7 +174,8 @@ detached.
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-07.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Write the image file to USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -198,7 +205,7 @@ MACs are sanitized.
   (env) > ssh freebsd@10.1.0.16 dmesg
 
 .. literalinclude:: out/out-08.txt
-    :language: bash
+   :language: bash
 
      
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image

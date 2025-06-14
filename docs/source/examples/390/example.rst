@@ -94,11 +94,11 @@ host_vars
 
 .. literalinclude:: host_vars/build.example.com/poudriere.yml
    :language: yaml
-   :caption: host_vars/build.example.com/poudriere.yml
+   :caption:
 
 .. literalinclude:: host_vars/build.example.com/pkg_dict.yml
    :language: yaml
-   :caption: host_vars/build.example.com/pkg_dict.yml
+   :caption:
 
 .. seealso::
 
@@ -107,7 +107,7 @@ host_vars
 
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
    :language: yaml
-   :caption: host_vars/build.example.com/fp_qemu.yml
+   :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
@@ -160,6 +160,7 @@ Build packages
    create_jails
    create_ports
    build-142amd64-minimal
+   build-142amd64-All
    qemu_list
    build-142aarch64-minimal
 
@@ -170,6 +171,7 @@ Build packages
 .. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
 
@@ -185,4 +187,3 @@ Build packages
 .. _Export data: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-export.html#export-data
 
 .. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/

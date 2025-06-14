@@ -55,29 +55,29 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The only difference between the examples 202. and 205. is the third host
-  iocage_03. This example creates the templates only.
+* The only difference between the examples 202. and 205. is the third host iocage_03. This example
+  creates the templates only.
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_03/iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 	       
 .. warning::
 
@@ -89,11 +89,11 @@ host_vars
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller
 	       
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -103,7 +103,8 @@ Playbook output - create templates
   (env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini -l iocage_03
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
+   :language: yaml
+   :force:
 
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +114,7 @@ List templates at iocage_01
   [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: bash
 
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,7 +124,7 @@ List templates at iocage_02
   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 List templates at iocage_03
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -133,7 +134,7 @@ List templates at iocage_03
   [iocage_03]# iocage list -lt
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: bash
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

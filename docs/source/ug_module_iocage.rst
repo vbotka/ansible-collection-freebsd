@@ -1,3 +1,5 @@
+.. _ug_module_iocage:
+
 Module vbotka.freebsd.iocage
 ----------------------------
 

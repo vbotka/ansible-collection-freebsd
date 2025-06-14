@@ -73,26 +73,26 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_03.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Playbook pb-postinstall.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-postinstall.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - configure resolv.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,13 +116,14 @@ idempotent, omit these variables according to your own discretion.
 					      -e fp_resolv_conf_clean=true
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook pb-network.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-network.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - configure loadbalance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,7 +133,8 @@ Playbook output - configure loadbalance
   (env) > ansible-playbook pb-network.yml -i iocage-hosts.ini -l iocage_03
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Result
 ^^^^^^
@@ -144,7 +146,7 @@ MACs are sanitized.
   (env) > ssh admin@10.1.0.17 ifconfig -a
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
      
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/

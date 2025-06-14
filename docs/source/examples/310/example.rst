@@ -106,11 +106,11 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: ini
+    :language: yaml
     :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-    :language: ini
+    :language: yaml
     :caption:
 
 group_vars
@@ -149,7 +149,7 @@ Playbook output - by default do nothing
 
 .. literalinclude:: out/out-04.txt
     :language: yaml
-
+    :force:
 
 Playbook *pb-test-02.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -171,6 +171,7 @@ The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install packag
 
 .. literalinclude:: out/out-05.txt
     :language: yaml
+    :force:
 
 Playbook *pb-test-03.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -189,6 +190,7 @@ Playbook output - import vbotka.freebsd_postinstall packages.yml
 
 .. literalinclude:: out/out-06.txt
     :language: yaml
+    :force:
 
 .. hint::
 
@@ -248,7 +250,8 @@ Run the play
           -e @extra-vars.yml
 
 .. literalinclude:: out/out-07.txt
-    :language: bash
+    :language: yaml
+    :force:
 
 Optionally, disable the option `display_ok_hosts`_
 
@@ -261,8 +264,8 @@ Optionally, disable the option `display_ok_hosts`_
           -e @extra-vars.yml
 
 .. literalinclude:: out/out-08.txt
-    :language: bash
-
+    :language: yaml
+    :force:
 
 The above plays show that, depending on a use case, it's possible to:
 

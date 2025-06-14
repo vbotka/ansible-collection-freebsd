@@ -11,4 +11,5 @@ Optionally, do not display *ok* hosts
                                   -e poudriere_cert=true
 
 .. literalinclude:: out/out-09.txt
-    :language: bash
+   :language: yaml
+   :force:

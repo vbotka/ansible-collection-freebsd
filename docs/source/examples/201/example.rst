@@ -163,8 +163,8 @@ Inventory iocage-hosts.ini
    * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
      hosts and creates the variables *iocage_\**
 	       
-Playbook *pb-iocage-display-lists.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-display-lists.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-display-lists.yml
    :language: yaml
@@ -178,6 +178,6 @@ Playbook output - display iocage lists
 
 .. literalinclude:: out/out-09.txt
    :language: yaml
-
+   :force:
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

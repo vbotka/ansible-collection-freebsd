@@ -91,8 +91,8 @@ Jails at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -108,14 +108,14 @@ host_vars
    :language: yaml
    :caption:
     
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini
 
-Playbook *pb-iocage-clone-list.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-clone-list.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-clone-list.yml
    :language: yaml
@@ -129,9 +129,10 @@ Playbook output - clone, start, and list
 
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :force:
 
-List all jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -140,8 +141,8 @@ List all jails at iocage_01
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-List all jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -150,8 +151,8 @@ List all jails at iocage_02
 .. literalinclude:: out/out-05.txt
    :language: bash
 	       
-Inventory *iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.yml
+^^^^^^^^^^^^^^^^^^^^
 
 Enable *"sudo: true"*. Otherwise, *iocage* will complain *"DHCP (running -- address requires
 root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
@@ -194,10 +195,11 @@ Playbook output - list some iocage_* vars
   env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: bash
+   :language: yaml
+   :force:
 
-List all jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+List jails at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^^
 
 If a jail is stopped the IP4 tab says: *"DHCP (not running)"*.
 
@@ -218,7 +220,8 @@ Some jails are stopped.
   (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-09.txt
-   :language: bash
+   :language: yaml
+   :force:
 
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

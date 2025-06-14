@@ -41,7 +41,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the *iocage* hosts
+* root privilege on the *iocage* hosts.
 
 Notes
 ^^^^^
@@ -56,17 +56,17 @@ Notes
    * `Patterns. Targeting hosts and groups.`_
    * `Variable precedence. Where should I put a variable?`_
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 .. seealso::
 
@@ -75,8 +75,8 @@ Inventory *iocage-hosts.ini*
    * `Understanding privilege escalation`_
    * `Setting the Python interpreter`_
 
-Playbook *pb-iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage.yml
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
    :language: yaml
@@ -95,6 +95,7 @@ Playbook output - display debug
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
+   :force:
 
 .. seealso:: `ansible-playbook <https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html>`_
 
@@ -103,13 +104,14 @@ Playbook output - install iocage
 
 .. code-block:: bash
 
-  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                         -l iocage_02 \
-                                         -t freebsd_iocage_pkg \
-                                         -e freebsd_iocage_debug=true
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                          -l iocage_02 \
+                                          -t freebsd_iocage_pkg \
+                                          -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
+   :force:
 
 .. note:: This *debug* shows the *result* of already installed package.
 

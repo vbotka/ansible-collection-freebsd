@@ -3,10 +3,10 @@
 Examples
 ********
 
-:001-003: Manage *iocage* on the remote host
-:010-019: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
+:001-003: Manage *iocage*
+:010-020: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
 :030:     `Filter vbotka.freebsd.iocage`_
-:200-:    Ansible client
+:200-206: Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
 :310-:    `Role vbotka.freebsd.postinstall`_
@@ -18,6 +18,7 @@ Examples
 :370-:    `Role vbotka.freebsd.pf`_
 :380-:    `Role vbotka.freebsd.custom_image`_
 :390-:    `Role vbotka.freebsd.poudriere`_
+:500-:    Infrastructure
 
 **Notes:**
 
@@ -26,16 +27,21 @@ Examples
 
 * Most examples comprise *batch.sh* that runs the commands and creates the output.
 
-* Most plays in *batch.sh* are idempotent. If it has already been run, the output of the tasks in
-  the examples may show *ok* instead of expected *changed*.
+* Most plays in *batch.sh* are idempotent. If a play has already been run, the output of the tasks
+  may show *ok* instead of expected *changed*.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Table of Contents
+   :caption: Manage iocage
 
    001 Debug vars and install iocage <examples/001/example.rst>
    002 Activate iocage <examples/002/example.rst>
    003 Audit iocage hosts <examples/003/example.rst>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: iocage module, inventory, and filter
+
    010 Clone jails and create inventory <examples/010/example.rst>
    examples/011/example.rst
    examples/012/example.rst
@@ -46,7 +52,13 @@ Examples
    examples/017/example.rst
    examples/018/example.rst
    examples/019/example.rst
+   examples/020/example.rst
    examples/030/example.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Ansible client
+
    200 Ansible client templates <examples/200/example.rst>
    201 Display iocage lists <examples/201/example.rst>
    202 DHCP Ansible client templates <examples/202/example.rst>
@@ -54,8 +66,18 @@ Examples
    204 DHCP, Auto UUID, iocage_tags v2 <examples/204/example.rst>
    205 DHCP Ansible client templates v2 <examples/205/example.rst>
    206 DHCP and fixed IP Ansible clients <examples/206/example.rst>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Plugins
+
    examples/300/example.rst
    examples/301/example.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Roles
+
    310 Configure and audit Ansible clients <examples/310/example.rst>
    320 Install and audit packages <examples/320/example.rst>
    330 Clone jails and create inventory <examples/330/example.rst>
@@ -67,6 +89,11 @@ Examples
    examples/380/example.rst
    examples/390/example.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Infrastructure
+
+   examples/500/example.rst
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
 .. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service

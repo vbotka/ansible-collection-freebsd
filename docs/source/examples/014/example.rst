@@ -51,14 +51,14 @@ Requirements
    * `Inventory plugins`_
    * `Enabling inventory cache plugins`_
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage.yml*
-^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.yml
+^^^^^^^^^^^^^^^^^^^^
 
 Enable cache
 
@@ -68,9 +68,8 @@ Enable cache
 
 .. hint::
 
-   If you do not configure *cache_plugin* Ansible falls back to
-   caching inventory with the `fact cache plugin`_ you configured. For
-   example,
+   If you do not configure *cache_plugin* Ansible falls back to caching inventory with the `fact
+   cache plugin`_ you configured. For example,
 
    .. code-block:: ini
 
@@ -80,8 +79,8 @@ Enable cache
      fact_caching_timeout = 3600
      fact_caching_prefix = ''
 
-Playbook *pb-vars-ip4.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-vars-ip4.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
@@ -89,8 +88,7 @@ Playbook *pb-vars-ip4.yml*
 Playbook output - cache disabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| It takes 4s to create the dynamic inventory and construct the variables if
-| *cache* is disabled.
+| It takes 4s to create the dynamic inventory and construct the variables if *cache* is disabled.
 | (The cache is disabled in *iocage.yml*. *cache=False*)
 
 ::
@@ -106,8 +104,7 @@ Playbook output - cache disabled
 Playbook output - cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the cache is enabled the inventory and variables are provided by
-the cache immediately
+If the cache is enabled the inventory and variables are provided by the cache immediately
 
 ::
 
@@ -116,7 +113,8 @@ the cache immediately
           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-02.txt
-   :language: bash
+   :language: yaml
+   :force:
    :emphasize-lines: 1,3
 
 Cache

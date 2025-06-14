@@ -8,7 +8,6 @@ iocage tags
    :local:
    :depth: 2
 
-
 An iocage tag is a key-value pair applied to a jail to hold metadata about that jail. Each tag is a
 label consisting of a key and an optional value. The iocage tags are stored in the dictionary
 *iocage_tags*.
@@ -22,7 +21,7 @@ label consisting of a key and an optional value. The iocage tags are stored in t
 property notes
 """"""""""""""
 
-We use the *iocage* property *notes* to store *iocage tags*. Quoting from `man iocage`_
+We use the *iocage* property *notes* to store *iocage tags*. Quoting `man iocage`_
 
 .. code-block:: text
 
@@ -57,30 +56,30 @@ For example, put the *notes* into the dictionary *clones*
 Then, the playbook :ref:`ug_pb-iocage-ansible-client` creates jails, for example, on the host
 *iocage_02*
 
-.. code-block:: sh
+::
 
-   [iocage_02]# iocage list -l
-   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
-   +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-   | 149 | afa9e515 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.122 | -   | ansible_client | no       |
-   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 148 | c1670497 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.135 | -   | ansible_client | no       |
-   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 147 | test_111 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24  | -   | ansible_client | no       |
-   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+  [iocage_02]# iocage list -l
+  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+  | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
+  +=====+==========+======+=======+======+=================+====================+=====+================+==========+
+  | 149 | afa9e515 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.122 | -   | ansible_client | no       |
+  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+  | 148 | c1670497 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.135 | -   | ansible_client | no       |
+  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+  | 147 | test_111 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24  | -   | ansible_client | no       |
+  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 
 with *notes*
 
-.. code-block:: sh
+::
 		
-   [iocage_02]# iocage get notes afa9e515
-   vmm=iocage_02 swarm=sw_01
-   [iocage_02]# iocage get notes c1670497
-   vmm=iocage_02 swarm=sw_01
-   [iocage_02]# iocage get notes test_111
-   vmm=iocage_02 swarm=sw_01
+  [iocage_02]# iocage get notes afa9e515
+  vmm=iocage_02 swarm=sw_01
+  [iocage_02]# iocage get notes c1670497
+  vmm=iocage_02 swarm=sw_01
+  [iocage_02]# iocage get notes test_111
+  vmm=iocage_02 swarm=sw_01
 
 .. note::
 
@@ -118,23 +117,23 @@ Then, this plugin creates the dictionary *iocage_tags* in each jail
 
 and use it to create the groups
 
-.. code-block:: sh
+::
 
-   (env) > ansible-inventory -i hosts --graph
-   @all:
-     |--@ungrouped:
-     |--@swarm_sw_01:
-     |  |--afa9e515
-     |  |--c1670497
-     |  |--test_111
-     |--@vmm_iocage_02:
-     |  |--afa9e515
-     |  |--c1670497
-     |  |--test_111
+  (env) > ansible-inventory -i hosts --graph
+  @all:
+    |--@ungrouped:
+    |--@swarm_sw_01:
+    |  |--afa9e515
+    |  |--c1670497
+    |  |--test_111
+    |--@vmm_iocage_02:
+    |  |--afa9e515
+    |  |--c1670497
+    |  |--test_111
 
 .. hint::
 
-   Take a look at Index and search ``iocage_tags`` to see what examples are available.
+   In the Index search ``iocage_tags`` to see what examples are available.
 
 
 .. _Ansible Tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html

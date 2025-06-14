@@ -75,26 +75,26 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_03.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,7 +106,8 @@ Install packages
   env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_packages -e pf_install=true
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -121,7 +122,8 @@ first configure the rules
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -e pf_enable=false
 
 .. literalinclude:: out/out-02.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Playbook output - enable pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,7 +133,8 @@ Playbook output - enable pf
   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_rcconf_pf
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: yaml
+   :force:
 
 Result
 ^^^^^^
@@ -144,7 +147,7 @@ pf status
   (env) > ssh admin@10.1.0.17 sudo service pf status
 
 .. literalinclude:: out/out-04.txt
-    :language: bash
+   :language: bash
 
 /etc/pf.conf
 """"""""""""
@@ -154,7 +157,7 @@ pf status
   (env) > ssh admin@10.1.0.17 cat /etc/pf.conf
 
 .. literalinclude:: out/out-05.txt
-    :language: bash
+   :language: bash
 
      
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
