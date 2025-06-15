@@ -5,6 +5,7 @@ As root at the iocage host, create three `VNET jails`_ with a DHCP interface fro
 *ansible_client*
 
 .. code-block:: console
+   :emphasize-lines: 1,3,5
 
    shell> iocage create --template ansible_client --name srv_1 bpf=1 dhcp=1 vnet=1
    srv_1 successfully created!
@@ -20,11 +21,9 @@ As root at the iocage host, create three `VNET jails`_ with a DHCP interface fro
 As admin at the controller, list the jails
 
 .. code-block:: console
+   :emphasize-lines: 1
 
    shell> ssh admin@10.1.0.73 iocage list -l
-
-.. code-block:: console
-
    +------+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
    | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
    +======+=======+======+=======+======+=================+====================+=====+================+==========+
@@ -104,26 +103,28 @@ Display the inventory
    Optionally, create `Shared IP jails`_
 
    .. code-block:: console
+      :emphasize-lines: 1,3,5
 
-     shell> iocage create --template ansible_client --name srv_1 ip4_addr="em0|10.1.0.101/24"
-     srv_1 successfully created!
-     shell> iocage create --template ansible_client --name srv_2 ip4_addr="em0|10.1.0.102/24"
-     srv_2 successfully created!
-     shell> iocage create --template ansible_client --name srv_3 ip4_addr="em0|10.1.0.103/24"
-     srv_3 successfully created!
+      shell> iocage create --template ansible_client --name srv_1 ip4_addr="em0|10.1.0.101/24"
+      srv_1 successfully created!
+      shell> iocage create --template ansible_client --name srv_2 ip4_addr="em0|10.1.0.102/24"
+      srv_2 successfully created!
+      shell> iocage create --template ansible_client --name srv_3 ip4_addr="em0|10.1.0.103/24"
+      srv_3 successfully created!
 
    .. code-block:: console
+      :emphasize-lines: 1
 
-     shell> iocage list -l
-     +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+---------- +
-     | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL  |
-     +======+=======+======+=======+======+=================+===================+=====+================+==========+
-     | None | srv_1 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.101/24 | -   | ansible_client | no       |
-     +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-     | None | srv_2 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.102/24 | -   | ansible_client | no       |
-     +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-     | None | srv_3 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.103/24 | -   | ansible_client | no       |
-     +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+      shell> iocage list -l
+      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------  +
+      | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL   |
+      +======+=======+======+=======+======+=================+===================+=====+================+==========+
+      | None | srv_1 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.101/24 | -   | ansible_client | no       |
+      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+      | None | srv_2 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.102/24 | -   | ansible_client | no       |
+      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+      | None | srv_3 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.103/24 | -   | ansible_client | no       |
+      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
 
 
 .. seealso::
