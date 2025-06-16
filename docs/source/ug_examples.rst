@@ -6,7 +6,7 @@ Examples
 :001-003: Manage *iocage*
 :010-020: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
 :030:     `Filter vbotka.freebsd.iocage`_
-:200-206: Ansible client
+:200-207: Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
 :310-:    `Role vbotka.freebsd.postinstall`_
@@ -66,6 +66,7 @@ Examples
    204 DHCP, Auto UUID, iocage_tags v2 <examples/204/example.rst>
    205 DHCP Ansible client templates v2 <examples/205/example.rst>
    206 DHCP and fixed IP Ansible clients <examples/206/example.rst>
+   207 DHCP Ansible client templates v3 <examples/207/example.rst>
 
 .. toctree::
    :maxdepth: 1

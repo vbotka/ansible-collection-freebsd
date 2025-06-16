@@ -17,7 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Updated docs.
+* Updated docs. Updated examples.
+* Added example 207
 
 
 0.7.10

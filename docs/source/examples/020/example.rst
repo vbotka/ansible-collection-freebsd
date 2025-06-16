@@ -9,7 +9,8 @@ Extending example :ref:`example_016`.
    :local:
    :depth: 1
 
-.. index:: single: inventory aliases; Example 020
+.. index:: single: inventory alias; Example 020
+.. index:: single: alias; Example 020
 .. index:: single: inventory vbotka.freebsd.iocage; Example 020
 .. index:: single: inventory ansible.builtin.constructed; Example 020
 .. index:: single: option inventory_hostname_tag; Example 020
@@ -245,7 +246,7 @@ Destroy the swarms if you don't need them.
    :language: yaml
    :force:
 
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
 .. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases

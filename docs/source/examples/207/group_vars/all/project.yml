@@ -1,0 +1,34 @@
+# The project keys are jails aliases.
+project:
+  logserv_1:
+    class: [logserv]
+    vmm: iocage_01
+  http_1:
+    class: [http, logclient]
+    vmm: iocage_02
+  db_1:
+    class: [db, logclient]
+    vmm: iocage_02
+  http_2:
+    class: [http, logclient]
+    vmm: iocage_03
+  db_2:
+    class: [db, logclient]
+    vmm: iocage_03
+
+# Declare vmm. Dictionary of iocage hosts.
+vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
+vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"
+
+# Declare class. Dictionary of classes.
+class_list: "{{ project | dict2items }}"
+class_keys: "{{ class_list | map(attribute='value.class') | flatten | unique | sort }}"
+class: |
+  {% filter from_yaml %}
+  {% for k in class_keys %}
+  {{ k }}: {{ class_list | selectattr('value.class', 'contains', k) | map(attribute='key') }}
+  {% endfor %}
+  {% endfilter %}
+
+# Jail properties.
+properties: "bpf=1 dhcp=1 vnet=1"

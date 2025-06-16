@@ -1,0 +1,38 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [test_1] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_1
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [test_2] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_2
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [test_3] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_3
+        iocage_classes: []
+
+        iocage_tags: {}
+
+TASK [debug] *******************************************************************
+ok: [test_1] => 
+    msg: |-
+        all: ['test_1', 'test_2', 'test_3']
+        ungrouped: []
+        state_down: ['test_1', 'test_2', 'test_3']
+
+PLAY RECAP *********************************************************************
+test_1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
