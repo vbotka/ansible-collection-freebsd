@@ -1,17 +1,8 @@
 diff --git a/setup/distfiles/modules/iocage.py b/setup/distfiles/modules/iocage.py
-index 71d1f73..83b56dd 100644
+index 3647564..3500e49 100644
 --- a/setup/distfiles/modules/iocage.py
 +++ b/setup/distfiles/modules/iocage.py
-@@ -34,7 +34,7 @@ DOCUMENTATION = r'''
- module: iocage
- short_description: FreeBSD iocage jail handling
- description:
--  - The M(iocage) module is wrapper to B(iocage) command.
-+  - The M(vbotka.freebsd.iocage) module is wrapper to B(iocage) command.
- options:
-   state:
-     description:
-@@ -88,7 +88,7 @@ options:
+@@ -100,7 +100,7 @@ options:
      type: dict
    args:
      description:
@@ -20,16 +11,16 @@ index 71d1f73..83b56dd 100644
          to the sub-command B(create) if the O(state) is V(basejail, thickjail, template, present).
          If the same Ansible task also fetches a release as apart of the creation
          the arguments will not be applied to the sub-command B(fetch). Use separate task
-@@ -168,7 +168,7 @@ author:
+@@ -165,7 +165,7 @@ seealso:
  
- EXAMPLES = r'''
+ EXAMPLES = r"""
  - name: Create Ansible facts iocage_*. This is the default state.
 -  iocage:
 +  vbotka.freebsd.iocage:
      state: facts
  
  - name: Display lists of bases, plugins, templates, and jails
-@@ -180,29 +180,29 @@ EXAMPLES = r'''
+@@ -177,29 +177,29 @@ EXAMPLES = r"""
        {{ iocage_jails.keys() | list }}
  
  - name: Fetch the remote host's version of base
@@ -64,7 +55,7 @@ index 71d1f73..83b56dd 100644
      state: fetched
      bupdate: true
      components: 'base.txz,doc.txz'
-@@ -210,53 +210,53 @@ EXAMPLES = r'''
+@@ -207,53 +207,53 @@ EXAMPLES = r"""
      args: -k
  
  - name: Update the jail. This will start the jail.
@@ -128,7 +119,7 @@ index 71d1f73..83b56dd 100644
      state: set
      name: foo
      properties:
-@@ -266,7 +266,7 @@ EXAMPLES = r'''
+@@ -263,7 +263,7 @@ EXAMPLES = r"""
  
  - name: Create jail without cloning, install packages, and set properties.
          Use release of the remote host.
@@ -137,7 +128,7 @@ index 71d1f73..83b56dd 100644
      state: present
      name: foo
      pkglist: /path/to/pkglist.json
-@@ -278,7 +278,7 @@ EXAMPLES = r'''
+@@ -275,7 +275,7 @@ EXAMPLES = r"""
  
  - name: Create template, install packages, and set properties.
          Use release of the remote host.
@@ -146,7 +137,7 @@ index 71d1f73..83b56dd 100644
      state: template
      name: tplfoo
      pkglist: /path/to/pkglist.json
-@@ -290,7 +290,7 @@ EXAMPLES = r'''
+@@ -287,7 +287,7 @@ EXAMPLES = r"""
  
  - name: Create the jail from the template tplfoo.
          Install packages and set properties.
@@ -155,7 +146,7 @@ index 71d1f73..83b56dd 100644
      state: cloned
      name: foo
      clone_from: tplfoo
-@@ -303,7 +303,7 @@ EXAMPLES = r'''
+@@ -300,7 +300,7 @@ EXAMPLES = r"""
  
  - name: Create the jail from the template tplfoo.
          The name is automatically generated.
@@ -164,7 +155,7 @@ index 71d1f73..83b56dd 100644
      state: cloned
      clone_from: tplfoo
    register: result
-@@ -312,19 +312,19 @@ EXAMPLES = r'''
+@@ -309,19 +309,19 @@ EXAMPLES = r"""
      jname: "{{ result.uuid_short }}"
  
  - name: Execute command in running jail
@@ -186,4 +177,4 @@ index 71d1f73..83b56dd 100644
 +  vbotka.freebsd.iocage:
      state: absent
      name: foo
- '''
+ """
