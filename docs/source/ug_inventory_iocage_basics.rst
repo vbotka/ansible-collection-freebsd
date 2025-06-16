@@ -23,7 +23,7 @@ As admin at the controller, list the jails
 .. code-block:: console
    :emphasize-lines: 1
 
-   shell> ssh admin@10.1.0.73 iocage list -l
+   (env) > ssh admin@10.1.0.73 iocage list -l
    +------+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
    | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
    +======+=======+======+=======+======+=================+====================+=====+================+==========+
@@ -38,7 +38,7 @@ Create the inventory configuration
 
 .. code-block:: console
 
-   shell> cat hosts/02_iocage.yml
+   (env) > cat hosts/02_iocage.yml
 
 .. code-block:: yaml
 
@@ -50,7 +50,7 @@ Display the inventory
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+   (env) > ansible-inventory -i hosts/02_iocage.yml --list --yaml
 
 .. code-block:: yaml
 

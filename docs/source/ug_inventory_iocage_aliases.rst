@@ -141,7 +141,7 @@ keeps the value of the `inventory alias`_. The *properties* are required. Enable
 
 .. code-block:: console
 
-   shell> cat hosts/02_iocage.yml
+   (env) > cat hosts/02_iocage.yml
 
 .. code-block:: yaml
    :emphasize-lines: 4,5
@@ -166,7 +166,7 @@ Display tags and groups. Create a playbook
 
 .. code-block:: console
 
-   shell> cat pb-test-groups.yml
+   (env) > cat pb-test-groups.yml
 
 .. code-block:: yaml+jinja
 
@@ -193,7 +193,7 @@ Run the playbook
 
 .. code-block:: console
 
-   shell> ansible-playbook -i hosts/02_iocage.yml pb-test-groups.yml
+   (env) > ansible-playbook -i hosts/02_iocage.yml pb-test-groups.yml
 
 .. code-block:: yaml
    :force:

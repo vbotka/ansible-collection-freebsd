@@ -48,7 +48,7 @@ Create the inventory configuration. Use the parameter *hooks_results* instead of
 
 .. code-block:: console
 
-   shell> cat hosts/02_iocage.yml
+   (env) > cat hosts/02_iocage.yml
 
 .. code-block:: yaml
 
@@ -69,7 +69,7 @@ As admin at the controller, display the inventory
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+   (env) > ansible-inventory -i hosts/02_iocage.yml --list --yaml
 
 .. code-block:: yaml
 
@@ -127,7 +127,7 @@ Compose the variable ansible_host
 
 .. code-block:: console
 
-   shell> cat hosts/02_iocage.yml
+   (env) > cat hosts/02_iocage.yml
 
 .. code-block:: yaml
    :emphasize-lines: 7
@@ -144,7 +144,7 @@ Test the jails. Create a playbook
 
 .. code-block:: console
 
-   shell> cat pb-test-uname.yml
+   (env) > cat pb-test-uname.yml
 
 .. code-block:: yaml
 
@@ -169,7 +169,7 @@ Run the playbook
 
 .. code-block:: console
 
-   shell> ansible-playbook -i hosts/02_iocage.yml pb-test-uname.yml
+   (env) > ansible-playbook -i hosts/02_iocage.yml pb-test-uname.yml
 
 .. code-block:: yaml
    :force:

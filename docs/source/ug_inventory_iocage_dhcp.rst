@@ -57,7 +57,7 @@ As admin at the controller, list the jails. The IP4 tab says "... address requir
 .. code-block:: console
    :emphasize-lines: 1
 
-   shell> ssh admin@10.1.0.73 iocage list -l
+   (env) > ssh admin@10.1.0.73 iocage list -l
    +-----+-------+------+-------+------+-----------------+-----------------------------------------+-----+----------------+----------+
    | JID | NAME  | BOOT | STATE | TYPE |     RELEASE     |                   IP4                   | IP6 |    TEMPLATE    | BASEJAIL |
    +=====+=======+======+=======+======+=================+=========================================+=====+================+==========+
@@ -73,7 +73,7 @@ Use sudo if enabled
 .. code-block:: console
    :emphasize-lines: 1
 
-   shell> ssh admin@10.1.0.73 sudo iocage list -l
+   (env) > ssh admin@10.1.0.73 sudo iocage list -l
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
    | JID | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
    +=====+=======+======+=======+======+=================+====================+=====+================+==========+
@@ -88,7 +88,7 @@ Create the inventory configuration. Use the parameter ``sudo``
 
 .. code-block:: console
 
-   shell> cat hosts/02_iocage.yml
+   (env) > cat hosts/02_iocage.yml
 
 .. code-block:: yaml
    :emphasize-lines: 4
@@ -102,7 +102,7 @@ Display the inventory
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+   (env) > ansible-inventory -i hosts/02_iocage.yml --list --yaml
 
 .. code-block:: yaml
 
@@ -177,5 +177,5 @@ In this case, make sure the sudo tag ``SETENV`` is used
 .. code-block:: console
    :emphasize-lines: 2
 
-   shell> ssh admin@10.1.0.73 sudo cat /usr/local/etc/sudoers | grep admin
+   (env) > ssh admin@10.1.0.73 sudo cat /usr/local/etc/sudoers | grep admin
    admin ALL=(ALL) NOPASSWD:SETENV: ALL

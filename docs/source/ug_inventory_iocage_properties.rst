@@ -6,7 +6,7 @@ Optionally, get the iocage properties. Update the inventory configuration. Use t
 
 .. code-block:: console
 
-   shell> cat hosts/02_iocage.yml
+   (env) > cat hosts/02_iocage.yml
 
 .. code-block:: yaml
    :emphasize-lines: 4
@@ -24,7 +24,7 @@ Display the properties. Create a playbook
 
 .. code-block:: console
 
-   shell> cat pb-test-properties.yml
+   (env) > cat pb-test-properties.yml
 
 .. code-block:: yaml
 
@@ -44,7 +44,7 @@ Run the playbook. Limit the inventory to *srv_3*
 
 .. code-block:: console
 
-   shell> ansible-playbook -i hosts/02_iocage.yml -l srv_3 pb-test-properties.yml
+   (env) > ansible-playbook -i hosts/02_iocage.yml -l srv_3 pb-test-properties.yml
 
 .. code-block:: yaml
    :force:

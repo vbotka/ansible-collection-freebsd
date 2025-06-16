@@ -22,40 +22,40 @@ Use the dictionary *clones*. For example,
 
 .. code-block:: yaml
 
-  clones:
-    test_111:
-      clone_from: ansible_client
-      properties:
-        ip4_addr: 'em0|10.1.0.111/24'
-    test_112:
-      clone_from: ansible_client
-      properties:
-        ip4_addr: 'em0|10.1.0.112/24'
-    test_113:
-      clone_from: ansible_client
-      properties:
-        ip4_addr: 'em0|10.1.0.113/24'
+   clones:
+     test_111:
+       clone_from: ansible_client
+       properties:
+         ip4_addr: 'em0|10.1.0.111/24'
+     test_112:
+       clone_from: ansible_client
+       properties:
+         ip4_addr: 'em0|10.1.0.112/24'
+     test_113:
+       clone_from: ansible_client
+       properties:
+         ip4_addr: 'em0|10.1.0.113/24'
 
 Use the playbook tag *clone* to execute selected tasks
 
-.. code-block:: sh
+.. code-block:: console
 
   (env) > ansible-playbook pb-iocage-ansible-clients.yml -t clone -e clone=true
 
 creates the clones
 
-.. code-block:: text
+.. code-block:: console
 
-  shell> iocage list -l
-  +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-  | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
-  +=====+==========+======+=======+======+=================+===================+=====+================+==========+
-  | 170 | test_111 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
-  +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-  | 171 | test_112 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.112/24 | -   | ansible_client | no       |
-  +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-  | 172 | test_113 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.113/24 | -   | ansible_client | no       |
-  +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   shell> iocage list -l
+   +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
+   +=====+==========+======+=======+======+=================+===================+=====+================+==========+
+   | 170 | test_111 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.111/24 | -   | ansible_client | no       |
+   +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   | 171 | test_112 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.112/24 | -   | ansible_client | no       |
+   +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   | 172 | test_113 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.113/24 | -   | ansible_client | no       |
+   +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
 
 
 swarms
@@ -72,13 +72,13 @@ Use the dictionary *swarms*. For example,
 
 Use the playbook tag *swarm* to execute selected tasks
 
-.. code-block:: sh
+.. code-block:: console
 
   (env) > ansible-playbook pb-iocage-ansible-clients.yml -t swarm -e swarm=true
 
 creates 3 jails from the template *ansible_client*. The names are generated automatically 
 
-.. code-block:: text
+.. code-block:: console
 
   shell> iocage list -l
   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
@@ -98,20 +98,20 @@ The dictionary *properties* keeps the default properties for both options. For e
 
 .. code-block:: yaml
 
-  properties:
-    vnet: 'on'
-    defaultrouter: 10.1.0.10
-    notes: "vmm={{ inventory_hostname }}"
+   properties:
+     vnet: 'on'
+     defaultrouter: 10.1.0.10
+     notes: "vmm={{ inventory_hostname }}"
 
 , or
 
 .. code-block:: yaml
 
-  properties:
-    bpf: 1
-    dhcp: 1
-    vnet: 1
-    notes: "vmm={{ inventory_hostname }}"
+   properties:
+     bpf: 1
+     dhcp: 1
+     vnet: 1
+     notes: "vmm={{ inventory_hostname }}"
 
 .. seealso::
 
