@@ -5,106 +5,88 @@
 
 from __future__ import annotations
 
-DOCUMENTATION = r'''
+DOCUMENTATION = r"""
 module: service
 short_description: FreeBSD control (start/stop/etc.) or list system services
 version_added: 0.6.3
 author:
   - Vladimir Botka (@vbotka)
 description:
-  - The M(vbotka.freebsd.service) module is wrapper to B(service) command.
-
+  - A wrapper to C(service) command.
 options:
-
   script:
     description:
       - rc.d script name.
-      - This option is required if O(list_enabled) is V(False) (default).
+      - This option is required if O(list_enabled) is V(false) (default).
     type: str
-
   command:
     description:
       - rc.d script command.
       - This option is required if O(script) is required and O(synopsis) is
-        V(False) (default).
+        V(false) (default).
     type: str
-
   env:
     description:
       - Set environment before starting the script.
       - Available in FreeBSD 14.0 and later.
     type: dict
-
   jail:
     description:
       - Perform the given actions under the named jail.
       - The O(jail) value can be either a jail ID or a jail name.
       - Jail name doesn't work in C(iocage) jails. Use JID.
     type: str
-
   list_enabled:
     description:
       - List enabled services and exit.
       - This option ignores the C(check_mode)
     type: bool
-    default: False
-
+    default: false
   synopsis:
     description:
       - Get script commands synopsis. Return attribute C(synopsis) and exit.
       - O(script) is required. Other options are ignored.
       - This option ignores the C(check_mode)
     type: bool
-    default: False
+    default: false
     version_added: 0.6.5
-
   wait:
     description:
       - Wait for a command C(service <script> <command>) to complete. Then, get
         the status.
       - The status before and after the command is compared and if they are
-        different the module returns C(changed=True).
+        different the module returns C(changed=true).
       - The default is 500ms
     type: float
     default: 0.5
     version_added: 0.6.6
-
 notes:
-
   - Supports C(check_mode) except O(synopsis) and O(list_enabled). These two
     options return data also in C(check_mode). All commands return
     C(changed=False) in C(check_mode).
-
   - Commands C(rcvar, status, start, stop) return parsed output.
-
   - The module ignores C(rc=1). For example, the binary C(service) returns
     C(rc=1) for status C(not running) or C(already running). These are not an
     errors in this module. In this case, the module returns C(rc=0) to avoid
     failure.
-
   - For commands that change the result of C(status) or C(enabled) the module
-    reports C(changed=True) when C(status) or C(enabled) before and after the
+    reports C(changed=true) when C(status) or C(enabled) before and after the
     command C(service <script> <command>) are different. In this case, the
     module also returns the dictionary C(state).
-
   - Set environment C(ANSIBLE_DEBUG=true) to enable the debug output. See RETURN
     VALUES C(module_args) in the registered output of the module.
-
   - The functionality of the binary C(service) options C(-l), C(-R), C(-r), and
     C(-v) are not implemented.
-
 seealso:
-
   - name: man service
     description: service -- control (start/stop/etc.) or list system services
     link: https://man.freebsd.org/cgi/man.cgi?service(8)
-
   - name: Practical rc.d scripting in BSD
     description: Reference points for further study of the design and efficient application of rc.d.
     link: https://docs.freebsd.org/en/articles/rc-scripting/
-'''
+"""
 
-EXAMPLES = r'''
+EXAMPLES = r"""
 ---
 - name: Get sshd ON/OFF knob value.
   register: out
@@ -328,9 +310,9 @@ EXAMPLES = r'''
 # fatal: [test_23]: FAILED! =>
 #   changed: false
 #   msg: Command is required for script sshd.
-'''
+"""
 
-RETURN = r'''
+RETURN = r"""
 module_args:
   description: Information on how the module was invoked.
   returned: debug
@@ -339,7 +321,7 @@ synopsis:
   description: Script commands synopsis
   returned: When O(synopsis) is V(True)
   type: dict
-'''
+"""
 
 import itertools
 import json
@@ -350,14 +332,12 @@ from ansible.module_utils._text import to_bytes
 
 
 def _command_fail(module, label, cmd, rc, stdout, stderr):
-    '''Command fails. Create output and terminate module.
-    '''
+    """Command fails. Create output and terminate module."""
     module.fail_json(msg=f"{label}", rc=rc, stdout=f"{stdout}", stderr=f"{stderr}")
 
 
 def _parse_command_output(script, command, rc, out, err):
-    '''Parse command output.
-    '''
+    """Parse command output."""
     if rc == 0:
         data = out
     else:
@@ -403,9 +383,10 @@ def _parse_command_output(script, command, rc, out, err):
 
 
 def _parse_script_synopsis(module, script_path, err):
-    '''Parse script commands synopsis. Expecting err form
-       Usage: /etc/rc.d/sshd [fast|force|one|quiet](start|stop|restart)
-    '''
+    """
+    Parse script commands synopsis. Expecting err form
+    Usage: /etc/rc.d/sshd [fast|force|one|quiet](start|stop|restart)
+    """
     lines = err.splitlines()
     if len(lines) > 1:
         module.fail_json(msg=f"Expecting a single line output from '{script_path}'.")
@@ -420,8 +401,7 @@ def _parse_script_synopsis(module, script_path, err):
 
 
 def _state(module, script_path, command, cmds, wait):
-    '''Record state of the service.
-    '''
+    """Record state of the service."""
 
     # TODO: configurable
     commands_status = ['start', 'stop', 'restart', 'reload', 'keygen']

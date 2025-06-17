@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Updated modules iocage and ucl. Updated documentation and docstrings.
+* Updated modules iocage, ucl, and service. Updated documentation and docstrings.
 * Updated filter iocage. Updated documentation and docstrings.
 * Updated docs. Updated examples.
 * Added example 207
