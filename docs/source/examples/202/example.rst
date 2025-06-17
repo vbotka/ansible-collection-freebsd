@@ -106,7 +106,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
@@ -226,9 +226,12 @@ Inventory *iocage-hosts.ini*
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Limit the inventory to iocage_01, and iocage_02
+
 ::
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage-hosts.ini
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
+                           -i iocage-hosts.ini -l iocage_01,iocage_02
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -257,10 +260,12 @@ List templates at iocage_02
 Playbook output - clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Limit the inventory to iocage_01, and iocage_02
+
 ::
 
   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
+                           -i iocage-hosts.ini -l iocage_01,iocage_02 \
                            -t clone \
                            -e clone=true
 
