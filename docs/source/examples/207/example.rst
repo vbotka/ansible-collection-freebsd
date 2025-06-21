@@ -258,9 +258,9 @@ Playbook pb-iocage-project-create.yml
 .. note::
 
    The inventory ``-i hosts`` provides the group of all created jails. The play can use it and
-   create only missing project jails. This makes the play idempotent despite the used module
+   create only the missing project jails. This makes the play idempotent despite the used module
    *command* and *iocage* option ``--count``
-	      
+
 Playbook output - create and start project jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

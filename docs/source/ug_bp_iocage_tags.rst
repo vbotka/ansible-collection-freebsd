@@ -137,7 +137,7 @@ and use it to create the groups
 
 .. hint::
 
-   In the Index search ``iocage_tags`` to see what examples are available.
+   In the *Index* search ``iocage_tags`` to see what examples are available.
 
 
 .. _Ansible Tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html

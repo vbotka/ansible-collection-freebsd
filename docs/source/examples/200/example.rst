@@ -7,15 +7,18 @@
    :local:
    :depth: 1
 
-.. index:: single: template ansible_client; Example 200
 .. index:: single: ansible_client; Example 200
+.. index:: single: template ansible_client; Example 200
 .. index:: single: playbook pb_iocage_template.yml; Example 200
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 200
 .. index:: single: inventory vbotka.freebsd.iocage; Example 200
 .. index:: single: module vbotka.freebsd.iocage; Example 200
 .. index:: single: module community.general.pkgng; Example 200
+.. index:: single: community.general.pkgng; Example 200
 .. index:: single: module ansible.posix.authorized; Example 200
+.. index:: single: ansible.posix.authorized; Example 200
 .. index:: single: module ansible.builtin.lineinfile; Example 200
+.. index:: single: ansible.builtin.lineinfile; Example 200
 .. index:: single: sudoers; Example 200
 
 .. index:: single: option compose; Example 200

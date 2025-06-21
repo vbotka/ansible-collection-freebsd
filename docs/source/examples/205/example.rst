@@ -9,6 +9,8 @@ Extending example :ref:`example_202`.
    :local:
    :depth: 1
 
+.. index:: single: ansible_client; Example 205
+.. index:: single: template ansible_client; Example 205
 .. index:: single: DHCP; Example 205
 .. index:: single: act_dhclient; Example 205
 .. index:: single: act_pk; Example 205
@@ -19,14 +21,16 @@ Extending example :ref:`example_202`.
 .. index:: single: ansible_client; Example 205
 .. index:: single: dhclient-exit-hooks; Example 205
 .. index:: single: dhclient; Example 205
-.. index:: single: module ansible.builtin.lineinfile; Example 205
-.. index:: single: module ansible.posix.authorized; Example 205
-.. index:: single: module community.general.pkgng; Example 205
 .. index:: single: module vbotka.freebsd.iocage; Example 205
+.. index:: single: module ansible.builtin.lineinfile; Example 205
+.. index:: single: ansible.builtin.lineinfile; Example 205
+.. index:: single: module ansible.posix.authorized; Example 205
+.. index:: single: ansible.posix.authorized; Example 205
+.. index:: single: module community.general.pkgng; Example 205
+.. index:: single: community.general.pkgng; Example 205
 .. index:: single: notes; Example 205
 .. index:: single: playbook pb_iocage_template.yml; Example 205
 .. index:: single: property notes; Example 205
-.. index:: single: template ansible_client; Example 205
 
 Use case
 ^^^^^^^^
