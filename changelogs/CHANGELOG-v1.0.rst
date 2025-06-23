@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Role postinstall upgraded to 2.7.8
 * Updated modules iocage, ucl, and service. Updated documentation and docstrings.
 * Updated filter iocage. Updated documentation and docstrings.
 * Updated docs.
