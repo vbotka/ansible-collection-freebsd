@@ -1,0 +1,11 @@
+
+PLAY [Update vmm repos.] *******************************************************
+
+TASK [Update repos] ************************************************************
+ok: [iocage_02]
+ok: [iocage_03]
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_03                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

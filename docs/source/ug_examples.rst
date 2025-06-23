@@ -94,7 +94,8 @@ Examples
    :maxdepth: 1
    :caption: Infrastructure
 
-   examples/500/example.rst
+   500 syslog-ng Server and Clients <examples/500/example.rst>
+
 
 .. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
 .. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service

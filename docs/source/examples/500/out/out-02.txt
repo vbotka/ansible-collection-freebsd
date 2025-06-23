@@ -1,9 +1,6 @@
 
 PLAY [Configure and start Log Server.] *****************************************
 
-TASK [Gathering Facts] *********************************************************
-ok: [logserv_1]
-
 TASK [Install packages] ********************************************************
 changed: [logserv_1]
 
@@ -23,5 +20,4 @@ RUNNING HANDLER [vbotka.freebsd_postinstall : Reload syslog-ng] ****************
 ok: [logserv_1]
 
 PLAY RECAP *********************************************************************
-logserv_1                  : ok=7    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-
+logserv_1                  : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0

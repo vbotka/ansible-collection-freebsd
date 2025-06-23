@@ -1,1 +1,17 @@
-# syslog client
+fp_syslogng: true
+fp_syslogng_enable: true
+fp_syslogng_conf_template: syslog-ng.conf.client.j2
+fp_syslogng_conf:
+  header:
+    - '@version:4.8'
+    - '@include "scl.conf"'
+  source:
+    s_local:
+      system:
+      internal:
+  destination:
+    d_network:
+      network: '"{{ log_serv }}" transport("udp")'
+  log:
+    - source: s_local
+      destination: d_network

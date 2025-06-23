@@ -20,7 +20,9 @@ Minor Changes
 * Updated modules iocage, ucl, and service. Updated documentation and docstrings.
 * Updated filter iocage. Updated documentation and docstrings.
 * Updated docs.
-* Updated examples: 200, 202, 205, 207, 310, 350
+* Updated examples: 200, 202, 205, 207, 310, 350.
+* Added playbook pb_iocage_update_vmm_repos.yml
+* Added example 500.
 
 
 0.7.10
