@@ -112,5 +112,5 @@ Run the playbook
    srv_3                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 
-.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage>
+.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _Ansible tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html

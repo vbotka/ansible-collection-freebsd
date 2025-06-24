@@ -141,5 +141,5 @@ and use it to create the groups
 
 
 .. _Ansible Tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html
-.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage
+.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

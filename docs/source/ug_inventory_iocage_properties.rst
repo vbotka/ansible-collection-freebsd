@@ -16,7 +16,7 @@ Optionally, get the iocage properties. Update the inventory configuration
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-Display the properties. Create a playbook ``pb-test-properties.yml``
+Display the properties. Create the playbook ``pb-test-properties.yml``
 
 .. code-block:: yaml
 

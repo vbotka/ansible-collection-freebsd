@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Updated docs. Fix links.
 
 
 0.7.11
