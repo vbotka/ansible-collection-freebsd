@@ -104,7 +104,7 @@ Playbook output - test sanity
 
   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
                                          -l iocage_02 \
-					 -t freebsd_iocage_sanity
+                                         -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -117,8 +117,8 @@ Playbook output - test sanity quietly
 
   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
           ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-	  ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-	                                 -l iocage_02 \
+          ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                         -l iocage_02 \
                                          -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-02.txt

@@ -110,7 +110,7 @@ Synopsis
     * create jails
     * start jails
     * optionally, stop and destroy the jails.
-  
+
 * At all created jails:
 
   In the playbook *pb-test-01.yml*:
@@ -178,7 +178,7 @@ host_vars
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
-	       
+
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -223,7 +223,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-06.txt
    :language: bash
-	       
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
@@ -278,7 +278,7 @@ Playbook output - display *iocage_tags*
 
      ansible-playbook pb_iocage_ansible_clients_v2.yml \
                       -i iocage-hosts.ini \
-		      -t swarm_destroy -e swarm_destroy=true
+                      -t swarm_destroy -e swarm_destroy=true
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

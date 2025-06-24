@@ -55,38 +55,38 @@ Notes
 
 * Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8>`_:  ::
 
-         list	 List  the  specified dataset type.  By	default, all jails are
-		 listed.
+         list    List  the  specified dataset type.  By         default, all jails are
+                 listed.
 
-		 Options:
+                 Options:
 
-		 [--http]	       Changes [-R | --remote] to use HTTP.
+                 [--http]              Changes [-R | --remote] to use HTTP.
 
-		 [-H | -h | --header]  Used in scripting.  Use tabs for	 sepa-
-				       rators.
+                 [-H | -h | --header]  Used in scripting.  Use tabs for          sepa-
+                                       rators.
 
-		 [-P | --plugins]      Shows plugins installed on the system.
+                 [-P | --plugins]      Shows plugins installed on the system.
 
-		 [-PRO]		       Lists  official	plugins	 available for
-				       download.
+                 [-PRO]                        Lists  official  plugins          available for
+                                       download.
 
-		 [-R | --remote]       Shows available RELEASE options for re-
-				       mote.
+                 [-R | --remote]       Shows available RELEASE options for re-
+                                       mote.
 
-		 [-b | -r | --base | --release | dataset_type]
-				       List all	bases.
+                 [-b | -r | --base | --release | dataset_type]
+                                       List all         bases.
 
-		 [-l | --long]	       Shows JID, NAME,	BOOT, STATE, TYPE, RE-
-				       LEASE, IP4, IP6,	and TEMPLATE  informa-
-				       tion.
+                 [-l | --long]         Shows JID, NAME,         BOOT, STATE, TYPE, RE-
+                                       LEASE, IP4, IP6,         and TEMPLATE  informa-
+                                       tion.
 
-		 [-q | --quick]	       Lists  all  jails  with less processing
-				       and fields.
+                 [-q | --quick]                Lists  all  jails  with less processing
+                                       and fields.
 
-		 [-s | --sort TEXT]    Sorts the list by the given type.
+                 [-s | --sort TEXT]    Sorts the list by the given type.
 
-		 [-t | --template | dataset_type]
-				       Lists all templates.
+                 [-t | --template | dataset_type]
+                                       Lists all templates.
 
 Lists at iocage_01
 ^^^^^^^^^^^^^^^^^^
@@ -162,7 +162,7 @@ Inventory iocage-hosts.ini
    * *root* is not needed to run ``iocage list ...`` when DHCP isn't used.
    * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
      hosts and creates the variables *iocage_\**
-	       
+
 Playbook pb-iocage-display-lists.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

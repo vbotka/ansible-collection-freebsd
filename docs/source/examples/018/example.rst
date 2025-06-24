@@ -59,7 +59,7 @@ Synopsis
   * display lists of jails.
 
 * On the iocage host *iocage_02*
-  
+
   In the playbook *pb-test.yml*, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
@@ -107,7 +107,7 @@ host_vars
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
-    
+
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -150,7 +150,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-05.txt
    :language: bash
-	       
+
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -170,7 +170,7 @@ root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
 
    * The tag *SETENV*, to preserve the environment, is needed when *env* is set.
 
-       
+
 Display inventory
 ^^^^^^^^^^^^^^^^^
 

@@ -76,7 +76,7 @@ with *notes*
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
-		
+
    [iocage_02]# iocage get notes afa9e515
    vmm=iocage_02 swarm=sw_01
    [iocage_02]# iocage get notes c1670497

@@ -243,11 +243,11 @@ Inventory hosts
    .. code-block:: console
 
       [iocage_01]# iocage list -h
-      - test_1	down	13.5-RELEASE	-
+      - test_1  down    13.5-RELEASE    -
       [iocage_02]# iocage list -h
-      - test_2	down	14.2-RELEASE	-
+      - test_2  down    14.2-RELEASE    -
       [iocage_03]# iocage list -h
-      - test_3	down	14.2-RELEASE	-
+      - test_3  down    14.2-RELEASE    -
 
 Playbook pb-iocage-project-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

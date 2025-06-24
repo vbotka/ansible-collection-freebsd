@@ -140,7 +140,7 @@ Create and start jails
 .. literalinclude:: out/out-11.txt
    :language: yaml
    :force:
-	       
+
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -178,8 +178,7 @@ Update repos
 ::
 
   (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml \
-                           -i iocage-hosts.ini \
-			   -l iocage_02
+                          -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-12.txt
    :language: yaml

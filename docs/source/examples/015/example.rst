@@ -90,7 +90,7 @@ Playbook output - display iocage_ip4
 
    * The inventory files in hosts are evaluated in alphabetical order.
    * The jail ansible_client from iocage_02 overrides the one from iocage_01
-	       
+
 Cache
 ^^^^^
 

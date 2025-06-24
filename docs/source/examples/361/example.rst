@@ -112,8 +112,8 @@ idempotent, omit these variables according to your own discretion.
 
   (env) > ansible-playbook pb-postinstall.yml -i iocage-hosts.ini -l iocage_03 \
                                               -t fp_resolvconf \
-					      -e fp_resolvconf_conf_clean=true \
-					      -e fp_resolv_conf_clean=true
+                                              -e fp_resolvconf_conf_clean=true \
+                                              -e fp_resolv_conf_clean=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

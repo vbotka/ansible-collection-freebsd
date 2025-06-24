@@ -184,7 +184,7 @@ host_vars
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
-	       
+
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -225,7 +225,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-06.txt
    :language: bash
-	       
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 

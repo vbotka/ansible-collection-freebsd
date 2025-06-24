@@ -36,7 +36,7 @@ Use case
 ^^^^^^^^
 
 Create template *ansible_client* at 3 iocage hosts.
-	   
+
 Tree
 ^^^^
 
@@ -82,7 +82,7 @@ host_vars
 .. literalinclude:: host_vars/iocage_03/iocage.yml
    :language: yaml
    :caption:
-	       
+
 .. warning::
 
    * The user *act_user* must exist on the *iocage* host. Otherwise, the module
@@ -92,7 +92,7 @@ host_vars
 
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller
-	       
+
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 

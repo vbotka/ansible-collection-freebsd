@@ -50,7 +50,7 @@ Configuration ansible.cfg
 
 .. literalinclude:: ansible.cfg
    :language: ini
-	       
+
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 

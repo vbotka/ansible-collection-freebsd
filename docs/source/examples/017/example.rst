@@ -72,14 +72,14 @@ functionality.
 
      shell> ANSIBLE_DISPLAY_OK_HOSTS=false \
             ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-	    ansible-playbook pb-iocage-obsolete.yml
+            ansible-playbook pb-iocage-obsolete.yml
 
      PLAY [Test inventory plugin version.] ****************************************
 
      PLAY RECAP *******************************************************************
      localhost: ok=3 changed=0 unreachable=0 failed=0 skipped=2 rescued=0 ignored=0
 
-       
+
 Notes
 ^^^^^
 
@@ -110,7 +110,7 @@ Inventory hosts
 .. literalinclude:: hosts/03_constructed.yml
     :language: yaml
     :caption:
-	       
+
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 

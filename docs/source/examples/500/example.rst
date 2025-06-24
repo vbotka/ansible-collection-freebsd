@@ -264,7 +264,7 @@ installation.
 
    (env) > ansible-playbook pb-logclient.yml \
                             -i hosts -i iocage-hosts.ini \
-			    -e install=true -e debug=true
+                            -e install=true -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

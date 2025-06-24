@@ -139,13 +139,13 @@ Playbook output - runner
    :force:
 
 .. note:: The commands `"iocage set ..."` are not idempotent.
-	       
+
 .. hint::
 
    See the log on the remote host ::
 
      shell> tail -f /var/log/iocage.log
-	       
+
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 

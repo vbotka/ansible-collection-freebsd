@@ -172,7 +172,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-03.txt
    :language: bash
-	       
+
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 

@@ -79,7 +79,7 @@ Synopsis
   * create jails from the Ansible client templates
   * start all jails
   * optionally display the lists of jails.
-  
+
 * On all created jails:
 
   In the playbook *pb-test-01.yml*:
@@ -129,7 +129,7 @@ host_vars
    * The user *act_user* will be created in the template.
    * The user *act_user* will serve as Ansible *remote_user*.
    * The file *act_pk* provides the public keys allowed to ssh to *act_user*.
-	       
+
 .. warning::
 
    * The user *act_user* must exist on the *iocage* host. Otherwise,
@@ -138,9 +138,9 @@ host_vars
 
    * The file *files/pk_admins.txt* was sanitized. Fit the public keys to your needs ::
 
-       shell> cat files/pk_admins.txt 
+       shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller
-	       
+
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -224,7 +224,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-06.txt
    :language: bash
-	       
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
@@ -262,7 +262,7 @@ Playbook output - display test vars
 ::
 
   (env) > ansible-playbook pb-test-01.yml -i hosts
-	       
+
 .. literalinclude:: out/out-08.txt
    :language: yaml
    :force:
