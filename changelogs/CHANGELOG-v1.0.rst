@@ -17,7 +17,12 @@ Major Changes
 
 Minor Changes
 -------------
-* Role postinstall upgraded to 2.7.8
+* Upgraded roles:
+  config_light 2.7.3
+  freebsd_custom_image 2.7.4
+  freebsd_iocage 0.5.2
+  freebsd_postinstall 2.7.9
+  freebsd_poudriere 2.7.3
 * Updated modules iocage, ucl, and service. Updated documentation and docstrings.
 * Updated filter iocage. Updated documentation and docstrings.
 * Updated docs.
