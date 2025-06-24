@@ -1,14 +1,10 @@
 Properties
 ^^^^^^^^^^
 
-Optionally, get the iocage properties. Update the inventory configuration. Use the parameter
-``get_properties``
+Optionally, get the iocage properties. Update the inventory configuration
+``hosts/02_iocage.yml``. Use the parameter ``get_properties``
 
-.. code-block:: console
-
-   (env) > cat hosts/02_iocage.yml
-
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :emphasize-lines: 4
 
    plugin: vbotka.freebsd.iocage
@@ -20,11 +16,7 @@ Optionally, get the iocage properties. Update the inventory configuration. Use t
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-Display the properties. Create a playbook
-
-.. code-block:: console
-
-   (env) > cat pb-test-properties.yml
+Display the properties. Create a playbook ``pb-test-properties.yml``
 
 .. code-block:: yaml
 
@@ -40,7 +32,7 @@ Display the properties. Create a playbook
        - debug:
            var: iocage_properties
 
-Run the playbook. Limit the inventory to *srv_3*
+Run the playbook. Limit the inventory to ``srv_3``
 
 .. code-block:: console
 

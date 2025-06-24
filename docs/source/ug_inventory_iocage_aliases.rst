@@ -4,7 +4,7 @@ Aliases
 Quoting `Inventory aliases`_:
 
   The `inventory_hostname`_ is the unique identifier for a host in Ansible, this can be an IP or a
-  hostname, but also just an 'alias' or short name for the host.
+  hostname, but also just an ``alias`` or short name for the host.
 
 .. note::
 
@@ -13,10 +13,10 @@ Quoting `Inventory aliases`_:
 
    .. code-block:: console
 
-     foo.example.com
-     10.1.0.11
-     bar ansible_host=foo.example.com
-     bar ansible_host=10.1.0.11
+      foo.example.com
+      10.1.0.11
+      bar ansible_host=foo.example.com
+      bar ansible_host=10.1.0.11
 
 .. seealso::
 
@@ -24,7 +24,7 @@ Quoting `Inventory aliases`_:
    * Ansible test `ansible.utils.resolvable`_ – Test if an IP or name can be resolved.
    * `Connection methods and details`_
 
-As root at the iocage host, stop and destroy all jails
+Optionally, as root at the iocage host, stop and destroy all jails
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -61,7 +61,7 @@ As root at the iocage host, stop and destroy all jails
    Destroying srv_2
    Destroying srv_3
 
-Create three VNET jails with a DHCP interface from the template *ansible_client*. Use the option
+Create three VNET jails with a DHCP interface from the template ``ansible_client``. Use the option
 ``--count``
 
 .. code-block:: console
@@ -123,7 +123,7 @@ List the jails
    | 209 | 9d94cc9e | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.115 | -   | ansible_client | no       |
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Set *notes*. The tag *alias* is used to create `inventory aliases`_
+Set ``notes`` in the jails. The tag ``alias`` is used to create `inventory aliases`_
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -135,15 +135,11 @@ Set *notes*. The tag *alias* is used to create `inventory aliases`_
    shell> iocage set notes="vmm=iocage_02 project=bar alias=srv_3" 9d94cc9e
    notes: none -> vmm=iocage_02 project=bar alias=srv_3
 
-Update the inventory configuration. Set the parameter ``inventory_hostname_tag`` to *alias*. This tag
-keeps the value of the `inventory alias`_. The *properties* are required. Enable the parameter
-``get_properties``
+Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
+``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the `inventory alias`_. The
+``properties`` are required. Enable the parameter ``get_properties``
 
-.. code-block:: console
-
-   (env) > cat hosts/02_iocage.yml
-
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :emphasize-lines: 4,5
 
    plugin: vbotka.freebsd.iocage
@@ -162,11 +158,7 @@ keeps the value of the `inventory alias`_. The *properties* are required. Enable
      - prefix: project
        key: iocage_tags.project
 
-Display tags and groups. Create a playbook
-
-.. code-block:: console
-
-   (env) > cat pb-test-groups.yml
+Display tags and groups. Create the playbook ``pb-test-groups.yml``
 
 .. code-block:: yaml+jinja
 

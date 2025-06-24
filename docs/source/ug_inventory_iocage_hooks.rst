@@ -2,21 +2,24 @@ Hooks
 ^^^^^
 
 The iocage utility internally opens a console to a jail to get the jail's DHCP address. This
-requires root. If you run the command `iocage list -l` as unprivileged user, you'll see the message
-`DHCP (running -- address requires root)`. If you are not granted the root privilege, use
-*/etc/dhclient-exit-hooks*. For example,
+requires root. If you run the command ``iocage list -l`` as unprivileged user, you'll see the message
+``DHCP (running -- address requires root)``. If you are not granted the root privilege, use
+``/etc/dhclient-exit-hooks``. For example,
 
-.. code-block:: bash
-   :emphasize-lines: 1
+.. code-block:: console
 
    shell> cat /zroot/iocage/jails/srv_1/root/etc/dhclient-exit-hooks
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
    case "$reason" in
        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
        ;;
    esac
 
-where */zroot/iocage* is the activated pool
+where ``/zroot/iocage`` is the activated pool
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -44,11 +47,8 @@ where */zroot/iocage* is the activated pool
 
 .. seealso:: `man dhclient-script`_
 
-Create the inventory configuration. Use the parameter *hooks_results* instead of *sudo*
-
-.. code-block:: console
-
-   (env) > cat hosts/02_iocage.yml
+Create the inventory configuration ``hosts/02_iocage.yml``. Use the option ``hooks_results`` instead
+of ``sudo``
 
 .. code-block:: yaml
 
@@ -60,10 +60,10 @@ Create the inventory configuration. Use the parameter *hooks_results* instead of
 
 .. note::
 
-   The parameter ``hooks_results`` expects the *poolname* to be mounted to */poolname*. For example,
-   if you activate the pool *iocage*, this plugin expects to find the ``hooks_results`` items in the
-   path */iocage/iocage/jails/<name>/root*. If you mount the *poolname* to a different path, the
-   easiest remedy is to create a symlink.
+   The option ``hooks_results`` expects the ``poolname`` to be mounted to ``/poolname``. For
+   example, if you activate the pool ``zroot``, this plugin expects to find the ``hooks_results``
+   items in the path ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname`` to a
+   different path, the easiest remedy is to create a symlink.
 
 As admin at the controller, display the inventory
 
@@ -123,13 +123,9 @@ As admin at the controller, display the inventory
              iocage_template: ansible_client
              iocage_type: jail
 
-Compose the variable ansible_host
+Update the inventory configuration ``hosts/02_iocage.yml``. Compose the variable ``ansible_host``
 
-.. code-block:: console
-
-   (env) > cat hosts/02_iocage.yml
-
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :emphasize-lines: 7
 
    plugin: vbotka.freebsd.iocage
@@ -140,11 +136,7 @@ Compose the variable ansible_host
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-Test the jails. Create a playbook
-
-.. code-block:: console
-
-   (env) > cat pb-test-uname.yml
+Test the jails. Create the playbook ``pb-test-uname.yml``
 
 .. code-block:: yaml
 

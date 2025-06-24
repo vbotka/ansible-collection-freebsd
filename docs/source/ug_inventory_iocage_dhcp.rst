@@ -84,11 +84,7 @@ Use sudo if enabled
    | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Create the inventory configuration. Use the parameter ``sudo``
-
-.. code-block:: console
-
-   (env) > cat hosts/02_iocage.yml
+Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``sudo``
 
 .. code-block:: yaml
    :emphasize-lines: 4
@@ -159,7 +155,8 @@ Display the inventory
              iocage_template: ansible_client
              iocage_type: jail
 
-If the parameter ``env`` is used and ``sudo`` is enabled, enable also ``sudo_preserve_env``. For example,
+If the parameter ``env`` is used and ``sudo`` is enabled, enable also ``sudo_preserve_env``. For
+example,
 
 .. code-block:: yaml
    :emphasize-lines: 6-7
@@ -175,7 +172,7 @@ If the parameter ``env`` is used and ``sudo`` is enabled, enable also ``sudo_pre
 In this case, make sure the sudo tag ``SETENV`` is used
 
 .. code-block:: console
-   :emphasize-lines: 2
+   :emphasize-lines: 1
 
    (env) > ssh admin@10.1.0.73 sudo cat /usr/local/etc/sudoers | grep admin
    admin ALL=(ALL) NOPASSWD:SETENV: ALL

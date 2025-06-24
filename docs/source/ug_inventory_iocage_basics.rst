@@ -2,7 +2,7 @@ Basics
 ^^^^^^
 
 As root at the iocage host, create three `VNET jails`_ with a DHCP interface from the template
-*ansible_client*
+``ansible_client``
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -34,11 +34,7 @@ As admin at the controller, list the jails
    | None | srv_3 | off  | down  | jail | 14.2-RELEASE-p3 | DHCP (not running) | -   | ansible_client | no       |
    +------+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Create the inventory configuration
-
-.. code-block:: console
-
-   (env) > cat hosts/02_iocage.yml
+Create the inventory configuration ``hosts/02_iocage.yml``
 
 .. code-block:: yaml
 
