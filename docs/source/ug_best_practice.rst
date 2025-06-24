@@ -25,5 +25,8 @@ Topics:
 .. _ug_bp_usecases:
 .. include:: ug_bp_usecases.rst
 
+.. _ug_bp_iocage:
+.. include:: ug_bp_iocage.rst
+
 .. _ug_bp_iocage_tags:
 .. include:: ug_bp_iocage_tags.rst

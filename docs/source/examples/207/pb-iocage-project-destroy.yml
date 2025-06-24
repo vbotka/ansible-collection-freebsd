@@ -1,0 +1,43 @@
+- name: Stop and destroy jails.
+  hosts: iocage
+
+  vars:
+
+    debug: false
+
+  tasks:
+
+    - name: Display vars.
+      when: debug | bool
+      vars:
+        project_jails_present: "{{ project | intersect(groups.all) }}"
+      run_once: true
+      debug:
+        msg: |
+          vmm:
+            {{ vmm | to_yaml | indent(2) }}
+          class:
+            {{ class | to_yaml | indent(2) }}
+          groups.all: {{ groups.all }}
+          project_jails_present: {{ project_jails_present }}
+
+    - name: Stop and destroy project jails.
+      vars:
+        iocage_jails_present: "{{ vmm[inventory_hostname] | intersect(groups.all) }}"
+        uuids: "{{ iocage_jails_present | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
+      block:
+
+        - name: All jails already destroyed. End host.
+          when: iocage_jails_present | length == 0
+          meta: end_host
+
+        - name: Stop jails.
+          command: >
+            iocage stop
+            {{ uuids | join(' ') }}
+
+        - name: Destroy jails.
+          command: >
+            iocage destroy
+            --force
+            {{ uuids | join(' ') }}

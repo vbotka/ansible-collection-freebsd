@@ -89,7 +89,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-02.txt
    :language: bash
-  
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
@@ -104,7 +104,7 @@ Inventory hosts
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
-	       
+
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 

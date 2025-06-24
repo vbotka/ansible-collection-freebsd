@@ -90,7 +90,7 @@ Two DHCP jails with generated UUID will be created from the template *ansible_cl
 
 .. note:: The clone ``test_111`` belongs to the swarm ``sw_01``. Set ``count: 3`` to create two more jails
           in the swarm ``sw_01``.
-	
+
 The `module vbotka.freebsd.iocage`_ doesn't work with multiple names. We will use
 *ansible.builtin.command* instead. Anyway, such a task is not idempotent if the UUID is generated
 automatically. Example of the commands

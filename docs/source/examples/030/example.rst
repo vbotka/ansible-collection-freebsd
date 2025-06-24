@@ -68,7 +68,7 @@ Notes
 ^^^^^
 
 * See `Adding custom facts`_
-	       
+
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -138,7 +138,7 @@ Create custom fact scripts
 
   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
                                          -t freebsd_iocage_facts \
-					 -e freebsd_iocage_facts=true
+                                         -e freebsd_iocage_facts=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

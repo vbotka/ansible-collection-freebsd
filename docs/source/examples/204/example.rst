@@ -110,7 +110,7 @@ Synopsis
     * create jails
     * start jails
     * optionally, stop and destroy the jails.
-  
+
 * At all created jails:
 
   In the playbook *pb-test-01.yml*:
@@ -138,9 +138,9 @@ Templates created in :ref:`example_202` are used in this example.
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -lt
+   [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -148,9 +148,9 @@ List templates at iocage_01
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -178,7 +178,7 @@ host_vars
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
-	       
+
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -194,11 +194,11 @@ Playbook pb_iocage_ansible_clients_v2.yml
 Playbook output - create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml \
-                           -i iocage-hosts.ini \
-                           -t swarm -e swarm=true -e debug=true
+   (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml \
+                            -i iocage-hosts.ini \
+                            -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -207,9 +207,9 @@ Playbook output - create and start jails
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -217,13 +217,13 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-06.txt
    :language: bash
-	       
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
@@ -248,9 +248,9 @@ Inventory hosts
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
    :language: bash
@@ -264,9 +264,9 @@ Playbook pb-test-01.yml
 Playbook output - display *iocage_tags*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
@@ -278,7 +278,7 @@ Playbook output - display *iocage_tags*
 
      ansible-playbook pb_iocage_ansible_clients_v2.yml \
                       -i iocage-hosts.ini \
-		      -t swarm_destroy -e swarm_destroy=true
+                      -t swarm_destroy -e swarm_destroy=true
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/

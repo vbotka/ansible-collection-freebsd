@@ -228,7 +228,7 @@ There are no installed packages with known vulnerabilities ::
 
    (env) > ansible-playbook pb-test-01.yml -i hosts \
                                            -t pkg_stat \
-					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
+                                           -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
@@ -247,7 +247,7 @@ There are 9 packages with known vulnerabilities ::
 
    (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini -l iocage_02 \
                                            -t pkg_stat \
-					   -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
+                                           -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
 .. literalinclude:: out/out-08.txt
    :language: yaml

@@ -5,6 +5,32 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.11
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Upgraded roles:
+  config_light 2.7.3
+  freebsd_custom_image 2.7.4
+  freebsd_iocage 0.5.2
+  freebsd_postinstall 2.7.9
+  freebsd_poudriere 2.7.3
+* Updated modules iocage, ucl, and service. Updated documentation and docstrings.
+* Updated filter iocage. Updated documentation and docstrings.
+* Updated docs.
+* Updated examples: 200, 202, 205, 207, 310, 350.
+* Added playbook pb_iocage_update_vmm_repos.yml
+* Added example 500.
+
+
 0.7.10
 ======
 

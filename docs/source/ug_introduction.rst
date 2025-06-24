@@ -31,8 +31,8 @@ The collection is shipped with:
 
       .. code-block:: text
 
-	 BSD support is important to us at Ansible. ... we have an active BSD community
-	 and strive to be as BSD-friendly as possible.
+         BSD support is important to us at Ansible. ... we have an active BSD community
+         and strive to be as BSD-friendly as possible.
 
      Search `latest Ansible docs`_ for ``FreeBSD`` to learn the current FreeBSD support.
 

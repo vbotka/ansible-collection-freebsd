@@ -9,16 +9,19 @@ Extending example :ref:`example_200`.
    :local:
    :depth: 1
 
-.. index:: single: template ansible_client; Example 202
 .. index:: single: ansible_client; Example 202
+.. index:: single: template ansible_client; Example 202
 .. index:: single: DHCP; Example 202
 .. index:: single: dhclient; Example 202
 .. index:: single: dhclient-exit-hooks; Example 202
 .. index:: single: inventory vbotka.freebsd.iocage; Example 202
 .. index:: single: module vbotka.freebsd.iocage; Example 202
 .. index:: single: module community.general.pkgng; Example 202
+.. index:: single: community.general.pkgng; Example 202
 .. index:: single: module ansible.posix.authorized; Example 202
+.. index:: single: ansible.posix.authorized; Example 202
 .. index:: single: module ansible.builtin.lineinfile; Example 202
+.. index:: single: ansible.builtin.lineinfile; Example 202
 .. index:: single: playbook pb_iocage_template.yml; Example 202
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 202
 
@@ -106,7 +109,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
@@ -205,7 +208,7 @@ host_vars
    * The user *act_user* will be created in the template.
    * The user *act_user* will serve as Ansible *remote_user*.
    * The file *act_pk* provides the public keys allowed to ssh to *act_user*.
-	       
+
 .. warning::
 
    * The user *act_user* must exist on the *iocage* host. Otherwise,
@@ -216,7 +219,7 @@ host_vars
 
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller
-	       
+
 Inventory *iocage-hosts.ini*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -226,9 +229,12 @@ Inventory *iocage-hosts.ini*
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Limit the inventory to iocage_01, and iocage_02
+
 ::
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage-hosts.ini
+  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
+                           -i iocage-hosts.ini -l iocage_01,iocage_02
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -257,10 +263,12 @@ List templates at iocage_02
 Playbook output - clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Limit the inventory to iocage_01, and iocage_02
+
 ::
 
   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
+                           -i iocage-hosts.ini -l iocage_01,iocage_02 \
                            -t clone \
                            -e clone=true
 
@@ -287,7 +295,7 @@ List jails at iocage_02
 
 .. literalinclude:: out/out-06.txt
    :language: bash
-	       
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 

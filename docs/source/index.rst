@@ -53,10 +53,10 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. _collection: https://galaxy.ansible.com/vbotka/freebsd
+.. _collection: https://galaxy.ansible.com/vbotka/freebsd/
+.. _vbotka.freebsd: https://galaxy.ansible.com/vbotka/freebsd/
 .. _share your feedback and report issues: https://github.com/vbotka/ansible-collection-freebsd/issues
 .. _Contributions are welcome: https://github.com/firstcontributions/first-contributions
-.. _vbotka.freebsd: https://galaxy.ansible.com/vbotka/freebsd
 .. _ansible-collection-freebsd: https://github.com/vbotka/ansible-collection-freebsd
 .. _collection docsite: https://ansible.readthedocs.io/projects/antsibull-docs/collection-docs
 .. _BSD-2-Clause: https://spdx.org/licenses/BSD-2-Clause.html

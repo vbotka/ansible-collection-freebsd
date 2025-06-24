@@ -1,0 +1,2 @@
+ansible_python_interpreter: auto_silent
+log_serv: "{{ hostvars.logserv_1.iocage_properties.host_hostuuid }}"

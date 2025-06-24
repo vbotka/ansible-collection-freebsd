@@ -1,0 +1,86 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [logserv_1] => 
+    msg: |-
+        ansible_host: 10.1.0.232
+        iocage_properties.host_hostuuid: 7afc4149
+        iocage_classes: [logserv]
+
+        iocage_tags: {alias: logserv_1, class: logserv, vmm: iocage_01}
+ok: [test_2] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_2
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [test_1] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_1
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [db_1] => 
+    msg: |-
+        ansible_host: 10.1.0.229
+        iocage_properties.host_hostuuid: a441d71a
+        iocage_classes: [db, logclient]
+
+        iocage_tags: {alias: db_1, class: 'db,logclient', vmm: iocage_02}
+ok: [http_1] => 
+    msg: |-
+        ansible_host: 10.1.0.156
+        iocage_properties.host_hostuuid: 32186770
+        iocage_classes: [http, logclient]
+
+        iocage_tags: {alias: http_1, class: 'http,logclient', vmm: iocage_02}
+ok: [test_3] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_3
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [http_2] => 
+    msg: |-
+        ansible_host: 10.1.0.243
+        iocage_properties.host_hostuuid: 0c89b3cb
+        iocage_classes: [http, logclient]
+
+        iocage_tags: {alias: http_2, class: 'http,logclient', vmm: iocage_03}
+ok: [db_2] => 
+    msg: |-
+        ansible_host: 10.1.0.169
+        iocage_properties.host_hostuuid: 29f36804
+        iocage_classes: [db, logclient]
+
+        iocage_tags: {alias: db_2, class: 'db,logclient', vmm: iocage_03}
+
+TASK [debug] *******************************************************************
+ok: [test_1] => 
+    msg: |-
+        all: ['test_1', 'logserv_1', 'test_2', 'http_1', 'db_1', 'test_3', 'http_2', 'db_2']
+        ungrouped: []
+        state_down: ['test_1', 'test_2', 'test_3']
+        logserv: ['logserv_1']
+        state_up: ['logserv_1', 'http_1', 'db_1', 'http_2', 'db_2']
+        vmm_iocage_01: ['logserv_1']
+        http: ['http_1', 'http_2']
+        logclient: ['http_1', 'db_1', 'http_2', 'db_2']
+        vmm_iocage_02: ['http_1', 'db_1']
+        db: ['db_1', 'db_2']
+        vmm_iocage_03: ['http_2', 'db_2']
+
+PLAY RECAP *********************************************************************
+db_1                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db_2                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+http_1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+http_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+logserv_1                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

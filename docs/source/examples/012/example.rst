@@ -17,7 +17,7 @@ Extending example :ref:`example_010`.
 .. index:: single: compose; Example 012
 .. index:: single: option keyed_groups; Example 012
 .. index:: single: keyed_groups; Example 012
-	   
+
 Use case
 ^^^^^^^^
 

@@ -8,22 +8,22 @@ from __future__ import annotations
 DOCUMENTATION = r"""
 name: iocage
 short_description: Parse iocage lists
-version_added: "0.5.0"
+version_added: 0.5.0
 author: Vladimir Botka (@vbotka)
 description: This filter parses iocage list output.
 options:
   _input:
     description:
-      - Either a dictionary of iocage list outputs or a string of a single iocage list output.
-      - If the option dataset is None the type of the input must be a dictionary.
+      - Either a dictionary of C(iocage) list outputs or a string of a single iocage list output.
+      - If the option O(dataset) is V(None) the type of the input must be a dictionary.
       - Otherwise, the type of the input must be a string.
     required: true
   dataset:
     description:
-      - Type of the iocage dataset.
+      - Type of the C(iocage) dataset.
     type: str
     choices: [jails, plugins, releases, templates]
-    version_added: "0.5.5"
+    version_added: 0.5.5
 """
 
 EXAMPLES = r"""
@@ -165,10 +165,11 @@ import re
 
 
 def _parse_ip4(ip4):
-    ''' Return dictionary iocage_ip4_dict. default = {ip4: [], msg: ''}.
-        If item matches ifc|IP or ifc|CIDR parse ifc, ip, and mask.
-        Otherwise, append item to msg.
-    '''
+    """
+    Return dictionary iocage_ip4_dict. default = {ip4: [], msg: ''}.
+    If item matches ifc|IP or ifc|CIDR parse ifc, ip, and mask.
+    Otherwise, append item to msg.
+    """
 
     iocage_ip4_dict = {}
     iocage_ip4_dict['ip4'] = []
@@ -189,8 +190,9 @@ def _parse_ip4(ip4):
 
 
 def _get_jails(data):
-    """ Parse the output of 'iocage list --long', or
-                            'iocage list --long --template'
+    """
+    Parse the output of 'iocage list --long', or
+                        'iocage list --long --template'
     """
 
     result = {}
@@ -224,8 +226,7 @@ def _get_jails(data):
 
 
 def _get_plugins(data):
-    """ Parse the output of 'iocage list --plugins'
-    """
+    """Parse the output of 'iocage list --plugins'"""
 
     result = {}
 
@@ -259,16 +260,14 @@ def _get_plugins(data):
 
 
 def _get_releases(data):
-    """ Parse the output of 'iocage list --release --header'
-    """
+    """Parse the output of 'iocage list --release --header'"""
 
     result = data.splitlines()
     return result
 
 
 def iocage(data, dataset=None):
-    """ Parse iocage dataset(s)
-    """
+    """Parse iocage dataset(s)"""
 
     results = {}
     fnc_dict = {'jails': _get_jails,

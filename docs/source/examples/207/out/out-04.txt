@@ -1,0 +1,58 @@
+
+PLAY [Create and start project jails.] *****************************************
+
+TASK [Display vars.] ***********************************************************
+ok: [iocage_01] => 
+    msg: |-
+        vmm:
+          iocage_01:
+            logserv_1:
+              class: [logserv]
+              vmm: iocage_01
+          iocage_02:
+            db_1:
+              class: [db, logclient]
+              vmm: iocage_02
+            http_1:
+              class: [http, logclient]
+              vmm: iocage_02
+          iocage_03:
+            db_2:
+              class: [db, logclient]
+              vmm: iocage_03
+            http_2:
+              class: [http, logclient]
+              vmm: iocage_03
+
+        class:
+          db: [db_1, db_2]
+          http: [http_1, http_2]
+          logclient: [http_1, db_1, http_2, db_2]
+          logserv: [logserv_1]
+
+        groups.all: ['test_1', 'test_2', 'test_3', 'iocage_01', 'iocage_02', 'iocage_03']
+        project_jails_present: []
+        project_jails_absent: ['db_1', 'http_1', 'logserv_1', 'http_2', 'db_2']
+
+TASK [Create jails.] ***********************************************************
+changed: [iocage_01]
+changed: [iocage_02]
+changed: [iocage_03]
+
+TASK [Set notes.] **************************************************************
+changed: [iocage_01] => (item=logserv_1 alias=logserv_1 class=logserv vmm=iocage_01)
+changed: [iocage_02] => (item=http_1 alias=http_1 class=http,logclient vmm=iocage_02)
+changed: [iocage_02] => (item=db_1 alias=db_1 class=db,logclient vmm=iocage_02)
+changed: [iocage_03] => (item=http_2 alias=http_2 class=http,logclient vmm=iocage_03)
+changed: [iocage_03] => (item=db_2 alias=db_2 class=db,logclient vmm=iocage_03)
+
+TASK [Start created jails.] ****************************************************
+changed: [iocage_01]
+changed: [iocage_02]
+changed: [iocage_03]
+
+PLAY RECAP *********************************************************************
+iocage_01                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_02                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_03                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

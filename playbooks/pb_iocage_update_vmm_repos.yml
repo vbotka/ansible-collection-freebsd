@@ -1,0 +1,15 @@
+- name: Update vmm repos.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  tasks:
+
+    - name: Update repos
+      register: out
+      changed_when: false
+      ansible.builtin.command: "pkg update -f"
+
+    - name: Debug update repos.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: out

@@ -9,6 +9,7 @@ Playbooks
 
 .. _ug_pb-iocage-template:
 .. include:: playbooks/pb-iocage-template.rst
+
 .. _ug_pb-iocage-ansible-client:
 .. include:: playbooks/pb-iocage-ansible-clients.rst
 

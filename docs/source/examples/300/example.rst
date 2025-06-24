@@ -166,7 +166,7 @@ Playbook output - display enabled services
 ::
 
   (env) > ansible-playbook pb-test-03.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
-	       
+
 .. literalinclude:: out/out-05.txt
     :language: yaml
     :force:

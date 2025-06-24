@@ -1,0 +1,50 @@
+
+PLAY [Stop and destroy jails.] *************************************************
+
+TASK [Display vars.] ***********************************************************
+ok: [iocage_01] => 
+    msg: |-
+        vmm:
+          iocage_01:
+            logserv_1:
+              class: [logserv]
+              vmm: iocage_01
+          iocage_02:
+            db_1:
+              class: [db, logclient]
+              vmm: iocage_02
+            http_1:
+              class: [http, logclient]
+              vmm: iocage_02
+          iocage_03:
+            db_2:
+              class: [db, logclient]
+              vmm: iocage_03
+            http_2:
+              class: [http, logclient]
+              vmm: iocage_03
+
+        class:
+          db: [db_1, db_2]
+          http: [http_1, http_2]
+          logclient: [http_1, db_1, http_2, db_2]
+          logserv: [logserv_1]
+
+        groups.all: ['logserv_1', 'test_1', 'db_1', 'http_1', 'test_2', 'db_2', 'http_2', 'test_3', 'iocage_01', 'iocage_02', 'iocage_03']
+        project_jails_present: ['http_1', 'db_2', 'logserv_1', 'db_1', 'http_2']
+
+TASK [Stop jails.] *************************************************************
+changed: [iocage_01]
+changed: [iocage_02]
+changed: [iocage_03]
+
+TASK [Destroy jails.] **********************************************************
+changed: [iocage_01]
+changed: [iocage_02]
+changed: [iocage_03]
+
+PLAY RECAP *********************************************************************
+iocage_01                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_02                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_03                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
