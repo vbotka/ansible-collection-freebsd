@@ -1,0 +1,92 @@
+---
+- name: Sanity
+  when: fzfs_pools_sanity | bool
+  vars:
+    pool_status: "{{ out_zpool_status.stdout | d('') | community.general.jc('zpool-status') }}"
+    pool_status_names: "{{ dict(pool_status | community.general.json_query('[].[pool, config[].name]')) }}"
+    pool_status_names_other: "{{ pool_status_names | dict2items
+                                                   | rejectattr('key', 'in', fzfs_pools)
+                                                   | map(attribute='value') }}"
+    pool_disks: "{{ fzfs_pools | dict2items
+                               | community.general.json_query('[].value[].vdevs[].disks')
+                               | flatten
+                               | sort }}"
+    disks_other: "{{ pool_disks | intersect(pool_status_names_other) }}"
+    mount_devices: "{{ ansible_mounts | map(attribute='device') | sort }}"
+    disks_mounted: "{{ pool_disks | intersect(mount_devices) }}"
+    disks_all: "{{ pool_disks | length }}"
+    disks_unique: "{{ pool_disks | unique | length }}"
+  tags: fzfs_pools_sanity
+  block:
+
+    - name: "Pools: Get zpool status."
+      changed_when: false
+      register: out_zpool_status
+      ansible.builtin.command: zpool status
+
+    - name: "Pools: Sanity debug."
+      when: fzfs_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          # Current pools status.
+          pool_status:
+            {{ pool_status | to_yaml(indent=2) | indent(2) }}
+          # Names in current pools.
+          pool_status_names:
+            {{ pool_status_names | to_yaml(indent=2) | indent(2) }}
+          # Names in current other pools.
+          pool_status_names_other: {{ pool_status_names_other }}
+          # Pools to be created.
+          fzfs_pools:
+            {{ fzfs_pools | to_yaml(indent=2) | indent(2) }}
+          # Disks in pools that should be created.
+          pool_disks: {{ pool_disks }}
+          # Disks already used in other pools (should be an empty list).
+          disks_other: {{ disks_other }}
+          # Current mounted devices.
+          mount_devices: {{ mount_devices }}
+          # Mounted devices in pools that should be created (should be an empty list).
+          disks_mounted: {{ disks_mounted }}
+          # Number of disks in pools that should be created.
+          disks_all: {{ disks_all }}
+          # Number of unique disks in pools that should be created (should be equal to disks_all).
+          disks_unique: {{ disks_unique }}
+
+    - name: "Pools: Sanity: No fzfs_pools disks already in other pools."
+      ansible.builtin.assert:
+        that: disks_other | length == 0
+        quiet: "{{ fzfs_assert_quiet | bool }}"
+        fail_msg: "[ERR] fzfs_pools disks {{ disks_other | join(', ') }} already in other pools."
+        success_msg: "[OK]  No fzfs_pools disks already in other pools."
+
+    - name: "Pools: Sanity: No fzfs_pools disks already mounted."
+      ansible.builtin.assert:
+        that: disks_mounted | length == 0
+        quiet: "{{ fzfs_assert_quiet | bool }}"
+        fail_msg: "[ERR] fzfs_pools disks {{ disks_mounted | join(', ') }} already mounted."
+        success_msg: "[OK]  No fzfs_pools disks already mounted."
+
+    - name: "Pools: Sanity: fzfs_pools disks are unique."
+      ansible.builtin.assert:
+        that: disks_all == disks_unique
+        quiet: "{{ fzfs_assert_quiet | bool }}"
+        fail_msg: "[ERR] fzfs_pools disks are not unique."
+        success_msg: "[OK]  fzfs_pools disks are unique."
+
+- name: "Pools: Manage ZFS pools."
+  community.general.zpool:
+    name: "{{ item.key }}"
+    vdevs: "{{ item.value.vdevs }}"
+    altroot: "{{ item.value.altroot | d(omit) }}"
+    disable_new_features: "{{ item.value.disable_new_features | d(omit) }}"
+    filesystem_properties: "{{ item.value.filesystem_properties | d(omit) }}"
+    force: "{{ item.value.force | d(omit) }}"
+    mountpoint: "{{ item.value.mountpoint | d(omit) }}"
+    pool_properties: "{{ item.value.pool_properties | d(omit) }}"
+    state: "{{ item.value.state | d(omit) }}"
+    temp_name: "{{ item.value.temp_name | d(omit) }}"
+  loop: "{{ fzfs_pools | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+# EOF

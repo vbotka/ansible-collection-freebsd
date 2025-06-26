@@ -1,0 +1,57 @@
+---
+- name: Pools
+  tags: fzfs_facts_pools
+  block:
+
+    - name: "Facts: Run zpool_facts"
+      community.general.zpool_facts:
+
+    - name: "Facts: Debug ansible_zfs_pools fzfs_debug2={{ fzfs_debug2 }}"
+      when: fzfs_debug2 | bool
+      ansible.builtin.debug:
+        var: ansible_zfs_pools
+
+    - name: "Facts: Debug list pools fzfs_debug={{ fzfs_debug }}"
+      when: fzfs_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          fzfs_pools_required: {{ fzfs_pools_required }}
+          fzfs_pools_missing: {{ fzfs_pools_missing }}
+          fzfs_pools_present: {{ fzfs_pools_present }}
+          {% for i in ansible_zfs_pools %}
+          name: {{ i.name }} size: {{ i.size }} free: {{ i.free }}
+          {% endfor %}
+
+- name: Datasets
+  when: fzfs_facts_ds | bool
+  tags: fzfs_facts_ds
+  block:
+
+    - name: "Facts: Run zfs_facts"
+      register: ansible_zfs_ds
+      community.general.zfs_facts:
+        name: "{{ item }}"
+        recurse: "{{ fzfs_facts_recurse }}"
+      loop: "{{ ansible_zfs_pools | map(attribute='name') }}"
+
+    - name: "Facts: Debug ansible_zfs_ds fzfs_debug2={{ fzfs_debug2 }}"
+      when: fzfs_debug2 | bool
+      ansible.builtin.debug:
+        var: ansible_zfs_ds
+
+    - name: "Facts: Get dictionary of datasets"
+      vars:
+        pools: "{{ ansible_zfs_ds.results | map(attribute='name') }}"
+        name_mount: "{{ ansible_zfs_ds.results |
+                        map(attribute='ansible_facts') |
+                        map('json_query', 'ansible_zfs_datasets[].[name, mountpoint]') |
+                        map('community.general.dict') }}"
+      ansible.builtin.set_fact:
+        fzfs_datasets: "{{ dict(pools | zip(name_mount)) }}"
+
+    - name: "Facts: Debug list of datasets fzfs_debug={{ fzfs_debug }}"
+      when: fzfs_debug | bool
+      ansible.builtin.debug:
+        var: fzfs_datasets | to_nice_yaml
+
+# EOF
