@@ -13,7 +13,6 @@
 
       fzfs_enable: {{ fzfs_enable }}
       fzfs_debug2: {{ fzfs_debug2 }}
-      fzfs_backup_conf: {{ fzfs_backup_conf }}
       fzfs_pools_sanity: {{ fzfs_pools_sanity }}
       fzfs_assert_quiet: {{ fzfs_assert_quiet }}
       fzfs_facts_ds: {{ fzfs_facts_ds }}

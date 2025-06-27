@@ -1,6 +1,9 @@
 ---
-- name: Pools
-  tags: fzfs_facts_pools
+
+- name: Get zpools facts
+  tags:
+    - fzfs_facts_pools
+    - fzfs_facts_ds
   block:
 
     - name: "Facts: Run zpool_facts"
@@ -11,16 +14,17 @@
       ansible.builtin.debug:
         var: ansible_zfs_pools
 
-    - name: "Facts: Debug list pools fzfs_debug={{ fzfs_debug }}"
-      when: fzfs_debug | bool
-      ansible.builtin.debug:
-        msg: |
-          fzfs_pools_required: {{ fzfs_pools_required }}
-          fzfs_pools_missing: {{ fzfs_pools_missing }}
-          fzfs_pools_present: {{ fzfs_pools_present }}
-          {% for i in ansible_zfs_pools %}
-          name: {{ i.name }} size: {{ i.size }} free: {{ i.free }}
-          {% endfor %}
+- name: "Facts: Debug list pools fzfs_debug={{ fzfs_debug }}"
+  when: fzfs_debug | bool
+  tags: fzfs_facts_pools
+  ansible.builtin.debug:
+    msg: |
+      fzfs_pools_required: {{ fzfs_pools_required }}
+      fzfs_pools_missing: {{ fzfs_pools_missing }}
+      fzfs_pools_present: {{ fzfs_pools_present }}
+      {% for i in ansible_zfs_pools %}
+      name: {{ i.name }} size: {{ i.size }} free: {{ i.free }}
+      {% endfor %}
 
 - name: Datasets
   when: fzfs_facts_ds | bool

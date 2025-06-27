@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Add role vbotka.freebsd.zfs
+* Add role vbotka.freebsd.zfs 2.7.1
 * Update docs. Fix links. Add example 400.
 
 

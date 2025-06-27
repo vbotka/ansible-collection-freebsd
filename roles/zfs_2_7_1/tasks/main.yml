@@ -1,14 +1,14 @@
 ---
 # tasks for freebsd_zfs
 
-- name: Import sysctl.yml
-  ansible.builtin.import_tasks: sysctl.yml
-  tags: fzfs_sysctl
-
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: fzfs_debug | bool
   tags: fzfs_debug
+
+- name: Import sysctl.yml
+  ansible.builtin.import_tasks: sysctl.yml
+  tags: fzfs_sysctl
 
 - name: Import rcconf.yml
   ansible.builtin.import_tasks: rcconf.yml

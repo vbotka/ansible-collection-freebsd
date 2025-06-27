@@ -3,7 +3,6 @@
 
 # fzfs_enable: true
 # fzfs_debug: true
-# fzfs_backup_conf: false
 # fzfs_rcconf: []
 # fzfs_datasets: []
 
