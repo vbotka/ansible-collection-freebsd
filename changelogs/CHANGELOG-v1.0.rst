@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Update README.
 * Update docs.
+* Update documentation URL to the latest (master) branch.
 
 
 0.7.12
