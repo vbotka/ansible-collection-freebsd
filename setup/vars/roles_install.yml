@@ -9,3 +9,4 @@ roles_install:
   - postinstall
   - poudriere
   - rsnapshot
+  - zfs

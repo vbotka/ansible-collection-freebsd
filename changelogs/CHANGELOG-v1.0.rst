@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.12
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add role vbotka.freebsd.zfs 2.7.1
+* Update docs. Fix links. Add example 400.
+
+
 0.7.11
 ======
 

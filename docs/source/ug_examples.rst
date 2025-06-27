@@ -18,6 +18,7 @@ Examples
 :370-:    `Role vbotka.freebsd.pf`_
 :380-:    `Role vbotka.freebsd.custom_image`_
 :390-:    `Role vbotka.freebsd.poudriere`_
+:400-:    `Role vbotka.freebsd.zfs`_
 :500-:    Infrastructure
 
 **Notes:**
@@ -89,6 +90,7 @@ Examples
    examples/370/example.rst
    examples/380/example.rst
    examples/390/example.rst
+   examples/400/example.rst
 
 .. toctree::
    :maxdepth: 1
@@ -113,3 +115,4 @@ Examples
 .. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
 .. _Role vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _Role vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot
+.. _Role vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
