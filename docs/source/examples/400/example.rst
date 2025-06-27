@@ -112,6 +112,30 @@ Playbook output - configure ZFS
    :language: yaml
    :force:
 
+Playbook output - List pools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-zfs.yml -i iocage-hosts.ini -l iocage_02 \
+                                       -t fzfs_facts_pools -e fzfs_debug=true
+
+.. literalinclude:: out/out-03.txt
+   :language: yaml
+   :force:
+
+Playbook output - List datasets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-zfs.yml -i iocage-hosts.ini -l iocage_02 \
+                                       -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true
+
+.. literalinclude:: out/out-04.txt
+   :language: yaml
+   :force:
+
 
 .. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
 .. _vbotka.freebsd_zfs: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_zfs

@@ -1,0 +1,21 @@
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd_zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd_zfs : Facts: Debug list pools fzfs_debug=true] ************
+ok: [iocage_02] => 
+    msg: |-
+        fzfs_pools_required: ['export', 'zroot']
+        fzfs_pools_missing: []
+        fzfs_pools_present: ['export', 'zroot']
+        name: export size: 99.5G free: 91.0G
+        name: zroot size: 496G free: 458G
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

@@ -7,7 +7,7 @@ ok: [iocage_02]
 TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
 ok: [iocage_02] => 
     msg: |-
-        fzfs_role_version: 2.7.0
+        fzfs_role_version: 2.7.1
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
