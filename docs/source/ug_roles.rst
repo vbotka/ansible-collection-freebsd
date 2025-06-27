@@ -20,6 +20,7 @@ This collection is shipped with the roles:
 * `vbotka.freebsd.postinstall`_
 * `vbotka.freebsd.poudriere`_
 * `vbotka.freebsd.rsnapshot`_
+* `vbotka.freebsd.zfs`_
 
 .. seealso:: The list of included roles in ``setup/vars/roles_install.yml``
 
@@ -46,5 +47,6 @@ Some roles are documented at `readtthedocs.io`_
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
 .. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot
+.. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
 
 .. _readtthedocs.io: https://rtfd.io

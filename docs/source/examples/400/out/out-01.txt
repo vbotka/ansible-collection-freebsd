@@ -1,0 +1,61 @@
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
+ok: [iocage_02] => 
+    msg: |-
+        fzfs_role_version: 2.7.0
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.12
+
+        fzfs_enable: True
+        fzfs_debug2: False
+        fzfs_backup_conf: False
+        fzfs_pools_sanity: True
+        fzfs_assert_quiet: True
+        fzfs_facts_ds: False
+        fzfs_facts_recurse: True
+        fzfs_mount_all: True
+
+        fzfs_sysctl_conf:
+          - {name: vfs.zfs.prefetch.disable, value: '0'}
+
+        fzfs_rcconf:
+          []
+
+        fzfs_pools:
+          export:
+            vdevs:
+            - disks: [/dev/ada1]
+          zroot:
+            vdevs:
+            - disks: [/dev/ada2]
+
+        fzfs_manage:
+          - extra_zfs_properties: {compression: 'on', mountpoint: /local/jails}
+            name: zroot/jails
+            state: present
+          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/local/poudriere}
+            name: zroot/poudriere
+            state: present
+          - extra_zfs_properties: {compression: 'on'}
+            name: export/scratch
+            state: present
+          - extra_zfs_properties: {compression: 'on'}
+            name: export/iso
+            state: present
+
+        fzfs_mountpoints:
+          []
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

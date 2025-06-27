@@ -281,11 +281,11 @@ command line. The import provides a faster execution at the cost of flexibility.
 
 
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall
+.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
 
-.. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
+.. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
 
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
 .. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name

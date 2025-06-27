@@ -42,7 +42,7 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Take a look at Index and search *playbook pb-iocage-template.yml* to see what examples are
+   Take a look at Index and search ``playbook pb-iocage-template.yml`` to see what examples are
    available.
 
 Ansible Client Template variables
@@ -182,7 +182,7 @@ Workflow
 ^^^^^^^^
 
 The last tasks *template.yml* convert the jails to templates. If you start the play again the first
-tasks *setup.yml* will end the host(s) if all templates have already been created. If you want to
+tasks *setup.yml* ends the host(s) if all templates have already been created. If you want to
 reconfigure already created template set ``template=0`` manually. For example,
 
 .. code-block:: console

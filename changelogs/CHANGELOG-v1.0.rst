@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Add role vbotka.freebsd.zfs
-* Update docs. Fix links.
+* Update docs. Fix links. Add example 400.
 
 
 0.7.11
