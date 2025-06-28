@@ -1,0 +1,73 @@
+---
+# All rights reserved (c) 2020-2025, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ansible_lib: al_include_os_vars_playbook_dir
+#
+# Description: Include OS specific variables from playbook_dir.
+#
+# Input: none
+#
+# Output: none
+#
+# Example:
+#
+#   tasks:
+#     - include_role:
+#         name: vbotka.ansible_lib
+#         tasks_from: al_include_os_vars_playbook_dir.yml
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-lib/tasks/al_include_os_vars_playbook_dir.yml
+
+# Defaults variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+- name: "Al_include_os_vars_playbook_dir: vars from {{ playbook_dir ~ '/vars/defaults' }}"
+  when: _file | length > 0
+  vars:
+    _file: "{{ lookup('ansible.builtin.first_found', params) }}"
+    _files:
+      - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - default.yml
+      - defaults.yml
+    params:
+      files: "{{ _files | unique }}"
+      paths: "{{ playbook_dir }}/vars/defaults"
+      skip: true
+# register: result
+  ansible.builtin.include_vars: "{{ _file }}"
+
+# - name: "al_include_os_vars_playbook_dir: Debug result al_debug={{ al_debug }}"
+#   when: al_debug | bool
+#   ansible.builtin.debug:
+#     var: result
+
+# Custom variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+- name: "Al_include_os_vars_playbook_dir: vars from {{ playbook_dir ~ '/vars' }}"
+  when: _file | length > 0
+  vars:
+    _file: "{{ lookup('ansible.builtin.first_found', params) }}"
+    _files:
+      - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - default.yml
+      - defaults.yml
+    params:
+      files: "{{ _files | unique }}"
+      paths: "{{ playbook_dir }}/vars"
+      skip: true
+# register: result
+  ansible.builtin.include_vars: "{{ _file }}"
+
+# - name: "al_include_os_vars_playbook_dir: Debug result al_debug={{ al_debug }}"
+#   when: al_debug | bool
+#   ansible.builtin.debug:
+#     var: result
+
+# EOF
+...
