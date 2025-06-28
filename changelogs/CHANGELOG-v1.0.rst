@@ -20,6 +20,7 @@ Minor Changes
 * Add role vbotka.freebsd.lib 2.7.0
 * Update README.
 * Update docs.
+* Updated docs. Add role vbotka.freebsd.lib
 * Update documentation URL to the latest (master) branch.
 
 

@@ -12,6 +12,7 @@ Roles:
 * `vbotka.freebsd.config_light`_ - install packages, configure files, services, and handlers.
 * `vbotka.freebsd.custom_image`_ - download, mount, and customize system images.
 * `vbotka.freebsd.iocage`_ - install and configure iocage.
+* `vbotka.freebsd.lib`_ - library of tasks.
 * `vbotka.freebsd.network`_ - configure network.
 * `vbotka.freebsd.packages`_ - configure repos and install packages.
 * `vbotka.freebsd.pf`_ - configure pf.
@@ -33,6 +34,7 @@ Various :ref:`ug_playbooks`.
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/ccustom_image
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage
+.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
