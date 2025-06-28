@@ -129,13 +129,11 @@ host_vars
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
-                           -l iocage_02 \
-                           -t swarm \
-                           -e swarm=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini -l iocage_02 \
+                            -t swarm -e swarm=true
 
 .. literalinclude:: out/out-11.txt
    :language: yaml
@@ -144,9 +142,9 @@ Create and start jails
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -164,9 +162,9 @@ Inventory hosts
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -175,10 +173,10 @@ Display inventory
 Update repos
 ^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml \
-                          -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml \
+                           -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-12.txt
    :language: yaml
@@ -196,7 +194,7 @@ Playbook output - install packages
 The inventory *iocage-hosts.ini* is needed to delegate the tasks 'Manage FreeBSD
 packages' to the iocage hosts.
 
-.. code:: bash
+.. code:: console
 
    (env) > ansible-playbook pb-install.yml -i hosts -i iocage-hosts.ini
 
@@ -213,9 +211,9 @@ Playbook pb.yml
 Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i hosts -t rsnapshot_debug -e rsnapshot_debug=true
+   (env) > ansible-playbook pb.yml -i hosts -t rsnapshot_debug -e rsnapshot_debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -224,9 +222,9 @@ Playbook output - debug
 Playbook output - configure rsnapshot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i hosts
+   (env) > ansible-playbook pb.yml -i hosts
 
 .. literalinclude:: out/out-05.txt
    :language: yaml

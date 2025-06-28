@@ -19,7 +19,7 @@ Minor Changes
 -------------
 * Add role vbotka.freebsd.lib 2.7.0
 * Update README.
-* Update docs.
+* Update docs. Updated examples.
 * Updated docs. Add role vbotka.freebsd.lib
 * Update documentation URL to the latest (master) branch.
 
@@ -78,7 +78,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Upgrade iventory iocage. Added options inventory_hostname_tag and
+* Upgrade inventory iocage. Added options inventory_hostname_tag and
   inventory_hostname_required.
 * Updated docs. Updated examples.
 * Added example 020
@@ -228,10 +228,10 @@ Minor Changes
 -------------
 * Update galaxy.yml; Do not distribute roles/\*/docs"
 * Update module ucl.py
-* Fix docs pygments.
+* Fix docs pigments.
 * Update module service:
   _parse_command_output returns 'void' when stdout is empty.
-* Update playbooks. Replace dash by undescore in files and directories.
+* Update playbooks. Replace dash by underscore in files and directories.
 * Add roles: info, network, rsnapshot
 * Add playbooks:
   pb_iocage_destroy_all_jails.yml
@@ -317,7 +317,7 @@ Minor Changes
 * Update docs.
   Add UG example 310. Audit Ansible clients.Use role vbotka.freebsd.postinstall
   Update UG index in example 300.
-  Update UG chanpter plugins.
+  Update UG chapter plugins.
   Update UG playbook pb-iocage-template.
 
 
