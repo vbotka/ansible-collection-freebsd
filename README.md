@@ -35,6 +35,7 @@ roles:
 * [role vbotka.freebsd.postinstall](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall) - postinstall configuration.
 * [role vbotka.freebsd.poudriere](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere) - install and configure Poudriere build system.
 * [role vbotka.freebsd.rsnapshot](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot) - install and configure rsnapshot.
+* [role vbotka.freebsd.zfs](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs) - configure ZFS.
 
 various [playbooks](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/?showing=playbook).
 

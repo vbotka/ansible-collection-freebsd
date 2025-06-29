@@ -3,6 +3,7 @@ roles_install:
   - config_light
   - custom_image
   - iocage
+  - lib
   - network
   - packages
   - pf

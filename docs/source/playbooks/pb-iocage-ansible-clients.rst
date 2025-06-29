@@ -10,7 +10,7 @@ pb-iocage-ansible-clients
 Synopsis
 ^^^^^^^^
 
-This playbook creates jails from the template *ansible_client*
+This playbook creates jails from the template ``ansible_client``
 
 Examples
 ^^^^^^^^
@@ -18,7 +18,7 @@ Examples
 clones
 """"""
 
-Use the dictionary *clones*. For example,
+Use the dictionary ``clones``. For example,
 
 .. code-block:: yaml
 
@@ -36,11 +36,11 @@ Use the dictionary *clones*. For example,
        properties:
          ip4_addr: 'em0|10.1.0.113/24'
 
-Use the playbook tag *clone* to execute selected tasks
+Use the playbook tag ``clone`` to execute selected tasks
 
 .. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-ansible-clients.yml -t clone -e clone=true
+   (env) > ansible-playbook pb-iocage-ansible-clients.yml -t clone -e clone=true
 
 creates the clones
 
@@ -57,44 +57,43 @@ creates the clones
    | 172 | test_113 | off  | up    | jail | 14.1-RELEASE-p6 | em0|10.1.0.113/24 | -   | ansible_client | no       |
    +-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
 
-
 swarms
 """"""
   
-Use the dictionary *swarms*. For example,
+Use the dictionary ``swarms``. For example,
 
 .. code-block:: yaml
 
-  swarms:
-    sw_01:
-      count: 3
-      template: ansible_client
+   swarms:
+     sw_01:
+       count: 3
+       template: ansible_client
 
-Use the playbook tag *swarm* to execute selected tasks
-
-.. code-block:: console
-
-  (env) > ansible-playbook pb-iocage-ansible-clients.yml -t swarm -e swarm=true
-
-creates 3 jails from the template *ansible_client*. The names are generated automatically 
+Use the playbook tag ``swarm`` to execute selected tasks
 
 .. code-block:: console
 
-  shell> iocage list -l
-  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-  | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
-  +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-  | 64  | 08daa493 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.114 | -   | ansible_client | no       |
-  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-  | 65  | 2746353a | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.187 | -   | ansible_client | no       |
-  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-  | 66  | 83707231 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.233 | -   | ansible_client | no       |
-  +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+   (env) > ansible-playbook pb-iocage-ansible-clients.yml -t swarm -e swarm=true
+
+creates 3 jails from the template ``ansible_client``. The names are generated automatically 
+
+.. code-block:: console
+
+   shell> iocage list -l
+   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+   | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
+   +=====+==========+======+=======+======+=================+====================+=====+================+==========+
+   | 64  | 08daa493 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.114 | -   | ansible_client | no       |
+   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+   | 65  | 2746353a | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.187 | -   | ansible_client | no       |
+   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+   | 66  | 83707231 | off  | up    | jail | 14.1-RELEASE-p6 | epair0b|10.1.0.233 | -   | ansible_client | no       |
+   +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 Default properties
 """"""""""""""""""
 
-The dictionary *properties* keeps the default properties for both options. For example,
+The dictionary ``properties`` keeps the default properties for both options. For example,
 
 .. code-block:: yaml
 

@@ -85,11 +85,11 @@ Fit the list to your needs. Usually, you want to add *gtar* and other archivers.
 
 .. note::
 
-   * The module `community.general.pkgng`_ is jail-aware ::
+   * The module `community.general.pkgng`_ is jail-aware. Quoting: ::
 
        jail: Pkg will execute in the given jail name or ID.
 
-   * It seems that a short UUID doesn't work as a name. Therefore, the ID of a jail is used ::
+   * It seems that a short ``UUID`` doesn't work as a name. Therefore, we use the ``ID`` of a jail ::
 
        jail: "{{ iocage_jails[item.key]['jid'] }}"
 
@@ -101,7 +101,7 @@ Fit the list to your needs. Usually, you want to add *gtar* and other archivers.
 act_user
 """"""""
 
-Create a user in the jail. Usually, this user will be used as a *remote_user* to connect to the
+Create a user in the jail. Usually, this user will be used as a ``remote_user`` to connect to the
 jail.
 
 .. code-block:: yaml
@@ -115,7 +115,7 @@ jail.
 act_pk
 """"""
 
-A path to a file comprising the public keys allowed to connect to the *act_user* at the jail.
+A path to a file comprising the public keys allowed to connect to the ``act_user`` at the jail.
 
 .. code-block:: yaml
 
@@ -124,14 +124,13 @@ A path to a file comprising the public keys allowed to connect to the *act_user*
 .. warning::
 
    The module `ansible.posix.authorized_key`_, used in this task, is not jail-aware. The user
-   *act_user* must exist on the iocage host. Otherwise, the module `ansible.posix.authorized_key`_
+   ``act_user`` must exist on the iocage host. Otherwise, the module `ansible.posix.authorized_key`_
    will crash.
 
-  
 act_sudo
 """"""""
 
-Add *act_user* to */root/usr/local/etc/sudoers*
+Add ``act_user`` to ``/root/usr/local/etc/sudoers``
 
 .. code-block:: yaml
 
@@ -150,7 +149,7 @@ The below passwordless entry will be created
 act_rcconf
 """"""""""
 
-Configure */root/etc/rc.conf*
+Configure ``/root/etc/rc.conf``
 
 .. code-block:: yaml
 
@@ -161,7 +160,7 @@ Configure */root/etc/rc.conf*
 act_dhclient
 """"""""""""
 
-Create *dhclient* hooks
+Create ``dhclient`` hooks
 
 .. code-block:: yaml
 
@@ -175,14 +174,14 @@ Create *dhclient* hooks
 
 .. note::
 
-   * These *hooks* are needed to configure *hooks_results* in `inventory plugin vbotka.freebsd.iocage`_
+   * These *hooks* are needed to configure ``hooks_results`` in `inventory plugin vbotka.freebsd.iocage`_
    * See `man dhclient-script`_
 
 Workflow
 ^^^^^^^^
 
-The last tasks *template.yml* convert the jails to templates. If you start the play again the first
-tasks *setup.yml* ends the host(s) if all templates have already been created. If you want to
+The last tasks ``template.yml`` convert the jails to templates. If you start the play again the first
+tasks ``setup.yml`` ends the host(s) if all templates have already been created. If you want to
 reconfigure already created template set ``template=0`` manually. For example,
 
 .. code-block:: console
