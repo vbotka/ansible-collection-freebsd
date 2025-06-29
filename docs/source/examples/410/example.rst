@@ -97,6 +97,42 @@ conf.d
    :language: yaml
    :caption:
 
+Expected results
+^^^^^^^^^^^^^^^^
+
+.. code-block:: yaml
+
+   al_include_confd_vars_list_type: plain
+   al_include_confd_vars_list:
+     - team: production
+       users: [alice, bob]
+     - team: qa1
+       users: [mallory, ted]
+     - team: qa2
+       users: [darth, wendy]
+     - team: devel
+       users: [charlie, david]
+
+
+.. code-block:: yaml
+
+   al_include_confd_vars_list_type: fname
+   al_include_confd_vars_list:
+     - fname: production
+       vars:
+       - team: production
+         users: [alice, bob]
+     - fname: qa
+       vars:
+       - team: qa1
+         users: [mallory, ted]
+       - team: qa2
+         users: [darth, wendy]
+     - fname: devel
+       vars:
+       - team: devel
+         users: [charlie, david]
+
 Playbook pb-include_confd_vars_list.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
