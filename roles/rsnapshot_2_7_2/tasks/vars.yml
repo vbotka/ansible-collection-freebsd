@@ -8,7 +8,7 @@
 
     - name: "Vars: Include OS vars"
       ansible.builtin.include_role:
-        name: vbotka.ansible_lib
+        name: vbotka.freebsd.lib
         tasks_from: al_include_os_vars_path
 
 - name: "Vars: Create template specific vars."

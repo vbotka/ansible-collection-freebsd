@@ -20,6 +20,7 @@ Minor Changes
 * Update README.
 * Update docs. Update example 410.
 * Update docs. Add example 411.
+* Upgrade role rsnapshot to 2.7.2
 
 
 0.7.13

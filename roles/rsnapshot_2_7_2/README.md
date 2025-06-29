@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.org/vbotka/ansible-rsnapshot.svg?branch=master)](https://travis-ci.org/vbotka/ansible-rsnapshot)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-rsnapshot)](https://github.com/vbotka/ansible-rsnapshot/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+
 [Ansible role.](https://galaxy.ansible.com/vbotka/rsnapshot/) Install and configure [rsnapshot](http://rsnapshot.org/).
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-rsnapshot/issues).
@@ -11,16 +13,32 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
-## Requirements and dependencies
-
-### Roles
-
-* vbotka.ansible_lib
+## Requirements
 
 ### Collections
 
 * community.general
+* vbotka.freebsd
 
+### Optionally, use the role vbotka.ansible_lib
+
+This role requires the collection vbotka.freebsd to include tasks from the role
+vbotka.freebsd.lib. See in the tasks:
+
+```yaml
+  ansible.builtin.include_role:
+    name: vbotka.freebsd.lib
+```
+
+Instead of the collection vbotka.freebsd, you can install and use the role
+vbotka.ansible_lib. Edit the tasks:
+
+```yaml
+  ansible.builtin.include_role:
+    name: vbotka.ansible_lib
+```
+
+Remove vbotka.freebsd from the collections in meta/main.yml
 
 ## Role Variables
 
