@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update README.
 
 
 0.7.13
