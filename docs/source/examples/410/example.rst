@@ -21,7 +21,7 @@ Create list of variables from files in the directory ``conf.d``. Use the role
 
    - name: Create list of vars from files in directory conf.d
      vars:
-       al_include_dir_vars_dir: "{{ playbook_dir }}/conf.d"
+       al_include_confd_dir: "{{ playbook_dir }}/conf.d"
      include_role:
        name: vbotka.ansible_lib
        tasks_from: al_include_confd_vars_list.yml
@@ -61,8 +61,8 @@ The variables' names are not collected. The resulting list comprises the variabl
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_.
-   | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
+   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_
+   | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_
    | Please make sure the versions are the same before you switch between them.
 
 .. seealso::

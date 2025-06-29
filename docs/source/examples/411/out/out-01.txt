@@ -1,0 +1,43 @@
+
+PLAY [Test vbotka.freebsd.lib al_include_dir_vars] *****************************
+
+TASK [Create dict of vars from nested directories al_vars] *********************
+included: vbotka.ansible_lib for iocage_02
+
+TASK [vbotka.ansible_lib : Al_include_dir_vars: Get list of directories.] ******
+ok: [iocage_02 -> localhost]
+
+TASK [vbotka.ansible_lib : Al_include_dir_vars: Set list of directories.] ******
+ok: [iocage_02]
+
+TASK [vbotka.ansible_lib : Al_include_dir_vars: Set dictionary of lists of files.] ***
+ok: [iocage_02] => (item=team)
+
+TASK [vbotka.ansible_lib : Al_include_dir_vars: Get content of files.] *********
+ok: [iocage_02] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'qa'])
+ok: [iocage_02] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'production'])
+ok: [iocage_02] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'devel'])
+
+TASK [vbotka.ansible_lib : Al_include_dir_vars: Create dictionary al_vars.] ****
+ok: [iocage_02] => (item=team)
+
+TASK [debug] *******************************************************************
+ok: [iocage_02] => 
+    msg: |-
+        al_vars:
+          team:
+            devel:
+            - team: devel
+              users: [charlie, david]
+            production:
+            - team: production
+              users: [alice, bob]
+            qa:
+            - team: qa1
+              users: [mallory, ted]
+            - team: qa2
+              users: [darth, wendy]
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=7    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

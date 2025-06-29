@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Update README.
 * Update docs. Update example 410.
+* Update docs. Add example 411.
 
 
 0.7.13
