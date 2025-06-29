@@ -15,7 +15,7 @@ Use case
 ^^^^^^^^
 
 Create list of variables from files in the directory ``conf.d``. Use the role
-`vbotka.freebsd.lib`_ tasks ``al_include_confd_vars_list.yml``
+`vbotka.freebsd.lib`_ tasks `al_include_confd_vars_list.yml`_
 
 .. code-block:: yaml
 
@@ -67,6 +67,7 @@ The variables' names are not collected. The resulting list comprises the variabl
 
 .. seealso::
 
+   * `al_include_confd_vars_list.yml`_
    * `Special variable playbook_dir`_
 
 Configuration ansible.cfg
@@ -119,5 +120,7 @@ Playbook output - debug display variables
 .. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
+
+.. _al_include_confd_vars_list.yml: https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml
 
 .. _Special variable playbook_dir: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-playbook_dir
