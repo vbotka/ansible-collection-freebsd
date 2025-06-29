@@ -92,6 +92,7 @@ Examples
    examples/380/example.rst
    examples/390/example.rst
    examples/400/example.rst
+   examples/410/example.rst
 
 .. toctree::
    :maxdepth: 1

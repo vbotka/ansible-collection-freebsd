@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Maintenance update.
+Add role vbotka.freebsd.lib
 
 Major Changes
 -------------
@@ -21,6 +21,7 @@ Minor Changes
 * Update README.
 * Update docs. Updated examples.
 * Updated docs. Add role vbotka.freebsd.lib
+* Updated docs. Add example 410.
 * Update documentation URL to the latest (master) branch.
 
 
