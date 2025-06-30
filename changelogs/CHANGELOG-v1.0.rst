@@ -5,6 +5,26 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.14
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update README.
+* Update docs. Update example 410.
+* Update docs. Add example 411.
+* Upgrade role rsnapshot to 2.7.2
+* Upgrade role postinstall to 2.7.10
+* Upgrade role custom_image to 2.7.5
+
+
 0.7.13
 ======
 

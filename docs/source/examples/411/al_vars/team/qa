@@ -1,0 +1,4 @@
+- team: qa1
+  users: [mallory, ted]
+- team: qa2
+  users: [darth, wendy]
