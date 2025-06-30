@@ -22,6 +22,7 @@ Minor Changes
 * Update docs. Add example 411.
 * Upgrade role rsnapshot to 2.7.2
 * Upgrade role postinstall to 2.7.10
+* Upgrade role custom_image to 2.7.5
 
 
 0.7.13
