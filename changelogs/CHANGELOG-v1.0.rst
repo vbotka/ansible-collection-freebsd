@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs. Update ug_inventory_iocage_*
 
 
 0.7.14

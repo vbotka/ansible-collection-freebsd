@@ -172,7 +172,9 @@ Display tags and groups. Create the playbook ``pb-test-groups.yml``
      tasks:
 
        - debug:
-           var: iocage_tags
+           msg: |
+             iocage_properties.host_hostname: {{ iocage_properties.host_hostname }}
+             iocage_tags: {{ iocage_tags }}
 
        - debug:
            msg: |
@@ -194,20 +196,17 @@ Run the playbook
 
    TASK [debug] ********************************************************************************************************
    ok: [srv_1] =>
-       iocage_tags:
-           alias: srv_1
-           project: foo
-           vmm: iocage_02
+       msg: |-
+           iocage_properties.host_hostname: 052b9557
+           iocage_tags: {'vmm': 'iocage_02', 'project': 'foo', 'alias': 'srv_1'}
    ok: [srv_2] =>
-       iocage_tags:
-           alias: srv_2
-           project: foo
-           vmm: iocage_02
+       msg: |-
+           iocage_properties.host_hostname: 1c11de2d
+           iocage_tags: {'vmm': 'iocage_02', 'project': 'foo', 'alias': 'srv_2'}
    ok: [srv_3] =>
-       iocage_tags:
-           alias: srv_3
-           project: bar
-           vmm: iocage_02
+       msg: |-
+           iocage_properties.host_hostname: 9d94cc9e
+           iocage_tags: {'vmm': 'iocage_02', 'project': 'bar', 'alias': 'srv_3'}
 
    TASK [debug] ********************************************************************************************************
    ok: [srv_1] =>
