@@ -21,6 +21,7 @@ Minor Changes
 * Update docs. Update example 410.
 * Update docs. Add example 411.
 * Upgrade role rsnapshot to 2.7.2
+* Upgrade role postinstall to 2.7.10
 
 
 0.7.13
