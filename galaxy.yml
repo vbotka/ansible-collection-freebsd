@@ -6,7 +6,9 @@ readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
 description: FreeBSD collection.
-license_file: LICENSE
+license:
+  - BSD-2-Clause
+  - GPL-3.0-or-later
 tags:
   - freebsd
   - iocage
