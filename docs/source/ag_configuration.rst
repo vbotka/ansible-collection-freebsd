@@ -3,4 +3,4 @@
 Configuration
 *************
 
-Optionally, configure this collection. See the playbook `setup/.configure.yml`
+Optionally, configure this collection. See the playbook ``setup/.configure.yml``

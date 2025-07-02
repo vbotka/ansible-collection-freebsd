@@ -11,7 +11,7 @@ For example, given the collection is installed in the directory ::
 
 Create the collection docsite in this directory
 
-.. code:: bash
+.. code:: console
 
    (env) > python3 -m pip install ansible-core antsibull-docs
    (env) > export ANSIBLE_COLLECTIONS_PATH=~/.ansible/collections
@@ -26,7 +26,6 @@ Create the collection docsite in this directory
 Upon successful build, open the local page in a browser ::
   
   file:///<path_to_collections>/collections/ansible_collections/vbotka/freebsd/dest/build/html/collections/vbotka/freebsd/index.html
-
 
 .. seealso::
 

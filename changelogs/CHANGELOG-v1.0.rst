@@ -21,6 +21,7 @@ Minor Changes
 * Update requirements.
 * Update docs ug_inventory_iocage_*
 * Update docs example 207
+* Update docs ag and dg.
 
 
 0.7.14

@@ -7,42 +7,33 @@ Update iocage module
 
 * Switch to the branch *current*
 
-* Make changes to the branch *current* or create new branch
+* Make changes to the branch *current* or create a new branch
 
-* Update the code and commit the changes. You are encouraged to
-  submit a PR.
+* Update the code and commit the changes. You are encouraged to submit a PR.
 
-* Calculate iocage.py hash. For example, ::
+* Calculate ``iocage.py`` hash. For example, ::
 
     shell> sha512sum iocage.py
 
-* To reflect your changes, update in the collection:
+* To incorporate your changes, update in the collection:
 
-  * the checksum *setup/vars/checksum.yml*
+  * the checksum ``setup/vars/checksum.yml``
 
-  * the patch *setup/files/module-iocage.patch* if needed
+  * the patches ``setup/files/module-iocage.*.patch`` if needed
 
-  * the dictionary *bsd_plugins.modules.iocage* in the file *setup/vars/plugins.yml*
+  * the dictionary ``plugins.modules.iocage`` in the file ``setup/vars/plugins.yml``
 
-  * optionally, update *setup/vars/plugins_all.yml* ::
+* See ``setup/vars/plugins_install.yml`` and update ``plugins/modules/iocage.py`` ::
 
-      shell> cd setup
-      shell> ansible-playbook .configure.yml -t create_plugins_all
-                                             -e create_plugins_all=true
-                                             -e i_know_what_i_am_doing=true
+    shell> cd setup
+    shell> ansible-playbook setup.yml -t plugins
 
-  * Update *plugins/modules/iocage.py* ::
-
-      shell> cd setup
-      shell> ansible-playbook setup.yml -t plugins
-
-    The *plugins* tasks are not idempotent if a patch is present.
+.. note:: The ``plugins`` tasks are not idempotent if a patch is present.
 
 .. warning::
 
-   * The collection upgrade will override the changes. Backup your
-     changes before you upgrade the collection.
+   * The collection upgrade will override the changes. Backup your changes before you upgrade the
+     collection.
 
-   * This collection does not provide an upgrade procedure to
-     preserve changes. After the upgrade, you are responsible for
-     restoring your changes.
+   * This collection does not provide an upgrade procedure to preserve changes. After the upgrade,
+     you are responsible for restoring your changes.
