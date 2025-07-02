@@ -19,7 +19,8 @@ Minor Changes
 -------------
 * Update Galaxy metadata.
 * Update requirements.
-* Update docs. Update ug_inventory_iocage_*
+* Update docs ug_inventory_iocage_*
+* Update docs example 207
 
 
 0.7.14
