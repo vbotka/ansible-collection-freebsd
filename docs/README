@@ -1,20 +1,12 @@
 README
 ======
 
-Update version
+* In docs/source/conf.py, update the version and release 
 
-  shell> grep "version =" source/conf.py 
-  version = '0.2'
-
-  shell> grep "version " source/index.rst
-  Collection version 0.2.4
-
-Create html documents
+* In docs, create html documentation
 
   shell> make html
 
-See the documents
-
-  shell> browser build/html/index.html
+* In a browser, see the documentation docs/build/html/index.html
 
 # EOF
