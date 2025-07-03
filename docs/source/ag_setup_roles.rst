@@ -83,8 +83,8 @@ restrictions.
 
 .. note::
 
-   The file ``README.md`` is imported into the collection documentation. The title might be
-   misleading because it keeps the Galaxy role name. For example, the role
+   The roles' files ``README.md`` are imported into the collection documentation. The titles might
+   be misleading because they keep the Galaxy names. For example, the role
    `vbotka.freebsd.custom_image`_ documentation says:
 
    .. code-block:: text
@@ -127,7 +127,8 @@ included in the ``README.md`` of these roles
      ansible.builtin.include_role:
        name: vbotka.ansible_lib
 
-Remove ``vbotka.freebsd`` from the ``collections`` in ``meta/main.yml``.
+If you switch to ``vbotka.ansible_lib``, remove ``vbotka.freebsd`` from the ``collections`` in
+``meta/main.yml``.
 
 Other roles
 ^^^^^^^^^^^
