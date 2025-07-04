@@ -1,0 +1,31 @@
+#!/bin/sh
+# {{ ansible_managed }}"
+
+# PROVIDE: wpa_cli
+# REQUIRE: mountcritremote
+# KEYWORD: nojail nostart
+
+. /etc/rc.subr
+. /etc/network.subr
+
+name="wpa_cli"
+desc="Frontend to WPA/802.11i Supplicant for wireless network
+devices. Run in daemon mode executing the action file based on events
+from wpa_supplicant"
+rcvar=
+
+ifn="$2"
+if [ -z "$ifn" ]; then
+	return 1
+fi
+
+load_rc_config $name
+
+command="${wpa_cli_program}"
+pidfile="/var/run/${name}/${ifn}.pid"
+command_args="-B -i $ifn -P $pidfile -p ${wpa_cli_ctrl_interface} -a ${wpa_cli_action_file}"
+required_files="${wpa_cli_action_file}"
+
+run_rc_command "$1"
+
+# EOF

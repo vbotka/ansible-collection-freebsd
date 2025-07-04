@@ -1,0 +1,22 @@
+---
+
+template_wpa_supplicant.conf.2_synopsis: |
+  Create wpa_supplicant.conf
+
+template_wpa_supplicant.conf.2_description: |
+  The attribute *conf* is a dictionary. For example,
+
+  .. code-block:: yaml
+
+     cimage_wpasupconf_data:
+       - dev: wlan0
+         network:
+           - conf:
+               ssid: '"my_access_point"'
+               psk: '"my_password"'
+               disabled: 0
+
+template_wpa_supplicant.conf.2_note: |
+
+  - "Some values must be double-quoted."
+  - "See https://wiki.archlinux.org/title/wpa_supplicant"

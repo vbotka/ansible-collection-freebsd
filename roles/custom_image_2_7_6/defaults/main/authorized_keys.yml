@@ -1,0 +1,7 @@
+---
+# authorized keys
+# cimage_authorized_key:
+#   - user: "freebsd"
+#     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar1/id_rsa.pub') }}"
+#   - user: "freebsd"
+#     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar2/id_rsa.pub') }}"

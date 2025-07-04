@@ -1,0 +1,10 @@
+---
+
+cl_service_cups_enable: true
+cl_service_cups_state: started
+
+cl_cupsd_conf_lines:
+  - regexp: ^\s*LogLevel\s+(.*)$
+    line: LogLevel warn
+
+# EOF

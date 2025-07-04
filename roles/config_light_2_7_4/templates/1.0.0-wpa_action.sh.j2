@@ -1,0 +1,65 @@
+#!/bin/sh
+# {{ ansible_managed }}
+
+version="1.0.0"
+ifname=$1
+cmd=$2
+# TODO: test prams
+
+{% if wpacli_action_script_log_to_file %}
+logtofile="1"
+{% else %}
+logtofile="0"
+{% endif %}
+logfile="{{ wpacli_action_script_logfile }}"
+
+if [ "$logtofile" = "1" ]; then
+    my_date=`date +"%b %d %T"`
+    printf "$my_date $ifname: $cmd \n" >> $logfile
+fi
+
+# wpa_supplicant reports connection to SSID. Start dhclient and
+# restart routing
+if [ "$cmd" = "CONNECTED" ]; then
+    if [ "$logtofile" = "1" ]; then
+	ssid=`wpa_cli -i$ifname status | grep ^ssid= | cut -f2- -d=`
+	printf "$my_date $ifname: SSID: $ssid \n" >> $logfile
+    fi
+    message=`/etc/rc.d/dhclient forcestart $ifname 2>&1` # NOTE 1
+    if [ "$logtofile" = "1" ]; then
+	printf "$my_date $ifname: dhclient start: $message \n" >> $logfile
+    fi
+    message=`/etc/rc.d/routing restart 2>&1`
+    if [ "$logtofile" = "1" ]; then
+	printf "$my_date $ifname: routing restart: $message \n" >> $logfile
+    fi
+fi
+
+# wpa_supplicant reports disconnection from SSID. Stop dhclient and
+# restart routing
+if [ "$cmd" = "DISCONNECTED" ]; then
+    message=`/etc/rc.d/dhclient forcestop $ifname`
+    if [ "$logtofile" = "1" ]; then
+	printf "$my_date $ifname: dhclient forcestart: $message \n" >> $logfile
+    fi
+    message=`/etc/rc.d/routing restart 2>&1`
+    if [ "$logtofile" = "1" ]; then
+	printf "$my_date $ifname: routing restart: $message \n" >> $logfile
+    fi
+fi
+
+exit 0
+
+# NOTE 1
+# We don't want /etc/network.subr to handle DHCP and instruct
+# ifconfig, in rc.conf, to configure WPA only.
+#      ifconfig_wlan1="WPA"
+# When we use "/etc/rc.d/dhclient start wlan1" it complains
+#      'wlan1' is not a DHCP-enabled interface
+# Hence we use /etc/rc.d/dhclient forcestart $ifname in this script
+
+# NOTE 2
+# Example how to activate the script.
+# wpa_cli -B -i wlan1 -a /root/bin/wpa_action.sh
+
+# EOF
