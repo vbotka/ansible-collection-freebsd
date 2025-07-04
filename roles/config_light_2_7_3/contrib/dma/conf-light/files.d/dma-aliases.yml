@@ -1,8 +1,0 @@
----
-dma_aliases:
-  path: /usr/local/etc/dma/aliases
-  create: true
-  owner: root
-  group: wheel
-  mode: "0644"
-  lines: "{{ cl_dma_aliases }}"

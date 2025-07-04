@@ -1,9 +1,0 @@
----
-ntp_conf:
-  path: "{{ cimage_mount_path }}/etc/ntp.conf"
-  force: true
-  owner: root
-  group: wheel
-  mode: "0644"
-  template:
-    path: ntp.conf-minimal.j2

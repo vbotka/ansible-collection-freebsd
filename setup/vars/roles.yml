@@ -40,7 +40,7 @@ bsd_roles:
     name: config_light
     scm: git
     src: https://github.com/vbotka/ansible-config-light
-    version: 2.7.3
+    version: 2.7.4
   - galaxy: vbotka.freebsd_bash
     name: bash
     scm: git
@@ -50,7 +50,7 @@ bsd_roles:
     name: custom_image
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-custom-image
-    version: 2.7.5
+    version: 2.7.6
   - galaxy: vbotka.freebsd_dhcp
     name: dhcp
     scm: git

@@ -1,5 +1,0 @@
----
-dma:
-  module: pkgng
-  name:
-    - mail/dma

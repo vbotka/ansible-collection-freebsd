@@ -22,6 +22,8 @@ Minor Changes
 * Update docs ug_inventory_iocage_*
 * Update docs example 207
 * Update docs ag and dg.
+* Upgrade role config_light 2.7.4
+* Upgrade role custom_image 2.7.6
 
 
 0.7.14
