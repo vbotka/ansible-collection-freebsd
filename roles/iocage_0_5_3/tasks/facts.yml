@@ -1,0 +1,20 @@
+---
+
+- name: "Facts: create directory /etc/ansible/facts.d"
+  ansible.builtin.file:
+    state: directory
+    path: /etc/ansible/facts.d
+    owner: root
+    group: wheel
+    mode: '0755'
+
+- name: "Facts: copy scipts to /etc/ansible/facts.d"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/ansible/facts.d
+    owner: root
+    group: wheel
+    mode: '0755'
+  loop: "{{ freebsd_iocage_facts_scripts }}"
+
+# EOF

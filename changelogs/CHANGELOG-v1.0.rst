@@ -24,6 +24,7 @@ Minor Changes
 * Update docs ag and dg.
 * Upgrade role config_light 2.7.4
 * Upgrade role custom_image 2.7.6
+* Upgrade role iocage 0.5.3
 * Upgrade role lib 2.7.1
 
 
