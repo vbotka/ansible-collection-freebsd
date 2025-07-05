@@ -44,6 +44,7 @@ dictionary ``bsd_roles`` keeps the tested roles
        scm: git
        src: https://github.com/vbotka/ansible-freebsd-dns
        version: 2.6.2
+       ...
 
 Put the roles you want to install into the list ``bsd_roles_install`` in
 ``setup/vars/roles_linstall.yml`` and run the play
@@ -77,13 +78,13 @@ The naming convention is simple:
    "ansible-config-light", "vbotka.config_light", "vbotka.freebsd.config_light"
    "ansible-freebsd-custom-image", "vbotka.freebsd_custom_image", "vbotka.freebsd.custom_image"
 
-The roles imported into the Ansible Galaxy namespace `vbotka`_ and included in the collection
+The roles imported in the Ansible Galaxy namespace `vbotka`_ and included in the collection
 `vbotka.freebsd`_ are identical. You can use them in parallel or interchange them without
 restrictions.
 
 .. note::
 
-   The roles' files ``README.md`` are imported into the collection documentation. The titles might
+   The roles' files ``README.md`` are imported in the collection documentation. The titles might
    be misleading because they keep the Galaxy names. For example, the role
    `vbotka.freebsd.custom_image`_ documentation says:
 
@@ -129,6 +130,12 @@ included in the ``README.md`` of these roles
 
 If you switch to ``vbotka.ansible_lib``, remove ``vbotka.freebsd`` from the ``collections`` in
 ``meta/main.yml``.
+
+.. warning::
+
+   Make sure the role doesn't use collection ``vbotka.freebsd`` plugins before you start editing the
+   inclusions.
+
 
 Other roles
 ^^^^^^^^^^^
