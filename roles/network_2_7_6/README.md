@@ -4,6 +4,8 @@
 [![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-network.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-network)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-network)](https://github.com/vbotka/ansible-freebsd-network/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.network](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network)
+
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_network/) FreeBSD. Configure network.
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-network/issues).
