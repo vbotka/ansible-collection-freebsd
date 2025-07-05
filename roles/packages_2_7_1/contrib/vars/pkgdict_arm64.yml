@@ -1,7 +1,7 @@
 ---
 
-pkg_list_amd64: []
-pkg_dict_amd64:
+pkg_list_arm64: []
+pkg_dict_arm64:
   - pkglist: minimal
     packages:
       - shells/bash
@@ -40,7 +40,7 @@ pkg_dict_amd64:
       - emulators/linux_base-{{ bsd_linux_version }}
   - pkglist: devel
     packages:
-      - devel/llvm60
+      - devel/llvm
       - devel/py-pip
   - pkglist: joomla
     packages:
@@ -179,18 +179,6 @@ pkg_dict_amd64:
   - pkglist: python
     packages:
       - lang/python{{ bsd_python_version }}
-      - lang/python
-      - lang/python3
-  - pkglist: docker
-    packages:
-      - sysutils/docker-freebsd
-      - security/ca_root_nss
-      - shells/bash
-      - print/indexinfo
-      - lang/go
-      - databases/sqlite3
-      - devel/gettext-runtime
-      - devel/readline
   - pkglist: rsnapshot
     packages:
       - sysutils/rsnapshot
@@ -198,12 +186,6 @@ pkg_dict_amd64:
     packages:
       - net-mgmt/net-snmp
       - net-mgmt/py-pysnmp
-  - pkglist: qemu
-    packages:
-      - emulators/qemu
-  - pkglist: qemu_user_static
-    packages:
-      - emulators/qemu-user-static
 
 # EOF
 ...

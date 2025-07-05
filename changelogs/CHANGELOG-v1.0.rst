@@ -27,6 +27,7 @@ Minor Changes
 * Upgrade role iocage 0.5.3
 * Upgrade role lib 2.7.1
 * Upgrade role network 2.7.6
+* Upgrade role packages 2.7.1
 
 
 0.7.14

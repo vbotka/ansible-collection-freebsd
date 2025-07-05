@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_packages
-pkg_role_version: 2.7.0
+pkg_role_version: 2.7.1
 
 # requirements >=
 pkg_version_community_general: 9.3.0
