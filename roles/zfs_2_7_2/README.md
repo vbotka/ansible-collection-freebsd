@@ -4,6 +4,8 @@
 [![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-zfs.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-zfs)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-zfs)](https://github.com/vbotka/ansible-freebsd-zfs/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.zfs](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs)
+
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_zfs/) FreeBSD. Configure ZFS.
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-zfs/issues).
