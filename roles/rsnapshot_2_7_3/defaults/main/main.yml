@@ -1,0 +1,20 @@
+---
+# defaults for vbotka.rsnapshot
+rsnapshot_role_version: 2.7.3
+rsnapshot_supported_linux_family: [Debian, RedHat]
+rsnapshot_debug: false
+rsnapshot_debug2: false
+rsnapshot_backup_conf: false
+rsnapshot_snapshot_root_owner: root
+
+### BACKUP POINTS / SCRIPTS ###
+rsnapshot_backup_points: []
+# rnapshot_backup_scripts: []
+rsnapshot_exclude: []
+
+### TEST ###
+rsnapshot_test: false
+rsnapshot_snapshot_root_test: /export/backup/snapshots-test
+rsnapshot_backup_points_test: []
+
+# EOF

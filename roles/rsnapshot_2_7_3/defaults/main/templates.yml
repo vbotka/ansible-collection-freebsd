@@ -1,0 +1,7 @@
+---
+rsnapshot_config_template: rsnapshot.conf.j2
+rsnapshot_config_template_test: rsnapshot-test.conf.j2
+
+rsnapshot_config_template_vars:
+  rsnapshot-auto.conf.j2: vars-auto.yml
+  rsnapshot-auto-test.conf.j2: vars-auto.yml

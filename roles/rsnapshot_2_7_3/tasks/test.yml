@@ -1,0 +1,42 @@
+---
+- name: "Test: DEBUG Print variables rsnapshot_debug={{ rsnapshot_debug }}"
+  when: rsnapshot_debug | bool
+  vars:
+    msg: |
+      Enable test ............ rsnapshot_test ................ {{ rsnapshot_test }}
+      Rsnapshot config test .. rsnapshot_config_file_test .... {{ rsnapshot_config_file_test }}
+      Backup dir test ........ rsnapshot_snapshot_root_test .. {{ rsnapshot_snapshot_root_test }}
+      Backup points test ..... rsnapshot_backup_points_test .. {{ rsnapshot_backup_points_test }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Test: Create test directory {{ rsnapshot_snapshot_root_test }}"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ rsnapshot_snapshot_root_test }}"
+    owner: "{{ rsnapshot_snapshot_root_owner }}"
+    group: "{{ rsnapshot_snapshot_root_group }}"
+    mode: "{{ rsnapshot_snapshot_root_mode }}"
+
+- name: "Test: Create test backup_points"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ item.dir }}"
+    owner: "{{ rsnapshot_snapshot_root_owner }}"
+    group: "{{ rsnapshot_snapshot_root_group }}"
+    mode: "{{ rsnapshot_snapshot_root_mode }}"
+  loop: "{{ rsnapshot_backup_points_test }}"
+
+- name: "Test: Create test configuration {{ rsnapshot_config_file_test }}"
+  vars:
+    tab: "{{ '\t' }}"
+  ansible.builtin.template:
+    src: "{{ rsnapshot_config_template_test }}"
+    dest: "{{ rsnapshot_config_file_test }}"
+    owner: "{{ rsnapshot_config_file_owner }}"
+    group: "{{ rsnapshot_config_file_group }}"
+    mode: "{{ rsnapshot_config_file_mode }}"
+    backup: "{{ rsnapshot_backup_conf }}"
+    validate: rsnapshot -c %s configtest
+
+# EOF
