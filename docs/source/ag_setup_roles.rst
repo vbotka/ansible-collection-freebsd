@@ -68,7 +68,9 @@ The naming convention is simple:
   without the prefix ``ansible-`` where dashes ``-`` are replaced with underscores ``_``.
 
 * The collection roles' names start with ``vbotka.freebsd`` and follow with the last parts of the
-  GitHub names where dashes ``-`` are replaced by underscores ``_``. For example,
+  GitHub names where dashes ``-`` are replaced by underscores ``_``.
+
+For example,
 
 .. csv-table::
    :header: "GitHub vbotka", "Galaxy vbotka", "Collection vbotka.freebsd"
@@ -108,8 +110,8 @@ reusable tasks that can be included in playbooks and other roles.
    "ansible-lib", "vbotka.ansible_lib", "vbotka.freebsd.lib"
 
 Some roles depend on it. If such roles are included in the collection `vbotka.freebsd`_ they are
-modified to depend on the role `vbotka.freebsd.lib`_. For clarification, the following comment is
-included in the ``README.md`` of these roles
+modified to use the role `vbotka.freebsd.lib`_. If there are no other dependencies on the collection
+`vbotka.freebsd`_ the following comment is included in the ``README.md``
 
 .. code-block:: text
 
@@ -129,7 +131,7 @@ included in the ``README.md`` of these roles
        name: vbotka.ansible_lib
 
 If you switch to ``vbotka.ansible_lib``, remove ``vbotka.freebsd`` from the ``collections`` in
-``meta/main.yml``.
+``meta/main.yml``. Then, the role can be used without the collection `vbotka.freebsd`_.
 
 .. warning::
 
