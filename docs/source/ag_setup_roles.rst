@@ -3,7 +3,7 @@
 Roles
 -----
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 2
 

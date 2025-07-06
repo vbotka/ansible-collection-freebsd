@@ -4,7 +4,7 @@ iocage tags
 .. index:: single: variable iocage_tags; iocage tags
 .. index:: single: iocage_tags; iocage tags
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 2
 
@@ -75,12 +75,14 @@ Then, the playbook :ref:`ug_pb-iocage-ansible-client` creates jails, for example
 with *notes*
 
 .. code-block:: console
-   :emphasize-lines: 1,3,5
+   :emphasize-lines: 1,4,7
 
    [iocage_02]# iocage get notes afa9e515
    vmm=iocage_02 swarm=sw_01
+
    [iocage_02]# iocage get notes c1670497
    vmm=iocage_02 swarm=sw_01
+
    [iocage_02]# iocage get notes test_111
    vmm=iocage_02 swarm=sw_01
 

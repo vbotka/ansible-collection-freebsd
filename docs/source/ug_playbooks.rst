@@ -3,7 +3,7 @@
 Playbooks
 *********
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 

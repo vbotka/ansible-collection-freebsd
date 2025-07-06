@@ -7,7 +7,6 @@ The `inventory plugin vbotka.freebsd.iocage`_ gets the inventory from the `iocag
 manager.
 
 .. toctree::
-   :caption: Table of Contents
    :maxdepth: 1
 
    ug_inventory_iocage_basics

@@ -1,7 +1,7 @@
 pb-iocage-template
 ------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 3
 

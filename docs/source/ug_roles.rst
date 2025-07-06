@@ -3,7 +3,7 @@
 Roles
 *****
 
-.. contents:: Table of Contents
+.. contents::
    :local:
 
 Included roles
