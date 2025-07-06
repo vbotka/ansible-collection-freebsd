@@ -115,7 +115,7 @@ bsd_roles:
     name: pf
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-pf
-    version: 2.7.4
+    version: 2.7.5
   - galaxy: vbotka.freebsd_php
     name: php
     scm: git
