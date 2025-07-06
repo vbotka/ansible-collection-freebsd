@@ -175,7 +175,7 @@ bsd_roles:
     name: rsnapshot
     scm: git
     src: https://github.com/vbotka/ansible-rsnapshot
-    version: 2.7.2
+    version: 2.7.3
   - galaxy: vbotka.yazvs
     name: yazvs
     scm: git
