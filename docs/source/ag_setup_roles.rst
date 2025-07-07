@@ -138,6 +138,13 @@ If you switch to ``vbotka.ansible_lib``, remove ``vbotka.freebsd`` from the ``co
    Make sure the role doesn't use collection ``vbotka.freebsd`` plugins before you start editing the
    inclusions.
 
+Other dependent roles
+"""""""""""""""""""""
+
+There might be other dependent roles. See for example, the role `vbotka.freebsd.zfs`_ depends on the
+role `vbotka.freebsd.postinstall`_. The procedures, described in the previous chapter, apply also
+here. With minimal modifications, It is possible to use a standalone role, for example
+`vbotka.freebsd_zfs`_, depending on the role `vbotka.freebsd_postinstall`_.
 
 Other roles
 ^^^^^^^^^^^
@@ -166,6 +173,11 @@ If you want to install other roles into this collection update the dictionary ``
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
 .. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib
 .. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib
+
+.. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
+.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _vbotka.freebsd_zfs: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_zfs
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall
 
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 
