@@ -32,7 +32,7 @@ Minor Changes
 * Upgrade role postinstall 2.7.11
 * Upgrade role poudriere 2.7.4
 * Upgrade role rsnapshot 2.7.3
-* Upgrade role zfs 2.7.2
+* Upgrade role zfs 2.7.3
 
 
 0.7.14

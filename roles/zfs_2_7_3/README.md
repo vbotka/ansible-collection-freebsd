@@ -15,15 +15,28 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
-### Roles
-
-* [vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall)
-
-This role is needed to run tasks from *sysctl.yml* and *loader.yml*
-
 ### Collections
 
 * community.general
+* vbotka.freebsd
+
+### Roles
+
+* vbotka.freebsd.postinstall
+
+This role, included in the collection *vbotka.freebsd*, is needed to run tasks from
+*sysctl.yml*. Instead of the collection *vbotka.freebsd*, you can install and use the role
+*vbotka.freebsd_postinstall*. Edit the tasks *sysctl.yml*:
+
+```yaml
+  ansible.builtin.include_role:
+    name: vbotka.freebsd_postinstall
+```
+
+If you install and use
+[vbotka.freebsd_postinstall](https://galaxy.ansible.com/vbotka/freebsd_postinstall), remove
+*vbotka.freebsd* from the collections in *meta/main.yml*. Then, the role can be used without the
+collection *vbotka.freebsd*.
 
 
 ## Variables
