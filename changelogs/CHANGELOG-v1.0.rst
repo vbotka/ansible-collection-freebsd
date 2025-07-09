@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update README.
+* Upgrade role packages 2.7.2
 
 
 0.7.15

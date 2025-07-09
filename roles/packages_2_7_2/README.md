@@ -4,7 +4,7 @@
 [![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-packages.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-packages)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-packages)](https://github.com/vbotka/ansible-freebsd-packages/tags)
 
-This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.network](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network)
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.packages](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_packages/) FreeBSD. Configure repositories. Install, update, and upgrade packages.
 
