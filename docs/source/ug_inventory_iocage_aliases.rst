@@ -126,14 +126,20 @@ List the jails
 Set ``notes`` in the jails. The tag ``alias`` is used to create `inventory aliases`_
 
 .. code-block:: console
-   :emphasize-lines: 1,3,5
+   :emphasize-lines: 1,4,7
 
    shell> iocage set notes="vmm=iocage_02 project=foo alias=srv_1" 052b9557
    notes: none -> vmm=iocage_02 project=foo alias=srv_1
+
    shell> iocage set notes="vmm=iocage_02 project=foo alias=srv_2" 1c11de2d
    notes: none -> vmm=iocage_02 project=foo alias=srv_2
+
    shell> iocage set notes="vmm=iocage_02 project=bar alias=srv_3" 9d94cc9e
    notes: none -> vmm=iocage_02 project=bar alias=srv_3
+
+.. note::
+
+   The inventory option ``inventory_hostname_tag`` requires the ``notes`` format ``t1=v1 t2=v2 ...``
 
 Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
 ``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the `inventory alias`_. The
@@ -158,6 +164,10 @@ Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
      - prefix: project
        key: iocage_tags.project
 
+.. note::
+
+   Declare the dictionary ``iocage_tags`` depending on the ``notes`` format.
+
 Display tags and groups. Create the playbook ``pb-test-groups.yml``
 
 .. code-block:: yaml+jinja
@@ -172,7 +182,9 @@ Display tags and groups. Create the playbook ``pb-test-groups.yml``
      tasks:
 
        - debug:
-           var: iocage_tags
+           msg: |
+             iocage_properties.host_hostname: {{ iocage_properties.host_hostname }}
+             iocage_tags: {{ iocage_tags }}
 
        - debug:
            msg: |
@@ -194,20 +206,17 @@ Run the playbook
 
    TASK [debug] ********************************************************************************************************
    ok: [srv_1] =>
-       iocage_tags:
-           alias: srv_1
-           project: foo
-           vmm: iocage_02
+       msg: |-
+           iocage_properties.host_hostname: 052b9557
+           iocage_tags: {'vmm': 'iocage_02', 'project': 'foo', 'alias': 'srv_1'}
    ok: [srv_2] =>
-       iocage_tags:
-           alias: srv_2
-           project: foo
-           vmm: iocage_02
+       msg: |-
+           iocage_properties.host_hostname: 1c11de2d
+           iocage_tags: {'vmm': 'iocage_02', 'project': 'foo', 'alias': 'srv_2'}
    ok: [srv_3] =>
-       iocage_tags:
-           alias: srv_3
-           project: bar
-           vmm: iocage_02
+       msg: |-
+           iocage_properties.host_hostname: 9d94cc9e
+           iocage_tags: {'vmm': 'iocage_02', 'project': 'bar', 'alias': 'srv_3'}
 
    TASK [debug] ********************************************************************************************************
    ok: [srv_1] =>

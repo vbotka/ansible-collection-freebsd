@@ -1,7 +1,7 @@
 pb-iocage-ansible-clients
 -------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 3
 

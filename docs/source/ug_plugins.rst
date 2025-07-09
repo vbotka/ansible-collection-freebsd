@@ -4,7 +4,6 @@ Plugins
 *******
 
 .. toctree::
-   :caption: Table of Contents
    :maxdepth: 1
 
    ug_module_iocage

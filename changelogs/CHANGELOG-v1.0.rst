@@ -5,6 +5,36 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.15
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update Galaxy metadata.
+* Update requirements.
+* Update docs ug_inventory_iocage_*
+* Update docs example 207
+* Update docs ag and dg.
+* Upgrade role config_light 2.7.4
+* Upgrade role custom_image 2.7.6
+* Upgrade role iocage 0.5.3
+* Upgrade role lib 2.7.1
+* Upgrade role network 2.7.6
+* Upgrade role packages 2.7.1
+* Upgrade role pf 2.7.5
+* Upgrade role postinstall 2.7.11
+* Upgrade role poudriere 2.7.4
+* Upgrade role rsnapshot 2.7.3
+* Upgrade role zfs 2.7.3
+
+
 0.7.14
 ======
 

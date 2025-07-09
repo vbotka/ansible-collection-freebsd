@@ -44,9 +44,9 @@ Use case
 ^^^^^^^^
 
 At multiple iocage hosts, create and run VNET jails with a DHCP interface from the template
-*ansible_client*. Use the dictionary ``iocage_tags`` and option ``inventory_hostname_tag`` to create
-`inventory aliases`_. Group the jails by iocage hosts, states, and classes. Declare the project in a single
-dictionary. The dictionary keys are jails aliases. For example,
+``ansible_client``. Use the dictionary ``iocage_tags`` and option ``inventory_hostname_tag`` to
+create `inventory aliases`_. Group the jails by iocage hosts, states, and classes. Declare the
+project in a single dictionary. The dictionary keys are jails aliases. For example,
 
 .. code-block:: yaml
 
@@ -146,9 +146,9 @@ Templates created in :ref:`example_202` are used in this example.
 
 .. seealso::
 
-   * `Binary iocage`_
    * `Inventory aliases`_
    * `Set Jail Property`_
+   * `Binary iocage`_
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -238,7 +238,7 @@ Inventory hosts
 
 .. note::
 
-   This example also works with already created jails. For example,
+   The following examples are tested with already present jails
 
    .. code-block:: console
 
@@ -253,7 +253,7 @@ Playbook pb-iocage-project-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-project-create.yml
-   :language: yaml
+   :language: yaml+jinja
 
 .. note::
 
@@ -276,11 +276,11 @@ Playbook pb-test-all.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
-   :language: yaml
+   :language: yaml+jinja
 
 .. note::
 
-   * The inventory configuration files *hosts/\*.yml* enable cache.
+   * The inventory configuration files ``hosts/*.yml`` enable cache.
    * Flush the cache. Otherwise, the jails created in the previous play won't be included.
 
 .. seealso::

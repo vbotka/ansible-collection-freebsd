@@ -10,7 +10,7 @@ bsd_roles:
     name: lib
     scm: git
     src: https://github.com/vbotka/ansible-lib
-    version: 2.7.0
+    version: 2.7.1
   - galaxy: vbotka.ansible_lint
     name: ansible_lint
     scm: git
@@ -40,7 +40,7 @@ bsd_roles:
     name: config_light
     scm: git
     src: https://github.com/vbotka/ansible-config-light
-    version: 2.7.3
+    version: 2.7.4
   - galaxy: vbotka.freebsd_bash
     name: bash
     scm: git
@@ -50,7 +50,7 @@ bsd_roles:
     name: custom_image
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-custom-image
-    version: 2.7.5
+    version: 2.7.6
   - galaxy: vbotka.freebsd_dhcp
     name: dhcp
     scm: git
@@ -65,7 +65,7 @@ bsd_roles:
     name: iocage
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-iocage
-    version: 0.5.2
+    version: 0.5.3
   - galaxy: vbotka.freebsd_jail
     name: jail
     scm: git
