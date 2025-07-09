@@ -143,7 +143,7 @@ Other dependent roles
 
 There might be other dependent roles. See for example, the role `vbotka.freebsd.zfs`_ depends on the
 role `vbotka.freebsd.postinstall`_. The procedures, described in the previous chapter, apply also
-here. With minimal modifications, It is possible to use a standalone role, for example
+here. With minimal modifications, it is possible to use a standalone role, for example
 `vbotka.freebsd_zfs`_, depending on the role `vbotka.freebsd_postinstall`_.
 
 Other roles
