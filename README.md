@@ -26,7 +26,7 @@ plugins:
 
 roles:
 
-* [role vbotka.freebsd.config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_ligth) - install packages, configure files, services, and handlers.
+* [role vbotka.freebsd.config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light) - install packages, configure files, services, and handlers.
 * [role vbotka.freebsd.custom_image](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image) - download, mount, and customize system images.
 * [role vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage) - install and configure iocage.
 * [role vbotka.freebsd.lib](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib) - library of tasks.
