@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_network
-fn_role_version: 2.7.6
+fn_role_version: 2.7.7
 
 fn_debug: false
 fn_backup_conf: false
@@ -62,5 +62,11 @@ fn_pkg_install_delay: 5
 fn_defaultrouter_dynamic: false
 fn_ipv6_defaultrouter_dynamic: false
 fn_ipv6_activate_all_interfaces_dynamic: false
+
+# handlers - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# The command 'service netif restart && service routing restart` returns rc=1. Wait for 5
+# seconds between the commands. See the handler 'Restart netif and routing'.
+fn_netif_sleep: 5
 
 # EOF

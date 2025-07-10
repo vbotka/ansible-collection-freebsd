@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Update README.
 * Upgrade role packages 2.7.2
+* Upgrade role network 2.7.7
 
 
 0.7.15
