@@ -14,6 +14,7 @@
       fn_rcconfd: {{ fn_rcconfd }}
       fn_rcconfd_dir: {{ fn_rcconfd_dir }}
       fn_backup_conf: {{ fn_backup_conf }}
+      fn_netif_sleep: {{ fn_netif_sleep }}
       fn_wlans:
         {{ fn_wlans | to_yaml(indent=2) | indent(2) }}
       fn_interfaces:
