@@ -23,21 +23,29 @@ This collection is shipped with the roles:
 * `vbotka.freebsd.rsnapshot`_
 * `vbotka.freebsd.zfs`_
 
-.. seealso:: The list of included roles in ``setup/vars/roles_install.yml``
+.. seealso::
+
+   * The pre-configured roles in ``setup/vars/roles.yml``.
+   * The list of included roles in ``setup/vars/roles_install.yml``.
+   * The administrator's guide chapter :ref:`ag_setup_roles`.
 
 Documented roles
 ----------------
 
-Some roles are documented at `readtthedocs.io`_
+Some roles in the namespace `vbotka`_ are documented at `readtthedocs.io`_
 
 .. include:: roles_documented.rst
 
-.. hint::
+Configuration samples
+---------------------
 
-   * See pre-configured roles in ``setup/vars/roles.yml``.
-   * See the README of the roles when not documented at `readtthedocs.io`_
-   * See the ``Index`` what examples are available.
-   * Feel free to contribute other roles.
+Most of the roles in the namespace `vbotka`_ provide (sometimes) commented configuration samples in
+roles' *vars* directories.
+
+.. hint::
+   * See the roles' README files.
+   * See this collection ``Index`` what examples are available.
+
 
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
@@ -51,4 +59,5 @@ Some roles are documented at `readtthedocs.io`_
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot
 .. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
 
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
 .. _readtthedocs.io: https://rtfd.io

@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs ug roles.
 
 
 0.7.16
