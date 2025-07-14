@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update docs ug roles.
+* Update docs ug inventory iocage.
 
 
 0.7.16

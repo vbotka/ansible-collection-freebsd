@@ -94,34 +94,31 @@ Display the inventory
              iocage_template: ansible_client
              iocage_type: jail
 
-.. note::
+Optionally, create `Shared IP jails`_
 
-   Optionally, create `Shared IP jails`_
+.. code-block:: console
+   :emphasize-lines: 1,3,5
 
-   .. code-block:: console
-      :emphasize-lines: 1,3,5
+   shell> iocage create --template ansible_client --name srv_1 ip4_addr="em0|10.1.0.101/24"
+   srv_1 successfully created!
+   shell> iocage create --template ansible_client --name srv_2 ip4_addr="em0|10.1.0.102/24"
+   srv_2 successfully created!
+   shell> iocage create --template ansible_client --name srv_3 ip4_addr="em0|10.1.0.103/24"
+   srv_3 successfully created!
 
-      shell> iocage create --template ansible_client --name srv_1 ip4_addr="em0|10.1.0.101/24"
-      srv_1 successfully created!
-      shell> iocage create --template ansible_client --name srv_2 ip4_addr="em0|10.1.0.102/24"
-      srv_2 successfully created!
-      shell> iocage create --template ansible_client --name srv_3 ip4_addr="em0|10.1.0.103/24"
-      srv_3 successfully created!
+.. code-block:: console
+   :emphasize-lines: 1
 
-   .. code-block:: console
-      :emphasize-lines: 1
-
-      shell> iocage list -l
-      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------  +
-      | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL   |
-      +======+=======+======+=======+======+=================+===================+=====+================+==========+
-      | None | srv_1 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.101/24 | -   | ansible_client | no       |
-      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-      | None | srv_2 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.102/24 | -   | ansible_client | no       |
-      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-      | None | srv_3 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.103/24 | -   | ansible_client | no       |
-      +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-
+    shell> iocage list -l
+   +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------  +
+   | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL   |
+   +======+=======+======+=======+======+=================+===================+=====+================+==========+
+   | None | srv_1 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.101/24 | -   | ansible_client | no       |
+   +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   | None | srv_2 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.102/24 | -   | ansible_client | no       |
+   +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   | None | srv_3 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.103/24 | -   | ansible_client | no       |
+   +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
 
 .. seealso::
 
@@ -129,7 +126,7 @@ Display the inventory
 
 .. hint::
      
-   If iocage needs environment variable(s), use the parameter ``env``. For example,
+   If iocage needs environment variable(s), use the parameter `env`_. For example,
 
    .. code-block:: yaml
    
@@ -144,3 +141,5 @@ Display the inventory
 .. _VNET jails: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-vnet-jail
 .. _Configuring a Shared IP Jail: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-shared-ip-jail
 .. _Shared IP jails: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-shared-ip-jail
+
+.. _env: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage#parameters
