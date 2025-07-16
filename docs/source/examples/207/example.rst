@@ -3,7 +3,7 @@
 207 Create DHCP jails from template v3. Auto UUID, iocage_tags, alias, class
 ----------------------------------------------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 

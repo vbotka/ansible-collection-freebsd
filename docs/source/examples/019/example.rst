@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_016`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -22,12 +22,12 @@ Extending example :ref:`example_016`.
 Use case
 ^^^^^^^^
 
-The option `use_vars_plugins`_, responsible for reading *host_vars* and *group_vars* directories, is
+The option `use_vars_plugins`_, responsible for reading ``host_vars`` and ``group_vars`` directories, is
 not available in the `inventory plugin vbotka.freebsd.iocage`_ because the `constructed fragment`_
 doesn't provide it.
 
-* Use the inventory plugin `ansible.builtin.constructed`_ to read *group_vars*.
-* Use the variable *region* to create the groups *region_EU* and *region_US*.
+* Use the inventory plugin `ansible.builtin.constructed`_ to read ``group_vars``.
+* Use the variable ``region`` to create the groups ``region_EU`` and ``region_US``.
 
 Tree
 ^^^^
@@ -54,22 +54,22 @@ Synopsis
 
 * The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(hosts):
 
-  * *test_101:103* from the host *iocage_01* 
-  * *test_111:113* from the host *iocage_02* 
+  * ``test_101:103`` from the host ``iocage_01`` 
+  * ``test_111:113`` from the host ``iocage_02``
 
-  and creates inventory groups *test_01* and *test_02*
+  and creates inventory groups ``test_01`` and ``test_02``
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
-  * *test* including all hosts starting *'test'*
-  * *test_up* including running hosts starting ‘test’
-  * *region_EU* including all hosts with the variable *region=EU*
-  * *region_US* including all hosts with the variable *region=US*
+  * ``test`` including all hosts starting ``'test'``
+  * ``test_up`` including running hosts starting ``'test'``
+  * ``region_EU`` including all hosts with the variable ``region=EU``
+  * ``region_US`` including all hosts with the variable ``region=US``
 
 Notes
 ^^^^^
 
-* The inventory files in the directory *hosts* are evaluated in alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
 
 .. seealso::
 
@@ -80,9 +80,9 @@ Notes
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -90,9 +90,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -138,8 +138,8 @@ group_vars
 
 .. warning::
 
-   * The option `use_vars_plugins`_ reads the **inventory** *group_vars* and *host_vars*
-   * The **playbook** *group_vars* and *host_vars* will be silently ignored.
+   * The option `use_vars_plugins`_ reads the **inventory** ``group_vars`` and ``host_vars``
+   * The **playbook** ``group_vars`` and ``host_vars`` will be silently ignored.
    * See `Variable precedence. Where should I put a variable?`_
 
 Playbook pb-test-all.yml
@@ -151,9 +151,9 @@ Playbook pb-test-all.yml
 Playbook output - list groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  env) > ansible-playbook pb-test-all.yml -i hosts
+   (env) > ansible-playbook pb-test-all.yml -i hosts
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -170,9 +170,9 @@ Playbook output - US running hosts
 
 Limit the US region to running hosts
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-US.yml -i hosts -l test_up
+   (env) > ansible-playbook pb-test-US.yml -i hosts -l test_up
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

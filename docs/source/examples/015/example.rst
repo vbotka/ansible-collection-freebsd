@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_014`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -47,8 +47,8 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails created in :ref:`example_010`
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration ansible.cfg
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -56,7 +56,7 @@ Configuration *ansible.cfg*
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-Set unique *cache_prefix*
+Set unique ``cache_prefix``
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
@@ -68,10 +68,10 @@ Set unique *cache_prefix*
    :caption:
    :emphasize-lines: 7-11
 
-.. warning:: Common *cache_prefix* would make the cache files to override each other repeatedly.
+.. warning:: Common ``cache_prefix`` would make the cache files to override each other repeatedly.
 
-Playbook *pb-vars-ip4.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-vars-ip4.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
@@ -79,9 +79,9 @@ Playbook *pb-vars-ip4.yml*
 Playbook output - display iocage_ip4
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-vars-ip4.yml -i hosts
+   (env) > ansible-playbook pb-vars-ip4.yml -i hosts
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -89,21 +89,23 @@ Playbook output - display iocage_ip4
 .. note::
 
    * The inventory files in hosts are evaluated in alphabetical order.
-   * The jail ansible_client from iocage_02 overrides the one from iocage_01
+   * The jail ``ansible_client`` from ``iocage_02`` overrides the one from ``iocage_01``
 
 Cache
 ^^^^^
 
-Look at the cache ::
+Look at the cache
 
-  shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_cbc1a
+.. code-block:: console
+
+   shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_cbc1a
 
 .. literalinclude:: out/out-02.txt
    :language: json
 
-::
+.. code-block:: console
 
-  shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a
+   shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a
 
 .. literalinclude:: out/out-03.txt
    :language: json

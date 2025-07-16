@@ -3,7 +3,7 @@
 350 Role vbotka.freebsd.rsnapshot
 ---------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 

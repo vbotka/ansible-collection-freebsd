@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_010`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -68,7 +68,7 @@ Enable cache
 
 .. hint::
 
-   If you do not configure *cache_plugin* Ansible falls back to caching inventory with the `fact
+   If you do not configure ``cache_plugin``, Ansible falls back to caching inventory with the `fact
    cache plugin`_ you configured. For example,
 
    .. code-block:: ini
@@ -88,14 +88,14 @@ Playbook pb-vars-ip4.yml
 Playbook output - cache disabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| It takes 4s to create the dynamic inventory and construct the variables if *cache* is disabled.
-| (The cache is disabled in *iocage.yml*. *cache=False*)
+| It takes 4s to create the dynamic inventory and construct the variables if ``cache`` is disabled.
+| (The ``cache`` is disabled in ``iocage.yml``. ``cache=False``)
 
-::
+.. code-block:: console
 
-  (env) > date +%r; \
-          ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-          ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
+   (env) > date +%r; \
+           ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -104,13 +104,13 @@ Playbook output - cache disabled
 Playbook output - cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the cache is enabled the inventory and variables are provided by the cache immediately
+If the ``cache`` is enabled the inventory and variables are provided by the cache immediately
 
-::
+.. code-block:: console
 
-  (env) > date +%r; \
-          ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-          ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
+   (env) > date +%r; \
+           ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -120,9 +120,11 @@ If the cache is enabled the inventory and variables are provided by the cache im
 Cache
 ^^^^^
 
-Look at the cache ::
+Look at the cache
 
-  shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_6a9dd
+.. code-block:: console
+
+   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_6a9dd
 
 .. literalinclude:: out/out-03.txt
    :language: json

@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_010`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -27,11 +27,14 @@ Extending example :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Use the property *notes* to create tags:
+Use the property ``notes`` to create tags:
 
-  * Add the property ``notes: "vmm={{ inventory_hostname }}"``
-  * In the inventory plugin, compose the variable *iocage_tags*
-  * In the inventory plugin, create groups *vmm_\** from the attribute *iocage_tags.vmm*
+* Add the property ``notes: "vmm={{ inventory_hostname }}"``
+
+In the inventory plugin:
+
+* compose the variable ``iocage_tags``
+* create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``
 
 Tree
 ^^^^
@@ -64,13 +67,13 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-base.yml*, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-base.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * create basejail *ansible_client*
+  * create basejail ``ansible_client``
 
-  In the playbook *pb-iocage-clone.yml*, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-clone.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * clone 3 jails from the basejail *ansible_client*
+  * clone 3 jails from the basejail ``ansible_client``
 
   In the playbooks:
 
@@ -81,7 +84,7 @@ Synopsis
   use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
-  * create the dictionary *iocage_tags* from *iocage_properties.notes*
+  * create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
   * display hosts, composed variables, and groups
   * comment on hosts potentially overriding each other silently.
 
@@ -109,8 +112,8 @@ Inventory iocage-hosts.ini
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-Enable ``get_properties: true`` to create the dictionary *iocage_properties*. Then, the dictionary
-*iocage_tags* can be created from *iocage_properties.notes*
+Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. Then, the dictionary
+``iocage_tags`` can be created from ``iocage_properties.notes``
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
@@ -133,8 +136,8 @@ host_vars
    :language: yaml
    :caption:
 
-.. note:: The structure of the *notes* is up to you. If you change it fit the declaration of
-          *iocage_tags* in the inventory.
+.. note:: The structure of the ``notes`` is up to you. If you change it, fit the declaration of
+          ``iocage_tags`` in the inventory.
 
 Playbook pb-iocage-base.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,9 +148,9 @@ Playbook pb-iocage-base.yml
 Playbook output - create basejails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-base.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-base.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -162,9 +165,9 @@ Playbook pb-iocage-clone.yml
 Playbook output - clone jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-clone.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-clone.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -179,9 +182,9 @@ Playbook pb-all.yml
 Playbook output - display variables and groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-all.yml -i hosts
+   (env) > ansible-playbook pb-all.yml -i hosts
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -189,8 +192,8 @@ Playbook output - display variables and groups
 
 .. note::
 
-   * The inventory files in the directory *hosts* are evaluated in alphabetical order.
-   * The jail *ansible_client* from *iocage_02* overrides the one from *iocage_01*
+   * The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
+   * The jail ``ansible_client`` from ``iocage_02`` overrides the one from ``iocage_01``
    * See the special variable `groups`_
 
 Playbook pb-ansible-client.yml
@@ -202,9 +205,9 @@ Playbook pb-ansible-client.yml
 Playbook output - display iocage_tags and group_names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-ansible-client.yml -i hosts
+   (env) > ansible-playbook pb-ansible-client.yml -i hosts
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -212,9 +215,8 @@ Playbook output - display iocage_tags and group_names
 
 .. note::
 
-   * The structure of the inventory hosts and groups is flat. The jail(host) *ansible-client* is the
+   * The structure of the inventory hosts and groups is flat. The jail(host) ``ansible-client`` is the
      same in all groups.
-
    * See the special variable `group_names`_
 
 .. warning:: There are no internal checks of the hosts overriding each other. The consistency is up to you.
@@ -228,9 +230,9 @@ Playbook pb-test.yml
 Playbook output - display all jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

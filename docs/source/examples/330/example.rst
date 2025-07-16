@@ -3,7 +3,7 @@
 330 Clone jails and create inventory (role)
 -------------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -116,11 +116,11 @@ Playbook pb-iocage-fetch-base-clone.yml
 Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
-                                                          -t debug \
-                                                          -e debug=true
+   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+                                                           -t debug \
+                                                           -e debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -129,10 +129,10 @@ Playbook output - debug
 Playbook output - runner
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
-                                                          -t runner
+   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+                                                           -t runner
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -149,9 +149,9 @@ Playbook output - runner
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -159,9 +159,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -175,9 +175,9 @@ Playbook pb-iocage-list.yml
 Playbook output - display iocage_jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-list.yml -i iocage-hosts.ini -e debug=true
+   (env) > ansible-playbook pb-iocage-list.yml -i iocage-hosts.ini -e debug=true
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -193,9 +193,9 @@ Playbook *pb-test-01.yml*
 Playbook output - create and use group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

@@ -3,7 +3,7 @@
 340 Role vbotka.freebsd.config_light
 ------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -163,13 +163,13 @@ host_vars
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
-                           -l iocage_02 \
-                           -t swarm \
-                           -e swarm=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini \
+                            -l iocage_02 \
+                            -t swarm \
+                            -e swarm=true
 
 .. literalinclude:: out/out-11.txt
    :language: bash
@@ -177,9 +177,9 @@ Create and start jails
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -197,9 +197,9 @@ Inventory hosts
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -207,9 +207,9 @@ Display inventory
 Update repos
 ^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
+   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-12.txt
    :language: yaml
@@ -251,9 +251,9 @@ Playbook output - setup
 
 Assemble data and create handlers.
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
+   (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -265,9 +265,9 @@ Playbook output - install and configure lighttpd
 The inventory *iocage-hosts.ini* is needed to delegate the tasks 'Manage FreeBSD
 packages' from the jails to their iocage hosts.
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini
+   (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-10.txt
    :language: yaml

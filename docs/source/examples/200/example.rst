@@ -3,7 +3,7 @@
 200 Create Ansible client templates and clone jails
 ---------------------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -150,9 +150,9 @@ Inventory *iocage-hosts.ini*
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage-hosts.ini
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -160,9 +160,9 @@ Playbook output - create templates
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -lt
+   [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -170,9 +170,9 @@ List templates at iocage_01
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -180,12 +180,12 @@ List templates at iocage_02
 Playbook output - clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
-                           -t clone \
-                           -e clone=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini \
+                            -t clone \
+                            -e clone=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -194,12 +194,12 @@ Playbook output - clone and start jails
 Playbook output - list jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini \
-                           -t list \
-                           -e debug=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini \
+                            -t list \
+                            -e debug=true
 
 .. literalinclude:: out/out-09.txt
    :language: yaml
@@ -208,9 +208,9 @@ Playbook output - list jails
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -218,9 +218,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-06.txt
    :language: bash
@@ -243,9 +243,9 @@ Inventory hosts
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
    :language: bash
@@ -259,9 +259,9 @@ Playbook pb-test-01.yml
 Playbook output - display test vars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: yaml

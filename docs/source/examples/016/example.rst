@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_015`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -40,15 +40,15 @@ Synopsis
 
 * The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(hosts):
 
-  * *test_101:103* from the host *iocage_01* 
-  * *test_111:113* from the host *iocage_02* 
+  * ``test_101:103`` from the host ``iocage_01`` 
+  * ``test_111:113`` from the host ``iocage_02`` 
 
-  and creates the inventory groups *test_01* and *test_02*.
+  and creates the inventory groups ``test_01`` and ``test_02``.
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
-  * *test* comprising hosts starting *'test'*
-  * *test_up* comprising running hosts starting *'test'*.
+  * ``test`` comprising hosts starting ``'test'``
+  * ``test_up`` comprising running hosts starting ``'test'``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -59,7 +59,7 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory *hosts* are evaluated in the alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in the alphabetical order.
 * See :ref:`example_015`
 * The `inventory plugin vbotka.freebsd.iocage`_ doesn't provide the option `use_vars_plugins`_.
 * See :ref:`example_019`.
@@ -73,9 +73,9 @@ Configuration ansible.cfg
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -83,9 +83,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -114,9 +114,9 @@ Playbook pb-test.yml
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-03.txt
    :language: yaml

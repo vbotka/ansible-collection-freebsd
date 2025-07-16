@@ -3,7 +3,7 @@
 010 Clone basejails and create inventory (plugins)
 --------------------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -46,7 +46,7 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-fetch-base-clone-list.yml*, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
   * fetch the release
   * create basejail
@@ -54,12 +54,12 @@ Synopsis
   * start 1 jail
   * display lists of bases, plugins, templates, and jails.
 
-* On the iocage host *iocage_02*
+* On the iocage host ``iocage_02``
   
-  In the playbook *pb-test-01.yml*, use the `inventory plugin vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-test-01.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
-  * display the hosts and composed variables in the group *test*
+  * display the hosts and composed variables in the group ``test``
   * display all created groups.
 
 Requirements
@@ -67,44 +67,44 @@ Requirements
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege on the iocage hosts.
 * activated `binary iocage`_
 
 Notes
 ^^^^^
 
-The fetching of a release is a quite time-consuming procedure. Optionally, fetch the releases
+The fetching of a release is a quite time-consuming process. Optionally, fetch the releases
 manually before you run the play. For example,
 
-.. code-block:: bash
+.. code-block:: console
 
-  [iocage_02]# iocage fetch
-  [0] 13.4-RELEASE
-  [1] 13.5-RELEASE
-  [2] 14.1-RELEASE (EOL)
-  [3] 14.2-RELEASE
+   [iocage_02]# iocage fetch
+   [0] 13.4-RELEASE
+   [1] 13.5-RELEASE
+   [2] 14.1-RELEASE (EOL)
+   [3] 14.2-RELEASE
 
-  Type the number of the desired RELEASE
-  Press [Enter] to fetch the default selection: (14.2-RELEASE)
-  Type EXIT to quit: 3
-  Fetching: 14.2-RELEASE
+   Type the number of the desired RELEASE
+   Press [Enter] to fetch the default selection: (14.2-RELEASE)
+   Type EXIT to quit: 3
+   Fetching: 14.2-RELEASE
 
-  Extracting: base.txz...
-  Extracting: lib32.txz...
-  Extracting: src.txz...
+   Extracting: base.txz...
+   Extracting: lib32.txz...
+   Extracting: src.txz...
 
-  * Updating 14.2-RELEASE to the latest patch level...
-  Looking up update.FreeBSD.org mirrors... 3 mirrors found.
-  Fetching metadata signature for 14.2-RELEASE from update2.freebsd.org... done.
-  Fetching metadata index... done.
-  Inspecting system... done.
-  Preparing to download files... done.
-  The following files will be removed as part of updating to
-  14.2-RELEASE-p3:
-  /etc/ssl/certs/08063a00.0
-  /etc/ssl/certs/18856ac4.0
-  /etc/ssl/certs/57bcb2da.0
-  ...
+   * Updating 14.2-RELEASE to the latest patch level...
+   Looking up update.FreeBSD.org mirrors... 3 mirrors found.
+   Fetching metadata signature for 14.2-RELEASE from update2.freebsd.org... done.
+   Fetching metadata index... done.
+   Inspecting system... done.
+   Preparing to download files... done.
+   The following files will be removed as part of updating to
+   14.2-RELEASE-p3:
+   /etc/ssl/certs/08063a00.0
+   /etc/ssl/certs/18856ac4.0
+   /etc/ssl/certs/57bcb2da.0
+   ...
 
 .. seealso::
 
@@ -145,9 +145,9 @@ Playbook pb-iocage-fetch-base-clone-list.yml
 Playbook output - fetch, create, clone, and start
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -156,9 +156,9 @@ Playbook output - fetch, create, clone, and start
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -166,9 +166,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -196,9 +196,9 @@ Playbook pb-test-01.yml
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i iocage.yml
+   (env) > ansible-playbook pb-test-01.yml -i iocage.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml

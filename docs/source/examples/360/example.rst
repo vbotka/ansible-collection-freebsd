@@ -3,7 +3,7 @@
 360 Configure NICs
 ------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -83,9 +83,9 @@ Playbook pb.yml
 Playbook output - configure network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

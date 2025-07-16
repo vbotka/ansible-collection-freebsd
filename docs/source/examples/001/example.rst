@@ -3,7 +3,7 @@
 001 Install iocage
 ------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -13,8 +13,7 @@
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to install the package `iocage`_. Display
-debug variables.
+Use the `role vbotka.freebsd.iocage`_ to install the package `iocage`_. Display debug variables.
 
 Tree
 ^^^^
@@ -30,9 +29,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the iocage host *iocage_02*
+* On the iocage host ``iocage_02``
   
-  In the playbook *pb-iocage.yml*, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * display variables
   * install `iocage`_ package.
@@ -41,15 +40,15 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the *iocage* hosts.
+* root privilege on the iocage hosts.
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_01`` into the run-strings to limit the play to the iocage host ``iocage_01``.
+* Put ``-l iocage_01`` into the run-strings to limit the play to the iocage host ``iocage_01``
 * Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
-* By default, *iocage* installation is enabled ``freebsd_iocage_install: true``.
-* By default, *debug* is disabled ``freebsd_iocage_debug: false`` .
+* By default, *iocage* installation is enabled ``freebsd_iocage_install: true``
+* By default, *debug* is disabled ``freebsd_iocage_debug: false``
 
 .. seealso::
 
@@ -86,10 +85,9 @@ Playbook pb-iocage.yml
 Playbook output - display debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                          -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
                                           -t freebsd_iocage_debug \
                                           -e freebsd_iocage_debug=true
 
@@ -102,10 +100,9 @@ Playbook output - display debug
 Playbook output - install iocage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                          -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
                                           -t freebsd_iocage_pkg \
                                           -e freebsd_iocage_debug=true
 
@@ -113,7 +110,7 @@ Playbook output - install iocage
    :language: yaml
    :force:
 
-.. note:: This *debug* shows the *result* of already installed package.
+.. note:: This *debug* shows the ``result`` of already installed package.
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _iocage: https://www.freshports.org/sysutils/iocage/

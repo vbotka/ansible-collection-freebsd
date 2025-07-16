@@ -3,7 +3,7 @@
 410 Include variables from conf.d
 ---------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
