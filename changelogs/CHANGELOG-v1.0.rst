@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update galaxy.yml build_ignore.
 
 
 0.7.17
