@@ -5,6 +5,26 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.17
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs ug roles.
+* Update docs ug inventory iocage.
+* Update docs ug examples.
+* Update docs ug example 017.
+* Upgrade role pf 2.7.6
+* Upgrade inventory plugin iocage.
+
+
 0.7.16
 ======
 

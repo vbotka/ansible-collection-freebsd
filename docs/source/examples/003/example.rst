@@ -3,7 +3,7 @@
 003 Audit iocage host
 ---------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -35,11 +35,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the iocage host *iocage_02*
+* On the iocage host ``iocage_02``
   
-  In the playbook *pb-iocage.yml*, use the role *vbotka.freebsd.iocage* to:
+  In the playbook ``pb-iocage.yml``, use the role ``vbotka.freebsd.iocage`` to:
 
-  * audit the *iocage* configuration.
+  * audit the `iocage`_ configuration.
 
 Requirements
 ^^^^^^^^^^^^
@@ -47,20 +47,20 @@ Requirements
 .. index:: single: role vbotka.freebsd.iocage; Example 003
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the *iocage* hosts
+* root privilege on the iocage hosts
 * binary `iocage`_.
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_01`` into the run-strings to run the play on the iocage host *iocage_01*
+* Put ``-l iocage_01`` into the run-strings to run the play on the iocage host ``iocage_01``
 * Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
-* By default, *iocage* sanity is enabled ``freebsd_iocage_sanity: true``
+* By default, sanity TESTING is enabled ``freebsd_iocage_sanity: true``
 
 .. seealso::
 
-   * See the tasks *roles/iocage/tasks/sanity.yml*
-   * See the default variables *roles/iocage/main/sanity.yml*
+   * See the tasks ``roles/iocage/tasks/sanity.yml``
+   * See the default variables ``roles/iocage/main/sanity.yml``
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -100,10 +100,9 @@ Playbook pb-iocage.yml
 Playbook output - test sanity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                         -l iocage_02 \
+  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
                                          -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-01.txt
@@ -113,12 +112,11 @@ Playbook output - test sanity
 Playbook output - test sanity quietly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: console
 
   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
           ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-          ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                         -l iocage_02 \
+          ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
                                          -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-02.txt

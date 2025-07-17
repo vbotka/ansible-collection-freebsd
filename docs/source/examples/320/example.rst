@@ -3,7 +3,7 @@
 320 Role vbotka.freebsd.packages
 --------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -109,9 +109,9 @@ Notes
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -139,7 +139,9 @@ Playbook pb-pkg-update.yml
 Playbook output - upgrade package ports-mgmt/pkg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Limit the inventory to one host *iocage_02* ::
+Limit the inventory to one host *iocage_02*
+
+.. code-block:: console
 
    (env) > ansible-playbook pb-pkg-update.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
 
@@ -168,9 +170,9 @@ group_vars
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -184,7 +186,9 @@ Playbook pb-test-01.yml
 Playbook output - display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Limit the inventory to one jail *test_111* ::
+Limit the inventory to one jail *test_111*
+
+.. code-block:: console
 
    (env) > ansible-playbook pb-test-01.yml -i hosts -l test_111 \
                                            -t pkg_debug \
@@ -197,7 +201,9 @@ Limit the inventory to one jail *test_111* ::
 Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install list pkg_list* ::
+The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install list pkg_list*
+
+.. code-block:: console
 
    (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage-hosts.ini
 
@@ -212,7 +218,9 @@ The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install list p
 Playbook output - install packages and enable debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Enable debug and limit the inventory to one jail *test_111* ::
+Enable debug and limit the inventory to one jail *test_111*
+
+.. code-block:: console
 
    (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage-hosts.ini -l test_111 \
                                            -e pkg_debug=true
@@ -224,7 +232,9 @@ Enable debug and limit the inventory to one jail *test_111* ::
 Playbook output - audit installed packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are no installed packages with known vulnerabilities ::
+There are no installed packages with known vulnerabilities
+
+.. code-block:: console
 
    (env) > ansible-playbook pb-test-01.yml -i hosts \
                                            -t pkg_stat \
@@ -243,7 +253,9 @@ Playbook pb-test-02.yml
 Playbook output - audit installed packages at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are 9 packages with known vulnerabilities ::
+There are 9 packages with known vulnerabilities
+
+.. code-block:: console
 
    (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini -l iocage_02 \
                                            -t pkg_stat \

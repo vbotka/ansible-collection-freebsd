@@ -1,30 +1,30 @@
 diff --git a/setup/distfiles/inventory/iocage.py b/setup/distfiles/inventory/iocage.py
-index 1303cdc..f4d8a06 100644
+index 603003d..aa04b1a 100644
 --- a/setup/distfiles/inventory/iocage.py
 +++ b/setup/distfiles/inventory/iocage.py
 @@ -9,7 +9,7 @@ from __future__ import annotations
- DOCUMENTATION = r'''
+ DOCUMENTATION = r"""
  name: iocage
- short_description: iocage inventory source
+ short_description: C(iocage) inventory source
 -version_added: 10.2.0
 +version_added: 0.3.0
  author:
    - Vladimir Botka (@vbotka)
  requirements:
-@@ -29,10 +29,10 @@ options:
+@@ -25,10 +25,10 @@ extends_documentation_fragment:
+ options:
    plugin:
      description:
-       - The name of this plugin, it should always be set to
--        V(community.general.iocage) for this plugin to recognize
-+        V(vbotka.freebsd.iocage) for this plugin to recognize
-         it as its own.
+-      - The name of this plugin, it should always be set to V(community.general.iocage) for this plugin to recognize it as
++      - The name of this plugin, it should always be set to V(vbotka.freebsd.iocage) for this plugin to recognize it as
+         its own.
      required: true
 -    choices: ['community.general.iocage']
 +    choices: ['vbotka.freebsd.iocage']
      type: str
    host:
      description: The IP/hostname of the C(iocage) host.
-@@ -51,14 +51,14 @@ options:
+@@ -45,14 +45,14 @@ options:
        - This requires passwordless sudo of the command C(iocage list*).
      type: bool
      default: false
@@ -40,8 +40,8 @@ index 1303cdc..f4d8a06 100644
 +    version_added: 0.5.0
    get_properties:
      description:
-       - Get jails' properties.
-@@ -79,7 +79,7 @@ options:
+       - Get jails' properties. Creates dictionary C(iocage_properties) for each added host.
+@@ -72,7 +72,7 @@ options:
        - The variable C(iocage_hooks) is not created if O(hooks_results) is empty.
      type: list
      elements: path
@@ -50,8 +50,8 @@ index 1303cdc..f4d8a06 100644
    inventory_hostname_tag:
      description:
        - The name of the tag in the C(iocage properties notes) that contains the jails alias.
-@@ -87,13 +87,13 @@ options:
-       - This option requires the notes format C("t1=v1 t2=v2 ...")
+@@ -80,13 +80,13 @@ options:
+       - This option requires the notes format C("t1=v1 t2=v2 ...").
        - The option O(get_properties) must be enabled.
      type: str
 -    version_added: 11.0.0
@@ -64,10 +64,10 @@ index 1303cdc..f4d8a06 100644
 -    version_added: 11.0.0
 +    version_added: 0.7.10
  notes:
-   - You might want to test the command C(ssh user@host iocage list -l) on
-     the controller before using this inventory plugin with O(user) specified
-@@ -115,17 +115,17 @@ notes:
- EXAMPLES = r'''
+   - You might want to test the command C(ssh user@host iocage list -l) on the controller before using this inventory plugin
+     with O(user) specified and with O(host) other than V(localhost).
+@@ -103,7 +103,7 @@ notes:
+ EXAMPLES = r"""
  ---
  # file name must end with iocage.yaml or iocage.yml
 -plugin: community.general.iocage
@@ -75,10 +75,7 @@ index 1303cdc..f4d8a06 100644
  host: 10.1.0.73
  user: admin
  
- ---
- # user is not required if iocage is running on localhost (default)
--plugin: community.general.iocage
-+plugin: vbotka.freebsd.iocage
+@@ -113,7 +113,7 @@ plugin: community.general.iocage
  
  ---
  # run cryptography without legacy algorithms
@@ -87,7 +84,7 @@ index 1303cdc..f4d8a06 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -134,7 +134,7 @@ env:
+@@ -122,7 +122,7 @@ env:
  ---
  # execute as root
  # sudoers example 'admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*'
@@ -96,7 +93,7 @@ index 1303cdc..f4d8a06 100644
  host: 10.1.0.73
  user: admin
  sudo: true
-@@ -144,7 +144,7 @@ env:
+@@ -132,7 +132,7 @@ env:
  
  ---
  # enable cache
@@ -105,7 +102,7 @@ index 1303cdc..f4d8a06 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -153,7 +153,7 @@ cache: true
+@@ -141,7 +141,7 @@ cache: true
  
  ---
  # see inventory plugin ansible.builtin.constructed
@@ -114,7 +111,7 @@ index 1303cdc..f4d8a06 100644
  host: 10.1.0.73
  user: admin
  env:
-@@ -173,7 +173,7 @@ keyed_groups:
+@@ -161,7 +161,7 @@ keyed_groups:
  
  ---
  # Read the file /var/db/dhclient-hook.address.epair0b in the jails and use it as ansible_host
@@ -123,7 +120,7 @@ index 1303cdc..f4d8a06 100644
  host: 10.1.0.73
  user: admin
  hooks_results:
-@@ -223,7 +223,7 @@ def _parse_ip4(ip4):
+@@ -211,7 +212,7 @@ def _parse_ip4(ip4):
  class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
      ''' Host inventory parser for ansible using iocage as source. '''
  

@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_330`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -44,16 +44,16 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage.yml* use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml`` use the `role vbotka.freebsd.iocage`_ to:
 
   * create custom facts scripts.
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test-01.yml``:
 
   * get the custom facts
   * use the `filter vbotka.freebsd.iocage`_ to parse the custom facts
-  * create the inventory group *test* and compose variables
-  * display the hosts and composed variables in the group *test*
+  * create the inventory group ``test`` and compose variables
+  * display the hosts and composed variables in the group ``test``
   * display all groups.
 
 Requirements
@@ -72,9 +72,9 @@ Notes
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -82,9 +82,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -121,12 +121,12 @@ Playbook pb-iocage.yml
 Playbook output - display versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                         -t freebsd_iocage_debug \
-                                         -e freebsd_iocage_debug=true \
-          | grep version
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                          -t freebsd_iocage_debug \
+                                          -e freebsd_iocage_debug=true \
+           | grep version
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -134,11 +134,11 @@ Playbook output - display versions
 Create custom fact scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                         -t freebsd_iocage_facts \
-                                         -e freebsd_iocage_facts=true
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+                                          -t freebsd_iocage_facts \
+                                          -e freebsd_iocage_facts=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -147,9 +147,9 @@ Create custom fact scripts
 Display custom fact script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
+   shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
 
 .. literalinclude:: out/out-05.txt
    :language: python
@@ -163,9 +163,9 @@ Playbook pb-test-01.yml
 Playbook output - display custom facts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

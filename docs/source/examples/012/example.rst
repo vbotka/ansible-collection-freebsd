@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_010`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -21,7 +21,7 @@ Extending example :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Enable and display *iocage_properties*.
+Enable and display ``iocage_properties``.
 
 Tree
 ^^^^
@@ -49,7 +49,7 @@ Configuration ansible.cfg
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable *get_properties*. See :ref:`ug_inventory_iocage`
+Enable ``get_properties``. See :ref:`ug_inventory_iocage`
 
 .. literalinclude:: iocage.yml
     :language: yaml
@@ -64,9 +64,9 @@ Playbook pb-vars-properties.yml
 Playbook output - display iocage_properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_113
+   (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-01.txt
     :language: yaml

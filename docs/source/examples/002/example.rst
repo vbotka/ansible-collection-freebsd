@@ -3,7 +3,7 @@
 002 Activate iocage
 -------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -34,9 +34,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the iocage host *iocage_02*
+* On the iocage host ``iocage_02``
   
-  In the playbook *pb-iocage.yml*, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * activate `iocage`_.
 
@@ -44,7 +44,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the *iocage* hosts
+* root privilege on the iocage hosts
 * binary `iocage`_.
 
 Notes
@@ -83,8 +83,8 @@ host_vars
 
 .. note::
 
-   * The activation will be skipped if the directory *freebsd_iocage_mount* exists.
-   * The variable *freebsd_iocage_mount* is declared in *defaults/main/main.yml* ::
+   * The activation will be skipped if the directory ``freebsd_iocage_mount`` exists.
+   * The variable ``freebsd_iocage_mount`` is declared in ``defaults/main/main.yml`` ::
 
        freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
@@ -97,19 +97,18 @@ Playbook pb-iocage.yml
 Playbook output - display result
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
-                                          -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
                                           -t freebsd_iocage_activate \
-                                          -e freebsd_iocage_activate=true \
+					  -e freebsd_iocage_activate=true \
                                           -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
-.. note:: This *debug* shows the *result* of already activated *iocage*.
+.. note:: This *debug* shows the ``result`` of already activated `iocage`_.
 
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

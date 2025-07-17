@@ -3,7 +3,7 @@
 380 Configure custom image
 --------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -96,10 +96,10 @@ Playbook pb.yml
 Playbook output - debug
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
-                                  -t cimage_debug -e cimage_debug=true
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
+                                   -t cimage_debug -e cimage_debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -107,11 +107,11 @@ Playbook output - debug
 
 Playbook output - download images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
-                                  -t cimage_download -e cimage_download=true
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
+                                   -t cimage_download -e cimage_download=true
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -119,11 +119,11 @@ Playbook output - download images
 
 Playbook output - unpack images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
-                                  -t cimage_unpack -e cimage_unpack=true
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
+                                   -t cimage_unpack -e cimage_unpack=true
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -131,10 +131,10 @@ Playbook output - unpack images
 
 Playbook output - mount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_mount
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_mount
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -142,10 +142,10 @@ Playbook output - mount image
 
 Playbook output - customize image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_customize
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_customize
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -153,10 +153,10 @@ Playbook output - customize image
 
 Playbook output - umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_umount
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_umount
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
@@ -169,9 +169,9 @@ The play is not idempotent when the image is unmounted. The default is ``cimage_
 this case, at least 3 tasks are *changed*. The image is mounted, unmounted, and the memory disk is
 detached.
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
@@ -180,13 +180,13 @@ detached.
 Write the image file to USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  shell> dd if=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img of=/dev/sdb bs=1M conv=sync status=progress
-  5348786176 bytes (5.3 GB, 5.0 GiB) copied, 154 s, 34.7 MB/s
-  5120+0 records in
-  5120+0 records out
-  5368709120 bytes (5.4 GB, 5.0 GiB) copied, 154.648 s, 34.7 MB/s
+   shell> dd if=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img of=/dev/sdb bs=1M conv=sync status=progress
+   5348786176 bytes (5.3 GB, 5.0 GiB) copied, 154 s, 34.7 MB/s
+   5120+0 records in
+   5120+0 records out
+   5368709120 bytes (5.4 GB, 5.0 GiB) copied, 154.648 s, 34.7 MB/s
 
 .. note:: Linux was used to write the image. In FreeBSD, use ``bs=1m``
  
@@ -200,9 +200,9 @@ Result
 
 MACs are sanitized.
 
-::
+.. code-block:: console
 
-  (env) > ssh freebsd@10.1.0.16 dmesg
+   (env) > ssh freebsd@10.1.0.16 dmesg
 
 .. literalinclude:: out/out-08.txt
    :language: bash

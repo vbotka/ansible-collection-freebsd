@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_016`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -32,23 +32,22 @@ Tree
   ├── hosts
   │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
-  │   └── 03_constructed.yml
+  │   └── 99_constructed.yml
   ├── pb-iocage-obsolete.yml
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-The `inventory plugin community.general.iocage`_ should provide the same
-functionality.
+The `inventory plugin community.general.iocage`_ should provide the same functionality.
 
 .. warning::
 
    The inventory plugin ``community.general.iocage`` may differ from
    ``vbotka.freebsd.iocage``. If you want be sure ``community.general.iocage``
    provides the same functionality compare the hash from
-   *setup/vars/chcksum.yml* with the ``community.general.iocage`` hash. Run the
-   included playbook *pb-iocage-obsolete.yml* ::
+   ``setup/vars/chcksum.yml`` with the ``community.general.iocage`` hash. Run the
+   included playbook ``pb-iocage-obsolete.yml`` ::
 
      shell> ansible-playbook pb-iocage-obsolete.yml
 
@@ -92,41 +91,47 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-    :language: yaml
-    :caption:
-    :emphasize-lines: 1
+   :language: yaml
+   :caption:
+   :emphasize-lines: 1
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :caption:
-    :emphasize-lines: 1
+   :language: yaml
+   :caption:
+   :emphasize-lines: 1
 
-.. literalinclude:: hosts/03_constructed.yml
-    :language: yaml
-    :caption:
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml
+   :caption:
+
+.. hint::
+
+   List all inventory: ::
+
+     (env) > ansible-inventory -i hosts --list --yaml
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

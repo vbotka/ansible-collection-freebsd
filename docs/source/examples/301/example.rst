@@ -3,7 +3,7 @@
 301 Module vbotka.freebsd.ucl
 -----------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -56,47 +56,47 @@ Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
-    :language: ini
+   :language: ini
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - get FreeBSD.url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 Playbook *pb-test-02.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - disable FreeBSD repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini --check --diff
+   (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini --check --diff
 
 .. literalinclude:: out/out-02.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 
 .. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/

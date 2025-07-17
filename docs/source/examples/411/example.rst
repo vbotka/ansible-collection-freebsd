@@ -3,7 +3,7 @@
 411 Include variables from nested directories
 ---------------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 

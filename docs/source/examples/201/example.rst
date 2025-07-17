@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_200`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -91,30 +91,30 @@ Notes
 Lists at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -r
+   [iocage_01]# iocage list -r
 
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -P
+   [iocage_01]# iocage list -P
 
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -lt
+   [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -122,30 +122,30 @@ Lists at iocage_01
 Lists at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -r
+   [iocage_02]# iocage list -r
 
 .. literalinclude:: out/out-05.txt
    :language: bash
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -P
+   [iocage_02]# iocage list -P
 
 .. literalinclude:: out/out-06.txt
    :language: bash
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: bash
@@ -172,9 +172,9 @@ Playbook pb-iocage-display-lists.yml
 Playbook output - display iocage lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-09.txt
    :language: yaml

@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_016`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -25,7 +25,7 @@ Use case
 ^^^^^^^^
 
 Get the `inventory aliases`_ from the `iocage property notes`_. In the `inventory plugin
-vbotka.freebsd.iocage`_ use option *inventory_hostname_tag* to tell the plugin which tag to use.
+vbotka.freebsd.iocage`_ use option ``inventory_hostname_tag`` to tell the plugin which tag to use.
 
 Tree
 ^^^^
@@ -58,11 +58,11 @@ Synopsis
 
 * At two iocage hosts:
 
-  * create jails using a template and the option *--count*
-  * at each jail, create property notes in the format "tag1=val1 tag2=val2 ..."
-  * put the inventory alias into the tag "alias=<alias>"
+  * create jails using a template and the option ``--count``
+  * at each jail, create property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
+  * put the inventory alias into the tag ``alias=<alias>``
 
-* In the `inventory plugin vbotka.freebsd.iocage`_ get the inventory aliases from the tag *alias*
+* In the `inventory plugin vbotka.freebsd.iocage`_ get the inventory aliases from the tag ``alias``
 
 * In the inventory plugin `ansible.builtin.constructed`_ create the inventory groups.
 
@@ -78,7 +78,7 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory *hosts* are evaluated in alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
 
 .. seealso::
 
@@ -89,9 +89,9 @@ Notes
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -99,9 +99,9 @@ List templates at iocage_02
 List templates at iocage_03
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_03]# iocage list -lt
+   [iocage_03]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -133,7 +133,7 @@ host_vars
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-The value of the iocage tag *alias* is used as the inventory alias. If the `iocage list is slow`_ use
+The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is slow`_ use
 the cache.
 
 .. literalinclude:: hosts/02_iocage.yml
@@ -159,9 +159,9 @@ Playbook pb-iocage-swarms-create.yml
 Playbook output - Create swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -176,9 +176,9 @@ Playbook output - Create swarms
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -186,9 +186,9 @@ List jails at iocage_02
 List jails at iocage_03
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_03]# iocage list -l
+   [iocage_03]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -202,9 +202,9 @@ Playbook pb-test-all.yml
 Playbook output - all groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-all.yml -i hosts
+   (env) > ansible-playbook pb-test-all.yml -i hosts
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
@@ -219,9 +219,9 @@ Playbook pb-test-db.yml
 Playbook output - group swarm_db
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-db.yml -i hosts
+   (env) > ansible-playbook pb-test-db.yml -i hosts
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
@@ -238,9 +238,9 @@ Playbook output - Destroy swarms
 
 Destroy the swarms if you don't need them.
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
+   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: yaml

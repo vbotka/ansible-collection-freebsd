@@ -3,7 +3,7 @@
 310 Role vbotka.freebsd.postinstall
 -----------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -90,12 +90,12 @@ Notes
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
-    :language: bash
+   :language: bash
 
 Configuration ansible.cfg
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -103,25 +103,25 @@ Configuration ansible.cfg
 Do not display skipped hosts. See the option `display_skipped_hosts`_
 
 .. literalinclude:: ansible.cfg
-    :language: ini
+   :language: ini
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-    :language: yaml
-    :caption:
+   :language: yaml
+   :caption:
 
 .. seealso::
 
@@ -130,29 +130,29 @@ group_vars
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
 
 .. literalinclude:: out/out-03.txt
-    :language: bash
+   :language: bash
 
 Playbook *pb-test-01.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - by default do nothing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-04.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 Playbook *pb-test-02.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -160,7 +160,7 @@ Playbook *pb-test-02.yml*
 Use the module `community.general.pkgng`_ to demonstrate the installation in a jail.
 
 .. literalinclude:: pb-test-02.yml
-    :language: yaml
+   :language: yaml
 
 
 Playbook output - install packages by community.general.pkgng
@@ -168,13 +168,13 @@ Playbook output - install packages by community.general.pkgng
 
 The inventory *iocage-hosts.ini* is needed to delegate the tasks *Install packages*.
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-02.yml -i hosts -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-02.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-05.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 Playbook *pb-test-03.yml*
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,18 +182,18 @@ Playbook *pb-test-03.yml*
 Use the imported tasks *packages.yml* from the role `vbotka.freebsd.postinstall`_
 
 .. literalinclude:: pb-test-03.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - import vbotka.freebsd_postinstall packages.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-03.yml -i hosts -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-03.yml -i hosts -i iocage-hosts.ini
 
 .. literalinclude:: out/out-06.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 .. hint::
 
@@ -241,34 +241,34 @@ Test the configuration step by step. Run the below plays with options ``--check
 Put the extra variables into the file *extra-vars.yml*
 
 .. literalinclude:: extra-vars.yml
-    :language: yaml
+   :language: yaml
 
 Run the play
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml \
-          -i hosts -i iocage-hosts.ini \                                            
-          -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
-          -e @extra-vars.yml
+   (env) > ansible-playbook pb-test-01.yml \
+           -i hosts -i iocage-hosts.ini \                                            
+           -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
+           -e @extra-vars.yml
 
 .. literalinclude:: out/out-07.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 Optionally, disable the option `display_ok_hosts`_
 
-::
+.. code-block:: console
 
-  (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
-          ansible-playbook pb-test-01.yml \
-          -i hosts -i iocage-hosts.ini \                                            
-          -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
-          -e @extra-vars.yml
+   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
+           ansible-playbook pb-test-01.yml \
+           -i hosts -i iocage-hosts.ini \                                            
+           -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
+           -e @extra-vars.yml
 
 .. literalinclude:: out/out-08.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 The above plays show that, depending on a use case, it's possible to:
 

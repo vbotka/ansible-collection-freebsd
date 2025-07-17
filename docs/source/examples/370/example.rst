@@ -3,7 +3,7 @@
 370 Configure pf
 ----------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -101,9 +101,9 @@ Playbook output - install packages
 
 Install packages
 
-::
+.. code-block:: console
 
-  env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_packages -e pf_install=true
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_packages -e pf_install=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -116,10 +116,10 @@ Starting and restarting of the firewall breaks the ssh connections. See the
 handlers for details. As a consequence, both handlers starting and reloading
 don't work properly and the ssh connection will stale. Therefore, let us
 first configure the rules
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -e pf_enable=false
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -e pf_enable=false
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -127,10 +127,10 @@ first configure the rules
 
 Playbook output - enable pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  
-::
 
-  (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_rcconf_pf
+.. code-block:: console
+
+   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_rcconf_pf
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -142,9 +142,9 @@ Result
 pf status
 """""""""
 
-::
+.. code-block:: console
 
-  (env) > ssh admin@10.1.0.17 sudo service pf status
+   (env) > ssh admin@10.1.0.17 sudo service pf status
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -152,9 +152,9 @@ pf status
 /etc/pf.conf
 """"""""""""
 
-::
+.. code-block:: console
 
-  (env) > ssh admin@10.1.0.17 cat /etc/pf.conf
+   (env) > ssh admin@10.1.0.17 cat /etc/pf.conf
 
 .. literalinclude:: out/out-05.txt
    :language: bash

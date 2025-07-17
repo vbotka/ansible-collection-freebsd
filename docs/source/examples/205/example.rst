@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_202`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -102,9 +102,9 @@ Inventory iocage-hosts.ini
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini -l iocage_03
+   (env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini -l iocage_03
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -113,9 +113,9 @@ Playbook output - create templates
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -lt
+   [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -123,9 +123,9 @@ List templates at iocage_01
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -133,9 +133,9 @@ List templates at iocage_02
 List templates at iocage_03
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_03]# iocage list -lt
+   [iocage_03]# iocage list -lt
 
 .. literalinclude:: out/out-04.txt
    :language: bash

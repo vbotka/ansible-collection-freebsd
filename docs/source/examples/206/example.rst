@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_203`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -202,9 +202,9 @@ Notes
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -231,11 +231,11 @@ Inventory iocage-hosts.ini
 Create and start clones
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini -l iocage_02 \
-                           -t clone -e clone=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini -l iocage_02 \
+                            -t clone -e clone=true
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -244,11 +244,11 @@ Create and start clones
 Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini -l iocage_02 \
-                           -t swarm -e swarm=true -e debug=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini -l iocage_02 \
+                            -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -257,9 +257,9 @@ Create and start swarms
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -279,9 +279,9 @@ Inventory hosts
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -295,9 +295,9 @@ Playbook pb-test-01.yml
 Playbook output
 ^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

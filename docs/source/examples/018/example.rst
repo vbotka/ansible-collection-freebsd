@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_010`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -52,31 +52,31 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-clone-list.yml*, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
   * clone 3 jails from the basejail
   * start all jails
   * display lists of jails.
 
-* On the iocage host *iocage_02*
+* On the iocage host ``iocage_02``
 
-  In the playbook *pb-test.yml*, use the `inventory plugin vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
-  * display the hosts and composed variables in the group *test*.
+  * display the hosts and composed variables in the group ``test``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails *ansible_client* created in :ref:`example_010`
+* jails ``ansible_client`` created in :ref:`example_010`
 
 Jails at iocage_01
 ^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -84,9 +84,9 @@ Jails at iocage_01
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -123,9 +123,9 @@ Playbook pb-iocage-clone-list.yml
 Playbook output - clone, start, and list
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage-hosts.ini
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -134,9 +134,9 @@ Playbook output - clone, start, and list
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -144,9 +144,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -154,8 +154,8 @@ List jails at iocage_02
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable *"sudo: true"*. Otherwise, *iocage* will complain *"DHCP (running -- address requires
-root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
+Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP (running -- address requires
+root)``. Enable also ``sudo_preserve_env: true``* if ``env`` is used.
 
 .. literalinclude:: iocage.yml
    :language: yaml
@@ -163,26 +163,26 @@ root)"*. Enable also *"sudo_preserve_env: true"* if *env* is used.
 
 .. hint::
 
-   * Limit admins sudo to the *"iocage list"* command ::
+   * Limit admins sudo to the command ``iocage list`` ::
 
        shell> grep iocage /usr/local/etc/sudoers
        admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
 
-   * The tag *SETENV*, to preserve the environment, is needed when *env* is set.
+   * The tag ``SETENV``, to preserve the environment, is needed when ``env`` is used.
 
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i iocage.yml --list --yaml
+   (env) > ansible-inventory -i iocage.yml --list --yaml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
 
-Playbook *pb-test.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
    :language: yaml
@@ -190,9 +190,9 @@ Playbook *pb-test.yml*
 Playbook output - list some iocage_* vars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  env) > ansible-playbook pb-test.yml -i iocage.yml
+   (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
@@ -201,11 +201,11 @@ Playbook output - list some iocage_* vars
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If a jail is stopped the IP4 tab says: *"DHCP (not running)"*.
+If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: bash
@@ -215,15 +215,16 @@ Playbook output - list some iocage_* vars
 
 Some jails are stopped.
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test.yml -i iocage.yml
+   (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-09.txt
    :language: yaml
    :force:
 
 
+.. _iocage: https://www.freshports.org/sysutils/iocage/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

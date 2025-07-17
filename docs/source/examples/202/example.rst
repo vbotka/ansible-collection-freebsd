@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_200`.
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -45,7 +45,9 @@ Extending example :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook ::
+Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the below hook
+
+.. code-block:: console
 
    shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks 
 
@@ -57,15 +59,19 @@ Get the IP addresses by DHCP. Create the *dhclient-exit-hooks*. For example, the
        ;;
    esac
 
-creates files. For example, ::
+creates files. For example,
 
-  shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b
-  10.1.0.130
+.. code-block:: console
+
+   shell> cat /zroot/iocage/jails/test_101/root/var/db/dhclient-hook.address.epair0b
+   10.1.0.130
   
 Read the files, created by the hooks, and use the IP addresses to compose the variable
-*ansible_host* ::
+*ansible_host*
 
-  shell> cat hosts/01_iocage.yml 
+.. code-block:: console
+
+   shell> cat hosts/01_iocage.yml 
 
 .. code-block:: yaml
    :force:
@@ -77,7 +83,7 @@ Read the files, created by the hooks, and use the IP addresses to compose the va
    compose:
      ansible_host: iocage_hooks.0
 
-The varaible *ansible_host* defaults to *iocage_ip4* if the hook is not available
+The variable *ansible_host* defaults to *iocage_ip4* if the hook is not available
 
 .. code-block:: yaml
 
@@ -231,10 +237,10 @@ Playbook output - create templates
 
 Limit the inventory to iocage_01, and iocage_02
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
-                           -i iocage-hosts.ini -l iocage_01,iocage_02
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
+                            -i iocage-hosts.ini -l iocage_01,iocage_02
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -243,9 +249,9 @@ Limit the inventory to iocage_01, and iocage_02
 List templates at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -lt
+   [iocage_01]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -253,9 +259,9 @@ List templates at iocage_01
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -lt
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -265,12 +271,12 @@ Playbook output - clone and start jails
 
 Limit the inventory to iocage_01, and iocage_02
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                           -i iocage-hosts.ini -l iocage_01,iocage_02 \
-                           -t clone \
-                           -e clone=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
+                            -i iocage-hosts.ini -l iocage_01,iocage_02 \
+                            -t clone \
+                            -e clone=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -279,9 +285,9 @@ Limit the inventory to iocage_01, and iocage_02
 List jails at iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_01]# iocage list -l
+   [iocage_01]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -289,9 +295,9 @@ List jails at iocage_01
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  [iocage_02]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-06.txt
    :language: bash
@@ -323,9 +329,9 @@ Inventory hosts
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
    :language: bash
@@ -339,9 +345,9 @@ Playbook pb-test-01.yml
 Playbook output - display list *iocage_hooks*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: yaml

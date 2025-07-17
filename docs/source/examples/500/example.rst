@@ -3,7 +3,7 @@
 500 syslog-ng Server and syslog-ng Clients
 ------------------------------------------
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 

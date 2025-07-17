@@ -1,8 +1,8 @@
 plugin: community.general.iocage
-host: 10.1.0.18
+host: 10.1.0.17
 user: admin
 sudo: true
 compose:
-  ansible_host: iocage_ip4 | split(',') | first
+  ansible_host: iocage_ip4
 groups:
   test_01: inventory_hostname.startswith('test')

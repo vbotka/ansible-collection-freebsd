@@ -5,7 +5,7 @@
 
 Extending example :ref:`example_203`
 
-.. contents:: Table of Contents
+.. contents::
    :local:
    :depth: 1
 
