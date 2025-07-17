@@ -32,7 +32,7 @@ Tree
   ├── hosts
   │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
-  │   └── 03_constructed.yml
+  │   └── 99_constructed.yml
   ├── pb-iocage-obsolete.yml
   └── pb-test.yml
 
@@ -106,9 +106,15 @@ Inventory hosts
    :caption:
    :emphasize-lines: 1
 
-.. literalinclude:: hosts/03_constructed.yml
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
+
+.. hint::
+
+   List all inventory: ::
+
+     (env) > ansible-inventory -i hosts --list --yaml
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
