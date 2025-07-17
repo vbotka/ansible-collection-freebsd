@@ -1,0 +1,32 @@
+---
+- name: Configure /etc/rc.conf or etc/rc.conf.d/pflog
+  vars:
+    _path: "{{ pf_rcconfd | bool | ternary('/etc/rc.conf.d/pflog', '/etc/rc.conf') }}"
+  block:
+
+    - name: "Rcconf-pflog: Enable and start pflog."
+      when: pf_log_enable | bool
+      notify: enable and start pflog
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: pflog_enable
+        value: "YES"
+
+    - name: "Rcconf-pflog: Disable and stop pflog."
+      when: not pf_log_enable | bool
+      notify: disable and stop pflog
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: pflog_enable
+        value: "NO"
+
+    - name: "Rcconf-pflog: Configure pflog."
+      notify: reload pf
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ item.name }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d(omit) }}"
+      loop: "{{ pf_log_rcconf }}"
+
+# EOF
