@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Update galaxy.yml build_ignore.
 * Update docs add ug example 501.
+* Upgrade role zfs 2.7.4
 
 
 0.7.17
