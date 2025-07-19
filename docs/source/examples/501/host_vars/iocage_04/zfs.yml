@@ -1,9 +1,4 @@
 fzfs_enable: true
-
-fzfs_sysctl_conf:
-  - name: vfs.zfs.prefetch.disable
-    value: '0'
-
 fzfs_pools:
   iocage:
     vdevs:

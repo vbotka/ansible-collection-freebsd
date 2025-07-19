@@ -1,0 +1,32 @@
+---
+
+- name: "Manage: Sanity all pools available."
+  ansible.builtin.assert:
+    that: fzfs_pools_missing | length == 0
+    quiet: "{{ fzfs_assert_quiet | bool }}"
+    fail_msg: "[ERR] Missing pool(s): {{ fzfs_pools_missing }}"
+    success_msg: "[OK]  All pools available."
+
+- name: "Manage: Manage zfs"
+  community.general.zfs:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    origin: "{{ item.origin | d(omit) }}"
+    extra_zfs_properties: "{{ item.extra_zfs_properties | d(omit) }}"
+  loop: "{{ fzfs_manage }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: "Manage: Set mode and ownership of zfs mountpoints"
+  notify: mount all zfs
+  ansible.builtin.file:
+    state: directory
+    path: "{{ item.mountpoint }}"
+    owner: "{{ item.owner | d(omit) }}"
+    group: "{{ item.group | d(omit) }}"
+    mode: "{{ item.mode | d(omit) }}"
+  loop: "{{ fzfs_mountpoints }}"
+  loop_control:
+    label: "{{ item.mountpoint }}"
+
+# EOF

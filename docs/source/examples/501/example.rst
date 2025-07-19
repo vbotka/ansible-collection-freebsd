@@ -42,10 +42,12 @@ Tree
   ├── example.rst
   ├── host_vars
   │   └── iocage_04
+  │       ├── loader.yml
   │       ├── network.yml
   │       ├── pf.yml
   │       └── zfs.yml
   ├── iocage.ini
+  ├── pb-loader.yml
   ├── pb-network.yml
   ├── pb-pf.yml
   └── pb-zfs.yml
@@ -72,7 +74,10 @@ Roles:
 Notes
 ^^^^^
 
-* The role `vbotka.freebsd.postinstall`_ is used to configure ``sysctl``
+* The role `vbotka.freebsd.postinstall`_ is used to configure:
+
+  * ``sysctl.conf``
+  * ``loader.conf``
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -89,6 +94,10 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
   
+.. literalinclude:: host_vars/iocage_04/loader.yml
+   :language: yaml
+   :caption:
+  
 .. literalinclude:: host_vars/iocage_04/network.yml
    :language: yaml
    :caption:
@@ -104,6 +113,10 @@ host_vars
 Playbooks
 ^^^^^^^^^
 
+.. literalinclude:: pb-loader.yml
+   :language: yaml
+   :caption:
+
 .. literalinclude:: pb-network.yml
    :language: yaml
    :caption:
@@ -118,6 +131,11 @@ Playbooks
 
 Playbooks' outputs
 ^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: out/out-04.txt
+   :caption: (env) > ansible-playbook pb-loader.yml -i iocage.ini
+   :language: yaml
+   :force:
 
 .. literalinclude:: out/out-01.txt
    :caption: (env) > ansible-playbook pb-network.yml -i iocage.ini
