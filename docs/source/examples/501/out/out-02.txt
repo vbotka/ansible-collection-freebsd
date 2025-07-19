@@ -1,0 +1,54 @@
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_02]
+
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+included: vbotka.freebsd.postinstall for iocage_02
+
+TASK [vbotka.freebsd.postinstall : Sysctl: Configure /etc/sysctl.conf] *********
+ok: [iocage_02] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
+
+TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.postinstall : Sysctl: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader.] ***
+ok: [iocage_02] => 
+    msg: |-
+        [WARNING] Loader boot-time tuneables in fp_sysctl_conf: [vfs.zfs.prefetch.disable]
+
+TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ***********************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ***************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Pools: Manage ZFS pools.] ***************************
+ok: [iocage_02] => (item=zroot)
+ok: [iocage_02] => (item=export)
+
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
+ok: [iocage_02]
+
+TASK [vbotka.freebsd.zfs : Manage: Manage zfs] *********************************
+ok: [iocage_02] => (item=zroot/jails)
+ok: [iocage_02] => (item=zroot/poudriere)
+ok: [iocage_02] => (item=export/scratch)
+ok: [iocage_02] => (item=export/iso)
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+

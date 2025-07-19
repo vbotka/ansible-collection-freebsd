@@ -1,0 +1,8 @@
+fn_gateway_enable: true
+fn_defaultrouter: 10.1.0.10
+fn_cloned_interfaces:
+  - interface: lagg0
+fn_interfaces:
+  - {interface: igb0, options: up}
+  - {interface: re0, options: up}
+  - {interface: lagg0, options: 'laggproto loadbalance laggport igb0 laggport re0 10.1.0.29/24'}

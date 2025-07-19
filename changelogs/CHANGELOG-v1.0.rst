@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Update galaxy.yml build_ignore.
+* Update docs add ug example 501.
 
 
 0.7.17
