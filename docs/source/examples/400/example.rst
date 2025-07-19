@@ -35,8 +35,10 @@ Tree
   ├── ansible.cfg
   ├── host_vars
   │   └── iocage_02
+  │       ├── loader.yml
   │       └── zfs.yml
   ├── iocage-hosts.ini
+  ├── pb-loader.yml
   └── pb-zfs.yml
 
 Synopsis
@@ -65,7 +67,7 @@ Requirements
 Notes
 ^^^^^
 
-* The role `vbotka.freebsd.postinstall`_ is used to configure ``sysctl``
+* The role `vbotka.freebsd.postinstall`_ is used to configure ``sysctl.conf`` and ``loader.conf``
 
 .. note::
 
@@ -145,9 +147,30 @@ ansible.cfg
 host_vars
 ^^^^^^^^^
   
+.. literalinclude:: host_vars/iocage_02/loader.yml
+   :language: yaml
+   :caption:
+  
 .. literalinclude:: host_vars/iocage_02/zfs.yml
    :language: yaml
    :caption:
+
+Playbook pb-loader.yml
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-loader.yml
+   :language: yaml
+
+Playbook output - loader.conf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-loader.yml -i iocage-hosts.ini -l iocage_02
+
+.. literalinclude:: out/out-05.txt
+   :language: yaml
+   :force:
 
 Playbook pb-zfs.yml
 ^^^^^^^^^^^^^^^^^^^

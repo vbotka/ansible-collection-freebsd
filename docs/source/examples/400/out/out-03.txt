@@ -13,7 +13,7 @@ ok: [iocage_02] =>
         fzfs_pools_required: ['export', 'zroot']
         fzfs_pools_missing: []
         fzfs_pools_present: ['export', 'zroot']
-        name: export size: 99.5G free: 91.0G
+        name: export size: 99.5G free: 91.1G
         name: zroot size: 496G free: 458G
 
 PLAY RECAP *********************************************************************
