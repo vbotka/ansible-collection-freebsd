@@ -33,9 +33,19 @@ ok: [iocage_02]
 TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
 ok: [iocage_02]
 
-TASK [vbotka.freebsd.zfs : Pools: Manage ZFS pools.] ***************************
-ok: [iocage_02] => (item=zroot)
-ok: [iocage_02] => (item=export)
+TASK [vbotka.freebsd.zfs : Pools: WARNING | community.general.zpool skipped.] ***
+ok: [iocage_02] => 
+    msg: |-
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        # WARNING:
+        #
+        # The module community.general.zpool is not idempotent. It crashes
+        # when running repeatedly. Because of the poor quality, the module
+        # community.general.zpool will be skipped for pools:
+        # ['export', 'zroot']
+        #
+        # Configure the skipped pools manually, if necessary.
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
 ok: [iocage_02]
@@ -50,5 +60,5 @@ ok: [iocage_02] => (item=export/scratch)
 ok: [iocage_02] => (item=export/iso)
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+iocage_02                  : ok=14   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
 

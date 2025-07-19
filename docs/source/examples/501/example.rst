@@ -13,7 +13,7 @@
 .. index:: single: pf; Example 501
 .. index:: single: role vbotka.freebsd.pf; Example 501
 .. index:: single: vbotka.freebsd.pf; Example 501
-.. index:: single: iocage ZFS; Example 501
+.. index:: single: ZFS; Example 501
 .. index:: single: role vbotka.freebsd.zfs; Example 501
 .. index:: single: vbotka.freebsd.zfs; Example 501
 
@@ -106,15 +106,18 @@ Playbooks
 
 .. literalinclude:: pb-network.yml
    :language: yaml
+   :caption:
 
 .. literalinclude:: pb-pf.yml
    :language: yaml
+   :caption:
 
 .. literalinclude:: pb-zfs.yml
    :language: yaml
+   :caption:
 
-Playbook outputs
-^^^^^^^^^^^^^^^^
+Playbooks' outputs
+^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
    :caption: (env) > ansible-playbook pb-network.yml -i iocage.ini

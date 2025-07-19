@@ -11,6 +11,15 @@
 .. index:: single: role vbotka.freebsd.zfs; Example 400
 .. index:: single: vbotka.freebsd.zfs; Example 400
 
+.. index:: single: community.general.zfs; Example 400
+.. index:: single: community.general.zfs_facts; Example 400
+.. index:: single: community.general.zpool; Example 400
+.. index:: single: community.general.zpool_facts; Example 400
+.. index:: single: module community.general.zfs; Example 400
+.. index:: single: module community.general.zfs_facts; Example 400
+.. index:: single: module community.general.zpool; Example 400
+.. index:: single: module community.general.zpool_facts; Example 400
+
 Use case
 ^^^^^^^^
 
@@ -70,8 +79,65 @@ Notes
    * `FreeBSD Wiki ZFS`_
    * `FreeBSD Wiki Category Zfs`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Known issues
+^^^^^^^^^^^^
+
+The module `community.general.zpool`_ can't create correct diff. For example,
+
+.. code-block:: yaml
+   :force:
+
+   (Pdb) p vdev_layout_diff
+   {'before': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2']}, {'type': 'stripe', 'disks': ['/dev/ada3']}]},
+    'after': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2', '/dev/ada3']}]}}
+
+
+This makes the module not idempotent. It crashes when running repeatedly. For example,
+
+.. code-block:: yaml
+   :force:
+      
+   failed: [srv.example.org] (item=iocage) =>
+       ansible_loop_var: item
+       changed: false
+       cmd: /sbin/zpool add iocage /dev/ada2 /dev/ada3
+       item:
+           key: iocage
+           value:
+               vdevs:
+               -   disks:
+                   - /dev/ada2
+                   - /dev/ada3
+       msg: |-
+           invalid vdev specification
+           use '-f' to override the following errors:
+           /dev/ada2 is part of active pool 'iocage'
+           /dev/ada3 is part of active pool 'iocage'
+       rc: 1
+       ...
+
+Setting ``force: true`` doesn't help. At the moment, the only workaround is to skip the module if
+the pool already exists. You'll see a warning. For example,
+
+.. code-block:: yaml
+   :force:
+      
+   TASK [vbotka.freebsd_zfs : Pools: WARNING | community.general.zpool skipped.] ****
+   ok: [srv.example.org] =>
+       msg: |-
+           # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+           # WARNING:
+           #
+           # The module community.general.zpool is not idempotent. It crashes
+           # when running repeatedly. Because of the poor quality, the module
+           # community.general.zpool will be skipped for pools:
+           # ['iocage']
+           #
+           # Configure the skipped pools manually, if necessary.
+           # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ansible.cfg
+^^^^^^^^^^^
    
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -147,3 +213,5 @@ Playbook output - List datasets
 .. _The Z File System (ZFS): https://docs.freebsd.org/en/books/handbook/zfs/
 .. _FreeBSD Wiki ZFS: https://wiki.freebsd.org/ZFS
 .. _FreeBSD Wiki Category Zfs: https://wiki.freebsd.org/CategoryZfs
+
+.. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html
