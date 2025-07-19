@@ -1,0 +1,4 @@
+fp_loader_conf_template: ''  # Available after community.general #10417 merged.
+fp_loader_conf:
+  - name: vfs.zfs.prefetch.disable
+    value: '0'
