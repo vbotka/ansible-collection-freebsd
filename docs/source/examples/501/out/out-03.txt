@@ -2,20 +2,57 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
-TASK [vbotka.freebsd_zfs : Facts: Run zpool_facts] *****************************
-ok: [iocage_02]
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+included: vbotka.freebsd.postinstall for iocage_04
 
-TASK [vbotka.freebsd_zfs : Facts: Debug list pools fzfs_debug=true] ************
-ok: [iocage_02] => 
+TASK [vbotka.freebsd.postinstall : Sysctl: Configure /etc/sysctl.conf] *********
+ok: [iocage_04] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
+
+TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.postinstall : Sysctl: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader.] ***
+ok: [iocage_04] => 
     msg: |-
-        fzfs_pools_required: ['export', 'zroot']
-        fzfs_pools_missing: []
-        fzfs_pools_present: ['export', 'zroot']
-        name: export size: 99.5G free: 91.0G
-        name: zroot size: 496G free: 458G
+        [WARNING] Loader boot-time tuneables in fp_sysctl_conf: [vfs.zfs.prefetch.disable]
+
+TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ***********************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ***************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: WARNING | community.general.zpool skipped.] ***
+ok: [iocage_04] => 
+    msg: |-
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        # WARNING:
+        #
+        # The module community.general.zpool is not idempotent. It crashes
+        # when running repeatedly. Because of the poor quality, the module
+        # community.general.zpool will be skipped for pools:
+        # ['iocage']
+        #
+        # Configure the skipped pools manually, if necessary.
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
+ok: [iocage_04]
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_04                  : ok=13   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
 

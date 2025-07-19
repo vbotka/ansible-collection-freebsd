@@ -17,6 +17,15 @@
 .. index:: single: role vbotka.freebsd.zfs; Example 501
 .. index:: single: vbotka.freebsd.zfs; Example 501
 
+.. index:: single: community.general.zfs; Example 501
+.. index:: single: community.general.zfs_facts; Example 501
+.. index:: single: community.general.zpool; Example 501
+.. index:: single: community.general.zpool_facts; Example 501
+.. index:: single: module community.general.zfs; Example 501
+.. index:: single: module community.general.zfs_facts; Example 501
+.. index:: single: module community.general.zpool; Example 501
+.. index:: single: module community.general.zpool_facts; Example 501
+
 Use case
 ^^^^^^^^
 
@@ -104,25 +113,21 @@ Playbooks
 .. literalinclude:: pb-zfs.yml
    :language: yaml
 
-Playbook output - configure ZFS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook outputs
+^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-playbook pb-zfs.yml -i iocage.ini
-
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-01.txt
+   :caption: (env) > ansible-playbook pb-network.yml -i iocage.ini
    :language: yaml
    :force:
 
-Playbook output
-^^^^^^^^^^^^^^^
+.. literalinclude:: out/out-02.txt
+   :caption: (env) > ansible-playbook pb-pf.yml -i iocage.ini
+   :language: yaml
+   :force:
 
-.. code-block:: console
-
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_04
-
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-03.txt
+   :caption: (env) > ansible-playbook pb-zfs.yml -i iocage.ini
    :language: yaml
    :force:
 
