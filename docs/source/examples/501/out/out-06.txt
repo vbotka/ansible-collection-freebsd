@@ -1,0 +1,31 @@
+
+PLAY [Configure iocage.] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.iocage : Activate: Activate iocage pool iocage] ***********
+changed: [iocage_04]
+
+TASK [vbotka.freebsd.iocage : Activate: Debug result freebsd_iocage_debug=true] ***
+ok: [iocage_04] => 
+    result:
+        changed: true
+        cmd:
+        - iocage
+        - activate
+        - iocage
+        delta: '0:00:01.083651'
+        end: '2025-07-20 19:20:41.659734'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2025-07-20 19:20:40.576083'
+        stderr: ''
+        stderr_lines: []
+        stdout: ZFS pool 'iocage' successfully activated.
+        stdout_lines:
+        - ZFS pool 'iocage' successfully activated.
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

@@ -1,0 +1,33 @@
+
+PLAY [Configure login.conf] ****************************************************
+
+PLAY [Install packages.] *******************************************************
+
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for iocage_04 => (item=custom)
+
+PLAY [Configure loader.conf] ***************************************************
+
+TASK [vbotka.freebsd.postinstall : Loader: Configure by sysrc /boot/loader.conf] ***
+changed: [iocage_04] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
+
+PLAY [Configure network.] ******************************************************
+
+TASK [vbotka.freebsd.network : Routing: Remove list of static routes from /etc/rc.conf] ***
+changed: [iocage_04]
+
+PLAY [Configure pf.] ***********************************************************
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+included: vbotka.freebsd.postinstall for iocage_04
+
+PLAY [Configure iocage.] *******************************************************
+
+TASK [vbotka.freebsd.iocage : Rcconf: Enable iocage] ***************************
+changed: [iocage_04]
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=67   changed=3    unreachable=0    failed=0    skipped=148  rescued=0    ignored=0   
+

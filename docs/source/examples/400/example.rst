@@ -81,6 +81,8 @@ Notes
    * `FreeBSD Wiki ZFS`_
    * `FreeBSD Wiki Category Zfs`_
 
+.. _example_400_known_issues:
+
 Known issues
 ^^^^^^^^^^^^
 

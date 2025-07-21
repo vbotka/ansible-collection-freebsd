@@ -1,0 +1,23 @@
+
+PLAY [Install packages.] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for iocage_04 => (item=custom)
+
+TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ***
+changed: [iocage_04]
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=6    changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0

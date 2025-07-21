@@ -18,5 +18,4 @@ ok: [iocage_04] =>
     msg: '[MESSAGE] Reboot to activate configuration in /boot/loader.conf'
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=5    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
-
+iocage_04                  : ok=5    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0

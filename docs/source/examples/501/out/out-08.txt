@@ -1,0 +1,45 @@
+[iocage_04]# iocage fetch --release 14.3-RELEASE
+Creating iocage/iocage
+Creating iocage/iocage/download
+Creating iocage/iocage/images
+Creating iocage/iocage/jails
+Creating iocage/iocage/log
+Creating iocage/iocage/releases
+Creating iocage/iocage/templates
+Default configuration missing, creating one
+Fetching: 14.3-RELEASE
+
+Downloading: MANIFEST [####################] 100% 
+Downloading: base.txz [####################] 100% 
+Downloading: lib32.txz [####################] 100% 
+Downloading: src.txz [####################] 100% 
+Extracting: base.txz... 
+Extracting: lib32.txz... 
+Extracting: src.txz... 
+
+* Updating 14.3-RELEASE to the latest patch level... 
+Looking up update.FreeBSD.org mirrors... 3 mirrors found.
+Fetching public key from update1.freebsd.org... done.
+Fetching metadata signature for 14.3-RELEASE from update1.freebsd.org... done.
+Fetching metadata index... done.
+Fetching 2 metadata files... done.
+Inspecting system... done.
+Preparing to download files... done.
+Fetching 8 patches..... done.
+Applying patches... done.
+The following files will be updated as part of updating to
+14.3-RELEASE-p1:
+/bin/freebsd-version
+/lib/libzpool.so.2
+/rescue/[
+/rescue/bectl
+/rescue/bsdlabel
+...
+/rescue/zstdmt
+/usr/lib/libzpool.a
+/usr/lib32/libzpool.a
+/usr/lib32/libzpool.so.2
+/usr/src/sys/conf/newvers.sh
+/usr/src/sys/contrib/openzfs/module/zfs/dmu_send.c
+Installing updates... done.
+Default configuration missing, creating one

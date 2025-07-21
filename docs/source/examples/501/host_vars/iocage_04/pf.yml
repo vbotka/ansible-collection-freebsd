@@ -1,4 +1,4 @@
-pf_install: false
+pf_install: false  # The packages are installed in the playbook pb-packages.yml
 pf_blacklistd: true
 pf_fail2ban: true
 pf_sshguard: true

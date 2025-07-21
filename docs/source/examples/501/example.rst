@@ -5,8 +5,11 @@
 
 .. contents::
    :local:
-   :depth: 1
+   :depth: 2
 
+.. index:: single: postinstall; Example 501
+.. index:: single: role vbotka.freebsd.postinstall; Example 501
+.. index:: single: vbotka.freebsd.postinstall; Example 501
 .. index:: single: network; Example 501
 .. index:: single: role vbotka.freebsd.network; Example 501
 .. index:: single: vbotka.freebsd.network; Example 501
@@ -39,45 +42,63 @@ Tree
   shell > tree .
   .
   ├── ansible.cfg
-  ├── example.rst
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
   ├── host_vars
   │   └── iocage_04
+  │       ├── iocage.yml
   │       ├── loader.yml
+  │       ├── login.yml
   │       ├── network.yml
+  │       ├── packages.yml
   │       ├── pf.yml
   │       └── zfs.yml
   ├── iocage.ini
+  ├── pb-all.yml
+  ├── pb-iocage.yml
   ├── pb-loader.yml
+  ├── pb-login.yml
   ├── pb-network.yml
+  ├── pb-packages.yml
   ├── pb-pf.yml
   └── pb-zfs.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the iocage host ``iocage_04``
+At the iocage host ``iocage_04``:
 
-  * configure network
-  * configure ``pf``
-  * create ZFS pool ``iocage``
+* configure ``/home/admin/.login_conf``
+* install packages
+* configure ``/boot/loader.conf``
+* configure network
+* configure ``pf``
+* create ZFS pool ``iocage``
+* activate iocage pool ``iocage``
+* fetch release
+* test ``iocage`` sanity.
 
 Requirements
 ^^^^^^^^^^^^
 
 Roles:
 
+* `vbotka.freebsd.iocage`_
 * `vbotka.freebsd.network`_
 * `vbotka.freebsd.pf`_
-* `vbotka.freebsd.zfs`_
 * `vbotka.freebsd.postinstall`_
+* `vbotka.freebsd.zfs`_
 
 Notes
 ^^^^^
 
-* The role `vbotka.freebsd.postinstall`_ is used to configure:
+* The role `vbotka.freebsd.postinstall`_ is used to:
 
-  * ``sysctl.conf``
-  * ``loader.conf``
+  * configure ``/home/admin/.login_conf``
+  * install packages
+  * configure ``/boot/loader.conf``
+  * configure ``/etc/sysctl.conf`` (Imported in the role `vbotka.freebsd.zfs`_)
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -91,6 +112,13 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+group_vars
+^^^^^^^^^^
+  
+.. literalinclude:: group_vars/all/iocage.yml
+   :language: yaml
+   :caption:
+
 host_vars
 ^^^^^^^^^
   
@@ -98,7 +126,15 @@ host_vars
    :language: yaml
    :caption:
   
+.. literalinclude:: host_vars/iocage_04/login.yml
+   :language: yaml
+   :caption:
+  
 .. literalinclude:: host_vars/iocage_04/network.yml
+   :language: yaml
+   :caption:
+  
+.. literalinclude:: host_vars/iocage_04/packages.yml
    :language: yaml
    :caption:
   
@@ -109,9 +145,21 @@ host_vars
 .. literalinclude:: host_vars/iocage_04/zfs.yml
    :language: yaml
    :caption:
+  
+.. literalinclude:: host_vars/iocage_04/iocage.yml
+   :language: yaml
+   :caption:
 
 Playbooks
 ^^^^^^^^^
+
+.. literalinclude:: pb-login.yml
+   :language: yaml
+   :caption:
+
+.. literalinclude:: pb-packages.yml
+   :language: yaml
+   :caption:
 
 .. literalinclude:: pb-loader.yml
    :language: yaml
@@ -129,31 +177,139 @@ Playbooks
    :language: yaml
    :caption:
 
+.. literalinclude:: pb-iocage.yml
+   :language: yaml
+   :caption:
+
 Playbooks' outputs
 ^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: out/out-04.txt
-   :caption: (env) > ansible-playbook pb-loader.yml -i iocage.ini
+Configure /home/admin/.login_conf
+"""""""""""""""""""""""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-login.yml -i iocage.ini
+
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
+
+Install packages
+""""""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-packages.yml -i iocage.ini
+
+.. literalinclude:: out/out-05.txt
+   :language: yaml
+   :force:
+
+Configure /boot/loader.conf
+"""""""""""""""""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-loader.yml -i iocage.ini
+
+.. literalinclude:: out/out-04.txt
+   :language: yaml
+   :force:
+
+Configure network
+"""""""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-network.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :caption: (env) > ansible-playbook pb-network.yml -i iocage.ini
    :language: yaml
    :force:
+
+Configure pf
+""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-pf.yml -i iocage.ini
+
 
 .. literalinclude:: out/out-02.txt
-   :caption: (env) > ansible-playbook pb-pf.yml -i iocage.ini
    :language: yaml
    :force:
+
+Configure ZFS
+"""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-zfs.yml -i iocage.ini
+
 
 .. literalinclude:: out/out-03.txt
-   :caption: (env) > ansible-playbook pb-zfs.yml -i iocage.ini
    :language: yaml
    :force:
 
+.. seealso::
 
+   Module community.general.zpool :ref:`example_400_known_issues`.
+
+Activate iocage
+"""""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
+                                          -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
+					  -e freebsd_iocage_debug=true
+
+.. literalinclude:: out/out-06.txt
+   :language: yaml
+   :force:
+
+Fetch release
+"""""""""""""
+
+.. literalinclude:: out/out-08.txt
+   :language: console
+
+Sanity iocage
+"""""""""""""
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
+                                          -t freebsd_iocage_sanity
+
+.. literalinclude:: out/out-09.txt
+   :language: yaml
+   :force:
+
+All playbooks
+^^^^^^^^^^^^^
+
+.. literalinclude:: pb-all.yml
+   :language: yaml
+   :caption:
+
+All playbooks output
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb-all.yml -i iocage.ini
+
+.. literalinclude:: out/out-10.txt
+   :language: yaml
+   :force:
+
+      
+.. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf
 .. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+
+.. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html
