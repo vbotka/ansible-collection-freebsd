@@ -5,3 +5,8 @@ fzfs_pools:
       - disks:
           - /dev/ada2
           - /dev/ada3
+
+fzfs_sysctl_tuneables_warning: false
+fzfs_sysctl_conf:
+ - name: vfs.zfs.prefetch.disable
+   value: "0"

@@ -2,6 +2,7 @@
 - name: "Pools: Get zpool status."
   changed_when: false
   register: out_zpool_status
+  check_mode: false
   ansible.builtin.command: zpool status
 
 - name: Sanity

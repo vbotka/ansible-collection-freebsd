@@ -18,6 +18,7 @@
       fzfs_facts_ds: {{ fzfs_facts_ds }}
       fzfs_facts_recurse: {{ fzfs_facts_recurse }}
       fzfs_mount_all: {{ fzfs_mount_all }}
+      fzfs_sysctl_tuneables_warning: "{{ fzfs_sysctl_tuneables_warning }}"
 
       fzfs_sysctl_conf:
         {{ fzfs_sysctl_conf | to_yaml(indent=2) | indent(2) }}

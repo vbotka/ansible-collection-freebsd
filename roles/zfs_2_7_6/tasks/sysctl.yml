@@ -8,6 +8,6 @@
       tags: fzfs_sysctl
       vars:
         fp_sysctl_conf: "{{ fzfs_sysctl_conf }}"
-        fp_sysctl_tuneables_warning: true
+        fp_sysctl_tuneables_warning: "{{ fzfs_sysctl_tuneables_warning | bool }}"
 
 # EOF

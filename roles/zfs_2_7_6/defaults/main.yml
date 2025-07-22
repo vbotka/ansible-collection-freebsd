@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_zfs
-fzfs_role_version: 2.7.5
+fzfs_role_version: 2.7.6
 
 fzfs_enable: false
 fzfs_debug: false
@@ -11,6 +11,7 @@ fzfs_facts_ds: false
 fzfs_facts_recurse: true
 fzfs_mount_all: true
 
+fzfs_sysctl_tuneables_warning: true
 fzfs_sysctl_conf: []
 fzfs_rcconf: []
 fzfs_pools: {}
