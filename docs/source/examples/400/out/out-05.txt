@@ -7,7 +7,7 @@ ok: [iocage_02]
 TASK [vbotka.freebsd.postinstall : Loader: Backup orig /boot/loader.conf] ******
 ok: [iocage_02]
 
-TASK [vbotka.freebsd.postinstall : Loader: Configure by sysrc /boot/loader.conf] ***
+TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /boot/loader.conf] ***
 changed: [iocage_02] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
 
 TASK [vbotka.freebsd.postinstall : Loader: Get sysctls settable via loader.] ***
