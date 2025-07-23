@@ -29,6 +29,12 @@
 .. index:: single: module community.general.zpool; Example 501
 .. index:: single: module community.general.zpool_facts; Example 501
 
+.. index:: single: iocage activate; Example 501
+.. index:: single: activate iocage; Example 501
+.. index:: single: .login_conf; Example 501
+.. index:: single: /boot/loader.conf; Example 501
+.. index:: single: /etc/sysctl.conf; Example 501
+
 Use case
 ^^^^^^^^
 
@@ -206,6 +212,8 @@ Install packages
    :language: yaml
    :force:
 
+.. _example_501_loader:
+      
 Configure /boot/loader.conf
 """""""""""""""""""""""""""
 
@@ -216,6 +224,30 @@ Configure /boot/loader.conf
 .. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
+
+.. note::
+
+   The kernel state ``vfs.zfs.prefetch.disable`` is settable via ``loader`` ::
+
+     shell> sysctl -aNT | grep vfs.zfs.prefetch.disable
+     vfs.zfs.prefetch.disable
+
+   and also via ``sysctl`` ::
+
+     shell> sysctl vfs.zfs.prefetch.disable=0
+     vfs.zfs.prefetch.disable: 0 -> 0
+
+   Put ``vfs.zfs.prefetch.disable="0"`` (and other kernel states, if you want to) into the
+   ``/boot/loader.conf``. These states will be used on bootstrapping the system. The message says:
+   ``Reboot to activate configuration in /boot/loader.conf``. You don't have to reboot, because this
+   state is also configured in ``/etc/syslog.conf`` and set in the kernel in the playbook
+   ``pb-zfs.yml``.
+
+   The values in ``/boot/loader.conf`` are double-quoted. Quoting ``man loader.conf``: ::
+
+     All settings have the following format:
+
+           variable="value"
 
 Configure network
 """""""""""""""""

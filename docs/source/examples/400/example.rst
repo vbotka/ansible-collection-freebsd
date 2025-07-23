@@ -20,6 +20,9 @@
 .. index:: single: module community.general.zpool; Example 400
 .. index:: single: module community.general.zpool_facts; Example 400
 
+.. index:: single: /boot/loader.conf; Example 400
+.. index:: single: /etc/sysctl.conf; Example 400
+
 Use case
 ^^^^^^^^
 
@@ -67,7 +70,10 @@ Requirements
 Notes
 ^^^^^
 
-* The role `vbotka.freebsd.postinstall`_ is used to configure ``sysctl.conf`` and ``loader.conf``
+* The role `vbotka.freebsd.postinstall`_ is used to configure:
+
+  * ``/boot/loader.conf``
+  * ``/etc/sysctl.conf``
 
 .. note::
 
@@ -174,6 +180,11 @@ Playbook output - loader.conf
    :language: yaml
    :force:
 
+.. hint::
+
+   You don't have to reboot. Configure ``sysctl.conf`` instead. See :ref:`example_501_loader`
+
+      
 Playbook pb-zfs.yml
 ^^^^^^^^^^^^^^^^^^^
 
