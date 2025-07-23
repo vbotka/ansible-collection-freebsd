@@ -5,6 +5,24 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.18
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update galaxy.yml build_ignore.
+* Update docs add ug examples.
+* Upgrade role zfs 2.7.6
+* Upgrade role postinstall 2.7.14
+
+
 0.7.17
 ======
 

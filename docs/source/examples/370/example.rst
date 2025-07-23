@@ -14,7 +14,7 @@
 .. index:: single: blacklistd; Example 370
 .. index:: single: fail2ban; Example 370
 .. index:: single: sshguard; Example 370
-.. index:: single: nat; Example 370
+.. index:: single: NAT; Example 370
 
 Use case
 ^^^^^^^^

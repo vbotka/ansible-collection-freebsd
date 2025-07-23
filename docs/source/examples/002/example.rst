@@ -9,6 +9,7 @@
 
 .. index:: single: role vbotka.freebsd.iocage; Example 002
 .. index:: single: iocage activate; Example 002
+.. index:: single: activate iocage; Example 002
 
 Use case
 ^^^^^^^^

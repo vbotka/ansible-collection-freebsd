@@ -1,6 +1,6 @@
 .. _example_500:
 
-500 syslog-ng Server and syslog-ng Clients
+500 syslog-ng server and syslog-ng clients
 ------------------------------------------
 
 .. contents::
@@ -135,14 +135,14 @@ Notes
    * `Configuring System Logging - FreeBSD Handbook`_
    * documentation `Ansible role FreeBSD postinstall`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
-   
+ansible.cfg
+^^^^^^^^^^^
+
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
    :language: yaml
@@ -269,7 +269,6 @@ installation.
 .. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
-
 
 Playbook pb-test-logclient.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -7,7 +7,7 @@ ok: [iocage_02]
 TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
 ok: [iocage_02] => 
     msg: |-
-        fzfs_role_version: 2.7.1
+        fzfs_role_version: 2.7.4
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
@@ -18,7 +18,6 @@ ok: [iocage_02] =>
 
         fzfs_enable: True
         fzfs_debug2: False
-        fzfs_backup_conf: False
         fzfs_pools_sanity: True
         fzfs_assert_quiet: True
         fzfs_facts_ds: False
@@ -26,7 +25,7 @@ ok: [iocage_02] =>
         fzfs_mount_all: True
 
         fzfs_sysctl_conf:
-          - {name: vfs.zfs.prefetch.disable, value: '0'}
+          []
 
         fzfs_rcconf:
           []

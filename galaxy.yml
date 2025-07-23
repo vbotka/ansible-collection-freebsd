@@ -1,7 +1,7 @@
 ---
 name: freebsd
 namespace: vbotka
-version: 0.7.17
+version: 0.7.18
 readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
@@ -25,8 +25,9 @@ build_ignore:
   - TODO
   - ATTIC
   - dest
-  - roles/*/docs
+  - files/pk_admins.txt.san
   - playbooks/sensitive
+  - roles/*/docs
   - '.ansible'
   - '.ansible-lint'
   - '.ansible-lint.local'

@@ -1,0 +1,7 @@
+- ansible.builtin.import_playbook: pb-login.yml
+- ansible.builtin.import_playbook: pb-packages.yml
+- ansible.builtin.import_playbook: pb-loader.yml
+- ansible.builtin.import_playbook: pb-network.yml
+- ansible.builtin.import_playbook: pb-pf.yml
+- ansible.builtin.import_playbook: pb-zfs.yml
+- ansible.builtin.import_playbook: pb-iocage.yml
