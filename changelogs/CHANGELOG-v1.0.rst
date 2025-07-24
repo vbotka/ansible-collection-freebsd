@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs add ug example 208
 
 
 0.7.18
