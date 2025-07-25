@@ -1,14 +1,10 @@
 ---
 - name: "Rcconf: Configure /etc/rc.conf"
   register: out
-  ansible.builtin.lineinfile:
+  community.general.sysrc:
     path: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/root/etc/rc.conf"
-    regex: '^\s*{{ item.1.key }}\s*=(.*)$'
-    line: '{{ item.1.key }}={{ item.1.value }}'
-    owner: root
-    group: wheel
-    mode: "0644"
-    backup: true
+    name: "{{ item.1.key }}"
+    value: "{{ item.1.value }}"
   loop: "{{ templates | dict2items | subelements('value.rcconf') }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1.key }} {{ item.1.value }}"

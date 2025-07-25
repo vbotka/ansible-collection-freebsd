@@ -19,8 +19,8 @@ act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
 act_rcconf:
-  iocage_enable: '"YES"'
-  sshd_enable: '"YES"'
+  iocage_enable: "YES"
+  sshd_enable: "YES"
 act_dhclient:
   dhclient-enter-hooks: |
     echo "dhclient-enter-hooks: $interface $reason new_ip_address=$new_ip_address" >> /var/log/dhclient-hook.log
