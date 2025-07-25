@@ -23,7 +23,7 @@ Extending example :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Create and display *iocage* lists and dictionaries.
+Create and display ``iocage`` lists and dictionaries.
 
 Tree
 ^^^^
@@ -39,21 +39,21 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-display-lists.yml*, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-display-lists.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * create and display *iocage* lists and dictionaries.
+  * create and display ``iocage`` lists and dictionaries.
 
 Notes
 ^^^^^
 
-* *root* is not needed to run *'iocage list ...'* on the *iocage* hosts when DHCP isn't used.
+* ``root`` is not needed to run ``iocage list ...`` on the ``iocage`` hosts when DHCP isn't used.
 
-* Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8>`_:  ::
+* Quoting from `man iocage`_:  ::
 
          list    List  the  specified dataset type.  By         default, all jails are
                  listed.
@@ -150,6 +150,12 @@ Lists at iocage_02
 .. literalinclude:: out/out-08.txt
    :language: bash
 
+ansible.cfg
+^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+   :language: ini
+
 Inventory iocage-hosts.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -159,9 +165,9 @@ Inventory iocage-hosts.ini
 .. note::
 
    * The escalation ``become=true`` is not necessary.
-   * *root* is not needed to run ``iocage list ...`` when DHCP isn't used.
-   * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
-     hosts and creates the variables *iocage_\**
+   * ``root`` is not needed to run ``iocage list ...`` when DHCP isn't used.
+   * ``admin`` executes the module ``vbotka.freebsd.iocage`` on the iocage
+     hosts and creates the variables ``iocage_*``
 
 Playbook pb-iocage-display-lists.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -181,3 +187,4 @@ Playbook output - display iocage lists
    :force:
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
+.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

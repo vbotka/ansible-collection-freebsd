@@ -1,7 +1,7 @@
 .. _example_205:
 
-205 Create Ansible client templates v2
---------------------------------------
+205 Create iocage templates v2
+------------------------------
 
 Extending example :ref:`example_202`.
 
@@ -35,7 +35,7 @@ Extending example :ref:`example_202`.
 Use case
 ^^^^^^^^
 
-Create template *ansible_client* at 3 iocage hosts.
+Create template ``ansible_client`` at 3 iocage hosts.
 
 Tree
 ^^^^
@@ -59,11 +59,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The only difference between the examples 202. and 205. is the third host iocage_03. This example
-  creates the templates only.
+* The only difference between the examples 202. and 205. is the third host ``iocage_03``. This
+  example creates the templates only.
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -85,10 +85,10 @@ host_vars
 
 .. warning::
 
-   * The user *act_user* must exist on the *iocage* host. Otherwise, the module
-     *ansible.posix.authorized_key* will crash. See *pb_iocage_template/pk.yml*
+   * The user ``act_user`` must exist on the ``iocage* host``. Otherwise, the module
+     ``ansible.posix.authorized_key`` will crash. See ``playbooks/pb_iocage_template/pk.yml``
 
-   * The file *files/pk_admins.txt* was sanitized. Fit the public keys to your needs ::
+   * The file ``files/pk_admins.txt`` was sanitized. Fit the public keys to your needs ::
 
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller

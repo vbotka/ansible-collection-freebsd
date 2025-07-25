@@ -61,15 +61,15 @@ Examples
    :maxdepth: 1
    :caption: Ansible client
 
-   200 Ansible client templates <examples/200/example.rst>
-   201 Display iocage lists <examples/201/example.rst>
-   202 DHCP, templates <examples/202/example.rst>
+   200 iocage templates <examples/200/example.rst>
+   201 iocage lists <examples/201/example.rst>
+   202 DHCP iocage templates <examples/202/example.rst>
    203 DHCP, auto UUID, iocage_tags <examples/203/example.rst>
    204 DHCP, auto UUID, iocage_tags v2 <examples/204/example.rst>
-   205 DHCP, templates v2 <examples/205/example.rst>
+   205 DHCP iocage templates v2 <examples/205/example.rst>
    206 DHCP and fixed IP clients <examples/206/example.rst>
-   207 DHCP, templates v3 <examples/207/example.rst>
-   208 DHCP, template, ansible-pull <examples/208/example.rst>
+   207 DHCP, auto UUID, tags, class <examples/207/example.rst>
+   208 DHCP, ansible-pull <examples/208/example.rst>
 
 .. toctree::
    :maxdepth: 1

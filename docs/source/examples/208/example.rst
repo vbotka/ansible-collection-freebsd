@@ -44,13 +44,13 @@ Tree
   ├── host_vars
   │   └── iocage_04
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb-test-01.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the ``iocage`` host ``iocage_04`` in the playbook `vbotka.freebsd.pb_iocage_template`_, use the
+* At the iocage host ``iocage_04`` in the playbook `vbotka.freebsd.pb_iocage_template`_, use the
   modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jail to templates.
@@ -65,7 +65,7 @@ Requirements
 
 * playbook `vbotka.freebsd.pb_iocage_template`_
 * `module vbotka.freebsd.iocage`_
-* root privilege on the ``iocage`` host
+* root privilege on the iocage host
 
 Notes
 ^^^^^
@@ -91,7 +91,7 @@ host_vars
 
 .. note::
 
-   The variables *act_\** are used to configure ``ansible_client_pull`` template
+   The variables ``act_*`` are used to configure ``ansible_client_pull`` template
 
    * The dhclient hooks ``act_dhclient`` will be created in ``/etc``
    * The user ``act_user`` will be created in the template.
@@ -100,9 +100,8 @@ host_vars
 
 .. warning::
 
-   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise,
-     the module ``ansible.posix.authorized_key`` will crash. See
-     ``pb_iocage_template/pk.yml``
+   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise, the module
+     ``ansible.posix.authorized_key`` will crash. See ``pb_iocage_template/pk.yml``
 
    * The file ``files/pk_admins.txt`` was sanitized. Fit the public keys to your needs ::
 

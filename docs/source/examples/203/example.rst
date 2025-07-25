@@ -1,7 +1,7 @@
 .. _example_203:
 
-203 Create DHCP jails from template. Auto UUID, iocage_tags
------------------------------------------------------------
+203 Create DHCP jails with auto UUID and iocage_tags
+----------------------------------------------------
 
 Extending example :ref:`example_202`.
 
@@ -38,24 +38,24 @@ Use case
 
 **Automatically generated UUID**
 
-Automatically generate the jails UUID names. At each iocage host three jails
-will be created from the template *ansible_client* ::
+Automatically generate the jails UUID names. At each iocage host, create three jails from the
+template ``ansible_client`` ::
 
   swarms:
     sw_01:
       count: 3
       template: ansible_client
 
-The module *vbotka.freebsd.iocage* doesn't work with multiple names. Use
-*ansible.builtin.command* instead. If the UUID is generated automatically such a
-task is not idempotent anyway. Example of the commands ::
+The module ``vbotka.freebsd.iocage`` doesn't work with multiple names. Use
+``ansible.builtin.command`` instead. If the UUID is generated automatically, such a task is not
+idempotent anyway. Example of the commands ::
 
   iocage create --short --template ansible_client --count 3  bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
   iocage start cd31c2a2 d254f889 158ef36d
 
 **The variable iocage_tags**
 
-In the inventory plugin, compose the variable *iocage_tags* ::
+In the inventory plugin, compose the variable ``iocage_tags`` ::
 
   iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
 
@@ -65,13 +65,13 @@ For example, ::
     vmm: iocage_01
     swarm: sw_01
 
-Create groups from *iocage_tags* ::
+Create groups from ``iocage_tags`` ::
 
   keyed_groups:
-  - prefix: swarm
-    key: iocage_tags.swarm
-  - prefix: vmm
-    key: iocage_tags.vmm
+    - prefix: swarm
+      key: iocage_tags.swarm
+    - prefix: vmm
+      key: iocage_tags.vmm
 
 Tree
 ^^^^
@@ -110,7 +110,7 @@ Synopsis
 
     * create facts only
 
-  * module *ansible.builtin.command* to:
+  * module ``ansible.builtin.command`` to:
 
     * create jails
     * start jails
@@ -161,8 +161,8 @@ List templates at iocage_02
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -245,7 +245,7 @@ Inventory hosts
 
 .. note::
 
-   The option ``get_properties: True`` is needed to get the dictionary  *iocage_properties*
+   The option ``get_properties: True`` is needed to get the dictionary ``iocage_properties``
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -276,7 +276,7 @@ Playbook output - display *iocage_tags*
 
 .. hint::
 
-   The below command stops and destroys the jails in *swarms* ::
+   The below command stops and destroys the jails in ``swarms`` ::
 
      ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
                       -i iocage-hosts.ini \

@@ -1,7 +1,7 @@
 .. _example_207:
 
-207 Create DHCP jails from template v3. Auto UUID, iocage_tags, alias, class
-----------------------------------------------------------------------------
+207 Create DHCP jails with auto UUID, iocage_tags, alias and class
+------------------------------------------------------------------
 
 .. contents::
    :local:
@@ -12,6 +12,7 @@
 .. index:: single: module ansible.builtin.command; Example 207
 .. index:: single: template ansible_client; Example 207
 .. index:: single: ansible_client; Example 207
+
 .. index:: single: DHCP; Example 207
 .. index:: single: alias; Example 207
 .. index:: single: inventory alias; Example 207
@@ -28,6 +29,7 @@
 .. index:: single: option keyed_groups; Example 207
 .. index:: single: property notes; Example 207
 .. index:: single: notes; Example 207
+
 .. index:: single: variable iocage_jails; Example 207
 .. index:: single: iocage_jails; Example 207
 .. index:: single: variable iocage_hooks; Example 207
@@ -36,6 +38,7 @@
 .. index:: single: iocage_properties; Example 207
 .. index:: single: variable iocage_tags; Example 207
 .. index:: single: iocage_tags; Example 207
+
 .. index:: single: option iocage --count; Example 207
 .. index:: single: option iocage --short; Example 207
 .. index:: single: option iocage --template; Example 207
@@ -46,7 +49,7 @@ Use case
 At multiple iocage hosts, create and run VNET jails with a DHCP interface from the template
 ``ansible_client``. Use the dictionary ``iocage_tags`` and option ``inventory_hostname_tag`` to
 create `inventory aliases`_. Group the jails by iocage hosts, states, and classes. Declare the
-project in a single dictionary. The dictionary keys are jails aliases. For example,
+project in a single dictionary. The dictionary keys are jails' aliases. For example,
 
 .. code-block:: yaml
 
@@ -104,7 +107,7 @@ Synopsis
   * iocage_02
   * iocage_03
 
-  In the playbook *pb-iocage-project-create.yml*, use:
+  In the playbook ``pb-iocage-project-create.yml``, use:
 
   * `inventory plugin vbotka.freebsd.iocage`_ to create inventory hosts
   * inventory plugin `ansible.builtin.constructed`_ to create groups and compose variables:
@@ -113,7 +116,7 @@ Synopsis
     * ``iocage_tags``
     * ``iocage_classes``
 
-  * module *ansible.builtin.command* and the `binary iocage`_ to:
+  * module ``ansible.builtin.command`` and the `binary iocage`_ to:
 
     * create jails
     * set notes
@@ -121,7 +124,7 @@ Synopsis
 
 * At all jails:
 
-  In the playbook *pb-test-all.yml*, display:
+  In the playbook ``pb-test-all.yml``, display:
 
   * variables:
 
@@ -150,8 +153,8 @@ Templates created in :ref:`example_202` are used in this example.
    * `Set Jail Property`_
    * `Binary iocage`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -258,8 +261,8 @@ Playbook pb-iocage-project-create.yml
 .. note::
 
    The inventory ``-i hosts`` provides the group of all created jails. The play can use it and
-   create only the missing project jails. This makes the play idempotent despite the used module
-   *command* and *iocage* option ``--count``
+   create only the missing project jails. This makes the play idempotent despite the module
+   ``ansible.builtin.command`` and ``iocage`` option ``--count`` being used.
 
 Playbook output - create and start project jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,7 +1,7 @@
 .. _example_200:
 
-200 Create Ansible client templates and clone jails
----------------------------------------------------
+200 Create iocage templates. Clone jails.
+-----------------------------------------
 
 .. contents::
    :local:
@@ -34,7 +34,7 @@
 Use case
 ^^^^^^^^
 
-Create templates for Ansible clients and clone jails.
+Create iocage templates for Ansible clients and clone jails.
 
 Tree
 ^^^^
@@ -61,28 +61,28 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
 
   In the playbook `vbotka.freebsd.pb_iocage_template`_, use the modules:
 
-  * vbotka.freebsd.iocage to create, start, stop, and convert jails to templates.
-  * vbotka.freebsd.iocage exec tasks to create a user and set .ssh ownership.
-  * community.general.pkgng to install packages.
-  * ansible.posix.authorized_key to configure public keys.
-  * ansible.builtin.lineinfile to configure /etc/rc.conf and /usr/local/etc/sudoers
+  * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
+  * ``vbotka.freebsd.iocage`` exec tasks to create a user and set .ssh ownership.
+  * ``community.general.pkgng`` to install packages.
+  * ``ansible.posix.authorized_key`` to configure public keys.
+  * ``ansible.builtin.lineinfile`` to configure /etc/rc.conf and /usr/local/etc/sudoers
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients`_, use the `module vbotka.freebsd.iocage`_ to:
 
-  * create jails from the Ansible client templates
+  * create jails from the iocage templates
   * start all jails
-  * optionally display the lists of jails.
+  * optionally, display the lists of jails.
 
 * On all created jails:
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test-01.yml``:
 
   * connect created jails
   * display basic configuration of the jails.
@@ -95,7 +95,7 @@ Requirements
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
-* activated *iocage*
+* activated ``iocage``
 * fetched releases.
 
 Notes
@@ -107,8 +107,8 @@ Notes
    * `Connection methods and details`_
    * `Understanding privilege escalation`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -126,23 +126,23 @@ host_vars
 
 .. note::
 
-   * The user *act_user* will be created in the template.
-   * The user *act_user* will serve as Ansible *remote_user*.
-   * The file *act_pk* provides the public keys allowed to ssh to *act_user*.
+   * The user ``act_user`` will be created in the template.
+   * The user ``act_user`` will serve as Ansible ``remote_user``
+   * The file ``act_pk`` provides the public keys allowed to ssh to ``act_user`` in a jail.
 
 .. warning::
 
-   * The user *act_user* must exist on the *iocage* host. Otherwise,
-     the module *ansible.posix.authorized_key* will crash. See
-     *pb_iocage_template/pk.yml*
+   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise,
+     the module ``ansible.posix.authorized_key`` will crash. See
+     ``playbooks/pb_iocage_template/pk.yml``
 
-   * The file *files/pk_admins.txt* was sanitized. Fit the public keys to your needs ::
+   * The file ``files/pk_admins.txt`` was sanitized. Fit the public keys to your needs ::
 
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage-hosts.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage-hosts.ini
    :language: ini

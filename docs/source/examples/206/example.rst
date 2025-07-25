@@ -1,7 +1,7 @@
 .. _example_206:
 
-206 Create DHCP and fixed IP jails from template
-------------------------------------------------
+206 Create DHCP and fixed IP jails
+----------------------------------
 
 Extending example :ref:`example_203`.
 
@@ -36,15 +36,15 @@ Extending example :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage`_ configuration file, use the option *hooks_results*
-to get the DHCP IP address. This option is common for all jails in this example
+In the `inventory plugin vbotka.freebsd.iocage`_ configuration file, use the option
+``hooks_results`` to get the DHCP IP address. This option is common for all jails in this example
 
 .. code-block:: yaml
 
    hooks_results:
      - /var/db/dhclient-hook.address.epair0b
 
-It will silently fail in jails with fixed IP addresses. If the item fails the result is a dash
+It will silently fail in jails with fixed IP addresses. If the item fails, the result is a dash
 character '-'
 
 .. code-block:: yaml
@@ -53,7 +53,7 @@ character '-'
      - '-'
 
 This use-case demonstrates the advantage of silently ignoring failed items over the potential
-explicit error handling. Let the option *compose* pick what is needed
+explicit error handling. Let the option ``compose`` pick what is needed
 
 .. code-block:: yaml
 
@@ -62,7 +62,7 @@ explicit error handling. Let the option *compose* pick what is needed
 
 **Fixed IP**
 
-One jail with fixed IP will be created from the template *ansible_client* in this example
+One jail with fixed IP will be created from the template ``ansible_client`` in this example
 
 .. code-block:: yaml
 
@@ -75,7 +75,7 @@ One jail with fixed IP will be created from the template *ansible_client* in thi
 
 **Automatically generated UUID**
 
-Two DHCP jails with generated UUID will be created from the template *ansible_client*
+Two DHCP jails with generated UUID will be created from the template ``ansible_client``
 
 .. code-block:: yaml
 
@@ -92,7 +92,7 @@ Two DHCP jails with generated UUID will be created from the template *ansible_cl
           in the swarm ``sw_01``.
 
 The `module vbotka.freebsd.iocage`_ doesn't work with multiple names. We will use
-*ansible.builtin.command* instead. Anyway, such a task is not idempotent if the UUID is generated
+``ansible.builtin.command`` instead. Anyway, such a task is not idempotent if the UUID is generated
 automatically. Example of the commands
 
 .. code-block:: bash
@@ -102,7 +102,7 @@ automatically. Example of the commands
 
 **The variable iocage_tags**
 
-The inventory plugin composes the variable *iocage_tags*
+The inventory plugin composes the variable ``iocage_tags``
 
 .. code-block:: yaml
 
@@ -116,7 +116,7 @@ For example,
      vmm: iocage_02
      swarm: sw_01
 
-This option is used to create groups from *iocage_tags*
+This dictionary is used to create groups
 
 .. code-block:: yaml
 
@@ -156,14 +156,14 @@ Synopsis
     * create one jail with fixed IP
     * start the jail
 
-  * module *ansible.builtin.command* to:
+  * module ``ansible.builtin.command`` to:
 
     * create two DHCP jails with generated UUID
     * start the jails
   
 * At all created jails:
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test-01.yml``:
 
   * connect to the created jails
   * display basic configuration of the jails.
@@ -209,8 +209,8 @@ List templates at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -305,7 +305,7 @@ Playbook output
 
 .. hint::
 
-   The below command stops and destroys the jails in *swarms* ::
+   The below command stops and destroys the jails in ``swarms`` ::
 
      ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
                       -i iocage-hosts.ini -l iocage_02 \

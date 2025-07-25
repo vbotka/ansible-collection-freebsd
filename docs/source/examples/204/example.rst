@@ -1,7 +1,7 @@
 .. _example_204:
 
-204 Create DHCP jails from template v2. Auto UUID, iocage_tags
---------------------------------------------------------------
+204 Create DHCP jails with auto UUID and iocage_tags v2
+-------------------------------------------------------
 
 Extending example :ref:`example_203`
 
@@ -39,8 +39,8 @@ Extending example :ref:`example_203`
 Use case
 ^^^^^^^^
 
-Instead of the `module vbotka.freebsd.iocage`_ create the variable *iocage_jails*
-using the `filter vbotka.freebsd.iocage`_
+Instead of the `module vbotka.freebsd.iocage`_ create the variable ``iocage_jails`` using the
+`filter vbotka.freebsd.iocage`_
 
 .. literalinclude:: pb_iocage_ansible_clients_v2/iocage_jails.yml
    :language: yaml
@@ -48,12 +48,12 @@ using the `filter vbotka.freebsd.iocage`_
 
 **Test filter vbotka.freebsd.iocage**
 
-Given the input *vars/iocage_datasets.yml*
+Given the input ``vars/iocage_datasets.yml``
 
 .. literalinclude:: vars/iocage_datasets.yml
    :language: yaml
 
-The below playbook *pb-test-02.yml*
+The below playbook ``pb-test-02.yml``
 
 .. literalinclude:: pb-test-02.yml
    :language: yaml
@@ -102,18 +102,18 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb_iocage_ansible_clients_v2.yml*, use:
+  In the playbook ``pb_iocage_ansible_clients_v2.yml``, use:
 
-  * module *ansible.builtin.command* to:
+  * module ``ansible.builtin.command`` to:
 
-    * create variable *iocage_jails*
+    * create variable ``iocage_jails``
     * create jails
     * start jails
     * optionally, stop and destroy the jails.
 
 * At all created jails:
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test-01.yml``:
 
   * connect to the created jails
   * display the basic jails' configuration.
@@ -243,7 +243,7 @@ Inventory hosts
 
 .. note::
 
-   The option ``get_properties: True`` is needed to get the dictionary *iocage_properties*.
+   The option ``get_properties: True`` is needed to get the dictionary ``iocage_properties``.
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -261,8 +261,8 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - display *iocage_tags*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - display iocage_tags
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -274,7 +274,7 @@ Playbook output - display *iocage_tags*
 
 .. hint::
 
-   The below command stops and destroys the jails in *swarms* ::
+   The below command stops and destroys the jails in ``swarms`` ::
 
      ansible-playbook pb_iocage_ansible_clients_v2.yml \
                       -i iocage-hosts.ini \
