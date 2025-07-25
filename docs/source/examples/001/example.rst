@@ -114,6 +114,7 @@ Playbook output - install iocage
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _iocage: https://www.freshports.org/sysutils/iocage/
+
 .. _Patterns. Targeting hosts and groups.: https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html
 .. _Variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 .. _How to build your inventory: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html

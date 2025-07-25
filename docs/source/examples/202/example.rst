@@ -120,7 +120,7 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook `vbotka.freebsd.pb_iocage_template`_, use the modules:
+  In the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
   * ``vbotka.freebsd.iocage`` exec to create a user and set .ssh ownership.
@@ -129,7 +129,7 @@ Synopsis
   * ``ansible.builtin.lineinfile`` to configure /etc/rc.conf and /usr/local/etc/sudoers
   * configure ``dhclient hooks``
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients`_, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use the `module vbotka.freebsd.iocage`_ to:
 
   * create jails from the Ansible client templates
   * start all jails
@@ -145,8 +145,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* playbook `vbotka.freebsd.pb_iocage_template`_
-* playbook `vbotka.freebsd.pb_iocage_ansible_clients`_
+* playbook `vbotka.freebsd.pb_iocage_template.yml`_
+* playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
@@ -361,7 +361,7 @@ Playbook output - display list iocage_hooks
                       -t clone_destroy \
                       -e clone_destroy=true
 
-.. _vbotka.freebsd.pb_iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
-.. _vbotka.freebsd.pb_iocage_ansible_clients: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+.. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

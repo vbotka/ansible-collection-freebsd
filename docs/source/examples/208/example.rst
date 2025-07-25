@@ -29,7 +29,7 @@
 Use case
 ^^^^^^^^
 
-Create ``iocage`` template that will use ``ansible-pull``.
+Create `iocage`_ template that will use `ansible-pull`_.
 
 Tree
 ^^^^
@@ -50,7 +50,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the iocage host ``iocage_04`` in the playbook `vbotka.freebsd.pb_iocage_template`_, use the
+* At the iocage host ``iocage_04`` in the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the
   modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jail to templates.
@@ -63,7 +63,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* playbook `vbotka.freebsd.pb_iocage_template`_
+* playbook `vbotka.freebsd.pb_iocage_template.yml`_
 * `module vbotka.freebsd.iocage`_
 * root privilege on the iocage host
 
@@ -101,7 +101,7 @@ host_vars
 .. warning::
 
    * The user ``act_user`` must exist on the ``iocage`` host. Otherwise, the module
-     ``ansible.posix.authorized_key`` will crash. See ``pb_iocage_template/pk.yml``
+     ``ansible.posix.authorized_key`` will crash. See ``playbooks/pb_iocage_template/pk.yml``
 
    * The file ``files/pk_admins.txt`` was sanitized. Fit the public keys to your needs ::
 
@@ -138,7 +138,11 @@ List templates at iocage_04
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-.. _vbotka.freebsd.pb_iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
-.. _vbotka.freebsd.pb_iocage_ansible_clients: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+.. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+
+.. _ansible-pull: https://docs.ansible.com/ansible/latest/cli/ansible-pull.html
+.. _iocage: https://iocage.readthedocs.io/en/latest/index.html

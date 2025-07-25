@@ -149,7 +149,7 @@ Synopsis
 
   * iocage_02
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients`_, use:
+  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use:
 
   * `module vbotka.freebsd.iocage`_ to:
 
@@ -171,7 +171,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* playbook `vbotka.freebsd.pb_iocage_ansible_clients`_
+* playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
@@ -312,7 +312,7 @@ Playbook output
                       -t swarm_destroy -e swarm_destroy=true
 
 
-.. _vbotka.freebsd.pb_iocage_ansible_clients: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
