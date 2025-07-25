@@ -33,7 +33,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host *iocage_03* at IP
+* The Ansible controller connects the iocage host ``iocage_03`` at IP
   10.1.0.17 configured in /etc/rc.conf ::
 
     defaultrouter="10.1.0.10"
@@ -47,9 +47,9 @@ Synopsis
     shell> cat /etc/resolvconf.conf
     resolvconf="NO"
 
-* In the playbook *pb-postinstall.yml* at *iocage_03* make sure the nameserver is 10.1.0.1
+* In the playbook ``pb-postinstall.yml`` at ``iocage_03`` make sure the nameserver is 10.1.0.1
 
-* In the playbook *pb-network.yml* at *iocage_03* configure loadbalance of three NICs.
+* In the playbook ``pb-network.yml`` at ``iocage_03`` configure loadbalance of three NICs.
     
 Requirements
 ^^^^^^^^^^^^
@@ -59,7 +59,7 @@ Requirements
 Notes
 ^^^^^
 
-The USB NICs ue0 and ue1 are used here for testing. It is not recommended to use them in
+The USB NICs ``ue0`` and ``ue1`` are used here for testing. It is not recommended to use them in
 production. See FreeBSD Forum thread `rc.d netif restart lagg0`_ to learn about the USB NICs
 problems.
 
@@ -69,8 +69,8 @@ problems.
    * `Wired Networks`_
    * `man ifconfig`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -97,16 +97,16 @@ Playbook pb-postinstall.yml
 Playbook output - configure resolv.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The tasks *fp_resolvconf* configure */etc/resolvconf.conf* and */etc/resolv.conf* using the modules
-*sysrc* and *lineinfile* respectively. If you're not sure about the content of these files you might
-want to clean the content before the configuration
+The tasks ``fp_resolvconf`` configure ``/etc/resolvconf.conf`` and ``/etc/resolv.conf`` using the
+modules ``community.general.sysrc`` and ``ansible.builtin.lineinfile`` respectively. If you're not
+sure about the content of these files you might want to clean the content before the configuration
 
 .. code-block:: yaml
 
    fp_resolvconf_conf_clean: true
    fp_resolv_conf_clean: true
 
-This makes the play not idempotent. The defaults are *false*. To make the play
+This makes the play not idempotent. The defaults are ``false``. To make the play
 idempotent, omit these variables according to your own discretion.
 
 .. code-block:: console

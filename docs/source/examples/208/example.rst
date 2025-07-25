@@ -18,6 +18,8 @@
 .. index:: single: module vbotka.freebsd.iocage; Example 208
 .. index:: single: module community.general.pkgng; Example 208
 .. index:: single: community.general.pkgng; Example 208
+.. index:: single: module community.general.sysrc; Example 208
+.. index:: single: community.general.sysrc; Example 208
 
 .. index:: single: act_dhclient; Example 208
 .. index:: single: act_pkg; Example 208
@@ -56,8 +58,9 @@ Synopsis
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jail to templates.
   * ``vbotka.freebsd.iocage`` exec to create a user and set .ssh ownership.
   * ``community.general.pkgng`` to install packages.
+  * ``community.general.sysrc`` to configure ``/etc/rc.conf``
   * ``ansible.posix.authorized_key`` to configure public keys.
-  * ``ansible.builtin.lineinfile`` to configure ``/etc/rc.conf`` and ``/usr/local/etc/sudoers``
+  * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``
   * configure ``dhclient hooks``
 
 Requirements

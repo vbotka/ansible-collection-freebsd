@@ -24,6 +24,8 @@ Extending example :ref:`example_202`.
 .. index:: single: module vbotka.freebsd.iocage; Example 205
 .. index:: single: module ansible.builtin.lineinfile; Example 205
 .. index:: single: ansible.builtin.lineinfile; Example 205
+.. index:: single: module community.general.sysrc; Example 205
+.. index:: single: community.general.sysrc; Example 205
 .. index:: single: module ansible.posix.authorized; Example 205
 .. index:: single: ansible.posix.authorized; Example 205
 .. index:: single: module community.general.pkgng; Example 205

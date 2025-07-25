@@ -19,6 +19,8 @@
 .. index:: single: ansible.posix.authorized; Example 200
 .. index:: single: module ansible.builtin.lineinfile; Example 200
 .. index:: single: ansible.builtin.lineinfile; Example 200
+.. index:: single: module community.general.sysrc; Example 200
+.. index:: single: community.general.sysrc; Example 200
 .. index:: single: sudoers; Example 200
 
 .. index:: single: option compose; Example 200
@@ -34,7 +36,7 @@
 Use case
 ^^^^^^^^
 
-Create iocage templates for Ansible clients and clone jails.
+Create iocage templates for Ansible clients. Clone jails.
 
 Tree
 ^^^^
@@ -72,9 +74,11 @@ Synopsis
   * ``vbotka.freebsd.iocage`` exec tasks to create a user and set .ssh ownership.
   * ``community.general.pkgng`` to install packages.
   * ``ansible.posix.authorized_key`` to configure public keys.
-  * ``ansible.builtin.lineinfile`` to configure /etc/rc.conf and /usr/local/etc/sudoers
+  * ``community.general.sysrc`` to configure /etc/rc.conf
+  * ``ansible.builtin.lineinfile`` to configure /usr/local/etc/sudoers
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use the `module
+  vbotka.freebsd.iocage`_ to:
 
   * create jails from the iocage templates
   * start all jails
