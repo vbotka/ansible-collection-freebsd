@@ -1,0 +1,29 @@
+---
+- name: Create directories and copy pkglist files.
+  when: _templates | length > 0
+  vars:
+    _templates: "{{ templates | dict2items
+                              | selectattr('value.pkglist', 'defined') }}"
+  block:
+
+    - name: "Pkglist: Create directories for pkglist files."
+      ansible.builtin.file:
+        state: directory
+        path: "{{ item.value.pkglist | dirname }}"
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.pkglist }}"
+
+    - name: "Pkglist: Copy pkglist files."
+      register: out
+      ansible.builtin.copy:
+        src: "{{ inventory_dir }}/files/{{ item.value.pkglist | basename }}"
+        dest: "{{ item.value.pkglist }}"
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.pkglist }}"
+
+    - name: "Pkglist: Debug copy pkglist files debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

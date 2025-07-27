@@ -1,4 +1,17 @@
 ---
+- name: Set iocage_templates.
+  when: iocage_templates is undefined
+  block:
+
+    - name: "Create: Get iocage list of templates."
+      register: out
+      changed_when: false
+      ansible.builtin.command: iocage list --template --long
+
+    - name: "Create: Set dictionary iocage_templates"
+      ansible.builtin.set_fact:
+        iocage_templates: "{{ out.stdout | vbotka.freebsd.iocage('templates') }}"
+
 - name: "Create: Create templates."
   register: out
   vbotka.freebsd.iocage:
@@ -6,7 +19,9 @@
     name: "{{ item.key }}"
     release: "{{ item.value.release }}"
     properties: "{{ item.value.properties | d(omit) }}"
-  loop: "{{ templates | dict2items | rejectattr('key', 'in', iocage_templates) }}"
+    pkglist: "{{ item.value.pkglist | d(omit) }}"
+  loop: "{{ templates | dict2items
+                      | rejectattr('key', 'in', iocage_templates) }}"
   loop_control:
     label: "{{ item.key }} {{ item.value.release }}"
 

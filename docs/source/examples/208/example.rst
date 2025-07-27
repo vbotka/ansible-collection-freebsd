@@ -27,6 +27,7 @@
 .. index:: single: act_pk; Example 208
 .. index:: single: act_sudo; Example 208
 .. index:: single: act_rcconf; Example 208
+.. index:: single: pkglist; Example 208
 
 Use case
 ^^^^^^^^
@@ -78,6 +79,7 @@ TBD
 .. seealso::
 
    * `Using Templates <https://iocage.readthedocs.io/en/latest/templates.html>`_
+   * :ref:`ug_pb-iocage-template`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -94,12 +96,26 @@ host_vars
 
 .. note::
 
-   The variables ``act_*`` are used to configure ``ansible_client_pull`` template
+   The variables ``act_*`` are used to configure the template
 
-   * The dhclient hooks ``act_dhclient`` will be created in ``/etc``
    * The user ``act_user`` will be created in the template.
    * The user ``act_user`` will serve as Ansible ``remote_user``
    * The file ``act_pk`` provides the public keys allowed to ssh to ``act_user``
+   * The list of packages ``act_pkg`` to be installed by ``community.general.pkgng``
+   * The dhclient hooks ``act_dhclient`` will be created in ``/etc``
+
+   Optionally, let the `module vbotka.freebsd.iocage`_ install packages. Enable the attribute
+   ``pkglist`` and empty the list ``act_pkg: []``. Create the file ``files/pkgs.json``
+
+   .. code-block:: json
+
+      {
+          "pkgs": [
+              "python311",
+              "py311-ansible",
+              "sudo"
+              ]
+      }
 
 .. warning::
 
@@ -141,11 +157,11 @@ List templates at iocage_04
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-.. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+.. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
 
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 
 .. _ansible-pull: https://docs.ansible.com/ansible/latest/cli/ansible-pull.html
 .. _iocage: https://iocage.readthedocs.io/en/latest/index.html

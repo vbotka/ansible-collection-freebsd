@@ -13,6 +13,10 @@
       tags: [always, setup]
       ansible.builtin.import_tasks: pb_iocage_template/setup.yml
 
+    - name: Copy pkglist
+      tags: pkglist
+      ansible.builtin.import_tasks: pb_iocage_template/pkglist.yml
+
     - name: Create jails
       tags: create
       ansible.builtin.import_tasks: pb_iocage_template/create.yml

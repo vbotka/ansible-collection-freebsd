@@ -2,70 +2,1735 @@
 PLAY [Create Ansible client templates.] ****************************************
 
 TASK [Setup: Get iocage list of templates.] ************************************
-ok: [iocage_01]
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [Setup: Set dictionary iocage_templates] **********************************
-ok: [iocage_01]
-ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Setup: Display iocage_templates debug=true] ******************************
+ok: [iocage_04] => 
+    iocage_templates: {}
+
+TASK [Create: Debug copy pkglist files debug2=true] ****************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        msg: All items skipped
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            false_condition: item.value.pkglist | d('') | length > 0
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            skip_reason: Conditional result was False
+            skipped: true
+        skipped: true
 
 TASK [Create: Create templates.] ***********************************************
-changed: [iocage_01] => (item=ansible_client 13.5-RELEASE)
-changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
+changed: [iocage_04] => (item=ansible_client_pull 14.3-RELEASE)
+
+TASK [Create: Debug create templates debug2=true] ******************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_facts:
+                iocage_jails:
+                    ansible_client_pull:
+                        basejail: 'no'
+                        boot: 'off'
+                        ip4: DHCP (not running)
+                        ip6: '-'
+                        jid: None
+                        name: ansible_client_pull
+                        properties:
+                            CONFIG_VERSION: '33'
+                            allow_chflags: '0'
+                            allow_mlock: '0'
+                            allow_mount: '0'
+                            allow_mount_devfs: '0'
+                            allow_mount_fdescfs: '0'
+                            allow_mount_fusefs: '0'
+                            allow_mount_linprocfs: '0'
+                            allow_mount_linsysfs: '0'
+                            allow_mount_nullfs: '0'
+                            allow_mount_procfs: '0'
+                            allow_mount_tmpfs: '0'
+                            allow_mount_zfs: '0'
+                            allow_nfsd: '0'
+                            allow_quotas: '0'
+                            allow_raw_sockets: '0'
+                            allow_set_hostname: '1'
+                            allow_socket_af: '0'
+                            allow_sysvipc: '0'
+                            allow_tun: '0'
+                            allow_vmm: '0'
+                            assign_localhost: '0'
+                            available: readonly
+                            basejail: '0'
+                            boot: '0'
+                            bpf: '1'
+                            children_max: '0'
+                            cloned_release: 14.3-RELEASE
+                            comment: none
+                            compression: 'on'
+                            compressratio: readonly
+                            coredumpsize: 'off'
+                            count: '1'
+                            cpuset: 'off'
+                            cputime: 'off'
+                            datasize: 'off'
+                            dedup: 'off'
+                            defaultrouter: auto
+                            defaultrouter6: auto
+                            depends: none
+                            devfs_ruleset: '4'
+                            dhcp: '1'
+                            enforce_statfs: '2'
+                            exec_clean: '1'
+                            exec_created: /usr/bin/true
+                            exec_fib: '0'
+                            exec_jail_user: root
+                            exec_poststart: /usr/bin/true
+                            exec_poststop: /usr/bin/true
+                            exec_prestart: /usr/bin/true
+                            exec_prestop: /usr/bin/true
+                            exec_start: /bin/sh /etc/rc
+                            exec_stop: /bin/sh /etc/rc.shutdown
+                            exec_system_jail_user: '0'
+                            exec_system_user: root
+                            exec_timeout: '60'
+                            host_domainname: none
+                            host_hostname: ansible-client-pull
+                            host_hostuuid: ansible_client_pull
+                            host_time: '1'
+                            hostid: d6add9ad-8b6e-4316-a226-345a60532b41
+                            hostid_strict_check: '0'
+                            interfaces: vnet0:bridge0
+                            ip4: new
+                            ip4_addr: none
+                            ip4_saddrsel: '1'
+                            ip6: new
+                            ip6_addr: none
+                            ip6_saddrsel: '1'
+                            ip_hostname: '0'
+                            jail_zfs: '0'
+                            jail_zfs_dataset: iocage/jails/ansible_client_pull/data
+                            jail_zfs_mountpoint: none
+                            last_started: none
+                            localhost_ip: none
+                            login_flags: -f root
+                            mac_prefix: 021b21
+                            maxproc: 'off'
+                            memorylocked: 'off'
+                            memoryuse: 'off'
+                            min_dyn_devfs_ruleset: '1000'
+                            mount_devfs: '1'
+                            mount_fdescfs: '1'
+                            mount_linprocfs: '0'
+                            mount_procfs: '0'
+                            mountpoint: readonly
+                            msgqqueued: 'off'
+                            msgqsize: 'off'
+                            nat: '0'
+                            nat_backend: ipfw
+                            nat_forwards: none
+                            nat_interface: none
+                            nat_prefix: '172.16'
+                            nmsgq: 'off'
+                            notes: none
+                            nsem: 'off'
+                            nsemop: 'off'
+                            nshm: 'off'
+                            nthr: 'off'
+                            openfiles: 'off'
+                            origin: readonly
+                            owner: root
+                            pcpu: 'off'
+                            plugin_name: none
+                            plugin_repository: none
+                            priority: '99'
+                            pseudoterminals: 'off'
+                            quota: none
+                            readbps: 'off'
+                            readiops: 'off'
+                            release: 14.3-RELEASE-p1
+                            reservation: none
+                            resolver: /etc/resolv.conf
+                            rlimits: 'off'
+                            rtsold: '0'
+                            securelevel: '2'
+                            shmsize: 'off'
+                            stacksize: 'off'
+                            state: down
+                            stop_timeout: '30'
+                            swapuse: 'off'
+                            sync_state: none
+                            sync_target: none
+                            sync_tgt_zpool: none
+                            sysvmsg: new
+                            sysvsem: new
+                            sysvshm: new
+                            template: '0'
+                            type: jail
+                            used: readonly
+                            vmemoryuse: 'off'
+                            vnet: '1'
+                            vnet0_mac: none
+                            vnet0_mtu: auto
+                            vnet1_mac: none
+                            vnet1_mtu: auto
+                            vnet2_mac: none
+                            vnet2_mtu: auto
+                            vnet3_mac: none
+                            vnet3_mtu: auto
+                            vnet_default_interface: none
+                            vnet_default_mtu: '1500'
+                            vnet_interfaces: none
+                            wallclock: 'off'
+                            writebps: 'off'
+                            writeiops: 'off'
+                        release: 14.3-RELEASE-p1
+                        state: down
+                        template: '-'
+                        type: jail
+                iocage_plugins: {}
+                iocage_releases:
+                - 14.3-RELEASE
+                iocage_states:
+                - absent
+                - basejail
+                - cloned
+                - exec
+                - facts
+                - fetched
+                - get
+                - pkg
+                - present
+                - restarted
+                - set
+                - started
+                - stopped
+                - template
+                - thickjail
+                iocage_templates: {}
+            ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    args: ''
+                    bupdate: false
+                    clone_from: null
+                    cmd: null
+                    components: null
+                    name: ansible_client_pull
+                    pkglist: null
+                    plugin: null
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    release: 14.3-RELEASE
+                    state: present
+                    user: root
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            msg: |-
+                'Jail was created.
+                /usr/local/bin/iocage create -n ansible_client_pull -r 14.3-RELEASE bpf=1 dhcp=1 vnet=1
+                ansible_client_pull successfully created!
+            stderr: ''
+            stderr_lines: []
+            stdout: ''
+            stdout_lines: []
+        skipped: false
+
+TASK [Start: Display iocage_jails debug=true] **********************************
+ok: [iocage_04] => 
+    iocage_jails:
+        ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible_client_pull
+            properties:
+                CONFIG_VERSION: '33'
+                allow_chflags: '0'
+                allow_mlock: '0'
+                allow_mount: '0'
+                allow_mount_devfs: '0'
+                allow_mount_fdescfs: '0'
+                allow_mount_fusefs: '0'
+                allow_mount_linprocfs: '0'
+                allow_mount_linsysfs: '0'
+                allow_mount_nullfs: '0'
+                allow_mount_procfs: '0'
+                allow_mount_tmpfs: '0'
+                allow_mount_zfs: '0'
+                allow_nfsd: '0'
+                allow_quotas: '0'
+                allow_raw_sockets: '0'
+                allow_set_hostname: '1'
+                allow_socket_af: '0'
+                allow_sysvipc: '0'
+                allow_tun: '0'
+                allow_vmm: '0'
+                assign_localhost: '0'
+                available: readonly
+                basejail: '0'
+                boot: '0'
+                bpf: '1'
+                children_max: '0'
+                cloned_release: 14.3-RELEASE
+                comment: none
+                compression: 'on'
+                compressratio: readonly
+                coredumpsize: 'off'
+                count: '1'
+                cpuset: 'off'
+                cputime: 'off'
+                datasize: 'off'
+                dedup: 'off'
+                defaultrouter: auto
+                defaultrouter6: auto
+                depends: none
+                devfs_ruleset: '4'
+                dhcp: '1'
+                enforce_statfs: '2'
+                exec_clean: '1'
+                exec_created: /usr/bin/true
+                exec_fib: '0'
+                exec_jail_user: root
+                exec_poststart: /usr/bin/true
+                exec_poststop: /usr/bin/true
+                exec_prestart: /usr/bin/true
+                exec_prestop: /usr/bin/true
+                exec_start: /bin/sh /etc/rc
+                exec_stop: /bin/sh /etc/rc.shutdown
+                exec_system_jail_user: '0'
+                exec_system_user: root
+                exec_timeout: '60'
+                host_domainname: none
+                host_hostname: ansible-client-pull
+                host_hostuuid: ansible_client_pull
+                host_time: '1'
+                hostid: d6add9ad-8b6e-4316-a226-345a60532b41
+                hostid_strict_check: '0'
+                interfaces: vnet0:bridge0
+                ip4: new
+                ip4_addr: none
+                ip4_saddrsel: '1'
+                ip6: new
+                ip6_addr: none
+                ip6_saddrsel: '1'
+                ip_hostname: '0'
+                jail_zfs: '0'
+                jail_zfs_dataset: iocage/jails/ansible_client_pull/data
+                jail_zfs_mountpoint: none
+                last_started: none
+                localhost_ip: none
+                login_flags: -f root
+                mac_prefix: 021b21
+                maxproc: 'off'
+                memorylocked: 'off'
+                memoryuse: 'off'
+                min_dyn_devfs_ruleset: '1000'
+                mount_devfs: '1'
+                mount_fdescfs: '1'
+                mount_linprocfs: '0'
+                mount_procfs: '0'
+                mountpoint: readonly
+                msgqqueued: 'off'
+                msgqsize: 'off'
+                nat: '0'
+                nat_backend: ipfw
+                nat_forwards: none
+                nat_interface: none
+                nat_prefix: '172.16'
+                nmsgq: 'off'
+                notes: none
+                nsem: 'off'
+                nsemop: 'off'
+                nshm: 'off'
+                nthr: 'off'
+                openfiles: 'off'
+                origin: readonly
+                owner: root
+                pcpu: 'off'
+                plugin_name: none
+                plugin_repository: none
+                priority: '99'
+                pseudoterminals: 'off'
+                quota: none
+                readbps: 'off'
+                readiops: 'off'
+                release: 14.3-RELEASE-p1
+                reservation: none
+                resolver: /etc/resolv.conf
+                rlimits: 'off'
+                rtsold: '0'
+                securelevel: '2'
+                shmsize: 'off'
+                stacksize: 'off'
+                state: down
+                stop_timeout: '30'
+                swapuse: 'off'
+                sync_state: none
+                sync_target: none
+                sync_tgt_zpool: none
+                sysvmsg: new
+                sysvsem: new
+                sysvshm: new
+                template: '0'
+                type: jail
+                used: readonly
+                vmemoryuse: 'off'
+                vnet: '1'
+                vnet0_mac: none
+                vnet0_mtu: auto
+                vnet1_mac: none
+                vnet1_mtu: auto
+                vnet2_mac: none
+                vnet2_mtu: auto
+                vnet3_mac: none
+                vnet3_mtu: auto
+                vnet_default_interface: none
+                vnet_default_mtu: '1500'
+                vnet_interfaces: none
+                wallclock: 'off'
+                writebps: 'off'
+                writeiops: 'off'
+            release: 14.3-RELEASE-p1
+            state: down
+            template: '-'
+            type: jail
 
 TASK [Start: Start jails.] *****************************************************
-ok: [iocage_02]
-ok: [iocage_01]
+ok: [iocage_04]
+
+TASK [Start: Debug start jails debug2=true] ************************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        cmd:
+        - iocage
+        - start
+        - ansible_client_pull
+        delta: '0:00:07.596518'
+        end: '2025-07-26 20:23:45.192474'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2025-07-26 20:23:37.595956'
+        stderr: No default gateway found for ipv6.
+        stderr_lines:
+        - No default gateway found for ipv6.
+        stdout: |-
+            * Starting ansible_client_pull
+              + Started OK
+              + Using devfs_ruleset: 1000 (iocage generated default)
+              + Configuring VNET OK
+              + Using IP options: vnet
+              + Starting services OK
+              + Executing poststart OK
+              + DHCP Address: 10.1.0.193/24
+        stdout_lines:
+        - '* Starting ansible_client_pull'
+        - '  + Started OK'
+        - '  + Using devfs_ruleset: 1000 (iocage generated default)'
+        - '  + Configuring VNET OK'
+        - '  + Using IP options: vnet'
+        - '  + Starting services OK'
+        - '  + Executing poststart OK'
+        - '  + DHCP Address: 10.1.0.193/24'
 
 TASK [Pkg: Get iocage list of jails.] ******************************************
-ok: [iocage_01]
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [Pkg: Set dictionary iocage_jails] ****************************************
-ok: [iocage_01]
-ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Pkg: Display iocage_jails debug=true] ************************************
+ok: [iocage_04] => 
+    iocage_jails:
+        ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: 10.1.0.193
+            ip4_dict:
+                ip4:
+                -   ifc: epair0b
+                    ip: 10.1.0.193
+                    mask: '-'
+                msg: ''
+            ip6: '-'
+            jid: '2'
+            release: 14.3-RELEASE-p1
+            state: up
+            template: '-'
+            type: jail
 
 TASK [Pkg: Install packages.] **************************************************
-changed: [iocage_02] => (item=ansible_client)
-changed: [iocage_01] => (item=ansible_client)
+changed: [iocage_04] => (item=ansible_client_pull)
+
+TASK [Pkg: Debug install packages debug2=true] *********************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    annotation: null
+                    autoremove: false
+                    cached: false
+                    chroot: null
+                    ignore_osver: false
+                    jail: '2'
+                    name:
+                    - python311
+                    - py311-ansible
+                    - sudo
+                    pkgsite: null
+                    rootdir: null
+                    state: present
+                    use_globs: false
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            msg: installed 3 packages
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                Updating FreeBSD repository catalogue...
+                [ansible-client-pull] Fetching meta.conf: . done
+                [ansible-client-pull] Fetching data.pkg: .......... done
+                Processing entries: .......... done
+                FreeBSD repository update completed. 35647 packages processed.
+                Updating FreeBSD-kmods repository catalogue...
+                [ansible-client-pull] Fetching meta.conf: . done
+                [ansible-client-pull] Fetching data.pkg: .. done
+                Processing entries: .......... done
+                FreeBSD-kmods repository update completed. 208 packages processed.
+                All repositories are up to date.
+                The following 22 package(s) will be affected (of 0 checked):
+
+                New packages to be INSTALLED:
+                        gettext-runtime: 0.23.1 [FreeBSD]
+                        indexinfo: 0.3.1_1 [FreeBSD]
+                        libffi: 3.5.1 [FreeBSD]
+                        libyaml: 0.2.5 [FreeBSD]
+                        mpdecimal: 4.0.1 [FreeBSD]
+                        py311-Babel: 2.17.0_1 [FreeBSD]
+                        py311-Jinja2: 3.1.6 [FreeBSD]
+                        py311-ansible: 11.7.0 [FreeBSD]
+                        py311-ansible-core: 2.18.6 [FreeBSD]
+                        py311-cffi: 1.17.1 [FreeBSD]
+                        py311-cryptography: 44.0.3_1,1 [FreeBSD]
+                        py311-importlib-resources: 6.5.2 [FreeBSD]
+                        py311-markupsafe: 3.0.2 [FreeBSD]
+                        py311-packaging: 25.0 [FreeBSD]
+                        py311-passlib: 1.7.4_1 [FreeBSD]
+                        py311-pycparser: 2.22 [FreeBSD]
+                        py311-pyyaml: 6.0.1_1 [FreeBSD]
+                        py311-resolvelib: 0.8.1_2 [FreeBSD]
+                        py311-toml: 0.10.2_1 [FreeBSD]
+                        python311: 3.11.13 [FreeBSD]
+                        readline: 8.2.13_2 [FreeBSD]
+                        sudo: 1.9.17p1 [FreeBSD]
+
+                Number of packages to be installed: 22
+
+                The process will require 844 MiB more space.
+                83 MiB to be downloaded.
+                [ansible-client-pull] [1/22] Fetching indexinfo-0.3.1_1.pkg: . done
+                [ansible-client-pull] [2/22] Fetching py311-resolvelib-0.8.1_2.pkg: .. done
+                [ansible-client-pull] [3/22] Fetching mpdecimal-4.0.1.pkg: .......... done
+                [ansible-client-pull] [4/22] Fetching py311-cryptography-44.0.3_1,1.pkg: .......... done
+                [ansible-client-pull] [5/22] Fetching py311-cffi-1.17.1.pkg: .......... done
+                [ansible-client-pull] [6/22] Fetching py311-ansible-11.7.0.pkg: .......... done
+                [ansible-client-pull] [7/22] Fetching py311-packaging-25.0.pkg: ......... done
+                [ansible-client-pull] [8/22] Fetching py311-passlib-1.7.4_1.pkg: .......... done
+                [ansible-client-pull] [9/22] Fetching py311-pycparser-2.22.pkg: .......... done
+                [ansible-client-pull] [10/22] Fetching libyaml-0.2.5.pkg: ..... done
+                [ansible-client-pull] [11/22] Fetching py311-Babel-2.17.0_1.pkg: .......... done
+                [ansible-client-pull] [12/22] Fetching py311-importlib-resources-6.5.2.pkg: ..... done
+                [ansible-client-pull] [13/22] Fetching py311-ansible-core-2.18.6.pkg: .......... done
+                [ansible-client-pull] [14/22] Fetching py311-markupsafe-3.0.2.pkg: .. done
+                [ansible-client-pull] [15/22] Fetching libffi-3.5.1.pkg: ... done
+                [ansible-client-pull] [16/22] Fetching readline-8.2.13_2.pkg: .......... done
+                [ansible-client-pull] [17/22] Fetching sudo-1.9.17p1.pkg: .......... done
+                [ansible-client-pull] [18/22] Fetching gettext-runtime-0.23.1.pkg: .......... done
+                [ansible-client-pull] [19/22] Fetching py311-toml-0.10.2_1.pkg: ... done
+                [ansible-client-pull] [20/22] Fetching py311-pyyaml-6.0.1_1.pkg: . done
+                [ansible-client-pull] [21/22] Fetching py311-Jinja2-3.1.6.pkg: .......... done
+                [ansible-client-pull] [22/22] Fetching python311-3.11.13.pkg: .......... done
+                Checking integrity... done (0 conflicting)
+                [ansible-client-pull] [1/22] Installing indexinfo-0.3.1_1...
+                [ansible-client-pull] [1/22] Extracting indexinfo-0.3.1_1: .... done
+                [ansible-client-pull] [2/22] Installing gettext-runtime-0.23.1...
+                [ansible-client-pull] [2/22] Extracting gettext-runtime-0.23.1: .......... done
+                [ansible-client-pull] [3/22] Installing libffi-3.5.1...
+                [ansible-client-pull] [3/22] Extracting libffi-3.5.1: .......... done
+                [ansible-client-pull] [4/22] Installing libyaml-0.2.5...
+                [ansible-client-pull] [4/22] Extracting libyaml-0.2.5: ......... done
+                [ansible-client-pull] [5/22] Installing mpdecimal-4.0.1...
+                [ansible-client-pull] [5/22] Extracting mpdecimal-4.0.1: .......... done
+                [ansible-client-pull] [6/22] Installing readline-8.2.13_2...
+                [ansible-client-pull] [6/22] Extracting readline-8.2.13_2: .......... done
+                [ansible-client-pull] [7/22] Installing python311-3.11.13...
+                [ansible-client-pull] [7/22] Extracting python311-3.11.13: .......... done
+                [ansible-client-pull] [8/22] Installing py311-Babel-2.17.0_1...
+                [ansible-client-pull] [8/22] Extracting py311-Babel-2.17.0_1: .......... done
+                [ansible-client-pull] [9/22] Installing py311-importlib-resources-6.5.2...
+                [ansible-client-pull] [9/22] Extracting py311-importlib-resources-6.5.2: .......... done
+                [ansible-client-pull] [10/22] Installing py311-markupsafe-3.0.2...
+                [ansible-client-pull] [10/22] Extracting py311-markupsafe-3.0.2: .......... done
+                [ansible-client-pull] [11/22] Installing py311-Jinja2-3.1.6...
+                [ansible-client-pull] [11/22] Extracting py311-Jinja2-3.1.6: .......... done
+                [ansible-client-pull] [12/22] Installing py311-packaging-25.0...
+                [ansible-client-pull] [12/22] Extracting py311-packaging-25.0: .......... done
+                [ansible-client-pull] [13/22] Installing py311-passlib-1.7.4_1...
+                [ansible-client-pull] [13/22] Extracting py311-passlib-1.7.4_1: .......... done
+                [ansible-client-pull] [14/22] Installing py311-pycparser-2.22...
+                [ansible-client-pull] [14/22] Extracting py311-pycparser-2.22: .......... done
+                [ansible-client-pull] [15/22] Installing py311-cffi-1.17.1...
+                [ansible-client-pull] [15/22] Extracting py311-cffi-1.17.1: .......... done
+                [ansible-client-pull] [16/22] Installing py311-cryptography-44.0.3_1,1...
+                [ansible-client-pull] [16/22] Extracting py311-cryptography-44.0.3_1,1: .......... done
+                [ansible-client-pull] [17/22] Installing py311-pyyaml-6.0.1_1...
+                [ansible-client-pull] [17/22] Extracting py311-pyyaml-6.0.1_1: .......... done
+                [ansible-client-pull] [18/22] Installing py311-resolvelib-0.8.1_2...
+                [ansible-client-pull] [18/22] Extracting py311-resolvelib-0.8.1_2: .......... done
+                [ansible-client-pull] [19/22] Installing py311-toml-0.10.2_1...
+                [ansible-client-pull] [19/22] Extracting py311-toml-0.10.2_1: .......... done
+                [ansible-client-pull] [20/22] Installing py311-ansible-core-2.18.6...
+                [ansible-client-pull] [20/22] Extracting py311-ansible-core-2.18.6: .......... done
+                [ansible-client-pull] [21/22] Installing py311-ansible-11.7.0...
+                [ansible-client-pull] [21/22] Extracting py311-ansible-11.7.0: .......... done
+                [ansible-client-pull] [22/22] Installing sudo-1.9.17p1...
+                [ansible-client-pull] [22/22] Extracting sudo-1.9.17p1: .......... done
+                =====
+                Message from python311-3.11.13:
+
+                --
+                Note that some standard Python modules are provided as separate ports
+                as they require additional dependencies. They are available as:
+
+                py311-gdbm       databases/py-gdbm@py311
+                py311-sqlite3    databases/py-sqlite3@py311
+                py311-tkinter    x11-toolkits/py-tkinter@py311
+            stdout_lines:
+            - Updating FreeBSD repository catalogue...
+            - '[ansible-client-pull] Fetching meta.conf: . done'
+            - '[ansible-client-pull] Fetching data.pkg: .......... done'
+            - 'Processing entries: .......... done'
+            - FreeBSD repository update completed. 35647 packages processed.
+            - Updating FreeBSD-kmods repository catalogue...
+            - '[ansible-client-pull] Fetching meta.conf: . done'
+            - '[ansible-client-pull] Fetching data.pkg: .. done'
+            - 'Processing entries: .......... done'
+            - FreeBSD-kmods repository update completed. 208 packages processed.
+            - All repositories are up to date.
+            - 'The following 22 package(s) will be affected (of 0 checked):'
+            - ''
+            - 'New packages to be INSTALLED:'
+            - "\tgettext-runtime: 0.23.1 [FreeBSD]"
+            - "\tindexinfo: 0.3.1_1 [FreeBSD]"
+            - "\tlibffi: 3.5.1 [FreeBSD]"
+            - "\tlibyaml: 0.2.5 [FreeBSD]"
+            - "\tmpdecimal: 4.0.1 [FreeBSD]"
+            - "\tpy311-Babel: 2.17.0_1 [FreeBSD]"
+            - "\tpy311-Jinja2: 3.1.6 [FreeBSD]"
+            - "\tpy311-ansible: 11.7.0 [FreeBSD]"
+            - "\tpy311-ansible-core: 2.18.6 [FreeBSD]"
+            - "\tpy311-cffi: 1.17.1 [FreeBSD]"
+            - "\tpy311-cryptography: 44.0.3_1,1 [FreeBSD]"
+            - "\tpy311-importlib-resources: 6.5.2 [FreeBSD]"
+            - "\tpy311-markupsafe: 3.0.2 [FreeBSD]"
+            - "\tpy311-packaging: 25.0 [FreeBSD]"
+            - "\tpy311-passlib: 1.7.4_1 [FreeBSD]"
+            - "\tpy311-pycparser: 2.22 [FreeBSD]"
+            - "\tpy311-pyyaml: 6.0.1_1 [FreeBSD]"
+            - "\tpy311-resolvelib: 0.8.1_2 [FreeBSD]"
+            - "\tpy311-toml: 0.10.2_1 [FreeBSD]"
+            - "\tpython311: 3.11.13 [FreeBSD]"
+            - "\treadline: 8.2.13_2 [FreeBSD]"
+            - "\tsudo: 1.9.17p1 [FreeBSD]"
+            - ''
+            - 'Number of packages to be installed: 22'
+            - ''
+            - The process will require 844 MiB more space.
+            - 83 MiB to be downloaded.
+            - '[ansible-client-pull] [1/22] Fetching indexinfo-0.3.1_1.pkg: . done'
+            - '[ansible-client-pull] [2/22] Fetching py311-resolvelib-0.8.1_2.pkg: ..
+                done'
+            - '[ansible-client-pull] [3/22] Fetching mpdecimal-4.0.1.pkg: .......... done'
+            - '[ansible-client-pull] [4/22] Fetching py311-cryptography-44.0.3_1,1.pkg:
+                .......... done'
+            - '[ansible-client-pull] [5/22] Fetching py311-cffi-1.17.1.pkg: ..........
+                done'
+            - '[ansible-client-pull] [6/22] Fetching py311-ansible-11.7.0.pkg: ..........
+                done'
+            - '[ansible-client-pull] [7/22] Fetching py311-packaging-25.0.pkg: .........
+                done'
+            - '[ansible-client-pull] [8/22] Fetching py311-passlib-1.7.4_1.pkg: ..........
+                done'
+            - '[ansible-client-pull] [9/22] Fetching py311-pycparser-2.22.pkg: ..........
+                done'
+            - '[ansible-client-pull] [10/22] Fetching libyaml-0.2.5.pkg: ..... done'
+            - '[ansible-client-pull] [11/22] Fetching py311-Babel-2.17.0_1.pkg: ..........
+                done'
+            - '[ansible-client-pull] [12/22] Fetching py311-importlib-resources-6.5.2.pkg:
+                ..... done'
+            - '[ansible-client-pull] [13/22] Fetching py311-ansible-core-2.18.6.pkg: ..........
+                done'
+            - '[ansible-client-pull] [14/22] Fetching py311-markupsafe-3.0.2.pkg: .. done'
+            - '[ansible-client-pull] [15/22] Fetching libffi-3.5.1.pkg: ... done'
+            - '[ansible-client-pull] [16/22] Fetching readline-8.2.13_2.pkg: ..........
+                done'
+            - '[ansible-client-pull] [17/22] Fetching sudo-1.9.17p1.pkg: .......... done'
+            - '[ansible-client-pull] [18/22] Fetching gettext-runtime-0.23.1.pkg: ..........
+                done'
+            - '[ansible-client-pull] [19/22] Fetching py311-toml-0.10.2_1.pkg: ... done'
+            - '[ansible-client-pull] [20/22] Fetching py311-pyyaml-6.0.1_1.pkg: . done'
+            - '[ansible-client-pull] [21/22] Fetching py311-Jinja2-3.1.6.pkg: ..........
+                done'
+            - '[ansible-client-pull] [22/22] Fetching python311-3.11.13.pkg: ..........
+                done'
+            - Checking integrity... done (0 conflicting)
+            - '[ansible-client-pull] [1/22] Installing indexinfo-0.3.1_1...'
+            - '[ansible-client-pull] [1/22] Extracting indexinfo-0.3.1_1: .... done'
+            - '[ansible-client-pull] [2/22] Installing gettext-runtime-0.23.1...'
+            - '[ansible-client-pull] [2/22] Extracting gettext-runtime-0.23.1: ..........
+                done'
+            - '[ansible-client-pull] [3/22] Installing libffi-3.5.1...'
+            - '[ansible-client-pull] [3/22] Extracting libffi-3.5.1: .......... done'
+            - '[ansible-client-pull] [4/22] Installing libyaml-0.2.5...'
+            - '[ansible-client-pull] [4/22] Extracting libyaml-0.2.5: ......... done'
+            - '[ansible-client-pull] [5/22] Installing mpdecimal-4.0.1...'
+            - '[ansible-client-pull] [5/22] Extracting mpdecimal-4.0.1: .......... done'
+            - '[ansible-client-pull] [6/22] Installing readline-8.2.13_2...'
+            - '[ansible-client-pull] [6/22] Extracting readline-8.2.13_2: .......... done'
+            - '[ansible-client-pull] [7/22] Installing python311-3.11.13...'
+            - '[ansible-client-pull] [7/22] Extracting python311-3.11.13: .......... done'
+            - '[ansible-client-pull] [8/22] Installing py311-Babel-2.17.0_1...'
+            - '[ansible-client-pull] [8/22] Extracting py311-Babel-2.17.0_1: ..........
+                done'
+            - '[ansible-client-pull] [9/22] Installing py311-importlib-resources-6.5.2...'
+            - '[ansible-client-pull] [9/22] Extracting py311-importlib-resources-6.5.2:
+                .......... done'
+            - '[ansible-client-pull] [10/22] Installing py311-markupsafe-3.0.2...'
+            - '[ansible-client-pull] [10/22] Extracting py311-markupsafe-3.0.2: ..........
+                done'
+            - '[ansible-client-pull] [11/22] Installing py311-Jinja2-3.1.6...'
+            - '[ansible-client-pull] [11/22] Extracting py311-Jinja2-3.1.6: ..........
+                done'
+            - '[ansible-client-pull] [12/22] Installing py311-packaging-25.0...'
+            - '[ansible-client-pull] [12/22] Extracting py311-packaging-25.0: ..........
+                done'
+            - '[ansible-client-pull] [13/22] Installing py311-passlib-1.7.4_1...'
+            - '[ansible-client-pull] [13/22] Extracting py311-passlib-1.7.4_1: ..........
+                done'
+            - '[ansible-client-pull] [14/22] Installing py311-pycparser-2.22...'
+            - '[ansible-client-pull] [14/22] Extracting py311-pycparser-2.22: ..........
+                done'
+            - '[ansible-client-pull] [15/22] Installing py311-cffi-1.17.1...'
+            - '[ansible-client-pull] [15/22] Extracting py311-cffi-1.17.1: ..........
+                done'
+            - '[ansible-client-pull] [16/22] Installing py311-cryptography-44.0.3_1,1...'
+            - '[ansible-client-pull] [16/22] Extracting py311-cryptography-44.0.3_1,1:
+                .......... done'
+            - '[ansible-client-pull] [17/22] Installing py311-pyyaml-6.0.1_1...'
+            - '[ansible-client-pull] [17/22] Extracting py311-pyyaml-6.0.1_1: ..........
+                done'
+            - '[ansible-client-pull] [18/22] Installing py311-resolvelib-0.8.1_2...'
+            - '[ansible-client-pull] [18/22] Extracting py311-resolvelib-0.8.1_2: ..........
+                done'
+            - '[ansible-client-pull] [19/22] Installing py311-toml-0.10.2_1...'
+            - '[ansible-client-pull] [19/22] Extracting py311-toml-0.10.2_1: ..........
+                done'
+            - '[ansible-client-pull] [20/22] Installing py311-ansible-core-2.18.6...'
+            - '[ansible-client-pull] [20/22] Extracting py311-ansible-core-2.18.6: ..........
+                done'
+            - '[ansible-client-pull] [21/22] Installing py311-ansible-11.7.0...'
+            - '[ansible-client-pull] [21/22] Extracting py311-ansible-11.7.0: ..........
+                done'
+            - '[ansible-client-pull] [22/22] Installing sudo-1.9.17p1...'
+            - '[ansible-client-pull] [22/22] Extracting sudo-1.9.17p1: .......... done'
+            - =====
+            - 'Message from python311-3.11.13:'
+            - ''
+            - --
+            - Note that some standard Python modules are provided as separate ports
+            - 'as they require additional dependencies. They are available as:'
+            - ''
+            - py311-gdbm       databases/py-gdbm@py311
+            - py311-sqlite3    databases/py-sqlite3@py311
+            - py311-tkinter    x11-toolkits/py-tkinter@py311
+        skipped: false
 
 TASK [User: Create user.] ******************************************************
-changed: [iocage_01] => (item=ansible_client admin)
-changed: [iocage_02] => (item=ansible_client admin)
+changed: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [User: Debug create user debug2=true] *************************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_facts:
+                iocage_jails:
+                    ansible_client_pull:
+                        basejail: 'no'
+                        boot: 'off'
+                        ip4: epair0b|10.1.0.193
+                        ip6: '-'
+                        jid: '2'
+                        name: ansible_client_pull
+                        properties:
+                            CONFIG_VERSION: '33'
+                            allow_chflags: '0'
+                            allow_mlock: '0'
+                            allow_mount: '0'
+                            allow_mount_devfs: '0'
+                            allow_mount_fdescfs: '0'
+                            allow_mount_fusefs: '0'
+                            allow_mount_linprocfs: '0'
+                            allow_mount_linsysfs: '0'
+                            allow_mount_nullfs: '0'
+                            allow_mount_procfs: '0'
+                            allow_mount_tmpfs: '0'
+                            allow_mount_zfs: '0'
+                            allow_nfsd: '0'
+                            allow_quotas: '0'
+                            allow_raw_sockets: '0'
+                            allow_set_hostname: '1'
+                            allow_socket_af: '0'
+                            allow_sysvipc: '0'
+                            allow_tun: '0'
+                            allow_vmm: '0'
+                            assign_localhost: '0'
+                            available: readonly
+                            basejail: '0'
+                            boot: '0'
+                            bpf: '1'
+                            children_max: '0'
+                            cloned_release: 14.3-RELEASE
+                            comment: none
+                            compression: 'on'
+                            compressratio: readonly
+                            coredumpsize: 'off'
+                            count: '1'
+                            cpuset: 'off'
+                            cputime: 'off'
+                            datasize: 'off'
+                            dedup: 'off'
+                            defaultrouter: auto
+                            defaultrouter6: auto
+                            depends: none
+                            devfs_ruleset: '4'
+                            dhcp: '1'
+                            enforce_statfs: '2'
+                            exec_clean: '1'
+                            exec_created: /usr/bin/true
+                            exec_fib: '0'
+                            exec_jail_user: root
+                            exec_poststart: /usr/bin/true
+                            exec_poststop: /usr/bin/true
+                            exec_prestart: /usr/bin/true
+                            exec_prestop: /usr/bin/true
+                            exec_start: /bin/sh /etc/rc
+                            exec_stop: /bin/sh /etc/rc.shutdown
+                            exec_system_jail_user: '0'
+                            exec_system_user: root
+                            exec_timeout: '60'
+                            host_domainname: none
+                            host_hostname: ansible-client-pull
+                            host_hostuuid: ansible_client_pull
+                            host_time: '1'
+                            hostid: d6add9ad-8b6e-4316-a226-345a60532b41
+                            hostid_strict_check: '0'
+                            interfaces: vnet0:bridge0
+                            ip4: new
+                            ip4_addr: none
+                            ip4_saddrsel: '1'
+                            ip6: new
+                            ip6_addr: none
+                            ip6_saddrsel: '1'
+                            ip_hostname: '0'
+                            jail_zfs: '0'
+                            jail_zfs_dataset: iocage/jails/ansible_client_pull/data
+                            jail_zfs_mountpoint: none
+                            last_started: '2025-07-26 18:23:45'
+                            localhost_ip: none
+                            login_flags: -f root
+                            mac_prefix: 021b21
+                            maxproc: 'off'
+                            memorylocked: 'off'
+                            memoryuse: 'off'
+                            min_dyn_devfs_ruleset: '1000'
+                            mount_devfs: '1'
+                            mount_fdescfs: '1'
+                            mount_linprocfs: '0'
+                            mount_procfs: '0'
+                            mountpoint: readonly
+                            msgqqueued: 'off'
+                            msgqsize: 'off'
+                            nat: '0'
+                            nat_backend: ipfw
+                            nat_forwards: none
+                            nat_interface: none
+                            nat_prefix: '172.16'
+                            nmsgq: 'off'
+                            notes: none
+                            nsem: 'off'
+                            nsemop: 'off'
+                            nshm: 'off'
+                            nthr: 'off'
+                            openfiles: 'off'
+                            origin: readonly
+                            owner: root
+                            pcpu: 'off'
+                            plugin_name: none
+                            plugin_repository: none
+                            priority: '99'
+                            pseudoterminals: 'off'
+                            quota: none
+                            readbps: 'off'
+                            readiops: 'off'
+                            release: 14.3-RELEASE-p1
+                            reservation: none
+                            resolver: /etc/resolv.conf
+                            rlimits: 'off'
+                            rtsold: '0'
+                            securelevel: '2'
+                            shmsize: 'off'
+                            stacksize: 'off'
+                            state: up
+                            stop_timeout: '30'
+                            swapuse: 'off'
+                            sync_state: none
+                            sync_target: none
+                            sync_tgt_zpool: none
+                            sysvmsg: new
+                            sysvsem: new
+                            sysvshm: new
+                            template: '0'
+                            type: jail
+                            used: readonly
+                            vmemoryuse: 'off'
+                            vnet: '1'
+                            vnet0_mac: 021b217e220c 021b217e220d
+                            vnet0_mtu: auto
+                            vnet1_mac: none
+                            vnet1_mtu: auto
+                            vnet2_mac: none
+                            vnet2_mtu: auto
+                            vnet3_mac: none
+                            vnet3_mtu: auto
+                            vnet_default_interface: none
+                            vnet_default_mtu: '1500'
+                            vnet_interfaces: none
+                            wallclock: 'off'
+                            writebps: 'off'
+                            writeiops: 'off'
+                        release: 14.3-RELEASE-p1
+                        state: up
+                        template: '-'
+                        type: jail
+                iocage_plugins: {}
+                iocage_releases:
+                - 14.3-RELEASE
+                iocage_states:
+                - absent
+                - basejail
+                - cloned
+                - exec
+                - facts
+                - fetched
+                - get
+                - pkg
+                - present
+                - restarted
+                - set
+                - started
+                - stopped
+                - template
+                - thickjail
+                iocage_templates: {}
+            ansible_loop_var: item
+            changed: true
+            failed: false
+            failed_when_result: false
+            invocation:
+                module_args:
+                    args: ''
+                    bupdate: false
+                    clone_from: null
+                    cmd: pw useradd -n admin -s /bin/sh -m
+                    components: null
+                    name: ansible_client_pull
+                    pkglist: null
+                    plugin: null
+                    properties: null
+                    release: null
+                    state: exec
+                    user: root
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            msg: |-
+                Jail 'ansible_client_pull' executed command 'pw useradd -n admin -s /bin/sh -m'
+                /usr/local/bin/iocage exec -u root ansible_client_pull -- pw useradd -n admin -s /bin/sh -m
+                rc: 0
+                stdout:
+
+                stderr:
+            stderr: ''
+            stderr_lines: []
+            stdout: ''
+            stdout_lines: []
+        skipped: false
 
 TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_01] => (item=ansible_client admin)
-changed: [iocage_02] => (item=ansible_client admin)
+changed: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Pk: Debug configure public keys debug2=true] *****************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            comment: null
+            exclusive: true
+            failed: false
+            follow: false
+            gid: 1001
+            group: admin
+            invocation:
+                module_args:
+                    changed: true
+                    comment: null
+                    exclusive: true
+                    follow: false
+                    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcXESHFs9CzvRrhnlCq6CwMxmz1PJSlkCcio7MO1nc1DY0M+NgtgBZ6KkK6KOOytfLyiPWXVGgZV/ewl+E81aYjhF2SZnY77P9SM+NbsvJb5eGCYDMaJ3t0TI7FeLjDhaWCDLZX1s6BcLMX0q87RmdJ9Eas/evGuX40fTfhGoAPtEKi/zipbS8dc8GkwaLFvOQpHb0Xn8i+nsZ8BaKG8q8b2GYzPovmpFhXd+szZwaLqW2RH2x3H095Ct6jJxx7TnMIJvcPNrOvZI7H875XFaLhOJy9BK/aHi8tS3RtPubfXc/dfOe3GQYvuJcVSQ5jjjmcXasYYlxeOioHrkR/qjEbJsdvJTz3LfcVgEbGYhOMjtX5QU6+S093wuUPVgPG1ZmahsLIZQTdaHUMgWgusHtgKApHhG0cy60/usxv608hYOWhfnV6/eLrBF7iyke1LWMPRs860wJWwo8I+Dl/TinzB2s8C3bjfRS8ELs8ma1F/vmO45sL2GOCSL0VFCtFXkFMiqvvoPUrUP/AlrjFS8ARJqzrrr8+Nw73W0cMepbV+q6EX7j8wn6eL6T3x99lVAz2gdqTiBiGZ6Fl09/2DQQNGn/1WKo0fb9EKBXxLRITbTIIQXbQIUF5ZzJBYszPFRvomFlx7TiBXC6oTg2UevFSRGLzSH4VfYG830K+6Y6wQ==
+                        vlado@plana
+                    key_options: null
+                    keyfile: /iocage/iocage/jails/ansible_client_pull/root/home/admin/.ssh/authorized_keys
+                    manage_dir: true
+                    path: /iocage/iocage/jails/ansible_client_pull/root/home/admin/.ssh/authorized_keys
+                    state: present
+                    user: admin
+                    validate_certs: true
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcXESHFs9CzvRrhnlCq6CwMxmz1PJSlkCcio7MO1nc1DY0M+NgtgBZ6KkK6KOOytfLyiPWXVGgZV/ewl+E81aYjhF2SZnY77P9SM+NbsvJb5eGCYDMaJ3t0TI7FeLjDhaWCDLZX1s6BcLMX0q87RmdJ9Eas/evGuX40fTfhGoAPtEKi/zipbS8dc8GkwaLFvOQpHb0Xn8i+nsZ8BaKG8q8b2GYzPovmpFhXd+szZwaLqW2RH2x3H095Ct6jJxx7TnMIJvcPNrOvZI7H875XFaLhOJy9BK/aHi8tS3RtPubfXc/dfOe3GQYvuJcVSQ5jjjmcXasYYlxeOioHrkR/qjEbJsdvJTz3LfcVgEbGYhOMjtX5QU6+S093wuUPVgPG1ZmahsLIZQTdaHUMgWgusHtgKApHhG0cy60/usxv608hYOWhfnV6/eLrBF7iyke1LWMPRs860wJWwo8I+Dl/TinzB2s8C3bjfRS8ELs8ma1F/vmO45sL2GOCSL0VFCtFXkFMiqvvoPUrUP/AlrjFS8ARJqzrrr8+Nw73W0cMepbV+q6EX7j8wn6eL6T3x99lVAz2gdqTiBiGZ6Fl09/2DQQNGn/1WKo0fb9EKBXxLRITbTIIQXbQIUF5ZzJBYszPFRvomFlx7TiBXC6oTg2UevFSRGLzSH4VfYG830K+6Y6wQ==
+                vlado@plana
+            key_options: null
+            keyfile: /iocage/iocage/jails/ansible_client_pull/root/home/admin/.ssh/authorized_keys
+            manage_dir: true
+            mode: '0600'
+            owner: admin
+            path: /iocage/iocage/jails/ansible_client_pull/root/home/admin/.ssh/authorized_keys
+            size: 737
+            state: file
+            uid: 1001
+            user: admin
+            validate_certs: true
+        skipped: false
 
 TASK [Pk: Chown .ssh] **********************************************************
-ok: [iocage_01] => (item=ansible_client admin)
-ok: [iocage_02] => (item=ansible_client admin)
+ok: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Pk: Debug chown .ssh debug2=true] ****************************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        msg: All items completed
+        results:
+        -   ansible_facts:
+                iocage_jails:
+                    ansible_client_pull:
+                        basejail: 'no'
+                        boot: 'off'
+                        ip4: epair0b|10.1.0.193
+                        ip6: '-'
+                        jid: '2'
+                        name: ansible_client_pull
+                        properties:
+                            CONFIG_VERSION: '33'
+                            allow_chflags: '0'
+                            allow_mlock: '0'
+                            allow_mount: '0'
+                            allow_mount_devfs: '0'
+                            allow_mount_fdescfs: '0'
+                            allow_mount_fusefs: '0'
+                            allow_mount_linprocfs: '0'
+                            allow_mount_linsysfs: '0'
+                            allow_mount_nullfs: '0'
+                            allow_mount_procfs: '0'
+                            allow_mount_tmpfs: '0'
+                            allow_mount_zfs: '0'
+                            allow_nfsd: '0'
+                            allow_quotas: '0'
+                            allow_raw_sockets: '0'
+                            allow_set_hostname: '1'
+                            allow_socket_af: '0'
+                            allow_sysvipc: '0'
+                            allow_tun: '0'
+                            allow_vmm: '0'
+                            assign_localhost: '0'
+                            available: readonly
+                            basejail: '0'
+                            boot: '0'
+                            bpf: '1'
+                            children_max: '0'
+                            cloned_release: 14.3-RELEASE
+                            comment: none
+                            compression: 'on'
+                            compressratio: readonly
+                            coredumpsize: 'off'
+                            count: '1'
+                            cpuset: 'off'
+                            cputime: 'off'
+                            datasize: 'off'
+                            dedup: 'off'
+                            defaultrouter: auto
+                            defaultrouter6: auto
+                            depends: none
+                            devfs_ruleset: '4'
+                            dhcp: '1'
+                            enforce_statfs: '2'
+                            exec_clean: '1'
+                            exec_created: /usr/bin/true
+                            exec_fib: '0'
+                            exec_jail_user: root
+                            exec_poststart: /usr/bin/true
+                            exec_poststop: /usr/bin/true
+                            exec_prestart: /usr/bin/true
+                            exec_prestop: /usr/bin/true
+                            exec_start: /bin/sh /etc/rc
+                            exec_stop: /bin/sh /etc/rc.shutdown
+                            exec_system_jail_user: '0'
+                            exec_system_user: root
+                            exec_timeout: '60'
+                            host_domainname: none
+                            host_hostname: ansible-client-pull
+                            host_hostuuid: ansible_client_pull
+                            host_time: '1'
+                            hostid: d6add9ad-8b6e-4316-a226-345a60532b41
+                            hostid_strict_check: '0'
+                            interfaces: vnet0:bridge0
+                            ip4: new
+                            ip4_addr: none
+                            ip4_saddrsel: '1'
+                            ip6: new
+                            ip6_addr: none
+                            ip6_saddrsel: '1'
+                            ip_hostname: '0'
+                            jail_zfs: '0'
+                            jail_zfs_dataset: iocage/jails/ansible_client_pull/data
+                            jail_zfs_mountpoint: none
+                            last_started: '2025-07-26 18:23:45'
+                            localhost_ip: none
+                            login_flags: -f root
+                            mac_prefix: 021b21
+                            maxproc: 'off'
+                            memorylocked: 'off'
+                            memoryuse: 'off'
+                            min_dyn_devfs_ruleset: '1000'
+                            mount_devfs: '1'
+                            mount_fdescfs: '1'
+                            mount_linprocfs: '0'
+                            mount_procfs: '0'
+                            mountpoint: readonly
+                            msgqqueued: 'off'
+                            msgqsize: 'off'
+                            nat: '0'
+                            nat_backend: ipfw
+                            nat_forwards: none
+                            nat_interface: none
+                            nat_prefix: '172.16'
+                            nmsgq: 'off'
+                            notes: none
+                            nsem: 'off'
+                            nsemop: 'off'
+                            nshm: 'off'
+                            nthr: 'off'
+                            openfiles: 'off'
+                            origin: readonly
+                            owner: root
+                            pcpu: 'off'
+                            plugin_name: none
+                            plugin_repository: none
+                            priority: '99'
+                            pseudoterminals: 'off'
+                            quota: none
+                            readbps: 'off'
+                            readiops: 'off'
+                            release: 14.3-RELEASE-p1
+                            reservation: none
+                            resolver: /etc/resolv.conf
+                            rlimits: 'off'
+                            rtsold: '0'
+                            securelevel: '2'
+                            shmsize: 'off'
+                            stacksize: 'off'
+                            state: up
+                            stop_timeout: '30'
+                            swapuse: 'off'
+                            sync_state: none
+                            sync_target: none
+                            sync_tgt_zpool: none
+                            sysvmsg: new
+                            sysvsem: new
+                            sysvshm: new
+                            template: '0'
+                            type: jail
+                            used: readonly
+                            vmemoryuse: 'off'
+                            vnet: '1'
+                            vnet0_mac: 021b217e220c 021b217e220d
+                            vnet0_mtu: auto
+                            vnet1_mac: none
+                            vnet1_mtu: auto
+                            vnet2_mac: none
+                            vnet2_mtu: auto
+                            vnet3_mac: none
+                            vnet3_mtu: auto
+                            vnet_default_interface: none
+                            vnet_default_mtu: '1500'
+                            vnet_interfaces: none
+                            wallclock: 'off'
+                            writebps: 'off'
+                            writeiops: 'off'
+                        release: 14.3-RELEASE-p1
+                        state: up
+                        template: '-'
+                        type: jail
+                iocage_plugins: {}
+                iocage_releases:
+                - 14.3-RELEASE
+                iocage_states:
+                - absent
+                - basejail
+                - cloned
+                - exec
+                - facts
+                - fetched
+                - get
+                - pkg
+                - present
+                - restarted
+                - set
+                - started
+                - stopped
+                - template
+                - thickjail
+                iocage_templates: {}
+            ansible_loop_var: item
+            changed: false
+            failed: false
+            invocation:
+                module_args:
+                    args: ''
+                    bupdate: false
+                    clone_from: null
+                    cmd: chown -R admin:admin /home/admin/.ssh
+                    components: null
+                    name: ansible_client_pull
+                    pkglist: null
+                    plugin: null
+                    properties: null
+                    release: null
+                    state: exec
+                    user: root
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            msg: |-
+                Jail 'ansible_client_pull' executed command 'chown -R admin:admin /home/admin/.ssh'
+                /usr/local/bin/iocage exec -u root ansible_client_pull -- chown -R admin:admin /home/admin/.ssh
+                rc: 0
+                stdout:
+
+                stderr:
+            stderr: ''
+            stderr_lines: []
+            stdout: ''
+            stdout_lines: []
+        skipped: false
 
 TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_01] => (item=ansible_client admin)
-changed: [iocage_02] => (item=ansible_client admin)
+changed: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Sudo: Debug configure sudo debug2=true] **********************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            backup: /iocage/iocage/jails/ansible_client_pull/root/usr/local/etc/sudoers.5375.2025-07-26@20:24:22~
+            changed: true
+            diff:
+            -   after: ''
+                after_header: /iocage/iocage/jails/ansible_client_pull/root/usr/local/etc/sudoers
+                    (content)
+                before: ''
+                before_header: /iocage/iocage/jails/ansible_client_pull/root/usr/local/etc/sudoers
+                    (content)
+            -   after_header: /iocage/iocage/jails/ansible_client_pull/root/usr/local/etc/sudoers
+                    (file attributes)
+                before_header: /iocage/iocage/jails/ansible_client_pull/root/usr/local/etc/sudoers
+                    (file attributes)
+            failed: false
+            invocation:
+                module_args:
+                    attributes: null
+                    backrefs: false
+                    backup: true
+                    create: false
+                    firstmatch: false
+                    group: null
+                    insertafter: null
+                    insertbefore: null
+                    line: 'admin ALL=(ALL) NOPASSWD: ALL'
+                    mode: null
+                    owner: null
+                    path: /iocage/iocage/jails/ansible_client_pull/root/usr/local/etc/sudoers
+                    regexp: null
+                    search_string: null
+                    selevel: null
+                    serole: null
+                    setype: null
+                    seuser: null
+                    state: present
+                    unsafe_writes: false
+                    validate: null
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            msg: line added
+        skipped: false
 
 TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_02] => (item=ansible_client dhclient-enter-hooks)
-changed: [iocage_01] => (item=ansible_client dhclient-enter-hooks)
-changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
-changed: [iocage_01] => (item=ansible_client dhclient-exit-hooks)
+changed: [iocage_04] => (item=ansible_client_pull dhclient-exit-hooks)
+
+TASK [Dhclient: Debug configure hooks debug2=true] *****************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            checksum: a6afbc9aebddcf5806e5496a90405ce830f8c89f
+            dest: /iocage/iocage/jails/ansible_client_pull/root/etc/dhclient-exit-hooks
+            diff: []
+            failed: false
+            gid: 0
+            group: wheel
+            invocation:
+                module_args:
+                    _original_basename: .x5vbdpbw
+                    attributes: null
+                    backup: true
+                    checksum: a6afbc9aebddcf5806e5496a90405ce830f8c89f
+                    content: null
+                    dest: /iocage/iocage/jails/ansible_client_pull/root/etc/dhclient-exit-hooks
+                    directory_mode: null
+                    follow: false
+                    force: true
+                    group: wheel
+                    local_follow: null
+                    mode: '0644'
+                    owner: root
+                    remote_src: null
+                    selevel: null
+                    serole: null
+                    setype: null
+                    seuser: null
+                    src: /home/admin/.ansible/tmp/ansible-tmp-1753554262.4954844-824030-253194128717896/.source
+                    unsafe_writes: false
+                    validate: null
+            item:
+            -   key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            -   key: dhclient-exit-hooks
+                value: |-
+                    case "$reason" in
+                        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                        ;;
+                    esac
+            md5sum: 79a3cbedb4cdc344cd52204b83f4774a
+            mode: '0644'
+            owner: root
+            size: 137
+            src: /home/admin/.ansible/tmp/ansible-tmp-1753554262.4954844-824030-253194128717896/.source
+            state: file
+            uid: 0
+        skipped: false
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_02] => (item=ansible_client iocage_enable "YES")
-changed: [iocage_01] => (item=ansible_client iocage_enable "YES")
-changed: [iocage_02] => (item=ansible_client sshd_enable "YES")
-changed: [iocage_01] => (item=ansible_client sshd_enable "YES")
+changed: [iocage_04] => (item=ansible_client_pull iocage_enable YES)
+changed: [iocage_04] => (item=ansible_client_pull sshd_enable YES)
+
+TASK [Rcconf: Debug configure /etc/rc.conf debug2=true] ************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    delim: ' '
+                    jail: null
+                    name: iocage_enable
+                    path: /iocage/iocage/jails/ansible_client_pull/root/etc/rc.conf
+                    state: present
+                    value: 'YES'
+            item:
+            -   key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            -   key: iocage_enable
+                value: 'YES'
+            value: 'YES'
+        -   ansible_loop_var: item
+            changed: true
+            failed: false
+            invocation:
+                module_args:
+                    delim: ' '
+                    jail: null
+                    name: sshd_enable
+                    path: /iocage/iocage/jails/ansible_client_pull/root/etc/rc.conf
+                    state: present
+                    value: 'YES'
+            item:
+            -   key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            -   key: sshd_enable
+                value: 'YES'
+            value: 'YES'
+        skipped: false
+
+TASK [Stop: Display iocage_jails debug=true] ***********************************
+ok: [iocage_04] => 
+    iocage_jails:
+        ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: 10.1.0.193
+            ip4_dict:
+                ip4:
+                -   ifc: epair0b
+                    ip: 10.1.0.193
+                    mask: '-'
+                msg: ''
+            ip6: '-'
+            jid: '2'
+            release: 14.3-RELEASE-p1
+            state: up
+            template: '-'
+            type: jail
 
 TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_01]
-ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Stop: Debug stop jails debug2=true] **************************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        cmd:
+        - iocage
+        - stop
+        - ansible_client_pull
+        delta: '0:00:00.642197'
+        end: '2025-07-26 20:24:25.056970'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2025-07-26 20:24:24.414773'
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            * Stopping ansible_client_pull
+              + Executing prestop OK
+              + Stopping services OK
+              + Tearing down VNET OK
+              + Removing devfs_ruleset: 1000 OK
+              + Removing jail process OK
+              + Executing poststop OK
+        stdout_lines:
+        - '* Stopping ansible_client_pull'
+        - '  + Executing prestop OK'
+        - '  + Stopping services OK'
+        - '  + Tearing down VNET OK'
+        - '  + Removing devfs_ruleset: 1000 OK'
+        - '  + Removing jail process OK'
+        - '  + Executing poststop OK'
 
 TASK [Template: Set template.] *************************************************
-ok: [iocage_01] => (item=ansible_client)
-ok: [iocage_02] => (item=ansible_client)
+ok: [iocage_04] => (item=ansible_client_pull)
+
+TASK [Template: Debug set template debug2=true] ********************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            cmd:
+            - iocage
+            - set
+            - template=1
+            - ansible_client_pull
+            delta: '0:00:00.788329'
+            end: '2025-07-26 20:24:32.040926'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: iocage set template=1 ansible_client_pull
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: ansible_client_pull
+                value:
+                    dhclient:
+                    -   key: dhclient-exit-hooks
+                        value: |-
+                            case "$reason" in
+                                "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                                echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                                ;;
+                            esac
+                    properties:
+                        bpf: 'on'
+                        dhcp: 'on'
+                        vnet: 'on'
+                    rcconf:
+                    -   key: iocage_enable
+                        value: 'YES'
+                    -   key: sshd_enable
+                        value: 'YES'
+                    release: 14.3-RELEASE
+            msg: ''
+            rc: 0
+            start: '2025-07-26 20:24:31.252597'
+            stderr: ''
+            stderr_lines: []
+            stdout: ansible_client_pull converted to a template.
+            stdout_lines:
+            - ansible_client_pull converted to a template.
+        skipped: false
 
 PLAY RECAP *********************************************************************
-iocage_01                  : ok=15   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
-iocage_02                  : ok=15   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
+iocage_04                  : ok=31   changed=7    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

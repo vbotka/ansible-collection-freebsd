@@ -130,9 +130,12 @@ host_vars
 
 .. note::
 
+   The variables ``act_*`` are used to configure the template
+
    * The user ``act_user`` will be created in the template.
    * The user ``act_user`` will serve as Ansible ``remote_user``
    * The file ``act_pk`` provides the public keys allowed to ssh to ``act_user`` in a jail.
+   * The list of packages ``act_pkg`` to be installed.
 
 .. warning::
 

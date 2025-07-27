@@ -14,9 +14,10 @@
     var: iocage_jails
 
 - name: "Pkg: Install packages."
-  register: out
+  when: _act_pkg | length > 0
   vars:
     _act_pkg: "{{ item.value.act_pkg | d(act_pkg) }}"
+  register: out
   community.general.pkgng:
     use_globs: false
     jail: "{{ iocage_jails[item.key]['jid'] }}"

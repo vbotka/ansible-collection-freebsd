@@ -12,6 +12,7 @@ pb-iocage-template
 .. index:: single: act_sudo; pb-iocage-template
 .. index:: single: act_rcconf; pb-iocage-template
 .. index:: single: act_dhclient; pb-iocage-template
+.. index:: single: pkglist; pb-iocage-template
 
 Synopsis
 ^^^^^^^^
@@ -39,6 +40,11 @@ creates the template ``ansible_client``
    | None | ansible_client | off  | down  | template | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -        | no       |
    +------+----------------+------+-------+----------+-----------------+-------------------+-----+----------+----------+
 
+.. note::
+
+   * The attribute ``release`` is mandatory.
+   * The lists ``dhclient`` and ``rcconf`` can be empty.
+   * The attributes ``properties`` and ``pkglist`` are optional.
 
 .. hint::
 
@@ -48,8 +54,8 @@ creates the template ``ansible_client``
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A few variables are required to configure a template for Ansible clients. The below values will
-skip all configuration tasks
+A few variables are required to configure a template for Ansible clients. The below variables are
+mandatory. Some of them are used as defaults. See the playbook tasks to learn details.
 
 .. code-block:: yaml
 
@@ -177,6 +183,36 @@ Create ``dhclient`` hooks
    * These *hooks* are needed to configure ``hooks_results`` in `inventory plugin vbotka.freebsd.iocage`_
    * See `man dhclient-script`_
 
+pkglist
+^^^^^^^
+
+``pkglist`` is an optional attribute of the dictionary ``templates``. The value is a path on the iocage
+host where the file will be copied to. See the option ``--pkglist`` in `man iocage`_
+
+.. code-block::
+
+   templates:
+     ansible_client:
+       pkglist: "tmp/ansible/ansible_client/pkgs.json"
+       ...
+
+Optionally, let the module ``vbotka.freebsd.iocage`` install packages. Enable the attribute
+``pkglist`` and empty the list ``act_pkg: []``. Create the file ``files/pkgs.json``. For example,
+
+.. code-block:: json
+
+   {
+       "pkgs": [
+           "python311",
+           "py311-ansible",
+           "sudo"
+           ]
+   }
+
+.. seealso::
+
+  `Install package inside jail vs install package from outside`_
+
 Workflow
 ^^^^^^^^
 
@@ -216,11 +252,17 @@ After the reconfiguration stop the jail and convert it to the template manually
 
 .. _Setting the Python interpreter: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter
 .. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
+.. _Setting a remote user: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
+
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+
 .. _community.crypto: https://galaxy.ansible.com/ui/repo/published/community/crypto/
+
 .. _ansible.builtin.unarchive: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html#notes
 .. _ansible.posix.authorized_key: https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _Setting a remote user: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
-.. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script(8)
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+
 .. _iocage templates: https://iocage.readthedocs.io/en/latest/templates.html
+.. _man iocage: https://man.freebsd.org/cgi/man.cgi?iocage(8)
+.. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script(8)
+.. _Install package inside jail vs install package from outside: https://forums.freebsd.org/threads/install-package-inside-jail-vs-install-package-from-outside.54123/
