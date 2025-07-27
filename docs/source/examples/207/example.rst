@@ -331,11 +331,14 @@ Playbook output - display all groups
    :language: yaml
    :force:
 
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
-.. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _Binary iocage: https://github.com/iocage/iocage
-.. _binary iocage: https://github.com/iocage/iocage
+.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+
 .. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
+.. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
+
+.. _Binary iocage: https://github.com/iocage/iocage/
+.. _binary iocage: https://github.com/iocage/iocage/
+
 .. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Set Jail Property: https://iocage.readthedocs.io/en/latest/basic-use.html?highlight=properties#set-jail-property

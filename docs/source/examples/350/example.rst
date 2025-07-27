@@ -17,8 +17,8 @@
 Use case
 ^^^^^^^^
 
-Create 3 jails (Ansible clients) at iocage host. Install and configure
-`rsnapshot`_ in Ansible clients using the role `vbotka.freebsd.rsnapshot`_.
+Create 3 jails (Ansible clients) at iocage host. Install and configure `rsnapshot`_ in Ansible
+clients using the role `vbotka.freebsd.rsnapshot`_.
 
 Tree
 ^^^^
@@ -56,14 +56,13 @@ Requirements
 Notes
 ^^^^^
 
-* Jail name doesn't work in the parameter `name`_ of the module
-  `community.general.pkgng`_ if the jail was created by *iocage*. Use JID
-  instead ::
+* Jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if the
+  jail was created by *iocage*. Use JID instead ::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The plays run at the jails. The inventory *iocage-hosts.ini* is needed when a
-  task is delegated to an iocage host ::
+* The plays run at the jails. The inventory *iocage-hosts.ini* is needed when a task is delegated to
+  an iocage host ::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
 
@@ -76,9 +75,8 @@ Notes
     rsnapshot_packages:
       - sysutils/rsnapshot
 
-* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the
-  repositories. Then, use the `cached`_ local package base instead of fetching
-  an updated one ::
+* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the repositories. Then, use the
+  `cached`_ local package base instead of fetching an updated one ::
 
     freebsd_pkgng_cached: true
     
@@ -191,8 +189,8 @@ Playbook pb-install.yml
 Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory *iocage-hosts.ini* is needed to delegate the tasks 'Manage FreeBSD
-packages' to the iocage hosts.
+The inventory ``iocage-hosts.ini`` is needed to delegate the tasks ``Manage FreeBSD packages`` to the
+iocage hosts.
 
 .. code:: console
 
@@ -238,8 +236,8 @@ TBD
 .. _rsnapshot: https://rsnapshot.org/
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsanpshot/
 
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
-.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
+.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml
 
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
 .. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name

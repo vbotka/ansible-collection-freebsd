@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Configure loadbalance using the role `vbotka.freebsd.network`_
+Use the role `vbotka.freebsd.network`_ to configure ``loadbalance``.
 
 Tree
 ^^^^
@@ -33,8 +33,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host ``iocage_03`` at IP
-  10.1.0.17 configured in /etc/rc.conf ::
+* The Ansible controller connects the iocage host ``iocage_03`` at IP 10.1.0.17 configured in
+  ``/etc/rc.conf`` ::
 
     defaultrouter="10.1.0.10"
     gateway_enable="YES"
