@@ -10,7 +10,7 @@ pf_sshguard_enable: true
 
 pf_type: default2
 pf_log_enable: true
-pf_ext_if: lagg0
+pf_ext_if: bridge0
 pf_log_all_blocked: log
 pf_pass_icmp_types: [echoreq, unreach]
 pf_pass_icmp6_types: [echoreq, unreach]

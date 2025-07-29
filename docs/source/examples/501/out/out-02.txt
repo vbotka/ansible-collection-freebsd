@@ -54,4 +54,5 @@ TASK [vbotka.freebsd.pf : Rcconf-pflog: Enable and start pflog.] ***************
 ok: [iocage_04]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=17   changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0
+iocage_04                  : ok=17   changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
+
