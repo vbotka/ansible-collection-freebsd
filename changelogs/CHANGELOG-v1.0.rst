@@ -23,7 +23,6 @@ Minor Changes
 * Upgrade role postinstall 2.7.15
 
 
-
 0.7.18
 ======
 
