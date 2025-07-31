@@ -2,13 +2,15 @@
 
 . ../defaults/batch
 
-# TODO: Destroy all jails and create: test_1, test_2, and test_3 at
-# iocage_01, iocage_02, and iocage_03 respectively.
 VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+
+echo admin | ssh admin@$iocage_01 sudo -S iocage create -n test_1 -r 13.5-RELEASE
+ssh admin@$iocage_02 sudo iocage create -n test_2 -r 14.2-RELEASE
+ssh admin@$iocage_04 sudo iocage create -n test_4 -r 14.3-RELEASE
 
 ssh admin@$iocage_01 iocage list -lt | tee out/out-01.txt
 ssh admin@$iocage_02 iocage list -lt | tee out/out-02.txt
-ssh admin@$iocage_03 iocage list -lt | tee out/out-03.txt
+ssh admin@$iocage_04 iocage list -lt | tee out/out-03.txt
 
 ansible-playbook -i hosts -i iocage.ini pb-iocage-project-create.yml -e debug=true | tee out/out-04.txt
 ansible-playbook -i hosts pb-test-all.yml --flush-cache | tee out/out-05.txt

@@ -11,10 +11,10 @@ project:
     vmm: iocage_02
   http_2:
     class: [http, logclient]
-    vmm: iocage_03
+    vmm: iocage_04
   db_2:
     class: [db, logclient]
-    vmm: iocage_03
+    vmm: iocage_04
 
 # Declare vmm. Dictionary of iocage hosts.
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"

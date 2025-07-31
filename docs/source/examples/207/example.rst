@@ -65,10 +65,10 @@ project in a single dictionary. The dictionary keys are jails' aliases. For exam
        vmm: iocage_02
      http_2:
        class: [http, logclient]
-       vmm: iocage_03
+       vmm: iocage_04
      db_2:
        class: [db, logclient]
-       vmm: iocage_03
+       vmm: iocage_04
 
 Tree
 ^^^^
@@ -84,14 +84,14 @@ Tree
   ├── hosts
   │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
-  │   ├── 03_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_01
   │   │   └── iocage.yml
   │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_03
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
   ├── pb-iocage-project-create.yml
@@ -105,7 +105,7 @@ Synopsis
 
   * iocage_01
   * iocage_02
-  * iocage_03
+  * iocage_04
 
   In the playbook ``pb-iocage-project-create.yml``, use:
 
@@ -185,12 +185,12 @@ List templates at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: console
 
-List templates at iocage_03
+List templates at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_03]# iocage list -lt
+   [iocage_04]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: console
@@ -213,7 +213,7 @@ host_vars
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_03/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -230,7 +230,7 @@ Inventory hosts
    :caption:
    :emphasize-lines: 9,10
 
-.. literalinclude:: hosts/03_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 9,10
@@ -249,8 +249,8 @@ Inventory hosts
       - test_1  down    13.5-RELEASE    -
       [iocage_02]# iocage list -h
       - test_2  down    14.2-RELEASE    -
-      [iocage_03]# iocage list -h
-      - test_3  down    14.2-RELEASE    -
+      [iocage_04]# iocage list -h
+      - test_4  down    14.3-RELEASE    -
 
 Playbook pb-iocage-project-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -264,7 +264,7 @@ Playbook pb-iocage-project-create.yml
    create only the missing project jails. This makes the play idempotent despite the module
    ``ansible.builtin.command`` and ``iocage`` option ``--count`` being used.
 
-Playbook output - create and start project jails
+Playbook output - Create and start project jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -290,7 +290,7 @@ Playbook pb-test-all.yml
 
    `ansible-playbook`_
 
-Playbook output - display all groups
+Playbook output - Display all groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -309,7 +309,7 @@ Destroy the project if you don’t need it anymore.
 .. literalinclude:: pb-iocage-project-destroy.yml
    :language: yaml
 
-Playbook output - stop and destroy jails
+Playbook output - Stop and destroy jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -320,7 +320,7 @@ Playbook output - stop and destroy jails
    :language: yaml
    :force:
 
-Playbook output - display all groups
+Playbook output - Display all groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

@@ -16,10 +16,10 @@ ok: [test_2] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [test_3] => 
+ok: [test_4] => 
     msg: |-
         ansible_host: -
-        iocage_properties.host_hostuuid: test_3
+        iocage_properties.host_hostuuid: test_4
         iocage_classes: []
 
         iocage_tags: {}
@@ -27,12 +27,12 @@ ok: [test_3] =>
 TASK [debug] *******************************************************************
 ok: [test_1] => 
     msg: |-
-        all: ['test_1', 'test_2', 'test_3']
+        all: ['test_1', 'test_2', 'test_4']
         ungrouped: []
-        state_down: ['test_1', 'test_2', 'test_3']
+        state_down: ['test_1', 'test_2', 'test_4']
 
 PLAY RECAP *********************************************************************
 test_1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_4                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
