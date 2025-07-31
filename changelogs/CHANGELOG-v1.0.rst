@@ -19,7 +19,7 @@ Minor Changes
 -------------
 * Update docs add ug examples: 202, 205, 207, 208, 360, 501
 * Update docs playbooks pb-iocage-template
-* Update playbook pb-iocage-template.yml and tasks
+* Update playbook pb-iocage-template.yml; Test PK validity.
 * Upgrade role postinstall 2.7.16
 
 
