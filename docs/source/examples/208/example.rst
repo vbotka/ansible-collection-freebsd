@@ -133,7 +133,7 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-Playbook output - create templates
+Playbook output - Create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the inventory to iocage_04
@@ -141,18 +141,25 @@ Limit the inventory to iocage_04
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
-                            -i iocage.ini -l iocage_04
+                            -i iocage.ini -l iocage_04 \
+                            -e debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
-List templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-01.yml
+   :language: yaml
+
+Playbook output - List templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_04]# iocage list -lt
+   (env) > ansible-playbook pb-test-01.yml -i iocage.ini -l iocage_04
 
 .. literalinclude:: out/out-02.txt
    :language: bash
