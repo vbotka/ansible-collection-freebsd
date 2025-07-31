@@ -17,7 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Update docs add ug examples: 208, 360, 501
+* Update docs add ug examples: 202, 205, 207, 208, 360, 501
 * Update docs playbooks pb-iocage-template
 * Update playbook pb-iocage-template.yml and tasks
 * Upgrade role postinstall 2.7.16

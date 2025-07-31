@@ -30,29 +30,51 @@ ok: [iocage_01] =>
           logclient: [http_1, db_1, http_2, db_2]
           logserv: [logserv_1]
 
-        groups.all: ['test_1', 'test_2', 'test_3', 'iocage_01', 'iocage_02', 'iocage_03']
+        groups.all: ['iocage_04', 'iocage_01', 'iocage_02', 'iocage_03']
         project_jails_present: []
-        project_jails_absent: ['db_1', 'http_1', 'logserv_1', 'http_2', 'db_2']
+        project_jails_absent: ['db_1', 'logserv_1', 'db_2', 'http_1', 'http_2']
 
 TASK [Create jails.] ***********************************************************
 changed: [iocage_01]
 changed: [iocage_02]
-changed: [iocage_03]
+fatal: [iocage_03]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    changed: true
+    cmd:
+    - iocage
+    - create
+    - --short
+    - --template
+    - ansible_client
+    - --count
+    - '2'
+    - bpf=1
+    - dhcp=1
+    - vnet=1
+    delta: '0:00:07.076431'
+    end: '2025-07-31 22:28:21.155044'
+    msg: non-zero return code
+    rc: 1
+    start: '2025-07-31 22:28:14.078613'
+    stderr: |-
+        Template: ansible_client not found!
+        Created Templates:
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
 
 TASK [Set notes.] **************************************************************
 changed: [iocage_01] => (item=logserv_1 alias=logserv_1 class=logserv vmm=iocage_01)
-changed: [iocage_02] => (item=http_1 alias=http_1 class=http,logclient vmm=iocage_02)
 changed: [iocage_02] => (item=db_1 alias=db_1 class=db,logclient vmm=iocage_02)
-changed: [iocage_03] => (item=http_2 alias=http_2 class=http,logclient vmm=iocage_03)
-changed: [iocage_03] => (item=db_2 alias=db_2 class=db,logclient vmm=iocage_03)
+changed: [iocage_02] => (item=http_1 alias=http_1 class=http,logclient vmm=iocage_02)
 
 TASK [Start created jails.] ****************************************************
 changed: [iocage_01]
 changed: [iocage_02]
-changed: [iocage_03]
 
 PLAY RECAP *********************************************************************
 iocage_01                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 iocage_02                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_03                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_03                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

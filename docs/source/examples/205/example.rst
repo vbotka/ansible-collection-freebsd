@@ -37,7 +37,7 @@ Extending example :ref:`example_202`.
 Use case
 ^^^^^^^^
 
-Create template ``ansible_client`` at 3 iocage hosts.
+Create template ``ansible_client`` at four iocage hosts.
 
 Tree
 ^^^^
@@ -63,8 +63,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The only difference between the examples 202. and 205. is the third host ``iocage_04``. This
-  example creates the templates only.
+* The only difference between the examples 202. and 205. are two more hosts ``iocage_03`` and
+  ``iocage_04``. This example creates the templates only.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -138,6 +138,16 @@ List templates at iocage_02
 .. literalinclude:: out/out-03.txt
    :language: bash
 
+List templates at iocage_03
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_03]# iocage list -lt
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
 List templates at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -145,7 +155,7 @@ List templates at iocage_04
 
    [iocage_04]# iocage list -lt
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: bash
 
 
