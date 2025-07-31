@@ -93,7 +93,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_03
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage-project-create.yml
   ├── pb-iocage-project-destroy.yml
   └── pb-test-all.yml
@@ -159,10 +159,10 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 List templates at iocage_01
@@ -269,7 +269,7 @@ Playbook output - create and start project jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts -i iocage-hosts.ini pb-iocage-project-create.yml -e debug=true
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-project-create.yml -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -314,7 +314,7 @@ Playbook output - stop and destroy jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts -i iocage-hosts.ini pb-iocage-project-destroy.yml -e debug=true
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-project-destroy.yml -e debug=true
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

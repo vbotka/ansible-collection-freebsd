@@ -54,20 +54,28 @@ Tree
   │   │   └── iocage.yml
   │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_03
+  │   ├── iocage_03
+  │   │   └── iocage.yml
+  │   └── iocage_04
   │       └── iocage.yml
-  └── iocage-hosts.ini
+  └── iocage.ini
 
 Synopsis
 ^^^^^^^^
 
-* The only difference between the examples 202. and 205. is the third host ``iocage_03``. This
+* The only difference between the examples 202. and 205. is the third host ``iocage_04``. This
   example creates the templates only.
 
 ansible.cfg
 ^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -85,6 +93,10 @@ host_vars
    :language: yaml
    :caption:
 
+.. literalinclude:: host_vars/iocage_04/iocage.yml
+   :language: yaml
+   :caption:
+
 .. warning::
 
    * The user ``act_user`` must exist on the ``iocage* host``. Otherwise, the module
@@ -95,18 +107,12 @@ host_vars
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
-
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-template.yml -i iocage-hosts.ini -l iocage_03
+   (env) > ansible-playbook pb-iocage-template.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -132,12 +138,12 @@ List templates at iocage_02
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-List templates at iocage_03
+List templates at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_03]# iocage list -lt
+   [iocage_04]# iocage list -lt
 
 .. literalinclude:: out/out-04.txt
    :language: bash
