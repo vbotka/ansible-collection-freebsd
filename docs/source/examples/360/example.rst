@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Configure NICs using the role `vbotka.freebsd.network`_
+Configure bridges for iocage hosts using the role `vbotka.freebsd.network`_
 
 Tree
 ^^^^
@@ -24,16 +24,21 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
   ├── host_vars
-  │   ├── iocage_02.yml
-  │   └── iocage_03.yml
-  ├── iocage-hosts.ini
-  └── pb.yml
-
+  │   ├── iocage_03.yml
+  │   └── iocage_04.yml
+  ├── iocage.ini
+  ├── pb-loader.yml
+  └── pb-network.yml
+  
 Synopsis
 ^^^^^^^^
 
-* Configure the iocage hosts network.
+* Configure /boot/loader.conf
+* Configure the bridges.
 
 Requirements
 ^^^^^^^^^^^^
@@ -57,37 +62,61 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
+Inventory iocage.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
+
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/iocage.yml
+   :language: yaml
+   :caption:
 
 host_vars
 ^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_02.yml
-   :language: yaml
-   :caption:
 
 .. literalinclude:: host_vars/iocage_03.yml
    :language: yaml
    :caption:
 
-Playbook pb.yml
-^^^^^^^^^^^^^^^
+.. literalinclude:: host_vars/iocage_04.yml
+   :language: yaml
+   :caption:
 
-.. literalinclude:: pb.yml
+Playbook pb-loader.yml
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-loader.yml
    :language: yaml
 
-Playbook output - configure network
+Playbook output - Configure loader.conf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-loader.yml -i iocage.ini
+
+.. literalinclude:: out/out-01.txt
+   :language: yaml
+   :force:
+
+Playbook pb-network.yml
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-network.yml
+   :language: yaml
+
+Playbook output - Configure network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-network.yml -i iocage.ini
 
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 

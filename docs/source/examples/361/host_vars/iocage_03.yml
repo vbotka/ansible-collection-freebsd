@@ -20,3 +20,13 @@ fp_resolvconf_conf:
 fp_resolv_conf_clean: false
 fp_resolv_conf:
   - {key: nameserver, value: 10.1.0.1}
+
+
+# fn_ethname: true
+# fn_ethname_enable: true
+# fn_ethname_cmd_enable: true
+# fn_ethname_cmd: start
+# fn_ethname_install: false
+# fn_ethname_name_mac:
+#   ue0: 3c:33:32:c7:20:19
+#   ue1: 40:86:cb:d2:53:90

@@ -1,4 +1,4 @@
-- name: Test role vbotka.freebsd.network
+- name: Configure network.
   hosts: iocage
   gather_facts: true
 
