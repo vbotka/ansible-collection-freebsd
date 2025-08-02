@@ -18,8 +18,8 @@ Extending example :ref:`example_016`.
 Use case
 ^^^^^^^^
 
-Use the `inventory plugin community.general.iocage`_ instead of the `inventory
-plugin vbotka.freebsd.iocage`_.
+Use the `inventory plugin community.general.iocage`_ instead of the `inventory plugin
+vbotka.freebsd.iocage`_.
 
 Tree
 ^^^^
@@ -45,7 +45,7 @@ The `inventory plugin community.general.iocage`_ should provide the same functio
 
    The inventory plugin ``community.general.iocage`` may differ from
    ``vbotka.freebsd.iocage``. If you want be sure ``community.general.iocage``
-   provides the same functionality compare the hash from
+   provides the same functionality, compare the hash from
    ``setup/vars/chcksum.yml`` with the ``community.general.iocage`` hash. Run the
    included playbook ``pb-iocage-obsolete.yml`` ::
 
@@ -87,8 +87,8 @@ Notes
 
        shell> ansible-doc -t inventory community.general.iocage
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini

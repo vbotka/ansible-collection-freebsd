@@ -52,7 +52,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(hosts):
+* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(managed nodes):
 
   * ``test_101:103`` from the host ``iocage_01`` 
   * ``test_111:113`` from the host ``iocage_02``
@@ -97,8 +97,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini

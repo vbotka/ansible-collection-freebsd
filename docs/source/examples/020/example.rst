@@ -47,7 +47,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_03
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage-swarms-create.yml
   ├── pb-iocage-swarms-destroy.yml
   ├── pb-test-all.yml
@@ -106,10 +106,16 @@ List templates at iocage_03
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 group_vars
@@ -133,8 +139,8 @@ host_vars
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is slow`_ use
-the cache.
+The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is slow`_
+use the cache.
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
@@ -161,7 +167,7 @@ Playbook output - Create swarms
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -240,7 +246,7 @@ Destroy the swarms if you don't need them.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
+   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: yaml

@@ -52,7 +52,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-all.yml
   ├── pb-ansible-client.yml
   ├── pb-iocage-base.yml
@@ -97,16 +97,16 @@ Requirements
 * activated `binary iocage`_
 * fetched releases.
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
+Inventory iocage.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 Inventory hosts
@@ -150,7 +150,7 @@ Playbook output - create basejails
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-base.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-base.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -167,7 +167,7 @@ Playbook output - clone jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-clone.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-clone.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
    :language: yaml

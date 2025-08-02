@@ -33,7 +33,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── iocage.yml
   ├── pb-iocage-fetch-base-clone-list.yml
   └── pb-test-01.yml
@@ -46,7 +46,8 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the `module vbotka.freebsd.iocage`_
+  to:
 
   * fetch the release
   * create basejail
@@ -73,8 +74,8 @@ Requirements
 Notes
 ^^^^^
 
-The fetching of a release is a quite time-consuming process. Optionally, fetch the releases
-manually before you run the play. For example,
+The fetching of a release is a quite time-consuming process. Optionally, fetch the releases manually
+before you run the play. For example,
 
 .. code-block:: console
 
@@ -113,16 +114,16 @@ manually before you run the play. For example,
    * `Start, Stop, or Restart a Jail`_
    * `Listing Jails`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -147,7 +148,7 @@ Playbook output - fetch, create, clone, and start
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

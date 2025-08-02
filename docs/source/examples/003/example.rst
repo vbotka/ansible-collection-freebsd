@@ -29,7 +29,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb-iocage.yml
 
 Synopsis
@@ -43,8 +43,6 @@ Synopsis
 
 Requirements
 ^^^^^^^^^^^^
-
-.. index:: single: role vbotka.freebsd.iocage; Example 003
 
 * `role vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
@@ -62,16 +60,16 @@ Notes
    * See the tasks ``roles/iocage/tasks/sanity.yml``
    * See the default variables ``roles/iocage/main/sanity.yml``
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -102,8 +100,8 @@ Playbook output - test sanity
 
 .. code-block:: console
 
-  (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
-                                         -t freebsd_iocage_sanity
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
+                                          -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -114,10 +112,10 @@ Playbook output - test sanity quietly
 
 .. code-block:: console
 
-  (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
-          ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-          ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
-                                         -t freebsd_iocage_sanity
+   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
+           ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
+           ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
+                                          -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-02.txt
    :language: yaml

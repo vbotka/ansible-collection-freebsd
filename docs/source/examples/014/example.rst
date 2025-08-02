@@ -23,6 +23,7 @@ Extending example :ref:`example_010`.
 .. index:: single: option compose; Example 014
 .. index:: single: option keyed_groups; Example 014
 .. index:: single: variable iocage_ip4_dict; Example 014
+.. index:: single: option --flush-cache; Example 014
 
 Use case
 ^^^^^^^^
@@ -51,8 +52,8 @@ Requirements
    * `Inventory plugins`_
    * `Enabling inventory cache plugins`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -73,11 +74,11 @@ Enable cache
 
    .. code-block:: ini
 
-     shell> grep fact_caching ansible.cfg
-     fact_caching = ansible.builtin.jsonfile
-     fact_caching_connection = /var/tmp/ansible_cache
-     fact_caching_timeout = 3600
-     fact_caching_prefix = ''
+      shell> grep fact_caching ansible.cfg
+      fact_caching = ansible.builtin.jsonfile
+      fact_caching_connection = /var/tmp/ansible_cache
+      fact_caching_timeout = 3600
+      fact_caching_prefix = ''
 
 Playbook pb-vars-ip4.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,7 +105,7 @@ Playbook output - cache disabled
 Playbook output - cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the ``cache`` is enabled the inventory and variables are provided by the cache immediately
+If the ``cache`` is enabled, the inventory and variables are provided by the cache immediately
 
 .. code-block:: console
 
@@ -116,6 +117,10 @@ If the ``cache`` is enabled the inventory and variables are provided by the cach
    :language: yaml
    :force:
    :emphasize-lines: 1,3
+
+.. hint::
+
+   Use the option `--flush-cache`_ to clear the cache.
 
 Cache
 ^^^^^
@@ -134,3 +139,5 @@ Look at the cache
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _Inventory plugins: https://docs.ansible.com/ansible/latest/plugins/inventory.html#inventory-plugins
 .. _fact cache plugin: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-fact-cache-plugins
+
+.. _--flush-cache: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html#cmdoption-ansible-playbook-flush-cache

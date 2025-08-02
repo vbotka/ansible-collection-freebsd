@@ -23,7 +23,7 @@ Tree
   shell> tree
   .
   ├── ansible.cfg
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb-iocage.yml
 
 Synopsis
@@ -55,16 +55,16 @@ Notes
    * `Patterns. Targeting hosts and groups.`_
    * `Variable precedence. Where should I put a variable?`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
+Inventory iocage.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 .. seealso::
@@ -80,14 +80,16 @@ Playbook pb-iocage.yml
 .. literalinclude:: pb-iocage.yml
    :language: yaml
 
-.. seealso:: `Ansible playbooks <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html>`_
+.. seealso::
+
+   `Ansible playbooks`_
 
 Playbook output - display debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
                                           -t freebsd_iocage_debug \
                                           -e freebsd_iocage_debug=true
 
@@ -95,14 +97,16 @@ Playbook output - display debug
    :language: yaml
    :force:
 
-.. seealso:: `ansible-playbook <https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html>`_
+.. seealso::
+
+   * `ansible-playbook`_
 
 Playbook output - install iocage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
                                           -t freebsd_iocage_pkg \
                                           -e freebsd_iocage_debug=true
 
@@ -110,7 +114,8 @@ Playbook output - install iocage
    :language: yaml
    :force:
 
-.. note:: This *debug* shows the ``result`` of already installed package.
+.. note:: This ``debug`` shows the ``result`` of already installed package.
+
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _iocage: https://www.freshports.org/sysutils/iocage
@@ -121,3 +126,6 @@ Playbook output - install iocage
 .. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
 .. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
 .. _Setting the Python interpreter: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter
+
+.. _Ansible playbooks: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html
+.. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html

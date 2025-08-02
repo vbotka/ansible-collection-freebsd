@@ -32,7 +32,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage.yml
   └── pb-test-01.yml
 
@@ -89,10 +89,16 @@ List jails at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -106,12 +112,6 @@ host_vars
    :language: yaml
    :caption:
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
-
 Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -123,7 +123,7 @@ Playbook output - display versions
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_debug \
                                           -e freebsd_iocage_debug=true \
            | grep version
@@ -136,7 +136,7 @@ Create custom fact scripts
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_facts \
                                           -e freebsd_iocage_facts=true
 
@@ -165,7 +165,7 @@ Playbook output - display custom facts
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-01.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

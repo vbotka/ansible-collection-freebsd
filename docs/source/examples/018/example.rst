@@ -39,7 +39,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── iocage.yml
   ├── pb-iocage-clone-list.yml
   └── pb-test.yml
@@ -91,10 +91,16 @@ Jails at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -108,12 +114,6 @@ host_vars
    :language: yaml
    :caption:
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
-
 Playbook pb-iocage-clone-list.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -125,7 +125,7 @@ Playbook output - clone, start, and list
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -155,7 +155,7 @@ Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP (running -- address requires
-root)``. Enable also ``sudo_preserve_env: true``* if ``env`` is used.
+root)``. Enable also ``sudo_preserve_env: true`` if ``env`` is used.
 
 .. literalinclude:: iocage.yml
    :language: yaml

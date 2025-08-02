@@ -47,8 +47,8 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails created in :ref:`example_010`
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -88,7 +88,7 @@ Playbook output - display iocage_ip4
 
 .. note::
 
-   * The inventory files in hosts are evaluated in alphabetical order.
+   * The inventory files in ``hosts`` are evaluated in alphabetical order.
    * The jail ``ansible_client`` from ``iocage_02`` overrides the one from ``iocage_01``
 
 Cache

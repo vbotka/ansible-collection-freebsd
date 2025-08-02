@@ -45,8 +45,8 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails created in :ref:`example_010`
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
