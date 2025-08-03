@@ -29,7 +29,7 @@ Tree
   ├── hosts
   │   ├── 02_iocage.yml
   │   └── 99_constructed.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-test-01.yml
   ├── pb-test-02.yml
   ├── pb-test-03.yml
@@ -41,21 +41,21 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On all running jails:
+At all running jails:
 
-  * playbook *pb-test-01.yml*: display sshd rcvar.
+  * playbook ``pb-test-01.yml``: display sshd rcvar.
 
-At iocage_02 jails:
+At ``iocage_02`` jails:
 
-  * playbook *pb-test-02.yml*: display sshd rcvar
-  * playbook *pb-test-03.yml*: display enabled services
-  * playbook *pb-test-04.yml*: display sshd status
-  * playbook *pb-test-05.yml*: display sshd commands synopsis
-  * playbook *pb-test-06.yml*: display sendmail rcvars.
+  * playbook ``pb-test-02.yml``: display sshd rcvar
+  * playbook ``pb-test-03.yml``: display enabled services
+  * playbook ``pb-test-04.yml``: display sshd status
+  * playbook ``pb-test-05.yml``: display sshd commands synopsis
+  * playbook ``pb-test-06.yml``: display sendmail rcvars.
 
-At iocage_03:
+At ``iocage_03``:
 
-  * playbook *pb-test-07.yml*: start apcupsd.
+  * playbook ``pb-test-07.yml``: start apcupsd.
 
 Requirements
 ^^^^^^^^^^^^
@@ -64,7 +64,6 @@ Requirements
 * `filter vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * running jails at the iocage host.
-
 
 Notes
 ^^^^^
@@ -85,10 +84,16 @@ List jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 Inventory hosts
@@ -110,14 +115,8 @@ Display inventory
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
-
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -125,9 +124,9 @@ Playbook *pb-test-01.yml*
 Playbook output - get running jails sshd rcvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The key and value of *rcvar* is returned in 1) the attribute *rcvar* of the
-registered variable *out.rcvar* and in 2) the *stdout*. Usually, you'll use the
-first option. The second option shows how to use *community.general.jc*.
+The key and value of ``rcvar`` is returned in 1) the attribute ``rcvar`` of the registered variable
+``out.rcvar`` and in 2) the ``stdout``. Usually, you'll use the first option. The second option shows
+how to use the filter``community.general.jc``.
 
 .. code-block:: console
 
@@ -137,8 +136,8 @@ first option. The second option shows how to use *community.general.jc*.
    :language: yaml
    :force:
 
-Playbook *pb-test-02.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-02.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
    :language: yaml
@@ -148,14 +147,14 @@ Playbook output - create dictionary jid_rcvar
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
+   (env) > ansible-playbook pb-test-02.yml -i iocage.ini -l iocage_02 -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-03.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-03.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-03.yml
    :language: yaml
@@ -165,14 +164,14 @@ Playbook output - display enabled services
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-03.yml -i iocage-hosts.ini -l iocage_02 -e debug=true
+   (env) > ansible-playbook pb-test-03.yml -i iocage.ini -l iocage_02 -e debug=true
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-04.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-04.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-04.yml
    :language: yaml
@@ -182,14 +181,14 @@ Playbook output - display sshd status
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-04.yml -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook pb-test-04.yml -i iocage.ini -l iocage_02
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-05.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-05.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-05.yml
    :language: yaml
@@ -199,14 +198,14 @@ Playbook output - display sshd commands synopsis
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-05.yml -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook pb-test-05.yml -i iocage.ini -l iocage_02
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-06.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-06.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-06.yml
    :language: yaml
@@ -222,8 +221,8 @@ Playbook output - display sendmail rcvars
    :language: yaml
    :force:
 
-Playbook *pb-test-07.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-07.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-07.yml
    :language: yaml
@@ -233,7 +232,7 @@ Playbook output - start apcupsd
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-07.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-07.yml -i iocage.ini
 
 .. literalinclude:: out/out-09.txt
    :language: yaml

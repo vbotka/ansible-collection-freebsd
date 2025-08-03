@@ -52,7 +52,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb.yml
 
 Synopsis
@@ -73,11 +73,11 @@ Notes
 ^^^^^
 
 * Jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if the
-  jail was created by *iocage*. Use JID instead ::
+  jail was created by ``iocage``. Use JID instead ::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The play ``pb.yml` runs at the jails. The inventory ``iocage-hosts.ini`` is needed when a task is
+* The play ``pb.yml` runs in the jails. The inventory ``iocage.ini`` is needed when a task is
   delegated to an iocage host ::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
@@ -127,10 +127,10 @@ Do not display skipped hosts. See the option `display_skipped_hosts`_
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 group_vars
@@ -166,7 +166,7 @@ Create and start jails
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage-hosts.ini \
+                            -i iocage.ini \
                             -l iocage_02 \
                             -t swarm \
                             -e swarm=true
@@ -199,7 +199,7 @@ Display inventory
 
 .. code-block:: console
 
-   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+   (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -209,7 +209,7 @@ Update repos
 
 .. code-block:: console
 
-   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
+   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini -l iocage_02
 
 .. literalinclude:: out/out-12.txt
    :language: yaml
@@ -262,12 +262,12 @@ Assemble data and create handlers.
 Playbook output - install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage-hosts.ini`` is needed to delegate the tasks 'Manage FreeBSD packages' from
-the jails to their iocage hosts.
+The inventory ``iocage.ini`` is needed to delegate the tasks 'Manage FreeBSD packages' from the
+jails to their iocage hosts.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini
+   (env) > ansible-playbook pb.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-10.txt
    :language: yaml
@@ -283,7 +283,7 @@ Open the page in a browser. For example, http://10.1.0.111/. The content should 
 .. note::
 
    The role and the configuration data in the examples are idempotent. Once the application is
-   installed and configured ansible-playbook shouldn’t report any changes. To speedup the playbook,
+   installed and configured, ansible-playbook shouldn’t report any changes. To speedup the playbook,
    disable setup, sanity, debug, and install. This way, the role will audit the required
    infrastructure ::
 

@@ -34,7 +34,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage-fetch-base-clone.yml
   ├── pb-iocage-list.yml
   └── pb-test-01.yml
@@ -47,21 +47,21 @@ Synopsis
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-fetch-base-clone.yml*, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-fetch-base-clone.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * fetch the release
   * create basejail
   * clone 3 jails from the basejail.
 
-  In the playbook *pb-iocage-list.yml*, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-list.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * create the lists of bases and jails
   * optionally, display the lists.
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test-01.yml``:
 
-  * create the inventory group *test* and compose variables
-  * display the hosts and composed variables in the group *test*
+  * create the inventory group ``test`` and compose variables
+  * display the hosts and composed variables in the group ``test``
   * display all groups.
 
 Requirements
@@ -69,7 +69,7 @@ Requirements
 
 * `role vbotka.freebsd.iocage`_
 * root privilege on the iocage hosts
-* activated *iocage*
+* activated ``iocage``
 
 Notes
 ^^^^^
@@ -84,16 +84,16 @@ Notes
    * `Start, Stop, or Restart a Jail`_
    * `Listing Jails`_
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -118,7 +118,7 @@ Playbook output - debug
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage.ini \
                                                            -t debug \
                                                            -e debug=true
 
@@ -131,14 +131,14 @@ Playbook output - runner
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage.ini \
                                                            -t runner
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
-.. note:: The commands `"iocage set ..."` are not idempotent.
+.. note:: The commands ``iocage set ...`` are not idempotent.
 
 .. hint::
 
@@ -177,14 +177,14 @@ Playbook output - display iocage_jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-list.yml -i iocage-hosts.ini -e debug=true
+   (env) > ansible-playbook pb-iocage-list.yml -i iocage.ini -e debug=true
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
@@ -195,7 +195,7 @@ Playbook output - create and use group
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test-01.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
