@@ -87,6 +87,12 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
+   :language: ini
+
 host_vars
 ^^^^^^^^^
 
@@ -126,12 +132,6 @@ host_vars
 
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller
-
-Inventory iocage.ini
-^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage.ini
-   :language: ini
 
 Playbook output - Create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

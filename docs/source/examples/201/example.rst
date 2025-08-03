@@ -33,7 +33,7 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb-iocage-display-lists.yml
 
 Synopsis
@@ -156,10 +156,10 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 .. note::
@@ -180,7 +180,7 @@ Playbook output - display iocage lists
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage.ini
 
 .. literalinclude:: out/out-09.txt
    :language: yaml

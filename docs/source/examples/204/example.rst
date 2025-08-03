@@ -83,7 +83,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb_iocage_ansible_clients_v2
   │   ├── iocage_jails.yml
   │   ├── swarm_destroy.yml
@@ -155,10 +155,16 @@ List templates at iocage_02
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 group_vars
@@ -179,12 +185,6 @@ host_vars
    :language: yaml
    :caption:
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
-
 Playbook pb_iocage_ansible_clients_v2.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -197,7 +197,7 @@ Playbook output - create and start jails
 .. code-block:: console
 
    (env) > ansible-playbook pb_iocage_ansible_clients_v2.yml \
-                            -i iocage-hosts.ini \
+                            -i iocage.ini \
                             -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-04.txt
@@ -277,7 +277,7 @@ Playbook output - display iocage_tags
    The below command stops and destroys the jails in ``swarms`` ::
 
      ansible-playbook pb_iocage_ansible_clients_v2.yml \
-                      -i iocage-hosts.ini \
+                      -i iocage.ini \
                       -t swarm_destroy -e swarm_destroy=true
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

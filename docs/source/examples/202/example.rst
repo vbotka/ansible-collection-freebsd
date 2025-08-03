@@ -111,7 +111,7 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb-test-01.yml
 
 Synopsis
@@ -175,6 +175,12 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
+   :language: ini
+
 host_vars
 ^^^^^^^^^
 
@@ -228,12 +234,6 @@ host_vars
        shell> cat files/pk_admins.txt 
        ssh-rsa <sanitized> admin@controller
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
-
 Playbook output - create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -242,7 +242,7 @@ Limit the inventory to ``iocage_01``, and ``iocage_02``
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
-                            -i iocage-hosts.ini -l iocage_01,iocage_02
+                            -i iocage.ini -l iocage_01,iocage_02
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -276,7 +276,7 @@ Limit the inventory to iocage_01, and iocage_02
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage-hosts.ini -l iocage_01,iocage_02 \
+                            -i iocage.ini -l iocage_01,iocage_02 \
                             -t clone \
                             -e clone=true
 
@@ -360,7 +360,7 @@ Playbook output - display list iocage_hooks
    The below command stops and destroys the cloned jails ::
 
      ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                      -i iocage-hosts.ini \
+                      -i iocage.ini \
                       -t clone_destroy \
                       -e clone_destroy=true
 
