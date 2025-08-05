@@ -49,30 +49,29 @@ Tree
   ├── files
   │   └── pk_admins.txt
   ├── hosts
-  │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
-  │   └── 03_constructed.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_01
+  │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
-  └── pb-test-01.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* At two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
   * ``vbotka.freebsd.iocage`` exec tasks to create a user and set .ssh ownership.
-  * ``community.general.pkgng`` to install packages.
   * ``ansible.posix.authorized_key`` to configure public keys.
   * ``community.general.sysrc`` to configure /etc/rc.conf
   * ``ansible.builtin.lineinfile`` to configure /usr/local/etc/sudoers
@@ -86,7 +85,7 @@ Synopsis
 
 * On all created jails:
 
-  In the playbook ``pb-test-01.yml``:
+  In the playbook ``pb-test.yml``:
 
   * connect created jails
   * display basic configuration of the jails.
@@ -104,6 +103,10 @@ Requirements
 
 Notes
 ^^^^^
+
+* The playbook `vbotka.freebsd.pb_iocage_template.yml`_ expects to find the file ``pkgs.json`` in
+  the directory ``files``. See the tasks ``playbooks/pb_iocage_template_pkglist.yml`` and
+  :ref:`ug_pb-iocage-template`.
 
 .. seealso::
 
@@ -126,11 +129,11 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
+.. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -141,7 +144,6 @@ host_vars
    * The user ``act_user`` will be created in the template.
    * The user ``act_user`` will serve as Ansible ``remote_user``
    * The file ``act_pk`` provides the public keys allowed to ssh to ``act_user`` in a jail.
-   * The list of packages ``act_pkg`` to be installed.
 
 .. warning::
 
@@ -164,22 +166,22 @@ Playbook output - create templates
 .. literalinclude:: out/out-01.txt
    :language: yaml
 
-List templates at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
 List templates at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -lt
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+List templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -208,19 +210,9 @@ Playbook output - list jails
                             -t list \
                             -e debug=true
 
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
-
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-05.txt
-   :language: bash
 
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,18 +224,28 @@ List jails at iocage_02
 .. literalinclude:: out/out-06.txt
    :language: bash
 
+List jails at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/01_iocage.yml
-   :language: yaml
-   :caption:
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: hosts/03_constructed.yml
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
 
@@ -254,13 +256,13 @@ Display inventory
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-08.txt
    :language: bash
 
-Playbook pb-test-01.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml
 
 Playbook output - display test vars
@@ -268,9 +270,9 @@ Playbook output - display test vars
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test.yml -i hosts
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml
    :force:
 

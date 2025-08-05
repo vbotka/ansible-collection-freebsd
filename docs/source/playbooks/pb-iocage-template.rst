@@ -6,7 +6,6 @@ pb-iocage-template
    :depth: 3
 
 .. index:: single: playbook pb-iocage-template.yml; pb-iocage-template
-.. index:: single: act_pkg; pb-iocage-template
 .. index:: single: act_user; pb-iocage-template
 .. index:: single: act_pk; pb-iocage-template
 .. index:: single: act_sudo; pb-iocage-template
@@ -23,28 +22,31 @@ This playbook creates `iocage templates`_ from the dictionary ``templates``. For
 
    templates:
      ansible_client:
-       release: 14.1-RELEASE
+       release: 14.3-RELEASE
        properties:
-         ip4_addr: 'em0|10.1.0.199/24'
+         bpf: 'on'
+         dhcp: 'on'
+         vnet: 'on'
        dhclient: "{{ act_dhclient | dict2items }}"
        rcconf: "{{ act_rcconf | dict2items }}"
+       pkglist: "{{ inventory_dir }}/files/pkgs.json"
 
 creates the template ``ansible_client``
 
 .. code-block:: console
 
    shell> iocage list -lt
-   +------+----------------+------+-------+----------+-----------------+-------------------+-----+----------+----------+
-   | JID  |      NAME      | BOOT | STATE |   TYPE   |     RELEASE     |        IP4        | IP6 | TEMPLATE | BASEJAIL |
-   +======+================+======+=======+==========+=================+===================+=====+==========+==========+
-   | None | ansible_client | off  | down  | template | 14.1-RELEASE-p6 | em0|10.1.0.199/24 | -   | -        | no       |
-   +------+----------------+------+-------+----------+-----------------+-------------------+-----+----------+----------+
+   +------+----------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+   | JID  |      NAME      | BOOT | STATE |   TYPE   |     RELEASE     |        IP4         | IP6 | TEMPLATE | BASEJAIL |
+   +======+================+======+=======+==========+=================+====================+=====+==========+==========+
+   | None | ansible_client | off  | down  | template | 14.3-RELEASE-p1 | DHCP (not running) | -   | -        | no       |
+   +------+----------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
 
 .. note::
 
-   * The attribute ``release`` is mandatory.
+   * The attributes ``release`` and ``properties`` are mandatory.
    * The lists ``dhclient`` and ``rcconf`` can be empty.
-   * The attributes ``properties`` and ``pkglist`` are optional.
+   * The attribute ``pkglist`` is optional.
 
 .. hint::
 
@@ -59,45 +61,11 @@ mandatory. Some of them are used as defaults. See the playbook tasks to learn de
 
 .. code-block:: yaml
 
-   act_pkg: []
    act_user: ''
    act_pk: ''
    act_sudo: false
    act_rcconf: {}
    act_dhclient: {}
-
-act_pkg
-"""""""
-
-Install a list of packages. Below is the minimal list for an ansible client. Set the Python version
-to your needs
-
-.. code-block:: yaml
-
-   act_pkg:
-     - security/sudo
-     - lang/python311
-
-Fit the list to your needs. Usually, you want to add *gtar* and other archivers. See the module
-`ansible.builtin.unarchive`_. If you want to use the collection `community.crypto`_ add *py-openssl*
-
-.. code-block:: yaml
-
-   act_pkg:
-     - lang/python311
-     - security/sudo
-     - archivers/gtar
-     - security/py-openssl
-
-.. note::
-
-   * The module `community.general.pkgng`_ is jail-aware. Quoting: ::
-
-       jail: Pkg will execute in the given jail name or ID.
-
-   * It seems that a short ``UUID`` doesn't work as a name. Therefore, we use the ``ID`` of a jail ::
-
-       jail: "{{ iocage_jails[item.key]['jid'] }}"
 
 .. seealso::
 
@@ -186,28 +154,50 @@ Create ``dhclient`` hooks
 pkglist
 ^^^^^^^
 
-``pkglist`` is an optional attribute of the dictionary ``templates``. The value is a path on the iocage
-host where the file will be copied to. See the option ``--pkglist`` in `man iocage`_
+``pkglist`` is an optional attribute of the dictionary ``templates``. The value is a path on the
+iocage host where the file ``pkgs.json`` will be copied to. See the option ``--pkglist`` in `man
+iocage`_
 
 .. code-block::
 
    templates:
      ansible_client:
-       pkglist: "tmp/ansible/ansible_client/pkgs.json"
+       pkglist: tmp/ansible/ansible_client/pkgs.json
        ...
 
-Optionally, let the module ``vbotka.freebsd.iocage`` install packages. Enable the attribute
-``pkglist`` and empty the list ``act_pkg: []``. Create the file ``files/pkgs.json``. For example,
+Create the file ``files/pkgs.json``. For example,
 
 .. code-block:: json
 
    {
        "pkgs": [
            "python311",
-           "py311-ansible",
            "sudo"
            ]
    }
+
+Fit the list to your needs. Usually, you want to add ``gtar`` and other archivers. See the module
+`ansible.builtin.unarchive`_. Add ``py-openssl`` if you want to use the collection
+`community.crypto`_
+
+.. code-block:: json
+
+   {
+       "pkgs": [
+           "python311",
+           "sudo",
+           "gtar",
+           "py-openssl"
+           ]
+   }
+
+.. note::
+
+   ``iocage`` tests DNS on installing the packages::
+
+     Testing Host DNS response to pkg.freebsd.org
+     2025/08/06 01:18:12 (INFO) Testing ansible_client's SRV response to pkg.freebsd.org
+     2025/08/06 01:18:12 (INFO) Testing ansible_client's DNSSEC response to pkg.freebsd.org
 
 .. seealso::
 

@@ -25,11 +25,6 @@
       tags: start
       ansible.builtin.import_tasks: pb_iocage_template/start.yml
 
-    - name: Install packages
-      when: act_pkg | length > 0
-      tags: pkg
-      ansible.builtin.import_tasks: pb_iocage_template/pkg.yml
-
     - name: Create user
       when: act_user | length > 0
       tags: user
