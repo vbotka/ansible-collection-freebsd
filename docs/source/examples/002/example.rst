@@ -25,9 +25,9 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_01
+  │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
   └── pb-iocage.yml
@@ -35,7 +35,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the iocage host ``iocage_02``
+* At the managed node ``iocage_04``
   
   In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
@@ -45,14 +45,14 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege on the managed node
 * binary `iocage`_.
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_01`` into the run-strings to run the play on the iocage host ``iocage_01``
-* Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
+* Put ``-l iocage_02`` into the run-strings to run the play on the managed node ``iocage_02``
+* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
 * By default, ``iocage`` activation is disabled ``freebsd_iocage_activate: false``
 
 .. seealso::
@@ -74,11 +74,11 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
+.. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -100,7 +100,7 @@ Playbook output - display result
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
                                           -t freebsd_iocage_activate \
 					  -e freebsd_iocage_activate=true \
                                           -e freebsd_iocage_debug=true

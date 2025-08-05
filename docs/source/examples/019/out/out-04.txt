@@ -1,11 +1,10 @@
-PLAY [region_US] ******************************************************************************
 
-TASK [debug] **********************************************************************************
-ok: [test_102] => 
-    ansible_host: 10.1.0.245
-ok: [test_103] => 
-    ansible_host: 10.1.0.180
+PLAY [region_EU] ***************************************************************
 
-PLAY RECAP ************************************************************************************
-test_102: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_103: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+TASK [debug] *******************************************************************
+ok: [test_111] => 
+    ansible_host: 10.1.0.175
+
+PLAY RECAP *********************************************************************
+test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

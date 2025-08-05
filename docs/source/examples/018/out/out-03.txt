@@ -1,39 +1,41 @@
-PLAY [iocage] **********************************************************************************
 
-TASK [Clone basejail.] *************************************************************************
-changed: [iocage_01] => (item={'name': 'test_101', 'clone_from': 'ansible_client'})
-changed: [iocage_01] => (item={'name': 'test_102', 'clone_from': 'ansible_client'})
+PLAY [iocage] ******************************************************************
+
+TASK [Clone basejail.] *********************************************************
+changed: [iocage_04] => (item={'name': 'test_131', 'clone_from': 'ansible_client'})
+changed: [iocage_04] => (item={'name': 'test_132', 'clone_from': 'ansible_client'})
+changed: [iocage_04] => (item={'name': 'test_133', 'clone_from': 'ansible_client'})
 changed: [iocage_02] => (item={'name': 'test_111', 'clone_from': 'ansible_client'})
-changed: [iocage_01] => (item={'name': 'test_103', 'clone_from': 'ansible_client'})
 changed: [iocage_02] => (item={'name': 'test_112', 'clone_from': 'ansible_client'})
 changed: [iocage_02] => (item={'name': 'test_113', 'clone_from': 'ansible_client'})
 
-TASK [Start clones.] ***************************************************************************
-changed: [iocage_01] => (item={'name': 'test_101', 'clone_from': 'ansible_client'})
-changed: [iocage_01] => (item={'name': 'test_102', 'clone_from': 'ansible_client'})
-changed: [iocage_02] => (item={'name': 'test_111', 'clone_from': 'ansible_client'})
-changed: [iocage_01] => (item={'name': 'test_103', 'clone_from': 'ansible_client'})
-changed: [iocage_02] => (item={'name': 'test_112', 'clone_from': 'ansible_client'})
-changed: [iocage_02] => (item={'name': 'test_113', 'clone_from': 'ansible_client'})
+TASK [Start clones.] ***********************************************************
+changed: [iocage_04] => (item=test_131)
+changed: [iocage_04] => (item=test_132)
+changed: [iocage_04] => (item=test_133)
+changed: [iocage_02] => (item=test_111)
+changed: [iocage_02] => (item=test_112)
+changed: [iocage_02] => (item=test_113)
 
-TASK [Create Ansible facts iocage_*] ***********************************************************
-ok: [iocage_01]
+TASK [Create Ansible facts iocage_*] *******************************************
+ok: [iocage_04]
 ok: [iocage_02]
 
-TASK [Display jails.] **************************************************************************
-ok: [iocage_01] =>
-    msg: |-
-        ansible_client - vnet0|10.1.0.198/24 13.5-RELEASE-p1 down
-        test_101 123 epair0b|10.1.0.130 13.5-RELEASE-p1 up
-        test_102 124 epair0b|10.1.0.245 13.5-RELEASE-p1 up
-        test_103 125 epair0b|10.1.0.180 13.5-RELEASE-p1 up
+TASK [Display jails.] **********************************************************
 ok: [iocage_02] => 
     msg: |-
-        ansible_client None em0|10.1.0.199/24 14.2-RELEASE-p3 down
-        test_111 2 epair0b|10.1.0.174 14.2-RELEASE-p3 up
-        test_112 3 epair0b|10.1.0.147 14.2-RELEASE-p3 up
-        test_113 4 epair0b|10.1.0.231 14.2-RELEASE-p3 up
+        ansible_client None - 14.2-RELEASE-p3 down
+        test_111 15 epair0b|10.1.0.175 14.2-RELEASE-p3 up
+        test_112 16 epair0b|10.1.0.148 14.2-RELEASE-p3 up
+        test_113 17 epair0b|10.1.0.232 14.2-RELEASE-p3 up
+ok: [iocage_04] => 
+    msg: |-
+        ansible_client None - 14.3-RELEASE-p1 down
+        test_131 16 epair0b|10.1.0.207 14.3-RELEASE-p1 up
+        test_132 17 epair0b|10.1.0.168 14.3-RELEASE-p1 up
+        test_133 18 epair0b|10.1.0.208 14.3-RELEASE-p1 up
 
-PLAY RECAP *************************************************************************************
-iocage_01: ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-iocage_02: ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

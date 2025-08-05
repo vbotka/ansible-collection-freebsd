@@ -41,6 +41,14 @@ Tree
   ├── iocage.yml
   └── pb-vars-ip4.yml
 
+Synopsis
+^^^^^^^^
+
+At a managed node:
+
+* get the dynamic inventory by the `inventory plugin vbotka.freebsd.iocage`_
+* configure and test ``cache``
+
 Requirements
 ^^^^^^^^^^^^
 
@@ -86,17 +94,17 @@ Playbook pb-vars-ip4.yml
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
 
-Playbook output - cache disabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - clear cache 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| It takes 4s to create the dynamic inventory and construct the variables if ``cache`` is disabled.
-| (The ``cache`` is disabled in ``iocage.yml``. ``cache=False``)
+In this particular case, it takes 4s to create the dynamic inventory and construct the variables
+after the ``cache`` was cleared (flushed).
 
 .. code-block:: console
 
    (env) > date +%r; \
            ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
+           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113 --flush-cache
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -129,7 +137,7 @@ Look at the cache
 
 .. code-block:: console
 
-   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_6a9dd
+   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_956f5
 
 .. literalinclude:: out/out-03.txt
    :language: json

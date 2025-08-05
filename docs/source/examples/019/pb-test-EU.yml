@@ -1,4 +1,4 @@
-- hosts: region_US
+- hosts: region_EU
 
   tasks:
 

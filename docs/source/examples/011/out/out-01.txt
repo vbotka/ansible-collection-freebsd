@@ -2,22 +2,22 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_113] => 
+ok: [test_133] => 
     msg: |-
-        inventory_hostname: test_113
-        ansible_host: 10.1.0.113
+        inventory_hostname: test_133
+        ansible_host: 10.1.0.133
 
-        iocage_jid: 27
+        iocage_jid: 12
         iocage_boot: off
         iocage_state: up
         iocage_type: jail
-        iocage_release: 14.2-RELEASE-p3
-        iocage_ip4_dict: {'ip4': [{'ifc': 'em0', 'ip': '10.1.0.113', 'mask': '24'}], 'msg': ''}
-        iocage_ip4: 10.1.0.113
+        iocage_release: 14.3-RELEASE-p1
+        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '10.1.0.133', 'mask': '24'}], 'msg': ''}
+        iocage_ip4: 10.1.0.133
         iocage_ip6: -
         iocage_template: ansible_client
         iocage_basejail: yes
 
 PLAY RECAP *********************************************************************
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

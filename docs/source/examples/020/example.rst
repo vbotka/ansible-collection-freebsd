@@ -40,12 +40,12 @@ Tree
   │       └── swarms.yml
   ├── hosts
   │   ├── 02_iocage.yml
-  │   ├── 03_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_03
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
   ├── pb-iocage-swarms-create.yml
@@ -56,7 +56,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two iocage hosts:
+* At two managed nodes:
 
   * create jails using a template and the option ``--count``
   * at each jail, create property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
@@ -96,12 +96,12 @@ List templates at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List templates at iocage_03
+List templates at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_03]# iocage list -lt
+   [iocage_04]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -132,7 +132,7 @@ host_vars
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_03/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
   
@@ -147,7 +147,7 @@ use the cache.
    :caption:
    :emphasize-lines: 10
 
-.. literalinclude:: hosts/03_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 10
@@ -189,12 +189,12 @@ List jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-List jails at iocage_03
+List jails at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_03]# iocage list -l
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -242,7 +242,7 @@ Playbook pb-iocage-swarms-destroy.yml
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Destroy the swarms if you don't need them.
+Destroy the swarms if you don't need them any more.
 
 .. code-block:: console
 
@@ -251,6 +251,7 @@ Destroy the swarms if you don't need them.
 .. literalinclude:: out/out-08.txt
    :language: yaml
    :force:
+
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

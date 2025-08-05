@@ -1,7 +1,7 @@
 .. _example_018:
 
-018 Clone basejails and use DHCP
---------------------------------
+018 Clone basejails. Use DHCP.
+------------------------------
 
 Extending example :ref:`example_010`.
 
@@ -35,9 +35,9 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_01
+  │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
   ├── iocage.yml
@@ -47,10 +47,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook ``pb-iocage-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
@@ -58,7 +58,7 @@ Synopsis
   * start all jails
   * display lists of jails.
 
-* On the iocage host ``iocage_02``
+* At the iocage host ``iocage_02``
 
   In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
@@ -71,22 +71,22 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails ``ansible_client`` created in :ref:`example_010`
 
-Jails at iocage_01
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -106,11 +106,11 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
+.. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -131,22 +131,22 @@ Playbook output - clone, start, and list
    :language: bash
    :force:
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+List jails at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -205,7 +205,7 @@ If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
 
 .. code-block:: console
 
-   [iocage_01]# iocage list -l
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: bash
@@ -213,7 +213,13 @@ If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
 Playbook output - list some iocage_* vars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some jails are stopped.
+Stop two jails
+
+.. code-block:: console
+
+   [iocage_02]# iocage stop test_112 test_113
+
+List variables
 
 .. code-block:: console
 

@@ -2,12 +2,12 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_113] => 
+ok: [test_133] => 
     iocage_properties:
         CONFIG_VERSION: '33'
         allow_chflags: '0'
         allow_mlock: '0'
-        allow_mount: '1'
+        allow_mount: '0'
         allow_mount_devfs: '0'
         allow_mount_fdescfs: '0'
         allow_mount_fusefs: '0'
@@ -40,7 +40,7 @@ ok: [test_113] =>
         cputime: 'off'
         datasize: 'off'
         dedup: 'off'
-        defaultrouter: auto
+        defaultrouter: 10.1.0.10
         defaultrouter6: auto
         depends: none
         devfs_ruleset: '4'
@@ -61,25 +61,25 @@ ok: [test_113] =>
         exec_timeout: '60'
         host_domainname: none
         host_hostname: ansible-client
-        host_hostuuid: test_113
+        host_hostuuid: test_133
         host_time: '1'
-        hostid: ea2ba7d1-4fcd-f13f-82e4-8b32c0a03403
+        hostid: d6add9ad-8b6e-4316-a226-345a60532b41
         hostid_strict_check: '0'
         interfaces: vnet0:bridge0
         ip4: new
-        ip4_addr: em0|10.1.0.113/24
+        ip4_addr: vnet0|10.1.0.133/24
         ip4_saddrsel: '1'
         ip6: new
         ip6_addr: none
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/test_113/data
+        jail_zfs_dataset: iocage/jails/test_133/data
         jail_zfs_mountpoint: none
-        last_started: '2025-04-20 19:20:33'
+        last_started: none
         localhost_ip: none
         login_flags: -f root
-        mac_prefix: 02a098
+        mac_prefix: 021b21
         maxproc: 'off'
         memorylocked: 'off'
         memoryuse: 'off'
@@ -113,7 +113,7 @@ ok: [test_113] =>
         quota: none
         readbps: 'off'
         readiops: 'off'
-        release: 14.2-RELEASE-p3
+        release: 14.3-RELEASE-p1
         reservation: none
         resolver: /etc/resolv.conf
         rlimits: 'off'
@@ -134,7 +134,7 @@ ok: [test_113] =>
         type: jail
         used: readonly
         vmemoryuse: 'off'
-        vnet: '0'
+        vnet: '1'
         vnet0_mac: none
         vnet0_mtu: auto
         vnet1_mac: none
@@ -143,7 +143,7 @@ ok: [test_113] =>
         vnet2_mtu: auto
         vnet3_mac: none
         vnet3_mtu: auto
-        vnet_default_interface: auto
+        vnet_default_interface: none
         vnet_default_mtu: '1500'
         vnet_interfaces: none
         wallclock: 'off'
@@ -151,5 +151,5 @@ ok: [test_113] =>
         writeiops: 'off'
 
 PLAY RECAP *********************************************************************
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -1,4 +1,0 @@
-freebsd_iocage_pool: pool2
-freebsd_iocage_pool_mount: /mnt/pool2
-
-freebsd_iocage_sanity_zfs_pool_active: true

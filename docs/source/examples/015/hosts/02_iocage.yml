@@ -9,7 +9,6 @@ cache_plugin: ansible.builtin.jsonfile
 cache_connection: /var/tmp/inventory_cache
 cache_timeout: 3600
 cache_prefix: iocage_02_
-strict: True
 compose:
   ansible_host: iocage_ip4
 groups:

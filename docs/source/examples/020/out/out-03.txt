@@ -2,20 +2,74 @@
 PLAY [Create swarms (not idempotent!)] *****************************************
 
 TASK [Create swarms.] **********************************************************
-changed: [iocage_02] => (item={'key': 'www_prod', 'value': {'count': 3, 'template': 'ansible_client'}})
-changed: [iocage_02] => (item={'key': 'www_devel', 'value': {'count': 2, 'template': 'ansible_client'}})
-changed: [iocage_03] => (item={'key': 'db', 'value': {'count': 2, 'template': 'ansible_client'}})
-
-TASK [Create tags.] ************************************************************
-changed: [iocage_02] => (item=1ee10f27 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p1)
-changed: [iocage_02] => (item=6d3ea4d5 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p2)
-changed: [iocage_03] => (item=d19992d0 vmm=iocage_03 project=example_020 swarm=db alias=db1)
-changed: [iocage_02] => (item=a46f9ed1 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p3)
-changed: [iocage_02] => (item=d9f0e0e1 vmm=iocage_02 project=example_020 swarm=www_devel alias=www_d1)
-changed: [iocage_02] => (item=652a9a2a vmm=iocage_02 project=example_020 swarm=www_devel alias=www_d2)
-changed: [iocage_03] => (item=d0555e9f vmm=iocage_03 project=example_020 swarm=db alias=db2)
+fatal: [iocage_03]: FAILED! => 
+    msg: |-
+        Unable to look up a name or access an attribute in template string ({{ swarms | dict2items }}).
+        Make sure your variable name does not contain invalid characters like '-': dict2items requires a dictionary, got <class 'ansible.template.native_helpers.AnsibleUndefined'> instead.. dict2items requires a dictionary, got <class 'ansible.template.native_helpers.AnsibleUndefined'> instead.
+failed: [iocage_02] (item={'key': 'www_prod', 'value': {'count': 3, 'template': 'ansible_client'}}) => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - create
+    - --short
+    - --count
+    - '3'
+    - --template
+    - ansible_client
+    - bpf=1
+    - dhcp=1
+    - vnet=1
+    delta: '0:00:02.604840'
+    end: '2025-08-05 22:00:57.708030'
+    item:
+        key: www_prod
+        value:
+            count: 3
+            template: ansible_client
+    msg: non-zero return code
+    rc: 1
+    start: '2025-08-05 22:00:55.103190'
+    stderr: |-
+        Template: ansible_client not found!
+        Created Templates:
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_02] (item={'key': 'www_devel', 'value': {'count': 2, 'template': 'ansible_client'}}) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - create
+    - --short
+    - --count
+    - '2'
+    - --template
+    - ansible_client
+    - bpf=1
+    - dhcp=1
+    - vnet=1
+    delta: '0:00:02.524862'
+    end: '2025-08-05 22:01:00.716030'
+    item:
+        key: www_devel
+        value:
+            count: 2
+            template: ansible_client
+    msg: non-zero return code
+    rc: 1
+    start: '2025-08-05 22:00:58.191168'
+    stderr: |-
+        Template: ansible_client not found!
+        Created Templates:
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
-iocage_03                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_02                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+iocage_03                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

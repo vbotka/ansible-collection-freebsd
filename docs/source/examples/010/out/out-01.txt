@@ -1,44 +1,45 @@
-PLAY [iocage] *******************************************************************************************************
 
-TASK [Fetch releases] ***********************************************************************************************
-ok: [iocage_01] => (item=13.4-RELEASE)
-ok: [iocage_01] => (item=13.5-RELEASE)
+PLAY [Iocage fetch releases, create basejail, clone and start jails.] **********
+
+TASK [Fetch releases] **********************************************************
+ok: [iocage_04] => (item=14.3-RELEASE)
 ok: [iocage_02] => (item=14.2-RELEASE)
 
-TASK [Create basejail] **********************************************************************************************
-changed: [iocage_02] => (item={'name': 'ansible_client', 'release': '14.2-RELEASE'})
-changed: [iocage_01] => (item={'name': 'ansible_client', 'release': '13.5-RELEASE'})
+TASK [Create basejail] *********************************************************
+changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
+changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
 
-TASK [Clone from basejail] ******************************************************************************************
-changed: [iocage_01] => (item={'name': 'test_101', 'clone_from': 'ansible_client', 'properties': {'vnet': 'on', 'defaultrouter': '10.1.0.10', 'ip4_addr': 'vnet0|10.1.0.101/24'}})
-changed: [iocage_01] => (item={'name': 'test_102', 'clone_from': 'ansible_client', 'properties': {'vnet': 'on', 'defaultrouter': '10.1.0.10', 'ip4_addr': 'vnet0|10.1.0.102/24'}})
-changed: [iocage_02] => (item={'name': 'test_111', 'clone_from': 'ansible_client', 'properties': {'ip4_addr': 'em0|10.1.0.111/24'}})
-changed: [iocage_01] => (item={'name': 'test_103', 'clone_from': 'ansible_client', 'properties': {'vnet': 'on', 'defaultrouter': '10.1.0.10', 'ip4_addr': 'vnet0|10.1.0.103/24'}})
-changed: [iocage_02] => (item={'name': 'test_112', 'clone_from': 'ansible_client', 'properties': {'ip4_addr': 'em0|10.1.0.112/24'}})
-changed: [iocage_02] => (item={'name': 'test_113', 'clone_from': 'ansible_client', 'properties': {'ip4_addr': 'em0|10.1.0.113/24'}})
+TASK [Clone from basejail] *****************************************************
+changed: [iocage_04] => (item=test_131 ansible_client)
+changed: [iocage_04] => (item=test_132 ansible_client)
+changed: [iocage_04] => (item=test_133 ansible_client)
+changed: [iocage_02] => (item=test_111 ansible_client)
+changed: [iocage_02] => (item=test_112 ansible_client)
+changed: [iocage_02] => (item=test_113 ansible_client)
 
-TASK [Start clones] *************************************************************************************************
-ok: [iocage_01] => (item=test_103)
-ok: [iocage_02] => (item=test_113)
+TASK [Start clones] ************************************************************
+ok: [iocage_04] => (item=test_133)
+changed: [iocage_02] => (item=test_113)
 
-TASK [Create Ansible facts iocage_*] ********************************************************************************
-ok: [iocage_01]
+TASK [Create Ansible facts iocage_*] *******************************************
+ok: [iocage_04]
 ok: [iocage_02]
 
-TASK [Display lists of bases, plugins, templates, and jails.] *******************************************************
-ok: [iocage_01] => 
-    msg: |-
-        ['13.3-RELEASE', '13.4-RELEASE', '13.5-RELEASE']
-        []
-        []
-        ['ansible_client', 'test_101', 'test_102', 'test_103']
+TASK [Display lists of bases, plugins, templates, and jails.] ******************
 ok: [iocage_02] => 
     msg: |-
-        ['14.2-RELEASE']
+        ['14.2-RELEASE', '14.3-RELEASE']
         []
         []
         ['ansible_client', 'test_111', 'test_112', 'test_113']
+ok: [iocage_04] => 
+    msg: |-
+        ['14.3-RELEASE']
+        []
+        []
+        ['ansible_client', 'test_131', 'test_132', 'test_133']
 
-PLAY RECAP **********************************************************************************************************
-iocage_01: ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-iocage_02: ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

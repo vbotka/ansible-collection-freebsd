@@ -68,7 +68,7 @@ Playbook output - display iocage_* vars
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_113
+   (env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_133
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

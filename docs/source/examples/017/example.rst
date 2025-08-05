@@ -30,8 +30,8 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── pb-iocage-obsolete.yml
   └── pb-test.yml
@@ -96,12 +96,12 @@ ansible.cfg
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/01_iocage.yml
+.. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 1
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 1

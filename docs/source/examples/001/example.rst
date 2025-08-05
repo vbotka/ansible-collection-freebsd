@@ -13,7 +13,7 @@
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to install the package `iocage`_. Display debug variables.
+Use the `role vbotka.freebsd.iocage`_ to install the package `iocage`_.
 
 Tree
 ^^^^
@@ -29,7 +29,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the iocage host ``iocage_02``
+* At the managed node ``iocage_04``
   
   In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
@@ -40,15 +40,15 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts.
+* root privilege on the managed nodes.
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_01`` into the run-strings to limit the play to the iocage host ``iocage_01``
-* Remove the limits ``-l iocage_0*`` to run the play on both iocage hosts.
-* By default, *iocage* installation is enabled ``freebsd_iocage_install: true``
-* By default, *debug* is disabled ``freebsd_iocage_debug: false``
+* Put ``-l iocage_02`` into the run-strings to limit the play to the manged node ``iocage_02``
+* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
+* By default, ``iocage`` installation is enabled ``freebsd_iocage_install: true``
+* By default, ``debug`` is disabled ``freebsd_iocage_debug: false``
 
 .. seealso::
 
@@ -89,7 +89,7 @@ Playbook output - display debug
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
                                           -t freebsd_iocage_debug \
                                           -e freebsd_iocage_debug=true
 
@@ -106,7 +106,7 @@ Playbook output - install iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_02 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
                                           -t freebsd_iocage_pkg \
                                           -e freebsd_iocage_debug=true
 

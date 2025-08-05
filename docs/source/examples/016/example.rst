@@ -18,8 +18,8 @@ Extending example :ref:`example_015`.
 Use case
 ^^^^^^^^
 
-Use the inventory plugin `ansible.builtin.constructed`_ after the two `inventory plugin
-vbotka.freebsd.iocage`_ configuration files to create inventory groups.
+Create inventory groups using the inventory plugin `ansible.builtin.constructed`_ after the two
+`inventory plugin vbotka.freebsd.iocage`_ configuration files.
 
 Tree
 ^^^^
@@ -30,20 +30,20 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails(managed nodes):
+* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails (managed nodes):
 
-  * ``test_101:103`` from the host ``iocage_01`` 
   * ``test_111:113`` from the host ``iocage_02`` 
+  * ``test_131:133`` from the host ``iocage_04`` 
 
-  and creates the inventory groups ``test_01`` and ``test_02``.
+  and creates the inventory groups ``test_02`` and ``test_04``.
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
@@ -64,22 +64,6 @@ Notes
 * The `inventory plugin vbotka.freebsd.iocage`_ doesn't provide the option `use_vars_plugins`_.
 * See :ref:`example_019`.
 
-ansible.cfg
-^^^^^^^^^^^
-
-.. literalinclude:: ansible.cfg
-   :language: ini
-
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -87,17 +71,33 @@ List jails at iocage_02
 
    [iocage_02]# iocage list -l
 
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+List jails at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
 .. literalinclude:: out/out-02.txt
    :language: bash
+
+ansible.cfg
+^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+   :language: ini
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/01_iocage.yml
+.. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
 

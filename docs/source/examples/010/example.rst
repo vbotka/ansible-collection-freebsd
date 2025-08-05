@@ -1,7 +1,7 @@
 .. _example_010:
 
-010 Clone basejails and create inventory (plugins)
---------------------------------------------------
+010 Clone basejails and create inventory
+----------------------------------------
 
 .. contents::
    :local:
@@ -17,8 +17,8 @@
 Use case
 ^^^^^^^^
 
-Fetch releases, create basejails, clone from the basejails, and start the jails. Use the `inventory
-plugin vbotka.freebsd.iocage`_ to create inventory. Display the created inventory.
+Fetch releases, create basejails, clone jails from the basejails, and start the jails. Use the
+`inventory plugin vbotka.freebsd.iocage`_ to create the inventory. Display the created inventory.
 
 Tree
 ^^^^
@@ -29,9 +29,9 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_01
+  │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
   ├── iocage.yml
@@ -41,10 +41,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the `module vbotka.freebsd.iocage`_
   to:
@@ -55,7 +55,7 @@ Synopsis
   * start 1 jail
   * display lists of bases, plugins, templates, and jails.
 
-* On the iocage host ``iocage_02``
+* At the managed node ``iocage_04``
   
   In the playbook ``pb-test-01.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
@@ -68,7 +68,7 @@ Requirements
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts.
+* root privilege on the managed nodes.
 * activated `binary iocage`_
 
 Notes
@@ -129,11 +129,11 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
+.. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -154,16 +154,6 @@ Playbook output - fetch, create, clone, and start
    :language: yaml
    :force:
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
 List jails at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -171,13 +161,23 @@ List jails at iocage_02
 
    [iocage_02]# iocage list -l
 
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+List jails at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
 .. literalinclude:: out/out-03.txt
    :language: bash
 
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-The jails at *iocage_02*
+The jails at ``iocage_04``
 
 .. literalinclude:: iocage.yml
    :language: yaml
@@ -201,7 +201,7 @@ Playbook output - display groups
 
    (env) > ansible-playbook pb-test-01.yml -i iocage.yml
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
    :emphasize-lines: 30-35

@@ -1,12 +1,13 @@
+
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
 ok: [test_111] => 
     msg: |-
-        test_111 2 14.2-RELEASE-p3 10.1.0.174 ['10.1.0.174'] up ''
-ok: [ansible_client] =>
+        test_111 15 14.2-RELEASE-p3 10.1.0.175 ['10.1.0.175'] up ''
+ok: [ansible_client] => 
     msg: |-
-        ansible_client None 14.2-RELEASE-p3 10.1.0.199 ['10.1.0.199'] down ''
+        ansible_client None 14.2-RELEASE-p3 - [] down '-'
 ok: [test_112] => 
     msg: |-
         test_112 None 14.2-RELEASE-p3 - [] down 'DHCP (not running)'
@@ -15,7 +16,8 @@ ok: [test_113] =>
         test_113 None 14.2-RELEASE-p3 - [] down 'DHCP (not running)'
 
 PLAY RECAP *********************************************************************
-ansible_client: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
