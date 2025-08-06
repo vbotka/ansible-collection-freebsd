@@ -51,7 +51,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Templates created in :ref:`example_205`
+* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^

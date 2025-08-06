@@ -45,7 +45,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * binary `iocage`_.
 
 Notes

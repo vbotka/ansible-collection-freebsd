@@ -1,19 +1,19 @@
 freebsd_iocage_pool: zroot
 freebsd_iocage_pool_mount: /zroot
-freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
+freebsd_iocage_mount: /zroot/iocage
 
 templates:
   ansible_client:
     release: 14.2-RELEASE
     properties:
-      ip4_addr: 'em0|10.1.0.199/24'
+      bpf: 1
+      dhcp: 1
+      vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
+    pkglist: /tmp/ansible/ansible_client/pkgs.json
 
 # ansible client template defaults
-act_pkg:
-  - security/sudo
-  - lang/python311
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
@@ -21,12 +21,7 @@ act_rcconf:
   iocage_enable: "YES"
   sshd_enable: "YES"
 act_dhclient:
-  dhclient-enter-hooks: |
-    echo "dhclient-enter-hooks: $interface $reason new_ip_address=$new_ip_address" >> /var/log/dhclient-hook.log
-    # logger "dhclient-enter-hooks: $interface $reason new_ip_address=$new_ip_address"
   dhclient-exit-hooks: |
-    echo "dhclient-exit-hooks: $interface $reason new_ip_address=$new_ip_address" >> /var/log/dhclient-hook.log
-    # logger "dhclient-exit-hooks: $interface $reason new_ip_address=$new_ip_address"
     case "$reason" in
         "BOUND"|"REBIND"|"REBOOT"|"RENEW")
         echo $new_ip_address > /var/db/dhclient-hook.address.$interface

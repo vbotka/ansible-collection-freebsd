@@ -39,7 +39,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
   * iocage_01
   * iocage_02
@@ -61,7 +61,7 @@ Requirements
 
 * `role vbotka.freebsd.iocage`_
 * `filter vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts.
+* root privilege in the managed nodes
 * jails created in previous examples.
 
 Notes

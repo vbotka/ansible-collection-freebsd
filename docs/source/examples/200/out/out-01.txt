@@ -10,20 +10,20 @@ ok: [iocage_02]
 ok: [iocage_04]
 
 TASK [Pkglist: Create directories for pkglist files.] **************************
-changed: [iocage_04] => (item=ansible_client tmp/ansible/ansible_client/pkgs.json)
-changed: [iocage_02] => (item=ansible_client tmp/ansible/ansible_client/pkgs.json)
+changed: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+changed: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 
 TASK [Pkglist: Copy pkglist files.] ********************************************
-changed: [iocage_04] => (item=ansible_client tmp/ansible/ansible_client/pkgs.json)
-changed: [iocage_02] => (item=ansible_client tmp/ansible/ansible_client/pkgs.json)
+changed: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+changed: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 
 TASK [Create: Create templates.] ***********************************************
 changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
 changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
 
 TASK [Start: Start jails.] *****************************************************
-ok: [iocage_02]
 ok: [iocage_04]
+ok: [iocage_02]
 
 TASK [User: Create user.] ******************************************************
 changed: [iocage_04] => (item=ansible_client admin)

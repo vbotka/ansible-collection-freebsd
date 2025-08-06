@@ -16,17 +16,14 @@
 .. index:: single: dhclient-exit-hooks; Example 208
 
 .. index:: single: module vbotka.freebsd.iocage; Example 208
-.. index:: single: module community.general.pkgng; Example 208
-.. index:: single: community.general.pkgng; Example 208
 .. index:: single: module community.general.sysrc; Example 208
 .. index:: single: community.general.sysrc; Example 208
 
-.. index:: single: act_dhclient; Example 208
-.. index:: single: act_pkg; Example 208
 .. index:: single: act_user; Example 208
 .. index:: single: act_pk; Example 208
 .. index:: single: act_sudo; Example 208
 .. index:: single: act_rcconf; Example 208
+.. index:: single: act_dhclient; Example 208
 .. index:: single: pkglist; Example 208
 
 Use case
@@ -48,7 +45,7 @@ Tree
   │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
-  └── pb-test-01.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -58,7 +55,6 @@ Synopsis
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jail to templates.
   * ``vbotka.freebsd.iocage`` exec to create a user and set .ssh ownership.
-  * ``community.general.pkgng`` to install packages.
   * ``community.general.sysrc`` to configure ``/etc/rc.conf``
   * ``ansible.posix.authorized_key`` to configure public keys.
   * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``
@@ -69,7 +65,7 @@ Requirements
 
 * playbook `vbotka.freebsd.pb_iocage_template.yml`_
 * `module vbotka.freebsd.iocage`_
-* root privilege on the iocage host
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^
@@ -107,11 +103,9 @@ host_vars
    * The user ``act_user`` will be created in the template.
    * The user ``act_user`` will serve as Ansible ``remote_user``
    * The file ``act_pk`` provides the public keys allowed to ssh to ``act_user``
-   * The list of packages ``act_pkg`` to be installed by ``community.general.pkgng``
    * The dhclient hooks ``act_dhclient`` will be created in ``/etc``
 
-   Optionally, let the `module vbotka.freebsd.iocage`_ install packages. Enable the attribute
-   ``pkglist`` and empty the list ``act_pkg: []``. Create the file ``files/pkgs.json``
+   Create the file ``files/pkgs.json``
 
    .. code-block:: json
 
@@ -148,10 +142,10 @@ Limit the inventory to iocage_04
    :language: yaml
    :force:
 
-Playbook pb-test-01.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml
 
 Playbook output - List templates
@@ -159,7 +153,7 @@ Playbook output - List templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage.ini -l iocage_04
+   (env) > ansible-playbook pb-test.yml -i iocage.ini -l iocage_04
 
 .. literalinclude:: out/out-02.txt
    :language: bash

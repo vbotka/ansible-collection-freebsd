@@ -42,12 +42,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the remote host *build.example.com*:
+* At the managed node ``build.example.com``:
 
-  * in the playbook *pb.yml*, use the role `vbotka.freebsd.poudriere`_ to install and configure
+  * in the playbook ``pb.yml``, use the role `vbotka.freebsd.poudriere`_ to install and configure
     `poudriere`_.
 
-  * in the playbook *pb-postinstall.yml*, use the role `vbotka.freebsd.postinstall`_ to install and
+  * in the playbook ``pb-postinstall.yml``, use the role `vbotka.freebsd.postinstall`_ to install and
     configure `QEMU`_.
 
   * build packages.
@@ -55,7 +55,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the *build.example.com*.
+* root privilege in the managed node ``build.example.com``.
 
 Notes
 ^^^^^

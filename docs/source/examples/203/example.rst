@@ -12,10 +12,12 @@ Extending example :ref:`example_202`.
 .. index:: single: template ansible_client; Example 203
 .. index:: single: ansible_client; Example 203
 .. index:: single: DHCP; Example 203
+
 .. index:: single: inventory vbotka.freebsd.iocage; Example 203
 .. index:: single: module vbotka.freebsd.iocage; Example 203
 .. index:: single: module ansible.builtin.command; Example 203
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 203
+
 .. index:: single: option compose; Example 203
 .. index:: single: compose; Example 203
 .. index:: single: option get_properties; Example 203
@@ -30,6 +32,8 @@ Extending example :ref:`example_202`.
 .. index:: single: iocage_properties; Example 203
 .. index:: single: variable iocage_tags; Example 203
 .. index:: single: iocage_tags; Example 203
+
+.. index:: single: option iocage --count; Example 203
 .. index:: single: option iocage --short; Example 203
 .. index:: single: option iocage --template; Example 203
 
@@ -99,7 +103,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two iocage hosts:
 
   * iocage_01
   * iocage_02
@@ -116,9 +120,9 @@ Synopsis
     * start jails
     * optionally stop and destroy the jails.
   
-* On all created jails:
+* At all created jails:
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test.yml``:
 
   * connect to the created jails
   * display basic configuration of the jails.
@@ -129,7 +133,7 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * templates created in :ref:`example_202`
 
 Notes

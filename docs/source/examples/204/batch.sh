@@ -6,7 +6,7 @@ VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_
 ssh admin@$iocage_01 iocage list -lt | tee out/out-02.txt
 ssh admin@$iocage_02 CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1 iocage list -lt | tee out/out-03.txt
 
-ansible-playbook pb_iocage_ansible_clients_v2.yml -i iocage.ini -t swarm -e swarm=true -e debug=true | tee out/out-04.txt
+ansible-playbook pb-iocage-ansible-clients-v2.yml -i iocage.ini -t swarm -e swarm=true -e debug=true | tee out/out-04.txt
 ssh admin@$iocage_01 sudo iocage list -l | tee out/out-05.txt
 ssh admin@$iocage_02 sudo CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1 iocage list -l | tee out/out-06.txt
 

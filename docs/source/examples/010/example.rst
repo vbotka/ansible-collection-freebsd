@@ -68,8 +68,8 @@ Requirements
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the managed nodes.
-* activated `binary iocage`_
+* root privilege in the managed nodes
+* activated `binary iocage`_.
 
 Notes
 ^^^^^

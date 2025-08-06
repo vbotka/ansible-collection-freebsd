@@ -11,6 +11,7 @@ Extending example :ref:`example_200`.
 
 .. index:: single: playbook pb-iocage-display-lists.yml; Example 201
 .. index:: single: module vbotka.freebsd.iocage; Example 201
+
 .. index:: single: variable iocage_jails; Example 201
 .. index:: single: iocage_jails; Example 201
 .. index:: single: variable iocage_plugins; Example 201
@@ -39,10 +40,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook ``pb-iocage-display-lists.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
@@ -55,69 +56,32 @@ Notes
 
 * Quoting from `man iocage`_:  ::
 
-         list    List  the  specified dataset type.  By         default, all jails are
-                 listed.
+         list    List  the  specified dataset type. By default, all jails are listed.
 
                  Options:
 
                  [--http]              Changes [-R | --remote] to use HTTP.
 
-                 [-H | -h | --header]  Used in scripting.  Use tabs for          sepa-
-                                       rators.
+                 [-H | -h | --header]  Used in scripting. Use tabs for separators.
 
                  [-P | --plugins]      Shows plugins installed on the system.
 
-                 [-PRO]                        Lists  official  plugins          available for
-                                       download.
+                 [-PRO]                Lists official plugins available for download.
 
-                 [-R | --remote]       Shows available RELEASE options for re-
-                                       mote.
+                 [-R | --remote]       Shows available RELEASE options for remote.
 
                  [-b | -r | --base | --release | dataset_type]
-                                       List all         bases.
+                                       List all bases.
 
-                 [-l | --long]         Shows JID, NAME,         BOOT, STATE, TYPE, RE-
-                                       LEASE, IP4, IP6,         and TEMPLATE  informa-
-                                       tion.
+                 [-l | --long]         Shows JID, NAME, BOOT, STATE, TYPE, RELEASE, IP4,
+		                       IP6, and TEMPLATE  information.
 
-                 [-q | --quick]                Lists  all  jails  with less processing
-                                       and fields.
+                 [-q | --quick]        Lists all jails with less processing and fields.
 
                  [-s | --sort TEXT]    Sorts the list by the given type.
 
                  [-t | --template | dataset_type]
                                        Lists all templates.
-
-Lists at iocage_01
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -r
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -P
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -lt
-
-.. literalinclude:: out/out-03.txt
-   :language: bash
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
 
 Lists at iocage_02
 ^^^^^^^^^^^^^^^^^^
@@ -126,26 +90,57 @@ Lists at iocage_02
 
    [iocage_02]# iocage list -r
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-01.txt
    :language: bash
 
 .. code-block:: console
 
    [iocage_02]# iocage list -P
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
 
 .. code-block:: console
 
    [iocage_02]# iocage list -lt
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-05.txt
    :language: bash
 
 .. code-block:: console
 
    [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+
+Lists at iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -r
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -P
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -lt
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: bash

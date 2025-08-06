@@ -9,29 +9,29 @@
 
 .. index:: single: ansible_client; Example 200
 .. index:: single: template ansible_client; Example 200
+.. index:: single: sudoers; Example 200
+
 .. index:: single: playbook pb_iocage_template.yml; Example 200
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 200
+
 .. index:: single: inventory vbotka.freebsd.iocage; Example 200
 .. index:: single: module vbotka.freebsd.iocage; Example 200
-.. index:: single: module community.general.pkgng; Example 200
-.. index:: single: community.general.pkgng; Example 200
 .. index:: single: module ansible.posix.authorized; Example 200
 .. index:: single: ansible.posix.authorized; Example 200
 .. index:: single: module ansible.builtin.lineinfile; Example 200
 .. index:: single: ansible.builtin.lineinfile; Example 200
 .. index:: single: module community.general.sysrc; Example 200
 .. index:: single: community.general.sysrc; Example 200
-.. index:: single: sudoers; Example 200
 
 .. index:: single: option compose; Example 200
 .. index:: single: compose; Example 200
 .. index:: single: option groups; Example 200
 
-.. index:: single: act_pkg; Example 200
 .. index:: single: act_user; Example 200
 .. index:: single: act_pk; Example 200
 .. index:: single: act_sudo; Example 200
 .. index:: single: act_rcconf; Example 200
+.. index:: single: pkglist; Example 200
 
 Use case
 ^^^^^^^^
@@ -47,7 +47,8 @@ Tree
   .
   ├── ansible.cfg
   ├── files
-  │   └── pk_admins.txt
+  │   ├── pk_admins.txt
+  │   └── pkgs.json
   ├── hosts
   │   ├── 02_iocage.yml
   │   ├── 04_iocage.yml
@@ -83,7 +84,7 @@ Synopsis
   * start all jails
   * optionally, display the lists of jails.
 
-* On all created jails:
+* At all created jails:
 
   In the playbook ``pb-test.yml``:
 
@@ -97,7 +98,7 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * activated ``iocage``
 * fetched releases.
 
@@ -125,6 +126,13 @@ Inventory iocage.ini
 
 .. literalinclude:: iocage.ini
    :language: ini
+
+files
+^^^^^
+
+.. literalinclude:: files/pkgs.json
+   :language: yaml
+   :caption:
 
 host_vars
 ^^^^^^^^^

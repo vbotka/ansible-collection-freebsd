@@ -54,7 +54,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the iocage host.
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^
@@ -106,8 +106,8 @@ sure about the content of these files you might want to clean the content before
    fp_resolvconf_conf_clean: true
    fp_resolv_conf_clean: true
 
-This makes the play not idempotent. The defaults are ``false``. To make the play
-idempotent, omit these variables according to your own discretion.
+This makes the play not idempotent. The defaults are ``false``. To make the play idempotent, omit
+these variables according to your own discretion.
 
 .. code-block:: console
 

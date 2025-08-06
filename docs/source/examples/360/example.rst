@@ -37,13 +37,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Configure /boot/loader.conf
+* Configure ``/boot/loader.conf``
 * Configure the bridges.
 
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the iocage hosts.
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^

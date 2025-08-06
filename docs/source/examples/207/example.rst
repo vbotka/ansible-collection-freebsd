@@ -7,16 +7,20 @@
    :local:
    :depth: 1
 
-.. index:: single: inventory vbotka.freebsd.iocage; Example 207
-.. index:: single: inventory ansible.builtin.constructed; Example 207
-.. index:: single: module ansible.builtin.command; Example 207
 .. index:: single: template ansible_client; Example 207
 .. index:: single: ansible_client; Example 207
-
 .. index:: single: DHCP; Example 207
+.. index:: single: property notes; Example 207
+.. index:: single: notes; Example 207
+
 .. index:: single: alias; Example 207
 .. index:: single: inventory alias; Example 207
 .. index:: single: inventory class; Example 207
+
+.. index:: single: inventory vbotka.freebsd.iocage; Example 207
+.. index:: single: inventory ansible.builtin.constructed; Example 207
+.. index:: single: module ansible.builtin.command; Example 207
+
 .. index:: single: option inventory_hostname_tag; Example 207
 .. index:: single: inventory_hostname_tag; Example 207
 .. index:: single: option get_properties; Example 207
@@ -27,8 +31,6 @@
 .. index:: single: compose; Example 207
 .. index:: single: option groups; Example 207
 .. index:: single: option keyed_groups; Example 207
-.. index:: single: property notes; Example 207
-.. index:: single: notes; Example 207
 
 .. index:: single: variable iocage_jails; Example 207
 .. index:: single: iocage_jails; Example 207
@@ -139,7 +141,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * templates created in :ref:`example_202`
 
 Notes

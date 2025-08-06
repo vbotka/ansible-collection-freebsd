@@ -27,10 +27,15 @@ Examples
 * All examples comprise additional files not shown in the files' tree. You might want to look them
   over for more details.
 
-* Most examples comprise *batch.sh* that runs the commands and creates the output.
+* Most examples comprise ``batch.sh`` that runs the commands and creates the output.
 
-* Most plays in *batch.sh* are idempotent. If a play has already been run, the output of the tasks
-  may show *ok* instead of expected *changed*.
+* Most plays in ``batch.sh`` are idempotent. If a play has already been run, the output of the tasks
+  may show ``ok`` instead of expected ``changed``.
+
+* The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
+
+* The playbooks in the collection, because of the Ansible collection naming conventions, use
+  underscores ``_`` in their filenames. For example, ``pb_iocage_template.yml``.
 
 .. toctree::
    :maxdepth: 1
@@ -66,7 +71,6 @@ Examples
    202 DHCP iocage templates <examples/202/example.rst>
    203 DHCP, auto UUID, iocage_tags <examples/203/example.rst>
    204 DHCP, auto UUID, iocage_tags v2 <examples/204/example.rst>
-   205 DHCP iocage templates v2 <examples/205/example.rst>
    206 DHCP and fixed IP clients <examples/206/example.rst>
    207 DHCP, auto UUID, tags, class <examples/207/example.rst>
    208 DHCP, ansible-pull <examples/208/example.rst>

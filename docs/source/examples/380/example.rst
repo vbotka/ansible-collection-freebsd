@@ -34,7 +34,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Use the playbook *pb.yml* at *iocage_02* to customize FreeBSD image:
+* Use the playbook ``pb.yml`` at ``iocage_02`` to customize FreeBSD image:
 
   * configure wireless adapter `RTL8188EU`_
   * configure wpa_supplicant
@@ -43,7 +43,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the iocage host.
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^

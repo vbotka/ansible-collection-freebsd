@@ -37,14 +37,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host *iocage_03* at IP
-  10.1.0.17 configured in /etc/rc.conf ::
+* The Ansible controller connects the iocage host ``iocage_03`` at IP 10.1.0.17 configured in
+  /etc/rc.conf ::
 
     defaultrouter="10.1.0.10"
     gateway_enable="YES"
     ifconfig_em0="inet 10.1.0.17 netmask 255.255.255.0"
 
-* In the playbook *pb.yml* at *iocage_03* configure:
+* In the playbook ``pb.yml`` at ``iocage_03`` configure:
 
   * blacklistd, fail2ban, and sshguard
   * nat
@@ -54,7 +54,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the iocage host.
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^
@@ -112,10 +112,9 @@ Install packages
 Playbook output - configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting and restarting of the firewall breaks the ssh connections. See the
-handlers for details. As a consequence, both handlers starting and reloading
-don't work properly and the ssh connection will stale. Therefore, let us
-first configure the rules
+Starting and restarting of the firewall breaks the ssh connections. See the handlers for details. As
+a consequence, both handlers starting and reloading don't work properly and the ssh connection will
+stale. Therefore, let us first configure the rules
 
 .. code-block:: console
 

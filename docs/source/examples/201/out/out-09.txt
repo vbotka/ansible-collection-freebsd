@@ -2,66 +2,13 @@
 PLAY [Display iocage lists and dictionaries.] **********************************
 
 TASK [Set iocage lists and dictionaries.] **************************************
-ok: [iocage_01]
+ok: [iocage_04]
 ok: [iocage_02]
 
 TASK [Display iocage lists and dictionaries (omit properties).] ****************
-ok: [iocage_01] => 
-    msg: |-
-        iocage_releases: ['13.3-RELEASE', '13.4-RELEASE', '13.5-RELEASE']
-        iocage_plugins:
-          {}
-
-        iocage_templates:
-          ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: vnet0|10.1.0.198/24
-            ip6: '-'
-            jid: '-'
-            name: ansible_client
-            release: 13.5-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
-
-        iocage_jails:
-          test_101:
-            basejail: 'no'
-            boot: 'off'
-            ip4: DHCP (running -- address requires root)
-            ip6: '-'
-            jid: '174'
-            name: test_101
-            release: 13.5-RELEASE-p1
-            state: up
-            template: ansible_client
-            type: jail
-          test_102:
-            basejail: 'no'
-            boot: 'off'
-            ip4: DHCP (running -- address requires root)
-            ip6: '-'
-            jid: '175'
-            name: test_102
-            release: 13.5-RELEASE-p1
-            state: up
-            template: ansible_client
-            type: jail
-          test_103:
-            basejail: 'no'
-            boot: 'off'
-            ip4: DHCP (running -- address requires root)
-            ip6: '-'
-            jid: '176'
-            name: test_103
-            release: 13.5-RELEASE-p1
-            state: up
-            template: ansible_client
-            type: jail
 ok: [iocage_02] => 
     msg: |-
-        iocage_releases: ['14.2-RELEASE']
+        iocage_releases: ['14.2-RELEASE', '14.3-RELEASE']
         iocage_plugins:
           {}
 
@@ -69,7 +16,7 @@ ok: [iocage_02] =>
           ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: em0|10.1.0.199/24
+            ip4: DHCP (not running)
             ip6: '-'
             jid: None
             name: ansible_client
@@ -82,9 +29,9 @@ ok: [iocage_02] =>
           test_111:
             basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: em0|10.1.0.111/24
             ip6: '-'
-            jid: '60'
+            jid: '37'
             name: test_111
             release: 14.2-RELEASE-p3
             state: up
@@ -93,9 +40,9 @@ ok: [iocage_02] =>
           test_112:
             basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: em0|10.1.0.112/24
             ip6: '-'
-            jid: '61'
+            jid: '38'
             name: test_112
             release: 14.2-RELEASE-p3
             state: up
@@ -104,16 +51,69 @@ ok: [iocage_02] =>
           test_113:
             basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: em0|10.1.0.113/24
             ip6: '-'
-            jid: '62'
+            jid: '39'
             name: test_113
             release: 14.2-RELEASE-p3
             state: up
             template: ansible_client
             type: jail
+ok: [iocage_04] => 
+    msg: |-
+        iocage_releases: ['14.3-RELEASE']
+        iocage_plugins:
+          {}
+
+        iocage_templates:
+          ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible_client
+            release: 14.3-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+
+        iocage_jails:
+          test_131:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.131/24
+            ip6: '-'
+            jid: '39'
+            name: test_131
+            release: 14.3-RELEASE-p1
+            state: up
+            template: ansible_client
+            type: jail
+          test_132:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.132/24
+            ip6: '-'
+            jid: '40'
+            name: test_132
+            release: 14.3-RELEASE-p1
+            state: up
+            template: ansible_client
+            type: jail
+          test_133:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.133/24
+            ip6: '-'
+            jid: '41'
+            name: test_133
+            release: 14.3-RELEASE-p1
+            state: up
+            template: ansible_client
+            type: jail
 
 PLAY RECAP *********************************************************************
-iocage_01                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 iocage_02                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

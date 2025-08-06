@@ -11,21 +11,26 @@ Extending example :ref:`example_016`.
 
 .. index:: single: inventory alias; Example 020
 .. index:: single: alias; Example 020
+
 .. index:: single: inventory vbotka.freebsd.iocage; Example 020
 .. index:: single: inventory ansible.builtin.constructed; Example 020
+
 .. index:: single: option inventory_hostname_tag; Example 020
 .. index:: single: inventory_hostname_tag; Example 020
 .. index:: single: option inventory_hostname_required; Example 020
 .. index:: single: inventory_hostname_required; Example 020
-.. index:: single: compose; Example 020
 .. index:: single: option compose; Example 020
 .. index:: single: compose; Example 020
+
+.. index:: single: option iocage --count; Example 020
+
 
 Use case
 ^^^^^^^^
 
 Get the `inventory aliases`_ from the `iocage property notes`_. In the `inventory plugin
-vbotka.freebsd.iocage`_ use option ``inventory_hostname_tag`` to tell the plugin which tag to use.
+vbotka.freebsd.iocage`_, use the option ``inventory_hostname_tag`` to tell the plugin which tag to
+use.
 
 Tree
 ^^^^
@@ -62,9 +67,9 @@ Synopsis
   * at each jail, create property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
   * put the inventory alias into the tag ``alias=<alias>``
 
-* In the `inventory plugin vbotka.freebsd.iocage`_ get the inventory aliases from the tag ``alias``
+* In the `inventory plugin vbotka.freebsd.iocage`_, get the inventory aliases from the tag ``alias``
 
-* In the inventory plugin `ansible.builtin.constructed`_ create the inventory groups.
+* In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups.
 
 * Display the jails and groups.
 
@@ -72,7 +77,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * templates created in :ref:`example_202`.
  
 Notes

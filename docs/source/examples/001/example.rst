@@ -40,7 +40,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the managed nodes.
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^

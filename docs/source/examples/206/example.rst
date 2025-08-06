@@ -12,26 +12,31 @@ Extending example :ref:`example_203`.
 .. index:: single: template ansible_client; Example 206
 .. index:: single: ansible_client; Example 206
 .. index:: single: DHCP; Example 206
+.. index:: single: property notes; Example 206
+.. index:: single: notes; Example 206
+
 .. index:: single: inventory vbotka.freebsd.iocage; Example 206
 .. index:: single: module vbotka.freebsd.iocage; Example 206
 .. index:: single: module ansible.builtin.command; Example 206
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 206
+
 .. index:: single: option compose; Example 206
 .. index:: single: compose; Example 206
 .. index:: single: option get_properties; Example 206
 .. index:: single: get_properties; Example 206
 .. index:: single: option hooks_results; Example 206
 .. index:: single: hooks_results; Example 206
-.. index:: single: property notes; Example 206
-.. index:: single: notes; Example 206
 .. index:: single: variable iocage_hooks; Example 206
 .. index:: single: iocage_hooks; Example 206
+
+.. index:: single: option iocage --count; Example 206
+.. index:: single: option iocage --short; Example 206
+.. index:: single: option iocage --template; Example 206
+
 .. index:: single: variable iocage_properties; Example 206
 .. index:: single: iocage_properties; Example 206
 .. index:: single: variable iocage_tags; Example 206
 .. index:: single: iocage_tags; Example 206
-.. index:: single: option iocage --short; Example 206
-.. index:: single: option iocage --template; Example 206
 
 Use case
 ^^^^^^^^
@@ -174,13 +179,13 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
-* templates created in :ref:`example_205`
+* root privilege in the managed nodes
+* templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-* Templates created in :ref:`example_205` are used in this example.
+* Templates created in :ref:`example_202` are used in this example.
 
 * The dash "-" is used in `binary iocage`_ to represent a missing value. See for example:
 

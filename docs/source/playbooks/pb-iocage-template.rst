@@ -1,17 +1,18 @@
-pb-iocage-template
+pb_iocage_template
 ------------------
 
 .. contents::
    :local:
    :depth: 3
 
-.. index:: single: playbook pb-iocage-template.yml; pb-iocage-template
-.. index:: single: act_user; pb-iocage-template
-.. index:: single: act_pk; pb-iocage-template
-.. index:: single: act_sudo; pb-iocage-template
-.. index:: single: act_rcconf; pb-iocage-template
-.. index:: single: act_dhclient; pb-iocage-template
-.. index:: single: pkglist; pb-iocage-template
+.. index:: single: playbook pb_iocage_template.yml; pb_iocage_template
+.. index:: single: act_user; pb_iocage_template
+.. index:: single: act_pk; pb_iocage_template
+.. index:: single: act_sudo; pb_iocage_template
+.. index:: single: act_rcconf; pb_iocage_template
+.. index:: single: act_dhclient; pb_iocage_template
+.. index:: single: pkglist; pb_iocage_template
+.. index:: single: option iocage --pkglist; pb_iocage_template
 
 Synopsis
 ^^^^^^^^
@@ -29,7 +30,7 @@ This playbook creates `iocage templates`_ from the dictionary ``templates``. For
          vnet: 'on'
        dhclient: "{{ act_dhclient | dict2items }}"
        rcconf: "{{ act_rcconf | dict2items }}"
-       pkglist: "{{ inventory_dir }}/files/pkgs.json"
+       pkglist: /tmp/ansible/ansible_client/pkgs.json
 
 creates the template ``ansible_client``
 
@@ -50,7 +51,7 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Take a look at Index and search ``playbook pb-iocage-template.yml`` to see what examples are
+   Take a look at Index and search ``playbook pb_iocage_template.yml`` to see what examples are
    available.
 
 Ansible Client Template variables
@@ -162,7 +163,7 @@ iocage`_
 
    templates:
      ansible_client:
-       pkglist: tmp/ansible/ansible_client/pkgs.json
+       pkglist: /tmp/ansible/ansible_client/pkgs.json
        ...
 
 Create the file ``files/pkgs.json``. For example,
@@ -175,6 +176,20 @@ Create the file ``files/pkgs.json``. For example,
            "sudo"
            ]
    }
+
+The playbook tasks ``pkglist.yml`` expects the path ``files/pkgs.json`` to be relative to the
+inventory
+
+.. code-block:: yaml
+
+   - name: Copy pkglist files.
+     ansible.builtin.copy:
+       src: "{{ inventory_dir }}/files/{{ item.value.pkglist | basename }}"
+       dest: "{{ item.value.pkglist }}"
+     loop: "{{ _templates }}"
+     vars:
+       _templates: "{{ templates | dict2items
+                                 | selectattr('value.pkglist', 'defined') }}"
 
 Fit the list to your needs. Usually, you want to add ``gtar`` and other archivers. See the module
 `ansible.builtin.unarchive`_. Add ``py-openssl`` if you want to use the collection
@@ -224,7 +239,7 @@ Then, use the playbook tags to execute selected tasks. For example, to install p
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-template.yml -t pkg
+   (env) > ansible-playbook pb_iocage_template.yml -t pkg
 
 After the reconfiguration stop the jail and convert it to the template manually
 
@@ -237,7 +252,7 @@ After the reconfiguration stop the jail and convert it to the template manually
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-template.yml -t stop,template
+   (env) > ansible-playbook pb_iocage_template.yml -t stop,template
 
 
 .. _Setting the Python interpreter: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter

@@ -11,7 +11,7 @@ templates:
       vnet: 'on'
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
-    pkglist: tmp/ansible/ansible_client/pkgs.json
+    pkglist: /tmp/ansible/ansible_client/pkgs.json
 
 # ansible client template defaults
 act_user: admin
