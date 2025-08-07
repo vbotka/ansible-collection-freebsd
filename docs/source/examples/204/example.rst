@@ -114,7 +114,7 @@ Synopsis
 
 * At all created jails:
 
-  In the playbook ``pb-test-01.yml``:
+  In the playbook ``pb-test.yml``:
 
   * connect to the created jails
   * display the basic jails' configuration.

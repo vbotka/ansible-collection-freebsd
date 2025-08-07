@@ -1,8 +1,6 @@
 plugin: vbotka.freebsd.iocage
-host: 10.1.0.73
+host: 10.1.0.29
 user: admin
-env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 get_properties: True
 hooks_results:
   - /var/db/dhclient-hook.address.epair0b
