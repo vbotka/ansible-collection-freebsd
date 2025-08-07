@@ -9,15 +9,17 @@ Extending example :ref:`example_010`.
    :local:
    :depth: 1
 
-.. index:: single: DHCP; Example 018
 .. index:: single: module vbotka.freebsd.iocage; Example 018
 .. index:: single: inventory vbotka.freebsd.iocage; Example 018
+.. index:: single: DHCP; Example 018
+.. index:: single: SETENV; Example 018
+.. index:: single: sudoers; Example 018
+
 .. index:: single: option sudo; Example 018
 .. index:: single: sudo; Example 018
 .. index:: single: option sudo_preserve_env; Example 018
 .. index:: single: sudo_preserve_env; Example 018
-.. index:: single: sudoers; Example 018
-.. index:: single: SETENV; Example 018
+
 .. index:: single: variable iocage_ip4_dict; Example 018
 .. index:: single: iocage_ip4_dict; Example 018
 
@@ -131,8 +133,8 @@ Playbook output - clone, start, and list
    :language: bash
    :force:
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -141,8 +143,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-List jails at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -163,7 +165,7 @@ root)``. Enable also ``sudo_preserve_env: true`` if ``env`` is used.
 
 .. hint::
 
-   * Limit admins sudo to the command ``iocage list`` ::
+   * Optionally, limit admins sudo to the command ``iocage list`` ::
 
        shell> grep iocage /usr/local/etc/sudoers
        admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
@@ -187,8 +189,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - list some iocage_* vars
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - vars iocage_*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -198,10 +200,14 @@ Playbook output - list some iocage_* vars
    :language: yaml
    :force:
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
+
+.. code-block:: console
+
+   [iocage_02]# iocage stop test_112 test_113
 
 .. code-block:: console
 
@@ -210,16 +216,8 @@ If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
 .. literalinclude:: out/out-08.txt
    :language: bash
 
-Playbook output - list some iocage_* vars
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Stop two jails
-
-.. code-block:: console
-
-   [iocage_02]# iocage stop test_112 test_113
-
-List variables
+Playbook output - vars iocage_*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

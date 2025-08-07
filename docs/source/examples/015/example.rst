@@ -84,7 +84,7 @@ Playbook pb-vars-ip4.yml
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
 
-Playbook output - display iocage_ip4
+Playbook output - Display iocage_ip4
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

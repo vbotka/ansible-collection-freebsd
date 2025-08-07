@@ -12,6 +12,8 @@ Extending example :ref:`example_202`.
 .. index:: single: template ansible_client; Example 203
 .. index:: single: ansible_client; Example 203
 .. index:: single: DHCP; Example 203
+.. index:: single: property notes; Example 203
+.. index:: single: notes; Example 203
 
 .. index:: single: inventory vbotka.freebsd.iocage; Example 203
 .. index:: single: module vbotka.freebsd.iocage; Example 203
@@ -24,8 +26,7 @@ Extending example :ref:`example_202`.
 .. index:: single: get_properties; Example 203
 .. index:: single: option hooks_results; Example 203
 .. index:: single: hooks_results; Example 203
-.. index:: single: property notes; Example 203
-.. index:: single: notes; Example 203
+
 .. index:: single: variable iocage_hooks; Example 203
 .. index:: single: iocage_hooks; Example 203
 .. index:: single: variable iocage_properties; Example 203
@@ -63,13 +64,17 @@ In the inventory plugin, compose the variable ``iocage_tags`` ::
 
   iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
 
-For example, ::
+For example,
 
-  iocage_tags:
-    vmm: iocage_01
-    swarm: sw_01
+.. code-block:: yaml
 
-Create groups from ``iocage_tags`` ::
+   iocage_tags:
+     vmm: iocage_01
+     swarm: sw_01
+
+Create groups from ``iocage_tags``
+
+.. code-block:: yaml
 
   keyed_groups:
     - prefix: swarm
@@ -89,24 +94,19 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── hosts
-  │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
-  │   └── 03_constructed.yml
-  ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   └── iocage_02
-  │       └── iocage.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── iocage.ini
-  └── pb-test-01.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* At two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use:
 
@@ -118,7 +118,7 @@ Synopsis
 
     * create jails
     * start jails
-    * optionally stop and destroy the jails.
+    * optionally, stop and destroy the jails.
   
 * At all created jails:
 
@@ -145,24 +145,24 @@ Notes
 
    * `binary iocage`_
 
-List templates at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
-List templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -lt
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -lt
+
+.. literalinclude:: out/out-02.txt
    :language: bash
 
 ansible.cfg
@@ -184,17 +184,6 @@ group_vars
    :language: yaml
    :caption:
 
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_01/iocage.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
-   :caption:
-
 Playbook output - create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -206,44 +195,44 @@ Playbook output - create and start swarms
                             -e swarm=true \
                             -e debug=true
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml
    :force:
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-05.txt
-   :language: bash
-
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -l
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-05.txt
    :language: bash
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/01_iocage.yml
+.. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 4,9
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 6,11
+   :emphasize-lines: 4,9
 
-.. literalinclude:: hosts/03_constructed.yml
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
 
@@ -258,23 +247,23 @@ Display inventory
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-06.txt
    :language: bash
 
-Playbook pb-test-01.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display *iocage_tags*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage_tags
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i hosts
+   (env) > ansible-playbook pb-test.yml -i hosts
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 

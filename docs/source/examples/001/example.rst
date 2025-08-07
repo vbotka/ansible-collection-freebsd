@@ -62,7 +62,7 @@ ansible.cfg
    :language: ini
 
 Inventory iocage.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage.ini
    :language: ini
@@ -84,7 +84,7 @@ Playbook pb-iocage.yml
 
    `Ansible playbooks`_
 
-Playbook output - display debug
+Playbook output - Display debug
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -101,7 +101,7 @@ Playbook output - display debug
 
    * `ansible-playbook`_
 
-Playbook output - install iocage
+Playbook output - Install iocage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

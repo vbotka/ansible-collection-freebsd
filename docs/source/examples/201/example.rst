@@ -1,7 +1,7 @@
 .. _example_201:
 
-201 Display iocage lists and dictionaries
------------------------------------------
+201 Display iocage datasets
+---------------------------
 
 Extending example :ref:`example_200`.
 
@@ -9,7 +9,7 @@ Extending example :ref:`example_200`.
    :local:
    :depth: 1
 
-.. index:: single: playbook pb-iocage-display-lists.yml; Example 201
+.. index:: single: playbook pb-iocage-display-datasets.yml; Example 201
 .. index:: single: module vbotka.freebsd.iocage; Example 201
 
 .. index:: single: variable iocage_jails; Example 201
@@ -24,7 +24,7 @@ Extending example :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Create and display ``iocage`` lists and dictionaries.
+Get and display ``iocage`` datasets.
 
 Tree
 ^^^^
@@ -35,7 +35,7 @@ Tree
   .
   ├── ansible.cfg
   ├── iocage.ini
-  └── pb-iocage-display-lists.yml
+  └── pb-iocage-display-datasets.yml
 
 Synopsis
 ^^^^^^^^
@@ -45,7 +45,7 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-display-lists.yml``, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-display-datasets.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
   * create and display ``iocage`` lists and dictionaries.
 
@@ -83,8 +83,8 @@ Notes
                  [-t | --template | dataset_type]
                                        Lists all templates.
 
-Lists at iocage_02
-^^^^^^^^^^^^^^^^^^
+Datasets at iocage_02
+^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -114,8 +114,8 @@ Lists at iocage_02
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Lists at iocage_04
-^^^^^^^^^^^^^^^^^^
+Datasets at iocage_04
+^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -164,18 +164,18 @@ Inventory iocage.ini
    * ``admin`` executes the module ``vbotka.freebsd.iocage`` on the iocage
      hosts and creates the variables ``iocage_*``
 
-Playbook pb-iocage-display-lists.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-display-datasets.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-iocage-display-lists.yml
+.. literalinclude:: pb-iocage-display-datasets.yml
    :language: yaml
 
-Playbook output - display iocage lists
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage datasets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage.ini
+   (env) > ansible-playbook pb-iocage-display-datasets.yml -i iocage.ini
 
 .. literalinclude:: out/out-09.txt
    :language: yaml

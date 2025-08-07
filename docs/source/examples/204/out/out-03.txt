@@ -1,5 +1,379 @@
-+------+----------------+------+-------+----------+-----------------+-------------------+-----+----------+----------+
-| JID  |      NAME      | BOOT | STATE |   TYPE   |     RELEASE     |        IP4        | IP6 | TEMPLATE | BASEJAIL |
-+======+================+======+=======+==========+=================+===================+=====+==========+==========+
-| None | ansible_client | off  | down  | template | 14.2-RELEASE-p3 | em0|10.1.0.199/24 | -   | -        | no       |
-+------+----------------+------+-------+----------+-----------------+-------------------+-----+----------+----------+
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage list of jails] ************************************************
+ok: [iocage_04]
+ok: [iocage_02]
+
+TASK [Set dictionary iocage_jails] *********************************************
+ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Set dictionary iocage_jails_properties] **********************************
+ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Combine iocage_jails and iocage_jails_properties] ************************
+ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_02] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02  swarm=sw_01"
+ok: [iocage_04] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_04  swarm=sw_01"
+
+TASK [Create swarms] ***********************************************************
+changed: [iocage_04] => (item=sw_01)
+changed: [iocage_02] => (item=sw_01)
+
+TASK [Debug create swarms debug=true] ******************************************
+ok: [iocage_02] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client
+            - --count
+            - '3'
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            - notes=vmm=iocage_02  swarm=sw_01
+            delta: '0:00:04.276951'
+            end: '2025-08-07 15:50:30.020336'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: |-
+                        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02  swarm=sw_01"
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2025-08-07 15:50:25.743385'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                b9d2f97a successfully created!
+                c33fe7bc successfully created!
+                9da57e6d successfully created!
+            stdout_lines:
+            - b9d2f97a successfully created!
+            - c33fe7bc successfully created!
+            - 9da57e6d successfully created!
+        skipped: false
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client
+            - --count
+            - '3'
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            - notes=vmm=iocage_04  swarm=sw_01
+            delta: '0:00:01.003907'
+            end: '2025-08-07 15:50:38.560180'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: |-
+                        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_04  swarm=sw_01"
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2025-08-07 15:50:37.556273'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                262a357b successfully created!
+                6dc099a5 successfully created!
+                c4c3f57a successfully created!
+            stdout_lines:
+            - 262a357b successfully created!
+            - 6dc099a5 successfully created!
+            - c4c3f57a successfully created!
+        skipped: false
+
+TASK [Get iocage list of jails] ************************************************
+ok: [iocage_04]
+ok: [iocage_02]
+
+TASK [Set dictionary iocage_jails] *********************************************
+ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Get properties of iocage jails] ******************************************
+ok: [iocage_04] => (item=262a357b)
+ok: [iocage_04] => (item=6dc099a5)
+ok: [iocage_04] => (item=c4c3f57a)
+ok: [iocage_02] => (item=9da57e6d)
+ok: [iocage_02] => (item=b9d2f97a)
+ok: [iocage_02] => (item=c33fe7bc)
+
+TASK [Set dictionary iocage_jails_properties] **********************************
+ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Combine iocage_jails and iocage_jails_properties] ************************
+ok: [iocage_02]
+ok: [iocage_04]
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_02] => (item=sw_01) => 
+    msg: |-
+        iocage start 9da57e6d b9d2f97a c33fe7bc
+ok: [iocage_04] => (item=sw_01) => 
+    msg: |-
+        iocage start 262a357b 6dc099a5 c4c3f57a
+
+TASK [Start swarms] ************************************************************
+changed: [iocage_04] => (item=sw_01)
+changed: [iocage_02] => (item=sw_01)
+
+TASK [Debug start swarms debug=true] *******************************************
+ok: [iocage_02] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - start
+            - 9da57e6d
+            - b9d2f97a
+            - c33fe7bc
+            delta: '0:00:33.543132'
+            end: '2025-08-07 15:51:16.338307'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: |-
+                        iocage start 9da57e6d b9d2f97a c33fe7bc
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2025-08-07 15:50:42.795175'
+            stderr: |-
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+            stderr_lines:
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            stdout: |-
+                * Starting 9da57e6d
+                  + Started OK
+                  + Using devfs_ruleset: 1000 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.219/24
+                * Starting b9d2f97a
+                  + Started OK
+                  + Using devfs_ruleset: 1001 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.152/24
+                * Starting c33fe7bc
+                  + Started OK
+                  + Using devfs_ruleset: 1002 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.209/24
+            stdout_lines:
+            - '* Starting 9da57e6d'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1000 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.219/24'
+            - '* Starting b9d2f97a'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1001 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.152/24'
+            - '* Starting c33fe7bc'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1002 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.209/24'
+        skipped: false
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - start
+            - 262a357b
+            - 6dc099a5
+            - c4c3f57a
+            delta: '0:00:22.708665'
+            end: '2025-08-07 15:51:17.264486'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: |-
+                        iocage start 262a357b 6dc099a5 c4c3f57a
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2025-08-07 15:50:54.555821'
+            stderr: |-
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+            stderr_lines:
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            stdout: |-
+                * Starting 262a357b
+                  + Started OK
+                  + Using devfs_ruleset: 1003 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.242/24
+                * Starting 6dc099a5
+                  + Started OK
+                  + Using devfs_ruleset: 1004 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.140/24
+                * Starting c4c3f57a
+                  + Started OK
+                  + Using devfs_ruleset: 1005 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.166/24
+            stdout_lines:
+            - '* Starting 262a357b'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1003 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.242/24'
+            - '* Starting 6dc099a5'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1004 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.140/24'
+            - '* Starting c4c3f57a'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1005 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.166/24'
+        skipped: false
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=15   changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+iocage_04                  : ok=15   changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+

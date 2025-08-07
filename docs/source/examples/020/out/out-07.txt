@@ -1,6 +1,13 @@
 
 PLAY [Test group swarm_db] *****************************************************
-skipping: no hosts matched
+
+TASK [debug] *******************************************************************
+ok: [db1] => 
+    iocage_properties.host_hostuuid: 08773eaf
+ok: [db2] => 
+    iocage_properties.host_hostuuid: e1cee9ca
 
 PLAY RECAP *********************************************************************
+db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

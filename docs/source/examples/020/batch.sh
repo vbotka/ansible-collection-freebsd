@@ -2,6 +2,11 @@
 
 . ../defaults/batch
 
+VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+ssh admin@$iocage_02 sudo iocage destroy -f ansible_client
+ssh admin@$iocage_04 sudo iocage destroy -f ansible_client
+(cd ../202 && ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini)
+
 ssh admin@$iocage_02 sudo iocage list -lt | tee out/out-01.txt
 ssh admin@$iocage_04 sudo iocage list -lt | tee out/out-02.txt
 

@@ -95,8 +95,8 @@ Playbook pb-iocage.yml
 .. literalinclude:: pb-iocage.yml
    :language: yaml
 
-Playbook output - display result
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Activate iocage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

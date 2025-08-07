@@ -9,15 +9,18 @@ Extending example :ref:`example_016`.
    :local:
    :depth: 1
 
-.. index:: single: option use_vars_plugins; Example 019
-.. index:: single: use_vars_plugins; Example 019
 .. index:: single: inventory vbotka.freebsd.iocage; Example 019
 .. index:: single: inventory ansible.builtin.constructed; Example 019
+
+.. index:: single: option use_vars_plugins; Example 019
+.. index:: single: use_vars_plugins; Example 019
 .. index:: single: option compose; Example 019
 .. index:: single: compose; Example 019
 .. index:: single: option groups; Example 019
 .. index:: single: groups; Example 019
+
 .. index:: single: vars plugin ansible.builtin.host_group_vars; Example 019
+.. index:: single: variable region; Example 019
 
 Use case
 ^^^^^^^^
@@ -77,8 +80,8 @@ Notes
    * The `vars plugin ansible.builtin.host_group_vars`_
    * :ref:`example_016`
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -87,8 +90,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List jails at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -138,9 +141,12 @@ group_vars
 
 .. warning::
 
-   * The option `use_vars_plugins`_ reads the **inventory** ``group_vars`` and ``host_vars``
-   * The **playbook** ``group_vars`` and ``host_vars`` will be silently ignored.
-   * See `Variable precedence. Where should I put a variable?`_
+   In the inventory plugin `ansible.builtin.constructed`_:
+
+      * The option `use_vars_plugins`_ reads the **inventory** ``group_vars`` and ``host_vars``
+      * The **playbook** ``group_vars`` and ``host_vars`` will be silently ignored.
+
+   See `Variable precedence. Where should I put a variable?`_
 
 Playbook pb-test-all.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,7 +154,7 @@ Playbook pb-test-all.yml
 .. literalinclude:: pb-test-all.yml
    :language: yaml
 
-Playbook output - list groups
+Playbook output - List groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

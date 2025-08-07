@@ -1,14 +1,14 @@
-- name: Display iocage lists and dictionaries.
+- name: Display iocage datasets.
   hosts: iocage
   environment:
     CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
     
   tasks:
 
-    - name: Set iocage lists and dictionaries.
+    - name: Get iocage datasets.
       vbotka.freebsd.iocage:
 
-    - name: Display iocage lists and dictionaries (omit properties).
+    - name: Display iocage datasets (omit properties).
       vars:
         tkeys: "{{ iocage_templates.keys() }}"
         tvals: "{{ iocage_templates.values()

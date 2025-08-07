@@ -13,4 +13,6 @@
       register: out_host
     
     - ansible.builtin.debug:
-        msg: "ansible_host={{ ansible_host }} iocage_tags={{ iocage_tags }}"
+        msg: >
+          ansible_host={{ ansible_host }}
+          iocage_tags={{ iocage_tags | to_yaml }}

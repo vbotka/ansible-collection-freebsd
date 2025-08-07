@@ -67,7 +67,7 @@ Examples
    :caption: Ansible client
 
    200 iocage templates <examples/200/example.rst>
-   201 iocage lists <examples/201/example.rst>
+   201 iocage datasets <examples/201/example.rst>
    202 DHCP iocage templates <examples/202/example.rst>
    203 DHCP, auto UUID, iocage_tags <examples/203/example.rst>
    204 DHCP, auto UUID, iocage_tags v2 <examples/204/example.rst>

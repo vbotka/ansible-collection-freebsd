@@ -36,7 +36,7 @@ Tree
   ├── iocage.ini
   ├── iocage.yml
   ├── pb-iocage-fetch-base-clone-list.yml
-  └── pb-test-01.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -57,7 +57,7 @@ Synopsis
 
 * At the managed node ``iocage_04``
   
-  In the playbook ``pb-test-01.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
   * create the inventory groups and compose variables
   * display the hosts and composed variables in the group ``test``
@@ -154,8 +154,8 @@ Playbook output - fetch, create, clone, and start
    :language: yaml
    :force:
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -164,8 +164,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-List jails at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -188,18 +188,18 @@ The jails at ``iocage_04``
    * `Inventory plugin ansible.builtin.constructed`_
    * `Enabling inventory cache plugins`_
 
-Playbook pb-test-01.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display groups
+Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage.yml
+   (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

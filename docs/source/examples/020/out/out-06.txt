@@ -2,47 +2,53 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
+ok: [www_p3] => 
     msg: |-
-        ansible_client
-        {}
-ok: [test_111] => 
+        0329af8c
+        {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_02}
+ok: [www_p2] => 
     msg: |-
-        test_111
-        {}
-ok: [test_112] => 
+        9b63c742
+        {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_02}
+ok: [www_p1] => 
     msg: |-
-        test_112
-        {}
-ok: [test_113] => 
+        b74d6441
+        {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_02}
+ok: [www_d2] => 
     msg: |-
-        test_113
-        {}
-ok: [test_131] => 
+        d1e8d656
+        {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_02}
+ok: [www_d1] => 
     msg: |-
-        test_131
-        {}
-ok: [test_132] => 
+        fe84d7ce
+        {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_02}
+ok: [db1] => 
     msg: |-
-        test_132
-        {}
-ok: [test_133] => 
+        08773eaf
+        {alias: db1, project: example_020, swarm: db, vmm: iocage_04}
+ok: [db2] => 
     msg: |-
-        test_133
-        {}
+        e1cee9ca
+        {alias: db2, project: example_020, swarm: db, vmm: iocage_04}
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
+ok: [www_p3] => 
     msg: |-
-        all: ['ansible_client', 'test_111', 'test_112', 'test_113', 'test_131', 'test_132', 'test_133']
-        ungrouped: ['ansible_client', 'test_111', 'test_112', 'test_113', 'test_131', 'test_132', 'test_133']
+        all: ['www_p3', 'www_p2', 'www_p1', 'www_d2', 'www_d1', 'db1', 'db2']
+        ungrouped: []
+        vmm_iocage_02: ['www_p3', 'www_p2', 'www_p1', 'www_d2', 'www_d1']
+        project_example_020: ['www_p3', 'www_p2', 'www_p1', 'www_d2', 'www_d1', 'db1', 'db2']
+        swarm_www_prod: ['www_p3', 'www_p2', 'www_p1']
+        swarm_www_devel: ['www_d2', 'www_d1']
+        vmm_iocage_04: ['db1', 'db2']
+        swarm_db: ['db1', 'db2']
 
 PLAY RECAP *********************************************************************
-ansible_client             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_131                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p3                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

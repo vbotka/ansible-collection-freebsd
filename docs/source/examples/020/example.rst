@@ -91,8 +91,8 @@ Notes
    * `Set Jail Property`_
    * :ref:`example_016`
 
-List templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -101,8 +101,8 @@ List templates at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -184,8 +184,8 @@ Playbook output - Create swarms
 
      shell> ansible-inventory -i hosts --list --yaml
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -194,8 +194,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-List jails at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -210,7 +210,7 @@ Playbook pb-test-all.yml
 .. literalinclude:: pb-test-all.yml
    :language: yaml
 
-Playbook output - all groups
+Playbook output - All groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -227,7 +227,7 @@ Playbook pb-test-db.yml
 .. literalinclude:: pb-test-db.yml
    :language: yaml
 
-Playbook output - group swarm_db
+Playbook output - Group swarm_db
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

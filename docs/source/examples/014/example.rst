@@ -94,7 +94,7 @@ Playbook pb-vars-ip4.yml
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
 
-Playbook output - clear cache 
+Playbook output - Clear cache 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this particular case, it takes 4s to create the dynamic inventory and construct the variables
@@ -110,7 +110,7 @@ after the ``cache`` was cleared (flushed).
    :language: bash
    :emphasize-lines: 1,3
 
-Playbook output - cache enabled
+Playbook output - Cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the ``cache`` is enabled, the inventory and variables are provided by the cache immediately

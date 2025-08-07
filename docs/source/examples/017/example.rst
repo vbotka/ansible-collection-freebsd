@@ -122,7 +122,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display groups
+Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

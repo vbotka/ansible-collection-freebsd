@@ -64,8 +64,8 @@ Notes
 * The `inventory plugin vbotka.freebsd.iocage`_ doesn't provide the option `use_vars_plugins`_.
 * See :ref:`example_019`.
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -74,8 +74,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List jails at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -111,7 +111,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display groups
+Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

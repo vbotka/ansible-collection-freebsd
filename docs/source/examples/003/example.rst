@@ -95,7 +95,7 @@ Playbook pb-iocage.yml
 .. literalinclude:: pb-iocage.yml
    :language: yaml
 
-Playbook output - test sanity
+Playbook output - Test sanity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -107,7 +107,7 @@ Playbook output - test sanity
    :language: yaml
    :force:
 
-Playbook output - test sanity quietly
+Playbook output - Test sanity quietly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

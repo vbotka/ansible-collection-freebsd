@@ -30,10 +30,10 @@ changed: [iocage_04] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
 TASK [Pk: The keys is valid.] **************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     changed: false
     msg: All assertions passed
-ok: [iocage_04] => 
+ok: [iocage_02] => 
     changed: false
     msg: All assertions passed
 
@@ -55,9 +55,9 @@ changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
 changed: [iocage_04] => (item=ansible_client iocage_enable YES)
-changed: [iocage_04] => (item=ansible_client sshd_enable YES)
 changed: [iocage_02] => (item=ansible_client iocage_enable YES)
 changed: [iocage_02] => (item=ansible_client sshd_enable YES)
+changed: [iocage_04] => (item=ansible_client sshd_enable YES)
 
 TASK [Stop: Stop jails.] *******************************************************
 ok: [iocage_02]

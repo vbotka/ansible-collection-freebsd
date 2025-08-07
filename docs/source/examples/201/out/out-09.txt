@@ -1,11 +1,11 @@
 
-PLAY [Display iocage lists and dictionaries.] **********************************
+PLAY [Display iocage datasets.] ************************************************
 
-TASK [Set iocage lists and dictionaries.] **************************************
+TASK [Get iocage datasets.] ****************************************************
 ok: [iocage_04]
 ok: [iocage_02]
 
-TASK [Display iocage lists and dictionaries (omit properties).] ****************
+TASK [Display iocage datasets (omit properties).] ******************************
 ok: [iocage_02] => 
     msg: |-
         iocage_releases: ['14.2-RELEASE', '14.3-RELEASE']
@@ -13,50 +13,51 @@ ok: [iocage_02] =>
           {}
 
         iocage_templates:
+          {}
+
+        iocage_jails:
           ansible_client:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: DHCP (not running)
+            ip4: '-'
             ip6: '-'
             jid: None
             name: ansible_client
             release: 14.2-RELEASE-p3
             state: down
             template: '-'
-            type: template
-
-        iocage_jails:
+            type: jail
           test_111:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: em0|10.1.0.111/24
+            ip4: DHCP (running -- address requires root)
             ip6: '-'
-            jid: '37'
+            jid: '54'
             name: test_111
             release: 14.2-RELEASE-p3
             state: up
             template: ansible_client
             type: jail
           test_112:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: em0|10.1.0.112/24
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '38'
+            jid: None
             name: test_112
             release: 14.2-RELEASE-p3
-            state: up
+            state: down
             template: ansible_client
             type: jail
           test_113:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: em0|10.1.0.113/24
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '39'
+            jid: None
             name: test_113
             release: 14.2-RELEASE-p3
-            state: up
+            state: down
             template: ansible_client
             type: jail
 ok: [iocage_04] => 
@@ -66,47 +67,48 @@ ok: [iocage_04] =>
           {}
 
         iocage_templates:
+          {}
+
+        iocage_jails:
           ansible_client:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: DHCP (not running)
+            ip4: '-'
             ip6: '-'
             jid: None
             name: ansible_client
             release: 14.3-RELEASE-p1
             state: down
             template: '-'
-            type: template
-
-        iocage_jails:
+            type: jail
           test_131:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: vnet0|10.1.0.131/24
+            ip4: DHCP (running -- address requires root)
             ip6: '-'
-            jid: '39'
+            jid: '56'
             name: test_131
             release: 14.3-RELEASE-p1
             state: up
             template: ansible_client
             type: jail
           test_132:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: vnet0|10.1.0.132/24
+            ip4: DHCP (running -- address requires root)
             ip6: '-'
-            jid: '40'
+            jid: '57'
             name: test_132
             release: 14.3-RELEASE-p1
             state: up
             template: ansible_client
             type: jail
           test_133:
-            basejail: 'no'
+            basejail: 'yes'
             boot: 'off'
-            ip4: vnet0|10.1.0.133/24
+            ip4: DHCP (running -- address requires root)
             ip6: '-'
-            jid: '41'
+            jid: '58'
             name: test_133
             release: 14.3-RELEASE-p1
             state: up

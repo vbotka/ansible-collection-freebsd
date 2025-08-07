@@ -164,7 +164,7 @@ host_vars
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller
 
-Playbook output - create templates
+Playbook output - Create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -174,8 +174,8 @@ Playbook output - create templates
 .. literalinclude:: out/out-01.txt
    :language: yaml
 
-List templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -184,8 +184,8 @@ List templates at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-List templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -194,7 +194,7 @@ List templates at iocage_04
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-Playbook output - clone and start jails
+Playbook output - Clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -208,7 +208,7 @@ Playbook output - clone and start jails
    :language: yaml
    :force:
 
-Playbook output - list jails
+Playbook output - List jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -222,8 +222,8 @@ Playbook output - list jails
    :language: yaml
    :force:
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -232,8 +232,8 @@ List jails at iocage_02
 .. literalinclude:: out/out-06.txt
    :language: bash
 
-List jails at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -273,7 +273,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display test vars
+Playbook output - Display test vars
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

@@ -1,17 +1,39 @@
-@all:
-  |--@ungrouped:
-  |--@swarm_sw_01:
-  |  |--0cf02b80
-  |  |--4af7c5ee
-  |  |--fa394b3d
-  |  |--663309f0
-  |  |--79cae6c5
-  |  |--e092710f
-  |--@vmm_iocage_01:
-  |  |--0cf02b80
-  |  |--4af7c5ee
-  |  |--fa394b3d
-  |--@vmm_iocage_02:
-  |  |--663309f0
-  |  |--79cae6c5
-  |  |--e092710f
+
+PLAY [Connect to the group test.] **********************************************
+
+TASK [ansible.builtin.command] *************************************************
+changed: [9bd6522d]
+changed: [a36580a7]
+changed: [f30e0189]
+changed: [4ed73386]
+changed: [2695b74b]
+changed: [8b76865c]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [2695b74b] => 
+    msg: |-
+        ansible_host=10.1.0.113 iocage_tags={swarm: sw_01, vmm: iocage_02}
+ok: [4ed73386] => 
+    msg: |-
+        ansible_host=10.1.0.203 iocage_tags={swarm: sw_01, vmm: iocage_02}
+ok: [8b76865c] => 
+    msg: |-
+        ansible_host=10.1.0.247 iocage_tags={swarm: sw_01, vmm: iocage_02}
+ok: [9bd6522d] => 
+    msg: |-
+        ansible_host=10.1.0.202 iocage_tags={swarm: sw_01, vmm: iocage_04}
+ok: [a36580a7] => 
+    msg: |-
+        ansible_host=10.1.0.182 iocage_tags={swarm: sw_01, vmm: iocage_04}
+ok: [f30e0189] => 
+    msg: |-
+        ansible_host=10.1.0.233 iocage_tags={swarm: sw_01, vmm: iocage_04}
+
+PLAY RECAP *********************************************************************
+2695b74b                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4ed73386                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+8b76865c                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+9bd6522d                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+a36580a7                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+f30e0189                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

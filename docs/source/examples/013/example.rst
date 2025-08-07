@@ -145,7 +145,7 @@ Playbook pb-iocage-base.yml
 .. literalinclude:: pb-iocage-base.yml
    :language: yaml
 
-Playbook output - create basejails
+Playbook output - Create basejails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -162,7 +162,7 @@ Playbook pb-iocage-clone.yml
 .. literalinclude:: pb-iocage-clone.yml
    :language: yaml
 
-Playbook output - clone jails
+Playbook output - Clone jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -179,7 +179,7 @@ Playbook pb-all.yml
 .. literalinclude:: pb-all.yml
    :language: yaml
 
-Playbook output - display variables and groups
+Playbook output - Display variables and groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -202,7 +202,7 @@ Playbook pb-ansible-client.yml
 .. literalinclude:: pb-ansible-client.yml
    :language: yaml
 
-Playbook output - display iocage_tags and group_names
+Playbook output - Display iocage_tags and group_names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -228,7 +228,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display all jails
+Playbook output - Display all jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
