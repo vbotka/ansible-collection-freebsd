@@ -5,9 +5,9 @@ TASK [Get iocage list of jails] ************************************************
 ok: [iocage_04]
 
 TASK [Jails service list enabled] **********************************************
-ok: [iocage_04] => (item=106)
-ok: [iocage_04] => (item=107)
-ok: [iocage_04] => (item=108)
+ok: [iocage_04] => (item=111)
+ok: [iocage_04] => (item=112)
+ok: [iocage_04] => (item=113)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
@@ -22,12 +22,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '106'
+                    jail: '111'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '106'
+            item: '111'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -66,12 +66,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '107'
+                    jail: '112'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '107'
+            item: '112'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -110,12 +110,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '108'
+                    jail: '113'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '108'
+            item: '113'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -152,11 +152,11 @@ ok: [iocage_04] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     jid_service_enabled | to_yaml: |-
-        '106': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
+        '111': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
           sshd, syslogd, utx, var_run, virecover]
-        '107': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
+        '112': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
           sshd, syslogd, utx, var_run, virecover]
-        '108': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
+        '113': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
           sshd, syslogd, utx, var_run, virecover]
 
 PLAY RECAP *********************************************************************

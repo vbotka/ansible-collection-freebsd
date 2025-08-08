@@ -2,8 +2,8 @@
 PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] ***
 
 TASK [Get sendmail rcvar(s).] **************************************************
-ok: [test_131]
 ok: [test_132]
+ok: [test_131]
 ok: [test_133]
 
 TASK [ansible.builtin.debug] ***************************************************

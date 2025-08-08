@@ -1,5 +1,5 @@
 - name: Test module vbotka.freebsd.service. Start apcupsd.
-  hosts: iocage_04
+  hosts: iocage
 
   vars:
 

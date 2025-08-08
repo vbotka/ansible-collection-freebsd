@@ -1,6 +1,5 @@
 - name: Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.
   hosts: iocage
-  remote_user: admin
 
   vars:
 

@@ -1,6 +1,5 @@
 - name: Test module vbotka.freebsd.service. Get script commands synopsis.
   hosts: iocage
-  remote_user: admin
 
   vars:
 

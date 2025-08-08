@@ -14,36 +14,36 @@ ok: [iocage_04] =>
         - iocage
         - list
         - --long
-        delta: '0:00:00.535789'
-        end: '2025-08-08 18:03:24.752978'
+        delta: '0:00:00.449236'
+        end: '2025-08-08 19:22:26.349311'
         failed: false
         msg: ''
         rc: 0
-        start: '2025-08-08 18:03:24.217189'
+        start: '2025-08-08 19:22:25.900075'
         stderr: ''
         stderr_lines: []
         stdout: |-
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
             | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
             +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-            | 106 | test_131 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.207 | -   | ansible_client | no       |
+            | 111 | test_131 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.207 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-            | 107 | test_132 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.168 | -   | ansible_client | no       |
+            | 112 | test_132 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.168 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-            | 108 | test_133 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.208 | -   | ansible_client | no       |
+            | 113 | test_133 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.208 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
         stdout_lines:
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
         - '| JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         |
             IP6 |    TEMPLATE    | BASEJAIL |'
         - +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-        - '| 106 | test_131 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.207
+        - '| 111 | test_131 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.207
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-        - '| 107 | test_132 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.168
+        - '| 112 | test_132 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.168
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-        - '| 108 | test_133 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.208
+        - '| 113 | test_133 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.208
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
@@ -59,7 +59,7 @@ ok: [iocage_04] =>
             - {ifc: epair0b, ip: 10.1.0.207, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '106'
+          jid: '111'
           release: 14.3-RELEASE-p1
           state: up
           template: ansible_client
@@ -73,7 +73,7 @@ ok: [iocage_04] =>
             - {ifc: epair0b, ip: 10.1.0.168, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '107'
+          jid: '112'
           release: 14.3-RELEASE-p1
           state: up
           template: ansible_client
@@ -87,7 +87,7 @@ ok: [iocage_04] =>
             - {ifc: epair0b, ip: 10.1.0.208, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '108'
+          jid: '113'
           release: 14.3-RELEASE-p1
           state: up
           template: ansible_client
@@ -96,12 +96,12 @@ ok: [iocage_04] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     jids | to_yaml: |-
-        ['106', '107', '108']
+        ['111', '112', '113']
 
 TASK [Jails service sshd rcvar.] ***********************************************
-ok: [iocage_04] => (item=106)
-ok: [iocage_04] => (item=107)
-ok: [iocage_04] => (item=108)
+ok: [iocage_04] => (item=111)
+ok: [iocage_04] => (item=112)
+ok: [iocage_04] => (item=113)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
@@ -116,12 +116,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '106'
+                    jail: '111'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '106'
+            item: '111'
             rc: 0
             rcvar:
                 sshd_enable: '"YES"'
@@ -145,12 +145,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '107'
+                    jail: '112'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '107'
+            item: '112'
             rc: 0
             rcvar:
                 sshd_enable: '"YES"'
@@ -174,12 +174,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '108'
+                    jail: '113'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '108'
+            item: '113'
             rc: 0
             rcvar:
                 sshd_enable: '"YES"'
@@ -201,11 +201,11 @@ ok: [iocage_04] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     jid_rcvar:
-        '106':
+        '111':
             sshd_enable: 'YES'
-        '107':
+        '112':
             sshd_enable: 'YES'
-        '108':
+        '113':
             sshd_enable: 'YES'
 
 PLAY RECAP *********************************************************************

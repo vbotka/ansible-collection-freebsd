@@ -41,20 +41,17 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At all running jails:
+At all running jails in ``iocage_04``:
 
   * playbook ``pb-test-01.yml``: display sshd rcvar.
+  * playbook ``pb-test-06.yml``: display sendmail rcvar.
 
-At ``iocage_04`` jails:
+At the managed node ``iocage_04``:
 
   * playbook ``pb-test-02.yml``: display sshd rcvar
   * playbook ``pb-test-03.yml``: display enabled services
   * playbook ``pb-test-04.yml``: display sshd status
   * playbook ``pb-test-05.yml``: display sshd commands synopsis
-  * playbook ``pb-test-06.yml``: display sendmail rcvars.
-
-At ``iocage_04``:
-
   * playbook ``pb-test-07.yml``: start apcupsd.
 
 Requirements
@@ -121,8 +118,8 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - get running jails sshd rcvar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - jails sshd rcvar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The key and value of ``rcvar`` is returned in 1) the attribute ``rcvar`` of the registered variable
 ``out.rcvar`` and in 2) the ``stdout``. Usually, you'll use the first option. The second option shows
@@ -142,8 +139,8 @@ Playbook pb-test-02.yml
 .. literalinclude:: pb-test-02.yml
    :language: yaml
 
-Playbook output - create dictionary jid_rcvar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - create jid_rcvar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -159,8 +156,8 @@ Playbook pb-test-03.yml
 .. literalinclude:: pb-test-03.yml
    :language: yaml
 
-Playbook output - display enabled services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - enabled services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -176,8 +173,8 @@ Playbook pb-test-04.yml
 .. literalinclude:: pb-test-04.yml
    :language: yaml
 
-Playbook output - display sshd status
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - sshd status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -193,8 +190,8 @@ Playbook pb-test-05.yml
 .. literalinclude:: pb-test-05.yml
    :language: yaml
 
-Playbook output - display sshd commands synopsis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - sshd commands synopsis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -210,8 +207,8 @@ Playbook pb-test-06.yml
 .. literalinclude:: pb-test-06.yml
    :language: yaml
 
-Playbook output - display sendmail rcvars
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - sendmail rcvar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
