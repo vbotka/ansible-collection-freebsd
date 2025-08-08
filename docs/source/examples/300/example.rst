@@ -27,7 +27,7 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-test-01.yml
@@ -45,7 +45,7 @@ At all running jails:
 
   * playbook ``pb-test-01.yml``: display sshd rcvar.
 
-At ``iocage_02`` jails:
+At ``iocage_04`` jails:
 
   * playbook ``pb-test-02.yml``: display sshd rcvar
   * playbook ``pb-test-03.yml``: display enabled services
@@ -53,7 +53,7 @@ At ``iocage_02`` jails:
   * playbook ``pb-test-05.yml``: display sshd commands synopsis
   * playbook ``pb-test-06.yml``: display sendmail rcvars.
 
-At ``iocage_03``:
+At ``iocage_04``:
 
   * playbook ``pb-test-07.yml``: start apcupsd.
 
@@ -74,12 +74,12 @@ Notes
 
    * `man service`_
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -l
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -99,7 +99,7 @@ Inventory iocage.ini
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
 
 .. literalinclude:: hosts/99_constructed.yml
@@ -147,7 +147,7 @@ Playbook output - create dictionary jid_rcvar
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-02.yml -i iocage.ini -l iocage_02 -e debug=true
+   (env) > ansible-playbook pb-test-02.yml -i iocage.ini -e debug=true
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -164,7 +164,7 @@ Playbook output - display enabled services
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-03.yml -i iocage.ini -l iocage_02 -e debug=true
+   (env) > ansible-playbook pb-test-03.yml -i iocage.ini -e debug=true
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -181,7 +181,7 @@ Playbook output - display sshd status
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-04.yml -i iocage.ini -l iocage_02
+   (env) > ansible-playbook pb-test-04.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

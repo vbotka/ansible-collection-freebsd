@@ -6,17 +6,13 @@ templates:
   ansible_client_pull:
     release: 14.3-RELEASE
     properties:
-      bpf: 'on'
-      dhcp: 'on'
-      vnet: 'on'
+      bpf: 1
+      dhcp: 1
+      vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
-    # pkglist: "tmp/ansible/ansible_client_pull/pkgs.json"
+    pkglist: /tmp/ansible/ansible_client_pull/pkgs.json
 
-act_pkg:
- - python311
- - py311-ansible
- - sudo
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true

@@ -11,8 +11,14 @@ TASK [Setup: Display iocage_templates debug=true] ******************************
 ok: [iocage_04] => 
     iocage_templates: {}
 
+TASK [Pkglist: Create directories for pkglist files.] **************************
+ok: [iocage_04] => (item=ansible_client_pull /tmp/ansible/ansible_client_pull/pkgs.json)
+
+TASK [Pkglist: Copy pkglist files.] ********************************************
+changed: [iocage_04] => (item=ansible_client_pull /tmp/ansible/ansible_client_pull/pkgs.json)
+
 TASK [Create: Create templates.] ***********************************************
-ok: [iocage_04] => (item=ansible_client_pull 14.3-RELEASE)
+changed: [iocage_04] => (item=ansible_client_pull 14.3-RELEASE)
 
 TASK [Start: Display iocage_jails debug=true] **********************************
 ok: [iocage_04] => 
@@ -20,9 +26,9 @@ ok: [iocage_04] =>
         ansible_client_pull:
             basejail: 'no'
             boot: 'off'
-            ip4: epair0b|10.1.0.194
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '10'
+            jid: None
             name: ansible_client_pull
             properties:
                 CONFIG_VERSION: '33'
@@ -98,7 +104,196 @@ ok: [iocage_04] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/ansible_client_pull/data
                 jail_zfs_mountpoint: none
-                last_started: '2025-07-31 22:31:06'
+                last_started: '2025-08-08 11:31:13'
+                localhost_ip: none
+                login_flags: -f root
+                mac_prefix: 021b21
+                maxproc: 'off'
+                memorylocked: 'off'
+                memoryuse: 'off'
+                min_dyn_devfs_ruleset: '1000'
+                mount_devfs: '1'
+                mount_fdescfs: '1'
+                mount_linprocfs: '0'
+                mount_procfs: '0'
+                mountpoint: readonly
+                msgqqueued: 'off'
+                msgqsize: 'off'
+                nat: '0'
+                nat_backend: ipfw
+                nat_forwards: none
+                nat_interface: none
+                nat_prefix: '172.16'
+                nmsgq: 'off'
+                notes: none
+                nsem: 'off'
+                nsemop: 'off'
+                nshm: 'off'
+                nthr: 'off'
+                openfiles: 'off'
+                origin: readonly
+                owner: root
+                pcpu: 'off'
+                plugin_name: none
+                plugin_repository: none
+                priority: '99'
+                pseudoterminals: 'off'
+                quota: none
+                readbps: 'off'
+                readiops: 'off'
+                release: 14.3-RELEASE-p1
+                reservation: none
+                resolver: /etc/resolv.conf
+                rlimits: 'off'
+                rtsold: '0'
+                securelevel: '2'
+                shmsize: 'off'
+                stacksize: 'off'
+                state: down
+                stop_timeout: '30'
+                swapuse: 'off'
+                sync_state: none
+                sync_target: none
+                sync_tgt_zpool: none
+                sysvmsg: new
+                sysvsem: new
+                sysvshm: new
+                template: '0'
+                type: jail
+                used: readonly
+                vmemoryuse: 'off'
+                vnet: '1'
+                vnet0_mac: 021b217e220c 021b217e220d
+                vnet0_mtu: auto
+                vnet1_mac: none
+                vnet1_mtu: auto
+                vnet2_mac: none
+                vnet2_mtu: auto
+                vnet3_mac: none
+                vnet3_mtu: auto
+                vnet_default_interface: none
+                vnet_default_mtu: '1500'
+                vnet_interfaces: none
+                wallclock: 'off'
+                writebps: 'off'
+                writeiops: 'off'
+            release: 14.3-RELEASE-p1
+            state: down
+            template: '-'
+            type: jail
+
+TASK [Start: Start jails.] *****************************************************
+ok: [iocage_04]
+
+TASK [User: Create user.] ******************************************************
+changed: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Pk: The keys is valid.] **************************************************
+ok: [iocage_04] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [Pk: Configure public keys.] **********************************************
+changed: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Pk: Chown .ssh] **********************************************************
+ok: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Sudo: Configure sudo.] ***************************************************
+changed: [iocage_04] => (item=ansible_client_pull admin)
+
+TASK [Dhclient: Configure hooks.] **********************************************
+changed: [iocage_04] => (item=ansible_client_pull dhclient-exit-hooks)
+
+TASK [Rcconf: Configure /etc/rc.conf] ******************************************
+changed: [iocage_04] => (item=ansible_client_pull iocage_enable YES)
+changed: [iocage_04] => (item=ansible_client_pull sshd_enable YES)
+
+TASK [Stop: Display iocage_jails debug=true] ***********************************
+ok: [iocage_04] => 
+    iocage_jails:
+        ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: epair0b|10.1.0.194
+            ip6: '-'
+            jid: '89'
+            name: ansible_client_pull
+            properties:
+                CONFIG_VERSION: '33'
+                allow_chflags: '0'
+                allow_mlock: '0'
+                allow_mount: '0'
+                allow_mount_devfs: '0'
+                allow_mount_fdescfs: '0'
+                allow_mount_fusefs: '0'
+                allow_mount_linprocfs: '0'
+                allow_mount_linsysfs: '0'
+                allow_mount_nullfs: '0'
+                allow_mount_procfs: '0'
+                allow_mount_tmpfs: '0'
+                allow_mount_zfs: '0'
+                allow_nfsd: '0'
+                allow_quotas: '0'
+                allow_raw_sockets: '0'
+                allow_set_hostname: '1'
+                allow_socket_af: '0'
+                allow_sysvipc: '0'
+                allow_tun: '0'
+                allow_vmm: '0'
+                assign_localhost: '0'
+                available: readonly
+                basejail: '0'
+                boot: '0'
+                bpf: '1'
+                children_max: '0'
+                cloned_release: 14.3-RELEASE
+                comment: none
+                compression: 'on'
+                compressratio: readonly
+                coredumpsize: 'off'
+                count: '1'
+                cpuset: 'off'
+                cputime: 'off'
+                datasize: 'off'
+                dedup: 'off'
+                defaultrouter: auto
+                defaultrouter6: auto
+                depends: none
+                devfs_ruleset: '4'
+                dhcp: '1'
+                enforce_statfs: '2'
+                exec_clean: '1'
+                exec_created: /usr/bin/true
+                exec_fib: '0'
+                exec_jail_user: root
+                exec_poststart: /usr/bin/true
+                exec_poststop: /usr/bin/true
+                exec_prestart: /usr/bin/true
+                exec_prestop: /usr/bin/true
+                exec_start: /bin/sh /etc/rc
+                exec_stop: /bin/sh /etc/rc.shutdown
+                exec_system_jail_user: '0'
+                exec_system_user: root
+                exec_timeout: '60'
+                host_domainname: none
+                host_hostname: ansible-client-pull
+                host_hostuuid: ansible_client_pull
+                host_time: '1'
+                hostid: d6add9ad-8b6e-4316-a226-345a60532b41
+                hostid_strict_check: '0'
+                interfaces: vnet0:bridge0
+                ip4: new
+                ip4_addr: none
+                ip4_saddrsel: '1'
+                ip6: new
+                ip6_addr: none
+                ip6_saddrsel: '1'
+                ip_hostname: '0'
+                jail_zfs: '0'
+                jail_zfs_dataset: iocage/jails/ansible_client_pull/data
+                jail_zfs_mountpoint: none
+                last_started: '2025-08-08 11:31:59'
                 localhost_ip: none
                 login_flags: -f root
                 mac_prefix: 021b21
@@ -175,263 +370,6 @@ ok: [iocage_04] =>
             state: up
             template: '-'
             type: jail
-        test_4:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip6: '-'
-            jid: None
-            name: test_4
-            properties:
-                CONFIG_VERSION: '33'
-                allow_chflags: '0'
-                allow_mlock: '0'
-                allow_mount: '0'
-                allow_mount_devfs: '0'
-                allow_mount_fdescfs: '0'
-                allow_mount_fusefs: '0'
-                allow_mount_linprocfs: '0'
-                allow_mount_linsysfs: '0'
-                allow_mount_nullfs: '0'
-                allow_mount_procfs: '0'
-                allow_mount_tmpfs: '0'
-                allow_mount_zfs: '0'
-                allow_nfsd: '0'
-                allow_quotas: '0'
-                allow_raw_sockets: '0'
-                allow_set_hostname: '1'
-                allow_socket_af: '0'
-                allow_sysvipc: '0'
-                allow_tun: '0'
-                allow_vmm: '0'
-                assign_localhost: '0'
-                available: readonly
-                basejail: '0'
-                boot: '0'
-                bpf: '0'
-                children_max: '0'
-                cloned_release: 14.3-RELEASE
-                comment: none
-                compression: 'on'
-                compressratio: readonly
-                coredumpsize: 'off'
-                count: '1'
-                cpuset: 'off'
-                cputime: 'off'
-                datasize: 'off'
-                dedup: 'off'
-                defaultrouter: auto
-                defaultrouter6: auto
-                depends: none
-                devfs_ruleset: '4'
-                dhcp: '0'
-                enforce_statfs: '2'
-                exec_clean: '1'
-                exec_created: /usr/bin/true
-                exec_fib: '0'
-                exec_jail_user: root
-                exec_poststart: /usr/bin/true
-                exec_poststop: /usr/bin/true
-                exec_prestart: /usr/bin/true
-                exec_prestop: /usr/bin/true
-                exec_start: /bin/sh /etc/rc
-                exec_stop: /bin/sh /etc/rc.shutdown
-                exec_system_jail_user: '0'
-                exec_system_user: root
-                exec_timeout: '60'
-                host_domainname: none
-                host_hostname: test-4
-                host_hostuuid: test_4
-                host_time: '1'
-                hostid: d6add9ad-8b6e-4316-a226-345a60532b41
-                hostid_strict_check: '0'
-                interfaces: vnet0:bridge0
-                ip4: new
-                ip4_addr: none
-                ip4_saddrsel: '1'
-                ip6: new
-                ip6_addr: none
-                ip6_saddrsel: '1'
-                ip_hostname: '0'
-                jail_zfs: '0'
-                jail_zfs_dataset: iocage/jails/test_4/data
-                jail_zfs_mountpoint: none
-                last_started: none
-                localhost_ip: none
-                login_flags: -f root
-                mac_prefix: 021b21
-                maxproc: 'off'
-                memorylocked: 'off'
-                memoryuse: 'off'
-                min_dyn_devfs_ruleset: '1000'
-                mount_devfs: '1'
-                mount_fdescfs: '1'
-                mount_linprocfs: '0'
-                mount_procfs: '0'
-                mountpoint: readonly
-                msgqqueued: 'off'
-                msgqsize: 'off'
-                nat: '0'
-                nat_backend: ipfw
-                nat_forwards: none
-                nat_interface: none
-                nat_prefix: '172.16'
-                nmsgq: 'off'
-                notes: none
-                nsem: 'off'
-                nsemop: 'off'
-                nshm: 'off'
-                nthr: 'off'
-                openfiles: 'off'
-                origin: readonly
-                owner: root
-                pcpu: 'off'
-                plugin_name: none
-                plugin_repository: none
-                priority: '99'
-                pseudoterminals: 'off'
-                quota: none
-                readbps: 'off'
-                readiops: 'off'
-                release: 14.3-RELEASE-p1
-                reservation: none
-                resolver: /etc/resolv.conf
-                rlimits: 'off'
-                rtsold: '0'
-                securelevel: '2'
-                shmsize: 'off'
-                stacksize: 'off'
-                state: down
-                stop_timeout: '30'
-                swapuse: 'off'
-                sync_state: none
-                sync_target: none
-                sync_tgt_zpool: none
-                sysvmsg: new
-                sysvsem: new
-                sysvshm: new
-                template: '0'
-                type: jail
-                used: readonly
-                vmemoryuse: 'off'
-                vnet: '0'
-                vnet0_mac: none
-                vnet0_mtu: auto
-                vnet1_mac: none
-                vnet1_mtu: auto
-                vnet2_mac: none
-                vnet2_mtu: auto
-                vnet3_mac: none
-                vnet3_mtu: auto
-                vnet_default_interface: none
-                vnet_default_mtu: '1500'
-                vnet_interfaces: none
-                wallclock: 'off'
-                writebps: 'off'
-                writeiops: 'off'
-            release: 14.3-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
-
-TASK [Pkg: Get iocage list of jails.] ******************************************
-ok: [iocage_04]
-
-TASK [Pkg: Set dictionary iocage_jails] ****************************************
-ok: [iocage_04]
-
-TASK [Pkg: Display iocage_jails debug=true] ************************************
-ok: [iocage_04] => 
-    iocage_jails:
-        ansible_client_pull:
-            basejail: 'no'
-            boot: 'off'
-            ip4: 10.1.0.194
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 10.1.0.194
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '10'
-            release: 14.3-RELEASE-p1
-            state: up
-            template: '-'
-            type: jail
-        test_4:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: '-'
-            ip6: '-'
-            jid: None
-            release: 14.3-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
-
-TASK [Pkg: Install packages.] **************************************************
-ok: [iocage_04] => (item=ansible_client_pull)
-
-TASK [User: Create user.] ******************************************************
-ok: [iocage_04] => (item=ansible_client_pull admin)
-
-TASK [Pk: The keys is valid.] **************************************************
-ok: [iocage_04] => 
-    changed: false
-    msg: All assertions passed
-
-TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_04] => (item=ansible_client_pull admin)
-
-TASK [Pk: Chown .ssh] **********************************************************
-ok: [iocage_04] => (item=ansible_client_pull admin)
-
-TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_04] => (item=ansible_client_pull admin)
-
-TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_04] => (item=ansible_client_pull dhclient-exit-hooks)
-
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_04] => (item=ansible_client_pull iocage_enable YES)
-changed: [iocage_04] => (item=ansible_client_pull sshd_enable YES)
-
-TASK [Stop: Display iocage_jails debug=true] ***********************************
-ok: [iocage_04] => 
-    iocage_jails:
-        ansible_client_pull:
-            basejail: 'no'
-            boot: 'off'
-            ip4: 10.1.0.194
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 10.1.0.194
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '10'
-            release: 14.3-RELEASE-p1
-            state: up
-            template: '-'
-            type: jail
-        test_4:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: '-'
-            ip6: '-'
-            jid: None
-            release: 14.3-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
 
 TASK [Stop: Stop jails.] *******************************************************
 ok: [iocage_04]
@@ -440,5 +378,5 @@ TASK [Template: Set template.] *************************************************
 ok: [iocage_04] => (item=ansible_client_pull)
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=19   changed=4    unreachable=0    failed=0    skipped=22   rescued=0    ignored=0   
+iocage_04                  : ok=18   changed=7    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
 

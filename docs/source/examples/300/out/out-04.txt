@@ -2,10 +2,10 @@
 PLAY [Test module vbotka.freebsd.service. Set dictionary jid_rcvar.] ***********
 
 TASK [Get iocage list of jails.] ***********************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     iocage_list_out:
         ansible_facts:
             discovered_interpreter_python: /usr/local/bin/python3.11
@@ -14,97 +14,97 @@ ok: [iocage_02] =>
         - iocage
         - list
         - --long
-        delta: '0:00:02.687320'
-        end: '2025-04-22 16:05:45.088920'
+        delta: '0:00:00.535789'
+        end: '2025-08-08 18:03:24.752978'
         failed: false
         msg: ''
         rc: 0
-        start: '2025-04-22 16:05:42.401600'
+        start: '2025-08-08 18:03:24.217189'
         stderr: ''
         stderr_lines: []
         stdout: |-
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
             | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
             +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-            | 60  | test_111 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.174 | -   | ansible_client | no       |
+            | 106 | test_131 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.207 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-            | 61  | test_112 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.147 | -   | ansible_client | no       |
+            | 107 | test_132 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.168 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-            | 62  | test_113 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.231 | -   | ansible_client | no       |
+            | 108 | test_133 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.208 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
         stdout_lines:
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
         - '| JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         |
             IP6 |    TEMPLATE    | BASEJAIL |'
         - +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-        - '| 60  | test_111 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.174
+        - '| 106 | test_131 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.207
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-        - '| 61  | test_112 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.147
+        - '| 107 | test_132 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.168
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-        - '| 62  | test_113 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.231
+        - '| 108 | test_133 | off  | up    | jail | 14.3-RELEASE-p1 | epair0b|10.1.0.208
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     jails | to_yaml: |-
-        test_111:
+        test_131:
           basejail: 'no'
           boot: 'off'
-          ip4: 10.1.0.174
+          ip4: 10.1.0.207
           ip4_dict:
             ip4:
-            - {ifc: epair0b, ip: 10.1.0.174, mask: '-'}
+            - {ifc: epair0b, ip: 10.1.0.207, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '60'
-          release: 14.2-RELEASE-p3
+          jid: '106'
+          release: 14.3-RELEASE-p1
           state: up
           template: ansible_client
           type: jail
-        test_112:
+        test_132:
           basejail: 'no'
           boot: 'off'
-          ip4: 10.1.0.147
+          ip4: 10.1.0.168
           ip4_dict:
             ip4:
-            - {ifc: epair0b, ip: 10.1.0.147, mask: '-'}
+            - {ifc: epair0b, ip: 10.1.0.168, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '61'
-          release: 14.2-RELEASE-p3
+          jid: '107'
+          release: 14.3-RELEASE-p1
           state: up
           template: ansible_client
           type: jail
-        test_113:
+        test_133:
           basejail: 'no'
           boot: 'off'
-          ip4: 10.1.0.231
+          ip4: 10.1.0.208
           ip4_dict:
             ip4:
-            - {ifc: epair0b, ip: 10.1.0.231, mask: '-'}
+            - {ifc: epair0b, ip: 10.1.0.208, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '62'
-          release: 14.2-RELEASE-p3
+          jid: '108'
+          release: 14.3-RELEASE-p1
           state: up
           template: ansible_client
           type: jail
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     jids | to_yaml: |-
-        ['60', '61', '62']
+        ['106', '107', '108']
 
 TASK [Jails service sshd rcvar.] ***********************************************
-ok: [iocage_02] => (item=60)
-ok: [iocage_02] => (item=61)
-ok: [iocage_02] => (item=62)
+ok: [iocage_04] => (item=106)
+ok: [iocage_04] => (item=107)
+ok: [iocage_04] => (item=108)
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     service_out:
         changed: false
         msg: All items completed
@@ -116,12 +116,12 @@ ok: [iocage_02] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '60'
+                    jail: '106'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '60'
+            item: '106'
             rc: 0
             rcvar:
                 sshd_enable: '"YES"'
@@ -145,12 +145,12 @@ ok: [iocage_02] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '61'
+                    jail: '107'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '61'
+            item: '107'
             rc: 0
             rcvar:
                 sshd_enable: '"YES"'
@@ -174,12 +174,12 @@ ok: [iocage_02] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '62'
+                    jail: '108'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '62'
+            item: '108'
             rc: 0
             rcvar:
                 sshd_enable: '"YES"'
@@ -199,15 +199,15 @@ ok: [iocage_02] =>
         skipped: false
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     jid_rcvar:
-        '60':
+        '106':
             sshd_enable: 'YES'
-        '61':
+        '107':
             sshd_enable: 'YES'
-        '62':
+        '108':
             sshd_enable: 'YES'
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

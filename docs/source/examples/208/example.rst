@@ -8,7 +8,6 @@
    :depth: 1
 
 .. index:: single: ansible-pull; Example 208
-
 .. index:: single: ansible_client_pull; Example 208
 .. index:: single: template ansible_client_pull; Example 208
 .. index:: single: DHCP; Example 208
