@@ -149,8 +149,8 @@ Playbook output - runner
 
      shell> tail -f /var/log/iocage.log
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_01
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -159,8 +159,8 @@ List jails at iocage_01
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

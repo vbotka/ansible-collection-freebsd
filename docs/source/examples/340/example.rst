@@ -174,8 +174,8 @@ Create and start jails
 .. literalinclude:: out/out-11.txt
    :language: bash
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
