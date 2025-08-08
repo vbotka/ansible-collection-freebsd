@@ -103,7 +103,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At three iocage hosts:
+* At three managed nodes:
 
   * iocage_01
   * iocage_02
@@ -167,8 +167,8 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-List templates at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_01
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -177,8 +177,8 @@ List templates at iocage_01
 .. literalinclude:: out/out-01.txt
    :language: console
 
-List templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -187,8 +187,8 @@ List templates at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: console
 
-List templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -243,7 +243,7 @@ Inventory hosts
 
 .. note::
 
-   The following examples are tested with already present jails
+   This example is tested with present jails
 
    .. code-block:: console
 
