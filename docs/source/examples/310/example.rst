@@ -18,8 +18,8 @@ Use case
 ^^^^^^^^
 
 Audit basic configuration of Ansible clients using the role `vbotka.freebsd.postinstall`_. The role
-is idempotent. Successful result means no changes are reported. Implement the same configuration as
-the example :ref:`example_200`.
+is idempotent. Successful result means no changes are reported. This example implements the same
+configuration as the example :ref:`example_200`.
 
 Tree
 ^^^^
@@ -36,7 +36,7 @@ Tree
   │   └── all
   │       └── ansible-client.yml
   ├── hosts
-  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-test-01.yml
@@ -46,7 +46,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On all running jails:
+At all running jails:
 
 * playbook ``pb-test-01.yml``: test the role does nothing by default
 * playbook ``pb-test-02.yml``: install packages using the module `community.general.pkgng`_
@@ -85,12 +85,12 @@ Notes
 
    * documentation `Ansible role FreeBSD postinstall`_
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -l
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -112,7 +112,7 @@ Inventory iocage.ini
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
 

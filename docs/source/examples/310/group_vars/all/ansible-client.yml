@@ -3,9 +3,6 @@ freebsd_install_retries: 3
 freebsd_install_delay: 5
 
 # Ansible client template defaults
-act_pkg:
-  - security/sudo
-  - lang/python311
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
@@ -19,6 +16,9 @@ act_dhclient:
         echo $new_ip_address > /var/db/dhclient-hook.address.$interface
         ;;
     esac
+act_pkg:
+  - security/sudo
+  - lang/python311
 
 # Install packages
 fp_packages:
