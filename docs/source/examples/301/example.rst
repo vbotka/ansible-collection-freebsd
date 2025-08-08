@@ -32,7 +32,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the ``iocage`` host:
+At a managed node :
 
 * playbook ``pb-test-01.yml``: get ``FreeBSD.url`` from ``/etc/pkg/FreeBSD.conf``
 * playbook ``pb-test-02.yml``: update ``FreeBSD.enabled`` in ``/etc/pkg/FreeBSD.conf``
@@ -41,6 +41,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `module vbotka.freebsd.ucl`_
+* installed `uclcmd`_
 
 Notes
 ^^^^^
@@ -100,5 +101,6 @@ Playbook output - disable FreeBSD repository
 
 
 .. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
+.. _uclcmd: https://www.freshports.org/devel/uclcmd/
 .. _uclcmd Command line tool for working with UCL config files: https://www.freshports.org/devel/uclcmd/
 .. _UCL (Universal Configuration Language): https://wiki.freebsd.org/UniversalConfigurationLanguage
