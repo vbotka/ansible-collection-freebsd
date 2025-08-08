@@ -40,7 +40,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the iocage host:
+At the managed node ``iocage_02``:
 
 * playbook ``pb-pkg-update.yml``:
 
@@ -55,7 +55,7 @@ At all running jails:
   * install packages
   * audit installed packages.
 
-At the iocage host:
+At the managed node ``iocage_02``:
 
 * playbook ``pb-test-02.yml``:
 
@@ -105,8 +105,8 @@ Notes
 
    * module `community.general.pkgng`_
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -129,24 +129,12 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-Playbook pb-pkg-update.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
 
-.. literalinclude:: pb-pkg-update.yml
+.. literalinclude:: group_vars/all/ansible-client.yml
    :language: yaml
-
-Playbook output - upgrade package ports-mgmt/pkg
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Limit the inventory to one host ``iocage_02``
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-pkg-update.yml -i iocage.ini -l iocage_02 -e debug=true
-
-.. literalinclude:: out/out-02.txt
-   :language: yaml
-   :force:
+   :caption:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
@@ -159,13 +147,6 @@ Inventory hosts
    :language: yaml
    :caption:
 
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml
-   :caption:
-
 Display inventory
 ^^^^^^^^^^^^^^^^^
 
@@ -175,6 +156,23 @@ Display inventory
 
 .. literalinclude:: out/out-03.txt
    :language: bash
+
+Playbook pb-pkg-update.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-pkg-update.yml
+   :language: yaml
+
+Playbook output - upgrade package ports-mgmt/pkg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-pkg-update.yml -i iocage.ini -e debug=true
+
+.. literalinclude:: out/out-02.txt
+   :language: yaml
+   :force:
 
 Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,8 +212,8 @@ The inventory ``iocage.ini`` is needed to delegate the tasks ``Install list pkg_
 
    Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_
 
-Playbook output - install packages and enable debug
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - install packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Enable debug and limit the inventory to one jail ``test_111``
 
@@ -257,7 +255,7 @@ There are 9 packages with known vulnerabilities
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-02.yml -i iocage.ini -l iocage_02 \
+   (env) > ansible-playbook pb-test-02.yml -i iocage.ini \
                                            -t pkg_stat \
                                            -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
