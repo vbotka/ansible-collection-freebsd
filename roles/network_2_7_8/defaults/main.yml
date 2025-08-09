@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_network
-fn_role_version: 2.7.7
+fn_role_version: 2.7.8
 
 fn_debug: false
 fn_backup_conf: false
@@ -19,10 +19,7 @@ fn_aliases: []
 # cloned_interfaces - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # loopback, bridge, lagg, carp
-fn_cloned_interfaces: [] # default state=present
-fn_cloned_interfaces_present: "{{ fn_cloned_interfaces |
-                                  community.general.json_query('[?&(state || `present`) == `present`]') }}"
-fn_cloned_interfaces_list: "{{ fn_cloned_interfaces_present | map(attribute='interface') | join(' ') }}"
+fn_cloned_interfaces: []
 
 # routing - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -32,7 +29,7 @@ fn_defaultrouter: ""
 # To enable routing, set the sysctl(8) variable net.inet.ip.forwarding
 # to 1. To stop routing, reset this variable to 0. (31.2.2)
 
-fn_static_routes: [] # default state=present
+fn_static_routes: []
 fn_static_routes_present: "{{ fn_static_routes |
                               community.general.json_query('[?&(state || `present`) == `present`]') }}"
 fn_static_routes_list: "{{ fn_static_routes_present | map(attribute='name') | join(' ') }}"

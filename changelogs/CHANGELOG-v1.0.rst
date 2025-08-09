@@ -21,6 +21,7 @@ Minor Changes
 * Update docs playbooks pb-iocage-template
 * Update playbook pb-iocage-template.yml; Test PK validity.
 * Upgrade role postinstall 2.7.17
+* Upgrade role network 2.7.8
 
 
 0.7.18

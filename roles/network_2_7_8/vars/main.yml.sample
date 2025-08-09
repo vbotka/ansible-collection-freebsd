@@ -52,7 +52,7 @@
 #       - {alias: "alias3", options: "inet 10.1.0.53  netmask 255.255.255.255"}
 #       - {alias: "alias4", options: "inet 10.1.0.71  netmask 255.255.255.255"}
 
-# 14.6. Managing Jails with ezjail
+# 14.6. Managing Jails with ezjail (obsolete)
 # https://www.freebsd.org/doc/handbook/jails-ezjail.html
 # Jail and pf traffic out
 # https://www.reddit.com/r/freebsd/comments/a83sg6/jail_and_pf_traffic_out/
@@ -63,22 +63,26 @@
 # fn_cloned_interfaces:
 #   - interface: lo1
 #
-# 31.6. Bridging
-# https://www.freebsd.org/doc/handbook/network-bridging.html
-#  - interface: bridge0
-#    options: addm fxp0 addm fxp1 up
+# Bridging
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-bridging
+# fn_cloned_interfaces:
+#   - interface: bridge0
+# fn_interfaces:
+#   - {interface: bridge0, options: inet 10.1.0.17/24, create: addm em0}
+#   - {interface: em0, options: up -tso -vlanhwtso}
 #
-# 31.7. Link Aggregation and Failover
+# Link Aggregation and Failover
 # https://www.freebsd.org/doc/handbook/network-aggregation.html
-#  - interface: lagg0
-#    options: laggproto lacp laggport fxp0 laggport fxp1 10.0.0.3/24
+# fn_cloned_interfaces:
+#   - interface: lagg0
+# fn_interfaces:
+#   - {interface: lagg0, options: 'dhcp', create: 'laggproto loadbalance laggport ue0 laggport ue1'}
+#   - {interface: ue0, options: up}
+#   - {interface: ue1, options: up}
 #
 # 31.10. Common Address Redundancy Protocol (CARP)
-# https://www.freebsd.org/doc/handbook/carp.html
-#  - interface: carp0
-#    options: vhid 1 advskew 100 pass testpass 192.168.1.50/24
-#  - interface: carp1
-#    options: vhid 2 advskew 100 pass testpass 192.168.1.51/24
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#carp
+# https://freebsdfoundation.org/wp-content/uploads/2022/11/zaborski_CARP.pdf
 
 # ethname MAC-based network name pinning
 # https://forums.freebsd.org/threads/how-to-associate-an-interface-name-with-its-mac.89337/

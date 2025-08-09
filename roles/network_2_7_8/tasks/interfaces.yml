@@ -5,7 +5,7 @@
   tags: fn_wlans
   community.general.sysrc:
     name: "wlans_{{ item.device }}"
-    value: "{{ item.interface }}"
+    value: "{{ item.interface | d(omit) }}"
     state: "{{ item.state | d(omit) }}"
   loop: "{{ fn_wlans }}"
 
@@ -13,7 +13,7 @@
   tags: fn_create_args
   community.general.sysrc:
     name: "create_args_{{ item.interface }}"
-    value: "{{ item.create }}"
+    value: "{{ item.create | d(omit) }}"
     state: "{{ item.state | d(omit) }}"
   loop: "{{ fn_interfaces | selectattr('create', 'defined') }}"
 
@@ -21,7 +21,7 @@
   tags: fn_ifconfig_interface
   community.general.sysrc:
     name: "ifconfig_{{ item.interface }}"
-    value: "{{ item.options }}"
+    value: "{{ item.options | d(omit) }}"
     state: "{{ item.state | d(omit) }}"
   loop: "{{ fn_interfaces | selectattr('options', 'defined') }}"
 
@@ -29,10 +29,14 @@
   tags: fn_ifconfig_aliases
   community.general.sysrc:
     name: "ifconfig_{{ item.0.interface }}_{{ item.1.alias }}"
-    value: "{{ item.1.options }}"
-    state: "{{ item.state | d(omit) }}"
+    value: "{{ item.1.options | d(omit) }}"
+    state: "{{ item.1.state | d(omit) }}"
   loop: "{{ fn_aliases | subelements('aliases') }}"
   loop_control:
-    label: "{{ item.0.interface }} {{ item.1.alias }} {{ item.1.options }}"
+    label: >
+      {{ item.0.interface }}
+      {{ item.1.alias }}
+      {{ item.1.options | d('UNDEFINED') }}
+      {{ item.1.state | d('present') }}
 
 # EOF
