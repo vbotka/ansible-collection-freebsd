@@ -7,10 +7,11 @@
    :local:
    :depth: 1
 
+.. index:: single: pf; Example 370
+.. index:: single: firewall; Example 370
 .. index:: single: role vbotka.freebsd.pf; Example 370
 .. index:: single: vbotka.freebsd.pf; Example 370
-.. index:: single: firewall; Example 370
-.. index:: single: pf; Example 370
+
 .. index:: single: blacklistd; Example 370
 .. index:: single: fail2ban; Example 370
 .. index:: single: sshguard; Example 370
@@ -30,21 +31,24 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_03.yml
-  ├── iocage-hosts.ini
+  │   └── iocage_04.yml
+  ├── iocage.ini
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host ``iocage_03`` at IP 10.1.0.17 configured in
-  /etc/rc.conf ::
+* The Ansible controller connects the iocage host ``iocage_04`` at IP 10.1.0.29 configured in
+  ``/etc/rc.conf``
 
-    defaultrouter="10.1.0.10"
-    gateway_enable="YES"
-    ifconfig_em0="inet 10.1.0.17 netmask 255.255.255.0"
+  .. code-block:: ini
 
-* In the playbook ``pb.yml`` at ``iocage_03`` configure:
+    cloned_interfaces="bridge0"
+    create_args_bridge0="addm igb0"
+    ifconfig_bridge0="inet 10.1.0.29/24"
+    ifconfig_igb0="up -tso -vlanhwtso"
+
+* In the playbook ``pb.yml`` at ``iocage_04`` configure:
 
   * blacklistd, fail2ban, and sshguard
   * nat
@@ -70,23 +74,25 @@ TBD
 .. seealso::
 
    * FreeBSD Handbook `Firewalls`_
+   * FreeBSD Forum `pf and bridge`_
+   * `man 4 if_bridge`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_03.yml
+.. literalinclude:: host_vars/iocage_04.yml
    :language: yaml
    :caption:
 
@@ -99,11 +105,9 @@ Playbook pb.yml
 Playbook output - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install packages
-
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_packages -e pf_install=true
+   (env) > ansible-playbook pb.yml -i iocage.ini -t pf_packages -e pf_install=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -118,7 +122,7 @@ stale. Therefore, let us first configure the rules
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -e pf_enable=false
+   (env) > ansible-playbook pb.yml -i iocage.ini -e pf_enable=false
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -129,7 +133,7 @@ Playbook output - enable pf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_03 -t pf_rcconf_pf
+   (env) > ansible-playbook pb.yml -i iocage.ini -t pf_rcconf_pf
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -143,7 +147,7 @@ pf status
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.17 sudo service pf status
+   (env) > ssh admin@10.1.0.29 sudo service pf status
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -153,7 +157,7 @@ pf status
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.17 cat /etc/pf.conf
+   (env) > ssh admin@10.1.0.29 cat /etc/pf.conf
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -165,3 +169,5 @@ pf status
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 
 .. _Firewalls: https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-intro
+.. _pf and bridge: https://forums.freebsd.org/threads/pf-and-bridge-4.77952/
+.. _man 4 if_bridge: https://man.freebsd.org/cgi/man.cgi?query=if_bridge

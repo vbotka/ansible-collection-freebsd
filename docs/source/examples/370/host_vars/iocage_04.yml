@@ -11,21 +11,9 @@ pf_sshguard_enable: true
 pf_log_enable: true
 pf_backup_conf: true
 
-# blacklistd
-pf_blacklistd_conf_local:
-  - {adr: ssh, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
-  - {adr: ftp, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
-  - {adr: smtp, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
-  - {adr: smtps, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
-  - {adr: submission, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
-  - {adr: '*', type: '*', proto: '*', owner: '*', name: '*', nfail: '3', disable: '60'}
-pf_blacklistd_flags: '-r'
-pf_blacklistd_rcconf:
-  - {name: blacklistd_flags, value: "{{ pf_blacklistd_flags }}"}
-
 # /etc/pf.conf
 pf_type: default2
-pf_ext_if: em0
+pf_ext_if: bridge0
 pf_log_all_blocked: log
 pf_pass_icmp_types: [echoreq, unreach]
 pf_pass_icmp6_types: [echoreq, unreach]
@@ -60,3 +48,15 @@ pf_filtering:
   - pass inet proto icmp icmp-type $icmp_types
   - pass inet6 proto icmp6 icmp6-type $icmp6_types
   - pass from { self, $localnet } to any keep state
+
+# blacklistd
+pf_blacklistd_conf_local:
+  - {adr: ssh, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
+  - {adr: ftp, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
+  - {adr: smtp, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
+  - {adr: smtps, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
+  - {adr: submission, type: stream, proto: '*', owner: '*', name: '*', nfail: '3', disable: 24h}
+  - {adr: '*', type: '*', proto: '*', owner: '*', name: '*', nfail: '3', disable: '60'}
+pf_blacklistd_flags: '-r'
+pf_blacklistd_rcconf:
+  - {name: blacklistd_flags, value: "{{ pf_blacklistd_flags }}"}
