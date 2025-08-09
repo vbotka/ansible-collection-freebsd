@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
+.. index:: single: network; Example 360
+.. index:: single: bridge; Example 360
 .. index:: single: role vbotka.freebsd.network; Example 360
 .. index:: single: vbotka.freebsd.network; Example 360
-.. index:: single: network; Example 360
 
 Use case
 ^^^^^^^^
@@ -63,7 +64,7 @@ Configuration ansible.cfg
    :language: ini
 
 Inventory iocage.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage.ini
    :language: ini

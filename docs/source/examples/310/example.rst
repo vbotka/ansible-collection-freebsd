@@ -10,6 +10,9 @@
 .. index:: single: role vbotka.freebsd.postinstall; Example 310
 .. index:: single: audit ansible_client; Example 310
 .. index:: single: display_skipped_hosts; Example 310
+
+.. index:: single: act_pkg; Example 310
+
 .. index:: single: module community.general.pkgng; Example 310
 .. index:: single: community.general.pkgng; Example 310
 .. index:: single: delegate_to; Example 310
