@@ -1,5 +1,5 @@
 fn_cloned_interfaces:
-  - interface: bridge0
+  - {interface: bridge0, state: value_present}
 fn_interfaces:
   - {interface: bridge0, options: inet 10.1.0.17/24, create: addm em0}
   - {interface: em0, options: up -tso -vlanhwtso}
