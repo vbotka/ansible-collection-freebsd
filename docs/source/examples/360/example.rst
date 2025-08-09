@@ -121,6 +121,25 @@ Playbook output - Configure network
    :language: yaml
    :force:
 
+Result
+^^^^^^
+
+MACs are sanitized.
+
+.. code-block:: console
+
+   (env) > ssh admin@10.1.0.17 ifconfig bridge0
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+
+.. code-block:: console
+
+   (env) > ssh admin@10.1.0.29 ifconfig bridge0
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
      
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _vbotka.freebsd_network: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network/

@@ -3,12 +3,20 @@ fn_gateway_enable: true
 fn_defaultrouter: 10.1.0.10
 
 fn_cloned_interfaces:
-  - interface: lagg0
+  - {interface: lagg0, state: value_present}
 fn_interfaces:
-  - {interface: em0, options: up}
-  - {interface: ue0, options: up}
-  - {interface: ue1, options: up}
-  - {interface: lagg0, options: 'laggproto loadbalance laggport em0 laggport ue0 laggport ue1 10.1.0.17/24'}
+  - {interface: lagg0, options: inet 10.1.0.28/24, create: laggproto loadbalance laggport ue0 laggport ue1}
+  - {interface: ue0, options: -tso -vlanhwtso}
+  - {interface: ue1, options: -tso -vlanhwtso}
+
+fn_ethname: true
+fn_ethname_enable: true
+fn_ethname_cmd_enable: true
+fn_ethname_cmd: start
+fn_ethname_install: false
+fn_ethname_name_mac:
+  ue0: 3c:33:32:c7:20:19
+  ue1: 40:86:cb:d2:53:90
 
 # role postinstall
 fp_resolvconf: true
@@ -20,13 +28,3 @@ fp_resolvconf_conf:
 fp_resolv_conf_clean: false
 fp_resolv_conf:
   - {key: nameserver, value: 10.1.0.1}
-
-
-# fn_ethname: true
-# fn_ethname_enable: true
-# fn_ethname_cmd_enable: true
-# fn_ethname_cmd: start
-# fn_ethname_install: false
-# fn_ethname_name_mac:
-#   ue0: 3c:33:32:c7:20:19
-#   ue1: 40:86:cb:d2:53:90
