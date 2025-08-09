@@ -1,5 +1,5 @@
 plugin: vbotka.freebsd.iocage
-host: 10.1.0.73
+host: 10.1.0.29
 user: admin
 env:
   CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

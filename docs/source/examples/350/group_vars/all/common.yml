@@ -1,10 +1,4 @@
 ansible_python_interpreter: auto_silent
 
-freebsd_install_method: packages
-freebsd_install_retries: 3
-freebsd_install_delay: 5
-
-freebsd_pkgng_cached: true
+freebsd_pkgng_cached: false
 freebsd_pkgng_use_globs: false
-freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
-freebsd_pkgng_jail: "{{ iocage_jid }}"

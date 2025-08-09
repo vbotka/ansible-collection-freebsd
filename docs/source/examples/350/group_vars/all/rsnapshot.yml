@@ -1,5 +1,8 @@
 rsnapshot_install: false
 
+rsnapshot_packages:
+  - sysutils/rsnapshot
+
 rsnapshot_config_template: rsnapshot-auto.conf.j2
 rsnapshot_snapshot_root: /export/backup/snapshots
 rsnapshot_no_create_root: '0'
