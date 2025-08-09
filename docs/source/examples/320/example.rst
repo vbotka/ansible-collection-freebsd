@@ -15,7 +15,7 @@
 Use case
 ^^^^^^^^
 
-Install packages in Ansible clients using the role `vbotka.freebsd.packages`_. Audit installed
+Using the role `vbotka.freebsd.packages`_ to install packages in Ansible clients. Audit installed
 packages.
 
 Tree

@@ -18,8 +18,7 @@
 Use case
 ^^^^^^^^
 
-Create 3 jails (Ansible clients) at an iocage host. Install and configure `rsnapshot`_ in Ansible
-clients using the role `vbotka.freebsd.rsnapshot`_.
+Use the role `vbotka.freebsd.rsnapshot`_ to install and configure `rsnapshot`_.
 
 Tree
 ^^^^

@@ -14,8 +14,7 @@
 Use case
 ^^^^^^^^
 
-Create 3 jails (Ansible clients) at iocage host. Install and configure `lighttpd`_ in Ansible
-clients using the role `vbotka.freebsd.config_light`_.
+Use the role `vbotka.freebsd.config_light`_ to install and configure `lighttpd`_.
 
 Tree
 ^^^^

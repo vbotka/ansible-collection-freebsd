@@ -1,7 +1,7 @@
 .. _example_360:
 
-360 Configure NICs
-------------------
+360 Configure bridge
+--------------------
 
 .. contents::
    :local:
@@ -15,7 +15,7 @@
 Use case
 ^^^^^^^^
 
-Configure bridges for iocage hosts using the role `vbotka.freebsd.network`_
+Use the role `vbotka.freebsd.network`_ to configure bridges.
 
 Tree
 ^^^^
@@ -39,7 +39,7 @@ Synopsis
 ^^^^^^^^
 
 * Configure ``/boot/loader.conf``
-* Configure the bridges.
+* Configure bridges.
 
 Requirements
 ^^^^^^^^^^^^
@@ -57,8 +57,8 @@ TBD
    | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini

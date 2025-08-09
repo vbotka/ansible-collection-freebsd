@@ -20,7 +20,7 @@
 Use case
 ^^^^^^^^
 
-Configure pf using the role `vbotka.freebsd.pf`_
+Use the role `vbotka.freebsd.pf`_ to configure pf.
 
 Tree
 ^^^^
