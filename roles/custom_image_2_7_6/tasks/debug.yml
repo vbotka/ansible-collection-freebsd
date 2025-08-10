@@ -1,8 +1,9 @@
 ---
-- name: "Debug cimage_debug={ cimage_debug }}"
+- name: "Debug cimage_debug=({ cimage_debug }}"
   vars:
     msg: |-
       cimage_role_version: {{ cimage_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}

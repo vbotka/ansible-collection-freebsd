@@ -17,20 +17,6 @@ cimage_mount_points:
     mountpoint: /mnt3
 cimage_mount_path: /mnt3
 
-# loader.conf
-cimage_loaderconf: true
-cimage_loaderconf_backup: true
-cimage_loaderconf_data:
-  - 'hw.usb.template=3'                                                                  
-  - 'umodem_load="YES"'                                                                  
-  - 'boot_multicons="YES"'                                                               
-  - 'boot_serial="YES"'                                                                  
-  - 'beastie_disable="YES"'                                                              
-  - 'loader_color="NO"'                                                                  
-  - 'legal.realtek.license_ack=1'                                                        
-cimage_loaderconf_sysctl: []
-cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
-
 # rc.conf
 cimage_rcconf: true
 cimage_rcconf_data:
@@ -49,3 +35,20 @@ cimage_wpasupconf_data:
           disabled: 0
 cimage_wpasupconf_link: true
 cimage_wpasupconf_link_dev: wlan0
+
+# postinstall
+cimage_postinstall: [loader]
+
+# postinstall loader
+fp_loader_conf_template: ''
+loader_states:
+  hw.usb.template: '3'
+  umodem_load: 'YES'
+  boot_multicons: 'YES'
+  boot_serial: 'YES'
+  beastie_disable: 'YES'
+  loader_colo: 'NO'
+  legal.realtek.license_ack: '1'
+fp_loader_conf: "{{ loader_states | dict2items(key_name='name') }}"
+loader_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
+fp_loader_conf_modules: "{{ dict(loader_modules | product(['YES'])) | dict2items(key_name='name') }}"

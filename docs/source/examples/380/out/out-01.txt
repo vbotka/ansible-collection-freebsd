@@ -2,20 +2,21 @@
 PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [images.example.com]
 
-TASK [vbotka.freebsd.custom_image : Debug cimage_debug={ cimage_debug }}] ******
-ok: [iocage_02] => 
+TASK [vbotka.freebsd_custom_image : Debug cimage_debug=true] *******************
+ok: [images.example.com] => 
     msg: |-
-        cimage_role_version: 2.7.3
+        cimage_role_version: 2.7.7
+        ansible_role_name: vbotka.freebsd_custom_image
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
         ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.2
-        ansible_distribution_release: 14.2-RELEASE-p1
-        ansible_python_version: 3.11.11
+        ansible_distribution_version: 14.3
+        ansible_distribution_release: 14.3-RELEASE
+        ansible_python_version: 3.11.12
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_sanity: False
         cimage_sanity_quiet: True
@@ -61,6 +62,10 @@ ok: [iocage_02] =>
         cimage_packages:
           []
 
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        cimage_customize:
+          []
+
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+images.example.com         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
