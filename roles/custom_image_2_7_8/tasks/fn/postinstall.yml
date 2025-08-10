@@ -7,7 +7,9 @@
 - name: "Postinstall: Configure."
   ansible.builtin.include_role:
     name: "{{ ansible_role_name | replace('custom_image', 'postinstall') }}"
-    tasks_from: "{{ item }}"
+    tasks_from: "{{ postinstall_item }}"
   loop: "{{ cimage_customize.postinstall }}"
+  loop_control:
+    loop_var: postinstall_item
 
 # EOF
