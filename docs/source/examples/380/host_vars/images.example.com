@@ -40,6 +40,8 @@ cimage_wpasupconf_link_dev: wlan0
 cimage_postinstall: [loader]
 
 # postinstall loader
+fp_loader_tuneables_warning: false
+fp_loader_conf_file: "{{ cimage_mount_path }}/boot/loader.conf"
 fp_loader_conf_template: ''
 loader_states:
   hw.usb.template: '3'

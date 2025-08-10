@@ -2,26 +2,60 @@
 PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Customize image.] **************************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/loaderconf.yml for iocage_02 => (item=loaderconf)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/wpasupconf.yml for iocage_02 => (item=wpasupconf)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/rcconf.yml for iocage_02 => (item=rcconf)
-
-TASK [vbotka.freebsd.custom_image : Loaderconf: Configure /mnt3/boot/loader.conf] ***
-ok: [iocage_02]
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/wpasupconf.yml for images.example.com => (item=wpasupconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/rcconf.yml for images.example.com => (item=rcconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/postinstall.yml for images.example.com => (item=postinstall)
 
 TASK [vbotka.freebsd.custom_image : Wpasupconf: Configure /mnt3/etc/wpasupplicant.conf] ***
-ok: [iocage_02] => (item=wlan0)
+changed: [images.example.com] => (item=wlan0)
 
 TASK [vbotka.freebsd.custom_image : Wpasupconf: Link to /etc/wpa_supplicant.conf.wlan0] ***
-ok: [iocage_02]
+changed: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Rcconf: Configure /mnt3/etc/rc.conf] *******
-ok: [iocage_02] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
-ok: [iocage_02] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+changed: [images.example.com] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
+changed: [images.example.com] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+
+TASK [Postinstall: Configure.] *************************************************
+included: vbotka.freebsd.postinstall for images.example.com => (item=loader)
+
+TASK [vbotka.freebsd.postinstall : Loader: Backup orig /boot/loader.conf] ******
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /boot/loader.conf] ***
+changed: [images.example.com] => (item={'name': 'hw.usb.template', 'value': '3'})
+changed: [images.example.com] => (item={'name': 'umodem_load', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'boot_multicons', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'boot_serial', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'beastie_disable', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'loader_colo', 'value': 'NO'})
+changed: [images.example.com] => (item={'name': 'legal.realtek.license_ack', 'value': '1'})
+
+TASK [vbotka.freebsd.postinstall : Loader: Configure modules by sysctl /boot/loader.conf] ***
+changed: [images.example.com] => (item={'name': 'wlan', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'wlan_wep', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'wlan_ccmp', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'wlan_tkip', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'wlan_amrr', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'rtwn', 'value': 'YES'})
+changed: [images.example.com] => (item={'name': 'if_rtwn_usb', 'value': 'YES'})
+
+TASK [vbotka.freebsd.postinstall : Loader: Get sysctls settable via loader.] ***
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.postinstall : Loader: Warn when fp_sysctl_conf keeps also non boot-time tuneables settable via loader.] ***
+ok: [images.example.com] => 
+    msg: |-
+        [WARNING] Non boot-time tuneables in fp_loader_conf: [beastie_disable, boot_multicons, boot_serial, legal.realtek.license_ack, loader_colo,
+          umodem_load]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Loader message reboot] ***********
+ok: [images.example.com] => 
+    msg: '[MESSAGE] Reboot to activate configuration in /boot/loader.conf'
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=8    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+images.example.com         : ok=14   changed=5    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

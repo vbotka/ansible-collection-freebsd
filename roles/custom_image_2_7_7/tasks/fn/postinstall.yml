@@ -1,0 +1,13 @@
+---
+- name: "Postinstall: Debug cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
+  ansible.builtin.debug:
+    var: cimage_customize.postinstall
+
+- name: "Postinstall: Configure."
+  ansible.builtin.include_role:
+    name: "{{ ansible_role_name | replace('custom_image', 'postinstall') }}"
+    tasks_from: "{{ item }}"
+  loop: "{{ cimage_customize.postinstall }}"
+
+# EOF
