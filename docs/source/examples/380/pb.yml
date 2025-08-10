@@ -3,4 +3,4 @@
   gather_facts: true
 
   roles:
-    - vbotka.freebsd_custom_image
+    - vbotka.freebsd.custom_image

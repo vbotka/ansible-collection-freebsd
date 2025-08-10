@@ -26,15 +26,15 @@ Tree
   ├── group_vars
   │   └── all
   │       └── vault.yml
+  ├── hosts
   ├── host_vars
-  │   └── iocage_02.yml
-  ├── iocage-hosts.ini
+  │   └── images.example.com
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* Use the playbook ``pb.yml`` at ``iocage_02`` to customize FreeBSD image:
+* Use the playbook ``pb.yml`` at ``images.example.com`` to customize FreeBSD image:
 
   * configure wireless adapter `RTL8188EU`_
   * configure wpa_supplicant
@@ -68,16 +68,16 @@ Configuration ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
+Inventory hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: hosts
    :language: ini
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02.yml
+.. literalinclude:: host_vars/images.example.com
    :language: yaml
    :caption:
 
@@ -98,8 +98,7 @@ Playbook output - debug
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
-                                   -t cimage_debug -e cimage_debug=true
+   (env) > ansible-playbook pb.yml -t cimage_debug -e cimage_debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -110,8 +109,7 @@ Playbook output - download images
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
-                                   -t cimage_download -e cimage_download=true
+   (env) > ansible-playbook pb.yml -t cimage_download -e cimage_download=true
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -122,8 +120,7 @@ Playbook output - unpack images
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 \
-                                   -t cimage_unpack -e cimage_unpack=true
+   (env) > ansible-playbook pb.yml -t cimage_unpack -e cimage_unpack=true
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -134,7 +131,7 @@ Playbook output - mount image
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_mount
+   (env) > ansible-playbook pb.yml -t cimage_mount
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -145,7 +142,7 @@ Playbook output - customize image
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_customize
+   (env) > ansible-playbook pb.yml -t cimage_customize
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -156,7 +153,7 @@ Playbook output - umount image
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02 -t cimage_umount
+   (env) > ansible-playbook pb.yml -t cimage_umount
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
@@ -166,12 +163,12 @@ Playbook output - mount, customize, and umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The play is not idempotent when the image is unmounted. The default is ``cimage_umount=true``. In
-this case, at least 3 tasks are *changed*. The image is mounted, unmounted, and the memory disk is
+this case, at least 3 tasks are ``changed``. The image is mounted, unmounted, and the memory disk is
 detached.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook pb.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml

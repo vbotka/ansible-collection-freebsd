@@ -7,5 +7,3 @@ images.example.com
 ansible_user=admin
 ansible_become=true
 ansible_python_interpreter=auto_silent
-
-# EOF
