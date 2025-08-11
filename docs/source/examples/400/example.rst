@@ -26,7 +26,7 @@
 Use case
 ^^^^^^^^
 
-Configure ZFS pools and datasets in an iocage host.
+Use the role `vbotka.freebsd.zfs`_ to configure ZFS pools and datasets.
 
 Tree
 ^^^^
@@ -37,29 +37,26 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_02
+  │   └── iocage_04
   │       ├── loader.yml
   │       └── zfs.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-loader.yml
   └── pb-zfs.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the iocage host ``iocage_02``
+* At the managed host ``iocage_04``
 
   * create ZFS pools:
 
     * ``zroot``
     * ``export``
 
-  * create ZFS datasets:
+  * create ZFS dataset:
 
-    * ``zroot/jails``
-    * ``zroot/poudriere``
-    * ``export/scratch``
-    * ``export/iso``
+    * ``zroot/export``
 
 Requirements
 ^^^^^^^^^^^^
@@ -85,7 +82,7 @@ Notes
 
    * `The Z File System (ZFS)`_
    * `FreeBSD Wiki ZFS`_
-   * `FreeBSD Wiki Category Zfs`_
+   * `FreeBSD Wiki Category ZFS`_
 
 .. _example_400_known_issues:
 
@@ -155,11 +152,11 @@ ansible.cfg
 host_vars
 ^^^^^^^^^
   
-.. literalinclude:: host_vars/iocage_02/loader.yml
+.. literalinclude:: host_vars/iocage_04/loader.yml
    :language: yaml
    :caption:
   
-.. literalinclude:: host_vars/iocage_02/zfs.yml
+.. literalinclude:: host_vars/iocage_04/zfs.yml
    :language: yaml
    :caption:
 
@@ -174,16 +171,17 @@ Playbook output - loader.conf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-loader.yml -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook pb-loader.yml -i iocage.ini
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
-.. hint::
+.. note::
 
-   You don't have to reboot. Configure ``sysctl.conf`` instead. See :ref:`example_501_loader`
+   Reboot if you see the message ::
 
+     [MESSAGE] Reboot to activate configuration in /boot/loader.conf
       
 Playbook pb-zfs.yml
 ^^^^^^^^^^^^^^^^^^^
@@ -191,26 +189,25 @@ Playbook pb-zfs.yml
 .. literalinclude:: pb-zfs.yml
    :language: yaml
 
-Playbook output - debug display variables
+Playbook output - Debug display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage-hosts.ini -l iocage_02 \
-                                       -t fzfs_debug -e fzfs_debug=true
+   (env) > ansible-playbook pb-zfs.yml -i iocage.ini -t fzfs_debug -e fzfs_debug=true
 
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
-Playbook output - configure ZFS
+Playbook output - Configure ZFS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage-hosts.ini -l iocage_02
+   (env) > ansible-playbook pb-zfs.yml -i iocage.ini
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml
    :force:
 
@@ -219,10 +216,9 @@ Playbook output - List pools
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage-hosts.ini -l iocage_02 \
-                                       -t fzfs_facts_pools -e fzfs_debug=true
+   (env) > ansible-playbook pb-zfs.yml -t fzfs_facts_pools -e fzfs_debug=true
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
 
@@ -231,10 +227,9 @@ Playbook output - List datasets
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage-hosts.ini -l iocage_02 \
-                                       -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true
+   (env) > ansible-playbook pb-zfs.yml -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
@@ -248,6 +243,6 @@ Playbook output - List datasets
 
 .. _The Z File System (ZFS): https://docs.freebsd.org/en/books/handbook/zfs/
 .. _FreeBSD Wiki ZFS: https://wiki.freebsd.org/ZFS
-.. _FreeBSD Wiki Category Zfs: https://wiki.freebsd.org/CategoryZfs
+.. _FreeBSD Wiki Category ZFS: https://wiki.freebsd.org/CategoryZfs
 
 .. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html

@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_zfs
-fzfs_role_version: 2.7.6
+fzfs_role_version: 2.7.7
 
 fzfs_enable: false
 fzfs_debug: false
@@ -19,7 +19,7 @@ fzfs_manage: []
 fzfs_mountpoints: []
 
 # Assert pools
-fzfs_pools_required: "{{ fzfs_manage | map(attribute='name') | map('split', '/') | map('first') | unique | sort }}"
+fzfs_pools_required: "{{ fzfs_pools.keys() | sort }}"
 fzfs_pools_present: "{{ ansible_zfs_pools | map(attribute='name') | sort }}"
 fzfs_pools_missing: "{{ fzfs_pools_required | difference(fzfs_pools_present) | sort }}"
 

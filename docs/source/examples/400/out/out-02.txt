@@ -2,55 +2,51 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
-TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
-included: vbotka.freebsd.postinstall for iocage_02
-
-TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Rcconf: Enable and Start zfs] ***********************
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Pools: Get zpool status.] ***************************
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Pools: WARNING | community.general.zpool skipped.] ***
-ok: [iocage_02] => 
+TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
+ok: [iocage_04] => 
     msg: |-
-        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        # WARNING:
-        #
-        # The module community.general.zpool is not idempotent. It crashes
-        # when running repeatedly. Because of the poor quality, the module
-        # community.general.zpool will be skipped for pools:
-        # ['zroot', 'export']
-        #
-        # Configure the skipped pools manually, if necessary.
-        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        fzfs_role_version: 2.7.6
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.3
+        ansible_distribution_release: 14.3-RELEASE
+        ansible_python_version: 3.11.12
 
-TASK [vbotka.freebsd_zfs : Facts: Run zpool_facts] *****************************
-ok: [iocage_02]
+        fzfs_enable: True
+        fzfs_debug2: False
+        fzfs_pools_sanity: True
+        fzfs_assert_quiet: True
+        fzfs_facts_ds: False
+        fzfs_facts_recurse: True
+        fzfs_mount_all: True
+        fzfs_sysctl_tuneables_warning: "True"
 
-TASK [vbotka.freebsd_zfs : Manage: Sanity all pools available.] ****************
-ok: [iocage_02]
+        fzfs_sysctl_conf:
+          []
 
-TASK [vbotka.freebsd_zfs : Manage: Manage zfs] *********************************
-ok: [iocage_02] => (item=zroot/jails)
-ok: [iocage_02] => (item=zroot/poudriere)
-ok: [iocage_02] => (item=export/scratch)
-ok: [iocage_02] => (item=export/iso)
+        fzfs_rcconf:
+          []
+
+        fzfs_pools:
+          iocage:
+            vdevs:
+            - disks: [/dev/ada2, /dev/ada3]
+          zroot:
+            vdevs:
+            - disks: [/dev/ada0p4, /dev/ada1p4]
+
+        fzfs_manage:
+          - extra_zfs_properties: {compression: 'on', mountpoint: /export}
+            name: zroot/export
+            state: present
+
+        fzfs_mountpoints:
+          []
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=12   changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
+iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

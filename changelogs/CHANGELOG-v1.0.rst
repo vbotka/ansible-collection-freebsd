@@ -23,6 +23,7 @@ Minor Changes
 * Upgrade role postinstall 2.7.17
 * Upgrade role network 2.7.8
 * Upgrade role custom_image 2.7.8
+* Upgrade role zfs 2.7.7
 
 
 0.7.18

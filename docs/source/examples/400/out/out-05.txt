@@ -1,22 +1,67 @@
 
-PLAY [Configure loader.conf] ***************************************************
+PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Loader: Backup orig /boot/loader.conf] ******
-ok: [iocage_02]
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /boot/loader.conf] ***
-changed: [iocage_02] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
+TASK [vbotka.freebsd.zfs : Facts: Run zfs_facts] *******************************
+ok: [iocage_04] => (item=iocage)
+ok: [iocage_04] => (item=zroot)
 
-TASK [vbotka.freebsd.postinstall : Loader: Get sysctls settable via loader.] ***
-ok: [iocage_02]
+TASK [vbotka.freebsd.zfs : Facts: Get dictionary of datasets] ******************
+ok: [iocage_04]
 
-RUNNING HANDLER [vbotka.freebsd.postinstall : Loader message reboot] ***********
-ok: [iocage_02] => 
-    msg: '[MESSAGE] Reboot to activate configuration in /boot/loader.conf'
+TASK [vbotka.freebsd.zfs : Facts: Debug list of datasets fzfs_debug=true] ******
+ok: [iocage_04] => 
+    fzfs_datasets | to_nice_yaml: |-
+        iocage:
+            iocage: /iocage
+            iocage/iocage: /iocage/iocage
+            iocage/iocage/download: /iocage/iocage/download
+            iocage/iocage/download/14.3-RELEASE: /iocage/iocage/download/14.3-RELEASE
+            iocage/iocage/images: /iocage/iocage/images
+            iocage/iocage/jails: /iocage/iocage/jails
+            iocage/iocage/jails/0f5055fd: /iocage/iocage/jails/0f5055fd
+            iocage/iocage/jails/0f5055fd/root: /iocage/iocage/jails/0f5055fd/root
+            iocage/iocage/jails/dbdcbdec: /iocage/iocage/jails/dbdcbdec
+            iocage/iocage/jails/dbdcbdec/root: /iocage/iocage/jails/dbdcbdec/root
+            iocage/iocage/jails/f53c3b61: /iocage/iocage/jails/f53c3b61
+            iocage/iocage/jails/f53c3b61/root: /iocage/iocage/jails/f53c3b61/root
+            iocage/iocage/log: /iocage/iocage/log
+            iocage/iocage/releases: /iocage/iocage/releases
+            iocage/iocage/releases/14.3-RELEASE: /iocage/iocage/releases/14.3-RELEASE
+            iocage/iocage/releases/14.3-RELEASE/root: /iocage/iocage/releases/14.3-RELEASE/root
+            iocage/iocage/releases/14.3-RELEASE/root@ansible_client: null
+            iocage/iocage/templates: /iocage/iocage/templates
+            iocage/iocage/templates/ansible_client: /iocage/iocage/templates/ansible_client
+            iocage/iocage/templates/ansible_client/root: /iocage/iocage/templates/ansible_client/root
+            iocage/iocage/templates/ansible_client/root@0f5055fd: null
+            iocage/iocage/templates/ansible_client/root@dbdcbdec: null
+            iocage/iocage/templates/ansible_client/root@f53c3b61: null
+            iocage/iocage/templates/ansible_client@0f5055fd: null
+            iocage/iocage/templates/ansible_client@dbdcbdec: null
+            iocage/iocage/templates/ansible_client@f53c3b61: null
+        zroot:
+            zroot: /zroot
+            zroot/ROOT: none
+            zroot/ROOT/default: /
+            zroot/export: /export
+            zroot/home: /home
+            zroot/home/admin: /home/admin
+            zroot/tmp: /tmp
+            zroot/usr: /usr
+            zroot/usr/ports: /usr/ports
+            zroot/usr/src: /usr/src
+            zroot/var: /var
+            zroot/var/audit: /var/audit
+            zroot/var/crash: /var/crash
+            zroot/var/log: /var/log
+            zroot/var/mail: /var/mail
+            zroot/var/tmp: /var/tmp
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=5    changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+iocage_04                  : ok=5    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 
