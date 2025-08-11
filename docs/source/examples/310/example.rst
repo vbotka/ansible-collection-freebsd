@@ -150,7 +150,7 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - by default do nothing
+Playbook output - By default do nothing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -170,7 +170,7 @@ Use the module `community.general.pkgng`_ to demonstrate the installation in a j
    :language: yaml
 
 
-Playbook output - install packages by community.general.pkgng
+Playbook output - Install packages by community.general.pkgng
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory ``iocage.ini`` is needed to delegate the tasks ``Install packages``.
@@ -191,7 +191,7 @@ Use the imported tasks ``packages.yml`` from the role `vbotka.freebsd.postinstal
 .. literalinclude:: pb-test-03.yml
    :language: yaml
 
-Playbook output - import vbotka.freebsd_postinstall packages.yml
+Playbook output - Import vbotka.freebsd_postinstall packages.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -214,7 +214,7 @@ Playbook output - import vbotka.freebsd_postinstall packages.yml
      - name: Install packages
        ansible.builtin.import_role:
          name: vbotka.freebsd_postinstall
-         tasks_from: packages.yml
+         tasks_from: packages
 
    Both options should give the same result.
 

@@ -8,7 +8,7 @@
         al_include_dir_vars_dir: "{{ playbook_dir }}/al_vars"
       include_role:
         name: vbotka.ansible_lib
-        tasks_from: al_include_dir_vars.yml
+        tasks_from: al_include_dir_vars
 
     - debug:
         msg: |

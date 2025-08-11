@@ -163,8 +163,8 @@ Playbook pb-pkg-update.yml
 .. literalinclude:: pb-pkg-update.yml
    :language: yaml
 
-Playbook output - upgrade package ports-mgmt/pkg
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Update repo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -180,7 +180,7 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - display variables
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Limit the inventory to one jail ``test_111``
@@ -195,7 +195,7 @@ Limit the inventory to one jail ``test_111``
    :language: yaml
    :force:
 
-Playbook output - install packages
+Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory ``iocage.ini`` is needed to delegate the tasks ``Install list pkg_list``
@@ -212,7 +212,7 @@ The inventory ``iocage.ini`` is needed to delegate the tasks ``Install list pkg_
 
    Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_
 
-Playbook output - install packages
+Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Enable debug and limit the inventory to one jail ``test_111``
@@ -226,7 +226,7 @@ Enable debug and limit the inventory to one jail ``test_111``
    :language: yaml
    :force:
 
-Playbook output - audit installed packages
+Playbook output - Audit installed packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are no installed packages with known vulnerabilities
@@ -248,7 +248,7 @@ Playbook pb-test-02.yml
 .. literalinclude:: pb-test-02.yml
    :language: yaml
 
-Playbook output - audit installed packages at iocage_02
+Playbook output - Audit installed packages at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are 9 packages with known vulnerabilities

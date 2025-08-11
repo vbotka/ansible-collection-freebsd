@@ -1,7 +1,7 @@
-iocage_02 ansible_host=10.1.0.73
+iocage_04 ansible_host=10.1.0.29
 
 [iocage]
-iocage_02
+iocage_04
 
 [iocage:vars]
 ansible_user=admin

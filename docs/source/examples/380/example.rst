@@ -62,14 +62,14 @@ TBD
    * `Memory Disks`_
    * `Wireless Networks`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
 Inventory hosts
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts
    :language: ini
@@ -93,8 +93,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - debug
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -104,7 +104,7 @@ Playbook output - debug
    :language: yaml
    :force:
 
-Playbook output - download images
+Playbook output - Download images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -115,7 +115,7 @@ Playbook output - download images
    :language: yaml
    :force:
 
-Playbook output - unpack images
+Playbook output - Unpack images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -126,7 +126,7 @@ Playbook output - unpack images
    :language: yaml
    :force:
 
-Playbook output - mount image
+Playbook output - Mount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -137,7 +137,7 @@ Playbook output - mount image
    :language: yaml
    :force:
 
-Playbook output - customize image
+Playbook output - Customize image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -148,7 +148,7 @@ Playbook output - customize image
    :language: yaml
    :force:
 
-Playbook output - umount image
+Playbook output - Umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -159,7 +159,7 @@ Playbook output - umount image
    :language: yaml
    :force:
 
-Playbook output - mount, customize, and umount image
+Playbook output - Mount, customize, and umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The play is not idempotent when the image is unmounted. The default is ``cimage_umount=true``. In

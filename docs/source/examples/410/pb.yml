@@ -11,9 +11,9 @@
       block:
 
         - name: Create list of vars from files in directory conf.d
-          include_role:
+          ansible.builtin.import_role:
             name: vbotka.ansible_lib
-            tasks_from: al_include_confd_vars_list.yml
+            tasks_from: al_include_confd_vars_list
 
         - debug:
             msg: |
@@ -29,9 +29,9 @@
       block:
 
         - name: Create list of vars from files in directory conf.d
-          include_role:
+          ansible.builtin.import_role:
             name: vbotka.ansible_lib
-            tasks_from: al_include_confd_vars_list.yml
+            tasks_from: al_include_confd_vars_list
 
         - debug:
             msg: |

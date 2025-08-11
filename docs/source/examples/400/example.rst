@@ -21,7 +21,7 @@
 .. index:: single: module community.general.zpool_facts; Example 400
 
 .. index:: single: /boot/loader.conf; Example 400
-.. index:: single: /etc/sysctl.conf; Example 400
+.. index:: single: vfs.zfs.prefetch.disable; Example 400
 
 Use case
 ^^^^^^^^
@@ -70,7 +70,6 @@ Notes
 * The role `vbotka.freebsd.postinstall`_ is used to configure:
 
   * ``/boot/loader.conf``
-  * ``/etc/sysctl.conf``
 
 .. note::
 
@@ -149,6 +148,12 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
+   :language: ini
+
 host_vars
 ^^^^^^^^^
   
@@ -189,8 +194,8 @@ Playbook pb-zfs.yml
 .. literalinclude:: pb-zfs.yml
    :language: yaml
 
-Playbook output - Debug display variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

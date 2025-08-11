@@ -153,7 +153,7 @@ Playbook pb-install.yml
 .. literalinclude:: pb-install.yml
    :language: yaml
 
-Playbook output - install packages
+Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory ``iocage.ini`` is needed when a task is delegated to an iocage host
@@ -172,8 +172,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: bash
 
-Playbook output - debug
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -183,7 +183,7 @@ Playbook output - debug
    :language: yaml
    :force:
 
-Playbook output - configure rsnapshot
+Playbook output - Configure rsnapshot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

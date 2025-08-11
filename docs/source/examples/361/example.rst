@@ -103,7 +103,7 @@ Playbook pb-postinstall.yml
 .. literalinclude:: pb-postinstall.yml
    :language: yaml
 
-Playbook output - configure resolv.conf
+Playbook output - Configure resolv.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The tasks ``fp_resolvconf`` configure ``/etc/resolvconf.conf`` and ``/etc/resolv.conf`` using the
@@ -135,7 +135,7 @@ Playbook pb-network.yml
 .. literalinclude:: pb-network.yml
    :language: yaml
 
-Playbook output - configure loadbalance
+Playbook output - Configure loadbalance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

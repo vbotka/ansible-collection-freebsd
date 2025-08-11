@@ -71,7 +71,7 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - get FreeBSD.url
+Playbook output - Get FreeBSD.url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -88,7 +88,7 @@ Playbook pb-test-02.yml
 .. literalinclude:: pb-test-02.yml
    :language: yaml
 
-Playbook output - disable FreeBSD repository
+Playbook output - Disable FreeBSD repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

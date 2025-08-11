@@ -84,8 +84,8 @@ Playbook pb-iocage.yml
 
    `Ansible playbooks`_
 
-Playbook output - Display debug
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

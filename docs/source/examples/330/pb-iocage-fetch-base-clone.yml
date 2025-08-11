@@ -52,7 +52,7 @@
           register: out
           ansible.builtin.import_role:
             name: vbotka.freebsd.iocage
-            tasks_from: runner.yml
+            tasks_from: runner
 
         - name: Debug
           when: debug2 | d(false) | bool

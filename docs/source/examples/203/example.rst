@@ -184,7 +184,7 @@ group_vars
    :language: yaml
    :caption:
 
-Playbook output - create and start swarms
+Playbook output - Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

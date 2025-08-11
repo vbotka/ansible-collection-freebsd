@@ -102,7 +102,7 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - install packages
+Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -113,7 +113,7 @@ Playbook output - install packages
    :language: yaml
    :force:
 
-Playbook output - configure pf
+Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting and restarting of the firewall breaks the ssh connections. See the handlers for details. As
@@ -128,7 +128,7 @@ stale. Therefore, let us first configure the rules
    :language: yaml
    :force:
 
-Playbook output - enable pf
+Playbook output - Enable pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

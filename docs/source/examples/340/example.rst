@@ -245,7 +245,7 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - setup
+Playbook output - Setup
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Assemble data and create handlers.
@@ -258,7 +258,7 @@ Assemble data and create handlers.
    :language: yaml
    :force:
 
-Playbook output - install and configure lighttpd
+Playbook output - Install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory ``iocage.ini`` is needed to delegate the tasks 'Manage FreeBSD packages' from the

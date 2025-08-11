@@ -116,8 +116,8 @@ Playbook pb-iocage-fetch-base-clone.yml
 .. literalinclude:: pb-iocage-fetch-base-clone.yml
    :language: yaml
 
-Playbook output - debug
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -129,7 +129,7 @@ Playbook output - debug
    :language: yaml
    :force:
 
-Playbook output - runner
+Playbook output - Runner
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -175,7 +175,7 @@ Playbook pb-iocage-list.yml
 .. literalinclude:: pb-iocage-list.yml
    :language: yaml
 
-Playbook output - display iocage_jails
+Playbook output - Display iocage_jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -193,7 +193,7 @@ Playbook pb-test.yml
    :language: yaml
    :emphasize-lines: 1,4,31
 
-Playbook output - create and use group
+Playbook output - Create and use group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
