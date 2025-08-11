@@ -1,9 +1,9 @@
 poudriere - generate signing key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i build-hosts.ini -l build.example.com -t poudriere_key
+   (env) > ansible-playbook pb.yml -t poudriere_key
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

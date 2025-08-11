@@ -7,9 +7,9 @@
    :local:
    :depth: 1
 
+.. index:: single: Poudriere; Example 390
 .. index:: single: role vbotka.freebsd.poudriere; Example 390
 .. index:: single: vbotka.freebsd.poudriere; Example 390
-.. index:: single: Poudriere; Example 390
 .. index:: single: QEMU; Example 390
 .. index:: single: ARM; Example 390
 .. index:: single: armv6; Example 390
@@ -20,7 +20,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_ and build packages.
+Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_. Build packages.
 
 Tree
 ^^^^
@@ -30,11 +30,10 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── build-hosts.ini
+  ├── hosts
   ├── host_vars
   │   └── build.example.com
   │       ├── fp_qemu.yml
-  │       ├── pkg_dict.yml
   │       └── poudriere.yml
   ├── pb-postinstall.yml
   └── pb.yml
@@ -77,26 +76,22 @@ Notes
    | `vbotka.freebsd_poudriere`_ is the role **freebsd_poudriere** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory build-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
-.. literalinclude:: build-hosts.ini
+.. literalinclude:: hosts
    :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/build.example.com/poudriere.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: host_vars/build.example.com/pkg_dict.yml
    :language: yaml
    :caption:
 
@@ -111,6 +106,8 @@ host_vars
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
+
+Limit ``pkg_dict_*`` for testing.
 
 .. literalinclude:: pb.yml
    :language: yaml
