@@ -2,11 +2,19 @@
 ├── cert.pem
 ├── cert.pem.sample -> ../../share/certs/ca-root-nss.crt
 ├── certs
-│   └── build.example.com.crt
+│   ├── build.example.com.crt
+│   ├── mail.g2.netng.org.crt
+│   └── www.test_23.g2.netng.org.crt
 ├── crt
 │   └── build.example.com-sk.crt
 ├── csr
-│   └── build.example.com.csr
+│   ├── build.example.com.csr
+│   ├── mail.g2.netng.org.csr
+│   └── www.test_23.g2.netng.org.csr
 └── private
     ├── build.example.com-sk.key
-    └── build.example.com.key
+    ├── build.example.com.key
+    ├── mail.g2.netng.org.key
+    └── www.test_23.g2.netng.org.key
+
+5 directories, 13 files

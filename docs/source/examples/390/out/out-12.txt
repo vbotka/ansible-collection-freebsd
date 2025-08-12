@@ -80,4 +80,4 @@
     ├── ansible -> /usr/local/etc/poudriere.d/pkglist/arm/ansible
     └── minimal -> /usr/local/etc/poudriere.d/pkglist/arm/minimal
 
-5 directories, 77 files
+5 directories, 76 files

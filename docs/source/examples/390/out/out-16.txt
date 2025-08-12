@@ -20,8 +20,8 @@ TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
 included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for build.example.com => (item=qemu_user_static)
 
 TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list qemu_user_static] ***
-ok: [build.example.com]
+changed: [build.example.com]
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=7    changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
+build.example.com          : ok=7    changed=1    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
 

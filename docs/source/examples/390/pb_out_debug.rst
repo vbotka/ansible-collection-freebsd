@@ -1,5 +1,5 @@
-poudriere - debug
-^^^^^^^^^^^^^^^^^
+poudriere - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
