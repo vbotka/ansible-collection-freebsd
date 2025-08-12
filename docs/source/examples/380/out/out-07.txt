@@ -2,74 +2,95 @@
 PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [images.example.com]
 
 TASK [Mount: Attach memory disk] ***********************************************
-included: vbotka.ansible_lib for iocage_02
+included: vbotka.freebsd.lib for images.example.com
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Default variables.] ********************
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks] *********************
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: List memory disks.] ********************
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary] ***
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Create empty memory disks dictionary.] ***
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Attach memory disk] ********************
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Attach memory disk.] *******************
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Add memory disk to dictionary] *********
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Add memory disk to dictionary.] ********
+ok: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Mount: Set variable cimage_mount_dev] ******
-ok: [iocage_02]
+ok: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Mount: Mount partitions md0] ***************
-changed: [iocage_02] => (item={'partition': 's2a', 'fstype': 'ufs', 'mountpoint': '/mnt3'})
+changed: [images.example.com] => (item={'partition': 's2a', 'fstype': 'ufs', 'mountpoint': '/mnt3'})
 
 TASK [vbotka.freebsd.custom_image : Customize image.] **************************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/loaderconf.yml for iocage_02 => (item=loaderconf)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/wpasupconf.yml for iocage_02 => (item=wpasupconf)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/rcconf.yml for iocage_02 => (item=rcconf)
-
-TASK [vbotka.freebsd.custom_image : Loaderconf: Configure /mnt3/boot/loader.conf] ***
-ok: [iocage_02]
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/wpasupconf.yml for images.example.com => (item=wpasupconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/rcconf.yml for images.example.com => (item=rcconf)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/postinstall.yml for images.example.com => (item=postinstall)
 
 TASK [vbotka.freebsd.custom_image : Wpasupconf: Configure /mnt3/etc/wpasupplicant.conf] ***
-ok: [iocage_02] => (item=wlan0)
+ok: [images.example.com] => (item=wlan0)
 
 TASK [vbotka.freebsd.custom_image : Wpasupconf: Link to /etc/wpa_supplicant.conf.wlan0] ***
-ok: [iocage_02]
+ok: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Rcconf: Configure /mnt3/etc/rc.conf] *******
-ok: [iocage_02] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
-ok: [iocage_02] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+ok: [images.example.com] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
+ok: [images.example.com] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+
+TASK [Postinstall: Configure.] *************************************************
+included: vbotka.freebsd.postinstall for images.example.com => (item=loader)
+
+TASK [vbotka.freebsd.postinstall : Loader: Backup orig /mnt3/boot/loader.conf] ***
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /mnt3/boot/loader.conf] ***
+ok: [images.example.com] => (item={'name': 'hw.usb.template', 'value': '3'})
+ok: [images.example.com] => (item={'name': 'umodem_load', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'boot_multicons', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'boot_serial', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'beastie_disable', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'loader_colo', 'value': 'NO'})
+ok: [images.example.com] => (item={'name': 'legal.realtek.license_ack', 'value': '1'})
+
+TASK [vbotka.freebsd.postinstall : Loader: Configure modules by sysctl /mnt3/boot/loader.conf] ***
+ok: [images.example.com] => (item={'name': 'wlan', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_wep', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_ccmp', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_tkip', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_amrr', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'rtwn', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'if_rtwn_usb', 'value': 'YES'})
 
 TASK [vbotka.freebsd.custom_image : Umount: Unmount] ***************************
-changed: [iocage_02] => (item=/mnt3)
+changed: [images.example.com] => (item=/mnt3)
 
 TASK [Umount: Detach memory disk] **********************************************
-included: vbotka.ansible_lib for iocage_02
+included: vbotka.freebsd.lib for images.example.com
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Default variables.] ********************
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks] *********************
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: List memory disks.] ********************
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary] ***
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Create empty memory disks dictionary.] ***
+ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Parse memory disks] ********************
-ok: [iocage_02] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	)
+TASK [vbotka.freebsd.lib : Al_mdconfig: Parse memory disks.] *******************
+ok: [images.example.com] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	)
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Detach memory disk] ********************
-changed: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Detach memory disk.] *******************
+changed: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Remove memory disk from dictionary] ****
-ok: [iocage_02]
+TASK [vbotka.freebsd.lib : Al_mdconfig: Remove memory disk from dictionary.] ***
+ok: [images.example.com]
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=24   changed=3    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+images.example.com         : ok=27   changed=3    unreachable=0    failed=0    skipped=43   rescued=0    ignored=0   
 

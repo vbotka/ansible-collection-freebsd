@@ -1,0 +1,7 @@
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.29
+user: admin
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)

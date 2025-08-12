@@ -1,31 +1,50 @@
 
-PLAY [Configure iocage.] *******************************************************
+PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.iocage : Activate: Activate iocage pool iocage] ***********
-changed: [iocage_04]
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+included: vbotka.freebsd.postinstall for iocage_04
 
-TASK [vbotka.freebsd.iocage : Activate: Debug result freebsd_iocage_debug=true] ***
+TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ***********************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ***************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Pools: WARNING | community.general.zpool skipped.] ***
 ok: [iocage_04] => 
-    result:
-        changed: true
-        cmd:
-        - iocage
-        - activate
-        - iocage
-        delta: '0:00:01.083651'
-        end: '2025-07-20 19:20:41.659734'
-        failed: false
-        msg: ''
-        rc: 0
-        start: '2025-07-20 19:20:40.576083'
-        stderr: ''
-        stderr_lines: []
-        stdout: ZFS pool 'iocage' successfully activated.
-        stdout_lines:
-        - ZFS pool 'iocage' successfully activated.
+    msg: |-
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        # WARNING:
+        #
+        # The module community.general.zpool is not idempotent. It crashes
+        # when running repeatedly. Because of the poor quality, the module
+        # community.general.zpool will be skipped for pools:
+        # ['iocage']
+        #
+        # Configure the skipped pools manually, if necessary.
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
+ok: [iocage_04]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+iocage_04                  : ok=11   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+

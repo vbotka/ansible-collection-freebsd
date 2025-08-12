@@ -1,12 +1,32 @@
 
-PLAY [Configure login.conf] ****************************************************
+PLAY [Configure iocage.] *******************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Login: Create local .login_conf] ************
-changed: [iocage_04] => (item=admin)
+TASK [vbotka.freebsd.iocage : Activate: Activate iocage pool iocage] ***********
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.iocage : Activate: Debug result freebsd_iocage_debug=true] ***
+ok: [iocage_04] => 
+    result:
+        changed: false
+        cmd:
+        - iocage
+        - activate
+        - iocage
+        delta: null
+        end: null
+        failed: false
+        msg: Did not run command since '/iocage/iocage' exists
+        rc: 0
+        start: null
+        stderr: ''
+        stderr_lines: []
+        stdout: skipped, since /iocage/iocage exists
+        stdout_lines:
+        - skipped, since /iocage/iocage exists
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

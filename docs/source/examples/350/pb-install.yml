@@ -1,17 +1,12 @@
-- name: Test role vbotka.freebsd.rsnapshot
+- name: Install packages.
   hosts: up
   gather_facts: true
   remote_user: admin
   become: true
 
-  vars:
-
-    rsnapshot_packages:
-      - sysutils/rsnapshot
-
   tasks:
 
-    - name: Manage FreeBSD packages
+    - name: Install rsnapshot packages.
       delegate_to: "{{ iocage_tags.vmm }}"
       register: out
       community.general.pkgng:
@@ -20,7 +15,7 @@
         cached: "{{ freebsd_pkgng_cached }}"
         use_globs: "{{ freebsd_pkgng_use_globs }}"
 
-    - name: Debug
+    - name: Debug.
       when: debug | d(false) | bool
       ansible.builtin.debug:
         var: out

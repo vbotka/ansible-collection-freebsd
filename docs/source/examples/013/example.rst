@@ -45,14 +45,14 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 01_iocage.yml
-  │   └── 02_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 04_iocage.yml
   ├── host_vars
-  │   ├── iocage_01
+  │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-all.yml
   ├── pb-ansible-client.yml
   ├── pb-iocage-base.yml
@@ -62,10 +62,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook ``pb-iocage-base.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
@@ -93,20 +93,20 @@ Requirements
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * activated `binary iocage`_
 * fetched releases.
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
+Inventory iocage.ini
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 Inventory hosts
@@ -115,24 +115,24 @@ Inventory hosts
 Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. Then, the dictionary
 ``iocage_tags`` can be created from ``iocage_properties.notes``
 
-.. literalinclude:: hosts/01_iocage.yml
-   :language: yaml
-   :caption:
-   :emphasize-lines: 4,10,19
-
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 6,12,21
+   :emphasize-lines: 6,10,19
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml
+   :caption:
+   :emphasize-lines: 4,8,17
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
+.. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -145,12 +145,12 @@ Playbook pb-iocage-base.yml
 .. literalinclude:: pb-iocage-base.yml
    :language: yaml
 
-Playbook output - create basejails
+Playbook output - Create basejails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-base.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-base.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -162,12 +162,12 @@ Playbook pb-iocage-clone.yml
 .. literalinclude:: pb-iocage-clone.yml
    :language: yaml
 
-Playbook output - clone jails
+Playbook output - Clone jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-clone.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-clone.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -179,7 +179,7 @@ Playbook pb-all.yml
 .. literalinclude:: pb-all.yml
    :language: yaml
 
-Playbook output - display variables and groups
+Playbook output - Display variables and groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -202,21 +202,22 @@ Playbook pb-ansible-client.yml
 .. literalinclude:: pb-ansible-client.yml
    :language: yaml
 
-Playbook output - display iocage_tags and group_names
+Playbook output - Display iocage_tags and group_names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook pb-ansible-client.yml -i hosts
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
 
 .. note::
 
-   * The structure of the inventory hosts and groups is flat. The jail(host) ``ansible-client`` is the
+   * The structure of the inventory hosts and groups is flat. The jail ``ansible-client`` is the
      same in all groups.
+
    * See the special variable `group_names`_
 
 .. warning:: There are no internal checks of the hosts overriding each other. The consistency is up to you.
@@ -227,14 +228,14 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display all jails
+Playbook output - Display all jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook pb-test.yml -i hosts
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 

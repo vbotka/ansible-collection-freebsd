@@ -14,17 +14,17 @@
 Use case
 ^^^^^^^^
 
-Create list of variables from files in the directory ``conf.d``. Use the role
-`vbotka.freebsd.lib`_ tasks `al_include_confd_vars_list.yml`_
+Create list of variables from files in the directory ``conf.d``. Use the role `vbotka.freebsd.lib`_
+tasks `al_include_confd_vars_list.yml`_
 
 .. code-block:: yaml
 
    - name: Create list of vars from files in directory conf.d
      vars:
        al_include_confd_dir: "{{ playbook_dir }}/conf.d"
-     include_role:
-       name: vbotka.ansible_lib
-       tasks_from: al_include_confd_vars_list.yml
+     ansible.builtin.import_role:
+       name: vbotka.freebsd.lib
+       tasks_from: al_include_confd_vars_list
 
 Tree
 ^^^^
@@ -38,15 +38,15 @@ Tree
   │   ├── devel.yml
   │   ├── production.yml
   │   └── qa.yml
-  ├── hosts.ini
-  └── pb-include_confd_vars_list.yml
+  ├── hosts
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* At all hosts:
+* At the managed node:
 
-  * Create a list of variables values from files in the controller's directory conf.d
+  * Create a list of variables' values from files in the controller's directory ``conf.d``
   * Display the created list.
   
 Requirements
@@ -70,16 +70,16 @@ The variables' names are not collected. The resulting list comprises the variabl
    * `al_include_confd_vars_list.yml`_
    * `Special variable playbook_dir`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
    
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts.ini
-^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
    
-.. literalinclude:: hosts.ini
+.. literalinclude:: hosts
    :language: ini
 
 conf.d
@@ -120,42 +120,42 @@ Expected results
    al_include_confd_vars_list:
      - fname: production
        vars:
-       - team: production
-         users: [alice, bob]
+         - team: production
+           users: [alice, bob]
      - fname: qa
        vars:
-       - team: qa1
-         users: [mallory, ted]
-       - team: qa2
-         users: [darth, wendy]
+         - team: qa1
+           users: [mallory, ted]
+         - team: qa2
+           users: [darth, wendy]
      - fname: devel
        vars:
-       - team: devel
-         users: [charlie, david]
+         - team: devel
+           users: [charlie, david]
 
-Playbook pb-include_confd_vars_list.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb.yml
+^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-include_confd_vars_list.yml
+.. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - debug display variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-include_confd_vars_list.yml -i hosts.ini
+   (env) > ansible-playbook pb.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
-   :emphasize-lines: 47-56, 111-126
+   :emphasize-lines: 44-53, 105-120
    :force:
 
 
-.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib
+.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
+.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 
 .. _al_include_confd_vars_list.yml: https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml
 

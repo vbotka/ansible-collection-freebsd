@@ -1,0 +1,22 @@
+properties:
+  notes: "vmm={{ inventory_hostname }}"
+
+clones:
+  test_131:
+    clone_from: ansible_client
+    properties:
+      bpf: 1
+      vnet: 1
+      ip4_addr: 'vnet0|10.1.0.131/24'
+      notes: "swarm=sw_01"
+
+swarms:
+  sw_01:
+    count: 3
+    template: ansible_client
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+start: [test_131]

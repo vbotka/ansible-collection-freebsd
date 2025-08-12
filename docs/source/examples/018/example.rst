@@ -1,7 +1,7 @@
 .. _example_018:
 
-018 Clone basejails and use DHCP
---------------------------------
+018 Clone basejails. Use DHCP.
+------------------------------
 
 Extending example :ref:`example_010`.
 
@@ -9,15 +9,17 @@ Extending example :ref:`example_010`.
    :local:
    :depth: 1
 
-.. index:: single: DHCP; Example 018
 .. index:: single: module vbotka.freebsd.iocage; Example 018
 .. index:: single: inventory vbotka.freebsd.iocage; Example 018
+.. index:: single: DHCP; Example 018
+.. index:: single: SETENV; Example 018
+.. index:: single: sudoers; Example 018
+
 .. index:: single: option sudo; Example 018
 .. index:: single: sudo; Example 018
 .. index:: single: option sudo_preserve_env; Example 018
 .. index:: single: sudo_preserve_env; Example 018
-.. index:: single: sudoers; Example 018
-.. index:: single: SETENV; Example 018
+
 .. index:: single: variable iocage_ip4_dict; Example 018
 .. index:: single: iocage_ip4_dict; Example 018
 
@@ -35,11 +37,11 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_01
+  │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── iocage.yml
   ├── pb-iocage-clone-list.yml
   └── pb-test.yml
@@ -47,10 +49,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook ``pb-iocage-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
@@ -58,7 +60,7 @@ Synopsis
   * start all jails
   * display lists of jails.
 
-* On the iocage host ``iocage_02``
+* At the iocage host ``iocage_02``
 
   In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
@@ -71,16 +73,6 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails ``ansible_client`` created in :ref:`example_010`
 
-Jails at iocage_01
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
@@ -88,31 +80,41 @@ Jails at iocage_02
 
    [iocage_02]# iocage list -l
 
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
-   :language: yaml
-   :caption:
-
 .. literalinclude:: host_vars/iocage_02/iocage.yml
    :language: yaml
    :caption:
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
-   :language: ini
+.. literalinclude:: host_vars/iocage_04/iocage.yml
+   :language: yaml
+   :caption:
 
 Playbook pb-iocage-clone-list.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,28 +127,28 @@ Playbook output - clone, start, and list
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
    :language: bash
    :force:
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -155,7 +157,7 @@ Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP (running -- address requires
-root)``. Enable also ``sudo_preserve_env: true``* if ``env`` is used.
+root)``. Enable also ``sudo_preserve_env: true`` if ``env`` is used.
 
 .. literalinclude:: iocage.yml
    :language: yaml
@@ -163,7 +165,7 @@ root)``. Enable also ``sudo_preserve_env: true``* if ``env`` is used.
 
 .. hint::
 
-   * Limit admins sudo to the command ``iocage list`` ::
+   * Optionally, limit admins sudo to the command ``iocage list`` ::
 
        shell> grep iocage /usr/local/etc/sudoers
        admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
@@ -187,8 +189,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - list some iocage_* vars
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - vars iocage_*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -198,22 +200,24 @@ Playbook output - list some iocage_* vars
    :language: yaml
    :force:
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
 
 .. code-block:: console
 
-   [iocage_01]# iocage list -l
+   [iocage_02]# iocage stop test_112 test_113
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: bash
 
-Playbook output - list some iocage_* vars
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Some jails are stopped.
+Playbook output - vars iocage_*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

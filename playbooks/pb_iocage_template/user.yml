@@ -1,5 +1,6 @@
 ---
 - name: "User: Create user."
+  when: _act_user | length > 0
   register: out
   vars:
     _act_user: "{{ item.value.act_user | d(act_user) }}"

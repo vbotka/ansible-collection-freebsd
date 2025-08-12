@@ -3,10 +3,14 @@
   gather_facts: true
   remote_user: admin
   become: true
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
     
   tasks:
 
-    - name: Install packages
+    - name: Install packages.
       ansible.builtin.import_role:
         name: vbotka.freebsd.postinstall
-        tasks_from: packages.yml
+        tasks_from: packages

@@ -7,4 +7,4 @@
     - name: Install packages.
       ansible.builtin.import_role:
         name: vbotka.freebsd.postinstall
-        tasks_from: packages.yml
+        tasks_from: packages

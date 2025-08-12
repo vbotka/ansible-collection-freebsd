@@ -3,26 +3,26 @@ PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
 ok: [ansible_client] => 
-    iocage_ip4: 10.1.0.199
-ok: [test_101] => 
-    iocage_ip4: 10.1.0.101
-ok: [test_102] => 
-    iocage_ip4: 10.1.0.102
-ok: [test_103] => 
-    iocage_ip4: 10.1.0.103
+    iocage_ip4: 10.1.0.198
 ok: [test_111] => 
     iocage_ip4: 10.1.0.111
 ok: [test_112] => 
     iocage_ip4: 10.1.0.112
 ok: [test_113] => 
     iocage_ip4: 10.1.0.113
+ok: [test_131] => 
+    iocage_ip4: 10.1.0.131
+ok: [test_132] => 
+    iocage_ip4: 10.1.0.132
+ok: [test_133] => 
+    iocage_ip4: 10.1.0.133
 
 PLAY RECAP *********************************************************************
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_101                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_102                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_103                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_131                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

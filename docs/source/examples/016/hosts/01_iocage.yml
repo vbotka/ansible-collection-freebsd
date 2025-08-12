@@ -1,8 +1,0 @@
-plugin: vbotka.freebsd.iocage
-host: 10.1.0.18
-user: admin
-sudo: true
-compose:
-  ansible_host: iocage_ip4
-groups:
-  test_01: inventory_hostname.startswith('test')

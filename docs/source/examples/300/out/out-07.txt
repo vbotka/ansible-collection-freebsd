@@ -2,13 +2,13 @@
 PLAY [Test module vbotka.freebsd.service. Get script commands synopsis.] *******
 
 TASK [Get iocage list of jails] ************************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [Jails sshd commands synopsis] ********************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     script_commands:
         changed: false
         failed: false
@@ -43,7 +43,7 @@ ok: [iocage_02] =>
             - quiet
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     commands | to_yaml: |-
         [start, stop, restart, rcvar, enable, disable, delete, enabled, describe, extracommands,
           configtest, keygen, reload, status, poll, faststart, faststop, fastrestart, fastrcvar,
@@ -58,5 +58,5 @@ ok: [iocage_02] =>
           quietkeygen, quietreload, quietstatus, quietpoll]
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -7,9 +7,9 @@
    :local:
    :depth: 1
 
+.. index:: single: Poudriere; Example 390
 .. index:: single: role vbotka.freebsd.poudriere; Example 390
 .. index:: single: vbotka.freebsd.poudriere; Example 390
-.. index:: single: Poudriere; Example 390
 .. index:: single: QEMU; Example 390
 .. index:: single: ARM; Example 390
 .. index:: single: armv6; Example 390
@@ -20,7 +20,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_ and build packages.
+Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_. Build packages.
 
 Tree
 ^^^^
@@ -30,11 +30,10 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── build-hosts.ini
+  ├── hosts
   ├── host_vars
   │   └── build.example.com
   │       ├── fp_qemu.yml
-  │       ├── pkg_dict.yml
   │       └── poudriere.yml
   ├── pb-postinstall.yml
   └── pb.yml
@@ -42,12 +41,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the remote host *build.example.com*:
+* At the managed node ``build.example.com``:
 
-  * in the playbook *pb.yml*, use the role `vbotka.freebsd.poudriere`_ to install and configure
+  * in the playbook ``pb.yml``, use the role `vbotka.freebsd.poudriere`_ to install and configure
     `poudriere`_.
 
-  * in the playbook *pb-postinstall.yml*, use the role `vbotka.freebsd.postinstall`_ to install and
+  * in the playbook ``pb-postinstall.yml``, use the role `vbotka.freebsd.postinstall`_ to install and
     configure `QEMU`_.
 
   * build packages.
@@ -55,7 +54,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the *build.example.com*.
+* root privilege in the managed node ``build.example.com``.
 
 Notes
 ^^^^^
@@ -77,26 +76,22 @@ Notes
    | `vbotka.freebsd_poudriere`_ is the role **freebsd_poudriere** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory build-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
-.. literalinclude:: build-hosts.ini
+.. literalinclude:: hosts
    :language: ini
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/build.example.com/poudriere.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: host_vars/build.example.com/pkg_dict.yml
    :language: yaml
    :caption:
 
@@ -111,6 +106,8 @@ host_vars
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
+
+Limit ``pkg_dict_*`` for testing.
 
 .. literalinclude:: pb.yml
    :language: yaml
@@ -168,14 +165,14 @@ Build packages
 
    * `Export data`_ how to configure apache24.
    
-.. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere
-.. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
+.. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere/
+.. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere/
+.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 
-.. _poudriere: https://github.com/freebsd/poudriere
+.. _poudriere: https://github.com/freebsd/poudriere/
 .. _Building Packages with Poudriere: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
 .. _QEMU: https://docs.freebsd.org/en/books/handbook/virtualization/#qemu-virtualization-host-guest
 .. _Ansible role FreeBSD Poudriere: https://ansible-freebsd-poudriere.readthedocs.io

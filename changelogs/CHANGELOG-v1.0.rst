@@ -5,6 +5,27 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.19
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs ug examples
+* Update docs playbooks pb-iocage-template
+* Update playbook pb-iocage-template.yml; Test PK validity.
+* Upgrade role postinstall 2.7.17
+* Upgrade role network 2.7.8
+* Upgrade role custom_image 2.7.8
+* Upgrade role zfs 2.7.7
+
+
 0.7.18
 ======
 

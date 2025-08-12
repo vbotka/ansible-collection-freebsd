@@ -1,0 +1,29 @@
+fetch:
+  - 14.3-RELEASE
+
+basejails:
+  - name: ansible_client
+    release: 14.3-RELEASE
+
+clones:
+  - name: test_131
+    clone_from: ansible_client
+    properties:
+      vnet: 'on'
+      defaultrouter: 10.1.0.10
+      ip4_addr: 'vnet0|10.1.0.131/24'
+  - name: test_132
+    clone_from: ansible_client
+    properties:
+      vnet: 'on'
+      defaultrouter: 10.1.0.10
+      ip4_addr: 'vnet0|10.1.0.132/24'
+  - name: test_133
+    clone_from: ansible_client
+    properties:
+      vnet: 'on'
+      defaultrouter: 10.1.0.10
+      ip4_addr: 'vnet0|10.1.0.133/24'
+
+start:
+  - test_133

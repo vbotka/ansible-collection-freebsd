@@ -1,7 +1,7 @@
 .. _example_330:
 
-330 Clone jails and create inventory (role)
--------------------------------------------
+330 Clone jails and create inventory
+------------------------------------
 
 .. contents::
    :local:
@@ -9,9 +9,11 @@
 
 .. index:: single: playbook pb-iocage-fetch-base-clone.yml; Example 330
 .. index:: single: playbook pb-iocage-list.yml; Example 330
+
 .. index:: single: module ansible.builtin.add_host; Example 330
 .. index:: single: role vbotka.freebsd.iocage; Example 330
 .. index:: single: tasks runner.yml; Example 330
+
 .. index:: single: variable freebsd_iocage_runner_cmd; Example 330
 .. index:: single: variable freebsd_iocage_runner_exec; Example 330
 
@@ -34,47 +36,48 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage-fetch-base-clone.yml
   ├── pb-iocage-list.yml
-  └── pb-test-01.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
   * iocage_01
   * iocage_02
 
-  In the playbook *pb-iocage-fetch-base-clone.yml*, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-fetch-base-clone.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * fetch the release
   * create basejail
   * clone 3 jails from the basejail.
 
-  In the playbook *pb-iocage-list.yml*, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-list.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * create the lists of bases and jails
   * optionally, display the lists.
 
-  In the playbook *pb-test-01.yml*:
+  In the playbook ``pb-test-01.yml``:
 
-  * create the inventory group *test* and compose variables
-  * display the hosts and composed variables in the group *test*
+  * create the inventory group ``test`` and compose variables
+  * display the hosts and composed variables in the group ``test``
   * display all groups.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
-* activated *iocage*
+* root privilege in the managed nodes
+* activated ``iocage``
 
 Notes
 ^^^^^
 
 * This example demonstrates a functionality similar to :ref:`example_010`.
+
 * The `role vbotka.freebsd.iocage`_ is preinstalled in this collection.
 
 .. seealso::
@@ -84,16 +87,16 @@ Notes
    * `Start, Stop, or Restart a Jail`_
    * `Listing Jails`_
 
-Configuration *ansible.cfg*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory *iocage-hosts.ini*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -113,12 +116,12 @@ Playbook pb-iocage-fetch-base-clone.yml
 .. literalinclude:: pb-iocage-fetch-base-clone.yml
    :language: yaml
 
-Playbook output - debug
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage.ini \
                                                            -t debug \
                                                            -e debug=true
 
@@ -126,19 +129,19 @@ Playbook output - debug
    :language: yaml
    :force:
 
-Playbook output - runner
+Playbook output - Runner
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage.ini \
                                                            -t runner
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
-.. note:: The commands `"iocage set ..."` are not idempotent.
+.. note:: The commands ``iocage set ...`` are not idempotent.
 
 .. hint::
 
@@ -146,8 +149,8 @@ Playbook output - runner
 
      shell> tail -f /var/log/iocage.log
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_01
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -156,8 +159,8 @@ List jails at iocage_01
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -172,30 +175,30 @@ Playbook pb-iocage-list.yml
 .. literalinclude:: pb-iocage-list.yml
    :language: yaml
 
-Playbook output - display iocage_jails
+Playbook output - Display iocage_jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-list.yml -i iocage-hosts.ini -e debug=true
+   (env) > ansible-playbook pb-iocage-list.yml -i iocage.ini -e debug=true
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml
    :emphasize-lines: 1,4,31
 
-Playbook output - create and use group
+Playbook output - Create and use group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

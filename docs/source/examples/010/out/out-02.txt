@@ -1,40 +1,11 @@
-PLAY [test] *********************************************************************************************************
-
-TASK [debug] ********************************************************************************************************
-ok: [test_111] => 
-    msg: |-
-        inventory_hostname: test_111
-        ansible_host: 10.1.0.111
-        release: 14.2
-        release_major: 14
-        release_minor: 2
-ok: [test_112] => 
-    msg: |-
-        inventory_hostname: test_112
-        ansible_host: 10.1.0.112
-        release: 14.2
-        release_major: 14
-        release_minor: 2
-ok: [test_113] => 
-    msg: |-
-        inventory_hostname: test_113
-        ansible_host: 10.1.0.113
-        release: 14.2
-        release_major: 14
-        release_minor: 2
-
-TASK [debug] ********************************************************************************************************
-ok: [test_111] => 
-    msg: |-
-        groups:
-          all: [ansible_client, test_111, test_112, test_113]
-          distro_14_2_RELEASE_p3: [ansible_client, test_111, test_112, test_113]
-          state_down: [ansible_client, test_111, test_112]
-          state_up: [test_113]
-          test: [test_111, test_112, test_113]
-          ungrouped: []
-
-PLAY RECAP **********************************************************************************************************
-test_111: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_112: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-test_113: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
++======+================+======+=======+======+=================+===================+=====+================+==========+
+| None | ansible_client | off  | down  | jail | 14.2-RELEASE-p3 | -                 | -   | -              | yes      |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| None | test_111       | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.111/24 | -   | ansible_client | yes      |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| None | test_112       | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.112/24 | -   | ansible_client | yes      |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+| 14   | test_113       | off  | up    | jail | 14.2-RELEASE-p3 | em0|10.1.0.113/24 | -   | ansible_client | yes      |
++------+----------------+------+-------+------+-----------------+-------------------+-----+----------------+----------+

@@ -1,7 +1,7 @@
 .. _example_201:
 
-201 Display iocage lists and dictionaries
------------------------------------------
+201 Display iocage datasets
+---------------------------
 
 Extending example :ref:`example_200`.
 
@@ -9,8 +9,9 @@ Extending example :ref:`example_200`.
    :local:
    :depth: 1
 
-.. index:: single: playbook pb-iocage-display-lists.yml; Example 201
+.. index:: single: playbook pb-iocage-display-datasets.yml; Example 201
 .. index:: single: module vbotka.freebsd.iocage; Example 201
+
 .. index:: single: variable iocage_jails; Example 201
 .. index:: single: iocage_jails; Example 201
 .. index:: single: variable iocage_plugins; Example 201
@@ -23,7 +24,7 @@ Extending example :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Create and display *iocage* lists and dictionaries.
+Get and display ``iocage`` datasets.
 
 Tree
 ^^^^
@@ -33,151 +34,152 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── iocage-hosts.ini
-  └── pb-iocage-display-lists.yml
+  ├── iocage.ini
+  └── pb-iocage-display-datasets.yml
 
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
-  In the playbook *pb-iocage-display-lists.yml*, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-display-datasets.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * create and display *iocage* lists and dictionaries.
+  * create and display ``iocage`` lists and dictionaries.
 
 Notes
 ^^^^^
 
-* *root* is not needed to run *'iocage list ...'* on the *iocage* hosts when DHCP isn't used.
+* ``root`` is not needed to run ``iocage list ...`` on the ``iocage`` hosts when DHCP isn't used.
 
-* Quoting from `man iocage <https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8>`_:  ::
+* Quoting from `man iocage`_:  ::
 
-         list    List  the  specified dataset type.  By         default, all jails are
-                 listed.
+         list    List  the  specified dataset type. By default, all jails are listed.
 
                  Options:
 
                  [--http]              Changes [-R | --remote] to use HTTP.
 
-                 [-H | -h | --header]  Used in scripting.  Use tabs for          sepa-
-                                       rators.
+                 [-H | -h | --header]  Used in scripting. Use tabs for separators.
 
                  [-P | --plugins]      Shows plugins installed on the system.
 
-                 [-PRO]                        Lists  official  plugins          available for
-                                       download.
+                 [-PRO]                Lists official plugins available for download.
 
-                 [-R | --remote]       Shows available RELEASE options for re-
-                                       mote.
+                 [-R | --remote]       Shows available RELEASE options for remote.
 
                  [-b | -r | --base | --release | dataset_type]
-                                       List all         bases.
+                                       List all bases.
 
-                 [-l | --long]         Shows JID, NAME,         BOOT, STATE, TYPE, RE-
-                                       LEASE, IP4, IP6,         and TEMPLATE  informa-
-                                       tion.
+                 [-l | --long]         Shows JID, NAME, BOOT, STATE, TYPE, RELEASE, IP4,
+		                       IP6, and TEMPLATE  information.
 
-                 [-q | --quick]                Lists  all  jails  with less processing
-                                       and fields.
+                 [-q | --quick]        Lists all jails with less processing and fields.
 
                  [-s | --sort TEXT]    Sorts the list by the given type.
 
                  [-t | --template | dataset_type]
                                        Lists all templates.
 
-Lists at iocage_01
-^^^^^^^^^^^^^^^^^^
+Datasets at iocage_02
+^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_01]# iocage list -r
+   [iocage_02]# iocage list -r
 
 .. literalinclude:: out/out-01.txt
    :language: bash
 
 .. code-block:: console
 
-   [iocage_01]# iocage list -P
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -lt
+   [iocage_02]# iocage list -P
 
 .. literalinclude:: out/out-03.txt
    :language: bash
 
 .. code-block:: console
 
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
-Lists at iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -r
+   [iocage_02]# iocage list -lt
 
 .. literalinclude:: out/out-05.txt
    :language: bash
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -P
+   [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+
+Datasets at iocage_04
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -r
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -P
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -lt
 
 .. literalinclude:: out/out-06.txt
    :language: bash
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -lt
-
-.. literalinclude:: out/out-07.txt
-   :language: bash
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: bash
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 .. note::
 
    * The escalation ``become=true`` is not necessary.
-   * *root* is not needed to run ``iocage list ...`` when DHCP isn't used.
-   * *admin* executes the module *vbotka.freebsd.iocage* on the iocage
-     hosts and creates the variables *iocage_\**
+   * ``root`` is not needed to run ``iocage list ...`` when DHCP isn't used.
+   * ``admin`` executes the module ``vbotka.freebsd.iocage`` on the iocage
+     hosts and creates the variables ``iocage_*``
 
-Playbook pb-iocage-display-lists.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-display-datasets.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-iocage-display-lists.yml
+.. literalinclude:: pb-iocage-display-datasets.yml
    :language: yaml
 
-Playbook output - display iocage lists
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage datasets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-display-lists.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-display-datasets.yml -i iocage.ini
 
 .. literalinclude:: out/out-09.txt
    :language: yaml
    :force:
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
+.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

@@ -25,22 +25,23 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-test-01.yml
   └── pb-test-02.yml
 
 Synopsis
 ^^^^^^^^
 
-On *iocage* host:
+At a managed node :
 
-* playbook pb-test-01.yml: get FreeBSD.url from /etc/pkg/FreeBSD.conf
-* playbook pb-test-02.yml: update FreeBSD.enabled in /etc/pkg/FreeBSD.conf
+* playbook ``pb-test-01.yml``: get ``FreeBSD.url`` from ``/etc/pkg/FreeBSD.conf``
+* playbook ``pb-test-02.yml``: update ``FreeBSD.enabled`` in ``/etc/pkg/FreeBSD.conf``
 
 Requirements
 ^^^^^^^^^^^^
 
-* `module vbotka.freebsd.ucl`_.
+* `module vbotka.freebsd.ucl`_
+* installed `uclcmd`_
 
 Notes
 ^^^^^
@@ -52,47 +53,47 @@ Notes
   * `uclcmd Command line tool for working with UCL config files`_
   * `UCL (Universal Configuration Language)`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
-Playbook *pb-test-01.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-01.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - get FreeBSD.url
+Playbook output - Get FreeBSD.url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+  (env) > ansible-playbook pb-test-01.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
-Playbook *pb-test-02.yml*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-02.yml
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
    :language: yaml
 
-Playbook output - disable FreeBSD repository
+Playbook output - Disable FreeBSD repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-02.yml -i iocage-hosts.ini --check --diff
+   (env) > ansible-playbook pb-test-02.yml -i iocage.ini --check --diff
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -100,5 +101,6 @@ Playbook output - disable FreeBSD repository
 
 
 .. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
+.. _uclcmd: https://www.freshports.org/devel/uclcmd/
 .. _uclcmd Command line tool for working with UCL config files: https://www.freshports.org/devel/uclcmd/
 .. _UCL (Universal Configuration Language): https://wiki.freebsd.org/UniversalConfigurationLanguage

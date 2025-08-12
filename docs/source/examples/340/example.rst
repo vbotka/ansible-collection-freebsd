@@ -14,8 +14,7 @@
 Use case
 ^^^^^^^^
 
-Create 3 jails (Ansible clients) at iocage host. Install and configure
-`lighttpd`_ in Ansible clients using the role `vbotka.freebsd.config_light`_.
+Use the role `vbotka.freebsd.config_light`_ to install and configure `lighttpd`_.
 
 Tree
 ^^^^
@@ -25,7 +24,7 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── conf-light/
+  ├── conf-light
   │   ├── files.d
   │   │   ├── lighttpd-index.yml
   │   │   ├── lighttpd-lighttpd-annotated-conf.yml
@@ -52,32 +51,33 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_02
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ create and start jails.
-* In the playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ update repositories.
-* In the playbook *pb.yml* at the jails install and configure `lighttpd`_.
+In the playbook:
+
+* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ create and start jails.
+* `vbotka.freebsd.pb_iocage_update_repos.yml`_ update repositories.
+* ``pb.yml`` at the jails, install and configure `lighttpd`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Templates created in :ref:`example_205`
+* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-* Jail name doesn't work in the parameter `name`_ of the module
-  `community.general.pkgng`_ if the jail was created by *iocage*. Use JID
-  instead ::
+* Jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if the
+  jail was created by ``iocage``. Use JID instead ::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The play *pb.yml* runs at the jails. The inventory *iocage-hosts.ini* is
-  needed when a task is delegated to an iocage host ::
+* The play ``pb.yml` runs in the jails. The inventory ``iocage.ini`` is needed when a task is
+  delegated to an iocage host ::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
 
@@ -92,13 +92,12 @@ Notes
       name:
         - www/lighttpd
 
-* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the
-  repositories. Then, use the `cached`_ local package base instead of fetching
-  an updated one ::
+* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the repositories. Then, use the
+  `cached`_ local package base instead of fetching an updated one ::
 
     freebsd_pkgng_cached: true
 
-* The directories *handlers* and *setup*, and files are group-writable ::
+* The directories ``handlers``, ``setup``, and ``files`` are group-writable ::
 
     cl_dird_group: adm
     cl_dird_dmode: "0770"
@@ -107,30 +106,30 @@ Notes
     cl_dira_fmode: "0660"
     cl_handlers_dir_group: adm
 
-  The user running the plays must be a member of the group *adm* ::
+  The user running the plays must be a member of the group ``adm`` ::
 
     shell> > groups admin
     admin : admin adm dialout
 
-  Fit the ownership and permissions in *cl-common.yml* to your needs.
+  Fit the ownership and permissions in ``cl-common.yml`` to your needs.
     
 .. seealso::
 
    * documentation `Ansible role Config Light`_
    * module `community.general.pkgng`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 Do not display skipped hosts. See the option `display_skipped_hosts`_
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 group_vars
@@ -166,7 +165,7 @@ Create and start jails
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage-hosts.ini \
+                            -i iocage.ini \
                             -l iocage_02 \
                             -t swarm \
                             -e swarm=true
@@ -174,8 +173,8 @@ Create and start jails
 .. literalinclude:: out/out-11.txt
    :language: bash
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -199,7 +198,7 @@ Display inventory
 
 .. code-block:: console
 
-   (env) > ansible-inventory -i hosts -i iocage-hosts.ini --graph
+   (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 .. literalinclude:: out/out-02.txt
    :language: bash
@@ -209,7 +208,7 @@ Update repos
 
 .. code-block:: console
 
-   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage-hosts.ini -l iocage_02
+   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini -l iocage_02
 
 .. literalinclude:: out/out-12.txt
    :language: yaml
@@ -246,7 +245,7 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - setup
+Playbook output - Setup
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Assemble data and create handlers.
@@ -259,15 +258,15 @@ Assemble data and create handlers.
    :language: yaml
    :force:
 
-Playbook output - install and configure lighttpd
+Playbook output - Install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory *iocage-hosts.ini* is needed to delegate the tasks 'Manage FreeBSD
-packages' from the jails to their iocage hosts.
+The inventory ``iocage.ini`` is needed to delegate the tasks 'Manage FreeBSD packages' from the
+jails to their iocage hosts.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i hosts -i iocage-hosts.ini
+   (env) > ansible-playbook pb.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-10.txt
    :language: yaml
@@ -282,10 +281,10 @@ Open the page in a browser. For example, http://10.1.0.111/. The content should 
 
 .. note::
 
-   The role and the configuration data in the examples are idempotent. Once the
-   application is installed and configured ansible-playbook shouldn’t report any
-   changes. To speedup the playbook disable setup, sanity, debug, and
-   install. This way, the role will audit the required infrastructure ::
+   The role and the configuration data in the examples are idempotent. Once the application is
+   installed and configured, ansible-playbook shouldn’t report any changes. To speedup the playbook,
+   disable setup, sanity, debug, and install. This way, the role will audit the required
+   infrastructure ::
 
      (env) > ansible-playbook pb.yml -i hosts
 
@@ -307,12 +306,15 @@ Open the page in a browser. For example, http://10.1.0.111/. The content should 
      
 .. _lighttpd: https://www.lighttpd.net/
 .. _Ansible role Config Light: https://ansible-config-light.readthedocs.io/en/latest/index.html
+
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.config_light: https://galaxy.ansible.com/ui/standalone/roles/vbotka/config_light/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
-.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
+.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
+
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
+.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml
+
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
 .. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
 .. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached

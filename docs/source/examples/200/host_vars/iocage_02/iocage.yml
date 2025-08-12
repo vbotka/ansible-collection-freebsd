@@ -1,25 +1,25 @@
 freebsd_iocage_pool: zroot
 freebsd_iocage_pool_mount: /zroot
-freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
+freebsd_iocage_mount: /zroot/iocage
 
 templates:
   ansible_client:
     release: 14.2-RELEASE
     properties:
-      ip4_addr: 'em0|10.1.0.199/24'
+      bpf: 'on'
+      dhcp: 'on'
+      vnet: 'on'
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
+    pkglist: /tmp/ansible/ansible_client/pkgs.json
 
 # ansible client template defaults
-act_pkg:
-  - security/sudo
-  - lang/python311
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
 act_rcconf:
-  iocage_enable: '"YES"'
-  sshd_enable: '"YES"'
+  iocage_enable: "YES"
+  sshd_enable: "YES"
 act_dhclient: {}
 
 clones:

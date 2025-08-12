@@ -1,9 +1,9 @@
 poudriere - create SSL directories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i build-hosts.ini -l build.example.com -t poudriere_dirs
+   (env) > ansible-playbook pb.yml -t poudriere_dirs
 
 .. literalinclude:: out/out-03.txt
    :language: yaml

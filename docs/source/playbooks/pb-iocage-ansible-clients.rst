@@ -1,11 +1,11 @@
-pb-iocage-ansible-clients
+pb_iocage_ansible_clients
 -------------------------
 
 .. contents::
    :local:
    :depth: 3
 
-.. index:: single: playbook pb-iocage-ansible-clients.yml; pb-iocage-ansible-clients
+.. index:: single: playbook pb_iocage_ansible_clients.yml; pb_iocage_ansible_clients
 
 Synopsis
 ^^^^^^^^
@@ -40,7 +40,7 @@ Use the playbook tag ``clone`` to execute selected tasks
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-ansible-clients.yml -t clone -e clone=true
+   (env) > ansible-playbook pb-iocage_ansible_clients.yml -t clone -e clone=true
 
 creates the clones
 
@@ -73,7 +73,7 @@ Use the playbook tag ``swarm`` to execute selected tasks
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-ansible-clients.yml -t swarm -e swarm=true
+   (env) > ansible-playbook pb_iocage_ansible_clients.yml -t swarm -e swarm=true
 
 creates 3 jails from the template ``ansible_client``. The names are generated automatically 
 
@@ -98,7 +98,7 @@ The dictionary ``properties`` keeps the default properties for both options. For
 .. code-block:: yaml
 
    properties:
-     vnet: 'on'
+     vnet: 1
      defaultrouter: 10.1.0.10
      notes: "vmm={{ inventory_hostname }}"
 
@@ -118,7 +118,7 @@ The dictionary ``properties`` keeps the default properties for both options. For
 
 .. hint::
 
-   Take a look at Index and search ``playbook pb-iocage-ansible-client.yml`` to see what examples
+   Take a look at Index and search ``playbook pb_iocage_ansible_client.yml`` to see what examples
    are available.
 
 Workflow

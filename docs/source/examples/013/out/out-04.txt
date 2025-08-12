@@ -1,25 +1,24 @@
 
-PLAY [test_01,test_02] *********************************************************
+PLAY [ansible_client] **********************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_101] => 
-    msg: test_101 running at iocage_01
-ok: [test_102] => 
-    msg: test_102 running at iocage_01
-ok: [test_103] => 
-    msg: test_103 running at iocage_01
-ok: [test_111] => 
-    msg: test_111 running at iocage_02
-ok: [test_112] => 
-    msg: test_112 running at iocage_02
-ok: [test_113] => 
-    msg: test_113 running at iocage_02
+ok: [ansible_client] => 
+    msg: |-
+        inventory_hostname: ansible_client
+        ansible_host: 10.1.0.198
+        release: 14.3
+
+        iocage_tags:
+          vmm: iocage_04
+
+        group_names:
+          - distro_02_14_2_RELEASE_p3
+          - distro_04_14_3_RELEASE_p1
+          - state_02_down
+          - state_04_down
+          - vmm_iocage_02
+          - vmm_iocage_04
 
 PLAY RECAP *********************************************************************
-test_101                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_102                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_103                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -1,0 +1,40 @@
+- name: Test vbotka.freebsd.lib al_include_confd_vars_list
+  hosts: all
+
+  tasks:
+
+    - name: List type | plain
+      vars:
+        al_include_confd_dir: "{{ playbook_dir }}/conf.d"
+        al_include_confd_vars_list_type: plain
+      run_once: true
+      block:
+
+        - name: Create list of vars from files in directory conf.d
+          ansible.builtin.import_role:
+            name: vbotka.ansible_lib
+            tasks_from: al_include_confd_vars_list
+
+        - debug:
+            msg: |
+              al_include_confd_vars_list_type: {{ al_include_confd_vars_list_type }}
+              al_include_confd_vars_list:
+                {{ al_include_confd_vars_list | to_yaml(indent=2) | indent(2) }}
+
+    - name: List type | fname
+      vars:
+        al_include_confd_dir: "{{ playbook_dir }}/conf.d"
+        al_include_confd_vars_list_type: fname
+      run_once: true
+      block:
+
+        - name: Create list of vars from files in directory conf.d
+          ansible.builtin.import_role:
+            name: vbotka.ansible_lib
+            tasks_from: al_include_confd_vars_list
+
+        - debug:
+            msg: |
+              al_include_confd_vars_list_type: {{ al_include_confd_vars_list_type }}
+              al_include_confd_vars_list:
+                {{ al_include_confd_vars_list | to_yaml(indent=2) | indent(2) }}

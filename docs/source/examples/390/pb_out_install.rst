@@ -1,11 +1,9 @@
 poudriere - install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code-block:: console
 
-  (env) > ansible-playbook pb.yml -i build-hosts.ini -l build.example.com \
-                                  -t poudriere_pkg \
-                                  -e poudriere_install=true
+   (env) > ansible-playbook pb.yml -t poudriere_pkg -e poudriere_install=true
 
 .. literalinclude:: out/out-02.txt
    :language: yaml

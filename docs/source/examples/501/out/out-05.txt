@@ -1,23 +1,58 @@
 
-PLAY [Install packages.] *******************************************************
+PLAY [Configure pf.] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Stat /etc/rc.d/blacklistd] ********
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
+TASK [vbotka.freebsd.pf : Blacklistd: Backup /etc/blacklistd.conf.orig] ********
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
+TASK [vbotka.freebsd.pf : Blacklistd: Configure /etc/blacklistd.conf] **********
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for iocage_04 => (item=custom)
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Stat /usr/local/etc/rc.d/fail2ban] ***
+ok: [iocage_04]
 
-TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ***
-changed: [iocage_04]
+TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/fail2ban.local] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/jail.local] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Rcconf-sshguard: Stat /usr/local/etc/rc.d/sshguard] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Configure sshguard.conf] *****************************
+ok: [iocage_04] => (item={'key': 'BACKEND', 'value': '/usr/local/libexec/sshg-fw-pf'})
+ok: [iocage_04] => (item={'key': 'WHITELIST_FILE', 'value': '/usr/local/etc/sshguard.whitelist'})
+
+TASK [vbotka.freebsd.pf : Pfconf: Configure and validate rules using template default2-pf.conf.j2] ***
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Enable and start blacklistd.] *****
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Configure blacklistd.] ************
+ok: [iocage_04] => (item={'name': 'blacklistd_flags', 'value': '-r'})
+
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Enable and start fail2ban.] *********
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Configure fail2ban.] ****************
+ok: [iocage_04] => (item={'name': 'fail2ban_flags', 'value': ''})
+
+TASK [vbotka.freebsd.pf : Rcconf-sshguard: Enable and start sshguard.] *********
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Rcconf-pf: Enable and start pf.] *********************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Rcconf-pflog: Enable and start pflog.] ***************
+ok: [iocage_04]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=6    changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0
+iocage_04                  : ok=17   changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
+

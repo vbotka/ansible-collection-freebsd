@@ -2,24 +2,24 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Create basejail] *********************************************************
+changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
 changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
-changed: [iocage_01] => (item=ansible_client 13.5-RELEASE)
 
 TASK [Display lists of bases, plugins, templates, and jails.] ******************
-ok: [iocage_01] => 
+ok: [iocage_02] => 
     msg: |-
-        releases: ['13.3-RELEASE', '13.4-RELEASE', '13.5-RELEASE']
+        releases: ['14.2-RELEASE', '14.3-RELEASE']
         plugins: []
         templates: []
         jails: ['ansible_client']
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     msg: |-
-        releases: ['14.2-RELEASE']
+        releases: ['14.3-RELEASE']
         plugins: []
         templates: []
         jails: ['ansible_client']
 
 PLAY RECAP *********************************************************************
-iocage_01                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 iocage_02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_04                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

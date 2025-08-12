@@ -79,9 +79,9 @@
                     "msg": ""
                 },
                 "iocage_ip6": "-",
-                "iocage_jid": "1",
+                "iocage_jid": "None",
                 "iocage_release": "14.2-RELEASE-p3",
-                "iocage_state": "up",
+                "iocage_state": "down",
                 "iocage_template": "ansible_client",
                 "iocage_type": "jail"
             }

@@ -2,33 +2,34 @@
 PLAY [test] ********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_101] => 
-    iocage_ip4: 10.1.0.101
-ok: [test_102] => 
-    iocage_ip4: 10.1.0.102
-ok: [test_103] => 
-    iocage_ip4: 10.1.0.103
 ok: [test_111] => 
     iocage_ip4: 10.1.0.111
 ok: [test_112] => 
     iocage_ip4: 10.1.0.112
 ok: [test_113] => 
     iocage_ip4: 10.1.0.113
+ok: [test_131] => 
+    iocage_ip4: 10.1.0.131
+ok: [test_132] => 
+    iocage_ip4: 10.1.0.132
+ok: [test_133] => 
+    iocage_ip4: 10.1.0.133
 
 TASK [debug] *******************************************************************
-ok: [test_101] => 
+ok: [test_111] => 
     msg: |-
-        all: ['ansible_client', 'test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
+        all: ['ansible_client', 'test_111', 'test_112', 'test_113', 'test_131', 'test_132', 'test_133']
         ungrouped: ['ansible_client']
-        test_01: ['test_101', 'test_102', 'test_103']
         test_02: ['test_111', 'test_112', 'test_113']
-        test: ['test_101', 'test_102', 'test_103', 'test_111', 'test_112', 'test_113']
-        test_up: ['test_103', 'test_113']
+        test_04: ['test_131', 'test_132', 'test_133']
+        test: ['test_111', 'test_112', 'test_113', 'test_131', 'test_132', 'test_133']
+        test_up: ['test_131', 'test_132', 'test_133']
 
 PLAY RECAP *********************************************************************
-test_101: ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_102: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_103: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113: ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+test_111                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_131                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

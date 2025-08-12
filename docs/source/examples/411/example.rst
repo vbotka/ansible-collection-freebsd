@@ -24,7 +24,7 @@ Create a dictionary of variables from nested directories in ``al_vars``. Use the
        al_include_dir_vars_dir: "{{ playbook_dir }}/al_vars"
      include_role:
        name: vbotka.ansible_lib
-       tasks_from: al_include_dir_vars.yml
+       tasks_from: al_include_dir_vars
 
 Tree
 ^^^^
@@ -40,15 +40,15 @@ Tree
   │       └── qa
   ├── ansible.cfg
   ├── example.rst
-  ├── hosts.ini
+  ├── hosts
   ├── out
   │   └── out-01.txt
-  └── pb-al_include_dir_vars.yml
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* At all hosts:
+* At the managed node:
 
   * Create a dictionary of variables from nested directories in the controller's directory ``al_vars``
   * Display the created dictionary.
@@ -74,16 +74,16 @@ TBD
    * `al_include_dir_vars.yml`_
    * `Special variable playbook_dir`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
    
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts.ini
-^^^^^^^^^^^^^^^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
    
-.. literalinclude:: hosts.ini
+.. literalinclude:: hosts
    :language: ini
 
 al_vars
@@ -109,29 +109,29 @@ Expected results
    al_vars:
      team:
        devel:
-       - team: devel
-         users: [charlie, david]
+         - team: devel
+           users: [charlie, david]
        production:
-       - team: production
-         users: [alice, bob]
+         - team: production
+           users: [alice, bob]
        qa:
-       - team: qa1
-         users: [mallory, ted]
-       - team: qa2
-         users: [darth, wendy]
+         - team: qa1
+           users: [mallory, ted]
+         - team: qa2
+           users: [darth, wendy]
 
-Playbook pb-al_include_dir_vars.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb.yml
+^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-al_include_dir_vars.yml
+.. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - debug display variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-al_include_dir_vars.yml -i hosts.ini
+   (env) > ansible-playbook pb.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -139,10 +139,10 @@ Playbook output - debug display variables
    :force:
 
 
-.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib
+.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
+.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
+.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 
 .. _al_include_dir_vars.yml: https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_dir_vars.yml
 

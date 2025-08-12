@@ -72,13 +72,10 @@
     - name: Configure /etc/rc.conf
       when: fci_rcconf | bool
       tags: fci_rcconf
-      ansible.builtin.lineinfile:
-        dest: '{{ fci_mount_path }}/etc/rc.conf'
-        regexp: '^\s*{{ item.key }}\s*=\s*(.*)$'
-        line: '{{ item.key }}="{{ item.value }}"'
-        owner: root
-        group: wheel
-        mode: '0644'
+      community.general.sysrc:
+        path: "{{ fci_mount_path }}/etc/rc.conf"
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
       loop: '{{ fci_rcconf_data }}'
 
     - name: Configure /etc/wpasupplicant.conf

@@ -11,21 +11,26 @@ Extending example :ref:`example_016`.
 
 .. index:: single: inventory alias; Example 020
 .. index:: single: alias; Example 020
+
 .. index:: single: inventory vbotka.freebsd.iocage; Example 020
 .. index:: single: inventory ansible.builtin.constructed; Example 020
+
 .. index:: single: option inventory_hostname_tag; Example 020
 .. index:: single: inventory_hostname_tag; Example 020
 .. index:: single: option inventory_hostname_required; Example 020
 .. index:: single: inventory_hostname_required; Example 020
-.. index:: single: compose; Example 020
 .. index:: single: option compose; Example 020
 .. index:: single: compose; Example 020
+
+.. index:: single: option iocage --count; Example 020
+
 
 Use case
 ^^^^^^^^
 
 Get the `inventory aliases`_ from the `iocage property notes`_. In the `inventory plugin
-vbotka.freebsd.iocage`_ use option ``inventory_hostname_tag`` to tell the plugin which tag to use.
+vbotka.freebsd.iocage`_, use the option ``inventory_hostname_tag`` to tell the plugin which tag to
+use.
 
 Tree
 ^^^^
@@ -40,14 +45,14 @@ Tree
   │       └── swarms.yml
   ├── hosts
   │   ├── 02_iocage.yml
-  │   ├── 03_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_03
+  │   └── iocage_04
   │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage-swarms-create.yml
   ├── pb-iocage-swarms-destroy.yml
   ├── pb-test-all.yml
@@ -56,15 +61,15 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two iocage hosts:
+* At two managed nodes:
 
   * create jails using a template and the option ``--count``
   * at each jail, create property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
   * put the inventory alias into the tag ``alias=<alias>``
 
-* In the `inventory plugin vbotka.freebsd.iocage`_ get the inventory aliases from the tag ``alias``
+* In the `inventory plugin vbotka.freebsd.iocage`_, get the inventory aliases from the tag ``alias``
 
-* In the inventory plugin `ansible.builtin.constructed`_ create the inventory groups.
+* In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups.
 
 * Display the jails and groups.
 
@@ -72,7 +77,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts
+* root privilege in the managed nodes
 * templates created in :ref:`example_202`.
  
 Notes
@@ -86,8 +91,8 @@ Notes
    * `Set Jail Property`_
    * :ref:`example_016`
 
-List templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_02
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -96,20 +101,26 @@ List templates at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-List templates at iocage_03
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_03]# iocage list -lt
+   [iocage_04]# iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
    :language: ini
 
 group_vars
@@ -126,22 +137,22 @@ host_vars
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/iocage_03/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
   
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is slow`_ use
-the cache.
+The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is slow`_
+use the cache.
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 10
 
-.. literalinclude:: hosts/03_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 10
@@ -161,7 +172,7 @@ Playbook output - Create swarms
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-iocage-swarms-create.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -173,8 +184,8 @@ Playbook output - Create swarms
 
      shell> ansible-inventory -i hosts --list --yaml
 
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -183,12 +194,12 @@ List jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-List jails at iocage_03
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_03]# iocage list -l
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: bash
@@ -199,7 +210,7 @@ Playbook pb-test-all.yml
 .. literalinclude:: pb-test-all.yml
    :language: yaml
 
-Playbook output - all groups
+Playbook output - All groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -216,7 +227,7 @@ Playbook pb-test-db.yml
 .. literalinclude:: pb-test-db.yml
    :language: yaml
 
-Playbook output - group swarm_db
+Playbook output - Group swarm_db
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -236,15 +247,16 @@ Playbook pb-iocage-swarms-destroy.yml
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Destroy the swarms if you don't need them.
+Destroy the swarms if you don't need them any more.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage-hosts.ini -i hosts
+   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
    :force:
+
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html

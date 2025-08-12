@@ -31,6 +31,9 @@ ok: [iocage_04]
 TASK [vbotka.freebsd.iocage : Sanity: Read /boot/loader.conf] ******************
 ok: [iocage_04]
 
+TASK [vbotka.freebsd.iocage : Sanity: kern.racct.enable = 1] *******************
+ok: [iocage_04]
+
 TASK [vbotka.freebsd.iocage : Sanity: Get sysctl security.jail.jailed] *********
 ok: [iocage_04]
 
@@ -50,4 +53,5 @@ TASK [vbotka.freebsd.iocage : Sanity: ZFS pool activated.] *********************
 ok: [iocage_04]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=16   changed=0    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0
+iocage_04                  : ok=17   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+

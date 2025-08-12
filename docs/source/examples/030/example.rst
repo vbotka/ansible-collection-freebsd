@@ -3,7 +3,7 @@
 030 Create custom facts
 -----------------------
 
-Extending example :ref:`example_330`.
+Extending example :ref:`example_020`.
 
 .. contents::
    :local:
@@ -27,28 +27,23 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   └── iocage_02
-  │       └── iocage.yml
-  ├── iocage-hosts.ini
+  ├── iocage.ini
   ├── pb-iocage.yml
-  └── pb-test-01.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+* At two managed nodes:
 
-  * iocage_01
   * iocage_02
+  * iocage_04
 
   In the playbook ``pb-iocage.yml`` use the `role vbotka.freebsd.iocage`_ to:
 
   * create custom facts scripts.
 
-  In the playbook ``pb-test-01.yml``:
+  In the playbook ``pb-test.yml``:
 
   * get the custom facts
   * use the `filter vbotka.freebsd.iocage`_ to parse the custom facts
@@ -61,7 +56,7 @@ Requirements
 
 * `role vbotka.freebsd.iocage`_
 * `filter vbotka.freebsd.iocage`_
-* root privilege on the iocage hosts.
+* root privilege in the managed nodes
 * jails created in previous examples.
 
 Notes
@@ -69,47 +64,36 @@ Notes
 
 * See `Adding custom facts`_
 
-List jails at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_01]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-List jails at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^
+Jails at iocage_02
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    [iocage_02]# iocage list -l
 
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+Jails at iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-host_vars
-^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
-   :caption:
-
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 Playbook pb-iocage.yml
@@ -118,12 +102,12 @@ Playbook pb-iocage.yml
 .. literalinclude:: pb-iocage.yml
    :language: yaml
 
-Playbook output - display versions
+Playbook output - Display versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_debug \
                                           -e freebsd_iocage_debug=true \
            | grep version
@@ -131,12 +115,12 @@ Playbook output - display versions
 .. literalinclude:: out/out-03.txt
    :language: yaml
 
-Create custom fact scripts
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create custom fact scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage-hosts.ini \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_facts \
                                           -e freebsd_iocage_facts=true
 
@@ -149,23 +133,23 @@ Display custom fact script
 
 .. code-block:: console
 
-   shell> ssh admin@10.1.0.18 cat /etc/ansible/facts.d/iocage.fact
+   [iocage_02]# cat /etc/ansible/facts.d/iocage.fact
 
 .. literalinclude:: out/out-05.txt
    :language: python
 
-Playbook pb-test-01.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - display custom facts
+Playbook output - Display custom facts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i iocage-hosts.ini
+   (env) > ansible-playbook pb-test.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

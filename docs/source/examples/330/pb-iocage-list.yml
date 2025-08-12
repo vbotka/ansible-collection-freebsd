@@ -11,7 +11,7 @@
       tags: runner
       ansible.builtin.import_role:
         name: vbotka.freebsd.iocage
-        tasks_from: runner.yml
+        tasks_from: runner
       vars:
         freebsd_iocage_runner_exec: lists
         freebsd_iocage_runner_cmd:

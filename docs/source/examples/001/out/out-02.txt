@@ -2,13 +2,13 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [vbotka.freebsd.iocage : Pkg: Install iocage packages.] *******************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [vbotka.freebsd.iocage : Pkg: Debug Install iocage packages freebsd_iocage_debug=true] ***
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     result:
         attempts: 1
         changed: false
@@ -20,19 +20,23 @@ ok: [iocage_02] =>
             Updating FreeBSD repository catalogue...
             Fetching data.pkg: .......... done
             Processing entries: .......... done
-            Fetching provides database: .......... done
-            Extracting database....success
-            FreeBSD repository update completed. 35949 packages processed.
+            FreeBSD repository update completed. 35653 packages processed.
+            Updating FreeBSD-kmods repository catalogue...
+            Fetching data.pkg: .. done
+            Processing entries: .......... done
+            FreeBSD-kmods repository update completed. 208 packages processed.
             All repositories are up to date.
         stdout_lines:
         - Updating FreeBSD repository catalogue...
         - 'Fetching data.pkg: .......... done'
         - 'Processing entries: .......... done'
-        - 'Fetching provides database: .......... done'
-        - Extracting database....success
-        - FreeBSD repository update completed. 35949 packages processed.
+        - FreeBSD repository update completed. 35653 packages processed.
+        - Updating FreeBSD-kmods repository catalogue...
+        - 'Fetching data.pkg: .. done'
+        - 'Processing entries: .......... done'
+        - FreeBSD-kmods repository update completed. 208 packages processed.
         - All repositories are up to date.
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

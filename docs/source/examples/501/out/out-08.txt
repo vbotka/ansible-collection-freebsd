@@ -19,8 +19,8 @@ Extracting: src.txz...
 
 * Updating 14.3-RELEASE to the latest patch level... 
 Looking up update.FreeBSD.org mirrors... 3 mirrors found.
-Fetching public key from update1.freebsd.org... done.
-Fetching metadata signature for 14.3-RELEASE from update1.freebsd.org... done.
+Fetching public key from update2.freebsd.org... done.
+Fetching metadata signature for 14.3-RELEASE from update2.freebsd.org... done.
 Fetching metadata index... done.
 Fetching 2 metadata files... done.
 Inspecting system... done.
@@ -35,6 +35,8 @@ The following files will be updated as part of updating to
 /rescue/bectl
 /rescue/bsdlabel
 ...
+/rescue/zstd
+/rescue/zstdcat
 /rescue/zstdmt
 /usr/lib/libzpool.a
 /usr/lib32/libzpool.a
@@ -42,4 +44,3 @@ The following files will be updated as part of updating to
 /usr/src/sys/conf/newvers.sh
 /usr/src/sys/contrib/openzfs/module/zfs/dmu_send.c
 Installing updates... done.
-Default configuration missing, creating one

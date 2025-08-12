@@ -40,8 +40,8 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails created in :ref:`example_010`
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -53,7 +53,7 @@ Enable ``get_properties``. See :ref:`ug_inventory_iocage`
 
 .. literalinclude:: iocage.yml
     :language: yaml
-    :emphasize-lines: 6
+    :emphasize-lines: 4
 
 Playbook pb-vars-properties.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,12 +61,12 @@ Playbook pb-vars-properties.yml
 .. literalinclude:: pb-vars-properties.yml
     :language: yaml
 
-Playbook output - display iocage_properties
+Playbook output - Display iocage_properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_113
+   (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_133
 
 .. literalinclude:: out/out-01.txt
     :language: yaml

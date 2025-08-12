@@ -2,65 +2,20 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
-TASK [vbotka.freebsd_zfs : Facts: Run zpool_facts] *****************************
-ok: [iocage_02]
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_04]
 
-TASK [vbotka.freebsd_zfs : Facts: Run zfs_facts] *******************************
-ok: [iocage_02] => (item=export)
-ok: [iocage_02] => (item=zroot)
-
-TASK [vbotka.freebsd_zfs : Facts: Get dictionary of datasets] ******************
-ok: [iocage_02]
-
-TASK [vbotka.freebsd_zfs : Facts: Debug list of datasets fzfs_debug=true] ******
-ok: [iocage_02] => 
-    fzfs_datasets | to_nice_yaml: |-
-        export:
-            export: /export
-            export/iso: /export/iso
-            export/scratch: /export/scratch
-        zroot:
-            zroot: /zroot
-            zroot/iocage: /zroot/iocage
-            zroot/iocage/download: /zroot/iocage/download
-            zroot/iocage/download/14.1-RELEASE: /zroot/iocage/download/14.1-RELEASE
-            zroot/iocage/download/14.2-RELEASE: /zroot/iocage/download/14.2-RELEASE
-            zroot/iocage/download/14.3-RELEASE: /zroot/iocage/download/14.3-RELEASE
-            zroot/iocage/images: /zroot/iocage/images
-            zroot/iocage/jails: /zroot/iocage/jails
-            zroot/iocage/jails/312467f3: /zroot/iocage/jails/312467f3
-            zroot/iocage/jails/312467f3/root: /zroot/iocage/jails/312467f3/root
-            zroot/iocage/jails/321657a2: /zroot/iocage/jails/321657a2
-            zroot/iocage/jails/321657a2/root: /zroot/iocage/jails/321657a2/root
-            zroot/iocage/jails/f4b00780: /zroot/iocage/jails/f4b00780
-            zroot/iocage/jails/f4b00780/root: /zroot/iocage/jails/f4b00780/root
-            zroot/iocage/log: /zroot/iocage/log
-            zroot/iocage/releases: /zroot/iocage/releases
-            zroot/iocage/releases/14.2-RELEASE: /zroot/iocage/releases/14.2-RELEASE
-            zroot/iocage/releases/14.2-RELEASE/root: /zroot/iocage/releases/14.2-RELEASE/root
-            zroot/iocage/releases/14.2-RELEASE/root@ansible_client: null
-            zroot/iocage/releases/14.3-RELEASE: /zroot/iocage/releases/14.3-RELEASE
-            zroot/iocage/releases/14.3-RELEASE/root: /zroot/iocage/releases/14.3-RELEASE/root
-            zroot/iocage/templates: /zroot/iocage/templates
-            zroot/iocage/templates/ansible_client: /zroot/iocage/templates/ansible_client
-            zroot/iocage/templates/ansible_client/root: /zroot/iocage/templates/ansible_client/root
-            zroot/iocage/templates/ansible_client/root@312467f3: null
-            zroot/iocage/templates/ansible_client/root@321657a2: null
-            zroot/iocage/templates/ansible_client/root@f4b00780: null
-            zroot/iocage/templates/ansible_client@312467f3: null
-            zroot/iocage/templates/ansible_client@321657a2: null
-            zroot/iocage/templates/ansible_client@f4b00780: null
-            zroot/jails: /local/jails
-            zroot/jails/basejail: /local/jails/basejail
-            zroot/jails/basejail@20241003_13:08:12: null
-            zroot/jails/newjail: /local/jails/newjail
-            zroot/obj: /usr/obj
-            zroot/ports: /usr/ports
-            zroot/poudriere: /usr/local/poudriere
-            zroot/src: /usr/src
+TASK [vbotka.freebsd.zfs : Facts: Debug list pools fzfs_debug=true] ************
+ok: [iocage_04] => 
+    msg: |-
+        fzfs_pools_required: ['iocage', 'zroot']
+        fzfs_pools_missing: []
+        fzfs_pools_present: ['iocage', 'zroot']
+        name: iocage size: 7.25T free: 7.25T
+        name: zroot size: 472G free: 468G
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=5    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

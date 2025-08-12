@@ -3,7 +3,9 @@
   gather_facts: true
   remote_user: admin
   become: true
-    
-  roles:
 
+  vars:
+    ansible_python_interpreter: auto_silent
+
+  roles:
     - vbotka.freebsd.postinstall

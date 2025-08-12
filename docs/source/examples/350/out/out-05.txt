@@ -2,58 +2,187 @@
 PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [ed8dd59a]
-ok: [d770d5af]
-ok: [9c61e7e2]
+ok: [f53c3b61]
+ok: [0f5055fd]
+ok: [dbdcbdec]
 
 TASK [vbotka.freebsd.rsnapshot : Vars: Set variables for al_include_os_vars_path] ***
-ok: [9c61e7e2]
-ok: [d770d5af]
-ok: [ed8dd59a]
+ok: [0f5055fd]
+ok: [dbdcbdec]
+ok: [f53c3b61]
 
 TASK [Vars: Include OS vars] ***************************************************
-included: vbotka.ansible_lib for 9c61e7e2, d770d5af, ed8dd59a
+included: vbotka.freebsd.lib for 0f5055fd, dbdcbdec, f53c3b61
 
-TASK [vbotka.ansible_lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
-ok: [9c61e7e2]
-ok: [d770d5af]
-ok: [ed8dd59a]
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
+ok: [dbdcbdec]
+ok: [f53c3b61]
+ok: [0f5055fd]
 
 TASK [vbotka.freebsd.rsnapshot : Vars: Create template specific vars.] *********
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/tasks/vars-auto.yml for 9c61e7e2, d770d5af, ed8dd59a
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/tasks/vars-auto.yml for 0f5055fd, dbdcbdec, f53c3b61
 
 TASK [vbotka.freebsd.rsnapshot : Vars-auto: set rsnapshot_conf_dict] ***********
-ok: [9c61e7e2]
-ok: [ed8dd59a]
-ok: [d770d5af]
+ok: [0f5055fd]
+ok: [dbdcbdec]
+ok: [f53c3b61]
 
-TASK [vbotka.freebsd.rsnapshot : Configure: Create directory /export/backup/snapshots] ***
-changed: [9c61e7e2]
-changed: [d770d5af]
-changed: [ed8dd59a]
+TASK [vbotka.freebsd.rsnapshot : Vars-auto: Debug rsnapshot_conf_dict rsnapshot_debug=true] ***
+ok: [0f5055fd] => 
+    rsnapshot_conf_dict:
+        cmd_cp: /bin/cp
+        cmd_logger: /usr/bin/logger
+        cmd_rm: /bin/rm
+        cmd_rsync: /usr/local/bin/rsync
+        cmd_ssh: /usr/bin/ssh
+        config_version: '1.2'
+        link_dest: '1'
+        lockfile: /var/run/rsnapshot.pid
+        logfile: /var/log/rsnapshot
+        loglevel: '3'
+        no_create_root: '0'
+        retain_daily: '7'
+        retain_hourly: '6'
+        retain_monthly: '3'
+        retain_weekly: '4'
+        snapshot_root: /export/backup/snapshots
+        verbose: '2'
+ok: [dbdcbdec] => 
+    rsnapshot_conf_dict:
+        cmd_cp: /bin/cp
+        cmd_logger: /usr/bin/logger
+        cmd_rm: /bin/rm
+        cmd_rsync: /usr/local/bin/rsync
+        cmd_ssh: /usr/bin/ssh
+        config_version: '1.2'
+        link_dest: '1'
+        lockfile: /var/run/rsnapshot.pid
+        logfile: /var/log/rsnapshot
+        loglevel: '3'
+        no_create_root: '0'
+        retain_daily: '7'
+        retain_hourly: '6'
+        retain_monthly: '3'
+        retain_weekly: '4'
+        snapshot_root: /export/backup/snapshots
+        verbose: '2'
+ok: [f53c3b61] => 
+    rsnapshot_conf_dict:
+        cmd_cp: /bin/cp
+        cmd_logger: /usr/bin/logger
+        cmd_rm: /bin/rm
+        cmd_rsync: /usr/local/bin/rsync
+        cmd_ssh: /usr/bin/ssh
+        config_version: '1.2'
+        link_dest: '1'
+        lockfile: /var/run/rsnapshot.pid
+        logfile: /var/log/rsnapshot
+        loglevel: '3'
+        no_create_root: '0'
+        retain_daily: '7'
+        retain_hourly: '6'
+        retain_monthly: '3'
+        retain_weekly: '4'
+        snapshot_root: /export/backup/snapshots
+        verbose: '2'
 
-TASK [vbotka.freebsd.rsnapshot : Configure: Create configuration /usr/local/etc/rsnapshot.conf] ***
-changed: [d770d5af]
-changed: [9c61e7e2]
-changed: [ed8dd59a]
+TASK [vbotka.freebsd.rsnapshot : Debug] ****************************************
+ok: [0f5055fd] => 
+    msg: |-
+        rsnapshot_role_version: 2.7.3
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.3
+        ansible_distribution_release: 14.3-RELEASE
+        ansible_python_version: 3.11.13
 
-TASK [vbotka.freebsd.rsnapshot : Test: Create test directory /export/backup/snapshots-test] ***
-changed: [9c61e7e2]
-changed: [d770d5af]
-changed: [ed8dd59a]
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
 
-TASK [vbotka.freebsd.rsnapshot : Test: Create test backup_points] **************
-changed: [9c61e7e2] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
-changed: [d770d5af] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
-changed: [ed8dd59a] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
 
-TASK [vbotka.freebsd.rsnapshot : Test: Create test configuration /usr/local/etc/rsnapshot-test.conf] ***
-changed: [d770d5af]
-changed: [9c61e7e2]
-changed: [ed8dd59a]
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot-auto.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-auto-test.conf.j2
+ok: [dbdcbdec] => 
+    msg: |-
+        rsnapshot_role_version: 2.7.3
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.3
+        ansible_distribution_release: 14.3-RELEASE
+        ansible_python_version: 3.11.13
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
+
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
+
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot-auto.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-auto-test.conf.j2
+ok: [f53c3b61] => 
+    msg: |-
+        rsnapshot_role_version: 2.7.3
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.3
+        ansible_distribution_release: 14.3-RELEASE
+        ansible_python_version: 3.11.13
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
+
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
+
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot-auto.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-auto-test.conf.j2
 
 PLAY RECAP *********************************************************************
-9c61e7e2                   : ok=11   changed=5    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
-d770d5af                   : ok=11   changed=5    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
-ed8dd59a                   : ok=11   changed=5    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+0f5055fd                   : ok=8    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+dbdcbdec                   : ok=8    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+f53c3b61                   : ok=8    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 

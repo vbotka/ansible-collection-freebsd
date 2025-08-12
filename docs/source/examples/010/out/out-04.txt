@@ -1,11 +1,42 @@
-+------+----------------+------+-------+------+-----------------+---------------------+-----+----------------+----------+
-| JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |         IP4         | IP6 |    TEMPLATE    | BASEJAIL |
-+======+================+======+=======+======+=================+=====================+=====+================+==========+
-| None | ansible_client | off  | down  | jail | 13.5-RELEASE-p1 | -                   | -   | -              | yes      |
-+------+----------------+------+-------+------+-----------------+---------------------+-----+----------------+----------+
-| None | test_101       | off  | down  | jail | 13.5-RELEASE-p1 | vnet0|10.1.0.101/24 | -   | ansible_client | yes      |
-+------+----------------+------+-------+------+-----------------+---------------------+-----+----------------+----------+
-| None | test_102       | off  | down  | jail | 13.5-RELEASE-p1 | vnet0|10.1.0.102/24 | -   | ansible_client | yes      |
-+------+----------------+------+-------+------+-----------------+---------------------+-----+----------------+----------+
-| 122  | test_103       | off  | up    | jail | 13.5-RELEASE-p1 | vnet0|10.1.0.103/24 | -   | ansible_client | yes      |
-+------+----------------+------+-------+------+-----------------+---------------------+-----+----------------+----------+
+
+PLAY [test] ********************************************************************
+
+TASK [debug] *******************************************************************
+ok: [test_131] => 
+    msg: |-
+        inventory_hostname: test_131
+        ansible_host: 10.1.0.131
+        release: 14.3
+        release_major: 14
+        release_minor: 3
+ok: [test_132] => 
+    msg: |-
+        inventory_hostname: test_132
+        ansible_host: 10.1.0.132
+        release: 14.3
+        release_major: 14
+        release_minor: 3
+ok: [test_133] => 
+    msg: |-
+        inventory_hostname: test_133
+        ansible_host: 10.1.0.133
+        release: 14.3
+        release_major: 14
+        release_minor: 3
+
+TASK [debug] *******************************************************************
+ok: [test_131] => 
+    msg: |-
+        groups:
+          all: [ansible_client, test_131, test_132, test_133]
+          distro_14_3_RELEASE_p1: [ansible_client, test_131, test_132, test_133]
+          state_down: [ansible_client, test_131, test_132]
+          state_up: [test_133]
+          test: [test_131, test_132, test_133]
+          ungrouped: []
+
+PLAY RECAP *********************************************************************
+test_131                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

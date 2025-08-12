@@ -1,4 +1,4 @@
-- hosts: test_01,test_02
+- hosts: all
 
   tasks:
 

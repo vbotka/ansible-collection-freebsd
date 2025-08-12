@@ -20,5 +20,5 @@ included: vbotka.freebsd.postinstall for iocage_04
 PLAY [Configure iocage.] *******************************************************
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=64   changed=0    unreachable=0    failed=0    skipped=149  rescued=0    ignored=0   
+iocage_04                  : ok=67   changed=0    unreachable=0    failed=0    skipped=143  rescued=0    ignored=0   
 

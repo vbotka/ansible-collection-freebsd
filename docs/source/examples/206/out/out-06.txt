@@ -2,38 +2,38 @@
 PLAY [swarm_sw_01] *************************************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_111]
-changed: [239ea7db]
-changed: [2aa1ccc8]
+changed: [158c7d67]
+changed: [0c534698]
+changed: [test_131]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [239ea7db] => 
+ok: [0c534698] => 
     msg: |-
-        out.stdout: 239ea7db
-        ansible_host: 10.1.0.126
-        iocage_hooks: ['10.1.0.126']
+        out.stdout: 0c534698
+        ansible_host: 10.1.0.204
+        iocage_hooks: ['10.1.0.204']
         iocage_tags:
           swarm: sw_01
-          vmm: iocage_02
-ok: [2aa1ccc8] => 
+          vmm: iocage_04
+ok: [158c7d67] => 
     msg: |-
-        out.stdout: 2aa1ccc8
-        ansible_host: 10.1.0.109
-        iocage_hooks: ['10.1.0.109']
+        out.stdout: 158c7d67
+        ansible_host: 10.1.0.122
+        iocage_hooks: ['10.1.0.122']
         iocage_tags:
           swarm: sw_01
-          vmm: iocage_02
-ok: [test_111] => 
+          vmm: iocage_04
+ok: [test_131] => 
     msg: |-
-        out.stdout: test-111
-        ansible_host: 10.1.0.111
+        out.stdout: test-131
+        ansible_host: 10.1.0.131
         iocage_hooks: ['-']
         iocage_tags:
           swarm: sw_01
-          vmm: iocage_02
+          vmm: iocage_04
 
 PLAY RECAP *********************************************************************
-239ea7db                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-2aa1ccc8                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+0c534698                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+158c7d67                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_131                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

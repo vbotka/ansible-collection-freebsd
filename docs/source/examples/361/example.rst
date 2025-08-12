@@ -7,14 +7,15 @@
    :local:
    :depth: 1
 
+.. index:: single: network; Example 361
+.. index:: single: loadbalance; Example 361
 .. index:: single: role vbotka.freebsd.network; Example 361
 .. index:: single: vbotka.freebsd.network; Example 361
-.. index:: single: loadbalance; Example 361
 
 Use case
 ^^^^^^^^
 
-Configure loadbalance using the role `vbotka.freebsd.network`_
+Use the role `vbotka.freebsd.network`_ to configure ``loadbalance``.
 
 Tree
 ^^^^
@@ -33,33 +34,41 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host *iocage_03* at IP
-  10.1.0.17 configured in /etc/rc.conf ::
+* The Ansible controller connects the iocage host ``iocage_03`` at IP 10.1.0.17 configured in
+  ``/etc/rc.conf`` of the managed node
 
-    defaultrouter="10.1.0.10"
-    gateway_enable="YES"
-    ifconfig_em0="inet 10.1.0.17 netmask 255.255.255.0"
+  .. code-block:: ini
 
-  The nameserver is 10.1.0.1 ::
+     defaultrouter="10.1.0.10"
+     gateway_enable="YES"
+     cloned_interfaces="bridge0"
+     create_args_bridge0="addm em0"
+     ifconfig_bridge0="inet 10.1.0.17/24"
+     ifconfig_em0="up -tso -vlanhwtso"
 
-    shell> cat /etc/resolv.conf
-    nameserver 10.1.0.1
-    shell> cat /etc/resolvconf.conf
-    resolvconf="NO"
+* The nameserver is 10.1.0.1
 
-* In the playbook *pb-postinstall.yml* at *iocage_03* make sure the nameserver is 10.1.0.1
+  .. code-block:: console
 
-* In the playbook *pb-network.yml* at *iocage_03* configure loadbalance of three NICs.
+     shell> cat /etc/resolv.conf
+     nameserver 10.1.0.1
+
+     shell> cat /etc/resolvconf.conf
+     resolvconf="NO"
+
+* In the playbook ``pb-postinstall.yml`` at ``iocage_03`` make sure the nameserver is 10.1.0.1
+
+* In the playbook ``pb-network.yml`` at ``iocage_03`` configure loadbalance of two NICs.
     
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege on the iocage host.
+* root privilege in the managed nodes.
 
 Notes
 ^^^^^
 
-The USB NICs ue0 and ue1 are used here for testing. It is not recommended to use them in
+The USB NICs ``ue0`` and ``ue1`` are used here for testing. It is not recommended to use them in
 production. See FreeBSD Forum thread `rc.d netif restart lagg0`_ to learn about the USB NICs
 problems.
 
@@ -69,16 +78,16 @@ problems.
    * `Wired Networks`_
    * `man ifconfig`_
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory iocage-hosts.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: iocage-hosts.ini
+.. literalinclude:: iocage.ini
    :language: ini
 
 host_vars
@@ -94,24 +103,24 @@ Playbook pb-postinstall.yml
 .. literalinclude:: pb-postinstall.yml
    :language: yaml
 
-Playbook output - configure resolv.conf
+Playbook output - Configure resolv.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The tasks *fp_resolvconf* configure */etc/resolvconf.conf* and */etc/resolv.conf* using the modules
-*sysrc* and *lineinfile* respectively. If you're not sure about the content of these files you might
-want to clean the content before the configuration
+The tasks ``fp_resolvconf`` configure ``/etc/resolvconf.conf`` and ``/etc/resolv.conf`` using the
+modules ``community.general.sysrc`` and ``ansible.builtin.lineinfile`` respectively. If you're not
+sure about the content of these files, you might want to clean the content before the configuration
 
 .. code-block:: yaml
 
    fp_resolvconf_conf_clean: true
    fp_resolv_conf_clean: true
 
-This makes the play not idempotent. The defaults are *false*. To make the play
-idempotent, omit these variables according to your own discretion.
+This makes the play not idempotent. The defaults are ``false``. To make the play idempotent, omit
+these variables at your own discretion.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-postinstall.yml -i iocage-hosts.ini -l iocage_03 \
+   (env) > ansible-playbook pb-postinstall.yml -i iocage.ini \
                                                -t fp_resolvconf \
                                                -e fp_resolvconf_conf_clean=true \
                                                -e fp_resolv_conf_clean=true
@@ -126,12 +135,12 @@ Playbook pb-network.yml
 .. literalinclude:: pb-network.yml
    :language: yaml
 
-Playbook output - configure loadbalance
+Playbook output - Configure loadbalance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-network.yml -i iocage-hosts.ini -l iocage_03
+   (env) > ansible-playbook pb-network.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -144,7 +153,7 @@ MACs are sanitized.
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.17 ifconfig -a
+   (env) > ssh admin@10.1.0.17 ifconfig lagg0
 
 .. literalinclude:: out/out-03.txt
    :language: bash

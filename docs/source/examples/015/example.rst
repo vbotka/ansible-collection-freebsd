@@ -37,9 +37,17 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 01_iocage.yml
-  │   └── 02_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 04_iocage.yml
   └── pb-vars-ip4.yml
+
+Synopsis
+^^^^^^^^
+
+At two managed nodes:
+
+* get the dynamic inventory by the `inventory plugin vbotka.freebsd.iocage`_
+* configure and test ``cache``
 
 Requirements
 ^^^^^^^^^^^^
@@ -47,8 +55,8 @@ Requirements
 * `inventory plugin vbotka.freebsd.iocage`_
 * jails created in :ref:`example_010`
 
-Configuration ansible.cfg
-^^^^^^^^^^^^^^^^^^^^^^^^^
+ansible.cfg
+^^^^^^^^^^^
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -58,15 +66,15 @@ Inventory hosts
 
 Set unique ``cache_prefix``
 
-.. literalinclude:: hosts/01_iocage.yml
-   :language: yaml
-   :caption:
-   :emphasize-lines: 5-9
-
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
    :emphasize-lines: 7-11
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml
+   :caption:
+   :emphasize-lines: 5-9
 
 .. warning:: Common ``cache_prefix`` would make the cache files to override each other repeatedly.
 
@@ -76,7 +84,7 @@ Playbook pb-vars-ip4.yml
 .. literalinclude:: pb-vars-ip4.yml
    :language: yaml
 
-Playbook output - display iocage_ip4
+Playbook output - Display iocage_ip4
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -88,8 +96,8 @@ Playbook output - display iocage_ip4
 
 .. note::
 
-   * The inventory files in hosts are evaluated in alphabetical order.
-   * The jail ``ansible_client`` from ``iocage_02`` overrides the one from ``iocage_01``
+   * The inventory files in ``hosts`` are evaluated in alphabetical order.
+   * The jail ``ansible_client`` from ``iocage_04`` overrides the one from ``iocage_02``
 
 Cache
 ^^^^^
@@ -98,14 +106,14 @@ Look at the cache
 
 .. code-block:: console
 
-   shell> cat /var/tmp/inventory_cache/iocage_01_vbotka.freebsd.iocage_a5393s_cbc1a
+   shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a
 
 .. literalinclude:: out/out-02.txt
    :language: json
 
 .. code-block:: console
 
-   shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a
+   shell> cat cat /var/tmp/inventory_cache/iocage_04_vbotka.freebsd.iocage_a5393s_d0c35
 
 .. literalinclude:: out/out-03.txt
    :language: json
