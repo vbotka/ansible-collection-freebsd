@@ -1,39 +1,24 @@
 
-PLAY [Configure ZFS.] **********************************************************
+PLAY [Configure loader.conf] ***************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_04]
 
-TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
-included: vbotka.freebsd.postinstall for iocage_04
-
-TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
+TASK [vbotka.freebsd.postinstall : Loader: Backup orig /boot/loader.conf] ******
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ***********************
-ok: [iocage_04]
+TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /boot/loader.conf] ***
+ok: [iocage_04] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
+ok: [iocage_04] => (item={'name': 'net.link.bridge.pfil_member', 'value': '0'})
+ok: [iocage_04] => (item={'name': 'net.link.bridge.pfil_bridge', 'value': '0'})
+ok: [iocage_04] => (item={'name': 'net.link.bridge.inherit_mac', 'value': '1'})
 
-TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ***************************
-ok: [iocage_04]
+TASK [vbotka.freebsd.postinstall : Loader: Configure modules by sysctl /boot/loader.conf] ***
+ok: [iocage_04] => (item={'name': 'if_bridge', 'value': 'YES'})
 
-TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.zfs : Pools: Manage ZFS pools.] ***************************
-changed: [iocage_04] => (item=iocage)
-
-TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
+TASK [vbotka.freebsd.postinstall : Loader: Get sysctls settable via loader.] ***
 ok: [iocage_04]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=11   changed=1    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+iocage_04                  : ok=5    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

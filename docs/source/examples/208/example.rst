@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+TODO: Run ansible-pull on boot.
+
 .. index:: single: ansible-pull; Example 208
 .. index:: single: ansible_client_pull; Example 208
 .. index:: single: template ansible_client_pull; Example 208

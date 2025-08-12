@@ -72,7 +72,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the iocage host ``iocage_04``:
+At the managed node ``iocage_04``:
 
 * configure ``/home/admin/.login_conf``
 * install packages
@@ -158,7 +158,7 @@ host_vars
 
 .. note::
 
-   Destroy the GPT tables on the disks you want to create the pool from ::
+   Destroy the GPT tables on the disks you want to create the pool from. For example, ::
 
      [iocage_04]# gpart destroy -F ada2
      [iocage_04]# gpart destroy -F ada3
@@ -229,7 +229,7 @@ Configure /home/admin/.login_conf
 
    (env) > ansible-playbook pb-login.yml -i iocage.ini
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
@@ -240,7 +240,7 @@ Install packages
 
    (env) > ansible-playbook pb-packages.yml -i iocage.ini
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
@@ -253,13 +253,13 @@ Configure /boot/loader.conf
 
    (env) > ansible-playbook pb-loader.yml -i iocage.ini
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml
    :force:
 
 .. note::
 
-   Reboot if you see the message ::
+   Reboot if you see this message ::
 
      [MESSAGE] Reboot to activate configuration in /boot/loader.conf
 
@@ -270,7 +270,7 @@ Configure network
 
    (env) > ansible-playbook pb-network.yml -i iocage.ini
 
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
 
@@ -281,7 +281,7 @@ Configure pf
 
    (env) > ansible-playbook pb-pf.yml -i iocage.ini
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
@@ -292,7 +292,7 @@ Configure ZFS
 
    (env) > ansible-playbook pb-zfs.yml -i iocage.ini
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
@@ -307,9 +307,9 @@ Activate iocage
 
    (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
-					  -e freebsd_iocage_debug=true
+                                          -e freebsd_iocage_debug=true
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 

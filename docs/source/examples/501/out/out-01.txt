@@ -1,31 +1,12 @@
 
-PLAY [Configure network.] ******************************************************
+PLAY [Configure login.conf] ****************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_04]
 
-TASK [vbotka.freebsd.network : Interfaces: Configure interfaces create_args in /etc/rc.conf] ***
-ok: [iocage_04] => (item={'interface': 'bridge0', 'options': 'inet 10.1.0.29/24', 'create': 'addm igb0'})
-
-TASK [vbotka.freebsd.network : Interfaces: Configure interfaces options in /etc/rc.conf] ***
-changed: [iocage_04] => (item={'interface': 'bridge0', 'options': 'inet 10.1.0.29/24', 'create': 'addm igb0'})
-ok: [iocage_04] => (item={'interface': 'igb0', 'options': 'up -tso -vlanhwtso'})
-
-TASK [vbotka.freebsd.network : Cloned-interfaces: Configure cloned_interfaces in /etc/rc.conf] ***
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.network : Routing: Set defaultrouter in /etc/rc.conf] *****
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.network : Routing: Set gateway_enable=YES in /etc/rc.conf] ***
-ok: [iocage_04]
-
-TASK [vbotka.freebsd.network : Routing: Remove list of static routes from /etc/rc.conf] ***
-ok: [iocage_04]
-
-RUNNING HANDLER [vbotka.freebsd.network : Restart netif and routing] ***********
-changed: [iocage_04]
+TASK [vbotka.freebsd.postinstall : Login: Create local .login_conf] ************
+ok: [iocage_04] => (item=admin)
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=8    changed=2    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

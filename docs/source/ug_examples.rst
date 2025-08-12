@@ -24,13 +24,13 @@ Examples
 
 **Notes:**
 
-* All examples comprise additional files not shown in the files' tree. You might want to look them
+* All examples comprise additional files not shown in the file' tree. You might want to look them
   over for more details.
 
 * Most examples comprise ``batch.sh`` that runs the commands and creates the output.
 
-* Most plays in ``batch.sh`` are idempotent. If a play has already been run, the output of the tasks
-  may show ``ok`` instead of expected ``changed``.
+* Most plays in ``batch.sh`` are idempotent. If a play has already been run, the output of such a
+  play may show ``ok`` instead of expected ``changed``.
 
 * The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
 
@@ -77,7 +77,7 @@ Examples
 
 .. toctree::
    :maxdepth: 1
-   :caption: Plugins
+   :caption: Ansible plugins
 
    examples/300/example.rst
    examples/301/example.rst
