@@ -1,43 +1,44 @@
-PLAY [Display all groups.] ******************************************************************************************
 
-TASK [debug] ********************************************************************************************************
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
 ok: [logserv_1] => 
     msg: |-
-        ansible_host: 10.1.0.225
-        iocage_properties.host_hostuuid: 17606f3f
+        ansible_host: 10.1.0.172
+        iocage_properties.host_hostuuid: 4b07a142
         iocage_classes: [logserv]
 
         iocage_tags: {alias: logserv_1, class: logserv, vmm: iocage_01}
 ok: [http_1] => 
     msg: |-
-        ansible_host: 10.1.0.142
-        iocage_properties.host_hostuuid: 3eb2c8af
+        ansible_host: 10.1.0.190
+        iocage_properties.host_hostuuid: 0f8e3961
         iocage_classes: [http, logclient]
 
         iocage_tags: {alias: http_1, class: 'http,logclient', vmm: iocage_02}
 ok: [db_1] => 
     msg: |-
-        ansible_host: 10.1.0.230
-        iocage_properties.host_hostuuid: b1442a0a
+        ansible_host: 10.1.0.189
+        iocage_properties.host_hostuuid: 35167ffa
         iocage_classes: [db, logclient]
 
         iocage_tags: {alias: db_1, class: 'db,logclient', vmm: iocage_02}
 ok: [http_2] => 
     msg: |-
-        ansible_host: 10.1.0.106
-        iocage_properties.host_hostuuid: 2b1a02cf
+        ansible_host: 10.1.0.110
+        iocage_properties.host_hostuuid: 33a222bb
         iocage_classes: [http, logclient]
 
-        iocage_tags: {alias: http_2, class: 'http,logclient', vmm: iocage_03}
+        iocage_tags: {alias: http_2, class: 'http,logclient', vmm: iocage_04}
 ok: [db_2] => 
     msg: |-
-        ansible_host: 10.1.0.111
-        iocage_properties.host_hostuuid: a2ec418c
+        ansible_host: 10.1.0.198
+        iocage_properties.host_hostuuid: ef5d35da
         iocage_classes: [db, logclient]
 
-        iocage_tags: {alias: db_2, class: 'db,logclient', vmm: iocage_03}
+        iocage_tags: {alias: db_2, class: 'db,logclient', vmm: iocage_04}
 
-TASK [debug] ********************************************************************************************************
+TASK [debug] *******************************************************************
 ok: [logserv_1] => 
     msg: |-
         all: ['logserv_1', 'http_1', 'db_1', 'http_2', 'db_2']
@@ -49,11 +50,12 @@ ok: [logserv_1] =>
         logclient: ['http_1', 'db_1', 'http_2', 'db_2']
         vmm_iocage_02: ['http_1', 'db_1']
         db: ['db_1', 'db_2']
-        vmm_iocage_03: ['http_2', 'db_2']
+        vmm_iocage_04: ['http_2', 'db_2']
 
-PLAY RECAP **********************************************************************************************************
+PLAY RECAP *********************************************************************
 db_1                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 db_2                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 http_1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 http_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-logserv_1                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+logserv_1                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

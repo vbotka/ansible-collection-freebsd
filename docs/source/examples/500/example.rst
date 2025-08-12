@@ -23,7 +23,7 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Use the jails
-created in the example :ref:`example_207`. The *project* keys are jails aliases.
+created in the example :ref:`example_207`. The ``project`` keys are jails aliases.
 
 .. code-block:: yaml
 
@@ -39,34 +39,34 @@ created in the example :ref:`example_207`. The *project* keys are jails aliases.
        vmm: iocage_02
      http_2:
        class: [http, logclient]
-       vmm: iocage_03
+       vmm: iocage_04
      db_2:
        class: [db, logclient]
-       vmm: iocage_03
+       vmm: iocage_04
 
-* Optionally, destroy all jails and templates. Run the play in :ref:`example_202`
-
-  .. code-block:: console
-
-     (env) > ansible-playbook -i iocage-hosts.ini vbotka.freebsd.pb_iocage_destroy_all_jails.yml
-
-* Create *ansible_client* templates. Run the play in :ref:`example_202`
+* Destroy all jails
 
   .. code-block:: console
 
-     (env) > ansible-playbook -i iocage-hosts.ini vbotka.freebsd.pb_iocage_template.yml
+     (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+
+* Create ``ansible_client`` templates. Run the play in :ref:`example_202`
+
+  .. code-block:: console
+
+     (env) > ansible-playbook pb-iocage-template.yml -i iocage.ini
 
 * Create the project. Run the play in :ref:`example_207`
 
   .. code-block:: console
 
-     (env) > ansible-playbook -i hosts -i iocage-hosts.ini pb-iocage-project-create.yml
+     (env) > ansible-playbook pb-iocage-project-create.yml -i iocage.ini -i hosts
 
 Tree
 ^^^^
 
 ::
-
+   
   shell > tree .
   .
   ├── ansible.cfg
@@ -80,23 +80,30 @@ Tree
   ├── hosts
   │   ├── 01_iocage.yml
   │   ├── 02_iocage.yml
-  │   ├── 03_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
-  ├── iocage-hosts.ini
+  ├── host_vars
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   ├── iocage_02
+  │   │   └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
+  ├── iocage.ini
+  ├── pb-all-groups.yml
   ├── pb-logclient.yml
   ├── pb-logserv.yml
-  ├── pb-test-all.yml
   └── pb-test-logclient.yml
 
 Synopsis
 ^^^^^^^^
 
-* In the inventory group *logserv*:
+* In the inventory group ``logserv``:
 
   * install `sysutils/syslog-ng`_
   * configure `syslog-ng Server`_.
 
-* In the inventory group *logclient*:
+* In the inventory group ``logclient``:
 
   * install `sysutils/syslog-ng`_
   * configure `syslog-ng Client`_.
@@ -117,10 +124,6 @@ Notes
      One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
      on TCP port 514 and saves them to directories and files based on sender host name and current
      date.
-
-* ``logserv_1`` is an inventory alias of the host *17606f3f* with the IP 10.1.0.225
-
-* See other hosts' aliases, ansible_host, and UUID in the playbook *pb-test-all.yml* output below.
 
 .. note::
 
@@ -152,7 +155,7 @@ hosts
    :language: yaml
    :caption:
 
-.. literalinclude:: hosts/03_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
 
@@ -160,20 +163,20 @@ hosts
    :language: yaml+jinja
    :caption:
 
-Playbook pb-test-all.yml
-^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-all-groups.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-all.yml
+.. literalinclude:: pb-all-groups.yml
    :language: yaml+jinja
 
-Playbook output - display all groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Flush the cache if you created the *project* and haven't refreshed it yet.
+Flush the cache if you created the ``project`` and haven't refreshed it yet.
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-all.yml --flush-cache
+   (env) > ansible-playbook pb-all-groups.yml -i hosts --flush-cache
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -200,8 +203,8 @@ Playbook pb-logserv.yml
 .. literalinclude:: pb-logserv.yml
    :language: yaml+jinja
 
-Playbook output - Configure and start Log Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Log Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Install the package if you're running this play for the first time.
 
@@ -218,34 +221,19 @@ Test the Log Server
 
 .. code-block:: console
 
-   (env) > ssh admin@17606f3f sudo service syslog-ng status
+   (env) > ssh admin@4b07a142 sudo service syslog-ng status
    syslog_ng is running as pid 63344.
 
 .. code-block:: console
 
-   (env) > ssh admin@17606f3f loggen -i -S -n 1 localhost 514
-   count=1, rate = 500000.00 msg/sec
-   average rate = 1.88 msg/sec, count=1, time=0.530987, (average) msg size=256, bandwidth=0.47 kB/sec
-
+   (env) > ssh admin@4b07a142 loggen -i -S -n 1 localhost 514
+   count=1, rate = 100000.00 msg/sec
+   average rate = 1.95 msg/sec, count=1, time=0.512063, (average) msg size=256, bandwidth=0.49 kB/sec
 .. code-block:: console
 
-   (env) > ssh admin@17606f3f sudo cat /var/log/remote/localhost/2025_06_22.log
-   Jun 22 00:37:49 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1750545469, stamp: 2025-06-22T00:37:49 PADDPADD...
-
-Update repos
-^^^^^^^^^^^^
-
-In the following play *pb-logclient.yml* we delegate the package installation to the iocage
-hosts. Let's update the repos to speedup the installation.
-
-.. code-block:: console
-
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_vmm_repos.yml \
-                            -i iocage-hosts.ini -l iocage_02,iocage_03
-
-.. literalinclude:: out/out-03.txt
-   :language: yaml
-   :force:
+   (env) > ssh admin@4b07a142 sudo cat /var/log/remote/localhost/2025_08_12.log
+    Aug 12 01:41:22 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1754955682, stamp: 2025-08-12T01:41:22 PADDPADD...
+    Aug 12 01:42:42 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1754955762, stamp: 2025-08-12T01:42:42 PADDPADD...
 
 Playbook pb-logclient.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,20 +241,16 @@ Playbook pb-logclient.yml
 .. literalinclude:: pb-logclient.yml
    :language: yaml+jinja
 
-Playbook output - Configure and start Log Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Log Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the package if you’re running this play for the first time. The repos were updated in the
-previous play. Set the `community.general.pkgng`_ option ``cached: true`` to speedup the
-installation.
+Install the package if you’re running this play for the first time.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logclient.yml \
-                            -i hosts -i iocage-hosts.ini \
-                            -e install=true -e debug=true
+   (env) > ansible-playbook pb-logclient.yml -i hosts -i iocage.ini -e install=true -e debug=true
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml
    :force:
 
@@ -283,20 +267,20 @@ Playbook output - Test Log Client
 
    (env) > ansible-playbook pb-test-logclient.yml -i hosts
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
 
 .. code-block:: console
 
-   (env) > ssh admin@17606f3f sudo ls -lat /var/log/remote/ | sort
-   drwx------  2 root  wheel   3 Jun 22 00:37 localhost
-   drwx------  2 root  wheel   3 Jun 22 23:39 2b1a02cf
-   drwx------  2 root  wheel   3 Jun 22 23:39 3eb2c8af
-   drwx------  2 root  wheel   3 Jun 22 23:39 a2ec418c
-   drwx------  2 root  wheel   3 Jun 22 23:39 b1442a0a
-   drwx------  7 root  wheel   7 Jun 22 23:39 .
-   drwxr-xr-x  5 root  wheel  27 Jun 22 00:37 ..
+   (env) > ssh admin@4b07a142 sudo ls -lat /var/log/remote/ | sort
+   drwx------  2 root  wheel   3 Aug 12 01:30 0f8e3961
+   drwx------  2 root  wheel   3 Aug 12 01:30 33a222bb
+   drwx------  2 root  wheel   3 Aug 12 01:30 35167ffa
+   drwx------  2 root  wheel   3 Aug 12 01:30 ef5d35da
+   drwx------  2 root  wheel   3 Aug 12 01:41 localhost
+   drwx------  7 root  wheel   7 Aug 12 01:41 .
+   drwxr-xr-x  3 root  wheel  17 Aug 12 01:30 ..
 
 
 .. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
