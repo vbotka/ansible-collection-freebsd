@@ -1,0 +1,60 @@
+pkg_dict_amd64_dict:
+  ansible:
+    - sysutils/ansible
+    - sysutils/py-ansible-lint
+    - sysutils/py-ansible-runner
+  apache:
+    - www/apache{{ apache_version }}
+    - www/mod_php{{ apache_php_version }}
+  apcups:
+    - sysutils/apcupsd
+  minimal:
+    - shells/bash
+    - devel/git@default
+    - archivers/gtar
+    - ports-mgmt/pkg
+    - ports-mgmt/portmaster
+    - ports-mgmt/portupgrade
+    - net/rsync
+    - ftp/wget
+  mysql:
+    - databases/mysql{{ bsd_mysql_version }}-client
+    - databases/mysql{{ bsd_mysql_version }}-server
+  mysql_extra:
+    - databases/py-pymysql
+    - databases/py-mysql-connector-python
+    - databases/py-mysqlclient
+  poudriere:
+    - ports-mgmt/poudriere
+    - ports-mgmt/portmaster
+    - devel/ccache
+  procmail:
+    - mail/procmail
+  python:
+    - lang/python{{ bsd_python_version }}
+    - lang/python
+    - lang/python3
+  qemu:
+    - emulators/qemu
+  qemu_user_static:
+    - emulators/qemu-user-static
+  security:
+    - security/ca_root_nss
+    - security/openssl
+    - security/py-acme
+    - security/py-acme-tiny
+    - security/py-certbot
+    - security/py-cryptography
+    - security/py-openssl
+  smart:
+    - sysutils/smartmontools
+    - sysutils/smart
+  snmpd:
+    - net-mgmt/net-snmp
+    - net-mgmt/py-pysnmp
+  ssmtp:
+    - mail/ssmtp
+  syslog-ng:
+    - sysutils/syslog-ng
+  wpa_supplicant:
+    - security/wpa_supplicant

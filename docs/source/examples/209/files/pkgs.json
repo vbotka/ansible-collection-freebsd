@@ -1,0 +1,14 @@
+{
+    "pkgs": [
+        "archivers/gtar",
+        "devel/git@default",
+        "ftp/wget",
+        "net/rsync",
+        "ports-mgmt/pkg",
+        "ports-mgmt/portmaster",
+        "ports-mgmt/portupgrade",
+        "shells/bash",
+        "www/apache24",
+        "www/mod_php83"
+    ]
+}
