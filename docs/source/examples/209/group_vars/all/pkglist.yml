@@ -1,2 +1,2 @@
-freebsd_iocage_pkglist_dict: "{{ pkg_dict_amd64_dict }}"
+freebsd_iocage_pkglist_dict: "{{ pkg_dict }}"
 freebsd_iocage_pkglist_pkgs: [apache, minimal]

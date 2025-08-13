@@ -29,7 +29,7 @@ Tree
   │   └── pkgs.json
   ├── group_vars
   │   └── all
-  │       ├── pkgdict_amd64.yml
+  │       ├── pkgdict.yml
   │       ├── pkgdict_versions.yml
   │       └── pkglist.yml
   ├── iocage.ini
@@ -60,7 +60,7 @@ Notes
 
 * The inventory ``iocage.ini`` is not needed in this example. It would be sufficient to run the play
   at the ``localhost``. It is used here because normally the files ``pkgs.json``, after being
-  created, are used in the ``iocage`` hosts.
+  created, are used in the ``iocage`` managed nodes.
 
 * The playbook in this example covers the simplest case of creating the common file ``pkgs.json``
   for all managed nodes in the group ``iocage``.
@@ -92,7 +92,7 @@ group_vars
    :language: yaml
    :caption:
 
-.. literalinclude:: group_vars/all/pkgdict_amd64.yml
+.. literalinclude:: group_vars/all/pkgdict.yml
    :language: yaml
    :caption:
 

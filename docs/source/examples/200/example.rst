@@ -32,6 +32,7 @@
 .. index:: single: act_sudo; Example 200
 .. index:: single: act_rcconf; Example 200
 .. index:: single: pkglist; Example 200
+.. index:: single: pkgs.json; Example 200
 
 Use case
 ^^^^^^^^

@@ -1,4 +1,4 @@
-pkg_dict_amd64_dict:
+pkg_dict:
   ansible:
     - sysutils/ansible
     - sysutils/py-ansible-lint

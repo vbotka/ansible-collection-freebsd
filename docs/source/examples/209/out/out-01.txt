@@ -1,13 +1,13 @@
 
 PLAY [Create pkglist file.] ****************************************************
 
-TASK [vbotka.freebsd_iocage : Pkglist: Sanity. All package lists are in dictionary.] ***
+TASK [vbotka.freebsd.iocage : Pkglist: Sanity. All package lists are in dictionary.] ***
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.freebsd_iocage : Pkglist: Create dictionary for pkglist files.] ***
+TASK [vbotka.freebsd.iocage : Pkglist: Create dictionary for pkglist files.] ***
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.freebsd_iocage : Pkglist: Create pkglist file.] *******************
+TASK [vbotka.freebsd.iocage : Pkglist: Create pkglist file.] *******************
 changed: [iocage_04 -> localhost]
 
 PLAY RECAP *********************************************************************

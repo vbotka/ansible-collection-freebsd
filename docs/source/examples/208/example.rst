@@ -26,6 +26,7 @@ TODO: Run ansible-pull on boot.
 .. index:: single: act_rcconf; Example 208
 .. index:: single: act_dhclient; Example 208
 .. index:: single: pkglist; Example 208
+.. index:: single: pkgs.json; Example 208
 
 Use case
 ^^^^^^^^

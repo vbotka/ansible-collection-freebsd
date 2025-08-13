@@ -5,5 +5,5 @@
   tasks:
 
     - ansible.builtin.import_role:
-        name: vbotka.freebsd_iocage
+        name: vbotka.freebsd.iocage
         tasks_from: pkglist
