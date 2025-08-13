@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_iocage
-freebsd_iocage_role_version: 0.5.3
+freebsd_iocage_role_version: 0.5.4
 
 freebsd_iocage_debug: false
 freebsd_iocage_debug2: false

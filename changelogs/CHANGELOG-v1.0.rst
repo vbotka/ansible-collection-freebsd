@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade role iocage 0.5.4
 * Add docs ug example 209
 
 

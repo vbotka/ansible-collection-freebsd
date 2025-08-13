@@ -1,57 +1,62 @@
 ---
 # tasks for freebsd_iocage
 
-- name: Import debug.yml
+- name: Display variables.
   ansible.builtin.import_tasks: debug.yml
   when: freebsd_iocage_debug | bool
   tags: freebsd_iocage_debug
 
-- name: Import pkg.yml
+- name: Install packages.
   ansible.builtin.import_tasks: pkg.yml
   when: freebsd_iocage_install | bool
   tags: freebsd_iocage_pkg
 
-- name: Import activate.yml
+- name: Activate iocage.
   ansible.builtin.import_tasks: activate.yml
   when: freebsd_iocage_activate | bool
   tags: freebsd_iocage_activate
 
-- name: Import conf.yml
+- name: Configure sysctl and iocage defaults.
   ansible.builtin.import_tasks: conf.yml
   tags: freebsd_iocage_conf
 
-- name: Import sanity.yml
+- name: Sanity.
   ansible.builtin.import_tasks: sanity.yml
   when: freebsd_iocage_sanity | bool
   tags: freebsd_iocage_sanity
 
-- name: Import rcconf.yml
+- name: Configure rc.conf
   ansible.builtin.import_tasks: rcconf.yml
   tags: freebsd_iocage_rcconf
 
-- name: Import data.yml
+- name: Mount external data to jails.
   ansible.builtin.import_tasks: data.yml
   when: freebsd_iocage_data | bool
   tags: freebsd_iocage_data
 
-- name: Import stat.yml
+- name: Display iocage datasets.
   ansible.builtin.import_tasks: stat.yml
   when: freebsd_iocage_stat | bool
   tags: freebsd_iocage_stat
 
-- name: Import runner.yml
+- name: Run iocage commands.
   ansible.builtin.import_tasks: runner.yml
   when: freebsd_iocage_runner | bool
   tags: freebsd_iocage_runner
 
-- name: Import clean.yml
+- name: Clean jails.
   ansible.builtin.import_tasks: clean.yml
   when: freebsd_iocage_clean | bool
   tags: freebsd_iocage_clean
 
-- name: Import facts.yml
+- name: Create custom facts.
   ansible.builtin.import_tasks: facts.yml
   when: freebsd_iocage_facts | bool
   tags: freebsd_iocage_facts
+
+- name: Create pkglist.
+  ansible.builtin.import_tasks: pkglist.yml
+  when: freebsd_iocage_pkglist | bool
+  tags: freebsd_iocage_pkglist
 
 # EOF
