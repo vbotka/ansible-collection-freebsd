@@ -7,6 +7,7 @@
         "ports-mgmt/pkg",
         "ports-mgmt/portmaster",
         "ports-mgmt/portupgrade",
+        "security/sudo",
         "shells/bash",
         "www/apache24",
         "www/mod_php83"

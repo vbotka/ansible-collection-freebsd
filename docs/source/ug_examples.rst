@@ -6,7 +6,7 @@ Examples
 :001-003: Manage iocage
 :010-020: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
 :030:     `Filter vbotka.freebsd.iocage`_
-:200-208: Ansible client
+:200-209: Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
 :310-:    `Role vbotka.freebsd.postinstall`_
