@@ -11,6 +11,7 @@ Included roles
 
 This collection is shipped with the roles:
 
+* `vbotka.freebsd.apache`_
 * `vbotka.freebsd.config_light`_
 * `vbotka.freebsd.custom_image`_
 * `vbotka.freebsd.iocage`_
@@ -47,6 +48,7 @@ roles' ``vars`` directories.
    * See this collection ``Index`` what examples are available.
 
 
+.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

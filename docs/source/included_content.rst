@@ -2,24 +2,25 @@
 Plugins:
 
 * `module vbotka.freebsd.iocage`_ - iocage jail handling.
-* `module vbotka.freebsd.service`_ - control or list system services.
+* `module vbotka.freebsd.service`_ - Control or list system services.
 * `module vbotka.freebsd.ucl`_ - CRUD-like interface for managing UCL files.
 * `inventory vbotka.freebsd.iocage`_ - iocage inventory source.
-* `filter vbotka.freebsd.iocage`_ - parse iocage lists.
+* `filter vbotka.freebsd.iocage`_ - Parse iocage lists.
 
 Roles:
 
-* `vbotka.freebsd.config_light`_ - install packages, configure files, services, and handlers.
-* `vbotka.freebsd.custom_image`_ - download, mount, and customize system images.
-* `vbotka.freebsd.iocage`_ - install and configure iocage.
-* `vbotka.freebsd.lib`_ - library of tasks.
-* `vbotka.freebsd.network`_ - configure network.
-* `vbotka.freebsd.packages`_ - configure repos and install packages.
-* `vbotka.freebsd.pf`_ - configure pf.
-* `vbotka.freebsd.postinstall`_ - postinstall configuration.
-* `vbotka.freebsd.poudriere`_ - install and configure Poudriere build system.
-* `vbotka.freebsd.rsnapshot`_ - install and configure rsnapshot.
-* `vbotka.freebsd.zfs`_ - configure ZFS.
+* `vbotka.freebsd.apache`_ - Install and configure Apache HTTP server.
+* `vbotka.freebsd.config_light`_ - Install packages, configure files, services, and handlers.
+* `vbotka.freebsd.custom_image`_ - Download, mount, and customize system images.
+* `vbotka.freebsd.iocage`_ - Install and configure iocage.
+* `vbotka.freebsd.lib`_ - Library of tasks.
+* `vbotka.freebsd.network`_ - Configure network.
+* `vbotka.freebsd.packages`_ - Configure repos and install packages.
+* `vbotka.freebsd.pf`_ - Configure pf.
+* `vbotka.freebsd.postinstall`_ - Postinstall configuration.
+* `vbotka.freebsd.poudriere`_ - Install and configure Poudriere build system.
+* `vbotka.freebsd.rsnapshot`_ - Install and configure rsnapshot.
+* `vbotka.freebsd.zfs`_ - Configure ZFS.
 
 Various :ref:`ug_playbooks`.
 
@@ -31,6 +32,7 @@ Various :ref:`ug_playbooks`.
 .. _inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 
+.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

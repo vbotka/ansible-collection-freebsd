@@ -20,6 +20,7 @@ Examples
 :390-:    `Role vbotka.freebsd.poudriere`_
 :400-:    `Role vbotka.freebsd.zfs`_
 :410-:    `Role vbotka.freebsd.lib`_
+:420-:    `Role vbotka.freebsd.apache`_
 :500-:    Infrastructure
 
 **Notes:**
@@ -116,6 +117,7 @@ Examples
 .. _Inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 .. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage
 
+.. _Role vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache
 .. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _Role vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage
