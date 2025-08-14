@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add role apache 2.7.1
 * Upgrade role iocage 0.5.4
 * Add docs ug example 209
 

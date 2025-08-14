@@ -1,0 +1,48 @@
+---
+
+task_httpd-confd-vhosts_synopsis: |2
+  Configure virtual hosts. Create files.
+
+task_httpd-confd-vhosts_description: |2
+  Use the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ to
+  configure virtual hosts. See the template vhost2.j2.  Take the YAML configuration files from the
+  directory ``apache_confd_dir_vhosts`` (7) at master and create files with the Apache virtual hosts
+  in the directory (41) at the remote host. The created files will be included in the configuration
+  file (51).
+
+
+  **Include data from conf.d (2-19)**
+
+  Include tasks from the file ``al_include_confd_vars_list`` (13) in the role ``vbotka.ansible_lib``
+  (12). This task takes as parameters the directory with the YAML configuration files (7) and the
+  type of the list (8), and returns the list with the YAML configurations of the virtual hosts
+  stored in the variable ``al_include_confd_vars_list``. The variable can be printed (15) when debug
+  is enabled ``apache_debug: true`` (19). The parameters (7, 8) are tested inside the included tasks.
+
+
+  **Create directories for virtual hosts (21-32)**
+
+  Include tasks from ``fn/httpd-confd-vhost-dirs.yml`` .
+
+
+  **Configure virtual hosts in extra directory (34-55)**
+
+  Create the Apache configuration files for the virtual hosts with the help of ``encode_apache``
+  filter. Store the configuration file (41). Include virtual hosts in httpd.conf (50).
+
+task_httpd-confd-vhosts_lines: 7,41,51
+
+task_httpd-confd-vhosts_seealso:
+  handlers: []
+  templates:
+    - vhost2
+  others:
+    - Example of the configuration file
+      `vars/conf.d/vhosts-sample/example.com.yml
+      <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/vhosts-sample/example.com.yml>`_
+    - Included task `al_include_confd_vars_list.yml
+      <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.
+
+task_httpd-confd-vhosts_note: []
+task_httpd-confd-vhosts_hint: []
+task_httpd-confd-vhosts_warning: []

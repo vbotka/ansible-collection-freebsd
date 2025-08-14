@@ -25,7 +25,7 @@ bsd_roles:
     name: apache
     scm: git
     src: https://github.com/vbotka/ansible-apache
-    version: 2.7.0
+    version: 2.7.1
   - galaxy: vbotka.bsdutils
     name: bsdutils
     scm: git
