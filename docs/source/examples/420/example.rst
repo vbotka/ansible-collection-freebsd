@@ -34,11 +34,7 @@ Tree
   │   └── www-1
   │       └── apache.yml
   ├── iocage.ini
-  ├── pb-apache.yml
-  └── servers
-      └── apache.d
-          ├── sections
-          └── vhosts
+  └── pb-apache.yml
 
 Synopsis
 ^^^^^^^^

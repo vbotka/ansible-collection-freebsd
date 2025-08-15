@@ -30,8 +30,8 @@ ok: [iocage_04] =>
             - dhcp=1
             - vnet=1
             - host_hostname=www-1
-            delta: '0:00:00.698836'
-            end: '2025-08-15 22:08:00.660350'
+            delta: '0:00:00.704470'
+            end: '2025-08-15 23:10:27.515389'
             failed: false
             invocation:
                 module_args:
@@ -53,18 +53,18 @@ ok: [iocage_04] =>
                     template: ansible_client_apache
             msg: ''
             rc: 0
-            start: '2025-08-15 22:07:59.961514'
+            start: '2025-08-15 23:10:26.810919'
             stderr: ''
             stderr_lines: []
-            stdout: 689441d7 successfully created!
+            stdout: 292c85e9 successfully created!
             stdout_lines:
-            - 689441d7 successfully created!
+            - 292c85e9 successfully created!
         skipped: false
 
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_04] => 
     msg: |-
-        iocage start 689441d7
+        iocage start 292c85e9
 
 TASK [Start clones host_hostname] **********************************************
 changed: [iocage_04]
@@ -76,34 +76,34 @@ ok: [iocage_04] =>
         cmd:
         - iocage
         - start
-        - 689441d7
-        delta: '0:00:13.021274'
-        end: '2025-08-15 22:08:14.004490'
+        - 292c85e9
+        delta: '0:00:14.075335'
+        end: '2025-08-15 23:10:41.921652'
         failed: false
         msg: ''
         rc: 0
-        start: '2025-08-15 22:08:00.983216'
+        start: '2025-08-15 23:10:27.846317'
         stderr: No default gateway found for ipv6.
         stderr_lines:
         - No default gateway found for ipv6.
         stdout: |-
-            * Starting 689441d7
+            * Starting 292c85e9
               + Started OK
               + Using devfs_ruleset: 1010 (iocage generated default)
               + Configuring VNET OK
               + Using IP options: vnet
               + Starting services OK
               + Executing poststart OK
-              + DHCP Address: 10.1.0.238/24
+              + DHCP Address: 10.1.0.169/24
         stdout_lines:
-        - '* Starting 689441d7'
+        - '* Starting 292c85e9'
         - '  + Started OK'
         - '  + Using devfs_ruleset: 1010 (iocage generated default)'
         - '  + Configuring VNET OK'
         - '  + Using IP options: vnet'
         - '  + Starting services OK'
         - '  + Executing poststart OK'
-        - '  + DHCP Address: 10.1.0.238/24'
+        - '  + DHCP Address: 10.1.0.169/24'
 
 PLAY RECAP *********************************************************************
 iocage_04                  : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
