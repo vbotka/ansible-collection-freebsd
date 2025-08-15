@@ -16,7 +16,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_.
+Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_. Use iocage property
+``host_hostname`` to create a jail.
 
 Tree
 ^^^^
@@ -53,8 +54,13 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
-* ``iocage`` property ``host_hostname``; dhcp name
+* ``iocage`` property ``host_hostname`` provides "The hostname of the jail.". Please note that ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
+
+* In case of DHCP, ``host_hostname`` resolves, however ``--name`` does not.
+
+.. seealso::
+
+   * `man 8 iocage`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -116,9 +122,13 @@ Playbook output - Create server
 Results
 ^^^^^^^
 
-TBD
+Open the page in a browser ``http://www-1/``. The content should be ::
+
+  It works!
 
 
 .. _Apache HTTP Server: https://httpd.apache.org/
 .. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
+
+.. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

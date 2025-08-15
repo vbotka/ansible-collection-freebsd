@@ -11,8 +11,8 @@ TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collectio
 ok: [www-1]
 
 TASK [vbotka.freebsd.apache : Httpd_conf: Configure parameters in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-1] => (item={'regexp': 'ServerName', 'line': 'www-001'})
-changed: [www-1] => (item={'regexp': 'ServerAdmin', 'line': ':"admin@www-001"'})
+changed: [www-1] => (item={'regexp': 'ServerName', 'line': 'www-1'})
+changed: [www-1] => (item={'regexp': 'ServerAdmin', 'line': ':"admin@www-1"'})
 changed: [www-1] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
 
 TASK [vbotka.freebsd.apache : Httpd-dirs: Configure directories in /usr/local/etc/apache24/Includes/] ***

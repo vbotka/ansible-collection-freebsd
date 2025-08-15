@@ -1,7 +1,7 @@
 apache_install: false
 apache_enable: true
 apache_ssl: false
-apache_servername: www-001
+apache_servername: www-1
 apache_serveradmin: :"admin@{{ apache_servername }}"
 
 apache_directory_blocks:
