@@ -2,10 +2,10 @@
   vars:
     _notes: '"{{ [properties.notes | d(""),
                   item.value.properties.notes | d(""),
-                  "swarm=" ~ item.key] | join(" ") }}"'
+                  "swarm=" ~ item.key] | select | join(" ") }}"'
     _properties: '{{ [properties | d({}),
                       item.value.properties | d({}),
-                      {"notes": _notes}] | combine(recursive=true) }}'
+                      {"notes": _notes}] | select | combine(recursive=true) }}'
     _query: '[?value.swarm==`{{ item.key }}`].key'
     _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
     cmd_create: >
@@ -14,7 +14,6 @@
       --template {{ item.value.template }}
       --count {{ _count }}
       {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
-
   block:
 
     - name: Get iocage facts

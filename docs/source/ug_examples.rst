@@ -101,6 +101,7 @@ Examples
    examples/400/example.rst
    410 Include vars from conf.d <examples/410/example.rst>
    411 Include vars from nested dirs <examples/411/example.rst>
+   420 Configure Apache server <examples/420/example.rst>
 
 .. toctree::
    :maxdepth: 1

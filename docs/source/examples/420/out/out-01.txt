@@ -1,0 +1,110 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_04] => (item=www-1 ansible_client_apache) => 
+    msg: |-
+        iocage create --short --template ansible_client_apache notes="vmm=iocage_04" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+
+TASK [Create clones host_hostname] *********************************************
+changed: [iocage_04] => (item=www-1 ansible_client_apache)
+
+TASK [Debug create clones host_hostname debug2=true] ***************************
+ok: [iocage_04] => 
+    out_create:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_facts:
+                discovered_interpreter_python: /usr/local/bin/python3.11
+            ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client_apache
+            - notes=vmm=iocage_04
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            - host_hostname=www-1
+            delta: '0:00:00.722512'
+            end: '2025-08-15 11:10:11.183233'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: |-
+                        iocage create --short --template ansible_client_apache notes="vmm=iocage_04" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: www-1
+                value:
+                    template: ansible_client_apache
+            msg: ''
+            rc: 0
+            start: '2025-08-15 11:10:10.460721'
+            stderr: ''
+            stderr_lines: []
+            stdout: 64d4e5af successfully created!
+            stdout_lines:
+            - 64d4e5af successfully created!
+        skipped: false
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_04] => 
+    msg: |-
+        iocage start 64d4e5af
+
+TASK [Start clones host_hostname] **********************************************
+changed: [iocage_04]
+
+TASK [Debug start clones host_hostname debug2=true] ****************************
+ok: [iocage_04] => 
+    out_start:
+        changed: true
+        cmd:
+        - iocage
+        - start
+        - 64d4e5af
+        delta: '0:00:11.905082'
+        end: '2025-08-15 11:10:23.406748'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2025-08-15 11:10:11.501666'
+        stderr: No default gateway found for ipv6.
+        stderr_lines:
+        - No default gateway found for ipv6.
+        stdout: |-
+            * Starting 64d4e5af
+              + Started OK
+              + Using devfs_ruleset: 1010 (iocage generated default)
+              + Configuring VNET OK
+              + Using IP options: vnet
+              + Starting services OK
+              + Executing poststart OK
+              + DHCP Address: 10.1.0.211/24
+        stdout_lines:
+        - '* Starting 64d4e5af'
+        - '  + Started OK'
+        - '  + Using devfs_ruleset: 1010 (iocage generated default)'
+        - '  + Configuring VNET OK'
+        - '  + Using IP options: vnet'
+        - '  + Starting services OK'
+        - '  + Executing poststart OK'
+        - '  + DHCP Address: 10.1.0.211/24'
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,6 @@
+- name: Create Apache HTTP Server.
+  hosts: www
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.apache

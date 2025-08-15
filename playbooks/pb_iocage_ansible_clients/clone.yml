@@ -1,11 +1,11 @@
 - name: Create clones from template
-  register: out
+  register: out_create
   vars:
     _notes: '{{ [properties.notes | d(""),
-                 item.value.properties.notes | d("")] | join(" ") }}'
-    _properties: "{{ [properties | d({}),
+                 item.value.properties.notes | d("")] | select | join(" ") }}'
+    _properties: '{{ [properties | d({}),
                       item.value.properties | d({}),
-                      {'notes': _notes}] | combine(recursive=true) }}"
+                      {"notes": _notes}] | select | combine(recursive=true) }}'
   vbotka.freebsd.iocage:
     state: cloned
     clone_from: "{{ item.value.clone_from }}"
@@ -18,19 +18,26 @@
 - name: "Debug clones from template debug2={{ debug2 }}"
   when: debug2 | bool
   ansible.builtin.debug:
-    var: out
+    var: out_create
+
+# - name: Start clones
+#   register: out
+#   vbotka.freebsd.iocage:
+#     state: started
+#     name: "{{ item }}"
+#   loop: "{{ start }}"
 
 - name: Start clones
-  register: out
-  vbotka.freebsd.iocage:
-    state: started
-    name: "{{ item }}"
-  loop: "{{ start }}"
+  register: out_start
+  ansible.builtin.command:
+    cmd: >
+      iocage start
+      {{ start | join(' ') }}
 
 - name: "Debug start clones debug2={{ debug2 }}"
   when: debug2 | bool
   ansible.builtin.debug:
-    var: out
+    var: out_start
 
 # Note
 #

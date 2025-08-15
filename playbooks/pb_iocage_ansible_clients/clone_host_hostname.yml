@@ -1,0 +1,55 @@
+- name: Create clones host_hostname from template
+  vars:
+    _notes: '"{{ [properties.notes | d(""),
+                  item.value.properties.notes | d("")] | select | join(" ") }}"'
+    _properties: '{{ [properties | d({}),
+                      item.value.properties | d({}),
+                      {"host_hostname": item.key},
+                      {"notes": _notes}] | select | combine(recursive=true) }}'
+    cmd_create: >
+      iocage create
+      --short
+      --template {{ item.value.template }}
+      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+    cmd_start: >
+      iocage start
+      {{ out_create.results | map(attribute='stdout_lines') | flatten | map('split') | map('first') | join(' ') }}
+  block:
+
+    - name: "Debug cmd_create debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_create }}"
+      loop: "{{ clones_host_hostname | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.template }}"
+
+    - name: Create clones host_hostname
+      when: not dry_run | bool
+      register: out_create
+      ansible.builtin.command:
+        cmd: "{{ cmd_create }}"
+      loop: "{{ clones_host_hostname | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.template }}"
+
+    - name: "Debug create clones host_hostname debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out_create
+
+    - name: "Debug cmd_start debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_start }}"
+
+    - name: Start clones host_hostname
+      when: not dry_run | bool
+      register: out_start
+      ansible.builtin.command:
+        cmd: "{{ cmd_start }}"
+
+    - name: "Debug start clones host_hostname debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out_start
