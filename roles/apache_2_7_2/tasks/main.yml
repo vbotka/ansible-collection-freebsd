@@ -39,6 +39,7 @@
 
 - name: Configure PHP in Includes
   ansible.builtin.import_tasks: httpd-php.yml
+  when: apache_php | bool
   tags: apache_httpd_php
 
 - name: Configure aliases in httpd.conf
@@ -47,6 +48,7 @@
 
 - name: Configure SSL.
   ansible.builtin.import_tasks: httpd-ssl.yml
+  when: apache_ssl | bool
   tags: apache_httpd_ssl
 
 - name: Configure virtual hosts.
@@ -55,6 +57,7 @@
 
 - name: Configure virtual hosts from vars/conf.d
   ansible.builtin.import_tasks: httpd-confd.yml
+  when: apache_confd | bool
   tags: apache_httpd_confd
 
 - name: Configure service.

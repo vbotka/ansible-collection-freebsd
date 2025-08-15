@@ -43,6 +43,7 @@
         {{ apache_directory_blocks | to_nice_yaml(indent=2) | indent(2) }}
       apache_alias:
         {{ apache_alias | to_nice_yaml(indent=2) | indent(2) }}
+      apache_confd: {{ apache_confd }}
       apache_confd_dir_vhosts: {{ apache_confd_dir_vhosts }}
       apache_confd_dir_sections: {{ apache_confd_dir_sections }}
 

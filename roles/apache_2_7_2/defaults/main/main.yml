@@ -1,6 +1,6 @@
 ---
 # defaults for vbotka.apache
-apache_role_version: 2.7.1
+apache_role_version: 2.7.2
 
 apache_install: true
 apache_enable: true
@@ -19,26 +19,32 @@ apache_httpd_conf:
   - {regexp: ServerAdmin, line: "{{ apache_serveradmin }}"}
   - {regexp: ServerTokens, line: "{{ apache_servertokens }}"}
 
-# Modules
-apache_httpd_conf_modules:
-  - {module: socache_shmcb_module, mod: mod_socache_shmcb.so}
+# dirs
+apache_directory_blocks: []
+
+# modules
+apache_httpd_conf_modules: []
+# - {module: socache_shmcb_module, mod: mod_socache_shmcb.so}
 
 # vhosts
 # Virtual hosts need apache_ssl. Port 80 is redirected permanently to
 # 443 for vhosts.
 apache_vhost: []
 
-# dirs
-apache_directory_blocks: []
-
 # aliases
 apache_alias: []
 
 # conf.d
+apache_confd: true
 apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/vhosts"
 apache_confd_dir_sections: "{{ role_path }}/vars/conf.d/sections"
 
 # rc.conf
 apache_rcconf: []
+
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+apache_ansible_lib:
+  vbotka.apache: vbotka.ansible_lib
+  vbotka.freebsd.apache: vbotka.freebsd.lib
 
 # EOF

@@ -1,7 +1,6 @@
 ---
 - name: Configure SSL.
   notify: reload apache
-  when: apache_ssl | bool
   block:
 
     - name: "Httpd-ssl: Present extra lines in {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"

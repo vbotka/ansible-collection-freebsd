@@ -1,8 +1,7 @@
 apache_install: false
-apache_enable: true
-apache_ssl: false
+apache_confd: false
 apache_servername: www-1
-apache_serveradmin: :"admin@{{ apache_servername }}"
+apache_serveradmin: :admin@www-1
 
 apache_directory_blocks:
   - Directory: /usr/local/www/apache24/data/
@@ -12,9 +11,3 @@ apache_directory_blocks:
       - "Options Indexes FollowSymLinks"
       - "AllowOverride All"
       - "Require all granted"
-
-apache_confd_dir_vhosts: "{{ inventory_dir }}/servers/apache.d/vhosts"
-apache_confd_dir_sections: "{{ inventory_dir }}/servers/apache.d/sections"
-apache_httpd_conf_modules: []
-apache_php_blocks: []
-apache_vhost: []

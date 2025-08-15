@@ -18,7 +18,7 @@ Minor Changes
 -------------
 * Add playbooks/pb_iocage_ansible_clients/clone_host_hostname.yml
 * Update playbooks/pb_iocage_ansible_clients
-* Add role apache 2.7.1
+* Add role apache 2.7.2
 * Upgrade role iocage 0.5.4
 * Add docs ug example 209, 420
 

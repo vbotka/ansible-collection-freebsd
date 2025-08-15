@@ -1,19 +1,19 @@
 ---
-- name: "Rc_conf: Configure /etc/rc.conf"
+- name: "Rc-conf: Configure /etc/rc.conf"
   notify: graceful apache
   community.general.sysrc:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
   loop: "{{ apache_rcconf }}"
 
-- name: "Rc_conf: Enable and Start Apache"
+- name: "Rc-conf: Enable and Start Apache"
   when: apache_enable | bool
   notify: enable and start apache
   community.general.sysrc:
     name: "{{ apache_service }}_enable"
     value: "YES"
 
-- name: "Rc_conf: Disable and Stop Apache"
+- name: "Rc-conf: Disable and Stop Apache"
   when: not apache_enable | bool
   notify: disable and stop apache
   community.general.sysrc:

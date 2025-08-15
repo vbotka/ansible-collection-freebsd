@@ -3,4 +3,5 @@
   gather_facts: true
 
   roles:
-    - vbotka.freebsd.apache
+    - vbotka.apache
+#   - vbotka.freebsd.apache

@@ -1,5 +1,5 @@
 ---
-- name: "Httpd_conf: Configure parameters in {{ apache_conf_path ~ '/httpd.conf' }}"
+- name: "Httpd-conf: Configure parameters in {{ apache_conf_path ~ '/httpd.conf' }}"
   notify: reload apache
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
