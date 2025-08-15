@@ -15,7 +15,7 @@
 .. index:: single: template ansible_client_apache; Example 209
 .. index:: single: playbook pb_iocage_template.yml; Example 209
 
-.. index:: single: Apache HTTP server; Example 209
+.. index:: single: Apache HTTP Server; Example 209
 
 Use case
 ^^^^^^^^
