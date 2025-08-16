@@ -1,6 +1,0 @@
----
-defaults_rc_conf:
-  path: "{{ cimage_mount_path }}/etc/defaults/rc.conf"
-  patch:
-    src: "{{ playbook_dir }}/files/rc.conf.patch"
-    basedir: "{{ cimage_mount_path }}/etc/defaults"
