@@ -1,0 +1,14 @@
+---
+- name: "Vars: Include OS vars."
+  vars:
+    al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
+  ansible.builtin.include_role:
+    name: "{{ rsnapshot_ansible_lib[ansible_role_name] }}"
+    tasks_from: al_include_os_vars_path
+
+- name: "Vars: Create template specific vars."
+  when: rsnapshot_config_template in rsnapshot_config_template_vars
+  ansible.builtin.include_tasks:
+    file: "{{ rsnapshot_config_template_vars[rsnapshot_config_template] }}"
+
+# EOF

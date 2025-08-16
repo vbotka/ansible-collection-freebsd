@@ -20,6 +20,7 @@ Minor Changes
 * Update playbooks/pb_iocage_ansible_clients
 * Add role apache 2.7.2
 * Upgrade role iocage 0.5.4
+* Upgrade role rsnapshot 2.7.4
 * Add docs ug example 209, 420
 
 

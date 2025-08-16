@@ -18,27 +18,10 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 ### Collections
 
 * community.general
-* vbotka.freebsd
 
-### Optionally, use the role vbotka.ansible_lib
+### Roles
 
-This role requires the collection vbotka.freebsd to include tasks from the role
-vbotka.freebsd.lib. See in the tasks:
-
-```yaml
-  ansible.builtin.include_role:
-    name: vbotka.freebsd.lib
-```
-
-Instead of the collection vbotka.freebsd, you can install and use the role
-vbotka.ansible_lib. Edit the tasks:
-
-```yaml
-  ansible.builtin.include_role:
-    name: vbotka.ansible_lib
-```
-
-Remove vbotka.freebsd from the collections in meta/main.yml
+- [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
 
 ## Role Variables
 

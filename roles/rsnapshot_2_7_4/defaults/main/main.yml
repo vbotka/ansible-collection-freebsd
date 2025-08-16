@@ -1,6 +1,6 @@
 ---
 # defaults for vbotka.rsnapshot
-rsnapshot_role_version: 2.7.3
+rsnapshot_role_version: 2.7.4
 rsnapshot_supported_linux_family: [Debian, RedHat]
 rsnapshot_debug: false
 rsnapshot_debug2: false
@@ -16,5 +16,11 @@ rsnapshot_exclude: []
 rsnapshot_test: false
 rsnapshot_snapshot_root_test: /export/backup/snapshots-test
 rsnapshot_backup_points_test: []
+
+### LIB ###
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+rsnapshot_ansible_lib:
+  vbotka.rsnapshot: vbotka.ansible_lib
+  vbotka.freebsd.rsnapshot: vbotka.freebsd.lib
 
 # EOF
