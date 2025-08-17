@@ -1,0 +1,31 @@
+
+PLAY [Create SSL certificate.] *************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [www-2]
+
+TASK [Vars: Include OS vars] ***************************************************
+included: vbotka.ansible_lib for www-2
+
+TASK [vbotka.ansible_lib : Al_include_os_vars_path_incr: vars from /export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults] ***
+ok: [www-2] => (item=/export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults/default.yml)
+ok: [www-2] => (item=/export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults/FreeBSD.yml)
+
+TASK [vbotka.ansible_lib : Al_include_os_vars_path_incr: vars from /export/home/vlado.config/.ansible/roles/vbotka.certificate/vars] ***
+ok: [www-2] => (item=/export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults.yml)
+
+TASK [vbotka.certificate : Vars: Add certificate_data_simple to certificate_data] ***
+ok: [www-2]
+
+TASK [vbotka.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys.] ***
+changed: [www-2] => (item=file:/usr/local/etc/ssl/private/www-2.key CN:www-2)
+
+TASK [vbotka.certificate : Cert-openssl-csr: Generate OpenSSL Certificate Signing Request.] ***
+changed: [www-2] => (item= file:/usr/local/etc/ssl/csr/www-2.csr CN:www-2)
+
+TASK [vbotka.certificate : Cert-openssl-certificate: Generate and/or check OpenSSL certificates.] ***
+changed: [www-2] => (item= file:/usr/local/etc/ssl/certs/www-2.crt CN:www-2)
+
+PLAY RECAP *********************************************************************
+www-2                      : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+

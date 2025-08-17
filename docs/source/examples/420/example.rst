@@ -10,6 +10,8 @@
 .. index:: single: Apache HTTP Server; Example 420
 .. index:: single: role vbotka.freebsd.apache; Example 420
 .. index:: single: vbotka.freebsd.apache; Example 420
+
+.. index:: single: iocage host_hostname; Example 420
 .. index:: single: host_hostname; Example 420
 
 
@@ -110,6 +112,10 @@ Playbook pb-apache.yml
 
 Playbook output - Create server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-apache.yml -i hosts
 
 .. literalinclude:: out/out-02.txt
    :language: yaml

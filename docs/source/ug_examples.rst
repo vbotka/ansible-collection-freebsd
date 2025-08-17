@@ -21,6 +21,7 @@ Examples
 :400-:    `Role vbotka.freebsd.zfs`_
 :410-:    `Role vbotka.freebsd.lib`_
 :420-:    `Role vbotka.freebsd.apache`_
+:430-:    `Role vbotka.freebsd.certificate`_
 :500-:    Infrastructure
 
 **Notes:**
@@ -102,6 +103,7 @@ Examples
    410 Include vars from conf.d <examples/410/example.rst>
    411 Include vars from nested dirs <examples/411/example.rst>
    420 Configure Apache server <examples/420/example.rst>
+   430 Configure Apache server SSL <examples/430/example.rst>
 
 .. toctree::
    :maxdepth: 1
@@ -119,6 +121,7 @@ Examples
 .. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage
 
 .. _Role vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache
+.. _Role vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate
 .. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _Role vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage

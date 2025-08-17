@@ -1,0 +1,37 @@
+
+PLAY [Create SSL certificate.] *************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [www-2]
+
+TASK [Vars: Include OS vars] ***************************************************
+included: vbotka.ansible_lib for www-2
+
+TASK [vbotka.ansible_lib : Al_include_os_vars_path_incr: vars from /export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults] ***
+ok: [www-2] => (item=/export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults/default.yml)
+ok: [www-2] => (item=/export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults/FreeBSD.yml)
+
+TASK [vbotka.ansible_lib : Al_include_os_vars_path_incr: vars from /export/home/vlado.config/.ansible/roles/vbotka.certificate/vars] ***
+ok: [www-2] => (item=/export/home/vlado.config/.ansible/roles/vbotka.certificate/vars/defaults.yml)
+
+TASK [vbotka.certificate : Vars: Add certificate_data_simple to certificate_data] ***
+ok: [www-2]
+
+TASK [vbotka.certificate : Cert-openssl-stat: Get status of OpenSSL private keys, CSRs, and certificates.] ***
+included: /export/home/vlado.config/.ansible/roles/vbotka.certificate/tasks/fn/cert-openssl-stat-item.yml for www-2 => (item=CN:www-2)
+
+TASK [vbotka.certificate : Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate.] ***
+ok: [www-2] => (item=/usr/local/etc/ssl/private/www-2.key)
+ok: [www-2] => (item=/usr/local/etc/ssl/csr/www-2.csr)
+ok: [www-2] => (item=/usr/local/etc/ssl/certs/www-2.crt)
+
+TASK [vbotka.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
+ok: [www-2] => 
+    msg: |-
+        - {exists: true, file: /usr/local/etc/ssl/private/www-2.key}
+        - {exists: true, file: /usr/local/etc/ssl/csr/www-2.csr}
+        - {exists: true, file: /usr/local/etc/ssl/certs/www-2.crt}
+
+PLAY RECAP *********************************************************************
+www-2                      : ok=8    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+
