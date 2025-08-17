@@ -238,7 +238,7 @@
 
 - name: "Al_pws_user_host: Sanity of al_pws_query. Empty."
   ansible.builtin.assert:
-    that: al_pws_query|length > 0
+    that: al_pws_query | length > 0
     success_msg: "[OK]  List of queries al_pws_query not empty."
     fail_msg: "[ERR] List of queries al_pws_query is empty."
     quiet: "{{ al_pws_sanity_quiet | bool }}"

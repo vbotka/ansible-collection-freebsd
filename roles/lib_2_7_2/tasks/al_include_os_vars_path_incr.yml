@@ -37,13 +37,16 @@
   vars:
     msg: |-
       al_os_vars_path: {{ al_os_vars_path | d('UNDEFINED') }}
+      ansible_os_family: {{ ansible_os_family }}
+      ansible_distribution: {{ ansible_distribution }}
+      ansible_distribution_release: {{ ansible_distribution_release }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
 - name: "Al_include_os_vars_path_incr: Test al_os_vars_path not defined."
   when: al_os_vars_path is not defined
   ansible.builtin.fail:
-    msg: Variable al_os_vars_path not defined. End of play.
+    msg: "[ERR] Variable al_os_vars_path not defined."
 
 # Default variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -57,7 +60,7 @@
       - "{{ my_path }}/{{ ansible_os_family }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-# register: result
+  register: result
   ansible.builtin.include_vars: "{{ item }}"
   loop: "{{ options | unique }}"
 
@@ -78,7 +81,7 @@
       - "{{ my_path }}/{{ ansible_os_family }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-# register: result
+  register: result
   ansible.builtin.include_vars: "{{ item }}"
   loop: "{{ options | unique }}"
 

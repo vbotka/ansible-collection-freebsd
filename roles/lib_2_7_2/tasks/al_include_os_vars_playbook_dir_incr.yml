@@ -21,12 +21,20 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # https://github.com/vbotka/ansible-lib/tasks/al_include_os_vars_playbook_dir_incr.yml
 
+- name: "Al_include_os_vars_playbook_dir_incr: Debug al_debug={{ al_debug }}"
+  when: al_debug | bool
+  vars:
+    msg: |-
+      playbook_dir {{ playbook_dir }}
+      ansible_os_family: {{ ansible_os_family }}
+      ansible_distribution: {{ ansible_distribution }}
+      ansible_distribution_release: {{ ansible_distribution_release }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
 # Defaults variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 - name: "Al_include_os_vars_playbook_dir_incr: vars from {{ playbook_dir ~ 'vars/defaults' }}"
-  ansible.builtin.include_vars: "{{ item }}"
-  # register: result
-  loop: "{{ options | unique }}"
   when: item is exists
   vars:
     my_path: "{{ playbook_dir }}/vars/defaults"
@@ -36,18 +44,18 @@
       - "{{ my_path }}/{{ ansible_os_family }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+  register: result
+  ansible.builtin.include_vars: "{{ item }}"
+  loop: "{{ options | unique }}"
 
-# - name: "al_include_os_vars_playbook_dir_incr: Debug include default vars al_debug={{ al_debug }}"
-#   ansible.builtin.debug:
-#     var: result
-#   when: al_debug | bool
+- name: "Al_include_os_vars_playbook_dir_incr: Debug include default vars al_debug2={{ al_debug2 }}"
+  when: al_debug2 | bool
+  ansible.builtin.debug:
+    var: result
 
 # Custom variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 - name: "Al_include_os_vars_playbook_dir_incr: vars from {{ playbook_dir ~ '/vars' }}"
-  ansible.builtin.include_vars: "{{ item }}"
-  # register: result
-  loop: "{{ options | unique }}"
   when: item is exists
   vars:
     my_path: "{{ playbook_dir }}/vars"
@@ -57,11 +65,14 @@
       - "{{ my_path }}/{{ ansible_os_family }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}.yml"
       - "{{ my_path }}/{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+  register: result
+  ansible.builtin.include_vars: "{{ item }}"
+  loop: "{{ options | unique }}"
 
-# - name: "al_include_os_vars_playbook_dir_incr: Debug include custom vars al_debug={{ al_debug }}"
-#   ansible.builtin.debug:
-#     var: result
-#   when: al_debug | bool
+- name: "Al_include_os_vars_playbook_dir_incr: Debug include custom vars al_debug2={{ al_debug2 }}"
+  when: al_debug2 | bool
+  ansible.builtin.debug:
+    var: result
 
 # EOF
 ...

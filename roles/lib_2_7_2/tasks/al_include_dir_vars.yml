@@ -95,7 +95,7 @@
 - name: "Al_include_dir_vars: End of play."
   when: al_include_dir_vars_dir is not defined
   ansible.builtin.fail:
-    msg: Variable al_include_dir_vars_dir is not defined. End of play.
+    msg: "[ERR] Variable al_include_dir_vars_dir is not defined."
 
 # Get list of directories - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 - name: "Al_include_dir_vars: Get list of directories."

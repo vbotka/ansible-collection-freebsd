@@ -10,7 +10,7 @@ bsd_roles:
     name: lib
     scm: git
     src: https://github.com/vbotka/ansible-lib
-    version: 2.7.1
+    version: 2.7.2
   - galaxy: vbotka.ansible_lint
     name: ansible_lint
     scm: git

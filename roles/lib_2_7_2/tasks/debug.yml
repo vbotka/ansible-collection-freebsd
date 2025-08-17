@@ -3,7 +3,7 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Ansible lib Debug
+- name: Ansible lib Debug.
   vars:
     msg: |-
       al_role_version: {{ al_role_version }}

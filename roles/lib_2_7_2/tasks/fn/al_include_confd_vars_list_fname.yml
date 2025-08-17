@@ -17,7 +17,7 @@
   ansible.builtin.debug:
     var: al_local_var
 
-- name: "Al_include_confd_vars_list_fname: Add fname and vars to list"
+- name: "Al_include_confd_vars_list_fname: Add fname and vars to list."
   ansible.builtin.set_fact:
     al_include_confd_vars_list: "{{ al_include_confd_vars_list +
                                     [{'fname': al_local_fname,

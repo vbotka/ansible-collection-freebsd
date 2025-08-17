@@ -9,11 +9,11 @@
     name: al_local_var
 
 - name: "Al_include_confd_vars_list_plain: Debug al_debug={{ al_debug }}"
+  when: al_debug | bool
   ansible.builtin.debug:
     var: al_local_var
-  when: al_debug | bool
 
-- name: "Al_include_confd_vars_list_plain: Add vars to list"
+- name: "Al_include_confd_vars_list_plain: Add vars to list."
   ansible.builtin.set_fact:
     al_include_confd_vars_list: "{{ al_include_confd_vars_list +
                                     al_local_var | json_query('*') }}"

@@ -48,17 +48,19 @@
 - name: "Al_include_confd_vars_list: Test al_include_confd_dir defined."
   when: al_include_confd_dir is not defined
   ansible.builtin.fail:
-    msg: Variable al_include_confd_dir is not defined. End of play.
+    msg: "[ERR] Variable al_include_confd_dir is not defined."
 
 - name: "Al_include_confd_vars_list: Test al_include_confd_dir exists."
   when: al_include_confd_dir is not exists
   ansible.builtin.fail:
-    msg: Path {{ al_include_confd_dir }} does not exist. End of play.
+    msg: "[ERR] Path {{ al_include_confd_dir }} does not exist."
 
 - name: "Al_include_confd_vars_list: Test al_include_confd_vars_list_type valid."
   when: al_include_confd_vars_list_type not in al_include_confd_vars_list_options
   ansible.builtin.fail:
-    msg: Unknown type of al_include_confd_vars_list_type. End of play.
+    msg: >
+      [ERR] Unknown type al_include_confd_vars_list_type.
+      See al_include_confd_vars_list_options.
 
 # List of configuration files - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

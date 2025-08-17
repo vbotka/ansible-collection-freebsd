@@ -22,6 +22,7 @@ Minor Changes
 * Upgrade role iocage 0.5.4
 * Upgrade role rsnapshot 2.7.4
 * Upgrade role custom_image 2.7.9
+* Upgrade role lib 2.7.2
 * Add docs ug example 209, 420
 
 

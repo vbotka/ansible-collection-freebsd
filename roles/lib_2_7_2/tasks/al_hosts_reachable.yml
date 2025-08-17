@@ -65,9 +65,9 @@
   rescue:
 
     - name: "Al_hosts_reachable: Rescue debug al_debug={{ al_debug }}"
+      when: al_debug | bool
       ansible.builtin.debug:
         msg: "[ERR] Can not connect to {{ inventory_hostname }}"
-      when: al_debug | bool
 
     - name: "Al_hosts_reachable: Rescue set variable my_host_reachable False."
       ansible.builtin.set_fact:

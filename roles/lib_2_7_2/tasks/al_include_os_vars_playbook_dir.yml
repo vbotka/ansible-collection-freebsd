@@ -21,6 +21,17 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # https://github.com/vbotka/ansible-lib/tasks/al_include_os_vars_playbook_dir.yml
 
+- name: "Al_include_os_vars_playbook_dir: Debug al_debug={{ al_debug }}"
+  when: al_debug | bool
+  vars:
+    msg: |-
+      playbook_dir {{ playbook_dir }}
+      ansible_os_family: {{ ansible_os_family }}
+      ansible_distribution: {{ ansible_distribution }}
+      ansible_distribution_release: {{ ansible_distribution_release }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
 # Defaults variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 - name: "Al_include_os_vars_playbook_dir: vars from {{ playbook_dir ~ '/vars/defaults' }}"
@@ -37,13 +48,13 @@
       files: "{{ _files | unique }}"
       paths: "{{ playbook_dir }}/vars/defaults"
       skip: true
-# register: result
+  register: result
   ansible.builtin.include_vars: "{{ _file }}"
 
-# - name: "al_include_os_vars_playbook_dir: Debug result al_debug={{ al_debug }}"
-#   when: al_debug | bool
-#   ansible.builtin.debug:
-#     var: result
+- name: "Al_include_os_vars_playbook_dir: Debug result al_debug2={{ al_debug2 }}"
+  when: al_debug2 | bool
+  ansible.builtin.debug:
+    var: result
 
 # Custom variables - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -61,13 +72,13 @@
       files: "{{ _files | unique }}"
       paths: "{{ playbook_dir }}/vars"
       skip: true
-# register: result
+  register: result
   ansible.builtin.include_vars: "{{ _file }}"
 
-# - name: "al_include_os_vars_playbook_dir: Debug result al_debug={{ al_debug }}"
-#   when: al_debug | bool
-#   ansible.builtin.debug:
-#     var: result
+- name: "Al_include_os_vars_playbook_dir: Debug result al_debug2={{ al_debug2 }}"
+  when: al_debug2 | bool
+  ansible.builtin.debug:
+    var: result
 
 # EOF
 ...

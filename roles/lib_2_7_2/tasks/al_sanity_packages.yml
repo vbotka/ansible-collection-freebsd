@@ -8,8 +8,8 @@
 #
 # Description:
 #
-#   Test required packages are installed.  Test whether the required packages are
-#   installed. Display error message and fail if the required packages are not installed.
+#   Test the required packages are installed. Display error message and fail if the
+#   required packages are not installed.
 #
 # Input:
 #
