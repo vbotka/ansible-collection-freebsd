@@ -107,8 +107,7 @@ Create and start the jail
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
                             -i iocage.ini \
-                            -t clone_host_hostname -e clone_host_hostname=true \
-                            -e debug=true -e debug2=true
+                            -t clone_host_hostname -e clone_host_hostname=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -185,16 +184,21 @@ Playbook output - Create server
 
    (env) > ansible-playbook pb-apache.yml -i hosts
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 
 Results
 ^^^^^^^
 
-Open the page in a browser ``https//www-2/``. The content should be ::
+* Certificate
 
-  It works!
+  .. literalinclude:: out/out-06.txt
+     :language: console
+
+* Open the page in a browser ``https//www-2/``. The content should be ::
+
+    It works!
 
 
 .. _Apache HTTP Server: https://httpd.apache.org/

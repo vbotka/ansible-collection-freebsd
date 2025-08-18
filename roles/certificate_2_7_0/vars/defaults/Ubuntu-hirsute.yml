@@ -1,0 +1,10 @@
+---
+# certificate vars for Ubuntu Focal
+
+# packages install
+certificate_packages:
+  - python-cryptography
+  - python-openssl
+  - python3-cryptography
+  - python3-openssl
+  - acme-tiny

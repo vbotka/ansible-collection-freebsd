@@ -17,4 +17,4 @@ ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl | tee out/ou
 ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl_stat | tee out/out-05.txt
 
 # Create Apache HTTP Server
-ansible-playbook pb-apache.yml -i hosts | tee out/out-06.txt
+ansible-playbook pb-apache.yml -i hosts | tee out/out-07.txt

@@ -1,0 +1,10 @@
+---
+# certificate vars for Ubuntu
+
+# sanity: override supported versions
+al_supported_versions_override: "{{ al_supported_versions_override_lists | flatten }}"
+al_supported_versions_override_lists:
+  - [bionic, cosmic, disco, eoan]
+  - [focal, groovy, hirsute, impish]
+  - [jammy, kinetic, lunar, mantic]
+  - [noble]

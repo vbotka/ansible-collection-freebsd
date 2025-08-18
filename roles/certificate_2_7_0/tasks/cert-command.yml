@@ -1,0 +1,23 @@
+---
+- name: "Cert-command: Generate a Self Signed OpenSSL certificate."
+  ansible.builtin.command:
+    cmd: >
+      openssl req -nodes -x509
+      -subj "{{ item.subject }}"
+      -days "{{ item.days }}"
+      -newkey "{{ item.cypher }}"
+      -keyout "{{ certificate_dir_private }}/{{ item.private }}"
+      -out "{{ certificate_dir_certs }}/{{ item.crt }}"
+  args:
+    creates: "{{ certificate_dir_certs }}/{{ item.crt }}"
+  loop: "{{ certificate_self_signed_command }}"
+
+- name: "Cert-command: Set permisions of private keys."
+  ansible.builtin.file:
+    path: "{{ certificate_dir_private }}/{{ item.private }}"
+    owner: "{{ certificate_dir_private_owner }}"
+    group: "{{ certificate_dir_private_group }}"
+    mode: "{{ certificate_file_private_mode }}"
+  loop: "{{ certificate_self_signed_command }}"
+
+# EOF
