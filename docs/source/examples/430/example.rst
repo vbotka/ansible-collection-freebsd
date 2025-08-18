@@ -70,6 +70,8 @@ Notes
 
 .. seealso::
 
+   * `FreeBSD Handbook 32.9. Apache HTTP Server`_
+   * `FreeBSD Handbook 32.9.3.1. SSL support`_
    * `Apache HTTP Server`_
    * `Apache HTTP Server - SSL/TLS Strong Encryption`_
    * `man 8 iocage`_
@@ -197,15 +199,25 @@ Results
   .. literalinclude:: out/out-06.txt
      :language: console
 
-* Open the page in a browser ``https//www-2/``. The content should be ::
+* Test the configuration
+
+  .. code-block:: console
+
+     (env) > ssh admin@www-2 sudo service apache24 configtest
+     Performing sanity check on apache24 configuration:
+     Syntax OK
+
+* In a browser, open the page ``https//www-2/``. The content should be ::
 
     It works!
 
 
-.. _Apache HTTP Server: https://httpd.apache.org/
-.. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 .. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
 
+.. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
+.. _FreeBSD Handbook 32.9.3.1. SSL support: https://docs.freebsd.org/en/books/handbook/network-servers/#_ssl_support
+.. _Apache HTTP Server: https://httpd.apache.org/
+.. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 .. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

@@ -1,24 +1,24 @@
-.. _example_431:
+.. _example_421:
 
-431 Role vbotka.freebsd.apache Virtual Host
+421 Role vbotka.freebsd.apache Virtual Host
 -------------------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: Apache Virtual Host; Example 431
-.. index:: single: Apache HTTP Server; Example 431
-.. index:: single: role vbotka.freebsd.apache; Example 431
-.. index:: single: vbotka.freebsd.apache; Example 431
+.. index:: single: Apache Virtual Host; Example 421
+.. index:: single: Apache HTTP Server; Example 421
+.. index:: single: role vbotka.freebsd.apache; Example 421
+.. index:: single: vbotka.freebsd.apache; Example 421
 
-.. index:: single: certificate; Example 431
-.. index:: single: SSL certificate; Example 431
-.. index:: single: role vbotka.freebsd.certificate; Example 431
-.. index:: single: vbotka.freebsd.certificate; Example 4311
+.. index:: single: certificate; Example 421
+.. index:: single: SSL certificate; Example 421
+.. index:: single: role vbotka.freebsd.certificate; Example 421
+.. index:: single: vbotka.freebsd.certificate; Example 4321
 
-.. index:: single: iocage host_hostname; Example 431
-.. index:: single: host_hostname; Example 431
+.. index:: single: iocage host_hostname; Example 421
+.. index:: single: host_hostname; Example 421
 
 
 Use case
@@ -65,12 +65,15 @@ Requirements
 Notes
 ^^^^^
 
-* ``iocage`` property ``host_hostname`` provides "The hostname of the jail.". Please note that ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
+* ``iocage`` property ``host_hostname`` provides "The hostname of the jail.". Please note that
+  ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
 
 * In case of DHCP, ``host_hostname`` resolves, however ``--name`` does not.
 
 .. seealso::
 
+   * `FreeBSD Handbook 32.9. Apache HTTP Server`_
+   * `FreeBSD Handbook 32.9.2. Virtual Hosting`_
    * `Apache HTTP Server Virtual Host`_
    * `Apache HTTP Server - SSL/TLS Strong Encryption`_
    * `man 8 iocage`_
@@ -200,16 +203,41 @@ Create data-foo-bar
 Results
 ^^^^^^^
 
-Open the page in a browser ``https//www.foo.bar/``. The content should be ::
+* Test the configuration
 
-  It works!
+  .. code-block:: console
+
+     (env) > ssh admin@www-3 sudo service apache24 configtest
+     Performing sanity check on apache24 configuration:
+     Syntax OK
+
+* The virtual host must resolve. For example,
+
+  .. code-block:: console
+
+     (env) > nslookup www-3
+     Server:         127.0.0.53
+     Address:        127.0.0.53#53
+
+     Non-authoritative answer:
+     Name:    www-3.example.org
+     Address: 10.1.0.223
+
+     (env) > grep www.foo.bar /etc/hosts
+     10.1.0.223 www.foo.bar
+
+* In a browser, open the page ``https//www.foo.bar/``. The content should be ::
+
+    It works!
 
 
-.. _Apache HTTP Server: https://httpd.apache.org/
-.. _Apache HTTP Server Virtual Host: https://httpd.apache.org/docs/2.4/vhosts/
 .. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 .. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
 
+.. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
+.. _FreeBSD Handbook 32.9.2. Virtual Hosting: https://docs.freebsd.org/en/books/handbook/network-servers/#_virtual_hosting
+.. _Apache HTTP Server: https://httpd.apache.org/
+.. _Apache HTTP Server Virtual Host: https://httpd.apache.org/docs/2.4/vhosts/
 .. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

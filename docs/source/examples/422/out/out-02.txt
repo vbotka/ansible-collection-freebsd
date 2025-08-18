@@ -2,31 +2,37 @@
 PLAY [Create Apache HTTP Server.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-1]
+ok: [www-4]
 
 TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for www-1
+included: vbotka.freebsd.lib for www-4
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/apache/vars/defaults] ***
-ok: [www-1]
+ok: [www-4]
 
 TASK [vbotka.freebsd.apache : Httpd-conf: Configure parameters in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-1] => (item={'regexp': 'ServerName', 'line': 'www-1'})
-changed: [www-1] => (item={'regexp': 'ServerAdmin', 'line': 'admin@www-1'})
-changed: [www-1] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
+changed: [www-4] => (item={'regexp': 'ServerName', 'line': 'www-4'})
+changed: [www-4] => (item={'regexp': 'ServerAdmin', 'line': 'admin@www-4'})
+changed: [www-4] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
 
 TASK [vbotka.freebsd.apache : Httpd-dirs: Configure directories in /usr/local/etc/apache24/Includes/] ***
-changed: [www-1] => (item=/usr/local/www/apache24/data/)
+changed: [www-4] => (item=/usr/local/www/apache24/data/)
+
+TASK [vbotka.freebsd.apache : Httpd-modules: Load modules in /usr/local/etc/apache24/httpd.conf] ***
+changed: [www-4] => (item={'module': 'php_module', 'mod': 'libphp.so'})
 
 TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
-changed: [www-1]
+changed: [www-4]
 
 RUNNING HANDLER [vbotka.freebsd.apache : Enable and start apache] **************
-changed: [www-1]
+changed: [www-4]
+
+RUNNING HANDLER [vbotka.freebsd.apache : Restart apache] ***********************
+changed: [www-4]
 
 RUNNING HANDLER [vbotka.freebsd.apache : Reload apache] ************************
-ok: [www-1]
+ok: [www-4]
 
 PLAY RECAP *********************************************************************
-www-1                      : ok=8    changed=4    unreachable=0    failed=0    skipped=34   rescued=0    ignored=0   
+www-4                      : ok=10   changed=6    unreachable=0    failed=0    skipped=33   rescued=0    ignored=0   
 
