@@ -1,30 +1,31 @@
-.. _example_430:
+.. _example_431:
 
-430 Role vbotka.freebsd.apache HTTPS
-------------------------------------
+431 Role vbotka.freebsd.apache Virtual Host
+-------------------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: certificate; Example 430
-.. index:: single: SSL certificate; Example 430
-.. index:: single: role vbotka.freebsd.certificate; Example 430
-.. index:: single: vbotka.freebsd.certificate; Example 430
+.. index:: single: Apache Virtual Host; Example 431
+.. index:: single: Apache HTTP Server; Example 431
+.. index:: single: role vbotka.freebsd.apache; Example 431
+.. index:: single: vbotka.freebsd.apache; Example 431
 
-.. index:: single: Apache HTTP Server; Example 430
-.. index:: single: role vbotka.freebsd.apache; Example 430
-.. index:: single: vbotka.freebsd.apache; Example 430
+.. index:: single: certificate; Example 431
+.. index:: single: SSL certificate; Example 431
+.. index:: single: role vbotka.freebsd.certificate; Example 431
+.. index:: single: vbotka.freebsd.certificate; Example 4311
 
-.. index:: single: iocage host_hostname; Example 430
-.. index:: single: host_hostname; Example 430
+.. index:: single: iocage host_hostname; Example 431
+.. index:: single: host_hostname; Example 431
 
 
 Use case
 ^^^^^^^^
 
 Use the role `vbotka.freebsd.certificate`_ to create SSL certificate. Use the role
-`vbotka.freebsd.apache`_ to configure `Apache HTTP Server - SSL/TLS Strong Encryption`_. Use iocage
+`vbotka.freebsd.apache`_ to configure `Apache HTTP Server Virtual Host`_. Use iocage
 property ``host_hostname`` to create a jail.
 
 Tree
@@ -39,7 +40,7 @@ Tree
   ├── host_vars
   │   ├── iocage_04
   │   │   └── ansible-client-apache.yml
-  │   └── www-2
+  │   └── www-3
   │       ├── apache.yml
   │       └── certificate.yml
   ├── iocage.ini
@@ -53,8 +54,8 @@ Synopsis
 
 * The playbook ``pb-certificate.yml`` creates SSL certificate in the jail.
 
-* The playbook ``pb-apache.yml`` uses the certificate and configures `Apache HTTP Server`_ in the
-  jail.
+* The playbook ``pb-apache.yml`` uses the certificate and configures `Apache HTTP Server Virtual
+  Host`_ in the jail.
 
 Requirements
 ^^^^^^^^^^^^
@@ -70,7 +71,7 @@ Notes
 
 .. seealso::
 
-   * `Apache HTTP Server`_
+   * `Apache HTTP Server Virtual Host`_
    * `Apache HTTP Server - SSL/TLS Strong Encryption`_
    * `man 8 iocage`_
 
@@ -93,11 +94,11 @@ host_vars
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/www-2/apache.yml
+.. literalinclude:: host_vars/www-3/apache.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/www-2/certificate.yml
+.. literalinclude:: host_vars/www-3/certificate.yml
    :language: yaml
    :caption:
 
@@ -189,20 +190,23 @@ Playbook output - Create server
    :language: yaml
    :force:
 
+Create data-foo-bar
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ssh admin@www-3 sudo cp -r /usr/local/www/apache24/data /usr/local/www/apache24/data-foo-bar
+      
 Results
 ^^^^^^^
 
-* Certificate
+Open the page in a browser ``https//www.foo.bar/``. The content should be ::
 
-  .. literalinclude:: out/out-06.txt
-     :language: console
-
-* Open the page in a browser ``https//www-2/``. The content should be ::
-
-    It works!
+  It works!
 
 
 .. _Apache HTTP Server: https://httpd.apache.org/
+.. _Apache HTTP Server Virtual Host: https://httpd.apache.org/docs/2.4/vhosts/
 .. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 .. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/

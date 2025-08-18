@@ -2,30 +2,33 @@
 PLAY [Create SSL certificate.] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-2]
+ok: [www-3]
 
 TASK [Vars: Include OS vars] ***************************************************
-included: vbotka.freebsd.lib for www-2
+included: vbotka.freebsd.lib for www-3
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
-ok: [www-2] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
-ok: [www-2] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
+ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
-ok: [www-2] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
 
 TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
-ok: [www-2]
+ok: [www-3]
 
 TASK [vbotka.freebsd.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys.] ***
-changed: [www-2] => (item=file:/usr/local/etc/ssl/private/www-2.key CN:www-2)
+changed: [www-3] => (item=file:/usr/local/etc/ssl/private/www-3.key CN:www-3)
+changed: [www-3] => (item=file:/usr/local/etc/ssl/private/www.foo.bar.key CN:www.foo.bar)
 
 TASK [vbotka.freebsd.certificate : Cert-openssl-csr: Generate OpenSSL Certificate Signing Request.] ***
-changed: [www-2] => (item= file:/usr/local/etc/ssl/csr/www-2.csr CN:www-2)
+changed: [www-3] => (item= file:/usr/local/etc/ssl/csr/www-3.csr CN:www-3)
+changed: [www-3] => (item= file:/usr/local/etc/ssl/csr/www.foo.bar.csr CN:www.foo.bar)
 
 TASK [vbotka.freebsd.certificate : Cert-openssl-certificate: Generate and/or check OpenSSL certificates.] ***
-changed: [www-2] => (item= file:/usr/local/etc/ssl/certs/www-2.crt CN:www-2)
+changed: [www-3] => (item= file:/usr/local/etc/ssl/certs/www-3.crt CN:www-3)
+changed: [www-3] => (item= file:/usr/local/etc/ssl/certs/www.foo.bar.crt CN:www.foo.bar)
 
 PLAY RECAP *********************************************************************
-www-2                      : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+www-3                      : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
 

@@ -41,8 +41,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts jails.
-* The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in the jails.
+* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts one jail.
+* The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in the jail.
 
 Requirements
 ^^^^^^^^^^^^
@@ -58,6 +58,7 @@ Notes
 
 .. seealso::
 
+   * `Apache HTTP Server`_
    * `man 8 iocage`_
 
 ansible.cfg

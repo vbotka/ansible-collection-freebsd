@@ -2,23 +2,23 @@
 PLAY [Create SSL certificate.] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-2]
+ok: [www-3]
 
 TASK [Vars: Include OS vars] ***************************************************
-included: vbotka.freebsd.lib for www-2
+included: vbotka.freebsd.lib for www-3
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
-ok: [www-2] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
-ok: [www-2] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
+ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
-ok: [www-2] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
 
 TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
-ok: [www-2]
+ok: [www-3]
 
 TASK [vbotka.freebsd.certificate : Debug certificate_debug=true] ***************
-ok: [www-2] => 
+ok: [www-3] => 
     msg: |-
         certificate_role_version: 2.7.0
         ansible_role_name: vbotka.freebsd.certificate
@@ -75,10 +75,15 @@ ok: [www-2] =>
 
         certificate_data:
           - passphrase: ************
-            CN: www-2
-            private: www-2.key
-            csr: www-2.csr
-            crt: www-2.crt
+            CN: www-3
+            private: www-3.key
+            csr: www-3.csr
+            crt: www-3.crt
+          - passphrase: ************
+            CN: www.foo.bar
+            private: www.foo.bar.key
+            csr: www.foo.bar.csr
+            crt: www.foo.bar.crt
 
         certificate_python_version: 311
         al_debug: False
@@ -115,5 +120,5 @@ ok: [www-2] =>
           - security/py-acme-tiny
 
 PLAY RECAP *********************************************************************
-www-2                      : ok=6    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+www-3                      : ok=6    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 

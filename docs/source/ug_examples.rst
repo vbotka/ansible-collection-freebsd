@@ -104,6 +104,7 @@ Examples
    411 Include vars from nested dirs <examples/411/example.rst>
    420 Configure Apache server <examples/420/example.rst>
    430 Configure Apache server SSL <examples/430/example.rst>
+   431 Configure Apache server vhost <examples/431/example.rst>
 
 .. toctree::
    :maxdepth: 1

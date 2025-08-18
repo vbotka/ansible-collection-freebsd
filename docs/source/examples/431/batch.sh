@@ -18,6 +18,3 @@ ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl_stat | tee o
 
 # Create Apache HTTP Server
 ansible-playbook pb-apache.yml -i hosts | tee out/out-07.txt
-
-# Create data-foo-bar
-ssh admin@www-3 sudo cp -r /usr/local/www/apache24/data /usr/local/www/apache24/data-foo-bar
