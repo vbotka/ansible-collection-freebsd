@@ -24,6 +24,7 @@ Minor Changes
 * Upgrade role rsnapshot 2.7.4
 * Upgrade role custom_image 2.7.9
 * Upgrade role lib 2.7.2
+* Upgrade role zfs 2.7.8
 * Add docs ug example 209, 420
 
 

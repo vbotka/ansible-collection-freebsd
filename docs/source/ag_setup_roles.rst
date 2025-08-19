@@ -110,7 +110,7 @@ reusable tasks that can be included in playbooks and other roles.
    "ansible-lib", "vbotka.ansible_lib", "vbotka.freebsd.lib"
 
 Some roles depend on it. If such roles are included in the collection `vbotka.freebsd`_ they are
-modified to use the dictionary ``<name>__ansible_lib``. For example, the dictionary ``rsnapshot_ansible_lib``
+modified to use the dictionary ``<name>_ansible_lib``. For example, the dictionary ``rsnapshot_ansible_lib``
 
 .. code-block:: yaml
 
@@ -129,6 +129,10 @@ the collection or not. For example,
      ansible.builtin.include_role:
        name: "{{ rsnapshot_ansible_lib[ansible_role_name] }}"
        tasks_from: al_include_os_vars_path
+
+.. seealso::
+
+   The special variable `ansible_role_name`_
 
 Other dependent roles
 """""""""""""""""""""
@@ -174,3 +178,4 @@ If you want to install other roles into this collection update the dictionary ``
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 
 .. _Migrating Roles to Roles in Collections on Galaxy: https://docs.ansible.com/ansible/devel/dev_guide/migrating_roles.html
+.. _ansible_role_name: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-ansible_role_name

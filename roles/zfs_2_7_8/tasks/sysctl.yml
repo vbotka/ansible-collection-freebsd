@@ -1,8 +1,7 @@
 ---
-
 - name: "Sysctl: Include vbotka.freebsd.postinstall sysctl"
   ansible.builtin.include_role:
-    name: vbotka.freebsd.postinstall
+    name: "{{ fzfs_freebsd_postinstall[ansible_role_name] }}"
     tasks_from: sysctl.yml
     apply:
       tags: fzfs_sysctl
