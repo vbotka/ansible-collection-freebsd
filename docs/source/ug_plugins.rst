@@ -6,8 +6,8 @@ Plugins
 .. toctree::
    :maxdepth: 1
 
-   ug_module_iocage
-   ug_module_service
-   ug_module_ucl
-   ug_inventory_iocage
-   ug_filter_iocage
+   module iocage <ug_module_iocage>
+   module service <ug_module_service>
+   module ucl <ug_module_ucl>
+   inventory iocage <ug_inventory_iocage>
+   filter iocage <ug_filter_iocage>

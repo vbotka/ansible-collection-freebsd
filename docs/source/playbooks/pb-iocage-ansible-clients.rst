@@ -40,7 +40,7 @@ Use the playbook tag ``clone`` to execute selected tasks
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage_ansible_clients.yml -t clone -e clone=true
+   (env) > ansible-playbook pb_iocage_ansible_clients.yml -t clone -e clone=true
 
 creates the clones
 
@@ -118,8 +118,8 @@ The dictionary ``properties`` keeps the default properties for both options. For
 
 .. hint::
 
-   Take a look at Index and search ``playbook pb_iocage_ansible_client.yml`` to see what examples
-   are available.
+   Look at Index and search ``playbook pb_iocage_ansible_client.yml`` to see what examples are
+   available.
 
 Workflow
 ^^^^^^^^

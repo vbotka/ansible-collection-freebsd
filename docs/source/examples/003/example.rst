@@ -57,8 +57,9 @@ Notes
 
 .. seealso::
 
-   * See the tasks ``roles/iocage/tasks/sanity.yml``
-   * See the default variables ``roles/iocage/main/sanity.yml``
+   * :ref:`example_501`
+   * The tasks ``roles/iocage/tasks/sanity.yml``
+   * The default variables ``roles/iocage/main/sanity.yml``
 
 ansible.cfg
 ^^^^^^^^^^^

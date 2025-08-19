@@ -51,8 +51,7 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Take a look at Index and search ``playbook pb_iocage_template.yml`` to see what examples are
-   available.
+   Look at Index and search ``playbook pb_iocage_template.yml`` to see what examples are available.
 
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,8 +75,7 @@ mandatory. Some of them are used as defaults. See the playbook tasks to learn de
 act_user
 """"""""
 
-Create a user in the jail. Usually, this user will be used as a ``remote_user`` to connect to the
-jail.
+Create a user in the jail. Usually, this user is used as the ``remote_user`` to connect to the jail.
 
 .. code-block:: yaml
 
@@ -90,7 +88,7 @@ jail.
 act_pk
 """"""
 
-A path to a file comprising the public keys allowed to connect to the ``act_user`` at the jail.
+A path to a file comprising the public keys allowed to connect to the ``act_user`` in the jail.
 
 .. code-block:: yaml
 
@@ -105,7 +103,7 @@ A path to a file comprising the public keys allowed to connect to the ``act_user
 act_sudo
 """"""""
 
-Add ``act_user`` to ``/root/usr/local/etc/sudoers``
+Add ``act_user`` to ``<dataset>/root/usr/local/etc/sudoers``
 
 .. code-block:: yaml
 
@@ -124,7 +122,7 @@ The below passwordless entry will be created
 act_rcconf
 """"""""""
 
-Configure ``/root/etc/rc.conf``
+Configure ``<dataset>/root/etc/rc.conf``
 
 .. code-block:: yaml
 
@@ -135,7 +133,7 @@ Configure ``/root/etc/rc.conf``
 act_dhclient
 """"""""""""
 
-Create ``dhclient`` hooks
+Create ``dhclient`` hooks in ``<dataset>/root/etc/``
 
 .. code-block:: yaml
 
@@ -149,7 +147,7 @@ Create ``dhclient`` hooks
 
 .. note::
 
-   * These *hooks* are needed to configure ``hooks_results`` in `inventory plugin vbotka.freebsd.iocage`_
+   * These ``hooks`` are needed to configure ``hooks_results`` in `inventory plugin vbotka.freebsd.iocage`_
    * See `man dhclient-script`_
 
 pkglist
