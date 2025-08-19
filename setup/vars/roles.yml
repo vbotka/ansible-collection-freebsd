@@ -35,7 +35,7 @@ bsd_roles:
     name: certificate
     scm: git
     src: https://github.com/vbotka/ansible-certificate
-    version: 2.7.0
+    version: 2.7.1
   - galaxy: vbotka.config_light
     name: config_light
     scm: git
