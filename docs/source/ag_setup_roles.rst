@@ -110,33 +110,25 @@ reusable tasks that can be included in playbooks and other roles.
    "ansible-lib", "vbotka.ansible_lib", "vbotka.freebsd.lib"
 
 Some roles depend on it. If such roles are included in the collection `vbotka.freebsd`_ they are
-modified to use the role `vbotka.freebsd.lib`_. If there are no other dependencies on the collection
-`vbotka.freebsd`_ the following comment is included in the ``README.md``
+modified to use the dictionary ``<name>__ansible_lib``. For example, the dictionary ``rsnapshot_ansible_lib``
 
-.. code-block:: text
+.. code-block:: yaml
 
-   Optionally, use the role vbotka.ansible_lib
-   -------------------------------------------
-   
-   This role requires the collection vbotka.freebsd to include tasks from the role
-   vbotka.freebsd.lib. See in the tasks:
-      
-      ansible.builtin.include_role:
-        name: vbotka.freebsd.lib
+   rsnapshot_ansible_lib:
+     vbotka.rsnapshot: vbotka.ansible_lib
+     vbotka.freebsd.rsnapshot: vbotka.freebsd.lib
 
-   Instead of the collection vbotka.freebsd, you can install and use the role
-   vbotka.ansible_lib. Edit the tasks:
+is used to select ``vbotka.ansible_lib`` or ``vbotka.freebsd.lib`` depending on the role running in
+the collection or not. For example,
 
+.. code-block:: yaml
+
+   - name: "Vars: Include OS vars."
+     vars:
+       al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
      ansible.builtin.include_role:
-       name: vbotka.ansible_lib
-
-If you switch to ``vbotka.ansible_lib``, remove ``vbotka.freebsd`` from the ``collections`` in
-``meta/main.yml``. Then, the role can be used without the collection `vbotka.freebsd`_.
-
-.. warning::
-
-   Make sure the role doesn't use collection ``vbotka.freebsd`` plugins before you start editing the
-   inclusions.
+       name: "{{ rsnapshot_ansible_lib[ansible_role_name] }}"
+       tasks_from: al_include_os_vars_path
 
 Other dependent roles
 """""""""""""""""""""

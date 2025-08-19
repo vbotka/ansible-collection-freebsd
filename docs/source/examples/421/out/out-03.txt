@@ -20,16 +20,16 @@ ok: [www-3]
 TASK [vbotka.freebsd.certificate : Packages: Install FreeBSD packages] *********
 ok: [www-3] => (item=security/py-cryptography)
 ok: [www-3] => (item=security/py-openssl)
-changed: [www-3] => (item=security/py-acme)
-changed: [www-3] => (item=security/py-acme-tiny)
+ok: [www-3] => (item=security/py-acme)
+ok: [www-3] => (item=security/py-acme-tiny)
 
 TASK [vbotka.freebsd.certificate : Cert-dirs: Create public directories /usr/local/etc/ssl] ***
-changed: [www-3] => (item=/usr/local/etc/ssl)
-changed: [www-3] => (item=/usr/local/etc/ssl/certs)
-changed: [www-3] => (item=/usr/local/etc/ssl/csr)
+ok: [www-3] => (item=/usr/local/etc/ssl)
+ok: [www-3] => (item=/usr/local/etc/ssl/certs)
+ok: [www-3] => (item=/usr/local/etc/ssl/csr)
 
 TASK [vbotka.freebsd.certificate : Cert-dirs: Create /usr/local/etc/ssl/private] ***
-changed: [www-3]
+ok: [www-3]
 
 TASK [vbotka.freebsd.certificate : Sanity: Get meta-data.] *********************
 ok: [www-3]
@@ -37,7 +37,7 @@ ok: [www-3]
 TASK [vbotka.freebsd.certificate : Sanity: Get role_name.] *********************
 ok: [www-3]
 
-TASK [Sanity: Include vbotka.ansible_lib al_sanity_platform.] ******************
+TASK [Sanity: Include al_sanity_platform from lib] *****************************
 included: vbotka.freebsd.lib for www-3
 
 TASK [vbotka.freebsd.lib : Al_sanity_platform: Setup. Collect minimal subset.] ***
@@ -61,13 +61,13 @@ ok: [www-3]
 TASK [vbotka.freebsd.lib : Al_include_sanity_platform_test_vars: Set al_sanity_platform_version_test] ***
 ok: [www-3]
 
-TASK [Sanity: Include vbotka.ansible_lib al_sanity_ansible_version.] ***********
+TASK [Sanity: Include al_sanity_ansible_version from lib] **********************
 included: vbotka.freebsd.lib for www-3
 
 TASK [vbotka.freebsd.lib : Al_sanity_ansible_version: Get Ansible minimal version.] ***
 ok: [www-3]
 
-TASK [Sanity: Include vbotka.ansible_lib al_sanity_packages.] ******************
+TASK [Sanity: Include al_sanity_packages from lib] *****************************
 included: vbotka.freebsd.lib for www-3
 
 TASK [vbotka.freebsd.lib : Al_sanity_packages: Setup. Gather minimal subset.] ***
@@ -80,5 +80,5 @@ TASK [vbotka.freebsd.lib : Al_sanity_packages: Set list of installed packages.] 
 ok: [www-3]
 
 PLAY RECAP *********************************************************************
-www-3                      : ok=24   changed=3    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
+www-3                      : ok=24   changed=0    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
 

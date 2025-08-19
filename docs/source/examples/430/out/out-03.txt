@@ -37,7 +37,7 @@ ok: [www-2]
 TASK [vbotka.freebsd.certificate : Sanity: Get role_name.] *********************
 ok: [www-2]
 
-TASK [Sanity: Include vbotka.ansible_lib al_sanity_platform.] ******************
+TASK [Sanity: Include al_sanity_platform from lib] *****************************
 included: vbotka.freebsd.lib for www-2
 
 TASK [vbotka.freebsd.lib : Al_sanity_platform: Setup. Collect minimal subset.] ***
@@ -61,13 +61,13 @@ ok: [www-2]
 TASK [vbotka.freebsd.lib : Al_include_sanity_platform_test_vars: Set al_sanity_platform_version_test] ***
 ok: [www-2]
 
-TASK [Sanity: Include vbotka.ansible_lib al_sanity_ansible_version.] ***********
+TASK [Sanity: Include al_sanity_ansible_version from lib] **********************
 included: vbotka.freebsd.lib for www-2
 
 TASK [vbotka.freebsd.lib : Al_sanity_ansible_version: Get Ansible minimal version.] ***
 ok: [www-2]
 
-TASK [Sanity: Include vbotka.ansible_lib al_sanity_packages.] ******************
+TASK [Sanity: Include al_sanity_packages from lib] *****************************
 included: vbotka.freebsd.lib for www-2
 
 TASK [vbotka.freebsd.lib : Al_sanity_packages: Setup. Gather minimal subset.] ***
