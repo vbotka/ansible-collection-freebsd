@@ -100,8 +100,8 @@ restrictions.
 Role vbotka.ansible_lib
 """""""""""""""""""""""
 
-The role `vbotka.ansible_lib`_ comprises independent tasks. The purpose is providing a library of
-reusable tasks that can be included in playbooks and other roles.
+The role `vbotka.ansible_lib`_ comprises independent tasks. The purpose is providing reusable tasks
+that can be imported or included in playbooks and other roles.
 
 .. csv-table::
    :header: "GitHub vbotka", "Galaxy vbotka", "Collection vbotka.freebsd"
@@ -137,10 +137,29 @@ the collection or not. For example,
 Other dependent roles
 """""""""""""""""""""
 
-There might be other dependent roles. See for example, the role `vbotka.freebsd.zfs`_ depends on the
-role `vbotka.freebsd.postinstall`_. The procedures, described in the previous chapter, apply also
-here. With minimal modifications, it is possible to use a standalone role, for example
-`vbotka.freebsd_zfs`_, depending on the role `vbotka.freebsd_postinstall`_.
+There are other dependent roles. For example, the role `vbotka.freebsd.zfs`_ depends on the role
+`vbotka.freebsd.postinstall`_. The dictionary ``fzfs_freebsd_postinstall``
+
+.. code-block:: yaml
+
+   fzfs_freebsd_postinstall:
+     vbotka.freebsd_zfs: vbotka.freebsd_postinstall
+     vbotka.freebsd.zfs: vbotka.freebsd.postinstall
+
+is used to select ``vbotka.freebsd_postinstall`` or ``vbotka.freebsd.postinstall`` depending on the
+role running in the collection or not. For example,
+
+.. code-block:: yaml
+
+   - name: "Sysctl: Include vbotka.freebsd.postinstall sysctl"
+     ansible.builtin.include_role:
+       name: "{{ fzfs_freebsd_postinstall[ansible_role_name] }}"
+       tasks_from: sysctl.yml
+       apply:
+         tags: fzfs_sysctl
+         vars:
+           fp_sysctl_conf: "{{ fzfs_sysctl_conf }}"
+           fp_sysctl_tuneables_warning: "{{ fzfs_sysctl_tuneables_warning | bool }}"
 
 Other roles
 ^^^^^^^^^^^
