@@ -1,42 +1,42 @@
 
 PLAY [Test vbotka.freebsd.lib al_include_confd_vars_list] **********************
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Find configuration files.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Find configuration files.] ***
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Create list of configuration files.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Create list of configuration files.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Find configuration links.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Find configuration links.] ***
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Add list of configuration links.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Add list of configuration links.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Create empty al_include_confd_vars_list.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Create empty al_include_confd_vars_list.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Create plain list of vars.] ***
-included: /export/home/vlado.config/.ansible/roles/vbotka.ansible_lib/tasks/fn/al_include_confd_vars_list_plain.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/production.yml)
-included: /export/home/vlado.config/.ansible/roles/vbotka.ansible_lib/tasks/fn/al_include_confd_vars_list_plain.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/qa.yml)
-included: /export/home/vlado.config/.ansible/roles/vbotka.ansible_lib/tasks/fn/al_include_confd_vars_list_plain.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/devel.yml)
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Create plain list of vars.] ***
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_confd_vars_list_plain.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/production.yml)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_confd_vars_list_plain.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/qa.yml)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_confd_vars_list_plain.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/devel.yml)
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_plain: Include production.yml] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_plain: Include production.yml] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_plain: Add vars to list] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_plain: Add vars to list.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_plain: Include qa.yml] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_plain: Include qa.yml] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_plain: Add vars to list] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_plain: Add vars to list.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_plain: Include devel.yml] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_plain: Include devel.yml] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_plain: Add vars to list] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_plain: Add vars to list.] ***
 ok: [iocage_04]
 
 TASK [debug] *******************************************************************
@@ -53,51 +53,51 @@ ok: [iocage_04] =>
           - team: devel
             users: [charlie, david]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Find configuration files.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Find configuration files.] ***
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Create list of configuration files.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Create list of configuration files.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Find configuration links.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Find configuration links.] ***
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Add list of configuration links.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Add list of configuration links.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Create empty al_include_confd_vars_list.] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Create empty al_include_confd_vars_list.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list: Create list of vars incl. fname] ***
-included: /export/home/vlado.config/.ansible/roles/vbotka.ansible_lib/tasks/fn/al_include_confd_vars_list_fname.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/production.yml)
-included: /export/home/vlado.config/.ansible/roles/vbotka.ansible_lib/tasks/fn/al_include_confd_vars_list_fname.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/qa.yml)
-included: /export/home/vlado.config/.ansible/roles/vbotka.ansible_lib/tasks/fn/al_include_confd_vars_list_fname.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/devel.yml)
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list: Create list of vars incl. fname] ***
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_confd_vars_list_fname.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/production.yml)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_confd_vars_list_fname.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/qa.yml)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_confd_vars_list_fname.yml for iocage_04 => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/410/conf.d/devel.yml)
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Create al_local_fname] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Create al_local_fname] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Include production.yml] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Include production.yml] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Add fname and vars to list] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Add fname and vars to list.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Create al_local_fname] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Create al_local_fname] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Include qa.yml] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Include qa.yml] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Add fname and vars to list] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Add fname and vars to list.] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Create al_local_fname] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Create al_local_fname] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Include devel.yml] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Include devel.yml] ***
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_confd_vars_list_fname: Add fname and vars to list] ***
+TASK [vbotka.freebsd.lib : Al_include_confd_vars_list_fname: Add fname and vars to list.] ***
 ok: [iocage_04]
 
 TASK [debug] *******************************************************************
