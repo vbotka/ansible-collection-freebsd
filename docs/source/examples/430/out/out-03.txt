@@ -20,16 +20,16 @@ ok: [www-2]
 TASK [vbotka.freebsd.certificate : Packages: Install FreeBSD packages] *********
 ok: [www-2] => (item=security/py-cryptography)
 ok: [www-2] => (item=security/py-openssl)
-changed: [www-2] => (item=security/py-acme)
-changed: [www-2] => (item=security/py-acme-tiny)
+ok: [www-2] => (item=security/py-acme)
+ok: [www-2] => (item=security/py-acme-tiny)
 
 TASK [vbotka.freebsd.certificate : Cert-dirs: Create public directories /usr/local/etc/ssl] ***
-changed: [www-2] => (item=/usr/local/etc/ssl)
-changed: [www-2] => (item=/usr/local/etc/ssl/certs)
-changed: [www-2] => (item=/usr/local/etc/ssl/csr)
+ok: [www-2] => (item=/usr/local/etc/ssl)
+ok: [www-2] => (item=/usr/local/etc/ssl/certs)
+ok: [www-2] => (item=/usr/local/etc/ssl/csr)
 
 TASK [vbotka.freebsd.certificate : Cert-dirs: Create /usr/local/etc/ssl/private] ***
-changed: [www-2]
+ok: [www-2]
 
 TASK [vbotka.freebsd.certificate : Sanity: Get meta-data.] *********************
 ok: [www-2]
@@ -80,5 +80,5 @@ TASK [vbotka.freebsd.lib : Al_sanity_packages: Set list of installed packages.] 
 ok: [www-2]
 
 PLAY RECAP *********************************************************************
-www-2                      : ok=24   changed=3    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
+www-2                      : ok=24   changed=0    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
 
