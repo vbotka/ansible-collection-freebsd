@@ -25,28 +25,33 @@
       tags: start
       ansible.builtin.import_tasks: pb_iocage_template/start.yml
 
+    - name: Install packages
+      when: act_pkg_install | d(false) | bool
+      tags: pkg
+      ansible.builtin.import_tasks: pb_iocage_template/pkg.yml
+
     - name: Create user
-      when: act_user | length > 0
+      when: act_user | d('') | length > 0
       tags: user
       ansible.builtin.import_tasks: pb_iocage_template/user.yml
 
     - name: Configure public keys
-      when: act_pk | length > 0
+      when: act_pk | d('') | length > 0
       tags: pk
       ansible.builtin.import_tasks: pb_iocage_template/pk.yml
 
     - name: Configure sudo
-      when: act_sudo | bool
+      when: act_sudo | d(false) | bool
       tags: sudo
       ansible.builtin.import_tasks: pb_iocage_template/sudo.yml
 
     - name: Configure dhclient
-      when: act_dhclient | length > 0
+      when: act_dhclient | d({}) | length > 0
       tags: dhclient
       ansible.builtin.import_tasks: pb_iocage_template/dhclient.yml
 
     - name: Configure /etc/rc.conf
-      when: act_rcconf | length > 0
+      when: act_rcconf | d({}) | length > 0
       tags: rcconf
       ansible.builtin.import_tasks: pb_iocage_template/rc_conf.yml
 

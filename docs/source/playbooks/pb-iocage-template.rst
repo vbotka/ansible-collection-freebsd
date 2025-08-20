@@ -6,6 +6,7 @@ pb_iocage_template
    :depth: 3
 
 .. index:: single: playbook pb_iocage_template.yml; pb_iocage_template
+.. index:: single: act_pkg; pb_iocage_template
 .. index:: single: act_user; pb_iocage_template
 .. index:: single: act_pk; pb_iocage_template
 .. index:: single: act_sudo; pb_iocage_template
@@ -51,16 +52,18 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Look at Index and search ``playbook pb_iocage_template.yml`` to see what examples are available.
+   Look at the ``Index`` and search ``playbook pb_iocage_template.yml`` what examples are available.
 
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A few variables are required to configure a template for Ansible clients. The below variables are
-mandatory. Some of them are used as defaults. See the playbook tasks to learn details.
+A few variables are required to configure a template for Ansible clients. See the playbook tasks to
+learn details.
 
 .. code-block:: yaml
 
+   act_pkg: []
+   act_pkg_install: false
    act_user: ''
    act_pk: ''
    act_sudo: false
@@ -72,6 +75,61 @@ mandatory. Some of them are used as defaults. See the playbook tasks to learn de
    * `Setting the Python interpreter`_
    * `Understanding privilege escalation`_
 
+act_pkg
+""""""""
+
+Install a list of packages. Put the list into the ``template`` attribute ``act_pkg``. For example,
+
+.. code-block:: yaml
+
+   templates:
+     ansible_client:
+       act_pkg:
+         - security/sudo
+         - lang/python311
+       ...
+
+If this attribute is missing, the variable ``act_pkg`` is used. Below is the minimal list for an
+ansible client. Set the Python version to your needs
+
+.. code-block:: yaml
+
+   act_pkg:
+     - security/sudo
+     - lang/python311
+
+Fit the list to your needs. Usually, you want to add ``gtar`` and other archivers. See the module
+`ansible.builtin.unarchive`_. If you want to use the collection `community.crypto`_ add
+``py-openssl``
+
+.. code-block:: yaml
+
+   act_pkg:
+     - lang/python311
+     - security/sudo
+     - archivers/gtar
+     - security/py-openssl
+
+Enable the installation by setting ``act_pkg_install=true`` (default=false).
+
+Notes:
+
+* As a first choice, use ``pkglist``. Use ``act_pkg`` to install additional packages in an already
+  created jail.
+
+* The module `community.general.pkgng`_ is jail-aware. Quoting: ::
+
+    jail: Pkg will execute in the given jail name or ID.
+
+* It seems that a short UUID doesn't work as a name. Use the ID instead ::
+
+    jail: "{{ iocage_jails[item.key]['jid'] }}"
+
+.. seealso::
+
+   * `Setting the Python interpreter`_
+   * `Understanding privilege escalation`_
+    
 act_user
 """"""""
 
@@ -127,8 +185,8 @@ Configure ``<dataset>/root/etc/rc.conf``
 .. code-block:: yaml
 
    act_rcconf:
-     iocage_enable: '"YES"'
-     sshd_enable: '"YES"'
+     iocage_enable: "YES"
+     sshd_enable: "YES"
 
 act_dhclient
 """"""""""""
@@ -233,11 +291,11 @@ If a running jail is needed start it
 
    shell> iocage start ansible_client
 
-Then, use the playbook tags to execute selected tasks. For example, to install packages
+Then, use the playbook tags to execute selected tasks. For example, to install additional packages, create the list of the packages ``act_pkg`` and run the play
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_template.yml -t pkg
+   (env) > ansible-playbook pb_iocage_template.yml -t pkg -e act_pkg_install=true
 
 After the reconfiguration stop the jail and convert it to the template manually
 
