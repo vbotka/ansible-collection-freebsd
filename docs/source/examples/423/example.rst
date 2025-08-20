@@ -18,9 +18,15 @@
 .. index:: single: role vbotka.freebsd.certificate; Example 423
 .. index:: single: vbotka.freebsd.certificate; Example 423
 
+.. index:: single: clones_host_hostname; Example 423
 .. index:: single: iocage host_hostname; Example 423
-.. index:: single: host_hostname; Example 423
+.. index:: single: fstab; Example 423
 .. index:: single: mount; Example 423
+.. index:: single: iocage host_hostname; Example 423
+.. index:: single: iocage allow_mount; Example 423
+.. index:: single: iocage allow_mount_zfs; Example 423
+.. index:: single: iocage jail_zfs; Example 423
+.. index:: single: host_hostname; Example 423
 .. index:: single: allow_mount; Example 423
 .. index:: single: allow_mount_zfs; Example 423
 .. index:: single: jail_zfs; Example 423

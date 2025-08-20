@@ -25,7 +25,7 @@ Minor Changes
 * Upgrade role custom_image 2.7.9
 * Upgrade role lib 2.7.2
 * Upgrade role zfs 2.7.8
-* Add docs ug example 209, 420
+* Add docs ug example 209, 420, 421, 422, 423, 430
 
 
 0.7.19
