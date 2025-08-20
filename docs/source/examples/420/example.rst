@@ -18,8 +18,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_. Use iocage property
-``host_hostname`` to create a jail.
+ Use iocage property ``host_hostname`` to create a jail. Use the role `vbotka.freebsd.apache`_ to
+ configure `Apache HTTP Server`_.
 
 Tree
 ^^^^

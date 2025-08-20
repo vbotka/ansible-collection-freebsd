@@ -105,6 +105,7 @@ Examples
    420 Configure Apache server <examples/420/example.rst>
    421 Configure Apache server vhost <examples/421/example.rst>
    422 Configure Apache server PHP <examples/422/example.rst>
+   423 Configure Apache server build <examples/423/example.rst>
    430 Configure Apache server SSL <examples/430/example.rst>
 
 .. toctree::

@@ -1,32 +1,38 @@
-.. _example_421:
+.. _example_423:
 
-421 Role vbotka.freebsd.apache Virtual Host
--------------------------------------------
+423 Role vbotka.freebsd.apache Poudriere
+----------------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: Apache Virtual Host; Example 421
-.. index:: single: Apache HTTP Server; Example 421
-.. index:: single: role vbotka.freebsd.apache; Example 421
-.. index:: single: vbotka.freebsd.apache; Example 421
+.. index:: single: Poudriere data; Example 423
+.. index:: single: Apache Virtual Host; Example 423
+.. index:: single: Apache HTTP Server; Example 423
+.. index:: single: role vbotka.freebsd.apache; Example 423
+.. index:: single: vbotka.freebsd.apache; Example 423
 
-.. index:: single: certificate; Example 421
-.. index:: single: SSL certificate; Example 421
-.. index:: single: role vbotka.freebsd.certificate; Example 421
-.. index:: single: vbotka.freebsd.certificate; Example 421
+.. index:: single: certificate; Example 423
+.. index:: single: SSL certificate; Example 423
+.. index:: single: role vbotka.freebsd.certificate; Example 423
+.. index:: single: vbotka.freebsd.certificate; Example 423
 
-.. index:: single: iocage host_hostname; Example 421
-.. index:: single: host_hostname; Example 421
+.. index:: single: iocage host_hostname; Example 423
+.. index:: single: host_hostname; Example 423
+.. index:: single: mount; Example 423
+.. index:: single: allow_mount; Example 423
+.. index:: single: allow_mount_zfs; Example 423
+.. index:: single: jail_zfs; Example 423
 
 
 Use case
 ^^^^^^^^
 
- Use iocage property ``host_hostname`` to create a jail. Use the role `vbotka.freebsd.certificate`_
- to create SSL certificate. Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server
- Virtual Host`_ ``www.foo.bar``.
+Use iocage property ``host_hostname`` to create a jail. Mount host directory
+``/usr/local/poudriere`` in the jail.  Use the role `vbotka.freebsd.certificate`_ to create SSL
+certificate for ``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure `Apache
+HTTP Server Virtual Host`_ ``build.foo.bar`` to access ``/usr/local/poudriere``.
 
 Tree
 ^^^^
@@ -40,7 +46,7 @@ Tree
   ├── host_vars
   │   ├── iocage_04
   │   │   └── ansible-client-apache.yml
-  │   └── www-3
+  │   └── www-5
   │       ├── apache.yml
   │       └── certificate.yml
   ├── iocage.ini
@@ -50,12 +56,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts one jail.
+* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts one jail. Mounts
+  host directory ``/usr/local/poudriere`` in the jail.
 
-* The playbook ``pb-certificate.yml`` creates SSL certificate for ``www.foo.bar``.
+* The playbook ``pb-certificate.yml`` creates SSL certificate for ``build.foo.bar``.
 
 * The playbook ``pb-apache.yml`` uses the certificate and configures `Apache HTTP Server Virtual
-  Host`_ ``www.foo.bar`` in the jail.
+  Host`_ ``build.foo.bar`` in the jail.
 
 Requirements
 ^^^^^^^^^^^^
@@ -72,6 +79,7 @@ Notes
 
 .. seealso::
 
+   * `How Do I Mount Host Datasets Inside Jails`_
    * `FreeBSD Handbook 32.9. Apache HTTP Server`_
    * `FreeBSD Handbook 32.9.2. Virtual Hosting`_
    * `Apache HTTP Server Virtual Host`_
@@ -97,11 +105,11 @@ host_vars
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/www-3/apache.yml
+.. literalinclude:: host_vars/www-5/apache.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/www-3/certificate.yml
+.. literalinclude:: host_vars/www-5/certificate.yml
    :language: yaml
    :caption:
 
@@ -192,13 +200,6 @@ Playbook output - Create server
 .. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
-
-Create data-foo-bar
-^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ssh admin@www-3 sudo cp -r /usr/local/www/apache24/data /usr/local/www/apache24/data-foo-bar
       
 Results
 ^^^^^^^
@@ -207,28 +208,36 @@ Results
 
   .. code-block:: console
 
-     (env) > ssh admin@www-3 sudo service apache24 configtest
+     (env) > ssh admin@www-5 sudo service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
 
-* The virtual host must resolve. For example,
+* The virtual host ``build.foo.bar`` must resolve. For example,
 
   .. code-block:: console
 
-     (env) > nslookup www-3
+     (env) > nslookup www-5
      Server:         127.0.0.53
      Address:        127.0.0.53#53
 
      Non-authoritative answer:
-     Name:    www-3.example.com
-     Address: 10.1.0.223
+     Name:    www-5.example.com
+     Address: 10.1.0.159
 
-     (env) > grep www.foo.bar /etc/hosts
-     10.1.0.223 www.foo.bar
+     (env) > grep build.foo.bar /etc/hosts
+     10.1.0.159 build.foo.bar
 
-* In a browser, open the page ``https//www.foo.bar/``. The content should be ::
+* In a browser, open the logs. For example,
 
-    It works!
+| https://build.foo.bar/logs/bulk/143amd64-default-devel/2025-08-12_13h34m10s/build.html
+
+.. image:: screenshot_build.png
+    :width: 100%
+    :align: center
+
+.. seealso::
+
+   :ref:`example_390`
 
 
 .. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
@@ -236,6 +245,7 @@ Results
 .. _vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
 
+.. _How Do I Mount Host Datasets Inside Jails: https://www.truenas.com/community/threads/freenas-11-iocage-how-do-i-mount-host-datasets-inside-jails.55193/
 .. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
 .. _FreeBSD Handbook 32.9.2. Virtual Hosting: https://docs.freebsd.org/en/books/handbook/network-servers/#_virtual_hosting
 .. _Apache HTTP Server: https://httpd.apache.org/

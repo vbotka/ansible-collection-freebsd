@@ -1,0 +1,36 @@
+apache_install: false
+apache_confd: false
+apache_servername: www-5
+apache_serveradmin: admin@www-5
+
+apache_ssl: true
+apache_sslengine: 'on'
+apache_sslcertificatekeyfile: "/usr/local/etc/ssl/private/{{ apache_servername }}.key"
+apache_sslcertificatefile: "/usr/local/etc/ssl/certs/{{ apache_servername }}.crt"
+
+apache_httpd_conf_modules:
+  - {module: socache_shmcb_module, mod: mod_socache_shmcb.so}
+  - {module: ssl_module, mod: mod_ssl.so}
+
+apache_vhosts: true
+apache_vhost:
+  - ServerName: build.foo.bar
+    DocumentRoot: /usr/local/poudriere/data/
+    SSLCertificateFile: "/usr/local/etc/ssl/certs/build.foo.bar.crt"
+    SSLCertificateKeyFile: "/usr/local/etc/ssl/private/build.foo.bar.key"
+    redirect: false
+
+apache_directory_blocks:
+  - Directory: /usr/local/www/apache24/data/
+    Includefile: usr-local-www-apache-data.conf
+    Conf:
+      - "DirectoryIndex index.html index.htm"
+      - "Options Indexes FollowSymLinks"
+      - "AllowOverride All"
+      - "Require all granted"
+  - Directory: /usr/local/poudriere/data
+    Includefile: usr-local-poudriere-data.conf
+    Conf:
+      - "Options Indexes FollowSymLinks"
+      - "AllowOverride All"
+      - "Require all granted"

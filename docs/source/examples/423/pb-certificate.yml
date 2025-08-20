@@ -1,0 +1,6 @@
+- name: Create SSL certificate.
+  hosts: www
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.certificate
