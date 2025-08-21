@@ -17,7 +17,7 @@ URL_BASE=http://build.example.com
 USE_COLORS=yes
 USE_PORTLINT=no
 USE_TMPFS=no
-ZPOOL=zroot
+ZPOOL=iocage
 ZROOTFS=/poudriere
 
 # EOF

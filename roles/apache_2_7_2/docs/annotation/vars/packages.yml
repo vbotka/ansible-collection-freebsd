@@ -1,0 +1,21 @@
+---
+
+task_packages_synopsis: |2
+  Install packages for supported OS.
+
+task_packages_description: |2
+  <TBD>
+
+task_packages_lines: 3
+
+task_packages_seealso:
+  handlers: []
+  templates: []
+  others:
+    - <TBD>
+
+task_packages_note: []
+task_packages_hint: []
+task_packages_warning: []
+
+# EOF

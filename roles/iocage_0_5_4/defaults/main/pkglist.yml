@@ -1,0 +1,13 @@
+---
+# pkglist
+
+freebsd_iocage_pkglist: false
+freebsd_iocage_pkglist_quiet: true
+freebsd_iocage_pkglist_dir: "{{ playbook_dir }}/files"
+freebsd_iocage_pkglist_dir_mode: "0775"
+freebsd_iocage_pkglist_file: pkgs.json
+freebsd_iocage_pkglist_file_mode: "0664"
+freebsd_iocage_pkglist_dict: {}
+freebsd_iocage_pkglist_pkgs: []
+
+# EOF

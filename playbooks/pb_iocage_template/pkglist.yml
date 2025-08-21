@@ -10,6 +10,7 @@
       ansible.builtin.file:
         state: directory
         path: "{{ item.value.pkglist | dirname }}"
+        mode: "0755"
       loop: "{{ _templates }}"
       loop_control:
         label: "{{ item.key }} {{ item.value.pkglist }}"
@@ -19,6 +20,7 @@
       ansible.builtin.copy:
         src: "{{ inventory_dir }}/files/{{ item.value.pkglist | basename }}"
         dest: "{{ item.value.pkglist }}"
+        mode: "0644"
       loop: "{{ _templates }}"
       loop_control:
         label: "{{ item.key }} {{ item.value.pkglist }}"

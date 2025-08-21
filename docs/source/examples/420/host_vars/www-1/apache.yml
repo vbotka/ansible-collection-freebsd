@@ -1,0 +1,13 @@
+apache_install: false
+apache_confd: false
+apache_servername: www-1
+apache_serveradmin: admin@www-1
+
+apache_directory_blocks:
+  - Directory: /usr/local/www/apache24/data/
+    Includefile: usr-local-www-apache-data.conf
+    Conf:
+      - "DirectoryIndex index.html index.htm"
+      - "Options Indexes FollowSymLinks"
+      - "AllowOverride All"
+      - "Require all granted"

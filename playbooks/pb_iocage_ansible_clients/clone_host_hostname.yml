@@ -1,0 +1,100 @@
+- name: Create clones host_hostname from template
+  vars:
+    _notes: '"{{ [properties.notes | d(""),
+                  item.value.properties.notes | d("")] | select | join(" ") }}"'
+    _properties: '{{ [properties | d({}),
+                      item.value.properties | d({}),
+                      {"host_hostname": item.key},
+                      {"notes": _notes}] | select | combine(recursive=true) }}'
+    jails_name: "{{ out_create.results | map(attribute='stdout_lines')
+                                       | flatten
+                                       | map('split')
+                                       | map('first') }}"
+    jails_hostname: "{{ clones_host_hostname.keys() }}"
+    jails: "{{ dict(jails_hostname | zip(jails_name)) }}"
+    cmd_create: >
+      iocage create
+      --short
+      --template {{ item.value.template }}
+      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+    cmd_fstab: >
+      iocage fstab
+      -a {{ jails[item.0.key] }}
+      {{ item.1.spec }} {{ item.1.file }} {{ item.1.type }} {{ item.1.options }}
+    cmd_start: >
+      iocage start {{ jails_name | join(' ') }}
+  block:
+
+    - name: Get pool.
+      register: out_pool
+      changed_when: false
+      ansible.builtin.command: iocage get -p
+
+    - name: "Debug cmd_create debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_create }}"
+      loop: "{{ clones_host_hostname | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.template }}"
+
+    - name: Create clones host_hostname  # noqa: no-changed-when
+      when: not dry_run | bool
+      register: out_create
+      ansible.builtin.command:
+        cmd: "{{ cmd_create }}"
+      loop: "{{ clones_host_hostname | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.template }}"
+
+    - name: "Debug create clones host_hostname debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out_create
+
+    - name: Create mount points.
+      ansible.builtin.file:
+        state: directory
+        path: "/{{ out_pool.stdout }}/iocage/jails/{{ jails[item.0.key] }}/root/{{ item.1.file }}"
+        mode: "0755"
+      loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: "Debug cmd_fstab debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_fstab }}"
+      loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
+
+    - name: Add fstab  # noqa: no-changed-when
+      when: not dry_run | bool
+      register: out_fstab
+      ansible.builtin.command:
+        cmd: "{{ cmd_fstab }}"
+      loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
+
+    - name: "Debug add fstab host_hostname debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out_fstab
+
+    - name: "Debug cmd_start debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_start }}"
+
+    - name: Start clones host_hostname  # noqa: no-changed-when
+      when: not dry_run | bool
+      register: out_start
+      ansible.builtin.command:
+        cmd: "{{ cmd_start }}"
+
+    - name: "Debug start clones host_hostname debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out_start

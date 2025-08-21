@@ -1,5 +1,7 @@
 ---
 roles_install:
+  - apache
+  - certificate
   - config_light
   - custom_image
   - iocage

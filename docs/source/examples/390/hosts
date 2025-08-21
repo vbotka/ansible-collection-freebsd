@@ -1,4 +1,4 @@
-build.example.com ansible_host=10.1.0.73
+build.example.com ansible_host=10.1.0.29
 
 [build]
 build.example.com

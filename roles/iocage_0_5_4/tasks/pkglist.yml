@@ -1,0 +1,48 @@
+---
+
+- name: Create pkglist file.
+  when: freebsd_iocage_pkglist_pkgs | length > 0
+  delegate_to: localhost
+  run_once: true
+  block:
+
+    - name: "Pkglist: Sanity. All package lists are in dictionary."
+      vars:
+        missing: "{{ freebsd_iocage_pkglist_pkgs | difference(freebsd_iocage_pkglist_dict) }}"
+      ansible.builtin.assert:
+        that: missing | length == 0
+        quiet: "{{ freebsd_iocage_pkglist_quiet | bool }}"
+        success_msg: "[OK]  All package lists are in the dictionary."
+        fail_msg: "[ERR] Missing package list(s): {{ missing | join(',') }}"
+
+    - name: "Pkglist: Create dictionary for pkglist files."
+      ansible.builtin.file:
+        state: directory
+        dest: "{{ freebsd_iocage_pkglist_dir }}"
+        mode: "{{ freebsd_iocage_pkglist_dir_mode }}"
+
+    - name: "Pkglist: Create pkglist file."
+      vars:
+        pkgs: "{{ freebsd_iocage_pkglist_pkgs | map('extract', freebsd_iocage_pkglist_dict)
+                                              | flatten
+                                              | unique
+                                              | sort }}"
+      ansible.builtin.copy:
+        dest: "{{ freebsd_iocage_pkglist_dir }}/{{ freebsd_iocage_pkglist_file }}"
+        mode: "{{ freebsd_iocage_pkglist_file_mode }}"
+        content: |
+          {{ {'pkgs': pkgs} | to_nice_json }}
+
+  rescue:
+
+    - name: "Pkglist: Rescue: Create pkglist files freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ ansible_failed_task }}
+          {{ ansible_failed_result }}
+
+    - name: "Pkg: Rescue: End host."
+      ansible.builtin.meta: end_host
+
+# EOF

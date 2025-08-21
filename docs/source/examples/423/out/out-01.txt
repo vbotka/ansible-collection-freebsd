@@ -1,0 +1,21 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get pool.] ***************************************************************
+changed: [iocage_04]
+
+TASK [Create clones host_hostname] *********************************************
+changed: [iocage_04] => (item=www-5 ansible_client_apache)
+
+TASK [Create mount points.] ****************************************************
+changed: [iocage_04] => (item=www-5 /usr/local/poudriere)
+
+TASK [Add fstab] ***************************************************************
+changed: [iocage_04] => (item=www-5 /usr/local/poudriere /usr/local/poudriere)
+
+TASK [Start clones host_hostname] **********************************************
+changed: [iocage_04]
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=5    changed=5    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

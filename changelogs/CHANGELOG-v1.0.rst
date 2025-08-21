@@ -5,6 +5,31 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.20
+======
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add playbooks/pb_iocage_ansible_clients/clone_host_hostname.yml
+* Update playbooks/pb_iocage_ansible_clients
+* Add playbooks/pb_iocage_template/pkg.yml
+* Update playbooks/pb_iocage_template
+* Add role apache 2.7.2
+* Add role certificate 2.7.1
+* Upgrade role iocage 0.5.4
+* Upgrade role rsnapshot 2.7.4
+* Upgrade role custom_image 2.7.9
+* Upgrade role lib 2.7.2
+* Upgrade role zfs 2.7.8
+* Add docs ug example 209, 420, 421, 422, 423, 430
+
+
 0.7.19
 ======
 

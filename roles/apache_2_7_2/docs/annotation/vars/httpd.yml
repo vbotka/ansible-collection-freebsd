@@ -1,0 +1,19 @@
+---
+
+task_httpd_synopsis: |2
+  Configure lines in httpd.conf
+
+task_httpd_description: |2
+  Iterate the list ``apache_httpd_conf`` (8) and add lines to the configuration file (4).
+
+task_httpd_lines: 4,8
+
+task_httpd_seealso:
+  handlers: []
+  templates: []
+  others:
+    - Variable :ref:`ug_apache_httpd_conf`
+
+task_httpd_note: []
+task_httpd_hint: []
+task_httpd_warning: []

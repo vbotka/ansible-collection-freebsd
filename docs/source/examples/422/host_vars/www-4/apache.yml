@@ -1,0 +1,18 @@
+apache_install: false
+apache_confd: false
+apache_servername: www-4
+apache_serveradmin: admin@www-4
+
+apache_httpd_conf_modules:
+  - {module: php_module, mod: libphp.so}
+
+apache_directory_blocks:
+  - Directory: /usr/local/www/apache24/data/
+    Includefile: usr-local-www-apache-data.conf
+    Conf:
+      - "DirectoryIndex index.php index.html index.htm"
+      - "AddType application/x-httpd-php .php"
+      - "AddType application/x-httpd-php-source .phps"
+      - "Options Indexes FollowSymLinks"
+      - "AllowOverride All"
+      - "Require all granted"

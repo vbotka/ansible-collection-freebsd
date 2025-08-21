@@ -116,15 +116,15 @@ Limit ``pkg_dict_*`` for testing.
    :caption: Playbook output
    :maxdepth: 1
 
-   debug <pb_out_debug>
-   install packages <pb_out_install>
-   create SSL directories <pb_out_dirs>
-   generate signing key <pb_out_key>
-   generate SSL certificate <pb_out_cert>
-   configure Poudriere <pb_out_conf>
-   create package lists <pb_out_lists>
-   customize make <pb_out_make>
-   all tasks <pb_out_all>
+   Display variables <pb_out_debug>
+   Install packages <pb_out_install>
+   Create SSL directories <pb_out_dirs>
+   Generate signing key <pb_out_key>
+   Generate SSL certificate <pb_out_cert>
+   Configure Poudriere <pb_out_conf>
+   Create package lists <pb_out_lists>
+   Customize make <pb_out_make>
+   All tasks <pb_out_all>
 
 .. toctree::
    :caption: Results
@@ -164,7 +164,9 @@ Build packages
 .. seealso::
 
    * `Export data`_ how to configure apache24.
-   
+   * :ref:`example_423`
+
+
 .. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere/
 .. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere/
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/

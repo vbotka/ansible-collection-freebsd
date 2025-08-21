@@ -100,8 +100,8 @@ restrictions.
 Role vbotka.ansible_lib
 """""""""""""""""""""""
 
-The role `vbotka.ansible_lib`_ comprises independent tasks. The purpose is providing a library of
-reusable tasks that can be included in playbooks and other roles.
+The role `vbotka.ansible_lib`_ comprises independent tasks. The purpose is providing reusable tasks
+that can be imported or included in playbooks and other roles.
 
 .. csv-table::
    :header: "GitHub vbotka", "Galaxy vbotka", "Collection vbotka.freebsd"
@@ -110,41 +110,56 @@ reusable tasks that can be included in playbooks and other roles.
    "ansible-lib", "vbotka.ansible_lib", "vbotka.freebsd.lib"
 
 Some roles depend on it. If such roles are included in the collection `vbotka.freebsd`_ they are
-modified to use the role `vbotka.freebsd.lib`_. If there are no other dependencies on the collection
-`vbotka.freebsd`_ the following comment is included in the ``README.md``
+modified to use the dictionary ``<name>_ansible_lib``. For example, the dictionary ``rsnapshot_ansible_lib``
 
-.. code-block:: text
+.. code-block:: yaml
 
-   Optionally, use the role vbotka.ansible_lib
-   -------------------------------------------
-   
-   This role requires the collection vbotka.freebsd to include tasks from the role
-   vbotka.freebsd.lib. See in the tasks:
-      
-      ansible.builtin.include_role:
-        name: vbotka.freebsd.lib
+   rsnapshot_ansible_lib:
+     vbotka.rsnapshot: vbotka.ansible_lib
+     vbotka.freebsd.rsnapshot: vbotka.freebsd.lib
 
-   Instead of the collection vbotka.freebsd, you can install and use the role
-   vbotka.ansible_lib. Edit the tasks:
+is used to select ``vbotka.ansible_lib`` or ``vbotka.freebsd.lib`` depending on the role running in
+the collection or not. For example,
 
+.. code-block:: yaml
+
+   - name: "Vars: Include OS vars."
+     vars:
+       al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
      ansible.builtin.include_role:
-       name: vbotka.ansible_lib
+       name: "{{ rsnapshot_ansible_lib[ansible_role_name] }}"
+       tasks_from: al_include_os_vars_path
 
-If you switch to ``vbotka.ansible_lib``, remove ``vbotka.freebsd`` from the ``collections`` in
-``meta/main.yml``. Then, the role can be used without the collection `vbotka.freebsd`_.
+.. seealso::
 
-.. warning::
-
-   Make sure the role doesn't use collection ``vbotka.freebsd`` plugins before you start editing the
-   inclusions.
+   The special variable `ansible_role_name`_
 
 Other dependent roles
 """""""""""""""""""""
 
-There might be other dependent roles. See for example, the role `vbotka.freebsd.zfs`_ depends on the
-role `vbotka.freebsd.postinstall`_. The procedures, described in the previous chapter, apply also
-here. With minimal modifications, it is possible to use a standalone role, for example
-`vbotka.freebsd_zfs`_, depending on the role `vbotka.freebsd_postinstall`_.
+There are other dependent roles. For example, the role `vbotka.freebsd.zfs`_ depends on the role
+`vbotka.freebsd.postinstall`_. The dictionary ``fzfs_freebsd_postinstall``
+
+.. code-block:: yaml
+
+   fzfs_freebsd_postinstall:
+     vbotka.freebsd_zfs: vbotka.freebsd_postinstall
+     vbotka.freebsd.zfs: vbotka.freebsd.postinstall
+
+is used to select ``vbotka.freebsd_postinstall`` or ``vbotka.freebsd.postinstall`` depending on the
+role running in the collection or not. For example,
+
+.. code-block:: yaml
+
+   - name: "Sysctl: Include vbotka.freebsd.postinstall sysctl"
+     ansible.builtin.include_role:
+       name: "{{ fzfs_freebsd_postinstall[ansible_role_name] }}"
+       tasks_from: sysctl.yml
+       apply:
+         tags: fzfs_sysctl
+         vars:
+           fp_sysctl_conf: "{{ fzfs_sysctl_conf }}"
+           fp_sysctl_tuneables_warning: "{{ fzfs_sysctl_tuneables_warning | bool }}"
 
 Other roles
 ^^^^^^^^^^^
@@ -182,3 +197,4 @@ If you want to install other roles into this collection update the dictionary ``
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 
 .. _Migrating Roles to Roles in Collections on Galaxy: https://docs.ansible.com/ansible/devel/dev_guide/migrating_roles.html
+.. _ansible_role_name: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-ansible_role_name

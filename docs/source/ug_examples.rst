@@ -3,10 +3,10 @@
 Examples
 ********
 
-:001-003: Manage *iocage*
+:001-003: Manage iocage
 :010-020: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
 :030:     `Filter vbotka.freebsd.iocage`_
-:200-208: Ansible client
+:200-209: Ansible client
 :300:     `Module vbotka.freebsd.service`_
 :301:     `Module vbotka.freebsd.ucl`_
 :310-:    `Role vbotka.freebsd.postinstall`_
@@ -20,6 +20,8 @@ Examples
 :390-:    `Role vbotka.freebsd.poudriere`_
 :400-:    `Role vbotka.freebsd.zfs`_
 :410-:    `Role vbotka.freebsd.lib`_
+:420-:    `Role vbotka.freebsd.apache`_
+:430-:    `Role vbotka.freebsd.certificate`_
 :500-:    Infrastructure
 
 **Notes:**
@@ -74,6 +76,7 @@ Examples
    206 DHCP and fixed IP clients <examples/206/example.rst>
    207 DHCP, auto UUID, tags, class <examples/207/example.rst>
    208 DHCP, ansible-pull <examples/208/example.rst>
+   209 iocage pkglist <examples/209/example.rst>
 
 .. toctree::
    :maxdepth: 1
@@ -99,6 +102,11 @@ Examples
    examples/400/example.rst
    410 Include vars from conf.d <examples/410/example.rst>
    411 Include vars from nested dirs <examples/411/example.rst>
+   420 Configure Apache server <examples/420/example.rst>
+   421 Configure Apache server vhost <examples/421/example.rst>
+   422 Configure Apache server PHP <examples/422/example.rst>
+   423 Configure Apache server build <examples/423/example.rst>
+   430 Configure Apache server SSL <examples/430/example.rst>
 
 .. toctree::
    :maxdepth: 1
@@ -115,6 +123,8 @@ Examples
 .. _Inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 .. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage
 
+.. _Role vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache
+.. _Role vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate
 .. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _Role vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage

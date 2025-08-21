@@ -12,7 +12,7 @@
 
         - name: Create list of vars from files in directory conf.d
           ansible.builtin.import_role:
-            name: vbotka.ansible_lib
+            name: vbotka.freebsd.lib
             tasks_from: al_include_confd_vars_list
 
         - debug:
@@ -30,7 +30,7 @@
 
         - name: Create list of vars from files in directory conf.d
           ansible.builtin.import_role:
-            name: vbotka.ansible_lib
+            name: vbotka.freebsd.lib
             tasks_from: al_include_confd_vars_list
 
         - debug:

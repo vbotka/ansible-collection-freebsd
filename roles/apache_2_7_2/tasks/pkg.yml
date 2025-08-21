@@ -1,0 +1,6 @@
+---
+- name: "Pkg: Install FreeBSD packages"
+  ansible.builtin.import_tasks: pkg-freebsd.yml
+  when: ansible_os_family == 'FreeBSD'
+
+# EOF

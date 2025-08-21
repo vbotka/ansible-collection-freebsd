@@ -5,11 +5,11 @@ TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Key: Generate signing key /usr/local/etc/ssl/private/build.example.com-sk.key] ***
-ok: [build.example.com]
+changed: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Key: Generate signing crt /usr/local/etc/ssl/crt/build.example.com-sk.crt] ***
-ok: [build.example.com]
+changed: [build.example.com]
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+build.example.com          : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

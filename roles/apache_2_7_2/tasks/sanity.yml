@@ -1,0 +1,8 @@
+---
+- name: "Sanity: Enable apache_php_fpm if apache_php enabled."
+  when: apache_php_fpm | bool
+  ansible.builtin.assert:
+    that: apache_php | bool
+    fail_msg: "[ERR] apache_php must be enabled when apache_php_fpm is enabled."
+
+# EOF

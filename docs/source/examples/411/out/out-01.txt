@@ -2,23 +2,23 @@
 PLAY [Test vbotka.freebsd.lib al_include_dir_vars] *****************************
 
 TASK [Create dict of vars from nested directories al_vars] *********************
-included: vbotka.ansible_lib for iocage_04
+included: vbotka.freebsd.lib for iocage_04
 
-TASK [vbotka.ansible_lib : Al_include_dir_vars: Get list of directories.] ******
+TASK [vbotka.freebsd.lib : Al_include_dir_vars: Get list of directories.] ******
 ok: [iocage_04 -> localhost]
 
-TASK [vbotka.ansible_lib : Al_include_dir_vars: Set list of directories.] ******
+TASK [vbotka.freebsd.lib : Al_include_dir_vars: Set list of directories.] ******
 ok: [iocage_04]
 
-TASK [vbotka.ansible_lib : Al_include_dir_vars: Set dictionary of lists of files.] ***
+TASK [vbotka.freebsd.lib : Al_include_dir_vars: Set dictionary of lists of files.] ***
 ok: [iocage_04] => (item=team)
 
-TASK [vbotka.ansible_lib : Al_include_dir_vars: Get content of files.] *********
+TASK [vbotka.freebsd.lib : Al_include_dir_vars: Get content of files.] *********
 ok: [iocage_04] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'qa'])
 ok: [iocage_04] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'production'])
 ok: [iocage_04] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'devel'])
 
-TASK [vbotka.ansible_lib : Al_include_dir_vars: Create dictionary al_vars.] ****
+TASK [vbotka.freebsd.lib : Al_include_dir_vars: Create dictionary al_vars.] ****
 ok: [iocage_04] => (item=team)
 
 TASK [debug] *******************************************************************

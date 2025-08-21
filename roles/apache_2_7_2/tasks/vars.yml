@@ -1,0 +1,9 @@
+---
+- name: "Vars: Include OS vars."  # noqa: var-naming[no-role-prefix]
+  vars:
+    al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
+  ansible.builtin.include_role:
+    name: "{{ apache_ansible_lib[ansible_role_name] }}"
+    tasks_from: al_include_os_vars_path
+
+# EOF

@@ -43,6 +43,8 @@ Extending example :ref:`example_200`.
 .. index:: single: act_sudo; Example 202
 .. index:: single: act_dhclient; Example 202
 .. index:: single: act_rcconf; Example 202
+.. index:: single: pkglist; Example 202
+.. index:: single: pkgs.json; Example 202
 
 Use case
 ^^^^^^^^

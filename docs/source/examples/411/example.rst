@@ -23,7 +23,7 @@ Create a dictionary of variables from nested directories in ``al_vars``. Use the
      vars:
        al_include_dir_vars_dir: "{{ playbook_dir }}/al_vars"
      include_role:
-       name: vbotka.ansible_lib
+       name: vbotka.freebsd.lib
        tasks_from: al_include_dir_vars
 
 Tree

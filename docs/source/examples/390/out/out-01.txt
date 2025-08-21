@@ -7,13 +7,13 @@ ok: [build.example.com]
 TASK [vbotka.freebsd.poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
-        poudriere_role_version: 2.7.2
+        poudriere_role_version: 2.7.4
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
         ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.2
-        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_distribution_version: 14.3
+        ansible_distribution_release: 14.3-RELEASE
         ansible_python_version: 3.11.12
 
         freebsd_install_method: packages
@@ -80,7 +80,7 @@ ok: [build.example.com] =>
             mode: '0755'
             owner: root
 
-        poudriere_conf_zpool: zroot
+        poudriere_conf_zpool: iocage
         poudriere_conf_no_zfs: no
         poudriere_conf_zrootfs: /poudriere
         poudriere_conf_freebsd_host: https://download.freebsd.org

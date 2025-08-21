@@ -1,0 +1,9 @@
+www-2
+
+[www]
+www-2
+
+[www:vars]
+ansible_user=admin
+ansible_become=true
+ansible_python_interpreter=auto_silent
