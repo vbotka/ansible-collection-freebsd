@@ -27,6 +27,7 @@
 
     - name: Get pool.
       register: out_pool
+      changed_when: false
       ansible.builtin.command: iocage get -p
 
     - name: "Debug cmd_create debug={{ debug }}"
@@ -37,7 +38,7 @@
       loop_control:
         label: "{{ item.key }} {{ item.value.template }}"
 
-    - name: Create clones host_hostname
+    - name: Create clones host_hostname  # noqa: no-changed-when
       when: not dry_run | bool
       register: out_create
       ansible.builtin.command:
@@ -55,6 +56,7 @@
       ansible.builtin.file:
         state: directory
         path: "/{{ out_pool.stdout }}/iocage/jails/{{ jails[item.0.key] }}/root/{{ item.1.file }}"
+        mode: "0755"
       loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
       loop_control:
         label: "{{ item.0.key }} {{ item.1.file }}"
@@ -67,7 +69,7 @@
       loop_control:
         label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
 
-    - name: Add fstab
+    - name: Add fstab  # noqa: no-changed-when
       when: not dry_run | bool
       register: out_fstab
       ansible.builtin.command:
@@ -86,7 +88,7 @@
       ansible.builtin.debug:
         msg: "{{ cmd_start }}"
 
-    - name: Start clones host_hostname
+    - name: Start clones host_hostname  # noqa: no-changed-when
       when: not dry_run | bool
       register: out_start
       ansible.builtin.command:

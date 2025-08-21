@@ -1,0 +1,12 @@
+- name: Set dictionary my_galaxy
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Set dictionary my_galaxy  # noqa: run-once
+      delegate_to: localhost
+      run_once: true
+      ansible.builtin.include_vars:
+        file: ../galaxy.yml
+        name: my_galaxy

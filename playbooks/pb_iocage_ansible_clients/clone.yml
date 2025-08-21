@@ -21,13 +21,13 @@
     var: out_create
 
 # - name: Start clones
-#   register: out
+#   register: out_start
 #   vbotka.freebsd.iocage:
 #     state: started
 #     name: "{{ item }}"
 #   loop: "{{ start }}"
 
-- name: Start clones
+- name: Start clones  # noqa: no-changed-when
   register: out_start
   ansible.builtin.command:
     cmd: >
