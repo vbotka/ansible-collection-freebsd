@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+{% for item  in fp_ssh_conf %}
+Host {{ item.host }}
+{% for conf  in item.conf %}
+    {{ conf.key }} {{ conf.val }}
+{% endfor %}
+{% endfor %}
+
+# EOF

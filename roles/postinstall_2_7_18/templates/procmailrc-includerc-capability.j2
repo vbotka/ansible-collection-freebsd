@@ -1,0 +1,8 @@
+# Subject: capability; Capability: Send list of capabilities
+:0i
+* !^Subject:.*Re:
+* !^FROM_DAEMON
+* ^Subject:.*capability
+| (/usr/local/bin/formail -r -A "From: {{ item.par1 }}"; \
+  grep -h -r "^# Subject.*Capability" {{ item.par2 }}/*.rc ) \
+  | $SENDMAIL -oi -t
