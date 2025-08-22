@@ -12,8 +12,11 @@
 .. index:: single: loggen; Example 500
 .. index:: single: log server; Example 500
 .. index:: single: log client; Example 500
-.. index:: single: role vbotka.freebsd.postinstall; Example 500
+
+.. index:: single: postinstall; Example 500
 .. index:: single: vbotka.freebsd.postinstall; Example 500
+.. index:: single: role vbotka.freebsd.postinstall; Example 500
+
 .. index:: single: module vbotka.freebsd.service; Example 500
 .. index:: single: vbotka.freebsd.service; Example 500
 .. index:: single: module community.general.pkgng; Example 500

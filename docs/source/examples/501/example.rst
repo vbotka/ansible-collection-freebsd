@@ -10,12 +10,15 @@
 .. index:: single: postinstall; Example 501
 .. index:: single: role vbotka.freebsd.postinstall; Example 501
 .. index:: single: vbotka.freebsd.postinstall; Example 501
+
 .. index:: single: network; Example 501
 .. index:: single: role vbotka.freebsd.network; Example 501
 .. index:: single: vbotka.freebsd.network; Example 501
+
 .. index:: single: pf; Example 501
 .. index:: single: role vbotka.freebsd.pf; Example 501
 .. index:: single: vbotka.freebsd.pf; Example 501
+
 .. index:: single: ZFS; Example 501
 .. index:: single: role vbotka.freebsd.zfs; Example 501
 .. index:: single: vbotka.freebsd.zfs; Example 501
