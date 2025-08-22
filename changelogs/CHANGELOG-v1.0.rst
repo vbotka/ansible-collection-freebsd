@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade role poudriere 2.7.5
 
 
 0.7.20
