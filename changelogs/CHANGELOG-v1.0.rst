@@ -5,6 +5,20 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.22
+======
+
+Release Summary
+---------------
+Upgrade role poudriere.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 0.7.21
 ======
 
