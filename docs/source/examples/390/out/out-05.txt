@@ -5,17 +5,14 @@ TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Cert: Generate private key /usr/local/etc/ssl/private/build.example.com.key] ***
-changed: [build.example.com]
+ok: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Cert: Generate csr /usr/local/etc/ssl/csr/build.example.com.csr] ***
-changed: [build.example.com]
+ok: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Cert: Generate crt /usr/local/etc/ssl/certs/build.example.com.crt] ***
-fatal: [build.example.com]: FAILED! => 
-    changed: false
-    msg: The directory /usr/local/etc/ssl/certs does not exist or the file is not a directory
-    name: /usr/local/etc/ssl/certs
+ok: [build.example.com]
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=3    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+build.example.com          : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

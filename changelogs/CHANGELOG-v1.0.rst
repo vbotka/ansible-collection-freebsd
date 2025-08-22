@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Upgrade role poudriere.
 
 Major Changes
 -------------
@@ -17,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Upgrade role poudriere 2.7.5
+* Update docs ug example 390.
 
 
 0.7.20

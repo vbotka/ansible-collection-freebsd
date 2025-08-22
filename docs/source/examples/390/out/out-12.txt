@@ -43,34 +43,7 @@
 ├── amd64.enabled
 │   ├── All
 │   ├── ansible -> /usr/local/etc/poudriere.d/pkglist/amd64/ansible
-│   ├── apache -> /usr/local/etc/poudriere.d/pkglist/amd64/apache
-│   ├── apcups -> /usr/local/etc/poudriere.d/pkglist/amd64/apcups
-│   ├── devel -> /usr/local/etc/poudriere.d/pkglist/amd64/devel
-│   ├── dhcp -> /usr/local/etc/poudriere.d/pkglist/amd64/dhcp
-│   ├── dns -> /usr/local/etc/poudriere.d/pkglist/amd64/dns
-│   ├── hostap -> /usr/local/etc/poudriere.d/pkglist/amd64/hostap
-│   ├── jail -> /usr/local/etc/poudriere.d/pkglist/amd64/jail
-│   ├── mailserver -> /usr/local/etc/poudriere.d/pkglist/amd64/mailserver
-│   ├── mailserver_sieve -> /usr/local/etc/poudriere.d/pkglist/amd64/mailserver_sieve
-│   ├── mailserver_spamassasin -> /usr/local/etc/poudriere.d/pkglist/amd64/mailserver_spamassasin
-│   ├── mcrypt -> /usr/local/etc/poudriere.d/pkglist/amd64/mcrypt
-│   ├── minimal -> /usr/local/etc/poudriere.d/pkglist/amd64/minimal
-│   ├── mysql -> /usr/local/etc/poudriere.d/pkglist/amd64/mysql
-│   ├── mysql_extra -> /usr/local/etc/poudriere.d/pkglist/amd64/mysql_extra
-│   ├── nagios -> /usr/local/etc/poudriere.d/pkglist/amd64/nagios
-│   ├── nginx -> /usr/local/etc/poudriere.d/pkglist/amd64/nginx
-│   ├── pf -> /usr/local/etc/poudriere.d/pkglist/amd64/pf
-│   ├── php -> /usr/local/etc/poudriere.d/pkglist/amd64/php
-│   ├── postinstall -> /usr/local/etc/poudriere.d/pkglist/amd64/postinstall
-│   ├── poudriere -> /usr/local/etc/poudriere.d/pkglist/amd64/poudriere
-│   ├── procmail -> /usr/local/etc/poudriere.d/pkglist/amd64/procmail
-│   ├── python -> /usr/local/etc/poudriere.d/pkglist/amd64/python
-│   ├── rsnapshot -> /usr/local/etc/poudriere.d/pkglist/amd64/rsnapshot
-│   ├── security -> /usr/local/etc/poudriere.d/pkglist/amd64/security
-│   ├── smart -> /usr/local/etc/poudriere.d/pkglist/amd64/smart
-│   ├── snmpd -> /usr/local/etc/poudriere.d/pkglist/amd64/snmpd
-│   ├── ssmtp -> /usr/local/etc/poudriere.d/pkglist/amd64/ssmtp
-│   └── wpa_supplicant -> /usr/local/etc/poudriere.d/pkglist/amd64/wpa_supplicant
+│   └── minimal -> /usr/local/etc/poudriere.d/pkglist/amd64/minimal
 ├── arm
 │   ├── All
 │   ├── ansible
@@ -80,4 +53,4 @@
     ├── ansible -> /usr/local/etc/poudriere.d/pkglist/arm/ansible
     └── minimal -> /usr/local/etc/poudriere.d/pkglist/arm/minimal
 
-5 directories, 76 files
+5 directories, 49 files

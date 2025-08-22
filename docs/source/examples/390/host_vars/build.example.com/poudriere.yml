@@ -7,6 +7,12 @@ poudriere_cert_key: "{{ poudriere_ssl_dir }}/private/{{ poudriere_cert_cn }}.key
 poudriere_cert_csr: "{{ poudriere_ssl_dir }}/csr/{{ poudriere_cert_cn }}.csr"
 poudriere_cert_path: "{{ poudriere_ssl_dir }}/certs/{{ poudriere_cert_cn }}.crt"
 
+poudriere_ssl_dirs:
+  - "{{ poudriere_ssl_dir }}"
+  - "{{ poudriere_ssl_dir }}/csr"
+  - "{{ poudriere_ssl_dir }}/crt"
+  - "{{ poudriere_ssl_dir }}/certs"
+
 # key
 poudriere_key_crt: "{{ poudriere_ssl_dir }}/crt/{{ poudriere_cert_cn }}-sk.crt"
 poudriere_conf_pkg_repo_signing_key: "{{ poudriere_ssl_dir }}/private/{{ poudriere_cert_cn }}-sk.key"
