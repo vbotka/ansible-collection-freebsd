@@ -10,13 +10,13 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Upgrade role poudriere.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Upgrade role postinstall 2.7.18
 
 
 0.7.21
