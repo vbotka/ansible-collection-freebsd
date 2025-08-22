@@ -67,6 +67,7 @@ pkg_dict_amd64_dict:
     - ports-mgmt/portmaster
     - ports-mgmt/portupgrade
     - net/rsync
+    - security/sudo
     - ftp/wget
   mysql:
     - databases/mysql{{ bsd_mysql_version }}-client
@@ -162,6 +163,8 @@ pkg_dict_amd64_dict:
     - net-mgmt/py-pysnmp
   ssmtp:
     - mail/ssmtp
+  syslog-ng:
+    - sysutils/syslog-ng
   wpa_supplicant:
     - security/wpa_supplicant
   yazvs:
