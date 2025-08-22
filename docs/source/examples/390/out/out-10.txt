@@ -1,20 +1,14 @@
 /usr/local/etc/ssl/
-├── cert.pem
-├── cert.pem.sample -> ../../share/certs/ca-root-nss.crt
 ├── certs
-│   ├── build.example.com.crt
-│   ├── mail.g2.netng.org.crt
-│   └── www.test_23.g2.netng.org.crt
+│   └── build.example.com.crt
 ├── crt
-│   └── build.example.com-sk.crt
+│   ├── build.example.com-sk.crt
+│   └── poudriere-sk.crt
 ├── csr
-│   ├── build.example.com.csr
-│   ├── mail.g2.netng.org.csr
-│   └── www.test_23.g2.netng.org.csr
+│   └── build.example.com.csr
 └── private
     ├── build.example.com-sk.key
     ├── build.example.com.key
-    ├── mail.g2.netng.org.key
-    └── www.test_23.g2.netng.org.key
+    └── poudriere-sk.key
 
-5 directories, 13 files
+5 directories, 7 files

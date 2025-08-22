@@ -1,12 +1,10 @@
 
 PLAY [Role vbotka.freebsd.poudriere] *******************************************
 
-TASK [vbotka.freebsd.poudriere : Cert: Generate crt /usr/local/etc/ssl/certs/build.example.com.crt] ***
-fatal: [build.example.com]: FAILED! => 
-    changed: false
-    msg: The directory /usr/local/etc/ssl/certs does not exist or the file is not a directory
-    name: /usr/local/etc/ssl/certs
+TASK [vbotka.freebsd.poudriere : Pkglists: Create package lists.] **************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudriere/tasks/pkglist.yml for build.example.com => (item=amd64)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudriere/tasks/pkglist.yml for build.example.com => (item=arm)
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=9    changed=0    unreachable=0    failed=1    skipped=5    rescued=0    ignored=0   
+build.example.com          : ok=25   changed=0    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0   
 

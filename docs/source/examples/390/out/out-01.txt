@@ -7,7 +7,7 @@ ok: [build.example.com]
 TASK [vbotka.freebsd.poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
-        poudriere_role_version: 2.7.4
+        poudriere_role_version: 2.7.5
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
@@ -57,8 +57,9 @@ ok: [build.example.com] =>
         poudriere_ssl_private_key_mode: 0600
         poudriere_ssl_dirs:
           - /usr/local/etc/ssl
-          - /usr/local/etc/ssl/crt
           - /usr/local/etc/ssl/csr
+          - /usr/local/etc/ssl/crt
+          - /usr/local/etc/ssl/certs
 
         poudriere_key_size: 4096
         poudriere_key_type: RSA
@@ -112,7 +113,7 @@ ok: [build.example.com] =>
           USE_COLORS: 'yes'
           USE_PORTLINT: 'no'
           USE_TMPFS: 'no'
-          ZPOOL: zroot
+          ZPOOL: iocage
           ZROOTFS: /poudriere
 
         poudriere_pkglist_dir: /usr/local/etc/poudriere.d/pkglist
