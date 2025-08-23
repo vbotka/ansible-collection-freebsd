@@ -327,8 +327,7 @@ Sanity iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
-                                          -t freebsd_iocage_sanity
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-09.txt
    :language: yaml

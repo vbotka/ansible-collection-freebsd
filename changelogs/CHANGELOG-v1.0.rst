@@ -18,6 +18,7 @@ Minor Changes
 -------------
 * Upgrade role postinstall 2.7.18
 * Upgrade role packages 2.7.3
+* Update docs.
 
 
 0.7.21
