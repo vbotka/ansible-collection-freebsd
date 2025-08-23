@@ -10,12 +10,15 @@
 .. index:: single: postinstall; Example 501
 .. index:: single: role vbotka.freebsd.postinstall; Example 501
 .. index:: single: vbotka.freebsd.postinstall; Example 501
+
 .. index:: single: network; Example 501
 .. index:: single: role vbotka.freebsd.network; Example 501
 .. index:: single: vbotka.freebsd.network; Example 501
+
 .. index:: single: pf; Example 501
 .. index:: single: role vbotka.freebsd.pf; Example 501
 .. index:: single: vbotka.freebsd.pf; Example 501
+
 .. index:: single: ZFS; Example 501
 .. index:: single: role vbotka.freebsd.zfs; Example 501
 .. index:: single: vbotka.freebsd.zfs; Example 501
@@ -324,8 +327,7 @@ Sanity iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
-                                          -t freebsd_iocage_sanity
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-09.txt
    :language: yaml

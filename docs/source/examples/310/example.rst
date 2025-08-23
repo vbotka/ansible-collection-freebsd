@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: postinstall; Example 310
+.. index:: single: vbotka.freebsd.postinstall; Example 310
 .. index:: single: role vbotka.freebsd.postinstall; Example 310
 .. index:: single: audit ansible_client; Example 310
 .. index:: single: display_skipped_hosts; Example 310

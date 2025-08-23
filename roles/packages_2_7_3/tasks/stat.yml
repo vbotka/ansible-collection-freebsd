@@ -6,7 +6,7 @@
     - name: "Stat: Get pkg audit"
       register: pkg_audit_out
       changed_when: false
-      failed_when: pkg_audit_out.rc > 1 # rc=1 if pkg_count != 0
+      failed_when: pkg_audit_out.rc > 1  # rc=1 if pkg_count != 0
       ansible.builtin.command: pkg audit -q -F -Rjson-compact
 
     - name: "Stat: Debug pkg audit pkg_debug={{ pkg_debug }}"

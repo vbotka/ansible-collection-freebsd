@@ -22,26 +22,26 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Variables
 
-See the defaults and examples in vars.
+Look at the defaults and examples in vars.
 
 
 ## Workflow
 
-1) Change shell on the remote host to /bin/sh if necessary
+1) Change the shell on the remote host to /bin/sh if necessary
 
-```bash
+```sh
 shell> ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
 2) Install the role and collection
 
-```bash
+```sh
 shell> ansible-galaxy role install vbotka.freebsd_packages
 ```
 
 Install the collection if necessary
 
-```bash
+```sh
 shell> ansible-galaxy collection install community.general
 ```
 
@@ -63,8 +63,7 @@ pkgdict_i386.yml
 pkgdict_versions.yml
 ```
 
-See *tasks/vars.yml*. The fact *ansible_architecture* is used to
-automatically select the correct list of dictionaries *pkgdict_*
+See *tasks/vars.yml*. The fact *ansible_architecture* is used to automatically select the correct list of dictionaries *pkgdict_*
 
 See *tasks/pkg_install* and *tasks/delete* how the variables are used.
 
@@ -109,8 +108,7 @@ Display variables
 shell> ansible-playbook freebsd-packages.yml -e pkg_debug=true -t pkg_debug
 ```
 
-Configure repositories. Set pkg_repos_conf_clean=true to delete repos not listed
-in pkg_repos_conf
+Configure repositories. Set pkg_repos_conf_clean=true to delete repos not listed in pkg_repos_conf
 
 ```bash
 shell> ansible-playbook freebsd-packages.yml -t pkg_conf
@@ -136,7 +134,7 @@ shell> ansible-playbook freebsd-packages.yml
 
 Hint. There are lot of skipped tasks. To make the output of the playbook easier to read:
 
-* Use callback plugin community.general.yaml
+* Configure *callback_result_format=yaml*, or set the environment *ANSIBLE_CALLBACK_RESULT_FORMAT=yaml*
 
 * Disable skipped hosts and display debug
 
@@ -148,11 +146,10 @@ shell> ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ansible-playbook freebsd-packages.yml
 
 ## Upgrade packages
 
-Since community.general 9.3.0 it is possible to upgrade
-*(state=latest)* packages in the form “category/port” aka
-“pkg-origin”. You have to disable globs *(use_globs=false)* if the
-form "pkg-origin" is used. See the parameter
-[use_globs](https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs)
+Since community.general 9.3.0 it is possible to upgrade *(state=latest)* packages in the form *category/port* aka *pkg-origin*. Disable globs *(use_globs=false)* if the
+form *pkg-origin* is used.
+
+See the parameter [use_globs](https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs)
 
 ```bash
 shell> ansible-playbook freebsd-packages.yml -e pkg_state=latest -e pkg_use_globs=false

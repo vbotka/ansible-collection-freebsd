@@ -5,6 +5,23 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.22
+======
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Upgrade role postinstall 2.7.18
+* Upgrade role packages 2.7.3
+* Update docs.
+
+
 0.7.21
 ======
 

@@ -32,7 +32,7 @@ Examples
 * Most examples comprise ``batch.sh`` that runs the commands and creates the output.
 
 * Most plays in ``batch.sh`` are idempotent. If a play has already been run, the output of such a
-  play may show ``ok`` instead of expected ``changed``.
+  play may show status ``ok`` instead of expected ``changed``.
 
 * The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
 
