@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Update docs ug examples: 309
+* Upgrade role poudriere 2.7.6
 
 
 0.7.22
