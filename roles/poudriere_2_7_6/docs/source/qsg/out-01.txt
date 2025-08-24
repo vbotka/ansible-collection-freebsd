@@ -1,10 +1,10 @@
 
-PLAY [Role vbotka.freebsd.poudriere] *******************************************
+PLAY [build.example.com] *******************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.poudriere : Poudriere Debug.] *****************************
+TASK [vbotka.freebsd_poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
         poudriere_role_version: 2.7.6
@@ -117,8 +117,8 @@ ok: [build.example.com] =>
           ZROOTFS: /poudriere
 
         poudriere_pkglist_dir: /usr/local/etc/poudriere.d/pkglist
-        poudriere_pkglist_all: True
-        poudriere_pkg_arch: [amd64, arm]
+        poudriere_pkglist_all: False
+        poudriere_pkg_arch: [amd64]
 
         poudriere_make_file: /usr/local/etc/poudriere.d/make.conf
         poudriere_make_conf:

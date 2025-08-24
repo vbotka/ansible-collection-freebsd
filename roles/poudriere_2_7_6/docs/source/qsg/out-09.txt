@@ -1,4 +1,4 @@
-/usr/local/etc/poudriere.d/pkglist
+/usr/local/etc/poudriere.d/pkglist/
 ├── amd64
 │   ├── All
 │   ├── ansible
