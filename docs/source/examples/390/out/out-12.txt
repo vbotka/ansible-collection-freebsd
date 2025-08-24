@@ -47,10 +47,43 @@
 ├── arm
 │   ├── All
 │   ├── ansible
-│   └── minimal
+│   ├── apache
+│   ├── apcups
+│   ├── devel
+│   ├── dhcp
+│   ├── dns
+│   ├── hostap
+│   ├── integrity
+│   ├── jail
+│   ├── joomla
+│   ├── leutils
+│   ├── linux
+│   ├── mailserver
+│   ├── mailserver_sieve
+│   ├── mailserver_spamassasin
+│   ├── mcrypt
+│   ├── minimal
+│   ├── mysql
+│   ├── mysql_extra
+│   ├── nginx
+│   ├── pf
+│   ├── php
+│   ├── postinstall
+│   ├── poudriere
+│   ├── procmail
+│   ├── python
+│   ├── roundcube
+│   ├── roundcube_aspell
+│   ├── rsnapshot
+│   ├── security
+│   ├── smart
+│   ├── snmpd
+│   ├── ssmtp
+│   ├── wpa_supplicant
+│   └── yazvs
 └── arm.enabled
     ├── All
     ├── ansible -> /usr/local/etc/poudriere.d/pkglist/arm/ansible
     └── minimal -> /usr/local/etc/poudriere.d/pkglist/arm/minimal
 
-5 directories, 49 files
+5 directories, 82 files

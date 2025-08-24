@@ -11,8 +11,8 @@ TASK [vbotka.freebsd.poudriere : Cert: Generate csr /usr/local/etc/ssl/csr/build
 ok: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Cert: Generate crt /usr/local/etc/ssl/certs/build.example.com.crt] ***
-ok: [build.example.com]
+changed: [build.example.com]
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+build.example.com          : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
