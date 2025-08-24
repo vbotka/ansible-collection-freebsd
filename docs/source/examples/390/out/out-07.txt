@@ -16,12 +16,12 @@ ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64)
 ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64.enabled)
 
 TASK [vbotka.freebsd.poudriere : Pkglist: Create packages lists in /usr/local/etc/poudriere.d/pkglist/amd64] ***
-changed: [build.example.com] => (item=ansible)
+ok: [build.example.com] => (item=ansible)
 changed: [build.example.com] => (item=minimal)
 
 TASK [vbotka.freebsd.poudriere : Pkglist: Link enabled lists to /usr/local/etc/poudriere.d/pkglist/amd64.enabled] ***
-changed: [build.example.com] => (item=ansible)
-changed: [build.example.com] => (item=minimal)
+ok: [build.example.com] => (item=ansible)
+ok: [build.example.com] => (item=minimal)
 
 TASK [vbotka.freebsd.poudriere : Pkglist: Create lists of all packages.] *******
 changed: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/amd64/All)
@@ -35,17 +35,17 @@ ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm)
 ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm.enabled)
 
 TASK [vbotka.freebsd.poudriere : Pkglist: Create packages lists in /usr/local/etc/poudriere.d/pkglist/arm] ***
-changed: [build.example.com] => (item=ansible)
-changed: [build.example.com] => (item=minimal)
+ok: [build.example.com] => (item=ansible)
+ok: [build.example.com] => (item=minimal)
 
 TASK [vbotka.freebsd.poudriere : Pkglist: Link enabled lists to /usr/local/etc/poudriere.d/pkglist/arm.enabled] ***
-changed: [build.example.com] => (item=ansible)
-changed: [build.example.com] => (item=minimal)
+ok: [build.example.com] => (item=ansible)
+ok: [build.example.com] => (item=minimal)
 
 TASK [vbotka.freebsd.poudriere : Pkglist: Create lists of all packages.] *******
-changed: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm/All)
-changed: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm.enabled/All)
+ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm/All)
+ok: [build.example.com] => (item=/usr/local/etc/poudriere.d/pkglist/arm.enabled/All)
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=13   changed=6    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+build.example.com          : ok=13   changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 
