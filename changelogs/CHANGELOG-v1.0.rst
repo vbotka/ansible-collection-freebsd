@@ -5,6 +5,19 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.7.24
+======
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 0.7.23
 ======
 Upgrade role poudriere 2.7.6
