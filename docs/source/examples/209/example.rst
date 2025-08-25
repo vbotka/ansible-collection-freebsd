@@ -116,6 +116,13 @@ group_vars
    :language: yaml
    :caption:
 
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_04/iocage.yml
+   :language: yaml
+   :caption:
+
 Playbook pb-pkglist.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 

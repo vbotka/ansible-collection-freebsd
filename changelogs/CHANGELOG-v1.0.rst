@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs ug example 209.
 
 
 0.7.23
