@@ -17,7 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Upgrade role packages 2.7.4
-* Update docs ug example 209.
+* Update docs ug examples 209, 320
 
 
 0.7.23
