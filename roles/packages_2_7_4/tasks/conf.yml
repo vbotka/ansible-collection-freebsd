@@ -16,6 +16,7 @@
     msg: "{{ '{}'.format(msg) }}"
 
 - name: "Conf: Configure /etc/pkg/FreeBSD.conf"
+  when: pkg_default_repo_conf | length > 0
   ansible.builtin.template:
     src: "{{ pkg_default_repo_template }}"
     dest: /etc/pkg/FreeBSD.conf
@@ -23,9 +24,6 @@
     group: "{{ pkg_group }}"
     mode: "0644"
     backup: "{{ pkg_backup_conf }}"
-  loop: "{{ pkg_default_repo_conf }}"
-  loop_control:
-    label: "{{ item.name }}"
 
 - name: Create repos in /usr/local/etc/pkg/repos/
   when: pkg_repos_conf | length > 0
@@ -60,14 +58,11 @@
       ansible.builtin.debug:
         var: out
 
-    - name: "Conf: Create my_repos list"
-      ansible.builtin.set_fact:
-        my_repos: "{{ out.results | map(attribute='dest') }}"
-
-    - name: "Conf: Debug my_repos pkg_debug={{ pkg_debug }}"
+    - name: "Conf: Debug list repos pkg_debug={{ pkg_debug }}"
       when: pkg_debug | bool
       ansible.builtin.debug:
-        var: my_repos
+        msg: |
+          {{ out.results | map(attribute='dest') }}
 
 - name: Remove repos in /usr/local/etc/pkg/repos/ not listed in pkg_repos_conf
   when: pkg_repos_conf_clean | bool

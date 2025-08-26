@@ -1,0 +1,8 @@
+---
+# Status
+pkg_stat: false
+pkg_audit_enable: false
+pkg_audit: "{{ dict(ansible_play_hosts |
+                    zip(ansible_play_hosts |
+                        map('extract', hostvars, ['pkg_audit_out', 'stdout']) |
+                        map('from_yaml'))) }}"

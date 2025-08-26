@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade role packages 2.7.4
 * Update docs ug example 209.
 
 

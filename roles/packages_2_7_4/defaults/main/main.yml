@@ -1,0 +1,18 @@
+---
+pkg_role_version: 2.7.4
+
+# requirements >=
+pkg_version_community_general: 9.3.0
+
+# Create backups of the configuration files if changed.
+# pkg_backup_conf: true
+pkg_backup_conf: false
+
+# Print facts and lists of variables.
+# pkg_debug: true
+pkg_debug: false
+pkg_debug2: false
+
+# Owner and group of the configuration files.
+pkg_owner: root
+pkg_group: wheel
