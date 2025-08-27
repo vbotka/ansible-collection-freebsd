@@ -10,12 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Upgrade role packages 2.7.4
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Add docs ug example 321
 * Upgrade role packages 2.7.4
 * Update docs ug examples 209, 320
 
