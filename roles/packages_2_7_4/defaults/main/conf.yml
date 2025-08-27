@@ -1,0 +1,29 @@
+---
+# /etc/pkg/FreeBSD.conf
+pkg_default_repo_template: repo.j2
+pkg_default_repo_conf: []
+# - "{{ pkg_default_repo }}"
+#
+# pkg_default_repo_enabled: "yes"
+# pkg_default_repo_url: pkg+http://pkg.FreeBSD.org/${ABI}/quarterly
+# pkg_default_repo:
+#   name: FreeBSD
+#   conf:
+#     - {key: url, value: '"{{ pkg_default_repo_url }}"'}
+#     - {key: mirror_type, value: '"srv"'}
+#     - {key: signature_type, value: '"fingerprints"'}
+#     - {key: fingerprints, value: '"/usr/share/keys/pkg"'}
+#     - {key: enabled, value: "{{ pkg_default_repo_enabled }}"}
+
+# /usr/local/etc/pkg/repos
+pkg_repos_template: repos.j2
+pkg_repos_conf: []
+# - "{{ pkg_default_repo }}"
+#
+# pkg_default_repo:
+#   name: FreeBSD
+#   conf:
+#     - {key: enabled, value: "no"}
+#
+# Remove repos not listed in pkg_repos_conf
+pkg_repos_conf_clean: false

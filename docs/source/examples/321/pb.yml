@@ -1,0 +1,6 @@
+- name: Role vbotka.freebsd.packages
+  hosts: iocage
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.packages

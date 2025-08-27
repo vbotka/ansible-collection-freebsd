@@ -1,0 +1,25 @@
+
+PLAY [Role vbotka.freebsd.packages] ********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.packages : Keys: Create directories.] *********************
+ok: [iocage_04] => (item=/usr/local/etc/ssl/crt)
+
+TASK [vbotka.freebsd.packages : Keys: Copy keys.] ******************************
+ok: [iocage_04] => (item=/usr/local/etc/ssl/crt/build.example.com-sk.crt)
+
+TASK [vbotka.freebsd.packages : Conf: Create directories] **********************
+ok: [iocage_04] => (item=/usr/local/etc/pkg)
+ok: [iocage_04] => (item=/usr/local/etc/pkg/repos)
+
+TASK [vbotka.freebsd.packages : Conf: Configure /usr/local/etc/pkg/repos] ******
+ok: [iocage_04] => (item=build)
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=6    changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+

@@ -1,0 +1,35 @@
+---
+- name: "Keys: Debug pkg_debug={{ pkg_debug }}"
+  when: pkg_debug | bool
+  vars:
+    msg: |-
+      pkg_keys:
+        {{ pkg_keys | to_nice_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: Copy keys.
+  when: pkg_keys | length > 0
+  block:
+
+    - name: "Keys: Create directories."
+      ansible.builtin.file:
+        state: directory
+        path: "{{ item }}"
+        owner: "{{ pkg_owner }}"
+        group: "{{ pkg_group }}"
+        mode: "0755"
+      loop: "{{ pkg_keys.keys() }}"
+
+    - name: "Keys: Copy keys."
+      ansible.builtin.copy:
+        src: "{{ item.1 }}"
+        dest: "{{ item.0.key }}"
+        owner: "{{ pkg_owner }}"
+        group: "{{ pkg_group }}"
+        mode: "0644"
+      loop: "{{ pkg_keys | dict2items | subelements('value') }}"
+      loop_control:
+        label: "{{ item.0.key }}/{{ item.1 }}"
+
+# EOF
