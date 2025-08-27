@@ -1,7 +1,7 @@
 .. _example_320:
 
-320 Role vbotka.freebsd.packages
---------------------------------
+320 Install and audit packages
+------------------------------
 
 .. contents::
    :local:
@@ -15,7 +15,7 @@
 Use case
 ^^^^^^^^
 
-Using the role `vbotka.freebsd.packages`_ to install packages in Ansible clients. Audit installed
+Use the role `vbotka.freebsd.packages`_ to install packages in Ansible clients. Audit installed
 packages.
 
 Tree
@@ -236,7 +236,7 @@ There are no installed packages with known vulnerabilities
    (env) > ansible-playbook pb-test-01.yml -i hosts \
                                            -t pkg_stat \
                                            -e pkg_stat=true -e pkg_audit_enable=true \
-					   -e pkg_debug=true
+                                           -e pkg_debug=true
 
 .. literalinclude:: out/out-07.txt
    :language: yaml

@@ -91,6 +91,7 @@ Examples
 
    310 Configure and audit Ansible clients <examples/310/example.rst>
    320 Install and audit packages <examples/320/example.rst>
+   321 Create package repo configuration <examples/321/example.rst>
    330 Clone jails and create inventory <examples/330/example.rst>
    340 Install and configure lighttpd <examples/340/example.rst>
    350 Install and configure rsnapshot <examples/350/example.rst>
