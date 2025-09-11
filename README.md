@@ -21,8 +21,9 @@ plugins:
 * [module vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
 * [module vbotka.freebsd.service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/) - Control or list system services.
 * [module vbotka.freebsd.ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/) - CRUD-like interface for managing UCL files.
-* [filter vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - Parse iocage lists.
 * [inventory vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
+* [filter vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - Parse iocage lists.
+* [lookup vbotka.freebsd.galaxy_info](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/lookup/galaxy_info/) - Get galaxy.yml meta data.
 
 roles:
 
