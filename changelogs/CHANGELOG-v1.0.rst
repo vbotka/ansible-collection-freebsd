@@ -5,7 +5,7 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-0.7.25
+0.8.0
 ======
 
 Release Summary
@@ -13,9 +13,13 @@ Release Summary
 
 Major Changes
 -------------
+* Add lookup plugin galaxy_info
+
 
 Minor Changes
 -------------
+* Update docs ug plugins lookup galaxy_info
+* Add example 040.
 
 
 0.7.24

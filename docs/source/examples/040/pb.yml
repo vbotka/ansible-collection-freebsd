@@ -1,0 +1,20 @@
+- name: Test lookup vbotka.freebsd.galaxy_info
+  hosts: iocage
+
+  tasks:
+    
+    - debug:
+        msg: |
+          type: {{ info | type_debug }}
+          info:
+            {{ info | to_nice_yaml }}
+      vars:
+        info: "{{ lookup('vbotka.freebsd.galaxy_info', 'all') }}"
+    
+    - debug:
+        msg: |
+          type: {{ info | type_debug }}
+          authors: {{ info.0 }}
+          version: {{ info.1 }}
+      vars:
+        info: "{{ lookup('vbotka.freebsd.galaxy_info', 'authors', 'version') }}"

@@ -11,3 +11,4 @@ Plugins
    module ucl <ug_module_ucl>
    inventory iocage <ug_inventory_iocage>
    filter iocage <ug_filter_iocage>
+   lookup galaxy_info <ug_lookup_galaxy_info>

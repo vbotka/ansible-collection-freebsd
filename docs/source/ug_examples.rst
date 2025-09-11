@@ -3,26 +3,25 @@
 Examples
 ********
 
-:001-003: Manage iocage
-:010-020: `Module vbotka.freebsd.iocage`_ and `Inventory vbotka.freebsd.iocage`_
-:030:     `Filter vbotka.freebsd.iocage`_
-:200-209: Ansible client
-:300:     `Module vbotka.freebsd.service`_
-:301:     `Module vbotka.freebsd.ucl`_
-:310-:    `Role vbotka.freebsd.postinstall`_
-:320-:    `Role vbotka.freebsd.packages`_
-:330-:    `Role vbotka.freebsd.iocage`_
-:340-:    `Role vbotka.freebsd.config_light`_
-:350-:    `Role vbotka.freebsd.rsnapshot`_
-:360-:    `Role vbotka.freebsd.network`_
-:370-:    `Role vbotka.freebsd.pf`_
-:380-:    `Role vbotka.freebsd.custom_image`_
-:390-:    `Role vbotka.freebsd.poudriere`_
-:400-:    `Role vbotka.freebsd.zfs`_
-:410-:    `Role vbotka.freebsd.lib`_
-:420-:    `Role vbotka.freebsd.apache`_
-:430-:    `Role vbotka.freebsd.certificate`_
-:500-:    Infrastructure
+:001-: Manage iocage
+:010-: `Module`_, `Inventory`_ and `Filter`_ ``vbotka.freebsd.iocage``
+:040-: Other plugins
+:200-: Ansible client
+:300-: Modules
+:310-: `Role vbotka.freebsd.postinstall`_
+:320-: `Role vbotka.freebsd.packages`_
+:330-: `Role vbotka.freebsd.iocage`_
+:340-: `Role vbotka.freebsd.config_light`_
+:350-: `Role vbotka.freebsd.rsnapshot`_
+:360-: `Role vbotka.freebsd.network`_
+:370-: `Role vbotka.freebsd.pf`_
+:380-: `Role vbotka.freebsd.custom_image`_
+:390-: `Role vbotka.freebsd.poudriere`_
+:400-: `Role vbotka.freebsd.zfs`_
+:410-: `Role vbotka.freebsd.lib`_
+:420-: `Role vbotka.freebsd.apache`_
+:430-: `Role vbotka.freebsd.certificate`_
+:500-: Infrastructure
 
 **Notes:**
 
@@ -66,6 +65,12 @@ Examples
 
 .. toctree::
    :maxdepth: 1
+   :caption: Plugins
+
+   examples/040/example.rst
+
+.. toctree::
+   :maxdepth: 1
    :caption: Ansible client
 
    200 iocage templates <examples/200/example.rst>
@@ -80,7 +85,7 @@ Examples
 
 .. toctree::
    :maxdepth: 1
-   :caption: Ansible plugins
+   :caption: Modules
 
    examples/300/example.rst
    examples/301/example.rst
@@ -117,12 +122,13 @@ Examples
    examples/501/example.rst
 
 
-.. _Module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
+.. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
+.. _Inventory: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
+.. _Filter: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage
+
 .. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service
 .. _Module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl
 
-.. _Inventory vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
-.. _Filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage
 
 .. _Role vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache
 .. _Role vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate

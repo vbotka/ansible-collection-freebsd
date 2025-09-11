@@ -1,0 +1,60 @@
+
+PLAY [Test lookup vbotka.freebsd.galaxy_info] **********************************
+
+TASK [debug] *******************************************************************
+ok: [iocage_04] => 
+    msg: |-
+        type: dict
+        info:
+          authors:
+        - Vladimir Botka <vbotka@gmail.com>
+        build_ignore:
+        - TODO
+        - ATTIC
+        - dest
+        - files/pk_admins.txt.san
+        - playbooks/sensitive
+        - roles/*/docs
+        - .ansible
+        - .ansible-lint
+        - .ansible-lint.local
+        - .git
+        - .github
+        - .gitignore
+        - .readthedocs.yaml
+        - .yamllint
+        - '*.orig'
+        - '*.tar.gz'
+        - '*~'
+        - \#*
+        dependencies:
+            ansible.posix: '*'
+            ansible.utils: '*'
+            community.general: '*'
+        description: FreeBSD collection.
+        documentation: https://ansible-collection-freebsd.readthedocs.io/
+        homepage: https://github.com/vbotka/ansible-collection-freebsd/wiki/
+        issues: https://github.com/vbotka/ansible-collection-freebsd/issues/
+        license:
+        - BSD-2-Clause
+        - GPL-3.0-or-later
+        name: freebsd
+        namespace: vbotka
+        readme: README.md
+        repository: https://github.com/vbotka/ansible-collection-freebsd/
+        tags:
+        - freebsd
+        - iocage
+        - infrastructure
+        version: 0.7.25
+
+TASK [debug] *******************************************************************
+ok: [iocage_04] => 
+    msg: |-
+        type: list
+        authors: ['Vladimir Botka <vbotka@gmail.com>']
+        version: 0.7.25
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
