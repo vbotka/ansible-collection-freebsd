@@ -1,4 +1,5 @@
 .. _ug_filter_iocage:
+.. index:: single: filter vbotka.freebsd.iocage; Plugins
 
 Filter vbotka.freebsd.iocage
 ----------------------------

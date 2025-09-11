@@ -19,6 +19,7 @@ Major Changes
 Minor Changes
 -------------
 * Update README.
+* Update docs Index.
 * Update docs ug included content.
 * Update docs ug plugins lookup galaxy_info
 * Add example 040.
