@@ -65,5 +65,7 @@ class LookupModule(LookupBase):
             for i in attr:
                 if i in data:
                     result.append(data[i])
+                else:
+                    raise AnsibleLookupError(f'Unknown attribute "{i}"')
 
         return result

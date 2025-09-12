@@ -34,8 +34,8 @@ At the managed node ``iocage_04`` in the playbook ``pb.yml`` use the `lookup
 vbotka.freebsd.galaxy_info`_ to:
 
   * display the complete meta data dictionary from galaxy.yml
-
   * display the attributes authors and version.
+  * fail with unknown attribute.
 
 Requirements
 ^^^^^^^^^^^^
