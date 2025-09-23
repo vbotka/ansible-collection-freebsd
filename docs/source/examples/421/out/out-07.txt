@@ -50,13 +50,13 @@ changed: [www-3] => (item=www.foo.bar)
 TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
 changed: [www-3]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Enable and start apache] **************
+RUNNING HANDLER [vbotka.freebsd.apache : Enable and start vbotka.freebsd.apache] ***
 changed: [www-3]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Restart apache] ***********************
+RUNNING HANDLER [vbotka.freebsd.apache : Restart vbotka.freebsd.apache] ********
 changed: [www-3]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Reload apache] ************************
+RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
 ok: [www-3]
 
 PLAY RECAP *********************************************************************

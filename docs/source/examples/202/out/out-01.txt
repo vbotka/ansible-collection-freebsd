@@ -22,18 +22,18 @@ changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
 changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
 
 TASK [Start: Start jails.] *****************************************************
-ok: [iocage_02]
 ok: [iocage_04]
+ok: [iocage_02]
 
 TASK [User: Create user.] ******************************************************
 changed: [iocage_04] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
-TASK [Pk: The keys is valid.] **************************************************
-ok: [iocage_04] => 
+TASK [Pk: The keys are valid.] *************************************************
+ok: [iocage_02] => 
     changed: false
     msg: All assertions passed
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     changed: false
     msg: All assertions passed
 
@@ -55,19 +55,19 @@ changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
 changed: [iocage_04] => (item=ansible_client iocage_enable YES)
+changed: [iocage_04] => (item=ansible_client sshd_enable YES)
 changed: [iocage_02] => (item=ansible_client iocage_enable YES)
 changed: [iocage_02] => (item=ansible_client sshd_enable YES)
-changed: [iocage_04] => (item=ansible_client sshd_enable YES)
 
 TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_02]
 ok: [iocage_04]
+ok: [iocage_02]
 
 TASK [Template: Set template.] *************************************************
 ok: [iocage_04] => (item=ansible_client)
 ok: [iocage_02] => (item=ansible_client)
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=15   changed=6    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
-iocage_04                  : ok=15   changed=6    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
+iocage_02                  : ok=15   changed=6    unreachable=0    failed=0    skipped=27   rescued=0    ignored=0   
+iocage_04                  : ok=15   changed=6    unreachable=0    failed=0    skipped=27   rescued=0    ignored=0   
 

@@ -133,7 +133,7 @@ If the ``cache`` is enabled, the inventory and variables are provided by the cac
 Cache
 ^^^^^
 
-Look at the cache
+Look at the cache. For example,
 
 .. code-block:: console
 

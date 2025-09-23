@@ -10,7 +10,7 @@ bsd_roles:
     name: lib
     scm: git
     src: https://github.com/vbotka/ansible-lib
-    version: 2.7.2
+    version: 2.8.0
   - galaxy: vbotka.ansible_lint
     name: ansible_lint
     scm: git
@@ -25,7 +25,7 @@ bsd_roles:
     name: apache
     scm: git
     src: https://github.com/vbotka/ansible-apache
-    version: 2.7.2
+    version: 2.8.0
   - galaxy: vbotka.bsdutils
     name: bsdutils
     scm: git
@@ -35,12 +35,12 @@ bsd_roles:
     name: certificate
     scm: git
     src: https://github.com/vbotka/ansible-certificate
-    version: 2.7.1
+    version: 2.8.0
   - galaxy: vbotka.config_light
     name: config_light
     scm: git
     src: https://github.com/vbotka/ansible-config-light
-    version: 2.7.4
+    version: 2.8.0
   - galaxy: vbotka.freebsd_bash
     name: bash
     scm: git
@@ -50,7 +50,7 @@ bsd_roles:
     name: custom_image
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-custom-image
-    version: 2.7.9
+    version: 2.8.0
   - galaxy: vbotka.freebsd_dhcp
     name: dhcp
     scm: git
@@ -65,7 +65,7 @@ bsd_roles:
     name: iocage
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-iocage
-    version: 0.5.4
+    version: 1.0.0
   - galaxy: vbotka.freebsd_jail
     name: jail
     scm: git
@@ -105,17 +105,17 @@ bsd_roles:
     name: network
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-network
-    version: 2.7.8
+    version: 2.8.1
   - galaxy: vbotka.freebsd_packages
     name: packages
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-packages
-    version: 2.7.4
+    version: 2.8.0
   - galaxy: vbotka.freebsd_pf
     name: pf
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-pf
-    version: 2.7.6
+    version: 2.8.0
   - galaxy: vbotka.freebsd_php
     name: php
     scm: git
@@ -130,12 +130,12 @@ bsd_roles:
     name: postinstall
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-postinstall
-    version: 2.7.18
+    version: 2.8.2
   - galaxy: vbotka.freebsd_poudriere
     name: poudriere
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-poudriere
-    version: 2.7.6
+    version: 2.8.0
   - galaxy: vbotka.freebsd_redis
     name: redis
     scm: git
@@ -160,7 +160,7 @@ bsd_roles:
     name: zfs
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-zfs
-    version: 2.7.8
+    version: 2.8.1
   - galaxy: vbotka.nginx
     name: nginx
     scm: git
@@ -175,7 +175,7 @@ bsd_roles:
     name: rsnapshot
     scm: git
     src: https://github.com/vbotka/ansible-rsnapshot
-    version: 2.7.4
+    version: 2.8.0
   - galaxy: vbotka.yazvs
     name: yazvs
     scm: git

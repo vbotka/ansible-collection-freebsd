@@ -125,6 +125,23 @@ Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. 
    :caption:
    :emphasize-lines: 4,8,17
 
+.. note:: The structure of the ``notes`` is up to you. If you change it, fit the declaration of
+          ``iocage_tags`` in the inventory.
+
+.. hint::
+
+   Make the expression more robust by selecting items comprising ``=``
+
+   .. code-block:: yaml
+
+      iocage_tags: dict(iocage_properties.notes | split | select('contains', '=') | map('split', '='))
+
+   Make sure the keys and values are not empty
+      
+   .. code-block:: yaml
+
+      iocage_tags: dict(iocage_properties.notes | split | select('match', '^.+=.+$') | map('split', '='))
+
 host_vars
 ^^^^^^^^^
 
@@ -135,9 +152,6 @@ host_vars
 .. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
-
-.. note:: The structure of the ``notes`` is up to you. If you change it, fit the declaration of
-          ``iocage_tags`` in the inventory.
 
 Playbook pb-iocage-base.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

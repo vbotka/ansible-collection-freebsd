@@ -1,12 +1,9 @@
-lagg0: flags=1008843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST,LOWER_UP> metric 0 mtu 1500
-	options=8000b<RXCSUM,TXCSUM,VLAN_MTU,LINKSTATE>
+lagg0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+	options=800000<HWSTATS>
 	ether 11:22:33:44:55:66
-	hwaddr 11:22:33:44:55:66
 	inet 10.1.0.28 netmask 0xffffff00 broadcast 10.1.0.255
 	laggproto loadbalance lagghash l2,l3,l4
-	laggport: ue0 flags=4<ACTIVE>
-	laggport: ue1 flags=4<ACTIVE>
 	groups: lagg
 	media: Ethernet autoselect
-	status: active
+	status: no carrier
 	nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>

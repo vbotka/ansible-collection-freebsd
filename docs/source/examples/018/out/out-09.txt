@@ -10,7 +10,7 @@ ok: [test_112] =>
         test_112 None 14.2-RELEASE-p3 - [] down 'DHCP (not running)'
 ok: [test_111] => 
     msg: |-
-        test_111 54 14.2-RELEASE-p3 10.1.0.175 ['10.1.0.175'] up ''
+        test_111 251 14.2-RELEASE-p3 10.1.0.174 ['10.1.0.174'] up ''
 ok: [test_113] => 
     msg: |-
         test_113 None 14.2-RELEASE-p3 - [] down 'DHCP (not running)'

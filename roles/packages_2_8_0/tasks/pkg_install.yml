@@ -1,0 +1,191 @@
+---
+- name: Install all lists from pkg_dict
+  when:
+    - pkg_dict_all | bool
+    - not pkg_install_individually | bool
+  tags: pkg_packages_install_all
+  block:
+
+    - name: "Packages_install: Debug all lists from pkg_dict pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: item.packages
+      loop: "{{ pkg_dict }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+
+    - name: "Packages_install: Install all lists from pkg_dict"
+      when: not pkg_dryrun | bool
+      delegate_to: "{{ pkg_delegate | d(omit, true) }}"
+      community.general.pkgng:
+        name: "{{ item.packages }}"
+        jail: "{{ pkg_pkg_jail | d(omit) }}"
+      loop: "{{ pkg_dict }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages_install: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Install individually from all lists in pkg_dict"
+  when:
+    - pkg_dict_all | bool
+    - pkg_install_individually | bool
+  tags: pkg_packages_install_all_indivindually
+  block:
+
+    - name: "Packages_install: Debug individually from all lists in pkg_dict pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        msg: "{{ item.0.pkglist }}: {{ item.1 }}"
+      loop: "{{ pkg_dict | subelements('packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+
+    - name: "Packages_install: Install individually from all lists in pkg_dict"
+      when: not pkg_dryrun | bool
+      delegate_to: "{{ pkg_delegate | d(omit, true) }}"
+      community.general.pkgng:
+        name: "{{ item.1 }}"
+      loop: "{{ pkg_dict | subelements('packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages_install: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Install selected lists from pkg_dict"
+  when:
+    - pkg_dict_select | length > 0
+    - not pkg_install_individually | bool
+  tags: pkg_packages_install_selected
+  block:
+
+    - name: "Packages_install: Debug selected lists from pkg_dict pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: item.packages
+      loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_dict_select) }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+
+    - name: "Packages_install: Install selected lists from pkg_dict"
+      when: not pkg_dryrun | bool
+      delegate_to: "{{ pkg_delegate | d(omit, true) }}"
+      community.general.pkgng:
+        name: "{{ item.packages }}"
+      loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_dict_select) }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages_install: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Install individually from selected lists in pkg_dict"
+  when:
+    - pkg_dict_select | length > 0
+    - pkg_install_individually | bool
+  tags: pkg_packages_install_selected_indivindually
+  block:
+
+    - name: "Packages_install: Debug individually from selected lists in pkg_dict pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        msg: "{{ item.0.pkglist }}: {{ item.1 }}"
+      loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_dict_select) | subelements('packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+
+    - name: "Packages_install: Install individually from selected lists in pkg_dict"
+      when: not pkg_dryrun | bool
+      delegate_to: "{{ pkg_delegate | d(omit, true) }}"
+      community.general.pkgng:
+        name: "{{ item.1 }}"
+      loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_dict_select) | subelements('packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages_install: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Install list pkg_list"
+  when:
+    - pkg_list | length > 0
+    - not pkg_install_individually | bool
+  tags: pkg_packages_install_list
+  block:
+
+    - name: "Packages_install: Debug list pkg_list pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: pkg_list
+
+    - name: "Packages_install: Install list pkg_list"
+      when: not pkg_dryrun | bool
+      delegate_to: "{{ pkg_delegate | d(omit, true) }}"
+      community.general.pkgng:
+        name: "{{ pkg_list }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages_install: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Install individually from list pkg_list"
+  when:
+    - pkg_list | length > 0
+    - pkg_install_individually | bool
+  tags: pkg_packages_install_list_indivindually
+  block:
+
+    - name: "Packages_install: Debug individually from list pkg_list pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: item
+      loop: "{{ pkg_list }}"
+
+    - name: "Packages_install: Install individually from list pkg_list"
+      when: not pkg_dryrun | bool
+      delegate_to: "{{ pkg_delegate | d(omit, true) }}"
+      community.general.pkgng:
+        name: "{{ item }}"
+      loop: "{{ pkg_list }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+
+    - name: "Packages_install: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+# EOF

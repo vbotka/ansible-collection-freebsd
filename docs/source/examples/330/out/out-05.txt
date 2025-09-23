@@ -11,11 +11,11 @@ ok: [iocage_02]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
 changed: [iocage_01] => (item=iocage list -rh)
-changed: [iocage_02] => (item=iocage list -rh)
 changed: [iocage_01] => (item=iocage list -lh)
+changed: [iocage_02] => (item=iocage list -rh)
 changed: [iocage_01] => (item=iocage list -Ph)
-changed: [iocage_02] => (item=iocage list -lh)
 changed: [iocage_01] => (item=iocage list -th)
+changed: [iocage_02] => (item=iocage list -lh)
 changed: [iocage_02] => (item=iocage list -Ph)
 changed: [iocage_02] => (item=iocage list -th)
 
@@ -74,7 +74,7 @@ ok: [iocage_01] =>
             type: jail
 ok: [iocage_02] => 
     msg: |-
-        iocage_releases: ['14.2-RELEASE']
+        iocage_releases: ['14.2-RELEASE', '14.3-RELEASE']
         iocage_jails:
           ansible_client:
             basejail: 'no'

@@ -8,9 +8,9 @@ TASK [vbotka.freebsd.network : Interfaces: Configure interfaces create_args in /
 ok: [iocage_03] => (item={'interface': 'lagg0', 'options': 'inet 10.1.0.28/24', 'create': 'laggproto loadbalance laggport ue0 laggport ue1'})
 
 TASK [vbotka.freebsd.network : Interfaces: Configure interfaces options in /etc/rc.conf] ***
-changed: [iocage_03] => (item={'interface': 'lagg0', 'options': 'inet 10.1.0.28/24', 'create': 'laggproto loadbalance laggport ue0 laggport ue1'})
-changed: [iocage_03] => (item={'interface': 'ue0', 'options': '-tso -vlanhwtso'})
-changed: [iocage_03] => (item={'interface': 'ue1', 'options': '-tso -vlanhwtso'})
+ok: [iocage_03] => (item={'interface': 'lagg0', 'options': 'inet 10.1.0.28/24', 'create': 'laggproto loadbalance laggport ue0 laggport ue1'})
+ok: [iocage_03] => (item={'interface': 'ue0', 'options': '-tso -vlanhwtso'})
+ok: [iocage_03] => (item={'interface': 'ue1', 'options': '-tso -vlanhwtso'})
 
 TASK [vbotka.freebsd.network : Cloned-interfaces: Configure cloned_interfaces in /etc/rc.conf] ***
 ok: [iocage_03] => (item={'interface': 'lagg0', 'state': 'value_present'})
@@ -37,9 +37,6 @@ ok: [iocage_03] => (item={'key': 'ue1', 'value': '40:86:cb:d2:53:90'})
 TASK [vbotka.freebsd.network : Ethname: service ethname <fn_ethname_cmd>] ******
 ok: [iocage_03]
 
-RUNNING HANDLER [vbotka.freebsd.network : Restart netif and routing] ***********
-changed: [iocage_03]
-
 PLAY RECAP *********************************************************************
-iocage_03                  : ok=12   changed=2    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+iocage_03                  : ok=11   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
 

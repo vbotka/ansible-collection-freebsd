@@ -7,30 +7,27 @@ ok: [iocage_04]
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     msg: |-
-        rcvar.rcvar: {'apcupsd_enable': '"NO"'}
+        rcvar.rcvar: {'apcupsd_enable': 'NO'}
+        rcvar.rcvar.apcupsd_enable: NO
+        start_cmd_enable: False
         start_cmd: onestart
 
 TASK [Start apcupsd. By default wait 500ms to complete the command.] ***********
-changed: [iocage_04]
+ok: [iocage_04]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     out:
-        changed: true
+        changed: false
         failed: false
-        onestart: Starting apcupsd.
+        onestart: apcupsd already running?  (pid=37341).
         rc: 0
-        state:
-            post: |-
-                apcupsd is running as pid 96437.
-            pre: |-
-                apcupsd is not running.
-        stderr: ''
-        stderr_lines: []
-        stdout: |-
-            Starting apcupsd.
-        stdout_lines:
-        - Starting apcupsd.
+        stderr: |-
+            apcupsd already running?  (pid=37341).
+        stderr_lines:
+        - apcupsd already running?  (pid=37341).
+        stdout: ''
+        stdout_lines: []
 
 TASK [Get apcupsd status.] *****************************************************
 ok: [iocage_04]
@@ -45,9 +42,9 @@ ok: [iocage_04] =>
         stderr: ''
         stderr_lines: []
         stdout: |-
-            apcupsd is running as pid 96437.
+            apcupsd is running as pid 37341.
         stdout_lines:
-        - apcupsd is running as pid 96437.
+        - apcupsd is running as pid 37341.
 
 TASK [Stop apcupsd. By default wait 500ms to complete the command.] ************
 changed: [iocage_04]
@@ -62,16 +59,16 @@ ok: [iocage_04] =>
             post: |-
                 apcupsd is not running.
             pre: |-
-                apcupsd is running as pid 96437.
+                apcupsd is running as pid 37341.
         stderr: ''
         stderr_lines: []
         stdout: |-
             Stopping apcupsd.
-            Waiting for PIDS: 96437.
+            Waiting for PIDS: 37341.
         stdout_lines:
         - Stopping apcupsd.
-        - 'Waiting for PIDS: 96437.'
-        stop: 'Waiting for PIDS: 96437'
+        - 'Waiting for PIDS: 37341.'
+        stop: 'Waiting for PIDS: 37341'
 
 TASK [Start apcupsd. Wait 200ms to complete the command.] **********************
 changed: [iocage_04]
@@ -85,7 +82,7 @@ ok: [iocage_04] =>
         rc: 0
         state:
             post: |-
-                apcupsd is running as pid 96511.
+                apcupsd is running as pid 82239.
             pre: |-
                 apcupsd is not running.
         stderr: ''
@@ -108,10 +105,10 @@ ok: [iocage_04] =>
         stderr: ''
         stderr_lines: []
         stdout: |-
-            apcupsd is running as pid 96511.
+            apcupsd is running as pid 82239.
         stdout_lines:
-        - apcupsd is running as pid 96511.
+        - apcupsd is running as pid 82239.
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=12   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

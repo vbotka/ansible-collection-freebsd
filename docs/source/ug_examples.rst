@@ -23,20 +23,25 @@ Examples
 :430-: `Role vbotka.freebsd.certificate`_
 :500-: Infrastructure
 
-**Notes:**
+.. note::
 
-* All examples comprise additional files not shown in the file' tree. See them for more details.
+   * All examples comprise additional files not shown in the file' tree. See them for more details.
 
-* Most examples comprise ``batch.sh`` that runs the commands and creates the output.
+   * Most examples comprise ``batch.sh`` that runs the commands and creates the output.
 
-* Most plays in ``batch.sh`` are idempotent. The output of such a play may show status ``ok``
-  instead of expected ``changed`` if the play has already been run.
+   * Most plays in ``batch.sh`` are idempotent. The output of such a play may show status ``ok``
+     instead of expected ``changed`` if the play has already been run.
 
-* The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
+   * The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
 
-* The playbooks in the collection, because of the Ansible collection naming conventions, use
-  underscores ``_`` in their filenames. For example, ``pb_iocage_template.yml``.
+   * The playbooks in the collection, because of the Ansible collection naming conventions, use
+     underscores ``_`` in their filenames. For example, ``pb_iocage_template.yml``.
 
+   * To avoid connection errors in examples where DHCP is used, ``host_key_checking = false`` is set
+     in ``ansible.cfg``
+
+.. hint:: See :ref:`dg_update_examples`.
+  
 .. toctree::
    :maxdepth: 1
    :caption: Manage iocage

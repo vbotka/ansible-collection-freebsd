@@ -4,6 +4,7 @@
 
   vars:
 
+    debug: false
     ansible_python_interpreter: auto_silent
     sshd_rcvar: "{{ out.stdout | community.general.jc('ini') }}"
     
@@ -14,6 +15,10 @@
         script: sshd
         command: rcvar
       register: out
+
+    - ansible.builtin.debug:
+        var: out
+      when: debug | bool
 
     - ansible.builtin.debug:
         var: out.stdout

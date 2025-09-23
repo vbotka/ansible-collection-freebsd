@@ -1,0 +1,43 @@
+---
+galaxy_info:
+  namespace: vbotka
+  role_name: freebsd_postinstall
+  author: Vladimir Botka
+  description: Postinstallation configuration of FreeBSD.
+  company: https://botka.info
+  github_branch: master
+  license: BSD
+  min_ansible_version: "2.19"
+  platforms:
+    - name: FreeBSD
+      versions:
+        - 13.5
+        - 14.2
+        - 14.3
+  galaxy_tags:
+    - freebsd
+    - ups
+    - cron
+    - fstab
+    - hostapd
+    - hosts
+    - libmap
+    - loader
+    - make
+    - nfs
+    - ntp
+    - procmail
+    - smart
+    - sudo
+    - ssh
+    - swap
+    - sysctl
+    - timezone
+    - users
+    - packages
+dependencies: []
+collections:
+  - ansible.posix
+  - ansible.utils
+  - community.general
+  - vbotka.freebsd

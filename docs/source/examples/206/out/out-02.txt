@@ -5,7 +5,7 @@ TASK [Create clones from template] *********************************************
 changed: [iocage_04] => (item=test_131 ansible_client)
 
 TASK [Start clones] ************************************************************
-changed: [iocage_04] => (item=test_131)
+changed: [iocage_04]
 
 PLAY RECAP *********************************************************************
 iocage_04                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

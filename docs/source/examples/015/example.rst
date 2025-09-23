@@ -102,7 +102,7 @@ Playbook output - Display iocage_ip4
 Cache
 ^^^^^
 
-Look at the cache
+Look at the cache. For example,
 
 .. code-block:: console
 

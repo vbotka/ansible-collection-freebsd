@@ -2,20 +2,20 @@
 PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] ***
 
 TASK [Get sendmail rcvar(s).] **************************************************
-ok: [test_132]
-ok: [test_131]
 ok: [test_133]
+ok: [test_131]
+ok: [test_132]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [test_131] => 
     out.rcvar:
-        sendmail_enable: '"NO"'
+        sendmail_enable: 'NO'
 ok: [test_132] => 
     out.rcvar:
-        sendmail_enable: '"NO"'
+        sendmail_enable: 'NO'
 ok: [test_133] => 
     out.rcvar:
-        sendmail_enable: '"NO"'
+        sendmail_enable: 'NO'
 
 PLAY RECAP *********************************************************************
 test_131                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

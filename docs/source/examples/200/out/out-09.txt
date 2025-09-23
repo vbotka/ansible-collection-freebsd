@@ -2,12 +2,12 @@
 PLAY [Connect to the group test.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_132]
+ok: [test_131]
+ok: [test_111]
 ok: [test_133]
 ok: [test_113]
-ok: [test_111]
+ok: [test_132]
 ok: [test_112]
-ok: [test_131]
 
 TASK [ansible.builtin.command] *************************************************
 changed: [test_131]
@@ -38,16 +38,16 @@ ok: [test_133] =>
         test-133 test_133 d6add9ad-8b6e-4316-a226-345a60532b41 /usr/local/bin/python3.11
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_132]
-changed: [test_111]
-changed: [test_112]
-changed: [test_113]
 changed: [test_131]
+changed: [test_132]
 changed: [test_133]
+changed: [test_111]
+changed: [test_113]
+changed: [test_112]
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_132]
 changed: [test_131]
+changed: [test_132]
 changed: [test_133]
 changed: [test_111]
 changed: [test_113]

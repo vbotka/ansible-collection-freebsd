@@ -7,7 +7,7 @@ ok: [test_133] =>
         inventory_hostname: test_133
         ansible_host: 10.1.0.133
 
-        iocage_jid: 12
+        iocage_jid: 1009
         iocage_boot: off
         iocage_state: up
         iocage_type: jail

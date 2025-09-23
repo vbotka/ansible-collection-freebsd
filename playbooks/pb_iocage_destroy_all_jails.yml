@@ -11,6 +11,9 @@
     running_jails: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
                                     | map(attribute='key') }}"
+    destroy_jails: "{{ iocage_jails | dict2items
+                                    | rejectattr('value.template', 'in', all_jails)
+                                    | map(attribute='key') }}"
 
   tasks:
 
@@ -33,6 +36,7 @@
           ansible.builtin.meta: end_play
 
     - name: Set iocage_jails
+      tags: list_jails
       block:
 
         - name: "Get iocage list of jails."
@@ -59,6 +63,7 @@
 
     - name: Stop running jails.
       when: running_jails | length > 0
+      tags: stop_jails
       block:
 
         - name: "Stop running jails."
@@ -76,17 +81,18 @@
         - name: "End of the host."
           ansible.builtin.meta: end_host
 
-    - name: Destroy all jails.
-      when: all_jails | length > 0
+    - name: Destroy jails.
+      when: destroy_jails | length > 0
+      tags: destroy_jails
       block:
 
-        - name: "Destroy all jails."
+        - name: "Destroy jails."
           changed_when: false
-          ansible.builtin.command: "iocage destroy -f {{ all_jails | join(' ') }}"
+          ansible.builtin.command: "iocage destroy -f {{ destroy_jails | join(' ') }}"
 
       rescue:
 
-        - name: "Destroy all jails failed."
+        - name: "Destroy jails failed."
           ansible.builtin.debug:
             msg: |
               {{ ansible_failed_task }}

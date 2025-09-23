@@ -76,7 +76,7 @@ ok: [test_133] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/test_133/data
         jail_zfs_mountpoint: none
-        last_started: none
+        last_started: '2025-09-22 13:55:46'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 021b21
@@ -135,7 +135,7 @@ ok: [test_133] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: none
+        vnet0_mac: 021b21882ebc 021b21882ebd
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto

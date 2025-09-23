@@ -1,0 +1,76 @@
+---
+
+- name: "Conf: Configure /etc/sysctl.conf"
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ freebsd_iocage_sysctl_update | dict2items }}"
+
+- name: Configure defaults.json
+  when: freebsd_iocage_defaults_update | length > 0
+  block:
+
+    - name: "Conf: Stat defaults.json"
+      register: result
+      ansible.builtin.stat:
+        path: "{{ freebsd_iocage_mount }}/defaults.json"
+
+    - name: "Conf: Exists {{ freebsd_iocage_mount ~ '/defaults.json' }}"
+      ansible.builtin.assert:
+        that: result.stat.exists
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        fail_msg: "[ERR] {{ freebsd_iocage_mount }}/defaults.json is missing."
+        success_msg: "[OK]  {{ freebsd_iocage_mount }}/defaults.json exists."
+
+    - name: "Conf: Read {{ freebsd_iocage_mount ~ '/defaults.json' }}"
+      register: result
+      ansible.builtin.slurp:
+        src: "{{ freebsd_iocage_mount }}/defaults.json"
+
+    - name: "Conf: Set freebsd_iocage_defaults_current"
+      ansible.builtin.set_fact:
+        freebsd_iocage_defaults_current: "{{ result['content'] | b64decode | from_yaml }}"
+
+    - name: "Conf: Debug freebsd_iocage_defaults_current freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        var: freebsd_iocage_defaults_current
+
+    - name: "Conf: Do not override integers."
+      when: not freebsd_iocage_defaults_override_int | bool
+      vars:
+        defaults_int: "{{ freebsd_iocage_defaults_current | dict2items |
+                          selectattr('value', 'integer') |
+                          map(attribute='key') }}"
+        update_int_k: "{{ freebsd_iocage_defaults_update.keys() | intersect(defaults_int) }}"
+        update_int_v: "{{ update_int_k | map('extract', freebsd_iocage_defaults_update) }}"
+      ansible.builtin.assert:
+        that: update_int_v | reject('integer') | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        fail_msg: "[ERR] Only integers allowed in: {{ update_int_k }}"
+
+    - name: "Conf: Do not override boolean."
+      when: not freebsd_iocage_defaults_override_bool | bool
+      vars:
+        defaults_bool: "{{ freebsd_iocage_defaults_current | dict2items |
+                           selectattr('value', 'in', ['on', 'off']) |
+                           map(attribute='key') }}"
+        update_bool_k: "{{ freebsd_iocage_defaults_update.keys() | intersect(defaults_bool) }}"
+        update_bool_v: "{{ update_bool_k | map('extract', freebsd_iocage_defaults_update) }}"
+      ansible.builtin.assert:
+        that: update_bool_v | reject('in', ['on', 'off']) | length == 0
+        fail_msg: "[ERR] Only ['on', 'off'] allowed in: {{ update_bool_k }}"
+
+    - name: "Conf: Update {{ freebsd_iocage_mount ~ '/defaults.json' }}"
+      vars:
+        freebsd_iocage_defaults: "{{ freebsd_iocage_defaults_current |
+                                     ansible.builtin.combine(freebsd_iocage_defaults_update) }}"
+      ansible.builtin.template:
+        src: defaults.json.j2
+        dest: "{{ freebsd_iocage_mount }}/defaults.json"
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ freebsd_iocage_backup_conf | bool }}"
+
+# EOF

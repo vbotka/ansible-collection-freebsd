@@ -1,9 +1,9 @@
 
-PLAY [Test role vbotka.freebsd.postinstall.] ***********************************
+PLAY [Test role vbotka.freebsd.postinstall] ************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_133]
 ok: [test_131]
+ok: [test_133]
 ok: [test_132]
 
 PLAY RECAP *********************************************************************

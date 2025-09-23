@@ -4,9 +4,10 @@ Developer's Guide
 #################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    dg_create_collection_docsite
+   dg_update_examples
    dg_update_iocage_module
 
 .. seealso::

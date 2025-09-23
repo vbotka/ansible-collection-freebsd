@@ -13,7 +13,7 @@ ok: [iocage_04] =>
         fzfs_pools_required: ['iocage', 'zroot']
         fzfs_pools_missing: []
         fzfs_pools_present: ['iocage', 'zroot']
-        name: iocage size: 7.25T free: 7.25T
+        name: iocage size: 7.25T free: 7.24T
         name: zroot size: 472G free: 468G
 
 PLAY RECAP *********************************************************************

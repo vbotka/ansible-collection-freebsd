@@ -10,7 +10,7 @@ ssh admin@$iocage_02 iocage list -lt | tee out/out-01.txt
 ssh admin@$iocage_04 iocage list -lt | tee out/out-02.txt
 
 # create swarms
-ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t swarm -e swarm=true -e debug=true | tee out/out-03.txt
+ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t swarm -e swarm=true -e debug=true --flush-cache | tee out/out-03.txt
 
 # status of swarms
 ssh admin@$iocage_02 sudo iocage list -l | tee out/out-04.txt

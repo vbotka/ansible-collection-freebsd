@@ -3,7 +3,9 @@
 
   vars:
 
-    start_cmd: "{{ rcvar.rcvar.apcupsd_enable | bool | ternary('start', 'onestart') }}"
+    debug: false
+    start_cmd_enable: "{{ rcvar.rcvar.apcupsd_enable == 'YES' }}"
+    start_cmd: "{{ start_cmd_enable | ternary('start', 'onestart') }}"
     
   tasks:
 
@@ -16,7 +18,10 @@
     - ansible.builtin.debug:
         msg: |
           rcvar.rcvar: {{ rcvar.rcvar }}
+          rcvar.rcvar.apcupsd_enable: {{ rcvar.rcvar.apcupsd_enable }}
+          start_cmd_enable: {{ start_cmd_enable }}
           start_cmd: {{ start_cmd }}
+      when: debug | bool
 
       # 500ms is enough to complete 'service apcupsd (one)start'.
       # The status before and after the command are different and dictionary status is returned.
@@ -63,6 +68,7 @@
         var: out
 
     - name: Get apcupsd status.
+
       register: out
       vbotka.freebsd.service:
         script: apcupsd

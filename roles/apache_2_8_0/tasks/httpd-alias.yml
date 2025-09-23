@@ -1,0 +1,14 @@
+---
+- name: "Httpd-alias: Configure aliases in {{ apache_conf_path ~ '/httpd.conf' }}"
+  when: apache_alias | length > 0
+  notify: "reload {{ ansible_role_name }}"
+  ansible.builtin.blockinfile:
+    dest: "{{ apache_conf_path }}/httpd.conf"
+    insertafter: <IfModule alias_module>
+    block: |2
+        {% for item in apache_alias %}
+        {{ item }}
+        {% endfor %}
+    backup: "{{ apache_backup_conf }}"
+
+# EOF

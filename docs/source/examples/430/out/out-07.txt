@@ -43,13 +43,13 @@ changed: [www-2] => (item=Include etc/apache24/extra/httpd-ssl.conf)
 TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
 changed: [www-2]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Enable and start apache] **************
+RUNNING HANDLER [vbotka.freebsd.apache : Enable and start vbotka.freebsd.apache] ***
 changed: [www-2]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Restart apache] ***********************
+RUNNING HANDLER [vbotka.freebsd.apache : Restart vbotka.freebsd.apache] ********
 changed: [www-2]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Reload apache] ************************
+RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
 ok: [www-2]
 
 PLAY RECAP *********************************************************************

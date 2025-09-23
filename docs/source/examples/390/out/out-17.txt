@@ -4,10 +4,10 @@ PLAY [Role vbotka.freebsd.postinstall] *****************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Sanity: Unknown run tags] *******************
+TASK [vbotka.freebsd_postinstall : Sanity: Unknown run tags] *******************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Rcconf: Configure qemu_user_static_enable in /etc/rc.conf] ***
+TASK [vbotka.freebsd_postinstall : Rcconf: Configure qemu_user_static_enable in /etc/rc.conf] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************

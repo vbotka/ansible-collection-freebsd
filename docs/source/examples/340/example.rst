@@ -44,12 +44,10 @@ Tree
   │       ├── cl-lighttpd.yml
   │       └── common.yml
   ├── hosts
-  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   └── iocage_02
+  │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
   └── pb.yml
@@ -151,11 +149,7 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_01/iocage.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml
    :caption:
 
@@ -166,19 +160,18 @@ Create and start jails
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
                             -i iocage.ini \
-                            -l iocage_02 \
                             -t swarm \
                             -e swarm=true
 
 .. literalinclude:: out/out-11.txt
    :language: bash
 
-Jails at iocage_02
+Jails at iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -l
+   [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -186,7 +179,7 @@ Jails at iocage_02
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
 .. literalinclude:: hosts/99_constructed.yml
@@ -208,7 +201,7 @@ Update repos
 
 .. code-block:: console
 
-   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini -l iocage_02
+   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini
 
 .. literalinclude:: out/out-12.txt
    :language: yaml

@@ -10,12 +10,12 @@ ok: [iocage_02]
 ok: [iocage_04]
 
 TASK [Pkglist: Create directories for pkglist files.] **************************
-changed: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
-changed: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+ok: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+ok: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 
 TASK [Pkglist: Copy pkglist files.] ********************************************
-changed: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
-changed: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+ok: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+ok: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 
 TASK [Create: Create templates.] ***********************************************
 changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
@@ -29,7 +29,7 @@ TASK [User: Create user.] ******************************************************
 changed: [iocage_04] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
-TASK [Pk: The keys is valid.] **************************************************
+TASK [Pk: The keys are valid.] *************************************************
 ok: [iocage_02] => 
     changed: false
     msg: All assertions passed
@@ -64,6 +64,6 @@ ok: [iocage_04] => (item=ansible_client)
 ok: [iocage_02] => (item=ansible_client)
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=14   changed=7    unreachable=0    failed=0    skipped=22   rescued=0    ignored=0   
-iocage_04                  : ok=14   changed=7    unreachable=0    failed=0    skipped=22   rescued=0    ignored=0   
+iocage_02                  : ok=14   changed=5    unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
+iocage_04                  : ok=14   changed=5    unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
 

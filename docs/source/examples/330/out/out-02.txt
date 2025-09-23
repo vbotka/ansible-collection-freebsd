@@ -6,15 +6,15 @@ ok: [iocage_01]
 ok: [iocage_02]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
-ok: [iocage_01]
 ok: [iocage_02]
+ok: [iocage_01]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
 ok: [iocage_01] => (item=iocage fetch --release 13.5-RELEASE)
 ok: [iocage_02] => (item=iocage fetch --release 14.2-RELEASE)
 changed: [iocage_01] => (item=iocage create --release 13.5-RELEASE --name ansible_client)
-changed: [iocage_02] => (item=iocage create --release 14.2-RELEASE --name ansible_client)
 changed: [iocage_01] => (item=iocage set vnet=1 ansible_client)
+changed: [iocage_02] => (item=iocage create --release 14.2-RELEASE --name ansible_client)
 changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 ansible_client)
 changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 ansible_client)
 changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 ansible_client)

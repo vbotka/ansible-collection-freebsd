@@ -13,51 +13,50 @@ ok: [iocage_02] =>
           {}
 
         iocage_templates:
-          {}
-
-        iocage_jails:
           ansible_client:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: '-'
+            ip4: DHCP (not running)
             ip6: '-'
             jid: None
             name: ansible_client
             release: 14.2-RELEASE-p3
             state: down
             template: '-'
-            type: jail
+            type: template
+
+        iocage_jails:
           test_111:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: em0|10.1.0.111/24
             ip6: '-'
-            jid: '54'
+            jid: '258'
             name: test_111
             release: 14.2-RELEASE-p3
             state: up
             template: ansible_client
             type: jail
           test_112:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: DHCP (not running)
+            ip4: em0|10.1.0.112/24
             ip6: '-'
-            jid: None
+            jid: '259'
             name: test_112
             release: 14.2-RELEASE-p3
-            state: down
+            state: up
             template: ansible_client
             type: jail
           test_113:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: DHCP (not running)
+            ip4: em0|10.1.0.113/24
             ip6: '-'
-            jid: None
+            jid: '260'
             name: test_113
             release: 14.2-RELEASE-p3
-            state: down
+            state: up
             template: ansible_client
             type: jail
 ok: [iocage_04] => 
@@ -67,48 +66,69 @@ ok: [iocage_04] =>
           {}
 
         iocage_templates:
-          {}
-
-        iocage_jails:
           ansible_client:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: '-'
+            ip4: DHCP (not running)
             ip6: '-'
             jid: None
             name: ansible_client
             release: 14.3-RELEASE-p1
             state: down
             template: '-'
-            type: jail
-          test_131:
-            basejail: 'yes'
+            type: template
+          ansible_client_apache:
+            basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '56'
+            jid: None
+            name: ansible_client_apache
+            release: 14.3-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible_client_pull
+            release: 14.3-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+
+        iocage_jails:
+          test_131:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.131/24
+            ip6: '-'
+            jid: '1018'
             name: test_131
             release: 14.3-RELEASE-p1
             state: up
             template: ansible_client
             type: jail
           test_132:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: vnet0|10.1.0.132/24
             ip6: '-'
-            jid: '57'
+            jid: '1017'
             name: test_132
             release: 14.3-RELEASE-p1
             state: up
             template: ansible_client
             type: jail
           test_133:
-            basejail: 'yes'
+            basejail: 'no'
             boot: 'off'
-            ip4: DHCP (running -- address requires root)
+            ip4: vnet0|10.1.0.133/24
             ip6: '-'
-            jid: '58'
+            jid: '1019'
             name: test_133
             release: 14.3-RELEASE-p1
             state: up

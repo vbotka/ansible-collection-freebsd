@@ -226,7 +226,7 @@ Results
      (env) > grep www.foo.bar /etc/hosts
      10.1.0.223 www.foo.bar
 
-* In a browser, open the page ``https//www.foo.bar/``. The content should be ::
+* In a browser, open the page ``https://www.foo.bar/``. The content should be ::
 
     It works!
 

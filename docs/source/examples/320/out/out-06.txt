@@ -1,14 +1,86 @@
 
-PLAY [Test role vbotka.freebsd.packages.] **************************************
+PLAY [Test role vbotka.freebsd.packages] ***************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [9d271b5e]
+ok: [8b8f7747]
+ok: [test_113]
 ok: [test_111]
+ok: [test_112]
 
 TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [8b8f7747]
+ok: [9d271b5e]
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
 TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [8b8f7747] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [9d271b5e] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
 ok: [test_111] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [test_112] => 
+    msg: |-
+        ansible_architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [test_113] => 
     msg: |-
         ansible_architecture: amd64
         pkg_dict:
@@ -26,15 +98,23 @@ ok: [test_111] =>
           []
 
 TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
+ok: [8b8f7747]
+ok: [9d271b5e]
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
 TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
+ok: [8b8f7747]
+ok: [9d271b5e]
 ok: [test_111]
+ok: [test_112]
+ok: [test_113]
 
 TASK [vbotka.freebsd.packages : Debug pkg_debug=true] **************************
-ok: [test_111] => 
+ok: [8b8f7747] => 
     msg: |-
-        pkg_role_version: 2.7.0
+        pkg_role_version: 2.8.0
         pkg_version_community_general: 9.3.0
 
         ansible_architecture: amd64
@@ -43,7 +123,7 @@ ok: [test_111] =>
         ansible_distribution_major_version: 14
         ansible_distribution_version: 14.2
         ansible_distribution_release: 14.2-RELEASE-p1
-        ansible_python_version: 3.11.11
+        ansible_python_version: 3.11.13
 
         freebsd_install_method: packages
         freebsd_install_retries: 3
@@ -65,7 +145,7 @@ ok: [test_111] =>
         pkg_cached: True
         pkg_chroot: UNDEFINED
         pkg_ignore_osver: UNDEFINED
-        pkg_jail: 60
+        pkg_jail: 274
         pkg_pkgsite: UNDEFINED
         pkg_rootdir: UNDEFINED
         pkg_state: UNDEFINED
@@ -75,7 +155,262 @@ ok: [test_111] =>
         pkg_default_repo_conf:
           []
 
-        pkg_repos_template: repo.j2
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [security/sudo, lang/python311, ports-mgmt/pkg]
+
+        pkg_list_deinstall:
+          []
+ok: [9d271b5e] => 
+    msg: |-
+        pkg_role_version: 2.8.0
+        pkg_version_community_general: 9.3.0
+
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.13
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_02"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: True
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 275
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: False
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [security/sudo, lang/python311, ports-mgmt/pkg]
+
+        pkg_list_deinstall:
+          []
+ok: [test_111] => 
+    msg: |-
+        pkg_role_version: 2.8.0
+        pkg_version_community_general: 9.3.0
+
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.13
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_02"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: True
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 278
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: False
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [security/sudo, lang/python311, ports-mgmt/pkg]
+
+        pkg_list_deinstall:
+          []
+ok: [test_112] => 
+    msg: |-
+        pkg_role_version: 2.8.0
+        pkg_version_community_general: 9.3.0
+
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.13
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_02"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: True
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 276
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: False
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [security/sudo, lang/python311, ports-mgmt/pkg]
+
+        pkg_list_deinstall:
+          []
+ok: [test_113] => 
+    msg: |-
+        pkg_role_version: 2.8.0
+        pkg_version_community_general: 9.3.0
+
+        ansible_architecture: amd64
+        ansible_os_family: FreeBSD
+        ansible_distribution: FreeBSD
+        ansible_distribution_major_version: 14
+        ansible_distribution_version: 14.2
+        ansible_distribution_release: 14.2-RELEASE-p1
+        ansible_python_version: 3.11.13
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_02"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: True
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 277
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: False
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
         pkg_repos_conf_clean: False
         pkg_repos_conf:
           []
@@ -93,7 +428,53 @@ ok: [test_111] =>
         pkg_list_deinstall:
           []
 
+TASK [vbotka.freebsd.packages : Keys: Debug pkg_debug=true] ********************
+ok: [8b8f7747] => 
+    msg: |-
+        pkg_keys:
+          {}
+ok: [9d271b5e] => 
+    msg: |-
+        pkg_keys:
+          {}
+ok: [test_111] => 
+    msg: |-
+        pkg_keys:
+          {}
+ok: [test_112] => 
+    msg: |-
+        pkg_keys:
+          {}
+ok: [test_113] => 
+    msg: |-
+        pkg_keys:
+          {}
+
 TASK [vbotka.freebsd.packages : Conf: Debug pkg_debug=true] ********************
+ok: [8b8f7747] => 
+    msg: |-
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_backup_conf: False
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf:
+          []
+ok: [9d271b5e] => 
+    msg: |-
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_backup_conf: False
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf:
+          []
 ok: [test_111] => 
     msg: |-
         pkg_owner: root
@@ -103,22 +484,110 @@ ok: [test_111] =>
         pkg_default_repo_conf:
           []
 
-        pkg_repos_template: repo.j2
+        pkg_repos_template: repos.j2
+        pkg_repos_conf:
+          []
+ok: [test_112] => 
+    msg: |-
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_backup_conf: False
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf:
+          []
+ok: [test_113] => 
+    msg: |-
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_backup_conf: False
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_repos_template: repos.j2
         pkg_repos_conf:
           []
 
 TASK [vbotka.freebsd.packages : Packages_install: Debug list pkg_list pkg_debug=true] ***
+ok: [8b8f7747] => 
+    pkg_list:
+    - security/sudo
+    - lang/python311
+    - ports-mgmt/pkg
+ok: [9d271b5e] => 
+    pkg_list:
+    - security/sudo
+    - lang/python311
+    - ports-mgmt/pkg
 ok: [test_111] => 
+    pkg_list:
+    - security/sudo
+    - lang/python311
+    - ports-mgmt/pkg
+ok: [test_112] => 
+    pkg_list:
+    - security/sudo
+    - lang/python311
+    - ports-mgmt/pkg
+ok: [test_113] => 
     pkg_list:
     - security/sudo
     - lang/python311
     - ports-mgmt/pkg
 
 TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
+ok: [test_113 -> iocage_02(10.1.0.73)]
+ok: [test_112 -> iocage_02(10.1.0.73)]
+ok: [9d271b5e -> iocage_02(10.1.0.73)]
+ok: [8b8f7747 -> iocage_02(10.1.0.73)]
 ok: [test_111 -> iocage_02(10.1.0.73)]
 
 TASK [vbotka.freebsd.packages : Packages_install: Debug result pkg_debug=true] ***
+ok: [8b8f7747] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [9d271b5e] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
 ok: [test_111] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [test_112] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [test_113] => 
     result:
         attempts: 1
         changed: false
@@ -130,5 +599,9 @@ ok: [test_111] =>
         stdout_lines: []
 
 PLAY RECAP *********************************************************************
-test_111                   : ok=10   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0   
+8b8f7747                   : ok=11   changed=0    unreachable=0    failed=0    skipped=33   rescued=0    ignored=0   
+9d271b5e                   : ok=11   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0   
+test_111                   : ok=11   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0   
+test_112                   : ok=11   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0   
+test_113                   : ok=11   changed=0    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0   
 

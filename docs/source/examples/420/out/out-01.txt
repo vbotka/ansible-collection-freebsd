@@ -1,6 +1,9 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
+TASK [Get pool.] ***************************************************************
+ok: [iocage_04]
+
 TASK [Debug cmd_create debug=true] *********************************************
 ok: [iocage_04] => (item=www-1 ansible_client_apache) => 
     msg: |-
@@ -15,9 +18,7 @@ ok: [iocage_04] =>
         changed: true
         msg: All items completed
         results:
-        -   ansible_facts:
-                discovered_interpreter_python: /usr/local/bin/python3.11
-            ansible_loop_var: item
+        -   ansible_loop_var: item
             changed: true
             cmd:
             - iocage
@@ -30,16 +31,17 @@ ok: [iocage_04] =>
             - dhcp=1
             - vnet=1
             - host_hostname=www-1
-            delta: '0:00:00.642988'
-            end: '2025-08-18 16:39:15.496648'
+            delta: '0:00:00.721136'
+            end: '2025-09-22 16:57:25.361569'
             failed: false
             invocation:
                 module_args:
-                    _raw_params: |-
-                        iocage create --short --template ansible_client_apache notes="vmm=iocage_04" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+                    _raw_params: null
                     _uses_shell: false
                     argv: null
                     chdir: null
+                    cmd: |-
+                        iocage create --short --template ansible_client_apache notes="vmm=iocage_04" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
                     creates: null
                     executable: null
                     expand_argument_vars: true
@@ -53,18 +55,26 @@ ok: [iocage_04] =>
                     template: ansible_client_apache
             msg: ''
             rc: 0
-            start: '2025-08-18 16:39:14.853660'
+            start: '2025-09-22 16:57:24.640433'
             stderr: ''
             stderr_lines: []
-            stdout: 68af99e0 successfully created!
+            stdout: 2a192dc8 successfully created!
             stdout_lines:
-            - 68af99e0 successfully created!
+            - 2a192dc8 successfully created!
         skipped: false
+
+TASK [Debug add fstab host_hostname debug2=true] *******************************
+ok: [iocage_04] => 
+    out_fstab:
+        changed: false
+        results: []
+        skipped: true
+        skipped_reason: No items in the list
 
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_04] => 
     msg: |-
-        iocage start 68af99e0
+        iocage start 2a192dc8
 
 TASK [Start clones host_hostname] **********************************************
 changed: [iocage_04]
@@ -76,35 +86,35 @@ ok: [iocage_04] =>
         cmd:
         - iocage
         - start
-        - 68af99e0
-        delta: '0:00:13.174462'
-        end: '2025-08-18 16:39:28.959602'
+        - 2a192dc8
+        delta: '0:00:04.581787'
+        end: '2025-09-22 16:57:30.490899'
         failed: false
         msg: ''
         rc: 0
-        start: '2025-08-18 16:39:15.785140'
+        start: '2025-09-22 16:57:25.909112'
         stderr: No default gateway found for ipv6.
         stderr_lines:
         - No default gateway found for ipv6.
         stdout: |-
-            * Starting 68af99e0
+            * Starting 2a192dc8
               + Started OK
-              + Using devfs_ruleset: 1010 (iocage generated default)
+              + Using devfs_ruleset: 1013 (iocage generated default)
               + Configuring VNET OK
               + Using IP options: vnet
               + Starting services OK
               + Executing poststart OK
-              + DHCP Address: 10.1.0.157/24
+              + DHCP Address: 10.1.0.156/24
         stdout_lines:
-        - '* Starting 68af99e0'
+        - '* Starting 2a192dc8'
         - '  + Started OK'
-        - '  + Using devfs_ruleset: 1010 (iocage generated default)'
+        - '  + Using devfs_ruleset: 1013 (iocage generated default)'
         - '  + Configuring VNET OK'
         - '  + Using IP options: vnet'
         - '  + Starting services OK'
         - '  + Executing poststart OK'
-        - '  + DHCP Address: 10.1.0.157/24'
+        - '  + DHCP Address: 10.1.0.156/24'
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=8    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

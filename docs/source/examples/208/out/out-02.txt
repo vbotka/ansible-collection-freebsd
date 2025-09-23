@@ -7,6 +7,19 @@ changed: [iocage_04]
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     iocage_templates:
+        ansible_client_apache:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 14.3-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
         ansible_client_pull:
             basejail: 'no'
             boot: 'off'

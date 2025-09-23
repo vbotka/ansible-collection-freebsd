@@ -18,6 +18,8 @@ ok: [iocage_04] =>
         - .ansible
         - .ansible-lint
         - .ansible-lint.local
+        - .deny
+        - .done
         - .git
         - .github
         - .gitignore
@@ -76,10 +78,11 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 26         var: info
                 ^ column 14
 
-fatal: [iocage_04]: FAILED! =>
+fatal: [iocage_04]: FAILED! => 
     msg: 'Task failed: Error while resolving `var` expression: The lookup plugin ''vbotka.freebsd.galaxy_info''
         failed: Unknown attribute "foo"'
 ...ignoring
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1  
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+
