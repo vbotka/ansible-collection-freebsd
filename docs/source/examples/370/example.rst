@@ -116,8 +116,8 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting and restarting of the firewall breaks the ssh connections. See the handlers for details. As
-a consequence, both handlers starting and reloading don't work properly and the ssh connection will
+Firewall starting and restarting breaks the ssh connections. See the handlers for details. As a
+consequence, both handlers starting and reloading don't work properly and the ssh connection will
 stale. Therefore, let us first configure the rules
 
 .. code-block:: console

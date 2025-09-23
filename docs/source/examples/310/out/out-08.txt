@@ -1,8 +1,8 @@
 
-PLAY [Test role vbotka.freebsd.postinstall.] ***********************************
+PLAY [Test role vbotka.freebsd.postinstall] ************************************
 
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for test_131, test_132, test_133 => (item=custom)
+TASK [vbotka.freebsd_postinstall : Packages: Install packages] *****************
+included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for test_131, test_132, test_133 => (item=custom)
 
 PLAY RECAP *********************************************************************
 test_131                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   

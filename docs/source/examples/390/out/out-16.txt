@@ -4,22 +4,22 @@ PLAY [Role vbotka.freebsd.postinstall] *****************************************
 TASK [Gathering Facts] *********************************************************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Sanity: Unknown run tags] *******************
+TASK [vbotka.freebsd_postinstall : Sanity: Unknown run tags] *******************
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
+TASK [vbotka.freebsd_postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
+TASK [vbotka.freebsd_postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
+TASK [vbotka.freebsd_postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
 ok: [build.example.com]
 
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for build.example.com => (item=qemu_user_static)
+TASK [vbotka.freebsd_postinstall : Packages: Install packages] *****************
+included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for build.example.com => (item=qemu_user_static)
 
-TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list qemu_user_static] ***
+TASK [vbotka.freebsd_postinstall : Packages-install: Install packages list qemu_user_static] ***
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************

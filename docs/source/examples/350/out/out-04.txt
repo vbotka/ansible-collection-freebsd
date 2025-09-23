@@ -2,17 +2,17 @@
 PLAY [Install packages.] *******************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [dbdcbdec]
-ok: [f53c3b61]
-ok: [0f5055fd]
+ok: [671f8cf1]
+ok: [2d90d9d5]
+ok: [8ae21331]
 
 TASK [Install rsnapshot packages.] *********************************************
-changed: [0f5055fd -> iocage_04(10.1.0.29)]
-changed: [f53c3b61 -> iocage_04(10.1.0.29)]
-changed: [dbdcbdec -> iocage_04(10.1.0.29)]
+changed: [2d90d9d5 -> iocage_04(10.1.0.29)]
+changed: [8ae21331 -> iocage_04(10.1.0.29)]
+changed: [671f8cf1 -> iocage_04(10.1.0.29)]
 
 PLAY RECAP *********************************************************************
-0f5055fd                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-dbdcbdec                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-f53c3b61                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2d90d9d5                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+671f8cf1                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+8ae21331                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

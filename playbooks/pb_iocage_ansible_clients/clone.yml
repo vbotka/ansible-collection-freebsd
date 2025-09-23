@@ -28,11 +28,14 @@
 #   loop: "{{ start }}"
 
 - name: Start clones  # noqa: no-changed-when
+  when: _jails | length > 0
+  vars:
+    _jails: "{{ start | difference(_started) }}"
   register: out_start
   ansible.builtin.command:
     cmd: >
       iocage start
-      {{ start | join(' ') }}
+      {{ _jails | join(' ') }}
 
 - name: "Debug start clones debug2={{ debug2 }}"
   when: debug2 | bool

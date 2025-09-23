@@ -24,26 +24,21 @@ ok: [iocage_04] =>
             iocage/iocage/download/14.3-RELEASE: /iocage/iocage/download/14.3-RELEASE
             iocage/iocage/images: /iocage/iocage/images
             iocage/iocage/jails: /iocage/iocage/jails
-            iocage/iocage/jails/0f5055fd: /iocage/iocage/jails/0f5055fd
-            iocage/iocage/jails/0f5055fd/root: /iocage/iocage/jails/0f5055fd/root
-            iocage/iocage/jails/dbdcbdec: /iocage/iocage/jails/dbdcbdec
-            iocage/iocage/jails/dbdcbdec/root: /iocage/iocage/jails/dbdcbdec/root
-            iocage/iocage/jails/f53c3b61: /iocage/iocage/jails/f53c3b61
-            iocage/iocage/jails/f53c3b61/root: /iocage/iocage/jails/f53c3b61/root
             iocage/iocage/log: /iocage/iocage/log
             iocage/iocage/releases: /iocage/iocage/releases
             iocage/iocage/releases/14.3-RELEASE: /iocage/iocage/releases/14.3-RELEASE
             iocage/iocage/releases/14.3-RELEASE/root: /iocage/iocage/releases/14.3-RELEASE/root
-            iocage/iocage/releases/14.3-RELEASE/root@ansible_client: null
+            iocage/iocage/releases/14.3-RELEASE/root@ansible_client_apache: null
+            iocage/iocage/releases/14.3-RELEASE/root@ansible_client_pull: null
             iocage/iocage/templates: /iocage/iocage/templates
-            iocage/iocage/templates/ansible_client: /iocage/iocage/templates/ansible_client
-            iocage/iocage/templates/ansible_client/root: /iocage/iocage/templates/ansible_client/root
-            iocage/iocage/templates/ansible_client/root@0f5055fd: null
-            iocage/iocage/templates/ansible_client/root@dbdcbdec: null
-            iocage/iocage/templates/ansible_client/root@f53c3b61: null
-            iocage/iocage/templates/ansible_client@0f5055fd: null
-            iocage/iocage/templates/ansible_client@dbdcbdec: null
-            iocage/iocage/templates/ansible_client@f53c3b61: null
+            iocage/iocage/templates/ansible_client_apache: /iocage/iocage/templates/ansible_client_apache
+            iocage/iocage/templates/ansible_client_apache/root: /iocage/iocage/templates/ansible_client_apache/root
+            iocage/iocage/templates/ansible_client_pull: /iocage/iocage/templates/ansible_client_pull
+            iocage/iocage/templates/ansible_client_pull/root: /iocage/iocage/templates/ansible_client_pull/root
+            iocage/obj: /usr/obj
+            iocage/ports: /usr/ports
+            iocage/poudriere: /usr/local/poudriere
+            iocage/src: /usr/src
         zroot:
             zroot: /zroot
             zroot/ROOT: none
@@ -53,8 +48,6 @@ ok: [iocage_04] =>
             zroot/home/admin: /home/admin
             zroot/tmp: /tmp
             zroot/usr: /usr
-            zroot/usr/ports: /usr/ports
-            zroot/usr/src: /usr/src
             zroot/var: /var
             zroot/var/audit: /var/audit
             zroot/var/crash: /var/crash

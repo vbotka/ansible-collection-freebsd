@@ -5,9 +5,6 @@
   vars:
 
     debug: false
-    running_jails_jid: "{{ iocage_jails | dict2items
-                                        | selectattr('value.state', 'eq', 'up')
-                                        | map(attribute='value.jid') }}"
 
   tasks:
 
@@ -42,6 +39,10 @@
 
     - name: Update repos.
       when: running_jails_jid | length > 0
+      vars:
+        running_jails_jid: "{{ iocage_jails | dict2items
+                                            | selectattr('value.state', 'eq', 'up')
+                                            | map(attribute='value.jid') }}"
       block:
 
         - name: "Update repos."

@@ -187,7 +187,7 @@ Notes
 
 * Templates created in :ref:`example_202` are used in this example.
 
-* The dash "-" is used in `binary iocage`_ to represent a missing value. See for example:
+* The dash '-' is used in `binary iocage`_ to represent a missing value. See for example:
 
   * `ioc_list.py#L259`_
   * `ioc_list.py#L276`_
@@ -277,7 +277,7 @@ Inventory hosts
 
 .. note::
 
-   The option `"get_properties: True"` is needed to compose the dictionary `iocage_tags`
+   The option ``get_properties: True`` is needed to compose the dictionary ``iocage_tags``
 
 Display inventory
 ^^^^^^^^^^^^^^^^^

@@ -3,13 +3,13 @@ PLAY [Install packages in jails.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [test_132]
-ok: [test_133]
 ok: [test_131]
+ok: [test_133]
 
 TASK [Install packages] ********************************************************
+ok: [test_131 -> iocage_04(10.1.0.29)]
 ok: [test_133 -> iocage_04(10.1.0.29)]
 ok: [test_132 -> iocage_04(10.1.0.29)]
-ok: [test_131 -> iocage_04(10.1.0.29)]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [test_131] => 

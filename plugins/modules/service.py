@@ -95,25 +95,26 @@ EXAMPLES = r"""
     command: rcvar
 
   out:
+    ansible_facts:
+      discovered_interpreter_python: /usr/local/bin/python3.11
     changed: false
     failed: false
     rc: 0
     rcvar:
-      sshd_enable: '"YES"'
+      sshd_enable: 'YES'
     stderr: ''
     stderr_lines: []
     stdout: |-
-        # sshd : Secure Shell Daemon
-        #
-        sshd_enable="YES"
-        #   (default: "")
+      # sshd : Secure Shell Daemon
+      #
+      sshd_enable="YES"
+      #   (default: "")
     stdout_lines:
       - '# sshd : Secure Shell Daemon'
       - '#'
       - sshd_enable="YES"
       - '#   (default: "")'
       - ''
-
 ---
 - name: Get /usr/local/etc/rc.d/apcupsd status.
   register: out
@@ -145,7 +146,7 @@ EXAMPLES = r"""
     failed: false
     rc: 0
     rcvar:
-      apcupsd_enable: '"NO"'
+      apcupsd_enable: 'NO'
     stderr: ''
     stderr_lines: []
     stdout: |-
@@ -186,7 +187,7 @@ EXAMPLES = r"""
       - Starting apcupsd.
 
 ---
-- name: List services that are enabled.
+- name: List enabled services.
   register: out
   vbotka.freebsd.service:
     list_enabled: true
@@ -205,7 +206,7 @@ EXAMPLES = r"""
         ...
 
 ---
-- name: Git script sshd commands synopsis.
+- name: Get script sshd commands synopsis.
   register: out
   vbotka.freebsd.service:
     script: sshd
@@ -350,7 +351,7 @@ def _parse_command_output(script, command, rc, out, err):
         if rc == 1:
             return data
         lines = data.splitlines()
-        return {k: v for i in lines if i and not i.startswith('#') for k, v in [i.split('=')]}
+        return {k: v.strip('\"') for i in lines if i and not i.startswith('#') for k, v in [i.split('=')]}
 
     if command.endswith('status'):
         data = out  # Command status returns data in stdout when rc=1

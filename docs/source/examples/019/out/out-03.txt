@@ -5,17 +5,17 @@ TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     iocage_ip4: '-'
 ok: [test_111] => 
-    iocage_ip4: 10.1.0.175
+    iocage_ip4: 10.1.0.174
 ok: [test_112] => 
     iocage_ip4: '-'
 ok: [test_113] => 
     iocage_ip4: '-'
 ok: [test_131] => 
-    iocage_ip4: 10.1.0.207
+    iocage_ip4: 10.1.0.206
 ok: [test_132] => 
-    iocage_ip4: 10.1.0.168
+    iocage_ip4: 10.1.0.167
 ok: [test_133] => 
-    iocage_ip4: 10.1.0.208
+    iocage_ip4: 10.1.0.207
 
 TASK [debug] *******************************************************************
 ok: [ansible_client] => 

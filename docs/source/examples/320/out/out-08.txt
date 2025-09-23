@@ -33,200 +33,428 @@ ok: [iocage_02] =>
     pkg_audit:
         iocage_02:
             packages:
+                apache24:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.4.64
+                        cve:
+                        - CVE-2025-53020
+                        - CVE-2025-49812
+                        - CVE-2025-49630
+                        - CVE-2025-23048
+                        - CVE-2024-47252
+                        - CVE-2024-43394
+                        - CVE-2024-43204
+                        - CVE-2024-42516
+                        description: Apache httpd -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/342f2a0a-5e9b-11f0-8baa-8447094a420f.html
+                    reverse dependencies:
+                    - mod_php83
+                    version: 2.4.63
                 cups:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 2.4.11
+                        - < 2.4.13
                         cve:
-                        - CVE-2024-47176
-                        - CVE-2024-47175
-                        - CVE-2024-47076
-                        description: cups-filters -- remote code execution
-                        url: https://vuxml.FreeBSD.org/freebsd/24375796-7cbc-11ef-a3a9-001cc0382b2f.html
+                        - CVE-2025-58364
+                        - CVE-2025-58060
+                        description: cups -- security vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/3aee6703-8ff6-11f0-b8da-589cfc10a551.html
                     reverse dependencies:
                     - gtk3
-                    version: 2.4.10_1
-                emacs-nox:
+                    version: 2.4.11_1
+                curl:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 30.1,3
+                        - '>= 8.5.0 : < 8.14.0'
                         cve:
-                        - CVE-2025-1244
-                        description: Emacs -- Arbitrary code execution vulnerability
-                        url: https://vuxml.FreeBSD.org/freebsd/e60e538f-e795-4a00-b475-cc85a7546e00.html
-                    reverse dependencies: []
-                    version: 29.4,3
-                expat:
-                    issue_count: 1
-                    issues:
-                    -   Affected versions:
-                        - < 2.6.3
-                        cve:
-                        - CVE-2024-45492
-                        - CVE-2024-45491
-                        - CVE-2024-45490
-                        description: expat -- multiple vulnerabilities
-                        url: https://vuxml.FreeBSD.org/freebsd/ca5f3bbc-7a62-11ef-9533-f875a43e1796.html
+                        - CVE-2025-4947
+                        - CVE-2025-5025
+                        description: curl -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/533b4470-3f25-11f0-b440-f02f7432cf97.html
                     reverse dependencies:
-                    - mesa-dri
-                    - xorg-server
-                    - nvidia-driver-304
-                    - mesa-libs
+                    - syslog-ng
+                    - rust
                     - git
                     - py311-iocage
                     - apache24
                     - mod_php83
-                    - apr
-                    - dbus-glib
-                    - avahi-app
-                    - cups
+                    version: 8.13.0_2
+                gdk-pixbuf2:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.42.12_2
+                        cve:
+                        - CVE-2025-7345
+                        description: gdk-pixbuf2 -- a heap buffer overflow
+                        url: https://vuxml.FreeBSD.org/freebsd/3d4393b2-68a5-11f0-b2b4-589cfc10832a.html
+                    reverse dependencies:
                     - gtk3
-                    - fontconfig
-                    - ffmpeg
-                    - libass
                     - librsvg2-rust
-                    - pango
-                    - cairo
-                    - libXft
-                    - dbus
-                    - at-spi2-core
-                    - colord
-                    - polkit
-                    - wayland
-                    - libva
-                    - vulkan-loader
-                    - libplacebo
-                    - libxkbcommon
-                    version: 2.6.2
+                    - libjxl
+                    - ffmpeg
+                    - gtk-update-icon-cache
+                    - adwaita-icon-theme
+                    version: 2.42.12_1
                 git:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 2.48.1
+                        - < 2.50.1
                         cve:
-                        - CVE-2024-52006
-                        - CVE-2024-50349
+                        - CVE-2025-48386
+                        - CVE-2025-48385
+                        - CVE-2025-48384
+                        - CVE-2025-46835
+                        - CVE-2025-27614
+                        - CVE-2025-27613
                         description: git -- multiple vulnerabilities
-                        url: https://vuxml.FreeBSD.org/freebsd/3445e4b6-d2b8-11ef-9ff3-43c2b5d6c4c8.html
+                        url: https://vuxml.FreeBSD.org/freebsd/2a4472ed-5c0d-11f0-b991-291fce777db8.html
                     reverse dependencies:
                     - py311-iocage
-                    version: 2.46.0
-                openssl:
+                    version: 2.49.0
+                gnutls:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 3.0.15_1,1
+                        - < 3.8.10
                         cve:
-                        - CVE-2024-9143
-                        description: OpenSSL -- OOB memory access vulnerability
-                        url: https://vuxml.FreeBSD.org/freebsd/c6f4177c-8e29-11ef-98e7-84a93843eb75.html
+                        - CVE-2025-6395
+                        - CVE-2025-32990
+                        - CVE-2025-32988
+                        - CVE-2025-32989
+                        description: GnuTLS -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/c3e1df74-5e73-11f0-95e5-74563cf9e4e9.html
                     reverse dependencies:
-                    - ssmtp
-                    - mod_php83
-                    - acme-tiny
-                    - git
-                    - py311-iocage
-                    - wget
-                    - rsync
-                    - rsnapshot
-                    - apache24
-                    - apr
-                    - curl
-                    - rust
-                    - libevent
-                    - avahi-app
+                    - ffmpeg
                     - cups
                     - gtk3
-                    - ruby
-                    - portupgrade
-                    - ruby32-bdb
-                    - p5-Net-SSLeay
-                    - p5-IO-Socket-SSL
-                    - libssh2
-                    - db18
-                    - py311-cryptography
-                    - py311-dnspython
-                    - py311-aioquic
-                    - py311-service-identity
+                    - emacs-nox
+                    - mailutils
+                    version: 3.8.9
+                libxml2:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 2.13.0 : < 2.13.6'
+                        - '>= 2.12.0 : < 2.12.10'
+                        - < 2.11.9_1
+                        cve:
+                        - CVE-2024-56171
+                        description: libxml2 -- Use After Free
+                        url: https://vuxml.FreeBSD.org/freebsd/bd2af307-3e50-11f0-95d4-00a098b42aeb.html
+                    reverse dependencies:
+                    - ffmpeg
+                    - librsvg2-rust
+                    - gtk3
+                    - gdk-pixbuf2
+                    - libjxl
+                    - gtk-update-icon-cache
+                    - adwaita-icon-theme
+                    - mod_php83
+                    - apache24
+                    - libxkbcommon
+                    - xkeyboard-config
+                    - xorg-server
+                    - nvidia-driver-304
+                    - wayland
+                    - mesa-dri
+                    - mesa-libs
+                    - vulkan-loader
+                    - libplacebo
+                    - libva
+                    - shared-mime-info
+                    - emacs-nox
+                    - libxslt
+                    - dbus
+                    - colord
+                    - polkit
+                    - cups
+                    - avahi-app
+                    - dbus-glib
+                    - at-spi2-core
+                    version: 2.11.9
+                libxslt:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.1.43_2
+                        cve:
+                        - CVE-2025-7425
+                        - CVE-2025-7424
+                        description: libxslt -- unmaintained, with multiple unfixed vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/b0a3466f-5efc-11f0-ae84-99047d0a6bcc.html
+                    reverse dependencies: []
+                    version: 1.1.43
+                p5-Authen-SASL:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.1900
+                        cve:
+                        - CVE-2025-40918
+                        description: p5-Authen-SASL -- Insecure source of randomness
+                        url: https://vuxml.FreeBSD.org/freebsd/defe9a20-781e-11f0-97c4-40b034429ecf.html
+                    reverse dependencies:
+                    - git
+                    - py311-iocage
+                    version: '2.18'
+                python310:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.10.17_1
+                        cve:
+                        - CVE-2025-4516
+                        description: cpython -- Use-after-free in "unicode_escape" decoder
+                            with error handler
+                        url: https://vuxml.FreeBSD.org/freebsd/e587b52d-38ac-11f0-b7b6-dcfe074bd614.html
+                    reverse dependencies:
+                    - py310-numpy
+                    version: 3.10.17
+                python311:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.11.12_1
+                        cve:
+                        - CVE-2025-4516
+                        description: cpython -- Use-after-free in "unicode_escape" decoder
+                            with error handler
+                        url: https://vuxml.FreeBSD.org/freebsd/e587b52d-38ac-11f0-b7b6-dcfe074bd614.html
+                    reverse dependencies:
+                    - llvm19
+                    - mesa-dri
+                    - xorg-server
+                    - nvidia-driver-304
+                    - spirv-llvm-translator-llvm19
+                    - gtk3
+                    - py311-iocage
+                    - llvm15
+                    - spirv-llvm-translator-llvm15
+                    - git
+                    - py311-jsonschema-specifications
+                    - py311-jsonschema
+                    - py311-ansible-lint
+                    - py311-ansible-compat
+                    - py311-referencing
                     - py311-certbot
-                    - py311-openssl
                     - py311-acme
+                    - py311-openssl
+                    - py311-aioquic
+                    - py311-dnspython
+                    - py311-httpx
+                    - py311-httpcore
+                    - py311-anyio
+                    - py311-typing-extensions
+                    - py311-truststore
+                    - py311-ansible-runner
+                    - py311-ansible
+                    - py311-ansible-core
+                    - py311-passlib
+                    - py311-yamllint
+                    - py311-wcmatch
+                    - py311-virtualenv
+                    - py311-urllib3
+                    - py311-requests
+                    - py311-trio
+                    - py311-tqdm
+                    - py311-texttable
+                    - py311-subprocess-tee
+                    - py311-pandas
+                    - py311-fail2ban
+                    - py311-sqlite3
+                    - py311-sortedcontainers
+                    - py311-gitdb
+                    - py311-gitpython
+                    - py311-smmap
+                    - py311-configobj
+                    - py311-six
+                    - py311-python-dateutil
+                    - py311-setuptools
+                    - py311-service-identity
+                    - py311-ruamel.yaml
+                    - py311-ruamel.yaml.clib
+                    - py311-rpds-py
+                    - py311-rich
+                    - py311-black
+                    - py311-regex
+                    - py311-pyyaml
+                    - py311-pytz
+                    - py311-pyrfc3339
+                    - py311-pylsqpack
+                    - py311-pygments
+                    - py311-pyasn1-modules
+                    - py311-ptyprocess
+                    - py311-pexpect
+                    - py311-psutil
+                    - py311-platformdirs
+                    - py311-parsedatetime
+                    - py311-outcome
+                    - py311-netifaces
+                    - py311-mypy_extensions
+                    - py311-daemon
+                    - py311-lockfile
+                    - py311-libzfs
                     - py311-josepy
-                    - py311-ansible-core
-                    - py311-ansible-lint
-                    - py311-ansible-compat
-                    - py311-ansible
-                    - py311-ansible-runner
-                    version: 3.0.14,1
-                py311-Jinja2:
+                    - py311-idna
+                    - py311-h2
+                    - py311-hyperframe
+                    - py311-humanfriendly
+                    - py311-coloredlogs
+                    - py311-hpack
+                    - py311-h11
+                    - py311-filelock
+                    - py311-distlib
+                    - py311-cryptography
+                    - py311-click
+                    - py311-charset-normalizer
+                    - py311-cffi
+                    - py311-certifi
+                    - py311-bracex
+                    - py311-attrs
+                    - py311-async_generator
+                    - py311-Jinja2
+                    - py311-Babel
+                    - json-glib
+                    - libgusb
+                    - colord
+                    - gobject-introspection
+                    - glib
+                    - syslog-ng
+                    - librsvg2-rust
+                    - libjxl
+                    - ffmpeg
+                    - gtk-update-icon-cache
+                    - adwaita-icon-theme
+                    - gdk-pixbuf2
+                    - shared-mime-info
+                    - polkit
+                    - pango
+                    - libgudev
+                    - harfbuzz
+                    - libass
+                    - gsettings-desktop-schemas
+                    - desktop-file-utils
+                    - avahi-app
+                    - cups
+                    - dbus-glib
+                    - cairo
+                    - at-spi2-core
+                    - acme-tiny
+                    - py311-tzdata
+                    - py311-numexpr
+                    - py311-bottleneck
+                    - py311-numpy
+                    - py311-importlib-resources
+                    - py311-resolvelib
+                    - py311-packaging
+                    - py311-pytest-runner
+                    - py311-socksio
+                    - py311-sniffio
+                    - py311-pyasn1
+                    - py311-configargparse
+                    - py311-distro
+                    - py311-toml
+                    - py311-colorama
+                    - py311-markdown-it-py
+                    - py311-pathspec
+                    - py311-mdurl
+                    - py311-markupsafe
+                    - py311-pysocks
+                    - py311-pyinotify
+                    - python
+                    - python3
+                    - py311-pycparser
+                    version: 3.11.12
+                python39:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 3.1.4
+                        - < 3.9.22_1
                         cve:
-                        - CVE-2024-34064
-                        description: Jinja2 -- Vulnerable to HTML attribute injection
-                            when passing user input as keys to xmlattr filter
-                        url: https://vuxml.FreeBSD.org/freebsd/04c9c3f8-5ed3-11ef-8262-b0416f0c4c67.html
+                        - CVE-2025-4516
+                        description: cpython -- Use-after-free in "unicode_escape" decoder
+                            with error handler
+                        url: https://vuxml.FreeBSD.org/freebsd/e587b52d-38ac-11f0-b7b6-dcfe074bd614.html
                     reverse dependencies:
-                    - py311-ansible-core
-                    - py311-ansible-lint
-                    - py311-ansible-compat
-                    - py311-ansible
-                    - py311-ansible-runner
-                    version: 3.1.3
-                py311-configobj:
+                    - py39-numpy
+                    version: 3.9.22
+                ruby:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - <= 5.0.8
+                        - '>= 3.5.0.p1,1 : < 3.5.0.p2,1'
+                        - '>= 3.4.0.p1,1 : < 3.4.5,1'
+                        - '>= 3.3.0.p1,1 : < 3.3.9,1'
+                        - '>= 3.2.0.p1,1 : < 3.2.9,1'
                         cve:
-                        - CVE-2023-26112
-                        description: Configobj -- Regular Expression Denial of Service
-                            attack
-                        url: https://vuxml.FreeBSD.org/freebsd/46419e8c-65d9-11ef-ac06-b0416f0c4c67.html
+                        - CVE-2025-24294
+                        description: rubygem-resolv -- Possible denial of service
+                        url: https://vuxml.FreeBSD.org/freebsd/eed1a411-699b-11f0-91fe-000c295725e4.html
                     reverse dependencies:
-                    - py311-certbot
-                    version: 5.0.8
-                rsync:
+                    - portupgrade
+                    - ruby33-bdb
+                    - ruby32-bdb
+                    version: 3.3.8,1
+                ruby32:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 3.4.0
+                        - < 3.2.9,1
                         cve:
-                        - CVE-2024-12747
-                        - CVE-2024-12088
-                        - CVE-2024-12087
-                        - CVE-2024-12086
-                        - CVE-2024-12085
-                        - CVE-2024-12084
-                        description: rsync -- Multiple security fixes
-                        url: https://vuxml.FreeBSD.org/freebsd/163edccf-d2ba-11ef-b10e-589cfc10a551.html
+                        - CVE-2025-24294
+                        description: rubygem-resolv -- Possible denial of service
+                        url: https://vuxml.FreeBSD.org/freebsd/eed1a411-699b-11f0-91fe-000c295725e4.html
+                    reverse dependencies: []
+                    version: 3.2.8,1
+                sqlite3:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.50.2,1
+                        cve:
+                        - CVE-2025-6965
+                        description: sqlite -- Integer Truncation on SQLite
+                        url: https://vuxml.FreeBSD.org/freebsd/0f5bcba2-67fb-11f0-9ee5-b42e991fc52e.html
                     reverse dependencies:
-                    - rsnapshot
-                    version: 3.3.0
+                    - colord
+                    - gtk3
+                    - py311-sqlite3
+                    - py311-pandas
+                    - py311-fail2ban
+                    - emacs-nox
+                    version: 3.46.1_1,1
+                sudo:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.9.17p1
+                        cve:
+                        - CVE-2025-32463
+                        - CVE-2025-32462
+                        description: sudo -- privilege escalation vulnerability through
+                            host and chroot options
+                        url: https://vuxml.FreeBSD.org/freebsd/24f4b495-56a1-11f0-9621-93abbef07693.html
+                    reverse dependencies: []
+                    version: 1.9.16p2_1
                 xorg-server:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 21.1.16,1
+                        - < 21.1.18,1
                         cve:
-                        - CVE-2025-26601
-                        - CVE-2025-26600
-                        - CVE-2025-26599
-                        - CVE-2025-26598
-                        - CVE-2025-26597
-                        - CVE-2025-26596
-                        - CVE-2025-26595
-                        - CVE-2025-26594
+                        - CVE-2025-49176
                         description: xorg server -- Multiple vulnerabilities
-                        url: https://vuxml.FreeBSD.org/freebsd/f4297478-fa62-11ef-b597-001fc69cd6dc.html
+                        url: https://vuxml.FreeBSD.org/freebsd/8df49466-5664-11f0-943a-18c04d5ea3dc.html
                     reverse dependencies:
                     - nvidia-driver-304
-                    version: 21.1.14,1
-            pkg_count: 9
+                    version: 21.1.16,1
+            pkg_count: 17
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

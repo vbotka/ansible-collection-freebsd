@@ -1,7 +1,7 @@
 ---
 name: freebsd
 namespace: vbotka
-version: 0.7.24
+version: 0.8.0
 readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
@@ -31,6 +31,8 @@ build_ignore:
   - '.ansible'
   - '.ansible-lint'
   - '.ansible-lint.local'
+  - '.deny'
+  - '.done'
   - '.git'
   - '.github'
   - '.gitignore'

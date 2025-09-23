@@ -2,6 +2,7 @@
 
 . ../defaults/batch
 
+ssh admin@$iocage_04 sudo iocage start ALL
 ssh admin@$iocage_04 sudo iocage list -l | tee out/out-01.txt
 ansible-inventory -i hosts -i iocage.ini --graph | tee out/out-03.txt
 

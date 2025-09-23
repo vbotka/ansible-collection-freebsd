@@ -13,23 +13,19 @@ TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /boot/loader.conf
 ok: [iocage_04] => (item={'name': 'net.link.bridge.pfil_member', 'value': '0'})
 ok: [iocage_04] => (item={'name': 'net.link.bridge.pfil_bridge', 'value': '0'})
 ok: [iocage_04] => (item={'name': 'net.link.bridge.inherit_mac', 'value': '1'})
-changed: [iocage_03] => (item={'name': 'net.link.bridge.pfil_member', 'value': '0'})
-changed: [iocage_03] => (item={'name': 'net.link.bridge.pfil_bridge', 'value': '0'})
-changed: [iocage_03] => (item={'name': 'net.link.bridge.inherit_mac', 'value': '1'})
+ok: [iocage_03] => (item={'name': 'net.link.bridge.pfil_member', 'value': '0'})
+ok: [iocage_03] => (item={'name': 'net.link.bridge.pfil_bridge', 'value': '0'})
+ok: [iocage_03] => (item={'name': 'net.link.bridge.inherit_mac', 'value': '1'})
 
 TASK [vbotka.freebsd.postinstall : Loader: Configure modules by sysctl /boot/loader.conf] ***
 ok: [iocage_04] => (item={'name': 'if_bridge', 'value': 'YES'})
-changed: [iocage_03] => (item={'name': 'if_bridge', 'value': 'YES'})
+ok: [iocage_03] => (item={'name': 'if_bridge', 'value': 'YES'})
 
 TASK [vbotka.freebsd.postinstall : Loader: Get sysctls settable via loader.] ***
 ok: [iocage_04]
 ok: [iocage_03]
 
-RUNNING HANDLER [vbotka.freebsd.postinstall : Loader message reboot] ***********
-ok: [iocage_03] => 
-    msg: '[MESSAGE] Reboot to activate configuration in /boot/loader.conf'
-
 PLAY RECAP *********************************************************************
-iocage_03                  : ok=6    changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+iocage_03                  : ok=5    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 iocage_04                  : ok=5    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

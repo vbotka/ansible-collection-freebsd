@@ -1,4 +1,6 @@
 .. _ug_module_service:
+.. index:: single: module vbotka.freebsd.service; Plugins
+.. index:: single: vbotka.freebsd.service; Plugins
 
 Module vbotka.freebsd.service
 -----------------------------

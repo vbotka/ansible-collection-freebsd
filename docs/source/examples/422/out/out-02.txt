@@ -24,13 +24,13 @@ changed: [www-4] => (item={'module': 'php_module', 'mod': 'libphp.so'})
 TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
 changed: [www-4]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Enable and start apache] **************
+RUNNING HANDLER [vbotka.freebsd.apache : Enable and start vbotka.freebsd.apache] ***
 changed: [www-4]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Restart apache] ***********************
+RUNNING HANDLER [vbotka.freebsd.apache : Restart vbotka.freebsd.apache] ********
 changed: [www-4]
 
-RUNNING HANDLER [vbotka.freebsd.apache : Reload apache] ************************
+RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
 ok: [www-4]
 
 PLAY RECAP *********************************************************************

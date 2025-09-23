@@ -1,0 +1,26 @@
+lighttpd_index:
+  path: "{{ cl_lighttpd_server_document_root }}/index.html"
+  owner: "{{ cl_lighttpd_server_username }}"
+  group: "{{ cl_lighttpd_server_groupname }}"
+  create: true
+  mode: "0644"
+  lines:
+    - line: <html><body><h1>Lighttpd works!</h1></body></html>
+lighttpd_lighttpd_annotated_conf:
+  path: /usr/local/etc/lighttpd/lighttpd.annotated.conf
+  lines:
+    - {regexp: '^\s*server.document-root\s*=.*$', state: absent}
+    - {regexp: '^\s*server.username\s*=.*$', state: absent}
+    - {regexp: '^\s*server.groupname\s*=.*$', state: absent}
+  handlers:
+    - reload lighttpd
+lighttpd_lighttpd_conf:
+  path: /usr/local/etc/lighttpd/lighttpd.conf
+  create: true
+  owner: root
+  group: wheel
+  mode: '0644'
+  assignment: ' = '
+  dict: "{{ cl_lighttpd_lighttpdconf_dict }}"
+  handlers:
+    - reload lighttpd

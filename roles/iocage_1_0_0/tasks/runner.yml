@@ -1,0 +1,72 @@
+---
+
+- name: "Runner: Debug. freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+  when: freebsd_iocage_debug | bool
+  ansible.builtin.debug:
+    msg: |
+      freebsd_iocage_runner_exec: {{ freebsd_iocage_runner_exec }}
+
+      freebsd_iocage_runner_env:
+        {{ freebsd_iocage_runner_env | to_nice_yaml(indent=2) | indent(2) }}
+      freebsd_iocage_runner_cmd:
+        {{ freebsd_iocage_runner_cmd | to_nice_yaml(indent=2) | indent(2) }}
+
+- name: Execute commands.
+  when: freebsd_iocage_runner_exec | length > 0
+  vars:
+    freebsd_iocage_runner_list: "{{ freebsd_iocage_runner_exec | split(',') }}"
+  block:
+
+    - name: "Runner: Assert all commands are available."
+      vars:
+        runner_cmd_missing: "{{ freebsd_iocage_runner_list | difference(freebsd_iocage_runner_cmd.keys()) }}"
+      ansible.builtin.assert:
+        that: runner_cmd_missing | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        fail_msg: "[ERR] Missing command(s): {{ runner_cmd_missing }}"
+        success_msg: "[OK]  All commands are available."
+
+    - name: "Runner: Assert all commands are iocage."
+      vars:
+        runner_cmd_regex_set: '[\w|\s|\.|\-|:|=|/|"]'
+        runner_cmd_not_iocage: "{{ freebsd_iocage_runner_list |
+                                   map('extract', freebsd_iocage_runner_cmd) | flatten |
+                                   rejectattr('cmd', 'regex', '^iocage ' ~ runner_cmd_regex_set ~ '*$') }}"
+      ansible.builtin.assert:
+        that: runner_cmd_not_iocage | length == 0
+        quiet: "{{ freebsd_iocage_assert_quiet | bool }}"
+        fail_msg: "[ERR] Not iocage command(s): {{ runner_cmd_not_iocage }}"
+        success_msg: "[OK]  All commands are iocage."
+
+    - name: "Runner: Run listed commands."
+      when: item.when | d(true)
+      environment: "{{ freebsd_iocage_runner_env }}"
+      register: out
+      failed_when: out.rc >= item.failed_rc | d(1) | int
+      ansible.builtin.command:
+        cmd: "{{ item.cmd }}"
+        creates: "{{ item.creates | d(omit) }}"
+        removes: "{{ item.removes | d(omit) }}"
+      loop: "{{ freebsd_iocage_runner_list | map('extract', freebsd_iocage_runner_cmd) | flatten }}"
+      loop_control:
+        label: "{{ item.cmd }}"
+
+    - name: "Runner: Debug run listed commands. freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        var: out
+
+  rescue:
+
+    - name: "Runner: Debug rescue freebsd_iocage_debug={{ freebsd_iocage_debug }}"
+      when: freebsd_iocage_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ ansible_failed_task }}
+          {{ ansible_failed_result }}
+
+    - name: "Runner: End host."
+      when: freebsd_iocage_runner_fatal | bool
+      ansible.builtin.meta: end_host
+
+# EOF

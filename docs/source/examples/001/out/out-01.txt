@@ -7,7 +7,7 @@ ok: [iocage_04]
 TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] **********
 ok: [iocage_04] => 
     msg: |-
-        freebsd_iocage_role_version: 0.5.3
+        freebsd_iocage_role_version: 1.0.0
 
         ansible_architecture: amd64
         ansible_os_family: FreeBSD

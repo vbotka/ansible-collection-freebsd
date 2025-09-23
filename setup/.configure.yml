@@ -41,7 +41,7 @@
         that: i_know_what_i_am_doing | d(false) | bool
         fail_msg: Confirm that you know what you are doing.
 
-    - name: Update roles tag in vars/roles.yml from local repos
+    - name: Update roles tag in vars/roles_latest.yml from local repos
       when: update_roles_tag_local | d(false) | bool
       tags: update_roles_tag_local
       ansible.builtin.import_tasks: tasks/conf-update_roles_tag_local.yml

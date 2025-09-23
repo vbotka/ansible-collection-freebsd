@@ -6,14 +6,14 @@ ok: [iocage_04]
 ok: [iocage_02]
 
 TASK [vbotka.freebsd.iocage : Facts: create directory /etc/ansible/facts.d] ****
-changed: [iocage_04]
+ok: [iocage_04]
 ok: [iocage_02]
 
 TASK [vbotka.freebsd.iocage : Facts: copy scipts to /etc/ansible/facts.d] ******
-changed: [iocage_04] => (item=iocage.fact)
+ok: [iocage_04] => (item=iocage.fact)
 ok: [iocage_02] => (item=iocage.fact)
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_04                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

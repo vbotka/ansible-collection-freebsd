@@ -1,0 +1,23 @@
+---
+- name: "Rc-conf: Configure /etc/rc.conf"
+  notify: "graceful apache {{ ansible_role_name }}"
+  community.general.sysrc:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ apache_rcconf }}"
+
+- name: "Rc-conf: Enable and Start Apache"
+  when: apache_enable | bool
+  notify: "enable and start {{ ansible_role_name }}"
+  community.general.sysrc:
+    name: "{{ apache_service }}_enable"
+    value: "YES"
+
+- name: "Rc-conf: Disable and Stop Apache"
+  when: not apache_enable | bool
+  notify: "disable and stop apache {{ ansible_role_name }}"
+  community.general.sysrc:
+    name: "{{ apache_service }}_enable"
+    value: "NO"
+
+# EOF

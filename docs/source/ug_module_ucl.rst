@@ -1,4 +1,7 @@
 .. _ug_module_ucl:
+.. index:: single: module vbotka.freebsd.ucl; Plugins
+.. index:: single: vbotka.freebsd.ucl; Plugins
+.. index:: single: ucl; Plugins
 
 Module vbotka.freebsd.ucl
 -------------------------

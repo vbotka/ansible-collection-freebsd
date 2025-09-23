@@ -1,4 +1,5 @@
 .. _ug_inventory_iocage:
+.. index:: single: inventory vbotka.freebsd.iocage; Plugins
 
 Inventory vbotka.freebsd.iocage
 -------------------------------

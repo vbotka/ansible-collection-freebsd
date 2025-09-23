@@ -21,7 +21,7 @@ pb_iocage_ansible_clients
 Synopsis
 ^^^^^^^^
 
-This playbook creates jails from the template ``ansible_client``
+This playbook creates jails from the templates.
 
 Examples
 ^^^^^^^^

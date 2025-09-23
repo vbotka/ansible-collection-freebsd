@@ -2,15 +2,13 @@ Updating FreeBSD repository catalogue...
 Fetching meta.conf: . done
 Fetching data.pkg: .......... done
 Processing entries: .......... done
-FreeBSD repository update completed. 35669 packages processed.
+FreeBSD repository update completed. 35665 packages processed.
 Updating FreeBSD-kmods repository catalogue...
 Fetching meta.conf: . done
 Fetching data.pkg: .. done
 Processing entries: .......... done
-FreeBSD-kmods repository update completed. 209 packages processed.
+FreeBSD-kmods repository update completed. 210 packages processed.
 Updating build repository catalogue...
-Fetching meta.conf: . done
-Fetching data.pkg: .......... done
-Processing entries: .......... done
-build repository update completed. 539 packages processed.
-All repositories are up to date.
+repository build has no meta file, using default settings
+Unable to update repository build
+Error updating repositories!

@@ -18,7 +18,7 @@ changed: [iocage_02] => (item=test_112 ansible_client)
 changed: [iocage_02] => (item=test_113 ansible_client)
 
 TASK [Start clones] ************************************************************
-ok: [iocage_04] => (item=test_133)
+changed: [iocage_04] => (item=test_133)
 changed: [iocage_02] => (item=test_113)
 
 TASK [Create Ansible facts iocage_*] *******************************************
@@ -36,10 +36,10 @@ ok: [iocage_04] =>
     msg: |-
         ['14.3-RELEASE']
         []
-        []
+        ['ansible_client_apache', 'ansible_client_pull']
         ['ansible_client', 'test_131', 'test_132', 'test_133']
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_04                  : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -2,16 +2,16 @@
 PLAY [Update repos.] ***********************************************************
 
 TASK [Get iocage list of jails.] ***********************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [Set dictionary iocage_jails] *********************************************
-ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [Update repos.] ***********************************************************
-ok: [iocage_02] => (item=71)
-ok: [iocage_02] => (item=72)
-ok: [iocage_02] => (item=73)
+ok: [iocage_04] => (item=1045)
+ok: [iocage_04] => (item=1046)
+ok: [iocage_04] => (item=1047)
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

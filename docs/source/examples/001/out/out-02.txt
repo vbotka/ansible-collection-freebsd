@@ -18,23 +18,15 @@ ok: [iocage_04] =>
         stderr_lines: []
         stdout: |-
             Updating FreeBSD repository catalogue...
-            Fetching data.pkg: .......... done
-            Processing entries: .......... done
-            FreeBSD repository update completed. 35653 packages processed.
+            FreeBSD repository is up to date.
             Updating FreeBSD-kmods repository catalogue...
-            Fetching data.pkg: .. done
-            Processing entries: .......... done
-            FreeBSD-kmods repository update completed. 208 packages processed.
+            FreeBSD-kmods repository is up to date.
             All repositories are up to date.
         stdout_lines:
         - Updating FreeBSD repository catalogue...
-        - 'Fetching data.pkg: .......... done'
-        - 'Processing entries: .......... done'
-        - FreeBSD repository update completed. 35653 packages processed.
+        - FreeBSD repository is up to date.
         - Updating FreeBSD-kmods repository catalogue...
-        - 'Fetching data.pkg: .. done'
-        - 'Processing entries: .......... done'
-        - FreeBSD-kmods repository update completed. 208 packages processed.
+        - FreeBSD-kmods repository is up to date.
         - All repositories are up to date.
 
 PLAY RECAP *********************************************************************

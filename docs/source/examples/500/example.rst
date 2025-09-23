@@ -26,7 +26,7 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Use the jails
-created in the example :ref:`example_207`. The ``project`` keys are jails aliases.
+created in the example :ref:`example_207`. The ``project`` keys are jail's aliases.
 
 .. code-block:: yaml
 
@@ -238,6 +238,11 @@ Test the Log Server
     Aug 12 01:41:22 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1754955682, stamp: 2025-08-12T01:41:22 PADDPADD...
     Aug 12 01:42:42 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1754955762, stamp: 2025-08-12T01:42:42 PADDPADD...
 
+.. note::
+
+   This test is not created dynamically. The Log Server jail name in this test differs from the
+   dynamically created name in the example. (TBD)
+
 Playbook pb-logclient.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -274,6 +279,8 @@ Playbook output - Test Log Client
    :language: yaml
    :force:
 
+Example of the directory at the Log Server.
+
 .. code-block:: console
 
    (env) > ssh admin@4b07a142 sudo ls -lat /var/log/remote/ | sort
@@ -284,6 +291,8 @@ Playbook output - Test Log Client
    drwx------  2 root  wheel   3 Aug 12 01:41 localhost
    drwx------  7 root  wheel   7 Aug 12 01:41 .
    drwxr-xr-x  3 root  wheel  17 Aug 12 01:30 ..
+
+.. note:: This example of the directory at the Log Server is not created dynamically. (TBD)
 
 
 .. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html

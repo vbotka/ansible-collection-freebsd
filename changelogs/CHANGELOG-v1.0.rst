@@ -5,6 +5,52 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.0
+======
+
+Release Summary
+---------------
+Ansible 2.19 upgrade.
+
+Major Changes
+-------------
+* Upgrade to latest inventory plugin iocage.
+* Upgrade roles:
+  apache 2.8.0
+  certificate 2.8.0
+  config_light 2.8.0
+  custom_image 2.8.0
+  iocage 1.0.0
+  lib 2.8.0
+  network 2.8.1
+  packages 2.8.0
+  pf 2.8.0
+  postinstall 2.8.2
+  poudriere 2.8.0
+  rsnapshot 2.8.0
+  zfs 2.8.1
+* Update examples.
+* Add lookup plugin galaxy_info
+
+Minor Changes
+-------------
+* Update playbooks.
+* Update README.
+* Update docs Index.
+* Update docs ug included content.
+* Update docs ug plugins lookup galaxy_info
+* Update docs dg Update plugins.
+* Add example 040.
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Module vbotka.freebsd.service command rcvar strips quotes. See the module
+  examples.
+
+
 0.7.24
 ======
 
