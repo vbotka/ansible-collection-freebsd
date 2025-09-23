@@ -37,8 +37,8 @@ ok: [iocage_02] =>
             - dhcp=1
             - vnet=1
             - notes=vmm=iocage_02 swarm=sw_01
-            delta: '0:00:04.775914'
-            end: '2025-09-22 16:24:28.231858'
+            delta: '0:00:04.709923'
+            end: '2025-09-23 11:58:08.525632'
             failed: false
             invocation:
                 module_args:
@@ -62,17 +62,17 @@ ok: [iocage_02] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2025-09-22 16:24:23.455944'
+            start: '2025-09-23 11:58:03.815709'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                9cbe5e62 successfully created!
-                215812b5 successfully created!
-                f45b299a successfully created!
+                af28761f successfully created!
+                59c22005 successfully created!
+                4a12d22c successfully created!
             stdout_lines:
-            - 9cbe5e62 successfully created!
-            - 215812b5 successfully created!
-            - f45b299a successfully created!
+            - af28761f successfully created!
+            - 59c22005 successfully created!
+            - 4a12d22c successfully created!
         skipped: false
 ok: [iocage_04] => 
     out:
@@ -93,8 +93,8 @@ ok: [iocage_04] =>
             - dhcp=1
             - vnet=1
             - notes=vmm=iocage_04 swarm=sw_01
-            delta: '0:00:01.072459'
-            end: '2025-09-22 16:24:18.131787'
+            delta: '0:00:01.049681'
+            end: '2025-09-23 11:57:57.794191'
             failed: false
             invocation:
                 module_args:
@@ -118,17 +118,17 @@ ok: [iocage_04] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2025-09-22 16:24:17.059328'
+            start: '2025-09-23 11:57:56.744510'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                abc8a705 successfully created!
-                c6a0a801 successfully created!
-                05870dcd successfully created!
+                c88902c2 successfully created!
+                d2993fd4 successfully created!
+                9a44b90a successfully created!
             stdout_lines:
-            - abc8a705 successfully created!
-            - c6a0a801 successfully created!
-            - 05870dcd successfully created!
+            - c88902c2 successfully created!
+            - d2993fd4 successfully created!
+            - 9a44b90a successfully created!
         skipped: false
 
 TASK [Get iocage facts] ********************************************************
@@ -138,10 +138,10 @@ ok: [iocage_02]
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_02] => (item=sw_01) => 
     msg: |-
-        iocage start 9cbe5e62 215812b5 f45b299a
+        iocage start 59c22005 4a12d22c af28761f
 ok: [iocage_04] => (item=sw_01) => 
     msg: |-
-        iocage start abc8a705 c6a0a801 05870dcd
+        iocage start 9a44b90a c88902c2 d2993fd4
 
 TASK [Start swarms] ************************************************************
 changed: [iocage_04] => (item=sw_01)
@@ -158,11 +158,11 @@ ok: [iocage_02] =>
             cmd:
             - iocage
             - start
-            - 9cbe5e62
-            - 215812b5
-            - f45b299a
-            delta: '0:00:36.932638'
-            end: '2025-09-22 16:25:28.059112'
+            - 59c22005
+            - 4a12d22c
+            - af28761f
+            delta: '0:00:33.306725'
+            end: '2025-09-23 11:59:04.721894'
             failed: false
             invocation:
                 module_args:
@@ -171,7 +171,7 @@ ok: [iocage_02] =>
                     argv: null
                     chdir: null
                     cmd: |-
-                        iocage start 9cbe5e62 215812b5 f45b299a
+                        iocage start 59c22005 4a12d22c af28761f
                     creates: null
                     executable: null
                     expand_argument_vars: true
@@ -186,7 +186,7 @@ ok: [iocage_02] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2025-09-22 16:24:51.126474'
+            start: '2025-09-23 11:58:31.415169'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -196,55 +196,55 @@ ok: [iocage_02] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting 9cbe5e62
+                * Starting 59c22005
                   + Started OK
                   + Using devfs_ruleset: 1001 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.1.0.178/24
-                * Starting 215812b5
+                  + DHCP Address: 10.1.0.117/24
+                * Starting 4a12d22c
                   + Started OK
                   + Using devfs_ruleset: 1002 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.1.0.179/24
-                * Starting f45b299a
+                  + DHCP Address: 10.1.0.130/24
+                * Starting af28761f
                   + Started OK
                   + Using devfs_ruleset: 1003 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.1.0.208/24
+                  + DHCP Address: 10.1.0.201/24
             stdout_lines:
-            - '* Starting 9cbe5e62'
+            - '* Starting 59c22005'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1001 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.1.0.178/24'
-            - '* Starting 215812b5'
+            - '  + DHCP Address: 10.1.0.117/24'
+            - '* Starting 4a12d22c'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1002 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.1.0.179/24'
-            - '* Starting f45b299a'
+            - '  + DHCP Address: 10.1.0.130/24'
+            - '* Starting af28761f'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1003 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.1.0.208/24'
+            - '  + DHCP Address: 10.1.0.201/24'
         skipped: false
 ok: [iocage_04] => 
     out:
@@ -256,11 +256,11 @@ ok: [iocage_04] =>
             cmd:
             - iocage
             - start
-            - abc8a705
-            - c6a0a801
-            - 05870dcd
-            delta: '0:00:24.758372'
-            end: '2025-09-22 16:25:09.478106'
+            - 9a44b90a
+            - c88902c2
+            - d2993fd4
+            delta: '0:00:23.582607'
+            end: '2025-09-23 11:58:48.003707'
             failed: false
             invocation:
                 module_args:
@@ -269,7 +269,7 @@ ok: [iocage_04] =>
                     argv: null
                     chdir: null
                     cmd: |-
-                        iocage start abc8a705 c6a0a801 05870dcd
+                        iocage start 9a44b90a c88902c2 d2993fd4
                     creates: null
                     executable: null
                     expand_argument_vars: true
@@ -284,7 +284,7 @@ ok: [iocage_04] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2025-09-22 16:24:44.719734'
+            start: '2025-09-23 11:58:24.421100'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -294,55 +294,55 @@ ok: [iocage_04] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting abc8a705
+                * Starting 9a44b90a
                   + Started OK
                   + Using devfs_ruleset: 1010 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.1.0.150/24
-                * Starting c6a0a801
+                  + DHCP Address: 10.1.0.239/24
+                * Starting c88902c2
                   + Started OK
                   + Using devfs_ruleset: 1011 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.1.0.124/24
-                * Starting 05870dcd
+                  + DHCP Address: 10.1.0.115/24
+                * Starting d2993fd4
                   + Started OK
                   + Using devfs_ruleset: 1012 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.1.0.103/24
+                  + DHCP Address: 10.1.0.215/24
             stdout_lines:
-            - '* Starting abc8a705'
+            - '* Starting 9a44b90a'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1010 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.1.0.150/24'
-            - '* Starting c6a0a801'
+            - '  + DHCP Address: 10.1.0.239/24'
+            - '* Starting c88902c2'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1011 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.1.0.124/24'
-            - '* Starting 05870dcd'
+            - '  + DHCP Address: 10.1.0.115/24'
+            - '* Starting d2993fd4'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1012 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.1.0.103/24'
+            - '  + DHCP Address: 10.1.0.215/24'
         skipped: false
 
 PLAY RECAP *********************************************************************

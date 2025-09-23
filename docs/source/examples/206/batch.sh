@@ -5,6 +5,9 @@
 # destroy
 VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
 
+# create templates
+(cd ../202 && ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini --flush-cache)
+
 # status
 ssh admin@$iocage_04 iocage list -lt | tee out/out-01.txt
 
