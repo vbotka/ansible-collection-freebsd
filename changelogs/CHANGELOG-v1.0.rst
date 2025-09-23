@@ -17,7 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Update docs ug examples batch.sh
-* Update docs ug examples: 203,
+* Update docs ug examples: 013, 203,
 * Add docs ug examples: 210,
 
 
