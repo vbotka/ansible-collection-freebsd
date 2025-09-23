@@ -86,6 +86,7 @@ Examples
    207 DHCP, auto UUID, tags, class <examples/207/example.rst>
    208 DHCP, ansible-pull <examples/208/example.rst>
    209 iocage pkglist <examples/209/example.rst>
+   210 iocage notes and tags <examples/210/example.rst>
 
 .. toctree::
    :maxdepth: 1
