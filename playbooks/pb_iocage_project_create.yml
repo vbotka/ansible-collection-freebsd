@@ -15,6 +15,7 @@
       run_once: true
       ansible.builtin.debug:
         msg: |
+          project_template: {{ project_template }}
           vmm:
             {{ vmm | to_yaml | indent(2) }}
           class:
@@ -38,7 +39,7 @@
           ansible.builtin.command: >
             iocage create
             --short
-            --template ansible_client
+            --template {{ project_template | d('ansible_client') }}
             --count {{ iocage_jails_absent | length }}
             {{ properties }}
 
