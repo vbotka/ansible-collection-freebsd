@@ -46,8 +46,7 @@ Tree
   ├── host_vars
   │   └── iocage_04
   │       └── iocage.yml
-  ├── iocage.ini
-  └── pb-test.yml
+  └── iocage.ini
 
 Synopsis
 ^^^^^^^^
@@ -144,18 +143,12 @@ Limit the inventory to iocage_04
    :language: yaml
    :force:
 
-Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-test.yml
-   :language: yaml
-
-Playbook output - List templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.ini -l iocage_04
+   [iocage_04]#  iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash

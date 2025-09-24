@@ -1,39 +1,9 @@
-
-PLAY [List templates.] *********************************************************
-
-TASK [ansible.builtin.command] *************************************************
-changed: [iocage_04]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_04] => 
-    iocage_templates:
-        ansible_client_apache:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 14.3-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
-        ansible_client_pull:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 14.3-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
-
-PLAY RECAP *********************************************************************
-iocage_04                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+| JID  |         NAME          | BOOT | STATE |   TYPE   |     RELEASE     |        IP4         | IP6 | TEMPLATE | BASEJAIL |
++======+=======================+======+=======+==========+=================+====================+=====+==========+==========+
+| None | ansible_client        | off  | down  | template | 14.3-RELEASE-p1 | DHCP (not running) | -   | -        | no       |
++------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+| None | ansible_client_apache | off  | down  | template | 14.3-RELEASE-p1 | DHCP (not running) | -   | -        | no       |
++------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+| None | ansible_client_pull   | off  | down  | template | 14.3-RELEASE-p1 | DHCP (not running) | -   | -        | no       |
++------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
