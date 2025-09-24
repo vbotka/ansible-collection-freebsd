@@ -15,7 +15,7 @@
       run_once: true
       ansible.builtin.debug:
         msg: |
-          project_template: {{ project_template }}
+          project_template: {{ project_template | d('ansible_client') }}
           vmm:
             {{ vmm | to_yaml | indent(2) }}
           class:

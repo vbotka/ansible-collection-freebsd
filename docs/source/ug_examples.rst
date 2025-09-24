@@ -125,6 +125,7 @@ Examples
 
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
+   examples/510/example.rst
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage

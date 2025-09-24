@@ -18,7 +18,7 @@ Minor Changes
 -------------
 * Update docs ug examples batch.sh
 * Update docs ug examples: 013, 203, 208
-* Add docs ug examples: 210,
+* Add docs ug examples: 210, 510
 * Add playbooks: pb_iocage_project_create.yml and pb_iocage_project_destroy.yml
 * Add var project_template (default=ansible_client) to pb_iocage_project_create.yml
 
