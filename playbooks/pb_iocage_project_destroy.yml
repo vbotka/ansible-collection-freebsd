@@ -12,7 +12,7 @@
       vars:
         project_jails_present: "{{ project | intersect(groups.all) }}"
       run_once: true
-      debug:
+      ansible.builtin.debug:
         msg: |
           vmm:
             {{ vmm | to_yaml | indent(2) }}
@@ -29,7 +29,7 @@
 
         - name: All jails already destroyed. End host.
           when: iocage_jails_present | length == 0
-          meta: end_host
+          ansible.builtin.meta: end_host
 
         - name: Stop jails.
           command: >
@@ -37,7 +37,7 @@
             {{ uuids | join(' ') }}
 
         - name: Destroy jails.
-          command: >
+          ansible.builtin.command: >
             iocage destroy
             --force
             {{ uuids | join(' ') }}

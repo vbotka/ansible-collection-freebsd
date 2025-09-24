@@ -13,7 +13,7 @@
         project_jails_present: "{{ project | intersect(groups.all) }}"
         project_jails_absent: "{{ project | difference(groups.all) }}"
       run_once: true
-      debug:
+      ansible.builtin.debug:
         msg: |
           vmm:
             {{ vmm | to_yaml | indent(2) }}
@@ -31,11 +31,11 @@
 
         - name: All jails already created. End host.
           when: iocage_jails_absent | length == 0
-          meta: end_host
+          ansible.builtin.meta: end_host
 
         - name: Create jails.
           register: out
-          command: >
+          ansible.builtin.command: >
             iocage create
             --short
             --template ansible_client
@@ -49,7 +49,7 @@
               alias={{ alias }}
               class={{ vmm[inventory_hostname][alias]['class'] | join(',') }}
               vmm={{ inventory_hostname }}
-          command: >
+          ansible.builtin.command: >
             iocage set
             notes="{{ iocage_tags }}"
             {{ item }}
@@ -59,6 +59,6 @@
             label: "{{ alias }} {{ iocage_tags }}"
 
         - name: Start created jails.
-          command: >
+          ansible.builtin.command: >
             iocage start
             {{ iocage_jails_created | join(' ') }}

@@ -13,6 +13,12 @@ Playbooks
 .. _ug_pb-iocage-template:
 .. include:: playbooks/pb-iocage-template.rst
 
+.. _ug_pb-iocage-project-create:
+.. include:: playbooks/pb-iocage-project-create.rst
+
+.. _ug_pb-iocage-project-destroy:
+.. include:: playbooks/pb-iocage-project-destroy.rst
+
 Other iocage playbooks
 ----------------------
 
