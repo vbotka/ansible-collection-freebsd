@@ -1,0 +1,16 @@
+- name: Dump cache.
+  hosts: localhost
+
+  vars:
+
+    cache: "{{ lookup('file', cache_file) | from_yaml }}"
+
+  tasks:
+
+    - assert:
+        that: cache_file is defined
+        fail_msg: "[ERR] variable cache_file is not defined."
+        quiet: true
+
+    - debug:
+        var: cache.__payload__ | from_yaml
