@@ -125,6 +125,7 @@ Examples
 
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
+   examples/502/example.rst
    examples/510/example.rst
 
 

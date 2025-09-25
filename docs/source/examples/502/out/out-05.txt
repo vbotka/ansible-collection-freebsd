@@ -1,0 +1,58 @@
+
+PLAY [Create Apache HTTP Server.] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [branch-server.example.com]
+
+TASK [Vars: Include OS vars.] **************************************************
+included: vbotka.freebsd.lib for branch-server.example.com
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/apache/vars/defaults] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.apache : Httpd-conf: Configure parameters in /usr/local/etc/apache24/httpd.conf] ***
+ok: [branch-server.example.com] => (item={'regexp': 'ServerName', 'line': 'branch-server.example.com'})
+ok: [branch-server.example.com] => (item={'regexp': 'ServerAdmin', 'line': 'admin@branch-server.example.com'})
+ok: [branch-server.example.com] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
+
+TASK [vbotka.freebsd.apache : Httpd-dirs: Configure directories in /usr/local/etc/apache24/Includes/] ***
+ok: [branch-server.example.com] => (item=/usr/local/www/apache24/data/)
+changed: [branch-server.example.com] => (item=/usr/local/www/apache24/pull/)
+
+TASK [vbotka.freebsd.apache : Httpd-modules: Load modules in /usr/local/etc/apache24/httpd.conf] ***
+ok: [branch-server.example.com] => (item={'module': 'socache_shmcb_module', 'mod': 'mod_socache_shmcb.so'})
+ok: [branch-server.example.com] => (item={'module': 'ssl_module', 'mod': 'mod_ssl.so'})
+
+TASK [vbotka.freebsd.apache : Httpd-ssl: Present extra lines in /usr/local/etc/apache24/extra/httpd-ssl.conf] ***
+ok: [branch-server.example.com] => (item={'regexp': 'ServerName ', 'line': 'branch-server.example.com:443'})
+ok: [branch-server.example.com] => (item={'regexp': 'ServerAdmin ', 'line': 'admin@branch-server.example.com'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLEngine ', 'line': 'on'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLProtocol ', 'line': 'all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLCipherSuite ', 'line': 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLHonorCipherOrder ', 'line': 'on'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLCompression ', 'line': 'off'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLSessionTickets ', 'line': 'off'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLCertificateFile ', 'line': '/usr/local/etc/ssl/certs/branch-server.example.com.crt'})
+ok: [branch-server.example.com] => (item={'regexp': 'SSLCertificateKeyFile ', 'line': '/usr/local/etc/ssl/private/branch-server.example.com.key'})
+
+TASK [vbotka.freebsd.apache : Httpd-ssl: SSL Listen in /usr/local/etc/apache24/extra/httpd-ssl.conf] ***
+ok: [branch-server.example.com] => (item=Listen 443)
+
+TASK [vbotka.freebsd.apache : Httpd-ssl: SSL in /usr/local/etc/apache24/httpd.conf] ***
+ok: [branch-server.example.com] => (item=Include etc/apache24/extra/httpd-ssl.conf)
+
+TASK [vbotka.freebsd.apache : Httpd-vhosts: Configure virtual hosts in /usr/local/etc/apache24/extra/] ***
+changed: [branch-server.example.com] => (item=pull.example.com)
+
+TASK [vbotka.freebsd.apache : Httpd-vhosts: Incl virtual hosts in /usr/local/etc/apache24/httpd.conf] ***
+changed: [branch-server.example.com] => (item=pull.example.com)
+
+TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
+ok: [branch-server.example.com]
+
+RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
+ok: [branch-server.example.com]
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=13   changed=3    unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
+

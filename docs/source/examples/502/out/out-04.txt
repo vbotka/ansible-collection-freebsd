@@ -1,0 +1,50 @@
+
+PLAY [Create SSL certificate.] *************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [branch-server.example.com]
+
+TASK [Vars: Include OS vars] ***************************************************
+included: vbotka.freebsd.lib for branch-server.example.com
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
+ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
+ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
+ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+
+TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat: Get status of OpenSSL private keys, CSRs, and certificates.] ***
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/fn/cert-openssl-stat-item.yml for branch-server.example.com => (item=CN:branch-server.example.com)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/fn/cert-openssl-stat-item.yml for branch-server.example.com => (item=CN:pull.example.com)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate.] ***
+ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/private/branch-server.example.com.key)
+ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/csr/branch-server.example.com.csr)
+ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/certs/branch-server.example.com.crt)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
+ok: [branch-server.example.com] => 
+    msg: |-
+        - {exists: true, file: /usr/local/etc/ssl/private/branch-server.example.com.key}
+        - {exists: true, file: /usr/local/etc/ssl/csr/branch-server.example.com.csr}
+        - {exists: true, file: /usr/local/etc/ssl/certs/branch-server.example.com.crt}
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate.] ***
+ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/private/pull.example.com.key)
+ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/csr/pull.example.com.csr)
+ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/certs/pull.example.com.crt)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
+ok: [branch-server.example.com] => 
+    msg: |-
+        - {exists: true, file: /usr/local/etc/ssl/private/pull.example.com.key}
+        - {exists: true, file: /usr/local/etc/ssl/csr/pull.example.com.csr}
+        - {exists: true, file: /usr/local/etc/ssl/certs/pull.example.com.crt}
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=11   changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

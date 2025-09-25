@@ -1,0 +1,34 @@
+
+PLAY [Create SSL certificate.] *************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [branch-server.example.com]
+
+TASK [Vars: Include OS vars] ***************************************************
+included: vbotka.freebsd.lib for branch-server.example.com
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
+ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
+ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
+ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+
+TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys.] ***
+ok: [branch-server.example.com] => (item=file:/usr/local/etc/ssl/private/branch-server.example.com.key CN:branch-server.example.com)
+changed: [branch-server.example.com] => (item=file:/usr/local/etc/ssl/private/pull.example.com.key CN:pull.example.com)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-csr: Generate OpenSSL Certificate Signing Request.] ***
+ok: [branch-server.example.com] => (item= file:/usr/local/etc/ssl/csr/branch-server.example.com.csr CN:branch-server.example.com)
+changed: [branch-server.example.com] => (item= file:/usr/local/etc/ssl/csr/pull.example.com.csr CN:pull.example.com)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-certificate: Generate and/or check OpenSSL certificates.] ***
+ok: [branch-server.example.com] => (item= file:/usr/local/etc/ssl/certs/branch-server.example.com.crt CN:branch-server.example.com)
+changed: [branch-server.example.com] => (item= file:/usr/local/etc/ssl/certs/pull.example.com.crt CN:pull.example.com)
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+

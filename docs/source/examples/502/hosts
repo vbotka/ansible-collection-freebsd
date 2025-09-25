@@ -1,0 +1,7 @@
+[branch_server]
+branch-server.example.com
+
+[branch_server:vars]
+ansible_user=admin
+ansible_become=true
+ansible_python_interpreter=auto_silent

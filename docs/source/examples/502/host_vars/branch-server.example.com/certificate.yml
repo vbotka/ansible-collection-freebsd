@@ -1,0 +1,3 @@
+certificate_data_simple:
+  - branch-server.example.com
+  - pull.example.com
