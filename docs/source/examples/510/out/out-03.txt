@@ -2,13 +2,6 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
-ok: [db_3] => 
-    msg: |-
-        ansible_host: 10.1.0.168
-        iocage_properties.host_hostuuid: 05c0a7c5
-        iocage_classes: [db, logclient]
-
-        iocage_tags: {alias: db_3, class: 'db,logclient', vmm: iocage_04}
 ok: [test_4] => 
     msg: |-
         ansible_host: -
@@ -16,36 +9,34 @@ ok: [test_4] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [logserv_3] => 
+ok: [db_3] => 
     msg: |-
-        ansible_host: 10.1.0.124
-        iocage_properties.host_hostuuid: 252041b4
-        iocage_classes: [logserv]
+        ansible_host: 10.1.0.141
+        iocage_properties.host_hostuuid: 3233c75a
+        iocage_classes: [logclient, db]
 
-        iocage_tags: {alias: logserv_3, class: logserv, vmm: iocage_04}
+        iocage_tags: {alias: db_3, class: 'logclient,db', vmm: iocage_04}
 ok: [http_3] => 
     msg: |-
-        ansible_host: 10.1.0.108
-        iocage_properties.host_hostuuid: a257c82b
-        iocage_classes: [http, logclient]
+        ansible_host: 10.1.0.139
+        iocage_properties.host_hostuuid: 9c489877
+        iocage_classes: [logclient, http]
 
-        iocage_tags: {alias: http_3, class: 'http,logclient', vmm: iocage_04}
+        iocage_tags: {alias: http_3, class: 'logclient,http', vmm: iocage_04}
 
 TASK [debug] *******************************************************************
 ok: [test_4] => 
     msg: |-
-        all: ['test_4', 'db_3', 'logserv_3', 'http_3']
+        all: ['test_4', 'db_3', 'http_3']
         ungrouped: []
-        state_up: ['test_4', 'db_3', 'logserv_3', 'http_3']
+        state_up: ['test_4', 'db_3', 'http_3']
         db: ['db_3']
         logclient: ['db_3', 'http_3']
-        vmm_iocage_04: ['db_3', 'logserv_3', 'http_3']
-        logserv: ['logserv_3']
+        vmm_iocage_04: ['db_3', 'http_3']
         http: ['http_3']
 
 PLAY RECAP *********************************************************************
 db_3                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 http_3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-logserv_3                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_4                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

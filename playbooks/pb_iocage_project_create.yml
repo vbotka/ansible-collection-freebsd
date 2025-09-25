@@ -1,14 +1,10 @@
 - name: Create and start project jails.
   hosts: iocage
 
-  vars:
-
-    debug: false
-
   tasks:
 
     - name: Display vars.
-      when: debug | bool
+      when: debug | d(false) | bool
       vars:
         project_jails_present: "{{ project | intersect(groups.all) }}"
         project_jails_absent: "{{ project | difference(groups.all) }}"
@@ -16,6 +12,7 @@
       ansible.builtin.debug:
         msg: |
           project_template: {{ project_template | d('ansible_client') }}
+          project_create_iocage_tags: {{ project_create_iocage_tags | d(false) }}
           vmm:
             {{ vmm | to_yaml | indent(2) }}
           class:
@@ -54,6 +51,29 @@
             iocage set
             notes="{{ iocage_tags }}"
             {{ item }}
+          loop: "{{ iocage_jails_created }}"
+          loop_control:
+            index_var: idx
+            label: "{{ alias }} {{ iocage_tags }}"
+
+        - name: Get pool.
+          when: project_create_iocage_tags | d(false) | bool
+          register: out_pool
+          changed_when: false
+          ansible.builtin.command: iocage get -p
+
+        - name: Create /var/db/iocage-tags.yml
+          when: project_create_iocage_tags | d(false) | bool
+          vars:
+            alias: "{{ iocage_jails_absent[idx] }}"
+            iocage_tags:
+              alias: "{{ alias }}"
+              class: "{{ vmm[inventory_hostname][alias]['class'] }}"
+              vmm: "{{ inventory_hostname }}"
+          ansible.builtin.copy:
+            dest: "/{{ out_pool.stdout }}/iocage/jails/{{ item }}/root/var/db/iocage-tags.yml"
+            content: |
+              {{ iocage_tags | to_yaml }}
           loop: "{{ iocage_jails_created }}"
           loop_control:
             index_var: idx

@@ -41,7 +41,7 @@ Synopsis
 ^^^^^^^^
 
 * At the managed node ``iocage_04`` in the playbook ``vbotka.freebsd.pb_iocage_project_create.yml``
-  create ``project`` jails.
+  create ``project``. TBD
 
 Requirements
 ^^^^^^^^^^^^
