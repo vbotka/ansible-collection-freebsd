@@ -12,6 +12,7 @@ TODO: Run ansible-pull on boot.
 .. index:: single: ansible-pull; Example 208
 .. index:: single: ansible_client_pull; Example 208
 .. index:: single: template ansible_client_pull; Example 208
+
 .. index:: single: DHCP; Example 208
 .. index:: single: dhclient; Example 208
 .. index:: single: dhclient-exit-hooks; Example 208
@@ -31,7 +32,7 @@ TODO: Run ansible-pull on boot.
 Use case
 ^^^^^^^^
 
-Create `iocage`_ template that will use `ansible-pull`_.
+Create `iocage`_ template ``ansible_client_pull`` that will use `ansible-pull`_.
 
 Tree
 ^^^^
@@ -112,6 +113,7 @@ host_vars
 
       {
           "pkgs": [
+	      "git",
               "python311",
               "py311-ansible",
               "sudo"
