@@ -1,5 +1,5 @@
 - name: Configure and start Log Server.
-  hosts: branch_server
+  hosts: branch-server.example.com
     
   tasks:
 

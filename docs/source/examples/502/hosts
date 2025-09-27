@@ -1,7 +1,7 @@
-[branch_server]
+[iocage]
 branch-server.example.com
 
-[branch_server:vars]
+[iocage:vars]
 ansible_user=admin
 ansible_become=true
 ansible_python_interpreter=auto_silent
