@@ -41,11 +41,11 @@ TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_
 ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : Services: Enable FreeBSD services.] ********
-changed: [branch-server.example.com] => (item=git)
+ok: [branch-server.example.com] => (item=git)
 
 TASK [vbotka.freebsd.config_light : Services: Manage FreeBSD service.] *********
-changed: [branch-server.example.com] => (item=git)
+ok: [branch-server.example.com] => (item=git)
 
 PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=15   changed=2    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+branch-server.example.com  : ok=15   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
 

@@ -1,0 +1,30 @@
+- name: Create Git repos.
+  hosts: branch-server.example.com
+
+  vars:
+
+    git_local_dir: /export/ansible/git
+    git_remote_dir: /usr/local/var/db/git
+    repos:
+      - test.git
+
+  tasks:
+
+    - name: Flush remote repos.
+      when: git_remote_flush | d(true) | bool
+      ansible.builtin.file:
+        state: absent
+        path: "{{ git_remote_dir }}/{{ item }}"
+      loop: "{{ repos }}"
+
+    - name: Sync repos from local to remote.
+      ansible.posix.synchronize:
+        src: "{{ git_local_dir }}/{{ item }}"
+        dest: "{{ git_remote_dir }}"
+      loop: "{{ repos }}"
+
+    - name: Enable repo's export.
+      ansible.builtin.command:
+        cmd: "touch {{ git_remote_dir }}/{{ item }}/git-daemon-export-ok"
+        creates: "{{ git_remote_dir }}/{{ item }}/git-daemon-export-ok"
+      loop: "{{ repos }}"

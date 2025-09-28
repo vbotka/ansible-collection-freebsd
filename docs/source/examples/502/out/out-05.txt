@@ -57,9 +57,9 @@ ok: [branch-server.example.com] =>
     cl_states:
         git_dir:
             create: true
-            group: git
+            group: git_daemon
             mode: '0755'
-            owner: git
+            owner: git_daemon
             path: /usr/local/var/db/git
             state: directory
 
@@ -145,9 +145,9 @@ ok: [branch-server.example.com] =>
         cl_states:
           git_dir:
             create: true
-            group: git
+            group: git_daemon
             mode: '0755'
-            owner: git
+            owner: git_daemon
             path: /usr/local/var/db/git
             state: directory
 

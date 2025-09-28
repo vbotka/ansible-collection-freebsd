@@ -13,7 +13,7 @@ ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collection
 ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/states.d)
 
 TASK [vbotka.freebsd.config_light : Setup: Create directory /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble] ***
-changed: [branch-server.example.com -> localhost]
+ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Setup: Create directory /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/handlers] ***
 ok: [branch-server.example.com -> localhost]
@@ -22,7 +22,7 @@ TASK [vbotka.freebsd.config_light : Setup: Create handlers/main.yml] ***********
 ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-handlers: Assemble handlers to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/handlersd] ***
-changed: [branch-server.example.com -> localhost]
+ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-handlers: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/handlersd to cl_handlersd_items] ***
 ok: [branch-server.example.com -> localhost]
@@ -31,7 +31,7 @@ TASK [vbotka.freebsd.config_light : Vars-handlers: Combine cl_handlers with cl_h
 ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com] ***
-changed: [branch-server.example.com -> localhost]
+ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com to cl_packagesd_items] ***
 ok: [branch-server.example.com]
@@ -40,7 +40,7 @@ TASK [vbotka.freebsd.config_light : Vars-packages: Combine cl_packages with cl_p
 ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com] ***
-changed: [branch-server.example.com -> localhost]
+ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com to cl_statessd_items] ***
 ok: [branch-server.example.com]
@@ -49,7 +49,7 @@ TASK [vbotka.freebsd.config_light : Vars-states: Combine cl_statess with cl_stat
 ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com] ***
-changed: [branch-server.example.com -> localhost]
+ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com to cl_cervicesd_items] ***
 ok: [branch-server.example.com]
@@ -58,7 +58,7 @@ TASK [vbotka.freebsd.config_light : Vars-services: Combine cl_services with cl_s
 ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com] ***
-changed: [branch-server.example.com -> localhost]
+ok: [branch-server.example.com -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com to cl_filesd_items] ***
 ok: [branch-server.example.com]
@@ -67,5 +67,5 @@ TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_
 ok: [branch-server.example.com]
 
 PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=20   changed=6    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+branch-server.example.com  : ok=20   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
 

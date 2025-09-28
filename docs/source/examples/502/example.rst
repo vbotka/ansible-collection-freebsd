@@ -46,7 +46,8 @@ Tree
   │       ├── common.yml
   │       └── syslog-ng.yml
   ├── pb-config-light.yml
-  └── pb-logserv.yml
+  ├── pb-git-repos.yml
+  └── pb-log-server.yml
 
 Synopsis
 ^^^^^^^^
@@ -67,7 +68,9 @@ roles:
 Notes
 ^^^^^
 
-TBD
+* This git server is configured to use the ``git`` protocol. See `Git on the Server - The protocols`_.
+
+* In FreeBSD, the service, user, and group name is ``git_daemon``. See `Using GIT on FreeBSD`_.
 
 .. seealso::
 
@@ -90,15 +93,15 @@ hosts
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/branch-server.example.com/common.yml
+   :language: yaml
+   :caption:
+
 .. literalinclude:: host_vars/branch-server.example.com/cl-common.yml
    :language: yaml
    :caption:
 
 .. literalinclude:: host_vars/branch-server.example.com/cl-git-daemon.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: host_vars/branch-server.example.com/common.yml
    :language: yaml
    :caption:
 
@@ -160,10 +163,20 @@ Playbook output - Branch Server
    :language: yaml
    :force:
 
-Playbook pb-logserv.yml
+Test service git_daemon
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-logserv.yml
+.. code-block:: console
+
+   [branch-server]# service git_daemon status
+
+.. literalinclude:: out/out-11.txt
+   :language: console
+      
+Playbook pb-log-server.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-log-server.yml
    :language: yaml+jinja
 
 Playbook output - Log server
@@ -171,12 +184,36 @@ Playbook output - Log server
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logserv.yml -e install=true
+   (env) > ansible-playbook pb-log-server.yml -e install=true
 
-.. literalinclude:: out/out-11.txt
+.. literalinclude:: out/out-12.txt
+   :language: yaml
+   :force:
+
+Test service syslog-ng
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [branch-server]# service syslog-ng status
+
+.. literalinclude:: out/out-13.txt
+   :language: console
+
+Playbook output - Git ropositories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-git-repos.yml -e install=true
+
+.. literalinclude:: out/out-14.txt
    :language: yaml
    :force:
 
 
 .. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
+
+.. _Git on the Server - The protocols: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols
+.. _Using GIT on FreeBSD: https://forums.freebsd.org/threads/using-git-on-freebsd-why-and-how.64898/
