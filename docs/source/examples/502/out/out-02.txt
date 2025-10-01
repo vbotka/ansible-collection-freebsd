@@ -1,84 +1,41 @@
 
-PLAY [Create SSL certificate.] *************************************************
+PLAY [Create and start project jails.] *****************************************
 
-TASK [Gathering Facts] *********************************************************
-ok: [branch-server.example.com]
+TASK [Display vars.] ***********************************************************
+[ERROR]: Task failed: Finalization of task args for 'ansible.builtin.debug' failed: Error while resolving value for 'msg': 'vmm' is undefined
 
-TASK [Vars: Include OS vars] ***************************************************
-included: vbotka.freebsd.lib for branch-server.example.com
+Task failed.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_project_create.yml:6:7
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
-ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
-ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+4   tasks:
+5
+6     - name: Display vars.
+        ^ column 7
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
-ok: [branch-server.example.com] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+<<< caused by >>>
 
-TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
-ok: [branch-server.example.com]
+Finalization of task args for 'ansible.builtin.debug' failed.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_project_create.yml:12:7
 
-TASK [vbotka.freebsd.certificate : Packages: Install FreeBSD packages] *********
-ok: [branch-server.example.com] => (item=security/py-cryptography)
-ok: [branch-server.example.com] => (item=security/py-openssl)
-ok: [branch-server.example.com] => (item=security/py-acme)
-ok: [branch-server.example.com] => (item=security/py-acme-tiny)
+10         project_jails_absent: "{{ project | difference(groups.all) }}"
+11       run_once: true
+12       ansible.builtin.debug:
+         ^ column 7
 
-TASK [vbotka.freebsd.certificate : Cert-dirs: Create public directories /usr/local/etc/ssl] ***
-ok: [branch-server.example.com] => (item=/usr/local/etc/ssl)
-ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/certs)
-ok: [branch-server.example.com] => (item=/usr/local/etc/ssl/csr)
+<<< caused by >>>
 
-TASK [vbotka.freebsd.certificate : Cert-dirs: Create /usr/local/etc/ssl/private] ***
-ok: [branch-server.example.com]
+Error while resolving value for 'msg': 'vmm' is undefined
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_project_create.yml:13:14
 
-TASK [vbotka.freebsd.certificate : Sanity: Get meta-data.] *********************
-ok: [branch-server.example.com]
+11       run_once: true
+12       ansible.builtin.debug:
+13         msg: |
+                ^ column 14
 
-TASK [vbotka.freebsd.certificate : Sanity: Get role_name.] *********************
-ok: [branch-server.example.com]
-
-TASK [Sanity: Include al_sanity_platform from lib] *****************************
-included: vbotka.freebsd.lib for branch-server.example.com
-
-TASK [vbotka.freebsd.lib : Al_sanity_platform: Setup. Collect minimal subset.] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_sanity_platform: Get supported platforms.] *******
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_sanity_platform: Get supported versions of FreeBSD.] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_sanity_platform: Set test variables.] ************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/lib/tasks/fn/al_include_sanity_platform_test_vars.yml for branch-server.example.com
-
-TASK [vbotka.freebsd.lib : Al_include_sanity_platform_test_vars: Set al_sanity_platform_test] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_include_sanity_platform_test_vars: Set al_sanity_platform_version_test] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_include_sanity_platform_test_vars: Set al_sanity_platform_version_test] ***
-ok: [branch-server.example.com]
-
-TASK [Sanity: Include al_sanity_ansible_version from lib] **********************
-included: vbotka.freebsd.lib for branch-server.example.com
-
-TASK [vbotka.freebsd.lib : Al_sanity_ansible_version: Get Ansible minimal version.] ***
-ok: [branch-server.example.com]
-
-TASK [Sanity: Include al_sanity_packages from lib] *****************************
-included: vbotka.freebsd.lib for branch-server.example.com
-
-TASK [vbotka.freebsd.lib : Al_sanity_packages: Setup. Gather minimal subset.] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_sanity_packages: Collect installed packages.] ****
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.lib : Al_sanity_packages: Set list of installed packages.] ***
-ok: [branch-server.example.com]
+fatal: [branch-server.example.com]: FAILED! => 
+    msg: 'Task failed: Finalization of task args for ''ansible.builtin.debug'' failed:
+        Error while resolving value for ''msg'': ''vmm'' is undefined'
 
 PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=24   changed=0    unreachable=0    failed=0    skipped=37   rescued=0    ignored=0   
+branch-server.example.com  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

@@ -7,9 +7,9 @@ cl_git_daemon_flags: "--syslog --reuseaddr --detach --base-path={{ cl_git_daemon
 cl_git_daemon_state: start
 
 # /etc/rc.conf
-cl_git_daemon_dict:
-  - {key: git_daemon_enable, value: "{{ cl_git_daemon_enable  }}"}
-  - {key: git_daemon_user, value: "{{ cl_git_daemon_user }}"}
-  - {key: git_daemon_group, value: "{{ cl_git_daemon_group }}"}
-  - {key: git_daemon_directory, value: "{{ cl_git_daemon_directory }}"}
-  - {key: git_daemon_flags, value: "{{ cl_git_daemon_flags }}"}
+cl_git_daemon_dict: "{{ cl_git_daemon_dict_raw | dict2items }}"
+cl_git_daemon_dict_raw:
+  git_daemon_user: "{{ cl_git_daemon_user }}"
+  git_daemon_group: "{{ cl_git_daemon_group }}"
+  git_daemon_directory: "{{ cl_git_daemon_directory }}"
+  git_daemon_flags: "{{ cl_git_daemon_flags }}"

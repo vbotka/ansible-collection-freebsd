@@ -41,11 +41,28 @@ TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_
 ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : Services: Enable FreeBSD services.] ********
-ok: [branch-server.example.com] => (item=git)
+changed: [branch-server.example.com] => (item=git)
 
 TASK [vbotka.freebsd.config_light : Services: Manage FreeBSD service.] *********
-ok: [branch-server.example.com] => (item=git)
+[ERROR]: Task failed: Module failed: Expecting a single line output from '/usr/local/etc/rc.d/git_daemon'.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/services.yml:41:7
+
+39         label: "{{ item.key }}"
+40
+41     - name: "Services: Manage FreeBSD service."
+         ^ column 7
+
+failed: [branch-server.example.com] (item=git) => 
+    ansible_loop_var: item
+    changed: false
+    item:
+        key: git
+        value:
+            enabled: true
+            name: git_daemon
+            state: start
+    msg: Expecting a single line output from '/usr/local/etc/rc.d/git_daemon'.
 
 PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=15   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+branch-server.example.com  : ok=14   changed=1    unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   
 

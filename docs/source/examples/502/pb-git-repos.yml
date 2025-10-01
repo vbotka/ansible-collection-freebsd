@@ -11,7 +11,7 @@
   tasks:
 
     - name: Flush remote repos.
-      when: git_remote_flush | d(true) | bool
+      when: git_remote_flush | d(false) | bool
       ansible.builtin.file:
         state: absent
         path: "{{ git_remote_dir }}/{{ item }}"

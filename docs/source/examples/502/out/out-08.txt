@@ -55,6 +55,15 @@ included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_l
 TASK [vbotka.freebsd.config_light : File-create-backup: Create time-stamp.] ****
 ok: [branch-server.example.com]
 
-PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=24   changed=0    unreachable=0    failed=0    skipped=49   rescued=0    ignored=0   
+TASK [vbotka.freebsd.config_light : File-create-backup: Stat cl_files.] ********
+ok: [branch-server.example.com] => (item=/etc/rc.conf)
 
+TASK [vbotka.freebsd.config_light : File-create-backup: Create backup files.] ***
+ok: [branch-server.example.com] => (item=/etc/rc.conf)
+
+TASK [vbotka.freebsd.config_light : Files-lineinfile: Lineinfile dict.] ********
+changed: [branch-server.example.com] => (item=/etc/rc.conf git_daemon_enable)
+changed: [branch-server.example.com] => (item=/etc/rc.conf git_daemon_user)
+changed: [branch-server.example.com] => (item=/etc/rc.conf git_daemon_group)
+changed: [branch-server.example.com] => (item=/etc/rc.conf git_daemon_directory)
+changed: [branch-server.example.com] => (item=/etc/rc.conf git_daemon_flags)

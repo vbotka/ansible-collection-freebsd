@@ -41,8 +41,8 @@ TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_
 ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : States: Apply file states.] ****************
-changed: [branch-server.example.com] => (item=/usr/local/var/db/git)
+ok: [branch-server.example.com] => (item=/usr/local/var/db/git)
 
 PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=14   changed=1    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+branch-server.example.com  : ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
 

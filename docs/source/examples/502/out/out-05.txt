@@ -91,7 +91,25 @@ ok: [branch-server.example.com]
 
 TASK [vbotka.freebsd.config_light : Vars-files: Debug cl_debug=true] ***********
 ok: [branch-server.example.com] => 
-    cl_files: {}
+    cl_files:
+        git:
+            dict:
+            -   key: git_daemon_enable
+                value: true
+            -   key: git_daemon_user
+                value: git_daemon
+            -   key: git_daemon_group
+                value: git_daemon
+            -   key: git_daemon_directory
+                value: /usr/local/var/db/git
+            -   key: git_daemon_flags
+                value: --syslog --reuseaddr --detach --base-path=/usr/local/var/db/git
+            group: wheel
+            handlers:
+            - restart git_daemon
+            mode: '0644'
+            owner: root
+            path: /etc/rc.conf
 
 TASK [vbotka.freebsd.config_light : Debug: Config Light.] **********************
 ok: [branch-server.example.com] => 
@@ -140,7 +158,24 @@ ok: [branch-server.example.com] =>
             state: start
 
         cl_files:
-          {}
+          git:
+            dict:
+            - key: git_daemon_enable
+              value: true
+            - key: git_daemon_user
+              value: git_daemon
+            - key: git_daemon_group
+              value: git_daemon
+            - key: git_daemon_directory
+              value: /usr/local/var/db/git
+            - key: git_daemon_flags
+              value: --syslog --reuseaddr --detach --base-path=/usr/local/var/db/git
+            group: wheel
+            handlers:
+            - restart git_daemon
+            mode: '0644'
+            owner: root
+            path: /etc/rc.conf
 
         cl_states:
           git_dir:

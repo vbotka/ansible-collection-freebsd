@@ -9,6 +9,9 @@
 
 .. index:: single: branch-server; Example 502
 
+.. index:: single: role vbotka.freebsd.config_light; Example 502
+.. index:: single: vbotka.freebsd.config_light; Example 502
+
 .. index:: single: log server; Example 502
 .. index:: single: syslog-ng; Example 502
 
@@ -31,7 +34,9 @@ Tree
   ├── ansible.cfg
   ├── conf-light
   │   ├── files.d
+  │   │   └── git.yml
   │   ├── handlers.d
+  │   │   └── git.yml
   │   ├── packages.d
   │   │   └── git.yml
   │   ├── services.d
@@ -56,6 +61,7 @@ Synopsis
 
   * install ``devel/git`` and configure ``git server``
   * install ``sysutils/syslog-ng`` and configure ``log server``.
+  * create ``git`` repositories.
 
 Requirements
 ^^^^^^^^^^^^
@@ -123,6 +129,12 @@ Update repos
 Configuration conf-light
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. literalinclude:: conf-light/files.d/git.yml
+   :language: yaml
+   :caption:
+.. literalinclude:: conf-light/handlers.d/git.yml
+   :language: yaml
+   :caption:
 .. literalinclude:: conf-light/packages.d/git.yml
    :language: yaml
    :caption:
