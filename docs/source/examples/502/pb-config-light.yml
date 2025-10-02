@@ -3,4 +3,4 @@
   gather_facts: true
 
   roles:
-    - vbotka.config_light
+    - vbotka.freebsd.config_light
