@@ -1,8 +1,0 @@
----
-rc_conf:
-  path: "{{ bsd_cimage_mount_path }}/etc/rc.conf"
-  force: true
-  owner: root
-  group: wheel
-  mode: "0644"
-  dict: "{{ bsd_cimage_rcconf_data }}"

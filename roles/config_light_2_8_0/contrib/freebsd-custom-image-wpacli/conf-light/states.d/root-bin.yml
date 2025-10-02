@@ -1,4 +1,0 @@
----
-root_bin:
-  state: directory
-  path: "{{ bsd_cimage_mount_path }}{{ wpacli_action_script_dir }}"

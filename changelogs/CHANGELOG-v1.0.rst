@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade role vbotka.config_light to version 2.8.2
 * Update docs ug introduction.
 * Update docs ug examples batch.sh
 * Update docs ug examples: 013, 014, 203, 208, 400

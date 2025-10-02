@@ -1,5 +1,0 @@
----
-php:
-  module: pkgng
-  name:
-    - lang/php72
