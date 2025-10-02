@@ -1,0 +1,136 @@
+---
+# defaults for config_light
+cl_role_version: 2.8.2
+
+cl_setup: true                # Import tasks/setup.yml
+cl_install: true              # Install packages or ports
+cl_debug: false               # Display debug output
+cl_backup: false              # Backup files
+cl_copyfile_delete: false     # Delete dest then copy samples and defaults
+cl_template_delete: false     # Delete dest then create from templates
+
+# Sanity
+cl_sanity: true               # Import tasks/sanity.yml
+cl_sanity_quiet: true         # Module assert, parameter quiet
+cl_sanity_collections: false  # Test required collections
+cl_sanity_modules_pkg: true   # Test modules in cl_packages are supported
+cl_sanity_yamllint: false     # Test yamllint is installed
+
+# Supported
+cl_supported_linux_family: [Debian, RedHat]
+cl_supported_modules_pkg: [apt, package, pkgng, snap, yum]
+
+# Required collections
+cl_collections: [ansible.posix, community.general, vbotka.freebsd]
+
+# Combine assembled data with these variables
+cl_handlers: {}
+cl_packages: {}
+cl_services: {}
+cl_files: {}
+cl_states: {}
+
+# Assemble data from these directories
+# cl_dird_owner: root        # no default
+# cl_dird_group: adm         # no default
+cl_dird_dmode: "0775" # default very permissive, restrict if necessary
+cl_dird: "{{ role_path }}/files"
+cl_handlersd_dir: "{{ cl_dird }}/handlers.d"
+cl_packagesd_dir: "{{ cl_dird }}/packages.d"
+cl_servicesd_dir: "{{ cl_dird }}/services.d"
+cl_filesd_dir: "{{ cl_dird }}/files.d"
+cl_statesd_dir: "{{ cl_dird }}/states.d"
+
+# Lint
+cl_yamllint: yamllint
+cl_yamllint_rules:
+  extends: default
+  rules:
+    line-length:
+      level: warning
+cl_assemble_validate: "{{ cl_yamllint }} -d '{{ cl_yamllint_rules | to_json }}' %s"
+cl_handlers_validate: "{{ cl_yamllint }} -d '{{ cl_yamllint_rules | to_json }}' %s"
+
+# Assemble inventory_hostname data into these files
+# cl_dira_owner: root        # no default
+# cl_dira_group: adm         # no default
+cl_dira_dmode: "0775" # default very permissive, restrict if necessary
+cl_dira_fmode: "0664" # default very permissive, restrict if necessary
+cl_dira: "{{ cl_dird }}/assemble"
+cl_handlersd: "{{ cl_dira }}/handlersd" # localhost; not inventory_hostname specific
+cl_packagesd: "{{ cl_dira }}/packagesd.{{ inventory_hostname }}"
+cl_servicesd: "{{ cl_dira }}/servicesd.{{ inventory_hostname }}"
+cl_filesd: "{{ cl_dira }}/filesd.{{ inventory_hostname }}"
+cl_statesd: "{{ cl_dira }}/statesd.{{ inventory_hostname }}"
+cl_assemble_regexp: ^(.*)[^~]$ # Any string but terminated by ~
+# Delete packagesd, servicesd, filesd, and statesd before assembling
+cl_all_delete: false # Delete packagesd, servicesd, filesd, and statesd
+cl_packagesd_delete: false # Delete packagesd
+cl_servicesd_delete: false # Delete servicesd
+cl_filesd_delete: false # Delete filesd
+cl_statesd_delete: false # Delete statesd
+
+# Role handlers directory
+# cl_handlers_dir_owner: admin   # no default
+# cl_handlers_dir_group: admin   # no default
+# cl_handlers_dir_dmode: '0775'  # no default
+# cl_handlers_main_mode: '0644'  # no default
+cl_handlers_delete_all: false
+cl_handlers_delete: false
+cl_handlers_create: true
+cl_handlers_dir_become: false
+
+# Snap
+cl_snap_paths:
+  - /usr/local/sbin
+  - /usr/local/bin
+  - /usr/sbin
+  - /usr/bin
+  - /sbin
+  - /bin
+# - /snap/bin
+cl_snap_patterns:
+  - snap
+
+# States
+cl_states_unmount: [absent, unmounted]
+cl_states_mount: [present, mounted, remounted]
+cl_states_file: [absent, directory, file, hard, link, touch]
+
+# Files
+cl_files_collections:
+  copy: ansible.builtin
+  template: ansible.builtin
+  markers: ansible.builtin
+  create-backup: ansible.builtin
+  patch: ansible.posix
+  lineinfile: ansible.builtin
+  blockinfile: ansible.builtin
+  inifile: ansible.builtin
+  ucl: vbotka.freebsd
+  sysrc: community.general
+  delete-backup: ansible.builtin
+cl_files_order: "{{ cl_files_collections |
+                    dict2items |
+                    selectattr('value', 'in', ['ansible.builtin'] + cl_collections) |
+                    map(attribute='key') }}"
+
+# OS common
+install_retries: 10
+install_delay: 5
+
+# FreeBSD
+freebsd_install_method: packages
+# freebsd_install_method: ports
+freebsd_use_packages: true
+
+# rc.conf and rc.conf.d
+cl_rcconfd: false
+cl_rcconfd_dir: /etc/rc.conf.d
+cl_rcconfd_path:
+  default: "{{ cl_rcconfd_dir }}/{{ _service }}"
+cl_rcconf_rcvar:
+  default: "{{ _service }}_enable"
+  devfs: devfs_load_rulesets
+
+# EOF

@@ -1,0 +1,39 @@
+---
+# Ansible managed
+# Automatically generated file with handlers.
+
+- name: postfix_freebsd enable and start postfix
+  service:
+    name: postfix
+    state: started
+    enabled: true
+
+- name: postfix_freebsd disable and stop postfix
+  service:
+    name: postfix
+    state: stopped
+    enabled: false
+
+- name: postfix_freebsd reload postfix
+  service:
+    name: postfix
+    state: reloaded
+  when:
+    - cl_service_postfix_enable|bool
+
+- name: postfix_freebsd restart postfix
+  service:
+    name: postfix
+    state: restarted
+  when:
+    - cl_service_postfix_enable|bool
+
+- name: postfix_freebsd postfix check
+  command:
+    cmd: /usr/local/sbin/postfix check
+
+- name: postfix_freebsd newaliases
+  command:
+    cmd: /usr/bin/newaliases
+
+# EOF

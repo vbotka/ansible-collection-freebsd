@@ -1,0 +1,13 @@
+---
+php-fpm-wwwconf:
+  path: /usr/local/etc/php-fpm.d/www.conf
+  create: true
+  owner: root
+  group: wheel
+  mode: "0644"
+  copyfile: "{{ cl_php_fpm_wwwconf_copy }}"
+  dict: "{{ cl_php_fpm_wwwconf_dict }}"
+  assignment: " = "
+  handlers:
+    - configtest php-fpm
+    - reload php-fpm

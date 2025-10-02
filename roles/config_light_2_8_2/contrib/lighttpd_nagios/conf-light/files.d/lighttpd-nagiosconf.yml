@@ -1,0 +1,11 @@
+---
+lighttpd-nagiosconf:
+  path: /usr/local/etc/lighttpd/nagios.conf
+  create: true
+  owner: root
+  group: wheel
+  mode: "0644"
+  blocks: "{{ cl_lighttpd_nagiosconf_blocks }}"
+  handlers:
+    - configtest lighttpd
+    - reload lighttpd

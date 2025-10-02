@@ -1,0 +1,34 @@
+---
+- name: "Files-sysrc: Debug sysrc in cl_files.values() cl_debug={{ cl_debug }}"
+  when: cl_debug | bool
+  ansible.builtin.debug:
+    msg: "{{ cl_files.values() | selectattr('sysrc', 'defined') | list }}"
+
+- name: "Files-sysrc: rc.conf"
+  register: cl_results_sysrc
+  notify: "{{ item.0.handlers | d(omit) }}"
+  community.general.sysrc:
+    path: "{{ item.0.path }}"
+    jail: "{{ item.0.jail | d(omit) }}"
+    delim: "{{ item.0.delim | d(omit) }}"
+    name: "{{ item.1.key }}"
+    value: "{{ item.1.value | d(omit) }}"
+    state: "{{ item.1.state | d(omit) }}"
+    # backup: "{{ cl_backup }}"
+  loop: "{{ cl_files.values() | list | subelements('sysrc', {'skip_missing': true}) }}"
+  loop_control:
+    label: "{{ item.0.path }} {{ item.1.key }}"
+
+- name: Debug
+  when: cl_debug | bool
+  block:
+
+    - name: "Files-sysrc: Debug cl_results_sysrc cl_debug={{ cl_debug }}"
+      ansible.builtin.debug:
+        var: cl_results_sysrc
+
+    - name: "Files-sysrc: Debug changed sysrc paths cl_debug={{ cl_debug }}"
+      ansible.builtin.debug:
+        msg: "{{ cl_results_sysrc.results | d([]) | json_query('[?changed].invocation.module_args.path') }}"
+
+# EOF

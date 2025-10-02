@@ -1,0 +1,319 @@
+---
+mytemplates:
+
+  - file: 1.0.0-wpa_action.sh.j2
+    link: 1.0.0-wpa_action.sh.j2
+    path: templates/1.0.0-wpa_action.sh.j2
+    synopsis: |
+      Configure 1.0.0-wpa_action.sh
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: 1.1.0-wpa_action.sh.j2
+    link: 1.1.0-wpa_action.sh.j2
+    path: templates/1.1.0-wpa_action.sh.j2
+    synopsis: |
+      Configure 1.1.0-wpa_action.sh
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: dma-auth.conf.j2
+    link: dma-auth.conf.j2
+    path: templates/dma-auth.conf.j2
+    synopsis: |
+      Configure dma-auth.conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: handlers-auto1.yml.j2
+    link: handlers-auto1.yml.j2
+    path: templates/handlers-auto1.yml.j2
+    synopsis: |
+      Configure handlers-auto1.yml
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: handlers-auto2.yml.j2
+    link: handlers-auto2.yml.j2
+    path: templates/handlers-auto2.yml.j2
+    synopsis: |
+      Configure handlers-auto2.yml
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: handlers-auto3.yml.j2
+    link: handlers-auto3.yml.j2
+    path: templates/handlers-auto3.yml.j2
+    synopsis: |
+      Configure handlers-auto3.yml
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: hosts.j2
+    link: hosts.j2
+    path: templates/hosts.j2
+    synopsis: |
+      Configure hosts
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: loader.conf.j2
+    link: loader.conf.j2
+    path: templates/loader.conf.j2
+    synopsis: |
+      Configure loader.conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: mailer.conf.j2
+    link: mailer.conf.j2
+    path: templates/mailer.conf.j2
+    synopsis: |
+      Configure mailer.conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: ntp.conf-minimal.j2
+    link: ntp.conf-minimal.j2
+    path: templates/ntp.conf-minimal.j2
+    synopsis: |
+      Configure ntp.conf-minimal
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: revaliases.j2
+    link: revaliases.j2
+    path: templates/revaliases.j2
+    synopsis: |
+      Configure revaliases
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: ssmtp.conf.j2
+    link: ssmtp.conf.j2
+    path: templates/ssmtp.conf.j2
+    synopsis: |
+      Configure ssmtp.conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: wpa_cli.j2
+    link: wpa_cli.j2
+    path: templates/wpa_cli.j2
+    synopsis: |
+      Configure wpa_cli
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: wpa_supplicant.conf.j2
+    link: wpa_supplicant.conf.j2
+    path: templates/wpa_supplicant.conf.j2
+    synopsis: |
+      Configure wpa_supplicant.conf
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+  - file: wpa_supplicant.conf.wlan0.j2
+    link: wpa_supplicant.conf.wlan0.j2
+    path: templates/wpa_supplicant.conf.wlan0.j2
+    synopsis: |
+      Configure wpa_supplicant.conf.wlan0
+    description: |
+      Description of the task.
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
+
+...

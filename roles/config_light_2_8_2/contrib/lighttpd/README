@@ -1,0 +1,1 @@
+shell> ansible-playbook pb.yml -e cl_setup=true -e cl_install=true

@@ -1,0 +1,10 @@
+---
+snap_root:
+  path: /snap
+  state: absent
+snap_var:
+  path: /var/snap
+  state: absent
+snap_lib_var:
+  path: /var/lib/snapd
+  state: absent
