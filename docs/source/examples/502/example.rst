@@ -11,6 +11,7 @@
 
 .. index:: single: role vbotka.freebsd.config_light; Example 502
 .. index:: single: vbotka.freebsd.config_light; Example 502
+.. index:: single: config_light files sysrc Example 502
 
 .. index:: single: log server; Example 502
 .. index:: single: syslog-ng; Example 502
@@ -115,17 +116,6 @@ host_vars
    :language: yaml
    :caption:
 
-Update repos
-^^^^^^^^^^^^
-
-.. code-block:: console
-
-   ansible-playbook vbotka.freebsd.pb_iocage_update_vmm_repos.yml
-
-.. literalinclude:: out/out-01.txt
-   :language: yaml
-   :force:
-
 Configuration conf-light
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -144,6 +134,17 @@ Configuration conf-light
 .. literalinclude:: conf-light/states.d/git-dir.yml
    :language: yaml
    :caption:
+
+Update repos
+^^^^^^^^^^^^
+
+.. code-block:: console
+
+   ansible-playbook vbotka.freebsd.pb_iocage_update_vmm_repos.yml
+
+.. literalinclude:: out/out-01.txt
+   :language: yaml
+   :force:
 
 Playbook pb-config-light.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
