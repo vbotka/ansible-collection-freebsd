@@ -11,11 +11,20 @@ Introduction
 * Requirements:
 
   * `ansible.posix`_
+  * `ansible.utils`_
+  * `community.crypto`_
   * `community.general`_
 
 The collection is shipped with:
 
 .. include:: included_content.rst
+
+.. note::
+
+   * The above **Requirements** lists the collections required by the roles.
+   * All listed collections are included in the standard `Ansible distribution`_.
+   * The roles may require other roles not listed here. See the roles' ``requirements.yml`` files
+     and install the missing roles manually when needed.
 
 .. seealso::
 
@@ -37,10 +46,15 @@ The collection is shipped with:
      Search `latest Ansible docs`_ for ``FreeBSD`` to learn the current FreeBSD support.
 
 
+.. _Ansible distribution: https://docs.ansible.com/ansible/latest/collections/index.html
+
+.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix
+.. _ansible.utils: https://docs.ansible.com/ansible/latest/collections/ansible/utils
+.. _community.crypto: https://docs.ansible.com/ansible/latest/collections/community/crypto
+.. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
+
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _FreeBSD Supported Production Releases: https://www.freebsd.org/releases
-.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix
-.. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
 .. _Installing collections: https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html
 .. _Managing BSD hosts with Ansible: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html
 .. _Jails - FreeBSD Wiki: https://wiki.freebsd.org/Jails
