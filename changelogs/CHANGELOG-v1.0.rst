@@ -47,6 +47,7 @@ Minor Changes
 * Add docs ug examples: 210, 502, 510
 * Add playbooks: pb_iocage_project_create.yml and pb_iocage_project_destroy.yml
 * Add var project_template (default=ansible_client) to pb_iocage_project_create.yml
+* Build documentation also in epub and pdf formats.
 
 
 0.8.0
