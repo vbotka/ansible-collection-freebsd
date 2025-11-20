@@ -88,6 +88,8 @@ Notes
 Known issues
 ^^^^^^^^^^^^
 
+* `zpool state=present is not idempotent #10771`_
+
 The module `community.general.zpool`_ can't create correct diff. For example,
 
 .. code-block:: yaml
@@ -251,3 +253,5 @@ Playbook output - List datasets
 .. _FreeBSD Wiki Category ZFS: https://wiki.freebsd.org/CategoryZfs
 
 .. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html
+
+.. _zpool state=present is not idempotent #10771: https://github.com/ansible-collections/community.general/issues/10771

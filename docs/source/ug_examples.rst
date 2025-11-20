@@ -86,6 +86,7 @@ Examples
    207 DHCP, auto UUID, tags, class <examples/207/example.rst>
    208 DHCP, ansible-pull <examples/208/example.rst>
    209 iocage pkglist <examples/209/example.rst>
+   210 iocage notes and tags <examples/210/example.rst>
 
 .. toctree::
    :maxdepth: 1
@@ -124,6 +125,8 @@ Examples
 
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
+   examples/502/example.rst
+   examples/510/example.rst
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage

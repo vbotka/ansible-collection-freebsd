@@ -142,6 +142,8 @@ Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. 
 
       iocage_tags: dict(iocage_properties.notes | split | select('match', '^.+=.+$') | map('split', '='))
 
+   Use the above expressions if ``notes`` are empty. See :ref:`example_210`.
+
 host_vars
 ^^^^^^^^^
 

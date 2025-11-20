@@ -11,25 +11,18 @@ ok: [test_1] =>
         iocage_tags: {}
 ok: [logserv_1] => 
     msg: |-
-        ansible_host: 10.1.0.232
-        iocage_properties.host_hostuuid: 4410f5d1
+        ansible_host: 10.1.0.224
+        iocage_properties.host_hostuuid: 10eedfd0
         iocage_classes: [logserv]
 
         iocage_tags: {alias: logserv_1, class: logserv, vmm: iocage_01}
 ok: [db_1] => 
     msg: |-
-        ansible_host: 10.1.0.136
-        iocage_properties.host_hostuuid: 8b8f7747
+        ansible_host: 10.1.0.193
+        iocage_properties.host_hostuuid: 68855646
         iocage_classes: [db, logclient]
 
         iocage_tags: {alias: db_1, class: 'db,logclient', vmm: iocage_02}
-ok: [http_1] => 
-    msg: |-
-        ansible_host: 10.1.0.141
-        iocage_properties.host_hostuuid: 9d271b5e
-        iocage_classes: [http, logclient]
-
-        iocage_tags: {alias: http_1, class: 'http,logclient', vmm: iocage_02}
 ok: [test_2] => 
     msg: |-
         ansible_host: -
@@ -37,6 +30,13 @@ ok: [test_2] =>
         iocage_classes: []
 
         iocage_tags: {}
+ok: [http_1] => 
+    msg: |-
+        ansible_host: 10.1.0.191
+        iocage_properties.host_hostuuid: 48309d2e
+        iocage_classes: [http, logclient]
+
+        iocage_tags: {alias: http_1, class: 'http,logclient', vmm: iocage_02}
 ok: [test_4] => 
     msg: |-
         ansible_host: -
@@ -46,15 +46,15 @@ ok: [test_4] =>
         iocage_tags: {}
 ok: [http_2] => 
     msg: |-
-        ansible_host: 10.1.0.184
-        iocage_properties.host_hostuuid: 0a6ec1a2
+        ansible_host: 10.1.0.118
+        iocage_properties.host_hostuuid: a5c500e4
         iocage_classes: [http, logclient]
 
         iocage_tags: {alias: http_2, class: 'http,logclient', vmm: iocage_04}
 ok: [db_2] => 
     msg: |-
-        ansible_host: 10.1.0.205
-        iocage_properties.host_hostuuid: fd808f46
+        ansible_host: 10.1.0.123
+        iocage_properties.host_hostuuid: dd4d5af2
         iocage_classes: [db, logclient]
 
         iocage_tags: {alias: db_2, class: 'db,logclient', vmm: iocage_04}
@@ -62,16 +62,16 @@ ok: [db_2] =>
 TASK [debug] *******************************************************************
 ok: [test_1] => 
     msg: |-
-        all: ['test_1', 'logserv_1', 'test_2', 'db_1', 'http_1', 'test_4', 'http_2', 'db_2']
+        all: ['test_1', 'logserv_1', 'test_2', 'http_1', 'db_1', 'test_4', 'http_2', 'db_2']
         ungrouped: []
         state_down: ['test_1', 'test_2', 'test_4']
         logserv: ['logserv_1']
-        state_up: ['logserv_1', 'db_1', 'http_1', 'http_2', 'db_2']
+        state_up: ['logserv_1', 'http_1', 'db_1', 'http_2', 'db_2']
         vmm_iocage_01: ['logserv_1']
-        db: ['db_1', 'db_2']
-        logclient: ['db_1', 'http_1', 'http_2', 'db_2']
-        vmm_iocage_02: ['db_1', 'http_1']
         http: ['http_1', 'http_2']
+        logclient: ['http_1', 'db_1', 'http_2', 'db_2']
+        vmm_iocage_02: ['http_1', 'db_1']
+        db: ['db_1', 'db_2']
         vmm_iocage_04: ['http_2', 'db_2']
 
 PLAY RECAP *********************************************************************

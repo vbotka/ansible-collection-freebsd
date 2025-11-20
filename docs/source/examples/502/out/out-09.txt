@@ -1,0 +1,68 @@
+
+PLAY [Create Branch Server.] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com to cl_packagesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-packages: Combine cl_packages with cl_packagesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com to cl_statessd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-states: Combine cl_statess with cl_statesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com to cl_cervicesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-services: Combine cl_services with cl_servicesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com to cl_filesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.config_light : Services: Enable FreeBSD services.] ********
+changed: [branch-server.example.com] => (item=git)
+
+TASK [vbotka.freebsd.config_light : Services: Manage FreeBSD service.] *********
+[ERROR]: Task failed: Module failed: Expecting a single line output from '/usr/local/etc/rc.d/git_daemon'.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/services.yml:41:7
+
+39         label: "{{ item.key }}"
+40
+41     - name: "Services: Manage FreeBSD service."
+         ^ column 7
+
+failed: [branch-server.example.com] (item=git) => 
+    ansible_loop_var: item
+    changed: false
+    item:
+        key: git
+        value:
+            enabled: true
+            name: git_daemon
+            state: start
+    msg: Expecting a single line output from '/usr/local/etc/rc.d/git_daemon'.
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=14   changed=1    unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   
+

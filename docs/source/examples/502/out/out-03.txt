@@ -1,0 +1,77 @@
+
+PLAY [Create Branch Server.] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Setup: Create directories in /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light] ***
+ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light)
+ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/handlers.d)
+ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/packages.d)
+ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/services.d)
+ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/files.d)
+ok: [branch-server.example.com -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/states.d)
+
+TASK [vbotka.config_light : Setup: Create directory /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Setup: Create directory /export/home/vlado.config/.ansible/roles/vbotka.config_light/handlers] ***
+changed: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Setup: Create handlers/main.yml] *******************
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-handlers: Assemble handlers to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/handlersd] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-handlers: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/handlersd to cl_handlersd_items] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-handlers: Combine cl_handlers with cl_handlersd_items.] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Setup: Create handlers listed in cl_handlers.] *****
+changed: [branch-server.example.com -> localhost] => (item=handlers-auto-git.yml)
+
+TASK [vbotka.config_light : Setup: Include handlers in handlers/main.yml] ******
+changed: [branch-server.example.com -> localhost] => (item=handlers-auto-git.yml)
+
+TASK [vbotka.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com to cl_packagesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-packages: Combine cl_packages with cl_packagesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com to cl_statesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-states: Combine cl_statess with cl_statesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com] ***
+ok: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com to cl_cervicesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-services: Combine cl_services with cl_servicesd_items.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com] ***
+changed: [branch-server.example.com -> localhost]
+
+TASK [vbotka.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com to cl_filesd_items] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.config_light : Vars-files: Combine cl_files with cl_filesd_items.] ***
+ok: [branch-server.example.com]
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=22   changed=4    unreachable=0    failed=0    skipped=17   rescued=0    ignored=0   
+

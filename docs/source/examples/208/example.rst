@@ -12,6 +12,7 @@ TODO: Run ansible-pull on boot.
 .. index:: single: ansible-pull; Example 208
 .. index:: single: ansible_client_pull; Example 208
 .. index:: single: template ansible_client_pull; Example 208
+
 .. index:: single: DHCP; Example 208
 .. index:: single: dhclient; Example 208
 .. index:: single: dhclient-exit-hooks; Example 208
@@ -31,7 +32,7 @@ TODO: Run ansible-pull on boot.
 Use case
 ^^^^^^^^
 
-Create `iocage`_ template that will use `ansible-pull`_.
+Create `iocage`_ template ``ansible_client_pull`` that will use `ansible-pull`_.
 
 Tree
 ^^^^
@@ -46,8 +47,7 @@ Tree
   ├── host_vars
   │   └── iocage_04
   │       └── iocage.yml
-  ├── iocage.ini
-  └── pb-test.yml
+  └── iocage.ini
 
 Synopsis
 ^^^^^^^^
@@ -113,6 +113,7 @@ host_vars
 
       {
           "pkgs": [
+	      "git",
               "python311",
               "py311-ansible",
               "sudo"
@@ -144,18 +145,12 @@ Limit the inventory to iocage_04
    :language: yaml
    :force:
 
-Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-test.yml
-   :language: yaml
-
-Playbook output - List templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Templates at iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.ini -l iocage_04
+   [iocage_04]#  iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: bash

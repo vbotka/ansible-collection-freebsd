@@ -5,8 +5,53 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.1
+=====
+
+**NOTE**
+
+It is not possible to use some roles in 2.19 because of the bug:
+"become_user broken with import_tasks since 2.19 #85856"
+https://github.com/ansible/ansible/issues/85856
+
+Downgrade to Ansible 2.18 ::
+
+  (env) > ansible --version
+  ansible [core 2.18.9]
+    ...
+    python version = 3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0] (/home/admin/env/bin/python3)
+    jinja version = 3.1.4
+    libyaml = True
+
+In Linux, run command ::
+
+  (env) > python3 -m pip install ansible==11.10.0
+
+The bug was fixed in #85877 and merged October 1, 2025. Let's test it
+when released. Probably in 2.19.4 See:
+https://github.com/ansible/ansible/tree/v2.19.3rc1/changelogs
+
+Release Summary
+---------------
+Downgrade to Ansible 2.18
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Upgrade role vbotka.freebsd.config_light to version 2.8.2
+* Update docs ug introduction.
+* Update docs ug examples batch.sh
+* Update docs ug examples: 013, 014, 203, 208, 400
+* Add docs ug examples: 210, 502, 510
+* Add playbooks: pb_iocage_project_create.yml and pb_iocage_project_destroy.yml
+* Add var project_template (default=ansible_client) to pb_iocage_project_create.yml
+* Build documentation also in epub and pdf formats.
+
+
 0.8.0
-======
+=====
 
 Release Summary
 ---------------

@@ -1,0 +1,12 @@
+- name: Test empty iocage notes.
+  hosts: test_4
+
+  tasks:
+
+    - debug:
+        msg: |
+          iocage_properties.notes: {{ iocage_properties.notes }}
+          iocage_properties.notes type: {{ iocage_properties.notes | type_debug }}
+
+    - debug:
+        var: iocage_tags

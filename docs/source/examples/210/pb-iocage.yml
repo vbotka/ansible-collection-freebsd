@@ -1,0 +1,12 @@
+- name: Test empty iocage notes.
+  hosts: iocage_04
+
+  tasks:
+
+    - command: iocage get notes test_4
+      register: out
+
+    - debug:
+        msg: |
+          out.stdout: {{ out.stdout }}
+          out.stdout type: {{ out.stdout | type_debug }}

@@ -1,0 +1,9 @@
+
+PLAY [Update vmm repos.] *******************************************************
+
+TASK [Update repos] ************************************************************
+ok: [branch-server.example.com]
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

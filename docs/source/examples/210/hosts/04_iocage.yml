@@ -1,0 +1,6 @@
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.29
+user: admin
+get_properties: true
+compose:
+  iocage_tags: dict(iocage_properties.notes | split | select('contains', '=') | map('split', '='))

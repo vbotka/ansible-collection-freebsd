@@ -1,0 +1,25 @@
+git:
+  template: handlers-auto3.yml.j2
+  handlers:
+    - handler: Start git_daemon
+      listen: start git_daemon
+      module: vbotka.freebsd.service
+      params:
+        - "script: git_daemon"
+        - "command: start"
+
+    - handler: Stop git_daemon
+      listen: stop git_daemon
+      module: vbotka.freebsd.service
+      params:
+        - "script: git_daemon"
+        - "command: stop"
+
+    - handler: Restart git_daemon
+      listen: restart git_daemon
+      module: vbotka.freebsd.service
+      params:
+        - "script: git_daemon"
+        - "command: restart"
+      conditions:
+        - "- cl_git_daemon_enable | bool"

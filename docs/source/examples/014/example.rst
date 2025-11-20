@@ -39,6 +39,7 @@ Tree
   .
   ├── ansible.cfg
   ├── iocage.yml
+  ├── pb-cache-dump.yml
   └── pb-vars-ip4.yml
 
 Synopsis
@@ -92,7 +93,8 @@ Playbook pb-vars-ip4.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-ip4.yml
-   :language: yaml
+   :language: yaml+jinja
+   :caption:
 
 Playbook output - Clear cache 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -141,6 +143,46 @@ Look at the cache. For example,
 
 .. literalinclude:: out/out-03.txt
    :language: json
+
+The cache format has changed since Ansible 2.19. Use the below playbook to read the cache
+
+.. literalinclude:: pb-cache-dump.yml
+   :language: yaml+jinja
+   :caption:
+
+For example,
+
+.. code-block:: console
+
+   shell> ansible-playbook pb-cache-dump.yml \
+          -e cache_file=/var/tmp/inventory_cache/iocage_04_s1_vbotka.freebsd.iocage_kfb2392
+
+.. code-block:: yaml
+
+   PLAY [Dump cache.] *************************************************************
+
+   TASK [assert] ******************************************************************
+   ok: [localhost]
+
+   TASK [debug] *******************************************************************
+   ok: [localhost] => 
+       cache.__payload__ | from_yaml:
+           _meta:
+               hostvars:
+                   test_4:
+                       iocage_basejail: 'no'
+                       iocage_boot: 'off'
+                       iocage_hooks:
+                       - '-'
+                       iocage_ip4: '-'
+                       iocage_ip4_dict:
+                           ip4: []
+                           msg: '-'
+                       iocage_ip6: '-'
+                       iocage_jid: None
+                       iocage_properties:
+                           CONFIG_VERSION: '33'
+       ...
 
 
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins

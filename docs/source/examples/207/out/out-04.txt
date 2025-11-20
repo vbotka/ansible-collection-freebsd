@@ -32,7 +32,7 @@ ok: [iocage_01] =>
 
         groups.all: ['test_1', 'test_2', 'test_4', 'iocage_01', 'iocage_02', 'iocage_04']
         project_jails_present: []
-        project_jails_absent: ['logserv_1', 'http_1', 'db_1', 'db_2', 'http_2']
+        project_jails_absent: ['http_1', 'http_2', 'db_2', 'db_1', 'logserv_1']
 
 TASK [Create jails.] ***********************************************************
 changed: [iocage_04]
@@ -40,11 +40,11 @@ changed: [iocage_01]
 changed: [iocage_02]
 
 TASK [Set notes.] **************************************************************
+changed: [iocage_04] => (item=http_2 alias=http_2 class=http,logclient vmm=iocage_04)
 changed: [iocage_04] => (item=db_2 alias=db_2 class=db,logclient vmm=iocage_04)
 changed: [iocage_01] => (item=logserv_1 alias=logserv_1 class=logserv vmm=iocage_01)
-changed: [iocage_04] => (item=http_2 alias=http_2 class=http,logclient vmm=iocage_04)
-changed: [iocage_02] => (item=db_1 alias=db_1 class=db,logclient vmm=iocage_02)
 changed: [iocage_02] => (item=http_1 alias=http_1 class=http,logclient vmm=iocage_02)
+changed: [iocage_02] => (item=db_1 alias=db_1 class=db,logclient vmm=iocage_02)
 
 TASK [Start created jails.] ****************************************************
 changed: [iocage_01]

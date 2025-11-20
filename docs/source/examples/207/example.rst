@@ -45,6 +45,11 @@
 .. index:: single: option iocage --short; Example 207
 .. index:: single: option iocage --template; Example 207
 
+.. index:: single: playbook pb_iocage_project_create.yml; Example 207
+.. index:: single: playbook pb_iocage_project_destroy.yml; Example 207
+.. index:: single: project create; Example 207
+.. index:: single: project destroy; Example 207
+
 Use case
 ^^^^^^^^
 
@@ -96,8 +101,6 @@ Tree
   │   └── iocage_04
   │       └── iocage.yml
   ├── iocage.ini
-  ├── pb-iocage-project-create.yml
-  ├── pb-iocage-project-destroy.yml
   └── pb-test-all.yml
 
 Synopsis
@@ -109,7 +112,7 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-project-create.yml``, use:
+  In the playbook ``vbotka.freebsd.pb_iocage_project_create.yml``, use:
 
   * `inventory plugin vbotka.freebsd.iocage`_ to create inventory hosts
   * inventory plugin `ansible.builtin.constructed`_ to create groups and compose variables:
@@ -254,24 +257,20 @@ Inventory hosts
       [iocage_04]# iocage list -h
       - test_4  down    14.3-RELEASE    -
 
-Playbook pb-iocage-project-create.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-iocage-project-create.yml
-   :language: yaml+jinja
-
-.. note::
-
-   The inventory ``-i hosts`` provides the group of all created jails. The play can use it and
-   create only the missing project jails. This makes the play idempotent despite the module
-   ``ansible.builtin.command`` and ``iocage`` option ``--count`` being used.
-
 Playbook output - Create and start project jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-project-create.yml -e debug=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create.yml \
+                            -i hosts -i iocage.ini -e debug=true
+
+.. seealso:: The playbook :ref:`ug_pb-iocage-project-create`
+.. note::
+
+   The inventory ``-i hosts`` provides the group of all created jails. The play can use it and
+   create only the missing project jails. This makes the play idempotent despite the module
+   ``ansible.builtin.command`` and ``iocage`` option ``--count`` being used.
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -282,11 +281,6 @@ Playbook pb-test-all.yml
 
 .. literalinclude:: pb-test-all.yml
    :language: yaml+jinja
-
-.. note::
-
-   * The inventory configuration files ``hosts/*.yml`` enable cache.
-   * Flush the cache. Otherwise, the jails created in the previous play won't be included.
 
 .. seealso::
 
@@ -299,24 +293,24 @@ Playbook output - Display all groups
 
    (env) > ansible-playbook -i hosts pb-test-all.yml --flush-cache
 
+.. note::
+
+   * The inventory configuration files ``hosts/*.yml`` enable cache.
+   * Flush the cache. Otherwise, the jails created in the previous play won't be included.
+
 .. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
-
-Playbook pb-iocage-project-destroy.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Destroy the project if you don’t need it anymore.
-
-.. literalinclude:: pb-iocage-project-destroy.yml
-   :language: yaml
 
 Playbook output - Stop and destroy jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-project-destroy.yml -e debug=true
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_destroy.yml \
+                            -i hosts -i iocage.ini -e debug=true
+
+.. seealso:: The playbook :ref:`ug_pb-iocage-project-destroy`
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

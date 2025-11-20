@@ -1,0 +1,29 @@
+# The project keys are jails aliases.
+project_template: ansible_client_pull
+project:
+  db_3:
+    class: [logclient, db]
+    vmm: iocage_04
+  http_3:
+    class: [logclient, http]
+    vmm: iocage_04
+
+# Put the dictionary iocage_tags into the file /var/db/iocage-tags.yml
+project_create_iocage_tags: true
+
+# Declare vmm. Dictionary of iocage hosts.
+vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
+vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"
+
+# Declare class. Dictionary of classes.
+class_list: "{{ project | dict2items }}"
+class_keys: "{{ class_list | map(attribute='value.class') | flatten | unique | sort }}"
+class: |
+  {% filter from_yaml %}
+  {% for k in class_keys %}
+  {{ k }}: {{ class_list | selectattr('value.class', 'contains', k) | map(attribute='key') }}
+  {% endfor %}
+  {% endfilter %}
+
+# Jail properties.
+properties: "bpf=1 dhcp=1 vnet=1"

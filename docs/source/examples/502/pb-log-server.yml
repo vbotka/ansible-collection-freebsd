@@ -1,0 +1,15 @@
+- name: Configure and start Log Server.
+  hosts: branch-server.example.com
+    
+  tasks:
+
+    - name: Install syslog-ng
+      when: install | d(false) | bool
+      community.general.pkgng:
+        name: sysutils/syslog-ng
+        use_globs: false
+
+    - name: Configure and start Log Server.
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.postinstall
+        tasks_from: syslog-ng.yml
