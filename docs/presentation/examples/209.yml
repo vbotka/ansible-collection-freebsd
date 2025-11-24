@@ -1,0 +1,11 @@
+209:
+  example: '209'
+  name: Create iocage pkglist file
+  case: |
+    * Use the role ``vbotka.freebsd.iocage`` to create `iocage`_ list of packages for ``Automatic Package Installation``.
+    * Create Ansible template for ``Apache HTTP server``.
+  requirements:
+    - role ``vbotka.freebsd.iocage.yml``
+    - playbook ``vbotka.freebsd.pb_iocage_template.yml``
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/209
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/209/example.html

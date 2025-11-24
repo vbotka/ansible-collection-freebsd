@@ -1,9 +1,11 @@
-200:
-  example: '200'
-  name: Create iocage templates. Clone jails.
+202:
+  example: '202'
+  extend: example 200
+  name: Create iocage templates. Clone DHCP jails
   case: |
     * Create iocage templates for Ansible clients.
-    * Clone jails.
+    * Get the IP addresses by DHCP.
+    * Create the ``dhclient-exit-hooks``.
   requirements:
     - playbook ``vbotka.freebsd.pb_iocage_template.yml``
     - playbook ``vbotka.freebsd.pb_iocage_ansible_clients.yml``
@@ -12,5 +14,5 @@
     - root privilege in the managed nodes
     - activated ``iocage``
     - fetched releases
-  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/200
-  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/200/example.html
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/202
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/202/example.html

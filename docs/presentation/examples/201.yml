@@ -2,7 +2,7 @@
   example: '201'
   name: Display iocage datasets
   case: |
-    Get and display ``iocage`` datasets.
+    * Get and display ``iocage`` datasets.
   requirements: []
   source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/201
   results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/201/example.html

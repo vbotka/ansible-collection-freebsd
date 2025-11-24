@@ -99,19 +99,15 @@ See the release notes what FreeBSD version(s) were tested. For example, quoting 
   - service
   - sysctl
 
+# FreeBSD collection
+
 ---
 
 ## Proposed FreeBSD collection
 
-The next section describes the proposed FreeBSD collection:
-
 * Ansible Galaxy: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
-
 * GitHub: [https://github.com/vbotka/ansible-collection-freebsd/](https://github.com/vbotka/ansible-collection-freebsd/)
-
 * Read The Docs: [https://ansible-collection-freebsd.readthedocs.io/en/latest/](https://ansible-collection-freebsd.readthedocs.io/en/latest/)
-
-# FreeBSD collection
 
 ---
 
@@ -219,7 +215,6 @@ To test the examples:
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/001)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/001/example.html)
 
 ---
@@ -237,7 +232,6 @@ To test the examples:
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/002)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/002/example.html)
 
 ---
@@ -255,7 +249,6 @@ To test the examples:
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/003)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/003/example.html)
 
 
@@ -280,7 +273,6 @@ inventory plugin ``vbotka.freebsd.iocage`` to create the inventory. Display the 
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/010)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html)
 
 ---
@@ -300,7 +292,6 @@ Display all variables ``iocage_*`` created by the inventory plugin ``vbotka.free
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/011)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/011/example.html)
 
 ---
@@ -320,7 +311,6 @@ Enable and display ``iocage_properties``.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/012)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/012/example.html)
 
 ---
@@ -350,7 +340,6 @@ In the inventory plugin:
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/013)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/013/example.html)
 
 ---
@@ -369,7 +358,6 @@ Enable and test inventory cache.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/014)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html)
 
 ---
@@ -388,7 +376,6 @@ Enabled cache in multiple inventory files.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/015)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/015/example.html)
 
 ---
@@ -408,7 +395,6 @@ inventory plugin ``vbotka.freebsd.iocage`` configuration files.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/016)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/016/example.html)
 
 ---
@@ -424,7 +410,6 @@ Use the inventory plugin ``community.general.iocage`` instead of the inventory p
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/017)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/017/example.html)
 
 ---
@@ -443,7 +428,6 @@ Use DHCP to configure the interfaces.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/018)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/018/example.html)
 
 ---
@@ -463,7 +447,6 @@ directories, is not available in the inventory plugin ``vbotka.freebsd.iocage`` 
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/019)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/019/example.html)
 
 ---
@@ -485,7 +468,6 @@ which tag to use.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/020)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/020/example.html)
 
 ---
@@ -508,7 +490,6 @@ Create custom facts to provide a dictionary of iocage datasets lists. Use the fi
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/030)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/030/example.html)
 
 
@@ -520,7 +501,8 @@ Create custom facts to provide a dictionary of iocage datasets lists. Use the fi
 ## example 200: Create iocage templates. Clone jails.
 
 
-Create iocage templates for Ansible clients. Clone jails.
+* Create iocage templates for Ansible clients.
+* Clone jails.
 
 
 *requirements*:
@@ -536,7 +518,6 @@ Create iocage templates for Ansible clients. Clone jails.
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/200)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/200/example.html)
 
 ---
@@ -544,13 +525,194 @@ Create iocage templates for Ansible clients. Clone jails.
 ## example 201: Display iocage datasets
 
 
-Get and display ``iocage`` datasets.
+* Get and display ``iocage`` datasets.
 
 
 
 *links*:
 
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/201)
-
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/201/example.html)
+
+---
+
+## example 202: Create iocage templates. Clone DHCP jails
+
+*extends*: example 200
+
+* Create iocage templates for Ansible clients.
+* Get the IP addresses by DHCP.
+* Create the ``dhclient-exit-hooks``.
+
+
+*requirements*:
+
+  - playbook ``vbotka.freebsd.pb_iocage_template.yml``
+  - playbook ``vbotka.freebsd.pb_iocage_ansible_clients.yml``
+  - module ``vbotka.freebsd.iocage``
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+  - activated ``iocage``
+  - fetched releases
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/202)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/202/example.html)
+
+---
+
+## example 203: Create DHCP jails with auto UUID and iocage_tags
+
+
+* Automatically generate the jails UUID names. At each iocage host, create three jails from the
+  template ``ansible_client``
+  The module ``vbotka.freebsd.iocage`` doesn't work with multiple names. Use
+  ``ansible.builtin.command`` instead.
+* In the inventory plugin, compose the variable ``iocage_tags``  
+  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+* Create groups from ``iocage_tags``
+
+
+*requirements*:
+
+  - playbook ``vbotka.freebsd.pb_iocage_ansible_clients.yml``
+  - module ``vbotka.freebsd.iocage``
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+  - templates created in example 202
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/203)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/203/example.html)
+
+---
+
+## example 204: Create DHCP jails with auto UUID and iocage_tags v2
+
+*extends*: example 203
+
+
+* Instead of the module ``vbotka.freebsd.iocage`` create the variable ``iocage_jails`` using the
+  filter ``vbotka.freebsd.iocage``
+
+
+*requirements*:
+
+  - filter ``vbotka.freebsd.iocage``
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+  - templates created in exmaple 202
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/204)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/204/example.html)
+
+---
+
+## example 206: Create DHCP and fixed IP jails
+
+*extends*: example 203
+
+* In the inventory plugin ``vbotka.freebsd.iocage`` configuration file, use the option
+  ``hooks_results`` to get the DHCP IP address.
+
+
+*requirements*:
+
+  - playbook ``vbotka.freebsd.pb_iocage_ansible_clients.yml``
+  - module ``vbotka.freebsd.iocage``
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+  - templates created in example 202
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/206)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/206/example.html)
+
+---
+
+## example 207: Create DHCP jails with auto UUID, iocage_tags, alias and class
+
+
+* At multiple iocage hosts, create and run VNET jails with a DHCP interface from the template
+  ``ansible_client``.
+* Use the dictionary ``iocage_tags`` and option ``inventory_hostname_tag`` to create ``inventory aliases``.
+* Group the jails by iocage hosts, states, and classes.
+* Declare the project in a single dictionary. The dictionary keys are jails' aliases.
+
+
+*requirements*:
+
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+  - templates created in example 202
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/207)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/207/example.html)
+
+---
+
+## example 208: Create iocage template for ansible-pull
+
+
+* Create iocage template ``ansible_client_pull`` that will use ``ansible-pull``.
+
+
+*requirements*:
+
+  - playbook ``vbotka.freebsd.pb_iocage_template.yml``
+  - module ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/208)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/208/example.html)
+
+---
+
+## example 209: Create iocage pkglist file
+
+
+* Use the role ``vbotka.freebsd.iocage`` to create `iocage`_ list of packages for ``Automatic Package Installation``.
+* Create Ansible template for ``Apache HTTP server``.
+
+
+*requirements*:
+
+  - role ``vbotka.freebsd.iocage.yml``
+  - playbook ``vbotka.freebsd.pb_iocage_template.yml``
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/209)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/209/example.html)
+
+---
+
+## example 210: Test empty iocage notes
+
+
+* Test empty iocage notes. Create ``iocage_tags``. The result should be an empty dictionary.
+
+
+*requirements*:
+
+  - inventory plugin ``vbotka.freebsd.iocage``
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/210)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/210/example.html)
+
+
+
+
+# Infrastructure
 

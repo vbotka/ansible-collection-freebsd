@@ -1,6 +1,6 @@
 # Ansible client
 
-{% for k,v in examples.items() if k in ansible_client %}
+{% for k,v in examples.items() if k in ansible_client_enable %}
 ---
 
 ## example {{ v.example }}: {{ v.name }}
@@ -22,7 +22,6 @@
 *links*:
 
   - [source code]({{ v.source }})
-
   - [results]({{ v.results }})
 
 {% endfor %}

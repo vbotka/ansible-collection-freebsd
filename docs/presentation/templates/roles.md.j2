@@ -1,17 +1,23 @@
-# Install, configure, and activate iocage
+# Roles
 
-{% for k,v in examples.items() if k in manage_iocage_enable %}
+{% for k,v in examples.items() if k in roles_enable %}
 ---
 
 ## example {{ v.example }}: {{ v.name }}
 
-**{{ v.case }}**
+{% if v.extend is defined %}
+*extends*: {{ v.extend }}
+{% endif %}
 
+{{ v.case }}
+
+{% if v.requirements | length > 0 %}
 *requirements*:
 
 {% for i in v.requirements %}
   - {{ i }}
 {% endfor %}
+{% endif %}
 
 *links*:
 

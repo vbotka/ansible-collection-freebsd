@@ -3,10 +3,13 @@
   gather_facts: false
 
   vars:
-    manage_iocage: [1, 2, 3]
-    plugins_iocage: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30]
-    plugins_other: [40]
-    ansible_client: [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210]
+    manage_iocage_enable: [1, 2, 3]
+    plugins_iocage_enable: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30]
+    plugins_other_enable: [40]
+    ansible_client_enable: [200, 201, 202, 203, 204, 206, 207, 208, 209, 210]
+    modules_enable: []
+    roles_enable: []
+    infrastructure_enable: []
 
   tasks:
 
