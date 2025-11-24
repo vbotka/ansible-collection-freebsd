@@ -1,0 +1,15 @@
+200:
+  example: '200'
+  name: Create iocage templates. Clone jails.
+  case: |
+    Create iocage templates for Ansible clients. Clone jails.
+  requirements:
+    - playbook ``vbotka.freebsd.pb_iocage_template.yml``
+    - playbook ``vbotka.freebsd.pb_iocage_ansible_clients.yml``
+    - module ``vbotka.freebsd.iocage``
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - activated ``iocage``
+    - fetched releases
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/200
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/200/example.html

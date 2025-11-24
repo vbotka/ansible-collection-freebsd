@@ -1,0 +1,10 @@
+18:
+  example: '018'
+  name: Clone basejails. Use DHCP.
+  case: |
+    Use DHCP to configure the interfaces.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - jails created in example 010
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/018
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/018/example.html

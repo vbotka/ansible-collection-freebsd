@@ -1,0 +1,21 @@
+13:
+  example: '013'
+  extend: example 010
+  name: Tags and custom groups
+  case: |
+    Use the property ``notes`` to create tags:
+
+      - Add the property ``notes: "vmm={{ inventory_hostname }}"``
+
+    In the inventory plugin:
+
+      - compose the variable ``iocage_tags``
+      - create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``
+  requirements:
+    - module ``vbotka.freebsd.iocage``
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - activated binary ``iocage``
+    - fetched releases
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/013
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/013/example.html

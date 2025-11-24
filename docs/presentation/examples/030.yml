@@ -1,0 +1,14 @@
+30:
+  example: '030'
+  extend: example 020
+  name: Create custom facts
+  case: |
+    Create custom facts to provide a dictionary of iocage datasets lists. Use the filter
+    ``vbotka.freebsd.iocage`` to parse them.
+  requirements:
+    - role ``vbotka.freebsd.iocage``
+    - filter ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - jails created in previous examples
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/030
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/030/example.html

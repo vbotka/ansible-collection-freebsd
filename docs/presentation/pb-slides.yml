@@ -1,0 +1,28 @@
+- name: Create tutorial.
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    manage_iocage: [1, 2, 3]
+    plugins_iocage: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30]
+    plugins_other: [40]
+    ansible_client: [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210]
+
+  tasks:
+
+    - name: Include variables.
+      include_vars:
+        dir: examples
+        name: examples
+        extensions: [yml, yaml]
+        ignore_unknown_extensions: true
+
+    - name: Debug.
+      when: debug | d(false) | bool
+      debug:
+        var: examples
+
+    - name: Create slides.
+      template:
+        src: slides.md.j2
+        dest: slides.md

@@ -1,0 +1,50 @@
+# Examples
+
+---
+
+## Example groups
+
+- Install, configure, and activate ``iocage``
+- Plugins ``iocage``
+- Other plugins
+- Ansible client
+- Modules
+- Roles
+- Infrastructure
+
+---
+
+## How to use the examples
+
+Each example provides links to the:
+
+- example source code
+
+- detailed description of the example
+
+- example results
+
+To test the examples:
+
+- clone the source code repository
+
+- open the guide with the detailed descriptions
+
+- run the examples and compare the results
+
+---
+
+## Notes
+
+- All examples comprise additional files not shown in the file' tree. See them for more details.
+
+- Most examples comprise ``batch.sh`` that runs the commands and creates the output.
+
+- Most plays in ``batch.sh`` are idempotent. The output of such a play may show status ``ok`` instead of
+  expected ``changed`` if the play has already been run.
+
+- The playbooks in the examples use dashes - in their filenames. For example, ``pb-iocage.yml``.
+
+- The playbooks in the collection, because of the Ansible collection naming conventions, use
+  underscores _ in their filenames. For example, ``pb_iocage_template.yml``.
+

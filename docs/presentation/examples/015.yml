@@ -1,0 +1,10 @@
+15:
+  example: '015'
+  name: Multiple inventory cache
+  case: |
+    Enabled cache in multiple inventory files.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - jails created in example 010
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/015
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/015/example.html

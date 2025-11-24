@@ -1,0 +1,11 @@
+16:
+  example: '016'
+  name: Multiple inventory constructed
+  case: |
+    Create inventory groups using the inventory plugin ``ansible.builtin.constructed`` after the two
+    inventory plugin ``vbotka.freebsd.iocage`` configuration files.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - jails created in example 010
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/016
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/016/example.html

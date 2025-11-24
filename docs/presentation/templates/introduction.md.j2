@@ -1,0 +1,113 @@
+# Introduction
+
+---
+
+## Why Ansible?
+
+- Preferred for its simplicity due to an agentless model using YAML.
+
+- Used by global leaders (AWS, Cisco, Google, ...).
+
+- IBM and Red Hat Ansible are closely integrated, particularly through the Red Hat Ansible
+  Automation Platform and the generative AI service, Red Hat Ansible Lightspeed with IBM watsonx
+  Code Assistant.
+
+---
+
+## Does Ansible work with FreeBSD?
+
+Yes. Quoting Ansible documentation [BSD efforts and contributions](https://docs.ansible.com/projects/ansible/latest/os_guide/intro_bsd.html#bsd-efforts-and-contributions):
+
+
+```text
+  "BSD support is important to us at Ansible. Even though
+  the majority of our contributors use and target Linux
+  we have an active BSD community and strive to be as
+  BSD-friendly as possible. Please feel free to report
+  any issues or incompatibilities you discover with BSD;
+  pull requests with an included fix are also welcome!"
+```
+
+See Ansible documentation [Managing BSD hosts with Ansible](https://docs.ansible.com/projects/ansible/latest/os_guide/intro_bsd.html#managing-bsd-hosts-with-ansible).
+
+---
+
+## Ansible collections
+
+* There are more than 100 collections included in the Ansible distribution.
+
+```console
+    shell> ansible-galaxy collection list | wc -l
+    107
+```
+
+* For example:
+  - [Amazon.Aws](https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/index.html#plugins-in-amazon-aws)
+  - [Cisco.Ios](https://docs.ansible.com/projects/ansible/latest/collections/cisco/ios/index.html#plugins-in-cisco-ios)
+  - [Google.Cloud](https://docs.ansible.com/projects/ansible/latest/collections/google/cloud/index.html#plugins-in-google-cloud)
+
+* See the [Collection Index](https://docs.ansible.com/projects/ansible/latest/collections/index.html#list-of-collections)
+
+---
+
+## Ansible collections ansible.*
+
+Tested with FreeBSD:
+
+* [ansible.builtin](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/index.html#plugins-in-ansible-builtin) - Modules and plugins contained in ansible-core.  
+  author: Ansible, Inc
+* [ansible.posix](https://docs.ansible.com/projects/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix) - For POSIX and POSIX-ish platforms.  
+  author: Ansible (github.com/ansible)
+* [ansible.utils](https://docs.ansible.com/projects/ansible/latest/collections/ansible/utils/index.html#plugins-in-ansible-utils) - Data management, manipulation, and validation.  
+  author: Ansible Community
+
+See the release notes what FreeBSD version(s) were tested. For example, quoting [v2.20.0](https://github.com/ansible/ansible/blob/stable-2.20/changelogs/CHANGELOG-v2.20.rst):
+
+```
+   ansible-test - Replace FreeBSD 14.2 with 14.3.
+```
+
+---
+
+## Ansible collections community.*
+
+* There are two FreeBSD specific modules in [community.general](https://docs.ansible.com/projects/ansible/latest/collections/community/general/index.html):
+
+  - [community.general.pkgng](https://docs.ansible.com/projects/ansible/latest/collections/community/general/pkgng_module.html#ansible-collections-community-general-pkgng-module) - Package manager for FreeBSD.
+  - [community.general.portinstall](https://docs.ansible.com/projects/ansible/latest/collections/community/general/portinstall_module.html#ansible-collections-community-general-portinstall-module) - Installing from FreeBSD’s ports system.
+
+* See other collections community.* For example:
+
+  - [community.crypto](https://docs.ansible.com/projects/ansible/latest/collections/community/crypto/index.html#plugins-in-community-crypto) - Modules and plugins for cryptographic operations.
+  - [community.postgresql](https://docs.ansible.com/projects/ansible/latest/collections/community/postgresql/index.html#plugins-in-community-postgresql) - PostgreSQL community modules.
+  - [community.mysql](https://docs.ansible.com/projects/ansible/latest/collections/community/mysql/index.html#plugins-in-community-mysql) - MySQL and MariaDB collection.
+
+* These collections are maintained by the Ansible community.
+
+---
+
+## Ansible collection dedicated to FreeBSD is needed to
+
+* support FreeBSD specific subsystems:
+
+  - iocage
+  - poudriere
+  - bhyve
+
+* support FreeBSD plugins where integration is problematic:
+
+  - service
+  - sysctl
+
+---
+
+## Proposed FreeBSD collection
+
+The next section describes the proposed FreeBSD collection:
+
+* Ansible Galaxy: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+
+* GitHub: [https://github.com/vbotka/ansible-collection-freebsd/](https://github.com/vbotka/ansible-collection-freebsd/)
+
+* Read The Docs: [https://ansible-collection-freebsd.readthedocs.io/en/latest/](https://ansible-collection-freebsd.readthedocs.io/en/latest/)
+

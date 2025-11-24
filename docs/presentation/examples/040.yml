@@ -1,0 +1,8 @@
+40:
+  example: '040'
+  name: Lookup galaxy_info
+  case: |
+    Use the lookup plugin ``vbotka.freebsd.galaxy_info`` to get the meta data from ``galaxy.yml``.
+  requirements: []
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/040
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/040/example.html

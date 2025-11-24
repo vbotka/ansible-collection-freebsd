@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Create docs tutorial.
+Add docs presentation.
 
 Major Changes
 -------------

@@ -1,0 +1,9 @@
+10:
+  example: '010'
+  name: 
+  case: |
+
+  requirements:
+
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/010
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html
