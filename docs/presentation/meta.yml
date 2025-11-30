@@ -10,20 +10,21 @@ toc: true
 toc-title: |
   Contents
 
-linkstyle: bold
+# linkstyle: bold
 
-fonttheme: professionalfonts
+# fonttheme: professionalfonts
 fontsize: 10pt
 mainfont: Caladea # Note: Set these to any fonts you have on your system.
 sansfont: Carlito
 monofont: Ubuntu Mono
 
-theme: "Boadilla" # Example theme
-# colortheme: default
-colortheme: "orchid" # Example color theme
-colorthemeoptions:
-  - "mint"
-  - "shadow"
+# theme: "boxes"
+theme: "Boadilla"
+colortheme: default
+# colortheme: "orchid" # Example color theme
+# colorthemeoptions:
+#  - "mint"
+#  - "shadow"
 
 # Source - https://stackoverflow.com/q/64732807
 # Posted by Lucas, modified by community. See post 'Timeline' for change history
@@ -33,6 +34,7 @@ header-includes: |
     \setbeamertemplate{frametitle continuation}[from second]
     % more stuff
     ```
+
 # toc-depth: 3
 
 # format:
@@ -49,8 +51,9 @@ header-includes: |
 # include: red, green, blue, cyan, magenta, yellow, black, gray,
 # white, darkgray, lightgray, brown, lime, olive, orange, pink,
 # purple, teal, and violet
-urlcolor: teal
-linkcolor: darkgray
-citecolor: red
-toccilor: red
+urlcolor: red
+# linkcolor: darkgray
+linkcolor: blue
+# citecolor: red
+# toccilor: red
 ...

@@ -105,9 +105,12 @@ See the release notes what FreeBSD version(s) were tested. For example, quoting 
 
 ## Proposed FreeBSD collection
 
-* Ansible Galaxy: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
-* GitHub: [https://github.com/vbotka/ansible-collection-freebsd/](https://github.com/vbotka/ansible-collection-freebsd/)
-* Read The Docs: [https://ansible-collection-freebsd.readthedocs.io/en/latest/](https://ansible-collection-freebsd.readthedocs.io/en/latest/)
+* Ansible Galaxy: \
+  [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+* GitHub: \
+  [https://github.com/vbotka/ansible-collection-freebsd/](https://github.com/vbotka/ansible-collection-freebsd/)
+* Read The Docs: \
+  [https://ansible-collection-freebsd.readthedocs.io/en/latest/](https://ansible-collection-freebsd.readthedocs.io/en/latest/)
 
 ---
 
@@ -210,6 +213,8 @@ shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
 
 * When ``sudo`` is not enabled, update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``hooks_results``
 
+\small
+
 ```yaml
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
@@ -218,7 +223,11 @@ hooks_results:
   - /var/db/dhclient-hook.address.epair0b
 ```
 
+\normalsize
+
 * Example of a hook ``/etc/dhclient-exit-hooks``
+
+\small
 
 ```sh
 case "$reason" in
@@ -228,11 +237,17 @@ case "$reason" in
 esac
 ```
 
+\normalsize
+
 * Display the inventory
+
+\small
 
 ```console
 shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
 ```
+
+\normalsize
 
 ---
 
@@ -240,6 +255,8 @@ shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
 
 Optionally, get the ``iocage properties``. Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``get_properties``. Compose the variable ``ansible_host``
 
+\small
+
 ```yaml
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
@@ -248,8 +265,11 @@ get_properties: true
 hooks_results:
   - /var/db/dhclient-hook.address.epair0b
 compose:
-  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+  ansible_host: (iocage_hooks.0 == '-') |
+                ternary(iocage_ip4, iocage_hooks.0)
 ```
+
+\normalsize
 
 ---
 
@@ -257,6 +277,8 @@ compose:
 
 Use ``property notes`` to store ``tags``. Update the inventory configuration ``hosts/02_iocage.yml``. Compose the dictionary ``iocage_tags`` and create ``groups``. The ``properties`` are required. Enable the parameter ``get_properties``
 
+\small
+
 ```yaml
 plugin: vbotka.freebsd.iocage
 host: 10.1.0.73
@@ -265,8 +287,10 @@ get_properties: true
 hooks_results:
   - /var/db/dhclient-hook.address.epair0b
 compose:
-  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
-  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+  ansible_host: (iocage_hooks.0 == '-') |
+                ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes |
+                split | map('split', '='))
 keyed_groups:
   - prefix: vmm
     key: iocage_tags.vmm
@@ -274,11 +298,15 @@ keyed_groups:
     key: iocage_tags.project
 ```
 
+\normalsize
+
 ---
 
 ## inventory iocage - Aliases
 
 The tag ``alias`` is used to create inventory aliases. Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter ``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the inventory alias.
+
+\small
 
 ```yaml
 plugin: vbotka.freebsd.iocage
@@ -289,7 +317,8 @@ inventory_hostname_tag: alias
 hooks_results:
   - /var/db/dhclient-hook.address.epair0b
 compose:
-  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+  ansible_host: (iocage_hooks.0 == '-') |
+                ternary(iocage_ip4, iocage_hooks.0)
   iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
 keyed_groups:
   - prefix: vmm
@@ -297,6 +326,8 @@ keyed_groups:
   - prefix: project
     key: iocage_tags.project
 ```
+
+\normalsize
 
 ---
 
