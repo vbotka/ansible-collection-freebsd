@@ -137,17 +137,188 @@ Note: The proposed FreeBSD collection is a work in progress.
 
 ## inventory iocage
 
-* Included in community.general as [community.general.iocage](https://docs.ansible.com/projects/ansible/latest/collections/community/general/iocage_inventory.html)
-* Documentation in [community.general](https://docs.ansible.com/projects/ansible/latest/collections/community/general/docsite/guide_iocage_inventory.html)
+* Get inventory hosts from the ``iocage`` jail manager running on ``host``.
+
+* Properly documented in [ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage.html)
+
+* Included also in the collection community.general as [community.general.iocage](https://docs.ansible.com/projects/ansible/latest/collections/community/general/iocage_inventory.html)
+
+* Also documented in [docs.ansible.com](https://docs.ansible.com/projects/ansible/latest/collections/community/general/docsite/guide_iocage_inventory.html)
+
 * License GPLv3
+
+* Extends fragments:
+
+```yaml
+extends_documentation_fragment:
+  - ansible.builtin.constructed
+  - ansible.builtin.inventory_cache
+```
+
+---
+
+## inventory iocage - Basics
+
+* Get the inventory from the command line
+
+```console
+shell> ssh admin@10.1.0.73 iocage list -l
+```
+
+* Configure inventory plugin ``hosts/02_iocage.yml``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+```
+
+* Display the inventory
+
+```console
+shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+```
+
+---
+
+## inventory iocage - DHCP
+
+* As admin at the controller, list the jails. The IP4 tab says “… address requires root”. Use sudo if enabled
+
+```console
+shell> ssh admin@10.1.0.73 sudo iocage list -l
+```
+
+* Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``sudo``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+sudo: true
+```
+
+* Display the inventory
+
+```console
+shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+```
+
+---
+
+## inventory iocage - Hooks
+
+* When ``sudo`` is not enabled, update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``hooks_results``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+```
+
+* Example of a hook ``/etc/dhclient-exit-hooks``
+
+```sh
+case "$reason" in
+    "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+    echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+    ;;
+esac
+```
+
+* Display the inventory
+
+```console
+shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+```
+
+---
+
+## inventory iocage - Properties
+
+Optionally, get the ``iocage properties``. Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``get_properties``. Compose the variable ``ansible_host``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+get_properties: true
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+```
+
+---
+
+## inventory iocage - Tags
+
+Use ``property notes`` to store ``tags``. Update the inventory configuration ``hosts/02_iocage.yml``. Compose the dictionary ``iocage_tags`` and create ``groups``. The ``properties`` are required. Enable the parameter ``get_properties``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+get_properties: true
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm
+  - prefix: project
+    key: iocage_tags.project
+```
+
+---
+
+## inventory iocage - Aliases
+
+The tag ``alias`` is used to create inventory aliases. Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter ``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the inventory alias.
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+get_properties: true
+inventory_hostname_tag: alias
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm
+  - prefix: project
+    key: iocage_tags.project
+```
 
 ---
 
 ## module iocage
 
+* FreeBSD iocage jail handling.
+
+* See the in-line documentation on [galaxy.ansible.com](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/)
+
+* Implements most of the ``iocage`` options.
+
+* See the in-line examples.
+
 ---
 
 ## filter iocage
+
+* This filter parses ``iocage`` list output.
+
+* See the in-line documentation on [galaxy.ansible.com](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/)
+
+* See the in-line examples.
 
 # Examples
 
@@ -157,10 +328,7 @@ Note: The proposed FreeBSD collection is a work in progress.
 
 - Install, configure, and activate ``iocage``
 - Plugins ``iocage``
-- Other plugins
 - Ansible client
-- Modules
-- Roles
 - Infrastructure
 
 ---
@@ -715,4 +883,84 @@ Create custom facts to provide a dictionary of iocage datasets lists. Use the fi
 
 
 # Infrastructure
+
+---
+
+## example 500: syslog-ng server and syslog-ng clients
+
+
+Configure and run a log server. Configure log clients and test them. Use ``syslog-ng``. Use the
+jails created in the example 207 Create DHCP jails with auto ``UUID``, ``iocage_tags``,
+``alias`` and ``class``. The project keys are jail’s aliases.
+
+
+*requirements*:
+
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - module ``vbotka.freebsd.service``
+  - role ``vbotka.freebsd.postinstall``
+  - jails created in example 207
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/500)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/500/example.html)
+
+---
+
+## example 501: iocage host
+
+
+Configure iocage host.
+
+
+*requirements*:
+
+  - role ``vbotka.freebsd.iocage``
+  - role ``vbotka.freebsd.network``
+  - role ``vbotka.freebsd.pf``
+  - role ``vbotka.freebsd.postinstall``
+  - role ``vbotka.freebsd.zfs``
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/501)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/501/example.html)
+
+---
+
+## example 502: Branch server
+
+
+Install and configure syslog-ng and git servers in the branch-server.
+
+
+*requirements*:
+
+  - role ``vbotka.freebsd.config_light``
+  - role ``vbotka.freebsd.postinstall``
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/502)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/502/example.html)
+
+---
+
+## example 510: Project ansible-pull
+
+
+Use the template ``ansible_client_pull`` to create project jails.
+
+
+*requirements*:
+
+  - inventory plugin ``vbotka.freebsd.iocage``
+  - root privilege in the managed nodes
+  - templates ``ansible_client_pull`` created in example 208
+
+*links*:
+
+  - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/510)
+  - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/510/example.html)
 

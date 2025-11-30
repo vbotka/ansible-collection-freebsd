@@ -1,5 +1,5 @@
 ---
-title: Manage FreeBSD jails by Ansible
+title: FreeBSD Jails Orchestration with Ansible
 subtitle: Tutorial with examples
 author:
 - Vladimir Botka
