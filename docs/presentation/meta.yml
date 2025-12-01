@@ -6,9 +6,11 @@ author:
 # date: March, 2026
 keywords: [ansible, freebsd, iocage, jails]
 beamer_class: beamer
+
 toc: true
 toc-title: |
   Contents
+# toc-depth: 3
 
 # linkstyle: bold
 
@@ -34,8 +36,6 @@ header-includes: |
     \setbeamertemplate{frametitle continuation}[from second]
     % more stuff
     ```
-
-# toc-depth: 3
 
 # format:
 #   beamer:
