@@ -10,13 +10,17 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Add docs presentation.
+Add docs presentation. Upgrade to Ansible 2.20 and FreeBSD 15.0
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+
+* Upgrade roles: iocage 1.1.0, lib 2.8.2, network 2.8.2, pf 2.8.1,
+  postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2
+* Update ansible-lint local config.
 
 
 0.8.1
