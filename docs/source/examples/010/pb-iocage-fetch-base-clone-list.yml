@@ -45,11 +45,11 @@
 
         - name: Create Ansible facts iocage_*
           vbotka.freebsd.iocage:
-      
+
         - name: Display lists of bases, plugins, templates, and jails.
           debug:
             msg: |-
-              {{ iocage_releases }}
-              {{ iocage_plugins.keys() | list }}
-              {{ iocage_templates.keys() | list }}
-              {{ iocage_jails.keys() | list }}
+              {{ ansible_facts.iocage_releases }}
+              {{ ansible_facts.iocage_plugins.keys() | list }}
+              {{ ansible_facts.iocage_templates.keys() | list }}
+              {{ ansible_facts.iocage_jails.keys() | list }}

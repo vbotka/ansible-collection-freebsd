@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Add docs presentation. Upgrade to Ansible 2.20 and FreeBSD 15.0
+Upgrade to Ansible 2.20. Supported versions 13.5, 14.3, and 15.0
 
 Major Changes
 -------------
@@ -22,7 +22,9 @@ Minor Changes
   postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2
 * Update ansible-lint local config.
 * Fix or ignore ansible-lint warnings.
-
+* Add docs presentation.
+* Update docs examples.
+* Update playbooks.
 
 0.8.1
 =====

@@ -2,9 +2,9 @@
 PLAY [Test role vbotka.freebsd.postinstall] ************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_131]
 ok: [test_133]
 ok: [test_132]
+ok: [test_131]
 
 PLAY RECAP *********************************************************************
 test_131                   : ok=1    changed=0    unreachable=0    failed=0    skipped=327  rescued=0    ignored=0   

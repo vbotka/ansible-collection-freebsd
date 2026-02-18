@@ -5,7 +5,7 @@ properties:
 
 basejails:
   - name: ansible_client
-    release: 14.3-RELEASE
+    release: 15.0-RELEASE
     properties:
       ip4_addr: 'vnet0|10.1.0.198/24'
 

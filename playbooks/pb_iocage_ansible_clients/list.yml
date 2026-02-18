@@ -4,9 +4,9 @@
 - name: "Display iocage_jails dictionary debug2={{ debug2 }}"
   when: debug2 | bool
   ansible.builtin.debug:
-    var: iocage_jails
+    var: ansible_facts.iocage_jails
 
 - name: "Display iocage_jails keys debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
-    var: iocage_jails.keys()
+    var: ansible_facts.iocage_jails.keys()

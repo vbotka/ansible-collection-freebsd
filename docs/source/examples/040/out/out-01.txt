@@ -48,14 +48,14 @@ ok: [iocage_04] =>
         - freebsd
         - iocage
         - infrastructure
-        version: 0.8.0
+        version: 0.8.2
 
 TASK [Get the attributes authors and version.] *********************************
 ok: [iocage_04] => 
     msg: |-
         type: list
         authors: ['Vladimir Botka <vbotka@gmail.com>']
-        version: 0.8.0
+        version: 0.8.2
 
 TASK [Error. Unknown attribute foo] ********************************************
 [ERROR]: Task failed: Error while resolving `var` expression: The lookup plugin 'vbotka.freebsd.galaxy_info' failed: Unknown attribute "foo"

@@ -12,10 +12,10 @@ ok: [iocage_04] =>
         ansible_architecture: amd64
         ansible_os_family: FreeBSD
         ansible_distribution: FreeBSD
-        ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.3
-        ansible_distribution_release: 14.3-RELEASE
-        ansible_python_version: 3.11.12
+        ansible_distribution_major_version: 15
+        ansible_distribution_version: 15.0
+        ansible_distribution_release: 15.0-RELEASE-p1
+        ansible_python_version: 3.11.14
 
         freebsd_install_method: packages
         freebsd_use_packages: True

@@ -1,7 +1,7 @@
 
 PLAY [Test module vbotka.freebsd.ucl] ******************************************
 
-TASK [Disable FreeBSD repository.] *********************************************
+TASK [Disable FreeBSD-ports repository.] ***************************************
 --- before: /etc/pkg/FreeBSD.conf (content)
 +++ after: /etc/pkg/FreeBSD.conf (content)
 @@ -1 +1 @@

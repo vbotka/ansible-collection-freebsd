@@ -5,14 +5,33 @@ TASK [Get iocage list of jails] ************************************************
 ok: [iocage_04]
 
 TASK [Jails service list enabled] **********************************************
-ok: [iocage_04] => (item=1064)
-ok: [iocage_04] => (item=1063)
-ok: [iocage_04] => (item=1062)
+ok: [iocage_04] => (item=69)
+ok: [iocage_04] => (item=70)
+ok: [iocage_04] => (item=68)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     service_out:
         changed: false
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
         msg: All items completed
         results:
         -   ansible_loop_var: item
@@ -22,12 +41,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '1064'
+                    jail: '69'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '1064'
+            item: '69'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -66,12 +85,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '1063'
+                    jail: '70'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '1063'
+            item: '70'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -110,12 +129,12 @@ ok: [iocage_04] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '1062'
+                    jail: '68'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '1062'
+            item: '68'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -152,12 +171,12 @@ ok: [iocage_04] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     jid_service_enabled | to_yaml: |-
-        '1062': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
-          sshd, syslogd, utx, var_run, virecover]
-        '1063': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
-          sshd, syslogd, utx, var_run, virecover]
-        '1064': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release,
-          sshd, syslogd, utx, var_run, virecover]
+        '68': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+        '69': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+        '70': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
 
 PLAY RECAP *********************************************************************
 iocage_04                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

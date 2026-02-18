@@ -7,10 +7,45 @@ ok: [iocage_04]
 TASK [Setup: Set dictionary iocage_templates] **********************************
 ok: [iocage_04]
 
-TASK [Setup: All templates already created.] ***********************************
+TASK [Pkglist: Create directories for pkglist files.] **************************
+ok: [iocage_04] => (item=ansible_client_apache /tmp/ansible/ansible_client_apache/pkgs.json)
+
+TASK [Pkglist: Copy pkglist files.] ********************************************
+ok: [iocage_04] => (item=ansible_client_apache /tmp/ansible/ansible_client_apache/pkgs.json)
+
+TASK [Create: Create templates.] ***********************************************
+ok: [iocage_04] => (item=ansible_client_apache 14.3-RELEASE)
+
+TASK [User: Create user.] ******************************************************
+ok: [iocage_04] => (item=ansible_client_apache admin)
+
+TASK [Pk: The keys are valid.] *************************************************
 ok: [iocage_04] => 
-    msg: All templates already created. End host.
+    changed: false
+    msg: All assertions passed
+
+TASK [Pk: Configure public keys.] **********************************************
+changed: [iocage_04] => (item=ansible_client_apache admin)
+
+TASK [Pk: Chown .ssh] **********************************************************
+ok: [iocage_04] => (item=ansible_client_apache admin)
+
+TASK [Sudo: Configure sudo.] ***************************************************
+changed: [iocage_04] => (item=ansible_client_apache admin)
+
+TASK [Dhclient: Configure hooks.] **********************************************
+changed: [iocage_04] => (item=ansible_client_apache dhclient-exit-hooks)
+
+TASK [Rcconf: Configure /etc/rc.conf] ******************************************
+changed: [iocage_04] => (item=ansible_client_apache iocage_enable YES)
+changed: [iocage_04] => (item=ansible_client_apache sshd_enable YES)
+
+TASK [Stop: Stop jails.] *******************************************************
+ok: [iocage_04]
+
+TASK [Template: Set template.] *************************************************
+ok: [iocage_04] => (item=ansible_client_apache)
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_04                  : ok=14   changed=4    unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
 

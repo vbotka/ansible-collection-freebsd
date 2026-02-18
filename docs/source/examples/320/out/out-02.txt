@@ -5,25 +5,55 @@ TASK [Gathering Facts] *********************************************************
 ok: [iocage_02]
 
 TASK [Upgrade package ports-mgmt/pkg] ******************************************
-ok: [iocage_02]
+[ERROR]: Task failed: Module failed: Could not update catalogue [1]: Updating FreeBSD repository catalogue...
+Fetching data.pkg: .......... done
+Processing entries: 
+Newer FreeBSD version for package zita-resampler:
+To ignore this error set IGNORE_OSVERSION=yes
+- package: 1403000
+- running userland: 1402000
+Ignore the mismatch and continue? [y/N]: Processing entries...
+Unable to update repository FreeBSD
+Error updating repositories!
+ pkg: repository FreeBSD contains packages for wrong OS version: FreeBSD:14:amd64
 
-TASK [Debug] *******************************************************************
-ok: [iocage_02] => 
-    out:
-        changed: false
-        failed: false
-        msg: package(s) already latest
-        stderr: ''
-        stderr_lines: []
-        stdout: |-
-            Updating FreeBSD repository catalogue...
-            FreeBSD repository is up to date.
-            All repositories are up to date.
-        stdout_lines:
-        - Updating FreeBSD repository catalogue...
-        - FreeBSD repository is up to date.
-        - All repositories are up to date.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/320/pb-pkg-update.yml:7:7
+
+5   tasks:
+6
+7     - name: Upgrade package ports-mgmt/pkg
+        ^ column 7
+
+fatal: [iocage_02]: FAILED! => 
+    changed: false
+    msg: |-
+        Could not update catalogue [1]: Updating FreeBSD repository catalogue...
+        Fetching data.pkg: .......... done
+        Processing entries:
+        Newer FreeBSD version for package zita-resampler:
+        To ignore this error set IGNORE_OSVERSION=yes
+        - package: 1403000
+        - running userland: 1402000
+        Ignore the mismatch and continue? [y/N]: Processing entries...
+        Unable to update repository FreeBSD
+        Error updating repositories!
+         pkg: repository FreeBSD contains packages for wrong OS version: FreeBSD:14:amd64
+    stderr: |-
+        pkg: repository FreeBSD contains packages for wrong OS version: FreeBSD:14:amd64
+    stderr_lines: <omitted>
+    stdout: |-
+        Updating FreeBSD repository catalogue...
+        Fetching data.pkg: .......... done
+        Processing entries:
+        Newer FreeBSD version for package zita-resampler:
+        To ignore this error set IGNORE_OSVERSION=yes
+        - package: 1403000
+        - running userland: 1402000
+        Ignore the mismatch and continue? [y/N]: Processing entries...
+        Unable to update repository FreeBSD
+        Error updating repositories!
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_02                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

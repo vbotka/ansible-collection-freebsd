@@ -2,38 +2,38 @@
 PLAY [Connect to the group test.] **********************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [3e1ca679]
-changed: [08e39bd1]
-changed: [a45b317b]
-changed: [2a50d41d]
-changed: [f9451319]
-changed: [97202705]
+changed: [68a10c1e]
+changed: [1e376626]
+changed: [ce47b3ee]
+changed: [fe63baa0]
+changed: [4b27d1f0]
+changed: [3d4f6e22]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [2a50d41d] => 
+ok: [3d4f6e22] => 
     msg: |-
-        ansible_host=10.1.0.161 iocage_tags={swarm: sw_01, vmm: iocage_02}
-ok: [97202705] => 
+        ansible_host=10.1.0.220 iocage_tags={swarm: sw_01, vmm: iocage_02}
+ok: [4b27d1f0] => 
     msg: |-
-        ansible_host=10.1.0.153 iocage_tags={swarm: sw_01, vmm: iocage_02}
-ok: [f9451319] => 
+        ansible_host=10.1.0.210 iocage_tags={swarm: sw_01, vmm: iocage_02}
+ok: [fe63baa0] => 
     msg: |-
-        ansible_host=10.1.0.143 iocage_tags={swarm: sw_01, vmm: iocage_02}
-ok: [08e39bd1] => 
+        ansible_host=10.1.0.128 iocage_tags={swarm: sw_01, vmm: iocage_02}
+ok: [1e376626] => 
     msg: |-
-        ansible_host=10.1.0.164 iocage_tags={swarm: sw_01, vmm: iocage_04}
-ok: [3e1ca679] => 
+        ansible_host=10.1.0.243 iocage_tags={swarm: sw_01, vmm: iocage_04}
+ok: [68a10c1e] => 
     msg: |-
-        ansible_host=10.1.0.222 iocage_tags={swarm: sw_01, vmm: iocage_04}
-ok: [a45b317b] => 
+        ansible_host=10.1.0.127 iocage_tags={swarm: sw_01, vmm: iocage_04}
+ok: [ce47b3ee] => 
     msg: |-
-        ansible_host=10.1.0.192 iocage_tags={swarm: sw_01, vmm: iocage_04}
+        ansible_host=10.1.0.193 iocage_tags={swarm: sw_01, vmm: iocage_04}
 
 PLAY RECAP *********************************************************************
-08e39bd1                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-2a50d41d                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-3e1ca679                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-97202705                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-a45b317b                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-f9451319                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+1e376626                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+3d4f6e22                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4b27d1f0                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+68a10c1e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ce47b3ee                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+fe63baa0                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -20,9 +20,10 @@
                           | map('split')
                           | map('map', 'split', '=')
                           | map('community.general.dict'))) }}"
-    _started: "{{ iocage_jails | dict2items
-                               | selectattr('value.state', 'eq', 'up')
-                               | map(attribute='key') }}"
+    _started: "{{ ansible_facts.iocage_jails
+                  | dict2items
+                  | selectattr('value.state', 'eq', 'up')
+                  | map(attribute='key') }}"
 
   tasks:
 

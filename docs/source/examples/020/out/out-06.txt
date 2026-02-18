@@ -4,50 +4,50 @@ PLAY [Display all groups.] *****************************************************
 TASK [debug] *******************************************************************
 ok: [www_d1] => 
     msg: |-
-        8c78c39a
+        131c39dc
         {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_02}
 ok: [www_d2] => 
     msg: |-
-        5da4d093
+        7e327eeb
         {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_02}
-ok: [www_p2] => 
-    msg: |-
-        8d412b7f
-        {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_02}
-ok: [www_p3] => 
-    msg: |-
-        d9c50644
-        {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_02}
 ok: [www_p1] => 
     msg: |-
-        8f19b252
+        d1946d2b
         {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_02}
+ok: [www_p3] => 
+    msg: |-
+        d3aca051
+        {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_02}
+ok: [www_p2] => 
+    msg: |-
+        f4407b5e
+        {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_02}
 ok: [db2] => 
     msg: |-
-        18438b09
+        4378c750
         {alias: db2, project: example_020, swarm: db, vmm: iocage_04}
 ok: [db1] => 
     msg: |-
-        e17abd19
+        9a232cd2
         {alias: db1, project: example_020, swarm: db, vmm: iocage_04}
 
 TASK [debug] *******************************************************************
-ok: [www_d2] => 
+ok: [www_d1] => 
     msg: |-
-        all: ['www_d2', 'www_d1', 'www_p2', 'www_p1', 'www_p3', 'db2', 'db1']
+        all: ['www_d1', 'www_d2', 'www_p1', 'www_p3', 'www_p2', 'db2', 'db1']
         ungrouped: []
-        vmm_iocage_02: ['www_d2', 'www_d1', 'www_p2', 'www_p1', 'www_p3']
-        project_example_020: ['www_d2', 'www_d1', 'www_p2', 'www_p1', 'www_p3', 'db2', 'db1']
-        swarm_www_devel: ['www_d2', 'www_d1']
-        swarm_www_prod: ['www_p2', 'www_p1', 'www_p3']
+        vmm_iocage_02: ['www_d1', 'www_d2', 'www_p1', 'www_p3', 'www_p2']
+        project_example_020: ['www_d1', 'www_d2', 'www_p1', 'www_p3', 'www_p2', 'db2', 'db1']
+        swarm_www_devel: ['www_d1', 'www_d2']
+        swarm_www_prod: ['www_p1', 'www_p3', 'www_p2']
         vmm_iocage_04: ['db2', 'db1']
         swarm_db: ['db2', 'db1']
 
 PLAY RECAP *********************************************************************
 db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d2                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

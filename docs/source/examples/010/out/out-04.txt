@@ -6,30 +6,30 @@ ok: [test_131] =>
     msg: |-
         inventory_hostname: test_131
         ansible_host: 10.1.0.131
-        release: 14.3
-        release_major: 14
-        release_minor: 3
-ok: [test_132] => 
-    msg: |-
-        inventory_hostname: test_132
-        ansible_host: 10.1.0.132
-        release: 14.3
-        release_major: 14
-        release_minor: 3
+        release: 15.0
+        release_major: 15
+        release_minor: 0
 ok: [test_133] => 
     msg: |-
         inventory_hostname: test_133
         ansible_host: 10.1.0.133
-        release: 14.3
-        release_major: 14
-        release_minor: 3
+        release: 15.0
+        release_major: 15
+        release_minor: 0
+ok: [test_132] => 
+    msg: |-
+        inventory_hostname: test_132
+        ansible_host: 10.1.0.132
+        release: 15.0
+        release_major: 15
+        release_minor: 0
 
 TASK [debug] *******************************************************************
 ok: [test_131] => 
     msg: |-
         groups:
           all: [ansible_client, test_131, test_132, test_133]
-          distro_14_3_RELEASE_p1: [ansible_client, test_131, test_132, test_133]
+          distro_15_0_RELEASE_p3: [ansible_client, test_131, test_132, test_133]
           state_down: [ansible_client, test_131, test_132]
           state_up: [test_133]
           test: [test_131, test_132, test_133]

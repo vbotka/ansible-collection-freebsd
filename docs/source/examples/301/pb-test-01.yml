@@ -17,11 +17,11 @@
     - ansible.builtin.debug:
         var: out.stdout
 
-    - name: Get FreeBSD repository url.
+    - name: Get FreeBSD-base repository url.
       register: out
       vbotka.freebsd.ucl:
         path: /etc/pkg/FreeBSD.conf
-        upath: FreeBSD.url
+        upath: FreeBSD-base.url
 
     - ansible.builtin.debug:
         var: out.stdout

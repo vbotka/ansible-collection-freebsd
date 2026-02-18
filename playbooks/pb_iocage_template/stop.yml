@@ -20,9 +20,10 @@
 - name: Stop created templates.
   when: _jails | length > 0
   vars:
-    jails_started: "{{ iocage_jails | dict2items
-                                    | selectattr('value.state', 'eq', 'up')
-                                    | map(attribute='key') }}"
+    jails_started: "{{ ansible_facts.iocage_jails
+                       | dict2items
+                       | selectattr('value.state', 'eq', 'up')
+                       | map(attribute='key') }}"
     _jails: "{{ templates | intersect(jails_started) }}"
   block:
 

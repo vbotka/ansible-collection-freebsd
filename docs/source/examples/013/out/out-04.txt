@@ -6,14 +6,14 @@ ok: [ansible_client] =>
     msg: |-
         inventory_hostname: ansible_client
         ansible_host: 10.1.0.198
-        release: 14.3
+        release: 15.0
 
         iocage_tags:
           vmm: iocage_04
 
         group_names:
-          - distro_02_14_2_RELEASE_p3
-          - distro_04_14_3_RELEASE_p1
+          - distro_02_14_3_RELEASE_p8
+          - distro_04_15_0_RELEASE_p3
           - state_02_down
           - state_04_down
           - vmm_iocage_02

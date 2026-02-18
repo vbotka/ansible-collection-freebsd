@@ -37,18 +37,15 @@ ok: [iocage_02] =>
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 2.4.64
+                        - < 2.4.66
                         cve:
-                        - CVE-2025-53020
-                        - CVE-2025-49812
-                        - CVE-2025-49630
-                        - CVE-2025-23048
-                        - CVE-2024-47252
-                        - CVE-2024-43394
-                        - CVE-2024-43204
-                        - CVE-2024-42516
+                        - CVE-2025-55753
+                        - CVE-2025-58098
+                        - CVE-2025-59775
+                        - CVE-2025-65082
+                        - CVE-2025-66200
                         description: Apache httpd -- Multiple vulnerabilities
-                        url: https://vuxml.FreeBSD.org/freebsd/342f2a0a-5e9b-11f0-8baa-8447094a420f.html
+                        url: https://vuxml.FreeBSD.org/freebsd/6ebe4a30-d138-11f0-af8c-8447094a420f.html
                     reverse dependencies:
                     - mod_php83
                     version: 2.4.63
@@ -83,6 +80,47 @@ ok: [iocage_02] =>
                     - apache24
                     - mod_php83
                     version: 8.13.0_2
+                expat:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.7.4
+                        cve:
+                        - CVE-2026-25210
+                        - CVE-2026-24515
+                        description: expat -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/027c6c07-065b-11f1-baae-589cfc023192.html
+                    reverse dependencies:
+                    - mesa-dri
+                    - xorg-server
+                    - nvidia-driver-304
+                    - mesa-libs
+                    - git
+                    - py311-iocage
+                    - apache24
+                    - mod_php83
+                    - wayland
+                    - gtk3
+                    - libxkbcommon
+                    - vulkan-loader
+                    - ffmpeg
+                    - libplacebo
+                    - libva
+                    - polkit
+                    - colord
+                    - avahi-app
+                    - cups
+                    - dbus-glib
+                    - dbus
+                    - at-spi2-core
+                    - apr
+                    - fontconfig
+                    - librsvg2-rust
+                    - pango
+                    - libass
+                    - cairo
+                    - libXft
+                    version: 2.7.1
                 gdk-pixbuf2:
                     issue_count: 1
                     issues:
@@ -136,17 +174,37 @@ ok: [iocage_02] =>
                     - emacs-nox
                     - mailutils
                     version: 3.8.9
+                libtasn1:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 4.21.0
+                        cve:
+                        - CVE-2025-13151
+                        description: libtasn1 -- Stack-based buffer overflow
+                        url: https://vuxml.FreeBSD.org/freebsd/7e63d0dd-eeff-11f0-b135-c01803b56cc4.html
+                    reverse dependencies:
+                    - gnutls
+                    - ffmpeg
+                    - cups
+                    - gtk3
+                    - emacs-nox
+                    - mailutils
+                    - p11-kit
+                    version: 4.20.0_1
                 libxml2:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - '>= 2.13.0 : < 2.13.6'
-                        - '>= 2.12.0 : < 2.12.10'
-                        - < 2.11.9_1
+                        - < 2.14.5
                         cve:
-                        - CVE-2024-56171
-                        description: libxml2 -- Use After Free
-                        url: https://vuxml.FreeBSD.org/freebsd/bd2af307-3e50-11f0-95d4-00a098b42aeb.html
+                        - CVE-2025-49795
+                        - CVE-2025-49795
+                        - CVE-2025-49794
+                        - CVE-2025-6170
+                        - CVE-2025-6021
+                        description: libxml2 -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/abbc8912-5efa-11f0-ae84-99047d0a6bcc.html
                     reverse dependencies:
                     - ffmpeg
                     - librsvg2-rust
@@ -182,14 +240,49 @@ ok: [iocage_02] =>
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 1.1.43_2
+                        - < 1.1.44
                         cve:
+                        - CVE-2025-11731
+                        - CVE-2025-9714
                         - CVE-2025-7425
                         - CVE-2025-7424
-                        description: libxslt -- unmaintained, with multiple unfixed vulnerabilities
+                        description: libxslt -- multiple vulnerabilities
                         url: https://vuxml.FreeBSD.org/freebsd/b0a3466f-5efc-11f0-ae84-99047d0a6bcc.html
                     reverse dependencies: []
                     version: 1.1.43
+                openexr:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.4.3
+                        description: OpenEXR < 3.4.3 -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/c71a3914-ba96-11f0-aada-f59a8ea34d12.html
+                    reverse dependencies:
+                    - libjxl
+                    - ffmpeg
+                    version: 3.3.3
+                openssl:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.0.19,1
+                        cve:
+                        - CVE-2026-22796
+                        - CVE-2026-22795
+                        - CVE-2025-69421
+                        - CVE-2025-69420
+                        - CVE-2025-69419
+                        - CVE-2025-69418
+                        - CVE-2025-68160
+                        - CVE-2025-66199
+                        - CVE-2025-15469
+                        - CVE-2025-15468
+                        - CVE-2025-15467
+                        - CVE-2025-11187
+                        description: OpenSSL -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/4b824428-fb93-11f0-b194-8447094a420f.html
+                    reverse dependencies: []
+                    version: 3.0.16,1
                 p5-Authen-SASL:
                     issue_count: 1
                     issues:
@@ -203,6 +296,47 @@ ok: [iocage_02] =>
                     - git
                     - py311-iocage
                     version: '2.18'
+                png:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.6.55
+                        cve:
+                        - CVE-2026-25646
+                        description: 'png -- CWE-122: Heap-based Buffer Overflow'
+                        url: https://vuxml.FreeBSD.org/freebsd/f9cb72e4-0b52-11f1-8e75-b42e991fc52e.html
+                    reverse dependencies:
+                    - webp
+                    - ffmpeg
+                    - librsvg2-rust
+                    - gtk3
+                    - libjxl
+                    - gdk-pixbuf2
+                    - gtk-update-icon-cache
+                    - adwaita-icon-theme
+                    - cairo
+                    - pango
+                    - freetype2
+                    - libass
+                    - harfbuzz
+                    - fontconfig
+                    - libXft
+                    - libXfont2
+                    - xorg-server
+                    - nvidia-driver-304
+                    version: 1.6.47
+                py311-virtualenv:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 20.36.1
+                        cve:
+                        - CVE-2026-22702
+                        description: 'virtualenv -- CWE-59: Improper Link Resolution Before
+                            File Access (''Link Following'')'
+                        url: https://vuxml.FreeBSD.org/freebsd/fd3855b8-efbc-11f0-9e3f-b0416f0c4c67.html
+                    reverse dependencies: []
+                    version: 20.31.2
                 python310:
                     issue_count: 1
                     issues:
@@ -220,12 +354,12 @@ ok: [iocage_02] =>
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 3.11.12_1
+                        - < 3.11.14_2
                         cve:
-                        - CVE-2025-4516
-                        description: cpython -- Use-after-free in "unicode_escape" decoder
-                            with error handler
-                        url: https://vuxml.FreeBSD.org/freebsd/e587b52d-38ac-11f0-b7b6-dcfe074bd614.html
+                        - CVE-2026-0865
+                        - CVE-2026-1299
+                        description: python -- several security vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/bfe9adc8-0224-11f1-8790-c5fb948922ad.html
                     reverse dependencies:
                     - llvm19
                     - mesa-dri
@@ -375,12 +509,10 @@ ok: [iocage_02] =>
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 3.9.22_1
-                        cve:
-                        - CVE-2025-4516
-                        description: cpython -- Use-after-free in "unicode_escape" decoder
-                            with error handler
-                        url: https://vuxml.FreeBSD.org/freebsd/e587b52d-38ac-11f0-b7b6-dcfe074bd614.html
+                        - '>= 3'
+                        description: python 3.9 -- end of life, not receiving security
+                            support
+                        url: https://vuxml.FreeBSD.org/freebsd/77a0f93a-b71e-11f0-8d86-d7789240c8c2.html
                     reverse dependencies:
                     - py39-numpy
                     version: 3.9.22
@@ -416,11 +548,11 @@ ok: [iocage_02] =>
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 3.50.2,1
+                        - < 3.50.1,1
                         cve:
-                        - CVE-2025-6965
-                        description: sqlite -- Integer Truncation on SQLite
-                        url: https://vuxml.FreeBSD.org/freebsd/0f5bcba2-67fb-11f0-9ee5-b42e991fc52e.html
+                        - CVE-2025-52099
+                        description: SQLite -- Integer Overflow vulnerability
+                        url: https://vuxml.FreeBSD.org/freebsd/2cd61f76-b41b-11f0-bf21-b42e991fc52e.html
                     reverse dependencies:
                     - colord
                     - gtk3
@@ -442,19 +574,37 @@ ok: [iocage_02] =>
                         url: https://vuxml.FreeBSD.org/freebsd/24f4b495-56a1-11f0-9621-93abbef07693.html
                     reverse dependencies: []
                     version: 1.9.16p2_1
+                xkbcomp:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.5.0
+                        cve:
+                        - CVE-2018-15863
+                        - CVE-2018-15861
+                        - CVE-2018-15859
+                        - CVE-2018-15863
+                        description: xkbcomp -- Several vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/c7187676-d176-11f0-841f-843a4b343614.html
+                    reverse dependencies:
+                    - xorg-server
+                    - nvidia-driver-304
+                    version: 1.4.7
                 xorg-server:
                     issue_count: 1
                     issues:
                     -   Affected versions:
-                        - < 21.1.18,1
+                        - < 21.1.19,1
                         cve:
-                        - CVE-2025-49176
-                        description: xorg server -- Multiple vulnerabilities
-                        url: https://vuxml.FreeBSD.org/freebsd/8df49466-5664-11f0-943a-18c04d5ea3dc.html
+                        - CVE-2025-62231
+                        - CVE-2025-62230
+                        - CVE-2025-62229
+                        description: Xorg -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/e99a32c8-b8e2-11f0-8510-b42e991fc52e.html
                     reverse dependencies:
                     - nvidia-driver-304
                     version: 21.1.16,1
-            pkg_count: 17
+            pkg_count: 24
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

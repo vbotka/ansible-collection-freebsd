@@ -1,4 +1,4 @@
-\- name: Install packages in jails.
+- name: Install packages in jails.
   hosts: up
   gather_facts: true
   remote_user: admin

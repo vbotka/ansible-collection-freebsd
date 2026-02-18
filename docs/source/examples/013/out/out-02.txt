@@ -18,9 +18,9 @@ ok: [iocage_02] =>
         jails: ['ansible_client', 'test_111', 'test_112', 'test_113']
 ok: [iocage_04] => 
     msg: |-
-        releases: ['14.3-RELEASE']
+        releases: ['14.3-RELEASE', '15.0-RELEASE']
         plugins: []
-        templates: ['ansible_client_apache', 'ansible_client_pull']
+        templates: []
         jails: ['ansible_client', 'test_131', 'test_132', 'test_133']
 
 PLAY RECAP *********************************************************************

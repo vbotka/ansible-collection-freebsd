@@ -17,7 +17,7 @@
           {{ out_host.stdout }}
           {{ iocage_properties.host_hostuuid }}
           {{ iocage_properties.hostid }}
-          {{ discovered_interpreter_python }}
+          {{ ansible_facts.discovered_interpreter_python }}
 
     - ansible.builtin.command: whoami
       register: out_user
