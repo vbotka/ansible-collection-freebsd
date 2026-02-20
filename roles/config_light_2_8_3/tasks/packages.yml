@@ -36,7 +36,7 @@
 - name: FreeBSD packages.
   when:
     - my_packages_pkgng | length > 0
-    - ansible_os_family == 'FreeBSD'
+    - ansible_facts.os_family == 'FreeBSD'
     - freebsd_install_method | lower == 'packages'
   block:
 
@@ -70,7 +70,7 @@
 - name: FreeBSD ports.
   when:
     - my_packages_pkgng | length > 0
-    - ansible_os_family == 'FreeBSD'
+    - ansible_facts.os_family == 'FreeBSD'
     - freebsd_install_method | lower == 'ports'
   block:
 
@@ -95,7 +95,7 @@
 - name: Linux snap.
   when:
     - my_packages_snap | length > 0
-    - ansible_os_family in cl_supported_linux_family
+    - ansible_facts.os_family in cl_supported_linux_family
   block:
 
     - name: "Packages: Find snap."
@@ -135,7 +135,7 @@
 - name: Linux package.
   when:
     - my_packages_default | length > 0
-    - ansible_os_family in cl_supported_linux_family
+    - ansible_facts.os_family in cl_supported_linux_family
   block:
 
     - name: "Packages: Manage Linux packages by package module."
@@ -159,7 +159,7 @@
 - name: Linux yum/dnf.
   when:
     - my_packages_yum | length > 0
-    - ansible_os_family == 'RedHat'
+    - ansible_facts.os_family == 'RedHat'
   block:
 
       # TODO: Complete parameters of the modules
@@ -184,7 +184,7 @@
 - name: Linux apt.
   when:
     - my_packages_apt | length > 0
-    - ansible_os_family == 'Debian'
+    - ansible_facts.os_family == 'Debian'
   block:
 
       # TODO: Complete parameters of the modules

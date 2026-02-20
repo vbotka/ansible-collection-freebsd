@@ -1,6 +1,6 @@
 ---
 # defaults for config_light
-cl_role_version: 2.8.2
+cl_role_version: 2.8.3
 
 cl_setup: true                # Import tasks/setup.yml
 cl_install: true              # Install packages or ports

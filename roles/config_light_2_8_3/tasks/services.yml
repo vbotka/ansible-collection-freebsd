@@ -10,7 +10,7 @@
     msg: "{{ '{}'.format(msg) }}"
 
 - name: FreeBSD services.
-  when: ansible_os_family == 'FreeBSD'
+  when: ansible_facts.os_family == 'FreeBSD'
   vars:
     _service: "{{ item.value.name }}"
     _rcconfd_path: "{{ cl_rcconfd_path[_service] | d(cl_rcconfd_path.default) }}"
@@ -47,7 +47,7 @@
         label: "{{ item.key }}"
 
 - name: Linux services.
-  when: ansible_os_family in cl_supported_linux_family
+  when: ansible_facts.os_family in cl_supported_linux_family
   block:
 
     - name: "Services: Manage services."
