@@ -1,12 +1,12 @@
 @all:
   |--@ungrouped:
   |  |--iocage_01
+  |  |--iocage_02
   |  |--iocage_03
-  |  |--iocage_04
   |  |--test_2
   |--@up:
   |  |--test_111
   |  |--test_112
   |  |--test_113
   |--@iocage:
-  |  |--iocage_02
+  |  |--iocage_04

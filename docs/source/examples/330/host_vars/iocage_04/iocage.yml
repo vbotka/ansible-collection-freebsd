@@ -1,5 +1,5 @@
-freebsd_iocage_pool: pool2
-freebsd_iocage_pool_mount: /mnt/pool2
+freebsd_iocage_pool: iocage
+freebsd_iocage_pool_mount: /iocage
 freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
 properties:
@@ -8,11 +8,11 @@ properties:
   notes: "vmm={{ inventory_hostname }}"
 
 fetch:
-  - 13.5-RELEASE
+  - 15.0-RELEASE
 
 basejails:
   - name: ansible_client
-    release: 13.5-RELEASE
+    release: 15.0-RELEASE
     properties:
       vnet: 1
       defaultrouter: 10.1.0.10

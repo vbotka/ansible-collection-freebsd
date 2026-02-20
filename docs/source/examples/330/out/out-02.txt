@@ -2,50 +2,50 @@
 PLAY [Iocage fetch releases, create basejail, and clone jails.] ****************
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
-ok: [iocage_01]
 ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
+ok: [iocage_04]
 ok: [iocage_02]
-ok: [iocage_01]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
-ok: [iocage_01] => (item=iocage fetch --release 13.5-RELEASE)
-ok: [iocage_02] => (item=iocage fetch --release 14.2-RELEASE)
-changed: [iocage_01] => (item=iocage create --release 13.5-RELEASE --name ansible_client)
-changed: [iocage_01] => (item=iocage set vnet=1 ansible_client)
-changed: [iocage_02] => (item=iocage create --release 14.2-RELEASE --name ansible_client)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 ansible_client)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 ansible_client)
+ok: [iocage_04] => (item=iocage fetch --release 15.0-RELEASE)
+ok: [iocage_02] => (item=iocage fetch --release 14.3-RELEASE)
+changed: [iocage_04] => (item=iocage create --release 15.0-RELEASE --name ansible_client)
+changed: [iocage_04] => (item=iocage set vnet=1 ansible_client)
+changed: [iocage_04] => (item=iocage set defaultrouter=10.1.0.10 ansible_client)
+changed: [iocage_04] => (item=iocage set notes=vmm=iocage_04 ansible_client)
+changed: [iocage_04] => (item=iocage set ip4_addr=vnet0|10.1.0.198/24 ansible_client)
+changed: [iocage_04] => (item=iocage clone ansible_client --name test_101)
+changed: [iocage_04] => (item=iocage clone ansible_client --name test_102)
+changed: [iocage_02] => (item=iocage create --release 14.3-RELEASE --name ansible_client)
+changed: [iocage_04] => (item=iocage clone ansible_client --name test_103)
+changed: [iocage_04] => (item=iocage set vnet=on test_101)
+changed: [iocage_04] => (item=iocage set defaultrouter=10.1.0.10 test_101)
+changed: [iocage_04] => (item=iocage set notes=vmm=iocage_04 test_101)
+changed: [iocage_04] => (item=iocage set ip4_addr=vnet0|10.1.0.101/24 test_101)
+changed: [iocage_04] => (item=iocage set vnet=on test_102)
 changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 ansible_client)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.198/24 ansible_client)
+changed: [iocage_04] => (item=iocage set defaultrouter=10.1.0.10 test_102)
+changed: [iocage_04] => (item=iocage set notes=vmm=iocage_04 test_102)
+changed: [iocage_04] => (item=iocage set ip4_addr=vnet0|10.1.0.102/24 test_102)
+changed: [iocage_04] => (item=iocage set vnet=on test_103)
+changed: [iocage_04] => (item=iocage set defaultrouter=10.1.0.10 test_103)
+changed: [iocage_04] => (item=iocage set notes=vmm=iocage_04 test_103)
+changed: [iocage_04] => (item=iocage set ip4_addr=vnet0|10.1.0.103/24 test_103)
 changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.199/24 ansible_client)
-changed: [iocage_01] => (item=iocage clone ansible_client --name test_101)
-changed: [iocage_01] => (item=iocage clone ansible_client --name test_102)
 changed: [iocage_02] => (item=iocage clone ansible_client --name test_111)
-changed: [iocage_01] => (item=iocage clone ansible_client --name test_103)
-changed: [iocage_01] => (item=iocage set vnet=on test_101)
 changed: [iocage_02] => (item=iocage clone ansible_client --name test_112)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 test_101)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 test_101)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.101/24 test_101)
 changed: [iocage_02] => (item=iocage clone ansible_client --name test_113)
-changed: [iocage_01] => (item=iocage set vnet=on test_102)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 test_102)
 changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 test_111)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 test_102)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.102/24 test_102)
 changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.111/24 test_111)
-changed: [iocage_01] => (item=iocage set vnet=on test_103)
-changed: [iocage_01] => (item=iocage set defaultrouter=10.1.0.10 test_103)
 changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 test_112)
-changed: [iocage_01] => (item=iocage set notes=vmm=iocage_01 test_103)
-changed: [iocage_01] => (item=iocage set ip4_addr=vnet0|10.1.0.103/24 test_103)
 changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.112/24 test_112)
 changed: [iocage_02] => (item=iocage set notes=vmm=iocage_02 test_113)
 changed: [iocage_02] => (item=iocage set ip4_addr=em0|10.1.0.113/24 test_113)
 
 PLAY RECAP *********************************************************************
-iocage_01                  : ok=3    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 iocage_02                  : ok=3    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

@@ -26,7 +26,7 @@ ok: [iocage_04] =>
             mirror_type = "srv";
             signature_type = "fingerprints";
             fingerprints = "/usr/share/keys/pkgbase-${VERSION_MAJOR}";
-            enabled = false;
+            enabled = true;
         }
 
 TASK [Get FreeBSD-base repository url.] ****************************************
