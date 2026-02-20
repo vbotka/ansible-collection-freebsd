@@ -1,4 +1,0 @@
-lighttpd:
-  name: lighttpd
-  state: "{{ cl_service_lighttpd_state }}"
-  enabled: "{{ cl_service_lighttpd_enable }}"

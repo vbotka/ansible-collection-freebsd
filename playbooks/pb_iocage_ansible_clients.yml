@@ -14,8 +14,8 @@
     clone_host_hostname: false
     clone_destroy: false
 
-    _tags: "{{ dict(iocage_jails.keys()
-                    | zip(iocage_jails.values()
+    _tags: "{{ dict(ansible_facts.iocage_jails.keys()
+                    | zip(ansible_facts.iocage_jails.values()
                           | map(attribute='properties.notes')
                           | map('split')
                           | map('map', 'split', '=')

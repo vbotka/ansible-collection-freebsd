@@ -29,3 +29,8 @@ ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true | tee out/out-03.t
 # ansible-playbook pb.yml -i hosts -t cl_services | tee out/out-09.txt
 
 ansible-playbook pb.yml -i hosts -i iocage.ini | tee out/out-10.txt
+
+# clean up
+sudo rm conf-light/assemble/*
+sudo rm ../../../../roles/config_light/handlers/*
+sudo touch ../../../../roles/config_light/handlers/main.yml
