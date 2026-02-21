@@ -4,18 +4,18 @@ PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 TASK [Gathering Facts] *********************************************************
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.custom_image : Download: Create directory /export/images/FreeBSD] ***
+TASK [vbotka.freebsd_custom_image : Download: Create directory /export/images/FreeBSD] ***
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.custom_image : Download: Get checksums] *******************
+TASK [vbotka.freebsd_custom_image : Download: Get checksums] *******************
+changed: [images.example.com] => (item=CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B)
+
+TASK [vbotka.freebsd_custom_image : Download: Read checksums] ******************
 ok: [images.example.com] => (item=CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B)
 
-TASK [vbotka.freebsd.custom_image : Download: Read checksums] ******************
-ok: [images.example.com] => (item=CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B)
-
-TASK [vbotka.freebsd.custom_image : Download: Get images] **********************
-ok: [images.example.com] => (item=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz)
+TASK [vbotka.freebsd_custom_image : Download: Get images] **********************
+changed: [images.example.com] => (item=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz)
 
 PLAY RECAP *********************************************************************
-images.example.com         : ok=5    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+images.example.com         : ok=5    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

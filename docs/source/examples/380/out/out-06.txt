@@ -4,28 +4,28 @@ PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 TASK [Gathering Facts] *********************************************************
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.custom_image : Umount: Unmount] ***************************
+TASK [vbotka.freebsd_custom_image : Umount: Unmount] ***************************
 changed: [images.example.com] => (item=/mnt3)
 
 TASK [Umount: Detach memory disk] **********************************************
-included: vbotka.freebsd.lib for images.example.com
+included: vbotka.ansible_lib for images.example.com
 
-TASK [vbotka.freebsd.lib : Al_mdconfig: Default variables.] ********************
+TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.lib : Al_mdconfig: List memory disks.] ********************
+TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks.] ********************
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.lib : Al_mdconfig: Create empty memory disks dictionary.] ***
+TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary.] ***
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.lib : Al_mdconfig: Parse memory disks.] *******************
-ok: [images.example.com] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	)
+TASK [vbotka.ansible_lib : Al_mdconfig: Parse memory disks.] *******************
+ok: [images.example.com] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	-	)
 
-TASK [vbotka.freebsd.lib : Al_mdconfig: Detach memory disk.] *******************
+TASK [vbotka.ansible_lib : Al_mdconfig: Detach memory disk.] *******************
 changed: [images.example.com]
 
-TASK [vbotka.freebsd.lib : Al_mdconfig: Remove memory disk from dictionary.] ***
+TASK [vbotka.ansible_lib : Al_mdconfig: Remove memory disk from dictionary.] ***
 ok: [images.example.com]
 
 PLAY RECAP *********************************************************************

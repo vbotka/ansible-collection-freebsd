@@ -94,7 +94,7 @@ Below is a simple playbook ``playbook.yml`` that calls this role (9) for a singl
      roles:
        - vbotka.freebsd_custom_image
 
-.. note:: ``gather_facts: true`` (3) must be set to test sanity ``ansible_os_family``
+.. note::  To test sanity ``ansible_os_family``, ``gather_facts: true`` (2) must be enabled.
 
 .. seealso::
    * For details see `Connection Plugins`_ (3-4)
@@ -146,8 +146,8 @@ Tags
 
 .. index:: single: tags; Tags
 
-The ``tags`` provide the user with a very useful tool to run selected tasks of the role. To see what
-tags are available list the role's tags
+The ``tags`` provide the user with a very useful tool to run selected tasks of the role. List the
+role's tags to see what tags are available
 
 .. include:: tags-list.rst
 
@@ -280,7 +280,7 @@ Best practice
 
 * Dump the customized image to a disk and boot it ::
 
-    shell> dd image.img of=/dev/mmcsd0 bs=1m conv=sync status=progress
+    shell> dd if=image.img of=/dev/mmcsd0 bs=1m conv=sync status=progress
 
 .. hint:: In Linux, use ``bs=1M``
 

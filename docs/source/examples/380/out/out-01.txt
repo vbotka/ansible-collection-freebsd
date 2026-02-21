@@ -4,19 +4,19 @@ PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 TASK [Gathering Facts] *********************************************************
 ok: [images.example.com]
 
-TASK [vbotka.freebsd.custom_image : Debug cimage_debug=true] *******************
+TASK [vbotka.freebsd_custom_image : Debug cimage_debug=true] *******************
 ok: [images.example.com] => 
     msg: |-
-        cimage_role_version: 2.8.0
-        ansible_role_name: vbotka.freebsd.custom_image
+        cimage_role_version: 2.8.1
+        ansible_role_name: vbotka.freebsd_custom_image
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        ansible_architecture: amd64
-        ansible_os_family: FreeBSD
-        ansible_distribution: FreeBSD
-        ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.3
-        ansible_distribution_release: 14.3-RELEASE
-        ansible_python_version: 3.11.12
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.0
+        ansible_facts.distribution_release: 15.0-RELEASE-p1
+        ansible_facts.python_version: 3.11.14
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_sanity: False
         cimage_sanity_quiet: True

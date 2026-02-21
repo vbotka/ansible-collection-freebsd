@@ -1,7 +1,7 @@
 ---
 - name: "Sanity: Only FreeBSD family supported"
   ansible.builtin.assert:
-    that: ansible_os_family == 'FreeBSD'
+    that: ansible_facts.os_family == 'FreeBSD'
     fail_msg: "[ERR] Only FreeBSD family supported."
     quiet: "{{ cimage_sanity_quiet | bool }}"
 

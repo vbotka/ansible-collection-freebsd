@@ -19,7 +19,8 @@ Minor Changes
 -------------
 
 * Upgrade roles: iocage 1.1.0, lib 2.8.2, network 2.8.2, pf 2.8.1,
-  postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2, packages 2.8.1, config_light 2.8.3
+  postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2, packages 2.8.1,
+  config_light 2.8.3, custom_image 2.8.1
 * Update ansible-lint local config.
 * Fix or ignore ansible-lint warnings.
 * Update docs examples. Disable example 361

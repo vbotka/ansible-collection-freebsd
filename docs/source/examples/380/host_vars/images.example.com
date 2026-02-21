@@ -9,7 +9,6 @@ cimage_download_images:
     checksum: CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B
 
 # mount
-cimage_mount_dir: /export/images/FreeBSD
 cimage_mount_file: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img
 cimage_mount_points:
   - partition: s2a

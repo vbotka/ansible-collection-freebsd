@@ -41,7 +41,7 @@ wireless network in `already downloaded image`_. Three files will be customized 
              disabled=0
              }
 
-After the configuration of the files is ready dump the image to a disk and boot the system. The
+After the configuration of the files is ready, dump the image to a disk and boot the system. The
 wireless adapter should automatically connect to the network and obtain DHCP address. It should be
 possible to connect to the system ``ssh freebsd@<ip-address>`` (default passwords of FreeBSD images
 are ``freebsd: freebsd`` and ``root: root``).
