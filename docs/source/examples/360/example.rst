@@ -29,7 +29,6 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── host_vars
-  │   ├── iocage_03.yml
   │   └── iocage_04.yml
   ├── iocage.ini
   ├── pb-loader.yml
@@ -39,7 +38,7 @@ Synopsis
 ^^^^^^^^
 
 * Configure ``/boot/loader.conf``
-* Configure bridges.
+* Configure bridge.
 
 Requirements
 ^^^^^^^^^^^^
@@ -77,11 +76,6 @@ group_vars
    :caption:
 
 host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_03.yml
-   :language: yaml
-   :caption:
 
 .. literalinclude:: host_vars/iocage_04.yml
    :language: yaml
@@ -128,16 +122,9 @@ MACs are sanitized.
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.17 ifconfig bridge0
-
-.. literalinclude:: out/out-03.txt
-   :language: bash
-
-.. code-block:: console
-
    (env) > ssh admin@10.1.0.29 ifconfig bridge0
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
 
      

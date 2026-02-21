@@ -22,9 +22,9 @@ Minor Changes
   postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2, packages 2.8.1, config_light 2.8.3
 * Update ansible-lint local config.
 * Fix or ignore ansible-lint warnings.
-* Add docs presentation.
-* Update docs examples.
+* Update docs examples. Disable example 361
 * Update playbooks.
+* Add docs presentation.
 
 0.8.1
 =====
