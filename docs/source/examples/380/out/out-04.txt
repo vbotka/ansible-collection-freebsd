@@ -5,27 +5,27 @@ TASK [Gathering Facts] *********************************************************
 ok: [images.example.com]
 
 TASK [Mount: Attach memory disk] ***********************************************
-included: vbotka.ansible_lib for images.example.com
+included: vbotka.freebsd.lib for images.example.com
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Default variables.] ********************
+TASK [vbotka.freebsd.lib : Al_mdconfig: Default variables.] ********************
 ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: List memory disks.] ********************
+TASK [vbotka.freebsd.lib : Al_mdconfig: List memory disks.] ********************
 ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Create empty memory disks dictionary.] ***
+TASK [vbotka.freebsd.lib : Al_mdconfig: Create empty memory disks dictionary.] ***
 ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Attach memory disk.] *******************
+TASK [vbotka.freebsd.lib : Al_mdconfig: Attach memory disk.] *******************
 ok: [images.example.com]
 
-TASK [vbotka.ansible_lib : Al_mdconfig: Add memory disk to dictionary.] ********
+TASK [vbotka.freebsd.lib : Al_mdconfig: Add memory disk to dictionary.] ********
 ok: [images.example.com]
 
-TASK [vbotka.freebsd_custom_image : Mount: Set variable cimage_mount_dev] ******
+TASK [vbotka.freebsd.custom_image : Mount: Set variable cimage_mount_dev] ******
 ok: [images.example.com]
 
-TASK [vbotka.freebsd_custom_image : Mount: Mount partitions md0] ***************
+TASK [vbotka.freebsd.custom_image : Mount: Mount partitions md0] ***************
 changed: [images.example.com] => (item={'partition': 's2a', 'fstype': 'ufs', 'mountpoint': '/mnt3'})
 
 PLAY RECAP *********************************************************************
