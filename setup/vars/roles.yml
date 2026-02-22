@@ -65,7 +65,7 @@ bsd_roles:
     name: iocage
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-iocage
-    version: 1.1.0
+    version: 1.2.0
   - galaxy: vbotka.freebsd_jail
     name: jail
     scm: git
