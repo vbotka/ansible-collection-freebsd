@@ -4,9 +4,11 @@
 ├── crt
 │   └── build.example.com-sk.crt
 ├── csr
-│   └── build.example.com.csr
+│   ├── build.example.com.csr
+│   └── poudriere.csr
 └── private
     ├── build.example.com-sk.key
-    └── build.example.com.key
+    ├── build.example.com.key
+    └── poudriere.key
 
-5 directories, 5 files
+5 directories, 7 files

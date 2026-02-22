@@ -6,10 +6,36 @@ ok: [build.example.com]
 
 TASK [vbotka.freebsd.poudriere : Pkg: Install poudriere packages.] *************
 ok: [build.example.com]
+FAILED - RETRYING: [build.example.com]: Pkg: Install packages to create certificate. (3 retries left).
+FAILED - RETRYING: [build.example.com]: Pkg: Install packages to create certificate. (2 retries left).
+FAILED - RETRYING: [build.example.com]: Pkg: Install packages to create certificate. (1 retries left).
 
 TASK [vbotka.freebsd.poudriere : Pkg: Install packages to create certificate.] ***
-ok: [build.example.com]
+[ERROR]: Task failed: Module failed: failed to install security/py-openssl
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudriere/tasks/pkg.yml:27:3
+
+25
+26   # Certificate packages.
+27 - name: "Pkg: Install packages to create certificate."
+     ^ column 3
+
+fatal: [build.example.com]: FAILED! => 
+    attempts: 3
+    changed: false
+    msg: failed to install security/py-openssl
+    stderr: |-
+        pkg: No packages available to install matching 'security/py-openssl' have been found in the repositories
+    stderr_lines: <omitted>
+    stdout: |-
+        Updating FreeBSD-ports repository catalogue...
+        FreeBSD-ports repository is up to date.
+        Updating FreeBSD-ports-kmods repository catalogue...
+        FreeBSD-ports-kmods repository is up to date.
+        Updating FreeBSD-base repository catalogue...
+        FreeBSD-base repository is up to date.
+        All repositories are up to date.
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+build.example.com          : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
 

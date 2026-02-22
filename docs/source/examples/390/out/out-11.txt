@@ -18,6 +18,6 @@ USE_COLORS=yes
 USE_PORTLINT=no
 USE_TMPFS=no
 ZPOOL=iocage
-ZROOTFS=/poudriere
+ZROOTFS=/usr/local/poudriere
 
 # EOF

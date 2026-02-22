@@ -23,6 +23,7 @@ poudriere_conf_template: poudriere.conf2.j2
 poudriere_conf_url_base: http://build.example.com
 poudriere_conf_use_tmpfs: "no"
 poudriere_conf_zpool: iocage
+poudriere_conf_zrootfs: /usr/local/poudriere
 poudriere_conf_data:
   BASEFS: "{{ poudriere_conf_basefs }}"
   BUILDER_HOSTNAME: "build"
