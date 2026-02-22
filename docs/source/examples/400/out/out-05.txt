@@ -22,6 +22,7 @@ ok: [iocage_04] =>
             iocage/iocage: /iocage/iocage
             iocage/iocage/download: /iocage/iocage/download
             iocage/iocage/download/14.3-RELEASE: /iocage/iocage/download/14.3-RELEASE
+            iocage/iocage/download/15.0-RELEASE: /iocage/iocage/download/15.0-RELEASE
             iocage/iocage/images: /iocage/iocage/images
             iocage/iocage/jails: /iocage/iocage/jails
             iocage/iocage/log: /iocage/iocage/log
@@ -30,7 +31,12 @@ ok: [iocage_04] =>
             iocage/iocage/releases/14.3-RELEASE/root: /iocage/iocage/releases/14.3-RELEASE/root
             iocage/iocage/releases/14.3-RELEASE/root@ansible_client_apache: null
             iocage/iocage/releases/14.3-RELEASE/root@ansible_client_pull: null
+            iocage/iocage/releases/15.0-RELEASE: /iocage/iocage/releases/15.0-RELEASE
+            iocage/iocage/releases/15.0-RELEASE/root: /iocage/iocage/releases/15.0-RELEASE/root
+            iocage/iocage/releases/15.0-RELEASE/root@ansible_client: null
             iocage/iocage/templates: /iocage/iocage/templates
+            iocage/iocage/templates/ansible_client: /iocage/iocage/templates/ansible_client
+            iocage/iocage/templates/ansible_client/root: /iocage/iocage/templates/ansible_client/root
             iocage/iocage/templates/ansible_client_apache: /iocage/iocage/templates/ansible_client_apache
             iocage/iocage/templates/ansible_client_apache/root: /iocage/iocage/templates/ansible_client_apache/root
             iocage/iocage/templates/ansible_client_pull: /iocage/iocage/templates/ansible_client_pull
@@ -46,8 +52,11 @@ ok: [iocage_04] =>
             zroot/export: /export
             zroot/home: /home
             zroot/home/admin: /home/admin
+            zroot/home/asadmin: /home/asadmin
             zroot/tmp: /tmp
             zroot/usr: /usr
+            zroot/usr/ports: /usr/ports
+            zroot/usr/src: /usr/src
             zroot/var: /var
             zroot/var/audit: /var/audit
             zroot/var/crash: /var/crash

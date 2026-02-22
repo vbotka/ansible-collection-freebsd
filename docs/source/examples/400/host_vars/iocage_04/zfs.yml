@@ -14,3 +14,23 @@ fzfs_manage:
     extra_zfs_properties:
       compression: 'on'
       mountpoint: /export
+  - name: iocage/ports
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/ports
+  - name: iocage/src
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/src
+  - name: iocage/obj
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/obj
+  - name: iocage/poudriere
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/local/poudriere

@@ -46,8 +46,12 @@ TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
 ok: [iocage_04]
 
 TASK [vbotka.freebsd.zfs : Manage: Manage zfs] *********************************
-ok: [iocage_04] => (item=zroot/export)
+changed: [iocage_04] => (item=zroot/export)
+ok: [iocage_04] => (item=iocage/ports)
+ok: [iocage_04] => (item=iocage/src)
+ok: [iocage_04] => (item=iocage/obj)
+ok: [iocage_04] => (item=iocage/poudriere)
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=12   changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
+iocage_04                  : ok=12   changed=1    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
 
