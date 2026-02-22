@@ -4,12 +4,12 @@ cimage_unpack: false
 # download
 cimage_dir: /export/images/FreeBSD
 cimage_download_images:
-  - site: https://download.freebsd.org/releases/arm/armv6/ISO-IMAGES/13.5
-    image: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz
-    checksum: CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B
+  - site: https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/15.0
+    image: FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img.xz
+    checksum: CHECKSUM.SHA256-FreeBSD-15.0-RELEASE-arm64-aarch64-RPI
 
 # mount
-cimage_mount_file: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img
+cimage_mount_file: FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img
 cimage_mount_points:
   - partition: s2a
     fstype: ufs

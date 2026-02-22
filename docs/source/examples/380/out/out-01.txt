@@ -34,9 +34,9 @@ ok: [images.example.com] =>
         cimage_mode: UNDEFINED
         cimage_mode_dir: UNDEFINED
         cimage_download_images:
-          - checksum: CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B
-            image: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz
-            site: https://download.freebsd.org/releases/arm/armv6/ISO-IMAGES/13.5
+          - checksum: CHECKSUM.SHA256-FreeBSD-15.0-RELEASE-arm64-aarch64-RPI
+            image: FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img.xz
+            site: https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/15.0
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_unpack_cmd:
@@ -44,7 +44,7 @@ ok: [images.example.com] =>
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_mount_path: /mnt3
-        cimage_mount_file: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img
+        cimage_mount_file: FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img
         cimage_mount_mode: 0755
         cimage_mount_points_create: False
         cimage_mount_points:
