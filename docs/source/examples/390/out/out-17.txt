@@ -8,11 +8,8 @@ TASK [vbotka.freebsd_postinstall : Sanity: Unknown run tags] *******************
 ok: [build.example.com]
 
 TASK [vbotka.freebsd_postinstall : Rcconf: Configure qemu_user_static_enable in /etc/rc.conf] ***
-changed: [build.example.com]
-
-RUNNING HANDLER [vbotka.freebsd_postinstall : Start qemu_user_static] **********
 ok: [build.example.com]
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=4    changed=1    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+build.example.com          : ok=3    changed=0    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
 

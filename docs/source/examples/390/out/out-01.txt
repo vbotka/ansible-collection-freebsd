@@ -7,14 +7,16 @@ ok: [build.example.com]
 TASK [vbotka.freebsd.poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
-        poudriere_role_version: 2.8.0
-        ansible_architecture: amd64
-        ansible_os_family: FreeBSD
-        ansible_distribution: FreeBSD
-        ansible_distribution_major_version: 15
-        ansible_distribution_version: 15.0
-        ansible_distribution_release: 15.0-RELEASE-p1
-        ansible_python_version: 3.11.14
+        poudriere_role_version: 2.8.1
+        ansible_role_name: vbotka.freebsd.poudriere
+
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.0
+        ansible_facts.distribution_release: 15.0-RELEASE-p1
+        ansible_facts.python_version: 3.11.14
 
         freebsd_install_method: packages
         freebsd_use_packages: True
@@ -43,7 +45,7 @@ ok: [build.example.com] =>
           - devel/ccache
 
         poudriere_packages_cert:
-          - security/py-openssl
+          - security/py-pyopenssl
           - security/py-acme-tiny
 
         poudriere_owner: root
