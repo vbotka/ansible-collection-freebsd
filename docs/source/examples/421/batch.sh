@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 . ../defaults/batch
 
+# Destroy jails
+# VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
+
 # Create jails
 ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t clone_host_hostname -e clone_host_hostname=true | tee out/out-01.txt
 

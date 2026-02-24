@@ -30,6 +30,8 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_04
   │   │   └── ansible-client-apache.yml
@@ -52,9 +54,12 @@ Requirements
 Notes
 ^^^^^
 
-* ``iocage`` property ``host_hostname`` provides "The hostname of the jail.". Please note that ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
+* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
 
-* In case of DHCP, ``host_hostname`` resolves, however ``--name`` does not.
+* ``iocage`` property ``host_hostname`` provides "The hostname of the jail. Default: UUID".
+
+* Make sure DHCP and dynamic DNS are configured so that ``host_hostname`` and
+  ``--name`` resolve.
 
 .. seealso::
 
@@ -102,8 +107,16 @@ Create and start jails
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts
-   :language: ini
+The value of the iocage tag ``alias`` is used as the inventory
+alias. If the command ``iocage list`` is slow use the cache.
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml
+   :caption:
+   :emphasize-lines: 10
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml
    :caption:
 
 Playbook pb-apache.yml
@@ -126,13 +139,20 @@ Playbook output - Create server
 Results
 ^^^^^^^
 
-* Test the configuration
+* Test the configuration. Replace ``www-1`` with an ``IP`` if it doesn't resolve.
 
   .. code-block:: console
 
      (env) > ssh admin@www-1 sudo service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
+
+* Test the server is running
+
+  .. code-block:: console
+
+     (env) > ssh admin@www-1 sudo service apache24 status
+     apache24 is running as pid 62481.
 
 * In a browser, open the page ``http://www-1/``. The content should be ::
 

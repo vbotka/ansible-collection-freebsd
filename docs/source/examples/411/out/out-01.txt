@@ -14,9 +14,9 @@ TASK [vbotka.freebsd.lib : Al_include_dir_vars: Set dictionary of lists of files
 ok: [iocage_04] => (item=team)
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Get content of files.] *********
-ok: [iocage_04] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'qa'])
-ok: [iocage_04] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'production'])
-ok: [iocage_04] => (item=[{'key': 'team', 'value': ['qa', 'production', 'devel']}, 'devel'])
+ok: [iocage_04] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'devel'])
+ok: [iocage_04] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'production'])
+ok: [iocage_04] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'qa'])
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Create dictionary al_vars.] ****
 ok: [iocage_04] => (item=team)

@@ -46,7 +46,7 @@ pkg_dict:
     - security/py-acme-tiny
     - security/py-certbot
     - security/py-cryptography
-    - security/py-openssl
+    - security/py-pyopenssl
   smart:
     - sysutils/smartmontools
     - sysutils/smart

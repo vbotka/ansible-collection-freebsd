@@ -29,9 +29,9 @@ ok: [www-3] => (item=/usr/local/etc/ssl/certs/www-3.crt)
 TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
 ok: [www-3] => 
     msg: |-
-        - {exists: true, file: /usr/local/etc/ssl/private/www-3.key}
-        - {exists: true, file: /usr/local/etc/ssl/csr/www-3.csr}
-        - {exists: true, file: /usr/local/etc/ssl/certs/www-3.crt}
+        - {exists: false, file: /usr/local/etc/ssl/private/www-3.key}
+        - {exists: false, file: /usr/local/etc/ssl/csr/www-3.csr}
+        - {exists: false, file: /usr/local/etc/ssl/certs/www-3.crt}
 
 TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate.] ***
 ok: [www-3] => (item=/usr/local/etc/ssl/private/www.foo.bar.key)
@@ -41,9 +41,9 @@ ok: [www-3] => (item=/usr/local/etc/ssl/certs/www.foo.bar.crt)
 TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
 ok: [www-3] => 
     msg: |-
-        - {exists: true, file: /usr/local/etc/ssl/private/www.foo.bar.key}
-        - {exists: true, file: /usr/local/etc/ssl/csr/www.foo.bar.csr}
-        - {exists: true, file: /usr/local/etc/ssl/certs/www.foo.bar.crt}
+        - {exists: false, file: /usr/local/etc/ssl/private/www.foo.bar.key}
+        - {exists: false, file: /usr/local/etc/ssl/csr/www.foo.bar.csr}
+        - {exists: false, file: /usr/local/etc/ssl/certs/www.foo.bar.crt}
 
 PLAY RECAP *********************************************************************
 www-3                      : ok=11   changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   

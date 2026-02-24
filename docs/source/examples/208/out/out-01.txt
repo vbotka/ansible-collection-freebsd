@@ -9,7 +9,20 @@ ok: [iocage_04]
 
 TASK [Setup: Display iocage_templates debug=true] ******************************
 ok: [iocage_04] => 
-    iocage_templates: {}
+    iocage_templates:
+        ansible_client_apache:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE-p3
+            state: down
+            template: '-'
+            type: template
 
 TASK [Pkglist: Create directories for pkglist files.] **************************
 ok: [iocage_04] => (item=ansible_client_pull /tmp/ansible/ansible_client_pull/pkgs.json)
@@ -18,7 +31,7 @@ TASK [Pkglist: Copy pkglist files.] ********************************************
 ok: [iocage_04] => (item=ansible_client_pull /tmp/ansible/ansible_client_pull/pkgs.json)
 
 TASK [Create: Create templates.] ***********************************************
-changed: [iocage_04] => (item=ansible_client_pull 14.3-RELEASE)
+changed: [iocage_04] => (item=ansible_client_pull 15.0-RELEASE)
 
 TASK [Start: Display iocage_jails debug=true] **********************************
 ok: [iocage_04] => 
@@ -58,7 +71,7 @@ ok: [iocage_04] =>
                 boot: '0'
                 bpf: '1'
                 children_max: '0'
-                cloned_release: 14.3-RELEASE
+                cloned_release: 15.0-RELEASE
                 comment: none
                 compression: 'on'
                 compressratio: readonly
@@ -104,7 +117,7 @@ ok: [iocage_04] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/ansible_client_pull/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-02-18 14:43:02'
+                last_started: '2026-02-24 06:54:09'
                 localhost_ip: none
                 login_flags: -f root
                 mac_prefix: 5a9cfc
@@ -141,7 +154,7 @@ ok: [iocage_04] =>
                 quota: none
                 readbps: 'off'
                 readiops: 'off'
-                release: 14.3-RELEASE-p8
+                release: 15.0-RELEASE-p3
                 reservation: none
                 resolver: /etc/resolv.conf
                 rlimits: 'off'
@@ -177,7 +190,7 @@ ok: [iocage_04] =>
                 wallclock: 'off'
                 writebps: 'off'
                 writeiops: 'off'
-            release: 14.3-RELEASE-p8
+            release: 15.0-RELEASE-p3
             state: down
             template: '-'
             type: jail
@@ -217,7 +230,7 @@ ok: [iocage_04] =>
             boot: 'off'
             ip4: epair0b|10.1.0.211
             ip6: '-'
-            jid: '63'
+            jid: '10'
             name: ansible_client_pull
             properties:
                 CONFIG_VERSION: '33'
@@ -247,7 +260,7 @@ ok: [iocage_04] =>
                 boot: '0'
                 bpf: '1'
                 children_max: '0'
-                cloned_release: 14.3-RELEASE
+                cloned_release: 15.0-RELEASE
                 comment: none
                 compression: 'on'
                 compressratio: readonly
@@ -293,7 +306,7 @@ ok: [iocage_04] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/ansible_client_pull/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-02-18 14:43:54'
+                last_started: '2026-02-24 06:55:01'
                 localhost_ip: none
                 login_flags: -f root
                 mac_prefix: 5a9cfc
@@ -330,7 +343,7 @@ ok: [iocage_04] =>
                 quota: none
                 readbps: 'off'
                 readiops: 'off'
-                release: 14.3-RELEASE-p8
+                release: 15.0-RELEASE-p3
                 reservation: none
                 resolver: /etc/resolv.conf
                 rlimits: 'off'
@@ -366,7 +379,7 @@ ok: [iocage_04] =>
                 wallclock: 'off'
                 writebps: 'off'
                 writeiops: 'off'
-            release: 14.3-RELEASE-p8
+            release: 15.0-RELEASE-p3
             state: up
             template: '-'
             type: jail

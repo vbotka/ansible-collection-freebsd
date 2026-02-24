@@ -1,0 +1,48 @@
+---
+# defaults for vbotka.apache
+apache_ssl: false
+apache_sslengine: "off"
+apache_ssllisten: ""
+apache_sslcertificatefile: /usr/local/etc/apache{{ apache_version }}/server.crt
+apache_sslcertificatekeyfile: /usr/local/etc/apache{{ apache_version }}/server.key
+apache_sslprotocol: all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+# apache_sslciphersuite: HIGH:!aNULL:!MD5
+# apache_sslciphersuite: RC4-SHA:AES128-SHA:HIGH:!aNULL:!MD5
+apache_sslciphersuite: "{{ apache_sslciphersuite_list | join(':') }}"
+apache_sslciphersuite_list:
+  - ECDHE-ECDSA-AES256-GCM-SHA384
+  - ECDHE-RSA-AES256-GCM-SHA384
+  - ECDHE-ECDSA-CHACHA20-POLY1305
+  - ECDHE-RSA-CHACHA20-POLY1305
+  - ECDHE-ECDSA-AES128-GCM-SHA256
+  - ECDHE-RSA-AES128-GCM-SHA256
+  - ECDHE-ECDSA-AES256-SHA384
+  - ECDHE-RSA-AES256-SHA384
+  - ECDHE-ECDSA-AES128-SHA256
+  - ECDHE-RSA-AES128-SHA256
+apache_sslhonorcipherorder: "on"
+apache_sslcompression: "off"
+apache_sslsessiontickets: "off"
+# SSLOpenSSLConfCmd DHParameters '/usr/local/etc/ssl/dhparam.pem'
+# SSLSessionCache shmcb:/var/run/ssl_scache(512000)
+# Header always set X-Frame-Options DENY
+# Header always set X-Frame-Options SAMEORIGIN
+apache_httpd_conf_ssl:
+  - Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf
+# Note: The regex value must be terminated by one space
+apache_httpd_conf_ssl_extra:
+  - { regexp: "ServerName ", line: "{{ apache_servername }}:443" }
+  - { regexp: "ServerAdmin ", line: "{{ apache_serveradmin }}" }
+  - { regexp: "SSLEngine ", line: "{{ apache_sslengine }}" }
+  - { regexp: "SSLProtocol ", line: "{{ apache_sslprotocol }}" }
+  - { regexp: "SSLCipherSuite ", line: "{{ apache_sslciphersuite }}" }
+  - { regexp: "SSLHonorCipherOrder ", line: "{{ apache_sslhonorcipherorder }}" }
+  - { regexp: "SSLCompression ", line: "{{ apache_sslcompression }}" }
+  - { regexp: "SSLSessionTickets ", line: "{{ apache_sslsessiontickets }}" }
+  - { regexp: "SSLCertificateFile ", line: "{{ apache_sslcertificatefile }}" }
+  - { regexp: "SSLCertificateKeyFile ", line: "{{ apache_sslcertificatekeyfile }}" }
+apache_httpd_conf_ssl_extra_absent: []
+apache_httpd_conf_ssl_listen:
+  - Listen 443
+
+# EOF

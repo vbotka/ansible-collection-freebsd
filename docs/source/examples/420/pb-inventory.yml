@@ -1,0 +1,8 @@
+- name: Display hosts
+  hosts: all
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ iocage_tags.alias }} {{ ansible_host }}

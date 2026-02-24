@@ -1,0 +1,8 @@
+---
+- src: https://github.com/jtyr/ansible-config_encoder_filters
+  version: v1.22.0
+  name: jtyr.config_encoder_filters
+
+- src: https://github.com/vbotka/ansible-lib
+  version: 2.6.1
+  name: vbotka.ansible_lib

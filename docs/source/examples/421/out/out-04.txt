@@ -18,17 +18,73 @@ TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certific
 ok: [www-3]
 
 TASK [vbotka.freebsd.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys.] ***
-changed: [www-3] => (item=file:/usr/local/etc/ssl/private/www-3.key CN:www-3)
-changed: [www-3] => (item=file:/usr/local/etc/ssl/private/www.foo.bar.key CN:www.foo.bar)
+[ERROR]: Task failed: Module failed: The directory /usr/local/etc/ssl/private does not exist or the file is not a directory
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/cert-openssl-privatekey.yml:5:7
 
-TASK [vbotka.freebsd.certificate : Cert-openssl-csr: Generate OpenSSL Certificate Signing Request.] ***
-changed: [www-3] => (item= file:/usr/local/etc/ssl/csr/www-3.csr CN:www-3)
-changed: [www-3] => (item= file:/usr/local/etc/ssl/csr/www.foo.bar.csr CN:www.foo.bar)
+3   block:
+4
+5     - name: "Cert-openssl-privatekey: Generate OpenSSL private keys."
+        ^ column 7
 
-TASK [vbotka.freebsd.certificate : Cert-openssl-certificate: Generate and/or check OpenSSL certificates.] ***
-changed: [www-3] => (item= file:/usr/local/etc/ssl/certs/www-3.crt CN:www-3)
-changed: [www-3] => (item= file:/usr/local/etc/ssl/certs/www.foo.bar.crt CN:www.foo.bar)
+failed: [www-3] (item=file:/usr/local/etc/ssl/private/www-3.key CN:www-3) => 
+    ansible_loop_var: item
+    changed: false
+    item:
+        CN: www-3
+        crt: www-3.crt
+        csr: www-3.csr
+        private: www-3.key
+    msg: The directory /usr/local/etc/ssl/private does not exist or the file is not a
+        directory
+    name: /usr/local/etc/ssl/private
+failed: [www-3] (item=file:/usr/local/etc/ssl/private/www.foo.bar.key CN:www.foo.bar) => 
+    ansible_loop_var: item
+    changed: false
+    item:
+        CN: www.foo.bar
+        crt: www.foo.bar.crt
+        csr: www.foo.bar.csr
+        private: www.foo.bar.key
+    msg: The directory /usr/local/etc/ssl/private does not exist or the file is not a
+        directory
+    name: /usr/local/etc/ssl/private
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys failed.] ***
+[ERROR]: Task failed: Finalization of task args for 'ansible.builtin.debug' failed: Error while resolving value for 'msg': The filter plugin 'ansible.builtin.to_nice_yaml' failed: ('cannot represent an object', <<Omit>>)
+
+Task failed.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/cert-openssl-privatekey.yml:33:7
+
+31   rescue:
+32
+33     - name: "Cert-openssl-privatekey: Generate OpenSSL private keys failed."
+         ^ column 7
+
+<<< caused by >>>
+
+Finalization of task args for 'ansible.builtin.debug' failed.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/cert-openssl-privatekey.yml:34:7
+
+32
+33     - name: "Cert-openssl-privatekey: Generate OpenSSL private keys failed."
+34       ansible.builtin.debug:
+         ^ column 7
+
+<<< caused by >>>
+
+Error while resolving value for 'msg': The filter plugin 'ansible.builtin.to_nice_yaml' failed: ('cannot represent an object', <<Omit>>)
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/cert-openssl-privatekey.yml:35:14
+
+33     - name: "Cert-openssl-privatekey: Generate OpenSSL private keys failed."
+34       ansible.builtin.debug:
+35         msg: |
+                ^ column 14
+
+fatal: [www-3]: FAILED! => 
+    msg: 'Task failed: Finalization of task args for ''ansible.builtin.debug'' failed:
+        Error while resolving value for ''msg'': The filter plugin ''ansible.builtin.to_nice_yaml''
+        failed: (''cannot represent an object'', <<Omit>>)'
 
 PLAY RECAP *********************************************************************
-www-3                      : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+www-3                      : ok=5    changed=0    unreachable=0    failed=1    skipped=6    rescued=1    ignored=0   
 
