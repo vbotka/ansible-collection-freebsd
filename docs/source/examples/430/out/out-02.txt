@@ -20,15 +20,16 @@ ok: [www-2]
 TASK [vbotka.freebsd.certificate : Debug certificate_debug=true] ***************
 ok: [www-2] => 
     msg: |-
-        certificate_role_version: 2.8.0
+        certificate_role_version: 2.8.1
         ansible_role_name: vbotka.freebsd.certificate
-        ansible_architecture: amd64
-        ansible_os_family: FreeBSD
-        ansible_distribution: FreeBSD
-        ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.3
-        ansible_distribution_release: 14.3-RELEASE
-        ansible_python_version: 3.11.13
+
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.0
+        ansible_facts.distribution_release: 15.0-RELEASE-p1
+        ansible_facts.python_version: 3.11.14
 
         certificate_sanity: True
         certificate_sanity_platform: True
@@ -84,7 +85,7 @@ ok: [www-2] =>
         al_debug: False
         al_sanity_packages_required:
           FreeBSD:
-            default: [py311-cryptography, py311-openssl, py311-acme, acme-tiny]
+            default: [py311-cryptography, py311-pyopenssl, py311-acme, acme-tiny]
           Ubuntu:
             bionic: [python-openssl, python-cryptography, acme-tiny]
             cosmic: [python-openssl, python-cryptography, acme-tiny]
@@ -108,7 +109,7 @@ ok: [www-2] =>
         certificate_install: True
         certificate_packages:
           - security/py-cryptography
-          - security/py-openssl
+          - security/py-pyopenssl
           - security/py-acme
 
         certificate_packages2:

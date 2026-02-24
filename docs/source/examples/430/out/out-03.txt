@@ -19,7 +19,7 @@ ok: [www-2]
 
 TASK [vbotka.freebsd.certificate : Packages: Install FreeBSD packages] *********
 ok: [www-2] => (item=security/py-cryptography)
-ok: [www-2] => (item=security/py-openssl)
+ok: [www-2] => (item=security/py-pyopenssl)
 changed: [www-2] => (item=security/py-acme)
 changed: [www-2] => (item=security/py-acme-tiny)
 

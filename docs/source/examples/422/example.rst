@@ -152,6 +152,7 @@ Results
      Syntax OK
 
 * In a browser, open the page ``http://www-4/info.php``. The content should be
+  similar to this one
 
 .. image:: screenshot_php.png
     :width: 100%
