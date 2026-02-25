@@ -50,8 +50,8 @@ changed: [iocage_04] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_02] => (item=ansible_client iocage_enable YES)
 changed: [iocage_04] => (item=ansible_client iocage_enable YES)
+changed: [iocage_02] => (item=ansible_client iocage_enable YES)
 changed: [iocage_04] => (item=ansible_client sshd_enable YES)
 changed: [iocage_02] => (item=ansible_client sshd_enable YES)
 

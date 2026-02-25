@@ -2,213 +2,213 @@
 PLAY [Test role vbotka.freebsd.config_light] ***********************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [72f28a3e]
-ok: [85cab5eb]
-ok: [3fe7b2a4]
+ok: [a99a6436]
+ok: [ba2fcc3a]
+ok: [8ff2f325]
 
 TASK [vbotka.freebsd.config_light : Setup: Create directories in /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light] ***
-ok: [3fe7b2a4 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light)
-ok: [3fe7b2a4 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/handlers.d)
-ok: [3fe7b2a4 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/packages.d)
-ok: [3fe7b2a4 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/services.d)
-ok: [3fe7b2a4 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/files.d)
-ok: [3fe7b2a4 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/states.d)
+ok: [8ff2f325 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light)
+ok: [8ff2f325 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/handlers.d)
+ok: [8ff2f325 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/packages.d)
+ok: [8ff2f325 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/services.d)
+ok: [8ff2f325 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/files.d)
+ok: [8ff2f325 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/states.d)
 
 TASK [vbotka.freebsd.config_light : Setup: Create directory /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble] ***
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Setup: Create directory /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/handlers] ***
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Setup: Create handlers/main.yml] ***********
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-handlers: Assemble handlers to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/handlersd] ***
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-handlers: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/handlersd to cl_handlersd_items] ***
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Vars-handlers: Combine cl_handlers with cl_handlersd_items.] ***
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Setup: Create handlers listed in cl_handlers.] ***
-ok: [3fe7b2a4 -> localhost] => (item=handlers-auto-lighttpd_freebsd.yml)
+ok: [8ff2f325 -> localhost] => (item=handlers-auto-lighttpd_freebsd.yml)
 
 TASK [vbotka.freebsd.config_light : Setup: Include handlers in handlers/main.yml] ***
-ok: [3fe7b2a4 -> localhost] => (item=handlers-auto-lighttpd_freebsd.yml)
+ok: [8ff2f325 -> localhost] => (item=handlers-auto-lighttpd_freebsd.yml)
 
-TASK [vbotka.freebsd.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/packagesd.3fe7b2a4] ***
-ok: [3fe7b2a4 -> localhost]
-ok: [85cab5eb -> localhost]
-ok: [72f28a3e -> localhost]
+TASK [vbotka.freebsd.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/packagesd.8ff2f325] ***
+ok: [a99a6436 -> localhost]
+ok: [ba2fcc3a -> localhost]
+ok: [8ff2f325 -> localhost]
 
-TASK [vbotka.freebsd.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/packagesd.3fe7b2a4 to cl_packagesd_items] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+TASK [vbotka.freebsd.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/packagesd.8ff2f325 to cl_packagesd_items] ***
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Vars-packages: Combine cl_packages with cl_packagesd_items.] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
-TASK [vbotka.freebsd.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/statesd.3fe7b2a4] ***
-ok: [85cab5eb -> localhost]
-ok: [3fe7b2a4 -> localhost]
-ok: [72f28a3e -> localhost]
+TASK [vbotka.freebsd.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/statesd.8ff2f325] ***
+ok: [8ff2f325 -> localhost]
+ok: [ba2fcc3a -> localhost]
+ok: [a99a6436 -> localhost]
 
-TASK [vbotka.freebsd.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/statesd.3fe7b2a4 to cl_statesd_items] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+TASK [vbotka.freebsd.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/statesd.8ff2f325 to cl_statesd_items] ***
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Vars-states: Combine cl_statess with cl_statesd_items.] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
-TASK [vbotka.freebsd.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/servicesd.3fe7b2a4] ***
-ok: [85cab5eb -> localhost]
-ok: [72f28a3e -> localhost]
-ok: [3fe7b2a4 -> localhost]
+TASK [vbotka.freebsd.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/servicesd.8ff2f325] ***
+ok: [8ff2f325 -> localhost]
+ok: [a99a6436 -> localhost]
+ok: [ba2fcc3a -> localhost]
 
-TASK [vbotka.freebsd.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/servicesd.3fe7b2a4 to cl_cervicesd_items] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+TASK [vbotka.freebsd.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/servicesd.8ff2f325 to cl_cervicesd_items] ***
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Vars-services: Combine cl_services with cl_servicesd_items.] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
-TASK [vbotka.freebsd.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/filesd.3fe7b2a4] ***
-ok: [3fe7b2a4 -> localhost]
-ok: [85cab5eb -> localhost]
-ok: [72f28a3e -> localhost]
+TASK [vbotka.freebsd.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/filesd.8ff2f325] ***
+ok: [8ff2f325 -> localhost]
+ok: [a99a6436 -> localhost]
+ok: [ba2fcc3a -> localhost]
 
-TASK [vbotka.freebsd.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/filesd.3fe7b2a4 to cl_filesd_items] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+TASK [vbotka.freebsd.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/340/conf-light/assemble/filesd.8ff2f325 to cl_filesd_items] ***
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_items.] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Sanity: Data directories must exist.] ******
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Sanity: Supported modules for packages.] ***
-ok: [3fe7b2a4 -> localhost]
+ok: [8ff2f325 -> localhost]
 
 TASK [vbotka.freebsd.config_light : Packages: Select lists.] *******************
-ok: [3fe7b2a4]
-ok: [85cab5eb]
-ok: [72f28a3e]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Packages: Create list defaulted to module package.] ***
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : Packages: Manage FreeBSD packages.] ********
-changed: [72f28a3e -> iocage_04(10.1.0.29)] => (item=['www/lighttpd'])
-changed: [3fe7b2a4 -> iocage_04(10.1.0.29)] => (item=['www/lighttpd'])
-changed: [85cab5eb -> iocage_04(10.1.0.29)] => (item=['www/lighttpd'])
+changed: [a99a6436 -> iocage_04(10.1.0.29)] => (item=['www/lighttpd'])
+changed: [8ff2f325 -> iocage_04(10.1.0.29)] => (item=['www/lighttpd'])
+changed: [ba2fcc3a -> iocage_04(10.1.0.29)] => (item=['www/lighttpd'])
 
 TASK [vbotka.freebsd.config_light : States: Apply file states.] ****************
-changed: [85cab5eb] => (item=/usr/local/www/lighttpd)
-changed: [3fe7b2a4] => (item=/usr/local/www/lighttpd)
-changed: [72f28a3e] => (item=/usr/local/www/lighttpd)
+changed: [a99a6436] => (item=/usr/local/www/lighttpd)
+changed: [8ff2f325] => (item=/usr/local/www/lighttpd)
+changed: [ba2fcc3a] => (item=/usr/local/www/lighttpd)
 
 TASK [vbotka.freebsd.config_light : Files: Manage files.] **********************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-copy.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=copy)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-template.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=template)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-markers.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=markers)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-create-backup.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=create-backup)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-patch.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=patch)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-lineinfile.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=lineinfile)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-blockinfile.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=blockinfile)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-inifile.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=inifile)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-ucl.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=ucl)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-sysrc.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=sysrc)
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-delete-backup.yml for 72f28a3e, 85cab5eb, 3fe7b2a4 => (item=delete-backup)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-copy.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=copy)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-template.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=template)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-markers.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=markers)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-create-backup.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=create-backup)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-patch.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=patch)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-lineinfile.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=lineinfile)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-blockinfile.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=blockinfile)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-inifile.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=inifile)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-ucl.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=ucl)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-sysrc.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=sysrc)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/tasks/files-delete-backup.yml for 8ff2f325, ba2fcc3a, a99a6436 => (item=delete-backup)
 
 TASK [vbotka.freebsd.config_light : File-create-backup: Create time-stamp.] ****
-ok: [3fe7b2a4]
-ok: [72f28a3e]
-ok: [85cab5eb]
+ok: [8ff2f325]
+ok: [a99a6436]
+ok: [ba2fcc3a]
 
 TASK [vbotka.freebsd.config_light : File-create-backup: Stat cl_files.] ********
-ok: [3fe7b2a4] => (item=/usr/local/www/lighttpd/index.html)
-ok: [72f28a3e] => (item=/usr/local/www/lighttpd/index.html)
-ok: [85cab5eb] => (item=/usr/local/www/lighttpd/index.html)
-ok: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
-ok: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
-ok: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
-ok: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
-ok: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
-ok: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [a99a6436] => (item=/usr/local/www/lighttpd/index.html)
+ok: [8ff2f325] => (item=/usr/local/www/lighttpd/index.html)
+ok: [ba2fcc3a] => (item=/usr/local/www/lighttpd/index.html)
+ok: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
+ok: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
+ok: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
+ok: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
 
 TASK [vbotka.freebsd.config_light : File-create-backup: Create backup files.] ***
-ok: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
-ok: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
-ok: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
-ok: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
-ok: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
-ok: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
+ok: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
+ok: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf)
+ok: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
+ok: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf)
 
 TASK [vbotka.freebsd.config_light : Files-lineinfile: Lineinfile lines.] *******
-changed: [85cab5eb] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
-changed: [72f28a3e] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
-changed: [3fe7b2a4] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [8ff2f325] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
+changed: [a99a6436] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
+changed: [ba2fcc3a] => (item=/usr/local/www/lighttpd/index.html <html><body><h1>Lighttpd works!</h1></body></html>)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.annotated.conf UNDEFINED)
 
 TASK [vbotka.freebsd.config_light : Files-lineinfile: Lineinfile dict.] ********
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
-changed: [3fe7b2a4] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
-changed: [72f28a3e] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
-changed: [85cab5eb] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.port)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.use-ipv6)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.username)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.groupname)
+changed: [8ff2f325] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
+changed: [ba2fcc3a] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
+changed: [a99a6436] => (item=/usr/local/etc/lighttpd/lighttpd.conf server.document-root)
 
 TASK [vbotka.freebsd.config_light : Services: Enable FreeBSD services.] ********
-changed: [72f28a3e] => (item=lighttpd)
-changed: [3fe7b2a4] => (item=lighttpd)
-changed: [85cab5eb] => (item=lighttpd)
+changed: [8ff2f325] => (item=lighttpd)
+changed: [ba2fcc3a] => (item=lighttpd)
+changed: [a99a6436] => (item=lighttpd)
 
 TASK [vbotka.freebsd.config_light : Services: Manage FreeBSD service.] *********
-changed: [72f28a3e] => (item=lighttpd)
-changed: [85cab5eb] => (item=lighttpd)
-changed: [3fe7b2a4] => (item=lighttpd)
+changed: [a99a6436] => (item=lighttpd)
+changed: [8ff2f325] => (item=lighttpd)
+changed: [ba2fcc3a] => (item=lighttpd)
 
 RUNNING HANDLER [vbotka.freebsd.config_light : Reload lighttpd] ****************
-ok: [72f28a3e]
-ok: [85cab5eb]
-ok: [3fe7b2a4]
+ok: [8ff2f325]
+ok: [ba2fcc3a]
+ok: [a99a6436]
 
 PLAY RECAP *********************************************************************
-3fe7b2a4                   : ok=47   changed=6    unreachable=0    failed=0    skipped=82   rescued=0    ignored=0   
-72f28a3e                   : ok=36   changed=6    unreachable=0    failed=0    skipped=71   rescued=0    ignored=0   
-85cab5eb                   : ok=36   changed=6    unreachable=0    failed=0    skipped=71   rescued=0    ignored=0   
+8ff2f325                   : ok=47   changed=6    unreachable=0    failed=0    skipped=82   rescued=0    ignored=0   
+a99a6436                   : ok=36   changed=6    unreachable=0    failed=0    skipped=71   rescued=0    ignored=0   
+ba2fcc3a                   : ok=36   changed=6    unreachable=0    failed=0    skipped=71   rescued=0    ignored=0   
 

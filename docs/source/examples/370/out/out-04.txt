@@ -4,19 +4,19 @@ Interface Stats for bridge0           IPv4             IPv6
   Bytes In                               0                0
   Bytes Out                              0                0
   Packets In
-    Passed                         1228839             6539
-    Blocked                            504                0
+    Passed                          233387              987
+    Blocked                            394                0
   Packets Out
     Passed                               0                0
-    Blocked                         657414                0
+    Blocked                         174948                0
 
 State Table                          Total             Rate
-  current entries                       18               
-  searches                         2008614       502153.5/s
-  inserts                            25684         6421.0/s
-  removals                           25666         6416.5/s
+  current entries                      164               
+  searches                          426626       106656.5/s
+  inserts                             8549         2137.2/s
+  removals                            8385         2096.2/s
 Counters
-  match                              54241        13560.2/s
+  match                              12205         3051.2/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s
@@ -24,8 +24,8 @@ Counters
   memory                                 0            0.0/s
   bad-timestamp                          0            0.0/s
   congestion                             0            0.0/s
-  ip-option                            357           89.2/s
-  proto-cksum                         5806         1451.5/s
+  ip-option                            107           26.8/s
+  proto-cksum                          872          218.0/s
   state-mismatch                         6            1.5/s
   state-insert                           0            0.0/s
   state-limit                            0            0.0/s

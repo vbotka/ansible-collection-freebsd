@@ -5,8 +5,8 @@ TASK [Gathering Facts] *********************************************************
 ok: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Unpack: Unpack images] *********************
-changed: [images.example.com] => (item=FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img.xz)
+ok: [images.example.com] => (item=FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img.xz)
 
 PLAY RECAP *********************************************************************
-images.example.com         : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+images.example.com         : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

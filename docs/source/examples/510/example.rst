@@ -48,7 +48,7 @@ Requirements
 
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege in the managed nodes
-* templates ``ansible_client_pull`` created in :ref:`example_208`
+* template ``ansible_client_pull`` created in :ref:`example_208`
 
 Notes
 ^^^^^

@@ -18,7 +18,7 @@ ok: [iocage_04] =>
           http: [http_3]
           logclient: [db_3, http_3]
 
-        groups.all: ['test_4', 'db_3', 'http_3', 'iocage_04']
+        groups.all: ['http_3', 'db_3', 'iocage_04']
         project_jails_present: ['db_3', 'http_3']
 
 TASK [Stop jails.] *************************************************************

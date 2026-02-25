@@ -29,11 +29,11 @@ ok: [iocage_04] =>
             iocage/iocage/releases: /iocage/iocage/releases
             iocage/iocage/releases/14.3-RELEASE: /iocage/iocage/releases/14.3-RELEASE
             iocage/iocage/releases/14.3-RELEASE/root: /iocage/iocage/releases/14.3-RELEASE/root
-            iocage/iocage/releases/14.3-RELEASE/root@ansible_client_apache: null
-            iocage/iocage/releases/14.3-RELEASE/root@ansible_client_pull: null
             iocage/iocage/releases/15.0-RELEASE: /iocage/iocage/releases/15.0-RELEASE
             iocage/iocage/releases/15.0-RELEASE/root: /iocage/iocage/releases/15.0-RELEASE/root
             iocage/iocage/releases/15.0-RELEASE/root@ansible_client: null
+            iocage/iocage/releases/15.0-RELEASE/root@ansible_client_apache: null
+            iocage/iocage/releases/15.0-RELEASE/root@ansible_client_pull: null
             iocage/iocage/templates: /iocage/iocage/templates
             iocage/iocage/templates/ansible_client: /iocage/iocage/templates/ansible_client
             iocage/iocage/templates/ansible_client/root: /iocage/iocage/templates/ansible_client/root

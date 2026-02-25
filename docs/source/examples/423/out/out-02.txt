@@ -2,124 +2,20 @@
 PLAY [Create SSL certificate.] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-5]
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
 
-TASK [Vars: Include OS vars] ***************************************************
-included: vbotka.freebsd.lib for www-5
+Task failed.
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
-ok: [www-5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
-ok: [www-5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+<<< caused by >>>
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
-ok: [www-5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
 
-TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
-ok: [www-5]
-
-TASK [vbotka.freebsd.certificate : Debug certificate_debug=true] ***************
-ok: [www-5] => 
-    msg: |-
-        certificate_role_version: 2.8.1
-        ansible_role_name: vbotka.freebsd.certificate
-
-        ansible_facts.architecture: amd64
-        ansible_facts.os_family: FreeBSD
-        ansible_facts.distribution: FreeBSD
-        ansible_facts.distribution_major_version: 15
-        ansible_facts.distribution_version: 15.0
-        ansible_facts.distribution_release: 15.0-RELEASE-p1
-        ansible_facts.python_version: 3.11.14
-
-        certificate_sanity: True
-        certificate_sanity_platform: True
-        certificate_sanity_ansible_version: True
-        certificate_sanity_packages: True
-
-        certificate_debug_classified: False
-        certificate_backup_conf: False
-
-        certificate_default_backend: auto
-        certificate_default_size: 4096
-        certificate_default_type: RSA
-        certificate_default_provider: selfsigned
-
-        certificate_owner: root
-        certificate_group: wheel
-        certificate_dir_mode: 0755
-        certificate_file_mode: 0644
-        certificate_dir: /usr/local/etc/ssl
-        certificate_dir_csr: /usr/local/etc/ssl/csr
-        certificate_dir_certs: /usr/local/etc/ssl/certs
-
-        certificate_private_owner: root
-        certificate_private_group: wheel
-        certificate_private_dir_mode: 0700
-        certificate_private_file_mode: 0600
-        certificate_private_dir: /usr/local/etc/ssl/private
-
-        certificate_acme_owner: root
-        certificate_acme_group: wheel
-        certificate_acme_dir_mode_private: 0700
-        certificate_acme_dir_mode_public: 0755
-        certificate_acme_base_dir: /usr/local
-        certificate_acme_dir: /usr/local/etc/letsencrypt
-        certificate_acme_dir_csr: /usr/local/etc/letsencrypt/csr
-        certificate_acme_dir_certs: /usr/local/etc/letsencrypt/archive
-        certificate_acme_dir_private: /usr/local/etc/letsencrypt/keys
-        certificate_acme_dir_challenges: /usr/local/www/apache24/data/.well-known/acme-challenge/
-        certificate_acme_link_crt: False
-        certificate_link_crt: False
-
-        certificate_self_signed_command:
-          []
-
-        certificate_data:
-          - passphrase: ************
-            CN: www-5
-            private: www-5.key
-            csr: www-5.csr
-            crt: www-5.crt
-          - passphrase: ************
-            CN: build.foo.bar
-            private: build.foo.bar.key
-            csr: build.foo.bar.csr
-            crt: build.foo.bar.crt
-
-        certificate_python_version: 311
-        al_debug: False
-        al_sanity_packages_required:
-          FreeBSD:
-            default: [py311-cryptography, py311-pyopenssl, py311-acme, acme-tiny]
-          Ubuntu:
-            bionic: [python-openssl, python-cryptography, acme-tiny]
-            cosmic: [python-openssl, python-cryptography, acme-tiny]
-            default: [python3-openssl, python3-cryptography, acme-tiny]
-            disco: [python-openssl, python-cryptography, acme-tiny]
-            eoan: [python-openssl, python-cryptography, acme-tiny]
-            focal:
-            - [python-openssl, python3-openssl]
-            - [python-cryptography, python3-cryptography]
-            - acme-tiny
-
-        freebsd_install_method: packages
-        freebsd_use_packages: True
-        freebsd_install_state: present
-        freebsd_install_retries: 10
-        freebsd_install_delay: 5
-        freebsd_flavors_enable: False
-        freebsd_flavors: [py311]
-
-        certificate_supported_linux_family: ['RedHat', 'Debian']
-        certificate_install: True
-        certificate_packages:
-          - security/py-cryptography
-          - security/py-pyopenssl
-          - security/py-acme
-
-        certificate_packages2:
-          - security/py-acme-tiny
+fatal: [www-5]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
+        www-5: Temporary failure in name resolution'
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-www-5                      : ok=6    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+www-5                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

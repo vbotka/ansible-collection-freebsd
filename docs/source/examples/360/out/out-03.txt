@@ -7,6 +7,6 @@ bridge0: flags=1008843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST,LOWER_UP> metric 0
 	root id 11:22:33:44:55:66 priority 32768 ifcost 0 port 0
 	bridge flags=0<>
 	member: igb0 flags=143<LEARNING,DISCOVER,AUTOEDGE,AUTOPTP>
-	        port 1 priority 128 path cost 20000 vlan protocol 802.1q
+	        port 1 priority 128 path cost 2000000 vlan protocol 802.1q
 	groups: bridge
 	nd6 options=9<PERFORMNUD,IFDISABLED>

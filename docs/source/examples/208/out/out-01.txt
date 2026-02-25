@@ -10,6 +10,19 @@ ok: [iocage_04]
 TASK [Setup: Display iocage_templates debug=true] ******************************
 ok: [iocage_04] => 
     iocage_templates:
+        ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE-p3
+            state: down
+            template: '-'
+            type: template
         ansible_client_apache:
             basejail: 'no'
             boot: 'off'
@@ -117,7 +130,7 @@ ok: [iocage_04] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/ansible_client_pull/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-02-24 06:54:09'
+                last_started: '2026-02-24 22:35:58'
                 localhost_ip: none
                 login_flags: -f root
                 mac_prefix: 5a9cfc
@@ -228,9 +241,9 @@ ok: [iocage_04] =>
         ansible_client_pull:
             basejail: 'no'
             boot: 'off'
-            ip4: epair0b|10.1.0.211
+            ip4: epair0b|10.1.0.212
             ip6: '-'
-            jid: '10'
+            jid: '75'
             name: ansible_client_pull
             properties:
                 CONFIG_VERSION: '33'
@@ -306,7 +319,7 @@ ok: [iocage_04] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/ansible_client_pull/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-02-24 06:55:01'
+                last_started: '2026-02-24 22:37:16'
                 localhost_ip: none
                 login_flags: -f root
                 mac_prefix: 5a9cfc

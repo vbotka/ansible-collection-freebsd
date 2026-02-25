@@ -2,63 +2,20 @@
 PLAY [Create Apache HTTP Server.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-5]
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
 
-TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for www-5
+Task failed.
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/apache/vars/defaults] ***
-ok: [www-5]
+<<< caused by >>>
 
-TASK [vbotka.freebsd.apache : Httpd-conf: Configure parameters in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-5] => (item={'regexp': 'ServerName', 'line': 'www-5'})
-changed: [www-5] => (item={'regexp': 'ServerAdmin', 'line': 'admin@www-5'})
-changed: [www-5] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
+Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
 
-TASK [vbotka.freebsd.apache : Httpd-dirs: Configure directories in /usr/local/etc/apache24/Includes/] ***
-changed: [www-5] => (item=/usr/local/www/apache24/data/)
-changed: [www-5] => (item=/usr/local/poudriere/data)
-
-TASK [vbotka.freebsd.apache : Httpd-modules: Load modules in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-5] => (item={'module': 'socache_shmcb_module', 'mod': 'mod_socache_shmcb.so'})
-changed: [www-5] => (item={'module': 'ssl_module', 'mod': 'mod_ssl.so'})
-
-TASK [vbotka.freebsd.apache : Httpd-ssl: Present extra lines in /usr/local/etc/apache24/extra/httpd-ssl.conf] ***
-changed: [www-5] => (item={'regexp': 'ServerName ', 'line': 'www-5:443'})
-changed: [www-5] => (item={'regexp': 'ServerAdmin ', 'line': 'admin@www-5'})
-ok: [www-5] => (item={'regexp': 'SSLEngine ', 'line': 'on'})
-changed: [www-5] => (item={'regexp': 'SSLProtocol ', 'line': 'all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1'})
-changed: [www-5] => (item={'regexp': 'SSLCipherSuite ', 'line': 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256'})
-changed: [www-5] => (item={'regexp': 'SSLHonorCipherOrder ', 'line': 'on'})
-changed: [www-5] => (item={'regexp': 'SSLCompression ', 'line': 'off'})
-changed: [www-5] => (item={'regexp': 'SSLSessionTickets ', 'line': 'off'})
-changed: [www-5] => (item={'regexp': 'SSLCertificateFile ', 'line': '/usr/local/etc/ssl/certs/www-5.crt'})
-changed: [www-5] => (item={'regexp': 'SSLCertificateKeyFile ', 'line': '/usr/local/etc/ssl/private/www-5.key'})
-
-TASK [vbotka.freebsd.apache : Httpd-ssl: SSL Listen in /usr/local/etc/apache24/extra/httpd-ssl.conf] ***
-ok: [www-5] => (item=Listen 443)
-
-TASK [vbotka.freebsd.apache : Httpd-ssl: SSL in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-5] => (item=Include etc/apache24/extra/httpd-ssl.conf)
-
-TASK [vbotka.freebsd.apache : Httpd-vhosts: Configure virtual hosts in /usr/local/etc/apache24/extra/] ***
-changed: [www-5] => (item=build.foo.bar)
-
-TASK [vbotka.freebsd.apache : Httpd-vhosts: Incl virtual hosts in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-5] => (item=build.foo.bar)
-
-TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
-changed: [www-5]
-
-RUNNING HANDLER [vbotka.freebsd.apache : Enable and start vbotka.freebsd.apache] ***
-changed: [www-5]
-
-RUNNING HANDLER [vbotka.freebsd.apache : Restart vbotka.freebsd.apache] ********
-changed: [www-5]
-
-RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
-ok: [www-5]
+fatal: [www-5]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
+        www-5: Temporary failure in name resolution'
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-www-5                      : ok=15   changed=10   unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
+www-5                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

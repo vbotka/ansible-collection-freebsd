@@ -11,8 +11,8 @@ ok: [test_1] =>
         iocage_tags: {}
 ok: [logserv_1] => 
     msg: |-
-        ansible_host: 10.1.0.191
-        iocage_properties.host_hostuuid: 9027657c
+        ansible_host: 10.1.0.213
+        iocage_properties.host_hostuuid: fb342671
         iocage_classes: [logserv]
 
         iocage_tags: {alias: logserv_1, class: logserv, vmm: iocage_01}
@@ -23,20 +23,20 @@ ok: [test_2] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [db_1] => 
-    msg: |-
-        ansible_host: 10.1.0.240
-        iocage_properties.host_hostuuid: e6a7dd86
-        iocage_classes: [db, logclient]
-
-        iocage_tags: {alias: db_1, class: 'db,logclient', vmm: iocage_02}
 ok: [http_1] => 
     msg: |-
-        ansible_host: 10.1.0.157
-        iocage_properties.host_hostuuid: 68e4d8a1
+        ansible_host: 10.1.0.187
+        iocage_properties.host_hostuuid: 2355c7ca
         iocage_classes: [http, logclient]
 
         iocage_tags: {alias: http_1, class: 'http,logclient', vmm: iocage_02}
+ok: [db_1] => 
+    msg: |-
+        ansible_host: 10.1.0.190
+        iocage_properties.host_hostuuid: a36ffb91
+        iocage_classes: [db, logclient]
+
+        iocage_tags: {alias: db_1, class: 'db,logclient', vmm: iocage_02}
 ok: [test_4] => 
     msg: |-
         ansible_host: -
@@ -46,15 +46,15 @@ ok: [test_4] =>
         iocage_tags: {}
 ok: [http_2] => 
     msg: |-
-        ansible_host: 10.1.0.149
-        iocage_properties.host_hostuuid: 41acde5d
+        ansible_host: 10.1.0.130
+        iocage_properties.host_hostuuid: 0353ff78
         iocage_classes: [http, logclient]
 
         iocage_tags: {alias: http_2, class: 'http,logclient', vmm: iocage_04}
 ok: [db_2] => 
     msg: |-
-        ansible_host: 10.1.0.146
-        iocage_properties.host_hostuuid: ee7b236f
+        ansible_host: 10.1.0.101
+        iocage_properties.host_hostuuid: 48dc9d76
         iocage_classes: [db, logclient]
 
         iocage_tags: {alias: db_2, class: 'db,logclient', vmm: iocage_04}

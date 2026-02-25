@@ -8,8 +8,8 @@ TASK [vbotka.freebsd.iocage : Pkglist: Create dictionary for pkglist files.] ***
 ok: [iocage_04 -> localhost]
 
 TASK [vbotka.freebsd.iocage : Pkglist: Create pkglist file.] *******************
-changed: [iocage_04 -> localhost]
+ok: [iocage_04 -> localhost]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

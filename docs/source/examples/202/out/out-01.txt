@@ -6,16 +6,16 @@ ok: [iocage_04]
 ok: [iocage_02]
 
 TASK [Setup: Set dictionary iocage_templates] **********************************
-ok: [iocage_02]
 ok: [iocage_04]
+ok: [iocage_02]
 
 TASK [Pkglist: Create directories for pkglist files.] **************************
 ok: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 ok: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 
 TASK [Pkglist: Copy pkglist files.] ********************************************
-ok: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 ok: [iocage_02] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+ok: [iocage_04] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
 
 TASK [Create: Create templates.] ***********************************************
 changed: [iocage_04] => (item=ansible_client 15.0-RELEASE)
@@ -30,10 +30,10 @@ changed: [iocage_04] => (item=ansible_client admin)
 changed: [iocage_02] => (item=ansible_client admin)
 
 TASK [Pk: The keys are valid.] *************************************************
-ok: [iocage_04] => 
+ok: [iocage_02] => 
     changed: false
     msg: All assertions passed
-ok: [iocage_02] => 
+ok: [iocage_04] => 
     changed: false
     msg: All assertions passed
 
@@ -54,14 +54,14 @@ changed: [iocage_04] => (item=ansible_client dhclient-exit-hooks)
 changed: [iocage_02] => (item=ansible_client dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
+changed: [iocage_02] => (item=ansible_client iocage_enable YES)
 changed: [iocage_04] => (item=ansible_client iocage_enable YES)
 changed: [iocage_04] => (item=ansible_client sshd_enable YES)
-changed: [iocage_02] => (item=ansible_client iocage_enable YES)
 changed: [iocage_02] => (item=ansible_client sshd_enable YES)
 
 TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_02]
 ok: [iocage_04]
+ok: [iocage_02]
 
 TASK [Template: Set template.] *************************************************
 ok: [iocage_04] => (item=ansible_client)

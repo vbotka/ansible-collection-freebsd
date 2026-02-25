@@ -2,8 +2,8 @@
 PLAY [Iocage list datasets.] ***************************************************
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
-ok: [iocage_02]
 ok: [iocage_04]
+ok: [iocage_02]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
 ok: [iocage_04]
@@ -51,15 +51,15 @@ ok: [test_113] =>
         inventory_hostname: test_113
         ansible_host: 10.1.0.113
         release: 14.3-RELEASE-p8
-ok: [test_101] => 
-    msg: |-
-        inventory_hostname: test_101
-        ansible_host: 10.1.0.101
-        release: 15.0-RELEASE-p3
 ok: [test_102] => 
     msg: |-
         inventory_hostname: test_102
         ansible_host: 10.1.0.102
+        release: 15.0-RELEASE-p3
+ok: [test_101] => 
+    msg: |-
+        inventory_hostname: test_101
+        ansible_host: 10.1.0.101
         release: 15.0-RELEASE-p3
 ok: [test_103] => 
     msg: |-

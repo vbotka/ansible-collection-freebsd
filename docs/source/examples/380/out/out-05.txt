@@ -10,14 +10,14 @@ included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_i
 included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/custom_image/tasks/fn/postinstall.yml for images.example.com => (item=postinstall)
 
 TASK [vbotka.freebsd.custom_image : Wpasupconf: Configure /mnt3/etc/wpasupplicant.conf] ***
-changed: [images.example.com] => (item=wlan0)
+ok: [images.example.com] => (item=wlan0)
 
 TASK [vbotka.freebsd.custom_image : Wpasupconf: Link to /etc/wpa_supplicant.conf.wlan0] ***
-changed: [images.example.com]
+ok: [images.example.com]
 
 TASK [vbotka.freebsd.custom_image : Rcconf: Configure /mnt3/etc/rc.conf] *******
-changed: [images.example.com] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
-changed: [images.example.com] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
+ok: [images.example.com] => (item={'key': 'wlans_rtwn0', 'value': 'wlan0'})
+ok: [images.example.com] => (item={'key': 'ifconfig_wlan0', 'value': 'WPA SYNCDHCP'})
 
 TASK [Postinstall: Configure.] *************************************************
 included: vbotka.freebsd.postinstall for images.example.com => (item=loader)
@@ -26,27 +26,23 @@ TASK [vbotka.freebsd.postinstall : Loader: Backup orig /mnt3/boot/loader.conf] *
 ok: [images.example.com]
 
 TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /mnt3/boot/loader.conf] ***
-changed: [images.example.com] => (item={'name': 'hw.usb.template', 'value': '3'})
+ok: [images.example.com] => (item={'name': 'hw.usb.template', 'value': '3'})
 ok: [images.example.com] => (item={'name': 'umodem_load', 'value': 'YES'})
 ok: [images.example.com] => (item={'name': 'boot_multicons', 'value': 'YES'})
 ok: [images.example.com] => (item={'name': 'boot_serial', 'value': 'YES'})
 ok: [images.example.com] => (item={'name': 'beastie_disable', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'loader_colo', 'value': 'NO'})
-changed: [images.example.com] => (item={'name': 'legal.realtek.license_ack', 'value': '1'})
+ok: [images.example.com] => (item={'name': 'loader_colo', 'value': 'NO'})
+ok: [images.example.com] => (item={'name': 'legal.realtek.license_ack', 'value': '1'})
 
 TASK [vbotka.freebsd.postinstall : Loader: Configure modules by sysctl /mnt3/boot/loader.conf] ***
-changed: [images.example.com] => (item={'name': 'wlan', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'wlan_wep', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'wlan_ccmp', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'wlan_tkip', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'wlan_amrr', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'rtwn', 'value': 'YES'})
-changed: [images.example.com] => (item={'name': 'if_rtwn_usb', 'value': 'YES'})
-
-RUNNING HANDLER [vbotka.freebsd.postinstall : Loader message reboot] ***********
-ok: [images.example.com] => 
-    msg: '[MESSAGE] Reboot to activate configuration in /boot/loader.conf'
+ok: [images.example.com] => (item={'name': 'wlan', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_wep', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_ccmp', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_tkip', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'wlan_amrr', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'rtwn', 'value': 'YES'})
+ok: [images.example.com] => (item={'name': 'if_rtwn_usb', 'value': 'YES'})
 
 PLAY RECAP *********************************************************************
-images.example.com         : ok=12   changed=5    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+images.example.com         : ok=11   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
 

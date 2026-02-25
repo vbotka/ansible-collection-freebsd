@@ -2,24 +2,24 @@
 PLAY [swarm_sw_01] *************************************************************
 
 TASK [ansible.builtin.command] *************************************************
+changed: [2f6cf965]
 changed: [test_131]
-changed: [91ea8489]
-changed: [972b0a3a]
+changed: [e4c59701]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [972b0a3a] => 
+ok: [2f6cf965] => 
     msg: |-
-        out.stdout: 972b0a3a
-        ansible_host: 10.1.0.219
-        iocage_hooks: ['10.1.0.219']
+        out.stdout: 2f6cf965
+        ansible_host: 10.1.0.228
+        iocage_hooks: ['10.1.0.228']
         iocage_tags:
           swarm: sw_01
           vmm: iocage_04
-ok: [91ea8489] => 
+ok: [e4c59701] => 
     msg: |-
-        out.stdout: 91ea8489
-        ansible_host: 10.1.0.110
-        iocage_hooks: ['10.1.0.110']
+        out.stdout: e4c59701
+        ansible_host: 10.1.0.200
+        iocage_hooks: ['10.1.0.200']
         iocage_tags:
           swarm: sw_01
           vmm: iocage_04
@@ -33,7 +33,7 @@ ok: [test_131] =>
           vmm: iocage_04
 
 PLAY RECAP *********************************************************************
-91ea8489                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-972b0a3a                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2f6cf965                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e4c59701                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_131                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

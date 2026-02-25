@@ -9,17 +9,17 @@ ok: [test_1] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [test_4] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_4
-        iocage_classes: []
-
-        iocage_tags: {}
 ok: [test_2] => 
     msg: |-
         ansible_host: -
         iocage_properties.host_hostuuid: test_2
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [test_4] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_4
         iocage_classes: []
 
         iocage_tags: {}

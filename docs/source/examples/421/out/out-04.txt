@@ -2,33 +2,20 @@
 PLAY [Create SSL certificate.] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-3]
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-3: Temporary failure in name resolution
 
-TASK [Vars: Include OS vars] ***************************************************
-included: vbotka.freebsd.lib for www-3
+Task failed.
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
-ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
-ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
+<<< caused by >>>
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
-ok: [www-3] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
+Failed to connect to the host via ssh: ssh: Could not resolve hostname www-3: Temporary failure in name resolution
 
-TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
-ok: [www-3]
-
-TASK [vbotka.freebsd.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys.] ***
-changed: [www-3] => (item=file:/usr/local/etc/ssl/private/www-3.key CN:www-3)
-changed: [www-3] => (item=file:/usr/local/etc/ssl/private/www.foo.bar.key CN:www.foo.bar)
-
-TASK [vbotka.freebsd.certificate : Cert-openssl-csr: Generate OpenSSL Certificate Signing Request.] ***
-changed: [www-3] => (item= file:/usr/local/etc/ssl/csr/www-3.csr CN:www-3)
-changed: [www-3] => (item= file:/usr/local/etc/ssl/csr/www.foo.bar.csr CN:www.foo.bar)
-
-TASK [vbotka.freebsd.certificate : Cert-openssl-certificate: Generate and/or check OpenSSL certificates.] ***
-changed: [www-3] => (item= file:/usr/local/etc/ssl/certs/www-3.crt CN:www-3)
-changed: [www-3] => (item= file:/usr/local/etc/ssl/certs/www.foo.bar.crt CN:www.foo.bar)
+fatal: [www-3]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
+        www-3: Temporary failure in name resolution'
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-www-3                      : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+www-3                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

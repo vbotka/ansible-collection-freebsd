@@ -6,8 +6,8 @@ ok: [iocage_02]
 ok: [iocage_04]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
-ok: [iocage_04]
 ok: [iocage_02]
+ok: [iocage_04]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
 ok: [iocage_04] => (item=iocage fetch --release 15.0-RELEASE)

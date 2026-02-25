@@ -2,20 +2,20 @@
 PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [7b1ffa9f]
-ok: [f62b11d7]
-ok: [4622f8da]
+ok: [b2b1ef56]
+ok: [fd032233]
+ok: [bdf104a6]
 
 TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for 4622f8da, 7b1ffa9f, f62b11d7
+included: vbotka.freebsd.lib for b2b1ef56, bdf104a6, fd032233
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
-ok: [4622f8da]
-ok: [7b1ffa9f]
-ok: [f62b11d7]
+ok: [b2b1ef56]
+ok: [bdf104a6]
+ok: [fd032233]
 
 TASK [vbotka.freebsd.rsnapshot : Debug] ****************************************
-ok: [4622f8da] => 
+ok: [b2b1ef56] => 
     msg: |-
         rsnapshot_role_version: 2.8.2
         ansible_role_name: vbotka.freebsd.rsnapshot
@@ -47,7 +47,7 @@ ok: [4622f8da] =>
         rsnapshot_config_version: 1.2
         rsnapshot_test: True
         rsnapshot_config_template_test: rsnapshot-test.conf.j2
-ok: [7b1ffa9f] => 
+ok: [bdf104a6] => 
     msg: |-
         rsnapshot_role_version: 2.8.2
         ansible_role_name: vbotka.freebsd.rsnapshot
@@ -79,7 +79,7 @@ ok: [7b1ffa9f] =>
         rsnapshot_config_version: 1.2
         rsnapshot_test: True
         rsnapshot_config_template_test: rsnapshot-test.conf.j2
-ok: [f62b11d7] => 
+ok: [fd032233] => 
     msg: |-
         rsnapshot_role_version: 2.8.2
         ansible_role_name: vbotka.freebsd.rsnapshot
@@ -113,7 +113,7 @@ ok: [f62b11d7] =>
         rsnapshot_config_template_test: rsnapshot-test.conf.j2
 
 PLAY RECAP *********************************************************************
-4622f8da                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-7b1ffa9f                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-f62b11d7                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+b2b1ef56                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+bdf104a6                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+fd032233                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 

@@ -26,7 +26,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '7'
+          iocage_jid: '67'
           iocage_release: 14.3-RELEASE-p8
           iocage_state: up
           iocage_template: ansible_client
@@ -42,7 +42,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '8'
+          iocage_jid: '68'
           iocage_release: 14.3-RELEASE-p8
           iocage_state: up
           iocage_template: ansible_client
@@ -58,7 +58,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '9'
+          iocage_jid: '69'
           iocage_release: 14.3-RELEASE-p8
           iocage_state: up
           iocage_template: ansible_client

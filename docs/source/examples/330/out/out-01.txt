@@ -2,31 +2,6 @@
 PLAY [Iocage fetch releases, create basejail, and clone jails.] ****************
 
 TASK [Debug] *******************************************************************
-ok: [iocage_02] => 
-    msg: |-
-        freebsd_iocage_runner_exec: fetch,create,clone
-        freebsd_iocage_runner_cmd:
-          clone:
-          - cmd: iocage clone ansible_client --name test_111
-            creates: /zroot/iocage/jails/test_111
-          - cmd: iocage clone ansible_client --name test_112
-            creates: /zroot/iocage/jails/test_112
-          - cmd: iocage clone ansible_client --name test_113
-            creates: /zroot/iocage/jails/test_113
-          - cmd: iocage set notes=vmm=iocage_02 test_111
-          - cmd: iocage set ip4_addr=em0|10.1.0.111/24 test_111
-          - cmd: iocage set notes=vmm=iocage_02 test_112
-          - cmd: iocage set ip4_addr=em0|10.1.0.112/24 test_112
-          - cmd: iocage set notes=vmm=iocage_02 test_113
-          - cmd: iocage set ip4_addr=em0|10.1.0.113/24 test_113
-          create:
-          - cmd: iocage create --release 14.3-RELEASE --name ansible_client
-            creates: /zroot/iocage/jails/ansible_client
-          - cmd: iocage set notes=vmm=iocage_02 ansible_client
-          - cmd: iocage set ip4_addr=em0|10.1.0.199/24 ansible_client
-          fetch:
-          - cmd: iocage fetch --release 14.3-RELEASE
-            creates: /zroot/iocage/releases/14.3-RELEASE
 ok: [iocage_04] => 
     msg: |-
         freebsd_iocage_runner_exec: fetch,create,clone
@@ -60,6 +35,31 @@ ok: [iocage_04] =>
           fetch:
           - cmd: iocage fetch --release 15.0-RELEASE
             creates: /iocage/iocage/releases/15.0-RELEASE
+ok: [iocage_02] => 
+    msg: |-
+        freebsd_iocage_runner_exec: fetch,create,clone
+        freebsd_iocage_runner_cmd:
+          clone:
+          - cmd: iocage clone ansible_client --name test_111
+            creates: /zroot/iocage/jails/test_111
+          - cmd: iocage clone ansible_client --name test_112
+            creates: /zroot/iocage/jails/test_112
+          - cmd: iocage clone ansible_client --name test_113
+            creates: /zroot/iocage/jails/test_113
+          - cmd: iocage set notes=vmm=iocage_02 test_111
+          - cmd: iocage set ip4_addr=em0|10.1.0.111/24 test_111
+          - cmd: iocage set notes=vmm=iocage_02 test_112
+          - cmd: iocage set ip4_addr=em0|10.1.0.112/24 test_112
+          - cmd: iocage set notes=vmm=iocage_02 test_113
+          - cmd: iocage set ip4_addr=em0|10.1.0.113/24 test_113
+          create:
+          - cmd: iocage create --release 14.3-RELEASE --name ansible_client
+            creates: /zroot/iocage/jails/ansible_client
+          - cmd: iocage set notes=vmm=iocage_02 ansible_client
+          - cmd: iocage set ip4_addr=em0|10.1.0.199/24 ansible_client
+          fetch:
+          - cmd: iocage fetch --release 14.3-RELEASE
+            creates: /zroot/iocage/releases/14.3-RELEASE
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

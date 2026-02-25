@@ -2,9 +2,9 @@
 PLAY [Test module vbotka.freebsd.service. Get running jails sshd rcvar.] *******
 
 TASK [Get sshd rcvar.] *********************************************************
+ok: [test_131]
 ok: [test_132]
 ok: [test_133]
-ok: [test_131]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [test_131] => 

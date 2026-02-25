@@ -9,17 +9,17 @@ ok: [test_131] =>
         release: 15.0
         release_major: 15
         release_minor: 0
-ok: [test_133] => 
-    msg: |-
-        inventory_hostname: test_133
-        ansible_host: 10.1.0.133
-        release: 15.0
-        release_major: 15
-        release_minor: 0
 ok: [test_132] => 
     msg: |-
         inventory_hostname: test_132
         ansible_host: 10.1.0.132
+        release: 15.0
+        release_major: 15
+        release_minor: 0
+ok: [test_133] => 
+    msg: |-
+        inventory_hostname: test_133
+        ansible_host: 10.1.0.133
         release: 15.0
         release_major: 15
         release_minor: 0

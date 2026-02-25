@@ -59,7 +59,7 @@ ok: [test_111] =>
         pkg_cached: True
         pkg_chroot: UNDEFINED
         pkg_ignore_osver: UNDEFINED
-        pkg_jail: 58
+        pkg_jail: 94
         pkg_pkgsite: UNDEFINED
         pkg_rootdir: UNDEFINED
         pkg_state: UNDEFINED

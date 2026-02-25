@@ -44,6 +44,9 @@ ok: [iocage_04] =>
                         description: expat -- multiple vulnerabilities
                         url: https://vuxml.FreeBSD.org/freebsd/027c6c07-065b-11f1-baae-589cfc023192.html
                     reverse dependencies:
+                    - apache24
+                    - mod_php83
+                    - apr
                     - avahi-app
                     - samba416
                     - sssd2
@@ -65,6 +68,12 @@ ok: [iocage_04] =>
                         description: python -- several security vulnerabilities
                         url: https://vuxml.FreeBSD.org/freebsd/bfe9adc8-0224-11f1-8790-c5fb948922ad.html
                     reverse dependencies:
+                    - py311-acme
+                    - py311-setuptools
+                    - py311-pyrfc3339
+                    - py311-pytz
+                    - py311-josepy
+                    - acme-tiny
                     - py311-iocage
                     - py311-requests
                     - py311-urllib3

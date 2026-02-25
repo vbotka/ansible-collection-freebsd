@@ -2,20 +2,13 @@
 PLAY [Test role vbotka.freebsd.custom_image] ***********************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [images.example.com]
-
-TASK [vbotka.freebsd.custom_image : Download: Create directory /export/images/FreeBSD] ***
-ok: [images.example.com]
-
-TASK [vbotka.freebsd.custom_image : Download: Get checksums] *******************
-changed: [images.example.com] => (item=CHECKSUM.SHA256-FreeBSD-15.0-RELEASE-arm64-aarch64-RPI)
-
-TASK [vbotka.freebsd.custom_image : Download: Read checksums] ******************
-ok: [images.example.com] => (item=CHECKSUM.SHA256-FreeBSD-15.0-RELEASE-arm64-aarch64-RPI)
-
-TASK [vbotka.freebsd.custom_image : Download: Get images] **********************
-changed: [images.example.com] => (item=FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img.xz)
+[ERROR]: Task failed: Data could not be sent to remote host "10.1.0.29". Make sure this host can be reached over ssh:
+fatal: [images.example.com]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Data could not be sent to remote host "10.1.0.29". Make sure this
+        host can be reached over ssh:'
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-images.example.com         : ok=5    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+images.example.com         : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

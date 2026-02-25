@@ -1,14 +1,29 @@
 /usr/local/etc/ssl/
 ├── certs
-│   └── build.example.com.crt
+│   ├── build.example.com.crt
+│   ├── joomla.planx.g2.netng.org.crt
+│   ├── mail.planx.g2.netng.org.crt
+│   ├── nagios.planx.g2.netng.org.crt
+│   ├── planx.g2.netng.org.crt
+│   └── www.planx.g2.netng.org.crt
 ├── crt
 │   └── build.example.com-sk.crt
 ├── csr
 │   ├── build.example.com.csr
-│   └── poudriere.csr
+│   ├── joomla.planx.g2.netng.org.csr
+│   ├── mail.planx.g2.netng.org.csr
+│   ├── nagios.planx.g2.netng.org.csr
+│   ├── planx.g2.netng.org.csr
+│   ├── poudriere.csr
+│   └── www.planx.g2.netng.org.csr
 └── private
     ├── build.example.com-sk.key
     ├── build.example.com.key
-    └── poudriere.key
+    ├── joomla.planx.g2.netng.org.key
+    ├── mail.planx.g2.netng.org.key
+    ├── nagios.planx.g2.netng.org.key
+    ├── planx.g2.netng.org.key
+    ├── poudriere.key
+    └── www.planx.g2.netng.org.key
 
-5 directories, 7 files
+5 directories, 22 files
