@@ -9,6 +9,6 @@ ansible-playbook pb-network.yml -i iocage.ini | tee out/out-04.txt
 ansible-playbook pb-pf.yml -i iocage.ini | tee out/out-05.txt
 ansible-playbook pb-zfs.yml -i iocage.ini | tee out/out-06.txt
 ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_activate -e freebsd_iocage_activate=true -e freebsd_iocage_debug=true | tee out/out-07.txt
-# iocage fetch --release 14.3-RELEASE | tee out/out-08.txt
+# iocage fetch --release 15.0-RELEASE | tee out/out-08.txt
 ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity | tee out/out-09.txt
 ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb-all.yml -i iocage.ini | tee out/out-10.txt

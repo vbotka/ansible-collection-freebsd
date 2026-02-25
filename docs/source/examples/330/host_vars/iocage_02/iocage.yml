@@ -6,11 +6,11 @@ properties:
   notes: "vmm={{ inventory_hostname }}"
 
 fetch:
-  - 14.2-RELEASE
+  - 14.3-RELEASE
 
 basejails:
   - name: ansible_client
-    release: 14.2-RELEASE
+    release: 14.3-RELEASE
     properties:
       ip4_addr: 'em0|10.1.0.199/24'
 

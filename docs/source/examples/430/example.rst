@@ -64,9 +64,12 @@ Requirements
 Notes
 ^^^^^
 
-* ``iocage`` property ``host_hostname`` provides "The hostname of the jail.". Please note that ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
+* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
 
-* In case of DHCP, ``host_hostname`` resolves, however ``--name`` does not.
+* ``iocage`` property ``host_hostname`` provides "The hostname of the jail. Default: UUID".
+
+* Make sure DHCP and dynamic DNS are configured so that ``host_hostname`` and
+  ``--name`` resolve.
 
 .. seealso::
 

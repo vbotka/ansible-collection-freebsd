@@ -7,8 +7,8 @@ shopt -s globstar
 export VBOTKA_FREEBSD_BATCH=true
 
 # VBOTKA_FREEBSD_COPY_ORIG=false
-VBOTKA_FREEBSD_DESTROY_JAILS=false
-VBOTKA_FREEBSD_DESTROY_TEMPLATES=false
+# VBOTKA_FREEBSD_DESTROY_JAILS=false
+# VBOTKA_FREEBSD_DESTROY_TEMPLATES=false
 # VBOTKA_FREEBSD_RUN_BATCH=false
 
 copy_orig="${VBOTKA_FREEBSD_COPY_ORIG:-true}"
@@ -40,7 +40,7 @@ fi
 if [[ $destroy_templates == true ]]; then
     ssh admin@$iocage_01 "echo admin | sudo -S iocage destroy -f ansible_client"
     ssh admin@$iocage_02 sudo iocage destroy -f ansible_client
-    ssh admin@$iocage_03 sudo iocage destroy -f ansible_client
+#   ssh admin@$iocage_03 sudo iocage destroy -f ansible_client
     ssh admin@$iocage_04 sudo iocage destroy -f ansible_client
 fi
 

@@ -76,10 +76,10 @@ ok: [test_133] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/test_133/data
         jail_zfs_mountpoint: none
-        last_started: '2025-09-22 13:55:46'
+        last_started: '2026-02-24 21:58:41'
         localhost_ip: none
         login_flags: -f root
-        mac_prefix: 021b21
+        mac_prefix: 5a9cfc
         maxproc: 'off'
         memorylocked: 'off'
         memoryuse: 'off'
@@ -113,7 +113,7 @@ ok: [test_133] =>
         quota: none
         readbps: 'off'
         readiops: 'off'
-        release: 14.3-RELEASE-p1
+        release: 15.0-RELEASE-p3
         reservation: none
         resolver: /etc/resolv.conf
         rlimits: 'off'
@@ -135,7 +135,7 @@ ok: [test_133] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: 021b21882ebc 021b21882ebd
+        vnet0_mac: 5a9cfc882ebc 5a9cfc882ebd
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto

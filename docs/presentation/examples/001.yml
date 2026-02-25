@@ -1,0 +1,9 @@
+1:
+  example: '001'
+  name: Install iocage
+  case: |
+    Use the role ``vbotka.freebsd.iocage`` to install the package ``iocage``.
+  requirements:
+    - root privilege in the managed nodes
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/001
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/001/example.html

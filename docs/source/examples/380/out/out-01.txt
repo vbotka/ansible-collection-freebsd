@@ -7,16 +7,16 @@ ok: [images.example.com]
 TASK [vbotka.freebsd.custom_image : Debug cimage_debug=true] *******************
 ok: [images.example.com] => 
     msg: |-
-        cimage_role_version: 2.8.0
+        cimage_role_version: 2.8.1
         ansible_role_name: vbotka.freebsd.custom_image
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        ansible_architecture: amd64
-        ansible_os_family: FreeBSD
-        ansible_distribution: FreeBSD
-        ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.3
-        ansible_distribution_release: 14.3-RELEASE
-        ansible_python_version: 3.11.12
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.0
+        ansible_facts.distribution_release: 15.0-RELEASE-p1
+        ansible_facts.python_version: 3.11.14
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_sanity: False
         cimage_sanity_quiet: True
@@ -34,9 +34,9 @@ ok: [images.example.com] =>
         cimage_mode: UNDEFINED
         cimage_mode_dir: UNDEFINED
         cimage_download_images:
-          - checksum: CHECKSUM.SHA512-FreeBSD-13.5-RELEASE-arm-armv6-RPI-B
-            image: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img.xz
-            site: https://download.freebsd.org/releases/arm/armv6/ISO-IMAGES/13.5
+          - checksum: CHECKSUM.SHA256-FreeBSD-15.0-RELEASE-arm64-aarch64-RPI
+            image: FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img.xz
+            site: https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/15.0
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_unpack_cmd:
@@ -44,7 +44,7 @@ ok: [images.example.com] =>
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         cimage_mount_path: /mnt3
-        cimage_mount_file: FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img
+        cimage_mount_file: FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img
         cimage_mount_mode: 0755
         cimage_mount_points_create: False
         cimage_mount_points:

@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: Display vars.
+    - name: Display vars.  # noqa: run-once
       when: debug | d(false) | bool
       vars:
         project_jails_present: "{{ project | intersect(groups.all) }}"
@@ -31,7 +31,7 @@
           when: iocage_jails_absent | length == 0
           ansible.builtin.meta: end_host
 
-        - name: Create jails.
+        - name: Create jails.  # noqa: no-changed-when
           register: out
           ansible.builtin.command: >
             iocage create
@@ -40,7 +40,7 @@
             --count {{ iocage_jails_absent | length }}
             {{ properties }}
 
-        - name: Set notes.
+        - name: Set notes.  # noqa: no-changed-when
           vars:
             alias: "{{ iocage_jails_absent[idx] }}"
             iocage_tags: >-
@@ -74,12 +74,13 @@
             dest: "/{{ out_pool.stdout }}/iocage/jails/{{ item }}/root/var/db/iocage-tags.yml"
             content: |
               {{ iocage_tags | to_yaml }}
+            mode: '0644'
           loop: "{{ iocage_jails_created }}"
           loop_control:
             index_var: idx
             label: "{{ alias }} {{ iocage_tags }}"
 
-        - name: Start created jails.
+        - name: Start created jails.  # noqa: no-changed-when
           ansible.builtin.command: >
             iocage start
             {{ iocage_jails_created | join(' ') }}

@@ -31,7 +31,7 @@ ok: [iocage_01] =>
           logserv: [logserv_1]
 
         groups.all: ['test_1', 'logserv_1', 'test_2', 'http_1', 'db_1', 'test_4', 'http_2', 'db_2', 'iocage_01', 'iocage_02', 'iocage_04']
-        project_jails_present: ['http_1', 'logserv_1', 'db_1', 'db_2', 'http_2']
+        project_jails_present: ['db_1', 'http_2', 'logserv_1', 'db_2', 'http_1']
 
 TASK [Stop jails.] *************************************************************
 changed: [iocage_01]

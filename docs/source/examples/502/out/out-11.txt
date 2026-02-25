@@ -1,1 +1,0 @@
-git_daemon is running as pid 1660.

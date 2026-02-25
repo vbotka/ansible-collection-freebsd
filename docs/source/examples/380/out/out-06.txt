@@ -20,7 +20,7 @@ TASK [vbotka.freebsd.lib : Al_mdconfig: Create empty memory disks dictionary.] *
 ok: [images.example.com]
 
 TASK [vbotka.freebsd.lib : Al_mdconfig: Parse memory disks.] *******************
-ok: [images.example.com] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img	)
+ok: [images.example.com] => (item=md0	vnode	 5120M	/export/images/FreeBSD/FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img	-	)
 
 TASK [vbotka.freebsd.lib : Al_mdconfig: Detach memory disk.] *******************
 changed: [images.example.com]

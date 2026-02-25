@@ -6,43 +6,43 @@ ok: [ansible_client] =>
     msg: |-
         inventory_hostname: ansible_client
         ansible_host: 10.1.0.198
-        release: 14.3
+        release: 15.0
         iocage_tags: {'vmm': 'iocage_04'}
 ok: [test_111] => 
     msg: |-
         inventory_hostname: test_111
         ansible_host: 10.1.0.111
-        release: 14.2
+        release: 14.3
         iocage_tags: {'vmm': 'iocage_02'}
 ok: [test_112] => 
     msg: |-
         inventory_hostname: test_112
         ansible_host: 10.1.0.112
-        release: 14.2
+        release: 14.3
         iocage_tags: {'vmm': 'iocage_02'}
 ok: [test_113] => 
     msg: |-
         inventory_hostname: test_113
         ansible_host: 10.1.0.113
-        release: 14.2
+        release: 14.3
         iocage_tags: {'vmm': 'iocage_02'}
 ok: [test_131] => 
     msg: |-
         inventory_hostname: test_131
         ansible_host: 10.1.0.131
-        release: 14.3
+        release: 15.0
         iocage_tags: {'vmm': 'iocage_04'}
 ok: [test_132] => 
     msg: |-
         inventory_hostname: test_132
         ansible_host: 10.1.0.132
-        release: 14.3
+        release: 15.0
         iocage_tags: {'vmm': 'iocage_04'}
 ok: [test_133] => 
     msg: |-
         inventory_hostname: test_133
         ansible_host: 10.1.0.133
-        release: 14.3
+        release: 15.0
         iocage_tags: {'vmm': 'iocage_04'}
 
 TASK [debug] *******************************************************************
@@ -50,8 +50,8 @@ ok: [ansible_client] =>
     msg: |-
         groups:
           all: [ansible_client, test_111, test_112, test_113, test_131, test_132, test_133]
-          distro_02_14_2_RELEASE_p3: [ansible_client, test_111, test_112, test_113]
-          distro_04_14_3_RELEASE_p1: [ansible_client, test_131, test_132, test_133]
+          distro_02_14_3_RELEASE_p8: [ansible_client, test_111, test_112, test_113]
+          distro_04_15_0_RELEASE_p3: [ansible_client, test_131, test_132, test_133]
           state_02_down: [ansible_client, test_111, test_112, test_113]
           state_04_down: [ansible_client, test_131, test_132, test_133]
           test_02: [test_111, test_112, test_113]

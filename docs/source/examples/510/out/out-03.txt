@@ -2,41 +2,33 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_4] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_4
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [db_3] => 
-    msg: |-
-        ansible_host: 10.1.0.141
-        iocage_properties.host_hostuuid: 3233c75a
-        iocage_classes: [logclient, db]
-
-        iocage_tags: {alias: db_3, class: 'logclient,db', vmm: iocage_04}
 ok: [http_3] => 
     msg: |-
-        ansible_host: 10.1.0.139
-        iocage_properties.host_hostuuid: 9c489877
+        ansible_host: 10.1.0.207
+        iocage_properties.host_hostuuid: 49646fd0
         iocage_classes: [logclient, http]
 
         iocage_tags: {alias: http_3, class: 'logclient,http', vmm: iocage_04}
+ok: [db_3] => 
+    msg: |-
+        ansible_host: 10.1.0.202
+        iocage_properties.host_hostuuid: e5f7d10b
+        iocage_classes: [logclient, db]
+
+        iocage_tags: {alias: db_3, class: 'logclient,db', vmm: iocage_04}
 
 TASK [debug] *******************************************************************
-ok: [test_4] => 
+ok: [http_3] => 
     msg: |-
-        all: ['test_4', 'db_3', 'http_3']
+        all: ['http_3', 'db_3']
         ungrouped: []
-        state_up: ['test_4', 'db_3', 'http_3']
-        db: ['db_3']
-        logclient: ['db_3', 'http_3']
-        vmm_iocage_04: ['db_3', 'http_3']
         http: ['http_3']
+        logclient: ['http_3', 'db_3']
+        state_up: ['http_3', 'db_3']
+        vmm_iocage_04: ['http_3', 'db_3']
+        db: ['db_3']
 
 PLAY RECAP *********************************************************************
 db_3                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-http_3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_4                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+http_3                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

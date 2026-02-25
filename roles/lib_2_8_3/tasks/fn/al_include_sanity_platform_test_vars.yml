@@ -1,0 +1,20 @@
+---
+# All rights reserved (c) 2020-2026, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Al_include_sanity_platform_test_vars: Set al_sanity_platform_test"
+  ansible.builtin.set_fact:
+    al_sanity_platform_test: "{{ ansible_facts.distribution }}"
+
+- name: "Al_include_sanity_platform_test_vars: Set al_sanity_platform_version_test"
+  ansible.builtin.set_fact:
+    al_sanity_platform_version_test: "{{ ansible_facts.distribution_release }}"
+
+- name: "Al_include_sanity_platform_test_vars: Set al_sanity_platform_version_test"
+  when: al_sanity_platform_test == 'FreeBSD'
+  ansible.builtin.set_fact:
+    al_sanity_platform_version_test: "{{ ansible_facts.distribution_version }}"
+
+# EOF
+...

@@ -7,28 +7,35 @@ ok: [iocage_04]
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     out.stdout: |-
-        FreeBSD {
+        FreeBSD-ports {
             url = "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly";
             mirror_type = "srv";
             signature_type = "fingerprints";
             fingerprints = "/usr/share/keys/pkg";
             enabled = true;
         }
-        FreeBSD-kmods {
+        FreeBSD-ports-kmods {
             url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
             mirror_type = "srv";
             signature_type = "fingerprints";
             fingerprints = "/usr/share/keys/pkg";
             enabled = true;
         }
+        FreeBSD-base {
+            url = "pkg+https://pkg.FreeBSD.org/${ABI}/base_release_${VERSION_MINOR}";
+            mirror_type = "srv";
+            signature_type = "fingerprints";
+            fingerprints = "/usr/share/keys/pkgbase-${VERSION_MAJOR}";
+            enabled = true;
+        }
 
-TASK [Get FreeBSD repository url.] *********************************************
+TASK [Get FreeBSD-base repository url.] ****************************************
 ok: [iocage_04]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     out.stdout: |-
-        "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly"
+        "pkg+https://pkg.FreeBSD.org/${ABI}/base_release_${VERSION_MINOR}"
 
 PLAY RECAP *********************************************************************
 iocage_04                  : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

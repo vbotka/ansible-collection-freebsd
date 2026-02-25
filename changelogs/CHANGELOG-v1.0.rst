@@ -5,6 +5,29 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.2
+=====
+
+Release Summary
+---------------
+Upgrade to Ansible 2.20. Supported versions 13.5, 14.3, and 15.0
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Upgrade roles: apache 2.8.1, iocage 1.2.0, lib 2.8.3, network 2.8.3,
+  pf 2.8.1, postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2, packages
+  2.8.1, config_light 2.8.3, custom_image 2.8.1, poudriere 2.8.1,
+  certificate 2.8.1
+* Update ansible-lint local config.
+* Fix or ignore ansible-lint warnings.
+* Update docs examples. Disable examples 321, 361, and 502
+* Update playbooks.
+* Add docs presentation.
+
+
 0.8.1
 =====
 

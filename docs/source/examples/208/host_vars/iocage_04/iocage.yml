@@ -4,7 +4,7 @@ freebsd_iocage_mount: /iocage/iocage
 
 templates:
   ansible_client_pull:
-    release: 14.3-RELEASE
+    release: 15.0-RELEASE
     properties:
       bpf: 1
       dhcp: 1

@@ -2,37 +2,20 @@
 PLAY [Create Apache HTTP Server.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [www-4]
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-4: Temporary failure in name resolution
 
-TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for www-4
+Task failed.
 
-TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/apache/vars/defaults] ***
-ok: [www-4]
+<<< caused by >>>
 
-TASK [vbotka.freebsd.apache : Httpd-conf: Configure parameters in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-4] => (item={'regexp': 'ServerName', 'line': 'www-4'})
-changed: [www-4] => (item={'regexp': 'ServerAdmin', 'line': 'admin@www-4'})
-changed: [www-4] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
+Failed to connect to the host via ssh: ssh: Could not resolve hostname www-4: Temporary failure in name resolution
 
-TASK [vbotka.freebsd.apache : Httpd-dirs: Configure directories in /usr/local/etc/apache24/Includes/] ***
-changed: [www-4] => (item=/usr/local/www/apache24/data/)
-
-TASK [vbotka.freebsd.apache : Httpd-modules: Load modules in /usr/local/etc/apache24/httpd.conf] ***
-changed: [www-4] => (item={'module': 'php_module', 'mod': 'libphp.so'})
-
-TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
-changed: [www-4]
-
-RUNNING HANDLER [vbotka.freebsd.apache : Enable and start vbotka.freebsd.apache] ***
-changed: [www-4]
-
-RUNNING HANDLER [vbotka.freebsd.apache : Restart vbotka.freebsd.apache] ********
-changed: [www-4]
-
-RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
-ok: [www-4]
+fatal: [www-4]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
+        www-4: Temporary failure in name resolution'
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-www-4                      : ok=10   changed=6    unreachable=0    failed=0    skipped=33   rescued=0    ignored=0   
+www-4                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

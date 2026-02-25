@@ -1,0 +1,69 @@
+---
+# defaults for freebsd_network
+fn_role_version: 2.8.3
+
+fn_debug: false
+fn_backup_conf: false
+
+# rc.conf.d - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_rcconfd: false
+fn_rcconfd_dir: /etc/rc.conf.d
+
+# interfaces - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_wlans: []
+fn_interfaces: []
+fn_aliases: []
+
+# cloned_interfaces - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# loopback, bridge, lagg, carp
+fn_cloned_interfaces: []
+
+# routing - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_gateway_enable: false
+fn_defaultrouter: ""
+
+# To enable routing, set the sysctl(8) variable net.inet.ip.forwarding
+# to 1. To stop routing, reset this variable to 0. (31.2.2)
+
+fn_static_routes: []
+fn_static_routes_present: "{{ fn_static_routes |
+                              community.general.json_query('[?&(state || `present`) == `present`]') }}"
+fn_static_routes_list: "{{ fn_static_routes_present | map(attribute='name') | join(' ') }}"
+
+# ethname - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_ethname: false
+fn_ethname_enable: false
+fn_ethname_cmd_enable: false
+fn_ethname_cmd: stop
+fn_ethname_install: false
+fn_ethname_pkg:
+  - sysutils/ethname
+fn_ethname_names: []
+fn_ethname_name_mac: {}
+fn_ethname_name_mac_remove: []
+
+# pkgng - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_pkg_install_retries: 3
+fn_pkg_install_delay: 5
+# fn_pkg_cached: false
+# fn_pkg_use_globs: false
+
+# dynamic configuration by a cloud provider - - - - - - - - - - - - - - - - - - - - - - -
+
+fn_defaultrouter_dynamic: false
+fn_ipv6_defaultrouter_dynamic: false
+fn_ipv6_activate_all_interfaces_dynamic: false
+
+# handlers - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# The command 'service netif restart && service routing restart` returns rc=1. Wait for 5
+# seconds between the commands. See the handler 'Restart netif and routing'.
+fn_netif_sleep: 5
+
+# EOF

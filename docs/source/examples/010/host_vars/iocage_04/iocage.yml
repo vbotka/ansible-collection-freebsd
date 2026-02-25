@@ -1,9 +1,9 @@
 fetch:
-  - 14.3-RELEASE
+  - 15.0-RELEASE
 
 basejails:
   - name: ansible_client
-    release: 14.3-RELEASE
+    release: 15.0-RELEASE
 
 clones:
   - name: test_131

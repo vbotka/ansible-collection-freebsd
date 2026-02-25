@@ -11,7 +11,7 @@ all:
             msg: '-'
           iocage_ip6: '-'
           iocage_jid: None
-          iocage_release: 14.2-RELEASE-p3
+          iocage_release: 14.3-RELEASE-p8
           iocage_state: down
           iocage_template: '-'
           iocage_type: jail
@@ -26,8 +26,8 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '251'
-          iocage_release: 14.2-RELEASE-p3
+          iocage_jid: '67'
+          iocage_release: 14.3-RELEASE-p8
           iocage_state: up
           iocage_template: ansible_client
           iocage_type: jail
@@ -42,8 +42,8 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '252'
-          iocage_release: 14.2-RELEASE-p3
+          iocage_jid: '68'
+          iocage_release: 14.3-RELEASE-p8
           iocage_state: up
           iocage_template: ansible_client
           iocage_type: jail
@@ -58,8 +58,8 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '253'
-          iocage_release: 14.2-RELEASE-p3
+          iocage_jid: '69'
+          iocage_release: 14.3-RELEASE-p8
           iocage_state: up
           iocage_template: ansible_client
           iocage_type: jail

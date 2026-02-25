@@ -11,11 +11,11 @@ ok: [test_112] =>
 ok: [test_113] => 
     iocage_ip4: '-'
 ok: [test_131] => 
-    iocage_ip4: 10.1.0.206
+    iocage_ip4: 10.1.0.224
 ok: [test_132] => 
-    iocage_ip4: 10.1.0.167
+    iocage_ip4: 10.1.0.185
 ok: [test_133] => 
-    iocage_ip4: 10.1.0.207
+    iocage_ip4: 10.1.0.225
 
 TASK [debug] *******************************************************************
 ok: [ansible_client] => 

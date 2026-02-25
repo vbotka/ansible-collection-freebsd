@@ -1,5 +1,5 @@
 properties:
-  notes: "vmm={{ inventory_hostname }}"
+  notes: "vmm={{ inventory_hostname }} alias=www-1 class=http"
   bpf: 1
   dhcp: 1
   vnet: 1

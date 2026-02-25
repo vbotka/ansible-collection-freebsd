@@ -1,22 +1,22 @@
-Status: Disabled for 0 days 00:00:05          Debug: Urgent
+Status: Disabled for 0 days 00:00:04          Debug: Urgent
 
 Interface Stats for bridge0           IPv4             IPv6
-  Bytes In                       169728082                0
-  Bytes Out                       21009745                0
+  Bytes In                               0                0
+  Bytes Out                              0                0
   Packets In
-    Passed                          164375                0
-    Blocked                            437                0
+    Passed                          233387              987
+    Blocked                            394                0
   Packets Out
-    Passed                          161705                0
-    Blocked                             16                0
+    Passed                               0                0
+    Blocked                         174948                0
 
 State Table                          Total             Rate
-  current entries                       11               
-  searches                          330544        66108.8/s
-  inserts                             2054          410.8/s
-  removals                            2043          408.6/s
+  current entries                      164               
+  searches                          426626       106656.5/s
+  inserts                             8549         2137.2/s
+  removals                            8385         2096.2/s
 Counters
-  match                               2919          583.8/s
+  match                              12205         3051.2/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s
@@ -24,11 +24,12 @@ Counters
   memory                                 0            0.0/s
   bad-timestamp                          0            0.0/s
   congestion                             0            0.0/s
-  ip-option                             32            6.4/s
-  proto-cksum                           15            3.0/s
-  state-mismatch                         0            0.0/s
+  ip-option                            107           26.8/s
+  proto-cksum                          872          218.0/s
+  state-mismatch                         6            1.5/s
   state-insert                           0            0.0/s
   state-limit                            0            0.0/s
   src-limit                              0            0.0/s
   synproxy                               0            0.0/s
   map-failed                             0            0.0/s
+  translate                              0            0.0/s

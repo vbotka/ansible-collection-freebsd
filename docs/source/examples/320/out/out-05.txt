@@ -2,44 +2,32 @@
 PLAY [Test role vbotka.freebsd.packages] ***************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [8b8f7747]
-ok: [test_112]
 ok: [test_113]
-ok: [9d271b5e]
+ok: [test_112]
 ok: [test_111]
 
 TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
-ok: [8b8f7747]
-ok: [9d271b5e]
 ok: [test_111]
 ok: [test_112]
 ok: [test_113]
 
 TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
-ok: [test_112]
-ok: [9d271b5e]
-ok: [test_111]
 ok: [test_113]
-ok: [8b8f7747]
+ok: [test_112]
+ok: [test_111]
 
 TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
-ok: [8b8f7747]
-ok: [9d271b5e]
 ok: [test_111]
 ok: [test_112]
 ok: [test_113]
 
 TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
-ok: [test_113 -> iocage_02(10.1.0.73)]
 ok: [test_112 -> iocage_02(10.1.0.73)]
-ok: [9d271b5e -> iocage_02(10.1.0.73)]
+ok: [test_113 -> iocage_02(10.1.0.73)]
 ok: [test_111 -> iocage_02(10.1.0.73)]
-ok: [8b8f7747 -> iocage_02(10.1.0.73)]
 
 PLAY RECAP *********************************************************************
-8b8f7747                   : ok=5    changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
-9d271b5e                   : ok=5    changed=0    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
-test_111                   : ok=5    changed=0    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+test_111                   : ok=5    changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
 test_112                   : ok=5    changed=0    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
 test_113                   : ok=5    changed=0    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
 

@@ -10,18 +10,18 @@ changed: [iocage_02] => (item=test_112 ansible_client)
 changed: [iocage_02] => (item=test_113 ansible_client)
 
 TASK [Display lists of bases, plugins, templates, and jails.] ******************
+ok: [iocage_04] => 
+    msg: |-
+        releases: ['14.3-RELEASE', '15.0-RELEASE']
+        plugins: []
+        templates: ['ansible_client_apache', 'ansible_client_pull']
+        jails: ['ansible_client', 'test_131', 'test_132', 'test_133']
 ok: [iocage_02] => 
     msg: |-
         releases: ['14.2-RELEASE', '14.3-RELEASE']
         plugins: []
         templates: []
         jails: ['ansible_client', 'test_111', 'test_112', 'test_113']
-ok: [iocage_04] => 
-    msg: |-
-        releases: ['14.3-RELEASE']
-        plugins: []
-        templates: ['ansible_client_apache', 'ansible_client_pull']
-        jails: ['ansible_client', 'test_131', 'test_132', 'test_133']
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

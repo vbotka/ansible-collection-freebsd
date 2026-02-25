@@ -1,0 +1,39 @@
+freebsd_iocage_pool: iocage
+freebsd_iocage_pool_mount: /iocage
+freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
+
+properties:
+  vnet: 'on'
+  defaultrouter: 10.1.0.10
+  notes: "vmm={{ inventory_hostname }}"
+
+fetch:
+  - 15.0-RELEASE
+
+basejails:
+  - name: ansible_client
+    release: 15.0-RELEASE
+    properties:
+      vnet: 1
+      defaultrouter: 10.1.0.10
+      ip4_addr: 'vnet0|10.1.0.198/24'
+
+clones:
+  - name: test_101
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.101/24'
+  - name: test_102
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.102/24'
+  - name: test_103
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.103/24'
+
+start:
+  - test_103
+
+# In production, put the password into the vault.
+ansible_become_password: admin

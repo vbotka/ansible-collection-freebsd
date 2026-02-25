@@ -1,11 +1,11 @@
 +------+----------------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 | JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
 +======+================+======+=======+======+=================+====================+=====+================+==========+
-| None | ansible_client | off  | down  | jail | 14.2-RELEASE-p3 | -                  | -   | -              | yes      |
+| None | ansible_client | off  | down  | jail | 14.3-RELEASE-p8 | -                  | -   | -              | yes      |
 +------+----------------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-| 251  | test_111       | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.174 | -   | ansible_client | yes      |
+| 67   | test_111       | off  | up    | jail | 14.3-RELEASE-p8 | epair0b|10.1.0.174 | -   | ansible_client | yes      |
 +------+----------------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-| None | test_112       | off  | down  | jail | 14.2-RELEASE-p3 | DHCP (not running) | -   | ansible_client | yes      |
+| None | test_112       | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | yes      |
 +------+----------------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-| None | test_113       | off  | down  | jail | 14.2-RELEASE-p3 | DHCP (not running) | -   | ansible_client | yes      |
+| None | test_113       | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | yes      |
 +------+----------------+------+-------+------+-----------------+--------------------+-----+----------------+----------+

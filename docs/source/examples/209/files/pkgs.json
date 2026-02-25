@@ -10,6 +10,6 @@
         "security/sudo",
         "shells/bash",
         "www/apache24",
-        "www/mod_php83"
+        "www/mod_php84"
     ]
 }

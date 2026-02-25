@@ -1,0 +1,10 @@
+Presentation
+============
+
+Create slides.md
+----------------
+(penv) > ansible-playbook pb-slides.yml
+
+Create slides.pdf
+-----------------
+(penv) > pandoc -s -t beamer -o slides.pdf slides.md meta.yml

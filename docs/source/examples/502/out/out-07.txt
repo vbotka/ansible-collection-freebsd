@@ -2,47 +2,20 @@
 PLAY [Create Branch Server.] ***************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [branch-server.example.com]
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname branch-server.example.com: No address associated with hostname
 
-TASK [vbotka.freebsd.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com] ***
-ok: [branch-server.example.com -> localhost]
+Task failed.
 
-TASK [vbotka.freebsd.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/packagesd.branch-server.example.com to cl_packagesd_items] ***
-ok: [branch-server.example.com]
+<<< caused by >>>
 
-TASK [vbotka.freebsd.config_light : Vars-packages: Combine cl_packages with cl_packagesd_items.] ***
-ok: [branch-server.example.com]
+Failed to connect to the host via ssh: ssh: Could not resolve hostname branch-server.example.com: No address associated with hostname
 
-TASK [vbotka.freebsd.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com] ***
-ok: [branch-server.example.com -> localhost]
-
-TASK [vbotka.freebsd.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/statesd.branch-server.example.com to cl_statessd_items] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.config_light : Vars-states: Combine cl_statess with cl_statesd_items.] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com] ***
-ok: [branch-server.example.com -> localhost]
-
-TASK [vbotka.freebsd.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/servicesd.branch-server.example.com to cl_cervicesd_items] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.config_light : Vars-services: Combine cl_services with cl_servicesd_items.] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com] ***
-ok: [branch-server.example.com -> localhost]
-
-TASK [vbotka.freebsd.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/502/conf-light/assemble/filesd.branch-server.example.com to cl_filesd_items] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_items.] ***
-ok: [branch-server.example.com]
-
-TASK [vbotka.freebsd.config_light : States: Apply file states.] ****************
-ok: [branch-server.example.com] => (item=/usr/local/var/db/git)
+fatal: [branch-server.example.com]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
+        branch-server.example.com: No address associated with hostname'
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-branch-server.example.com  : ok=14   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+branch-server.example.com  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

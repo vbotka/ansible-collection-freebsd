@@ -4,6 +4,8 @@ PLAY [Create and start project jails.] *****************************************
 TASK [Display vars.] ***********************************************************
 ok: [iocage_01] => 
     msg: |-
+        project_template: ansible_client
+        project_create_iocage_tags: False
         vmm:
           iocage_01:
             logserv_1:
@@ -32,7 +34,7 @@ ok: [iocage_01] =>
 
         groups.all: ['test_1', 'test_2', 'test_4', 'iocage_01', 'iocage_02', 'iocage_04']
         project_jails_present: []
-        project_jails_absent: ['http_1', 'http_2', 'db_2', 'db_1', 'logserv_1']
+        project_jails_absent: ['http_1', 'db_1', 'http_2', 'logserv_1', 'db_2']
 
 TASK [Create jails.] ***********************************************************
 changed: [iocage_04]
@@ -52,7 +54,7 @@ changed: [iocage_04]
 changed: [iocage_02]
 
 PLAY RECAP *********************************************************************
-iocage_01                  : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_02                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_04                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_01                  : ok=4    changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_02                  : ok=3    changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

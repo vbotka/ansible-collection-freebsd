@@ -1,0 +1,59 @@
+---
+title: FreeBSD Jails Orchestration with Ansible
+subtitle: Tutorial with examples
+author:
+- Vladimir Botka
+# date: March, 2026
+keywords: [ansible, freebsd, iocage, jails]
+beamer_class: beamer
+
+toc: true
+toc-title: |
+  Contents
+# toc-depth: 3
+
+# linkstyle: bold
+
+# fonttheme: professionalfonts
+fontsize: 10pt
+mainfont: Caladea # Note: Set these to any fonts you have on your system.
+sansfont: Carlito
+monofont: Ubuntu Mono
+
+# theme: "boxes"
+theme: "Boadilla"
+colortheme: default
+# colortheme: "orchid" # Example color theme
+# colorthemeoptions:
+#  - "mint"
+#  - "shadow"
+
+# Source - https://stackoverflow.com/q/64732807
+# Posted by Lucas, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-11-24, License - CC BY-SA 4.0
+header-includes: |
+    ```{=latex}
+    \setbeamertemplate{frametitle continuation}[from second]
+    % more stuff
+    ```
+
+# format:
+#   beamer:
+#     header-includes: |
+#        \usefonttheme[stillsansseriflarge]{serif}
+#     keep-tex: true
+
+# geometry: a4paper,landscape,margin=2cm
+# abstract: |
+#   This is the abstract.
+
+# The standard colors available with the xcolor package typically
+# include: red, green, blue, cyan, magenta, yellow, black, gray,
+# white, darkgray, lightgray, brown, lime, olive, orange, pink,
+# purple, teal, and violet
+urlcolor: red
+# linkcolor: darkgray
+linkcolor: blue
+# citecolor: red
+# toccilor: red
+...

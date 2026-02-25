@@ -7,7 +7,7 @@
 
   tasks:
 
-    - name: Display vars.
+    - name: Display vars.  # noqa: run-once
       when: debug | bool
       vars:
         project_jails_present: "{{ project | intersect(groups.all) }}"
@@ -31,12 +31,12 @@
           when: iocage_jails_present | length == 0
           ansible.builtin.meta: end_host
 
-        - name: Stop jails.
-          command: >
+        - name: Stop jails.  # noqa: no-changed-when
+          ansible.builtin.command: >
             iocage stop
             {{ uuids | join(' ') }}
 
-        - name: Destroy jails.
+        - name: Destroy jails.  # noqa: no-changed-when
           ansible.builtin.command: >
             iocage destroy
             --force

@@ -13,76 +13,25 @@ ok: [iocage_04] =>
         start_cmd: onestart
 
 TASK [Start apcupsd. By default wait 500ms to complete the command.] ***********
-ok: [iocage_04]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_04] => 
-    out:
-        changed: false
-        failed: false
-        onestart: apcupsd already running?  (pid=37341).
-        rc: 0
-        stderr: |-
-            apcupsd already running?  (pid=37341).
-        stderr_lines:
-        - apcupsd already running?  (pid=37341).
-        stdout: ''
-        stdout_lines: []
-
-TASK [Get apcupsd status.] *****************************************************
-ok: [iocage_04]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_04] => 
-    out:
-        changed: false
-        failed: false
-        rc: 0
-        status: running
-        stderr: ''
-        stderr_lines: []
-        stdout: |-
-            apcupsd is running as pid 37341.
-        stdout_lines:
-        - apcupsd is running as pid 37341.
-
-TASK [Stop apcupsd. By default wait 500ms to complete the command.] ************
 changed: [iocage_04]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     out:
         changed: true
-        failed: false
-        rc: 0
-        state:
-            post: |-
-                apcupsd is not running.
-            pre: |-
-                apcupsd is running as pid 37341.
-        stderr: ''
-        stderr_lines: []
-        stdout: |-
-            Stopping apcupsd.
-            Waiting for PIDS: 37341.
-        stdout_lines:
-        - Stopping apcupsd.
-        - 'Waiting for PIDS: 37341.'
-        stop: 'Waiting for PIDS: 37341'
-
-TASK [Start apcupsd. Wait 200ms to complete the command.] **********************
-changed: [iocage_04]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_04] => 
-    out:
-        changed: true
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
         failed: false
         onestart: Starting apcupsd.
         rc: 0
         state:
             post: |-
-                apcupsd is running as pid 82239.
+                apcupsd is running as pid 86133.
             pre: |-
                 apcupsd is not running.
         stderr: ''
@@ -99,15 +48,101 @@ TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_04] => 
     out:
         changed: false
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
         failed: false
         rc: 0
         status: running
         stderr: ''
         stderr_lines: []
         stdout: |-
-            apcupsd is running as pid 82239.
+            apcupsd is running as pid 86133.
         stdout_lines:
-        - apcupsd is running as pid 82239.
+        - apcupsd is running as pid 86133.
+
+TASK [Stop apcupsd. By default wait 500ms to complete the command.] ************
+changed: [iocage_04]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        failed: false
+        rc: 0
+        state:
+            post: |-
+                apcupsd is not running.
+            pre: |-
+                apcupsd is running as pid 86133.
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Stopping apcupsd.
+            Waiting for PIDS: 86133.
+        stdout_lines:
+        - Stopping apcupsd.
+        - 'Waiting for PIDS: 86133.'
+        stop: 'Waiting for PIDS: 86133'
+
+TASK [Start apcupsd. Wait 200ms to complete the command.] **********************
+ok: [iocage_04]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        failed: false
+        onestart: Starting apcupsd.
+        rc: 0
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Starting apcupsd.
+        stdout_lines:
+        - Starting apcupsd.
+
+TASK [Get apcupsd status.] *****************************************************
+ok: [iocage_04]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_04] => 
+    out:
+        changed: false
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        failed: false
+        rc: 0
+        status: running
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            apcupsd is running as pid 86416.
+        stdout_lines:
+        - apcupsd is running as pid 86416.
 
 PLAY RECAP *********************************************************************
 iocage_04                  : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

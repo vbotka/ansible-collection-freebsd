@@ -3,83 +3,83 @@ PLAY [Test role vbotka.freebsd.postinstall] ************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [test_132]
+ok: [test_133]
+ok: [test_131]
+
+TASK [vbotka.freebsd.postinstall : Sanity: Unknown run tags] *******************
 ok: [test_131]
 ok: [test_133]
-
-TASK [vbotka.freebsd_postinstall : Sanity: Unknown run tags] *******************
 ok: [test_132]
-ok: [test_131]
-ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Dhclient: Create hooks.] ********************
+TASK [vbotka.freebsd.postinstall : Dhclient: Create hooks.] ********************
+ok: [test_132] => (item=dhclient-exit-hooks)
 ok: [test_133] => (item=dhclient-exit-hooks)
 ok: [test_131] => (item=dhclient-exit-hooks)
-ok: [test_132] => (item=dhclient-exit-hooks)
 
-TASK [vbotka.freebsd_postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
+TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
+TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
+TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Packages: Installation by pkgng required when fp_install_delegate] ***
+TASK [vbotka.freebsd.postinstall : Packages: Installation by pkgng required when fp_install_delegate] ***
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Packages: Required variable fp_pkg_jail when fp_install_delegate] ***
+TASK [vbotka.freebsd.postinstall : Packages: Required variable fp_pkg_jail when fp_install_delegate] ***
 ok: [test_132]
 ok: [test_131]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Packages: Install packages] *****************
-included: /export/home/vlado.config/.ansible/roles/vbotka.freebsd_postinstall/tasks/packages-install.yml for test_131, test_132, test_133 => (item=custom)
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for test_131, test_132, test_133 => (item=custom)
 
-TASK [vbotka.freebsd_postinstall : Packages-install: Install packages list custom] ***
+TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ***
 ok: [test_132 -> iocage_04(10.1.0.29)]
-ok: [test_131 -> iocage_04(10.1.0.29)]
 ok: [test_133 -> iocage_04(10.1.0.29)]
+ok: [test_131 -> iocage_04(10.1.0.29)]
 
-TASK [vbotka.freebsd_postinstall : Users: Manage user accounts] ****************
-ok: [test_132] => (item=(censored due to no_log))
+TASK [vbotka.freebsd.postinstall : Users: Manage user accounts] ****************
 ok: [test_133] => (item=(censored due to no_log))
+ok: [test_132] => (item=(censored due to no_log))
 ok: [test_131] => (item=(censored due to no_log))
 
-TASK [vbotka.freebsd_postinstall : Authorized-key: Get passwd] *****************
+TASK [vbotka.freebsd.postinstall : Authorized-key: Get passwd] *****************
+ok: [test_132]
+ok: [test_133]
+ok: [test_131]
+
+TASK [vbotka.freebsd.postinstall : Authorized-key: Set local_list_users] *******
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Authorized-key: Set local_list_users] *******
+TASK [vbotka.freebsd.postinstall : Authorized-key: Sanity: All users exist.] ***
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Authorized-key: Sanity: All users exist.] ***
+TASK [vbotka.freebsd.postinstall : Authorized-key: Sanity: All keys are valid.] ***
 ok: [test_131]
 ok: [test_132]
 ok: [test_133]
 
-TASK [vbotka.freebsd_postinstall : Authorized-key: Sanity: All keys are valid.] ***
-ok: [test_132]
-ok: [test_131]
-ok: [test_133]
-
-TASK [vbotka.freebsd_postinstall : Authorized-key: Configure authorized keys individually] ***
-ok: [test_132] => (item=admin)
+TASK [vbotka.freebsd.postinstall : Authorized-key: Configure authorized keys individually] ***
 ok: [test_131] => (item=admin)
+ok: [test_132] => (item=admin)
 ok: [test_133] => (item=admin)
 
-TASK [vbotka.freebsd_postinstall : Sudoers: Configure /usr/local/etc/sudoers] ***
+TASK [vbotka.freebsd.postinstall : Sudoers: Configure /usr/local/etc/sudoers] ***
 ok: [test_133] => (item={'key': 'admin', 'value': 'ALL=(ALL) NOPASSWD: ALL'})
 ok: [test_132] => (item={'key': 'admin', 'value': 'ALL=(ALL) NOPASSWD: ALL'})
 ok: [test_131] => (item={'key': 'admin', 'value': 'ALL=(ALL) NOPASSWD: ALL'})

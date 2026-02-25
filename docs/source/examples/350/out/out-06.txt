@@ -2,53 +2,45 @@
 PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [671f8cf1]
-ok: [8ae21331]
-ok: [2d90d9d5]
+ok: [fd032233]
+ok: [b2b1ef56]
+ok: [bdf104a6]
 
 TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for 2d90d9d5, 671f8cf1, 8ae21331
+included: vbotka.freebsd.lib for b2b1ef56, bdf104a6, fd032233
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
-ok: [671f8cf1]
-ok: [2d90d9d5]
-ok: [8ae21331]
-
-TASK [vbotka.freebsd.rsnapshot : Vars: Create template specific vars.] *********
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/tasks/vars-auto.yml for 2d90d9d5, 671f8cf1, 8ae21331
-
-TASK [vbotka.freebsd.rsnapshot : Vars-auto: set rsnapshot_conf_dict] ***********
-ok: [2d90d9d5]
-ok: [671f8cf1]
-ok: [8ae21331]
+ok: [b2b1ef56]
+ok: [fd032233]
+ok: [bdf104a6]
 
 TASK [vbotka.freebsd.rsnapshot : Configure: Create directory /export/backup/snapshots] ***
-changed: [671f8cf1]
-changed: [8ae21331]
-changed: [2d90d9d5]
+changed: [fd032233]
+changed: [bdf104a6]
+changed: [b2b1ef56]
 
 TASK [vbotka.freebsd.rsnapshot : Configure: Create configuration /usr/local/etc/rsnapshot.conf] ***
-changed: [8ae21331]
-changed: [2d90d9d5]
-changed: [671f8cf1]
+changed: [bdf104a6]
+changed: [b2b1ef56]
+changed: [fd032233]
 
 TASK [vbotka.freebsd.rsnapshot : Test: Create test directory /export/backup/snapshots-test] ***
-changed: [2d90d9d5]
-changed: [671f8cf1]
-changed: [8ae21331]
+changed: [b2b1ef56]
+changed: [fd032233]
+changed: [bdf104a6]
 
 TASK [vbotka.freebsd.rsnapshot : Test: Create test backup_points] **************
-changed: [2d90d9d5] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
-changed: [671f8cf1] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
-changed: [8ae21331] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [bdf104a6] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [b2b1ef56] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [fd032233] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
 
 TASK [vbotka.freebsd.rsnapshot : Test: Create test configuration /usr/local/etc/rsnapshot-test.conf] ***
-changed: [8ae21331]
-changed: [2d90d9d5]
-changed: [671f8cf1]
+changed: [b2b1ef56]
+changed: [fd032233]
+changed: [bdf104a6]
 
 PLAY RECAP *********************************************************************
-2d90d9d5                   : ok=10   changed=5    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
-671f8cf1                   : ok=10   changed=5    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
-8ae21331                   : ok=10   changed=5    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
+b2b1ef56                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+bdf104a6                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+fd032233                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
 

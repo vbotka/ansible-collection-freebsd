@@ -1,6 +1,79 @@
 
 PLAY [Configure and start Log Client.] *****************************************
-skipping: no hosts matched
+
+TASK [Debug.] ******************************************************************
+ok: [http_1] => 
+    msg: |-
+        log_serv: 84c518c4
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+ok: [db_1] => 
+    msg: |-
+        log_serv: 84c518c4
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+ok: [http_2] => 
+    msg: |-
+        log_serv: 84c518c4
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+ok: [db_2] => 
+    msg: |-
+        log_serv: 84c518c4
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+
+TASK [Install syslog-ng] *******************************************************
+changed: [http_2 -> iocage_04(10.1.0.29)]
+changed: [db_2 -> iocage_04(10.1.0.29)]
+changed: [http_1 -> iocage_02(10.1.0.73)]
+changed: [db_1 -> iocage_02(10.1.0.73)]
+
+TASK [Stop syslogd.] ***********************************************************
+changed: [http_2]
+changed: [db_2]
+changed: [db_1]
+changed: [http_1]
+
+TASK [Disable syslogd.] ********************************************************
+changed: [http_2]
+changed: [db_2]
+changed: [db_1]
+changed: [http_1]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+ok: [http_1]
+ok: [db_1]
+ok: [http_2]
+ok: [db_2]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+changed: [db_2]
+changed: [http_2]
+changed: [db_1]
+changed: [http_1]
+
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+changed: [db_2]
+changed: [http_2]
+changed: [db_1]
+changed: [http_1]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
+changed: [http_2]
+changed: [db_2]
+changed: [http_1]
+changed: [db_1]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+ok: [http_2]
+ok: [db_2]
+ok: [http_1]
+ok: [db_1]
 
 PLAY RECAP *********************************************************************
+db_1                       : ok=9    changed=6    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+db_2                       : ok=9    changed=6    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+http_1                     : ok=9    changed=6    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+http_2                     : ok=9    changed=6    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

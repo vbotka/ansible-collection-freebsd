@@ -319,6 +319,9 @@ Activate iocage
 Fetch release
 """""""""""""
 
+.. note:: This example is not updated to the current release and serves
+          a demonstration purpose only.
+
 .. literalinclude:: out/out-08.txt
    :language: console
 

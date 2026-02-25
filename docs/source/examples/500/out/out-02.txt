@@ -1,6 +1,24 @@
 
 PLAY [Configure and start Log Server.] *****************************************
-skipping: no hosts matched
+
+TASK [Install syslog-ng] *******************************************************
+changed: [logserv_1]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+ok: [logserv_1]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+changed: [logserv_1]
+
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+changed: [logserv_1]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
+changed: [logserv_1]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+ok: [logserv_1]
 
 PLAY RECAP *********************************************************************
+logserv_1                  : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

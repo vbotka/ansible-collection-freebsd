@@ -7,11 +7,11 @@ ok: [test_133] =>
         inventory_hostname: test_133
         ansible_host: 10.1.0.133
 
-        iocage_jid: 1009
+        iocage_jid: 45
         iocage_boot: off
         iocage_state: up
         iocage_type: jail
-        iocage_release: 14.3-RELEASE-p1
+        iocage_release: 15.0-RELEASE-p3
         iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '10.1.0.133', 'mask': '24'}], 'msg': ''}
         iocage_ip4: 10.1.0.133
         iocage_ip6: -

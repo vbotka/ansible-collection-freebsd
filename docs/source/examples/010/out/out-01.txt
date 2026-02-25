@@ -2,12 +2,12 @@
 PLAY [Iocage fetch releases, create basejail, clone and start jails.] **********
 
 TASK [Fetch releases] **********************************************************
-ok: [iocage_04] => (item=14.3-RELEASE)
-ok: [iocage_02] => (item=14.2-RELEASE)
+ok: [iocage_04] => (item=15.0-RELEASE)
+ok: [iocage_02] => (item=14.3-RELEASE)
 
 TASK [Create basejail] *********************************************************
-changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
-changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
+changed: [iocage_04] => (item=ansible_client 15.0-RELEASE)
+changed: [iocage_02] => (item=ansible_client 14.3-RELEASE)
 
 TASK [Clone from basejail] *****************************************************
 changed: [iocage_04] => (item=test_131 ansible_client)
@@ -34,7 +34,7 @@ ok: [iocage_02] =>
         ['ansible_client', 'test_111', 'test_112', 'test_113']
 ok: [iocage_04] => 
     msg: |-
-        ['14.3-RELEASE']
+        ['14.3-RELEASE', '15.0-RELEASE']
         []
         ['ansible_client_apache', 'ansible_client_pull']
         ['ansible_client', 'test_131', 'test_132', 'test_133']

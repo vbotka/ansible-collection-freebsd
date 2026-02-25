@@ -1,6 +1,32 @@
 
 PLAY [Test Log Client.] ********************************************************
-skipping: no hosts matched
+
+TASK [Run loggen] **************************************************************
+changed: [http_2]
+changed: [db_2]
+changed: [http_1]
+changed: [db_1]
+
+TASK [Debug.] ******************************************************************
+ok: [http_1] => 
+    out.stderr: |-
+        count=1, rate = 166666.67 msg/sec
+        average rate = 1.85 msg/sec, count=1, time=0.540408, (average) msg size=256, bandwidth=0.46 kB/sec
+ok: [http_2] => 
+    out.stderr: |-
+        count=1, rate = 250000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500028, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [db_1] => 
+    out.stderr: |-
+        count=1, rate = 27027.03 msg/sec
+        average rate = 1.83 msg/sec, count=1, time=0.545652, (average) msg size=256, bandwidth=0.46 kB/sec
+ok: [db_2] => 
+    out.stderr: average rate = 2.00 msg/sec, count=1, time=0.500012, (average) msg size=256,
+        bandwidth=0.50 kB/sec
 
 PLAY RECAP *********************************************************************
+db_1                       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db_2                       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+http_1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+http_2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

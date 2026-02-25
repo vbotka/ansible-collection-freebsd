@@ -2,21 +2,21 @@
 
 . ../defaults/batch
 
-# destroy
+# Destroy jails
 VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
 echo admin | ssh admin@$iocage_01 sudo -S iocage destroy -f ansible_client
 ssh admin@$iocage_02 sudo iocage destroy -f ansible_client
 ssh admin@$iocage_04 sudo iocage destroy -f ansible_client
 
-# prepare
+# Prepare
 echo "*** Create templates."
 (cd ../202 && ansible-playbook pb-iocage-template.yml -i iocage.ini --flush-cache)
 echo "*** Show inventory."
 (cd ../207 && ansible-inventory -i iocage.ini -i hosts --graph)
 echo "*** Create jails."
-(cd ../207 && ansible-playbook pb-iocage-project-create.yml -i iocage.ini -i hosts)
+(cd ../207 && ansible-playbook vbotka.freebsd.pb_iocage_project_create.yml -i iocage.ini -i hosts)
 
-# status of the project
+# Status of the project
 ansible-playbook pb-all-groups.yml -i hosts --flush-cache | tee out/out-01.txt
 
 # Create Log Server

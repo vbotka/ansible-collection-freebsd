@@ -7,7 +7,7 @@ ok: [iocage_04]
 TASK [Debug cmd_create debug=true] *********************************************
 ok: [iocage_04] => (item=www-1 ansible_client_apache) => 
     msg: |-
-        iocage create --short --template ansible_client_apache notes="vmm=iocage_04" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+        iocage create --short --template ansible_client_apache notes="vmm=iocage_04 alias=www-1 class=http" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
 
 TASK [Create clones host_hostname] *********************************************
 changed: [iocage_04] => (item=www-1 ansible_client_apache)
@@ -26,13 +26,13 @@ ok: [iocage_04] =>
             - --short
             - --template
             - ansible_client_apache
-            - notes=vmm=iocage_04
+            - notes=vmm=iocage_04 alias=www-1 class=http
             - bpf=1
             - dhcp=1
             - vnet=1
             - host_hostname=www-1
-            delta: '0:00:00.721136'
-            end: '2025-09-22 16:57:25.361569'
+            delta: '0:00:00.371485'
+            end: '2026-02-25 00:03:13.688762'
             failed: false
             invocation:
                 module_args:
@@ -41,7 +41,7 @@ ok: [iocage_04] =>
                     argv: null
                     chdir: null
                     cmd: |-
-                        iocage create --short --template ansible_client_apache notes="vmm=iocage_04" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+                        iocage create --short --template ansible_client_apache notes="vmm=iocage_04 alias=www-1 class=http" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
                     creates: null
                     executable: null
                     expand_argument_vars: true
@@ -55,12 +55,12 @@ ok: [iocage_04] =>
                     template: ansible_client_apache
             msg: ''
             rc: 0
-            start: '2025-09-22 16:57:24.640433'
+            start: '2026-02-25 00:03:13.317277'
             stderr: ''
             stderr_lines: []
-            stdout: 2a192dc8 successfully created!
+            stdout: c21bd13b successfully created!
             stdout_lines:
-            - 2a192dc8 successfully created!
+            - c21bd13b successfully created!
         skipped: false
 
 TASK [Debug add fstab host_hostname debug2=true] *******************************
@@ -74,7 +74,7 @@ ok: [iocage_04] =>
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_04] => 
     msg: |-
-        iocage start 2a192dc8
+        iocage start c21bd13b
 
 TASK [Start clones host_hostname] **********************************************
 changed: [iocage_04]
@@ -86,34 +86,34 @@ ok: [iocage_04] =>
         cmd:
         - iocage
         - start
-        - 2a192dc8
-        delta: '0:00:04.581787'
-        end: '2025-09-22 16:57:30.490899'
+        - c21bd13b
+        delta: '0:00:11.612697'
+        end: '2026-02-25 00:03:25.725450'
         failed: false
         msg: ''
         rc: 0
-        start: '2025-09-22 16:57:25.909112'
+        start: '2026-02-25 00:03:14.112753'
         stderr: No default gateway found for ipv6.
         stderr_lines:
         - No default gateway found for ipv6.
         stdout: |-
-            * Starting 2a192dc8
+            * Starting c21bd13b
               + Started OK
-              + Using devfs_ruleset: 1013 (iocage generated default)
+              + Using devfs_ruleset: 1000 (iocage generated default)
               + Configuring VNET OK
               + Using IP options: vnet
               + Starting services OK
               + Executing poststart OK
-              + DHCP Address: 10.1.0.156/24
+              + DHCP Address: 10.1.0.233/24
         stdout_lines:
-        - '* Starting 2a192dc8'
+        - '* Starting c21bd13b'
         - '  + Started OK'
-        - '  + Using devfs_ruleset: 1013 (iocage generated default)'
+        - '  + Using devfs_ruleset: 1000 (iocage generated default)'
         - '  + Configuring VNET OK'
         - '  + Using IP options: vnet'
         - '  + Starting services OK'
         - '  + Executing poststart OK'
-        - '  + DHCP Address: 10.1.0.156/24'
+        - '  + DHCP Address: 10.1.0.233/24'
 
 PLAY RECAP *********************************************************************
 iocage_04                  : ok=8    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   

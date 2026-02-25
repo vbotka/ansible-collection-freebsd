@@ -7,14 +7,16 @@ ok: [build.example.com]
 TASK [vbotka.freebsd.poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
-        poudriere_role_version: 2.8.0
-        ansible_architecture: amd64
-        ansible_os_family: FreeBSD
-        ansible_distribution: FreeBSD
-        ansible_distribution_major_version: 14
-        ansible_distribution_version: 14.3
-        ansible_distribution_release: 14.3-RELEASE
-        ansible_python_version: 3.11.12
+        poudriere_role_version: 2.8.1
+        ansible_role_name: vbotka.freebsd.poudriere
+
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.0
+        ansible_facts.distribution_release: 15.0-RELEASE-p1
+        ansible_facts.python_version: 3.11.14
 
         freebsd_install_method: packages
         freebsd_use_packages: True
@@ -43,7 +45,7 @@ ok: [build.example.com] =>
           - devel/ccache
 
         poudriere_packages_cert:
-          - security/py-openssl
+          - security/py-pyopenssl
           - security/py-acme-tiny
 
         poudriere_owner: root
@@ -83,7 +85,7 @@ ok: [build.example.com] =>
 
         poudriere_conf_zpool: iocage
         poudriere_conf_no_zfs: no
-        poudriere_conf_zrootfs: /poudriere
+        poudriere_conf_zrootfs: /usr/local/poudriere
         poudriere_conf_freebsd_host: https://download.freebsd.org
         poudriere_conf_resolv_conf: /etc/resolv.conf
         poudriere_conf_basefs: /usr/local/poudriere
@@ -114,7 +116,7 @@ ok: [build.example.com] =>
           USE_PORTLINT: 'no'
           USE_TMPFS: 'no'
           ZPOOL: iocage
-          ZROOTFS: /poudriere
+          ZROOTFS: /usr/local/poudriere
 
         poudriere_pkglist_dir: /usr/local/etc/poudriere.d/pkglist
         poudriere_pkglist_all: True

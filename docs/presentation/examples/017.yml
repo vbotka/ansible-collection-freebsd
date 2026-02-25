@@ -1,0 +1,9 @@
+17:
+  example: '017'
+  name: community.general.iocage
+  case: |
+    Use the inventory plugin ``community.general.iocage`` instead of the inventory plugin
+    ``vbotka.freebsd.iocage``.
+  requirements: []
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/017
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/017/example.html

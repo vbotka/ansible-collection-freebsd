@@ -7,13 +7,13 @@ changed: [iocage_02] => (item={'key': 'www_prod', 'value': {'count': 3, 'templat
 changed: [iocage_02] => (item={'key': 'www_devel', 'value': {'count': 2, 'template': 'ansible_client'}})
 
 TASK [Create tags.] ************************************************************
-changed: [iocage_04] => (item=e17abd19 vmm=iocage_04 project=example_020 swarm=db alias=db1)
-changed: [iocage_04] => (item=18438b09 vmm=iocage_04 project=example_020 swarm=db alias=db2)
-changed: [iocage_02] => (item=8f19b252 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p1)
-changed: [iocage_02] => (item=8d412b7f vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p2)
-changed: [iocage_02] => (item=d9c50644 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p3)
-changed: [iocage_02] => (item=8c78c39a vmm=iocage_02 project=example_020 swarm=www_devel alias=www_d1)
-changed: [iocage_02] => (item=5da4d093 vmm=iocage_02 project=example_020 swarm=www_devel alias=www_d2)
+changed: [iocage_04] => (item=026a1357 vmm=iocage_04 project=example_020 swarm=db alias=db1)
+changed: [iocage_04] => (item=ff5a1f63 vmm=iocage_04 project=example_020 swarm=db alias=db2)
+changed: [iocage_02] => (item=29712c80 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p1)
+changed: [iocage_02] => (item=24ceb6f1 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p2)
+changed: [iocage_02] => (item=b65059d4 vmm=iocage_02 project=example_020 swarm=www_prod alias=www_p3)
+changed: [iocage_02] => (item=fba6f241 vmm=iocage_02 project=example_020 swarm=www_devel alias=www_d1)
+changed: [iocage_02] => (item=d58e1d10 vmm=iocage_02 project=example_020 swarm=www_devel alias=www_d2)
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

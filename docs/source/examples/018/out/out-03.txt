@@ -24,16 +24,16 @@ ok: [iocage_02]
 TASK [Display jails.] **********************************************************
 ok: [iocage_02] => 
     msg: |-
-        ansible_client None - 14.2-RELEASE-p3 down
-        test_111 251 epair0b|10.1.0.174 14.2-RELEASE-p3 up
-        test_112 252 epair0b|10.1.0.147 14.2-RELEASE-p3 up
-        test_113 253 epair0b|10.1.0.231 14.2-RELEASE-p3 up
+        ansible_client None - 14.3-RELEASE-p8 down
+        test_111 67 epair0b|10.1.0.174 14.3-RELEASE-p8 up
+        test_112 68 epair0b|10.1.0.147 14.3-RELEASE-p8 up
+        test_113 69 epair0b|10.1.0.231 14.3-RELEASE-p8 up
 ok: [iocage_04] => 
     msg: |-
-        ansible_client None - 14.3-RELEASE-p1 down
-        test_131 1010 epair0b|10.1.0.206 14.3-RELEASE-p1 up
-        test_132 1011 epair0b|10.1.0.167 14.3-RELEASE-p1 up
-        test_133 1012 epair0b|10.1.0.207 14.3-RELEASE-p1 up
+        ansible_client None - 15.0-RELEASE-p3 down
+        test_131 46 epair0b|10.1.0.224 15.0-RELEASE-p3 up
+        test_132 47 epair0b|10.1.0.185 15.0-RELEASE-p3 up
+        test_133 48 epair0b|10.1.0.225 15.0-RELEASE-p3 up
 
 PLAY RECAP *********************************************************************
 iocage_02                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

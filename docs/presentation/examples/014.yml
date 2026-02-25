@@ -1,0 +1,10 @@
+14:
+  example: '014'
+  name: Inventory cache
+  case: |
+    Enable and test inventory cache.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - jails created in example 010
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/014
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html

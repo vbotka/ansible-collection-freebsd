@@ -2,8 +2,8 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Create basejail] *********************************************************
-changed: [iocage_04] => (item=ansible_client 14.3-RELEASE)
-changed: [iocage_02] => (item=ansible_client 14.2-RELEASE)
+changed: [iocage_04] => (item=ansible_client 15.0-RELEASE)
+changed: [iocage_02] => (item=ansible_client 14.3-RELEASE)
 
 TASK [Display lists of bases, plugins, templates, and jails.] ******************
 ok: [iocage_02] => 
@@ -14,7 +14,7 @@ ok: [iocage_02] =>
         jails: ['ansible_client']
 ok: [iocage_04] => 
     msg: |-
-        releases: ['14.3-RELEASE']
+        releases: ['14.3-RELEASE', '15.0-RELEASE']
         plugins: []
         templates: ['ansible_client_apache', 'ansible_client_pull']
         jails: ['ansible_client']

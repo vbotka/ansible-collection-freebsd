@@ -1,0 +1,14 @@
+500:
+  example: '500'
+  name: syslog-ng server and syslog-ng clients
+  case: |
+    Configure and run a log server. Configure log clients and test them. Use ``syslog-ng``. Use the
+    jails created in the example 207 Create DHCP jails with auto ``UUID``, ``iocage_tags``,
+    ``alias`` and ``class``. The project keys are jail’s aliases.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - module ``vbotka.freebsd.service``
+    - role ``vbotka.freebsd.postinstall``
+    - jails created in example 207
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/500
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/500/example.html

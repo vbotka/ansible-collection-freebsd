@@ -20,23 +20,23 @@ ok: [iocage_04] =>
           http: [http_3]
           logclient: [db_3, http_3]
 
-        groups.all: ['test_4', 'iocage_04']
+        groups.all: ['iocage_04']
         project_jails_present: []
-        project_jails_absent: ['http_3', 'db_3']
+        project_jails_absent: ['db_3', 'http_3']
 
 TASK [Create jails.] ***********************************************************
 changed: [iocage_04]
 
 TASK [Set notes.] **************************************************************
-changed: [iocage_04] => (item=http_3 alias=http_3 class=logclient,http vmm=iocage_04)
 changed: [iocage_04] => (item=db_3 alias=db_3 class=logclient,db vmm=iocage_04)
+changed: [iocage_04] => (item=http_3 alias=http_3 class=logclient,http vmm=iocage_04)
 
 TASK [Get pool.] ***************************************************************
 ok: [iocage_04]
 
 TASK [Create /var/db/iocage-tags.yml] ******************************************
-changed: [iocage_04] => (item=http_3 {'alias': 'http_3', 'class': ['logclient', 'http'], 'vmm': 'iocage_04'})
 changed: [iocage_04] => (item=db_3 {'alias': 'db_3', 'class': ['logclient', 'db'], 'vmm': 'iocage_04'})
+changed: [iocage_04] => (item=http_3 {'alias': 'http_3', 'class': ['logclient', 'http'], 'vmm': 'iocage_04'})
 
 TASK [Start created jails.] ****************************************************
 changed: [iocage_04]

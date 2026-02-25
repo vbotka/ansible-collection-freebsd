@@ -52,11 +52,15 @@ Synopsis
   * create ZFS pools:
 
     * ``zroot``
-    * ``export``
+    * ``iocage``
 
-  * create ZFS dataset:
+  * create and mount ZFS datasets:
 
-    * ``zroot/export``
+    * ``zroot/export``      mount /export
+    * ``iocage/ports``      mount /usr/ports
+    * ``iocage/src``        mount /usr/src
+    * ``iocage/obj``        mount /usr/obj
+    * ``iocage/poudriere``  mount /usr/local/poudriere
 
 Requirements
 ^^^^^^^^^^^^
@@ -67,9 +71,7 @@ Requirements
 Notes
 ^^^^^
 
-* The role `vbotka.freebsd.postinstall`_ is used to configure:
-
-  * ``/boot/loader.conf``
+The role `vbotka.freebsd.postinstall`_ is used to configure ``/boot/loader.conf``
 
 .. note::
 

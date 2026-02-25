@@ -14,15 +14,16 @@
     clone_host_hostname: false
     clone_destroy: false
 
-    _tags: "{{ dict(iocage_jails.keys()
-                    | zip(iocage_jails.values()
+    _tags: "{{ dict(ansible_facts.iocage_jails.keys()
+                    | zip(ansible_facts.iocage_jails.values()
                           | map(attribute='properties.notes')
                           | map('split')
                           | map('map', 'split', '=')
                           | map('community.general.dict'))) }}"
-    _started: "{{ iocage_jails | dict2items
-                               | selectattr('value.state', 'eq', 'up')
-                               | map(attribute='key') }}"
+    _started: "{{ ansible_facts.iocage_jails
+                  | dict2items
+                  | selectattr('value.state', 'eq', 'up')
+                  | map(attribute='key') }}"
 
   tasks:
 

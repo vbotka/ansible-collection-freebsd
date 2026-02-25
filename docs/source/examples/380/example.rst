@@ -179,13 +179,13 @@ Write the image file to USB
 
 .. code-block:: console
 
-   shell> dd if=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img of=/dev/sdb bs=1M conv=sync status=progress
-   5348786176 bytes (5.3 GB, 5.0 GiB) copied, 154 s, 34.7 MB/s
+   shell> dd if=FreeBSD-15.0-RELEASE-arm64-aarch64-RPI.img of=/dev/da1 bs=1m conv=sync status=progress
+     5366611968 bytes (5367 MB, 5118 MiB) transferred 150.028s, 36 MB/s
    5120+0 records in
    5120+0 records out
-   5368709120 bytes (5.4 GB, 5.0 GiB) copied, 154.648 s, 34.7 MB/s
+   5368709120 bytes transferred in 150.164342 secs (35752224 bytes/sec)
 
-.. note:: Linux was used to write the image. In FreeBSD, use ``bs=1m``
+.. note:: FreeBSD was used to write the image. In Linux, use ``bs=1M``
  
 .. seealso::
 

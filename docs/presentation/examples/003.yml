@@ -1,0 +1,10 @@
+3:
+  example: '003'
+  name: Audit ``iocage`` host
+  case: |
+    Use the role ``vbotka.freebsd.iocage`` to audit the ``iocage`` configuration.
+  requirements:
+    - root privilege in the managed nodes
+    - binary iocage
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/003
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/003/example.html
