@@ -17,7 +17,6 @@ Major Changes
 
 Minor Changes
 -------------
-
 * Upgrade roles: apache 2.8.1, iocage 1.2.0, lib 2.8.3, network 2.8.3,
   pf 2.8.1, postinstall 2.8.4, rsnapshot 2.8.2, zfs 2.8.2, packages
   2.8.1, config_light 2.8.3, custom_image 2.8.1, poudriere 2.8.1,
