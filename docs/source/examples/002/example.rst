@@ -51,8 +51,6 @@ Requirements
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the run-strings to run the play on the managed node ``iocage_02``
-* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
 * By default, ``iocage`` activation is disabled ``freebsd_iocage_activate: false``
 
 .. seealso::
@@ -100,7 +98,7 @@ Playbook output - Activate iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_activate \
 					  -e freebsd_iocage_activate=true \
                                           -e freebsd_iocage_debug=true

@@ -51,8 +51,6 @@ Requirements
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the run-strings to run the play on the iocage host ``iocage_02``
-* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
 * By default, sanity testing is enabled ``freebsd_iocage_sanity: true``
 
 .. seealso::
@@ -101,8 +99,7 @@ Playbook output - Test sanity
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_sanity
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -115,8 +112,7 @@ Playbook output - Test sanity quietly
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
            ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-           ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_sanity
+           ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-02.txt
    :language: yaml

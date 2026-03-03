@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update examples 001, 002, 003, and 501 for new remote host iocage_5
 
 
 0.8.2

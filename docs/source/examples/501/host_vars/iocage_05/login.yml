@@ -1,0 +1,10 @@
+fp_login_conf_local:
+  - user: admin
+    class: me
+    conf:
+      - "{{ fp_login_conf_local_iocage }}"
+
+fp_login_conf_local_iocage:
+  - charset=UTF-8
+  - lang=en_US.UTF-8
+  - setenv=LC_COLLATE=C

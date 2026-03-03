@@ -45,8 +45,6 @@ Requirements
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the run-strings to limit the play to the manged node ``iocage_02``
-* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
 * By default, ``iocage`` installation is enabled ``freebsd_iocage_install: true``
 * By default, ``debug`` is disabled ``freebsd_iocage_debug: false``
 
@@ -89,7 +87,7 @@ Playbook output - Display variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_debug \
                                           -e freebsd_iocage_debug=true
 
@@ -106,7 +104,7 @@ Playbook output - Install iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
+   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
                                           -t freebsd_iocage_pkg \
                                           -e freebsd_iocage_debug=true
 
@@ -119,6 +117,7 @@ Playbook output - Install iocage
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _iocage: https://www.freshports.org/sysutils/iocage
+
 
 .. _Patterns. Targeting hosts and groups.: https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html
 .. _Variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
