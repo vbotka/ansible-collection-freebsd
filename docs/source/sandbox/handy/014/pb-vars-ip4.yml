@@ -1,0 +1,6 @@
+- hosts: all
+
+  tasks:
+
+    - debug:
+        var: iocage_ip4
