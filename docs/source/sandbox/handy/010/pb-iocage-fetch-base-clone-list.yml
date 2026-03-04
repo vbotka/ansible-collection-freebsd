@@ -1,0 +1,55 @@
+- name: Iocage fetch releases, create basejail, clone and start jails.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  tasks:
+
+    - name: Fetch releases
+      tags: fetch
+      vbotka.freebsd.iocage:
+        release: "{{ item }}"
+      loop: "{{ fetch }}"
+
+    - name: Create basejail
+      tags: create
+      vbotka.freebsd.iocage:
+        state: basejail
+        name: "{{ item.name }}"
+        release: "{{ item.release }}"
+        properties: "{{ item.properties | d(omit) }}"
+      loop: "{{ basejails }}"
+      loop_control:
+        label: "{{ item.name }} {{ item.release }}"
+
+    - name: Clone from basejail
+      tags: clone
+      vbotka.freebsd.iocage:
+        state: cloned
+        clone_from: "{{ item.clone_from }}"
+        name: "{{ item.name }}"
+        properties: "{{ item.properties | d(omit) }}"
+      loop: "{{ clones }}"
+      loop_control:
+        label: "{{ item.name }} {{ item.clone_from }}"
+
+    - name: Start clones
+      tags: start
+      vbotka.freebsd.iocage:
+        state: started
+        name: "{{ item }}"
+      loop: "{{ start }}"
+
+    - name: Display iocage_*
+      tags: debug
+      block:
+
+        - name: Create Ansible facts iocage_*
+          vbotka.freebsd.iocage:
+
+        - name: Display lists of bases, plugins, templates, and jails.
+          debug:
+            msg: |-
+              {{ ansible_facts.iocage_releases }}
+              {{ ansible_facts.iocage_plugins.keys() | list }}
+              {{ ansible_facts.iocage_templates.keys() | list }}
+              {{ ansible_facts.iocage_jails.keys() | list }}

@@ -17,7 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Experimental examples moved to docs/source/sandbox/handy
 * Update examples 001, 002, 003, and 501 for new remote host iocage_5
+  (ansible_host=handy)
 
 
 0.8.2

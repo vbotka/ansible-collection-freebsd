@@ -1,7 +1,0 @@
-fn_gateway_enable: true
-fn_defaultrouter: 10.10.0.1
-fn_cloned_interfaces:
-  - interface: bridge0
-fn_interfaces:
-  - {interface: bridge0, create: addm wlan1}
-  - {interface: wlan1, options: WPA SYNCDHCP}
