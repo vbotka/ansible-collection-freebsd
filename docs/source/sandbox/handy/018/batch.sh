@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+. ../defaults/batch
+
+# Destroy jails
+VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+ssh admin@$iocage_05 sudo iocage destroy -f ansible_client
+
+# Create templates
+(cd ../010 && ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage.ini -t create)
+
+# Status of jails
+ssh admin@$iocage_05 sudo iocage list -l | tee out/out-02.txt
+
+# Create jails
+ansible-playbook pb-iocage-clone-list.yml -i iocage.ini | tee out/out-03.txt
+
+# Status of jails
+ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
+ansible-inventory -i iocage.yml --list --yaml | tee out/out-06.txt
+
+# Test
+ansible-playbook pb-test.yml -i iocage.yml  | tee out/out-07.txt
+ssh admin@$iocage_02 sudo iocage list -l | tee out/out-08.txt
+ansible-playbook pb-test.yml -i iocage.yml | tee out/out-09.txt

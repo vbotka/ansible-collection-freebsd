@@ -1,0 +1,4 @@
+plugin: vbotka.freebsd.iocage
+host: handy
+user: admin
+sudo: true
