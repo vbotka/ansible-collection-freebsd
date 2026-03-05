@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update the inventory plugin iocage. Add example handy/017.
 * Replace https://iocage.readthedocs.io/en/latest/ by
   https://freebsd.github.io/iocage/
 * Experimental examples moved to docs/source/sandbox/handy
