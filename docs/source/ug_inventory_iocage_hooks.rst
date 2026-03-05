@@ -190,4 +190,4 @@ Run the playbook
 
 .. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script
 .. _Managing BSD hosts with Ansible: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#managing-bsd-hosts-with-ansible
-.. _Shared IP jails: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-shared-ip-jail
+.. _Shared IP jails: https://freebsd.github.io/iocage/networking.html#configuring-a-shared-ip-jail

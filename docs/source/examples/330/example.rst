@@ -202,7 +202,7 @@ Playbook output - Create and use group
 
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _Fetch a Release: https://iocage.readthedocs.io/en/latest/basic-use.html#fetch-a-release
-.. _Create a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#create-a-jail
-.. _Start, Stop, or Restart a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#start-stop-or-restart-a-jail
-.. _Listing Jails: https://iocage.readthedocs.io/en/latest/basic-use.html#listing-jails
+.. _Fetch a Release: https://freebsd.github.io/iocage/basic-use.html#fetch-a-release
+.. _Create a Jail: https://freebsd.github.io/iocage/basic-use.html#create-a-jail
+.. _Start, Stop, or Restart a Jail: https://freebsd.github.io/iocage/basic-use.html#start-stop-or-restart-a-jail
+.. _Listing Jails: https://freebsd.github.io/iocage/basic-use.html#listing-jails

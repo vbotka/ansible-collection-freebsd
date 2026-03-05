@@ -301,6 +301,6 @@ Playbook output - Display test vars
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 
-.. _Using Templates: https://iocage.readthedocs.io/en/latest/templates.html
+.. _Using Templates: https://freebsd.github.io/iocage/templates.html
 .. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
 .. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#become

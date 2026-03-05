@@ -171,7 +171,7 @@ Notes
 .. seealso::
 
    * `man dhclient-script <https://man.freebsd.org/cgi/man.cgi?dhclient-script>`_
-   * `Using Templates <https://iocage.readthedocs.io/en/latest/templates.html>`_
+   * `Using Templates <https://freebsd.github.io/iocage/templates.html>`_
 
 ansible.cfg
 ^^^^^^^^^^^

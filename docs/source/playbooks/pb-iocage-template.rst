@@ -323,7 +323,7 @@ After the reconfiguration stop the jail and convert it to the template manually
 .. _ansible.posix.authorized_key: https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
 
-.. _iocage templates: https://iocage.readthedocs.io/en/latest/templates.html
+.. _iocage templates: https://freebsd.github.io/iocage/templates.html
 .. _man iocage: https://man.freebsd.org/cgi/man.cgi?iocage(8)
 .. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script(8)
 .. _Install package inside jail vs install package from outside: https://forums.freebsd.org/threads/install-package-inside-jail-vs-install-package-from-outside.54123/
