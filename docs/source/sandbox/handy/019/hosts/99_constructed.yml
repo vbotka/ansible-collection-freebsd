@@ -1,0 +1,8 @@
+plugin: ansible.builtin.constructed
+use_vars_plugins: true
+groups:
+    test: inventory_hostname.startswith('test')
+    test_up: inventory_hostname.startswith('test') and iocage_state == 'up'
+keyed_groups:
+  - prefix: region
+    key: region
