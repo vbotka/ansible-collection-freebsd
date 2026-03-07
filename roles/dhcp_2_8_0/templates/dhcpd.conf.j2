@@ -1,0 +1,48 @@
+# {{ ansible_managed }}
+#
+# Credit: How To Set Up A FreeBSD Wireless Access Point
+# https://www.howtoforge.com/setting_up_a_freebsd_wlan_access_point
+
+### GLOBAL SETTINGS
+option domain-name "{{ bsd_dhcpd_domain_name }}";
+option domain-name-servers {{ bsd_dhcpd_domain_name_servers }};
+default-lease-time {{ bsd_dhcpd_default_lease_time }};
+max-lease-time {{ bsd_dhcpd_max_lease_time }};
+ddns-update-style {{ bsd_dhcpd_ddns_update_style }};
+always-broadcast {{ bsd_dhcpd_always_broadcast }};
+log-facility {{ bsd_dhcpd_log_facility }};
+{% if bsd_dhcpd_netbios_name_servers|length > 0 %}
+option netbios-name-servers {{ bsd_dhcpd_netbios_name_servers }};
+{% endif %}
+{% if bsd_dhcpd_authoritative %}
+authoritative;
+{% endif %}
+
+### WIRED LOCAL AREA NETWORK
+subnet {{ bsd_dhcpd_wired_lan_subnet }}.0 netmask {{ bsd_dhcpd_wired_lan_netmask }} {
+range {{ bsd_dhcpd_wired_lan_subnet }}.{{ bsd_dhcpd_wired_lan_subnet_from }} {{ bsd_dhcpd_wired_lan_subnet }}.{{ bsd_dhcpd_wired_lan_subnet_to }};
+option broadcast-address {{ bsd_dhcpd_wired_lan_subnet }}.{{ bsd_dhcpd_wired_lan_subnet_broadcast }};
+option subnet-mask {{ bsd_dhcpd_wired_lan_netmask }};
+option routers {{ bsd_dhcpd_wired_lan_routers }};
+}
+
+### WIRELESS NETWORK
+subnet {{ bsd_dhcpd_wireless_subnet }}.0 netmask {{ bsd_dhcpd_wireless_netmask }} {
+range {{ bsd_dhcpd_wireless_subnet }}.{{ bsd_dhcpd_wireless_subnet_from }} {{ bsd_dhcpd_wireless_subnet }}.{{ bsd_dhcpd_wireless_subnet_to }};
+option broadcast-address {{ bsd_dhcpd_wireless_subnet }}.{{ bsd_dhcpd_wireless_subnet_broadcast }};
+option subnet-mask {{ bsd_dhcpd_wireless_netmask }};
+option routers {{ bsd_dhcpd_wireless_routers }};
+}
+
+{% for (key, value) in bsd_dhcpd_assigned_ip %}
+host {{ key }} {
+        hardware ethernet {{ value.mac }};
+        fixed-address {{ value.ip }};
+}
+{% endfor %}
+
+# TODO:
+# * add general list of subnets
+# * add general list of hosts
+
+# EOF

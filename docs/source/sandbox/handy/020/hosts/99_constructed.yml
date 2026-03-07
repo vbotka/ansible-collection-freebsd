@@ -1,0 +1,8 @@
+plugin: ansible.builtin.constructed
+keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm
+  - prefix: project
+    key: iocage_tags.project
+  - prefix: swarm
+    key: iocage_tags.swarm

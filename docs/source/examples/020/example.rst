@@ -262,6 +262,6 @@ Destroy the swarms if you don't need them any more.
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
 .. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _iocage property notes: https://iocage.readthedocs.io/en/latest/basic-use.html?highlight=properties#set-jail-property
-.. _Set Jail Property: https://iocage.readthedocs.io/en/latest/basic-use.html?highlight=properties#set-jail-property
+.. _iocage property notes: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
+.. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _iocage list is slow: https://forums.freebsd.org/threads/freebsd-13-1-extremally-slow.86723

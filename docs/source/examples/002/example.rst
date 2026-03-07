@@ -113,6 +113,6 @@ Playbook output - Activate iocage
 
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _iocage: https://iocage.readthedocs.io/en/latest/index.html
-.. _iocage - A FreeBSD Jail Manager: https://iocage.readthedocs.io/en/latest/index.html
-.. _Activate iocage: https://iocage.readthedocs.io/en/latest/basic-use.html#activate-iocage
+.. _iocage: https://freebsd.github.io/iocage/index.html
+.. _iocage - A FreeBSD Jail Manager: https://freebsd.github.io/iocage/index.html
+.. _Activate iocage: https://freebsd.github.io/iocage/basic-use.html#activate-iocage

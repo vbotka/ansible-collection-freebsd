@@ -1,0 +1,59 @@
+---
+# defaults freebsd_dhcp
+bsd_dhcpd_role_version: 2.8.0
+
+bsd_dhcpd_install: true
+bsd_dhcpd_sanity: true
+bsd_dhcpd_sanity_fatal: true
+bsd_dhcpd_enable: false
+bsd_dhcpd_debug: false
+bsd_dhcpd_backup_conf: false
+
+freebsd_install_method: packages
+# freebsd_install_method: ports
+freebsd_use_packages: true
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+
+# Configure /etc/rc.conf or etc/rc.conf.d/dhcpd
+bsd_dhcpd_rcconfd: false
+bsd_dhcpd_rcconf: []
+
+# packages
+bsd_dhcpd_version: "44"
+bsd_dhcpd_packages:
+  - net/isc-dhcp{{ bsd_dhcpd_version }}-server
+
+# dhcpd
+bsd_dhcpd_service: isc-dhcpd
+bsd_dhcpd_template: dhcpd.conf.j2
+
+# global
+bsd_dhcpd_domain_name: localnet.localdomain
+bsd_dhcpd_domain_name_servers: ns1.example.org, ns2.example.org
+bsd_dhcpd_netbios_name_servers: ""
+bsd_dhcpd_default_lease_time: "600"
+bsd_dhcpd_max_lease_time: "7200"
+bsd_dhcpd_ddns_update_style: none
+bsd_dhcpd_always_broadcast: "on"
+bsd_dhcpd_authoritative: true
+bsd_dhcpd_log_facility: local7
+
+# wired
+bsd_dhcpd_wired_lan_subnet: 10.1.1
+bsd_dhcpd_wired_lan_subnet_from: "100"
+bsd_dhcpd_wired_lan_subnet_to: "199"
+bsd_dhcpd_wired_lan_subnet_broadcast: "255"
+bsd_dhcpd_wired_lan_netmask: 255.255.255.0
+bsd_dhcpd_wired_lan_routers: 10.1.1.1
+
+# wireless
+bsd_dhcpd_wireless_subnet: 10.1.0
+bsd_dhcpd_wireless_subnet_from: "100"
+bsd_dhcpd_wireless_subnet_to: "199"
+bsd_dhcpd_wireless_subnet_broadcast: "255"
+bsd_dhcpd_wireless_netmask: 255.255.255.0
+bsd_dhcpd_wireless_routers: 10.1.0.1
+
+# assigned IPs
+bsd_dhcpd_assigned_ip: []

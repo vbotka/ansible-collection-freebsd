@@ -1,0 +1,23 @@
+---
+- name: "Packages: Install dhcp packages."
+  community.general.pkgng:
+    name: "{{ item }}"
+  loop: "{{ bsd_dhcpd_packages }}"
+  register: result
+  until: result is succeeded
+  retries: "{{ freebsd_install_retries }}"
+  delay: "{{ freebsd_install_delay }}"
+  when: freebsd_install_method == 'packages'
+
+- name: "Packages: Install dhcp ports."
+  community.general.portinstall:
+    name: "{{ item }}"
+    use_packages: "{{ freebsd_use_packages | d(true) }}"
+  loop: "{{ bsd_dhcpd_packages }}"
+  register: result
+  until: result is succeeded
+  retries: "{{ freebsd_install_retries }}"
+  delay: "{{ freebsd_install_delay }}"
+  when: freebsd_install_method == 'ports'
+
+# EOF

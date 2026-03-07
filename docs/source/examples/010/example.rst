@@ -213,7 +213,7 @@ Playbook output - Display groups
 .. _binary iocage: https://github.com/iocage/iocage/
 .. _Inventory plugin ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
-.. _Fetch a Release: https://iocage.readthedocs.io/en/latest/basic-use.html#fetch-a-release
-.. _Create a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#create-a-jail
-.. _Start, Stop, or Restart a Jail: https://iocage.readthedocs.io/en/latest/basic-use.html#start-stop-or-restart-a-jail
-.. _Listing Jails: https://iocage.readthedocs.io/en/latest/basic-use.html#listing-jails
+.. _Fetch a Release: https://freebsd.github.io/iocage/basic-use.html#fetch-a-release
+.. _Create a Jail: https://freebsd.github.io/iocage/basic-use.html#create-a-jail
+.. _Start, Stop, or Restart a Jail: https://freebsd.github.io/iocage/basic-use.html#start-stop-or-restart-a-jail
+.. _Listing Jails: https://freebsd.github.io/iocage/basic-use.html#listing-jails

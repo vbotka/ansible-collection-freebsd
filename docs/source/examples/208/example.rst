@@ -76,7 +76,7 @@ TBD
 
 .. seealso::
 
-   * `Using Templates <https://iocage.readthedocs.io/en/latest/templates.html>`_
+   * `Using Templates <https://freebsd.github.io/iocage/templates.html>`_
    * :ref:`ug_pb-iocage-template`
 
 ansible.cfg
@@ -162,4 +162,4 @@ Templates at iocage_04
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
 
 .. _ansible-pull: https://docs.ansible.com/ansible/latest/cli/ansible-pull.html
-.. _iocage: https://iocage.readthedocs.io/en/latest/index.html
+.. _iocage: https://freebsd.github.io/iocage/index.html

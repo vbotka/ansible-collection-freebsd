@@ -40,6 +40,6 @@ manager.
 .. _Examples: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#examples
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
 
-.. _iocage - A FreeBSD Jail Manager: https://iocage.readthedocs.io/en/latest
+.. _iocage - A FreeBSD Jail Manager: https://freebsd.github.io/iocage
 .. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _Jails and Containers: https://docs.freebsd.org/en/books/handbook/jails

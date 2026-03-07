@@ -1,0 +1,37 @@
+---
+# handlers freebsd_dhcp
+
+- name: Enable and start dhcpd
+  listen: enable and start dhcpd
+  ansible.builtin.service:
+    name: "{{ bsd_dhcpd_service }}"
+    state: started
+    enabled: true
+
+- name: Disable and stop dhcpd
+  listen: disable and stop dhcpd
+  ansible.builtin.service:
+    name: "{{ bsd_dhcpd_service }}"
+    state: stopped
+    enabled: false
+
+- name: Start dhcpd
+  listen: start dhcpd
+  ansible.builtin.service:
+    name: "{{ bsd_dhcpd_service }}"
+    state: started
+
+- name: Stop dhcpd
+  listen: stop dhcpd
+  ansible.builtin.service:
+    name: "{{ bsd_dhcpd_service }}"
+    state: stopped
+
+- name: Restart dhcpd
+  listen: restart dhcpd
+  ansible.builtin.service:
+    name: "{{ bsd_dhcpd_service }}"
+    state: restarted
+  when: bsd_dhcpd_enable | bool
+
+# EOF

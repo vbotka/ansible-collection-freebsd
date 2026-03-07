@@ -1,0 +1,19 @@
+# {{ ansible_managed }}
+
+# Global options
+option domain-name "{{ bsd_dhcpd_domain_name }}";
+option domain-name-servers {{ bsd_dhcpd_domain_name_servers | join(', ') }};
+default-lease-time {{ bsd_dhcpd_default_lease_time }};
+max-lease-time {{ bsd_dhcpd_max_lease_time }};
+
+{% if bsd_dhcpd_authoritative %}
+# Denotes this server as the primary DHCP server for the local network
+authoritative;
+{% endif %}
+
+# Internal subnet configuration
+subnet {{ bsd_dhcpd_subnet }}.0 netmask {{ bsd_dhcpd_wired_lan_netmask }} {
+  range {{ bsd_dhcpd_subnet }}.{{ bsd_dhcpd_subnet_from }} {{ bsd_dhcpd_subnet }}.{{ bsd_dhcpd_subnet_to }};
+  option routers {{ bsd_dhcpd_routers | join(', ') }};
+  option broadcast-address {{ bsd_dhcpd_subnet }}.{{ bsd_dhcpd_subnet_broadcast }};
+}

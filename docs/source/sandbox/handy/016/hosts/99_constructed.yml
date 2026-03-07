@@ -1,0 +1,4 @@
+plugin: ansible.builtin.constructed
+groups:
+    test: inventory_hostname.startswith('test')
+    test_up: inventory_hostname.startswith('test') and iocage_state == 'up'

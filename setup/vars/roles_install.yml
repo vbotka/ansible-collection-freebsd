@@ -4,6 +4,7 @@ roles_install:
   - certificate
   - config_light
   - custom_image
+  - dhcp
   - iocage
   - lib
   - network

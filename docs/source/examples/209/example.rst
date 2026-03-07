@@ -165,8 +165,8 @@ Playbook output - Create template
 .. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml
 
 .. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage
-.. _iocage: https://iocage.readthedocs.io/en/latest/index.html
-.. _Automatic Package Installation: https://iocage.readthedocs.io/en/latest/advanced-use.html?highlight=pkglist#automatic-package-installation
+.. _iocage: https://freebsd.github.io/iocage/index.html
+.. _Automatic Package Installation: https://freebsd.github.io/iocage/advanced-use.html?highlight=pkglist#automatic-package-installation
 
 .. _role vbotka.freebsd.postinstall defaults: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
 .. _Apache HTTP Server: https://httpd.apache.org/

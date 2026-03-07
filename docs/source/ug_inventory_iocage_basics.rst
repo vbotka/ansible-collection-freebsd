@@ -137,9 +137,9 @@ Optionally, create `Shared IP jails`_
         CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
 
 
-.. _Configuring a VNET Jail: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-vnet-jail
-.. _VNET jails: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-vnet-jail
-.. _Configuring a Shared IP Jail: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-shared-ip-jail
-.. _Shared IP jails: https://iocage.readthedocs.io/en/latest/networking.html#configuring-a-shared-ip-jail
+.. _Configuring a VNET Jail: https://freebsd.github.io/iocage/networking.html#configuring-a-vnet-jail
+.. _VNET jails: https://freebsd.github.io/iocage/networking.html#configuring-a-vnet-jail
+.. _Configuring a Shared IP Jail: https://freebsd.github.io/iocage/networking.html#configuring-a-shared-ip-jail
+.. _Shared IP jails: https://freebsd.github.io/iocage/networking.html#configuring-a-shared-ip-jail
 
 .. _env: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage#parameters

@@ -1,0 +1,6 @@
+fzfs_enable: true
+fzfs_pools:
+  zroot:
+    vdevs:
+      - disks:
+          - /dev/nda0p4

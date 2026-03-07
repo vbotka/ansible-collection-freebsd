@@ -1,0 +1,24 @@
+
+PLAY [Test role vbotka.freebsd.dhcp] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.dhcp : Sanity: Collect installed packages.] ***************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.dhcp : Sanity: Set my_missing_packages] *******************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.dhcp : Rcconf: Enable and start dhcpd] ********************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.dhcp : Rcconf: Configure dhcpd.] **************************
+ok: [iocage_05] => (item={'name': 'dhcpd_ifaces', 'value': 'bridge0'})
+
+TASK [vbotka.freebsd.dhcp : Conf: Configure /usr/local/etc/dhcpd.conf from dhcpd.conf-minimal.j2] ***
+ok: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=6    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

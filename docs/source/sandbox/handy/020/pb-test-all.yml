@@ -1,0 +1,16 @@
+- name: Display all groups.
+  hosts: all
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ iocage_properties.host_hostuuid | d('UNDEFINED') }}
+          {{ iocage_tags | d({}) | to_yaml }}
+
+    - debug:
+        msg: |
+          {% for group in groups %}
+          {{ group }}: {{ groups[group] }}
+          {% endfor %}
+      run_once: true

@@ -1,0 +1,9 @@
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+clones:
+  - {name: test_151, clone_from: ansible_client}
+  - {name: test_152, clone_from: ansible_client}
+  - {name: test_153, clone_from: ansible_client}

@@ -1,0 +1,17 @@
+# Ansible managed
+
+# Global options
+option domain-name "g3.example.com";
+option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 600;
+max-lease-time 7200;
+
+# Denotes this server as the primary DHCP server for the local network
+authoritative;
+
+# Internal subnet configuration
+subnet 10.1.0.0 netmask 255.255.255.0 {
+  range 10.1.0.100 10.1.0.200;
+  option routers 10.1.0.1;
+  option broadcast-address 10.1.0.255;
+}

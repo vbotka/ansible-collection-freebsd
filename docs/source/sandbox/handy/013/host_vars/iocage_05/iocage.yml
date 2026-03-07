@@ -1,0 +1,24 @@
+properties:
+  vnet: 'on'
+  defaultrouter: 10.1.0.10
+  notes: "vmm={{ inventory_hostname }}"
+
+basejails:
+  - name: ansible_client
+    release: 15.0-RELEASE
+    properties:
+      ip4_addr: 'vnet0|10.1.0.197/24'
+
+clones:
+  - name: test_151
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.151/24'
+  - name: test_152
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.152/24'
+  - name: test_153
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'vnet0|10.1.0.153/24'

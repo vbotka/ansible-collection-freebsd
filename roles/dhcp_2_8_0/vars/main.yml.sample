@@ -1,0 +1,13 @@
+---
+# vars freebsd-dhcp
+
+# bsd_dhcpd_assigned_ip:
+# host1:
+#  ip: '10.1.0.11'
+#  mac: '00:13:11:22:33:44'
+# host2:
+#  ip: '10.1.0.12'
+#  mac: '00:13:11:22:33:45'
+
+# EOF
+...

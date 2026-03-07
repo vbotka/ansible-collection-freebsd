@@ -14,6 +14,7 @@ Roles:
 * `certificate`_ - Generate and/or check OpenSSL certificates.
 * `config_light`_ - Install packages, configure files, services, and handlers.
 * `custom_image`_ - Download, mount, and customize system images.
+* `dhcp`_ - Install and configure DHCP.
 * `iocage`_ - Install and configure iocage.
 * `lib`_ - Library of tasks.
 * `network`_ - Configure network.
@@ -39,6 +40,7 @@ Various :ref:`ug_playbooks`.
 .. _certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
 .. _config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
 .. _custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
+.. _dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
 .. _iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
 .. _network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
