@@ -1,0 +1,35 @@
+---
+bsd_dhcpd_install: false
+
+bsd_dhcpd_enable: true
+bsd_dhcpd_debug: false
+bsd_dhcpd_sanity: true
+bsd_dhcpd_sanity_fatal: true
+bsd_dhcpd_backup_conf: true
+
+# rc.conf
+bsd_dhcpd_rcconf:
+  - name: dhcpd_ifaces
+    value: bridge0
+
+# Template
+bsd_dhcpd_template: dhcpd.conf-minimal.j2
+
+# Gobal
+bsd_dhcpd_domain_name: g3.example.com
+bsd_dhcpd_domain_name_servers: [8.8.8.8, 8.8.4.4]
+bsd_dhcpd_default_lease_time: 600
+bsd_dhcpd_max_lease_time: 7200
+
+# Primary server
+bsd_dhcpd_authoritative: true
+
+# Subnet
+bsd_dhcpd_subnet: 10.1.0
+bsd_dhcpd_netmask: 255.255.255.0
+bsd_dhcpd_subnet_from: 100
+bsd_dhcpd_subnet_to: 200
+bsd_dhcpd_routers: [10.1.0.1]
+bsd_dhcpd_subnet_broadcast: 255
+
+# EOF

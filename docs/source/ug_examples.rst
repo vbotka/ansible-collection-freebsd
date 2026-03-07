@@ -21,6 +21,7 @@ Examples
 :410-: `Role vbotka.freebsd.lib`_
 :420-: `Role vbotka.freebsd.apache`_
 :430-: `Role vbotka.freebsd.certificate`_
+:440-: `Role vbotka.freebsd.dhcp`_
 :500-: Infrastructure
 
 .. note::
@@ -118,6 +119,7 @@ Examples
    422 Configure Apache server PHP <examples/422/example.rst>
    423 Configure Apache server build <examples/423/example.rst>
    430 Configure Apache server SSL <examples/430/example.rst>
+   440 Configure DHCP server <examples/440/example.rst>
 
 .. toctree::
    :maxdepth: 1
@@ -141,6 +143,7 @@ Examples
 .. _Role vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate
 .. _Role vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light
 .. _Role vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
+.. _Role vbotka.freebsd.dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage
 .. _Role vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib
 .. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network

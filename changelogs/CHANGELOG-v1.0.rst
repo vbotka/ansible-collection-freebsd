@@ -19,11 +19,12 @@ Minor Changes
 -------------
 * Update roles: pf 2.8.2, postinstall 2.8.5
 * Add role dhcp 2.8.0
-* Update the inventory plugin iocag
+* Update the inventory plugin iocage
 * Update docs. Replace https://iocage.readthedocs.io/en/latest/ by
   https://freebsd.github.io/iocage/
 * Update examples for new remote host iocage_5 (ansible_host=handy)
 * Experimental examples moved to docs/source/sandbox/handy
+* Add example 440 Configure DHCP server
 
 
 0.8.2
