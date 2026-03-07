@@ -1,0 +1,23 @@
+
+PLAY [all] *********************************************************************
+
+TASK [debug] *******************************************************************
+ok: [test_152] => 
+    msg: |-
+        test_152 9 15.0-RELEASE 10.1.0.102 ['10.1.0.102'] up ''
+ok: [test_151] => 
+    msg: |-
+        test_151 8 15.0-RELEASE 10.1.0.101 ['10.1.0.101'] up ''
+ok: [ansible_client] => 
+    msg: |-
+        ansible_client None 15.0-RELEASE - [] down '-'
+ok: [test_153] => 
+    msg: |-
+        test_153 10 15.0-RELEASE 10.1.0.103 ['10.1.0.103'] up ''
+
+PLAY RECAP *********************************************************************
+ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

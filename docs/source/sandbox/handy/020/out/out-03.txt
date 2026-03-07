@@ -1,0 +1,13 @@
+
+PLAY [Create swarms (not idempotent!)] *****************************************
+
+TASK [Create swarms.] **********************************************************
+changed: [iocage_05] => (item={'key': 'db', 'value': {'count': 2, 'template': 'ansible_client'}})
+
+TASK [Create tags.] ************************************************************
+changed: [iocage_05] => (item=c5e43051 vmm=iocage_05 project=example_020 swarm=db alias=db1)
+changed: [iocage_05] => (item=d8860604 vmm=iocage_05 project=example_020 swarm=db alias=db2)
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

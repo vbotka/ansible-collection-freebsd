@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Upgrade role dhcp 2.8.1
-* Update docs example 440
+* Update docs and sandbox examples.
 
 
 0.8.3
