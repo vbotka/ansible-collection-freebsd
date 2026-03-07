@@ -17,6 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Update roles: pf 2.8.2, postinstall 2.8.5
+* Add role dhcp 2.8.0
 * Update the inventory plugin iocag
 * Update docs. Replace https://iocage.readthedocs.io/en/latest/ by
   https://freebsd.github.io/iocage/
