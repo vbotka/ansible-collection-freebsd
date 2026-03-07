@@ -1,0 +1,27 @@
+
+PLAY [Configure login.conf] ****************************************************
+
+PLAY [Install packages.] *******************************************************
+
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for iocage_05 => (item=custom)
+
+PLAY [Configure loader.conf] ***************************************************
+
+PLAY [Configure network.] ******************************************************
+
+PLAY [Configure pf.] ***********************************************************
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+included: vbotka.freebsd.postinstall for iocage_05
+
+PLAY [Configure iocage.] *******************************************************
+
+TASK [vbotka.freebsd.iocage : Rcconf: Enable iocage] ***************************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=68   changed=1    unreachable=0    failed=0    skipped=145  rescued=0    ignored=0   
+
