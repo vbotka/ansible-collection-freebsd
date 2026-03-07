@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Upgrade role dhcp 2.8.1
 
 
 0.8.3

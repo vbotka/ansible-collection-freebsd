@@ -55,7 +55,7 @@ bsd_roles:
     name: dhcp
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-dhcp
-    version: 2.8.0
+    version: 2.8.1
   - galaxy: vbotka.freebsd_dns
     name: dns
     scm: git
