@@ -1,0 +1,50 @@
+# This play is not idempotent! New jails are created each time this play runs.
+- name: Create swarms (not idempotent!)
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  vars:
+
+    debug: false
+
+  tasks:
+
+    - name: Create swarms.
+      register: out_swarms
+      ansible.builtin.command:
+        cmd: >-
+          iocage create
+          --short
+          --count {{ item.value.count }}
+          --template {{ item.value.template }}
+          {{ properties }}
+      loop: "{{ swarms | dict2items }}"
+
+    - name: Debug iocage create.
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out_swarms
+
+    - name: Create tags.
+      register: out_tags
+      vars:
+        jail_name: "{{ item.1 | split | first }}"
+        iocage_tags: >-
+          vmm={{ inventory_hostname}}
+          project={{ project }}
+          swarm={{ item.0.item.key }}
+          alias={{ names[idx] }}
+      ansible.builtin.command:
+        cmd: >-
+          iocage set
+          notes="{{ iocage_tags }}"
+          {{ jail_name }}
+      loop: "{{ out_swarms.results | subelements('stdout_lines') }}"
+      loop_control:
+        index_var: idx
+        label: "{{ jail_name }} {{ iocage_tags }}"
+
+    - name: Debug create tags.
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out_tags
