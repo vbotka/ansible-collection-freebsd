@@ -33,10 +33,12 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_05
-  │       └── pf.yml
+  │   └── iocage_05
+  │       ├── dhcp.yml
+  │       └── pf.yml
   ├── iocage.ini
-  └── pb.yml
+  ├── pb-dhcp.yml
+  └── pb-pf.yml
 
 Synopsis
 ^^^^^^^^
