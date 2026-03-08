@@ -1,0 +1,86 @@
+
+PLAY [Test filter vbotka.freebsd.iocage] ***************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    result:
+        jails:
+            ansible_client:
+                basejail: 'no'
+                boot: 'off'
+                ip4: 10.1.0.199
+                ip4_dict:
+                    ip4:
+                    -   ifc: em0
+                        ip: 10.1.0.199
+                        mask: '24'
+                    msg: ''
+                ip6: '-'
+                jid: None
+                release: 14.1-RELEASE-p6
+                state: down
+                template: '-'
+                type: jail
+            test_111:
+                basejail: 'no'
+                boot: 'off'
+                ip4: 10.1.0.111
+                ip4_dict:
+                    ip4:
+                    -   ifc: em0
+                        ip: 10.1.0.111
+                        mask: '24'
+                    msg: ''
+                ip6: '-'
+                jid: None
+                release: 14.1-RELEASE-p6
+                state: down
+                template: ansible_client
+                type: jail
+        releases:
+        - 14.1-RELEASE
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    jails:
+        ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: 10.1.0.199
+            ip4_dict:
+                ip4:
+                -   ifc: em0
+                    ip: 10.1.0.199
+                    mask: '24'
+                msg: ''
+            ip6: '-'
+            jid: None
+            release: 14.1-RELEASE-p6
+            state: down
+            template: '-'
+            type: jail
+        test_111:
+            basejail: 'no'
+            boot: 'off'
+            ip4: 10.1.0.111
+            ip4_dict:
+                ip4:
+                -   ifc: em0
+                    ip: 10.1.0.111
+                    mask: '24'
+                msg: ''
+            ip6: '-'
+            jid: None
+            release: 14.1-RELEASE-p6
+            state: down
+            template: ansible_client
+            type: jail
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    releases:
+    - 14.1-RELEASE
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
