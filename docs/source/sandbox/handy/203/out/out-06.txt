@@ -1,0 +1,10 @@
+@all:
+  |--@ungrouped:
+  |--@swarm_sw_01:
+  |  |--554f1d14
+  |  |--c788c81b
+  |  |--eaff6c83
+  |--@vmm_iocage_05:
+  |  |--554f1d14
+  |  |--c788c81b
+  |  |--eaff6c83
