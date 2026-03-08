@@ -1,0 +1,183 @@
+
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.] *** 14:45:25
+
+TASK [Get iocage list of jails] *************************************** 14:45:26
+ok: [iocage_05]
+
+TASK [Jails service list enabled] ************************************* 14:45:27
+ok: [iocage_05] => (item=42)
+ok: [iocage_05] => (item=41)
+ok: [iocage_05] => (item=40)
+
+TASK [ansible.builtin.debug] ****************************************** 14:45:28
+ok: [iocage_05] => 
+    service_out:
+        changed: false
+        deprecations:
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        -   collection_name: ansible.builtin
+            deprecator:
+                resolved_name: ansible.builtin
+                type: null
+            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
+            version: '2.24'
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            invocation:
+                module_args:
+                    command: null
+                    env: null
+                    jail: '42'
+                    list_enabled: true
+                    script: null
+                    synopsis: false
+                    wait: 0.5
+            item: '42'
+            rc: 0
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                /etc/rc.d/cleanvar
+                /etc/rc.d/cleartmp
+                /etc/rc.d/cron
+                /etc/rc.d/ip6addrctl
+                /etc/rc.d/motd
+                /etc/rc.d/netif
+                /etc/rc.d/newsyslog
+                /etc/rc.d/os-release
+                /etc/rc.d/sshd
+                /etc/rc.d/syslogd
+                /etc/rc.d/utx
+                /etc/rc.d/var_run
+                /etc/rc.d/virecover
+            stdout_lines:
+            - /etc/rc.d/cleanvar
+            - /etc/rc.d/cleartmp
+            - /etc/rc.d/cron
+            - /etc/rc.d/ip6addrctl
+            - /etc/rc.d/motd
+            - /etc/rc.d/netif
+            - /etc/rc.d/newsyslog
+            - /etc/rc.d/os-release
+            - /etc/rc.d/sshd
+            - /etc/rc.d/syslogd
+            - /etc/rc.d/utx
+            - /etc/rc.d/var_run
+            - /etc/rc.d/virecover
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            invocation:
+                module_args:
+                    command: null
+                    env: null
+                    jail: '41'
+                    list_enabled: true
+                    script: null
+                    synopsis: false
+                    wait: 0.5
+            item: '41'
+            rc: 0
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                /etc/rc.d/cleanvar
+                /etc/rc.d/cleartmp
+                /etc/rc.d/cron
+                /etc/rc.d/ip6addrctl
+                /etc/rc.d/motd
+                /etc/rc.d/netif
+                /etc/rc.d/newsyslog
+                /etc/rc.d/os-release
+                /etc/rc.d/sshd
+                /etc/rc.d/syslogd
+                /etc/rc.d/utx
+                /etc/rc.d/var_run
+                /etc/rc.d/virecover
+            stdout_lines:
+            - /etc/rc.d/cleanvar
+            - /etc/rc.d/cleartmp
+            - /etc/rc.d/cron
+            - /etc/rc.d/ip6addrctl
+            - /etc/rc.d/motd
+            - /etc/rc.d/netif
+            - /etc/rc.d/newsyslog
+            - /etc/rc.d/os-release
+            - /etc/rc.d/sshd
+            - /etc/rc.d/syslogd
+            - /etc/rc.d/utx
+            - /etc/rc.d/var_run
+            - /etc/rc.d/virecover
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            invocation:
+                module_args:
+                    command: null
+                    env: null
+                    jail: '40'
+                    list_enabled: true
+                    script: null
+                    synopsis: false
+                    wait: 0.5
+            item: '40'
+            rc: 0
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                /etc/rc.d/cleanvar
+                /etc/rc.d/cleartmp
+                /etc/rc.d/cron
+                /etc/rc.d/ip6addrctl
+                /etc/rc.d/motd
+                /etc/rc.d/netif
+                /etc/rc.d/newsyslog
+                /etc/rc.d/os-release
+                /etc/rc.d/sshd
+                /etc/rc.d/syslogd
+                /etc/rc.d/utx
+                /etc/rc.d/var_run
+                /etc/rc.d/virecover
+            stdout_lines:
+            - /etc/rc.d/cleanvar
+            - /etc/rc.d/cleartmp
+            - /etc/rc.d/cron
+            - /etc/rc.d/ip6addrctl
+            - /etc/rc.d/motd
+            - /etc/rc.d/netif
+            - /etc/rc.d/newsyslog
+            - /etc/rc.d/os-release
+            - /etc/rc.d/sshd
+            - /etc/rc.d/syslogd
+            - /etc/rc.d/utx
+            - /etc/rc.d/var_run
+            - /etc/rc.d/virecover
+        skipped: false
+
+TASK [ansible.builtin.debug] ****************************************** 14:45:28
+ok: [iocage_05] => 
+    jid_service_enabled | to_yaml: |-
+        '40': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+        '41': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+        '42': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+          syslogd, utx, var_run, virecover]
+
+PLAY RECAP ************************************************************ 14:45:28
+iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
