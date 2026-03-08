@@ -1,57 +1,57 @@
 
-PLAY [Create Ansible client templates.] ****************************************
+PLAY [Create Ansible client templates.] ******************************* 11:42:33
 
-TASK [Setup: Get iocage list of templates.] ************************************
+TASK [Setup: Get iocage list of templates.] *************************** 11:42:34
 ok: [iocage_05]
 
-TASK [Create: Get iocage list of templates.] ***********************************
+TASK [Pkglist: Create directories for pkglist files.] ***************** 11:42:35
+ok: [iocage_05] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+
+TASK [Pkglist: Copy pkglist files.] *********************************** 11:42:36
+ok: [iocage_05] => (item=ansible_client /tmp/ansible/ansible_client/pkgs.json)
+
+TASK [Create: Get iocage list of templates.] ************************** 11:42:37
 ok: [iocage_05]
 
-TASK [Create: Create templates.] ***********************************************
+TASK [Create: Create templates.] ************************************** 11:46:12
 changed: [iocage_05] => (item=ansible_client 15.0-RELEASE)
 
-TASK [Start: Get iocage list of jails.] ****************************************
+TASK [Start: Get iocage list of jails.] ******************************* 11:46:13
 ok: [iocage_05]
 
-TASK [Start: Start created templates.] *****************************************
+TASK [Start: Start created templates.] ******************************** 11:46:14
 ok: [iocage_05]
 
-TASK [Pkg: Get iocage list of jails.] ******************************************
-ok: [iocage_05]
-
-TASK [Pkg: Install packages.] **************************************************
-changed: [iocage_05] => (item=ansible_client)
-
-TASK [User: Create user.] ******************************************************
+TASK [User: Create user.] ********************************************* 11:46:18
 changed: [iocage_05] => (item=ansible_client admin)
 
-TASK [Pk: The keys are valid.] *************************************************
+TASK [Pk: The keys are valid.] **************************************** 11:46:18
 ok: [iocage_05] => 
     changed: false
     msg: All assertions passed
 
-TASK [Pk: Configure public keys.] **********************************************
+TASK [Pk: Configure public keys.] ************************************* 11:46:19
 changed: [iocage_05] => (item=ansible_client admin)
 
-TASK [Pk: Chown .ssh] **********************************************************
+TASK [Pk: Chown .ssh] ************************************************* 11:46:22
 ok: [iocage_05] => (item=ansible_client admin)
 
-TASK [Sudo: Configure sudo.] ***************************************************
+TASK [Sudo: Configure sudo.] ****************************************** 11:46:23
 changed: [iocage_05] => (item=ansible_client admin)
 
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
+TASK [Rcconf: Configure /etc/rc.conf] ********************************* 11:46:23
 changed: [iocage_05] => (item=ansible_client iocage_enable YES)
 changed: [iocage_05] => (item=ansible_client sshd_enable YES)
 
-TASK [Stop: Get iocage list of jails.] *****************************************
+TASK [Stop: Get iocage list of jails.] ******************************** 11:46:25
 ok: [iocage_05]
 
-TASK [Stop: Stop jails.] *******************************************************
+TASK [Stop: Stop jails.] ********************************************** 11:46:26
 ok: [iocage_05]
 
-TASK [Template: Set template.] *************************************************
+TASK [Template: Set template.] **************************************** 11:46:27
 ok: [iocage_05] => (item=ansible_client)
 
-PLAY RECAP *********************************************************************
-iocage_05                  : ok=16   changed=6    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
+PLAY RECAP ************************************************************ 11:46:27
+iocage_05                  : ok=16   changed=5    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
 

@@ -1,0 +1,99 @@
+NOTES:
+
+
+There is no difference in installing packages
+=============================================
+
+* module community.general.pkgng parameter jail
+* module vbotka.freebsd.iocage parameter pkglist
+* command line iocage parameter -p
+
+(playbook vbotka.freebsd.pb_iocage_template.yml)
+
+
+Module community.general.pkgng
+------------------------------
+
+Installation of the packages takes > 3min
+
+Parameter: jail: "{{ iocage_jails[item.key]['jid'] }}"
+
+act_pkg_install: true
+act_pkg:
+  - python311
+  - sudo
+
+shell> ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini
+...
+TASK [Start: Start created templates.] ******************************** 11:12:07
+ok: [iocage_05]
+
+TASK [Pkg: Get iocage list of jails.] ********************************* 11:12:07
+ok: [iocage_05]
+
+TASK [Pkg: Install packages.] ***************************************** 11:15:48
+changed: [iocage_05] => (item=ansible_client)
+
+TASK [User: Create user.] ********************************************* 11:15:52
+changed: [iocage_05] => (item=ansible_client admin)
+--
+
+
+Module vbotka.freebsd.iocage 
+----------------------------
+
+Installation of the packages takes > 3min
+
+Parameter pkglist: "{{ item.value.pkglist | d(omit) }}"
+
+Vars:
+pkglist: /tmp/ansible/ansible_client/pkgs.json
+act_pkg_install: false
+
+shell> ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini
+...
+TASK [Create: Get iocage list of templates.] ************************** 11:42:37
+ok: [iocage_05]
+
+TASK [Create: Create templates.] ************************************** 11:46:12
+changed: [iocage_05] => (item=ansible_client 15.0-RELEASE)
+
+TASK [Start: Get iocage list of jails.] ******************************* 11:46:13
+ok: [iocage_05]
+--
+
+Command iocage
+--------------
+
+Installation of the packages takes ~ 3min
+
+Parameter -p /tmp/ansible/ansible_client/pkgs.json
+
+shell> date
+Sun Mar  8 12:13:19 CET 2026
+
+shell> iocage create -n ansible_client -p /tmp/ansible/ansible_client/pkgs.json -r 15.0-RELEASE bpf=1 dhcp=1 vnet=1
+ansible_client successfully created!
+
+Testing Host DNS response to pkg.freebsd.org
+Testing ansible_client's SRV response to pkg.freebsd.org
+Testing ansible_client's DNSSEC response to pkg.freebsd.org
+
+Installing pkg... 
+
+Installing supplied packages:
+  - python311... 
+=====
+Message from python311-3.11.15:
+
+Note that some standard Python modules are provided as separate ports
+as they require additional dependencies. They are available as:
+
+py311-gdbm       databases/py-gdbm@py311
+py311-sqlite3    databases/py-sqlite3@py311
+py311-tkinter    x11-toolkits/py-tkinter@py311
+  - sudo... 
+
+shell> date
+Sun Mar  8 12:16:11 CET 2026
+--

@@ -1,7 +1,20 @@
 
-PLAY [Connect to the group test.] **********************************************
+PLAY [Connect to the group test.] ************************************* 11:47:08
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] ************************************************ 11:47:18
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
+
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
+
+fatal: [test_153]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153
+        port 22: Connection timed out'
+    unreachable: true
 [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.151 port 22: Connection timed out
 
 Task failed.
@@ -28,21 +41,8 @@ fatal: [test_152]: UNREACHABLE! =>
     msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.152
         port 22: Connection timed out'
     unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
 
-Task failed.
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
-
-fatal: [test_153]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153
-        port 22: Connection timed out'
-    unreachable: true
-
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 11:47:18
 test_151                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
