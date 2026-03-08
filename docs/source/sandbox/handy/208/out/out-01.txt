@@ -1,10 +1,10 @@
 
-PLAY [Create Ansible client templates.] ****************************************
+PLAY [Create Ansible client templates.] ******************************* 13:19:35
 
-TASK [Setup: Get iocage list of templates.] ************************************
+TASK [Setup: Get iocage list of templates.] *************************** 13:19:36
 ok: [iocage_05]
 
-TASK [Setup: Display iocage_templates debug=true] ******************************
+TASK [Setup: Display iocage_templates debug=true] ********************* 13:19:36
 ok: [iocage_05] => 
     iocage_templates:
         ansible_client:
@@ -20,17 +20,30 @@ ok: [iocage_05] =>
             state: down
             template: '-'
             type: template
+        ansible_client_apache:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: template
 
-TASK [Create: Get iocage list of templates.] ***********************************
+TASK [Create: Get iocage list of templates.] ************************** 13:19:36
 ok: [iocage_05]
 
-TASK [Create: Create templates.] ***********************************************
+TASK [Create: Create templates.] ************************************** 13:19:41
 changed: [iocage_05] => (item=ansible_client_pull 15.0-RELEASE)
 
-TASK [Start: Get iocage list of jails.] ****************************************
+TASK [Start: Get iocage list of jails.] ******************************* 13:19:42
 ok: [iocage_05]
 
-TASK [Start: Display iocage_jails debug=true] **********************************
+TASK [Start: Display iocage_jails debug=true] ************************* 13:19:42
 ok: [iocage_05] => 
     iocage_jails:
         ansible_client_pull:
@@ -47,13 +60,13 @@ ok: [iocage_05] =>
             template: '-'
             type: jail
 
-TASK [Start: Start created templates.] *****************************************
+TASK [Start: Start created templates.] ******************************** 13:19:45
 ok: [iocage_05]
 
-TASK [Pkg: Get iocage list of jails.] ******************************************
+TASK [Pkg: Get iocage list of jails.] ********************************* 13:19:46
 ok: [iocage_05]
 
-TASK [Pkg: Display iocage_jails debug=true] ************************************
+TASK [Pkg: Display iocage_jails debug=true] *************************** 13:19:46
 ok: [iocage_05] => 
     iocage_jails:
         ansible_client_pull:
@@ -67,43 +80,43 @@ ok: [iocage_05] =>
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '33'
+            jid: '38'
             release: 15.0-RELEASE
             state: up
             template: '-'
             type: jail
 
-TASK [Pkg: Install packages.] **************************************************
+TASK [Pkg: Install packages.] ***************************************** 13:26:33
 changed: [iocage_05] => (item=ansible_client_pull)
 
-TASK [User: Create user.] ******************************************************
+TASK [User: Create user.] ********************************************* 13:26:37
 changed: [iocage_05] => (item=ansible_client_pull admin)
 
-TASK [Pk: The keys are valid.] *************************************************
+TASK [Pk: The keys are valid.] **************************************** 13:26:37
 ok: [iocage_05] => 
     changed: false
     msg: All assertions passed
 
-TASK [Pk: Configure public keys.] **********************************************
+TASK [Pk: Configure public keys.] ************************************* 13:26:38
 changed: [iocage_05] => (item=ansible_client_pull admin)
 
-TASK [Pk: Chown .ssh] **********************************************************
+TASK [Pk: Chown .ssh] ************************************************* 13:26:42
 ok: [iocage_05] => (item=ansible_client_pull admin)
 
-TASK [Sudo: Configure sudo.] ***************************************************
+TASK [Sudo: Configure sudo.] ****************************************** 13:26:42
 changed: [iocage_05] => (item=ansible_client_pull admin)
 
-TASK [Dhclient: Configure hooks.] **********************************************
+TASK [Dhclient: Configure hooks.] ************************************* 13:26:43
 changed: [iocage_05] => (item=ansible_client_pull dhclient-exit-hooks)
 
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
+TASK [Rcconf: Configure /etc/rc.conf] ********************************* 13:26:44
 changed: [iocage_05] => (item=ansible_client_pull iocage_enable YES)
 changed: [iocage_05] => (item=ansible_client_pull sshd_enable YES)
 
-TASK [Stop: Get iocage list of jails.] *****************************************
+TASK [Stop: Get iocage list of jails.] ******************************** 13:26:45
 ok: [iocage_05]
 
-TASK [Stop: Display iocage_jails debug=true] ***********************************
+TASK [Stop: Display iocage_jails debug=true] ************************** 13:26:45
 ok: [iocage_05] => 
     iocage_jails:
         ansible_client_pull:
@@ -117,18 +130,18 @@ ok: [iocage_05] =>
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '33'
+            jid: '38'
             release: 15.0-RELEASE
             state: up
             template: '-'
             type: jail
 
-TASK [Stop: Stop jails.] *******************************************************
+TASK [Stop: Stop jails.] ********************************************** 13:26:46
 ok: [iocage_05]
 
-TASK [Template: Set template.] *************************************************
+TASK [Template: Set template.] **************************************** 13:26:48
 ok: [iocage_05] => (item=ansible_client_pull)
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 13:26:48
 iocage_05                  : ok=21   changed=7    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
 

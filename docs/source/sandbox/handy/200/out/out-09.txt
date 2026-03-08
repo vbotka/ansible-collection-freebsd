@@ -1,20 +1,7 @@
 
-PLAY [Connect to the group test.] ************************************* 11:47:08
+PLAY [Connect to the group test.] ************************************* 12:55:08
 
-TASK [Gathering Facts] ************************************************ 11:47:18
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
-
-Task failed.
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
-
-fatal: [test_153]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153
-        port 22: Connection timed out'
-    unreachable: true
+TASK [Gathering Facts] ************************************************ 12:55:18
 [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.151 port 22: Connection timed out
 
 Task failed.
@@ -26,6 +13,19 @@ Failed to connect to the host via ssh: ssh: connect to host 10.1.0.151 port 22: 
 fatal: [test_151]: UNREACHABLE! => 
     changed: false
     msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.151
+        port 22: Connection timed out'
+    unreachable: true
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
+
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
+
+fatal: [test_153]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153
         port 22: Connection timed out'
     unreachable: true
 [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.152 port 22: Connection timed out
@@ -42,7 +42,7 @@ fatal: [test_152]: UNREACHABLE! =>
         port 22: Connection timed out'
     unreachable: true
 
-PLAY RECAP ************************************************************ 11:47:18
+PLAY RECAP ************************************************************ 12:55:18
 test_151                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   

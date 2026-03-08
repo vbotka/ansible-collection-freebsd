@@ -18,7 +18,7 @@
     use_globs: false
     jail: "{{ iocage_jails[item.key]['jid'] }}"
     name: "{{ _act_pkg }}"
-    cached: "{{ act_pkg_cached | d(omit) | bool }}"
+    cached: "{{ act_pkg_cached | bool | d(omit) }}"
   loop: "{{ templates | dict2items }}"
   loop_control:
     label: "{{ item.key }}"

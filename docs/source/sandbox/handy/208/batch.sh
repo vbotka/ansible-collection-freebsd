@@ -7,7 +7,9 @@ VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_
 ssh admin@$iocage_05 sudo iocage destroy -f ansible_client_pull
 
 # Create templates
-ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini -e debug=true | tee out/out-01.txt
+ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
+		 -i iocage.ini \
+		 -e debug=true | tee out/out-01.txt
 
 # List templates
 ssh admin@$iocage_05 iocage list -lt | tee out/out-02.txt

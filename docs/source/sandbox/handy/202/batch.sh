@@ -9,7 +9,7 @@ ssh admin@$iocage_05 sudo iocage destroy -f ansible_client
 # Create templates
 ansible-playbook vbotka.freebsd.pb_iocage_template.yml \
 		 -i iocage.ini \
-		 -e debug=true -e debug2=true \
+		 -e debug=true -e debug2=false \
 		 --flush-cache | tee out/out-01.txt
 
 # Status of templates

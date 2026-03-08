@@ -1,7 +1,7 @@
 
-PLAY [Connect to the group test.] **********************************************
+PLAY [Connect to the group test.] ************************************* 13:04:36
 
-TASK [ansible.builtin.command] *************************************************
+TASK [ansible.builtin.command] **************************************** 13:04:46
 [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.101 port 22: Connection timed out
 
 Task failed.
@@ -60,7 +60,7 @@ fatal: [test_152]: UNREACHABLE! =>
         port 22: Connection timed out'
     unreachable: true
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 13:04:46
 test_151                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
