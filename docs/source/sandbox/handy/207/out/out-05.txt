@@ -1,0 +1,43 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [test_5] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_5
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [http_5] => 
+    msg: |-
+        ansible_host: 10.1.0.112
+        iocage_properties.host_hostuuid: 5bb68e44
+        iocage_classes: [http, logclient]
+
+        iocage_tags: {alias: http_5, class: 'http,logclient', vmm: iocage_05}
+ok: [db_5] => 
+    msg: |-
+        ansible_host: 10.1.0.113
+        iocage_properties.host_hostuuid: 55c8b6da
+        iocage_classes: [db, logclient]
+
+        iocage_tags: {alias: db_5, class: 'db,logclient', vmm: iocage_05}
+
+TASK [debug] *******************************************************************
+ok: [test_5] => 
+    msg: |-
+        all: ['test_5', 'db_5', 'http_5']
+        ungrouped: []
+        state_down: ['test_5']
+        db: ['db_5']
+        logclient: ['db_5', 'http_5']
+        state_up: ['db_5', 'http_5']
+        vmm_iocage_05: ['db_5', 'http_5']
+        http: ['http_5']
+
+PLAY RECAP *********************************************************************
+db_5                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+http_5                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_5                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

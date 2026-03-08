@@ -1,0 +1,32 @@
+
+PLAY [Stop and destroy jails.] *************************************************
+
+TASK [Display vars.] ***********************************************************
+ok: [iocage_05] => 
+    msg: |-
+        vmm:
+          iocage_05:
+            db_5:
+              class: [db, logclient]
+              vmm: iocage_05
+            http_5:
+              class: [http, logclient]
+              vmm: iocage_05
+
+        class:
+          db: [db_5]
+          http: [http_5]
+          logclient: [http_5, db_5]
+
+        groups.all: ['test_5', 'db_5', 'http_5', 'iocage_05']
+        project_jails_present: ['http_5', 'db_5']
+
+TASK [Stop jails.] *************************************************************
+changed: [iocage_05]
+
+TASK [Destroy jails.] **********************************************************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
