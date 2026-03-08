@@ -1,0 +1,19 @@
+- name: Create pkglist file.
+  hosts: iocage
+  remote_user: admin
+
+  vars:
+
+    pkgs: "{{ freebsd_iocage_pkglist_pkgs | map('extract', freebsd_iocage_pkglist_dict)
+                                          | flatten
+                                          | unique
+                                          | sort }}"
+
+  tasks:
+
+    - ansible.builtin.debug:
+        var: pkgs
+
+    - ansible.builtin.import_role:
+        name: vbotka.freebsd.iocage
+        tasks_from: pkglist

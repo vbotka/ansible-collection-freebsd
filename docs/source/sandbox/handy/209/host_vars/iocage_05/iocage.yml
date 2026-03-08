@@ -1,0 +1,34 @@
+freebsd_iocage_pool: zroot
+freebsd_iocage_pool_mount: /zroot
+freebsd_iocage_mount: /zroot/iocage
+
+templates:
+  ansible_client_apache:
+    release: 15.0-RELEASE
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+    dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
+    # pkglist: /tmp/ansible/ansible_client_apache/pkgs.json
+
+# pkg
+act_pkg_install: true
+act_pkg: "{{ freebsd_iocage_pkglist_pkgs | map('extract', freebsd_iocage_pkglist_dict)
+                                         | flatten | unique | sort }}"
+
+# ansible client template defaults
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  iocage_enable: "YES"
+  sshd_enable: "YES"
+act_dhclient:
+  dhclient-exit-hooks: |
+    case "$reason" in
+        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+        ;;
+    esac
