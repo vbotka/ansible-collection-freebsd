@@ -1,12 +1,8 @@
 ---
 - name: "Setup: Get iocage list of templates."
-  register: out
+  register: out_templates
   changed_when: false
-  ansible.builtin.command: iocage list --long --template
-
-- name: "Setup: Set dictionary iocage_templates"
-  ansible.builtin.set_fact:
-    iocage_templates: "{{ out.stdout | vbotka.freebsd.iocage('templates') }}"
+  ansible.builtin.command: iocage list --template --long
 
 - name: "Setup: Display iocage_templates debug={{ debug }}"
   when: debug | bool

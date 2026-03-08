@@ -18,7 +18,9 @@ Major Changes
 Minor Changes
 -------------
 * Upgrade role dhcp 2.8.1
-* Update docs and sandbox examples.
+* Update docs and sandbox examples. Add sandbox examples.
+* Update playbook pb_iocage_template. Do not use set_facts to create
+  iocage_jails and iocage_templates lists.
 
 
 0.8.3

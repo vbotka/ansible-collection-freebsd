@@ -6,6 +6,8 @@
 
     debug: false
     debug2: false
+    iocage_templates: "{{ out_templates.stdout | vbotka.freebsd.iocage('templates') }}"
+    iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
 
   tasks:
 
