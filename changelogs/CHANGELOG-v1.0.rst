@@ -10,7 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-Update docs and examples.
+Update roles, playbooks, docs and examples.
 
 Major Changes
 -------------
