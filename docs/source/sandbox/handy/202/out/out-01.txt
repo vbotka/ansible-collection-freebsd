@@ -1,0 +1,147 @@
+
+PLAY [Create Ansible client templates.] ******************************* 12:59:51
+
+TASK [Setup: Get iocage list of templates.] *************************** 12:59:51
+ok: [iocage_05]
+
+TASK [Setup: Display iocage_templates debug=true] ********************* 12:59:51
+ok: [iocage_05] => 
+    iocage_templates:
+        ansible_client_apache:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: template
+        ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: template
+
+TASK [Create: Get iocage list of templates.] ************************** 12:59:52
+ok: [iocage_05]
+
+TASK [Create: Create templates.] ************************************** 12:59:57
+changed: [iocage_05] => (item=ansible_client 15.0-RELEASE)
+
+TASK [Start: Get iocage list of jails.] ******************************* 12:59:58
+ok: [iocage_05]
+
+TASK [Start: Display iocage_jails debug=true] ************************* 12:59:58
+ok: [iocage_05] => 
+    iocage_jails:
+        ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: jail
+
+TASK [Start: Start created templates.] ******************************** 13:00:00
+ok: [iocage_05]
+
+TASK [Pkg: Get iocage list of jails.] ********************************* 13:00:01
+ok: [iocage_05]
+
+TASK [Pkg: Display iocage_jails debug=true] *************************** 13:00:01
+ok: [iocage_05] => 
+    iocage_jails:
+        ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: 10.1.0.116
+            ip4_dict:
+                ip4:
+                -   ifc: epair0b
+                    ip: 10.1.0.116
+                    mask: '-'
+                msg: ''
+            ip6: '-'
+            jid: '22'
+            release: 15.0-RELEASE
+            state: up
+            template: '-'
+            type: jail
+
+TASK [Pkg: Install packages.] ***************************************** 13:03:45
+changed: [iocage_05] => (item=ansible_client)
+
+TASK [User: Create user.] ********************************************* 13:03:49
+changed: [iocage_05] => (item=ansible_client admin)
+
+TASK [Pk: The keys are valid.] **************************************** 13:03:49
+ok: [iocage_05] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [Pk: Configure public keys.] ************************************* 13:03:49
+changed: [iocage_05] => (item=ansible_client admin)
+
+TASK [Pk: Chown .ssh] ************************************************* 13:03:53
+ok: [iocage_05] => (item=ansible_client admin)
+
+TASK [Sudo: Configure sudo.] ****************************************** 13:03:54
+changed: [iocage_05] => (item=ansible_client admin)
+
+TASK [Dhclient: Configure hooks.] ************************************* 13:03:55
+changed: [iocage_05] => (item=ansible_client dhclient-exit-hooks)
+
+TASK [Rcconf: Configure /etc/rc.conf] ********************************* 13:03:55
+changed: [iocage_05] => (item=ansible_client iocage_enable YES)
+changed: [iocage_05] => (item=ansible_client sshd_enable YES)
+
+TASK [Stop: Get iocage list of jails.] ******************************** 13:03:57
+ok: [iocage_05]
+
+TASK [Stop: Display iocage_jails debug=true] ************************** 13:03:57
+ok: [iocage_05] => 
+    iocage_jails:
+        ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: 10.1.0.116
+            ip4_dict:
+                ip4:
+                -   ifc: epair0b
+                    ip: 10.1.0.116
+                    mask: '-'
+                msg: ''
+            ip6: '-'
+            jid: '22'
+            release: 15.0-RELEASE
+            state: up
+            template: '-'
+            type: jail
+
+TASK [Stop: Stop jails.] ********************************************** 13:03:58
+ok: [iocage_05]
+
+TASK [Template: Set template.] **************************************** 13:03:59
+ok: [iocage_05] => (item=ansible_client)
+
+PLAY RECAP ************************************************************ 13:03:59
+iocage_05                  : ok=21   changed=7    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+

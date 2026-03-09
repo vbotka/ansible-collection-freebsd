@@ -1,0 +1,91 @@
+- name: Module vbotka.freebsd.service examples.
+  hosts: iocage
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
+  tasks:
+
+    - name: Get sshd ON/OFF knob value.
+      register: out
+      vbotka.freebsd.service:
+        script: sshd
+        command: rcvar
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Get /usr/local/etc/rc.d/apcupsd status.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: status
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Get /usr/local/etc/rc.d/apcupsd rcvar.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: rcvar
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Start apcupsd.
+      register: out
+      vbotka.freebsd.service:
+        script: apcupsd
+        command: onestart
+    - ansible.builtin.debug:
+        var: out
+
+    - name: List enbled services.
+      register: out
+      vbotka.freebsd.service:
+        list_enabled: true
+    - ansible.builtin.debug:
+        var: out
+
+    - name: Get script sshd commands synopsis.
+      register: out
+      vbotka.freebsd.service:
+        script: sshd
+        synopsis: true
+    - ansible.builtin.debug:
+        var: out
+
+    - debug:
+        msg: |
+          groups.up: {{ groups.up }}
+          jid: {{ groups.up | map('extract', hostvars, 'iocage_jid') }}
+          vmm: {{ groups.up | map('extract', hostvars, ['iocage_tags', 'vmm']) }}
+
+    - name: Get sshd_enable values from the jails.
+      delegate_to: "{{ hostvars[item].iocage_tags.vmm }}"
+      register: out
+      run_once: true
+      vbotka.freebsd.service:
+        jail: "{{ hostvars[item].iocage_jid }}"
+        script: sshd
+        command: rcvar
+        env:
+          HOME: /
+          PATH: /sbin:/bin:/usr/sbin:/usr/bin
+      loop: "{{ groups.up }}"
+
+    - name: Display the dictionary. Use stdout.
+      vars:
+        jail_rcvar: "{{ dict(keys | zip(vals)) }}"
+        keys: "{{ out.results | map(attribute='item') }}"
+        vals: "{{ out.results | map(attribute='stdout') | map('community.general.jc', 'ini') }}"
+      ansible.builtin.debug:
+        var: jail_rcvar
+
+    - name: Display the dictionary. Use rcvar.
+      vars:
+        jail_rcvar: "{{ dict(keys | zip(vals)) }}"
+        keys: "{{ out.results | map(attribute='item') }}"
+        vals: "{{ out.results | map(attribute='rcvar') }}"
+      ansible.builtin.debug:
+        var: jail_rcvar

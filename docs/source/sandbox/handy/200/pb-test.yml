@@ -1,0 +1,33 @@
+- name: Connect to the group test.
+  hosts: test
+  remote_user: admin
+  gather_facts: true
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
+  tasks:
+
+    - ansible.builtin.command: hostname
+      register: out_host
+    
+    - ansible.builtin.debug:
+        msg: >
+          {{ out_host.stdout }}
+          {{ iocage_properties.host_hostuuid }}
+          {{ iocage_properties.hostid }}
+          {{ ansible_facts.discovered_interpreter_python }}
+
+    - ansible.builtin.command: whoami
+      register: out_user
+
+    - ansible.builtin.command: whoami
+      register: out_root
+      become: true
+    
+    - ansible.builtin.debug:
+        msg: >
+          {{ out_host.stdout }}
+          {{ out_user.stdout }}
+          {{ out_root.stdout }}

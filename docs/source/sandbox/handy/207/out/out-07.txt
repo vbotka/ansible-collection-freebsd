@@ -1,0 +1,22 @@
+
+PLAY [Display all groups.] ******************************************** 13:18:17
+
+TASK [debug] ********************************************************** 13:18:17
+ok: [test_5] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_5
+        iocage_classes: []
+
+        iocage_tags: {}
+
+TASK [debug] ********************************************************** 13:18:17
+ok: [test_5] => 
+    msg: |-
+        all: ['test_5']
+        ungrouped: []
+        state_down: ['test_5']
+
+PLAY RECAP ************************************************************ 13:18:17
+test_5                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

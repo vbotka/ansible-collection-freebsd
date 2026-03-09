@@ -5,6 +5,24 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.4
+=====
+
+Release Summary
+---------------
+Update roles, playbooks, docs and examples.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Upgrade role dhcp 2.8.1
+* Update docs and sandbox examples. Add sandbox examples.
+* Update playbook pb_iocage_template. Do not use set_facts to create
+  iocage_jails and iocage_templates lists.
+
+
 0.8.3
 =====
 

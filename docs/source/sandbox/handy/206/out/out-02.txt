@@ -1,0 +1,43 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 13:09:57
+
+TASK [Create clones from template] ************************************ 13:10:02
+changed: [iocage_05] => (item=test_151 ansible_client)
+
+TASK [Start clones] *************************************************** 13:10:04
+[ERROR]: Task failed: Module failed: non-zero return code
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:30:3
+
+28 #   loop: "{{ start }}"
+29
+30 - name: Start clones  # noqa: no-changed-when
+     ^ column 3
+
+fatal: [iocage_05]: FAILED! => 
+    changed: true
+    cmd:
+    - iocage
+    - start
+    - test_151
+    delta: '0:00:00.971939'
+    end: '2026-03-08 13:10:14.309678'
+    msg: non-zero return code
+    rc: 1
+    start: '2026-03-08 13:10:13.337739'
+    stderr: |-
+        No default gateway found for ipv6.
+          + Configuring VNET FAILED
+          route: message indicates error: Invalid argument
+        add net default: gateway 10.10.0.1 fib 0: Invalid argument
+
+        Stopped test_151 due to VNET failure
+    stderr_lines: <omitted>
+    stdout: |-
+        * Starting test_151
+          + Started OK
+          + Using devfs_ruleset: 1000 (iocage generated default)
+    stdout_lines: <omitted>
+
+PLAY RECAP ************************************************************ 13:10:04
+iocage_05                  : ok=1    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+

@@ -1,0 +1,60 @@
+
+PLAY [Create Ansible client templates.] ******************************* 13:30:03
+
+TASK [Setup: Get iocage list of templates.] *************************** 13:30:04
+ok: [iocage_05]
+
+TASK [Create: Get iocage list of templates.] ************************** 13:30:05
+ok: [iocage_05]
+
+TASK [Create: Create templates.] ************************************** 13:30:10
+changed: [iocage_05] => (item=ansible_client_apache 15.0-RELEASE)
+
+TASK [Start: Get iocage list of jails.] ******************************* 13:30:10
+ok: [iocage_05]
+
+TASK [Start: Start created templates.] ******************************** 13:30:14
+ok: [iocage_05]
+
+TASK [Pkg: Get iocage list of jails.] ********************************* 13:30:14
+ok: [iocage_05]
+
+TASK [Pkg: Install packages.] ***************************************** 13:37:56
+changed: [iocage_05] => (item=ansible_client_apache)
+
+TASK [User: Create user.] ********************************************* 13:38:00
+changed: [iocage_05] => (item=ansible_client_apache admin)
+
+TASK [Pk: The keys are valid.] **************************************** 13:38:00
+ok: [iocage_05] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [Pk: Configure public keys.] ************************************* 13:38:00
+changed: [iocage_05] => (item=ansible_client_apache admin)
+
+TASK [Pk: Chown .ssh] ************************************************* 13:38:04
+ok: [iocage_05] => (item=ansible_client_apache admin)
+
+TASK [Sudo: Configure sudo.] ****************************************** 13:38:05
+changed: [iocage_05] => (item=ansible_client_apache admin)
+
+TASK [Dhclient: Configure hooks.] ************************************* 13:38:06
+changed: [iocage_05] => (item=ansible_client_apache dhclient-exit-hooks)
+
+TASK [Rcconf: Configure /etc/rc.conf] ********************************* 13:38:06
+changed: [iocage_05] => (item=ansible_client_apache iocage_enable YES)
+changed: [iocage_05] => (item=ansible_client_apache sshd_enable YES)
+
+TASK [Stop: Get iocage list of jails.] ******************************** 13:38:08
+ok: [iocage_05]
+
+TASK [Stop: Stop jails.] ********************************************** 13:38:09
+ok: [iocage_05]
+
+TASK [Template: Set template.] **************************************** 13:38:11
+ok: [iocage_05] => (item=ansible_client_apache)
+
+PLAY RECAP ************************************************************ 13:38:11
+iocage_05                  : ok=17   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
+

@@ -1,0 +1,131 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 13:10:04
+
+TASK [Get iocage facts] *********************************************** 13:10:08
+ok: [iocage_05]
+
+TASK [Debug cmd_create debug=true] ************************************ 13:10:08
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible_client --count 2 notes="vmm=iocage_05 swarm=sw_01" bpf=1 dhcp=1 vnet=1
+
+TASK [Create swarms] ************************************************** 13:10:09
+changed: [iocage_05] => (item=sw_01)
+
+TASK [Debug create swarms debug=true] ********************************* 13:10:09
+ok: [iocage_05] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client
+            - --count
+            - '2'
+            - notes=vmm=iocage_05 swarm=sw_01
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            delta: '0:00:00.631674'
+            end: '2026-03-08 13:10:19.697578'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage create --short --template ansible_client --count 2 notes="vmm=iocage_05 swarm=sw_01" bpf=1 dhcp=1 vnet=1
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    properties:
+                        bpf: 1
+                        dhcp: 1
+                        vnet: 1
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2026-03-08 13:10:19.065904'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                395f3a01 successfully created!
+                061542ac successfully created!
+            stdout_lines:
+            - 395f3a01 successfully created!
+            - 061542ac successfully created!
+        skipped: false
+
+TASK [Get iocage facts] *********************************************** 13:10:14
+ok: [iocage_05]
+
+TASK [Debug cmd_start debug=true] ************************************* 13:10:14
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        iocage start test_151 061542ac 395f3a01
+
+TASK [Start swarms] *************************************************** 13:10:15
+[ERROR]: Task failed: Module failed: non-zero return code
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/swarm.yml:86:7
+
+84         label: "{{ item.key }}"
+85
+86     - name: Start swarms # noqa: no-changed-when
+         ^ column 7
+
+failed: [iocage_05] (item=sw_01) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - start
+    - test_151
+    - 061542ac
+    - 395f3a01
+    delta: '0:00:01.080819'
+    end: '2026-03-08 13:10:25.880347'
+    item:
+        key: sw_01
+        value:
+            count: 3
+            properties:
+                bpf: 1
+                dhcp: 1
+                vnet: 1
+            template: ansible_client
+    msg: non-zero return code
+    rc: 1
+    start: '2026-03-08 13:10:24.799528'
+    stderr: |-
+        No default gateway found for ipv6.
+          + Configuring VNET FAILED
+          route: message indicates error: Invalid argument
+        add net default: gateway 10.10.0.1 fib 0: Invalid argument
+
+        Stopped test_151 due to VNET failure
+    stderr_lines: <omitted>
+    stdout: |-
+        * Starting test_151
+          + Started OK
+          + Using devfs_ruleset: 1000 (iocage generated default)
+    stdout_lines: <omitted>
+
+PLAY RECAP ************************************************************ 13:10:15
+iocage_05                  : ok=6    changed=1    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+

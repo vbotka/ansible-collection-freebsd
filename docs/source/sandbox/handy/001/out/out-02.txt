@@ -1,0 +1,38 @@
+
+PLAY [iocage] ******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.iocage : Pkg: Install iocage packages.] *******************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.iocage : Pkg: Debug Install iocage packages freebsd_iocage_debug=true] ***
+ok: [iocage_05] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Updating FreeBSD-ports repository catalogue...
+            FreeBSD-ports repository is up to date.
+            Updating FreeBSD-ports-kmods repository catalogue...
+            FreeBSD-ports-kmods repository is up to date.
+            Updating FreeBSD-base repository catalogue...
+            FreeBSD-base repository is up to date.
+            All repositories are up to date.
+        stdout_lines:
+        - Updating FreeBSD-ports repository catalogue...
+        - FreeBSD-ports repository is up to date.
+        - Updating FreeBSD-ports-kmods repository catalogue...
+        - FreeBSD-ports-kmods repository is up to date.
+        - Updating FreeBSD-base repository catalogue...
+        - FreeBSD-base repository is up to date.
+        - All repositories are up to date.
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

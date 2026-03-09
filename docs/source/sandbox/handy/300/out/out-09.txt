@@ -1,0 +1,27 @@
+
+PLAY [Test module vbotka.freebsd.service. Start apcupsd.] ************* 14:45:49
+
+TASK [Get apcupsd rcvar.] ********************************************* 14:45:49
+[ERROR]: Task failed: Module failed: Error executing command: [Errno 2] No such file or directory: b'None'
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/300/pb-test-07.yml:12:7
+
+10   tasks:
+11
+12     - name: Get apcupsd rcvar.
+         ^ column 7
+
+fatal: [iocage_05]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    changed: false
+    cmd: None
+    msg: Error executing command.
+    rc: 2
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+
+PLAY RECAP ************************************************************ 14:45:49
+iocage_05                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

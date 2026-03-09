@@ -1,0 +1,29 @@
+- name: Test lookup vbotka.freebsd.galaxy_info
+  hosts: iocage
+
+  tasks:
+    
+    - name: Get the complete meta data dictionary from galaxy.yml
+      debug:
+        msg: |
+          type: {{ info | type_debug }}
+          info:
+            {{ info | to_nice_yaml }}
+      vars:
+        info: "{{ lookup('vbotka.freebsd.galaxy_info', 'all') }}"
+    
+    - name: Get the attributes authors and version.
+      debug:
+        msg: |
+          type: {{ info | type_debug }}
+          authors: {{ info.0 }}
+          version: {{ info.1 }}
+      vars:
+        info: "{{ lookup('vbotka.freebsd.galaxy_info', 'authors', 'version') }}"
+
+    - name: Error. Unknown attribute foo
+      debug:
+        var: info
+      ignore_errors: true
+      vars:
+        info: "{{ lookup('vbotka.freebsd.galaxy_info', 'foo') }}"

@@ -21,5 +21,5 @@ ansible-inventory -i iocage.yml --list --yaml | tee out/out-06.txt
 
 # Test
 ansible-playbook pb-test.yml -i iocage.yml  | tee out/out-07.txt
-ssh admin@$iocage_02 sudo iocage list -l | tee out/out-08.txt
+ssh admin@$iocage_05 sudo iocage list -l | tee out/out-08.txt
 ansible-playbook pb-test.yml -i iocage.yml | tee out/out-09.txt

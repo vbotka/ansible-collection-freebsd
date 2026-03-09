@@ -25,7 +25,7 @@
       loop_control:
         label: "{{ item.name }}"
 
-    - name: Display jails
+    - name: Display jails.
       tags: debug
       block:
 
@@ -35,6 +35,6 @@
         - name: Display jails.
           debug:
             msg: |
-              {% for jail, attr in iocage_jails.items() %}
+              {% for jail, attr in ansible_facts.iocage_jails.items() %}
               {{ jail }} {{ attr_debug | map('extract', attr) | join(' ') }}
               {% endfor %}

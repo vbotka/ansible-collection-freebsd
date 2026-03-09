@@ -1,0 +1,64 @@
+
+PLAY [Display iocage datasets.] ************************************************
+
+TASK [Get iocage datasets.] ****************************************************
+ok: [iocage_05]
+
+TASK [Display iocage datasets (omit properties).] ******************************
+ok: [iocage_05] => 
+    msg: |-
+        iocage_releases: ['15.0-RELEASE']
+        iocage_plugins:
+          {}
+
+        iocage_templates:
+          ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible_client
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: template
+
+        iocage_jails:
+          test_151:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.151/24
+            ip6: '-'
+            jid: '15'
+            name: test_151
+            release: 15.0-RELEASE
+            state: up
+            template: ansible_client
+            type: jail
+          test_152:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.152/24
+            ip6: '-'
+            jid: '13'
+            name: test_152
+            release: 15.0-RELEASE
+            state: up
+            template: ansible_client
+            type: jail
+          test_153:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|10.1.0.153/24
+            ip6: '-'
+            jid: '14'
+            name: test_153
+            release: 15.0-RELEASE
+            state: up
+            template: ansible_client
+            type: jail
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

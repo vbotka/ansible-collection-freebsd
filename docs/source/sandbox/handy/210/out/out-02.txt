@@ -1,0 +1,15 @@
+
+PLAY [Test empty iocage notes.] *************************************** 13:42:21
+
+TASK [command] ******************************************************** 13:42:23
+changed: [iocage_05]
+
+TASK [debug] ********************************************************** 13:42:23
+ok: [iocage_05] => 
+    msg: |-
+        out.stdout: none
+        out.stdout type: str
+
+PLAY RECAP ************************************************************ 13:42:23
+iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
