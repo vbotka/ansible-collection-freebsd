@@ -12,6 +12,10 @@
   Automation Platform and the generative AI service, Red Hat Ansible Lightspeed with IBM watsonx
   Code Assistant.
 
+::: notes
+These are speaker notes. 
+They will not appear on the slide itself but will be available in the presenter view.
+:::
 ---
 
 ## Does Ansible work with FreeBSD?
@@ -71,8 +75,9 @@ See the release notes what FreeBSD version(s) were tested. For example, quoting 
 
 ## Ansible collections community.*
 
-* There are two FreeBSD specific modules in [community.general](https://docs.ansible.com/projects/ansible/latest/collections/community/general/index.html):
+* There are three FreeBSD specific modules in [community.general](https://docs.ansible.com/projects/ansible/latest/collections/community/general/index.html):
 
+  - [community.general.sysrc](https://docs.ansible.com/projects/ansible/latest/collections/community/general/sysrc_module.html#community-general-sysrc-module-manage-freebsd-using-sysrc) - Manage FreeBSD using sysrc.
   - [community.general.pkgng](https://docs.ansible.com/projects/ansible/latest/collections/community/general/pkgng_module.html#ansible-collections-community-general-pkgng-module) - Package manager for FreeBSD.
   - [community.general.portinstall](https://docs.ansible.com/projects/ansible/latest/collections/community/general/portinstall_module.html#ansible-collections-community-general-portinstall-module) - Installing from FreeBSD’s ports system.
 

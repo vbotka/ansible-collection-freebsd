@@ -1,7 +1,7 @@
 
-PLAY [Create and start project jails.] ******************************** 13:17:56
+PLAY [Create and start project jails.] ******************************** 05:25:07
 
-TASK [Display vars.] ************************************************** 13:17:56
+TASK [Display vars.] ************************************************** 05:25:07
 ok: [iocage_05] => 
     msg: |-
         project_template: ansible_client
@@ -22,18 +22,18 @@ ok: [iocage_05] =>
 
         groups.all: ['test_5', 'iocage_05']
         project_jails_present: []
-        project_jails_absent: ['http_5', 'db_5']
+        project_jails_absent: ['db_5', 'http_5']
 
-TASK [Create jails.] ************************************************** 13:17:57
+TASK [Create jails.] ************************************************** 05:25:08
 changed: [iocage_05]
 
-TASK [Set notes.] ***************************************************** 13:17:58
-changed: [iocage_05] => (item=http_5 alias=http_5 class=http,logclient vmm=iocage_05)
+TASK [Set notes.] ***************************************************** 05:25:09
 changed: [iocage_05] => (item=db_5 alias=db_5 class=db,logclient vmm=iocage_05)
+changed: [iocage_05] => (item=http_5 alias=http_5 class=http,logclient vmm=iocage_05)
 
-TASK [Start created jails.] ******************************************* 13:18:04
+TASK [Start created jails.] ******************************************* 05:25:15
 changed: [iocage_05]
 
-PLAY RECAP ************************************************************ 13:18:04
+PLAY RECAP ************************************************************ 05:25:15
 iocage_05                  : ok=4    changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

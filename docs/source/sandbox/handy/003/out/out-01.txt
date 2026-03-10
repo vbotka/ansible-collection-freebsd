@@ -1,57 +1,57 @@
 
-PLAY [iocage] ******************************************************************
+PLAY [iocage] ********************************************************* 05:13:26
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] ************************************************ 05:13:30
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Service start, restart, and stop are mutually exclusive] ***
+TASK [vbotka.freebsd.iocage : Sanity: Service start, restart, and stop are mutually exclusive] *** 05:13:30
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Get environment.] ************************
+TASK [vbotka.freebsd.iocage : Sanity: Get environment.] *************** 05:13:32
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Environment LANG = en_US.UTF-8] **********
+TASK [vbotka.freebsd.iocage : Sanity: Environment LANG = en_US.UTF-8] *** 05:13:33
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Environment LC_COLLATE = C] **************
+TASK [vbotka.freebsd.iocage : Sanity: Environment LC_COLLATE = C] ***** 05:13:33
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Get mounts] ******************************
+TASK [vbotka.freebsd.iocage : Sanity: Get mounts] ********************* 05:13:35
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: /dev/fd mounted to fdescfs] **************
+TASK [vbotka.freebsd.iocage : Sanity: /dev/fd mounted to fdescfs] ***** 05:13:35
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Get sysctl kern.conftxt] *****************
+TASK [vbotka.freebsd.iocage : Sanity: Get sysctl kern.conftxt] ******** 05:13:35
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Mandatory kernel options VIMAGE, RACCT, and RCTL.] ***
+TASK [vbotka.freebsd.iocage : Sanity: Mandatory kernel options VIMAGE, RACCT, and RCTL.] *** 05:13:36
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Read /boot/loader.conf] ******************
+TASK [vbotka.freebsd.iocage : Sanity: Read /boot/loader.conf] ********* 05:13:36
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: kern.racct.enable = 1] *******************
+TASK [vbotka.freebsd.iocage : Sanity: kern.racct.enable = 1] ********** 05:13:36
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Get sysctl security.jail.jailed] *********
+TASK [vbotka.freebsd.iocage : Sanity: Get sysctl security.jail.jailed] *** 05:13:37
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Not in jail.] ****************************
+TASK [vbotka.freebsd.iocage : Sanity: Not in jail.] ******************* 05:13:37
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Get ZFS pools.] **************************
+TASK [vbotka.freebsd.iocage : Sanity: Get ZFS pools.] ***************** 05:13:37
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: ZFS pool exists.] ************************
+TASK [vbotka.freebsd.iocage : Sanity: ZFS pool exists.] *************** 05:13:37
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: Get ZFS datasets.] ***********************
+TASK [vbotka.freebsd.iocage : Sanity: Get ZFS datasets.] ************** 05:13:38
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Sanity: ZFS pool activated.] *********************
+TASK [vbotka.freebsd.iocage : Sanity: ZFS pool activated.] ************ 05:13:38
 ok: [iocage_05]
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:13:38
 iocage_05                  : ok=17   changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
 

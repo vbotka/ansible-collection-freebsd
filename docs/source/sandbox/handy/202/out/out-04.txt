@@ -1,14 +1,14 @@
 
-PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 13:04:00
+PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 05:21:56
 
-TASK [Create clones from template] ************************************ 13:04:05
+TASK [Create clones from template] ************************************ 05:22:01
 changed: [iocage_05] => (item=test_151 ansible_client)
 changed: [iocage_05] => (item=test_152 ansible_client)
 changed: [iocage_05] => (item=test_153 ansible_client)
 
-TASK [Start clones] *************************************************** 13:04:29
+TASK [Start clones] *************************************************** 05:22:22
 changed: [iocage_05]
 
-PLAY RECAP ************************************************************ 13:04:29
+PLAY RECAP ************************************************************ 05:22:22
 iocage_05                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

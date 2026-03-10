@@ -1,18 +1,18 @@
 
-PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 13:10:04
+PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 05:24:25
 
-TASK [Get iocage facts] *********************************************** 13:10:08
+TASK [Get iocage facts] *********************************************** 05:24:29
 ok: [iocage_05]
 
-TASK [Debug cmd_create debug=true] ************************************ 13:10:08
+TASK [Debug cmd_create debug=true] ************************************ 05:24:29
 ok: [iocage_05] => (item=sw_01) => 
     msg: |-
         iocage create --short --template ansible_client --count 2 notes="vmm=iocage_05 swarm=sw_01" bpf=1 dhcp=1 vnet=1
 
-TASK [Create swarms] ************************************************** 13:10:09
+TASK [Create swarms] ************************************************** 05:24:30
 changed: [iocage_05] => (item=sw_01)
 
-TASK [Debug create swarms debug=true] ********************************* 13:10:09
+TASK [Debug create swarms debug=true] ********************************* 05:24:30
 ok: [iocage_05] => 
     out:
         changed: true
@@ -32,8 +32,8 @@ ok: [iocage_05] =>
             - bpf=1
             - dhcp=1
             - vnet=1
-            delta: '0:00:00.631674'
-            end: '2026-03-08 13:10:19.697578'
+            delta: '0:00:00.631846'
+            end: '2026-03-10 05:24:40.910552'
             failed: false
             invocation:
                 module_args:
@@ -61,26 +61,26 @@ ok: [iocage_05] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2026-03-08 13:10:19.065904'
+            start: '2026-03-10 05:24:40.278706'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                395f3a01 successfully created!
-                061542ac successfully created!
+                4004434c successfully created!
+                316d2590 successfully created!
             stdout_lines:
-            - 395f3a01 successfully created!
-            - 061542ac successfully created!
+            - 4004434c successfully created!
+            - 316d2590 successfully created!
         skipped: false
 
-TASK [Get iocage facts] *********************************************** 13:10:14
+TASK [Get iocage facts] *********************************************** 05:24:34
 ok: [iocage_05]
 
-TASK [Debug cmd_start debug=true] ************************************* 13:10:14
+TASK [Debug cmd_start debug=true] ************************************* 05:24:35
 ok: [iocage_05] => (item=sw_01) => 
     msg: |-
-        iocage start test_151 061542ac 395f3a01
+        iocage start test_151 316d2590 4004434c
 
-TASK [Start swarms] *************************************************** 13:10:15
+TASK [Start swarms] *************************************************** 05:24:36
 [ERROR]: Task failed: Module failed: non-zero return code
 Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/swarm.yml:86:7
 
@@ -96,10 +96,10 @@ failed: [iocage_05] (item=sw_01) =>
     - iocage
     - start
     - test_151
-    - 061542ac
-    - 395f3a01
-    delta: '0:00:01.080819'
-    end: '2026-03-08 13:10:25.880347'
+    - 316d2590
+    - 4004434c
+    delta: '0:00:01.064203'
+    end: '2026-03-10 05:24:47.061553'
     item:
         key: sw_01
         value:
@@ -111,7 +111,7 @@ failed: [iocage_05] (item=sw_01) =>
             template: ansible_client
     msg: non-zero return code
     rc: 1
-    start: '2026-03-08 13:10:24.799528'
+    start: '2026-03-10 05:24:45.997350'
     stderr: |-
         No default gateway found for ipv6.
           + Configuring VNET FAILED
@@ -126,6 +126,6 @@ failed: [iocage_05] (item=sw_01) =>
           + Using devfs_ruleset: 1000 (iocage generated default)
     stdout_lines: <omitted>
 
-PLAY RECAP ************************************************************ 13:10:15
+PLAY RECAP ************************************************************ 05:24:36
 iocage_05                  : ok=6    changed=1    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
 

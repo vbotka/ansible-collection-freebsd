@@ -1,7 +1,7 @@
 
-PLAY [Test lookup vbotka.freebsd.galaxy_info] **********************************
+PLAY [Test lookup vbotka.freebsd.galaxy_info] ************************* 05:18:53
 
-TASK [Get the complete meta data dictionary from galaxy.yml] *******************
+TASK [Get the complete meta data dictionary from galaxy.yml] ********** 05:18:53
 ok: [iocage_05] => 
     msg: |-
         type: dict
@@ -48,16 +48,16 @@ ok: [iocage_05] =>
         - freebsd
         - iocage
         - infrastructure
-        version: 0.8.4
+        version: 0.8.5
 
-TASK [Get the attributes authors and version.] *********************************
+TASK [Get the attributes authors and version.] ************************ 05:18:53
 ok: [iocage_05] => 
     msg: |-
         type: list
         authors: ['Vladimir Botka <vbotka@gmail.com>']
-        version: 0.8.4
+        version: 0.8.5
 
-TASK [Error. Unknown attribute foo] ********************************************
+TASK [Error. Unknown attribute foo] *********************************** 05:18:53
 [ERROR]: Task failed: Error while resolving `var` expression: The lookup plugin 'vbotka.freebsd.galaxy_info' failed: Unknown attribute "foo"
 
 Task failed.
@@ -83,6 +83,6 @@ fatal: [iocage_05]: FAILED! =>
         failed: Unknown attribute "foo"'
 ...ignoring
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:18:53
 iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
 

@@ -1,7 +1,7 @@
 
-PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] *** 14:45:38
+PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] *** 05:30:52
 
-TASK [Get sendmail rcvar(s).] ***************************************** 14:45:48
+TASK [Get sendmail rcvar(s).] ***************************************** 05:31:02
 [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.102 port 22: Connection timed out
 
 Task failed.
@@ -60,7 +60,7 @@ fatal: [test_153]: UNREACHABLE! =>
         port 22: Connection timed out'
     unreachable: true
 
-PLAY RECAP ************************************************************ 14:45:48
+PLAY RECAP ************************************************************ 05:31:02
 test_151                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   

@@ -1,7 +1,7 @@
 
-PLAY [all] *********************************************************************
+PLAY [all] ************************************************************ 05:15:53
 
-TASK [debug] *******************************************************************
+TASK [debug] ********************************************************** 05:15:53
 ok: [ansible_client] => 
     iocage_ip4: 10.1.0.197
 ok: [test_151] => 
@@ -11,7 +11,7 @@ ok: [test_152] =>
 ok: [test_153] => 
     iocage_ip4: 10.1.0.153
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:15:53
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

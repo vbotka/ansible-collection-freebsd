@@ -1,7 +1,7 @@
 
-PLAY [swarm_sw_01] **************************************************** 13:10:27
+PLAY [swarm_sw_01] **************************************************** 05:24:48
 
-TASK [ansible.builtin.command] **************************************** 13:10:27
+TASK [ansible.builtin.command] **************************************** 05:24:48
 [ERROR]: Task failed: Failed to connect to the host via ssh: hostname contains invalid characters
 
 Task failed.
@@ -16,12 +16,12 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 Failed to connect to the host via ssh: hostname contains invalid characters
 
-fatal: [395f3a01]: UNREACHABLE! => 
+fatal: [316d2590]: UNREACHABLE! => 
     changed: false
     msg: 'Task failed: Failed to connect to the host via ssh: hostname contains invalid
         characters'
     unreachable: true
-fatal: [061542ac]: UNREACHABLE! => 
+fatal: [4004434c]: UNREACHABLE! => 
     changed: false
     msg: 'Task failed: Failed to connect to the host via ssh: hostname contains invalid
         characters'
@@ -46,8 +46,8 @@ fatal: [test_151]: UNREACHABLE! =>
         port 22: Connection timed out'
     unreachable: true
 
-PLAY RECAP ************************************************************ 13:10:37
-061542ac                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-395f3a01                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+PLAY RECAP ************************************************************ 05:24:58
+316d2590                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+4004434c                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

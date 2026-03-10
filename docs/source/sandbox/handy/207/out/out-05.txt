@@ -1,14 +1,14 @@
 
-PLAY [Display all groups.] ******************************************** 13:18:10
+PLAY [Display all groups.] ******************************************** 05:25:21
 
-TASK [debug] ********************************************************** 13:18:10
-ok: [http_5] => 
+TASK [debug] ********************************************************** 05:25:21
+ok: [db_5] => 
     msg: |-
-        ansible_host: 10.1.0.124
-        iocage_properties.host_hostuuid: 668504b1
-        iocage_classes: [http, logclient]
+        ansible_host: 10.1.0.133
+        iocage_properties.host_hostuuid: b5d6741f
+        iocage_classes: [db, logclient]
 
-        iocage_tags: {alias: http_5, class: 'http,logclient', vmm: iocage_05}
+        iocage_tags: {alias: db_5, class: 'db,logclient', vmm: iocage_05}
 ok: [test_5] => 
     msg: |-
         ansible_host: -
@@ -16,27 +16,27 @@ ok: [test_5] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [db_5] => 
+ok: [http_5] => 
     msg: |-
-        ansible_host: 10.1.0.125
-        iocage_properties.host_hostuuid: 90f89892
-        iocage_classes: [db, logclient]
+        ansible_host: 10.1.0.134
+        iocage_properties.host_hostuuid: bb4dd8fe
+        iocage_classes: [http, logclient]
 
-        iocage_tags: {alias: db_5, class: 'db,logclient', vmm: iocage_05}
+        iocage_tags: {alias: http_5, class: 'http,logclient', vmm: iocage_05}
 
-TASK [debug] ********************************************************** 13:18:10
+TASK [debug] ********************************************************** 05:25:21
 ok: [test_5] => 
     msg: |-
-        all: ['test_5', 'http_5', 'db_5']
+        all: ['test_5', 'db_5', 'http_5']
         ungrouped: []
         state_down: ['test_5']
-        http: ['http_5']
-        logclient: ['http_5', 'db_5']
-        state_up: ['http_5', 'db_5']
-        vmm_iocage_05: ['http_5', 'db_5']
         db: ['db_5']
+        logclient: ['db_5', 'http_5']
+        state_up: ['db_5', 'http_5']
+        vmm_iocage_05: ['db_5', 'http_5']
+        http: ['http_5']
 
-PLAY RECAP ************************************************************ 13:18:10
+PLAY RECAP ************************************************************ 05:25:21
 db_5                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 http_5                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_5                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

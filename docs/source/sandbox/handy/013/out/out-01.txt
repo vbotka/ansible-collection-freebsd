@@ -1,17 +1,17 @@
 
-PLAY [iocage] ******************************************************************
+PLAY [iocage] ********************************************************* 05:14:59
 
-TASK [Create basejail] *********************************************************
+TASK [Create basejail] ************************************************ 05:15:13
 changed: [iocage_05] => (item=ansible_client 15.0-RELEASE)
 
-TASK [Display lists of bases, plugins, templates, and jails.] ******************
+TASK [Display lists of bases, plugins, templates, and jails.] ********* 05:15:13
 ok: [iocage_05] => 
     msg: |-
         releases: ['15.0-RELEASE']
         plugins: []
-        templates: []
+        templates: ['ansible_client_apache', 'ansible_client_pull']
         jails: ['ansible_client']
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:15:13
 iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

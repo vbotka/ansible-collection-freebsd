@@ -1,15 +1,15 @@
 
-PLAY [Role vbotka.freebsd.iocage] **********************************************
+PLAY [Role vbotka.freebsd.iocage] ************************************* 05:18:43
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] ************************************************ 05:18:47
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Facts: create directory /etc/ansible/facts.d] ****
-changed: [iocage_05]
+TASK [vbotka.freebsd.iocage : Facts: create directory /etc/ansible/facts.d] *** 05:18:47
+ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Facts: copy scipts to /etc/ansible/facts.d] ******
-changed: [iocage_05] => (item=iocage.fact)
+TASK [vbotka.freebsd.iocage : Facts: copy scipts to /etc/ansible/facts.d] *** 05:18:48
+ok: [iocage_05] => (item=iocage.fact)
 
-PLAY RECAP *********************************************************************
-iocage_05                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+PLAY RECAP ************************************************************ 05:18:48
+iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

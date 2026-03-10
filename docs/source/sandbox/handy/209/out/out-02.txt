@@ -1,60 +1,60 @@
 
-PLAY [Create Ansible client templates.] ******************************* 13:30:03
+PLAY [Create Ansible client templates.] ******************************* 05:27:24
 
-TASK [Setup: Get iocage list of templates.] *************************** 13:30:04
+TASK [Setup: Get iocage list of templates.] *************************** 05:27:25
 ok: [iocage_05]
 
-TASK [Create: Get iocage list of templates.] ************************** 13:30:05
+TASK [Create: Get iocage list of templates.] ************************** 05:27:26
 ok: [iocage_05]
 
-TASK [Create: Create templates.] ************************************** 13:30:10
+TASK [Create: Create templates.] ************************************** 05:27:31
 changed: [iocage_05] => (item=ansible_client_apache 15.0-RELEASE)
 
-TASK [Start: Get iocage list of jails.] ******************************* 13:30:10
+TASK [Start: Get iocage list of jails.] ******************************* 05:27:32
 ok: [iocage_05]
 
-TASK [Start: Start created templates.] ******************************** 13:30:14
+TASK [Start: Start created templates.] ******************************** 05:27:36
 ok: [iocage_05]
 
-TASK [Pkg: Get iocage list of jails.] ********************************* 13:30:14
+TASK [Pkg: Get iocage list of jails.] ********************************* 05:27:37
 ok: [iocage_05]
 
-TASK [Pkg: Install packages.] ***************************************** 13:37:56
+TASK [Pkg: Install packages.] ***************************************** 05:29:26
 changed: [iocage_05] => (item=ansible_client_apache)
 
-TASK [User: Create user.] ********************************************* 13:38:00
+TASK [User: Create user.] ********************************************* 05:29:29
 changed: [iocage_05] => (item=ansible_client_apache admin)
 
-TASK [Pk: The keys are valid.] **************************************** 13:38:00
+TASK [Pk: The keys are valid.] **************************************** 05:29:30
 ok: [iocage_05] => 
     changed: false
     msg: All assertions passed
 
-TASK [Pk: Configure public keys.] ************************************* 13:38:00
+TASK [Pk: Configure public keys.] ************************************* 05:29:30
 changed: [iocage_05] => (item=ansible_client_apache admin)
 
-TASK [Pk: Chown .ssh] ************************************************* 13:38:04
+TASK [Pk: Chown .ssh] ************************************************* 05:29:34
 ok: [iocage_05] => (item=ansible_client_apache admin)
 
-TASK [Sudo: Configure sudo.] ****************************************** 13:38:05
+TASK [Sudo: Configure sudo.] ****************************************** 05:29:34
 changed: [iocage_05] => (item=ansible_client_apache admin)
 
-TASK [Dhclient: Configure hooks.] ************************************* 13:38:06
+TASK [Dhclient: Configure hooks.] ************************************* 05:29:35
 changed: [iocage_05] => (item=ansible_client_apache dhclient-exit-hooks)
 
-TASK [Rcconf: Configure /etc/rc.conf] ********************************* 13:38:06
+TASK [Rcconf: Configure /etc/rc.conf] ********************************* 05:29:36
 changed: [iocage_05] => (item=ansible_client_apache iocage_enable YES)
 changed: [iocage_05] => (item=ansible_client_apache sshd_enable YES)
 
-TASK [Stop: Get iocage list of jails.] ******************************** 13:38:08
+TASK [Stop: Get iocage list of jails.] ******************************** 05:29:37
 ok: [iocage_05]
 
-TASK [Stop: Stop jails.] ********************************************** 13:38:09
+TASK [Stop: Stop jails.] ********************************************** 05:29:39
 ok: [iocage_05]
 
-TASK [Template: Set template.] **************************************** 13:38:11
+TASK [Template: Set template.] **************************************** 05:29:40
 ok: [iocage_05] => (item=ansible_client_apache)
 
-PLAY RECAP ************************************************************ 13:38:11
+PLAY RECAP ************************************************************ 05:29:40
 iocage_05                  : ok=17   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
 

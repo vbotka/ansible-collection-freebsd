@@ -1,10 +1,10 @@
 
-PLAY [Display iocage datasets.] ************************************************
+PLAY [Display iocage datasets.] *************************************** 05:20:47
 
-TASK [Get iocage datasets.] ****************************************************
+TASK [Get iocage datasets.] ******************************************* 05:20:52
 ok: [iocage_05]
 
-TASK [Display iocage datasets (omit properties).] ******************************
+TASK [Display iocage datasets (omit properties).] ********************* 05:20:52
 ok: [iocage_05] => 
     msg: |-
         iocage_releases: ['15.0-RELEASE']
@@ -23,6 +23,28 @@ ok: [iocage_05] =>
             state: down
             template: '-'
             type: template
+          ansible_client_apache:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible_client_apache
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: template
+          ansible_client_pull:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible_client_pull
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: template
 
         iocage_jails:
           test_151:
@@ -30,7 +52,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.151/24
             ip6: '-'
-            jid: '15'
+            jid: '12'
             name: test_151
             release: 15.0-RELEASE
             state: up
@@ -41,7 +63,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.152/24
             ip6: '-'
-            jid: '13'
+            jid: '10'
             name: test_152
             release: 15.0-RELEASE
             state: up
@@ -52,13 +74,13 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.153/24
             ip6: '-'
-            jid: '14'
+            jid: '11'
             name: test_153
             release: 15.0-RELEASE
             state: up
             template: ansible_client
             type: jail
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:20:52
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

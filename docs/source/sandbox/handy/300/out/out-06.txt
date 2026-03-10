@@ -1,21 +1,21 @@
 
-PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_status.] *** 14:45:28
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_status.] *** 05:30:42
 
-TASK [Get iocage list of jails] *************************************** 14:45:29
+TASK [Get iocage list of jails] *************************************** 05:30:43
 ok: [iocage_05]
 
-TASK [Jails sshd status] ********************************************** 14:45:30
-ok: [iocage_05] => (item=42)
-ok: [iocage_05] => (item=41)
-ok: [iocage_05] => (item=40)
+TASK [Jails sshd status] ********************************************** 05:30:44
+ok: [iocage_05] => (item=31)
+ok: [iocage_05] => (item=30)
+ok: [iocage_05] => (item=29)
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:31
+TASK [ansible.builtin.debug] ****************************************** 05:30:45
 ok: [iocage_05] => 
     jid_service_status | to_nice_yaml: |-
-        '40': running
-        '41': running
-        '42': running
+        '29': running
+        '30': running
+        '31': running
 
-PLAY RECAP ************************************************************ 14:45:31
+PLAY RECAP ************************************************************ 05:30:45
 iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 
