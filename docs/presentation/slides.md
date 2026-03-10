@@ -12,10 +12,6 @@
   Automation Platform and the generative AI service, Red Hat Ansible Lightspeed with IBM watsonx
   Code Assistant.
 
-::: notes
-These are speaker notes. 
-They will not appear on the slide itself but will be available in the presenter view.
-:::
 ---
 
 ## Does Ansible work with FreeBSD?
