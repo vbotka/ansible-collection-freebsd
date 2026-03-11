@@ -27,7 +27,7 @@ In this tutorial, there are approx. 30 examples in 4 categories:
 ## (3) Introduction
 
 I'm not sure how many time we will have for questions at the end of the presentation. Therefore, do
-not hesitate and ask immediatelly.
+not hesitate and ask immediately.
 
 Important question is: Do you need your Ansible code to also cover other systems in parallel to
 FreeBSD? This means, do you have to write your playbooks, roles, and plugins to manage also other
@@ -66,7 +66,7 @@ Goals of this presentation:
   3) [Ansible Development Tools MCP Server](https://docs.ansible.com/projects/vscode-ansible/mcp/)
 
 Note: MCP (Model Context Protocol) is an open standard that enables AI models to use external AI tools and services via a unified interface.
-      Using the Ansible MCP server, you can connect your Ansible Automation Platform with your preferred external AI tool (such as Claude, Cursor, or ChatGPT).
+      Using the Ansible MCP server, you can connect your Ansible Automation Platform with your preferred external AI tool (such as Claude, Cursor, or Chat-GPT).
 
 * [Ansible Forum](https://forum.ansible.com/) is the main Ansible social network. If you use Ansible, join this forum.
 
@@ -93,7 +93,7 @@ Quoting Ansible:
 
   To learn what to expect, see [CfgMgmtCamp 2026 B.1.014 -- Ansible Contributor Summit](https://www.youtube.com/watch?v=I5-T-RuhJzY&t=106s)
 
-  Take a look at other recorded presenations. For example,
+  Take a look at other recorded presentations. For example,
 
    - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
      Maintainer of the collection community.general
@@ -141,7 +141,7 @@ Quoting last comment on Oct 2, 2025 [conversation](https://github.com/ansible/an
 
 **vbotka.freebsd.service**
 
-It is easier to write a FreeBSD module. The poposed collection comprises the FreeBSD specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
+It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
 See the [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
 
 **ansible.posix.sysctl**
@@ -227,8 +227,8 @@ Take a look at what FreeBSD version(s) are being tested. Quoting
 
 ## (9) Ansible collection dedicated to FreeBSD is needed
 
-FreeBSD collection is missing. In a certain sense, this is a good news. Ansible is mature, we can
-avoid trials and errors when building Ansible FreeBSD collection.
+FreeBSD collection is missing. In a certain sense, this is a good news. Ansible is mature, so we can
+avoid trial and error when building the Ansible FreeBSD collection.
 
 The question is not `if` FreeBSD collection? But `how`?
   - this is a proposal
@@ -237,7 +237,7 @@ The question is not `if` FreeBSD collection? But `how`?
 
 Proposed collection
   - FreeBSD or BSD?
-  - namespace (bsd ?)
+  - namespace (freebsd or bsd?)
   - setup; start with a minimal tested content; customize your collection on-demand
   - setup description (distfiles, files, vars, playbooks setup.yml and .configure.yml)
     The framework is well-known from the ports collection.
@@ -247,29 +247,23 @@ A module vs. command/shell ansible module
 
 General dilemmas:
 
-  - Use a module or a command (ansible.builtin.command or ansible.builtin.shell) e.g. iocage ?
+  - Use a module or a command (ansible.builtin.command or ansible.builtin.shell) e.g. iocage?
 
-  - To configure a file, instead of the modules to run a command you can use modules 'lineinfile' or 'blockinfiles'. e.g. sysrc
+  - To configure a file, instead of a modules to run a command you can use modules 'lineinfile' or
+    'blockinfile'. e.g. sysrc
 
-  This is a trade-off: A specific module provides more comfort, but it's slower. Instead, 'command/shell' and 'lineinfile/blockinfile' are faster
-   but the user is responsible to check the consistency.
+  This is a trade-off: A specific module provides more comfort, but it's slower. Instead,
+   'command/shell' and 'lineinfile/blockinfile' are faster but the user is responsible to check the
+   consistency.
 
-   As of the consistency of Ansible modules, it is not all that cool. e.g. module 'ansible.builtin.group' makes 'gid' double entries in '/etc/group'
-
-   You can:
-    - test it and file a bug
-    - Use the modules 'command/shell' to run the 'pw' command
-    - Write module 'pw'
-
-  Ansible prefers writting new modules. e.g. new module: logrotate#11424
+  Ansible prefers writing new modules. e.g. new module: logrotate#11424
   https://github.com/ansible-collections/community.general/pull/11424
 
   Make modules 'command' and 'shell' idempotent
 
   Both modules 'command' and 'shell' can be idempotent via:
 
-  - The 'creates' option.
-     Quote: 'creates'  A filename, when it already exists, this step will not be run.
+  - The 'creates' option. Quote: 'creates'  A filename, when it already exists, this step will not be run.
 
   - The registering and testing the command output.
     See: Defining “changed”
