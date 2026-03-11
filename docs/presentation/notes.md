@@ -93,37 +93,43 @@ Quoting Ansible:
 
   To learn what to expect, see [CfgMgmtCamp 2026 B.1.014 -- Ansible Contributor Summit](https://www.youtube.com/watch?v=I5-T-RuhJzY&t=106s)
 
-  Take a look at other recorded presentations. For example,
+  Take a look at other recorded presentations. For example:
 
-   - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
-     Maintainer of the collection community.general
+    - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
+      Maintainer of the collection community.general
 
-     * Problems in the Ansible world and how to improve on them
-       https://gist.github.com/felixfontein/72562a7bd35bad62ee7c849af533a76e
+      * Problems in the Ansible world and how to improve on them
+        https://gist.github.com/felixfontein/72562a7bd35bad62ee7c849af533a76e
 
-  - Konstantin Volenbovskyi
+    - Konstantin Volenbovskyi
 
-    * Upgrade to Ansible 12 (core 2.19)
-      Ansible Style Guide
-      https://github.com/abacusresearch/ansible-style-guide/blob/main/Ansible_Style_Guide_CfgMgmtCamp2026.pdf
+      * Upgrade to Ansible 12 (core 2.19)
+        Ansible Style Guide
+        https://github.com/abacusresearch/ansible-style-guide/blob/main/Ansible_Style_Guide_CfgMgmtCamp2026.pdf
 
 
-  - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
-    https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
+    - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
+      https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
 
-* It is not all that cool. There are also problems.
+  It is not all that cool. There are also problems:
 
-  - Ansible Lint.(There are ~100 open [issues](https://github.com/ansible/ansible-lint/issues)
+  - Ansible Lint.(~100 open [issues](https://github.com/ansible/ansible-lint/issues)
+  - Ansible Galaxy.(~300 open [issues](https://github.com/ansible/galaxy/issues)
 
-  - Ansible Galaxy issues
-    - https://forum.ansible.com/latest
-      "We aware that ansible.galaxy.com is currently throwing 500 errors and Collection can not be downloaded. See details."
-    - Import errors <TBD>
-
-  - Some modules are poor quality. e.g.
-    - filesystem; dev is mandatory, the UUID can't be used to identify the device!
+  - Some modules are poor quality. Few examples:
+    - community.general.filesystem; dev parameter is mandatory, the UUID can't be used to identify the device!
     - community.general.zfs/zpool ~10 open bugs
+	- community.general.zpool [state=present is not idempotent #10771](https://github.com/ansible-collections/community.general/issues/10771)
+      (open since Aug, 2025)
 
+  Other presenations for advanced users:
+    - Brian Coca (@bcoca) Ansible core team member
+        1) Ansible tips & tricks
+           https://www.slideshare.net/slideshow/ansible-tips-tricks/49006020
+        2) More tips n tricks
+           https://www.slideshare.net/slideshow/more-tips-n-tricks/67015247
+           notes: Why not best practice? Many good practices. "One size fits all" are limited and limiting.
+           Decide on a workflow, use tools to achieve it.
 
 ## (5) Does Ansible work with FreeBSD?
 
@@ -131,9 +137,9 @@ There are problems with some Ansible modules running on FreeBSD. The modules `se
 
 **ansible.builtin.service**
 
-  Still open since May, 2025
   [FreeBSD service arguments are passed in the wrong order #85156](https://github.com/ansible/ansible/issues/85156)
   [service: Fix order of arguments in FreeBSD #85190](https://github.com/ansible/ansible/pull/85190)
+  (open since May, 2025)
 
 Quoting last comment on Oct 2, 2025 [conversation](https://github.com/ansible/ansible/pull/85190#issuecomment-3359300597)
 
@@ -141,7 +147,7 @@ Quoting last comment on Oct 2, 2025 [conversation](https://github.com/ansible/an
 
 **vbotka.freebsd.service**
 
-It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
+It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD-specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
 See the [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
 
 **ansible.posix.sysctl**
@@ -277,6 +283,63 @@ General dilemmas:
 
 ## (10) FreeBSD collection
 
+
+## (11) Proposed FreeBSD collection
+
+(clik at the links)
+
+
+## (12) Collection Content
+
+(clik at the links)
+
+
+## (13) We focus on the iocage plugins
+
+(clik at the links)
+
+
+## (14) Plugin inventory iocage
+
+[nventory vbotka.freebsd.iocage](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage.html)
+
+
+## (15) Plugin inventory iocage - Basics
+
+[Basics](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_basics.html)
+
+
+## (16) Plugin inventory iocage - DHCP
+
+[DHCP](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_dhcp.html)
+
+
+## (17) Plugin inventory iocage - Hooks
+
+[Hooks](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_hooks.html)
+
+
+## (18) Plugin inventory iocage - Properties
+
+[Properties](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_properties.html)
+
+
+## (19) Plugin inventory iocage - Tags
+
+[Tags](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_tags.html)
+
+
+## (20) Plugin inventory iocage - Aliases
+
+[Aliases](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_aliases.html)
+
+
+## (21) Module iocage
+
+
+## (22) Filter iocage
+
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Section 3
@@ -298,6 +361,7 @@ General dilemmas:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Section 4
+
 
 ## (27) Install, configure, and activate iocage
 
