@@ -1,18 +1,17 @@
 # FreeBSD Jails Orchestration with Ansible
-
-Presenter Notes.
-
-(TBD link to GitHub)
+  Presenter Notes
 
 Good afternoon ...
+
+You can download this notes from (TBD link to GitHub).
 
 
 ## (2) Contents
 
-We start with a brief overview of FreeBSD and Ansible. The goal is to present the idea that FreeBSD
-Ansible collection is needed.
+We start with a brief overview of FreeBSD and Ansible. The main goal is to present the idea that
+FreeBSD Ansible collection is needed and propose how to proceed to create such a collection.
 
-Then, we review the proposed FreeBSD collection with the focus on the iocage plugins.
+We will review the proposed FreeBSD collection with the focus on the iocage plugins.
 
 In this tutorial, there are approx. 30 examples in 4 categories:
   - installation and configuration of an iocage host
@@ -24,6 +23,7 @@ In this tutorial, there are approx. 30 examples in 4 categories:
 
 # Section 1
 
+
 ## (3) Introduction
 
 I'm not sure how many time we will have for questions at the end of the presentation. Therefore, do
@@ -32,11 +32,10 @@ not hesitate and ask immediatelly.
 Important question is: Do you need your Ansible code to also cover other systems in parallel to
 FreeBSD? This means, do you have to write your playbooks, roles, and plugins to manage also other
 systems in parallel to FreeBSD?  This question is crucial. The code is much simpler if you cover
-FreeBSD only. In this presentation, we focus on the FreeBSD management by Ansible. You can write
-your own FreeBSD modules. (example)
+FreeBSD only. In this presentation, we focus on the FreeBSD management by Ansible. So, you can write
+your own FreeBSD playbooks, roles, and plugins.
 
-When you use Ansible "multi-OS" modules in FreeBSD, testing is needed. It can happen that such modules do not
-implement all FreeBSD options properly. (ansible.posix #663 and #664, ...)
+(Simple module example)
 
 Goals of this presentation:
   - try to analyze FreeBSD specifics
@@ -128,14 +127,48 @@ Quoting Ansible:
 
 ## (5) Does Ansible work with FreeBSD?
 
+There are problems with some Ansible modules running on FreeBSD. The modules `service` and `sysctl` are typical examples.
 
-  * FreeBSD modules' problems; create BSD native modules
-    - service:
-      https://github.com/ansible/ansible/issues/85156
-      https://github.com/ansible/ansible/pull/85190
-    - sysctl:
-      https://github.com/ansible-collections/ansible.posix/issues/663
-      https://github.com/ansible-collections/ansible.posix/pull/664
+**ansible.builtin.service**
+
+  Still open since May, 2025
+  [FreeBSD service arguments are passed in the wrong order #85156](https://github.com/ansible/ansible/issues/85156)
+  [service: Fix order of arguments in FreeBSD #85190](https://github.com/ansible/ansible/pull/85190)
+
+Quoting last comment on Oct 2, 2025 [conversation](https://github.com/ansible/ansible/pull/85190#issuecomment-3359300597)
+
+> A different solution I would personally accept is a new, FreeBSD-specific module and a note on the generic service module that it does not accept extra arguments to the service script.
+
+**vbotka.freebsd.service**
+
+It is easier to write a FreeBSD module. The poposed collection comprises the FreeBSD specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
+See the [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
+
+**ansible.posix.sysctl**
+
+The next typical example is `sysctl`. In Linux, there is no `/boot/loader.conf`
+
+Quoting from the issue [In FreeBSD, the module sysctl always reports changed ...](https://github.com/ansible-collections/ansible.posix/issues/663)
+
+> The default option is reload=True. As a result, /etc/sysctl.conf and /etc/sysctl.conf.local are reloaded even when the option is sysctl_file=/boot/loader.conf
+
+In other words, if you use `ansible.posix.sysctl` to configure `/boot/loader.conf` the module
+reloads the `sysctl` service. This doesn't make sense, because in FreeBSD, you have to reboot the
+system if you want to activate the changes in `/boot/loader.conf`.
+
+The simple remedy is to set the module parameter `reload=False` because you have to reboot the
+system on your own anyway (let an Ansible handler run the module ansible.builtin.reboot)
+
+Still, it would be good to know, because you don't expect it. But, the PR below hasn't been accepted yet
+[In FreeBSD, fail if loader.conf shall be reloaded.](https://github.com/ansible-collections/ansible.posix/pull/664)
+
+Conclusion:
+
+* When using Ansible "multi-OS" modules in FreeBSD, testing is needed. It can happen that such
+  modules do not implement all FreeBSD options properly.
+
+* Consider to create BSD native modules.
+
 
 ## (6) Ansible collections
 
@@ -182,12 +215,14 @@ It is clear that the fragmentation was necessary to keep the project maintainabl
 
 ## (7) Ansible collections ansible.*
 
-TBD
-
+Take a look at who the author of the collections is. This can tell you what the collection support level might be.
 
 ## (8) Ansible collections community.*
 
-TBD
+Take a look at what FreeBSD version(s) are being tested. Quoting
+[CfgMgmtCamp 2026 discussion (8/12): Instant Ansible-test target updates without announcements](https://forum.ansible.com/t/cfgmgmtcamp-2026-discussion-8-12-instant-ansible-test-target-updates-without-announcements/45295)
+
+> The VM images are sometimes also changed for stable branches, in the same manner: no announcement, no overlap between availability of the old and new image. As an example, when I woke up on January 8th, I noticed the following replacements since the previous evening: ... freebsd/13.5 VM → freebsd/15.0
 
 
 ## (9) Ansible collection dedicated to FreeBSD is needed
