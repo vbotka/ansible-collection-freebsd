@@ -1,5 +1,13 @@
 Content
+-------
 
 501 ... Configure the iocage host.
 901 ... Test the filter vbotka.freebsd.iocage
 902 ... Use ansible_port to forward the SSH connection from the iocage host to the jails.
+
+Notes
+-----
+
+* To see the tasks timing use the 'timestamp' callback.
+  shell> export ANSIBLE_STDOUT_CALLBACK=community.general.timestamp
+  shell> ./bastch.sh

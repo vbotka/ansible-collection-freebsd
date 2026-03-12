@@ -1,8 +1,6 @@
 # FreeBSD Jails Orchestration with Ansible
   Presenter Notes
 
-Good afternoon ...
-
 You can download this notes from (TBD link to GitHub).
 
 
@@ -26,7 +24,7 @@ In this tutorial, there are approx. 30 examples in 4 categories:
 
 ## (3) Introduction
 
-I'm not sure how many time we will have for questions at the end of the presentation. Therefore, do
+I'm not sure how many time we will have for the questions at the end of the presentation. Therefore, do
 not hesitate and ask immediately.
 
 Important question is: Do you need your Ansible code to also cover other systems in parallel to
@@ -122,7 +120,7 @@ Quoting Ansible:
 	- community.general.zpool [state=present is not idempotent #10771](https://github.com/ansible-collections/community.general/issues/10771)
       (open since Aug, 2025)
 
-  Other presenations for advanced users:
+  Other presentations for advanced users:
     - Brian Coca (@bcoca) Ansible core team member
         1) Ansible tips & tricks
            https://www.slideshare.net/slideshow/ansible-tips-tricks/49006020
@@ -286,22 +284,22 @@ General dilemmas:
 
 ## (11) Proposed FreeBSD collection
 
-(clik at the links)
+(click at the links)
 
 
 ## (12) Collection Content
 
-(clik at the links)
+(click at the links)
 
 
 ## (13) We focus on the iocage plugins
 
-(clik at the links)
+(click at the links)
 
 
 ## (14) Plugin inventory iocage
 
-[nventory vbotka.freebsd.iocage](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage.html)
+[inventory vbotka.freebsd.iocage](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage.html)
 
 
 ## (15) Plugin inventory iocage - Basics
@@ -418,12 +416,97 @@ Quote [Activate iocage](https://freebsd.github.io/iocage/basic-use.html#activate
 
 > Before iocage is functional, it needs to activate. Essentially, iocage needs to link with a usable zpool.
 
-The files' tree shows new directory `host_vars`. In production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the host `iocage_04`. For testing, you can use `zroot`.
+The files' tree shows a new directory `host_vars` that keeps the host-specific variables. In production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the host `iocage_04`. For testing, you can use `zroot`.
 
 
 ## (30) example 003: Audit iocage host
 
 In the slide, click at the `source code` and `results` links.
+
+Use the role `vbotka.freebsd.iocage` to audit the iocage configuration.
+
+The installation and configuration of the iocage host is described in the details in the example `501`. Here we run the role to make sure everything is configured properly.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Section 5
+
+
+## (31) Plugins iocage
+
+
+## (32) example 010: Clone basejails and create inventory
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (33) example 011: Display variables iocage_*
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (34) example 012: Display iocage_properties
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (35) example 013: Tags and custom groups
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (36) example 014: Inventory cache
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (37) example 015: Multiple inventory cache
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (38) example 016: Multiple inventory constructed
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (39) example 017: community.general.iocage
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (40) example 018: Clone basejails. Use DHCP.
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (41) example 019: Inventory option use_vars_plugins
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (42) example 020: Get inventory aliases from notes
+
+In the slide, click at the `source code` and `results` links.
+
+
+## (43) example 030: Create custom facts
+
+In the slide, click at the `source code` and `results` links.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Section 6
+
+
+## (44) Ansible client
+
+
+## (43) example 200: Create iocage templates. Clone jails.
+
+In the slide, click at the `source code` and `results` links.
+
+
 
 
 # EOF
