@@ -1,7 +1,7 @@
 # FreeBSD Jails Orchestration with Ansible
   Presenter Notes
 
-You can download this notes from (TBD link to GitHub).
+You can download this notes from (TBD. Link to GitHub).
 
 
 ## (2) Contents
@@ -9,7 +9,7 @@ You can download this notes from (TBD link to GitHub).
 We start with a brief overview of FreeBSD and Ansible. The main goal is to present the idea that
 FreeBSD Ansible collection is needed and propose how to proceed to create such a collection.
 
-We will review the proposed FreeBSD collection with the focus on the iocage plugins.
+Then, we will review the proposed FreeBSD collection with the focus on the iocage plugins.
 
 In this tutorial, there are approx. 30 examples in 4 categories:
   - installation and configuration of an iocage host
@@ -33,7 +33,7 @@ systems in parallel to FreeBSD?  This question is crucial. The code is much simp
 FreeBSD only. In this presentation, we focus on the FreeBSD management by Ansible. So, you can write
 your own FreeBSD playbooks, roles, and plugins.
 
-(Simple module example)
+(TBD. Simple module example)
 
 Goals of this presentation:
   - try to analyze FreeBSD specifics
@@ -45,46 +45,52 @@ Goals of this presentation:
 
 * There are many system management tools. We decided to pick Ansible because it is the leading tool.
 
-* AI generated code: fine, but you have to know what you want. I other words, you have to ask good
-  questions. This presentation is to help ask good questions.
+* AI generated code. Can be useful, but you have to know what you want. I other words, you have to
+  ask good questions. This presentation is to help ask good questions.
 
   AI is not a subject of this presentation. But, still, what is the latest Ansible AI status?
 
-  At the moment it can be described as `IT automation with agentic AI`
+  At the moment it can be described as `IT automation with agentic AI`.
 
-  1) Introducing the `Model Context Protocol` MCP server for Red Hat Ansible Automation Platform (technology preview)
+  1) Introducing the `Model Context Protocol` MCP server for `Red Hat Ansible Automation Platform`
+     (technology preview)
+
      [MCP for Ansible](https://www.redhat.com/en/blog/it-automation-agentic-ai-introducing-mcp-server-red-hat-ansible-automation-platform)
      [Deploying MCP](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.6/html/containerized_installation/deploying-ansible-mcp-server)
      [AAP MCP Service](https://github.com/ansible/aap-mcp-server)
 
-  2) The integration of Ansible, `Model Context Protocol` (MCP), and `ARA` Records enables `AI-powered, conversational monitoring and troubleshooting of Ansible playbooks`.
-     See [ARA](https://ara.recordsansible.org/)
+  2) The integration of Ansible, `Model Context Protocol` (MCP), and `ARA` Records enables
+     `AI-powered, conversational monitoring and troubleshooting of Ansible playbooks`.
+     See: [ARA](https://ara.recordsansible.org/)
 	 "ARA Records Ansible and makes it easier to understand and troubleshoot."
 
   3) [Ansible Development Tools MCP Server](https://docs.ansible.com/projects/vscode-ansible/mcp/)
 
-Note: MCP (Model Context Protocol) is an open standard that enables AI models to use external AI tools and services via a unified interface.
-      Using the Ansible MCP server, you can connect your Ansible Automation Platform with your preferred external AI tool (such as Claude, Cursor, or Chat-GPT).
+Note: MCP (Model Context Protocol) is an open standard that enables AI models to use external AI
+      tools and services via a unified interface.  Using the Ansible MCP server, you can connect
+      your Ansible Automation Platform with your preferred external AI tool (such as Claude, Cursor,
+      or Chat-GPT).
 
-* [Ansible Forum](https://forum.ansible.com/) is the main Ansible social network. If you use Ansible, join this forum.
+* To be informed about latest development join [Ansible Forum](https://forum.ansible.com/). This is the
+  main Ansible social network. If you use Ansible, join this forum.
 
-* Latest status of Ansible was extensively presented at the
+* If you are interested in the overview of the latest status, Ansible was extensively presented at the
   [CfgMgmtCamp 2026 February 2, 2026](https://forum.ansible.com/t/cfgmgmtcamp-2026/44250)
   tag: cfgmfmftcamp
 
-  Major changes in Ansible 2.19.
+  The one of the most important topics were major changes in Ansible 2.19.
   - See the CfgMgmtCamp 2026  videos at youtube.com (search "CfgMgmtCamp 2026")
   - Read the [threads](https://forum.ansible.com/tag/cfgmgmgtcamp)
 
-  Ansible introduced data tagging in core 2.19
+  In core 2.19, Ansible introduced `data tagging`
   There are some undocumented changes. Not mentioned in the release notes. For example, see
   [Type ‘GroupTuple’ is unsupported in variable storage](https://forum.ansible.com/t/type-grouptuple-is-unsupported-in-variable-storage/44513)
 
-Quoting Ansible:
+  Quoting Ansible:
 
 > We don’t have knowledge of every python type returned by every filter out there … try to let you know there is something that needs done."
 
-  Topic closed with the conclusion:
+  This topic was closed with the conclusion:
   - Is this a bug? `No`
   - Do I have to explicitly convert all such filters to eliminate these particular warnings (and errors)? `Yes`
   - Is the user now responsible for handling this? `Yes`
@@ -120,7 +126,7 @@ Quoting Ansible:
 	- community.general.zpool [state=present is not idempotent #10771](https://github.com/ansible-collections/community.general/issues/10771)
       (open since Aug, 2025)
 
-  Other presentations for advanced users:
+  See other presentations for advanced users:
     - Brian Coca (@bcoca) Ansible core team member
         1) Ansible tips & tricks
            https://www.slideshare.net/slideshow/ansible-tips-tricks/49006020
@@ -131,7 +137,8 @@ Quoting Ansible:
 
 ## (5) Does Ansible work with FreeBSD?
 
-There are problems with some Ansible modules running on FreeBSD. The modules `service` and `sysctl` are typical examples.
+There are problems with some Ansible modules running on FreeBSD. The modules `service` and `sysctl`
+are typical examples.
 
 **ansible.builtin.service**
 
@@ -142,6 +149,31 @@ There are problems with some Ansible modules running on FreeBSD. The modules `se
 Quoting last comment on Oct 2, 2025 [conversation](https://github.com/ansible/ansible/pull/85190#issuecomment-3359300597)
 
 > A different solution I would personally accept is a new, FreeBSD-specific module and a note on the generic service module that it does not accept extra arguments to the service script.
+
+This is exactly the point. The `service` solutions among the operating systems are profoundly
+different. It might be more efficient to start with the OS specific `service` modules and integrate
+later. A good example is the `ansible.builtin.package` module (TBD. Link). There are OS-specific
+modules:
+
+  - ansible.builtin.apt
+  - ansible.builtin.dnf
+  - ...
+  
+You can tell the module `ansible.builtin.package` to use the `required package manager module` or
+default to `auto`. The module `ansible.builtin.service` doesn't provide such choice, but you can
+implement it on your own, if necessary. For example, you can conditionally run tasks.
+
+```yaml
+- name: Run service module on Linux.
+  when: os_family == 'Linux'
+  ansible.builtin.service:
+  ...
+
+- name: Run service module on BSD.
+  when: os_family == 'BSD'
+  community.bsd.service:
+  ...
+```
 
 **vbotka.freebsd.service**
 
@@ -194,19 +226,17 @@ It's necessary to mention that Ansible is highly configurable. Everything is a p
 
 The introduction of collections allowed for several key changes:
 
-Independent release cycles: Content maintainers could develop and release their
-plugins outside of the main Ansible core release cycle, allowing for quicker bug
-fixes and feature additions.
+Independent release cycles: Content maintainers could develop and release their plugins outside of
+the main Ansible core release cycle, allowing for quicker bug fixes and feature additions.
 
-Improved organization: Collections help structure content into logical,
-project-specific units, reducing namespace collisions and managing the large
-number of plugins in the core repository.
+Improved organization: Collections help structure content into logical, project-specific units,
+reducing namespace collisions and managing the large number of plugins in the core repository.
 
-Centralized hub: Ansible Galaxy became the primary platform for sharing and
-finding community-contributed collections.
+Centralized hub: Ansible Galaxy became the primary platform for sharing and finding
+community-contributed collections.
 
-Certified content: Red Hat introduced the concept of certified collections
-available through the Red Hat Automation Hub.
+Certified content: Red Hat introduced the concept of certified collections available through the Red
+Hat Automation Hub.
 
 To realize the extent of the code, take a look at the current number of the modules included in the collections distributed with Ansible 2.20.3
 
@@ -214,6 +244,7 @@ To realize the extent of the code, take a look at the current number of the modu
 shell> ansible-doc -t module -l | wc -l
 9604
 ```
+
 It is clear that the fragmentation was necessary to keep the project maintainable.
 
 
