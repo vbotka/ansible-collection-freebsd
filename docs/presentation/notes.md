@@ -1,7 +1,7 @@
 # FreeBSD Jails Orchestration with Ansible
   Presenter Notes
 
-You can download this notes from (TBD. Link to GitHub).
+You can download these notes from (TBD. Link to GitHub).
 
 
 ## (2) Contents
@@ -26,19 +26,6 @@ In this tutorial, there are approx. 30 examples in 4 categories:
 
 I'm not sure how many time we will have for the questions at the end of the presentation. Therefore, do
 not hesitate and ask immediately.
-
-Important question is: Do you need your Ansible code to also cover other systems in parallel to
-FreeBSD? This means, do you have to write your playbooks, roles, and plugins to manage also other
-systems in parallel to FreeBSD?  This question is crucial. The code is much simpler if you cover
-FreeBSD only. In this presentation, we focus on the FreeBSD management by Ansible. So, you can write
-your own FreeBSD playbooks, roles, and plugins.
-
-(TBD. Simple module example)
-
-Goals of this presentation:
-  - try to analyze FreeBSD specifics
-  - try to explain Ansible options
-  - explain the current status of the proposed FreeBSD collection.
 
 
 ## (4) Why Ansible?
@@ -137,6 +124,22 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
 
 ## (5) Does Ansible work with FreeBSD?
 
+When you decide to use Ansible to manage FreeBSD, important question is: Do you need your Ansible
+code also cover other systems in parallel to FreeBSD? This means, do you have to write your
+playbooks, roles, and plugins to manage also other systems in parallel to FreeBSD?  This question is
+crucial. The code is much simpler if you cover FreeBSD only. In this presentation, we focus on the
+FreeBSD management by Ansible.
+
+You can write your own FreeBSD playbooks, roles, and plugins.
+
+(TBD. Simple module example)
+
+Goals of this presentation:
+
+  - try to analyze FreeBSD specifics
+  - try to explain Ansible options
+  - explain the current status of the proposed FreeBSD collection.
+
 There are problems with some Ansible modules running on FreeBSD. The modules `service` and `sysctl`
 are typical examples.
 
@@ -152,8 +155,11 @@ Quoting last comment on Oct 2, 2025 [conversation](https://github.com/ansible/an
 
 This is exactly the point. The `service` solutions among the operating systems are profoundly
 different. It might be more efficient to start with the OS specific `service` modules and integrate
-later. A good example is the `ansible.builtin.package` module (TBD. Link). There are OS-specific
-modules:
+later.
+
+A good example is the module [ansible.builtin.package](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/package_module.html).
+
+There are OS-specific modules:
 
   - ansible.builtin.apt
   - ansible.builtin.dnf
@@ -188,14 +194,20 @@ Quoting from the issue [In FreeBSD, the module sysctl always reports changed ...
 
 > The default option is reload=True. As a result, /etc/sysctl.conf and /etc/sysctl.conf.local are reloaded even when the option is sysctl_file=/boot/loader.conf
 
-In other words, if you use `ansible.posix.sysctl` to configure `/boot/loader.conf` the module
-reloads the `sysctl` service. This doesn't make sense, because in FreeBSD, you have to reboot the
-system if you want to activate the changes in `/boot/loader.conf`.
+In other words, if you use the module
+
+[ansible.posix.sysctl](https://docs.ansible.com/projects/ansible/latest/collections/ansible/posix/sysctl_module.html#ansible-posix-sysctl-module-manage-entries-in-sysctl-conf)
+
+to configure `/boot/loader.conf` (you can set `sysctl_file=/boot/loader.conf`) the module reloads
+the `sysctl` service. In FreeBSD, this doesn't make sense, because in FreeBSD, you have to reboot the system if
+you want to activate the changes in `/boot/loader.conf`.
 
 The simple remedy is to set the module parameter `reload=False` because you have to reboot the
-system on your own anyway (let an Ansible handler run the module ansible.builtin.reboot)
+system anyway (for example, let an Ansible handler run the module `ansible.builtin.reboot`)
 
-Still, it would be good to know, because you don't expect it. But, the PR below hasn't been accepted yet
+Still, it would be good to know, that the module by default reloads sysctl, because you don't expect
+it. But, the PR below hasn't been accepted yet
+
 [In FreeBSD, fail if loader.conf shall be reloaded.](https://github.com/ansible-collections/ansible.posix/pull/664)
 
 Conclusion:
@@ -208,35 +220,41 @@ Conclusion:
 
 ## (6) Ansible collections
 
-* Complexity: To make qualified decision in Ansible, multiple areas of expertise are needed:
+* An important aspect in the complexity: To make qualified decision in Ansible, multiple areas of
+  expertise are needed:
   - Multiple OS. Most modules are created for Linux.
   - OS administration experience.
   - Multiple programming languages.
   Logical consequences are collections focused on particular technologies.
 
-There are more than 100 collections included in the Ansible distribution, sometimes referenced as 'battery included'. See [Collection Index][(https://docs.ansible.com/projects/ansible/latest/collections/index.html)
+There are more than 100 collections included in the Ansible distribution, sometimes referenced as 'battery included'. See
+[Collection Index](https://docs.ansible.com/projects/ansible/latest/collections/index.html)
 
-Ansible introduced the collections in the version 2.8 released in the year 2019. This feature provided a new distribution format for Ansible content, including playbooks, roles, and plugins.
+Ansible introduced the collections in the version 2.8, released in the year 2019. This feature
+provided a new distribution format for Ansible content, including playbooks, roles, and plugins.
 
-It's necessary to mention that Ansible is highly configurable. Everything is a plugin. See [Working with plugins](https://docs.ansible.com/projects/ansible/latest/plugins/plugins.html). Later we will describe our iocage plugins:
+It's necessary to mention that Ansible is highly configurable. Everything is a plugin. See
+[Working with plugins](https://docs.ansible.com/projects/ansible/latest/plugins/plugins.html).
 
-* iocage inventory plugin,
-* iocage module, and
-* iocage filter
+Later we will describe our iocage plugins:
+
+  - iocage inventory plugin,
+  - iocage module, and
+  - iocage filter
 
 The introduction of collections allowed for several key changes:
 
-Independent release cycles: Content maintainers could develop and release their plugins outside of
-the main Ansible core release cycle, allowing for quicker bug fixes and feature additions.
+  - Independent release cycles: Content maintainers could develop and release their plugins outside
+    of the main Ansible core release cycle, allowing for quicker bug fixes and feature additions.
 
-Improved organization: Collections help structure content into logical, project-specific units,
-reducing namespace collisions and managing the large number of plugins in the core repository.
+  - Improved organization: Collections help structure content into logical, project-specific units,
+    reducing namespace collisions and managing the large number of plugins in the core repository.
 
-Centralized hub: Ansible Galaxy became the primary platform for sharing and finding
-community-contributed collections.
+  - Centralized hub: Ansible Galaxy became the primary platform for sharing and finding
+    community-contributed collections.
 
-Certified content: Red Hat introduced the concept of certified collections available through the Red
-Hat Automation Hub.
+  - Certified content: Red Hat introduced the concept of certified collections available through the
+    Red Hat Automation Hub.
 
 To realize the extent of the code, take a look at the current number of the modules included in the collections distributed with Ansible 2.20.3
 
@@ -252,13 +270,60 @@ It is clear that the fragmentation was necessary to keep the project maintainabl
 
 Take a look at who the author of the collections is. This can tell you what the collection support level might be.
 
+Take a look at what FreeBSD version(s) are being tested.
+
+Quoting [ansible-core 2.20 ... Release Notes](https://github.com/ansible/ansible/blob/stable-2.20/changelogs/CHANGELOG-v2.20.rst)
+
+> ansible-test - Replace FreeBSD 14.2 with 14.3.
+> ansible-test - Use OS packages to satisfy controller requirements on FreeBSD 13.5 ...
+
+```console
+shell> git remote -v
+origin	https://github.com/ansible/ansible.git (fetch)
+origin	https://github.com/ansible/ansible.git (push)
+
+shell> git branch
+* devel
+
+shell> git log --grep="Replace FreeBSD 13.5 with 15.0"
+
+commit 69afa45880c9c03009b178632dccc7c0ffc5b5fa
+Author: Matt Clay <matt@mystile.com>
+Date:   Wed Jan 7 13:45:42 2026 -0800
+
+    ansible-test - Replace FreeBSD 13.5 with 15.0 (#86385)
+```
+
+
 ## (8) Ansible collections community.*
 
-Take a look at what FreeBSD version(s) are being tested. Quoting
-[CfgMgmtCamp 2026 discussion (8/12): Instant Ansible-test target updates without announcements](https://forum.ansible.com/t/cfgmgmtcamp-2026-discussion-8-12-instant-ansible-test-target-updates-without-announcements/45295)
+Take a look at what FreeBSD version(s) are being tested.
+
+Quoting [CfgMgmtCamp 2026 discussion (8/12): Instant Ansible-test target updates without announcements](https://forum.ansible.com/t/cfgmgmtcamp-2026-discussion-8-12-instant-ansible-test-target-updates-without-announcements/45295)
 
 > The VM images are sometimes also changed for stable branches, in the same manner: no announcement, no overlap between availability of the old and new image. As an example, when I woke up on January 8th, I noticed the following replacements since the previous evening: ... freebsd/13.5 VM → freebsd/15.0
 
+```console
+shell> git remote -v
+origin	https://github.com/ansible-collections/community.general.git (fetch)
+origin	https://github.com/ansible-collections/community.general.git (push)
+
+shell> git branch
+* main
+
+shell> git log --grep="FreeBSD 13.5 -> 15.0 for devel"
+
+commit 0e6ba07261f370352a59e888701b63dcee26a704
+Author: Felix Fontein <felix@fontein.de>
+Date:   Thu Jan 8 09:41:28 2026 +0100
+
+    Update CI pipelines (#11401)
+
+    Update CI pipelines:
+    - Fedora 42 -> 43 for devel
+    - RHEL 10.0 -> 10.1 for all ansible-core branches
+    - FreeBSD 13.5 -> 15.0 for devel
+```
 
 ## (9) Ansible collection dedicated to FreeBSD is needed
 
@@ -267,18 +332,22 @@ avoid trial and error when building the Ansible FreeBSD collection.
 
 The question is not `if` FreeBSD collection? But `how`?
   - this is a proposal
-  - as flexible as possible
-  - tools, not policy
+  - the solution should be as flexible as possible
 
 Proposed collection
   - FreeBSD or BSD?
   - namespace (freebsd or bsd?)
+
+If there is time we describe the setup later (TBD. Appendix):
   - setup; start with a minimal tested content; customize your collection on-demand
   - setup description (distfiles, files, vars, playbooks setup.yml and .configure.yml)
     The framework is well-known from the ports collection.
 
-A module vs. command/shell ansible module
-  - For example, iocage: complex utility; module is idempotent but slow; use 'creates' to make the command idempotent (faster)
+When to write a new plugin?
+
+  - A module vs. command/shell ansible module. For example, iocage is a complex utility. The module
+    is idempotent but slow. Optionally, use the parameter 'creates' to make the command
+    idempotent. This will be faster.
 
 General dilemmas:
 
