@@ -297,6 +297,15 @@ Date:   Wed Jan 7 13:45:42 2026 -0800
 
 ## (8) Ansible collections community.*
 
+Ansible collection [community.general](https://github.com/ansible-collections/community.general) is the largest community collection with more than 1000 contributors. At the moment, it comprises 580 modules
+
+```console
+shell > ansible-doc -t module -l | grep community.general | wc -l
+580
+```
+
+Supported by Ansible community.
+
 Take a look at what FreeBSD version(s) are being tested.
 
 Quoting [CfgMgmtCamp 2026 discussion (8/12): Instant Ansible-test target updates without announcements](https://forum.ansible.com/t/cfgmgmtcamp-2026-discussion-8-12-instant-ansible-test-target-updates-without-announcements/45295)
@@ -334,11 +343,11 @@ The question is not `if` FreeBSD collection? But `how`?
   - this is a proposal
   - the solution should be as flexible as possible
 
-Proposed collection
-  - FreeBSD or BSD?
-  - namespace (freebsd or bsd?)
+Proposed collection. There are open questions:
+  - Cover only FreeBSD or all BSD flavours?
+  - What shall be the namespace (freebsd or bsd?)
 
-If there is time we describe the setup later (TBD. Appendix):
+If there is time we describe the setup of the proposed collection later (TBD. Appendix):
   - setup; start with a minimal tested content; customize your collection on-demand
   - setup description (distfiles, files, vars, playbooks setup.yml and .configure.yml)
     The framework is well-known from the ports collection.
@@ -602,7 +611,7 @@ In the slide, click at the `source code` and `results` links.
 ## (44) Ansible client
 
 
-## (43) example 200: Create iocage templates. Clone jails.
+## (45) example 200: Create iocage templates. Clone jails.
 
 In the slide, click at the `source code` and `results` links.
 
