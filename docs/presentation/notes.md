@@ -1,5 +1,5 @@
 # FreeBSD Jails Orchestration with Ansible
-  Presenter Notes
+  Presenter Notes.
 
 These notes can be downloaded from
 https://github.com/vbotka/ansible-collection-freebsd/blob/devel/docs/presentation/notes.md
@@ -552,7 +552,7 @@ The installation and configuration of the iocage host is described in the detail
 ## Section 5
 
 
-### (31) Plugins iocage
+### Plugins iocage
 
 
 ### (32) example 010: Clone basejails and create inventory
