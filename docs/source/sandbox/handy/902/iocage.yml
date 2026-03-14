@@ -1,0 +1,7 @@
+plugin: vbotka.freebsd.iocage
+host: handy
+user: admin
+sudo: true
+compose:
+  ansible_host: "['10', '10', '1', '14'] | join('.')"
+  ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200

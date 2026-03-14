@@ -5,6 +5,23 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.5
+=====
+
+Release Summary
+---------------
+
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update docs and sandbox examples. Add sandbox examples.
+* Update presentation.
+* Upgrade roles: pf 2.8.4
+
+
 0.8.4
 =====
 

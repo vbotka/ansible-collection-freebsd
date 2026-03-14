@@ -1,31 +1,31 @@
 
-PLAY [Configure ZFS.] **********************************************************
+PLAY [Configure ZFS.] ************************************************* 05:31:52
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] ************************************************ 05:31:55
 ok: [iocage_05]
 
-TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ************** 05:31:55
 included: vbotka.freebsd.postinstall for iocage_05
 
-TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
+TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] *** 05:31:56
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ***********************
+TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ************** 05:31:57
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ***************************
+TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ****************** 05:31:58
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] *** 05:31:58
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
+TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] *** 05:31:58
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
+TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] *** 05:31:58
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Pools: WARNING | community.general.zpool skipped.] ***
+TASK [vbotka.freebsd.zfs : Pools: WARNING | community.general.zpool skipped.] *** 05:31:58
 ok: [iocage_05] => 
     msg: |-
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -39,12 +39,12 @@ ok: [iocage_05] =>
         # Configure the skipped pools manually, if necessary.
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] ******************** 05:31:59
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
+TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ******* 05:31:59
 ok: [iocage_05]
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:31:59
 iocage_05                  : ok=11   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
 

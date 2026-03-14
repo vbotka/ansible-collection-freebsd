@@ -1,10 +1,10 @@
 
-PLAY [Test module vbotka.freebsd.service. Set dictionary jid_rcvar.] *** 14:45:22
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_rcvar.] *** 05:30:36
 
-TASK [Get iocage list of jails.] ************************************** 14:45:23
+TASK [Get iocage list of jails.] ************************************** 05:30:37
 ok: [iocage_05]
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:23
+TASK [ansible.builtin.debug] ****************************************** 05:30:37
 ok: [iocage_05] => 
     iocage_list_out:
         ansible_facts:
@@ -14,40 +14,40 @@ ok: [iocage_05] =>
         - iocage
         - list
         - --long
-        delta: '0:00:00.439378'
-        end: '2026-03-08 14:45:33.910091'
+        delta: '0:00:00.445544'
+        end: '2026-03-10 05:30:48.400413'
         failed: false
         msg: ''
         rc: 0
-        start: '2026-03-08 14:45:33.470713'
+        start: '2026-03-10 05:30:47.954869'
         stderr: ''
         stderr_lines: []
         stdout: |-
             +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
             | JID |   NAME   | BOOT | STATE | TYPE |   RELEASE    |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
             +=====+==========+======+=======+======+==============+====================+=====+================+==========+
-            | 42  | test_151 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.101 | -   | ansible_client | no       |
+            | 31  | test_151 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.101 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-            | 41  | test_152 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.102 | -   | ansible_client | no       |
+            | 30  | test_152 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.102 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-            | 40  | test_153 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.116 | -   | ansible_client | no       |
+            | 29  | test_153 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.116 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
         stdout_lines:
         - +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
         - '| JID |   NAME   | BOOT | STATE | TYPE |   RELEASE    |        IP4         |
             IP6 |    TEMPLATE    | BASEJAIL |'
         - +=====+==========+======+=======+======+==============+====================+=====+================+==========+
-        - '| 42  | test_151 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.101
+        - '| 31  | test_151 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.101
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-        - '| 41  | test_152 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.102
+        - '| 30  | test_152 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.102
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-        - '| 40  | test_153 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.116
+        - '| 29  | test_153 | off  | up    | jail | 15.0-RELEASE | epair0b|10.1.0.116
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:23
+TASK [ansible.builtin.debug] ****************************************** 05:30:37
 ok: [iocage_05] => 
     jails | to_yaml: |-
         test_151:
@@ -59,7 +59,7 @@ ok: [iocage_05] =>
             - {ifc: epair0b, ip: 10.1.0.101, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '42'
+          jid: '31'
           release: 15.0-RELEASE
           state: up
           template: ansible_client
@@ -73,7 +73,7 @@ ok: [iocage_05] =>
             - {ifc: epair0b, ip: 10.1.0.102, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '41'
+          jid: '30'
           release: 15.0-RELEASE
           state: up
           template: ansible_client
@@ -87,23 +87,23 @@ ok: [iocage_05] =>
             - {ifc: epair0b, ip: 10.1.0.116, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '40'
+          jid: '29'
           release: 15.0-RELEASE
           state: up
           template: ansible_client
           type: jail
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:23
+TASK [ansible.builtin.debug] ****************************************** 05:30:37
 ok: [iocage_05] => 
     jids | to_yaml: |-
-        ['42', '41', '40']
+        ['31', '30', '29']
 
-TASK [Jails service sshd rcvar.] ************************************** 14:45:24
-ok: [iocage_05] => (item=42)
-ok: [iocage_05] => (item=41)
-ok: [iocage_05] => (item=40)
+TASK [Jails service sshd rcvar.] ************************************** 05:30:38
+ok: [iocage_05] => (item=31)
+ok: [iocage_05] => (item=30)
+ok: [iocage_05] => (item=29)
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:25
+TASK [ansible.builtin.debug] ****************************************** 05:30:39
 ok: [iocage_05] => 
     service_out:
         changed: false
@@ -135,12 +135,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '42'
+                    jail: '31'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '42'
+            item: '31'
             rc: 0
             rcvar:
                 sshd_enable: 'YES'
@@ -164,12 +164,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '41'
+                    jail: '30'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '41'
+            item: '30'
             rc: 0
             rcvar:
                 sshd_enable: 'YES'
@@ -193,12 +193,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '40'
+                    jail: '29'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '40'
+            item: '29'
             rc: 0
             rcvar:
                 sshd_enable: 'YES'
@@ -217,16 +217,16 @@ ok: [iocage_05] =>
             - ''
         skipped: false
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:25
+TASK [ansible.builtin.debug] ****************************************** 05:30:39
 ok: [iocage_05] => 
     jid_rcvar:
-        '40':
+        '29':
             sshd_enable: 'YES'
-        '41':
+        '30':
             sshd_enable: 'YES'
-        '42':
+        '31':
             sshd_enable: 'YES'
 
-PLAY RECAP ************************************************************ 14:45:25
+PLAY RECAP ************************************************************ 05:30:39
 iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

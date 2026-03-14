@@ -5,6 +5,42 @@ vbotka.freebsd_pf 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.4
+=====
+
+Release Summary
+---------------
+Maintenance udpate.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Fix lint complains about file premissions in contrib/freebsd-pf-setup.yml
+* Fix CHANGELOG.md
+
+
+2.8.3
+=====
+
+Release Summary
+---------------
+Feature udpate.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Enable include files in pf.conf
+* Add variables pf_includes_dir and pf_includes
+* Add template default3-pf.conf.j2
+* Add tasks pfconf-includes.yml
+* Add contrib playbook freebsd-pf-setup.yml
+* Add sample configuration vars/pfconf_default_ex04.yml.sample
+
+
 2.8.2
 =====
 

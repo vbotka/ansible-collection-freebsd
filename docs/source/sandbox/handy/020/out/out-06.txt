@@ -1,26 +1,26 @@
 
-PLAY [Display all groups.] *****************************************************
+PLAY [Display all groups.] ******************************************** 05:18:38
 
-TASK [debug] *******************************************************************
-ok: [db1] => 
-    msg: |-
-        c5e43051
-        {alias: db1, project: example_020, swarm: db, vmm: iocage_05}
+TASK [debug] ********************************************************** 05:18:38
 ok: [db2] => 
     msg: |-
-        d8860604
+        c2c5442a
         {alias: db2, project: example_020, swarm: db, vmm: iocage_05}
-
-TASK [debug] *******************************************************************
 ok: [db1] => 
     msg: |-
-        all: ['db1', 'db2']
-        ungrouped: []
-        vmm_iocage_05: ['db1', 'db2']
-        project_example_020: ['db1', 'db2']
-        swarm_db: ['db1', 'db2']
+        cffb12d9
+        {alias: db1, project: example_020, swarm: db, vmm: iocage_05}
 
-PLAY RECAP *********************************************************************
-db1                        : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+TASK [debug] ********************************************************** 05:18:38
+ok: [db2] => 
+    msg: |-
+        all: ['db2', 'db1']
+        ungrouped: []
+        vmm_iocage_05: ['db2', 'db1']
+        project_example_020: ['db2', 'db1']
+        swarm_db: ['db2', 'db1']
+
+PLAY RECAP ************************************************************ 05:18:38
+db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

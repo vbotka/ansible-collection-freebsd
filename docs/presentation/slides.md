@@ -71,8 +71,9 @@ See the release notes what FreeBSD version(s) were tested. For example, quoting 
 
 ## Ansible collections community.*
 
-* There are two FreeBSD specific modules in [community.general](https://docs.ansible.com/projects/ansible/latest/collections/community/general/index.html):
+* There are three FreeBSD specific modules in [community.general](https://docs.ansible.com/projects/ansible/latest/collections/community/general/index.html):
 
+  - [community.general.sysrc](https://docs.ansible.com/projects/ansible/latest/collections/community/general/sysrc_module.html#community-general-sysrc-module-manage-freebsd-using-sysrc) - Manage FreeBSD using sysrc.
   - [community.general.pkgng](https://docs.ansible.com/projects/ansible/latest/collections/community/general/pkgng_module.html#ansible-collections-community-general-pkgng-module) - Package manager for FreeBSD.
   - [community.general.portinstall](https://docs.ansible.com/projects/ansible/latest/collections/community/general/portinstall_module.html#ansible-collections-community-general-portinstall-module) - Installing from FreeBSD’s ports system.
 
@@ -995,3 +996,41 @@ Use the template ``ansible_client_pull`` to create project jails.
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/510)
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/510/example.html)
 
+
+# Appendix
+
+---
+
+## FreeBSD collection configuration
+
+- In the repository, see the tree
+
+```console
+    shell> tree setup
+```
+
+- See the playbook *setup/.configure.yml *. This play can:
+
+  * create setup/vars/roles_latest.yml
+
+- See the file *setup/vars/roles_latest.yml*
+
+- This play should be used to configure other options when necessary.
+
+---
+
+## FreeBSD collection setup
+
+- In the repository, see the tree
+
+```console
+    shell> tree setup
+```
+
+- See the playbook *setup/setup.yml*. This play can:
+
+  * display variables
+  * install plugins
+  * install roles
+
+- See the files in the directory *setup/vars/*

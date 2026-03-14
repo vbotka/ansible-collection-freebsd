@@ -1,27 +1,27 @@
 
-PLAY [Configure login.conf] ****************************************************
+PLAY [Configure login.conf] ******************************************* 05:32:19
 
-PLAY [Install packages.] *******************************************************
+PLAY [Install packages.] ********************************************** 05:32:24
 
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] ******** 05:32:27
 included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for iocage_05 => (item=custom)
 
-PLAY [Configure loader.conf] ***************************************************
+PLAY [Configure loader.conf] ****************************************** 05:32:31
 
-PLAY [Configure network.] ******************************************************
+PLAY [Configure network.] ********************************************* 05:32:37
 
-PLAY [Configure pf.] ***********************************************************
+PLAY [Configure pf.] ************************************************** 05:32:43
 
-PLAY [Configure ZFS.] **********************************************************
+PLAY [Configure ZFS.] ************************************************* 05:33:01
 
-TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
+TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ************** 05:33:05
 included: vbotka.freebsd.postinstall for iocage_05
 
-PLAY [Configure iocage.] *******************************************************
+PLAY [Configure iocage.] ********************************************** 05:33:07
 
-TASK [vbotka.freebsd.iocage : Rcconf: Enable iocage] ***************************
+TASK [vbotka.freebsd.iocage : Rcconf: Enable iocage] ****************** 05:33:22
 changed: [iocage_05]
 
-PLAY RECAP *********************************************************************
-iocage_05                  : ok=68   changed=1    unreachable=0    failed=0    skipped=145  rescued=0    ignored=0   
+PLAY RECAP ************************************************************ 05:33:23
+iocage_05                  : ok=70   changed=1    unreachable=0    failed=0    skipped=146  rescued=0    ignored=0   
 

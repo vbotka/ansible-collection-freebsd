@@ -1,16 +1,16 @@
 
-PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 12:54:54
+PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 05:20:20
 
-TASK [Get iocage facts] *********************************************** 12:55:00
+TASK [Get iocage facts] *********************************************** 05:20:26
 ok: [iocage_05]
 
-TASK [Display iocage_jails keys debug=true] *************************** 12:55:00
+TASK [Display iocage_jails keys debug=true] *************************** 05:20:26
 ok: [iocage_05] => 
     ansible_facts.iocage_jails.keys():
     - test_151
     - test_152
     - test_153
 
-PLAY RECAP ************************************************************ 12:55:00
+PLAY RECAP ************************************************************ 05:20:26
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

@@ -1,12 +1,12 @@
 
-PLAY [Configure login.conf] ****************************************************
+PLAY [Configure login.conf] ******************************************* 05:31:04
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] ************************************************ 05:31:09
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.postinstall : Login: Create local .login_conf] ************
+TASK [vbotka.freebsd.postinstall : Login: Create local .login_conf] *** 05:31:11
 ok: [iocage_05] => (item=admin)
 
-PLAY RECAP *********************************************************************
+PLAY RECAP ************************************************************ 05:31:11
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

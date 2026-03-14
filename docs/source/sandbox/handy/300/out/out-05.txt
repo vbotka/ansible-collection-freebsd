@@ -1,15 +1,15 @@
 
-PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.] *** 14:45:25
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_service_enabled.] *** 05:30:39
 
-TASK [Get iocage list of jails] *************************************** 14:45:26
+TASK [Get iocage list of jails] *************************************** 05:30:40
 ok: [iocage_05]
 
-TASK [Jails service list enabled] ************************************* 14:45:27
-ok: [iocage_05] => (item=42)
-ok: [iocage_05] => (item=41)
-ok: [iocage_05] => (item=40)
+TASK [Jails service list enabled] ************************************* 05:30:41
+ok: [iocage_05] => (item=31)
+ok: [iocage_05] => (item=30)
+ok: [iocage_05] => (item=29)
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:28
+TASK [ansible.builtin.debug] ****************************************** 05:30:42
 ok: [iocage_05] => 
     service_out:
         changed: false
@@ -41,12 +41,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '42'
+                    jail: '31'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '42'
+            item: '31'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -85,12 +85,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '41'
+                    jail: '30'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '41'
+            item: '30'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -129,12 +129,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '40'
+                    jail: '29'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '40'
+            item: '29'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -168,16 +168,16 @@ ok: [iocage_05] =>
             - /etc/rc.d/virecover
         skipped: false
 
-TASK [ansible.builtin.debug] ****************************************** 14:45:28
+TASK [ansible.builtin.debug] ****************************************** 05:30:42
 ok: [iocage_05] => 
     jid_service_enabled | to_yaml: |-
-        '40': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '29': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
-        '41': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '30': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
-        '42': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '31': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
 
-PLAY RECAP ************************************************************ 14:45:28
+PLAY RECAP ************************************************************ 05:30:42
 iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

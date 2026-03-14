@@ -34,6 +34,10 @@ colortheme: default
 header-includes: |
     ```{=latex}
     \setbeamertemplate{frametitle continuation}[from second]
+    \usepackage{listings}
+    \lstdefinestyle{ascii-tree}{
+        literate={├}{|}1 {─}{--}1 {└}{+}1
+    }
     % more stuff
     ```
 
