@@ -670,10 +670,87 @@ Notes:
 
 ### (47) example 201: Display iocage datasets
 
+In the slide, click at the `source code` and `results` links.
+
+See the playbook:
+[pb-iocage-display-datasets.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/examples/201/pb-iocage-display-datasets.yml)
+
+There are 4 datasets created by *iocage*:
+
+ - releases
+ - plugins
+ - templates
+ - jails
+
+In the first task, the module *vbotka.freebsd.iocage* without arguments creates the datasets. The
+datasets are stored in the dictionary *ansible_facts*.
+
+For abbreviation, the *properties* are removed from *templates* and *jails*.
+
+
+### (48) example 202: Create iocage templates. Clone DHCP jails.
+
+In the slide, click at the `source code` and `results` links.
+
+In addition to the `example 200` we configure `dhclient hooks`. Then, when we clone the jails, DHCP
+is used to assign the addresses. See the *host_vars*. The common *properties* are used.
+
+Explanation of the warning: "The user act_user must exist on the iocage host. Otherwise, the module
+ansible.posix.authorized_key will crash."
+
+In the module *ansible.posix.authorized_key* we configure the path for each jail. The module assumes
+the keys belongs to a user on the iocage host. The module is checking whether the user exists even when
+the parameter *path* is used.
+
+```yaml
+- ansible.posix.authorized_key:
+    user: "{{ _act_user }}"
+    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/home/{{ _act_user }}/.ssh/authorized_keys"
+	...
+  loop: "{{ templates | dict2items }}"
+```
+
+
+### (49) example 203: Create DHCP jails with auto UUID and iocage_tags
+
+In the slide, click at the `source code` and `results` links.
+
+We use here the templates created in the previous `example 202`.
+
+*iocage* is able to create more jails with the same parameters if the option *--count* is used. In
+this case, it's more efficient to use a module *command* instead of the *iocage* module, because
+such a step is not idempotent anyway. See the examples in the `Use case`
+
+Here we use the playbook `pb_iocage_ansible_clients.yml` again, but, this time, to create *swarms*.
+
+See [swarms](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html#swarms).
+
+We borrowed *swarms* from the "Container swarms", which refer to a cluster of machines configured to
+work together as a single, unified system. It is not related to Docker in any way.
+
+See the source code:
+[pb_iocage_ansible_clients.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_ansible_clients.yml)
+[tasks](https://github.com/vbotka/ansible-collection-freebsd/tree/master/playbooks/pb_iocage_ansible_clients)
+
+Let's take a look at the tasks in
+[swarms.yhml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_ansible_clients/swarm.yml)
+
+The first task `vbotka.freebsd.iocage` creates the *iocage* datasets only.
+
+In the dictionary `swarms` the parameter `count` declares the number of jails in each swarm. We want
+to keep this number of jails. In the playbook section `vars`, the dictionary `_tags` is
+declared. This dictionary keeps tags for each jail. In the section `vars` of the block in the tasks
+`swarm.yml`, we count the number of jails in a swarm. The filter
+`community.general.json_query(_query)` selects the jails and the filter `length` counts them. The
+the variable `_count` keeps the number of the missing jails in a swarm.
+
+See how the command `cmd_create` is created.
+
+See the results.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-## Section 7
+## SECTION 7
 
 
 ### Infrastructure
