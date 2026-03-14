@@ -1015,7 +1015,7 @@ Use the template ``ansible_client_pull`` to create project jails.
 
 - See the file *setup/vars/roles_latest.yml*
 
-
+- This play should be used to configure other options when necessary.
 
 ---
 
