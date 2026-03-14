@@ -463,7 +463,7 @@ General dilemmas:
 ## Section 3
 
 
-### (23) Examples
+### Examples
 
 
 ### (24) Example groups
