@@ -18,7 +18,8 @@ Major Changes
 Minor Changes
 -------------
 * Update docs and sandbox examples. Add sandbox examples.
-* Upgrade roles: pf 2.8.3
+* Update presentation.
+* Upgrade roles: pf 2.8.4
 
 
 0.8.4
