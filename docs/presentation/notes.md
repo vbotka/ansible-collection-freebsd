@@ -1,25 +1,34 @@
 # FreeBSD Jails Orchestration with Ansible
   Presenter Notes
 
-You can download these notes from (TBD. Link to GitHub).
+These notes can be downloaded from
+https://github.com/vbotka/ansible-collection-freebsd/blob/devel/docs/presentation/notes.md
 
+We start with a brief overview of FreeBSD and Ansible. Then, we will review the proposed FreeBSD
+collection with the focus on the iocage plugins.
+
+The main part of this tutorial are examples. There are approx. 30 examples in 4 categories:
+
+  - installation and configuration of an iocage host
+  - usage of the iocage plugins
+  - creation of FreeBSD jails as Ansible remote hosts
+  - orchestration of the FreeBSD jails by Ansible.
+
+The main goal is to present the idea that FreeBSD Ansible collection is needed and propose how to
+proceed to create such a collection.
 
 # Table of Contents
 
 1. [Introduction](#introduction)
-
-We start with a brief overview of FreeBSD and Ansible. The main goal is to present the idea that
-FreeBSD Ansible collection is needed and propose how to proceed to create such a collection.
-
-Then, we will review the proposed FreeBSD collection with the focus on the iocage plugins.
-
-In this tutorial, there are approx. 30 examples in 4 categories:
-  - installation and configuration of an iocage host
-  - usage of the iocage plugins
-  - creation of FreeBSD jails as Ansible remote hosts
-  - orchestration of the FreeBSD jails by Ansible
+2. [FreeBSD collection](#freebsd-collection)
+3. [Examples](#examples)
+4. [Install configure and activate iocage](#install-configure-and-activate-iocage)
+5. [Plugins iocage](#plugins-iocage)
+6. [Ansible client](#ansible-client)
+7. [Infrastructure](#infrastructure)
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
 ## Section 1
 
@@ -390,7 +399,7 @@ General dilemmas:
 ## Section 2
 
 
-### (10) FreeBSD collection
+### FreeBSD collection
 
 
 ### (11) Proposed FreeBSD collection
@@ -472,7 +481,7 @@ General dilemmas:
 ## Section 4
 
 
-### (27) Install, configure, and activate iocage
+### Install, configure, and activate iocage
 
 (The below link shows the examples' categories)
 [Manage iocage](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_examples.html)
@@ -610,14 +619,19 @@ In the slide, click at the `source code` and `results` links.
 ## Section 6
 
 
-### (44) Ansible client
+### Ansible client
 
 
 ### (45) example 200: Create iocage templates. Clone jails.
 
 In the slide, click at the `source code` and `results` links.
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+## Section 7
+
+
+### Infrastructure
 
 
 # EOF
