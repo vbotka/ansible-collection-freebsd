@@ -26,6 +26,7 @@ proceed to create such a collection.
 5. [Plugins iocage](#plugins-iocage)
 6. [Ansible client](#ansible-client)
 7. [Infrastructure](#infrastructure)
+8. [Appendix](#appendix)
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -632,6 +633,20 @@ In the slide, click at the `source code` and `results` links.
 
 
 ### Infrastructure
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+## Section 8
+
+
+### Appendix
+
+
+### (62) FreeBSD collection configuration
+
+
+### (63) FreeBSD collection setup
 
 
 # EOF

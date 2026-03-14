@@ -996,3 +996,41 @@ Use the template ``ansible_client_pull`` to create project jails.
   - [source code](https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/510)
   - [results](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/510/example.html)
 
+
+# Appendix
+
+---
+
+## FreeBSD collection configuration
+
+- In the repository, see the tree
+
+```console
+    shell> tree setup
+```
+
+- See the playbook *setup/.configure.yml *. This play can:
+
+  * create setup/vars/roles_latest.yml
+
+- See the file *setup/vars/roles_latest.yml*
+
+
+
+---
+
+## FreeBSD collection setup
+
+- In the repository, see the tree
+
+```console
+    shell> tree setup
+```
+
+- See the playbook *setup/setup.yml*. This play can:
+
+  * display variables
+  * install plugins
+  * install roles
+
+- See the files in the directory *setup/vars/*
