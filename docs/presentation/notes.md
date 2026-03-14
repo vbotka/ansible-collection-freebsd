@@ -4,7 +4,7 @@
 These notes can be downloaded from
 https://github.com/vbotka/ansible-collection-freebsd/blob/devel/docs/presentation/notes.md
 
-We start with a brief overview of FreeBSD and Ansible. Then, we will review the proposed FreeBSD
+We start with a brief overview of Ansible and FreeBSD. Then, we will review the proposed FreeBSD
 collection with the focus on the iocage plugins.
 
 The main part of this tutorial are examples. There are approx. 30 examples in 4 categories:
@@ -16,6 +16,10 @@ The main part of this tutorial are examples. There are approx. 30 examples in 4 
 
 The main goal is to present the idea that FreeBSD Ansible collection is needed and propose how to
 proceed to create such a collection.
+
+This presentation does not cover the use-case of FreeBSD as an Ansible controller. FreeBSD is used
+here as an Ansible remote host.
+
 
 # Table of Contents
 
@@ -113,6 +117,7 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
 
     - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
       https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
+
 
   It is not all that cool. There are also problems:
 
