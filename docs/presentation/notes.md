@@ -632,6 +632,45 @@ In the slide, click at the `source code` and `results` links.
 
 In the slide, click at the `source code` and `results` links.
 
+See the playbook:
+[pb_iocage_template](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html#pb-iocage-template)
+
+See the source code:
+[pb_iocage_template](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_template.yml)
+[tasks](https://github.com/vbotka/ansible-collection-freebsd/tree/master/playbooks/pb_iocage_template)
+
+The most time-consuming part is the installation of the packages:
+
+  - See the task [create.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_template/create.yml)
+    Either use the attribute *pkglist* in the module *vbotka.freebsd.iocage*
+
+  - See the task [pkg.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_template/pkg.yml)
+    Or, use the attributes *jail* and *name* in the module *community.general.pkgng*
+	
+  - See the [NOTES](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/200/NOTES)
+
+Note: The module *community.general.pkgng* is *jail-aware*
+
+See: [community.general.pkgng](https://docs.ansible.com/projects/ansible/latest/collections/community/general/pkgng_module.html#ansible-collections-community-general-pkgng-module) 
+     [jail aware](https://wiki.freebsd.org/Jails#Jail-specific_and_Jail-aware_Utilities)
+
+
+See the playbook:
+[pb_iocage_ansible_clients](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html#pb-iocage-ansible-clients)
+
+See the source code:
+[pb_iocage_ansible_clients.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_ansible_clients.yml)
+[tasks](https://github.com/vbotka/ansible-collection-freebsd/tree/master/playbooks/pb_iocage_ansible_clients)
+
+Notes:
+
+* If possible, install packages in a standalone tasks. Then, disable the installation to speedup the
+  plays.
+
+
+### (47) example 201: Display iocage datasets
+
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 7
