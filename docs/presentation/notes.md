@@ -34,7 +34,6 @@ here as an Ansible remote host.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 ## Section 1
 
 
@@ -102,22 +101,20 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
 
   Take a look at other recorded presentations. For example:
 
-    - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
-      Maintainer of the collection community.general
+  - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
+    Maintainer of the collection community.general
 
-      * Problems in the Ansible world and how to improve on them
-        https://gist.github.com/felixfontein/72562a7bd35bad62ee7c849af533a76e
+    * Problems in the Ansible world and how to improve on them
+      https://gist.github.com/felixfontein/72562a7bd35bad62ee7c849af533a76e
 
-    - Konstantin Volenbovskyi
+  - Konstantin Volenbovskyi
 
-      * Upgrade to Ansible 12 (core 2.19)
-        Ansible Style Guide
-        https://github.com/abacusresearch/ansible-style-guide/blob/main/Ansible_Style_Guide_CfgMgmtCamp2026.pdf
+    * Upgrade to Ansible 12 (core 2.19)
+      Ansible Style Guide
+      https://github.com/abacusresearch/ansible-style-guide/blob/main/Ansible_Style_Guide_CfgMgmtCamp2026.pdf
 
-
-    - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
-      https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
-
+  - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
+    https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
 
   It is not all that cool. There are also problems:
 
@@ -138,6 +135,7 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
            https://www.slideshare.net/slideshow/more-tips-n-tricks/67015247
            notes: Why not best practice? Many good practices. "One size fits all" are limited and limiting.
            Decide on a workflow, use tools to achieve it.
+
 
 ### (6) Does Ansible work with FreeBSD?
 
@@ -188,20 +186,23 @@ implement it on your own, if necessary. For example, you can conditionally run t
 
 ```yaml
 - name: Run service module on Linux.
-  when: os_family == 'Linux'
+  when: ansible_system == 'Linux'
   ansible.builtin.service:
   ...
 
 - name: Run service module on BSD.
-  when: os_family == 'BSD'
-  community.bsd.service:
+  when: ansible_system: == 'FreeBSD'
+  community.freebsd.service:
   ...
 ```
 
 **vbotka.freebsd.service**
 
-It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD-specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
-See the [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
+It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD-specific module
+[service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
+See [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
+
+TODO: No sychronization ATM, parameter *wait* is used (default 500ms).
 
 **ansible.posix.sysctl**
 
@@ -222,7 +223,7 @@ you want to activate the changes in `/boot/loader.conf`.
 The simple remedy is to set the module parameter `reload=False` because you have to reboot the
 system anyway (for example, let an Ansible handler run the module `ansible.builtin.reboot`)
 
-Still, it would be good to know, that the module by default reloads sysctl, because you don't expect
+Still, it would be good to know that the module by default reloads sysctl, because you don't expect
 it. But, the PR below hasn't been accepted yet
 
 [In FreeBSD, fail if loader.conf shall be reloaded.](https://github.com/ansible-collections/ansible.posix/pull/664)
@@ -285,7 +286,7 @@ It is clear that the fragmentation was necessary to keep the project maintainabl
 
 ### (8) Ansible collections ansible.*
 
-Take a look at who the author of the collections is. This can tell you what the collection support level might be.
+Take a look at who the authors of the collections are. This can tell you what the collection support level might be.
 
 Take a look at what FreeBSD version(s) are being tested.
 
@@ -314,10 +315,12 @@ Date:   Wed Jan 7 13:45:42 2026 -0800
 
 ### (9) Ansible collections community.*
 
-Ansible collection [community.general](https://github.com/ansible-collections/community.general) is the largest community collection with more than 1000 contributors. At the moment, it comprises 580 modules
+Ansible collection [community.general](https://github.com/ansible-collections/community.general) is
+the largest community collection with more than 1000 contributors. At the moment, it comprises 580
+modules
 
 ```console
-shell > ansible-doc -t module -l | grep community.general | wc -l
+shell> ansible-doc -t module -l | grep community.general | wc -l
 580
 ```
 
@@ -351,6 +354,7 @@ Date:   Thu Jan 8 09:41:28 2026 +0100
     - FreeBSD 13.5 -> 15.0 for devel
 ```
 
+
 ### (10) Ansible collection dedicated to FreeBSD is needed
 
 FreeBSD collection is missing. In a certain sense, this is a good news. Ansible is mature, so we can
@@ -364,21 +368,18 @@ Proposed collection. There are open questions:
   - Cover only FreeBSD or all BSD flavours?
   - What shall be the namespace (freebsd or bsd?)
 
-If there is time we describe the setup of the proposed collection later (TBD. Appendix):
+If there is time we describe the setup of the proposed collection later (Appendix):
   - setup; start with a minimal tested content; customize your collection on-demand
   - setup description (distfiles, files, vars, playbooks setup.yml and .configure.yml)
     The framework is well-known from the ports collection.
 
 When to write a new plugin?
-
   - A module vs. command/shell ansible module. For example, iocage is a complex utility. The module
     is idempotent but slow. Optionally, use the parameter 'creates' to make the command
     idempotent. This will be faster.
 
 General dilemmas:
-
   - Use a module or a command (ansible.builtin.command or ansible.builtin.shell) e.g. iocage?
-
   - To configure a file, instead of a modules to run a command you can use modules 'lineinfile' or
     'blockinfile'. e.g. sysrc
 
@@ -389,16 +390,12 @@ General dilemmas:
   Ansible prefers writing new modules. e.g. new module: logrotate#11424
   https://github.com/ansible-collections/community.general/pull/11424
 
-  Make modules 'command' and 'shell' idempotent
-
-  Both modules 'command' and 'shell' can be idempotent via:
-
+  Make modules 'command' and 'shell' idempotent. Both modules 'command' and 'shell' can be
+  idempotent via:
   - The 'creates' option. Quote: 'creates'  A filename, when it already exists, this step will not be run.
-
   - The registering and testing the command output.
     See: Defining “changed”
     https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_error_handling.html#defining-changed
-
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -452,6 +449,8 @@ See the [source code](https://github.com/vbotka/ansible-collection-freebsd/blob/
   - hooks_results
   - inventory_hostname_tag
   - inventory_hostname_required
+
+Side-note: You can use the inventory plugin `community.general.iocage` from the Ansible distribution.
 
 
 ### (16) Plugin inventory iocage - Basics
