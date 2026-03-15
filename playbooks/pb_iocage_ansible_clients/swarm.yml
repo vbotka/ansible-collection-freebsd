@@ -24,7 +24,7 @@
       ansible.builtin.debug:
         msg: |
           iocage_jails:
-            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+            {{ ansible_facts.iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
           _tags:
             {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
 
@@ -70,7 +70,7 @@
       ansible.builtin.debug:
         msg: |
           iocage_jails:
-            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+            {{ ansible_facts.iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
           _started: {{ _started }}
           _tags:
             {{ _tags | to_nice_yaml(indent=2) | indent(2) }}

@@ -718,8 +718,8 @@ In the slide, click at the `source code` and `results` links.
 We use here the templates created in the previous `example 202`.
 
 *iocage* is able to create more jails with the same parameters if the option *--count* is used. In
-this case, it's more efficient to use a module *command* instead of the *iocage* module, because
-such a step is not idempotent anyway. See the examples in the `Use case`
+this case, it's more efficient to use the module *ansible.builtin.command* instead of the module
+*iocage*, because such a step is not idempotent anyway. See the examples in the `Use case`.
 
 Here we use the playbook `pb_iocage_ansible_clients.yml` again, but, this time, to create *swarms*.
 
@@ -739,7 +739,15 @@ The first task `vbotka.freebsd.iocage` creates the *iocage* datasets only.
 
 In the dictionary `swarms` the parameter `count` declares the number of jails in each swarm. We want
 to keep this number of jails. In the playbook section `vars`, the dictionary `_tags` is
-declared. This dictionary keeps tags for each jail. In the section `vars` of the block in the tasks
+declared.
+
+As a sidenote: This is a very useful construct, frequently used to create intermediate dictionaries.
+
+```
+ dict(keys_list | zip(values_list))
+```
+
+This dictionary keeps tags for each jail. In the section `vars` of the block in the tasks
 `swarm.yml`, we count the number of jails in a swarm. The filter
 `community.general.json_query(_query)` selects the jails and the filter `length` counts them. The
 the variable `_count` keeps the number of the missing jails in a swarm.
@@ -747,6 +755,16 @@ the variable `_count` keeps the number of the missing jails in a swarm.
 See how the command `cmd_create` is created.
 
 See the results.
+
+
+### (50) example 204: Create DHCP jails with auto UUID and iocage_tags v2
+
+In the slide, click at the `source code` and `results` links.
+
+We use here the templates created in the previous `example 202`. Compared with `example 203`, the
+difference is using the filter `iocage` instead of the module `iocage` to create the dictionary
+`iocage_jails`.
+
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
