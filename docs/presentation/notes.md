@@ -7,12 +7,16 @@ https://github.com/vbotka/ansible-collection-freebsd/blob/devel/docs/presentatio
 We start with a brief overview of Ansible and FreeBSD. Then, we will review the proposed FreeBSD
 collection with the focus on the iocage plugins.
 
-The main part of this tutorial are examples. There are approx. 30 examples in 4 categories:
+The main part of this tutorial are examples. There are approx. 30 of them in 4 categories:
 
   - installation and configuration of an iocage host
   - usage of the iocage plugins
   - creation of FreeBSD jails as Ansible remote hosts
   - orchestration of the FreeBSD jails by Ansible.
+
+In the current scope of this tutorial, the orchestration means automated management of jails across
+a cluster of machines. We want to conclude this tutorial with a project described in the dictionary
+[project](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/500/example.html#use-case)
 
 The main goal is to present the idea that FreeBSD Ansible collection is needed and propose how to
 proceed to create such a collection.
@@ -202,7 +206,7 @@ It is easier to write a FreeBSD module. The proposed collection comprises the Fr
 [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
 See [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
 
-TODO: No sychronization ATM, parameter *wait* is used (default 500ms).
+TODO: No synchronization ATM, parameter *wait* is used (default 500ms).
 
 **ansible.posix.sysctl**
 
@@ -397,6 +401,9 @@ General dilemmas:
     See: Defining “changed”
     https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_error_handling.html#defining-changed
 
+  See also Ansible Development Guide [Should you develop a module?](https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_modules.html#should-you-develop-a-module)
+
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 2
@@ -486,8 +493,24 @@ https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_
 
 ### (22) Module iocage
 
+Without any parameters the module
+[vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/)
+creates iocage dastasets in the dictionary `ansible_facts`
+
+See, for example, the *sandbox* example
+[903](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/903/pb-vars-iocage.yml)
+
 
 ### (23) Filter iocage
+
+It is faster to:
+
+- execute the `iocage list ...` from the module `ansible.builtin.command`,
+- register the output, and
+- use the filter `iocage` to parse the output
+
+See, for example, the *sandbox* example
+[901](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/901/pb-test-filter.yml)
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -937,10 +960,13 @@ In the slide, click at the `source code` and `results` links.
 ### Appendix
 
 
-### (62) FreeBSD collection configuration
+### (62) App1. FreeBSD collection configuration
 
 
-### (63) FreeBSD collection setup
+### (63) App2. FreeBSD collection setup
+
+
+### (64) App3. Recommended reading
 
 
 # EOF
