@@ -713,7 +713,7 @@ In the slide, click at the `source code` and `results` links.
 
 Compare the timing
 [Clear cache](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-clear-cache)
-[CAche enabled](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-cache-enabled)
+[Cache enabled](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-cache-enabled)
 
 
 ### (38) example 015: Multiple inventory cache
@@ -749,29 +749,91 @@ shell> ansible-doc -t inventory community.general.iocage
 
 In the slide, click at the `source code` and `results` links.
 
-(TBD)
+The module `vbotka.freebsd.iocage` is used to:
+- clone and start jails
+See the playbook
+[pb-iocage-clone-list.yml](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/018/example.html#playbook-pb-iocage-clone-list-yml)
+
+See the `properties` in
+[host_vars](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/018/example.html#host-vars)
+
+Quoting [man iocage](https://man.freebsd.org/cgi/man.cgi?query=iocage):
+
+```console
+  PROPERTIES
+  ...
+  dhcp=[1 | 0] This controls starting the jail with the Dynamic Host
+               Configuration Protocol enabled. To enable dhcp, vnet and
+               bpf must also be enabled.
+               Default: 0
+               Source: local
+```
+See the results.
 
 
 ### (42) example 019: Inventory option use_vars_plugins
 
 In the slide, click at the `source code` and `results` links.
 
-(TBD)
+Despite the fact that inventory plugin `iocage` extends `constructed`
+See [source code](https://github.com/vbotka/ansible-collection-freebsd/blob/master/plugins/inventory/iocage.py#L20)
+
+```yaml
+extends_documentation_fragment:
+  - ansible.builtin.constructed
+  - ansible.builtin.inventory_cache
+```
+
+The option
+[use_vars_plugins](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-use_vars_plugins)
+is not available in the inventory plugin `iocage`
+
+See the results.
 
 
 ### (43) example 020: Get inventory aliases from notes
 
 In the slide, click at the `source code` and `results` links.
 
-(TBD)
+**Use the option inventory_hostname_tag to tell the plugin which tag to use.**
+
+See [Aliases](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_aliases.html#aliases)
 
 
 ### (44) example 030: Create custom facts
 
 In the slide, click at the `source code` and `results` links.
 
-(TBD)
+**Create custom facts to provide a dictionary of iocage datasets lists.**
 
+See [Adding custom facts](https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts)
+
+As a side note 1: The module
+[ansible.builtin.meta](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/meta_module.html#ansible-builtin-meta-module-execute-ansible-actions)
+provides option `refresh_inventory` quoting:
+
+```console
+forces the reload of the inventory, which in the case of dynamic inventory scripts means they will be re-executed.
+If the dynamic inventory script is using a cache, Ansible cannot know this and has no way of refreshing it ...
+This is mainly useful when additional hosts are created and users wish to use them instead of using the
+ansible.builtin.add_host module.
+```
+
+As a side note 2: The task
+
+```yaml
+    - name: Get custom facts
+      ansible.builtin.setup:
+        filter: ansible_local
+```
+
+can be used instead of this task
+
+
+```yaml
+    - name: Get iocage datasets
+      vbotka.freebsd.iocage:
+```
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -934,7 +996,7 @@ shell>  iocage list
 +-----+----------+-------+--------------+------+
 | JID |   NAME   | STATE |   RELEASE    | IP4  |
 +=====+==========+=======+==============+======+
-| 1   | cb040eb9 | up    | 15.0-RELEASE | DHCP |
+| 1   | cb040et9 | up    | 15.0-RELEASE | DHCP |
 +-----+----------+-------+--------------+------+
 | 2   | dd911c4f | up    | 15.0-RELEASE | DHCP |
 +-----+----------+-------+--------------+------+
@@ -1040,20 +1102,28 @@ dictionary.
 
 In the slide, click at the `source code` and `results` links.
 
+**The project keys are jail’s aliases.**
+
 
 ### (58) example 501: iocage host
 
 In the slide, click at the `source code` and `results` links.
+
+**Configure iocage host.**
 
 
 ### (59) example 502: Branch server
 
 In the slide, click at the `source code` and `results` links.
 
+**WIP**
+
 
 ### (60) example 510: Project ansible-pull
 
 In the slide, click at the `source code` and `results` links.
+
+**WIP**
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
