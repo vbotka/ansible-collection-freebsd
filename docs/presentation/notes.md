@@ -635,6 +635,20 @@ The installation and configuration of the *iocage* host is described in the deta
 
 In the slide, click at the `source code` and `results` links.
 
+The module `vbotka.freebsd.iocage` is used to:
+- fetch release (Optionally, fetch the releases manually before you run the play.)
+- create basejail
+- clone and start jails
+See the playbook
+[pb-iocage-fetch-base-clone-list.yml](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html#playbook-pb-iocage-fetch-base-clone-list-yml)
+
+See [host_vars](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html#host-vars)
+In *iocage_02* test `shared IP` networking option.
+In *iocage_04* test `VNET`.
+See [Networking](https://freebsd.github.io/iocage/networking.html)
+
+See results.
+
 
 ### (34) example 011: Display variables iocage_*
 
@@ -683,12 +697,14 @@ See the documentation
 
 Quoting man iocage:
 
-> PROPERTIES
+```console
+  PROPERTIES
   ...
   notes="any string"
       Custom notes for miscellaneous tagging.
       Default: none
       Source: local
+```
 
 
 ### (37) example 014: Inventory cache
