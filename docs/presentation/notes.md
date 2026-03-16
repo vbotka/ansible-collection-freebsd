@@ -36,7 +36,7 @@ here as an Ansible remote host.
 7. [Infrastructure](#infrastructure)
 8. [Appendix](#appendix)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 1
 
@@ -404,7 +404,7 @@ General dilemmas:
   See also Ansible Development Guide [Should you develop a module?](https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_modules.html#should-you-develop-a-module)
 
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 2
 
@@ -416,6 +416,17 @@ General dilemmas:
 
 (click at the links)
 
+In this tutorial, we'll be mainly skipping among these 3 sites.
+- Most information is in the documentation at `readthedocs.io`.
+- Review the code at `GitHub` if you want to learn more details.
+- The documentation at `Ansible Galaxy` provides quick reference to the plugins, roles, and
+  playbooks.
+
+Use the command line to get a plugin description fast. For example,
+
+```console
+shell> ansible-doc -t inventory vbotka.freebsd.iocage
+```
 
 ### (13) Collection Content
 
@@ -493,18 +504,16 @@ https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_
 
 ### (22) Module iocage
 
-Without any parameters the module
-[vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/)
-creates iocage dastasets in the dictionary `ansible_facts`
-
-See, for example, the *sandbox* example
-[903](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/903/pb-vars-iocage.yml)
+See [vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/)
+- See the description of the parameter `state`. The choices provide the corresponding *iocage* commands.
+- Without any parameters the module creates *iocage* datasets in the dictionary `ansible_facts`
+- See, for example, the *sandbox* example
+  [903](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/903/pb-vars-iocage.yml)
 
 
 ### (23) Filter iocage
 
-It is faster to:
-
+To get the *iocage* datasets, it is faster to:
 - execute the `iocage list ...` from the module `ansible.builtin.command`,
 - register the output, and
 - use the filter `iocage` to parse the output
@@ -513,7 +522,7 @@ See, for example, the *sandbox* example
 [901](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/901/pb-test-filter.yml)
 
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 3
 
@@ -531,7 +540,7 @@ See, for example, the *sandbox* example
 
 ### (27) Notes
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 4
 
@@ -548,13 +557,19 @@ Let's start with the first 3 examples to `Manage iocage host`.
 
 In the slide, click at the `source code` and `results` links.
 
-The `source code` link shows the directory of this example at GitHub and the `results` link shows the example in the documentation at `ReadTheDocs.io`. 
+The `source code` link shows the directory of this example at GitHub and the `results` link shows
+the example in the documentation at `ReadTheDocs.io`.
 
-Let's review the role `vbotka.freebsd.iocage`. Open the link `role vbotka.freebsd.iocage`. This is the Ansible Galaxy page of the collection showing the README file of the role `freebsd_iocage`.
+Let's review the role `vbotka.freebsd.iocage`. Open the link `role vbotka.freebsd.iocage`. This is
+the Ansible Galaxy page of the collection showing the README file of the role `freebsd_iocage`.
 
-Here it is necessary to explain the roles' naming conventions.
+Here it is the right time to explain the roles' naming conventions.
 
-All roles included in this collection have got repositories in `GitHub` and are published as standalone roles in `Ansible Galaxy`. For example, this role is named `freebsd_iocage` in the Ansible Galaxy name space `vbotka`. In this collection  the role is simply named `iocage`. See the list of the roles at the left side. Clink the link `Ansible role`. This is the standalone role `vbotka.freebsd_iocage` in `Ansible Galaxy`.
+All roles included in this collection have got repositories in `GitHub` and are published as
+standalone roles in `Ansible Galaxy`. For example, this role is named `freebsd_iocage` in the
+Ansible Galaxy name space `vbotka`. In this collection the role is simply named `iocage`. See the
+list of the roles at the left side. Clink the link `Ansible role`. This is the standalone role
+`vbotka.freebsd_iocage` in `Ansible Galaxy`.
 
 `Ansible Galaxy` hosts both standalone roles and collections.
 
@@ -565,22 +580,25 @@ You can use the standalone roles or the roles included in the collection. The co
 
 Take a look at the directory [roles](https://github.com/vbotka/ansible-collection-freebsd/tree/master/roles)
 
-You see what versions of the roles are included in the collection. The names of the roles are links to the versions.
+You see what versions of the roles are included in the collection. The names of the roles are links
+to the versions.
 
 Take a look at the tasks of the role
 [ansible-freebsd-iocage/tasks/main.yml](https://github.com/vbotka/ansible-freebsd-iocage/blob/master/tasks/main.yml)
 
-For now, we only demonstrate how the role works. In this example we only display variables and install the package iocage.
+For now, we only demonstrate how the role works. In this example we only display variables and
+install the package iocage.
 
 Take a look at the:
-
 - inventory `iocage.ini`,
 - playbook `pb-iocage.yml`, and
 - `batch.sh`
 
-The first play selects the tag `freebsd_iocage_debug` and enables `freebsd_iocage_debug` (Describe the debug variables.)
+The first play selects the tag `freebsd_iocage_debug` and enables `freebsd_iocage_debug` (Describe
+the debug variables.)
 
-The second play selects the tag `freebsd_iocage_pkg`. The package has already been installed. Therefor we see the message `package(s) already present`.
+The second play selects the tag `freebsd_iocage_pkg`. The package has already been
+installed. Therefor, we see the message `package(s) already present`.
 
 
 ### (30) example 002: Activate iocage
@@ -591,18 +609,21 @@ Quote [Activate iocage](https://freebsd.github.io/iocage/basic-use.html#activate
 
 > Before iocage is functional, it needs to activate. Essentially, iocage needs to link with a usable zpool.
 
-The files' tree shows a new directory `host_vars` that keeps the host-specific variables. In production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the host `iocage_04`. For testing, you can use `zroot`.
+The files' tree shows a new directory `host_vars` that keeps the host-specific variables. In
+production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the
+host `iocage_04`. For testing, you can use `zroot`.
 
 
 ### (31) example 003: Audit iocage host
 
 In the slide, click at the `source code` and `results` links.
 
-Use the role `vbotka.freebsd.iocage` to audit the iocage configuration.
+Use the role `vbotka.freebsd.iocage` to audit the *iocage* configuration.
 
-The installation and configuration of the iocage host is described in the details in the example `501`. Here we run the role to make sure everything is configured properly.
+The installation and configuration of the *iocage* host is described in the details in the example
+`501`. Here we run the role to make sure everything is configured properly.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 5
 
@@ -619,57 +640,124 @@ In the slide, click at the `source code` and `results` links.
 
 In the slide, click at the `source code` and `results` links.
 
+Compare the `Playbook output` with the table `Jails at iocage_04` from the previous example
+`010`. The variables `iocage_*` are created by parsing the columns of the table. The column `name`
+is used as the name of the jails. The variable `iocage_name` is **not** created.
+
+The column `IP4` may provide more addresses separated by comma. Therefor the attribute `ip4` of the
+dictionary `iocage_ip4_dict` is a list. The variable `iocage_ip4` is the address of the first item
+from this list.
+
+The *iocage* convention is to use dash '-' if a value is missing. For example, `iocage_ip6: -`
+
+See the inventory configuration file
+[iocage.yml](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/011/example.html#inventory-iocage-yml)
+The variables `iocage_*` are used to:
+- `compose` variables:
+  * ansible_host
+  * release
+  * release_major
+  * release_minor
+- create `keyed_groups`:
+  * distro
+  * state
+
 
 ### (35) example 012: Display iocage_properties
 
 In the slide, click at the `source code` and `results` links.
+
+By default (`get_properties: False`) the properties are not provided.
+See the documentation
+[Properties](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_properties.html#properties)
 
 
 ### (36) example 013: Tags and custom groups
 
 In the slide, click at the `source code` and `results` links.
 
+**Tags are key-value pairs for organizing resources**
+
+See the documentation
+[Tags](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_tags.html#tags)
+
+Quoting man iocage:
+
+> PROPERTIES
+  ...
+  notes="any string"
+      Custom notes for miscellaneous tagging.
+      Default: none
+      Source: local
+
 
 ### (37) example 014: Inventory cache
 
 In the slide, click at the `source code` and `results` links.
+
+Compare the timing
+[Clear cache](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-clear-cache)
+[CAche enabled](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-cache-enabled)
 
 
 ### (38) example 015: Multiple inventory cache
 
 In the slide, click at the `source code` and `results` links.
 
+**The parameter cache_prefix must be used if there are more inventory sources.**
+
 
 ### (39) example 016: Multiple inventory constructed
 
 In the slide, click at the `source code` and `results` links.
+
+**The inventory plugin ansible.builtin.constructed must be used to create group from all jails**
 
 
 ### (40) example 017: community.general.iocage
 
 In the slide, click at the `source code` and `results` links.
 
+The inventory plugin
+[community.general.iocage](https://docs.ansible.com/projects/ansible/latest/collections/community/general/iocage_inventory.html)
+is included in the Ansible collection `community.general`
+
+This plugin can be used in a standard Ansible installation without any requirements. See:
+
+```console
+shell> ansible-doc -t inventory community.general.iocage
+```
+
 
 ### (41) example 018: Clone basejails. Use DHCP.
 
 In the slide, click at the `source code` and `results` links.
+
+(TBD)
 
 
 ### (42) example 019: Inventory option use_vars_plugins
 
 In the slide, click at the `source code` and `results` links.
 
+(TBD)
+
 
 ### (43) example 020: Get inventory aliases from notes
 
 In the slide, click at the `source code` and `results` links.
+
+(TBD)
 
 
 ### (44) example 030: Create custom facts
 
 In the slide, click at the `source code` and `results` links.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(TBD)
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 6
 
@@ -924,7 +1012,7 @@ In the slide, click at the `source code` and `results` links.
 This is a trivial case of test empty iocage notes. Create iocage_tags. The result should be an empty
 dictionary.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## SECTION 7
 
@@ -952,7 +1040,7 @@ In the slide, click at the `source code` and `results` links.
 In the slide, click at the `source code` and `results` links.
 
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 8
 
