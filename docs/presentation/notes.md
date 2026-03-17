@@ -24,6 +24,7 @@ proceed to create such a collection.
 This presentation does not cover the use-case of FreeBSD as an Ansible controller. FreeBSD is used
 here as an Ansible remote host.
 
+---
 
 # Table of Contents
 
@@ -36,7 +37,7 @@ here as an Ansible remote host.
 7. [Infrastructure](#infrastructure)
 8. [Appendix](#appendix)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 1
 
@@ -46,6 +47,7 @@ here as an Ansible remote host.
 I'm not sure how many time we will have for the questions at the end of the presentation. Therefore, do
 not hesitate and ask immediately.
 
+---
 
 ### (5) Why Ansible?
 
@@ -140,6 +142,7 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
            notes: Why not best practice? Many good practices. "One size fits all" are limited and limiting.
            Decide on a workflow, use tools to achieve it.
 
+---
 
 ### (6) Does Ansible work with FreeBSD?
 
@@ -239,6 +242,7 @@ Conclusion:
 
 * Consider to create BSD native modules.
 
+---
 
 ### (7) Ansible collections
 
@@ -287,6 +291,7 @@ shell> ansible-doc -t module -l | wc -l
 
 It is clear that the fragmentation was necessary to keep the project maintainable.
 
+---
 
 ### (8) Ansible collections ansible.*
 
@@ -316,6 +321,7 @@ Date:   Wed Jan 7 13:45:42 2026 -0800
     ansible-test - Replace FreeBSD 13.5 with 15.0 (#86385)
 ```
 
+---
 
 ### (9) Ansible collections community.*
 
@@ -358,6 +364,7 @@ Date:   Thu Jan 8 09:41:28 2026 +0100
     - FreeBSD 13.5 -> 15.0 for devel
 ```
 
+---
 
 ### (10) Ansible collection dedicated to FreeBSD is needed
 
@@ -403,14 +410,14 @@ General dilemmas:
 
   See also Ansible Development Guide [Should you develop a module?](https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_modules.html#should-you-develop-a-module)
 
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 2
 
 
 ### FreeBSD collection
 
+---
 
 ### (12) Proposed FreeBSD collection
 
@@ -428,15 +435,19 @@ Use the command line to get a plugin description fast. For example,
 shell> ansible-doc -t inventory vbotka.freebsd.iocage
 ```
 
+---
+
 ### (13) Collection Content
 
 (click at the links)
 
+---
 
 ### (14) We focus on the iocage plugins
 
 (click at the links)
 
+---
 
 ### (15) Plugin inventory iocage
 
@@ -470,37 +481,44 @@ See the [source code](https://github.com/vbotka/ansible-collection-freebsd/blob/
 
 Side-note: You can use the inventory plugin `community.general.iocage` from the Ansible distribution.
 
+---
 
 ### (16) Plugin inventory iocage - Basics
 
 [Basics](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_basics.html)
 
+---
 
 ### (17) Plugin inventory iocage - DHCP
 
 [DHCP](
 https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_dhcp.html)
 
+---
 
 ### (18) Plugin inventory iocage - Hooks
 
 [Hooks](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_hooks.html)
 
+---
 
 ### (19) Plugin inventory iocage - Properties
 
 [Properties](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_properties.html)
 
+---
 
 ### (20) Plugin inventory iocage - Tags
 
 [Tags](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_tags.html)
 
+---
 
 ### (21) Plugin inventory iocage - Aliases
 
 [Aliases](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_aliases.html)
 
+---
 
 ### (22) Module iocage
 
@@ -510,6 +528,7 @@ See [vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/
 - See, for example, the *sandbox* example
   [903](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/903/pb-vars-iocage.yml)
 
+---
 
 ### (23) Filter iocage
 
@@ -521,29 +540,32 @@ To get the *iocage* datasets, it is faster to:
 See, for example, the *sandbox* example
 [901](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/901/pb-test-filter.yml)
 
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 3
 
 
 ### Examples
 
+---
 
 ### (25) Example groups
 
 [examples](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_examples.html)
 
+---
 
 ### (26) How to use the examples
 
+---
 
 ### (27) Notes
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 4
 
+---
 
 ### Install, configure, and activate iocage
 
@@ -552,6 +574,7 @@ See, for example, the *sandbox* example
 
 Let's start with the first 3 examples to `Manage iocage host`.
 
+---
 
 ### (29) example 001: Install Iocage
 
@@ -600,6 +623,7 @@ the debug variables.)
 The second play selects the tag `freebsd_iocage_pkg`. The package has already been
 installed. Therefor, we see the message `package(s) already present`.
 
+---
 
 ### (30) example 002: Activate iocage
 
@@ -613,6 +637,7 @@ The files' tree shows a new directory `host_vars` that keeps the host-specific v
 production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the
 host `iocage_04`. For testing, you can use `zroot`.
 
+---
 
 ### (31) example 003: Audit iocage host
 
@@ -623,13 +648,14 @@ Use the role `vbotka.freebsd.iocage` to audit the *iocage* configuration.
 The installation and configuration of the *iocage* host is described in the details in the example
 `501`. Here we run the role to make sure everything is configured properly.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 5
 
 
 ### Plugins iocage
 
+---
 
 ### (33) example 010: Clone basejails and create inventory
 
@@ -649,6 +675,7 @@ See [Networking](https://freebsd.github.io/iocage/networking.html)
 
 See results.
 
+---
 
 ### (34) example 011: Display variables iocage_*
 
@@ -676,6 +703,7 @@ The variables `iocage_*` are used to:
   * distro
   * state
 
+---
 
 ### (35) example 012: Display iocage_properties
 
@@ -685,6 +713,7 @@ By default (`get_properties: False`) the properties are not provided.
 See the documentation
 [Properties](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_properties.html#properties)
 
+---
 
 ### (36) example 013: Tags and custom groups
 
@@ -706,6 +735,7 @@ Quoting man iocage:
       Source: local
 ```
 
+---
 
 ### (37) example 014: Inventory cache
 
@@ -715,6 +745,7 @@ Compare the timing
 [Clear cache](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-clear-cache)
 [Cache enabled](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-cache-enabled)
 
+---
 
 ### (38) example 015: Multiple inventory cache
 
@@ -722,6 +753,7 @@ In the slide, click at the `source code` and `results` links.
 
 **The parameter cache_prefix must be used if there are more inventory sources.**
 
+---
 
 ### (39) example 016: Multiple inventory constructed
 
@@ -729,6 +761,7 @@ In the slide, click at the `source code` and `results` links.
 
 **The inventory plugin ansible.builtin.constructed must be used to create group from all jails**
 
+---
 
 ### (40) example 017: community.general.iocage
 
@@ -744,6 +777,7 @@ This plugin can be used in a standard Ansible installation without any requireme
 shell> ansible-doc -t inventory community.general.iocage
 ```
 
+---
 
 ### (41) example 018: Clone basejails. Use DHCP.
 
@@ -770,6 +804,7 @@ Quoting [man iocage](https://man.freebsd.org/cgi/man.cgi?query=iocage):
 ```
 See the results.
 
+---
 
 ### (42) example 019: Inventory option use_vars_plugins
 
@@ -790,6 +825,7 @@ is not available in the inventory plugin `iocage`
 
 See the results.
 
+---
 
 ### (43) example 020: Get inventory aliases from notes
 
@@ -799,6 +835,7 @@ In the slide, click at the `source code` and `results` links.
 
 See [Aliases](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_aliases.html#aliases)
 
+---
 
 ### (44) example 030: Create custom facts
 
@@ -835,13 +872,13 @@ can be used instead of this task
       vbotka.freebsd.iocage:
 ```
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ## Section 6
 
 
 ### Ansible client
 
+---
 
 ### (46) example 200: Create iocage templates. Clone jails.
 
@@ -882,6 +919,7 @@ Notes:
 * If possible, install packages in a standalone tasks. Then, disable the installation to speedup the
   plays.
 
+---
 
 ### (47) example 201: Display iocage datasets
 
@@ -902,6 +940,7 @@ datasets are stored in the dictionary *ansible_facts*.
 
 For abbreviation, the *properties* are removed from *templates* and *jails*.
 
+---
 
 ### (48) example 202: Create iocage templates. Clone DHCP jails.
 
@@ -925,6 +964,7 @@ the parameter *path* is used.
   loop: "{{ templates | dict2items }}"
 ```
 
+---
 
 ### (49) example 203: Create DHCP jails with auto UUID and iocage_tags
 
@@ -971,6 +1011,7 @@ See how the command `cmd_create` is created.
 
 See the results.
 
+---
 
 ### (50) example 204: Create DHCP jails with auto UUID and iocage_tags v2
 
@@ -1032,6 +1073,7 @@ Then, the dictionaries `iocage_jails` and `iocage_jails_properties` are recursiv
 
 The rest of this example is the same as `example 203`.
 
+---
 
 ### (51) example 206: Create DHCP and fixed IP jails
 
@@ -1040,6 +1082,7 @@ In the slide, click at the `source code` and `results` links.
 This use case demonstrates the **advantage of silently ignoring failed items** over the potential
 explicit error handling. Let the option compose pick what is needed.
 
+---
 
 ### (52) example 207: Create DHCP jails with auto UUID, iocage_tags, alias and class
 
@@ -1059,6 +1102,7 @@ We use *swarms* here to create jails. Hence, the jails' names will be random. In
 The goal is to efficiently create jails by the *iocage* `--count` option and still have dedicated
 jails' names. We also declare the `class` tag that will be used later (example 500).
 
+---
 
 ### (53) example 208: Create iocage template for ansible-pull
 
@@ -1075,6 +1119,7 @@ These packages are needed to
 
 An example how to use the template `ansible_client_pull` is not ready yet.
 
+---
 
 ### (54) example 209: Create iocage pkglist file
 
@@ -1082,6 +1127,7 @@ In the slide, click at the `source code` and `results` links.
 
 Explain `Notes`, `group_vars`, and `host_vars`.
 
+---
 
 ### (55) example 210: Test empty iocage notes
 
@@ -1090,13 +1136,14 @@ In the slide, click at the `source code` and `results` links.
 This is a trivial case of test empty iocage notes. Create iocage_tags. The result should be an empty
 dictionary.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## SECTION 7
 
 
 ### Infrastructure
 
+---
 
 ### (57) example 500: syslog-ng server and syslog-ng clients
 
@@ -1104,6 +1151,7 @@ In the slide, click at the `source code` and `results` links.
 
 **The project keys are jail’s aliases.**
 
+---
 
 ### (58) example 501: iocage host
 
@@ -1111,6 +1159,7 @@ In the slide, click at the `source code` and `results` links.
 
 **Configure iocage host.**
 
+---
 
 ### (59) example 502: Branch server
 
@@ -1118,6 +1167,7 @@ In the slide, click at the `source code` and `results` links.
 
 **WIP**
 
+---
 
 ### (60) example 510: Project ansible-pull
 
@@ -1125,22 +1175,25 @@ In the slide, click at the `source code` and `results` links.
 
 **WIP**
 
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 8
 
 
 ### Appendix
 
+---
 
 ### (62) App1. FreeBSD collection configuration
 
+---
 
 ### (63) App2. FreeBSD collection setup
 
+---
 
 ### (64) App3. Recommended reading
 
+---
 
 # EOF
