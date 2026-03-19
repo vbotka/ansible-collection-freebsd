@@ -5,6 +5,21 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.6
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Update playbooks: pb_iocage_ansible_clients
+* Update presentation.
+
+
 0.8.5
 =====
 

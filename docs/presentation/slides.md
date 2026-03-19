@@ -1001,7 +1001,7 @@ Use the template ``ansible_client_pull`` to create project jails.
 
 ---
 
-## FreeBSD collection configuration
+## App1. FreeBSD collection configuration
 
 - In the repository, see the tree
 
@@ -1019,7 +1019,7 @@ Use the template ``ansible_client_pull`` to create project jails.
 
 ---
 
-## FreeBSD collection setup
+## App2. FreeBSD collection setup
 
 - In the repository, see the tree
 
@@ -1034,3 +1034,12 @@ Use the template ``ansible_client_pull`` to create project jails.
   * install roles
 
 - See the files in the directory *setup/vars/*
+
+---
+
+## App3. Recommended reading
+
+- [FreeBSD Handbook: Chapter 17. Jails and Containers](https://docs.freebsd.org/en/books/handbook/jails/)
+- [FreeBSD Forum: Jails](https://forums.freebsd.org/tags/jails/)
+- [FreeBSD Mastery: Jails](https://mwl.link/freebsd-mastery-jails.html)
+- [FreeBSD Mastery: ZFS](https://mwl.link/freebsd-mastery-zfs.html)

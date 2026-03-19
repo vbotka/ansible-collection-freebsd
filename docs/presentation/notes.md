@@ -7,12 +7,16 @@ https://github.com/vbotka/ansible-collection-freebsd/blob/devel/docs/presentatio
 We start with a brief overview of Ansible and FreeBSD. Then, we will review the proposed FreeBSD
 collection with the focus on the iocage plugins.
 
-The main part of this tutorial are examples. There are approx. 30 examples in 4 categories:
+The main part of this tutorial are examples. There are approx. 30 of them in 4 categories:
 
   - installation and configuration of an iocage host
   - usage of the iocage plugins
   - creation of FreeBSD jails as Ansible remote hosts
   - orchestration of the FreeBSD jails by Ansible.
+
+In the current scope of this tutorial, the orchestration means automated management of jails across
+a cluster of machines. We want to conclude this tutorial with a project described in the dictionary
+[project](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/500/example.html#use-case)
 
 The main goal is to present the idea that FreeBSD Ansible collection is needed and propose how to
 proceed to create such a collection.
@@ -20,6 +24,7 @@ proceed to create such a collection.
 This presentation does not cover the use-case of FreeBSD as an Ansible controller. FreeBSD is used
 here as an Ansible remote host.
 
+---
 
 # Table of Contents
 
@@ -32,8 +37,7 @@ here as an Ansible remote host.
 7. [Infrastructure](#infrastructure)
 8. [Appendix](#appendix)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+---
 
 ## Section 1
 
@@ -43,8 +47,9 @@ here as an Ansible remote host.
 I'm not sure how many time we will have for the questions at the end of the presentation. Therefore, do
 not hesitate and ask immediately.
 
+---
 
-### (4) Why Ansible?
+### (5) Why Ansible?
 
 * There are many system management tools. We decided to pick Ansible because it is the leading tool.
 
@@ -102,22 +107,20 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
 
   Take a look at other recorded presentations. For example:
 
-    - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
-      Maintainer of the collection community.general
+  - Felix Fontein (@felixfontein) Ansible Steering Committee Member and
+    Maintainer of the collection community.general
 
-      * Problems in the Ansible world and how to improve on them
-        https://gist.github.com/felixfontein/72562a7bd35bad62ee7c849af533a76e
+    * Problems in the Ansible world and how to improve on them
+      https://gist.github.com/felixfontein/72562a7bd35bad62ee7c849af533a76e
 
-    - Konstantin Volenbovskyi
+  - Konstantin Volenbovskyi
 
-      * Upgrade to Ansible 12 (core 2.19)
-        Ansible Style Guide
-        https://github.com/abacusresearch/ansible-style-guide/blob/main/Ansible_Style_Guide_CfgMgmtCamp2026.pdf
+    * Upgrade to Ansible 12 (core 2.19)
+      Ansible Style Guide
+      https://github.com/abacusresearch/ansible-style-guide/blob/main/Ansible_Style_Guide_CfgMgmtCamp2026.pdf
 
-
-    - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
-      https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
-
+  - Writing, running, and testing awesome Ansible content with natural language and AI - powered by Ansible's MCP server
+    https://cfp.cfgmgmtcamp.org/ghent2026/talk/WG9ST8/
 
   It is not all that cool. There are also problems:
 
@@ -139,7 +142,9 @@ Note: MCP (Model Context Protocol) is an open standard that enables AI models to
            notes: Why not best practice? Many good practices. "One size fits all" are limited and limiting.
            Decide on a workflow, use tools to achieve it.
 
-### (5) Does Ansible work with FreeBSD?
+---
+
+### (6) Does Ansible work with FreeBSD?
 
 When you decide to use Ansible to manage FreeBSD, important question is: Do you need your Ansible
 code also cover other systems in parallel to FreeBSD? This means, do you have to write your
@@ -188,20 +193,23 @@ implement it on your own, if necessary. For example, you can conditionally run t
 
 ```yaml
 - name: Run service module on Linux.
-  when: os_family == 'Linux'
+  when: ansible_system == 'Linux'
   ansible.builtin.service:
   ...
 
 - name: Run service module on BSD.
-  when: os_family == 'BSD'
-  community.bsd.service:
+  when: ansible_system: == 'FreeBSD'
+  community.freebsd.service:
   ...
 ```
 
 **vbotka.freebsd.service**
 
-It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD-specific module [service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
-See the [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
+It is easier to write a FreeBSD module. The proposed collection comprises the FreeBSD-specific module
+[service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
+See [source code](https://raw.githubusercontent.com/vbotka/ansible-collection-freebsd/refs/heads/master/plugins/modules/service.py)
+
+TODO: No synchronization ATM, parameter *wait* is used (default 500ms).
 
 **ansible.posix.sysctl**
 
@@ -222,7 +230,7 @@ you want to activate the changes in `/boot/loader.conf`.
 The simple remedy is to set the module parameter `reload=False` because you have to reboot the
 system anyway (for example, let an Ansible handler run the module `ansible.builtin.reboot`)
 
-Still, it would be good to know, that the module by default reloads sysctl, because you don't expect
+Still, it would be good to know that the module by default reloads sysctl, because you don't expect
 it. But, the PR below hasn't been accepted yet
 
 [In FreeBSD, fail if loader.conf shall be reloaded.](https://github.com/ansible-collections/ansible.posix/pull/664)
@@ -234,8 +242,9 @@ Conclusion:
 
 * Consider to create BSD native modules.
 
+---
 
-### (6) Ansible collections
+### (7) Ansible collections
 
 * An important aspect in the complexity: To make qualified decision in Ansible, multiple areas of
   expertise are needed:
@@ -282,10 +291,11 @@ shell> ansible-doc -t module -l | wc -l
 
 It is clear that the fragmentation was necessary to keep the project maintainable.
 
+---
 
-### (7) Ansible collections ansible.*
+### (8) Ansible collections ansible.*
 
-Take a look at who the author of the collections is. This can tell you what the collection support level might be.
+Take a look at who the authors of the collections are. This can tell you what the collection support level might be.
 
 Take a look at what FreeBSD version(s) are being tested.
 
@@ -311,13 +321,16 @@ Date:   Wed Jan 7 13:45:42 2026 -0800
     ansible-test - Replace FreeBSD 13.5 with 15.0 (#86385)
 ```
 
+---
 
-### (8) Ansible collections community.*
+### (9) Ansible collections community.*
 
-Ansible collection [community.general](https://github.com/ansible-collections/community.general) is the largest community collection with more than 1000 contributors. At the moment, it comprises 580 modules
+Ansible collection [community.general](https://github.com/ansible-collections/community.general) is
+the largest community collection with more than 1000 contributors. At the moment, it comprises 580
+modules
 
 ```console
-shell > ansible-doc -t module -l | grep community.general | wc -l
+shell> ansible-doc -t module -l | grep community.general | wc -l
 580
 ```
 
@@ -351,7 +364,9 @@ Date:   Thu Jan 8 09:41:28 2026 +0100
     - FreeBSD 13.5 -> 15.0 for devel
 ```
 
-### (9) Ansible collection dedicated to FreeBSD is needed
+---
+
+### (10) Ansible collection dedicated to FreeBSD is needed
 
 FreeBSD collection is missing. In a certain sense, this is a good news. Ansible is mature, so we can
 avoid trial and error when building the Ansible FreeBSD collection.
@@ -364,21 +379,18 @@ Proposed collection. There are open questions:
   - Cover only FreeBSD or all BSD flavours?
   - What shall be the namespace (freebsd or bsd?)
 
-If there is time we describe the setup of the proposed collection later (TBD. Appendix):
+If there is time we describe the setup of the proposed collection later (Appendix):
   - setup; start with a minimal tested content; customize your collection on-demand
   - setup description (distfiles, files, vars, playbooks setup.yml and .configure.yml)
     The framework is well-known from the ports collection.
 
 When to write a new plugin?
-
   - A module vs. command/shell ansible module. For example, iocage is a complex utility. The module
     is idempotent but slow. Optionally, use the parameter 'creates' to make the command
     idempotent. This will be faster.
 
 General dilemmas:
-
   - Use a module or a command (ansible.builtin.command or ansible.builtin.shell) e.g. iocage?
-
   - To configure a file, instead of a modules to run a command you can use modules 'lineinfile' or
     'blockinfile'. e.g. sysrc
 
@@ -389,103 +401,171 @@ General dilemmas:
   Ansible prefers writing new modules. e.g. new module: logrotate#11424
   https://github.com/ansible-collections/community.general/pull/11424
 
-  Make modules 'command' and 'shell' idempotent
-
-  Both modules 'command' and 'shell' can be idempotent via:
-
+  Make modules 'command' and 'shell' idempotent. Both modules 'command' and 'shell' can be
+  idempotent via:
   - The 'creates' option. Quote: 'creates'  A filename, when it already exists, this step will not be run.
-
   - The registering and testing the command output.
     See: Defining “changed”
     https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_error_handling.html#defining-changed
 
+  See also Ansible Development Guide [Should you develop a module?](https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_modules.html#should-you-develop-a-module)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 2
 
 
 ### FreeBSD collection
 
+---
 
-### (11) Proposed FreeBSD collection
-
-(click at the links)
-
-
-### (12) Collection Content
+### (12) Proposed FreeBSD collection
 
 (click at the links)
 
+In this tutorial, we'll be mainly skipping among these 3 sites.
+- Most information is in the documentation at `readthedocs.io`.
+- Review the code at `GitHub` if you want to learn more details.
+- The documentation at `Ansible Galaxy` provides quick reference to the plugins, roles, and
+  playbooks.
 
-### (13) We focus on the iocage plugins
+Use the command line to get a plugin description fast. For example,
+
+```console
+shell> ansible-doc -t inventory vbotka.freebsd.iocage
+```
+
+---
+
+### (13) Collection Content
 
 (click at the links)
 
+---
 
-### (14) Plugin inventory iocage
+### (14) We focus on the iocage plugins
+
+(click at the links)
+
+---
+
+### (15) Plugin inventory iocage
 
 [inventory vbotka.freebsd.iocage](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage.html)
 
+See the documentation. There are plenty of options.
 
-### (15) Plugin inventory iocage - Basics
+```console
+shell> ansible-doc -t inventory vbotka.freebsd.iocage
+```
+
+See the inventory plugins `ansible.builtin.constructed` what options belong to this plugin
+
+```console
+shell> ansible-doc -t inventory ansible.builtin.constructed
+```
+
+See [Cache plugins](https://docs.ansible.com/projects/ansible/latest/plugins/cache.html) what options belong to cache.
+
+See the [source code](https://github.com/vbotka/ansible-collection-freebsd/blob/master/plugins/inventory/iocage.py) what options belong to this plugin:
+
+  - host
+  - user
+  - sudo
+  - sudo_preserve_env
+  - get_properties
+  - env
+  - hooks_results
+  - inventory_hostname_tag
+  - inventory_hostname_required
+
+Side-note: You can use the inventory plugin `community.general.iocage` from the Ansible distribution.
+
+---
+
+### (16) Plugin inventory iocage - Basics
 
 [Basics](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_basics.html)
 
+---
 
-### (16) Plugin inventory iocage - DHCP
+### (17) Plugin inventory iocage - DHCP
 
-[DHCP](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_dhcp.html)
+[DHCP](
+https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_dhcp.html)
 
+---
 
-### (17) Plugin inventory iocage - Hooks
+### (18) Plugin inventory iocage - Hooks
 
 [Hooks](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_hooks.html)
 
+---
 
-### (18) Plugin inventory iocage - Properties
+### (19) Plugin inventory iocage - Properties
 
 [Properties](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_properties.html)
 
+---
 
-### (19) Plugin inventory iocage - Tags
+### (20) Plugin inventory iocage - Tags
 
 [Tags](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_tags.html)
 
+---
 
-### (20) Plugin inventory iocage - Aliases
+### (21) Plugin inventory iocage - Aliases
 
 [Aliases](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_aliases.html)
 
+---
 
-### (21) Module iocage
+### (22) Module iocage
 
+See [vbotka.freebsd.iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/)
+- See the description of the parameter `state`. The choices provide the corresponding *iocage* commands.
+- Without any parameters the module creates *iocage* datasets in the dictionary `ansible_facts`
+- See, for example, the *sandbox* example
+  [903](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/903/pb-vars-iocage.yml)
 
-### (22) Filter iocage
+---
 
+### (23) Filter iocage
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+To get the *iocage* datasets, it is faster to:
+- execute the `iocage list ...` from the module `ansible.builtin.command`,
+- register the output, and
+- use the filter `iocage` to parse the output
+
+See, for example, the *sandbox* example
+[901](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/901/pb-test-filter.yml)
+
+---
 
 ## Section 3
 
 
 ### Examples
 
+---
 
-### (24) Example groups
+### (25) Example groups
 
 [examples](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_examples.html)
 
+---
 
-### (25) How to use the examples
+### (26) How to use the examples
 
+---
 
-### (26) Notes
+### (27) Notes
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 4
 
+---
 
 ### Install, configure, and activate iocage
 
@@ -494,18 +574,25 @@ General dilemmas:
 
 Let's start with the first 3 examples to `Manage iocage host`.
 
+---
 
-### (28) example 001: Install Iocage
+### (29) example 001: Install Iocage
 
 In the slide, click at the `source code` and `results` links.
 
-The `source code` link shows the directory of this example at GitHub and the `results` link shows the example in the documentation at `ReadTheDocs.io`. 
+The `source code` link shows the directory of this example at GitHub and the `results` link shows
+the example in the documentation at `ReadTheDocs.io`.
 
-Let's review the role `vbotka.freebsd.iocage`. Open the link `role vbotka.freebsd.iocage`. This is the Ansible Galaxy page of the collection showing the README file of the role `freebsd_iocage`.
+Let's review the role `vbotka.freebsd.iocage`. Open the link `role vbotka.freebsd.iocage`. This is
+the Ansible Galaxy page of the collection showing the README file of the role `freebsd_iocage`.
 
-Here it is necessary to explain the roles' naming conventions.
+Here it is the right time to explain the roles' naming conventions.
 
-All roles included in this collection have got repositories in `GitHub` and are published as standalone roles in `Ansible Galaxy`. For example, this role is named `freebsd_iocage` in the Ansible Galaxy name space `vbotka`. In this collection  the role is simply named `iocage`. See the list of the roles at the left side. Clink the link `Ansible role`. This is the standalone role `vbotka.freebsd_iocage` in `Ansible Galaxy`.
+All roles included in this collection have got repositories in `GitHub` and are published as
+standalone roles in `Ansible Galaxy`. For example, this role is named `freebsd_iocage` in the
+Ansible Galaxy name space `vbotka`. In this collection the role is simply named `iocage`. See the
+list of the roles at the left side. Clink the link `Ansible role`. This is the standalone role
+`vbotka.freebsd_iocage` in `Ansible Galaxy`.
 
 `Ansible Galaxy` hosts both standalone roles and collections.
 
@@ -516,25 +603,29 @@ You can use the standalone roles or the roles included in the collection. The co
 
 Take a look at the directory [roles](https://github.com/vbotka/ansible-collection-freebsd/tree/master/roles)
 
-You see what versions of the roles are included in the collection. The names of the roles are links to the versions.
+You see what versions of the roles are included in the collection. The names of the roles are links
+to the versions.
 
 Take a look at the tasks of the role
 [ansible-freebsd-iocage/tasks/main.yml](https://github.com/vbotka/ansible-freebsd-iocage/blob/master/tasks/main.yml)
 
-For now, we only demonstrate how the role works. In this example we only display variables and install the package iocage.
+For now, we only demonstrate how the role works. In this example we only display variables and
+install the package iocage.
 
 Take a look at the:
-
 - inventory `iocage.ini`,
 - playbook `pb-iocage.yml`, and
 - `batch.sh`
 
-The first play selects the tag `freebsd_iocage_debug` and enables `freebsd_iocage_debug` (Describe the debug variables.)
+The first play selects the tag `freebsd_iocage_debug` and enables `freebsd_iocage_debug` (Describe
+the debug variables.)
 
-The second play selects the tag `freebsd_iocage_pkg`. The package has already been installed. Therefor we see the message `package(s) already present`.
+The second play selects the tag `freebsd_iocage_pkg`. The package has already been
+installed. Therefor, we see the message `package(s) already present`.
 
+---
 
-### (29) example 002: Activate iocage
+### (30) example 002: Activate iocage
 
 In the slide, click at the `source code` and `results` links.
 
@@ -542,116 +633,567 @@ Quote [Activate iocage](https://freebsd.github.io/iocage/basic-use.html#activate
 
 > Before iocage is functional, it needs to activate. Essentially, iocage needs to link with a usable zpool.
 
-The files' tree shows a new directory `host_vars` that keeps the host-specific variables. In production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the host `iocage_04`. For testing, you can use `zroot`.
+The files' tree shows a new directory `host_vars` that keeps the host-specific variables. In
+production, it is recommended to use a dedicated ZFS pool for iocage, for example, `iocage` in the
+host `iocage_04`. For testing, you can use `zroot`.
 
+---
 
-### (30) example 003: Audit iocage host
+### (31) example 003: Audit iocage host
 
 In the slide, click at the `source code` and `results` links.
 
-Use the role `vbotka.freebsd.iocage` to audit the iocage configuration.
+Use the role `vbotka.freebsd.iocage` to audit the *iocage* configuration.
 
-The installation and configuration of the iocage host is described in the details in the example `501`. Here we run the role to make sure everything is configured properly.
+The installation and configuration of the *iocage* host is described in the details in the example
+`501`. Here we run the role to make sure everything is configured properly.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+---
 
 ## Section 5
 
 
 ### Plugins iocage
 
+---
 
-### (32) example 010: Clone basejails and create inventory
-
-In the slide, click at the `source code` and `results` links.
-
-
-### (33) example 011: Display variables iocage_*
+### (33) example 010: Clone basejails and create inventory
 
 In the slide, click at the `source code` and `results` links.
 
+The module `vbotka.freebsd.iocage` is used to:
+- fetch release (Optionally, fetch the releases manually before you run the play.)
+- create basejail
+- clone and start jails
+See the playbook
+[pb-iocage-fetch-base-clone-list.yml](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html#playbook-pb-iocage-fetch-base-clone-list-yml)
 
-### (34) example 012: Display iocage_properties
+See [host_vars](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html#host-vars)
+In *iocage_02* test `shared IP` networking option.
+In *iocage_04* test `VNET`.
+See [Networking](https://freebsd.github.io/iocage/networking.html)
 
-In the slide, click at the `source code` and `results` links.
+See results.
 
+---
 
-### (35) example 013: Tags and custom groups
-
-In the slide, click at the `source code` and `results` links.
-
-
-### (36) example 014: Inventory cache
-
-In the slide, click at the `source code` and `results` links.
-
-
-### (37) example 015: Multiple inventory cache
-
-In the slide, click at the `source code` and `results` links.
-
-
-### (38) example 016: Multiple inventory constructed
+### (34) example 011: Display variables iocage_*
 
 In the slide, click at the `source code` and `results` links.
 
+Compare the `Playbook output` with the table `Jails at iocage_04` from the previous example
+`010`. The variables `iocage_*` are created by parsing the columns of the table. The column `name`
+is used as the name of the jails. The variable `iocage_name` is **not** created.
 
-### (39) example 017: community.general.iocage
+The column `IP4` may provide more addresses separated by comma. Therefor the attribute `ip4` of the
+dictionary `iocage_ip4_dict` is a list. The variable `iocage_ip4` is the address of the first item
+from this list.
+
+The *iocage* convention is to use dash '-' if a value is missing. For example, `iocage_ip6: -`
+
+See the inventory configuration file
+[iocage.yml](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/011/example.html#inventory-iocage-yml)
+The variables `iocage_*` are used to:
+- `compose` variables:
+  * ansible_host
+  * release
+  * release_major
+  * release_minor
+- create `keyed_groups`:
+  * distro
+  * state
+
+---
+
+### (35) example 012: Display iocage_properties
 
 In the slide, click at the `source code` and `results` links.
 
+By default (`get_properties: False`) the properties are not provided.
+See the documentation
+[Properties](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_properties.html#properties)
 
-### (40) example 018: Clone basejails. Use DHCP.
+---
 
-In the slide, click at the `source code` and `results` links.
-
-
-### (41) example 019: Inventory option use_vars_plugins
-
-In the slide, click at the `source code` and `results` links.
-
-
-### (42) example 020: Get inventory aliases from notes
+### (36) example 013: Tags and custom groups
 
 In the slide, click at the `source code` and `results` links.
 
+**Tags are key-value pairs for organizing resources**
 
-### (43) example 030: Create custom facts
+See the documentation
+[Tags](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_tags.html#tags)
+
+Quoting man iocage:
+
+```console
+  PROPERTIES
+  ...
+  notes="any string"
+      Custom notes for miscellaneous tagging.
+      Default: none
+      Source: local
+```
+
+---
+
+### (37) example 014: Inventory cache
 
 In the slide, click at the `source code` and `results` links.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Compare the timing
+[Clear cache](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-clear-cache)
+[Cache enabled](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/014/example.html#playbook-output-cache-enabled)
+
+---
+
+### (38) example 015: Multiple inventory cache
+
+In the slide, click at the `source code` and `results` links.
+
+**The parameter cache_prefix must be used if there are more inventory sources.**
+
+---
+
+### (39) example 016: Multiple inventory constructed
+
+In the slide, click at the `source code` and `results` links.
+
+**The inventory plugin ansible.builtin.constructed must be used to create group from all jails**
+
+---
+
+### (40) example 017: community.general.iocage
+
+In the slide, click at the `source code` and `results` links.
+
+The inventory plugin
+[community.general.iocage](https://docs.ansible.com/projects/ansible/latest/collections/community/general/iocage_inventory.html)
+is included in the Ansible collection `community.general`
+
+This plugin can be used in a standard Ansible installation without any requirements. See:
+
+```console
+shell> ansible-doc -t inventory community.general.iocage
+```
+
+---
+
+### (41) example 018: Clone basejails. Use DHCP.
+
+In the slide, click at the `source code` and `results` links.
+
+The module `vbotka.freebsd.iocage` is used to:
+- clone and start jails
+See the playbook
+[pb-iocage-clone-list.yml](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/018/example.html#playbook-pb-iocage-clone-list-yml)
+
+See the `properties` in
+[host_vars](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/018/example.html#host-vars)
+
+Quoting [man iocage](https://man.freebsd.org/cgi/man.cgi?query=iocage):
+
+```console
+  PROPERTIES
+  ...
+  dhcp=[1 | 0] This controls starting the jail with the Dynamic Host
+               Configuration Protocol enabled. To enable dhcp, vnet and
+               bpf must also be enabled.
+               Default: 0
+               Source: local
+```
+See the results.
+
+---
+
+### (42) example 019: Inventory option use_vars_plugins
+
+In the slide, click at the `source code` and `results` links.
+
+Despite the fact that inventory plugin `iocage` extends `constructed`
+See [source code](https://github.com/vbotka/ansible-collection-freebsd/blob/master/plugins/inventory/iocage.py#L20)
+
+```yaml
+extends_documentation_fragment:
+  - ansible.builtin.constructed
+  - ansible.builtin.inventory_cache
+```
+
+The option
+[use_vars_plugins](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-use_vars_plugins)
+is not available in the inventory plugin `iocage`
+
+See the results.
+
+---
+
+### (43) example 020: Get inventory aliases from notes
+
+In the slide, click at the `source code` and `results` links.
+
+**Use the option inventory_hostname_tag to tell the plugin which tag to use.**
+
+See [Aliases](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage_aliases.html#aliases)
+
+---
+
+### (44) example 030: Create custom facts
+
+In the slide, click at the `source code` and `results` links.
+
+**Create custom facts to provide a dictionary of iocage datasets lists.**
+
+See [Adding custom facts](https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts)
+
+As a side note 1: The module
+[ansible.builtin.meta](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/meta_module.html#ansible-builtin-meta-module-execute-ansible-actions)
+provides option `refresh_inventory` quoting:
+
+```console
+forces the reload of the inventory, which in the case of dynamic inventory scripts means they will be re-executed.
+If the dynamic inventory script is using a cache, Ansible cannot know this and has no way of refreshing it ...
+This is mainly useful when additional hosts are created and users wish to use them instead of using the
+ansible.builtin.add_host module.
+```
+
+As a side note 2: The task
+
+```yaml
+    - name: Get custom facts
+      ansible.builtin.setup:
+        filter: ansible_local
+```
+
+can be used instead of this task
+
+
+```yaml
+    - name: Get iocage datasets
+      vbotka.freebsd.iocage:
+```
+
 
 ## Section 6
 
 
 ### Ansible client
 
+---
 
 ### (46) example 200: Create iocage templates. Clone jails.
 
 In the slide, click at the `source code` and `results` links.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+See the playbook:
+[pb_iocage_template](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html#pb-iocage-template)
 
-## Section 7
+See the source code:
+[pb_iocage_template](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_template.yml)
+[tasks](https://github.com/vbotka/ansible-collection-freebsd/tree/master/playbooks/pb_iocage_template)
+
+The most time-consuming part is the installation of the packages:
+
+  - See the task [create.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_template/create.yml)
+    Either use the attribute *pkglist* in the module *vbotka.freebsd.iocage*
+
+  - See the task [pkg.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_template/pkg.yml)
+    Or, use the attributes *jail* and *name* in the module *community.general.pkgng*
+	
+  - See the [NOTES](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/sandbox/handy/200/NOTES)
+
+Note: The module *community.general.pkgng* is *jail-aware*
+
+See: [community.general.pkgng](https://docs.ansible.com/projects/ansible/latest/collections/community/general/pkgng_module.html#ansible-collections-community-general-pkgng-module) 
+     [jail aware](https://wiki.freebsd.org/Jails#Jail-specific_and_Jail-aware_Utilities)
+
+
+See the playbook:
+[pb_iocage_ansible_clients](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html#pb-iocage-ansible-clients)
+
+See the source code:
+[pb_iocage_ansible_clients.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_ansible_clients.yml)
+[tasks](https://github.com/vbotka/ansible-collection-freebsd/tree/master/playbooks/pb_iocage_ansible_clients)
+
+Notes:
+
+* If possible, install packages in a standalone tasks. Then, disable the installation to speedup the
+  plays.
+
+---
+
+### (47) example 201: Display iocage datasets
+
+In the slide, click at the `source code` and `results` links.
+
+See the playbook:
+[pb-iocage-display-datasets.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/examples/201/pb-iocage-display-datasets.yml)
+
+There are 4 datasets created by *iocage*:
+
+ - releases
+ - plugins
+ - templates
+ - jails
+
+In the first task, the module *vbotka.freebsd.iocage* without arguments creates the datasets. The
+datasets are stored in the dictionary *ansible_facts*.
+
+For abbreviation, the *properties* are removed from *templates* and *jails*.
+
+---
+
+### (48) example 202: Create iocage templates. Clone DHCP jails.
+
+In the slide, click at the `source code` and `results` links.
+
+In addition to the `example 200` we configure `dhclient hooks`. Then, when we clone the jails, DHCP
+is used to assign the addresses. See the *host_vars*. The common *properties* are used.
+
+Explanation of the warning: "The user act_user must exist on the iocage host. Otherwise, the module
+ansible.posix.authorized_key will crash."
+
+In the module *ansible.posix.authorized_key* we configure the path for each jail. The module assumes
+the keys belongs to a user on the iocage host. The module is checking whether the user exists even when
+the parameter *path* is used.
+
+```yaml
+- ansible.posix.authorized_key:
+    user: "{{ _act_user }}"
+    path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/home/{{ _act_user }}/.ssh/authorized_keys"
+	...
+  loop: "{{ templates | dict2items }}"
+```
+
+---
+
+### (49) example 203: Create DHCP jails with auto UUID and iocage_tags
+
+In the slide, click at the `source code` and `results` links.
+
+We use here the templates created in the previous `example 202`.
+
+*iocage* is able to create more jails with the same parameters if the option *--count* is used. In
+this case, it's more efficient to use the module *ansible.builtin.command* instead of the module
+*iocage*, because such a step is not idempotent anyway. See the examples in the `Use case`.
+
+Here we use the playbook `pb_iocage_ansible_clients.yml` again, but, this time, to create *swarms*.
+
+See [swarms](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html#swarms).
+
+We borrowed *swarms* from the "Container swarms", which refer to a cluster of machines configured to
+work together as a single, unified system. It is not related to Docker in any way.
+
+See the source code:
+[pb_iocage_ansible_clients.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_ansible_clients.yml)
+[tasks](https://github.com/vbotka/ansible-collection-freebsd/tree/master/playbooks/pb_iocage_ansible_clients)
+
+Let's take a look at the tasks in
+[swarms.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/playbooks/pb_iocage_ansible_clients/swarm.yml)
+
+The first task `vbotka.freebsd.iocage` creates the *iocage* datasets only.
+
+In the dictionary `swarms` the parameter `count` declares the number of jails in each swarm. We want
+to keep this number of jails. In the playbook section `vars`, the dictionary `_tags` is
+declared.
+
+As a side-note: This is a very useful construct, frequently used to create intermediate dictionaries.
+
+```
+ dict(keys_list | zip(values_list))
+```
+
+This dictionary keeps tags for each jail. In the section `vars` of the block in the tasks
+`swarm.yml`, we count the number of jails in a swarm. The filter
+`community.general.json_query(_query)` selects the jails and the filter `length` counts them. The
+the variable `_count` keeps the number of the missing jails in a swarm.
+
+See how the command `cmd_create` is created.
+
+See the results.
+
+---
+
+### (50) example 204: Create DHCP jails with auto UUID and iocage_tags v2
+
+In the slide, click at the `source code` and `results` links.
+
+Also here we use the templates created in the `example 202`. Compared with `example 203`, the
+difference is using the filter `iocage` instead of the module `iocage` to create the dictionary
+`iocage_jails`.
+
+Take a look at the *tree*. Instead of the collection playbook
+`vbotka.freebsd.pb_iocage_ansible_clients.yml` we use the modified playbook `pb-iocage-ansible-clients-v2.yml` and the tasks
+
+In the tasks [swarm.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/examples/204/pb-iocage-ansible-clients-v2/swarm.yml)
+we import [iocage_jails.yml](https://github.com/vbotka/ansible-collection-freebsd/blob/master/docs/source/examples/204/pb-iocage-ansible-clients-v2/iocage_jails.yml)
+instead of the module `iocage` which creates the dictionary `iocage_jails`.
+
+If interested, take a look at `iocage_jails.yml` how the dictionary is created.
+
+If the jails are present, for example,
+
+```console
+shell>  iocage list
++-----+----------+-------+--------------+------+
+| JID |   NAME   | STATE |   RELEASE    | IP4  |
++=====+==========+=======+==============+======+
+| 1   | cb040et9 | up    | 15.0-RELEASE | DHCP |
++-----+----------+-------+--------------+------+
+| 2   | dd911c4f | up    | 15.0-RELEASE | DHCP |
++-----+----------+-------+--------------+------+
+| 3   | f20ab29e | up    | 15.0-RELEASE | DHCP |
++-----+----------+-------+--------------+------+
+```
+
+In `vbotka/freebsd/docs/source/sandbox/handy/204` modify `pb-iocage-ansible-clients-v2/iocage_jails.yml` add
+
+```yaml
+- debug:
+    var: iocage_jails
+- meta: end_play
+```
+
+and display the dictionary `iocage_jails`
+
+```console
+ansible-playbook pb-iocage-ansible-clients-v2.yml -i iocage.ini -t swarm -e swarm=true
+```
+
+Then, add another debug
+
+```yaml
+- debug:
+    var: iocage_jails_properties
+- meta: end_play
+```
+
+and display how `iocage_jails_properties` is created.
+
+Then, the dictionaries `iocage_jails` and `iocage_jails_properties` are recursively merged.
+
+The rest of this example is the same as `example 203`.
+
+---
+
+### (51) example 206: Create DHCP and fixed IP jails
+
+In the slide, click at the `source code` and `results` links.
+
+This use case demonstrates the **advantage of silently ignoring failed items** over the potential
+explicit error handling. Let the option compose pick what is needed.
+
+---
+
+### (52) example 207: Create DHCP jails with auto UUID, iocage_tags, alias and class
+
+In the slide, click at the `source code` and `results` links.
+
+Use the option `inventory_hostname_tag` to create inventory aliases.
+
+Quoting [Inventory aliases](https://docs.ansible.com/projects/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases)
+
+> The inventory_hostname is the unique identifier for a host in Ansible. This identifier can be an IP address or a hostname, but it can also be just an ‘alias’ or short name for the host.
+
+We use *swarms* here to create jails. Hence, the jails' names will be random. In the inventory we will:
+
+- create `aliases`, declared in the dictionary `project`, and
+- compose variables `ansible_host`
+
+The goal is to efficiently create jails by the *iocage* `--count` option and still have dedicated
+jails' names. We also declare the `class` tag that will be used later (example 500).
+
+---
+
+### (53) example 208: Create iocage template for ansible-pull
+
+In the slide, click at the `source code` and `results` links.
+
+In addition to the template `ansible_client`, 2 more packages are installed in the template `ansible_client_pull`:
+
+  - git
+  - py311-ansible
+
+These packages are needed to 
+
+> pull a remote copy of ansible on each managed node ... and update playbook source via a source repository.
+
+An example how to use the template `ansible_client_pull` is not ready yet.
+
+---
+
+### (54) example 209: Create iocage pkglist file
+
+In the slide, click at the `source code` and `results` links.
+
+Explain `Notes`, `group_vars`, and `host_vars`.
+
+---
+
+### (55) example 210: Test empty iocage notes
+
+In the slide, click at the `source code` and `results` links.
+
+This is a trivial case of test empty iocage notes. Create iocage_tags. The result should be an empty
+dictionary.
+
+---
+
+## SECTION 7
 
 
 ### Infrastructure
 
+---
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+### (57) example 500: syslog-ng server and syslog-ng clients
+
+In the slide, click at the `source code` and `results` links.
+
+**The project keys are jail’s aliases.**
+
+---
+
+### (58) example 501: iocage host
+
+In the slide, click at the `source code` and `results` links.
+
+**Configure iocage host.**
+
+---
+
+### (59) example 502: Branch server
+
+In the slide, click at the `source code` and `results` links.
+
+**WIP**
+
+---
+
+### (60) example 510: Project ansible-pull
+
+In the slide, click at the `source code` and `results` links.
+
+**WIP**
+
+---
 
 ## Section 8
 
 
 ### Appendix
 
+---
 
-### (62) FreeBSD collection configuration
+### (62) App1. FreeBSD collection configuration
 
+---
 
-### (63) FreeBSD collection setup
+### (63) App2. FreeBSD collection setup
 
+---
+
+### (64) App3. Recommended reading
+
+---
 
 # EOF
