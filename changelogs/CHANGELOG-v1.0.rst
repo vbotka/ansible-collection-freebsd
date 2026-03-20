@@ -5,6 +5,14 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.7
+=====
+
+Release Summary
+---------------
+The tutorial docs/presentation/* moved to docs/presentation/tutorial/*
+
+
 0.8.6
 =====
 
