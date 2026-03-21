@@ -1,6 +1,8 @@
 ---
 plugins_no: 3
 plugins:
+  connection:
+    jailexec: https://raw.githubusercontent.com/chofstede/ansible_jailexec
   inventory:
     iocage: preinstalled in distfiles
   modules:

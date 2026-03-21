@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add connection plugin jailexec.
 
 
 0.8.7
