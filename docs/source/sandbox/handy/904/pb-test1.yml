@@ -1,0 +1,9 @@
+- hosts: jails
+
+  tasks:
+
+    - command: hostname
+      register: out
+
+    - debug:
+        var: out.stdout
