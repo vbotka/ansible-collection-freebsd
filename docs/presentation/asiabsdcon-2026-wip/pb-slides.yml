@@ -1,0 +1,10 @@
+- name: Create presentation.
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Create slides.
+      template:
+        src: slides.md.j2
+        dest: slides.md

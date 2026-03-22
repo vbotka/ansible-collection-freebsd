@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Add connection plugin jailexec.
+* Add presentation for the WIP session at AsiaBSDcon.
 
 
 0.8.7
