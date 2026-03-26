@@ -1,0 +1,20 @@
+- name: Test module vbotka.freebsd.iocage
+  hosts: iocage
+
+  vars:
+
+    debug: false
+    debug2: false
+
+  tasks:
+
+    - name: Create Ansible facts iocage_*
+      vbotka.freebsd.iocage:
+
+    - name: Display lists of bases, plugins, templates, and jails.
+      debug:
+        msg: |-
+          {{ ansible_facts.iocage_releases }}
+          {{ ansible_facts.iocage_plugins.keys() | list }}
+          {{ ansible_facts.iocage_templates.keys() | list }}
+          {{ ansible_facts.iocage_jails.keys() | list }}

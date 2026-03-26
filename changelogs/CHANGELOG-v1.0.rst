@@ -18,6 +18,7 @@ Minor Changes
 -------------
 * Add connection plugin jailexec.
 * Add presentation for the WIP session at AsiaBSDcon.
+* Update the example docs/source/sandbox/handy/901
 
 
 0.8.7
