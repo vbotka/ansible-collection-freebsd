@@ -47,11 +47,11 @@
     label: "{{ item.0.key }} {{ item.1 }}"
 
 - name: "Patch plugins (not idempotent if patch exists)."
-  when: _patch is defined
+  when: _patch | length > 0
   tags: plugins_patch
   vars:
     _branch: "{{ branch[item.0.key][item.1] }}"
-    _patch: "{{ patch[item.0.key][item.1][_branch] }}"
+    _patch: "{{ patch[item.0.key][item.1][_branch] | d('')}}"
   register: result
   ansible.posix.patch:
     src: "files/{{ patch[item.0.key][item.1][_branch] }}"

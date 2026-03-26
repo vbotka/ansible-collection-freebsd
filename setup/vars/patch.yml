@@ -1,5 +1,8 @@
 ---
 patch:
+# connection:
+#   jailexec:
+#     main: connection-jailexec.main.patch
   modules:
     iocage:
       current: module-iocage.current.patch

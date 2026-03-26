@@ -3,4 +3,4 @@
 
 vbotka.freebsd.iocage:
   query: >-
-    
+    {}
