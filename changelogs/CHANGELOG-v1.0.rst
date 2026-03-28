@@ -20,6 +20,7 @@ Minor Changes
 * Add presentation for the WIP session at AsiaBSDcon.
 * Update the example docs/source/sandbox/handy/901
 * Update iocage module.
+* Test JSON query for "Indirect Node Counting" in docs/source/sandbox/handy/901
 
 
 0.8.7

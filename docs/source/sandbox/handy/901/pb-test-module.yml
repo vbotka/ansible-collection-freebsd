@@ -9,6 +9,7 @@
   tasks:
 
     - name: Create Ansible facts iocage_*
+      register: result
       vbotka.freebsd.iocage:
 
     - name: Display lists of bases, plugins, templates, and jails.
@@ -18,3 +19,16 @@
           {{ ansible_facts.iocage_plugins.keys() | list }}
           {{ ansible_facts.iocage_templates.keys() | list }}
           {{ ansible_facts.iocage_jails.keys() | list }}
+
+    - name: Display result.
+      when: debug | d(false) | bool
+      debug:
+        var: result
+
+    - name: Copy result to file module_output.json
+      delegate_to: localhost
+      register: result
+      copy:
+        dest: "{{ playbook_dir }}/module_output.json"
+        content: |
+          {{ result | to_json }}
