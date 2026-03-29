@@ -419,29 +419,29 @@ Synopsis: Configure virtual hosts. Create files.
 
 Use the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ to
 configure virtual hosts. See the template vhost2.j2.  Take the YAML configuration files from the
-directory ``apache_confd_dir_vhosts`` (7) at master and create files with the Apache virtual hosts
-in the directory (41) at the remote host. The created files will be included in the configuration
-file (51).
+directory ``apache_confd_dir_vhosts`` (4) at master and create files with the Apache virtual hosts
+in the directory (30) at the remote host. The created files will be included in the configuration
+file (40).
 
 
-**Include data from conf.d (2-19)**
+**Include data from conf.d (2-20)**
 
-Include tasks from the file ``al_include_confd_vars_list`` (13) in the role ``vbotka.ansible_lib``
-(12). This task takes as parameters the directory with the YAML configuration files (7) and the
-type of the list (8), and returns the list with the YAML configurations of the virtual hosts
-stored in the variable ``al_include_confd_vars_list``. The variable can be printed (15) when debug
-is enabled ``apache_debug: true`` (19). The parameters (7, 8) are tested inside the included tasks.
+Include tasks from the file ``al_include_confd_vars_list`` (8) in the role ``vbotka.ansible_lib``
+(7). This task takes as parameters the directory with the YAML configuration files (4) and the
+type of the list (5), and returns the list with the YAML configurations of the virtual hosts
+stored in the variable ``al_include_confd_vars_list``. The variable can be printed (14) when debug
+is enabled ``apache_debug: true`` (11). The parameters (4, 5) are tested inside the included tasks.
 
 
-**Create directories for virtual hosts (21-32)**
+**Create directories for virtual hosts (22-24)**
 
 Include tasks from ``fn/httpd-confd-vhost-dirs.yml`` .
 
 
-**Configure virtual hosts in extra directory (34-55)**
+**Configure virtual hosts in extra directory (26-47)**
 
 Create the Apache configuration files for the virtual hosts with the help of ``encode_apache``
-filter. Store the configuration file (41). Include virtual hosts in httpd.conf (50).
+filter. Store the configuration file (33). Include virtual hosts in httpd.conf (42).
 
 
 [`tasks/httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
@@ -450,7 +450,7 @@ filter. Store the configuration file (41). Include virtual hosts in httpd.conf (
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-vhosts.yml
     :language: yaml
-    :emphasize-lines: 7,41,51
+    :emphasize-lines: 4-5,7-8,33,42
     :linenos:
 
 .. seealso::

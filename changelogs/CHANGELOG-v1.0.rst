@@ -22,6 +22,7 @@ Minor Changes
 * Update iocage module.
 * Test JSON query for "Indirect Node Counting" in docs/source/sandbox/handy/901
 * Add extensions/audit/event_query.yml and README.md
+* Role apache upgraded to 2.8.2
 
 
 0.8.7
