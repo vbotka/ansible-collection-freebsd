@@ -25,26 +25,200 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-"""
-FreeBSD Jail Connection Plugin for Ansible
-
-This connection plugin enables Ansible to execute tasks inside FreeBSD jails
-by connecting to the jail host via SSH and using jexec to run commands within
-the jail. It provides a secure, efficient way to manage jail containers without
-requiring direct SSH access to individual jails.
-
-Features:
-- SSH connection to jail host with full authentication support
-- Jail command execution via jexec with privilege escalation (doas/sudo)
-- Efficient file transfer with proper permission handling
-- Connection pooling and persistence for improved performance
-- Comprehensive error handling and logging
-- Production-ready code quality with extensive documentation
-"""
+# FreeBSD Jail Connection Plugin for Ansible
+#
+# This connection plugin enables Ansible to execute tasks inside FreeBSD jails
+# by connecting to the jail host via SSH and using jexec to run commands within
+# the jail. It provides a secure, efficient way to manage jail containers without
+# requiring direct SSH access to individual jails.
+#
+# Features:
+# - SSH connection to jail host with full authentication support
+# - Jail command execution via jexec with privilege escalation (doas/sudo)
+# - Efficient file transfer with proper permission handling
+# - Connection pooling and persistence for improved performance
+# - Comprehensive error handling and logging
+# - Production-ready code quality with extensive documentation
 
 from __future__ import absolute_import, division, print_function
 
-__metaclass__ = type
+DOCUMENTATION = """
+---
+name: jailexec
+short_description: Execute tasks in FreeBSD jails via jexec over SSH
+description:
+    - This connection plugin allows Ansible to execute tasks inside FreeBSD jails
+    - Uses SSH to connect to the jail host, then jexec to run commands within the jail
+    - Supports file transfers, privilege escalation, and connection persistence
+    - Designed for production use with comprehensive error handling
+author: Christian Hofstede-Kuhn <christian@hofstede.it>
+version_added: "2.0"
+options:
+    # SSH connection options (inherited from SSH plugin)
+    host:
+        description: Hostname/IP of the jail host to connect to
+        default: inventory_hostname
+        vars:
+            - name: inventory_hostname
+            - name: ansible_host
+            - name: ansible_ssh_host
+    ssh_executable:
+        description: Location of SSH executable
+        default: 'ssh'
+        vars:
+            - name: ansible_ssh_executable
+    sftp_executable:
+        description: Location of SFTP executable
+        default: 'sftp'
+        vars:
+            - name: ansible_sftp_executable
+    scp_executable:
+        description: Location of SCP executable
+        default: 'scp'
+        vars:
+            - name: ansible_scp_executable
+    ssh_args:
+        description: Arguments to pass to SSH CLI tools
+        default: ''
+        vars:
+            - name: ansible_ssh_args
+    ssh_common_args:
+        description: Extra arguments for SSH CLI tools
+        default: ''
+        vars:
+            - name: ansible_ssh_common_args
+    ssh_extra_args:
+        description: SSH-specific extra arguments
+        default: ''
+        vars:
+            - name: ansible_ssh_extra_args
+    port:
+        description: Remote port for SSH connection
+        type: int
+        default: 22
+        vars:
+            - name: ansible_port
+            - name: ansible_ssh_port
+    remote_user:
+        description: User for SSH login to jail host
+        vars:
+            - name: ansible_user
+            - name: ansible_ssh_user
+    timeout:
+        description: Connection timeout in seconds
+        type: int
+        default: 10
+        vars:
+            - name: ansible_timeout
+            - name: ansible_ssh_timeout
+    private_key_file:
+        description: Path to SSH private key
+        vars:
+            - name: ansible_private_key_file
+            - name: ansible_ssh_private_key_file
+    password:
+        description: SSH password
+        vars:
+            - name: ansible_password
+            - name: ansible_ssh_password
+    host_key_checking:
+        description: Whether to check SSH host keys
+        type: bool
+        default: true
+        vars:
+            - name: ansible_host_key_checking
+            - name: ansible_ssh_host_key_checking
+    use_tty:
+        description: Force TTY allocation
+        type: bool
+        default: true
+        vars:
+            - name: ansible_ssh_use_tty
+    reconnection_retries:
+        description: Number of connection retry attempts
+        type: int
+        default: 3
+        vars:
+            - name: ansible_ssh_reconnection_retries
+     # Jail-specific options
+    jail_name:
+        description: Name of the jail to connect to
+        vars:
+            - name: ansible_jail_name
+    jail_host:
+        description: FreeBSD host that runs the jails
+        required: true
+        vars:
+            - name: ansible_jail_host
+    jail_user:
+        description: User to execute commands as within the jail
+        default: root
+        vars:
+            - name: ansible_user
+            - name: ansible_jail_user
+    privilege_escalation:
+        description: Privilege escalation method (doas or sudo)
+        default: doas
+        choices: ['doas', 'sudo']
+        vars:
+            - name: ansible_jail_privilege_escalation
+            - name: ansible_privilege_escalation
+    remote_tmp:
+        description: Remote temporary directory for Ansible files
+        default: /tmp/.ansible/tmp
+        vars:
+            - name: ansible_remote_tmp
+            - name: ansible_jail_remote_tmp
+
+notes:
+    - Requires SSH access to the jail host with privilege escalation (doas/sudo)
+    - The jail must exist and be running on the target host
+    - File transfers use a two-stage process for proper permission handling
+    - Connection pooling improves performance for multiple operations
+    - All paths starting with ~ are converted to use the remote_tmp directory
+
+seealso:
+    - name: FreeBSD Jails Handbook
+      description: Official FreeBSD documentation on jails
+      link: https://docs.freebsd.org/en/books/handbook/jails/
+    - name: Ansible SSH Connection Plugin
+      description: Base SSH plugin documentation
+      link: https://docs.ansible.com/ansible/latest/plugins/connection/ssh.html
+"""
+
+EXAMPLES = """
+- name: Inventory configuration for jail management
+  description: |
+    Configure inventory to manage FreeBSD jails via SSH to jail host
+  code: |
+    # inventory/hosts
+    [jail_hosts]
+    freebsd-host.example.com ansible_connection=ssh ansible_user=admin
+     [jails]
+    web-jail ansible_connection=jailexec ansible_jail_host=freebsd-host.example.com
+    db-jail  ansible_connection=jailexec ansible_jail_host=freebsd-host.example.com
+
+- name: Playbook using jail connection
+  description: |
+    Execute tasks inside jails using the jailexec connection plugin
+  code: |
+    - hosts: jails
+      connection: jailexec
+      tasks:
+        - name: Install package in jail
+          package:
+            name: nginx
+            state: present
+        - name: Copy configuration file to jail
+          copy:
+            src: nginx.conf
+            dest: /usr/local/etc/nginx/nginx.conf
+        - name: Start service in jail
+          service:
+            name: nginx
+            state: started
+            enabled: yes
+"""
 
 import os
 import re
@@ -145,187 +319,6 @@ def retry_on_failure(
         return wrapper
 
     return decorator
-
-
-DOCUMENTATION = """
-    name: jailexec
-    short_description: Execute tasks in FreeBSD jails via jexec over SSH
-    description:
-        - This connection plugin allows Ansible to execute tasks inside FreeBSD jails
-        - Uses SSH to connect to the jail host, then jexec to run commands within the jail
-        - Supports file transfers, privilege escalation, and connection persistence
-        - Designed for production use with comprehensive error handling
-    author: Christian Hofstede-Kuhn <christian@hofstede.it>
-    version_added: "2.0"
-    options:
-        # SSH connection options (inherited from SSH plugin)
-        host:
-            description: Hostname/IP of the jail host to connect to
-            default: inventory_hostname
-            vars:
-                - name: inventory_hostname
-                - name: ansible_host
-                - name: ansible_ssh_host
-        ssh_executable:
-            description: Location of SSH executable
-            default: 'ssh'
-            vars:
-                - name: ansible_ssh_executable
-        sftp_executable:
-            description: Location of SFTP executable
-            default: 'sftp'
-            vars:
-                - name: ansible_sftp_executable
-        scp_executable:
-            description: Location of SCP executable
-            default: 'scp'
-            vars:
-                - name: ansible_scp_executable
-        ssh_args:
-            description: Arguments to pass to SSH CLI tools
-            default: ''
-            vars:
-                - name: ansible_ssh_args
-        ssh_common_args:
-            description: Extra arguments for SSH CLI tools
-            default: ''
-            vars:
-                - name: ansible_ssh_common_args
-        ssh_extra_args:
-            description: SSH-specific extra arguments
-            default: ''
-            vars:
-                - name: ansible_ssh_extra_args
-        port:
-            description: Remote port for SSH connection
-            type: int
-            default: 22
-            vars:
-                - name: ansible_port
-                - name: ansible_ssh_port
-        remote_user:
-            description: User for SSH login to jail host
-            vars:
-                - name: ansible_user
-                - name: ansible_ssh_user
-        timeout:
-            description: Connection timeout in seconds
-            type: int
-            default: 10
-            vars:
-                - name: ansible_timeout
-                - name: ansible_ssh_timeout
-        private_key_file:
-            description: Path to SSH private key
-            vars:
-                - name: ansible_private_key_file
-                - name: ansible_ssh_private_key_file
-        password:
-            description: SSH password
-            vars:
-                - name: ansible_password
-                - name: ansible_ssh_password
-        host_key_checking:
-            description: Whether to check SSH host keys
-            type: bool
-            default: true
-            vars:
-                - name: ansible_host_key_checking
-                - name: ansible_ssh_host_key_checking
-        use_tty:
-            description: Force TTY allocation
-            type: bool
-            default: true
-            vars:
-                - name: ansible_ssh_use_tty
-        reconnection_retries:
-            description: Number of connection retry attempts
-            type: int
-            default: 3
-            vars:
-                - name: ansible_ssh_reconnection_retries
-
-        # Jail-specific options
-        jail_name:
-            description: Name of the jail to connect to
-            vars:
-                - name: ansible_jail_name
-        jail_host:
-            description: FreeBSD host that runs the jails
-            required: true
-            vars:
-                - name: ansible_jail_host
-        jail_user:
-            description: User to execute commands as within the jail
-            default: root
-            vars:
-                - name: ansible_user
-                - name: ansible_jail_user
-        privilege_escalation:
-            description: Privilege escalation method (doas or sudo)
-            default: doas
-            choices: ['doas', 'sudo']
-            vars:
-                - name: ansible_jail_privilege_escalation
-                - name: ansible_privilege_escalation
-        remote_tmp:
-            description: Remote temporary directory for Ansible files
-            default: /tmp/.ansible/tmp
-            vars:
-                - name: ansible_remote_tmp
-                - name: ansible_jail_remote_tmp
-
-    notes:
-        - Requires SSH access to the jail host with privilege escalation (doas/sudo)
-        - The jail must exist and be running on the target host
-        - File transfers use a two-stage process for proper permission handling
-        - Connection pooling improves performance for multiple operations
-        - All paths starting with ~ are converted to use the remote_tmp directory
-
-    seealso:
-        - name: FreeBSD Jails Handbook
-          description: Official FreeBSD documentation on jails
-          link: https://docs.freebsd.org/en/books/handbook/jails/
-        - name: Ansible SSH Connection Plugin
-          description: Base SSH plugin documentation
-          link: https://docs.ansible.com/ansible/latest/plugins/connection/ssh.html
-
-    examples:
-        - name: Inventory configuration for jail management
-          description: |
-            Configure inventory to manage FreeBSD jails via SSH to jail host
-          code: |
-            # inventory/hosts
-            [jail_hosts]
-            freebsd-host.example.com ansible_connection=ssh ansible_user=admin
-
-            [jails]
-            web-jail ansible_connection=jailexec ansible_jail_host=freebsd-host.example.com
-            db-jail  ansible_connection=jailexec ansible_jail_host=freebsd-host.example.com
-
-        - name: Playbook using jail connection
-          description: |
-            Execute tasks inside jails using the jailexec connection plugin
-          code: |
-            - hosts: jails
-              connection: jailexec
-              tasks:
-                - name: Install package in jail
-                  package:
-                    name: nginx
-                    state: present
-
-                - name: Copy configuration file to jail
-                  copy:
-                    src: nginx.conf
-                    dest: /usr/local/etc/nginx/nginx.conf
-
-                - name: Start service in jail
-                  service:
-                    name: nginx
-                    state: started
-                    enabled: yes
-"""
 
 
 class Connection(SSHConnection):
