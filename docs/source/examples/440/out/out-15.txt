@@ -10,8 +10,8 @@ max-lease-time 7200;
 authoritative;
 
 # Internal subnet configuration
-subnet 10.1.0.0 netmask 255.255.255.0 {
-  range 10.1.0.100 10.1.0.200;
-  option routers 10.1.0.1;
-  option broadcast-address 10.1.0.255;
+subnet 192.168.99.0 netmask 255.255.255.0 {
+  range 192.168.99.100 192.168.99.200;
+  option routers 192.168.99.1;
+  option broadcast-address 192.168.99.255;
 }

@@ -19,6 +19,7 @@ Minor Changes
 * Add connection plugin jailexec.
 * Add presentation for the WIP session at AsiaBSDcon.
 * Update the example docs/source/sandbox/handy/901
+* Update the example docs/source/examples/440; redirect SSH to the jails.
 * Update iocage module.
 * Test JSON query for "Indirect Node Counting" in docs/source/sandbox/handy/901
 * Add extensions/audit/event_query.yml and README.md
