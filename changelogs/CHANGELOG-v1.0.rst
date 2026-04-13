@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Maintenance and feature update.
 
 Major Changes
 -------------
@@ -17,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Add connection plugin jailexec.
+* Connection plugin jailexec tested in Ansible 2.20 in sandbox/handy/904
 * Add presentation for the WIP session at AsiaBSDcon.
 * Update the example docs/source/sandbox/handy/901
 * Update the example docs/source/examples/440; redirect SSH to the jails.
