@@ -11,6 +11,9 @@
 .. index:: single: bridge; Example 440
 .. index:: single: wlan; Example 440
 .. index:: single: pf; Example 440
+.. index:: single: pf port redirection; Example 440
+.. index:: single: port redirection; Example 440
+.. index:: single: redirection of ports; Example 440
 .. index:: single: firewall; Example 440
 .. index:: single: role vbotka.freebsd.dhcp; Example 440
 .. index:: single: role vbotka.freebsd.pf; Example 440
@@ -32,12 +35,15 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
+  ├── files
+  │   └── pf-rdr-ssh.conf
   ├── host_vars
   │   └── iocage_05
   │       ├── dhcp.yml
   │       └── pf.yml
   ├── iocage.ini
   ├── pb-dhcp.yml
+  ├── pb-pf-setup.yml
   └── pb-pf.yml
 
 Synopsis
@@ -49,18 +55,19 @@ Synopsis
   .. code-block:: ini
 
     gateway_enable="YES"
-    defaultrouter="10.10.0.1"
+    defaultrouter="192.168.1.1"
     cloned_interfaces="bridge0"
-    ifconfig_bridge0="inet 10.1.0.1/24"
+    ifconfig_bridge0="inet 192.168.99.1/24"
     wlans_iwm0="wlan0"
     create_args_wlan0="country US"
     ifconfig_wlan0="WPA SYNCDHCP"
+    dhcpd_ifaces="bridge0"
 
 * In the playbook ``pb-dhcp.yml`` at ``iocage_05`` configure:
 
-  * subnet 10.1.0.0/24
+  * subnet 192.168.99.0/24
+  * routers [192.168.99.1]
   * range 100-200
-  * dhcpd_ifaces="bridge0"
 
 * In the playbook ``pb-pf.yml`` at ``iocage_05`` configure:
 
@@ -69,6 +76,7 @@ Synopsis
   * log all blocked
   * allow SSH from the external network
   * pass from localnet and jails' vnet to any
+  * redirect ssh ports to jails
     
 Requirements
 ^^^^^^^^^^^^
@@ -78,7 +86,28 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+* In this example, a cheap HW connected via WiFi is used for the iocage server
+  testing.
+
+* Change this to fit the configuration to your needs:
+
+  * ``/etc/rc.conf`` :
+
+    * defaultrouter
+    * ifconfig_bridge0
+
+  * ``dhcp.yml`` :
+
+    * bsd_dhcpd_subnet
+    * bsd_dhcpd_subnet_from
+    * bsd_dhcpd_subnet_to
+    * bsd_dhcpd_routers
+
+  * ``pf.yml`` :
+
+    * pf_local_net
+    * pf_jail_net
+    * pf_ssh_redirected_ports
 
 .. note::
 
@@ -107,6 +136,19 @@ Inventory iocage.ini
 
 .. literalinclude:: iocage.ini
    :language: ini
+
+files
+^^^^^
+
+.. literalinclude:: files/pf-rdr-ssh.conf
+   :lines: 1-10
+   :language: console
+   :caption:
+
+.. note::
+
+   * The above listing is limited to the first 10 lines.
+   * See the playbook ``pb-pf-setup.yml`` below how to create the file.
 
 host_vars
 ^^^^^^^^^
@@ -144,6 +186,23 @@ Playbook output - Configure DHCP
    (env) > ansible-playbook pb-dhcp.yml -i iocage.ini
 
 .. literalinclude:: out/out-12.txt
+   :language: yaml
+   :force:
+
+Playbook pb-pf-setup.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-pf-setup.yml
+   :language: yaml
+
+Playbook output - Create files/pf-rdr-ssh.conf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-pf-setup.yml -i iocage.ini
+
+.. literalinclude:: out/out-13.txt
    :language: yaml
    :force:
 
@@ -190,8 +249,8 @@ Playbook output - Enable pf
    :language: yaml
    :force:
 
-Result
-^^^^^^
+Results
+^^^^^^^
 
 isc-dhcpd status
 """"""""""""""""
@@ -233,6 +292,25 @@ pf status
 .. literalinclude:: out/out-05.txt
    :language: bash
 
+List jails
+""""""""""
+
+.. code-block:: console
+
+   (env) > ssh admin@handy sudo iocage list -l
+
+.. literalinclude:: out/out-16.txt
+   :language: console
+
+SSH to a jail
+"""""""""""""
+
+.. code-block:: console
+
+   (env) > ssh -p 2200 admin@handy
+
+.. literalinclude:: out/out-17.txt
+   :language: console
      
 .. _vbotka.freebsd.dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
 .. _vbotka.freebsd_dhcp: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_dhcp/

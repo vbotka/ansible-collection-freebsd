@@ -1,15 +1,16 @@
 # Ansible managed
-# template: default2-pf.conf.j2
+# template: default3-pf.conf.j2
 
 # MACROS
 ext_if = "wlan0"
 int_if = "bridge0"
-localnet = "10.10.1.0/24"
-localvnet = "10.1.0.0/24"
+localnet = "192.168.1.0/16"
+jailnet = "192.168.99.0/16"
 logall = "log"
 icmp_types = "{ echoreq, unreach }"
 icmp6_types = "{ echoreq, unreach }"
 tcp_services = "{ ssh }"
+ssh_redirected_ports = "2200:2299"
 
 # TABLES
 table <sshabuse> persist
@@ -24,16 +25,18 @@ scrub in on $ext_if all fragment reassemble
 
 # TRANSLATION
 nat on $ext_if from $localnet to any -> ($ext_if)
-nat on $ext_if from $localvnet to any -> ($ext_if)
+nat on $int_if from $jailnet to any -> ($int_if)
+include "/etc/pf/pf-rdr-ssh.conf"
 
 # FILTERING
 antispoof for $ext_if
 anchor "blacklistd/*" in on $ext_if
 anchor "f2b/*"
 block $logall all
-pass in on $ext_if proto tcp to any port $tcp_services flags S/SA keep state
 pass inet proto icmp icmp-type $icmp_types
 pass inet6 proto icmp6 icmp6-type $icmp6_types
-pass from { self, $localnet, $localvnet } to any keep state
+pass in on $ext_if proto tcp from $localnet to any port $tcp_services flags S/SA keep state
+pass in on $ext_if proto tcp from $localnet to any port $ssh_redirected_ports flags S/SA keep state
+pass from { self, $localnet, $jailnet } to any keep state
 
 # EOF

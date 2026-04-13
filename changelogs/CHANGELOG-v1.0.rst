@@ -5,6 +5,30 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.8
+=====
+
+Release Summary
+---------------
+Maintenance and feature update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add connection plugin jailexec.
+* Connection plugin jailexec tested in Ansible 2.20 in sandbox/handy/904
+* Add presentation for the WIP session at AsiaBSDcon.
+* Update the example docs/source/sandbox/handy/901
+* Update the example docs/source/examples/440; redirect SSH to the jails.
+* Update iocage module.
+* Test JSON query for "Indirect Node Counting" in docs/source/sandbox/handy/901
+* Add extensions/audit/event_query.yml and README.md
+* Role apache upgraded to 2.8.2
+* Role postinstall upgraded to 2.8.6
+
+
 0.8.7
 =====
 

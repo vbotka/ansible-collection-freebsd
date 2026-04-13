@@ -1,0 +1,42 @@
+- name: Test module vbotka.freebsd.iocage event query.
+  hosts: iocage
+
+  vars:
+
+    debug: false
+    debug2: false
+    iocage_ds_keys: [iocage_templates, iocage_jails]
+    iocage_ds: "{{ dict(iocage_ds_keys
+                        | zip(iocage_ds_keys
+                              | map('extract', module_output.ansible_facts))) }}"
+
+  tasks:
+
+    - name: Create Ansible facts iocage_*
+      register: module_output
+      vbotka.freebsd.iocage:
+
+    - name: Display iocage datasets keys.
+      debug:
+        msg: |-
+          {{ ansible_facts.iocage_releases }}
+          {{ ansible_facts.iocage_plugins.keys() | list }}
+          {{ ansible_facts.iocage_templates.keys() | list }}
+          {{ ansible_facts.iocage_jails.keys() | list }}
+
+    - name: Display module_output
+      when: debug2 | d(false) | bool
+      debug:
+        var: module_output
+
+    - name: Display iocage datasets.
+      when: debug | d(false) | bool
+      debug:
+        var: iocage_ds
+
+    - name: Copy module_output to file module_output.json
+      delegate_to: localhost
+      copy:
+        dest: "{{ playbook_dir }}/module_output_{{ inventory_hostname }}.json"
+        content: |
+          {{ module_output | to_json }}
