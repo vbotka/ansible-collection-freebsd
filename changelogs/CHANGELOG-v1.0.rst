@@ -18,6 +18,7 @@ Minor Changes
 -------------
 * Add example 050. Test connection plugin jailexec.
 * Update docs. Add UG chapter 'connection vbotka.freebsd.jailexec'
+* Update README. Add connection plugin jailexec.
 
 
 0.8.8
