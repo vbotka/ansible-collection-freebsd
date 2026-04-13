@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Add example 050. Test connection plugin jailexec.
 
 
 0.8.8
