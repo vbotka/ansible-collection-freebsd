@@ -14,6 +14,7 @@
 .. index:: single: pf port redirection; Example 440
 .. index:: single: port redirection; Example 440
 .. index:: single: redirection of ports; Example 440
+.. index:: single: forwarding of ports; Example 440
 .. index:: single: firewall; Example 440
 .. index:: single: role vbotka.freebsd.dhcp; Example 440
 .. index:: single: role vbotka.freebsd.pf; Example 440
@@ -24,8 +25,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role
-`vbotka.freebsd.pf`_ to configure pf.
+Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role `vbotka.freebsd.pf`_ to
+configure pf. Redirect the ports from the local network to the SSH in the jails.
 
 Tree
 ^^^^
