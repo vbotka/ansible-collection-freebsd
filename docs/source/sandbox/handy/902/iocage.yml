@@ -3,5 +3,9 @@ host: handy
 user: admin
 sudo: true
 compose:
-  ansible_host: "['10', '10', '1', '14'] | join('.')"
+  ansible_host: "'192.168.1.9'"  # jail host
   ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
+  ansible_python_interpreter: "'auto_silent'"
+
+# The ansible_port is the last IP octet minus 100 (because DHCP starts at 100)
+# plus 2200 (because the ssh forwarded ports start at 2200).

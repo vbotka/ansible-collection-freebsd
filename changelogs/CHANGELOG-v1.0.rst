@@ -5,6 +5,29 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.9
+=====
+
+Release Summary
+---------------
+Docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add example 050. Test connection plugin jailexec.
+* Update README. Add connection plugin jailexec.
+* Update docs.
+  Add UG chapter 'connection vbotka.freebsd.jailexec'
+  Add UG connection plugin jailexec to the included content.
+  Add example 050. Test connection plugin jailexec.
+  Update example sandbox/handy/904
+  Update example inventory in sandbox/handy/904
+  Update description of example 440
+
+
 0.8.8
 =====
 
