@@ -6,6 +6,7 @@ Plugins:
 * `module ucl`_ - CRUD-like interface for managing UCL files.
 * `inventory iocage`_ - iocage inventory source.
 * `filter iocage`_ - Parse iocage lists.
+* `connection jailexec`_ - Connect jails without SSH.
 * `lookup galaxy_info`_ - Get the meta data from galaxy.yml
 
 Roles:
@@ -32,6 +33,7 @@ Various :ref:`ug_playbooks`.
 .. _module service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 .. _module ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
 
+.. _connection jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/
 .. _inventory iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _filter iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _lookup galaxy_info: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/lookup/galaxy_info/
