@@ -234,7 +234,7 @@ from ansible.utils.display import Display
 
 # Module-level display instance for consistent logging
 display = Display()
-display.vvvv(">>>> Connection plugin jailexec debug message")
+display.vvvv(">>>> Connection plugin jailexec debug message.")
 
 # Constants for configuration
 DEFAULT_JAIL_USER = "root"
@@ -579,7 +579,7 @@ class Connection(SSHConnection):
             )
 
         # Test jail accessibility with a simple command
-        test_cmd = self._build_host_command("jls", "-j", str(self.jail_name))
+        test_cmd = self._build_host_command("jls", "-j", self.jail_name)
         display.vvvv(f">>>> _verify_jail_access: Test jail accessibility with a simple command: {test_cmd}", host=self.jail_name)
 
         try:
@@ -761,7 +761,6 @@ class Connection(SSHConnection):
         else:
             display.vvvv(">>>> exec_command: cmd is not a list", host=self.jail_name)
             cmd_str = str(cmd).strip()
-            # cmd_str = str(cmd)
             # Only validate string commands for dangerous patterns (list commands are safely quoted)
             self._validate_command_security(cmd_str)
 

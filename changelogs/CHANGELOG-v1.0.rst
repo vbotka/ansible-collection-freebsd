@@ -15,7 +15,8 @@ Major Changes
 -------------
 
 Minor Changes
--------------
+--------------
+* Connection plugin jailexec cleanup.
 
 
 0.8.9
