@@ -283,7 +283,7 @@ def validate_jail_name(jail_name: str) -> None:
 
 def validate_path_security(path: str) -> None:
     """Validate file paths to prevent security attacks."""
-    if not path or not str(path).strip():
+    if not path or not path.strip():
         if path.isspace():
             raise AnsibleError(
                 f"Path contains dangerous pattern (whitespace-only): {repr(path)}"
@@ -386,7 +386,7 @@ class Connection(SSHConnection):
             jail_host = self.get_option("jail_host")
             display.vvvv(f">>>> _get_jail_configuration jail_host: {jail_host}", host=self.jail_name)
             if jail_host:
-                jail_host = str(jail_host).strip()
+                jail_host = jail_host.strip()
             if not jail_host:
                 raise AnsibleConnectionFailure(
                     f"No jail host specified for jail '{self.jail_name}'. "
@@ -407,7 +407,7 @@ class Connection(SSHConnection):
             jail_user = self.get_option("jail_user")
             display.vvvv(f">>>> _get_jail_configuration jail_user: {jail_user}", host=self.jail_name)
             if jail_user:
-                jail_user = str(jail_user).strip()
+                jail_user = jail_user.strip()
                 if not jail_user:
                     raise AnsibleConnectionFailure(
                         "jail_user cannot be empty or whitespace"
@@ -446,7 +446,7 @@ class Connection(SSHConnection):
                 try:
                     self.connection_timeout = max(1, int(timeout))
                 except (ValueError, TypeError):
-                    display.warning(f"Invalid timeout value: {timeout}, using default", host=self.jail_name)
+                    display.warning(f"Invalid timeout value: {timeout}, using default")
 
         except AnsibleConnectionFailure:
             display.vvvv(">>>> _get_jail_configuration jail_host: Re-raise connection failures as-is", host=self.jail_name)
@@ -790,7 +790,7 @@ class Connection(SSHConnection):
         display.vvvv(f">>>> exec_command: jail_cmd_parts: {jail_cmd_parts}", host=self.jail_name)
 
         # Build final command
-        final_cmd = " ".join(shlex.quote(str(part)) for part in jail_cmd_parts)
+        final_cmd = " ".join(shlex.quote(part) for part in jail_cmd_parts)
 
         display.vvv(
             f">>> jailexec: Executing on jail host: {final_cmd}", host=self.jail_name
