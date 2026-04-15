@@ -1,4 +1,5 @@
-- hosts: jails
+- name: Test the connection plugin jailexec
+  hosts: jails
 
   tasks:
 

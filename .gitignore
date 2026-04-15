@@ -13,7 +13,6 @@ vagrant*
 pk_admins.txt.san
 vars/main.yml
 vbotka-freebsd-*.tar.gz
-TODO
 ATTIC
 docs/source/examples/313/conf-light/assemble
 roles/config_light_*/handlers
