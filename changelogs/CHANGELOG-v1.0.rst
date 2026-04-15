@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Update example sandbox/handy/904
 * Connection plugin jailexec cleanup.
 
 
