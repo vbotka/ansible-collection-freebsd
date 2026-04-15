@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Update jailexec and examples.
 
 Major Changes
 -------------
