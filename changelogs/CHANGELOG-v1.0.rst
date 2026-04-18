@@ -5,6 +5,23 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.11
+======
+
+Release Summary
+---------------
+Update jailexec and examples.
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+* Connection plugin jailexec; cast option jail_name to str.
+* Update example 050
+* Update example sandbox/handy/904
+
+
 0.8.10
 ======
 

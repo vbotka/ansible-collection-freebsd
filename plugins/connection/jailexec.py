@@ -268,7 +268,7 @@ def validate_jail_name(jail_name: str) -> None:
 
     jail_name = str(jail_name).strip()
 
-    if len(str(jail_name)) > MAX_JAIL_NAME_LENGTH:
+    if len(jail_name) > MAX_JAIL_NAME_LENGTH:
         raise AnsibleConnectionFailure(
             f"Jail name too long (max {MAX_JAIL_NAME_LENGTH} characters): {jail_name}"
         )
@@ -394,7 +394,7 @@ class Connection(SSHConnection):
                 )
             self.jail_host = jail_host
 
-            jail_name_option = self.get_option("jail_name")
+            jail_name_option = str(self.get_option("jail_name"))
             display.vvvv(f">>>> _get_jail_configuration jail_name_option: {jail_name_option}", host=self.jail_name)
             if jail_name_option and jail_name_option != self.jail_name:
                 validate_jail_name(jail_name_option)
