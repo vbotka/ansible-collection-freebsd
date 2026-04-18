@@ -20,6 +20,7 @@ Minor Changes
 * Connection plugin jailexec; cast option jail_name to str.
 * Update example 050
 * Update example sandbox/handy/904
+* Create patch for jailexec upstream main and update setup.
 
 
 0.8.10
