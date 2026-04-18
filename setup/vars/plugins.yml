@@ -1,5 +1,5 @@
 ---
-plugins_no: 3
+plugins_no: 4
 plugins:
   connection:
     jailexec: https://raw.githubusercontent.com/chofstede/ansible_jailexec
