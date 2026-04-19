@@ -120,7 +120,8 @@ Examples
    422 Configure Apache server PHP <examples/422/example.rst>
    423 Configure Apache server build <examples/423/example.rst>
    430 Configure Apache server SSL <examples/430/example.rst>
-   440 Configure DHCP server <examples/440/example.rst>
+   examples/440/example.rst
+   examples/441/example.rst
 
 .. toctree::
    :maxdepth: 1

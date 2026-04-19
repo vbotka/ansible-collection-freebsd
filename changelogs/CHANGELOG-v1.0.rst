@@ -16,7 +16,8 @@ Major Changes
 
 Minor Changes
 --------------
-
+* Update docs. Add example 441. Redirect SHH to jails.
+* Update docs. Update example 440.
 
 0.8.11
 ======
