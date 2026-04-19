@@ -29,8 +29,9 @@
 Use case
 ^^^^^^^^
 
-Automatically generate the jails UUID names. In the inventory plugin, compose the variable
-``iocage_tags``
+Create multiple jails with auto UUID names. In the inventory, compose the variables
+``ansible_host`` and ``ansible_port`` to connect the jails via the redirected ports. See
+the example :ref:`example_440` how ``pf`` is configured.
 
 Tree
 ^^^^
@@ -40,12 +41,11 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── group_vars
-  │   └── all
-  │       └── iocage.yml
   ├── hosts
   │   ├── 05_iocage.yml
   │   └── 99_constructed.yml
+  ├── host_vars
+  │   └── iocage_05.yml
   ├── iocage.ini
   └── pb-test.yml
 
@@ -151,9 +151,16 @@ Inventory hosts
 
 .. note::
 
-   In the example :ref:`example_440`, the variables ``ssh_rdr_start=2200`` and
-   ``dhcp_ip_start=100`` are used in the playbook ``pb-pf-setup.yml`` to calculate the
-   port to redirect the SHH to, and to create the file ``pf-rdr-ssh.conf``.
+   * In the example :ref:`example_440`, the variables ``ssh_rdr_start=2200`` and
+     ``dhcp_ip_start=100`` are used in the playbook ``pb-pf-setup.yml`` to calculate the
+     ports to redirect SSH from, and to create the file ``pf-rdr-ssh.conf``.
+
+   * For example, from the controller, the following command connects to the jail at
+     <bsd_dhcpd_subnet>.106::
+
+       shell> ssh -p 2206 admin@iocage_05
+
+   * See the variable ``bsd_dhcpd_subnet`` in the example :ref:`example_440`
 		  
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
@@ -175,8 +182,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - Display iocage_tags
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test SSH redirection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
