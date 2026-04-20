@@ -1,0 +1,15 @@
+- name: Test the SSH redirection to the jails.
+  hosts: swarm_sw_01
+  gather_facts: false
+    
+  tasks:
+    
+    - ansible.builtin.debug:
+        msg: |
+          ansible_connection: {{ ansible_connection }}
+          ansible_host: {{ ansible_host }}
+          ansible_port: {{ ansible_port }}
+          ansible_user: {{ ansible_user }}
+
+          iocage_ip4: {{ iocage_ip4 }}
+          iocage_tags: {{ iocage_tags }}

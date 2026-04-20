@@ -1,7 +1,3 @@
-* Create example 441 extending example 440
-  - create jails
-  - create dynamic inventory with ansible_host assigned to the value of vmm from the tags.
-
 * Create example 051 extending 050
   - create jails
   - create dynamic inventory with:

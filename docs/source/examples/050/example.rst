@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Test the `connection vbotka.freebsd.jailexec`_
+Test the `connection plugin vbotka.freebsd.jailexec`_
 
 Tree
 ^^^^
@@ -33,7 +33,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At an iocage node test the `connection vbotka.freebsd.jailexec`_
+At an iocage node test the `connection plugin vbotka.freebsd.jailexec`_
 
 Requirements
 ^^^^^^^^^^^^
@@ -99,4 +99,4 @@ Playbook output
 .. literalinclude:: out/out-02.txt
    :language: yaml
 
-.. _connection vbotka.freebsd.jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/
+.. _connection plugin vbotka.freebsd.jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/

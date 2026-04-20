@@ -5,7 +5,7 @@
 
   vars:
 
-    ssh_fwd_start: 2200
+    ssh_rdr_start: 2200
     dhcp_subnet: 192.168.99
     dhcp_ip_start: 100
     stop: 100
@@ -18,7 +18,7 @@
         dest: "{{ playbook_dir }}/files/pf-rdr-ssh.conf"
         content: |
           {% for i in range(0, stop) %}
-          rdr on $ext_if proto tcp from $localnet to ($ext_if) port {{ ssh_fwd_start + i }} -> {{ dhcp_subnet }}.{{ dhcp_ip_start + i }} port 22
+          rdr on $ext_if proto tcp from $localnet to ($ext_if) port {{ ssh_rdr_start + i }} -> {{ dhcp_subnet }}.{{ dhcp_ip_start + i }} port 22
           {% endfor %}
 
 # EOF

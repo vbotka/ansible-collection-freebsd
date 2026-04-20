@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.12
+======
+
+Release Summary
+---------------
+Added examples to docs.
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+* docs. Add example 441. Redirect SHH to jails.
+* docs. Add example 442. Connection jailexec instead of ssh,
+* docs. Update examples 050 and 502
+
 0.8.11
 ======
 

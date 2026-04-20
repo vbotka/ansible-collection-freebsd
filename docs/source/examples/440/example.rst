@@ -1,7 +1,7 @@
 .. _example_440:
 
-440 Configure DHCP
-------------------
+440 Configure DHCP and pf
+-------------------------
 
 .. contents::
    :local:
@@ -14,7 +14,6 @@
 .. index:: single: pf port redirection; Example 440
 .. index:: single: port redirection; Example 440
 .. index:: single: redirection of ports; Example 440
-.. index:: single: forwarding of ports; Example 440
 .. index:: single: firewall; Example 440
 .. index:: single: role vbotka.freebsd.dhcp; Example 440
 .. index:: single: role vbotka.freebsd.pf; Example 440
