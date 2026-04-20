@@ -122,6 +122,7 @@ Examples
    430 Configure Apache server SSL <examples/430/example.rst>
    examples/440/example.rst
    examples/441/example.rst
+   examples/442/example.rst
 
 .. toctree::
    :maxdepth: 1

@@ -30,8 +30,8 @@ Use case
 ^^^^^^^^
 
 Create multiple jails with auto UUID names. In the inventory, compose the variables
-``ansible_host`` and ``ansible_port`` to connect the jails via the redirected ports. See
-the example :ref:`example_440` how ``pf`` is configured.
+``ansible_host`` and ``ansible_port`` to connect the jails via the redirected SSH
+ports. See the example :ref:`example_440` how ``pf`` is configured.
 
 Tree
 ^^^^
@@ -81,11 +81,17 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+The only difference between this example and the example :ref:`example_442` are the
+following two lines in the file ``hosts/05_iocage.yml``
+
+.. code-block:: yaml
+
+   ansible_host: dict(iocage_properties.notes | split | map('split', '=')).vmm
+   ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
 
 .. seealso::
 
-   * TBD
+   example :ref:`example_050`
 
 Templates at iocage_05
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -147,7 +153,7 @@ Inventory hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 10,11
+   :emphasize-lines: 9,10
 
 .. note::
 
@@ -195,7 +201,7 @@ Playbook output - Test SSH redirection
 
 .. hint::
 
-   The below command stops and destroys the jails in ``swarms`` ::
+   The below play stops and destroys the jails in ``swarms`` ::
 
      ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
                       -i iocage.ini \
@@ -206,5 +212,3 @@ Playbook output - Test SSH redirection
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _binary iocage: https://github.com/iocage/iocage/

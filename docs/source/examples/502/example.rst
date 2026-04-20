@@ -11,7 +11,7 @@
 
 .. index:: single: role vbotka.freebsd.config_light; Example 502
 .. index:: single: vbotka.freebsd.config_light; Example 502
-.. index:: single: config_light files sysrc Example 502
+.. index:: single: config_light; Example 502
 
 .. index:: single: log server; Example 502
 .. index:: single: syslog-ng; Example 502
