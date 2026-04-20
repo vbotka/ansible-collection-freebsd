@@ -1,9 +1,0 @@
-* Create example 051 extending 050
-  - create jails
-  - create dynamic inventory with:
-    ansible_jail_host assigned to the value of vmm from the tags
-    ansible_connection=vbotka.freebsd.jailexec
-    ansible_jail_privilege_escalation=sudo
-    ansible_python_interpreter=auto_silent
-
-# EOF
