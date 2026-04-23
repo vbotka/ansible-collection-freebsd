@@ -21,7 +21,7 @@
 .. index:: single: option iocage --count; Example 443
 .. index:: single: option iocage --newmac; Example 443
 
-.. index:: single: iocage plugin; Example 443
+.. index:: single: iocage plugins; Example 443
 .. index:: single: plugin ansible-zero; Example 443
 .. index:: single: ansible-zero; Example 443
 

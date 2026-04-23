@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* docs. Fix index 'iocage plugins'.
 
 
 0.8.13
