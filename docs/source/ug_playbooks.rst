@@ -19,6 +19,9 @@ Playbooks
 .. _ug_pb-iocage-project-destroy:
 .. include:: playbooks/pb-iocage-project-destroy.rst
 
+.. _ug_pb-iocage-plugin:
+.. include:: playbooks/pb-iocage-plugins.rst
+
 Other iocage playbooks
 ----------------------
 

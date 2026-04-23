@@ -10,12 +10,18 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Basic management of iocage plugins added.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
+* Added playbook pb_iocage_plugins.yml; fetch iocage plugins.
+* Updated playbook pb_iocage_ansible_clients.yml; Clone jails from iocage
+  plugins.
+* docs. Add example 443; Iocage plugin ansible-zero.
+* docs. Add pb-iocage-plugins to UG.
 
 
 0.8.12

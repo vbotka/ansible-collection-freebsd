@@ -1,0 +1,17 @@
+- name: Test the connection plugin jailexec.
+  hosts: swarm_sw_01
+  gather_facts: false
+    
+  tasks:
+    
+    - ansible.builtin.debug:
+        msg: |
+          ansible_connection: {{ ansible_connection }}
+          ansible_host: {{ ansible_host }}
+          ansible_user: {{ ansible_user }}
+
+          ansible_jail_host: {{ ansible_jail_host }}
+          ansible_jail_privilege_escalation: {{ ansible_jail_privilege_escalation }}
+
+          iocage_ip4: {{ iocage_ip4 }}
+          iocage_tags: {{ iocage_tags }}
