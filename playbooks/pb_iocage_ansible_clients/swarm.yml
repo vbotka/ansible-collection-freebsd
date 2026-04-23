@@ -8,23 +8,43 @@
                       {"notes": _notes}] | select | combine(recursive=true) }}'
     _query: '[?value.swarm==`{{ item.key }}`].key'
     _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
-    cmd_create: >
+    cmd_create_from_template: >
       iocage create
       --short
       --template {{ item.value.template }}
       --count {{ _count }}
       {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+    cmd_clone_from_plugin: >
+      iocage clone
+      {{ item.value.plugin }}
+      --newmac
+      --count {{ _count }}
+      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+    cmd_create: |
+      {% if 'template' in item.value %}
+      {{ cmd_create_from_template }}
+      {% elif 'plugin' in item.value %}
+      {{ cmd_clone_from_plugin }}
+      {% endif %}
+
   block:
 
     - name: Get iocage facts
       vbotka.freebsd.iocage:
+
+    - name: Reject jails with empty notes
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ ansible_facts.iocage_jails
+                          | dict2items
+                          | rejectattr('value.properties.notes', 'equalto', 'none')
+                          | items2dict }}"
 
     - name: "Debug iocage_jails and _tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         msg: |
           iocage_jails:
-            {{ ansible_facts.iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
           _tags:
             {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
 
@@ -65,12 +85,19 @@
     - name: Get iocage facts
       vbotka.freebsd.iocage:
 
+    - name: Reject jails with empty notes
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ ansible_facts.iocage_jails
+                          | dict2items
+                          | rejectattr('value.properties.notes', 'equalto', 'none')
+                          | items2dict }}"
+
     - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         msg: |
           iocage_jails:
-            {{ ansible_facts.iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
           _started: {{ _started }}
           _tags:
             {{ _tags | to_nice_yaml(indent=2) | indent(2) }}

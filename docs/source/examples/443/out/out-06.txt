@@ -1,0 +1,43 @@
+
+PLAY [Test the connection plugin jailexec.] ************************************
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [4ddecd35-83a8-43fe-97c0-26ce93a9fb51] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: 4ddecd35-83a8-43fe-97c0-26ce93a9fb51
+        ansible_user: admin
+
+        ansible_jail_host: iocage_05
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: 10.10.99.121
+        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
+ok: [bd21d433-2685-4b53-be96-4b45cbb77ddc] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: bd21d433-2685-4b53-be96-4b45cbb77ddc
+        ansible_user: admin
+
+        ansible_jail_host: iocage_05
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: 10.10.99.122
+        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
+ok: [a59dc6c6-fda8-432a-95ae-fedb9bf2313e] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: a59dc6c6-fda8-432a-95ae-fedb9bf2313e
+        ansible_user: admin
+
+        ansible_jail_host: iocage_05
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: 10.10.99.120
+        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
+
+PLAY RECAP *********************************************************************
+4ddecd35-83a8-43fe-97c0-26ce93a9fb51 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+a59dc6c6-fda8-432a-95ae-fedb9bf2313e : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+bd21d433-2685-4b53-be96-4b45cbb77ddc : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
