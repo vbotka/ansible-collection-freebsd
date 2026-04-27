@@ -1,0 +1,18 @@
+fp_syslogng: true
+fp_syslogng_enable: true
+fp_syslogng_conf_template: syslog-ng.conf.server.j2
+fp_syslogng_conf:
+  header:
+    - '@version:4.8'
+    - '@include "scl.conf"'
+  source:
+    s_remote:
+      tcp:
+        port:
+          514
+  destination:
+    d_remote:
+      file: '"/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.log" create-dirs(yes)'
+  log:
+    - source: s_remote
+      destination: d_remote

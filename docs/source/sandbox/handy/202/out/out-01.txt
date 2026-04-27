@@ -1,10 +1,10 @@
 
-PLAY [Create Ansible client templates.] ******************************* 05:20:58
+PLAY [Create Ansible client templates.] ****************************************
 
-TASK [Setup: Get iocage list of templates.] *************************** 05:20:59
+TASK [Setup: Get iocage list of templates.] ************************************
 ok: [iocage_05]
 
-TASK [Setup: Display iocage_templates debug=true] ********************* 05:20:59
+TASK [Setup: Display iocage_templates debug=true] ******************************
 ok: [iocage_05] => 
     iocage_templates:
         ansible_client_apache:
@@ -34,16 +34,16 @@ ok: [iocage_05] =>
             template: '-'
             type: template
 
-TASK [Create: Get iocage list of templates.] ************************** 05:21:00
+TASK [Create: Get iocage list of templates.] ***********************************
 ok: [iocage_05]
 
-TASK [Create: Create templates.] ************************************** 05:21:05
+TASK [Create: Create templates.] ***********************************************
 changed: [iocage_05] => (item=ansible_client 15.0-RELEASE)
 
-TASK [Start: Get iocage list of jails.] ******************************* 05:21:06
+TASK [Start: Get iocage list of jails.] ****************************************
 ok: [iocage_05]
 
-TASK [Start: Display iocage_jails debug=true] ************************* 05:21:06
+TASK [Start: Display iocage_jails debug=true] **********************************
 ok: [iocage_05] => 
     iocage_jails:
         ansible_client:
@@ -60,88 +60,134 @@ ok: [iocage_05] =>
             template: '-'
             type: jail
 
-TASK [Start: Start created templates.] ******************************** 05:21:08
+TASK [Start: Start created templates.] *****************************************
 ok: [iocage_05]
 
-TASK [Pkg: Get iocage list of jails.] ********************************* 05:21:08
+TASK [Pkg: Get iocage list of jails.] ******************************************
 ok: [iocage_05]
 
-TASK [Pkg: Display iocage_jails debug=true] *************************** 05:21:08
+TASK [Pkg: Display iocage_jails debug=true] ************************************
 ok: [iocage_05] => 
     iocage_jails:
         ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: 10.1.0.126
+            ip4: 172.16.99.104
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 10.1.0.126
+                    ip: 172.16.99.104
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '13'
+            jid: '9'
             release: 15.0-RELEASE
             state: up
             template: '-'
             type: jail
 
-TASK [Pkg: Install packages.] ***************************************** 05:21:41
-changed: [iocage_05] => (item=ansible_client)
+TASK [Pkg: Install packages.] **************************************************
+[ERROR]: Task failed: Module failed: Could not update catalogue [1]: Updating FreeBSD-ports repository catalogue...
+repository FreeBSD-ports has no meta file, using default settings
+Unable to update repository FreeBSD-ports
+Updating FreeBSD-ports-kmods repository catalogue...
+repository FreeBSD-ports-kmods has no meta file, using default settings
+Unable to update repository FreeBSD-ports-kmods
+Error updating repositories!
+ pkg: No SRV record found for the repo 'FreeBSD-ports'
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.conf: Timeout was reached
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.txz -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.tzst -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.tzst -- pkg+:// implies SRV mirror type
+pkg: No SRV record found for the repo 'FreeBSD-ports-kmods'
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.conf: Timeout was reached
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.txz -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.tzst -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.tzst -- pkg+:// implies SRV mirror type
 
-TASK [User: Create user.] ********************************************* 05:21:45
-changed: [iocage_05] => (item=ansible_client admin)
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_template/pkg.yml:12:3
 
-TASK [Pk: The keys are valid.] **************************************** 05:21:45
-ok: [iocage_05] => 
+10     var: iocage_jails
+11
+12 - name: "Pkg: Install packages."
+     ^ column 3
+
+failed: [iocage_05] (item=ansible_client) => 
+    ansible_loop_var: item
     changed: false
-    msg: All assertions passed
-
-TASK [Pk: Configure public keys.] ************************************* 05:21:45
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Pk: Chown .ssh] ************************************************* 05:21:49
-ok: [iocage_05] => (item=ansible_client admin)
-
-TASK [Sudo: Configure sudo.] ****************************************** 05:21:49
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Dhclient: Configure hooks.] ************************************* 05:21:50
-changed: [iocage_05] => (item=ansible_client dhclient-exit-hooks)
-
-TASK [Rcconf: Configure /etc/rc.conf] ********************************* 05:21:51
-changed: [iocage_05] => (item=ansible_client iocage_enable YES)
-changed: [iocage_05] => (item=ansible_client sshd_enable YES)
-
-TASK [Stop: Get iocage list of jails.] ******************************** 05:21:52
-ok: [iocage_05]
-
-TASK [Stop: Display iocage_jails debug=true] ************************** 05:21:52
-ok: [iocage_05] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: 10.1.0.126
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 10.1.0.126
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '13'
+    item:
+        key: ansible_client
+        value:
+            dhclient:
+            -   key: dhclient-exit-hooks
+                value: |-
+                    case "$reason" in
+                        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+                        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+                        ;;
+                    esac
+            properties:
+                bpf: 1
+                dhcp: 1
+                vnet: 1
+            rcconf:
+            -   key: iocage_enable
+                value: 'YES'
+            -   key: sshd_enable
+                value: 'YES'
             release: 15.0-RELEASE
-            state: up
-            template: '-'
-            type: jail
+    msg: |-
+        Could not update catalogue [1]: Updating FreeBSD-ports repository catalogue...
+        repository FreeBSD-ports has no meta file, using default settings
+        Unable to update repository FreeBSD-ports
+        Updating FreeBSD-ports-kmods repository catalogue...
+        repository FreeBSD-ports-kmods has no meta file, using default settings
+        Unable to update repository FreeBSD-ports-kmods
+        Error updating repositories!
+         pkg: No SRV record found for the repo 'FreeBSD-ports'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.conf: Timeout was reached
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.tzst -- pkg+:// implies SRV mirror type
+        pkg: No SRV record found for the repo 'FreeBSD-ports-kmods'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.conf: Timeout was reached
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+    stderr: |-
+        pkg: No SRV record found for the repo 'FreeBSD-ports'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.conf: Timeout was reached
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.tzst -- pkg+:// implies SRV mirror type
+        pkg: No SRV record found for the repo 'FreeBSD-ports-kmods'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.conf: Timeout was reached
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+    stderr_lines: <omitted>
+    stdout: |-
+        Updating FreeBSD-ports repository catalogue...
+        repository FreeBSD-ports has no meta file, using default settings
+        Unable to update repository FreeBSD-ports
+        Updating FreeBSD-ports-kmods repository catalogue...
+        repository FreeBSD-ports-kmods has no meta file, using default settings
+        Unable to update repository FreeBSD-ports-kmods
+        Error updating repositories!
+    stdout_lines: <omitted>
 
-TASK [Stop: Stop jails.] ********************************************** 05:21:54
-ok: [iocage_05]
-
-TASK [Template: Set template.] **************************************** 05:21:54
-ok: [iocage_05] => (item=ansible_client)
-
-PLAY RECAP ************************************************************ 05:21:55
-iocage_05                  : ok=21   changed=7    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=9    changed=1    unreachable=0    failed=1    skipped=6    rescued=0    ignored=0   
 

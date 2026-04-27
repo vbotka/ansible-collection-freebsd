@@ -10,7 +10,7 @@
 902 ... Use ansible_port to forward the SSH connection from the iocage host to the jails.
 903 ... Display iocage_ data-sets collected by the module vbotka.freebsd.iocage
 904 ... Test connection plugin jailexec
-
+905 ... Test iocage plugin syslog-ng
 
 **Notes**
 

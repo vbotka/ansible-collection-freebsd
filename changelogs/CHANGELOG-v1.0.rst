@@ -16,8 +16,11 @@ Major Changes
 
 Minor Changes
 --------------
+* Update cloning in the playbook playbooks/pb_iocage_ansible_clients.yml
 * docs. Fix index 'iocage plugins'.
-
+* docs. Update examples 443 and 500.
+* docs. Update sandbox 202, 901, and 904.
+* docs. Add examples 520 and 905 (WIP).
 
 0.8.13
 ======

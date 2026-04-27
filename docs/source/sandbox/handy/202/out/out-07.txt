@@ -1,10 +1,3 @@
 @all:
   |--@ungrouped:
-  |--@test_01:
-  |  |--test_151
-  |  |--test_152
-  |  |--test_153
-  |--@test:
-  |  |--test_151
-  |  |--test_152
-  |  |--test_153
+  |  |--ansible_client

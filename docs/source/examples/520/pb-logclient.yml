@@ -1,0 +1,38 @@
+- name: Configure and start Log Client.
+  hosts: logclient
+  remote_user: admin
+  become: true
+    
+  tasks:
+
+    - name: Debug.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        msg: |
+          log_serv: {{ log_serv }}
+          fp_syslogd_enable: {{ fp_syslogd_enable }}
+          fp_syslogng_enable: {{ fp_syslogng_enable }}
+
+    - name: Install syslog-ng
+      when: install | d(false) | bool
+      delegate_to: "{{ iocage_tags.vmm }}"
+      community.general.pkgng:
+        name: sysutils/syslog-ng
+        use_globs: false
+        jail: "{{ iocage_jid }}"
+        cached: true
+
+    - name: Stop syslogd.
+      vbotka.freebsd.service:
+        script: syslogd
+        command: stop
+
+    - name: Disable syslogd.
+      vbotka.freebsd.service:
+        script: syslogd
+        command: disable
+
+    - name: Configure and start syslog-ng.
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.postinstall
+        tasks_from: syslog-ng.yml

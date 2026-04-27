@@ -1,0 +1,20 @@
+plugin: ansible.builtin.constructed
+compose:
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes | split
+                                            | select('match', '^.*=.*$')
+                                            | map('split', '='))
+  iocage_classes: iocage_properties.notes | split
+                                          | select('match', '^class=.*$') | first
+                                          | split('=') | last
+                                          | split(',')
+groups:
+  db: "'db' in iocage_classes"
+  http: "'http' in iocage_classes"
+  logclient: "'logclient' in iocage_classes"
+  logserv: "'logserv' in iocage_classes"
+keyed_groups:
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm

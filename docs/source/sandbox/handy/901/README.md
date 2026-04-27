@@ -4,6 +4,7 @@ This example prepares the JSON query for the "Indirect Node Counting". This
 query will be used in the file extensions/audit/event_query.yml
 
 See:
+
 - The Future of Ansible Resource Management ...
   https://forum.ansible.com/t/the-future-of-ansible-resource-management-help-shape-our-new-standardized-taxonomy/45595
 - Indirect Node Counts in Ansible Collections
@@ -47,12 +48,19 @@ and store the module output in the file
           {{ module_output | to_json }}
 ```
 
-Test the query stored in the file event_query.json
+Run this
+
+```console
+shell> ansible-playbook pb-test-query.yml
+```
+
+Then, test the query stored in the file event_query.json
 
 ```console
 shell> cat module_output_iocage_05.json | jq -f event_query.json
 ```
 
+The result is the dictionary described in the above docs.
 
 ```yaml
 {

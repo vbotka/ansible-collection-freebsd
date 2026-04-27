@@ -1,51 +1,43 @@
-.. _example_500:
+.. _example_520:
 
-500 syslog-ng server and syslog-ng clients
-------------------------------------------
+520 Plugins syslog-ng server/clients
+------------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: syslog-ng; Example 500
-.. index:: single: syslogd; Example 500
-.. index:: single: loggen; Example 500
-.. index:: single: log server; Example 500
-.. index:: single: log client; Example 500
+.. index:: single: syslog-ng; Example 520
+.. index:: single: syslogd; Example 520
+.. index:: single: loggen; Example 520
+.. index:: single: log server; Example 520
+.. index:: single: log client; Example 520
 
-.. index:: single: postinstall; Example 500
-.. index:: single: vbotka.freebsd.postinstall; Example 500
-.. index:: single: role vbotka.freebsd.postinstall; Example 500
+.. index:: single: iocage plugins; Example 520
+.. index:: single: plugin syslog-server; Example 520
+.. index:: single: plugin syslog-client; Example 520
 
-.. index:: single: module vbotka.freebsd.service; Example 500
-.. index:: single: vbotka.freebsd.service; Example 500
-.. index:: single: module community.general.pkgng; Example 500
-.. index:: single: community.general.pkgng; Example 500
+.. index:: single: module vbotka.freebsd.service; Example 520
+.. index:: single: vbotka.freebsd.service; Example 520
 
 Use case
 ^^^^^^^^
 
-Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Use the jails
-created in the example :ref:`example_207`. The ``project`` keys are jail's aliases.
+Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Clone the
+iocage plugin ``syslog-ng`. The ``project`` keys are jail's aliases.
 
 .. code-block:: yaml
 
    project:
-     logserv_1:
+     logserv:
        class: [logserv]
-       vmm: iocage_01
-     http_1:
-       class: [http, logclient]
-       vmm: iocage_02
-     db_1:
-       class: [db, logclient]
-       vmm: iocage_02
-     http_2:
-       class: [http, logclient]
-       vmm: iocage_04
-     db_2:
-       class: [db, logclient]
-       vmm: iocage_04
+       vmm: iocage_05
+     foo:
+       class: [logclient]
+       vmm: iocage_05
+     bar:
+       class: [logclient]
+       vmm: iocage_05
 
 * Destroy all jails
 
@@ -54,18 +46,6 @@ created in the example :ref:`example_207`. The ``project`` keys are jail's alias
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml \
                               -i iocage.ini \
 			      --flush-cache
-
-* Create ``ansible_client`` templates. Run the play in :ref:`example_202`
-
-  .. code-block:: console
-
-     (env) > ansible-playbook pb-iocage-template.yml -i iocage.ini
-
-* Create the project. Run the play in :ref:`example_207`
-
-  .. code-block:: console
-
-     (env) > ansible-playbook pb-iocage-project-create.yml -i iocage.ini -i hosts
 
 Tree
 ^^^^
@@ -83,16 +63,10 @@ Tree
   │   └── logserv
   │       └── syslog-ng.yml
   ├── hosts
-  │   ├── 01_iocage.yml
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 05_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
+  │   └── iocage_05
   │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all-groups.yml
@@ -103,23 +77,30 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the inventory group ``logserv``:
+* At a managed node:
 
-  * install `sysutils/syslog-ng`_
-  * configure `syslog-ng Server`_.
+  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
 
-* In the inventory group ``logclient``:
+  * Fetch the iocage plugin ``syslog-ng``
 
-  * install `sysutils/syslog-ng`_
-  * configure `syslog-ng Client`_.
+  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
+
+  * Clone jails from the iocage plugin ``syslog-ng``
+
+* In the inventory group ``logserv`` configure `syslog-ng Server`_.
+
+* In the inventory group ``logclient`` configure `syslog-ng Client`_.
 
 Requirements
 ^^^^^^^^^^^^
 
+* iocage plugin ``syslog-ng``
+* playbook `vbotka.freebsd.pb_iocage_plugins.yml`_
+* playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
+* `connection plugin vbotka.freebsd.jailexec`_
 * `module vbotka.freebsd.service`_
 * role `vbotka.freebsd.postinstall`_
-* jails created in the project :ref:`example_207`
 
 Notes
 ^^^^^
@@ -132,9 +113,7 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_.
-   | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
+   TBD
 
 .. seealso::
 
@@ -158,15 +137,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/01_iocage.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
-   :caption:
-
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
 
@@ -313,13 +284,15 @@ Example of the directory at the Log Server.
 .. _syslog-ng - FreeBSD Wiki: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
 .. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng
 
+.. _vbotka.freebsd.pb_iocage_plugins.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_plugins.yml/
+.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 .. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _connection plugin vbotka.freebsd.jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html

@@ -133,6 +133,7 @@ Examples
    examples/501/example.rst
    examples/502/example.rst
    examples/510/example.rst
+   examples/520/example.rst
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
