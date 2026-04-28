@@ -1,7 +1,7 @@
 
-PLAY [all] ************************************************************ 05:15:41
+PLAY [all] *********************************************************************
 
-TASK [debug] ********************************************************** 05:15:41
+TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: |-
         inventory_hostname: ansible_client
@@ -27,18 +27,19 @@ ok: [test_153] =>
         release: 15.0
         iocage_tags: {'vmm': 'iocage_05'}
 
-TASK [debug] ********************************************************** 05:15:41
+TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: |-
         groups:
           all: [ansible_client, test_151, test_152, test_153]
           distro_05_15_0_RELEASE: [ansible_client, test_151, test_152, test_153]
-          state_05_down: [ansible_client, test_151, test_152, test_153]
+          state_05_down: [ansible_client, test_151]
+          state_05_up: [test_152, test_153]
           test_05: [test_151, test_152, test_153]
           ungrouped: []
           vmm_iocage_05: [ansible_client, test_151, test_152, test_153]
 
-PLAY RECAP ************************************************************ 05:15:41
+PLAY RECAP *********************************************************************
 ansible_client             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

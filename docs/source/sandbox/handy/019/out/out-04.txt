@@ -1,15 +1,15 @@
 
-PLAY [region_EU] ****************************************************** 05:17:23
+PLAY [region_EU] ***************************************************************
 
-TASK [debug] ********************************************************** 05:17:23
+TASK [debug] *******************************************************************
 ok: [test_151] => 
-    ansible_host: 10.1.0.101
+    ansible_host: 10.10.99.102
 ok: [test_152] => 
-    ansible_host: 10.1.0.102
+    ansible_host: 10.10.99.101
 ok: [test_153] => 
-    ansible_host: 10.1.0.116
+    ansible_host: '-'
 
-PLAY RECAP ************************************************************ 05:17:23
+PLAY RECAP *********************************************************************
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

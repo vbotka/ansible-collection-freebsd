@@ -1,27 +1,27 @@
 
-PLAY [iocage] ********************************************************* 05:16:15
+PLAY [iocage] ******************************************************************
 
-TASK [Clone basejail.] ************************************************ 05:16:22
+TASK [Clone basejail.] *********************************************************
 changed: [iocage_05] => (item={'name': 'test_151', 'clone_from': 'ansible_client'})
 changed: [iocage_05] => (item={'name': 'test_152', 'clone_from': 'ansible_client'})
 changed: [iocage_05] => (item={'name': 'test_153', 'clone_from': 'ansible_client'})
 
-TASK [Start clones.] ************************************************** 05:16:48
+TASK [Start clones.] ***********************************************************
 changed: [iocage_05] => (item=test_151)
 changed: [iocage_05] => (item=test_152)
-changed: [iocage_05] => (item=test_153)
+ok: [iocage_05] => (item=test_153)
 
-TASK [Create Ansible facts iocage_*] ********************************** 05:17:14
+TASK [Create Ansible facts iocage_*] *******************************************
 ok: [iocage_05]
 
-TASK [Display jails.] ************************************************* 05:17:14
+TASK [Display jails.] **********************************************************
 ok: [iocage_05] => 
     msg: |-
         ansible_client None - 15.0-RELEASE down
-        test_151 5 epair0b|10.1.0.101 15.0-RELEASE up
-        test_152 6 epair0b|10.1.0.102 15.0-RELEASE up
-        test_153 7 epair0b|10.1.0.116 15.0-RELEASE up
+        test_151 5 epair0b|10.10.99.102 15.0-RELEASE up
+        test_152 6 epair0b|10.10.99.101 15.0-RELEASE up
+        test_153 4 DHCP - Network Issue: Command '['jexec', 'ioc-test_153', 'ifconfig', 'epair0b', 'inet']' returned non-zero exit status 1. 15.0-RELEASE up
 
-PLAY RECAP ************************************************************ 05:17:14
+PLAY RECAP *********************************************************************
 iocage_05                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

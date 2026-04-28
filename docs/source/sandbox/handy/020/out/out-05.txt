@@ -1,7 +1,7 @@
 +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
 | JID  |   NAME   | BOOT | STATE | TYPE |   RELEASE    |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
 +======+==========+======+=======+======+==============+====================+=====+================+==========+
-| None | c2c5442a | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
+| None | 05d2b7f1 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
 +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-| None | cffb12d9 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
+| None | 55a03079 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
 +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+

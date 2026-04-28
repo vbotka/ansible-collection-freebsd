@@ -1,64 +1,67 @@
 
-PLAY [Configure pf.] ************************************************** 05:31:36
+PLAY [Configure pf.] ***********************************************************
 
-TASK [Gathering Facts] ************************************************ 05:31:39
+TASK [Gathering Facts] *********************************************************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Stat /etc/rc.d/blacklistd] *** 05:31:39
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Stat /etc/rc.d/blacklistd] ********
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Blacklistd: Backup /etc/blacklistd.conf.orig] *** 05:31:40
+TASK [vbotka.freebsd.pf : Blacklistd: Backup /etc/blacklistd.conf.orig] ********
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Blacklistd: Configure /etc/blacklistd.conf] *** 05:31:41
+TASK [vbotka.freebsd.pf : Blacklistd: Configure /etc/blacklistd.conf] **********
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Stat /usr/local/etc/rc.d/fail2ban] *** 05:31:41
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Stat /usr/local/etc/rc.d/fail2ban] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/fail2ban.local] *** 05:31:42
+TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/fail2ban.local] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/jail.local] *** 05:31:43
+TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/jail.local] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-sshguard: Stat /usr/local/etc/rc.d/sshguard] *** 05:31:43
+TASK [vbotka.freebsd.pf : Rcconf-sshguard: Stat /usr/local/etc/rc.d/sshguard] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Configure sshguard.conf] ******************** 05:31:44
+TASK [vbotka.freebsd.pf : Configure sshguard.conf] *****************************
 ok: [iocage_05] => (item={'key': 'BACKEND', 'value': '/usr/local/libexec/sshg-fw-pf'})
 ok: [iocage_05] => (item={'key': 'WHITELIST_FILE', 'value': '/usr/local/etc/sshguard.whitelist'})
 
-TASK [vbotka.freebsd.pf : Create directory /etc/pf] ******************* 05:31:45
+TASK [vbotka.freebsd.pf : Create directory /etc/pf] ****************************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Copy includes files to /etc/pf] ************* 05:31:46
-ok: [iocage_05] => (item={'key': 'pf_translation', 'value': 'pf-rdr-ssh.conf'})
+TASK [vbotka.freebsd.pf : Copy includes files to /etc/pf] **********************
+changed: [iocage_05] => (item={'key': 'pf_translation', 'value': 'pf-rdr-ssh.conf'})
 
-TASK [vbotka.freebsd.pf : Pfconf: Configure and validate rules using template default3-pf.conf.j2] *** 05:31:48
+TASK [vbotka.freebsd.pf : Pfconf: Configure and validate rules using template default3-pf.conf.j2] ***
+changed: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Enable and start blacklistd.] *****
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Enable and start blacklistd.] *** 05:31:48
-ok: [iocage_05]
-
-TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Configure blacklistd.] *** 05:31:49
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Configure blacklistd.] ************
 ok: [iocage_05] => (item={'name': 'blacklistd_flags', 'value': '-r'})
 
-TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Enable and start fail2ban.] *** 05:31:49
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Enable and start fail2ban.] *********
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Configure fail2ban.] ******* 05:31:50
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Configure fail2ban.] ****************
 ok: [iocage_05] => (item={'name': 'fail2ban_flags', 'value': ''})
 
-TASK [vbotka.freebsd.pf : Rcconf-sshguard: Enable and start sshguard.] *** 05:31:50
+TASK [vbotka.freebsd.pf : Rcconf-sshguard: Enable and start sshguard.] *********
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-pf: Enable and start pf.] ************ 05:31:51
+TASK [vbotka.freebsd.pf : Rcconf-pf: Enable and start pf.] *********************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.pf : Rcconf-pflog: Enable and start pflog.] ****** 05:31:51
+TASK [vbotka.freebsd.pf : Rcconf-pflog: Enable and start pflog.] ***************
 ok: [iocage_05]
 
-PLAY RECAP ************************************************************ 05:31:51
-iocage_05                  : ok=19   changed=0    unreachable=0    failed=0    skipped=40   rescued=0    ignored=0   
+RUNNING HANDLER [vbotka.freebsd.pf : Reload pf] ********************************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=20   changed=3    unreachable=0    failed=0    skipped=40   rescued=0    ignored=0   
 

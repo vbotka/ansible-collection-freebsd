@@ -1,13 +1,13 @@
 
-PLAY [iocage] ********************************************************* 05:13:09
+PLAY [iocage] ******************************************************************
 
-TASK [Gathering Facts] ************************************************ 05:13:12
+TASK [Gathering Facts] *********************************************************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Pkg: Install iocage packages.] ********** 05:13:19
+TASK [vbotka.freebsd.iocage : Pkg: Install iocage packages.] *******************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Pkg: Debug Install iocage packages freebsd_iocage_debug=true] *** 05:13:19
+TASK [vbotka.freebsd.iocage : Pkg: Debug Install iocage packages freebsd_iocage_debug=true] ***
 ok: [iocage_05] => 
     result:
         attempts: 1
@@ -33,6 +33,6 @@ ok: [iocage_05] =>
         - FreeBSD-base repository is up to date.
         - All repositories are up to date.
 
-PLAY RECAP ************************************************************ 05:13:19
+PLAY RECAP *********************************************************************
 iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 
