@@ -16,4 +16,4 @@
 
 * To see the tasks timing use the 'timestamp' callback.
   shell> export ANSIBLE_STDOUT_CALLBACK=community.general.timestamp
-  shell> ./bastch.sh
+  shell> ./batch.sh
