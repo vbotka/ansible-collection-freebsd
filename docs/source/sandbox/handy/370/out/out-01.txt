@@ -1,0 +1,12 @@
+
+PLAY [Test role vbotka.freebsd.pf] *********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.pf : Packages: Install packages.] *************************
+ok: [iocage_04]
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

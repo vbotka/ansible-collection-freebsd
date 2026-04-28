@@ -20,7 +20,8 @@ Minor Changes
 * docs. Fix index 'iocage plugins'.
 * docs. Update examples 440, 443, and 500.
 * docs. Update sandbox 202, 901, and 904.
-* docs. Add examples 520 and 905 (WIP).
+* docs. Add examples 520 (WIP).
+* docs. Add 370, 905 to sandbox.
 * docs. Update sandbox examples.
 
 
