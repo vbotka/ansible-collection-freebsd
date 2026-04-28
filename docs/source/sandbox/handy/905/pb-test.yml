@@ -1,15 +1,17 @@
-- name: Connect to the group test.
-  hosts: vmm_iocage_05
+- name: Test the connection plugin jailexec.
+  hosts: swarm_sw_01
   gather_facts: false
-  remote_user: admin
     
   tasks:
-
-    - ansible.builtin.command: hostname
-      register: out_host
     
     - ansible.builtin.debug:
         msg: |
+          ansible_connection: {{ ansible_connection }}
           ansible_host: {{ ansible_host }}
-          iocage_tags:
-            {{ iocage_tags | to_nice_yaml }}
+          ansible_user: {{ ansible_user }}
+
+          ansible_jail_host: {{ ansible_jail_host }}
+          ansible_jail_privilege_escalation: {{ ansible_jail_privilege_escalation }}
+
+          iocage_ip4: {{ iocage_ip4 }}
+          iocage_tags: {{ iocage_tags }}

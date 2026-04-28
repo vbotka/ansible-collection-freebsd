@@ -8,4 +8,4 @@ and the external interface. For example,
 defaultrouter: 10.10.99.1
 ```
 
-See the example 902. how the network, dhcp, and pf are configured.
+See README in example 902.

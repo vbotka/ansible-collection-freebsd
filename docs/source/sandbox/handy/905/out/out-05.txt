@@ -1,0 +1,11 @@
+@all:
+  |--@ungrouped:
+  |  |--syslog-ng
+  |--@swarm_sw_01:
+  |  |--0beb93ec-f91e-47d5-8e32-d3c4d906ec52
+  |  |--2284f85d-f027-431e-968a-c12ab2d92e86
+  |  |--31720243-c8c2-4b2c-952b-38f3c81ab6c3
+  |--@vmm_iocage_05:
+  |  |--0beb93ec-f91e-47d5-8e32-d3c4d906ec52
+  |  |--2284f85d-f027-431e-968a-c12ab2d92e86
+  |  |--31720243-c8c2-4b2c-952b-38f3c81ab6c3

@@ -1,147 +1,46 @@
 
-PLAY [Create Ansible client templates.] ****************************************
+PLAY [Fetch and stop iocage plugins.] ******************************************
 
-TASK [Setup: Get iocage list of templates.] ************************************
+TASK [Get already fetched plugins.] ********************************************
 ok: [iocage_05]
 
-TASK [Setup: Display iocage_templates debug=true] ******************************
+TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
-    iocage_templates:
-        ansible_client_apache:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.0-RELEASE
-            state: down
-            template: '-'
-            type: template
-        ansible_client_pull:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.0-RELEASE
-            state: down
-            template: '-'
-            type: template
+    msg: |-
+        iocage_plugins:
+          {}
 
-TASK [Create: Get iocage list of templates.] ***********************************
-ok: [iocage_05]
+        plugins:
+          syslog-ng:
+            git: https://github.com/vbotka/iocage-plugins
+            options: bpf=1 dhcp=1 vnet=1
 
-TASK [Create: Create templates.] ***********************************************
-changed: [iocage_05] => (item=ansible_client 15.0-RELEASE)
-
-TASK [Start: Get iocage list of jails.] ****************************************
-ok: [iocage_05]
-
-TASK [Start: Display iocage_jails debug=true] **********************************
+TASK [Debug required plugins debug=true] ***************************************
 ok: [iocage_05] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.0-RELEASE
-            state: down
-            template: '-'
-            type: jail
+    msg: |-
+        required_plugins:
+          - syslog-ng
 
-TASK [Start: Start created templates.] *****************************************
+        selected_plugins:
+          -   key: syslog-ng
+            value:
+                git: https://github.com/vbotka/iocage-plugins
+                options: bpf=1 dhcp=1 vnet=1
+
+TASK [Check all required plugins are included in the dictionary plugins.] ******
 ok: [iocage_05]
 
-TASK [Pkg: Get iocage list of jails.] ******************************************
+TASK [Debug commands debug=true] ***********************************************
+ok: [iocage_05] => (item=syslog-ng) => 
+    msg: |-
+        iocage fetch --plugin-name syslog-ng --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
+
+TASK [Fetch required plaugins.] ************************************************
+ok: [iocage_05] => (item=syslog-ng)
+
+TASK [Stop fetched plugins.] ***************************************************
 ok: [iocage_05]
-
-TASK [Pkg: Display iocage_jails debug=true] ************************************
-ok: [iocage_05] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: 10.10.99.126
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 10.10.99.126
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '11'
-            release: 15.0-RELEASE
-            state: up
-            template: '-'
-            type: jail
-
-TASK [Pkg: Install packages.] **************************************************
-changed: [iocage_05] => (item=ansible_client)
-
-TASK [User: Create user.] ******************************************************
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Pk: The keys are valid.] *************************************************
-ok: [iocage_05] => 
-    changed: false
-    msg: All assertions passed
-
-TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Pk: Chown .ssh] **********************************************************
-ok: [iocage_05] => (item=ansible_client admin)
-
-TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_05] => (item=ansible_client dhclient-exit-hooks)
-
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_05] => (item=ansible_client iocage_enable YES)
-changed: [iocage_05] => (item=ansible_client sshd_enable YES)
-
-TASK [Stop: Get iocage list of jails.] *****************************************
-ok: [iocage_05]
-
-TASK [Stop: Display iocage_jails debug=true] ***********************************
-ok: [iocage_05] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: 10.10.99.126
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 10.10.99.126
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '11'
-            release: 15.0-RELEASE
-            state: up
-            template: '-'
-            type: jail
-
-TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_05]
-
-TASK [Template: Set template.] *************************************************
-ok: [iocage_05] => (item=ansible_client)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=21   changed=7    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
