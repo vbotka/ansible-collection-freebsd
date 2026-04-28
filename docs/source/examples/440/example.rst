@@ -55,9 +55,9 @@ Synopsis
   .. code-block:: ini
 
     gateway_enable="YES"
-    defaultrouter="192.168.1.1"
+    defaultrouter="172.16.0.1"
     cloned_interfaces="bridge0"
-    ifconfig_bridge0="inet 192.168.99.1/24"
+    ifconfig_bridge0="inet 10.10.99.1/24"
     wlans_iwm0="wlan0"
     create_args_wlan0="country US"
     ifconfig_wlan0="WPA SYNCDHCP"
@@ -65,8 +65,8 @@ Synopsis
 
 * In the playbook ``pb-dhcp.yml`` at ``iocage_05`` configure:
 
-  * subnet 192.168.99.0/24
-  * routers [192.168.99.1]
+  * subnet 10.10.99.0/24
+  * routers [10.10.99.1]
   * range 100-200
 
 * In the playbook ``pb-pf.yml`` at ``iocage_05`` configure:

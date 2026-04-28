@@ -1,22 +1,22 @@
-Status: Disabled for 0 days 00:00:09          Debug: Urgent
+Status: Disabled for 0 days 00:00:07          Debug: Urgent
 
 Interface Stats for wlan0             IPv4             IPv6
   Bytes In                               0                0
   Bytes Out                              0                0
   Packets In
-    Passed                           24489                0
-    Blocked                           2618                0
+    Passed                          110161               43
+    Blocked                              5                0
   Packets Out
     Passed                               0                0
-    Blocked                          16614                0
+    Blocked                          83545                0
 
 State Table                          Total             Rate
-  current entries                       21               
-  searches                           43721         4857.9/s
-  inserts                              806           89.6/s
-  removals                             785           87.2/s
+  current entries                       30               
+  searches                          287374        41053.4/s
+  inserts                             3206          458.0/s
+  removals                            3176          453.7/s
 Counters
-  match                               3424          380.4/s
+  match                               3328          475.4/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s
@@ -25,7 +25,7 @@ Counters
   bad-timestamp                          0            0.0/s
   congestion                             0            0.0/s
   ip-option                              0            0.0/s
-  proto-cksum                            0            0.0/s
+  proto-cksum                           39            5.6/s
   state-mismatch                         0            0.0/s
   state-insert                           0            0.0/s
   state-limit                            0            0.0/s

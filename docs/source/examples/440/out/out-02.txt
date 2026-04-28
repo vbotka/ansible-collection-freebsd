@@ -33,10 +33,10 @@ TASK [vbotka.freebsd.pf : Create directory /etc/pf] ****************************
 ok: [iocage_05]
 
 TASK [vbotka.freebsd.pf : Copy includes files to /etc/pf] **********************
-changed: [iocage_05] => (item={'key': 'pf_translation', 'value': 'pf-rdr-ssh.conf'})
+ok: [iocage_05] => (item={'key': 'pf_translation', 'value': 'pf-rdr-ssh.conf'})
 
 TASK [vbotka.freebsd.pf : Pfconf: Configure and validate rules using template default3-pf.conf.j2] ***
-changed: [iocage_05]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Enable and start blacklistd.] *****
 ok: [iocage_05]
@@ -63,5 +63,5 @@ RUNNING HANDLER [vbotka.freebsd.pf : Disable and stop pf] **********************
 changed: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=20   changed=4    unreachable=0    failed=0    skipped=41   rescued=0    ignored=0   
+iocage_05                  : ok=20   changed=2    unreachable=0    failed=0    skipped=40   rescued=0    ignored=0   
 
