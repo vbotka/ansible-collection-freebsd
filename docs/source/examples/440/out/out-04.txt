@@ -1,22 +1,22 @@
-Status: Disabled for 0 days 00:00:08          Debug: Urgent
+Status: Disabled for 0 days 00:00:09          Debug: Urgent
 
 Interface Stats for wlan0             IPv4             IPv6
   Bytes In                               0                0
   Bytes Out                              0                0
   Packets In
-    Passed                            4175                0
-    Blocked                              3                0
+    Passed                           24489                0
+    Blocked                           2618                0
   Packets Out
     Passed                               0                0
-    Blocked                           2391                0
+    Blocked                          16614                0
 
 State Table                          Total             Rate
   current entries                       21               
-  searches                            6621          827.6/s
-  inserts                               66            8.2/s
-  removals                              45            5.6/s
+  searches                           43721         4857.9/s
+  inserts                              806           89.6/s
+  removals                             785           87.2/s
 Counters
-  match                                 69            8.6/s
+  match                               3424          380.4/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s

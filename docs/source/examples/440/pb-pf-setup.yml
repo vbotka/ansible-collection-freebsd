@@ -6,7 +6,7 @@
   vars:
 
     ssh_rdr_start: 2200
-    dhcp_subnet: 192.168.99
+    dhcp_subnet: 10.10.99
     dhcp_ip_start: 100
     stop: 100
 
