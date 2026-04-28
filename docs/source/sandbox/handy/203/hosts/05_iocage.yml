@@ -1,9 +1,10 @@
 plugin: vbotka.freebsd.iocage
 host: handy
 user: admin
-get_properties: True
-hooks_results:
-  - /var/db/dhclient-hook.address.epair0b
+sudo: true
+get_properties: true
 compose:
-  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
-  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+  ansible_host: "'iocage_05'"
+  ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
+  ansible_python_interpreter: "'auto_silent'"
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)'))
