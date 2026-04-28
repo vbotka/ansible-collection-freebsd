@@ -2,36 +2,36 @@
 PLAY [Test the SSH redirection to the jails.] **********************************
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [0a3ea428] => 
+ok: [9883b679] => 
     msg: |-
         ansible_connection: ssh
         ansible_host: iocage_05
-        ansible_port: 2206
+        ansible_port: 2227
         ansible_user: admin
 
-        iocage_ip4: 10.10.99.106
+        iocage_ip4: 10.10.99.127
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
-ok: [93d13878] => 
+ok: [6569ed50] => 
     msg: |-
         ansible_connection: ssh
         ansible_host: iocage_05
-        ansible_port: 2208
+        ansible_port: 2228
         ansible_user: admin
 
-        iocage_ip4: 10.10.99.108
+        iocage_ip4: 10.10.99.128
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
-ok: [ffb2c114] => 
+ok: [b56cb786] => 
     msg: |-
         ansible_connection: ssh
         ansible_host: iocage_05
-        ansible_port: 2207
+        ansible_port: 2226
         ansible_user: admin
 
-        iocage_ip4: 10.10.99.107
+        iocage_ip4: 10.10.99.126
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
 PLAY RECAP *********************************************************************
-0a3ea428                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-93d13878                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ffb2c114                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+6569ed50                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+9883b679                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+b56cb786                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
