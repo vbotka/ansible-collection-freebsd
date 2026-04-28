@@ -92,7 +92,7 @@ Inventory hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 9-11
+   :emphasize-lines: 7-9
 
 .. note::
 
