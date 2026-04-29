@@ -20,12 +20,9 @@
   ansible.builtin.debug:
     var: out_create
 
-# - name: Start clones
-#   register: out_start
-#   vbotka.freebsd.iocage:
-#     state: started
-#     name: "{{ item }}"
-#   loop: "{{ start }}"
+- name: Set iocage_jails
+  ansible.builtin.set_fact:
+    iocage_jails: "{{ ansible_facts.iocage_jails }}"
 
 - name: Start clones  # noqa: no-changed-when
   when: _jails | length > 0

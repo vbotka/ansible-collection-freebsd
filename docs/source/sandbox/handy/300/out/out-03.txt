@@ -1,27 +1,8 @@
 
-PLAY [Test module vbotka.freebsd.service. Get running jails sshd rcvar.] *** 05:30:26
+PLAY [Test module vbotka.freebsd.service. Get running jails sshd rcvar.] *******
 
-TASK [Get sshd rcvar.] ************************************************ 05:30:36
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.116 port 22: Connection timed out
-
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/300/pb-test-01.yml:13:7
-
-11   tasks:
-12
-13     - name: Get sshd rcvar.
-         ^ column 7
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.116 port 22: Connection timed out
-
-fatal: [test_153]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.116
-        port 22: Connection timed out'
-    unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.101 port 22: Connection timed out
+TASK [Get sshd rcvar.] *********************************************************
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.102 port 22: Connection timed out
 
 Task failed.
 Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/300/pb-test-01.yml:13:7
@@ -33,14 +14,14 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 <<< caused by >>>
 
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.101 port 22: Connection timed out
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.102 port 22: Connection timed out
 
 fatal: [test_151]: UNREACHABLE! => 
     changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.101
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.102
         port 22: Connection timed out'
     unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.102 port 22: Connection timed out
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.101 port 22: Connection timed out
 
 Task failed.
 Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/300/pb-test-01.yml:13:7
@@ -52,15 +33,34 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 <<< caused by >>>
 
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.102 port 22: Connection timed out
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.101 port 22: Connection timed out
 
 fatal: [test_152]: UNREACHABLE! => 
     changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.102
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.101
+        port 22: Connection timed out'
+    unreachable: true
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.100 port 22: Connection timed out
+
+Task failed.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/300/pb-test-01.yml:13:7
+
+11   tasks:
+12
+13     - name: Get sshd rcvar.
+         ^ column 7
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.100 port 22: Connection timed out
+
+fatal: [test_153]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.100
         port 22: Connection timed out'
     unreachable: true
 
-PLAY RECAP ************************************************************ 05:30:36
+PLAY RECAP *********************************************************************
 test_151                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   

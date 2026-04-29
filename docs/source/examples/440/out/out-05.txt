@@ -4,8 +4,8 @@
 # MACROS
 ext_if = "wlan0"
 int_if = "bridge0"
-localnet = "192.168.1.0/16"
-jailnet = "192.168.99.0/16"
+localnet = "172.16.0.0/24"
+jailnet = "10.10.99.0/24"
 logall = "log"
 icmp_types = "{ echoreq, unreach }"
 icmp6_types = "{ echoreq, unreach }"
@@ -25,6 +25,7 @@ scrub in on $ext_if all fragment reassemble
 
 # TRANSLATION
 nat on $ext_if from $localnet to any -> ($ext_if)
+nat on $ext_if from $jailnet to any -> ($ext_if)
 nat on $int_if from $jailnet to any -> ($int_if)
 include "/etc/pf/pf-rdr-ssh.conf"
 

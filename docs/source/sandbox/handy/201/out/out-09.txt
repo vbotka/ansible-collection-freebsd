@@ -1,10 +1,10 @@
 
-PLAY [Display iocage datasets.] *************************************** 05:20:47
+PLAY [Display iocage datasets.] ************************************************
 
-TASK [Get iocage datasets.] ******************************************* 05:20:52
+TASK [Get iocage datasets.] ****************************************************
 ok: [iocage_05]
 
-TASK [Display iocage datasets (omit properties).] ********************* 05:20:52
+TASK [Display iocage datasets (omit properties).] ******************************
 ok: [iocage_05] => 
     msg: |-
         iocage_releases: ['15.0-RELEASE']
@@ -52,7 +52,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.151/24
             ip6: '-'
-            jid: '12'
+            jid: '10'
             name: test_151
             release: 15.0-RELEASE
             state: up
@@ -63,7 +63,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.152/24
             ip6: '-'
-            jid: '10'
+            jid: '11'
             name: test_152
             release: 15.0-RELEASE
             state: up
@@ -74,13 +74,13 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.153/24
             ip6: '-'
-            jid: '11'
+            jid: '9'
             name: test_153
             release: 15.0-RELEASE
             state: up
             template: ansible_client
             type: jail
 
-PLAY RECAP ************************************************************ 05:20:52
+PLAY RECAP *********************************************************************
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

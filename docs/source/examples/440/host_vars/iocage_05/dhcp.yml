@@ -25,11 +25,11 @@ bsd_dhcpd_max_lease_time: 7200
 bsd_dhcpd_authoritative: true
 
 # Subnet
-bsd_dhcpd_subnet: 192.168.99
+bsd_dhcpd_subnet: 10.10.99
 bsd_dhcpd_netmask: 255.255.255.0
 bsd_dhcpd_subnet_from: 100
 bsd_dhcpd_subnet_to: 200
-bsd_dhcpd_routers: [192.168.99.1]
+bsd_dhcpd_routers: [10.10.99.1]
 bsd_dhcpd_subnet_broadcast: 255
 
 # EOF

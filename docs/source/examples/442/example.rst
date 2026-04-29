@@ -63,7 +63,7 @@ following three lines in the file ``hosts/05_iocage.yml``
 .. code-block:: yaml
 
    ansible_connection: "'vbotka.freebsd.jailexec'"
-   ansible_jail_host: dict(iocage_properties.notes | split | map('split', '=')).vmm
+   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)')).vmm
    ansible_jail_privilege_escalation: "'sudo'"
 
 .. seealso::
@@ -92,7 +92,7 @@ Inventory hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 9-11
+   :emphasize-lines: 7-9
 
 .. note::
 

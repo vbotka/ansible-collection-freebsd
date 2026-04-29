@@ -1,19 +1,19 @@
 
-PLAY [Get custom facts] *********************************************** 05:18:49
+PLAY [Get custom facts] ********************************************************
 
-TASK [Get custom facts] *********************************************** 05:18:53
+TASK [Get custom facts] ********************************************************
 ok: [iocage_05]
 
-TASK [Debug] ********************************************************** 05:18:53
+TASK [Debug] *******************************************************************
 ok: [iocage_05] => 
     ansible_local.iocage:
         jails: |-
             +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
             | JID  |   NAME   | BOOT | STATE | TYPE |   RELEASE    |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
             +======+==========+======+=======+======+==============+====================+=====+================+==========+
-            | None | c2c5442a | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
+            | None | 05d2b7f1 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
             +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-            | None | cffb12d9 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
+            | None | 55a03079 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
             +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
         plugins: |-
             +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
@@ -33,11 +33,11 @@ ok: [iocage_05] =>
             | None | ansible_client_pull   | off  | down  | template | 15.0-RELEASE | DHCP (not running) | -   | -        | no       |
             +------+-----------------------+------+-------+----------+--------------+--------------------+-----+----------+----------+
 
-TASK [Debug] ********************************************************** 05:18:53
+TASK [Debug] *******************************************************************
 ok: [iocage_05] => 
     ansible_local.iocage | vbotka.freebsd.iocage:
         jails:
-            c2c5442a:
+            05d2b7f1:
                 basejail: 'no'
                 boot: 'off'
                 ip4: '-'
@@ -50,7 +50,7 @@ ok: [iocage_05] =>
                 state: down
                 template: ansible_client
                 type: jail
-            cffb12d9:
+            55a03079:
                 basejail: 'no'
                 boot: 'off'
                 ip4: '-'
@@ -107,6 +107,6 @@ ok: [iocage_05] =>
                 template: '-'
                 type: template
 
-PLAY RECAP ************************************************************ 05:18:53
+PLAY RECAP *********************************************************************
 iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

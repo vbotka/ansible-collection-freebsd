@@ -1,27 +1,30 @@
 
-PLAY [Configure network.] ********************************************* 05:31:30
+PLAY [Configure network.] ******************************************************
 
-TASK [Gathering Facts] ************************************************ 05:31:33
+TASK [Gathering Facts] *********************************************************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.network : Interfaces: Configure wlans in /etc/rc.conf] *** 05:31:33
+TASK [vbotka.freebsd.network : Interfaces: Configure wlans in /etc/rc.conf] ****
 ok: [iocage_05] => (item={'device': 'iwm0', 'interface': 'wlan0'})
 
-TASK [vbotka.freebsd.network : Interfaces: Configure interfaces create_args in /etc/rc.conf] *** 05:31:34
+TASK [vbotka.freebsd.network : Interfaces: Configure interfaces create_args in /etc/rc.conf] ***
 ok: [iocage_05] => (item={'interface': 'wlan0', 'options': 'WPA SYNCDHCP', 'create': 'country SK regdomain ETSI'})
 
-TASK [vbotka.freebsd.network : Interfaces: Configure interfaces options in /etc/rc.conf] *** 05:31:34
+TASK [vbotka.freebsd.network : Interfaces: Configure interfaces options in /etc/rc.conf] ***
 ok: [iocage_05] => (item={'interface': 'wlan0', 'options': 'WPA SYNCDHCP', 'create': 'country SK regdomain ETSI'})
 
-TASK [vbotka.freebsd.network : Routing: Set defaultrouter in /etc/rc.conf] *** 05:31:35
+TASK [vbotka.freebsd.network : Routing: Set defaultrouter in /etc/rc.conf] *****
+changed: [iocage_05]
+
+TASK [vbotka.freebsd.network : Routing: Set gateway_enable=YES in /etc/rc.conf] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.network : Routing: Set gateway_enable=YES in /etc/rc.conf] *** 05:31:35
+TASK [vbotka.freebsd.network : Routing: Remove list of static routes from /etc/rc.conf] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.network : Routing: Remove list of static routes from /etc/rc.conf] *** 05:31:36
+RUNNING HANDLER [vbotka.freebsd.network : Restart routing] *********************
 ok: [iocage_05]
 
-PLAY RECAP ************************************************************ 05:31:36
-iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=8    changed=1    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
 

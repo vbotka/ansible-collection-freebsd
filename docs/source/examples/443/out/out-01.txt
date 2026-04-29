@@ -36,11 +36,11 @@ ok: [iocage_05] => (item=ansible-zero) =>
         iocage fetch --plugin-name ansible-zero --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
 
 TASK [Fetch required plaugins.] ************************************************
-changed: [iocage_05] => (item=ansible-zero)
+ok: [iocage_05] => (item=ansible-zero)
 
 TASK [Stop fetched plugins.] ***************************************************
-changed: [iocage_05]
+ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

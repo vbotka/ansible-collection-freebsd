@@ -15,6 +15,9 @@
 .. index:: single: option compose; Example 441
 .. index:: single: compose; Example 441
 
+.. index:: single: option defaultrouter; Example 441
+.. index:: single: defaultrouter; Example 441
+
 .. index:: single: variable iocage_tags; Example 441
 .. index:: single: iocage_tags; Example 441
 
@@ -76,7 +79,7 @@ Requirements
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * root privilege in the managed nodes
-* templates created in :ref:`example_202`
+* template ``ansible_client`` created in :ref:`example_202`
 
 Notes
 ^^^^^
@@ -120,7 +123,15 @@ host_vars
 
 .. literalinclude:: host_vars/iocage_05.yml
    :language: yaml
+   :emphasize-lines: 6
    :caption:
+
+.. hint::
+
+   If the default iocage option ``defaultrouter=auto`` doesn't work set it. This may be
+   needed if the jails are provided with the DHCP on the bridge. In this case, the
+   defaultrouter for the jails is the IP address of the bridge. pf must provide NAT and
+   redirection. See example :ref:`example_440`.
 
 Playbook output - Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

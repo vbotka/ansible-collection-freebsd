@@ -1,27 +1,8 @@
 
-PLAY [Connect to the group test.] ************************************* 05:24:00
+PLAY [Connect to the group test.] **********************************************
 
-TASK [ansible.builtin.command] **************************************** 05:24:10
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.130 port 22: Connection timed out
-
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
-
-10   tasks:
-11
-12     - ansible.builtin.command: hostname
-         ^ column 7
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.130 port 22: Connection timed out
-
-fatal: [02676a7d]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.130
-        port 22: Connection timed out'
-    unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.131 port 22: Connection timed out
+TASK [ansible.builtin.command] *************************************************
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.113 port 22: Connection timed out
 
 Task failed.
 Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
@@ -33,14 +14,14 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 <<< caused by >>>
 
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.131 port 22: Connection timed out
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.113 port 22: Connection timed out
 
-fatal: [0d8ac594]: UNREACHABLE! => 
+fatal: [8fca2e53]: UNREACHABLE! => 
     changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.131
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.113
         port 22: Connection timed out'
     unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.132 port 22: Connection timed out
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.111 port 22: Connection timed out
 
 Task failed.
 Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
@@ -52,16 +33,35 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 <<< caused by >>>
 
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.132 port 22: Connection timed out
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.111 port 22: Connection timed out
 
-fatal: [a4e38c7f]: UNREACHABLE! => 
+fatal: [df0018dd]: UNREACHABLE! => 
     changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.132
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.111
+        port 22: Connection timed out'
+    unreachable: true
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.112 port 22: Connection timed out
+
+Task failed.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
+
+10   tasks:
+11
+12     - ansible.builtin.command: hostname
+         ^ column 7
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.112 port 22: Connection timed out
+
+fatal: [c9176754]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.112
         port 22: Connection timed out'
     unreachable: true
 
-PLAY RECAP ************************************************************ 05:24:10
-02676a7d                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-0d8ac594                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-a4e38c7f                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+8fca2e53                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+c9176754                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+df0018dd                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

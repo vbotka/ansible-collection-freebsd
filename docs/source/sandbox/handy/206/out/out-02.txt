@@ -1,43 +1,38 @@
 
-PLAY [Create and start jails. Optionally stop and destroy jails.] ***** 05:24:17
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Create clones from template] ************************************ 05:24:23
-changed: [iocage_05] => (item=test_151 ansible_client)
+TASK [Create clones from template] *********************************************
+[ERROR]: Task failed: Module failed: Jail not created.
+cmd: '/usr/local/bin/iocage create -n test_151 -t ansible_client notes=""vmm=iocage_05 swarm=sw_01"" bpf=1 vnet=1 ip4_addr="vnet0|10.1.0.151/24" ' return: 1
+stdout: ''
+stderr: 'swarm is not a valid property!
+'
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:1:3
 
-TASK [Start clones] *************************************************** 05:24:24
-[ERROR]: Task failed: Module failed: non-zero return code
-Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:30:3
+1 - name: Create clones from template
+    ^ column 3
 
-28 #   loop: "{{ start }}"
-29
-30 - name: Start clones  # noqa: no-changed-when
-     ^ column 3
+failed: [iocage_05] (item=test_151 ansible_client) => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    ansible_loop_var: item
+    changed: false
+    item:
+        key: test_151
+        value:
+            clone_from: ansible_client
+            properties:
+                bpf: 1
+                ip4_addr: vnet0|10.1.0.151/24
+                notes: swarm=sw_01
+                vnet: 1
+    msg: |-
+        Jail not created.
+        cmd: '/usr/local/bin/iocage create -n test_151 -t ansible_client notes=""vmm=iocage_05 swarm=sw_01"" bpf=1 vnet=1 ip4_addr="vnet0|10.1.0.151/24" ' return: 1
+        stdout: ''
+        stderr: 'swarm is not a valid property!
+        '
 
-fatal: [iocage_05]: FAILED! => 
-    changed: true
-    cmd:
-    - iocage
-    - start
-    - test_151
-    delta: '0:00:01.346857'
-    end: '2026-03-10 05:24:35.540421'
-    msg: non-zero return code
-    rc: 1
-    start: '2026-03-10 05:24:34.193564'
-    stderr: |-
-        No default gateway found for ipv6.
-          + Configuring VNET FAILED
-          route: message indicates error: Invalid argument
-        add net default: gateway 10.10.0.1 fib 0: Invalid argument
-
-        Stopped test_151 due to VNET failure
-    stderr_lines: <omitted>
-    stdout: |-
-        * Starting test_151
-          + Started OK
-          + Using devfs_ruleset: 1000 (iocage generated default)
-    stdout_lines: <omitted>
-
-PLAY RECAP ************************************************************ 05:24:24
-iocage_05                  : ok=1    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

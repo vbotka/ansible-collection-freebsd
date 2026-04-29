@@ -15,5 +15,3 @@ ssh admin@$iocage_05 cat /usr/local/etc/dhcpd.conf  | tee out/out-15.txt
 
 ssh admin@$iocage_05 sudo service pf status | tee out/out-04.txt
 ssh admin@$iocage_05 cat /etc/pf.conf | tee out/out-05.txt
-# ssh admin@$iocage_05 sudo iocage list -l | tee out/out-16.txt
-# ssh -p 2200 admin@$iocage_05 | tee out/out-17.txt

@@ -51,7 +51,9 @@ created in the example :ref:`example_207`. The ``project`` keys are jail's alias
 
   .. code-block:: console
 
-     (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+     (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml \
+                              -i iocage.ini \
+			      --flush-cache
 
 * Create ``ansible_client`` templates. Run the play in :ref:`example_202`
 

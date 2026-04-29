@@ -1,7 +1,7 @@
 
-PLAY [ansible_client] ************************************************* 05:15:46
+PLAY [ansible_client] **********************************************************
 
-TASK [debug] ********************************************************** 05:15:46
+TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: |-
         inventory_hostname: ansible_client
@@ -16,6 +16,6 @@ ok: [ansible_client] =>
           - state_05_down
           - vmm_iocage_05
 
-PLAY RECAP ************************************************************ 05:15:46
+PLAY RECAP *********************************************************************
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

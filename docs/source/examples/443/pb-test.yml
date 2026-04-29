@@ -3,7 +3,10 @@
   gather_facts: false
     
   tasks:
-    
+
+    - ansible.builtin.command: uname -a
+      register: out
+
     - ansible.builtin.debug:
         msg: |
           ansible_connection: {{ ansible_connection }}
@@ -15,3 +18,6 @@
 
           iocage_ip4: {{ iocage_ip4 }}
           iocage_tags: {{ iocage_tags }}
+
+          uname:
+            {{ out.stdout }}

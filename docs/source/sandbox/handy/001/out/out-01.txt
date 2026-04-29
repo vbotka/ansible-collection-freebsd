@@ -1,10 +1,10 @@
 
-PLAY [iocage] ********************************************************* 05:13:04
+PLAY [iocage] ******************************************************************
 
-TASK [Gathering Facts] ************************************************ 05:13:08
+TASK [Gathering Facts] *********************************************************
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] *** 05:13:08
+TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] **********
 ok: [iocage_05] => 
     msg: |-
         freebsd_iocage_role_version: 1.2.0
@@ -96,6 +96,6 @@ ok: [iocage_05] =>
         freebsd_iocage_facts_scripts:
           - iocage.fact
 
-PLAY RECAP ************************************************************ 05:13:08
+PLAY RECAP *********************************************************************
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

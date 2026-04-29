@@ -1,27 +1,132 @@
 
-PLAY [Configure login.conf] ******************************************* 05:32:19
+PLAY [Configure login.conf] ****************************************************
 
-PLAY [Install packages.] ********************************************** 05:32:24
+PLAY [Install packages.] *******************************************************
 
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] ******** 05:32:27
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
 included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for iocage_05 => (item=custom)
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (10 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (9 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (8 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (7 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (6 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (5 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (4 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (3 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (2 retries left).
+FAILED - RETRYING: [iocage_05]: Packages-install: Install packages list custom (1 retries left).
 
-PLAY [Configure loader.conf] ****************************************** 05:32:31
+TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ***
+[ERROR]: Task failed: Module failed: Could not update catalogue [1]: Updating FreeBSD-ports repository catalogue...
+repository FreeBSD-ports has no meta file, using default settings
+Unable to update repository FreeBSD-ports
+Updating FreeBSD-ports-kmods repository catalogue...
+repository FreeBSD-ports-kmods has no meta file, using default settings
+Unable to update repository FreeBSD-ports-kmods
+Updating FreeBSD-base repository catalogue...
+repository FreeBSD-base has no meta file, using default settings
+Unable to update repository FreeBSD-base
+Error updating repositories!
+ pkg: No SRV record found for the repo 'FreeBSD-ports'
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.conf: Could not resolve hostname
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.txz -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.tzst -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.tzst -- pkg+:// implies SRV mirror type
+pkg: No SRV record found for the repo 'FreeBSD-ports-kmods'
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.conf: Could not resolve hostname
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.txz -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.tzst -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+pkg: No SRV record found for the repo 'FreeBSD-base'
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/meta.conf: Could not resolve hostname
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/meta.txz -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/data.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/data.tzst -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/packagesite.tzst -- pkg+:// implies SRV mirror type
 
-PLAY [Configure network.] ********************************************* 05:32:37
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml:6:7
 
-PLAY [Configure pf.] ************************************************** 05:32:43
+4   block:
+5
+6     - name: "Packages-install: Install packages list {{ item }}"
+        ^ column 7
 
-PLAY [Configure ZFS.] ************************************************* 05:33:01
+fatal: [iocage_05]: FAILED! => 
+    attempts: 10
+    changed: false
+    msg: |-
+        Could not update catalogue [1]: Updating FreeBSD-ports repository catalogue...
+        repository FreeBSD-ports has no meta file, using default settings
+        Unable to update repository FreeBSD-ports
+        Updating FreeBSD-ports-kmods repository catalogue...
+        repository FreeBSD-ports-kmods has no meta file, using default settings
+        Unable to update repository FreeBSD-ports-kmods
+        Updating FreeBSD-base repository catalogue...
+        repository FreeBSD-base has no meta file, using default settings
+        Unable to update repository FreeBSD-base
+        Error updating repositories!
+         pkg: No SRV record found for the repo 'FreeBSD-ports'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.conf: Could not resolve hostname
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.tzst -- pkg+:// implies SRV mirror type
+        pkg: No SRV record found for the repo 'FreeBSD-ports-kmods'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.conf: Could not resolve hostname
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+        pkg: No SRV record found for the repo 'FreeBSD-base'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/meta.conf: Could not resolve hostname
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+    stderr: |-
+        pkg: No SRV record found for the repo 'FreeBSD-ports'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.conf: Could not resolve hostname
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly/packagesite.tzst -- pkg+:// implies SRV mirror type
+        pkg: No SRV record found for the repo 'FreeBSD-ports-kmods'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.conf: Could not resolve hostname
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+        pkg: No SRV record found for the repo 'FreeBSD-base'
+        pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/meta.conf: Could not resolve hostname
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/meta.txz -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/data.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/data.tzst -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/packagesite.pkg -- pkg+:// implies SRV mirror type
+        pkg: packagesite URL error for pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_0/packagesite.tzst -- pkg+:// implies SRV mirror type
+    stderr_lines: <omitted>
+    stdout: |-
+        Updating FreeBSD-ports repository catalogue...
+        repository FreeBSD-ports has no meta file, using default settings
+        Unable to update repository FreeBSD-ports
+        Updating FreeBSD-ports-kmods repository catalogue...
+        repository FreeBSD-ports-kmods has no meta file, using default settings
+        Unable to update repository FreeBSD-ports-kmods
+        Updating FreeBSD-base repository catalogue...
+        repository FreeBSD-base has no meta file, using default settings
+        Unable to update repository FreeBSD-base
+        Error updating repositories!
+    stdout_lines: <omitted>
 
-TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ************** 05:33:05
-included: vbotka.freebsd.postinstall for iocage_05
-
-PLAY [Configure iocage.] ********************************************** 05:33:07
-
-TASK [vbotka.freebsd.iocage : Rcconf: Enable iocage] ****************** 05:33:22
-changed: [iocage_05]
-
-PLAY RECAP ************************************************************ 05:33:23
-iocage_05                  : ok=70   changed=1    unreachable=0    failed=0    skipped=146  rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=1    skipped=4    rescued=0    ignored=0   
 

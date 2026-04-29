@@ -18,11 +18,11 @@ all:
         test_151:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.1.0.101
+          iocage_ip4: 10.10.99.102
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.1.0.101
+              ip: 10.10.99.102
               mask: '-'
             msg: ''
           iocage_ip6: '-'
@@ -34,11 +34,11 @@ all:
         test_152:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.1.0.102
+          iocage_ip4: 10.10.99.101
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.1.0.102
+              ip: 10.10.99.101
               mask: '-'
             msg: ''
           iocage_ip6: '-'
@@ -50,15 +50,13 @@ all:
         test_153:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.1.0.116
+          iocage_ip4: '-'
           iocage_ip4_dict:
-            ip4:
-            - ifc: epair0b
-              ip: 10.1.0.116
-              mask: '-'
-            msg: ''
+            ip4: []
+            msg: 'DHCP - Network Issue: Command ''[''jexec'' ''ioc-test_153'' ''ifconfig''
+              ''epair0b'' ''inet'']'' returned non-zero exit status 1.'
           iocage_ip6: '-'
-          iocage_jid: '7'
+          iocage_jid: '4'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client

@@ -9,6 +9,8 @@
 
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 443
 .. index:: single: playbook pb_iocage_plugins.yml; Example 443
+.. index:: single: connection vbotka.freebsd.jailexec; Example 443
+.. index:: single: inventory vbotka.freebsd.iocage; Example 443
 
 .. index:: single: option compose; Example 443
 .. index:: single: compose; Example 443
@@ -21,9 +23,13 @@
 .. index:: single: option iocage --count; Example 443
 .. index:: single: option iocage --newmac; Example 443
 
-.. index:: single: iocage plugin; Example 443
+.. index:: single: iocage plugins; Example 443
 .. index:: single: plugin ansible-zero; Example 443
 .. index:: single: ansible-zero; Example 443
+
+.. index:: single: ansible_jail_host; Example 443
+.. index:: single: ansible_jail_name; Example 443
+.. index:: single: ansible_jail_privilege_escalation; Example 443
 
 Use case
 ^^^^^^^^
@@ -108,6 +114,12 @@ host_vars
 .. literalinclude:: host_vars/iocage_05.yml
    :language: yaml
    :caption:
+   :emphasize-lines: 6
+
+.. note::
+
+   By default, the jails cloned from the plugins inherit the iocage property type
+   ``pluginv2``. Change it to ``jail``.
 
 Playbook output - Fetch plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -168,7 +180,11 @@ Inventory hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 9,10
+   :emphasize-lines: 9-12
+
+.. note::
+
+   iocage ``name`` doesn't work with ``ansible_jail_name``. iocage ``jid`` must be used.
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
