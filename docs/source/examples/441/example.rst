@@ -123,11 +123,12 @@ host_vars
    :emphasize-lines: 6
    :caption:
 
-.. note::
+.. hint::
 
-   The iocage option ``defaultrouter`` is needed if the jails are provided with the DHCP
-   on the bridge. In this case, the defaultrouter for the jails is the IP address of the
-   bridge. pf must provide NAT and redirection. See example :ref:`example_440`.
+   If the default iocage option ``defaultrouter=auto`` doesn't work set it. This may be
+   needed if the jails are provided with the DHCP on the bridge. In this case, the
+   defaultrouter for the jails is the IP address of the bridge. pf must provide NAT and
+   redirection. See example :ref:`example_440`.
 
 Playbook output - Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
