@@ -3,6 +3,7 @@ properties:
   dhcp: 1
   vnet: 1
   notes: "vmm={{ inventory_hostname }}"
+  type: jail
 
 swarms:
   sw_01:
