@@ -8,7 +8,7 @@ ansible_jail_name: iocage_jid
 
 # iocage type
 
-By default the jails cloned from the plugins inherit the iocage property type
+By default, the jails cloned from the plugins inherit the iocage property type
 ``pluginv2``. Change it to ``jail``
 
 ```yaml

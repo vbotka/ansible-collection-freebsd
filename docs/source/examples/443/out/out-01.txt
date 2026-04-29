@@ -36,61 +36,11 @@ ok: [iocage_05] => (item=ansible-zero) =>
         iocage fetch --plugin-name ansible-zero --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
 
 TASK [Fetch required plaugins.] ************************************************
-[ERROR]: Task failed: Module failed: non-zero return code
-Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_plugins.yml:121:11
+ok: [iocage_05] => (item=ansible-zero)
 
-119             label: "{{ item.key }}"
-120
-121         - name: Fetch required plaugins.
-              ^ column 11
-
-failed: [iocage_05] (item=ansible-zero) => 
-    ansible_loop_var: item
-    changed: false
-    cmd:
-    - iocage
-    - fetch
-    - --plugin-name
-    - ansible-zero
-    - --git_repository
-    - https://github.com/vbotka/iocage-plugins
-    - bpf=1
-    - dhcp=1
-    - vnet=1
-    delta: '0:01:42.083325'
-    end: '2026-04-27 12:38:20.804786'
-    item:
-        key: ansible-zero
-        value:
-            git: https://github.com/vbotka/iocage-plugins
-            options: bpf=1 dhcp=1 vnet=1
-    msg: non-zero return code
-    rc: 1
-    start: '2026-04-27 12:36:38.721461'
-    stderr: |-
-        pkg.FreeBSD.org's SRV record could not be verified.
-
-        pkg.FreeBSD.org could not be reached via DNSSEC.
-
-        pkg.FreeBSD.org could not be reached via DNS, check ansible-zero's network configuration
-        ansible-zero had a failure
-        Exception: SystemExit Message: 1
-        Partial plugin destroyed
-    stderr_lines: <omitted>
-    stdout: |-
-        Plugin: ansible-zero
-          Official Plugin: False
-          Using RELEASE: 15.0-RELEASE
-          Using Branch: 15.0-RELEASE
-          Post-install Artifact: https://github.com/vbotka/iocage-plugins.git
-          These pkgs will be installed:
-
-        Testing Host DNS response to pkg.FreeBSD.org
-        Testing ansible-zero's SRV response to pkg.FreeBSD.org
-        Testing ansible-zero's DNSSEC response to pkg.FreeBSD.org
-        Testing ansible-zero's DNS response to pkg.FreeBSD.org
-    stdout_lines: <omitted>
+TASK [Stop fetched plugins.] ***************************************************
+ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
