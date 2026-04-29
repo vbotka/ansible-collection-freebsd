@@ -15,6 +15,9 @@
 .. index:: single: option compose; Example 441
 .. index:: single: compose; Example 441
 
+.. index:: single: option defaultrouter; Example 441
+.. index:: single: defaultrouter; Example 441
+
 .. index:: single: variable iocage_tags; Example 441
 .. index:: single: iocage_tags; Example 441
 
