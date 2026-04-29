@@ -6,7 +6,10 @@
 
     debug: false
     vbotka_freebsd_batch: "{{ lookup('ansible.builtin.env', 'VBOTKA_FREEBSD_BATCH') | default(false, true) }}"
-    iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
+    iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails')
+                                       | dict2items
+                                       | selectattr('value.type', 'eq', 'jail')
+                                       | items2dict }}"
     all_jails: "{{ iocage_jails.keys() }}"
     running_jails: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
@@ -48,7 +51,13 @@
         - name: "Debug iocage_jails debug={{ debug }}"
           when: debug | bool
           ansible.builtin.debug:
-            var: iocage_jails
+            msg: |
+              iocage_jails:
+              {{ iocage_jails.keys() | to_nice_yaml }}
+              running_jails:
+              {{ running_jails | to_nice_yaml }}
+              destroy_jails:
+              {{ destroy_jails | to_nice_yaml }}
 
       rescue:
 

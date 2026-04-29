@@ -16,6 +16,9 @@ Major Changes
 
 Minor Changes
 --------------
+* Update pb_iocage_destroy_all_jails.yml; By default do not destroy plugins
+  along other jails.
+* Docs. Update snadbox 905.
 
 
 0.8.14
