@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Docs. Update index.
 
 
 0.8.15
@@ -35,7 +36,6 @@ Minor Changes
 * Update pb_iocage_plugins.yml
 * Update pb_iocage_project_create.yml
 * Docs. Update examples.
-
 
 
 0.8.14

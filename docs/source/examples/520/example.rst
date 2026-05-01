@@ -8,9 +8,10 @@
    :depth: 1
 
 .. index:: single: project; Example 520
+.. index:: single: project create from plugins; Example 520
 
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 520
 .. index:: single: playbook pb_iocage_plugins.yml; Example 520
+.. index:: single: playbook pb_iocage_project_create_from_plugins.yml; Example 520
 .. index:: single: connection vbotka.freebsd.jailexec; Example 520
 .. index:: single: inventory vbotka.freebsd.iocage; Example 520
 
