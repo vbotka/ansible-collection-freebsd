@@ -16,6 +16,9 @@ Playbooks
 .. _ug_pb-iocage-project-create:
 .. include:: playbooks/pb-iocage-project-create.rst
 
+.. _ug_pb-iocage-project-create-from-plugins:
+.. include:: playbooks/pb-iocage-project-create-from-plugins.rst
+
 .. _ug_pb-iocage-project-destroy:
 .. include:: playbooks/pb-iocage-project-destroy.rst
 
