@@ -2,7 +2,7 @@
 PLAY [swarm_sw_01] *************************************************************
 
 TASK [ansible.builtin.command] *************************************************
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.114 port 22: Connection timed out
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.198 port 22: Connection timed out
 
 Task failed.
 Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/206/pb-test.yml:10:7
@@ -14,14 +14,14 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 <<< caused by >>>
 
-Failed to connect to the host via ssh: ssh: connect to host 10.10.99.114 port 22: Connection timed out
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.198 port 22: Connection timed out
 
-fatal: [29770bab]: UNREACHABLE! => 
+fatal: [1346aa54]: UNREACHABLE! => 
     changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.114
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.198
         port 22: Connection timed out'
     unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.116 port 22: Connection timed out
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.197 port 22: Connection timed out
 
 Task failed.
 Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/206/pb-test.yml:10:7
@@ -33,35 +33,15 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 
 <<< caused by >>>
 
-Failed to connect to the host via ssh: ssh: connect to host 10.10.99.116 port 22: Connection timed out
+Failed to connect to the host via ssh: ssh: connect to host 10.10.99.197 port 22: Connection timed out
 
-fatal: [81b121d7]: UNREACHABLE! => 
+fatal: [9e27b296]: UNREACHABLE! => 
     changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.116
-        port 22: Connection timed out'
-    unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.115 port 22: Connection timed out
-
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/206/pb-test.yml:10:7
-
- 8   tasks:
- 9
-10     - ansible.builtin.command: hostname
-         ^ column 7
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.10.99.115 port 22: Connection timed out
-
-fatal: [b0209c55]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.115
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.197
         port 22: Connection timed out'
     unreachable: true
 
 PLAY RECAP *********************************************************************
-29770bab                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-81b121d7                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-b0209c55                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+1346aa54                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+9e27b296                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

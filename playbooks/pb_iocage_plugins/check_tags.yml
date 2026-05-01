@@ -1,0 +1,12 @@
+---
+- name: One tag is required.
+  ansible.builtin.assert:
+    that: ansible_run_tags | difference(['all']) | length == 1
+    fail_msg: "[ERR] One tag is required."
+    quiet: true
+
+- name: Test the tag is known.
+  ansible.builtin.assert:
+    that: ansible_run_tags | intersect(tags_known) | length == 1
+    fail_msg: "[ERR] Unknown tag."
+    quiet: true

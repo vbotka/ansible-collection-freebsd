@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: swarms; Example 340
+
 .. index:: single: role vbotka.freebsd.config_light; Example 340
 .. index:: single: vbotka.freebsd.config_light; Example 340
 .. index:: single: lighttpd; Example 340

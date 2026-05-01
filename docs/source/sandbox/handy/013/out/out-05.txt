@@ -2,18 +2,33 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
+[ERROR]: Task failed: Finalization of task args for 'ansible.builtin.debug' failed: Error while resolving value for 'msg': 'iocage_tags' is undefined
+
+Task failed: Finalization of task args for 'ansible.builtin.debug' failed.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/013/pb-test.yml:5:7
+
+3   tasks:
+4
+5     - debug:
+        ^ column 7
+
+<<< caused by >>>
+
+Error while resolving value for 'msg': 'iocage_tags' is undefined
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/013/pb-test.yml:6:14
+
+4
+5     - debug:
+6         msg: "{{ inventory_hostname }} running at {{ iocage_tags.vmm }}"
+               ^ column 14
+
+fatal: [ansible-zero]: FAILED! => 
+    msg: 'Task failed: Finalization of task args for ''ansible.builtin.debug'' failed:
+        Error while resolving value for ''msg'': ''iocage_tags'' is undefined'
 ok: [ansible_client] => 
     msg: ansible_client running at iocage_05
-ok: [test_151] => 
-    msg: test_151 running at iocage_05
-ok: [test_152] => 
-    msg: test_152 running at iocage_05
-ok: [test_153] => 
-    msg: test_153 running at iocage_05
 
 PLAY RECAP *********************************************************************
+ansible-zero               : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

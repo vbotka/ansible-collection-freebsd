@@ -1,0 +1,29 @@
+- name: Test Log Server.
+  hosts: logserv_group
+  become: true
+    
+  tasks:
+
+    - name: Run commands
+      register: out
+      ansible.builtin.shell: "{{ item }}"
+      loop:
+        - rm -rf /var/log/remote/localhost/*
+        - service syslog-ng status
+        - loggen -i -S -n 1 localhost 514
+        - sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
+
+    - name: Debug.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        msg: |
+          {% for i in out.results %}
+          shell> {{ i.item }}
+          {% if i.stdout | length > 0 %}
+          {{ i.stdout }}
+          {% endif %}
+          {% if i.stderr | length > 0 %}
+          {{ i.stderr }}
+          {% endif %}
+
+          {% endfor %}

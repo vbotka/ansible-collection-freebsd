@@ -1,0 +1,54 @@
+---
+- name: Fetch plugins required by swarm.
+
+  vars:
+
+    required_plugins_query: '[].value.plugin'
+    required_plugins: "{{ swarms | dict2items
+                                 | community.general.json_query(required_plugins_query)
+                                 | unique
+                                 | sort }}"
+    selected_plugins: "{{ plugins | dict2items
+                                  | selectattr('key', 'in', required_plugins)
+                                  | rejectattr('key', 'in', iocage_plugins) }}"
+
+  block:
+
+    - name: "Debug required plugins debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: |
+          required_plugins:
+            {{ required_plugins | to_nice_yaml }}
+          selected_plugins:
+            {{ selected_plugins | to_nice_yaml }}
+
+    - name: Check all required plugins are included in the dictionary plugins.
+      when: check_plugins | d(true)
+      ansible.builtin.assert:
+        that: required_plugins | difference(plugins.keys()) | length == 0
+        fail_msg: "[ERR] Not all required plugins are included in plugins."
+        quiet: true
+
+    - name: "Debug commands debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ cmd_fetch }}
+      loop: "{{ selected_plugins }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Fetch required plaugins.
+      changed_when: false
+      ansible.builtin.command: "{{ cmd_fetch }}"
+      loop: "{{ selected_plugins }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Stop fetched plugins.
+      changed_when: false
+      when: stop_plugins | d(true) | bool
+      ansible.builtin.command: >
+        iocage stop
+        {{ selected_plugins | map(attribute='key') | join(' ') }}

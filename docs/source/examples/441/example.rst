@@ -10,6 +10,8 @@
    :local:
    :depth: 1
 
+.. index:: single: swarms; Example 441
+
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 441
 
 .. index:: single: option compose; Example 441

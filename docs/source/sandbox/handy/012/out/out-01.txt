@@ -149,6 +149,300 @@ ok: [ansible_client] =>
         wallclock: 'off'
         writebps: 'off'
         writeiops: 'off'
+ok: [ansible-zero] => 
+    iocage_properties:
+        CONFIG_VERSION: '33'
+        allow_chflags: '0'
+        allow_mlock: '0'
+        allow_mount: '0'
+        allow_mount_devfs: '0'
+        allow_mount_fdescfs: '0'
+        allow_mount_fusefs: '0'
+        allow_mount_linprocfs: '0'
+        allow_mount_linsysfs: '0'
+        allow_mount_nullfs: '0'
+        allow_mount_procfs: '0'
+        allow_mount_tmpfs: '0'
+        allow_mount_zfs: '0'
+        allow_nfsd: '0'
+        allow_quotas: '0'
+        allow_raw_sockets: '0'
+        allow_set_hostname: '1'
+        allow_socket_af: '0'
+        allow_sysvipc: '0'
+        allow_tun: '0'
+        allow_vmm: '0'
+        assign_localhost: '0'
+        available: readonly
+        basejail: '1'
+        boot: '1'
+        bpf: '1'
+        children_max: '0'
+        comment: none
+        compression: 'on'
+        compressratio: readonly
+        coredumpsize: 'off'
+        count: '1'
+        cpuset: 'off'
+        cputime: 'off'
+        datasize: 'off'
+        dedup: 'off'
+        defaultrouter: auto
+        defaultrouter6: auto
+        depends: none
+        devfs_ruleset: '4'
+        dhcp: '1'
+        enforce_statfs: '2'
+        exec_clean: '1'
+        exec_created: /usr/bin/true
+        exec_fib: '0'
+        exec_jail_user: root
+        exec_poststart: /usr/bin/true
+        exec_poststop: /usr/bin/true
+        exec_prestart: /usr/bin/true
+        exec_prestop: /usr/bin/true
+        exec_start: /bin/sh /etc/rc
+        exec_stop: /bin/sh /etc/rc.shutdown
+        exec_system_jail_user: '0'
+        exec_system_user: root
+        exec_timeout: '60'
+        host_domainname: none
+        host_hostname: ansible-zero
+        host_hostuuid: ansible-zero
+        host_time: '1'
+        hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
+        hostid_strict_check: '0'
+        interfaces: vnet0:bridge0
+        ip4: new
+        ip4_addr: none
+        ip4_saddrsel: '1'
+        ip6: new
+        ip6_addr: none
+        ip6_saddrsel: '1'
+        ip_hostname: '0'
+        jail_zfs: '0'
+        jail_zfs_dataset: iocage/jails/ansible-zero/data
+        jail_zfs_mountpoint: none
+        last_started: '2026-04-30 08:05:07'
+        localhost_ip: none
+        login_flags: -f root
+        mac_prefix: 665d86
+        maxproc: 'off'
+        memorylocked: 'off'
+        memoryuse: 'off'
+        min_dyn_devfs_ruleset: '1000'
+        mount_devfs: '1'
+        mount_fdescfs: '1'
+        mount_linprocfs: '0'
+        mount_procfs: '0'
+        mountpoint: readonly
+        msgqqueued: 'off'
+        msgqsize: 'off'
+        nat: '0'
+        nat_backend: ipfw
+        nat_forwards: none
+        nat_interface: none
+        nat_prefix: '172.16'
+        nmsgq: 'off'
+        notes: none
+        nsem: 'off'
+        nsemop: 'off'
+        nshm: 'off'
+        nthr: 'off'
+        openfiles: 'off'
+        origin: readonly
+        owner: root
+        pcpu: 'off'
+        plugin_name: ansible-zero
+        plugin_repository: https://github.com/vbotka/iocage-plugins
+        priority: '99'
+        pseudoterminals: 'off'
+        quota: none
+        readbps: 'off'
+        readiops: 'off'
+        release: 15.0-RELEASE
+        reservation: none
+        resolver: /etc/resolv.conf
+        rlimits: 'off'
+        rtsold: '0'
+        securelevel: '2'
+        shmsize: 'off'
+        stacksize: 'off'
+        state: down
+        stop_timeout: '30'
+        swapuse: 'off'
+        sync_state: none
+        sync_target: none
+        sync_tgt_zpool: none
+        sysvmsg: new
+        sysvsem: new
+        sysvshm: new
+        template: '0'
+        type: pluginv2
+        used: readonly
+        vmemoryuse: 'off'
+        vnet: '1'
+        vnet0_mac: 665d86e5c1e3 665d86e5c1e4
+        vnet0_mtu: auto
+        vnet1_mac: none
+        vnet1_mtu: auto
+        vnet2_mac: none
+        vnet2_mtu: auto
+        vnet3_mac: none
+        vnet3_mtu: auto
+        vnet_default_interface: none
+        vnet_default_mtu: '1500'
+        vnet_interfaces: none
+        wallclock: 'off'
+        writebps: 'off'
+        writeiops: 'off'
+ok: [syslog-ng] => 
+    iocage_properties:
+        CONFIG_VERSION: '33'
+        allow_chflags: '0'
+        allow_mlock: '0'
+        allow_mount: '0'
+        allow_mount_devfs: '0'
+        allow_mount_fdescfs: '0'
+        allow_mount_fusefs: '0'
+        allow_mount_linprocfs: '0'
+        allow_mount_linsysfs: '0'
+        allow_mount_nullfs: '0'
+        allow_mount_procfs: '0'
+        allow_mount_tmpfs: '0'
+        allow_mount_zfs: '0'
+        allow_nfsd: '0'
+        allow_quotas: '0'
+        allow_raw_sockets: '0'
+        allow_set_hostname: '1'
+        allow_socket_af: '0'
+        allow_sysvipc: '0'
+        allow_tun: '0'
+        allow_vmm: '0'
+        assign_localhost: '0'
+        available: readonly
+        basejail: '1'
+        boot: '1'
+        bpf: '1'
+        children_max: '0'
+        comment: none
+        compression: 'on'
+        compressratio: readonly
+        coredumpsize: 'off'
+        count: '1'
+        cpuset: 'off'
+        cputime: 'off'
+        datasize: 'off'
+        dedup: 'off'
+        defaultrouter: auto
+        defaultrouter6: auto
+        depends: none
+        devfs_ruleset: '4'
+        dhcp: '1'
+        enforce_statfs: '2'
+        exec_clean: '1'
+        exec_created: /usr/bin/true
+        exec_fib: '0'
+        exec_jail_user: root
+        exec_poststart: /usr/bin/true
+        exec_poststop: /usr/bin/true
+        exec_prestart: /usr/bin/true
+        exec_prestop: /usr/bin/true
+        exec_start: /bin/sh /etc/rc
+        exec_stop: /bin/sh /etc/rc.shutdown
+        exec_system_jail_user: '0'
+        exec_system_user: root
+        exec_timeout: '60'
+        host_domainname: none
+        host_hostname: syslog-ng
+        host_hostuuid: syslog-ng
+        host_time: '1'
+        hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
+        hostid_strict_check: '0'
+        interfaces: vnet0:bridge0
+        ip4: new
+        ip4_addr: none
+        ip4_saddrsel: '1'
+        ip6: new
+        ip6_addr: none
+        ip6_saddrsel: '1'
+        ip_hostname: '0'
+        jail_zfs: '0'
+        jail_zfs_dataset: iocage/jails/syslog-ng/data
+        jail_zfs_mountpoint: none
+        last_started: '2026-04-30 10:13:24'
+        localhost_ip: none
+        login_flags: -f root
+        mac_prefix: 665d86
+        maxproc: 'off'
+        memorylocked: 'off'
+        memoryuse: 'off'
+        min_dyn_devfs_ruleset: '1000'
+        mount_devfs: '1'
+        mount_fdescfs: '1'
+        mount_linprocfs: '0'
+        mount_procfs: '0'
+        mountpoint: readonly
+        msgqqueued: 'off'
+        msgqsize: 'off'
+        nat: '0'
+        nat_backend: ipfw
+        nat_forwards: none
+        nat_interface: none
+        nat_prefix: '172.16'
+        nmsgq: 'off'
+        notes: none
+        nsem: 'off'
+        nsemop: 'off'
+        nshm: 'off'
+        nthr: 'off'
+        openfiles: 'off'
+        origin: readonly
+        owner: root
+        pcpu: 'off'
+        plugin_name: syslog-ng
+        plugin_repository: https://github.com/vbotka/iocage-plugins
+        priority: '99'
+        pseudoterminals: 'off'
+        quota: none
+        readbps: 'off'
+        readiops: 'off'
+        release: 15.0-RELEASE
+        reservation: none
+        resolver: /etc/resolv.conf
+        rlimits: 'off'
+        rtsold: '0'
+        securelevel: '2'
+        shmsize: 'off'
+        stacksize: 'off'
+        state: down
+        stop_timeout: '30'
+        swapuse: 'off'
+        sync_state: none
+        sync_target: none
+        sync_tgt_zpool: none
+        sysvmsg: new
+        sysvsem: new
+        sysvshm: new
+        template: '0'
+        type: pluginv2
+        used: readonly
+        vmemoryuse: 'off'
+        vnet: '1'
+        vnet0_mac: 665d86703979 665d8670397a
+        vnet0_mtu: auto
+        vnet1_mac: none
+        vnet1_mtu: auto
+        vnet2_mac: none
+        vnet2_mtu: auto
+        vnet3_mac: none
+        vnet3_mtu: auto
+        vnet_default_interface: none
+        vnet_default_mtu: '1500'
+        vnet_interfaces: none
+        wallclock: 'off'
+        writebps: 'off'
+        writeiops: 'off'
 ok: [test_151] => 
     iocage_properties:
         CONFIG_VERSION: '33'
@@ -268,7 +562,7 @@ ok: [test_151] =>
         securelevel: '2'
         shmsize: 'off'
         stacksize: 'off'
-        state: up
+        state: down
         stop_timeout: '30'
         swapuse: 'off'
         sync_state: none
@@ -415,7 +709,7 @@ ok: [test_152] =>
         securelevel: '2'
         shmsize: 'off'
         stacksize: 'off'
-        state: up
+        state: down
         stop_timeout: '30'
         swapuse: 'off'
         sync_state: none
@@ -517,7 +811,7 @@ ok: [test_153] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/test_153/data
         jail_zfs_mountpoint: none
-        last_started: none
+        last_started: '2026-04-30 11:17:47'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86
@@ -576,7 +870,7 @@ ok: [test_153] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: none
+        vnet0_mac: 665d864c63ed 665d864c63ee
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto
@@ -592,7 +886,9 @@ ok: [test_153] =>
         writeiops: 'off'
 
 PLAY RECAP *********************************************************************
+ansible-zero               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

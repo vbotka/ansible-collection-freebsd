@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: project; Example 500
+
 .. index:: single: syslog-ng; Example 500
 .. index:: single: syslogd; Example 500
 .. index:: single: loggen; Example 500

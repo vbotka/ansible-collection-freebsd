@@ -1,5 +1,5 @@
 - name: Configure and start Log Client.
-  hosts: logclient
+  hosts: logclient_group
   remote_user: admin
   become: true
     

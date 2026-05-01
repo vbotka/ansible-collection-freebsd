@@ -1,10 +1,12 @@
 @all:
   |--@ungrouped:
+  |  |--ansible-zero
+  |  |--syslog-ng
   |--@swarm_sw_01:
-  |  |--1c7f8602
-  |  |--29255552
-  |  |--966d0408
+  |  |--070d1cbe
+  |  |--8c0cdb11
+  |  |--f5cf9ce1
   |--@vmm_iocage_05:
-  |  |--1c7f8602
-  |  |--29255552
-  |  |--966d0408
+  |  |--070d1cbe
+  |  |--8c0cdb11
+  |  |--f5cf9ce1

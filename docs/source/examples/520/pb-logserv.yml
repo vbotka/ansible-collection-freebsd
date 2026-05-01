@@ -1,5 +1,5 @@
 - name: Configure and start Log Server.
-  hosts: logserv
+  hosts: logserv_group
   remote_user: admin
   become: true
     

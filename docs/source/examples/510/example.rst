@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: project; Example 510
+
 .. index:: single: template ansible_client_pull; Example 510
 .. index:: single: ansible_client_pull; Example 510
 

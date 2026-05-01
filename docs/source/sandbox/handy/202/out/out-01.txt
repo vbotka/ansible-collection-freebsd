@@ -46,6 +46,19 @@ ok: [iocage_05]
 TASK [Start: Display iocage_jails debug=true] **********************************
 ok: [iocage_05] => 
     iocage_jails:
+        ansible-zero:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
         ansible_client:
             basejail: 'no'
             boot: 'off'
@@ -59,6 +72,19 @@ ok: [iocage_05] =>
             state: down
             template: '-'
             type: jail
+        syslog-ng:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
 
 TASK [Start: Start created templates.] *****************************************
 ok: [iocage_05]
@@ -69,22 +95,48 @@ ok: [iocage_05]
 TASK [Pkg: Display iocage_jails debug=true] ************************************
 ok: [iocage_05] => 
     iocage_jails:
+        ansible-zero:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
         ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: 10.10.99.100
+            ip4: 10.10.99.193
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 10.10.99.100
+                    ip: 10.10.99.193
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '12'
+            jid: '43'
             release: 15.0-RELEASE
             state: up
             template: '-'
             type: jail
+        syslog-ng:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
 
 TASK [Pkg: Install packages.] **************************************************
 changed: [iocage_05] => (item=ansible_client)
@@ -119,22 +171,48 @@ ok: [iocage_05]
 TASK [Stop: Display iocage_jails debug=true] ***********************************
 ok: [iocage_05] => 
     iocage_jails:
+        ansible-zero:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
         ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: 10.10.99.100
+            ip4: 10.10.99.193
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 10.10.99.100
+                    ip: 10.10.99.193
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '12'
+            jid: '43'
             release: 15.0-RELEASE
             state: up
             template: '-'
             type: jail
+        syslog-ng:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
 
 TASK [Stop: Stop jails.] *******************************************************
 ok: [iocage_05]

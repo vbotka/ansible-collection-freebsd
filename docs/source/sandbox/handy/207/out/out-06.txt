@@ -18,8 +18,8 @@ ok: [iocage_05] =>
           http: [http_5]
           logclient: [http_5, db_5]
 
-        groups.all: ['test_5', 'http_5', 'db_5', 'iocage_05']
-        project_jails_present: ['db_5', 'http_5']
+        groups.all: ['ansible-zero', 'syslog-ng', 'test_5', 'http_5', 'db_5', 'iocage_05']
+        project_jails_present: ['http_5', 'db_5']
 
 TASK [Stop jails.] *************************************************************
 changed: [iocage_05]

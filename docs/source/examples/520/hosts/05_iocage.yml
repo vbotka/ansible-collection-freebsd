@@ -1,12 +1,34 @@
 plugin: vbotka.freebsd.iocage
+# inventory plugin vbotka.freebsd.iocage
 host: iocage_05
 user: admin
+sudo: true
+get_properties: true
+inventory_hostname_tag: alias
+# cache
 cache: true
 cache_plugin: ansible.builtin.jsonfile
 cache_connection: /var/tmp/inventory_cache
 cache_timeout: 3600
 cache_prefix: iocage_05_
-get_properties: true
-inventory_hostname_tag: alias
-hooks_results:
-  - /var/db/dhclient-hook.address.epair0b
+
+compose:
+  ansible_user: "'admin'"
+  ansible_python_interpreter: "'auto_silent'"
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)'))
+  iocage_classes: iocage_properties.notes | regex_findall('class=(\w+)')
+# connection plugin vbotka.freebsd.jailexec
+  ansible_connection: "'vbotka.freebsd.jailexec'"
+  ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)')).vmm | d('none')
+  ansible_jail_privilege_escalation: "'sudo'"
+  ansible_jail_name: iocage_jid
+
+groups:
+  logserv_group: iocage_classes is contains('logserv')
+  logclient_group: iocage_classes is contains('logclient')
+
+keyed_groups:
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm

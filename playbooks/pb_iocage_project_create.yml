@@ -4,6 +4,7 @@
   tasks:
 
     - name: Display vars.  # noqa: run-once
+      tags: debug
       when: debug | d(false) | bool
       vars:
         project_jails_present: "{{ project | intersect(groups.all) }}"
@@ -11,21 +12,29 @@
       run_once: true
       ansible.builtin.debug:
         msg: |
+          project:
+            {{ project | to_nice_yaml(indent=2) | indent(2) }}
           project_template: {{ project_template | d('ansible_client') }}
           project_create_iocage_tags: {{ project_create_iocage_tags | d(false) }}
           vmm:
-            {{ vmm | to_yaml | indent(2) }}
+            {{ vmm | to_nice_yaml(indent=2) | indent(2) }}
           class:
-            {{ class | to_yaml | indent(2) }}
+            {{ class | to_nice_yaml(indent=2) | indent(2) }}
           groups.all: {{ groups.all }}
           project_jails_present: {{ project_jails_present }}
           project_jails_absent: {{ project_jails_absent }}
 
     - name: Create and start jails.
+      tags: create
       vars:
         iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.all) }}"
-        iocage_jails_created: "{{ out.stdout_lines | map('split') | map('first') }}"
+        iocage_jails_created: "{{ out.stdout_lines | d([]) | map('split') | map('first') }}"
       block:
+
+        - name: Display iocage_jails_absent
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: iocage_jails_absent
 
         - name: All jails already created. End host.
           when: iocage_jails_absent | length == 0
@@ -39,6 +48,11 @@
             --template {{ project_template | d('ansible_client') }}
             --count {{ iocage_jails_absent | length }}
             {{ properties }}
+
+        - name: Display iocage_jails_created
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: iocage_jails_created
 
         - name: Set notes.  # noqa: no-changed-when
           vars:

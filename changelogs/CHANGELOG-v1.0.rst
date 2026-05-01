@@ -16,9 +16,13 @@ Major Changes
 
 Minor Changes
 --------------
+* Add playbook pb_iocage_project_create_from_plugins.yml
 * Update pb_iocage_destroy_all_jails.yml; By default do not destroy plugins
   along other jails.
-* Docs. Update snadbox 905.
+* Update pb_iocage_plugins.yml
+* Update pb_iocage_project_create.yml
+* Docs. Update examples.
+
 
 
 0.8.14

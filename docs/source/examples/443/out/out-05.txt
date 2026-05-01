@@ -1,11 +1,12 @@
 @all:
   |--@ungrouped:
   |  |--ansible-zero
+  |  |--syslog-ng
   |--@swarm_sw_01:
-  |  |--0980ecf2-efbe-4969-bdfe-83e4f4fb81c2
-  |  |--86c82dcc-da4b-48d8-8ee5-d355e9270531
-  |  |--9e701b9b-a72b-4b6f-a99e-7bd3b5d1f2dc
+  |  |--0e44fbc5-5fb0-4e46-bab4-04ff31dcfa3a
+  |  |--548d66d0-ce33-4d4b-b5bf-58406d04e1d6
+  |  |--95207d1a-5ee6-4fba-a963-f03188ccb0ad
   |--@vmm_iocage_05:
-  |  |--0980ecf2-efbe-4969-bdfe-83e4f4fb81c2
-  |  |--86c82dcc-da4b-48d8-8ee5-d355e9270531
-  |  |--9e701b9b-a72b-4b6f-a99e-7bd3b5d1f2dc
+  |  |--0e44fbc5-5fb0-4e46-bab4-04ff31dcfa3a
+  |  |--548d66d0-ce33-4d4b-b5bf-58406d04e1d6
+  |  |--95207d1a-5ee6-4fba-a963-f03188ccb0ad

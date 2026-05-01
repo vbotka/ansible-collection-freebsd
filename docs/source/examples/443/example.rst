@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: swarms; Example 443
+
 .. index:: single: playbook pb_iocage_ansible_clients.yml; Example 443
 .. index:: single: playbook pb_iocage_plugins.yml; Example 443
 .. index:: single: connection vbotka.freebsd.jailexec; Example 443
@@ -128,7 +130,7 @@ Playbook output - Fetch plugins
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
                             -i iocage.ini \
-                            -t required_plugins \
+                            -t swarm_plugins \
 			    -e debug=true
 
 .. literalinclude:: out/out-01.txt
@@ -184,7 +186,8 @@ Inventory hosts
 
 .. note::
 
-   iocage ``name`` doesn't work with ``ansible_jail_name``. iocage ``jid`` must be used.
+   iocage ``name`` doesn't work with ``ansible_jail_name``. iocage ``jid`` must be used
+   instead.
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml

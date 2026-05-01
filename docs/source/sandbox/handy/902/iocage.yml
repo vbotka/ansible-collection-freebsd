@@ -3,7 +3,7 @@ host: handy
 user: admin
 sudo: true
 compose:
-  ansible_host: "'192.168.1.9'"  # jail host
+  ansible_host: "'172.16.0.241'"  # jail host
   ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
   ansible_python_interpreter: "'auto_silent'"
 

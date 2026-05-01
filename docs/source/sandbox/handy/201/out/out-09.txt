@@ -9,7 +9,30 @@ ok: [iocage_05] =>
     msg: |-
         iocage_releases: ['15.0-RELEASE']
         iocage_plugins:
-          {}
+          ansible-zero:
+            boot: 'on'
+            doc_url: '-'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-zero
+            portal: '-'
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+          syslog-ng:
+            boot: 'on'
+            doc_url: '-'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: syslog-ng
+            portal: '-'
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
 
         iocage_templates:
           ansible_client:
@@ -47,12 +70,34 @@ ok: [iocage_05] =>
             type: template
 
         iocage_jails:
+          ansible-zero:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-zero
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+          syslog-ng:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: syslog-ng
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
           test_151:
             basejail: 'no'
             boot: 'off'
             ip4: vnet0|10.1.0.151/24
             ip6: '-'
-            jid: '10'
+            jid: '40'
             name: test_151
             release: 15.0-RELEASE
             state: up
@@ -63,7 +108,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.152/24
             ip6: '-'
-            jid: '11'
+            jid: '42'
             name: test_152
             release: 15.0-RELEASE
             state: up
@@ -74,7 +119,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|10.1.0.153/24
             ip6: '-'
-            jid: '9'
+            jid: '41'
             name: test_153
             release: 15.0-RELEASE
             state: up
