@@ -2,16 +2,78 @@
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
 TASK [Create clones from template] *********************************************
-changed: [iocage_05] => (item=test_151 ansible_client)
-changed: [iocage_05] => (item=test_152 ansible_client)
-changed: [iocage_05] => (item=test_153 ansible_client)
+[ERROR]: Task failed: Module failed: Jail not created.
+cmd: '/usr/local/bin/iocage clone ansible_client -n test_151 bpf=1 dhcp=1 vnet=1 notes=""vmm=iocage_05"" defaultrouter="10.10.99.1" ' return: 1
+stdout: ''
+stderr: 'Jail: ansible_client must not be running to be cloned!
+'
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:1:3
 
-TASK [Set iocage_jails] ********************************************************
-ok: [iocage_05]
+1 - name: Create clones from template
+    ^ column 3
 
-TASK [Start clones] ************************************************************
-changed: [iocage_05]
+failed: [iocage_05] (item=test_151 ansible_client) => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    ansible_loop_var: item
+    changed: false
+    item:
+        key: test_151
+        value:
+            clone_from: ansible_client
+    msg: |-
+        Jail not created.
+        cmd: '/usr/local/bin/iocage clone ansible_client -n test_151 bpf=1 dhcp=1 vnet=1 notes=""vmm=iocage_05"" defaultrouter="10.10.99.1" ' return: 1
+        stdout: ''
+        stderr: 'Jail: ansible_client must not be running to be cloned!
+        '
+[ERROR]: Task failed: Module failed: Jail not created.
+cmd: '/usr/local/bin/iocage clone ansible_client -n test_152 bpf=1 dhcp=1 vnet=1 notes=""vmm=iocage_05"" defaultrouter="10.10.99.1" ' return: 1
+stdout: ''
+stderr: 'Jail: ansible_client must not be running to be cloned!
+'
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:1:3
+
+1 - name: Create clones from template
+    ^ column 3
+
+failed: [iocage_05] (item=test_152 ansible_client) => 
+    ansible_loop_var: item
+    changed: false
+    item:
+        key: test_152
+        value:
+            clone_from: ansible_client
+    msg: |-
+        Jail not created.
+        cmd: '/usr/local/bin/iocage clone ansible_client -n test_152 bpf=1 dhcp=1 vnet=1 notes=""vmm=iocage_05"" defaultrouter="10.10.99.1" ' return: 1
+        stdout: ''
+        stderr: 'Jail: ansible_client must not be running to be cloned!
+        '
+[ERROR]: Task failed: Module failed: Jail not created.
+cmd: '/usr/local/bin/iocage clone ansible_client -n test_153 bpf=1 dhcp=1 vnet=1 notes=""vmm=iocage_05"" defaultrouter="10.10.99.1" ' return: 1
+stdout: ''
+stderr: 'Jail: ansible_client must not be running to be cloned!
+'
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:1:3
+
+1 - name: Create clones from template
+    ^ column 3
+
+failed: [iocage_05] (item=test_153 ansible_client) => 
+    ansible_loop_var: item
+    changed: false
+    item:
+        key: test_153
+        value:
+            clone_from: ansible_client
+    msg: |-
+        Jail not created.
+        cmd: '/usr/local/bin/iocage clone ansible_client -n test_153 bpf=1 dhcp=1 vnet=1 notes=""vmm=iocage_05"" defaultrouter="10.10.99.1" ' return: 1
+        stdout: ''
+        stderr: 'Jail: ansible_client must not be running to be cloned!
+        '
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=3    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_05                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 
