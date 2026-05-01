@@ -26,7 +26,7 @@
 .. index:: single: option iocage --newmac; Example 443
 
 .. index:: single: iocage plugins; Example 443
-.. index:: single: plugin ansible-zero; Example 443
+.. index:: single: iocage plugin ansible-zero; Example 443
 .. index:: single: ansible-zero; Example 443
 
 .. index:: single: ansible_jail_host; Example 443
