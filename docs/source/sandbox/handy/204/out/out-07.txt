@@ -1,67 +1,6 @@
 
 PLAY [Connect to the group test.] **********************************************
-
-TASK [ansible.builtin.command] *************************************************
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.113 port 22: Connection timed out
-
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
-
-10   tasks:
-11
-12     - ansible.builtin.command: hostname
-         ^ column 7
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.10.99.113 port 22: Connection timed out
-
-fatal: [8fca2e53]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.113
-        port 22: Connection timed out'
-    unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.111 port 22: Connection timed out
-
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
-
-10   tasks:
-11
-12     - ansible.builtin.command: hostname
-         ^ column 7
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.10.99.111 port 22: Connection timed out
-
-fatal: [df0018dd]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.111
-        port 22: Connection timed out'
-    unreachable: true
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.112 port 22: Connection timed out
-
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-test.yml:12:7
-
-10   tasks:
-11
-12     - ansible.builtin.command: hostname
-         ^ column 7
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.10.99.112 port 22: Connection timed out
-
-fatal: [c9176754]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.10.99.112
-        port 22: Connection timed out'
-    unreachable: true
+skipping: no hosts matched
 
 PLAY RECAP *********************************************************************
-8fca2e53                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-c9176754                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-df0018dd                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

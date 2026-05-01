@@ -6,7 +6,7 @@
 VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
 
 # Fetch plugins
-ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t required_plugins -e debug=true | tee out/out-01.txt
+ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t swarm_plugins -e debug=true | tee out/out-01.txt
 
 # List plugins
 ssh admin@$iocage_05 sudo iocage list -P | tee out/out-02.txt

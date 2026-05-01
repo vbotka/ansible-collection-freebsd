@@ -9,6 +9,8 @@ Extending example :ref:`example_016`.
    :local:
    :depth: 1
 
+.. index:: single: swarms; Example 020
+
 .. index:: single: inventory alias; Example 020
 .. index:: single: alias; Example 020
 

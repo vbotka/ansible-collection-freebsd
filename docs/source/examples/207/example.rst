@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: project; Example 207
+
 .. index:: single: template ansible_client; Example 207
 .. index:: single: ansible_client; Example 207
 .. index:: single: DHCP; Example 207

@@ -7,6 +7,8 @@ ok: [iocage_05]
 TASK [Display iocage_jails keys debug=true] ************************************
 ok: [iocage_05] => 
     ansible_facts.iocage_jails.keys():
+    - ansible-zero
+    - syslog-ng
     - test_151
     - test_152
     - test_153

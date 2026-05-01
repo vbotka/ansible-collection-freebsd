@@ -59,6 +59,19 @@ ok: [iocage_05] =>
             state: down
             template: '-'
             type: jail
+        syslog-ng:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
 
 TASK [Start: Start created templates.] *****************************************
 ok: [iocage_05]
@@ -72,19 +85,32 @@ ok: [iocage_05] =>
         ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: 10.10.99.100
+            ip4: 10.10.99.124
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 10.10.99.100
+                    ip: 10.10.99.124
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '12'
+            jid: '24'
             release: 15.0-RELEASE
             state: up
             template: '-'
             type: jail
+        syslog-ng:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
 
 TASK [Pkg: Install packages.] **************************************************
 changed: [iocage_05] => (item=ansible_client)
@@ -93,55 +119,22 @@ TASK [User: Create user.] ******************************************************
 changed: [iocage_05] => (item=ansible_client admin)
 
 TASK [Pk: The keys are valid.] *************************************************
-ok: [iocage_05] => 
+[ERROR]: Task failed: Action failed: [ERR] Invalid key.
+
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_template/pk.yml:28:7
+
+26
+27     # TODO: This test fails if there are more keys in the file.
+28     - name: "Pk: The keys are valid."
+         ^ column 7
+
+fatal: [iocage_05]: FAILED! => 
+    assertion: _act_pk_valid | length > 0
     changed: false
-    msg: All assertions passed
-
-TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Pk: Chown .ssh] **********************************************************
-ok: [iocage_05] => (item=ansible_client admin)
-
-TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_05] => (item=ansible_client admin)
-
-TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_05] => (item=ansible_client dhclient-exit-hooks)
-
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_05] => (item=ansible_client iocage_enable YES)
-changed: [iocage_05] => (item=ansible_client sshd_enable YES)
-
-TASK [Stop: Get iocage list of jails.] *****************************************
-ok: [iocage_05]
-
-TASK [Stop: Display iocage_jails debug=true] ***********************************
-ok: [iocage_05] => 
-    iocage_jails:
-        ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: 10.10.99.100
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 10.10.99.100
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '12'
-            release: 15.0-RELEASE
-            state: up
-            template: '-'
-            type: jail
-
-TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_05]
-
-TASK [Template: Set template.] *************************************************
-ok: [iocage_05] => (item=ansible_client)
+    evaluated_to: false
+    msg: |-
+        [ERR] Invalid key.
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=21   changed=7    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+iocage_05                  : ok=11   changed=3    unreachable=0    failed=1    skipped=9    rescued=0    ignored=0   
 

@@ -1,0 +1,27 @@
+
+PLAY [Test Log Server.] ********************************************************
+
+TASK [Run commands] ************************************************************
+changed: [logserv] => (item=rm -rf /var/log/remote/localhost/*)
+changed: [logserv] => (item=service syslog-ng status)
+changed: [logserv] => (item=loggen -i -S -n 1 localhost 514)
+changed: [logserv] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
+
+TASK [Debug.] ******************************************************************
+ok: [logserv] => 
+    msg: |-
+        shell> rm -rf /var/log/remote/localhost/*
+
+        shell> service syslog-ng status
+        syslog_ng is running as pid 38521.
+
+        shell> loggen -i -S -n 1 localhost 514
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500266, (average) msg size=256, bandwidth=0.50 kB/sec
+
+        shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
+        May  1 06:33:00 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1777609980, stamp: 2026-05-01T06:33:00 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+PLAY RECAP *********************************************************************
+logserv                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

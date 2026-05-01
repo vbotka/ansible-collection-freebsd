@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: swarms; Example 350
+
 .. index:: single: rsnapshot; Example 350
 .. index:: single: role vbotka.freebsd.rsnapshot; Example 350
 .. index:: single: vbotka.freebsd.rsnapshot; Example 350

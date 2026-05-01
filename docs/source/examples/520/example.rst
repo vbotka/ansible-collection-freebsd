@@ -1,13 +1,18 @@
 .. _example_520:
 
-520 Plugins syslog-ng server/clients
-------------------------------------
-
-**(WIP)**
+520 Plugin syslog-ng
+--------------------
 
 .. contents::
    :local:
    :depth: 1
+
+.. index:: single: project; Example 520
+
+.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 520
+.. index:: single: playbook pb_iocage_plugins.yml; Example 520
+.. index:: single: connection vbotka.freebsd.jailexec; Example 520
+.. index:: single: inventory vbotka.freebsd.iocage; Example 520
 
 .. index:: single: syslog-ng; Example 520
 .. index:: single: syslogd; Example 520
@@ -15,18 +20,21 @@
 .. index:: single: log server; Example 520
 .. index:: single: log client; Example 520
 
-.. index:: single: iocage plugins; Example 520
-.. index:: single: plugin syslog-server; Example 520
-.. index:: single: plugin syslog-client; Example 520
-
 .. index:: single: module vbotka.freebsd.service; Example 520
 .. index:: single: vbotka.freebsd.service; Example 520
+
+.. index:: single: iocage plugins; Example 520
+.. index:: single: iocage plugin syslog-ng; Example 520
+
+.. index:: single: ansible_jail_host; Example 520
+.. index:: single: ansible_jail_name; Example 520
+.. index:: single: ansible_jail_privilege_escalation; Example 520
 
 Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Clone the
-iocage plugin ``syslog-ng`. The ``project`` keys are jail's aliases.
+iocage plugin ``syslog-ng``. The ``project`` keys are jail's aliases.
 
 .. code-block:: yaml
 
@@ -49,9 +57,44 @@ iocage plugin ``syslog-ng`. The ``project`` keys are jail's aliases.
                               -i iocage.ini \
 			      --flush-cache
 
+* Fetch the required iocage plugins
+
+  .. code-block:: console
+
+     (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
+                              -i iocage.ini \
+			      -t project_plugins \
+			      --flush-cache
+
+* Create the project
+
+  .. code-block:: console
+
+     (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml \
+                              -i iocage.ini \
+			      -i hosts \
+			      --flush-cache
+
+* Create log server
+
+  .. code-block:: console
+
+     (env) > ansible-playbook pb-logserv.yml -i hosts
+
+* Create log clients			      
+
+  .. code-block:: console
+
+     (env) > ansible-playbook pb-logclient.yml -i hosts -i iocage.ini
+
+* Test
+
+  .. code-block:: console
+
+     (env) > ansible-playbook pb-test-logclient.yml -i hosts
+
 Tree
 ^^^^
-
 ::
    
   shell > tree .
@@ -59,14 +102,14 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   ├── all
-  │   │   └── common.yml
-  │   ├── logclient
+  │   │   ├── common.yml
+  │   │   └── project.yml
+  │   ├── logclient_group
   │   │   └── syslog-ng.yml
-  │   └── logserv
+  │   └── logserv_group
   │       └── syslog-ng.yml
   ├── hosts
-  │   ├── 05_iocage.yml
-  │   └── 99_constructed.yml
+  │   └── 05_iocage.yml
   ├── host_vars
   │   └── iocage_05
   │       └── iocage.yml
@@ -74,7 +117,8 @@ Tree
   ├── pb-all-groups.yml
   ├── pb-logclient.yml
   ├── pb-logserv.yml
-  └── pb-test-logclient.yml
+  ├── pb-test-logclient.yml
+  └── pb-test-logserv.yml
 
 Synopsis
 ^^^^^^^^
@@ -85,20 +129,20 @@ Synopsis
 
   * Fetch the iocage plugin ``syslog-ng``
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
+  In the playbook `vbotka.freebsd.pb_iocage_project_create_from_plugins.yml`_:
 
   * Clone jails from the iocage plugin ``syslog-ng``
 
-* In the inventory group ``logserv`` configure `syslog-ng Server`_.
+* In the inventory group ``logserv_group`` configure `syslog-ng Server`_.
 
-* In the inventory group ``logclient`` configure `syslog-ng Client`_.
+* In the inventory group ``logclient_group`` configure `syslog-ng Client`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * iocage plugin ``syslog-ng``
 * playbook `vbotka.freebsd.pb_iocage_plugins.yml`_
-* playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* playbook `vbotka.freebsd.pb_iocage_project_create_from_plugins.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
 * `module vbotka.freebsd.service`_
@@ -142,10 +186,93 @@ hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
+   :emphasize-lines: 27-28
 
-.. literalinclude:: hosts/99_constructed.yml
+.. note::
+
+   The below group declarations ::
+
+     logserv: iocage_classes is contains('logserv')
+     logclient: iocage_classes is contains('logclient')
+
+   fail (ansible version 2.20) ::
+
+     Failed to parse inventory with 'auto' plugin.
+
+     <<< caused by >>>
+
+     can't add group to itself
+
+   As a workaround, use these declarations::
+
+     logserv_group: iocage_classes is contains('logserv')
+     logclient_group: iocage_classes is contains('logclient')
+
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/common.yml
    :language: yaml+jinja
    :caption:
+
+.. literalinclude:: group_vars/all/project.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/logserv_group/syslog-ng.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/logclient_group/syslog-ng.yml
+   :language: yaml+jinja
+   :caption:
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+Fetch the iocage plugin
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
+                            -i iocage.ini \
+			    -t project_plugins \
+			    -e debug=true
+
+.. literalinclude:: out/out-01.txt
+   :language: yaml
+   :force:
+
+List plugins
+^^^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_05 sudo iocage list -P
+
+.. literalinclude:: out/out-02.txt
+   :language: sh
+
+Playbook output - Create project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Flush the cache if you created the ``project`` and haven't refreshed the inventory cache yet.
+
+.. code-block:: console
+
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml \
+                              -i iocage.ini \
+			      -i hosts \
+			      --flush-cache
+
+.. literalinclude:: out/out-03.txt
+   :language: yaml
+   :force:
 
 Playbook pb-all-groups.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -156,30 +283,15 @@ Playbook pb-all-groups.yml
 Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Flush the cache if you created the ``project`` and haven't refreshed it yet.
+Flush the cache if necessary.
 
 .. code-block:: console
 
    (env) > ansible-playbook pb-all-groups.yml -i hosts --flush-cache
 
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
-
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/common.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: group_vars/logserv/syslog-ng.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: group_vars/logclient/syslog-ng.yml
-   :language: yaml+jinja
-   :caption:
 
 Playbook pb-logserv.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -190,39 +302,30 @@ Playbook pb-logserv.yml
 Playbook output - Log Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the package if you're running this play for the first time.
-
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logserv.yml -i hosts -e install=true
+   (env) > ansible-playbook pb-logserv.yml -i hosts
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
-Test the Log Server
-^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-logserv.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-logserv.yml
+   :language: yaml+jinja
+
+Playbook output - Test Log Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ssh admin@4b07a142 sudo service syslog-ng status
-   syslog_ng is running as pid 63344.
+   (env) > ansible-playbook pb-test-logserv.yml -i hosts -e debug=true
 
-.. code-block:: console
-
-   (env) > ssh admin@4b07a142 loggen -i -S -n 1 localhost 514
-   count=1, rate = 100000.00 msg/sec
-   average rate = 1.95 msg/sec, count=1, time=0.512063, (average) msg size=256, bandwidth=0.49 kB/sec
-.. code-block:: console
-
-   (env) > ssh admin@4b07a142 sudo cat /var/log/remote/localhost/2025_08_12.log
-    Aug 12 01:41:22 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1754955682, stamp: 2025-08-12T01:41:22 PADDPADD...
-    Aug 12 01:42:42 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1754955762, stamp: 2025-08-12T01:42:42 PADDPADD...
-
-.. note::
-
-   This test is not created dynamically. The Log Server jail name in this test differs from the
-   dynamically created name in the example. (TBD)
+.. literalinclude:: out/out-09.txt
+   :language: yaml
+   :force:
 
 Playbook pb-logclient.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -233,15 +336,23 @@ Playbook pb-logclient.yml
 Playbook output - Log Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the package if you’re running this play for the first time.
+.. code-block:: console
+
+   (env) > ansible-playbook pb-logclient.yml -i hosts -i iocage.ini -e debug=true
+
+.. literalinclude:: out/out-06.txt
+   :language: yaml
+   :force:
+
+List jails
+^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logclient.yml -i hosts -i iocage.ini -e install=true -e debug=true
+   shell > ssh admin@iocage_05 sudo iocage list -l
 
-.. literalinclude:: out/out-03.txt
-   :language: yaml
-   :force:
+.. literalinclude:: out/out-08.txt
+   :language: sh
 
 Playbook pb-test-logclient.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,24 +367,9 @@ Playbook output - Test Log Client
 
    (env) > ansible-playbook pb-test-logclient.yml -i hosts
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
-
-Example of the directory at the Log Server.
-
-.. code-block:: console
-
-   (env) > ssh admin@4b07a142 sudo ls -lat /var/log/remote/ | sort
-   drwx------  2 root  wheel   3 Aug 12 01:30 0f8e3961
-   drwx------  2 root  wheel   3 Aug 12 01:30 33a222bb
-   drwx------  2 root  wheel   3 Aug 12 01:30 35167ffa
-   drwx------  2 root  wheel   3 Aug 12 01:30 ef5d35da
-   drwx------  2 root  wheel   3 Aug 12 01:41 localhost
-   drwx------  7 root  wheel   7 Aug 12 01:41 .
-   drwxr-xr-x  3 root  wheel  17 Aug 12 01:30 ..
-
-.. note:: This example of the directory at the Log Server is not created dynamically. (TBD)
 
 
 .. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
@@ -287,7 +383,7 @@ Example of the directory at the Log Server.
 .. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng
 
 .. _vbotka.freebsd.pb_iocage_plugins.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_plugins.yml/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
+.. _vbotka.freebsd.pb_iocage_project_create_from_plugins.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/

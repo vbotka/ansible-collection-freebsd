@@ -1,7 +1,5 @@
 - name: Test Log Client.
-  hosts: logclient
-  remote_user: admin
-  become: true
+  hosts: logclient_group
     
   tasks:
 

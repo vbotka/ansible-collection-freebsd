@@ -7,7 +7,7 @@ ok: [test_151] =>
 ok: [test_152] => 
     ansible_host: 10.10.99.101
 ok: [test_153] => 
-    ansible_host: '-'
+    ansible_host: 10.10.99.103
 
 PLAY RECAP *********************************************************************
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

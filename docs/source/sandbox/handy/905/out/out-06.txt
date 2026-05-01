@@ -2,35 +2,56 @@
 PLAY [Test the connection plugin jailexec.] ************************************
 
 TASK [ansible.builtin.command] *************************************************
-[ERROR]: Task failed: Cannot access jail 'None': Shared connection to iocage_05 closed.
+changed: [d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15]
+changed: [4226e03f-a27c-43a9-ac02-4f7f72c11333]
+changed: [5a3e9570-5080-4470-8079-4304df22d512]
 
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/905/pb-test.yml:9:7
+TASK [ansible.builtin.debug] ***************************************************
+ok: [4226e03f-a27c-43a9-ac02-4f7f72c11333] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: 4226e03f-a27c-43a9-ac02-4f7f72c11333
+        ansible_user: admin
 
-7 #    - ansible.builtin.command: "pkg info -I syslog-ng"
-8 #      register: out
-9     - ansible.builtin.command: "uname -a"
-        ^ column 7
+        ansible_jail_host: iocage_05
+        ansible_jail_privilege_escalation: sudo
 
-<<< caused by >>>
+        iocage_ip4: 10.10.99.192
+        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
-Cannot access jail 'None': Shared connection to iocage_05 closed.
+        pkg info:
+        syslog-ng-4.11.0_1             Powerful syslogd replacement
+ok: [5a3e9570-5080-4470-8079-4304df22d512] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: 5a3e9570-5080-4470-8079-4304df22d512
+        ansible_user: admin
 
-fatal: [d691667b-1379-468b-9558-9c8c5190bbef]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_05 closed.'
-    unreachable: true
-fatal: [d866b78c-e66a-48d5-977a-305107224c13]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_05 closed.'
-    unreachable: true
-fatal: [173f4b80-d3e9-432e-a594-859548b44387]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_05 closed.'
-    unreachable: true
+        ansible_jail_host: iocage_05
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: 10.10.99.129
+        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
+
+        pkg info:
+        syslog-ng-4.11.0_1             Powerful syslogd replacement
+ok: [d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15
+        ansible_user: admin
+
+        ansible_jail_host: iocage_05
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: 10.10.99.191
+        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
+
+        pkg info:
+        syslog-ng-4.11.0_1             Powerful syslogd replacement
 
 PLAY RECAP *********************************************************************
-173f4b80-d3e9-432e-a594-859548b44387 : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-d691667b-1379-468b-9558-9c8c5190bbef : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
-d866b78c-e66a-48d5-977a-305107224c13 : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+4226e03f-a27c-43a9-ac02-4f7f72c11333 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+5a3e9570-5080-4470-8079-4304df22d512 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

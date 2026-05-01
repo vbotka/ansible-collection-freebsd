@@ -4,10 +4,12 @@
     
   tasks:
 
-    - ansible.builtin.command: uname -a
+    - name: Get uname  # noqa: no-changed-when
+      ansible.builtin.command: uname -a
       register: out
 
-    - ansible.builtin.debug:
+    - name: Debug
+      ansible.builtin.debug:
         msg: |
           ansible_connection: {{ ansible_connection }}
           ansible_host: {{ ansible_host }}

@@ -1,0 +1,66 @@
+- name: Create and start project jails from plugins.
+  hosts: iocage
+
+  tasks:
+
+    - name: Display vars.  # noqa: run-once
+      tags: debug
+      when: debug | d(false) | bool
+      vars:
+        project_jails_present: "{{ project | intersect(groups.all) }}"
+        project_jails_absent: "{{ project | difference(groups.all) }}"
+      run_once: true
+      ansible.builtin.debug:
+        msg: |
+          project:
+            {{ project | to_nice_yaml(indent=2) | indent(2) }}
+          vmm:
+            {{ vmm | to_nice_yaml(indent=2) | indent(2) }}
+          groups.all: {{ groups.all }}
+          project_jails_present: {{ project_jails_present }}
+          project_jails_absent: {{ project_jails_absent }}
+
+    - name: Clone and start jails.
+      tags: clone
+      vars:
+        iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.all) }}"
+        iocage_jails_created: "{{ out.results | map(attribute='stdout') | map('split') | map('first') }}"
+      block:
+
+        - name: Display iocage_jails_absent
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: iocage_jails_absent
+
+        - name: All jails already created. End host.
+          when: iocage_jails_absent | length == 0
+          ansible.builtin.meta: end_host
+
+        - name: Clone jails from plugins.
+          changed_when: false
+          register: out
+          vars:
+            _notes: >
+              "vmm={{ inventory_hostname }}
+              class={{ vmm[inventory_hostname][item]['class'] | join(',') }}
+              alias={{ item }}"
+            _properties: >
+              {{ properties }}
+              notes={{ _notes }}
+          ansible.builtin.command: >
+            iocage clone
+            {{ vmm[inventory_hostname][item]['plugin'] }}
+            --newmac
+            {{ _properties }}
+          loop: "{{ iocage_jails_absent }}"
+
+        - name: Display iocage_jails_created
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: iocage_jails_created
+
+        - name: Start created jails.
+          changed_when: false
+          ansible.builtin.command: >
+            iocage start
+            {{ iocage_jails_created | join(' ') }}

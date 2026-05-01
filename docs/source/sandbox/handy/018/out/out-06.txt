@@ -2,6 +2,19 @@ all:
   children:
     ungrouped:
       hosts:
+        ansible-zero:
+          iocage_basejail: 'yes'
+          iocage_boot: 'on'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: DHCP (not running)
+          iocage_ip6: '-'
+          iocage_jid: None
+          iocage_release: 15.0-RELEASE
+          iocage_state: down
+          iocage_template: '-'
+          iocage_type: pluginv2
         ansible_client:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
@@ -15,6 +28,19 @@ all:
           iocage_state: down
           iocage_template: '-'
           iocage_type: jail
+        syslog-ng:
+          iocage_basejail: 'yes'
+          iocage_boot: 'on'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: DHCP (not running)
+          iocage_ip6: '-'
+          iocage_jid: None
+          iocage_release: 15.0-RELEASE
+          iocage_state: down
+          iocage_template: '-'
+          iocage_type: pluginv2
         test_151:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
@@ -26,7 +52,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '5'
+          iocage_jid: '35'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client
@@ -42,7 +68,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '6'
+          iocage_jid: '36'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client
@@ -50,13 +76,15 @@ all:
         test_153:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: '-'
+          iocage_ip4: 10.10.99.103
           iocage_ip4_dict:
-            ip4: []
-            msg: 'DHCP - Network Issue: Command ''[''jexec'' ''ioc-test_153'' ''ifconfig''
-              ''epair0b'' ''inet'']'' returned non-zero exit status 1.'
+            ip4:
+            - ifc: epair0b
+              ip: 10.10.99.103
+              mask: '-'
+            msg: ''
           iocage_ip6: '-'
-          iocage_jid: '4'
+          iocage_jid: '37'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client

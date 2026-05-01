@@ -2,19 +2,6 @@
 PLAY [Connect to the group test.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
-
-Task failed.
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
-
-fatal: [test_153]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153
-        port 22: Connection timed out'
-    unreachable: true
 [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.151 port 22: Connection timed out
 
 Task failed.
@@ -39,6 +26,19 @@ Failed to connect to the host via ssh: ssh: connect to host 10.1.0.152 port 22: 
 fatal: [test_152]: UNREACHABLE! => 
     changed: false
     msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.152
+        port 22: Connection timed out'
+    unreachable: true
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
+
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153 port 22: Connection timed out
+
+fatal: [test_153]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: connect to host 10.1.0.153
         port 22: Connection timed out'
     unreachable: true
 

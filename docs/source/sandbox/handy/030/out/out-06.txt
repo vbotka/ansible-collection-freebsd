@@ -8,18 +8,25 @@ TASK [Debug] *******************************************************************
 ok: [iocage_05] => 
     ansible_local.iocage:
         jails: |-
-            +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-            | JID  |   NAME   | BOOT | STATE | TYPE |   RELEASE    |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
-            +======+==========+======+=======+======+==============+====================+=====+================+==========+
-            | None | 05d2b7f1 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
-            +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
-            | None | 55a03079 | off  | down  | jail | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
-            +------+----------+------+-------+------+--------------+--------------------+-----+----------------+----------+
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------------+----------+
+            | JID  |     NAME     | BOOT | STATE |   TYPE   |   RELEASE    |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
+            +======+==============+======+=======+==========+==============+====================+=====+================+==========+
+            | None | 4bf06305     | off  | down  | jail     | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------------+----------+
+            | None | ansible-zero | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -              | yes      |
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------------+----------+
+            | None | fec83ac1     | off  | down  | jail     | 15.0-RELEASE | DHCP (not running) | -   | ansible_client | no       |
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------------+----------+
+            | None | syslog-ng    | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -              | yes      |
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------------+----------+
         plugins: |-
-            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
-            | JID | NAME | BOOT | STATE | TYPE | RELEASE | IP4 | IP6 | TEMPLATE | PORTAL | DOC_URL |
-            +=====+======+======+=======+======+=========+=====+=====+==========+========+=========+
-            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------+--------+---------+
+            | JID  |     NAME     | BOOT | STATE |   TYPE   |   RELEASE    |        IP4         | IP6 | TEMPLATE | PORTAL | DOC_URL |
+            +======+==============+======+=======+==========+==============+====================+=====+==========+========+=========+
+            | None | ansible-zero | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -        | -      | -       |
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------+--------+---------+
+            | None | syslog-ng    | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -        | -      | -       |
+            +------+--------------+------+-------+----------+--------------+--------------------+-----+----------+--------+---------+
         releases: |-
             15.0-RELEASE
         templates: |-
@@ -37,7 +44,7 @@ TASK [Debug] *******************************************************************
 ok: [iocage_05] => 
     ansible_local.iocage | vbotka.freebsd.iocage:
         jails:
-            05d2b7f1:
+            4bf06305:
                 basejail: 'no'
                 boot: 'off'
                 ip4: '-'
@@ -50,7 +57,20 @@ ok: [iocage_05] =>
                 state: down
                 template: ansible_client
                 type: jail
-            55a03079:
+            ansible-zero:
+                basejail: 'yes'
+                boot: 'on'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE
+                state: down
+                template: '-'
+                type: pluginv2
+            fec83ac1:
                 basejail: 'no'
                 boot: 'off'
                 ip4: '-'
@@ -63,7 +83,48 @@ ok: [iocage_05] =>
                 state: down
                 template: ansible_client
                 type: jail
-        plugins: {}
+            syslog-ng:
+                basejail: 'yes'
+                boot: 'on'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE
+                state: down
+                template: '-'
+                type: pluginv2
+        plugins:
+            ansible-zero:
+                boot: 'on'
+                doc_url: '-'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                portal: '-'
+                release: 15.0-RELEASE
+                state: down
+                template: '-'
+                type: pluginv2
+            syslog-ng:
+                boot: 'on'
+                doc_url: '-'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                portal: '-'
+                release: 15.0-RELEASE
+                state: down
+                template: '-'
+                type: pluginv2
         releases:
         - 15.0-RELEASE
         templates:

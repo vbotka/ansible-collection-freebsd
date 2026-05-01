@@ -2,6 +2,20 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
+ok: [ansible-zero] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: ansible-zero
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [syslog-ng] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: syslog-ng
+        iocage_classes: []
+
+        iocage_tags: {}
 ok: [test_5] => 
     msg: |-
         ansible_host: -
@@ -9,27 +23,27 @@ ok: [test_5] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [db_5] => 
-    msg: |-
-        ansible_host: 10.10.99.117
-        iocage_properties.host_hostuuid: 9149490f
-        iocage_classes: [db, logclient]
-
-        iocage_tags: {alias: db_5, class: 'db,logclient', vmm: iocage_05}
 ok: [http_5] => 
     msg: |-
-        ansible_host: 10.10.99.118
-        iocage_properties.host_hostuuid: 588ca6e1
+        ansible_host: 10.10.99.200
+        iocage_properties.host_hostuuid: 5bf77d9b
         iocage_classes: [http, logclient]
 
         iocage_tags: {alias: http_5, class: 'http,logclient', vmm: iocage_05}
+ok: [db_5] => 
+    msg: |-
+        ansible_host: 10.10.99.105
+        iocage_properties.host_hostuuid: d8d102ab
+        iocage_classes: [db, logclient]
+
+        iocage_tags: {alias: db_5, class: 'db,logclient', vmm: iocage_05}
 
 TASK [debug] *******************************************************************
-ok: [test_5] => 
+ok: [ansible-zero] => 
     msg: |-
-        all: ['test_5', 'http_5', 'db_5']
+        all: ['ansible-zero', 'syslog-ng', 'test_5', 'http_5', 'db_5']
         ungrouped: []
-        state_down: ['test_5']
+        state_down: ['ansible-zero', 'syslog-ng', 'test_5']
         http: ['http_5']
         logclient: ['http_5', 'db_5']
         state_up: ['http_5', 'db_5']
@@ -37,7 +51,9 @@ ok: [test_5] =>
         db: ['db_5']
 
 PLAY RECAP *********************************************************************
+ansible-zero               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 db_5                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 http_5                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_5                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_5                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

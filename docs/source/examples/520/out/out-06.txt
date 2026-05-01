@@ -1,0 +1,47 @@
+
+PLAY [Configure and start Log Client.] *****************************************
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    msg: |-
+        log_serv: 10.10.99.122
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+ok: [foo] => 
+    msg: |-
+        log_serv: 10.10.99.122
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+
+TASK [Stop syslogd.] ***********************************************************
+changed: [bar]
+changed: [foo]
+
+TASK [Disable syslogd.] ********************************************************
+changed: [bar]
+changed: [foo]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+ok: [foo]
+ok: [bar]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+changed: [foo]
+changed: [bar]
+
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+changed: [bar]
+changed: [foo]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
+changed: [bar]
+changed: [foo]
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+ok: [bar]
+ok: [foo]
+
+PLAY RECAP *********************************************************************
+bar                        : ok=8    changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+foo                        : ok=8    changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+

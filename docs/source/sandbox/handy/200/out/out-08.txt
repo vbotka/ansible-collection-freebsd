@@ -1,5 +1,7 @@
 @all:
   |--@ungrouped:
+  |  |--ansible-zero
+  |  |--syslog-ng
   |--@test_05:
   |  |--test_151
   |  |--test_152
