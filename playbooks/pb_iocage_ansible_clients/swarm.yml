@@ -56,10 +56,11 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Create swarms # noqa: no-changed-when
+    - name: Create swarms
       when:
         - not dry_run | bool
         - _count | int > 0
+      changed_when: false
       register: out
       ansible.builtin.command:
         cmd: "{{ cmd_create }}"
@@ -110,10 +111,11 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Start swarms # noqa: no-changed-when
+    - name: Start swarms
       when:
         - not dry_run | bool
         - _jails | length > 0
+      changed_when: false
       register: out
       ansible.builtin.command:
         cmd: "{{ cmd_start }}"

@@ -1,5 +1,5 @@
 ---
-# Copyright 2019 Vladimir Botka <vbotka@gmail.com>
+# Copyright 2019-2026 Vladimir Botka <vbotka@gmail.com>
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
@@ -67,7 +67,8 @@
         version: "{{ item.version | d('HEAD') }}"
       loop: "{{ requirements }}"
 
-    - name: Command git clone repos. # noqa: no-changed-when
+    - name: Command git clone repos.
+      changed_when: false
       when:
         - item.install | d(true)
         - not git_module | bool

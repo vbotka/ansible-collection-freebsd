@@ -40,7 +40,8 @@
           when: iocage_jails_absent | length == 0
           ansible.builtin.meta: end_host
 
-        - name: Create jails.  # noqa: no-changed-when
+        - name: Create jails.
+          changed_when: false
           register: out
           ansible.builtin.command: >
             iocage create
@@ -54,7 +55,8 @@
           ansible.builtin.debug:
             var: iocage_jails_created
 
-        - name: Set notes.  # noqa: no-changed-when
+        - name: Set notes.
+          changed_when: false
           vars:
             alias: "{{ iocage_jails_absent[idx] }}"
             iocage_tags: >-
@@ -94,7 +96,8 @@
             index_var: idx
             label: "{{ alias }} {{ iocage_tags }}"
 
-        - name: Start created jails.  # noqa: no-changed-when
+        - name: Start created jails.
+          changed_when: false
           ansible.builtin.command: >
             iocage start
             {{ iocage_jails_created | join(' ') }}

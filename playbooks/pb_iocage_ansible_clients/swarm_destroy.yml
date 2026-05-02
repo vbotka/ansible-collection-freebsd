@@ -29,10 +29,11 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Stop swarms # noqa: no-changed-when
+    - name: Stop swarms
       when:
         - not dry_run | d(true) | bool
         - _jails_started | length > 0
+      changed_when: false
       register: out
       ansible.builtin.command:
         cmd: "{{ cmd_stop }}"
@@ -53,10 +54,11 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Destroy swarms # noqa: no-changed-when
+    - name: Destroy swarms
       when:
         - not dry_run | d(true) | bool
         - _swarm_exist | length > 0
+      changed_when: false
       register: out
       ansible.builtin.command:
         cmd: "{{ cmd_destroy }}"

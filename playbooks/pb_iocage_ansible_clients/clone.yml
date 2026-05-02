@@ -24,8 +24,9 @@
   ansible.builtin.set_fact:
     iocage_jails: "{{ ansible_facts.iocage_jails }}"
 
-- name: Start clones  # noqa: no-changed-when
+- name: Start clones
   when: _jails | length > 0
+  changed_when: false
   vars:
     _jails: "{{ start | difference(_started) }}"
   register: out_start
