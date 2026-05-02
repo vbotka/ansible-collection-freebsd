@@ -259,8 +259,8 @@ List plugins
 .. literalinclude:: out/out-02.txt
    :language: sh
 
-Playbook output - Create project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create project from plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flush the cache if you created the ``project`` and haven't refreshed the inventory cache yet.
 
