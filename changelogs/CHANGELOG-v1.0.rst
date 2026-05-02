@@ -18,6 +18,7 @@ Minor Changes
 --------------
 * Docs. Update index.
 * Replace noqa changed_when with the option in the playbooks.
+* Update license in the playbooks.
 
 
 0.8.15
