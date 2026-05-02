@@ -24,6 +24,11 @@ Extending example :ref:`example_010`.
 .. index:: single: variable iocage_properties; Example 013
 .. index:: single: iocage_properties; Example 013
 
+.. index:: single: iocage_jails; Example 013
+.. index:: single: iocage_plugins; Example 013
+.. index:: single: iocage_releases; Example 013
+.. index:: single: iocage_templates; Example 013
+
 Use case
 ^^^^^^^^
 

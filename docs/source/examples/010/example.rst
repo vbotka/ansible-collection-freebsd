@@ -14,6 +14,11 @@
 .. index:: single: option keyed_groups; Example 010
 .. index:: single: keyed_groups; Example 010
 
+.. index:: single: iocage_jails; Example 010
+.. index:: single: iocage_plugins; Example 010
+.. index:: single: iocage_releases; Example 010
+.. index:: single: iocage_templates; Example 010
+
 Use case
 ^^^^^^^^
 
