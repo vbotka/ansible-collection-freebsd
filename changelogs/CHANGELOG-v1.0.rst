@@ -19,6 +19,8 @@ Minor Changes
 * Docs. Update index.
 * Replace noqa changed_when with the option in the playbooks.
 * Update license in the playbooks.
+* Docs. By default, some testing pb do not work wihout SSH redirection or jailexec.
+  Disable sandbox 020, 202 in batch.sh
 
 
 0.8.15

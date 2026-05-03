@@ -1,0 +1,53 @@
+
+PLAY [Fetch and stop iocage plugins.] ******************************************
+
+TASK [One tag is required.] ****************************************************
+ok: [iocage_05]
+
+TASK [Test the tag is known.] **************************************************
+ok: [iocage_05]
+
+TASK [Get already fetched plugins.] ********************************************
+ok: [iocage_05]
+
+TASK [Debug fetched plugins debug=true] ****************************************
+ok: [iocage_05] => 
+    msg: |-
+        iocage_plugins:
+          ansible-zero:
+            boot: 'on'
+            doc_url: '-'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            portal: '-'
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+        syslog-ng:
+            boot: 'on'
+            doc_url: '-'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            portal: '-'
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+
+        plugins:
+          syslog-ng:
+            git: https://github.com/vbotka/iocage-plugins
+            options: bpf=1 dhcp=1 vnet=1
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

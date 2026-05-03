@@ -7,6 +7,8 @@
 
     debug: false
 
+    _properties: "{{ [properties | d({}), item.value.properties | d({})] | combine(recursive=true) }}"
+
   tasks:
 
     - name: Create swarms.
@@ -17,7 +19,7 @@
           --short
           --count {{ item.value.count }}
           --template {{ item.value.template }}
-          {{ properties }}
+          {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
       loop: "{{ swarms | dict2items }}"
 
     - name: Debug iocage create.

@@ -1,0 +1,14 @@
+enabled_plugins:
+  - ansible-test
+
+plugins:
+  ansible-test:
+    git: https://github.com/vbotka/iocage-plugins
+    properties: >
+      bpf=1
+      dhcp=1
+      vnet=1
+      notes="vmm={{ inventory_hostname }}"
+  ansible-zero:
+    git: https://github.com/vbotka/iocage-plugins
+

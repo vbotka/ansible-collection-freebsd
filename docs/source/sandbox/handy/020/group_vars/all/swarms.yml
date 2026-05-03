@@ -1,2 +1,5 @@
 project: example_020
-properties: "bpf=1 dhcp=1 vnet=1"
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
