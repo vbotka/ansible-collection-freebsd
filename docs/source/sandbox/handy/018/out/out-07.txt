@@ -5,26 +5,18 @@ TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: |-
         ansible_client None 15.0-RELEASE - [] down '-'
-ok: [ansible-zero] => 
-    msg: |-
-        ansible-zero None 15.0-RELEASE - [] down 'DHCP (not running)'
-ok: [syslog-ng] => 
-    msg: |-
-        syslog-ng None 15.0-RELEASE - [] down 'DHCP (not running)'
 ok: [test_151] => 
     msg: |-
-        test_151 35 15.0-RELEASE 10.10.99.102 ['10.10.99.102'] up ''
+        test_151 39 15.0-RELEASE 10.10.99.102 ['10.10.99.102'] up ''
 ok: [test_152] => 
     msg: |-
-        test_152 36 15.0-RELEASE 10.10.99.101 ['10.10.99.101'] up ''
+        test_152 40 15.0-RELEASE 10.10.99.101 ['10.10.99.101'] up ''
 ok: [test_153] => 
     msg: |-
-        test_153 37 15.0-RELEASE 10.10.99.103 ['10.10.99.103'] up ''
+        test_153 41 15.0-RELEASE 10.10.99.103 ['10.10.99.103'] up ''
 
 PLAY RECAP *********************************************************************
-ansible-zero               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

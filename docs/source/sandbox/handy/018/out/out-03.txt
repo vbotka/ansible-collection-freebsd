@@ -18,11 +18,9 @@ TASK [Display jails.] **********************************************************
 ok: [iocage_05] => 
     msg: |-
         ansible_client None - 15.0-RELEASE down
-        ansible-zero None DHCP (not running) 15.0-RELEASE down
-        syslog-ng None DHCP (not running) 15.0-RELEASE down
-        test_151 35 epair0b|10.10.99.102 15.0-RELEASE up
-        test_152 36 epair0b|10.10.99.101 15.0-RELEASE up
-        test_153 37 epair0b|10.10.99.103 15.0-RELEASE up
+        test_151 39 epair0b|10.10.99.102 15.0-RELEASE up
+        test_152 40 epair0b|10.10.99.101 15.0-RELEASE up
+        test_153 41 epair0b|10.10.99.103 15.0-RELEASE up
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
