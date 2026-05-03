@@ -1,4 +1,4 @@
-- hosts: ansible_client
+- hosts: test_05
 
   tasks:
 
