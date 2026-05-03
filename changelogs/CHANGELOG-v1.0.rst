@@ -21,7 +21,7 @@ Minor Changes
 * Update license in the playbooks.
 * Docs. Update sandbox 010, 013, 014, 015, 018
 * Docs. By default, some testing pb do not work without SSH redirection or jailexec.
-  Disable sandbox 020, 200, 202, 203 in batch.sh
+  Disable sandbox 020, 200, 202, 203, 204 in batch.sh
 
 
 0.8.15

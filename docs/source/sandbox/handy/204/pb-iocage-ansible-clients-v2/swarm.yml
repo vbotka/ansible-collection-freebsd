@@ -1,5 +1,5 @@
 ---
-- name: Create swarms
+- name: Create swarms.
   vars:
     _notes: '"{{ [properties.notes | d(""),
                   item.value.properties.notes | d(""),
@@ -38,7 +38,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Create swarms
+    - name: Create swarms.
       when:
         - not dry_run | bool
         - _count | int > 0
@@ -54,7 +54,7 @@
       ansible.builtin.debug:
         var: out
 
-- name: Start swarms
+- name: Start swarms.
   vars:
     _query: '[?value.swarm==`{{ item.key }}`].key'
     _jails: "{{ _tags | dict2items | community.general.json_query(_query) | difference(_started) }}"
@@ -85,7 +85,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Start swarms
+    - name: Start swarms.
       when:
         - not dry_run | bool
         - _jails | length > 0

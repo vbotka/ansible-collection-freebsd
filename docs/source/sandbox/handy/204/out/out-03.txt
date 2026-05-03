@@ -1,15 +1,11 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Get iocage list of jails] ************************************************
+TASK [Get iocage list of jails.] ***********************************************
 ok: [iocage_05]
 
 TASK [Set dictionary iocage_jails] *********************************************
 ok: [iocage_05]
-
-TASK [Get properties of iocage jails] ******************************************
-ok: [iocage_05] => (item=ansible-zero)
-ok: [iocage_05] => (item=syslog-ng)
 
 TASK [Set dictionary iocage_jails_properties] **********************************
 ok: [iocage_05]
@@ -18,43 +14,196 @@ TASK [Combine iocage_jails and iocage_jails_properties] ************************
 ok: [iocage_05]
 
 TASK [Debug cmd_create debug=true] *********************************************
-[ERROR]: Task failed: Finalization of task args for 'ansible.builtin.debug' failed: Error while resolving value for 'msg': The filter plugin 'community.general.dict' failed: dictionary update sequence element #0 has length 1; 2 is required
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_05  swarm=sw_01"
 
-Task failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-iocage-ansible-clients-v2/swarm.yml:33:7
+TASK [Create swarms.] **********************************************************
+changed: [iocage_05] => (item=sw_01)
 
-31             {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
-32
-33     - name: "Debug cmd_create debug={{ debug }}"
-         ^ column 7
+TASK [Debug create swarms debug=true] ******************************************
+ok: [iocage_05] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client
+            - --count
+            - '3'
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            - notes=vmm=iocage_05  swarm=sw_01
+            delta: '0:00:00.801648'
+            end: '2026-05-04 01:34:01.676563'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_05  swarm=sw_01"
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2026-05-04 01:34:00.874915'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                dbcd65ea successfully created!
+                f28b6a53 successfully created!
+                ee19164c successfully created!
+            stdout_lines:
+            - dbcd65ea successfully created!
+            - f28b6a53 successfully created!
+            - ee19164c successfully created!
+        skipped: false
 
-<<< caused by >>>
+TASK [Get iocage list of jails.] ***********************************************
+ok: [iocage_05]
 
-Finalization of task args for 'ansible.builtin.debug' failed.
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-iocage-ansible-clients-v2/swarm.yml:35:7
+TASK [Set dictionary iocage_jails] *********************************************
+ok: [iocage_05]
 
-33     - name: "Debug cmd_create debug={{ debug }}"
-34       when: debug | bool
-35       ansible.builtin.debug:
-         ^ column 7
+TASK [Get properties of iocage jails.] *****************************************
+ok: [iocage_05] => (item=dbcd65ea)
+ok: [iocage_05] => (item=ee19164c)
+ok: [iocage_05] => (item=f28b6a53)
 
-<<< caused by >>>
+TASK [Set dictionary iocage_jails_properties] **********************************
+ok: [iocage_05]
 
-Error while resolving value for 'msg': The filter plugin 'community.general.dict' failed: dictionary update sequence element #0 has length 1; 2 is required
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/204/pb-iocage-ansible-clients-v2/swarm.yml:36:14
+TASK [Combine iocage_jails and iocage_jails_properties] ************************
+ok: [iocage_05]
 
-34       when: debug | bool
-35       ansible.builtin.debug:
-36         msg: "{{ cmd_create }}"
-                ^ column 14
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        iocage start dbcd65ea ee19164c f28b6a53
 
-failed: [iocage_05] (item=sw_01) => 
-    msg: 'Task failed: Finalization of task args for ''ansible.builtin.debug'' failed:
-        Error while resolving value for ''msg'': The filter plugin ''community.general.dict''
-        failed: dictionary update sequence element #0 has length 1; 2 is required'
-fatal: [iocage_05]: FAILED! => 
-    msg: One or more items failed
+TASK [Start swarms.] ***********************************************************
+changed: [iocage_05] => (item=sw_01)
+
+TASK [Debug start swarms debug=true] *******************************************
+ok: [iocage_05] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - start
+            - dbcd65ea
+            - ee19164c
+            - f28b6a53
+            delta: '0:00:08.612954'
+            end: '2026-05-04 01:34:14.160802'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage start dbcd65ea ee19164c f28b6a53
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2026-05-04 01:34:05.547848'
+            stderr: |-
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+            stderr_lines:
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            stdout: |-
+                * Starting dbcd65ea
+                  + Started OK
+                  + Using devfs_ruleset: 1000 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.10.99.139/24
+                * Starting ee19164c
+                  + Started OK
+                  + Using devfs_ruleset: 1001 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.10.99.140/24
+                * Starting f28b6a53
+                  + Started OK
+                  + Using devfs_ruleset: 1002 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.10.99.141/24
+            stdout_lines:
+            - '* Starting dbcd65ea'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1000 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.10.99.139/24'
+            - '* Starting ee19164c'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1001 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.10.99.140/24'
+            - '* Starting f28b6a53'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1002 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.10.99.141/24'
+        skipped: false
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=5    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+iocage_05                  : ok=15   changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 
