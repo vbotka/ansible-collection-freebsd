@@ -3,4 +3,4 @@ host: handy
 user: admin
 get_properties: true
 compose:
-  iocage_tags: dict(iocage_properties.notes | split | select('contains', '=') | map('split', '='))
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)'))
