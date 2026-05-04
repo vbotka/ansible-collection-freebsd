@@ -21,7 +21,9 @@ Minor Changes
 * Update license in the playbooks.
 * Docs. Update sandbox 010, 013, 014, 015, 018
 * Docs. By default, some testing pb do not work without SSH redirection or jailexec.
-  Disable sandbox 020, 200, 202, 203, 204, 206 in batch.sh
+  Disable sandbox 020, 200, 202, 203, 204, 206, 207 in batch.sh
+* Unified format of properties is a dictionary
+  updated: pb_iocage_project_create.yml, pb_iocage_ansible_clients/clone.yml
 
 
 0.8.15

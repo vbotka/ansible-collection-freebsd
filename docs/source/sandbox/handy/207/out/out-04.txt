@@ -40,32 +40,53 @@ ok: [iocage_05] =>
           - http_5
           - db_5
 
-        groups.all: ['ansible-zero', 'syslog-ng', 'test_5', 'iocage_05']
+        groups.all: ['test_5', 'iocage_05']
         project_jails_present: []
-        project_jails_absent: ['http_5', 'db_5']
+        project_jails_absent: ['db_5', 'http_5']
 
 TASK [Display iocage_jails_absent] *********************************************
 ok: [iocage_05] => 
     iocage_jails_absent:
-    - http_5
     - db_5
+    - http_5
 
 TASK [Create jails.] ***********************************************************
-changed: [iocage_05]
+[ERROR]: Task failed: Module failed: non-zero return code
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_project_create.yml:48:11
 
-TASK [Display iocage_jails_created] ********************************************
-ok: [iocage_05] => 
-    iocage_jails_created:
-    - 5bf77d9b
-    - d8d102ab
+46           ansible.builtin.meta: end_host
+47
+48         - name: Create jails.
+             ^ column 11
 
-TASK [Set notes.] **************************************************************
-changed: [iocage_05] => (item=http_5 alias=http_5 class=http,logclient vmm=iocage_05)
-changed: [iocage_05] => (item=db_5 alias=db_5 class=db,logclient vmm=iocage_05)
-
-TASK [Start created jails.] ****************************************************
-changed: [iocage_05]
+fatal: [iocage_05]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    changed: false
+    cmd:
+    - iocage
+    - create
+    - --short
+    - --template
+    - ansible_client
+    - --count
+    - '2'
+    - '{bpf:'
+    - 1,
+    - 'dhcp:'
+    - 1,
+    - 'vnet:'
+    - 1}
+    delta: '0:00:00.747561'
+    end: '2026-05-04 02:26:54.424517'
+    msg: non-zero return code
+    rc: 1
+    start: '2026-05-04 02:26:53.676956'
+    stderr: '{bpf: is not a valid property!'
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=6    changed=3    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

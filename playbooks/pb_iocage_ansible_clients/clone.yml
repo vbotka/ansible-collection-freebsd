@@ -6,8 +6,8 @@
 - name: Create clones from template
   register: out_create
   vars:
-    _notes: '"{{ [properties.notes | d(""),
-                  item.value.properties.notes | d("")] | select | join(" ") }}"'
+    _notes: '{{ [properties.notes | d(""),
+                  item.value.properties.notes | d("")] | select | join(" ") }}'
     _properties: '{{ [properties | d({}),
                       item.value.properties | d({}),
                       {"notes": _notes}] | select | combine(recursive=true) }}'
