@@ -19,7 +19,7 @@ Minor Changes
 * Docs. Update index.
 * Replace noqa changed_when with the option in the playbooks.
 * Update license in the playbooks.
-* Docs. Update sandbox 010, 013, 014, 015, 018, 208
+* Docs. Update sandbox 010, 013, 014, 015, 018, 208, 209
 * Docs. By default, some testing pb do not work without SSH redirection or jailexec.
   Disable sandbox 020, 200, 202, 203, 204, 206, 207 in batch.sh
 * Unified format of properties is a dictionary
