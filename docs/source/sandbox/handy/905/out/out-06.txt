@@ -2,56 +2,56 @@
 PLAY [Test the connection plugin jailexec.] ************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15]
-changed: [4226e03f-a27c-43a9-ac02-4f7f72c11333]
-changed: [5a3e9570-5080-4470-8079-4304df22d512]
+changed: [5c680650-090a-4af4-91f1-54f73fa0ceaf]
+changed: [4a2e5d3a-7b2e-4e67-970a-2739bfd69668]
+changed: [7fcff786-a7a4-4c2b-8e9f-99b4fe5e244c]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [4226e03f-a27c-43a9-ac02-4f7f72c11333] => 
+ok: [4a2e5d3a-7b2e-4e67-970a-2739bfd69668] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 4226e03f-a27c-43a9-ac02-4f7f72c11333
+        ansible_host: 4a2e5d3a-7b2e-4e67-970a-2739bfd69668
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.192
+        iocage_ip4: 10.10.99.152
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
         pkg info:
         syslog-ng-4.11.0_1             Powerful syslogd replacement
-ok: [5a3e9570-5080-4470-8079-4304df22d512] => 
+ok: [5c680650-090a-4af4-91f1-54f73fa0ceaf] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 5a3e9570-5080-4470-8079-4304df22d512
+        ansible_host: 5c680650-090a-4af4-91f1-54f73fa0ceaf
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.129
+        iocage_ip4: 10.10.99.154
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
         pkg info:
         syslog-ng-4.11.0_1             Powerful syslogd replacement
-ok: [d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15] => 
+ok: [7fcff786-a7a4-4c2b-8e9f-99b4fe5e244c] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15
+        ansible_host: 7fcff786-a7a4-4c2b-8e9f-99b4fe5e244c
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.191
+        iocage_ip4: 10.10.99.153
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
         pkg info:
         syslog-ng-4.11.0_1             Powerful syslogd replacement
 
 PLAY RECAP *********************************************************************
-4226e03f-a27c-43a9-ac02-4f7f72c11333 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-5a3e9570-5080-4470-8079-4304df22d512 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-d5ba99c7-6ba8-424e-a52a-e3ee7c7baf15 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4a2e5d3a-7b2e-4e67-970a-2739bfd69668 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+5c680650-090a-4af4-91f1-54f73fa0ceaf : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+7fcff786-a7a4-4c2b-8e9f-99b4fe5e244c : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

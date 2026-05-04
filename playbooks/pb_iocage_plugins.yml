@@ -17,7 +17,9 @@
       iocage fetch
       --plugin-name {{ item.key }}
       --git_repository {{ item.value.git }}
-      {{ item.value.properties }}
+      {{ item.value.properties.keys() | zip(item.value.properties.values())
+                                      | map('join', '=')
+                                      | join(' ') }}
 
   tasks:
 

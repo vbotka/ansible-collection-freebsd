@@ -43,7 +43,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Fetch required plaugins.
+    - name: Fetch required plugins.
       changed_when: false
       ansible.builtin.command: "{{ cmd_fetch }}"
       loop: "{{ selected_plugins }}"
