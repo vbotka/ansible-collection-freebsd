@@ -1,14 +1,21 @@
-enabled_plugins:
-  - ansible-test
-
 plugins:
   ansible-test:
     git: https://github.com/vbotka/iocage-plugins
-    properties: >
-      bpf=1
-      dhcp=1
-      vnet=1
-      notes="vmm={{ inventory_hostname }}"
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
   ansible-zero:
     git: https://github.com/vbotka/iocage-plugins
 
+swarms:
+  sw_01:
+    count: 3
+    plugin: ansible-test
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  notes: "vmm={{ inventory_hostname }}"
+  type: jail

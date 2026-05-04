@@ -14,7 +14,35 @@ TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
     msg: |-
         iocage_plugins:
-          syslog-ng:
+          ansible-test:
+            boot: 'on'
+            doc_url: '-'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            portal: '-'
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+        ansible-zero:
+            boot: 'on'
+            doc_url: '-'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            portal: '-'
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+        syslog-ng:
             boot: 'on'
             doc_url: '-'
             ip4: '-'
@@ -32,34 +60,11 @@ ok: [iocage_05] =>
         plugins:
           ansible-zero:
             git: https://github.com/vbotka/iocage-plugins
-            properties: bpf=1 dhcp=1 vnet=1
-
-TASK [Debug required plugins debug=true] ***************************************
-ok: [iocage_05] => 
-    msg: |-
-        required_plugins:
-          - ansible-zero
-
-        selected_plugins:
-          -   key: ansible-zero
-            value:
-                git: https://github.com/vbotka/iocage-plugins
-                properties: bpf=1 dhcp=1 vnet=1
-
-TASK [Check all required plugins are included in the dictionary plugins.] ******
-ok: [iocage_05]
-
-TASK [Debug commands debug=true] ***********************************************
-ok: [iocage_05] => (item=ansible-zero) => 
-    msg: |-
-        iocage fetch --plugin-name ansible-zero --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
-
-TASK [Fetch required plaugins.] ************************************************
-ok: [iocage_05] => (item=ansible-zero)
-
-TASK [Stop fetched plugins.] ***************************************************
-ok: [iocage_05]
+            properties:
+                bpf: 1
+                dhcp: 1
+                vnet: 1
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
 

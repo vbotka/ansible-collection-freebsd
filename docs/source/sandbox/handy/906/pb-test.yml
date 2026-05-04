@@ -1,15 +1,14 @@
-- name: Test the connection plugin jailexec.
-  hosts: swarm_sw_01
-  gather_facts: false
+- name: Test the iocage plugin ansible-test.
+  hosts: vmm_iocage_05
     
   tasks:
 
-    - ansible.builtin.command: "pkg info -I syslog-ng"
-      register: out
-#    - ansible.builtin.command: "uname -a"
-#      register: out
+    - name: Get custom facts
+      ansible.builtin.setup:
+        filter: ansible_local
 
-    - ansible.builtin.debug:
+    - name: Debug
+      ansible.builtin.debug:
         msg: |
           ansible_connection: {{ ansible_connection }}
           ansible_host: {{ ansible_host }}
@@ -21,5 +20,4 @@
           iocage_ip4: {{ iocage_ip4 }}
           iocage_tags: {{ iocage_tags }}
 
-          pkg info:
-          {{ out.stdout }}
+          ansible_local.iocage: {{ ansible_local.iocage }}

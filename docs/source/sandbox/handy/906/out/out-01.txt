@@ -44,10 +44,44 @@ ok: [iocage_05] =>
             type: pluginv2
 
         plugins:
-          syslog-ng:
+          ansible-test:
             git: https://github.com/vbotka/iocage-plugins
-            options: bpf=1 dhcp=1 vnet=1
+            properties:
+                bpf: 1
+                dhcp: 1
+                vnet: 1
+        ansible-zero:
+            git: https://github.com/vbotka/iocage-plugins
+
+TASK [Debug required plugins debug=true] ***************************************
+ok: [iocage_05] => 
+    msg: |-
+        required_plugins:
+          - ansible-test
+
+        selected_plugins:
+          -   key: ansible-test
+            value:
+                git: https://github.com/vbotka/iocage-plugins
+                properties:
+                    bpf: 1
+                    dhcp: 1
+                    vnet: 1
+
+TASK [Check all required plugins are included in the dictionary plugins.] ******
+ok: [iocage_05]
+
+TASK [Debug commands debug=true] ***********************************************
+ok: [iocage_05] => (item=ansible-test) => 
+    msg: |-
+        iocage fetch --plugin-name ansible-test --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
+
+TASK [Fetch required plugins.] *************************************************
+ok: [iocage_05] => (item=ansible-test)
+
+TASK [Stop fetched plugins.] ***************************************************
+ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+iocage_05                  : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
