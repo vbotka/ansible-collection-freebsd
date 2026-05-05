@@ -7,11 +7,15 @@
 
   vars:
 
-    project_list: "{{ project | dict2items | map(attribute='value') }}"
-    project_vmm: "{{ project_list | community.general.lists_mergeby(project_list, 'vmm', list_merge='append_rp')
-                                  | items2dict(key_name='vmm', value_name='class') }}"
-    required_plugins: "{{ project_vmm[inventory_hostname] | map('extract', classes)
-                                                          | unique | sort }}"
+    project_groups: "{{ dict(project | dict2items
+                                     | map(attribute='value')
+                                     | groupby('vmm')) }}"
+    project_vmm_keys: "{{ project_groups.keys() }}"
+    project_vmm_vals: "{{ project_groups.values() | map('json_query', '[].plugin')
+                                                  | map('unique')
+                                                  | map('sort') }}"
+    project_vmm: "{{ dict(project_vmm_keys | zip(project_vmm_vals)) }}"
+    required_plugins: "{{ project_vmm[inventory_hostname] }}"
     selected_plugins: "{{ plugins | dict2items
                                   | selectattr('key', 'in', required_plugins)
                                   | rejectattr('key', 'in', iocage_plugins) }}"
@@ -45,7 +49,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Fetch required plaugins.
+    - name: Fetch required plugins.
       changed_when: false
       ansible.builtin.command: "{{ cmd_fetch }}"
       loop: "{{ selected_plugins }}"

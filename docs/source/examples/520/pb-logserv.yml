@@ -5,6 +5,15 @@
     
   tasks:
 
+    - name: Get custom facts
+      ansible.builtin.setup:
+        filter: ansible_local
+
+    - debug:
+        var: ansible_local
+
+    - meta: stop_play
+
     - name: Install syslog-ng
       when: install | d(false) | bool
       community.general.pkgng:

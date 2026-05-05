@@ -19,14 +19,14 @@ Minor Changes
 * Docs. Update index.
 * Replace noqa changed_when with the option in the playbooks.
 * Update license in the playbooks.
-* Docs. Update example 443
+* Docs. Update example 443, 520
 * Docs. Update sandbox 010, 013, 014, 015, 018, 208, 209, 210, 300
 * Docs. Update sandbox 901, 902, 903, 904, 905, 906
 * Docs. By default, some testing pb do not work without SSH redirection or jailexec.
   Disable sandbox 020, 200, 202, 203, 204, 206, 207 in batch.sh
 * Unified format of properties is a dictionary
   updated: pb_iocage_project_create.yml, pb_iocage_ansible_clients/clone.yml,
-  pb_iocage_plugins.yml, pb_iocage_plugins/swarm_plugins.yml
+  pb_iocage_plugins.yml, pb_iocage_plugins/swarm_plugins.yml, pb_iocage_plugins/project_plugins.yml
 
 
 0.8.15
