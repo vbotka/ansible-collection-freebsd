@@ -1,6 +1,5 @@
 - name: Test Log Server.
   hosts: logserv_group
-  become: true
     
   tasks:
 

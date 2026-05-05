@@ -190,7 +190,7 @@ hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 27-28
+   :emphasize-lines: 26-27
 
 .. note::
 

@@ -17,8 +17,6 @@ ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml -i ioc
 # Status of the project
 ansible-playbook pb-all-groups.yml -i hosts --flush-cache | tee out/out-04.txt
 
-# <PROCEED HERE>
-
 # Create Log Server
 ansible-playbook pb-logserv.yml -i hosts | tee out/out-05.txt
 

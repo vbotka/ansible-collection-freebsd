@@ -1,18 +1,18 @@
 - name: Configure and start Log Server.
   hosts: logserv_group
-  remote_user: admin
-  become: true
     
   tasks:
 
-    - name: Get custom facts
-      ansible.builtin.setup:
-        filter: ansible_local
+    - name: Custom facts.
+      when: custom_facts | d(true) | bool
+      block:
 
-    - debug:
-        var: ansible_local
+        - name: Get custom facts
+          ansible.builtin.setup:
+            filter: ansible_local
 
-    - meta: stop_play
+        - debug:
+            var: ansible_local
 
     - name: Install syslog-ng
       when: install | d(false) | bool

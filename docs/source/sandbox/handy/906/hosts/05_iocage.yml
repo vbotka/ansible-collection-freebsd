@@ -8,6 +8,5 @@ compose:
   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)')).vmm | d('none')
   ansible_jail_privilege_escalation: "'sudo'"
   ansible_jail_name: iocage_jid
-  ansible_user: "'admin'"
   ansible_python_interpreter: "'auto_silent'"
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)'))

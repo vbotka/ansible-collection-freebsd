@@ -13,7 +13,6 @@ cache_timeout: 3600
 cache_prefix: iocage_05_
 
 compose:
-  ansible_user: "'admin'"
   ansible_python_interpreter: "'auto_silent'"
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)'))
   iocage_classes: iocage_properties.notes | regex_findall('class=(\w+)')
