@@ -17,13 +17,13 @@ ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml -i ioc
 # Status of the project
 ansible-playbook pb-all-groups.yml -i hosts --flush-cache | tee out/out-04.txt
 
-# Create Log Server
+# Configure Log Server
 ansible-playbook pb-logserv.yml -i hosts | tee out/out-05.txt
 
 # Test Log Server
 ansible-playbook pb-test-logserv.yml -i hosts -e debug=true | tee out/out-09.txt
 
-# Create Log Clients
+# Configure Log Clients
 ansible-playbook pb-logclient.yml -i hosts -i iocage.ini -e debug=true | tee out/out-06.txt
 
 # List jails

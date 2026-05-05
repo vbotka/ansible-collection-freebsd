@@ -1,0 +1,57 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [ansible-syslogng-client] => 
+    msg: |-
+        ansible_host: ansible-syslogng-client
+        iocage_properties.host_hostuuid: ansible-syslogng-client
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [ansible-syslogng-server] => 
+    msg: |-
+        ansible_host: ansible-syslogng-server
+        iocage_properties.host_hostuuid: ansible-syslogng-server
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [bar] => 
+    msg: |-
+        ansible_host: bar
+        iocage_properties.host_hostuuid: 632d2e4b-7a85-45a2-99a0-1b89173aaa27
+        iocage_classes: [logclient]
+
+        iocage_tags: {alias: bar, class: logclient, vmm: iocage_05}
+ok: [foo] => 
+    msg: |-
+        ansible_host: foo
+        iocage_properties.host_hostuuid: 877549a9-20cd-45a7-8e87-8d71920103f4
+        iocage_classes: [logclient]
+
+        iocage_tags: {alias: foo, class: logclient, vmm: iocage_05}
+ok: [logserv] => 
+    msg: |-
+        ansible_host: logserv
+        iocage_properties.host_hostuuid: 69c660d2-f30a-4c73-874f-c62d131e97fc
+        iocage_classes: [logserv]
+
+        iocage_tags: {alias: logserv, class: logserv, vmm: iocage_05}
+
+TASK [debug] *******************************************************************
+ok: [ansible-syslogng-client] => 
+    msg: |-
+        all: ['ansible-syslogng-client', 'ansible-syslogng-server', 'bar', 'logserv', 'foo']
+        ungrouped: []
+        state_down: ['ansible-syslogng-client', 'ansible-syslogng-server', 'bar', 'logserv', 'foo']
+        logclient_group: ['bar', 'foo']
+        vmm_iocage_05: ['bar', 'logserv', 'foo']
+        logserv_group: ['logserv']
+
+PLAY RECAP *********************************************************************
+ansible-syslogng-client    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-syslogng-server    : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+bar                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+logserv                    : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
