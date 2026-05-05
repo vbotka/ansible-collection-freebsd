@@ -18,6 +18,8 @@
           ansible_jail_privilege_escalation: {{ ansible_jail_privilege_escalation }}
 
           iocage_ip4: {{ iocage_ip4 }}
-          iocage_tags: {{ iocage_tags }}
+          iocage_tags:
+            {{ iocage_tags | to_nice_yaml | indent(2) }}
 
-          ansible_local.iocage: {{ ansible_local.iocage }}
+          ansible_local.iocage:
+            {{ ansible_local.iocage | to_nice_yaml | indent(2) }}
