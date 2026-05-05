@@ -53,7 +53,7 @@
             --short
             --template {{ project_template | d('ansible_client') }}
             --count {{ iocage_jails_absent | length }}
-            {{ properties.keys() | zip(properties.values()) | map('join', '=') | join(' ') }}
+            {{ properties | dictsort | map('join', '=') | join(' ') }}
 
         - name: Display iocage_jails_created
           when: debug | d(false) | bool

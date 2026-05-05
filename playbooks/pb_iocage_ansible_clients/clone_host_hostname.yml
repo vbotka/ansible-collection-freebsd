@@ -21,7 +21,7 @@
       iocage create
       --short
       --template {{ item.value.template }}
-      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+      {{ _properties | dictsort | map('join', '=') | join(' ') }}
     cmd_fstab: >
       iocage fstab
       -a {{ jails[item.0.key] }}

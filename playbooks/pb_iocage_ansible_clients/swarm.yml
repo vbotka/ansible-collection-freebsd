@@ -18,13 +18,13 @@
       --short
       --template {{ item.value.template }}
       --count {{ _count }}
-      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+      {{ _properties | dictsort | map('join', '=') | join(' ') }}
     cmd_clone_from_plugin: >
       iocage clone
       {{ item.value.plugin }}
       --newmac
       --count {{ _count }}
-      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+      {{ _properties | dictsort | map('join', '=') | join(' ') }}
     cmd_create: |
       {% if 'template' in item.value %}
       {{ cmd_create_from_template }}

@@ -27,6 +27,7 @@ Minor Changes
 * Unified format of properties is a dictionary
   updated: pb_iocage_project_create.yml, pb_iocage_ansible_clients/clone.yml,
   pb_iocage_plugins.yml, pb_iocage_plugins/swarm_plugins.yml, pb_iocage_plugins/project_plugins.yml
+* Use Jinja filter dictsort to concatenate iocage properties.
 
 
 0.8.15

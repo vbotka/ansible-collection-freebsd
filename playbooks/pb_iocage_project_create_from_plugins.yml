@@ -50,7 +50,7 @@
               class={{ vmm[inventory_hostname][item]['class'] | join(',') }}
               alias={{ item }}"
             _properties: >
-              {{ properties.keys() | zip(properties.values()) | map('join', '=') | join(' ') }}
+              {{ properties | dictsort | map('join', '=') | join(' ') }}
               notes={{ _notes }}
           ansible.builtin.command: >
             iocage clone
