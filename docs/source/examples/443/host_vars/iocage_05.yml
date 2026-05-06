@@ -13,4 +13,7 @@ swarms:
 plugins:
   ansible-zero:
     git: https://github.com/vbotka/iocage-plugins
-    properties: bpf=1 dhcp=1 vnet=1
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1

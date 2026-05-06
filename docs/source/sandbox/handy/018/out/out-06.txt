@@ -2,19 +2,6 @@ all:
   children:
     ungrouped:
       hosts:
-        ansible-zero:
-          iocage_basejail: 'yes'
-          iocage_boot: 'on'
-          iocage_ip4: '-'
-          iocage_ip4_dict:
-            ip4: []
-            msg: DHCP (not running)
-          iocage_ip6: '-'
-          iocage_jid: None
-          iocage_release: 15.0-RELEASE
-          iocage_state: down
-          iocage_template: '-'
-          iocage_type: pluginv2
         ansible_client:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
@@ -28,19 +15,6 @@ all:
           iocage_state: down
           iocage_template: '-'
           iocage_type: jail
-        syslog-ng:
-          iocage_basejail: 'yes'
-          iocage_boot: 'on'
-          iocage_ip4: '-'
-          iocage_ip4_dict:
-            ip4: []
-            msg: DHCP (not running)
-          iocage_ip6: '-'
-          iocage_jid: None
-          iocage_release: 15.0-RELEASE
-          iocage_state: down
-          iocage_template: '-'
-          iocage_type: pluginv2
         test_151:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
@@ -52,7 +26,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '35'
+          iocage_jid: '39'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client
@@ -68,7 +42,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '36'
+          iocage_jid: '40'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client
@@ -84,7 +58,7 @@ all:
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '37'
+          iocage_jid: '41'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client

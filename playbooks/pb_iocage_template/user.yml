@@ -1,4 +1,8 @@
 ---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
 - name: "User: Create user."
   when: _act_user | length > 0
   register: out

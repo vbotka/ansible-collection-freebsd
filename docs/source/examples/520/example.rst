@@ -1,16 +1,17 @@
 .. _example_520:
 
-520 Plugin syslog-ng
---------------------
+520 Iocage plugin ansible-syslogng
+----------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
 .. index:: single: project; Example 520
+.. index:: single: project create from plugins; Example 520
 
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 520
 .. index:: single: playbook pb_iocage_plugins.yml; Example 520
+.. index:: single: playbook pb_iocage_project_create_from_plugins.yml; Example 520
 .. index:: single: connection vbotka.freebsd.jailexec; Example 520
 .. index:: single: inventory vbotka.freebsd.iocage; Example 520
 
@@ -24,7 +25,7 @@
 .. index:: single: vbotka.freebsd.service; Example 520
 
 .. index:: single: iocage plugins; Example 520
-.. index:: single: iocage plugin syslog-ng; Example 520
+.. index:: single: iocage plugin ansible-syslogng; Example 520
 
 .. index:: single: ansible_jail_host; Example 520
 .. index:: single: ansible_jail_name; Example 520
@@ -34,19 +35,22 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Clone the
-iocage plugin ``syslog-ng``. The ``project`` keys are jail's aliases.
+iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
 
 .. code-block:: yaml
 
    project:
      logserv:
        class: [logserv]
+       plugin: ansible-syslogng
        vmm: iocage_05
      foo:
        class: [logclient]
+       plugin: ansible-syslogng
        vmm: iocage_05
      bar:
        class: [logclient]
+       plugin: ansible-syslogng
        vmm: iocage_05
 
 * Destroy all jails
@@ -55,7 +59,7 @@ iocage plugin ``syslog-ng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml \
                               -i iocage.ini \
-			      --flush-cache
+                              --flush-cache
 
 * Fetch the required iocage plugins
 
@@ -63,8 +67,8 @@ iocage plugin ``syslog-ng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
                               -i iocage.ini \
-			      -t project_plugins \
-			      --flush-cache
+                              -t project_plugins \
+                              --flush-cache
 
 * Create the project
 
@@ -72,8 +76,8 @@ iocage plugin ``syslog-ng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml \
                               -i iocage.ini \
-			      -i hosts \
-			      --flush-cache
+                              -i hosts \
+                              --flush-cache
 
 * Create log server
 
@@ -81,7 +85,7 @@ iocage plugin ``syslog-ng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook pb-logserv.yml -i hosts
 
-* Create log clients			      
+* Create log clients
 
   .. code-block:: console
 
@@ -127,11 +131,11 @@ Synopsis
 
   In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
 
-  * Fetch the iocage plugin ``syslog-ng``
+  * Fetch the iocage plugin ``ansible-syslogng``
 
   In the playbook `vbotka.freebsd.pb_iocage_project_create_from_plugins.yml`_:
 
-  * Clone jails from the iocage plugin ``syslog-ng``
+  * Clone jails from the iocage plugin ``ansible-syslogng``
 
 * In the inventory group ``logserv_group`` configure `syslog-ng Server`_.
 
@@ -140,7 +144,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* iocage plugin ``syslog-ng``
+* iocage plugin ``ansible-syslogng``
 * playbook `vbotka.freebsd.pb_iocage_plugins.yml`_
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_plugins.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
@@ -186,7 +190,7 @@ hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 27-28
+   :emphasize-lines: 26-27
 
 .. note::
 
@@ -241,8 +245,8 @@ Fetch the iocage plugin
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
                             -i iocage.ini \
-			    -t project_plugins \
-			    -e debug=true
+                            -t project_plugins \
+                            -e debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -258,17 +262,17 @@ List plugins
 .. literalinclude:: out/out-02.txt
    :language: sh
 
-Playbook output - Create project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create project from plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flush the cache if you created the ``project`` and haven't refreshed the inventory cache yet.
 
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml \
-                              -i iocage.ini \
-			      -i hosts \
-			      --flush-cache
+                            -i iocage.ini \
+                            -i hosts \
+			    --flush-cache
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -386,13 +390,10 @@ Playbook output - Test Log Client
 .. _vbotka.freebsd.pb_iocage_project_create_from_plugins.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
 .. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _connection plugin vbotka.freebsd.jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 
-.. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
 .. _Configuring System Logging - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/config/#configtuning-syslog

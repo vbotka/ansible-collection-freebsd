@@ -1,8 +1,13 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
 - name: Create clones from template
   register: out_create
   vars:
-    _notes: '"{{ [properties.notes | d(""),
-                  item.value.properties.notes | d("")] | select | join(" ") }}"'
+    _notes: '{{ [properties.notes | d(""),
+                  item.value.properties.notes | d("")] | select | join(" ") }}'
     _properties: '{{ [properties | d({}),
                       item.value.properties | d({}),
                       {"notes": _notes}] | select | combine(recursive=true) }}'
@@ -24,8 +29,9 @@
   ansible.builtin.set_fact:
     iocage_jails: "{{ ansible_facts.iocage_jails }}"
 
-- name: Start clones  # noqa: no-changed-when
+- name: Start clones
   when: _jails | length > 0
+  changed_when: false
   vars:
     _jails: "{{ start | difference(_started) }}"
   register: out_start

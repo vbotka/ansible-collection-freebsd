@@ -11,6 +11,8 @@
 903 ... Display iocage_ data-sets collected by the module vbotka.freebsd.iocage
 904 ... Test connection plugin jailexec
 905 ... Test iocage plugin syslog-ng
+906 ... Test custom facts of iocage plugin
+
 
 **Notes**
 

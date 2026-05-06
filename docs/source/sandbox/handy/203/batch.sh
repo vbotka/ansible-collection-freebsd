@@ -19,4 +19,4 @@ ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
 ansible-inventory -i hosts --graph | tee out/out-06.txt
 
 # Test
-ansible-playbook pb-test.yml -i hosts --flush-cache | tee out/out-07.txt
+# ansible-playbook pb-test.yml -i hosts --flush-cache | tee out/out-07.txt

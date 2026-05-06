@@ -1,3 +1,8 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
 - name: Create and start project jails.
   hosts: iocage
 
@@ -40,21 +45,23 @@
           when: iocage_jails_absent | length == 0
           ansible.builtin.meta: end_host
 
-        - name: Create jails.  # noqa: no-changed-when
+        - name: Create jails.
+          changed_when: false
           register: out
           ansible.builtin.command: >
             iocage create
             --short
             --template {{ project_template | d('ansible_client') }}
             --count {{ iocage_jails_absent | length }}
-            {{ properties }}
+            {{ properties | dictsort | map('join', '=') | join(' ') }}
 
         - name: Display iocage_jails_created
           when: debug | d(false) | bool
           ansible.builtin.debug:
             var: iocage_jails_created
 
-        - name: Set notes.  # noqa: no-changed-when
+        - name: Set notes.
+          changed_when: false
           vars:
             alias: "{{ iocage_jails_absent[idx] }}"
             iocage_tags: >-
@@ -94,7 +101,8 @@
             index_var: idx
             label: "{{ alias }} {{ iocage_tags }}"
 
-        - name: Start created jails.  # noqa: no-changed-when
+        - name: Start created jails.
+          changed_when: false
           ansible.builtin.command: >
             iocage start
             {{ iocage_jails_created | join(' ') }}

@@ -1,0 +1,4 @@
+plugin: ansible.builtin.constructed
+keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm

@@ -6,7 +6,9 @@
     - debug:
         msg: |
           ansible_host: {{ ansible_host | d('UNDEFINED') }}
+          iocage_properties.host_hostname: {{ iocage_properties.host_hostname | d('UNDEFINED') }}
           iocage_properties.host_hostuuid: {{ iocage_properties.host_hostuuid | d('UNDEFINED') }}
+          iocage_jid: {{ iocage_jid }}
           iocage_classes: {{ iocage_classes | d([]) | to_yaml }}
           iocage_tags: {{ iocage_tags | d({}) | to_yaml }}
 

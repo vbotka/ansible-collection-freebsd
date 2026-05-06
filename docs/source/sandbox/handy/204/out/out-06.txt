@@ -1,3 +1,10 @@
 @all:
   |--@ungrouped:
-  |  |--ansible-zero
+  |--@swarm_sw_01:
+  |  |--4ba9d7b2
+  |  |--c4a2f4c0
+  |  |--d7fb328c
+  |--@vmm_iocage_05:
+  |  |--4ba9d7b2
+  |  |--c4a2f4c0
+  |  |--d7fb328c

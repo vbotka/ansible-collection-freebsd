@@ -1,0 +1,25 @@
+
+PLAY [Start jails.] ************************************************************
+
+TASK [Display groups.] *********************************************************
+ok: [iocage_05] => 
+    msg: |-
+        ansible_pull: ['test']
+        state_down:
+          - ansible-pull-test
+          - ansible-syslogng
+          - test
+
+TASK [Display jails that shall be started.] ************************************
+ok: [iocage_05] => 
+    msg: |-
+        start_jails: ['test']
+        start_uuid:
+          - c6f15d2e-d612-44dd-8c4c-7334541d78d9
+
+TASK [Start jails.] ************************************************************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,15 @@
+
+PLAY [Create jails from iocage plugins.] ***************************************
+
+TASK [Create log server.] ******************************************************
+changed: [iocage_05]
+
+TASK [Create log client foo.] **************************************************
+changed: [iocage_05]
+
+TASK [Create log client bar.] **************************************************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

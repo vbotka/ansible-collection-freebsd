@@ -1,5 +1,5 @@
 ---
-- name: Get iocage list of jails
+- name: Get iocage list of jails.
   register: out
   changed_when: false
   ansible.builtin.command: iocage list --long
@@ -8,7 +8,7 @@
   ansible.builtin.set_fact:
     iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
 
-- name: Get properties of iocage jails
+- name: Get properties of iocage jails.
   register: out
   changed_when: false
   ansible.builtin.command: "iocage get --all {{ item }}"

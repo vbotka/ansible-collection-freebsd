@@ -1,3 +1,8 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
 - name: Create clones host_hostname from template
   vars:
     _notes: '"{{ [properties.notes | d(""),
@@ -16,7 +21,7 @@
       iocage create
       --short
       --template {{ item.value.template }}
-      {{ _properties.keys() | zip(_properties.values()) | map('join', '=') | join(' ') }}
+      {{ _properties | dictsort | map('join', '=') | join(' ') }}
     cmd_fstab: >
       iocage fstab
       -a {{ jails[item.0.key] }}
@@ -38,8 +43,9 @@
       loop_control:
         label: "{{ item.key }} {{ item.value.template }}"
 
-    - name: Create clones host_hostname  # noqa: no-changed-when
+    - name: Create clones host_hostname
       when: not dry_run | bool
+      changed_when: false
       register: out_create
       ansible.builtin.command:
         cmd: "{{ cmd_create }}"
@@ -69,8 +75,9 @@
       loop_control:
         label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
 
-    - name: Add fstab  # noqa: no-changed-when
+    - name: Add fstab
       when: not dry_run | bool
+      changed_when: false
       register: out_fstab
       ansible.builtin.command:
         cmd: "{{ cmd_fstab }}"
@@ -88,8 +95,9 @@
       ansible.builtin.debug:
         msg: "{{ cmd_start }}"
 
-    - name: Start clones host_hostname  # noqa: no-changed-when
+    - name: Start clones host_hostname
       when: not dry_run | bool
+      changed_when: false
       register: out_start
       ansible.builtin.command:
         cmd: "{{ cmd_start }}"

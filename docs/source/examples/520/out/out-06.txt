@@ -1,21 +1,35 @@
 
 PLAY [Configure and start Log Client.] *****************************************
 
+TASK [Get custom facts] ********************************************************
+ok: [bar]
+ok: [foo]
+
+TASK [debug] *******************************************************************
+ok: [foo] => 
+    ansible_local:
+        iocage:
+            iocage_plugin_name: ansible-syslogng
+ok: [bar] => 
+    ansible_local:
+        iocage:
+            iocage_plugin_name: ansible-syslogng
+
 TASK [Debug.] ******************************************************************
 ok: [bar] => 
     msg: |-
-        log_serv: 10.10.99.122
+        log_serv: 10.10.99.117
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 ok: [foo] => 
     msg: |-
-        log_serv: 10.10.99.122
+        log_serv: 10.10.99.117
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 
 TASK [Stop syslogd.] ***********************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [Disable syslogd.] ********************************************************
 changed: [bar]
@@ -26,8 +40,8 @@ ok: [foo]
 ok: [bar]
 
 TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-changed: [foo]
 changed: [bar]
+changed: [foo]
 
 TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
 changed: [bar]
@@ -38,10 +52,10 @@ changed: [bar]
 changed: [foo]
 
 RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
-ok: [bar]
 ok: [foo]
+ok: [bar]
 
 PLAY RECAP *********************************************************************
-bar                        : ok=8    changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
-foo                        : ok=8    changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+bar                        : ok=10   changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+foo                        : ok=10   changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 

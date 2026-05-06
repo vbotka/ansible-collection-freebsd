@@ -1,27 +1,8 @@
-properties
-==========
-
-Unify formats
-
-```yaml
-properties: "bpf=1 dhcp=1 vnet=1"
-```
-
-```
-properties:
-  bpf: 1
-  dhcp: 1
-  vnet: 1
-```
-
-Fix
-===
-
-sandbox: 204
-
+Update examples
+===============
+Update examples according the tested changes in the sanbox.
 
 batch.sh
 ========
 
 On error, stamp the example .error instead of .done
-

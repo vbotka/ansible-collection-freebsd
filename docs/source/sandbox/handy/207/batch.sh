@@ -21,10 +21,10 @@ ssh admin@$iocage_05 sudo iocage create -n test_5 -r 15.0-RELEASE
 ansible-playbook -i hosts -i iocage.ini vbotka.freebsd.pb_iocage_project_create.yml -e debug=true | tee out/out-04.txt
 
 # Test all jails
-ansible-playbook -i hosts pb-test-all.yml --flush-cache | tee out/out-05.txt
+# ansible-playbook -i hosts pb-test-all.yml --flush-cache | tee out/out-05.txt
 
 # Destroy project
-ansible-playbook -i hosts -i iocage.ini vbotka.freebsd.pb_iocage_project_destroy.yml -e debug=true | tee out/out-06.txt
+# ansible-playbook -i hosts -i iocage.ini vbotka.freebsd.pb_iocage_project_destroy.yml -e debug=true | tee out/out-06.txt
 
 # Test all jails
-ansible-playbook -i hosts pb-test-all.yml --flush-cache | tee out/out-07.txt
+# ansible-playbook -i hosts pb-test-all.yml --flush-cache | tee out/out-07.txt

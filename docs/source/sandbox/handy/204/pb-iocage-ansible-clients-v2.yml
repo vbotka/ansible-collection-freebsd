@@ -26,12 +26,12 @@
 
   tasks:
 
-    - name: Create and start swarms
+    - name: Create and start swarms.
       when: swarm | bool
       tags: swarm
       ansible.builtin.import_tasks: pb-iocage-ansible-clients-v2/swarm.yml
 
-    - name: Stop and destroy swarms
+    - name: Stop and destroy swarms.
       when: swarm_destroy | bool
       tags: swarm_destroy
       ansible.builtin.import_tasks: pb-iocage-ansible-clients-v2/swarm_destroy.yml

@@ -26,9 +26,15 @@ Examples
 
 .. note::
 
-   * All examples comprise additional files not shown in the file' tree. See them for more details.
+   * By default, the firewall is on the external interface and on the ``vnet`` bridge of the jail
+     host. The DHCP for the jails is on the bridge. The SSH from the local network to the jails is
+     redirected. See the example :ref:`example_440`. The examples that do not use this setting are
+     marked ``.deny``. This means, they are not included in ``batch.sh``. To run these examples,
+     reconfigure the firewall. See the example :ref:`example_370`.
 
-   * Most examples comprise ``batch.sh`` that runs the commands and creates the output.
+   * All examples comprise additional files not shown in the files' tree. See them for more details.
+
+   * The examples comprise ``batch.sh`` that runs the commands and creates the output.
 
    * Most plays in ``batch.sh`` are idempotent. The output of such a play may show status ``ok``
      instead of expected ``changed`` if the play has already been run.

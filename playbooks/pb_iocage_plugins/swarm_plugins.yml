@@ -1,4 +1,8 @@
 ---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
 - name: Fetch plugins required by swarm.
 
   vars:
@@ -8,9 +12,6 @@
                                  | community.general.json_query(required_plugins_query)
                                  | unique
                                  | sort }}"
-    selected_plugins: "{{ plugins | dict2items
-                                  | selectattr('key', 'in', required_plugins)
-                                  | rejectattr('key', 'in', iocage_plugins) }}"
 
   block:
 
@@ -39,7 +40,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Fetch required plaugins.
+    - name: Fetch required plugins.
       changed_when: false
       ansible.builtin.command: "{{ cmd_fetch }}"
       loop: "{{ selected_plugins }}"

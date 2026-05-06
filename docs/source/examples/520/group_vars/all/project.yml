@@ -2,39 +2,32 @@
 project:
   logserv:
     class: [logserv]
-    plugin: syslog-ng
+    plugin: ansible-syslogng
     vmm: iocage_05
   foo:
     class: [logclient]
-    plugin: syslog-ng
+    plugin: ansible-syslogng
     vmm: iocage_05
   bar:
     class: [logclient]
-    plugin: syslog-ng
+    plugin: ansible-syslogng
     vmm: iocage_05
 
-classes:
-  logserv: syslog-ng
-  logclient: syslog-ng
-
 plugins:
-  syslog-ng:
+  ansible-syslogng:
     git: https://github.com/vbotka/iocage-plugins
-    properties: bpf=1 dhcp=1 vnet=1
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+# Jail properties.
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  type: jail
 
 # Declare vmm. Dictionary of iocage hosts.
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
 vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"
-
-# Declare class. Dictionary of classes.
-# class_list: "{{ project | dict2items }}"
-# class_keys: "{{ class_list | map(attribute='value.class') | flatten | unique | sort }}"
-# class: |
-#  {% filter from_yaml %}
-#  {% for k in class_keys %}
-#  {{ k }}: {{ class_list | selectattr('value.class', 'contains', k) | map(attribute='key') }}
-#  {% endfor %}
-#  {% endfilter %}
-
-# Jail properties.
-properties: 'bpf=1 dhcp=1 vnet=1 type=jail'

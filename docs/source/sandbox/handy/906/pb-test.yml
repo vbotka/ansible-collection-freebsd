@@ -1,0 +1,25 @@
+- name: Test the iocage plugin ansible-test.
+  hosts: vmm_iocage_05
+    
+  tasks:
+
+    - name: Get custom facts
+      ansible.builtin.setup:
+        filter: ansible_local
+
+    - name: Debug
+      ansible.builtin.debug:
+        msg: |
+          ansible_connection: {{ ansible_connection }}
+          ansible_host: {{ ansible_host }}
+          ansible_user: {{ ansible_user | d('none') }}
+
+          ansible_jail_host: {{ ansible_jail_host }}
+          ansible_jail_privilege_escalation: {{ ansible_jail_privilege_escalation }}
+
+          iocage_ip4: {{ iocage_ip4 }}
+          iocage_tags:
+            {{ iocage_tags | to_nice_yaml | indent(2) }}
+
+          ansible_local.iocage:
+            {{ ansible_local.iocage | to_nice_yaml | indent(2) }}

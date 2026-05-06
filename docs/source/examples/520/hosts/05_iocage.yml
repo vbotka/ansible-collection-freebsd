@@ -1,5 +1,4 @@
 plugin: vbotka.freebsd.iocage
-# inventory plugin vbotka.freebsd.iocage
 host: iocage_05
 user: admin
 sudo: true
@@ -13,15 +12,15 @@ cache_timeout: 3600
 cache_prefix: iocage_05_
 
 compose:
-  ansible_user: "'admin'"
-  ansible_python_interpreter: "'auto_silent'"
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)'))
   iocage_classes: iocage_properties.notes | regex_findall('class=(\w+)')
 # connection plugin vbotka.freebsd.jailexec
   ansible_connection: "'vbotka.freebsd.jailexec'"
   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=(\w+)')).vmm | d('none')
-  ansible_jail_privilege_escalation: "'sudo'"
   ansible_jail_name: iocage_jid
+  ansible_jail_privilege_escalation: "'sudo'"
+# ansible options
+  ansible_python_interpreter: "'auto_silent'"
 
 groups:
   logserv_group: iocage_classes is contains('logserv')

@@ -19,7 +19,7 @@ ansible-playbook pb-iocage-swarms-create.yml -i iocage.ini --flush-cache | tee o
 ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
 
 # Test
-ansible-playbook pb-test-all.yml -i hosts --flush-cache | tee out/out-06.txt
-ansible-playbook pb-test-db.yml -i hosts | tee out/out-07.txt
+# ansible-playbook pb-test-all.yml -i hosts --flush-cache | tee out/out-06.txt
+# ansible-playbook pb-test-db.yml -i hosts | tee out/out-07.txt
 
 # ansible-playbook pb-iocage-swarms-destroy.yml -i iocage.ini -i hosts | tee out/out-08.txt

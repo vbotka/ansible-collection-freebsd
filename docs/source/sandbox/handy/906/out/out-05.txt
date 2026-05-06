@@ -1,0 +1,8 @@
+@all:
+  |--@ungrouped:
+  |  |--ansible-syslogng
+  |  |--ansible-test
+  |--@vmm_iocage_05:
+  |  |--1c0e3e54-cc3c-4ccc-8e8f-25a4e64b4690
+  |  |--a6586295-6150-4220-b51f-c87fa91d24dc
+  |  |--db715aa3-6b47-464a-ab83-51f5763daf13

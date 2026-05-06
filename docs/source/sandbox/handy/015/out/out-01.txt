@@ -2,12 +2,6 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
-    iocage_ip4: 10.1.0.197
-ok: [ansible-zero] => 
-    iocage_ip4: '-'
-ok: [syslog-ng] => 
-    iocage_ip4: '-'
 ok: [test_151] => 
     iocage_ip4: 10.1.0.151
 ok: [test_152] => 
@@ -16,9 +10,6 @@ ok: [test_153] =>
     iocage_ip4: 10.1.0.153
 
 PLAY RECAP *********************************************************************
-ansible-zero               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -1,4 +1,9 @@
-- name: Create and start project jails from plugins.
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create and start project jails from iocage plugins.
   hosts: iocage
 
   tasks:
@@ -45,7 +50,7 @@
               class={{ vmm[inventory_hostname][item]['class'] | join(',') }}
               alias={{ item }}"
             _properties: >
-              {{ properties }}
+              {{ properties | dictsort | map('join', '=') | join(' ') }}
               notes={{ _notes }}
           ansible.builtin.command: >
             iocage clone
