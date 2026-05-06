@@ -1,1 +1,1 @@
-# iocage plugins ansible-syslogng
+# iocage plugin ansible-syslogng
