@@ -18,11 +18,11 @@ ok: [iocage_05] =>
 
         plugins:
           ansible-syslogng:
-            git: https://github.com/vbotka/iocage-plugins
-            properties:
-                bpf: 1
-                dhcp: 1
-                vnet: 1
+              git: https://github.com/vbotka/iocage-plugins
+              properties:
+                  bpf: 1
+                  dhcp: 1
+                  vnet: 1
 
 TASK [Debug required plugins debug=true] ***************************************
 ok: [iocage_05] => 

@@ -16,9 +16,6 @@
                                                   | map('sort') }}"
     project_vmm: "{{ dict(project_vmm_keys | zip(project_vmm_vals)) }}"
     required_plugins: "{{ project_vmm[inventory_hostname] }}"
-    selected_plugins: "{{ plugins | dict2items
-                                  | selectattr('key', 'in', required_plugins)
-                                  | rejectattr('key', 'in', iocage_plugins) }}"
 
   block:
 

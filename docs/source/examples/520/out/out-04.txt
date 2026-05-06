@@ -5,28 +5,36 @@ TASK [debug] *******************************************************************
 ok: [ansible-syslogng] => 
     msg: |-
         ansible_host: ansible-syslogng
+        iocage_properties.host_hostname: ansible-syslogng
         iocage_properties.host_hostuuid: ansible-syslogng
+        iocage_jid: None
         iocage_classes: []
 
         iocage_tags: {}
 ok: [logserv] => 
     msg: |-
         ansible_host: logserv
-        iocage_properties.host_hostuuid: 5d766771-c491-4d8d-98b8-1b508ad4ac48
+        iocage_properties.host_hostname: 6cbc208a-43af-4759-b35d-4e3b9cd35e2a
+        iocage_properties.host_hostuuid: 6cbc208a-43af-4759-b35d-4e3b9cd35e2a
+        iocage_jid: 14
         iocage_classes: [logserv]
 
         iocage_tags: {alias: logserv, class: logserv, vmm: iocage_05}
 ok: [foo] => 
     msg: |-
         ansible_host: foo
-        iocage_properties.host_hostuuid: c14a5863-efbb-47c8-95b2-8ed73ed882e7
+        iocage_properties.host_hostname: 8beac7a2-c853-4c56-b201-5012270f6a76
+        iocage_properties.host_hostuuid: 8beac7a2-c853-4c56-b201-5012270f6a76
+        iocage_jid: 13
         iocage_classes: [logclient]
 
         iocage_tags: {alias: foo, class: logclient, vmm: iocage_05}
 ok: [bar] => 
     msg: |-
         ansible_host: bar
-        iocage_properties.host_hostuuid: ed4e65fc-20b6-4869-8c6e-c57f98c6a9a3
+        iocage_properties.host_hostname: d5a4cc04-8100-4472-9595-6fec352099a9
+        iocage_properties.host_hostuuid: d5a4cc04-8100-4472-9595-6fec352099a9
+        iocage_jid: 15
         iocage_classes: [logclient]
 
         iocage_tags: {alias: bar, class: logclient, vmm: iocage_05}

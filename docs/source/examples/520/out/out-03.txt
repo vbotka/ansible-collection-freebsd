@@ -2,9 +2,9 @@
 PLAY [Create and start project jails from iocage plugins.] *********************
 
 TASK [Clone jails from plugins.] ***********************************************
+ok: [iocage_05] => (item=foo)
 ok: [iocage_05] => (item=logserv)
 ok: [iocage_05] => (item=bar)
-ok: [iocage_05] => (item=foo)
 
 TASK [Start created jails.] ****************************************************
 ok: [iocage_05]

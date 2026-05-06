@@ -27,7 +27,7 @@ Minor Changes
   Disable sandbox 020, 200, 202, 203, 204, 206, 207 in batch.sh
 * Unified format of properties is a dictionary
   updated: pb_iocage_project_create.yml, pb_iocage_ansible_clients/clone.yml,
-  pb_iocage_plugins.yml, pb_iocage_plugins/swarm_plugins.yml, pb_iocage_plugins/project_plugins.yml
+  pb_iocage_plugins.yml, pb_iocage_plugins/*
 * Use Jinja filter dictsort to concatenate iocage properties.
 
 

@@ -59,7 +59,7 @@ iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml \
                               -i iocage.ini \
-			      --flush-cache
+                              --flush-cache
 
 * Fetch the required iocage plugins
 
@@ -67,8 +67,8 @@ iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
                               -i iocage.ini \
-			      -t project_plugins \
-			      --flush-cache
+                              -t project_plugins \
+                              --flush-cache
 
 * Create the project
 
@@ -76,8 +76,8 @@ iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml \
                               -i iocage.ini \
-			      -i hosts \
-			      --flush-cache
+                              -i hosts \
+                              --flush-cache
 
 * Create log server
 
@@ -85,7 +85,7 @@ iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
 
      (env) > ansible-playbook pb-logserv.yml -i hosts
 
-* Create log clients			      
+* Create log clients
 
   .. code-block:: console
 
@@ -245,8 +245,8 @@ Fetch the iocage plugin
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
                             -i iocage.ini \
-			    -t project_plugins \
-			    -e debug=true
+                            -t project_plugins \
+                            -e debug=true
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -270,9 +270,9 @@ Flush the cache if you created the ``project`` and haven't refreshed the invento
 .. code-block:: console
 
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_plugins.yml \
-                              -i iocage.ini \
-			      -i hosts \
-			      --flush-cache
+                            -i iocage.ini \
+                            -i hosts \
+			    --flush-cache
 
 .. literalinclude:: out/out-03.txt
    :language: yaml

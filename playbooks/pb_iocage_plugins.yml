@@ -13,13 +13,15 @@
     tags_known: ['fetched_plugins', 'enabled_plugins', 'swarm_plugins', 'project_plugins']
 
     iocage_plugins: "{{ out.stdout | vbotka.freebsd.iocage('plugins') }}"
+    selected_plugins: "{{ plugins | dict2items
+                                  | selectattr('key', 'in', required_plugins)
+                                  | rejectattr('key', 'in', iocage_plugins) }}"
+
     cmd_fetch: >
       iocage fetch
       --plugin-name {{ item.key }}
       --git_repository {{ item.value.git }}
-      {{ item.value.properties.keys() | zip(item.value.properties.values())
-                                      | map('join', '=')
-                                      | join(' ') }}
+      {{ item.value.properties | dictsort | map('join', '=') | join(' ') }}
 
   tasks:
 

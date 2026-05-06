@@ -12,9 +12,6 @@
                                  | community.general.json_query(required_plugins_query)
                                  | unique
                                  | sort }}"
-    selected_plugins: "{{ plugins | dict2items
-                                  | selectattr('key', 'in', required_plugins)
-                                  | rejectattr('key', 'in', iocage_plugins) }}"
 
   block:
 

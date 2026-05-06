@@ -4,25 +4,22 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 - name: Fetch enabled plugins.
-
-  vars:
-
-    selected_plugins: "{{ plugins | dict2items
-                                  | selectattr('key', 'in', enabled_plugins)
-                                  | rejectattr('key', 'in', iocage_plugins) }}"
-
   block:
+
+    - name: Set required plugins.
+      ansible.builtin.set_fact:
+        required_plugins: "{{ enabled_plugins }}"
 
     - name: "Debug selected plugins debug={{ debug }}"
       when: debug | bool
       ansible.builtin.debug:
         msg: |
-          enabled_plugins:
-            {{ enabled_plugins | to_nice_yaml }}
+          required_plugins:
+            {{ required_plugins | to_nice_yaml }}
           selected_plugins:
             {{ selected_plugins | to_nice_yaml }}
 
-    - name: Check all enabled plugins are included in the dictionary plugins.
+    - name: Check all required plugins are included in the dictionary plugins.
       when: check_plugins | d(true)
       ansible.builtin.assert:
         that: enabled_plugins | difference(plugins.keys()) | length == 0
@@ -47,7 +44,9 @@
 
     - name: Stop fetched plugins.
       changed_when: false
-      when: stop_plugins | d(true) | bool
+      when:
+        - stop_plugins | d(true) | bool
+        - selected_plugins | length > 0
       ansible.builtin.command: >
         iocage stop
         {{ selected_plugins | map(attribute='key') | join(' ') }}

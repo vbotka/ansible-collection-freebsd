@@ -6,16 +6,44 @@ changed: [foo]
 changed: [bar]
 
 TASK [Debug.] ******************************************************************
-ok: [bar] => 
-    out.stderr: |-
-        count=1, rate = 142857.14 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500271, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 125000.00 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500436, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 33333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500247, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 28571.43 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500369, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [logserv]
+
+TASK [Get log files.] **********************************************************
+changed: [logserv] => (item=/var/log/remote/10.10.99.131/2026_05_06.log)
+changed: [logserv] => (item=/var/log/remote/localhost/2026_05_06.log)
+changed: [logserv] => (item=/var/log/remote/10.10.99.116/2026_05_06.log)
+
+TASK [Display log files.] ******************************************************
+ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.131/2026_05_06.log']) => 
+    msg: |-
+        May  6 03:19:53 10.10.99.131 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778030393, stamp: 2026-05-06T03:19:53 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [logserv] => (item=['cat', '/var/log/remote/localhost/2026_05_06.log']) => 
+    msg: |-
+        May  6 03:19:38 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778030378, stamp: 2026-05-06T03:19:38 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.116/2026_05_06.log']) => 
+    msg: |-
+        May  6 03:19:53 10.10.99.116 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778030393, stamp: 2026-05-06T03:19:53 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 PLAY RECAP *********************************************************************
 bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+logserv                    : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
