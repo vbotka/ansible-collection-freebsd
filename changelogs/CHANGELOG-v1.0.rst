@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Docs and examples update with iocage plugins.
 
 Major Changes
 -------------
