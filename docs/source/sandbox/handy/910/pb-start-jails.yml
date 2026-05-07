@@ -1,0 +1,31 @@
+---
+- name: Start jails.
+  hosts: iocage_05
+
+  vars:
+
+    start_jails: "{{ groups.log_server | intersect(groups.state_down) }}"
+    start_uuid: "{{ start_jails | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
+
+  tasks:
+
+    - name: Display groups.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        msg: |
+          log_server: {{ groups.log_server }}
+          state_down:
+            {{ groups.state_down  | to_nice_yaml | indent(2) }}
+
+    - name: Display jails that shall be started.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        msg: |
+          start_jails: {{ start_jails }}
+          start_uuid:
+            {{ start_uuid | to_nice_yaml | indent(2) }}
+
+    - name: Start jails.
+      ansible.builtin.command: >
+        iocage start
+        {{ start_uuid | join(' ') }}
