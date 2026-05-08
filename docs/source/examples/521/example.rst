@@ -39,6 +39,7 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
+  │       ├── common.yml
   │       └── syslog-ng.yml
   ├── hosts
   │   └── 05_iocage.yml
@@ -54,22 +55,32 @@ Synopsis
 
 * At a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
+  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_ fetch the `iocage plugins`_:
 
-  * Fetch the iocage plugins ``ansible-pull-syslogng-server`` and ``ansible-pull-syslogng-client``
+  * ``ansible-pull-syslogng-server``
+  * ``ansible-pull-syslogng-client``
 
   In the playbook ``pb-create-jails.yml``:
 
-  * Clone jails from the iocage plugins
+  * Clone jails from the fetched iocage plugins
 
 * In the inventory group ``log_server`` test `syslog-ng Server`_.
 
-* In the inventory group ``log_client`` configure `syslog-ng Client`_.
+* In the inventory group ``log_client`` configure and test `syslog-ng Client`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* iocage plugins ``ansible-pull-syslogng-server`` and ``ansible-pull-syslogng-client``
+* `iocage plugins`_:
+
+  * ``ansible-pull-syslogng-server``
+  * ``ansible-pull-syslogng-client``
+
+* Configuration repositories for ``ansible-pull``:
+
+  * `ansible-conf-syslogng-server`_
+  * `ansible-conf-syslogng-client`_
+
 * playbook `vbotka.freebsd.pb_iocage_plugins.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
@@ -117,6 +128,10 @@ hosts
 
 group_vars
 ^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/common.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: group_vars/all/syslog-ng.yml
    :language: yaml+jinja
@@ -251,6 +266,9 @@ Playbook output - Test Log Client
    :language: yaml
    :force:
 
+.. _iocage plugins: https://github.com/vbotka/iocage-plugins
+.. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
+.. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
 
 .. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
 .. _syslog-ng Server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng

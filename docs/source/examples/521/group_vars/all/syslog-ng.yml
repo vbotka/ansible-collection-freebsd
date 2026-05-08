@@ -1,6 +1,3 @@
-ansible_python_interpreter: auto_silent
-log_serv: "{{ hostvars.log-server.iocage_ip4 }}"
-
 enabled_plugins:
   - ansible-pull-syslogng-client
   - ansible-pull-syslogng-server

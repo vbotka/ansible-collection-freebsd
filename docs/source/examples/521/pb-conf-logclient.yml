@@ -10,6 +10,7 @@
 
     - name: Display vars.
       when: debug | d(false) | bool
+      run_once: true
       ansible.builtin.debug:
         msg: |
           log_server: {{ log_server }}
