@@ -1,0 +1,32 @@
+ansible_python_interpreter: auto_silent
+log_serv: "{{ hostvars.log-server.iocage_ip4 }}"
+
+enabled_plugins:
+  - ansible-pull-syslogng-client
+  - ansible-pull-syslogng-server
+
+plugins:
+  ansible-pull-syslogng-client:
+    git: https://github.com/vbotka/iocage-plugins
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+  ansible-pull-syslogng-server:
+    git: https://github.com/vbotka/iocage-plugins
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+# jail properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  type: jail
+
+# log clients' aliases
+log_clients:
+  - foo
+  - bar
