@@ -16,7 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
-* Docs. Add sandbox 910
+* Docs. Add sandbox 910, 911
 * Docs. Update sandbox 013-300, 905-909
 
 0.8.16

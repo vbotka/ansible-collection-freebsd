@@ -1,0 +1,58 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [ansible-pull-syslogng-client] => 
+    msg: |-
+        ansible_host: ansible-pull-syslogng-client
+        iocage_properties.host_hostuuid: ansible-pull-syslogng-client
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [log-server] => 
+    msg: |-
+        ansible_host: log-server
+        iocage_properties.host_hostuuid: f02f3b6d-0487-480b-be86-56a4bd271651
+        iocage_classes: [log-server]
+
+        iocage_tags: {alias: log-server, class: log-server, vmm: iocage_05}
+ok: [ansible-pull-syslogng-server] => 
+    msg: |-
+        ansible_host: ansible-pull-syslogng-server
+        iocage_properties.host_hostuuid: ansible-pull-syslogng-server
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [foo] => 
+    msg: |-
+        ansible_host: foo
+        iocage_properties.host_hostuuid: f7c305b5-756a-4b50-9de9-0e676f8b9ba4
+        iocage_classes: [log-client]
+
+        iocage_tags: {alias: foo, class: log-client, vmm: iocage_05}
+ok: [bar] => 
+    msg: |-
+        ansible_host: bar
+        iocage_properties.host_hostuuid: fab95f53-6f07-4ba9-be7f-2a462cc6d468
+        iocage_classes: [log-client]
+
+        iocage_tags: {alias: bar, class: log-client, vmm: iocage_05}
+
+TASK [debug] *******************************************************************
+ok: [ansible-pull-syslogng-client] => 
+    msg: |-
+        all: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server', 'log-server', 'foo', 'bar']
+        ungrouped: []
+        state_down: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server', 'foo', 'bar']
+        log_server: ['log-server']
+        state_up: ['log-server']
+        vmm_iocage_05: ['log-server', 'foo', 'bar']
+        log_client: ['foo', 'bar']
+
+PLAY RECAP *********************************************************************
+ansible-pull-syslogng-client : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-pull-syslogng-server : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+bar                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server                 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
