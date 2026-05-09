@@ -86,7 +86,7 @@ Declare the plugins in a dictionary. For example,
 
 .. hint::
 
-   To find the example, look at the ``Index`` and search:
+   To find the examples, search in the ``Index``:
 
    * pb_iocage_plugins.yml
    * tag enabled_plugins
