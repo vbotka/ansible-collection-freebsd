@@ -52,7 +52,7 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Look at the ``Index`` and search ``playbook pb_iocage_template.yml`` what examples are available.
+   Look at the ``Index`` and search the playbook ``pb_iocage_template.yml`` what examples are available.
 
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

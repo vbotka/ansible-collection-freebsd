@@ -14,7 +14,7 @@ This playbook fetches ``iocage plugins``.
 
 .. hint::
 
-   Look at the ``Index`` and search ``playbook pb_iocage_plugins.yml`` what examples are available.
+   Look at the ``Index`` and search the playbook ``pb_iocage_plugins.yml`` what examples are available.
 
 .. seealso::
 
