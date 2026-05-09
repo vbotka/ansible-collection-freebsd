@@ -12,8 +12,8 @@
 .. index:: single: template ansible_client_pull; Example 510
 .. index:: single: ansible_client_pull; Example 510
 
-.. index:: single: playbook pb_iocage_project_create.yml; Example 510
-.. index:: single: playbook pb_iocage_project_destroy.yml; Example 510
+.. index:: single: pb_iocage_project_create.yml; Example 510
+.. index:: single: pb_iocage_project_destroy.yml; Example 510
 .. index:: single: project create; Example 510
 .. index:: single: project destroy; Example 510
 

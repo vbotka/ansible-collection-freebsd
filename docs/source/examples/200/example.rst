@@ -11,8 +11,8 @@
 .. index:: single: template ansible_client; Example 200
 .. index:: single: sudoers; Example 200
 
-.. index:: single: playbook pb_iocage_template.yml; Example 200
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 200
+.. index:: single: pb_iocage_template.yml; Example 200
+.. index:: single: pb_iocage_ansible_clients.yml; Example 200
 
 .. index:: single: inventory vbotka.freebsd.iocage; Example 200
 .. index:: single: module vbotka.freebsd.iocage; Example 200

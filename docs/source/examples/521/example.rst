@@ -19,7 +19,7 @@
 .. index:: single: ansible-pull-syslogng-server; Example 521
 .. index:: single: ansible-pull-syslogng-client; Example 521
 
-.. index:: single: playbook pb_iocage_plugins.yml; Example 521
+.. index:: single: pb_iocage_plugins.yml; Example 521
 .. index:: single: connection vbotka.freebsd.jailexec; Example 521
 .. index:: single: inventory vbotka.freebsd.iocage; Example 521
 

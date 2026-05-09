@@ -47,8 +47,8 @@
 .. index:: single: option iocage --short; Example 207
 .. index:: single: option iocage --template; Example 207
 
-.. index:: single: playbook pb_iocage_project_create.yml; Example 207
-.. index:: single: playbook pb_iocage_project_destroy.yml; Example 207
+.. index:: single: pb_iocage_project_create.yml; Example 207
+.. index:: single: pb_iocage_project_destroy.yml; Example 207
 .. index:: single: project create; Example 207
 .. index:: single: project destroy; Example 207
 

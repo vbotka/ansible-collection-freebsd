@@ -12,7 +12,7 @@
 
 .. index:: single: swarms; Example 441
 
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 441
+.. index:: single: pb_iocage_ansible_clients.yml; Example 441
 
 .. index:: single: option compose; Example 441
 .. index:: single: compose; Example 441

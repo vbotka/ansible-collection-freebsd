@@ -9,8 +9,8 @@
 
 .. index:: single: swarms; Example 443
 
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 443
-.. index:: single: playbook pb_iocage_plugins.yml; Example 443
+.. index:: single: pb_iocage_ansible_clients.yml; Example 443
+.. index:: single: pb_iocage_plugins.yml; Example 443
 .. index:: single: connection vbotka.freebsd.jailexec; Example 443
 .. index:: single: inventory vbotka.freebsd.iocage; Example 443
 
