@@ -86,7 +86,12 @@ Declare the plugins in a dictionary. For example,
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook ``pb_iocage_plugins.yml`` what examples are available.
+   To find the example, look at the ``Index`` and search:
+
+   * pb_iocage_plugins.yml
+   * tag enabled_plugins
+   * tag project_plugins
+   * tag swarm_plugins
 
 .. seealso::
 
