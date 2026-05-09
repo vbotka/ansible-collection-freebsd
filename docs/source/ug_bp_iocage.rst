@@ -14,7 +14,7 @@ iocage
 
 .. hint::
 
-   In the *Index* search ``clone jails``, ``base jails``, and ``thick jails`` to see what examples are
+   In the ``Index`` search ``clone jails``, ``base jails``, and ``thick jails`` to see what examples are
    available.
 
 
