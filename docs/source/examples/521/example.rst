@@ -255,8 +255,8 @@ Playbook pb-test-logclient.yml
 .. literalinclude:: pb-test-logclient.yml
    :language: yaml+jinja
 
-Playbook output - Test Log Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test Log Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
