@@ -7,7 +7,19 @@
    :local:
    :depth: 1
 
-.. index:: single: playbook pb_iocage_plugins.yml; Example 521
+.. index:: single: ansible-pull; Example 521
+.. index:: single: ansible-pull repo ansible-conf-syslogng-server; Example 521
+.. index:: single: ansible-pull repo ansible-conf-syslogng-client; Example 521
+.. index:: single: ansible-conf-syslogng-server; Example 521
+.. index:: single: ansible-conf-syslogng-client; Example 521
+
+.. index:: single: iocage plugins; Example 521
+.. index:: single: iocage plugin ansible-pull-syslogng-server; Example 521
+.. index:: single: iocage plugin ansible-pull-syslogng-client; Example 521
+.. index:: single: ansible-pull-syslogng-server; Example 521
+.. index:: single: ansible-pull-syslogng-client; Example 521
+
+.. index:: single: pb_iocage_plugins.yml; Example 521
 .. index:: single: connection vbotka.freebsd.jailexec; Example 521
 .. index:: single: inventory vbotka.freebsd.iocage; Example 521
 
@@ -20,9 +32,7 @@
 .. index:: single: module vbotka.freebsd.service; Example 521
 .. index:: single: vbotka.freebsd.service; Example 521
 
-.. index:: single: iocage plugins; Example 521
-.. index:: single: iocage plugin ansible-pull-syslogng-client; Example 521
-.. index:: single: iocage plugin ansible-pull-syslogng-server; Example 521
+.. index:: single: tag enabled_plugins; Example 521
 
 Use case
 ^^^^^^^^
@@ -98,7 +108,7 @@ Notes
 
 .. note::
 
-   TBD
+   In this example, DHCP was provided by the iocage host. See :ref:`example_440`
 
 .. seealso::
 
@@ -151,8 +161,8 @@ Fetch iocage plugins
    :language: yaml
    :force:
 
-List plugins
-^^^^^^^^^^^^
+List iocage plugins
+^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -167,8 +177,8 @@ Playbook pb-create-jails.yml
 .. literalinclude:: pb-create-jails.yml
    :language: yaml+jinja
 
-Playbook output - Create jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create jails from iocage plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -210,9 +220,17 @@ Playbook pb-conf-logclient.yml
 
 .. literalinclude:: pb-conf-logclient.yml
    :language: yaml+jinja
+   :emphasize-lines: 21-23
 
-Playbook output - Configure Log Clients LOG_SERVER, enable, and start syslog-ng
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+
+   The configuration file ``/usr/local/etc/syslog-ng.conf``, created by the iocage plugin
+   ``ansible-pull-syslogng-client`` from the repo `ansible-conf-syslogng-client`_, keeps the string
+   ``LOG_SERVER`` in the place of the log-server IP. The above play replaces this string with the
+   log-server IP.
+
+Playbook output - Configure, enable, and start Log Clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

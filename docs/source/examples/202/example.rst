@@ -28,8 +28,8 @@ Extending example :ref:`example_200`.
 .. index:: single: module community.general.sysrc; Example 202
 .. index:: single: community.general.sysrc; Example 202
 
-.. index:: single: playbook pb_iocage_template.yml; Example 202
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 202
+.. index:: single: pb_iocage_template.yml; Example 202
+.. index:: single: pb_iocage_ansible_clients.yml; Example 202
 
 .. index:: single: option compose; Example 202
 .. index:: single: compose; Example 202

@@ -5,7 +5,7 @@ pb_iocage_template
    :local:
    :depth: 3
 
-.. index:: single: playbook pb_iocage_template.yml; pb_iocage_template
+.. index:: single: pb_iocage_template.yml; pb_iocage_template
 .. index:: single: act_pkg; pb_iocage_template
 .. index:: single: act_user; pb_iocage_template
 .. index:: single: act_pk; pb_iocage_template
@@ -52,7 +52,7 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Look at the ``Index`` and search ``playbook pb_iocage_template.yml`` what examples are available.
+   Look at the ``Index`` and search the playbook ``pb_iocage_template.yml`` what examples are available.
 
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

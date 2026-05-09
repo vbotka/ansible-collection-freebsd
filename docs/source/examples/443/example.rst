@@ -8,9 +8,10 @@
    :depth: 1
 
 .. index:: single: swarms; Example 443
+.. index:: single: tag swarm_plugins; Example 443
 
-.. index:: single: playbook pb_iocage_ansible_clients.yml; Example 443
-.. index:: single: playbook pb_iocage_plugins.yml; Example 443
+.. index:: single: pb_iocage_ansible_clients.yml; Example 443
+.. index:: single: pb_iocage_plugins.yml; Example 443
 .. index:: single: connection vbotka.freebsd.jailexec; Example 443
 .. index:: single: inventory vbotka.freebsd.iocage; Example 443
 
@@ -36,7 +37,7 @@
 Use case
 ^^^^^^^^
 
-Clone multiple jails from the iocage plugin ``ansible-zero``. Use the `connection
+Clone multiple jails from the `iocage plugin`_ ``ansible-zero``. Use the `connection
 plugin vbotka.freebsd.jailexec`_ to connect the jails.
 
 Tree
@@ -62,7 +63,7 @@ Synopsis
 
   In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
   
-  * Fetch the iocage plugin ``ansible-zero``
+  * Fetch the `iocage plugin`_ ``ansible-zero``
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
   
@@ -182,7 +183,7 @@ Inventory hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml
    :caption:
-   :emphasize-lines: 9-12
+   :emphasize-lines: 9
 
 .. note::
 
@@ -209,7 +210,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - Test jailexec connection plugin
+Playbook output - Test connection plugin jailexec
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -235,3 +236,4 @@ Playbook output - Test jailexec connection plugin
 .. _connection plugin vbotka.freebsd.jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/ 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/ 
 .. _iocage plugins: https://github.com/vbotka/iocage-plugins/
+.. _iocage plugin: https://github.com/vbotka/iocage-plugins/

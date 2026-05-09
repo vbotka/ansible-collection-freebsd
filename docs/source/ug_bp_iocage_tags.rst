@@ -8,19 +8,20 @@ iocage tags
    :local:
    :depth: 2
 
-An iocage tag is a key-value pair applied to a jail to hold metadata about that jail. Each tag is a
-label consisting of a key and an optional value. The iocage tags are stored in the dictionary
+An ``iocage tag`` is a key-value pair applied to a jail to hold metadata about that jail. Each tag
+is a label consisting of a key and an optional value. The iocage tags are stored in the dictionary
 ``iocage_tags``.
 
 .. note::
 
-   The iocage tags are not related to `Ansible Tags`_ in any way. In this document, a tag means an
-   Ansible tag while iocage tag(s) always reference attribute(s) of the dictionary ``iocage_tags``.
+   The ``iocage tags`` are not related to `Ansible Tags`_ in any way. In this document, a ``tag``
+   means an ``Ansible tag`` while ``iocage tag(s)`` always reference the attribute(s) of the
+   dictionary ``iocage_tags``.
 
 Property notes
 """"""""""""""
 
-We use the *iocage* property *notes* to store iocage tags. Quoting `man iocage`_:
+We use the ``iocage`` property ``notes`` to store ``iocage tags``. Quoting `man iocage`_:
 
 .. code-block:: text
 
@@ -31,7 +32,7 @@ We use the *iocage* property *notes* to store iocage tags. Quoting `man iocage`_
          Default: none
          Source: local
 
-For example, put the *notes* into the dictionary *clones*
+For example, put the ``notes`` into the dictionary ``clones``
 
 .. code-block:: yaml
 
@@ -43,7 +44,7 @@ For example, put the *notes* into the dictionary *clones*
          notes: "vmm={{ inventory_hostname }} swarm=sw_01"
 
 
-, or into the dictionary *swarms*
+, or into the dictionary ``swarms``
 
 .. code-block:: yaml
 
@@ -55,7 +56,7 @@ For example, put the *notes* into the dictionary *clones*
          notes: "vmm={{ inventory_hostname }}"
 
 Then, the playbook :ref:`ug_pb-iocage-ansible-client` creates jails, for example, on the host
-*iocage_02*
+``iocage_02``
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -72,7 +73,7 @@ Then, the playbook :ref:`ug_pb-iocage-ansible-client` creates jails, for example
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 
-with *notes*
+with ``notes``
 
 .. code-block:: console
    :emphasize-lines: 1,4,7
@@ -88,8 +89,8 @@ with *notes*
 
 .. note::
 
-   The tasks *pb-iocage-ansible-clients/swarm.yml* create the iocage tag *swarm* automatically from
-   the dictionary *swarms* keys.
+   The tasks ``pb-iocage-ansible-clients/swarm.yml`` create the iocage tag ``swarm`` automatically from
+   the dictionary ``swarms`` keys.
    
 .. seealso::
 
@@ -105,7 +106,7 @@ the dictionary ``iocage_tags``, and use it to create ``keyed_groups``
 
    get_properties: True
    compose:
-     iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+     iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
    keyed_groups:
      - prefix: swarm
        key: iocage_tags.swarm
@@ -120,7 +121,7 @@ Then, this plugin creates the dictionary ``iocage_tags`` in each jail
      swarm: sw_01
      vmm: iocage_02
 
-and use it to create the groups
+and use it to create the ``groups``
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -139,7 +140,7 @@ and use it to create the groups
 
 .. hint::
 
-   In the *Index* search ``iocage_tags`` to see what examples are available.
+   In the ``Index`` search ``iocage_tags`` to see what examples are available.
 
 
 .. _Ansible Tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html

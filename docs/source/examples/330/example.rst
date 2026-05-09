@@ -7,8 +7,8 @@
    :local:
    :depth: 1
 
-.. index:: single: playbook pb-iocage-fetch-base-clone.yml; Example 330
-.. index:: single: playbook pb-iocage-list.yml; Example 330
+.. index:: single: pb-iocage-fetch-base-clone.yml; Example 330
+.. index:: single: pb-iocage-list.yml; Example 330
 
 .. index:: single: module ansible.builtin.add_host; Example 330
 .. index:: single: role vbotka.freebsd.iocage; Example 330

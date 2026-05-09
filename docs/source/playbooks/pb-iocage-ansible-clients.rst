@@ -5,7 +5,7 @@ pb_iocage_ansible_clients
    :local:
    :depth: 3
 
-.. index:: single: playbook pb_iocage_ansible_clients.yml; pb_iocage_ansible_clients
+.. index:: single: pb_iocage_ansible_clients.yml; pb_iocage_ansible_clients
 
 .. index:: single: clones; pb_iocage_ansible_clients
 .. index:: single: swarms; pb_iocage_ansible_clients
@@ -21,7 +21,7 @@ pb_iocage_ansible_clients
 Synopsis
 ^^^^^^^^
 
-This playbook creates jails from the templates.
+This playbook creates ``jails`` from the ``templates``.
 
 Examples
 ^^^^^^^^

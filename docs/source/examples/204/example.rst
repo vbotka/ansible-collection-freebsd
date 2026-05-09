@@ -20,7 +20,7 @@ Extending example :ref:`example_203`
 .. index:: single: filter vbotka.freebsd.iocage; Example 204
 .. index:: single: inventory vbotka.freebsd.iocage; Example 204
 .. index:: single: module ansible.builtin.command; Example 204
-.. index:: single: playbook pb-iocage-ansible-clients-v2.yml; Example 204
+.. index:: single: pb-iocage-ansible-clients-v2.yml; Example 204
 
 .. index:: single: option get_properties; Example 204
 .. index:: single: get_properties; Example 204
