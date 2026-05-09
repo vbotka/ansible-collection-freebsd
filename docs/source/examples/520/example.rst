@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index:: single: project; Example 520
+.. index:: single: tag project_plugins; Example 520
 .. index:: single: project create from plugins; Example 520
 
 .. index:: single: pb_iocage_plugins.yml; Example 520

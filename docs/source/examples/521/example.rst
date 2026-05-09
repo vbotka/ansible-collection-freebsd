@@ -32,6 +32,8 @@
 .. index:: single: module vbotka.freebsd.service; Example 521
 .. index:: single: vbotka.freebsd.service; Example 521
 
+.. index:: single: tag enabled_plugins; Example 521
+
 Use case
 ^^^^^^^^
 

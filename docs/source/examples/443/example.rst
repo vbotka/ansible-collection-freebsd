@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index:: single: swarms; Example 443
+.. index:: single: tag swarm_plugins; Example 443
 
 .. index:: single: pb_iocage_ansible_clients.yml; Example 443
 .. index:: single: pb_iocage_plugins.yml; Example 443
