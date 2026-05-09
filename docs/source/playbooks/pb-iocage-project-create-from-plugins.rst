@@ -5,7 +5,7 @@ pb_iocage_project_create_from_plugins
    :local:
    :depth: 3
 
-.. index:: single: playbook pb_iocage_project_create_from_plugins.yml; pb_iocage_project_create_from_plugins
+.. index:: single: pb_iocage_project_create_from_plugins.yml; pb_iocage_project_create_from_plugins
 .. index:: single: project create from plugins; pb_iocage_project_create_from_plugins
 
 Synopsis

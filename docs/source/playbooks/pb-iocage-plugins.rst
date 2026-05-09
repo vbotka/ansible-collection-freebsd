@@ -5,7 +5,7 @@ pb_iocage_plugins
    :local:
    :depth: 3
 
-.. index:: single: playbook pb_iocage_plugins.yml; pb_iocage_plugins
+.. index:: single: pb_iocage_plugins.yml; pb_iocage_plugins
 
 Synopsis
 ^^^^^^^^
