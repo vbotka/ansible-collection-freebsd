@@ -10,7 +10,7 @@ Extending example :ref:`example_016`.
    :depth: 1
 
 .. index:: single: inventory community.general.iocage; Example 017
-.. index:: single: playbook pb-iocage-obsolete.yml; Example 017
+.. index:: single: pb-iocage-obsolete.yml; Example 017
 .. index:: single: option compose; Example 017
 .. index:: single: compose; Example 017
 .. index:: single: option groups; Example 017

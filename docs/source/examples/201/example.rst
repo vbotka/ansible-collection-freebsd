@@ -9,7 +9,7 @@ Extending example :ref:`example_200`.
    :local:
    :depth: 1
 
-.. index:: single: playbook pb-iocage-display-datasets.yml; Example 201
+.. index:: single: pb-iocage-display-datasets.yml; Example 201
 .. index:: single: module vbotka.freebsd.iocage; Example 201
 
 .. index:: single: variable iocage_jails; Example 201
