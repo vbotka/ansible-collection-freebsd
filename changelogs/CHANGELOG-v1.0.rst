@@ -5,6 +5,22 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+0.8.17
+======
+
+Release Summary
+---------------
+Docs and examples update with iocage plugins.
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+* Docs. Add example 521
+* Docs. Add sandbox 910, 911
+* Docs. Update sandbox 013-300, 905-909
+
 0.8.16
 ======
 

@@ -1,0 +1,30 @@
+
+PLAY [Start jails.] ************************************************************
+
+TASK [Display groups.] *********************************************************
+ok: [iocage_05] => 
+    msg: |-
+        log_server: ['log-server']
+        log_client: ['foo', 'bar']
+        state_down:
+          - ansible-pull-syslogng-client
+          - ansible-pull-syslogng-server
+          - foo
+          - log-server
+          - bar
+
+TASK [Display jails that shall be started.] ************************************
+ok: [iocage_05] => 
+    msg: |-
+        start_jails: ['log-server', 'foo', 'bar']
+        start_uuid:
+          - b9926fae-1c72-4acb-829e-596fa170b893
+          - 9efa8772-a854-4484-8f98-9ed1dab076d5
+          - dd3c10f5-4f46-48c0-881b-71bf5724297d
+
+TASK [Start jails.] ************************************************************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

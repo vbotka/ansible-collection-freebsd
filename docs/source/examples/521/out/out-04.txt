@@ -1,0 +1,17 @@
+@all:
+  |--@ungrouped:
+  |--@state_down:
+  |  |--ansible-pull-syslogng-client
+  |  |--ansible-pull-syslogng-server
+  |  |--foo
+  |  |--log-server
+  |  |--bar
+  |--@log_client:
+  |  |--foo
+  |  |--bar
+  |--@vmm_iocage_05:
+  |  |--foo
+  |  |--log-server
+  |  |--bar
+  |--@log_server:
+  |  |--log-server

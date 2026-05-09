@@ -12,7 +12,10 @@
 904 ... Test connection plugin jailexec
 905 ... Test iocage plugin syslog-ng
 906 ... Test custom facts of iocage plugin
-
+907 ... Test plugins ansible-syslogng-client and ansible-syslogng-server
+908 ... Test var enabled_plugins; simplified version of 907
+909 ... Test ansible-pull, repo ansible-pull-test
+910 ... Test ansible-pull, repo ansible-pull-syslogng-server
 
 **Notes**
 
