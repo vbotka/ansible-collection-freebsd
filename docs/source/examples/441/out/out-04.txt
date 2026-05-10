@@ -1,11 +1,10 @@
 @all:
   |--@ungrouped:
-  |  |--syslog-ng
   |--@swarm_sw_01:
-  |  |--00aa13f8
-  |  |--277c9023
-  |  |--d80e9da5
+  |  |--0b5478fa
+  |  |--1d208d0a
+  |  |--eab83e55
   |--@vmm_iocage_05:
-  |  |--00aa13f8
-  |  |--277c9023
-  |  |--d80e9da5
+  |  |--0b5478fa
+  |  |--1d208d0a
+  |  |--eab83e55

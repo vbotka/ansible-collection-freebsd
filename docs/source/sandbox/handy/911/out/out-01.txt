@@ -28,6 +28,48 @@ ok: [iocage_05] =>
               state: down
               template: '-'
               type: pluginv2
+          ansible-pull-test:
+              boot: 'on'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-syslogng:
+              boot: 'on'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-test:
+              boot: 'on'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
 
         plugins:
           ansible-pull-syslogng-client:

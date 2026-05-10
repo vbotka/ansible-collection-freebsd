@@ -3,15 +3,17 @@
   |--@state_down:
   |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
+  |  |--ansible-syslogng
+  |  |--ansible-zero
   |  |--foo
-  |  |--log-server
   |  |--bar
+  |  |--log-server
   |--@log_client:
   |  |--foo
   |  |--bar
   |--@vmm_iocage_05:
   |  |--foo
-  |  |--log-server
   |  |--bar
+  |  |--log-server
   |--@log_server:
   |  |--log-server

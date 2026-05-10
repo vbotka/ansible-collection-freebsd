@@ -2,65 +2,65 @@
 PLAY [Test the iocage plugin ansible-test.] ************************************
 
 TASK [Get custom facts] ********************************************************
-ok: [1c0e3e54-cc3c-4ccc-8e8f-25a4e64b4690]
-ok: [a6586295-6150-4220-b51f-c87fa91d24dc]
-ok: [db715aa3-6b47-464a-ab83-51f5763daf13]
+ok: [5d41d6b5-d679-4f04-996a-aac5ed7b492f]
+ok: [c576b267-560e-4347-a118-e5c53fc998dd]
+ok: [0fd33b8f-45b9-4ee3-9ad0-93911ac61e36]
 
 TASK [Debug] *******************************************************************
-ok: [1c0e3e54-cc3c-4ccc-8e8f-25a4e64b4690] => 
+ok: [0fd33b8f-45b9-4ee3-9ad0-93911ac61e36] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 1c0e3e54-cc3c-4ccc-8e8f-25a4e64b4690
+        ansible_host: 0fd33b8f-45b9-4ee3-9ad0-93911ac61e36
         ansible_user: none
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.129
+        iocage_ip4: 10.10.99.198
         iocage_tags:
           swarm: sw_01
           vmm: iocage_05
 
 
         ansible_local.iocage:
-          iocage_plugin_name: ansible-syslogng
-ok: [a6586295-6150-4220-b51f-c87fa91d24dc] => 
+          iocage_plugin_name: ansible-test
+ok: [5d41d6b5-d679-4f04-996a-aac5ed7b492f] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: a6586295-6150-4220-b51f-c87fa91d24dc
+        ansible_host: 5d41d6b5-d679-4f04-996a-aac5ed7b492f
         ansible_user: none
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.191
+        iocage_ip4: 10.10.99.197
         iocage_tags:
           swarm: sw_01
           vmm: iocage_05
 
 
         ansible_local.iocage:
-          iocage_plugin_name: ansible-syslogng
-ok: [db715aa3-6b47-464a-ab83-51f5763daf13] => 
+          iocage_plugin_name: ansible-test
+ok: [c576b267-560e-4347-a118-e5c53fc998dd] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: db715aa3-6b47-464a-ab83-51f5763daf13
+        ansible_host: c576b267-560e-4347-a118-e5c53fc998dd
         ansible_user: none
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.190
+        iocage_ip4: 10.10.99.196
         iocage_tags:
           swarm: sw_01
           vmm: iocage_05
 
 
         ansible_local.iocage:
-          iocage_plugin_name: ansible-syslogng
+          iocage_plugin_name: ansible-test
 
 PLAY RECAP *********************************************************************
-1c0e3e54-cc3c-4ccc-8e8f-25a4e64b4690 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-a6586295-6150-4220-b51f-c87fa91d24dc : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db715aa3-6b47-464a-ab83-51f5763daf13 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+0fd33b8f-45b9-4ee3-9ad0-93911ac61e36 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+5d41d6b5-d679-4f04-996a-aac5ed7b492f : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+c576b267-560e-4347-a118-e5c53fc998dd : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -10,12 +10,17 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Docs updated examples and sandbox. Only iocage_05 tested.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
+* Docs. Add deprecation_warnings = false to ansible.cfg
+* Docs. Add d('none') for missing vmm in tags.
+* Docs. Update regex_findall('class=([\w\-]+)') for classes with the dash in the names.
+* Docs. Updated sandbox/handy/README.md
 
 
 0.8.18

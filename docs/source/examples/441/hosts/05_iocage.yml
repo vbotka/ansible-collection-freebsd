@@ -6,7 +6,7 @@ get_properties: true
 hooks_results:
   - /var/db/dhclient-hook.address.epair0b
 compose:
-  ansible_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm
+  ansible_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
   ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
   ansible_user: "'admin'"
   ansible_python_interpreter: "'auto_silent'"

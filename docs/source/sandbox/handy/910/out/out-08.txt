@@ -7,6 +7,9 @@ ok: [iocage_05] =>
         log_server: ['log-server']
         state_down:
           - ansible-pull-syslogng-server
+          - ansible-pull-test
+          - ansible-syslogng
+          - ansible-test
           - log-server
 
 TASK [Display jails that shall be started.] ************************************
@@ -14,7 +17,7 @@ ok: [iocage_05] =>
     msg: |-
         start_jails: ['log-server']
         start_uuid:
-          - 612452f6-a6dd-4f69-87c0-36b3f1de8f5f
+          - 935250ad-8e0a-4d76-a749-226298a1f110
 
 TASK [Start jails.] ************************************************************
 changed: [iocage_05]
