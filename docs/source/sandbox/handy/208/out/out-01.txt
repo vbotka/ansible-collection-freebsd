@@ -7,19 +7,6 @@ ok: [iocage_05]
 TASK [Setup: Display iocage_templates debug=true] ******************************
 ok: [iocage_05] => 
     iocage_templates:
-        ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.0-RELEASE
-            state: down
-            template: '-'
-            type: template
         ansible_client_apache:
             basejail: 'no'
             boot: 'off'
@@ -46,6 +33,32 @@ ok: [iocage_05]
 TASK [Start: Display iocage_jails debug=true] **********************************
 ok: [iocage_05] => 
     iocage_jails:
+        ansible-pull-syslogng-client:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+        ansible-pull-syslogng-server:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
         ansible_client_pull:
             basejail: 'no'
             boot: 'off'
@@ -69,18 +82,44 @@ ok: [iocage_05]
 TASK [Pkg: Display iocage_jails debug=true] ************************************
 ok: [iocage_05] => 
     iocage_jails:
+        ansible-pull-syslogng-client:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+        ansible-pull-syslogng-server:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
         ansible_client_pull:
             basejail: 'no'
             boot: 'off'
-            ip4: 10.10.99.119
+            ip4: 10.10.99.168
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 10.10.99.119
+                    ip: 10.10.99.168
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '13'
+            jid: '5'
             release: 15.0-RELEASE
             state: up
             template: '-'
@@ -119,18 +158,44 @@ ok: [iocage_05]
 TASK [Stop: Display iocage_jails debug=true] ***********************************
 ok: [iocage_05] => 
     iocage_jails:
+        ansible-pull-syslogng-client:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
+        ansible-pull-syslogng-server:
+            basejail: 'yes'
+            boot: 'on'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.0-RELEASE
+            state: down
+            template: '-'
+            type: pluginv2
         ansible_client_pull:
             basejail: 'no'
             boot: 'off'
-            ip4: 10.10.99.119
+            ip4: 10.10.99.168
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 10.10.99.119
+                    ip: 10.10.99.168
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '13'
+            jid: '5'
             release: 15.0-RELEASE
             state: up
             template: '-'

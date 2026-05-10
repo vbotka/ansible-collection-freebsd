@@ -9,25 +9,25 @@ ok: [iocage_05] =>
     msg: |-
         iocage_releases: ['15.0-RELEASE']
         iocage_plugins:
-          ansible-zero:
+          ansible-pull-syslogng-client:
             boot: 'on'
             doc_url: '-'
             ip4: DHCP (not running)
             ip6: '-'
             jid: None
-            name: ansible-zero
+            name: ansible-pull-syslogng-client
             portal: '-'
             release: 15.0-RELEASE
             state: down
             template: '-'
             type: pluginv2
-          syslog-ng:
+          ansible-pull-syslogng-server:
             boot: 'on'
             doc_url: '-'
             ip4: DHCP (not running)
             ip6: '-'
             jid: None
-            name: syslog-ng
+            name: ansible-pull-syslogng-server
             portal: '-'
             release: 15.0-RELEASE
             state: down
@@ -35,17 +35,6 @@ ok: [iocage_05] =>
             type: pluginv2
 
         iocage_templates:
-          ansible_client:
-            basejail: 'no'
-            boot: 'off'
-            ip4: DHCP (not running)
-            ip6: '-'
-            jid: None
-            name: ansible_client
-            release: 15.0-RELEASE
-            state: down
-            template: '-'
-            type: template
           ansible_client_apache:
             basejail: 'no'
             boot: 'off'
@@ -70,61 +59,28 @@ ok: [iocage_05] =>
             type: template
 
         iocage_jails:
-          ansible-zero:
+          ansible-pull-syslogng-client:
             basejail: 'yes'
             boot: 'on'
             ip4: DHCP (not running)
             ip6: '-'
             jid: None
-            name: ansible-zero
+            name: ansible-pull-syslogng-client
             release: 15.0-RELEASE
             state: down
             template: '-'
             type: pluginv2
-          syslog-ng:
+          ansible-pull-syslogng-server:
             basejail: 'yes'
             boot: 'on'
             ip4: DHCP (not running)
             ip6: '-'
             jid: None
-            name: syslog-ng
+            name: ansible-pull-syslogng-server
             release: 15.0-RELEASE
             state: down
             template: '-'
             type: pluginv2
-          test_151:
-            basejail: 'no'
-            boot: 'off'
-            ip4: vnet0|10.1.0.151/24
-            ip6: '-'
-            jid: '40'
-            name: test_151
-            release: 15.0-RELEASE
-            state: up
-            template: ansible_client
-            type: jail
-          test_152:
-            basejail: 'no'
-            boot: 'off'
-            ip4: vnet0|10.1.0.152/24
-            ip6: '-'
-            jid: '42'
-            name: test_152
-            release: 15.0-RELEASE
-            state: up
-            template: ansible_client
-            type: jail
-          test_153:
-            basejail: 'no'
-            boot: 'off'
-            ip4: vnet0|10.1.0.153/24
-            ip6: '-'
-            jid: '41'
-            name: test_153
-            release: 15.0-RELEASE
-            state: up
-            template: ansible_client
-            type: jail
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

@@ -2,6 +2,32 @@ all:
   children:
     ungrouped:
       hosts:
+        ansible-pull-syslogng-client:
+          iocage_basejail: 'yes'
+          iocage_boot: 'on'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: DHCP (not running)
+          iocage_ip6: '-'
+          iocage_jid: None
+          iocage_release: 15.0-RELEASE
+          iocage_state: down
+          iocage_template: '-'
+          iocage_type: pluginv2
+        ansible-pull-syslogng-server:
+          iocage_basejail: 'yes'
+          iocage_boot: 'on'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: DHCP (not running)
+          iocage_ip6: '-'
+          iocage_jid: None
+          iocage_release: 15.0-RELEASE
+          iocage_state: down
+          iocage_template: '-'
+          iocage_type: pluginv2
         ansible_client:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
@@ -18,15 +44,15 @@ all:
         test_151:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.10.99.102
+          iocage_ip4: 10.10.99.165
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.10.99.102
+              ip: 10.10.99.165
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '39'
+          iocage_jid: '2'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client
@@ -34,15 +60,15 @@ all:
         test_152:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.10.99.101
+          iocage_ip4: 10.10.99.166
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.10.99.101
+              ip: 10.10.99.166
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '40'
+          iocage_jid: '3'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client
@@ -50,15 +76,15 @@ all:
         test_153:
           iocage_basejail: 'yes'
           iocage_boot: 'off'
-          iocage_ip4: 10.10.99.103
+          iocage_ip4: 10.10.99.167
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.10.99.103
+              ip: 10.10.99.167
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '41'
+          iocage_jid: '4'
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_template: ansible_client

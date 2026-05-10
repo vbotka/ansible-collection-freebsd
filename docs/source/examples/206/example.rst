@@ -113,7 +113,7 @@ The inventory plugin composes the variable ``iocage_tags``
 
 .. code-block:: yaml
 
-   iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
 
 For example,
 

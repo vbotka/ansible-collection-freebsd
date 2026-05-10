@@ -5,17 +5,25 @@ TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: |-
         ansible_client None 15.0-RELEASE - [] down '-'
-ok: [test_151] => 
+ok: [ansible-pull-syslogng-client] => 
     msg: |-
-        test_151 39 15.0-RELEASE 10.10.99.102 ['10.10.99.102'] up ''
+        ansible-pull-syslogng-client None 15.0-RELEASE - [] down 'DHCP (not running)'
 ok: [test_152] => 
     msg: |-
-        test_152 40 15.0-RELEASE 10.10.99.101 ['10.10.99.101'] up ''
+        test_152 3 15.0-RELEASE 10.10.99.166 ['10.10.99.166'] up ''
+ok: [ansible-pull-syslogng-server] => 
+    msg: |-
+        ansible-pull-syslogng-server None 15.0-RELEASE - [] down 'DHCP (not running)'
+ok: [test_151] => 
+    msg: |-
+        test_151 2 15.0-RELEASE 10.10.99.165 ['10.10.99.165'] up ''
 ok: [test_153] => 
     msg: |-
-        test_153 41 15.0-RELEASE 10.10.99.103 ['10.10.99.103'] up ''
+        test_153 4 15.0-RELEASE 10.10.99.167 ['10.10.99.167'] up ''
 
 PLAY RECAP *********************************************************************
+ansible-pull-syslogng-client : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-pull-syslogng-server : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

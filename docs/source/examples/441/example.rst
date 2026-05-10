@@ -91,7 +91,7 @@ following two lines in the file ``hosts/05_iocage.yml``
 
 .. code-block:: yaml
 
-   ansible_host: dict(iocage_properties.notes | split | map('split', '=')).vmm
+   ansible_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm
    ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
 
 .. seealso::

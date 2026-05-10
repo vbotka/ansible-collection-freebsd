@@ -149,7 +149,7 @@ ok: [ansible_client] =>
         wallclock: 'off'
         writebps: 'off'
         writeiops: 'off'
-ok: [ansible-zero] => 
+ok: [ansible-pull-syslogng-client] => 
     iocage_properties:
         CONFIG_VERSION: '33'
         allow_chflags: '0'
@@ -207,8 +207,8 @@ ok: [ansible-zero] =>
         exec_system_user: root
         exec_timeout: '60'
         host_domainname: none
-        host_hostname: ansible-zero
-        host_hostuuid: ansible-zero
+        host_hostname: ansible-pull-syslogng-client
+        host_hostuuid: ansible-pull-syslogng-client
         host_time: '1'
         hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
         hostid_strict_check: '0'
@@ -221,9 +221,9 @@ ok: [ansible-zero] =>
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/ansible-zero/data
+        jail_zfs_dataset: iocage/jails/ansible-pull-syslogng-client/data
         jail_zfs_mountpoint: none
-        last_started: '2026-04-30 08:05:07'
+        last_started: '2026-05-08 07:31:07'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86
@@ -253,7 +253,7 @@ ok: [ansible-zero] =>
         origin: readonly
         owner: root
         pcpu: 'off'
-        plugin_name: ansible-zero
+        plugin_name: ansible-pull-syslogng-client
         plugin_repository: https://github.com/vbotka/iocage-plugins
         priority: '99'
         pseudoterminals: 'off'
@@ -282,7 +282,7 @@ ok: [ansible-zero] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: 665d86e5c1e3 665d86e5c1e4
+        vnet0_mac: 665d869460a0 665d869460a1
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto
@@ -296,7 +296,7 @@ ok: [ansible-zero] =>
         wallclock: 'off'
         writebps: 'off'
         writeiops: 'off'
-ok: [syslog-ng] => 
+ok: [ansible-pull-syslogng-server] => 
     iocage_properties:
         CONFIG_VERSION: '33'
         allow_chflags: '0'
@@ -354,8 +354,8 @@ ok: [syslog-ng] =>
         exec_system_user: root
         exec_timeout: '60'
         host_domainname: none
-        host_hostname: syslog-ng
-        host_hostuuid: syslog-ng
+        host_hostname: ansible-pull-syslogng-server
+        host_hostuuid: ansible-pull-syslogng-server
         host_time: '1'
         hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
         hostid_strict_check: '0'
@@ -368,9 +368,9 @@ ok: [syslog-ng] =>
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/syslog-ng/data
+        jail_zfs_dataset: iocage/jails/ansible-pull-syslogng-server/data
         jail_zfs_mountpoint: none
-        last_started: '2026-04-30 10:13:24'
+        last_started: '2026-05-08 07:33:58'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86
@@ -400,7 +400,7 @@ ok: [syslog-ng] =>
         origin: readonly
         owner: root
         pcpu: 'off'
-        plugin_name: syslog-ng
+        plugin_name: ansible-pull-syslogng-server
         plugin_repository: https://github.com/vbotka/iocage-plugins
         priority: '99'
         pseudoterminals: 'off'
@@ -429,7 +429,7 @@ ok: [syslog-ng] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: 665d86703979 665d8670397a
+        vnet0_mac: 665d869d767e 665d869d767f
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto
@@ -811,7 +811,7 @@ ok: [test_153] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/test_153/data
         jail_zfs_mountpoint: none
-        last_started: '2026-04-30 11:17:47'
+        last_started: '2026-05-10 02:56:04'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86
@@ -886,9 +886,9 @@ ok: [test_153] =>
         writeiops: 'off'
 
 PLAY RECAP *********************************************************************
-ansible-zero               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-pull-syslogng-client : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-pull-syslogng-server : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
