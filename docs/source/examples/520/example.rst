@@ -27,6 +27,7 @@
 
 .. index:: single: iocage plugins; Example 520
 .. index:: single: iocage plugin ansible-syslogng; Example 520
+.. index:: single: ansible-syslogng; Example 520
 
 .. index:: single: ansible_jail_host; Example 520
 .. index:: single: ansible_jail_name; Example 520
