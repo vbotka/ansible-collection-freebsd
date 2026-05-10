@@ -2,13 +2,6 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
-ok: [test] => 
-    msg: |-
-        ansible_host: test
-        iocage_properties.host_hostuuid: 845313bc-6def-4ca6-8c95-d87c361b418b
-        iocage_classes: [ansible-pull]
-
-        iocage_tags: {}
 ok: [ansible-pull-test] => 
     msg: |-
         ansible_host: ansible-pull-test
@@ -16,16 +9,40 @@ ok: [ansible-pull-test] =>
         iocage_classes: []
 
         iocage_tags: {}
+ok: [ansible-test] => 
+    msg: |-
+        ansible_host: ansible-test
+        iocage_properties.host_hostuuid: ansible-test
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [ansible-syslogng] => 
+    msg: |-
+        ansible_host: ansible-syslogng
+        iocage_properties.host_hostuuid: ansible-syslogng
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [test] => 
+    msg: |-
+        ansible_host: test
+        iocage_properties.host_hostuuid: bbc561fe-f2ba-41cd-9d79-f481fb99f9de
+        iocage_classes: [ansible-pull]
+
+        iocage_tags: {alias: test, class: ansible-pull, vmm: iocage_05}
 
 TASK [debug] *******************************************************************
 ok: [ansible-pull-test] => 
     msg: |-
-        all: ['ansible-pull-test', 'test']
+        all: ['ansible-pull-test', 'ansible-syslogng', 'ansible-test', 'test']
         ungrouped: []
-        state_down: ['ansible-pull-test', 'test']
+        state_down: ['ansible-pull-test', 'ansible-syslogng', 'ansible-test', 'test']
         ansible_pull: ['test']
+        vmm_iocage_05: ['test']
 
 PLAY RECAP *********************************************************************
 ansible-pull-test          : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-syslogng           : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-test               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

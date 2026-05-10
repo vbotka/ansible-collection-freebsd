@@ -9,18 +9,20 @@ ok: [iocage_05] =>
         state_down:
           - ansible-pull-syslogng-client
           - ansible-pull-syslogng-server
+          - ansible-syslogng
+          - ansible-zero
           - foo
-          - log-server
           - bar
+          - log-server
 
 TASK [Display jails that shall be started.] ************************************
 ok: [iocage_05] => 
     msg: |-
-        start_jails: ['log-server', 'foo', 'bar']
+        start_jails: ['bar', 'foo', 'log-server']
         start_uuid:
-          - b9926fae-1c72-4acb-829e-596fa170b893
-          - 9efa8772-a854-4484-8f98-9ed1dab076d5
-          - dd3c10f5-4f46-48c0-881b-71bf5724297d
+          - 56c03084-a015-4316-8434-f2fb635afd7c
+          - 2f769ae6-2b0f-4864-b700-b6fd5387e6a7
+          - ff77eecd-340f-4d30-b3e8-589cc2c32aa5
 
 TASK [Start jails.] ************************************************************
 changed: [iocage_05]

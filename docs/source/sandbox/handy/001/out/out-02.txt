@@ -22,9 +22,7 @@ ok: [iocage_05] =>
             Updating FreeBSD-ports-kmods repository catalogue...
             FreeBSD-ports-kmods repository is up to date.
             Updating FreeBSD-base repository catalogue...
-            Fetching data: ..... done
-            Processing entries: .......... done
-            FreeBSD-base repository update completed. 496 packages processed.
+            FreeBSD-base repository is up to date.
             All repositories are up to date.
         stdout_lines:
         - Updating FreeBSD-ports repository catalogue...
@@ -32,9 +30,7 @@ ok: [iocage_05] =>
         - Updating FreeBSD-ports-kmods repository catalogue...
         - FreeBSD-ports-kmods repository is up to date.
         - Updating FreeBSD-base repository catalogue...
-        - 'Fetching data: ..... done'
-        - 'Processing entries: .......... done'
-        - FreeBSD-base repository update completed. 496 packages processed.
+        - FreeBSD-base repository is up to date.
         - All repositories are up to date.
 
 PLAY RECAP *********************************************************************

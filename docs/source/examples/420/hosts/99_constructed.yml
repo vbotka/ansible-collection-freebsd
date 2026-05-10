@@ -1,13 +1,8 @@
 plugin: ansible.builtin.constructed
 compose:
   ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
-  iocage_tags: dict(iocage_properties.notes | split
-                                            | select('match', '^.*=.*$')
-                                            | map('split', '='))
-  iocage_classes: iocage_properties.notes | split
-                                          | select('match', '^class=.*$') | first
-                                          | split('=') | last
-                                          | split(',')
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+  iocage_classes: iocage_properties.notes | regex_findall('class=(\w+)')
 groups:
   www: "'http' in iocage_classes"
 keyed_groups:

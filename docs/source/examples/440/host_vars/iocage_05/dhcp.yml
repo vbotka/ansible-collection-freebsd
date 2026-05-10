@@ -17,7 +17,7 @@ bsd_dhcpd_template: dhcpd.conf-minimal.j2
 
 # Gobal
 bsd_dhcpd_domain_name: g3.example.com
-bsd_dhcpd_domain_name_servers: [8.8.8.8, 8.8.4.4]
+bsd_dhcpd_domain_name_servers: [1.1.1.1, 8.8.8.8]
 bsd_dhcpd_default_lease_time: 600
 bsd_dhcpd_max_lease_time: 7200
 

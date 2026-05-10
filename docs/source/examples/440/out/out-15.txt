@@ -2,7 +2,7 @@
 
 # Global options
 option domain-name "g3.example.com";
-option domain-name-servers 8.8.8.8, 8.8.4.4;
+option domain-name-servers 1.1.1.1, 8.8.8.8;
 default-lease-time 600;
 max-lease-time 7200;
 

@@ -8,23 +8,17 @@ TASK [debug] *******************************************************************
 ok: [logserv] => 
     ansible_local:
         iocage:
-            iocage_plugin_name: ansible-syslogng-server
+            iocage_plugin_name: ansible-syslogng
 
 TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
 ok: [logserv]
 
 TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-changed: [logserv]
+ok: [logserv]
 
 TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-changed: [logserv]
-
-RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
-changed: [logserv]
-
-RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
 ok: [logserv]
 
 PLAY RECAP *********************************************************************
-logserv                    : ok=7    changed=3    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+logserv                    : ok=5    changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 

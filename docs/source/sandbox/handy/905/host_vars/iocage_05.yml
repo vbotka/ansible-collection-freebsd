@@ -8,10 +8,10 @@ properties:
 swarms:
   sw_01:
     count: 3
-    plugin: syslog-ng
+    plugin: ansible-syslogng
 
 plugins:
-  syslog-ng:
+  ansible-syslogng:
     git: https://github.com/vbotka/iocage-plugins
     properties:
       bpf: 1

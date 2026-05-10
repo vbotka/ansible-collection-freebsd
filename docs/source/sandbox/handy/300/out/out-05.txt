@@ -5,9 +5,9 @@ TASK [Get iocage list of jails] ************************************************
 ok: [iocage_05]
 
 TASK [Jails service list enabled] **********************************************
-ok: [iocage_05] => (item=60)
-ok: [iocage_05] => (item=61)
-ok: [iocage_05] => (item=59)
+ok: [iocage_05] => (item=10)
+ok: [iocage_05] => (item=9)
+ok: [iocage_05] => (item=8)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_05] => 
@@ -41,12 +41,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '60'
+                    jail: '10'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '60'
+            item: '10'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -85,12 +85,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '61'
+                    jail: '9'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '61'
+            item: '9'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -129,12 +129,12 @@ ok: [iocage_05] =>
                 module_args:
                     command: null
                     env: null
-                    jail: '59'
+                    jail: '8'
                     list_enabled: true
                     script: null
                     synopsis: false
                     wait: 0.5
-            item: '59'
+            item: '8'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -171,11 +171,11 @@ ok: [iocage_05] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_05] => 
     jid_service_enabled | to_yaml: |-
-        '59': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '10': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
-        '60': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '8': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
-        '61': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '9': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
 
 PLAY RECAP *********************************************************************

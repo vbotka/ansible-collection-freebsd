@@ -15,29 +15,29 @@ ok: [iocage_05] =>
     msg: |-
         iocage_plugins:
           ansible-syslogng:
-            boot: 'on'
-            doc_url: '-'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            portal: '-'
-            release: 15.0-RELEASE
-            state: down
-            template: '-'
-            type: pluginv2
+              boot: 'on'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
 
         plugins:
           ansible-test:
-            git: https://github.com/vbotka/iocage-plugins
-            properties:
-                bpf: 1
-                dhcp: 1
-                vnet: 1
-        ansible-zero:
-            git: https://github.com/vbotka/iocage-plugins
+              git: https://github.com/vbotka/iocage-plugins
+              properties:
+                  bpf: 1
+                  dhcp: 1
+                  vnet: 1
+          ansible-zero:
+              git: https://github.com/vbotka/iocage-plugins
 
 TASK [Debug required plugins debug=true] ***************************************
 ok: [iocage_05] => 

@@ -2,6 +2,9 @@
   |--@ungrouped:
   |--@state_down:
   |  |--ansible-pull-syslogng-server
+  |  |--ansible-pull-test
+  |  |--ansible-syslogng
+  |  |--ansible-test
   |  |--log-server
   |--@log_server:
   |  |--log-server
