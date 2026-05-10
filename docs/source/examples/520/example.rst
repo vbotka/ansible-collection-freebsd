@@ -81,13 +81,13 @@ iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
                               -i hosts \
                               --flush-cache
 
-* Create log server
+* Configure log server
 
   .. code-block:: console
 
      (env) > ansible-playbook pb-logserv.yml -i hosts
 
-* Create log clients
+* Configure log clients
 
   .. code-block:: console
 
