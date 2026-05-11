@@ -19,6 +19,10 @@ The collection is shipped with:
 
 .. include:: included_content.rst
 
+.. tip::
+
+   See the :ref:`ug_examples` and proof of concents in the `Sandbox`_.
+
 .. note::
 
    * The above **Requirements** lists the collections required by the roles.
@@ -64,3 +68,5 @@ The collection is shipped with:
 .. _latest Ansible docs: https://docs.ansible.com/ansible/latest/
 .. _Jails and Containers - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/jails/
 .. _result_format=yaml: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format
+
+.. _Sandbox: https://github.com/vbotka/ansible-collection-freebsd/tree/0da2bb84f9c7c6366b87f681651474fc40698605/docs/source/sandbox
