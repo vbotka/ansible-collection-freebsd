@@ -5,22 +5,22 @@ all:
         bar:
           ansible_connection: vbotka.freebsd.jailexec
           ansible_jail_host: iocage_05
-          ansible_jail_name: '31'
+          ansible_jail_name: '38'
           ansible_jail_privilege_escalation: sudo
           ansible_python_interpreter: auto_silent
           iocage_basejail: 'yes'
           iocage_boot: 'on'
           iocage_classes:
           - log-client
-          iocage_ip4: 10.10.99.127
+          iocage_ip4: 10.10.99.117
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.10.99.127
+              ip: 10.10.99.117
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '31'
+          iocage_jid: '38'
           iocage_properties:
             CONFIG_VERSION: '33'
             allow_chflags: '0'
@@ -78,8 +78,8 @@ all:
             exec_system_user: root
             exec_timeout: '60'
             host_domainname: none
-            host_hostname: c321bc5e-814d-484d-be20-7e77e68d5fbc
-            host_hostuuid: c321bc5e-814d-484d-be20-7e77e68d5fbc
+            host_hostname: e9ed2cac-ce86-48ef-a90b-6c9c57143cdf
+            host_hostuuid: e9ed2cac-ce86-48ef-a90b-6c9c57143cdf
             host_time: '1'
             hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
             hostid_strict_check: '0'
@@ -92,9 +92,9 @@ all:
             ip6_saddrsel: '1'
             ip_hostname: '0'
             jail_zfs: '0'
-            jail_zfs_dataset: iocage/jails/c321bc5e-814d-484d-be20-7e77e68d5fbc/data
+            jail_zfs_dataset: iocage/jails/e9ed2cac-ce86-48ef-a90b-6c9c57143cdf/data
             jail_zfs_mountpoint: none
-            last_started: '2026-05-11 03:21:37'
+            last_started: '2026-05-11 04:00:34'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -124,7 +124,7 @@ all:
             origin: readonly
             owner: root
             pcpu: 'off'
-            plugin_name: c321bc5e-814d-484d-be20-7e77e68d5fbc
+            plugin_name: e9ed2cac-ce86-48ef-a90b-6c9c57143cdf
             plugin_repository: https://github.com/vbotka/iocage-plugins
             priority: '99'
             pseudoterminals: 'off'
@@ -153,7 +153,7 @@ all:
             used: readonly
             vmemoryuse: 'off'
             vnet: '1'
-            vnet0_mac: 665d86811cb4 665d86811cb5
+            vnet0_mac: 665d86448f8b 665d86448f8c
             vnet0_mtu: auto
             vnet1_mac: none
             vnet1_mtu: auto
@@ -178,22 +178,22 @@ all:
         foo:
           ansible_connection: vbotka.freebsd.jailexec
           ansible_jail_host: iocage_05
-          ansible_jail_name: '30'
+          ansible_jail_name: '37'
           ansible_jail_privilege_escalation: sudo
           ansible_python_interpreter: auto_silent
           iocage_basejail: 'yes'
           iocage_boot: 'on'
           iocage_classes:
           - log-client
-          iocage_ip4: 10.10.99.195
+          iocage_ip4: 10.10.99.116
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.10.99.195
+              ip: 10.10.99.116
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '30'
+          iocage_jid: '37'
           iocage_properties:
             CONFIG_VERSION: '33'
             allow_chflags: '0'
@@ -251,8 +251,8 @@ all:
             exec_system_user: root
             exec_timeout: '60'
             host_domainname: none
-            host_hostname: ce1949ed-dc27-40a8-b850-7c323e8803a6
-            host_hostuuid: ce1949ed-dc27-40a8-b850-7c323e8803a6
+            host_hostname: 7e5199cf-4c1d-4437-a128-419e2c3903d9
+            host_hostuuid: 7e5199cf-4c1d-4437-a128-419e2c3903d9
             host_time: '1'
             hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
             hostid_strict_check: '0'
@@ -265,9 +265,9 @@ all:
             ip6_saddrsel: '1'
             ip_hostname: '0'
             jail_zfs: '0'
-            jail_zfs_dataset: iocage/jails/ce1949ed-dc27-40a8-b850-7c323e8803a6/data
+            jail_zfs_dataset: iocage/jails/7e5199cf-4c1d-4437-a128-419e2c3903d9/data
             jail_zfs_mountpoint: none
-            last_started: '2026-05-11 03:21:34'
+            last_started: '2026-05-11 04:00:30'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -297,7 +297,7 @@ all:
             origin: readonly
             owner: root
             pcpu: 'off'
-            plugin_name: ce1949ed-dc27-40a8-b850-7c323e8803a6
+            plugin_name: 7e5199cf-4c1d-4437-a128-419e2c3903d9
             plugin_repository: https://github.com/vbotka/iocage-plugins
             priority: '99'
             pseudoterminals: 'off'
@@ -326,7 +326,7 @@ all:
             used: readonly
             vmemoryuse: 'off'
             vnet: '1'
-            vnet0_mac: 665d86b7ec8c 665d86b7ec8d
+            vnet0_mac: 665d86d66891 665d86d66892
             vnet0_mtu: auto
             vnet1_mac: none
             vnet1_mtu: auto
@@ -441,7 +441,7 @@ all:
             jail_zfs: '0'
             jail_zfs_dataset: iocage/jails/ansible-pull-syslogng-client/data
             jail_zfs_mountpoint: none
-            last_started: '2026-05-11 03:21:13'
+            last_started: '2026-05-11 04:00:06'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -607,7 +607,7 @@ all:
             jail_zfs: '0'
             jail_zfs_dataset: iocage/jails/ansible-pull-syslogng-server/data
             jail_zfs_mountpoint: none
-            last_started: '2026-05-11 03:16:51'
+            last_started: '2026-05-11 03:56:31'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -692,22 +692,22 @@ all:
         log-server:
           ansible_connection: vbotka.freebsd.jailexec
           ansible_jail_host: iocage_05
-          ansible_jail_name: '27'
+          ansible_jail_name: '34'
           ansible_jail_privilege_escalation: sudo
           ansible_python_interpreter: auto_silent
           iocage_basejail: 'yes'
           iocage_boot: 'on'
           iocage_classes:
           - log-server
-          iocage_ip4: 10.10.99.125
+          iocage_ip4: 10.10.99.128
           iocage_ip4_dict:
             ip4:
             - ifc: epair0b
-              ip: 10.10.99.125
+              ip: 10.10.99.128
               mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '27'
+          iocage_jid: '34'
           iocage_properties:
             CONFIG_VERSION: '33'
             allow_chflags: '0'
@@ -765,8 +765,8 @@ all:
             exec_system_user: root
             exec_timeout: '60'
             host_domainname: none
-            host_hostname: d1c2873d-6398-4a03-9a2a-f36142ae1b26
-            host_hostuuid: d1c2873d-6398-4a03-9a2a-f36142ae1b26
+            host_hostname: 9287fe9a-6605-4e5f-a6b4-a79c2f94887f
+            host_hostuuid: 9287fe9a-6605-4e5f-a6b4-a79c2f94887f
             host_time: '1'
             hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
             hostid_strict_check: '0'
@@ -779,9 +779,9 @@ all:
             ip6_saddrsel: '1'
             ip_hostname: '0'
             jail_zfs: '0'
-            jail_zfs_dataset: iocage/jails/d1c2873d-6398-4a03-9a2a-f36142ae1b26/data
+            jail_zfs_dataset: iocage/jails/9287fe9a-6605-4e5f-a6b4-a79c2f94887f/data
             jail_zfs_mountpoint: none
-            last_started: '2026-05-11 03:17:16'
+            last_started: '2026-05-11 03:56:53'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -811,7 +811,7 @@ all:
             origin: readonly
             owner: root
             pcpu: 'off'
-            plugin_name: d1c2873d-6398-4a03-9a2a-f36142ae1b26
+            plugin_name: 9287fe9a-6605-4e5f-a6b4-a79c2f94887f
             plugin_repository: https://github.com/vbotka/iocage-ix-plugins
             priority: '99'
             pseudoterminals: 'off'
@@ -840,7 +840,7 @@ all:
             used: readonly
             vmemoryuse: 'off'
             vnet: '1'
-            vnet0_mac: 665d867fbeaf 665d867fbeb0
+            vnet0_mac: 665d8628dde9 665d8628ddea
             vnet0_mtu: auto
             vnet1_mac: none
             vnet1_mtu: auto

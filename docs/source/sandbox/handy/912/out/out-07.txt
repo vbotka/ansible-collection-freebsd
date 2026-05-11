@@ -12,7 +12,7 @@ ok: [ansible-pull-syslogng-server] =>
 ok: [log-server] => 
     msg: |-
         ansible_host: log-server
-        iocage_properties.host_hostuuid: d1c2873d-6398-4a03-9a2a-f36142ae1b26
+        iocage_properties.host_hostuuid: 9287fe9a-6605-4e5f-a6b4-a79c2f94887f
         iocage_classes: [log-server]
 
         iocage_tags: {alias: log-server, class: log-server, vmm: iocage_05}

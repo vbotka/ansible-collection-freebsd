@@ -16,24 +16,24 @@ ok: [ansible-pull-syslogng-server] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [bar] => 
-    msg: |-
-        ansible_host: bar
-        iocage_properties.host_hostuuid: c321bc5e-814d-484d-be20-7e77e68d5fbc
-        iocage_classes: [log-client]
-
-        iocage_tags: {alias: bar, class: log-client, vmm: iocage_05}
 ok: [foo] => 
     msg: |-
         ansible_host: foo
-        iocage_properties.host_hostuuid: ce1949ed-dc27-40a8-b850-7c323e8803a6
+        iocage_properties.host_hostuuid: 7e5199cf-4c1d-4437-a128-419e2c3903d9
         iocage_classes: [log-client]
 
         iocage_tags: {alias: foo, class: log-client, vmm: iocage_05}
+ok: [bar] => 
+    msg: |-
+        ansible_host: bar
+        iocage_properties.host_hostuuid: e9ed2cac-ce86-48ef-a90b-6c9c57143cdf
+        iocage_classes: [log-client]
+
+        iocage_tags: {alias: bar, class: log-client, vmm: iocage_05}
 ok: [log-server] => 
     msg: |-
         ansible_host: log-server
-        iocage_properties.host_hostuuid: d1c2873d-6398-4a03-9a2a-f36142ae1b26
+        iocage_properties.host_hostuuid: 9287fe9a-6605-4e5f-a6b4-a79c2f94887f
         iocage_classes: [log-server]
 
         iocage_tags: {alias: log-server, class: log-server, vmm: iocage_05}
@@ -41,12 +41,12 @@ ok: [log-server] =>
 TASK [debug] *******************************************************************
 ok: [ansible-pull-syslogng-client] => 
     msg: |-
-        all: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server', 'bar', 'foo', 'log-server']
+        all: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server', 'foo', 'log-server', 'bar']
         ungrouped: []
         state_down: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server']
-        log_client: ['bar', 'foo']
-        state_up: ['bar', 'foo', 'log-server']
-        vmm_iocage_05: ['bar', 'foo', 'log-server']
+        log_client: ['foo', 'bar']
+        state_up: ['foo', 'log-server', 'bar']
+        vmm_iocage_05: ['foo', 'log-server', 'bar']
         log_server: ['log-server']
 
 PLAY RECAP *********************************************************************

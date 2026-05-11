@@ -4,20 +4,20 @@ PLAY [Configure, enable, and start Log Clients.] *******************************
 TASK [Display vars.] ***********************************************************
 ok: [bar] => 
     msg: |-
-        log_server: 10.10.99.125
-        log_client: ['bar', 'foo']
+        log_server: 10.10.99.128
+        log_client: ['foo', 'bar']
 ok: [foo] => 
     msg: |-
-        log_server: 10.10.99.125
-        log_client: ['bar', 'foo']
+        log_server: 10.10.99.128
+        log_client: ['foo', 'bar']
 
 TASK [Configure LOG_SERVER] ****************************************************
 changed: [foo]
 changed: [bar]
 
 TASK [Enable syslog-ng] ********************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [Start syslog-ng] *********************************************************
 changed: [foo]
