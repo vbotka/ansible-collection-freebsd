@@ -19,13 +19,9 @@ The collection is shipped with:
 
 .. include:: included_content.rst
 
-.. tip::
-
-   See the :ref:`ug_examples` and proof of concents in the `Sandbox`_.
-
 .. note::
 
-   * The above **Requirements** lists the collections required by the roles.
+   * The above **Requirements** list the collections required by the roles.
    * All listed collections are included in the standard `Ansible distribution`_.
    * The roles may require other roles not listed here. See the roles' ``requirements.yml`` files
      and install the missing roles manually when needed.
@@ -36,10 +32,17 @@ The collection is shipped with:
    * `Jails and Containers - FreeBSD Handbook`_
    * `Jails - FreeBSD Wiki`_
 
+.. tip::
+
+   See the :ref:`ug_examples` and proof of concepts in the `Sandbox`_.
+
 .. hint::
 
    * Run Ansible in Python virtual environment. See `venv — Creation of virtual environments`_.
    * Use `result_format=yaml`_
+
+.. important::
+
    * `Ansible claims`_:
 
       .. code-block:: text

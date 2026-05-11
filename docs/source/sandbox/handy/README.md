@@ -1,4 +1,4 @@
-# Sandbox examples running at the handy box
+# Proof of concepts.
 
 **Content**
 
