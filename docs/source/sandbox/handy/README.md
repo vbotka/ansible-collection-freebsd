@@ -2,9 +2,8 @@
 
 **Content**
 
-001 - 899 ... docs/source/examples/ run the examples at handy box.
-
-501 ... Configure the iocage host.
+* 001 - 899 ... docs/source/examples/ run the examples at handy box.
+* 501 ... Configure the iocage host.
 
 * 901 Test the filter and module vbotka.freebsd.iocage
 * 902 Use ansible_port to forward the SSH connection from the iocage host to the jails.
