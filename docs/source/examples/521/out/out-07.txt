@@ -1,17 +1,17 @@
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
 | JID  |                 NAME                 | BOOT | STATE |   TYPE   |   RELEASE    |         IP4          | IP6 |           TEMPLATE           | BASEJAIL |
 +======+======================================+======+=======+==========+==============+======================+=====+==============================+==========+
-| 54   | 2f769ae6-2b0f-4864-b700-b6fd5387e6a7 | on   | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.112 | -   | ansible-pull-syslogng-client | yes      |
+| 24   | 69888ab1-7b28-4bdf-ab5d-ba4554e7905d | on   | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.100 | -   | ansible-pull-syslogng-client | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
-| 53   | 56c03084-a015-4316-8434-f2fb635afd7c | on   | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.111 | -   | ansible-pull-syslogng-client | yes      |
+| 23   | 9fd5be36-483a-490f-b66d-f08d5d8a3826 | on   | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.123 | -   | ansible-pull-syslogng-client | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
-| None | ansible-pull-syslogng-client         | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
+| None | ansible-pull-syslogng-client         | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
-| None | ansible-pull-syslogng-server         | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
+| None | ansible-pull-syslogng-server         | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
-| None | ansible-syslogng                     | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
+| None | ansible-syslogng                     | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
-| None | ansible-zero                         | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
+| None | ansible-zero                         | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -                            | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+
-| 55   | ff77eecd-340f-4d30-b3e8-589cc2c32aa5 | on   | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.113 | -   | ansible-pull-syslogng-server | yes      |
+| 22   | ec003d55-9405-42f1-8898-0eaf868c96f8 | on   | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.193 | -   | ansible-pull-syslogng-server | yes      |
 +------+--------------------------------------+------+-------+----------+--------------+----------------------+-----+------------------------------+----------+

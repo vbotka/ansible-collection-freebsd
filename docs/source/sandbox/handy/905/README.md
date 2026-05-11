@@ -1,4 +1,6 @@
-# ansible_jail_name
+# iocage plugin ansible-syslogng
+
+## ansible_jail_name
 
 iocage ``name`` doesn't work with ``ansible_jail_name``. iocage ``jid`` must be used.
 
@@ -6,7 +8,7 @@ iocage ``name`` doesn't work with ``ansible_jail_name``. iocage ``jid`` must be 
 ansible_jail_name: iocage_jid
 ```
 
-# iocage type
+## iocage type
 
 By default, the jails cloned from the plugins inherit the iocage property type
 ``pluginv2``. Change it to ``jail``
@@ -20,7 +22,7 @@ properties:
   type: jail
 ```
 
-# iocage property defaultrouter
+## iocage property defaultrouter
 
 The iocage property ``defaultrouter`` may be working properly with the default (``auto``).
 

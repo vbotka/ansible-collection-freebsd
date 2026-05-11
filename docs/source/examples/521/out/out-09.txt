@@ -2,18 +2,18 @@
 PLAY [Test Log Clients.] *******************************************************
 
 TASK [Run loggen] **************************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [Debug.] ******************************************************************
-ok: [foo] => 
-    out.stderr: |-
-        count=1, rate = 125000.00 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500689, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [bar] => 
     out.stderr: |-
-        count=1, rate = 142857.14 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.501008, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 333333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.50027, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 250000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500159, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,24 +21,24 @@ TASK [Get log files paths.] ****************************************************
 ok: [log-server]
 
 TASK [Get log files.] **********************************************************
-changed: [log-server] => (item=/var/log/remote/localhost/2026_05_10.log)
-changed: [log-server] => (item=/var/log/remote/10.10.99.112/2026_05_10.log)
-changed: [log-server] => (item=/var/log/remote/10.10.99.111/2026_05_10.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.100/2026_05_11.log)
+changed: [log-server] => (item=/var/log/remote/localhost/2026_05_11.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.123/2026_05_11.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_05_10.log']) => 
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.100/2026_05_11.log']) => 
     msg: |-
-        May 10 13:09:27 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778411367, stamp: 2026-05-10T13:09:27 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 11 03:01:09 10.10.99.100 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778461269, stamp: 2026-05-11T03:01:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.112/2026_05_10.log']) => 
+ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_05_11.log']) => 
     msg: |-
-        May 10 13:09:40 10.10.99.112 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778411380, stamp: 2026-05-10T13:09:40 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 11 03:00:55 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778461255, stamp: 2026-05-11T03:00:55 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.111/2026_05_10.log']) => 
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.123/2026_05_11.log']) => 
     msg: |-
-        May 10 13:09:40 10.10.99.111 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778411380, stamp: 2026-05-10T13:09:40 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 11 03:01:09 10.10.99.123 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778461269, stamp: 2026-05-11T03:01:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -8,6 +8,7 @@ plugins:
       bpf: 1
       dhcp: 1
       vnet: 1
+      boot: 0
 
 # jail properties
 properties:
@@ -15,3 +16,4 @@ properties:
   dhcp: 1
   vnet: 1
   type: jail
+  boot: 1

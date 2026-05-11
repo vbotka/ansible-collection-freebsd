@@ -20,6 +20,7 @@ plugins:
       bpf: 1
       dhcp: 1
       vnet: 1
+      boot: 0
 
 # Jail properties.
 properties:
@@ -27,6 +28,7 @@ properties:
   dhcp: 1
   vnet: 1
   type: jail
+  boot: 1
 
 # Declare vmm. Dictionary of iocage hosts.
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"

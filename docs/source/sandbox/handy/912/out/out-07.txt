@@ -1,0 +1,33 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [ansible-pull-syslogng-server] => 
+    msg: |-
+        ansible_host: ansible-pull-syslogng-server
+        iocage_properties.host_hostuuid: ansible-pull-syslogng-server
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [log-server] => 
+    msg: |-
+        ansible_host: log-server
+        iocage_properties.host_hostuuid: d1c2873d-6398-4a03-9a2a-f36142ae1b26
+        iocage_classes: [log-server]
+
+        iocage_tags: {alias: log-server, class: log-server, vmm: iocage_05}
+
+TASK [debug] *******************************************************************
+ok: [ansible-pull-syslogng-server] => 
+    msg: |-
+        all: ['ansible-pull-syslogng-server', 'log-server']
+        ungrouped: []
+        state_down: ['ansible-pull-syslogng-server']
+        log_server: ['log-server']
+        state_up: ['log-server']
+        vmm_iocage_05: ['log-server']
+
+PLAY RECAP *********************************************************************
+ansible-pull-syslogng-server : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server                 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

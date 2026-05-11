@@ -21,7 +21,7 @@ The collection is shipped with:
 
 .. note::
 
-   * The above **Requirements** lists the collections required by the roles.
+   * The above **Requirements** list the collections required by the roles.
    * All listed collections are included in the standard `Ansible distribution`_.
    * The roles may require other roles not listed here. See the roles' ``requirements.yml`` files
      and install the missing roles manually when needed.
@@ -32,10 +32,17 @@ The collection is shipped with:
    * `Jails and Containers - FreeBSD Handbook`_
    * `Jails - FreeBSD Wiki`_
 
+.. tip::
+
+   See the :ref:`ug_examples` and proof of concepts in the `Sandbox`_.
+
 .. hint::
 
    * Run Ansible in Python virtual environment. See `venv — Creation of virtual environments`_.
    * Use `result_format=yaml`_
+
+.. important::
+
    * `Ansible claims`_:
 
       .. code-block:: text
@@ -64,3 +71,5 @@ The collection is shipped with:
 .. _latest Ansible docs: https://docs.ansible.com/ansible/latest/
 .. _Jails and Containers - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/jails/
 .. _result_format=yaml: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format
+
+.. _Sandbox: https://github.com/vbotka/ansible-collection-freebsd/tree/0da2bb84f9c7c6366b87f681651474fc40698605/docs/source/sandbox

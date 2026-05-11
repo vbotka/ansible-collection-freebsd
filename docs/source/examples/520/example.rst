@@ -27,6 +27,7 @@
 
 .. index:: single: iocage plugins; Example 520
 .. index:: single: iocage plugin ansible-syslogng; Example 520
+.. index:: single: ansible-syslogng; Example 520
 
 .. index:: single: ansible_jail_host; Example 520
 .. index:: single: ansible_jail_name; Example 520
@@ -80,13 +81,13 @@ iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
                               -i hosts \
                               --flush-cache
 
-* Create log server
+* Configure log server
 
   .. code-block:: console
 
      (env) > ansible-playbook pb-logserv.yml -i hosts
 
-* Create log clients
+* Configure log clients
 
   .. code-block:: console
 
@@ -239,8 +240,8 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Fetch the iocage plugin
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Fetch the iocage plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -263,8 +264,8 @@ List plugins
 .. literalinclude:: out/out-02.txt
    :language: sh
 
-Playbook output - Create project from plugins
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create project from iocage plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flush the cache if you created the ``project`` and haven't refreshed the inventory cache yet.
 
@@ -304,8 +305,8 @@ Playbook pb-logserv.yml
 .. literalinclude:: pb-logserv.yml
    :language: yaml+jinja
 
-Playbook output - Log Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Log Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -338,8 +339,8 @@ Playbook pb-logclient.yml
 .. literalinclude:: pb-logclient.yml
    :language: yaml+jinja
 
-Playbook output - Log Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Log Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
