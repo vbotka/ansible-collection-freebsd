@@ -10,14 +10,21 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Docs updated examples and sandbox. Only iocage_05 tested.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
-* Docs. Update examples 443, 520, and 521. Do not start the fetched iocage
-  plugins on boot.
+* Docs. Add sandbox 912 and 913. The same as 910 and 911 bu the repo
+  https://github.com/vbotka/iocage-ix-plugins
+* Docs. Update sandbox 910 and 911
+* Docs. Update UG and sandbox README.
+* Docs. Update examples 443, 520, and 521. Do not start the fetched
+  iocage plugins on boot.
+* Docs. Add ansible-syslogng to the Index.
+
 
 0.8.19
 ======
