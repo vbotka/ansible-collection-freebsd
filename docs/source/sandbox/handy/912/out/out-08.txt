@@ -1,0 +1,49 @@
+
+PLAY [Start jails.] ************************************************************
+
+TASK [Display groups.] *********************************************************
+ok: [iocage_05] => 
+    msg: |-
+        log_server: ['log-server']
+        state_down:
+          - ansible-pull-syslogng-server
+
+TASK [Display jails that shall be started.] ************************************
+ok: [iocage_05] => 
+    msg: |-
+        start_jails: []
+        start_uuid:
+          []
+
+TASK [Start jails.] ************************************************************
+[ERROR]: Task failed: Module failed: non-zero return code
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/handy/912/pb-start-jails.yml:28:7
+
+26             {{ start_uuid | to_nice_yaml | indent(2) }}
+27
+28     - name: Start jails.
+         ^ column 7
+
+fatal: [iocage_05]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    changed: true
+    cmd:
+    - iocage
+    - start
+    delta: '0:00:00.411493'
+    end: '2026-05-11 05:17:29.797483'
+    msg: non-zero return code
+    rc: 1
+    start: '2026-05-11 05:17:29.385990'
+    stderr: |-
+        Usage: iocage start [OPTIONS] JAILS...
+
+        Error: Missing argument "jails".
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
