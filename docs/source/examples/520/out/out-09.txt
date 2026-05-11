@@ -13,14 +13,14 @@ ok: [logserv] =>
         shell> rm -rf /var/log/remote/localhost/*
 
         shell> service syslog-ng status
-        syslog_ng is running as pid 77820.
+        syslog_ng is running as pid 28104.
 
         shell> loggen -i -S -n 1 localhost 514
-        count=1, rate = 27027.03 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500379, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500368, (average) msg size=256, bandwidth=0.50 kB/sec
 
         shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
-        May 10 12:57:03 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778410623, stamp: 2026-05-10T12:57:03 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 11 02:28:02 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778459282, stamp: 2026-05-11T02:28:02 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
 PLAY RECAP *********************************************************************
 logserv                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

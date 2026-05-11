@@ -15,7 +15,7 @@ ok: [iocage_05] =>
     msg: |-
         iocage_plugins:
           ansible-zero:
-              boot: 'on'
+              boot: 'off'
               doc_url: '-'
               ip4: '-'
               ip4_dict:
@@ -33,6 +33,7 @@ ok: [iocage_05] =>
           ansible-syslogng:
               git: https://github.com/vbotka/iocage-plugins
               properties:
+                  boot: 0
                   bpf: 1
                   dhcp: 1
                   vnet: 1
@@ -48,6 +49,7 @@ ok: [iocage_05] =>
             value:
                 git: https://github.com/vbotka/iocage-plugins
                 properties:
+                    boot: 0
                     bpf: 1
                     dhcp: 1
                     vnet: 1
@@ -61,7 +63,7 @@ ok: [iocage_05]
 TASK [Debug commands debug=true] ***********************************************
 ok: [iocage_05] => (item=ansible-syslogng) => 
     msg: |-
-        iocage fetch --plugin-name ansible-syslogng --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
+        iocage fetch --plugin-name ansible-syslogng --git_repository https://github.com/vbotka/iocage-plugins boot=0 bpf=1 dhcp=1 vnet=1
 
 TASK [Fetch required plugins.] *************************************************
 ok: [iocage_05] => (item=ansible-syslogng)

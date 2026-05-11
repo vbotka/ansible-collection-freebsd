@@ -16,7 +16,8 @@ Major Changes
 
 Minor Changes
 --------------
-
+* Docs. Update examples 443, 520, and 521. Do not start the fetched iocage
+  plugins on boot.
 
 0.8.19
 ======

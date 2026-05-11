@@ -2,56 +2,56 @@
 PLAY [Test the connection plugin jailexec.] ************************************
 
 TASK [Get uname] ***************************************************************
-changed: [f3ce2fa6-b24a-4295-be4a-d4d3b24382a9]
-changed: [ddf206c2-b6ad-45e8-a1b7-aff341f5622c]
-changed: [e2c768ad-7d91-4e5e-b89a-d4627c61d207]
+changed: [5da64365-6425-4602-bb41-0d6ffcd912f1]
+changed: [14367ff7-47c0-4cbf-86a8-29a44307f61e]
+changed: [c925c0de-78f0-49b0-ad4d-d55b11875367]
 
 TASK [Debug] *******************************************************************
-ok: [ddf206c2-b6ad-45e8-a1b7-aff341f5622c] => 
+ok: [5da64365-6425-4602-bb41-0d6ffcd912f1] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: ddf206c2-b6ad-45e8-a1b7-aff341f5622c
+        ansible_host: 5da64365-6425-4602-bb41-0d6ffcd912f1
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.135
+        iocage_ip4: 10.10.99.106
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
         uname:
-          FreeBSD ddf206c2-b6ad-45e8-a1b7-aff341f5622c 15.0-RELEASE FreeBSD 15.0-RELEASE releng/15.0-n280995-7aedc8de6446 GENERIC amd64
-ok: [e2c768ad-7d91-4e5e-b89a-d4627c61d207] => 
+          FreeBSD 5da64365-6425-4602-bb41-0d6ffcd912f1 15.0-RELEASE FreeBSD 15.0-RELEASE releng/15.0-n280995-7aedc8de6446 GENERIC amd64
+ok: [14367ff7-47c0-4cbf-86a8-29a44307f61e] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: e2c768ad-7d91-4e5e-b89a-d4627c61d207
+        ansible_host: 14367ff7-47c0-4cbf-86a8-29a44307f61e
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.175
+        iocage_ip4: 10.10.99.114
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
         uname:
-          FreeBSD e2c768ad-7d91-4e5e-b89a-d4627c61d207 15.0-RELEASE FreeBSD 15.0-RELEASE releng/15.0-n280995-7aedc8de6446 GENERIC amd64
-ok: [f3ce2fa6-b24a-4295-be4a-d4d3b24382a9] => 
+          FreeBSD 14367ff7-47c0-4cbf-86a8-29a44307f61e 15.0-RELEASE FreeBSD 15.0-RELEASE releng/15.0-n280995-7aedc8de6446 GENERIC amd64
+ok: [c925c0de-78f0-49b0-ad4d-d55b11875367] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: f3ce2fa6-b24a-4295-be4a-d4d3b24382a9
+        ansible_host: c925c0de-78f0-49b0-ad4d-d55b11875367
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.173
+        iocage_ip4: 10.10.99.174
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
         uname:
-          FreeBSD f3ce2fa6-b24a-4295-be4a-d4d3b24382a9 15.0-RELEASE FreeBSD 15.0-RELEASE releng/15.0-n280995-7aedc8de6446 GENERIC amd64
+          FreeBSD c925c0de-78f0-49b0-ad4d-d55b11875367 15.0-RELEASE FreeBSD 15.0-RELEASE releng/15.0-n280995-7aedc8de6446 GENERIC amd64
 
 PLAY RECAP *********************************************************************
-ddf206c2-b6ad-45e8-a1b7-aff341f5622c : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-e2c768ad-7d91-4e5e-b89a-d4627c61d207 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-f3ce2fa6-b24a-4295-be4a-d4d3b24382a9 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+14367ff7-47c0-4cbf-86a8-29a44307f61e : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+5da64365-6425-4602-bb41-0d6ffcd912f1 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+c925c0de-78f0-49b0-ad4d-d55b11875367 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -240,8 +240,8 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Fetch the iocage plugin
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Fetch the iocage plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -264,8 +264,8 @@ List plugins
 .. literalinclude:: out/out-02.txt
    :language: sh
 
-Playbook output - Create project from plugins
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create project from iocage plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Flush the cache if you created the ``project`` and haven't refreshed the inventory cache yet.
 
@@ -305,8 +305,8 @@ Playbook pb-logserv.yml
 .. literalinclude:: pb-logserv.yml
    :language: yaml+jinja
 
-Playbook output - Log Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Log Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -339,8 +339,8 @@ Playbook pb-logclient.yml
 .. literalinclude:: pb-logclient.yml
    :language: yaml+jinja
 
-Playbook output - Log Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Log Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

@@ -6,24 +6,24 @@ ok: [bar]
 ok: [foo]
 
 TASK [debug] *******************************************************************
-ok: [foo] => 
+ok: [bar] => 
     ansible_local:
         iocage:
             iocage_plugin_name: ansible-syslogng
-ok: [bar] => 
+ok: [foo] => 
     ansible_local:
         iocage:
             iocage_plugin_name: ansible-syslogng
 
 TASK [Debug.] ******************************************************************
-ok: [foo] => 
-    msg: |-
-        log_serv: 10.10.99.107
-        fp_syslogd_enable: False
-        fp_syslogng_enable: True
 ok: [bar] => 
     msg: |-
-        log_serv: 10.10.99.107
+        log_serv: 10.10.99.121
+        fp_syslogd_enable: False
+        fp_syslogng_enable: True
+ok: [foo] => 
+    msg: |-
+        log_serv: 10.10.99.121
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 
@@ -32,16 +32,16 @@ ok: [foo]
 ok: [bar]
 
 TASK [Disable syslogd.] ********************************************************
-ok: [foo]
 ok: [bar]
+ok: [foo]
 
 TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
-ok: [foo]
 ok: [bar]
+ok: [foo]
 
 TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
 ok: [bar]

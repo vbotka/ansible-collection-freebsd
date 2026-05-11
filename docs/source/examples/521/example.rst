@@ -7,6 +7,9 @@
    :local:
    :depth: 1
 
+.. index:: single: tag enabled_plugins; Example 521
+.. index:: single: enabled_plugins; Example 521
+
 .. index:: single: ansible-pull; Example 521
 .. index:: single: ansible-pull repo ansible-conf-syslogng-server; Example 521
 .. index:: single: ansible-pull repo ansible-conf-syslogng-client; Example 521
@@ -31,8 +34,6 @@
 
 .. index:: single: module vbotka.freebsd.service; Example 521
 .. index:: single: vbotka.freebsd.service; Example 521
-
-.. index:: single: tag enabled_plugins; Example 521
 
 Use case
 ^^^^^^^^
@@ -147,8 +148,8 @@ group_vars
    :language: yaml+jinja
    :caption:
 
-Fetch iocage plugins
-^^^^^^^^^^^^^^^^^^^^
+Playbook output - Fetch iocage plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
