@@ -2,10 +2,10 @@
 PLAY [Configure, enable, and start Log Clients.] *******************************
 
 TASK [Display vars.] ***********************************************************
-ok: [bar] => 
+ok: [foo] => 
     msg: |-
-        log_server: 10.10.99.193
-        log_client: ['bar', 'foo']
+        log_server: 10.10.99.178
+        log_client: ['foo', 'bar']
 
 TASK [Configure LOG_SERVER] ****************************************************
 changed: [bar]
@@ -16,10 +16,10 @@ changed: [foo]
 changed: [bar]
 
 TASK [Start syslog-ng] *********************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 PLAY RECAP *********************************************************************
-bar                        : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-foo                        : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+bar                        : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

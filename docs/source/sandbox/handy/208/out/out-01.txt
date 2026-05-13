@@ -35,7 +35,7 @@ ok: [iocage_05] =>
     iocage_jails:
         ansible-pull-syslogng-client:
             basejail: 'yes'
-            boot: 'on'
+            boot: 'off'
             ip4: '-'
             ip4_dict:
                 ip4: []
@@ -48,7 +48,7 @@ ok: [iocage_05] =>
             type: pluginv2
         ansible-pull-syslogng-server:
             basejail: 'yes'
-            boot: 'on'
+            boot: 'off'
             ip4: '-'
             ip4_dict:
                 ip4: []
@@ -84,7 +84,7 @@ ok: [iocage_05] =>
     iocage_jails:
         ansible-pull-syslogng-client:
             basejail: 'yes'
-            boot: 'on'
+            boot: 'off'
             ip4: '-'
             ip4_dict:
                 ip4: []
@@ -97,7 +97,7 @@ ok: [iocage_05] =>
             type: pluginv2
         ansible-pull-syslogng-server:
             basejail: 'yes'
-            boot: 'on'
+            boot: 'off'
             ip4: '-'
             ip4_dict:
                 ip4: []
@@ -119,7 +119,7 @@ ok: [iocage_05] =>
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '5'
+            jid: '24'
             release: 15.0-RELEASE
             state: up
             template: '-'
@@ -160,7 +160,7 @@ ok: [iocage_05] =>
     iocage_jails:
         ansible-pull-syslogng-client:
             basejail: 'yes'
-            boot: 'on'
+            boot: 'off'
             ip4: '-'
             ip4_dict:
                 ip4: []
@@ -173,7 +173,7 @@ ok: [iocage_05] =>
             type: pluginv2
         ansible-pull-syslogng-server:
             basejail: 'yes'
-            boot: 'on'
+            boot: 'off'
             ip4: '-'
             ip4_dict:
                 ip4: []
@@ -195,7 +195,7 @@ ok: [iocage_05] =>
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '5'
+            jid: '24'
             release: 15.0-RELEASE
             state: up
             template: '-'

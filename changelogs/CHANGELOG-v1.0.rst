@@ -5,19 +5,40 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-0.8.20
+0.8.21
 ======
 
 Release Summary
 ---------------
-Docs updated examples and sandbox. Only iocage_05 tested.
+Implement the iocage plugins framework. Only iocage_05 is tested.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
-* Docs. Add sandbox 912 and 913. The same as 910 and 911 bu the repo
+* Role postinstall upgraded to 2.8.7
+* Add attribute 'branch' to the dictionary 'plugins'.
+* Update pb_iocage_plugins.yml with the attribute 'branch'.
+* Docs. Update examples 013, , 441, 442, 443, 520, 521.
+* Docs. Update sandbox.
+* Docs. Update sandbox 501 deny, review the configuration before enabled.
+* Docs. Update sandbox 912 and 913 is obsolete.
+
+
+0.8.20
+======
+
+Release Summary
+---------------
+Docs updated examples and sandbox. Only iocage_05 is tested.
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+* Docs. Add sandbox 912 and 913. The same as 910 and 911 but the repo
   https://github.com/vbotka/iocage-ix-plugins
 * Docs. Update sandbox 910 and 911
 * Docs. Update UG and sandbox README.
@@ -31,7 +52,7 @@ Minor Changes
 
 Release Summary
 ---------------
-Docs updated examples and sandbox. Only iocage_05 tested.
+Docs updated examples and sandbox. Only iocage_05 is tested.
 
 Major Changes
 -------------

@@ -39,7 +39,7 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Clone the
-iocage plugins ``ansible-pull-syslogng-server`` and ``ansible-pull-syslogng-client``.
+`iocage plugins`_ ``ansible-pull-syslogng-server`` and ``ansible-pull-syslogng-client``.
 
 Tree
 ^^^^
@@ -75,9 +75,9 @@ Synopsis
 
   * Clone jails from the fetched iocage plugins
 
-* In the inventory group ``log_server`` test `syslog-ng Server`_.
+* In the inventory group ``log_server`` test `syslog-ng server`_.
 
-* In the inventory group ``log_client`` configure and test `syslog-ng Client`_.
+* In the inventory group ``log_client`` configure and test `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -285,12 +285,20 @@ Playbook output - Test Log Clients
    :language: yaml
    :force:
 
+.. hint::
+
+   Use the utility ``lnav`` on the log server to display all logfiles in the the directory
+   ``/var/log/remote`` ::
+
+     shell > lnav -r /var/log/remote/
+
+
 .. _iocage plugins: https://github.com/vbotka/iocage-plugins
 .. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
 .. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
 
-.. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-.. _syslog-ng Server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
+.. _syslog-ng client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
+.. _syslog-ng server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
 
 .. _syslog-ng - documentation: https://syslog-ng.github.io
 .. _syslog-ng client hosts: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html

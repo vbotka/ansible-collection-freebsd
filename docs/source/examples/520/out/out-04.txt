@@ -23,27 +23,27 @@ ok: [ansible-zero] =>
 ok: [bar] => 
     msg: |-
         ansible_host: bar
-        iocage_properties.host_hostname: 86350666-46c0-4aad-9b88-b020fff0e0c5
-        iocage_properties.host_hostuuid: 86350666-46c0-4aad-9b88-b020fff0e0c5
-        iocage_jid: 16
+        iocage_properties.host_hostname: aa3977f7-1efb-42d7-ba12-dd6dac8d4cfa
+        iocage_properties.host_hostuuid: aa3977f7-1efb-42d7-ba12-dd6dac8d4cfa
+        iocage_jid: 72
         iocage_classes: [logclient]
 
         iocage_tags: {alias: bar, class: logclient, vmm: iocage_05}
 ok: [foo] => 
     msg: |-
         ansible_host: foo
-        iocage_properties.host_hostname: aeb6e31e-6bc5-4fe0-ba94-6505be2c36a9
-        iocage_properties.host_hostuuid: aeb6e31e-6bc5-4fe0-ba94-6505be2c36a9
-        iocage_jid: 17
+        iocage_properties.host_hostname: c6b535de-791d-4ede-ba24-3b82389e6484
+        iocage_properties.host_hostuuid: c6b535de-791d-4ede-ba24-3b82389e6484
+        iocage_jid: 71
         iocage_classes: [logclient]
 
         iocage_tags: {alias: foo, class: logclient, vmm: iocage_05}
 ok: [logserv] => 
     msg: |-
         ansible_host: logserv
-        iocage_properties.host_hostname: c0718ad5-f1c4-4012-9de7-3f7212df8150
-        iocage_properties.host_hostuuid: c0718ad5-f1c4-4012-9de7-3f7212df8150
-        iocage_jid: 15
+        iocage_properties.host_hostname: e8778af5-b480-4f23-91d4-be3d0caffc26
+        iocage_properties.host_hostuuid: e8778af5-b480-4f23-91d4-be3d0caffc26
+        iocage_jid: 70
         iocage_classes: [logserv]
 
         iocage_tags: {alias: logserv, class: logserv, vmm: iocage_05}

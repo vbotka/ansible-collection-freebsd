@@ -1,0 +1,4 @@
+NOTES:
+
+The test is disabled in batch.sh because it fails with the default pf configuration
+(Example 440). Enable it when you reconfigure pf (Example 370).

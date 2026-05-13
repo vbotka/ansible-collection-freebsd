@@ -3,36 +3,9 @@ PLAY [Create and start project jails from iocage plugins.] *********************
 
 TASK [Clone jails from plugins.] ***********************************************
 ok: [iocage_05] => (item=logserv)
-ok: [iocage_05] => (item=bar)
 ok: [iocage_05] => (item=foo)
-
-TASK [Start created jails.] ****************************************************
-[ERROR]: Task failed: Module failed: non-zero return code
-Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_project_create_from_plugins.yml:67:11
-
-65             var: iocage_jails_created
-66
-67         - name: Start created jails.
-             ^ column 11
-
-fatal: [iocage_05]: FAILED! => 
-    changed: false
-    cmd:
-    - iocage
-    - start
-    - c0718ad5-f1c4-4012-9de7-3f7212df8150
-    - 86350666-46c0-4aad-9b88-b020fff0e0c5
-    - aeb6e31e-6bc5-4fe0-ba94-6505be2c36a9
-    delta: '0:00:00.428876'
-    end: '2026-05-11 02:27:52.227513'
-    msg: non-zero return code
-    rc: 1
-    start: '2026-05-11 02:27:51.798637'
-    stderr: c0718ad5-f1c4-4012-9de7-3f7212df8150 is already running!
-    stderr_lines: <omitted>
-    stdout: ''
-    stdout_lines: <omitted>
+ok: [iocage_05] => (item=bar)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=1    changed=0    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+iocage_05                  : ok=1    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

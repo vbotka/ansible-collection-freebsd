@@ -73,12 +73,14 @@ Declare the plugins in a dictionary. For example,
    plugins:
      ansible-pull-syslogng-client:
        git: https://github.com/vbotka/iocage-plugins
+       branch: main
        properties:
          bpf: 1
          dhcp: 1
          vnet: 1
      ansible-pull-syslogng-server:
        git: https://github.com/vbotka/iocage-plugins
+       branch: main
        properties:
          bpf: 1
          dhcp: 1

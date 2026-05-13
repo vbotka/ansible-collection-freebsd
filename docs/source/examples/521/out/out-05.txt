@@ -5,7 +5,7 @@ TASK [Display groups.] *********************************************************
 ok: [iocage_05] => 
     msg: |-
         log_server: ['log-server']
-        log_client: ['bar', 'foo']
+        log_client: ['foo', 'bar']
         state_down:
           - ansible-pull-syslogng-client
           - ansible-pull-syslogng-server

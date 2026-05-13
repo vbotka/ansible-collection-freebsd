@@ -21,6 +21,7 @@
       iocage fetch
       --plugin-name {{ item.key }}
       --git_repository {{ item.value.git }}
+      --branch {{ item.value.branch }}
       {{ item.value.properties | dictsort | map('join', '=') | join(' ') }}
 
   tasks:

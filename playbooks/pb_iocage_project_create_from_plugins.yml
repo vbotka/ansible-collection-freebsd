@@ -64,8 +64,8 @@
           ansible.builtin.debug:
             var: iocage_jails_created
 
-        - name: Start created jails.
-          changed_when: false
-          ansible.builtin.command: >
-            iocage start
-            {{ iocage_jails_created | join(' ') }}
+#       - name: Start created jails.
+#         changed_when: false
+#         ansible.builtin.command: >
+#           iocage start
+#           {{ iocage_jails_created | join(' ') }}
