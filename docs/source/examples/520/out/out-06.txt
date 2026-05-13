@@ -2,15 +2,15 @@
 PLAY [Configure and start Log Client.] *****************************************
 
 TASK [Get custom facts] ********************************************************
-ok: [foo]
 ok: [bar]
+ok: [foo]
 
 TASK [debug] *******************************************************************
-ok: [bar] => 
+ok: [foo] => 
     ansible_local:
         iocage:
             iocage_plugin_name: ansible-syslogng
-ok: [foo] => 
+ok: [bar] => 
     ansible_local:
         iocage:
             iocage_plugin_name: ansible-syslogng
@@ -18,12 +18,12 @@ ok: [foo] =>
 TASK [Debug.] ******************************************************************
 ok: [bar] => 
     msg: |-
-        log_serv: 10.10.99.199
+        log_serv: 10.10.99.143
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 ok: [foo] => 
     msg: |-
-        log_serv: 10.10.99.199
+        log_serv: 10.10.99.143
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 
@@ -35,21 +35,21 @@ TASK [Disable syslogd.] ********************************************************
 ok: [bar]
 ok: [foo]
 
-TASK [vbotka.freebsd_postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
 ok: [bar]
 ok: [foo]
 
-TASK [vbotka.freebsd_postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-changed: [bar]
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
 changed: [foo]
+changed: [bar]
 
-TASK [vbotka.freebsd_postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
 ok: [foo]
 ok: [bar]
 
-RUNNING HANDLER [vbotka.freebsd_postinstall : Reload syslog-ng] ****************
-ok: [bar]
+RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
 ok: [foo]
+ok: [bar]
 
 PLAY RECAP *********************************************************************
 bar                        : ok=9    changed=1    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   

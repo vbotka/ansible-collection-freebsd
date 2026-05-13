@@ -2,18 +2,18 @@
 PLAY [Test Log Client.] ********************************************************
 
 TASK [Run loggen] **************************************************************
-changed: [foo]
 changed: [bar]
+changed: [foo]
 
 TASK [Debug.] ******************************************************************
 ok: [bar] => 
     out.stderr: |-
-        count=1, rate = 55555.56 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500207, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 27027.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500308, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 27777.78 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500426, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 30303.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500339, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,26 +21,26 @@ TASK [Get log files paths.] ****************************************************
 ok: [logserv]
 
 TASK [Get log files.] **********************************************************
-changed: [logserv] => (item=/var/log/remote/10.10.99.115/2026_05_13.log)
-changed: [logserv] => (item=/var/log/remote/10.10.99.105/2026_05_13.log)
+changed: [logserv] => (item=/var/log/remote/10.10.99.126/2026_05_13.log)
+changed: [logserv] => (item=/var/log/remote/10.10.99.200/2026_05_13.log)
 
 TASK [Display log files.] ******************************************************
-ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.115/2026_05_13.log']) => 
+ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.126/2026_05_13.log']) => 
     msg: |-
-        May 13 13:08:22 10.10.99.115 syslog-ng[50459]: Loading the new configuration;
-        May 13 13:08:22 10.10.99.115 syslog-ng[50459]: Configuration reload finished;
-        May 13 13:08:22 10.10.99.115 syslog-ng[50459]: Syslog connection established; fd='20', server='AF_INET(10.10.99.199:514)', local='AF_INET(0.0.0.0:0)'
-        May 13 13:08:24 10.10.99.115 1 2026-05-13T13:08:24.840720+02:00 878ce7a8-d0a6-439a-8549-d517f886da8b ansible-ansible.legacy.command 53777 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.199 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        May 13 13:08:24 10.10.99.115 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778670504, stamp: 2026-05-13T13:08:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 13 13:20:04 10.10.99.126 syslog-ng[62336]: Loading the new configuration;
+        May 13 13:20:04 10.10.99.126 syslog-ng[62336]: Configuration reload finished;
+        May 13 13:20:04 10.10.99.126 syslog-ng[62336]: Syslog connection established; fd='20', server='AF_INET(10.10.99.143:514)', local='AF_INET(0.0.0.0:0)'
+        May 13 13:20:07 10.10.99.126 1 2026-05-13T13:20:07.254815+02:00 aa3977f7-1efb-42d7-ba12-dd6dac8d4cfa ansible-ansible.legacy.command 63708 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.143 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 13 13:20:07 10.10.99.126 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778671207, stamp: 2026-05-13T13:20:07 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.105/2026_05_13.log']) => 
+ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.200/2026_05_13.log']) => 
     msg: |-
-        May 13 13:08:22 10.10.99.105 syslog-ng[51436]: Loading the new configuration;
-        May 13 13:08:22 10.10.99.105 syslog-ng[51436]: Configuration reload finished;
-        May 13 13:08:22 10.10.99.105 syslog-ng[51436]: Syslog connection established; fd='20', server='AF_INET(10.10.99.199:514)', local='AF_INET(0.0.0.0:0)'
-        May 13 13:08:24 10.10.99.105 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778670504, stamp: 2026-05-13T13:08:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-        May 13 13:08:24 10.10.99.105 1 2026-05-13T13:08:24.855734+02:00 05b35b0d-7f2c-497c-b5b3-6552ad06f907 ansible-ansible.legacy.command 53778 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.199 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 13 13:20:04 10.10.99.200 syslog-ng[61359]: Loading the new configuration;
+        May 13 13:20:04 10.10.99.200 syslog-ng[61359]: Configuration reload finished;
+        May 13 13:20:04 10.10.99.200 syslog-ng[61359]: Syslog connection established; fd='20', server='AF_INET(10.10.99.143:514)', local='AF_INET(0.0.0.0:0)'
+        May 13 13:20:07 10.10.99.200 1 2026-05-13T13:20:07.261130+02:00 c6b535de-791d-4ede-ba24-3b82389e6484 ansible-ansible.legacy.command 63709 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.143 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 13 13:20:07 10.10.99.200 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778671207, stamp: 2026-05-13T13:20:07 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

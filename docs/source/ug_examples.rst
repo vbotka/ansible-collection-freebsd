@@ -26,26 +26,28 @@ Examples
 
 .. note::
 
-   * By default, the firewall is on the external interface and on the ``vnet`` bridge of the jail
-     host. The DHCP for the jails is on the bridge. The SSH from the local network to the jails is
-     redirected. See the example :ref:`example_440`. The examples that do not use this setting are
-     marked ``.deny``. This means, they are not included in ``batch.sh``. To run these examples,
-     reconfigure the firewall. See the example :ref:`example_370`.
+   * The examples that create jails use by default the iocage host setting created in the
+     example :ref:`example_440`. The firewall is on the external interface and on the
+     ``vnet`` bridge of the iocage host. The DHCP for the jails is on the bridge. The SSH
+     from the local network to the jails is redirected. The examples that do not use this
+     setting are marked ``.deny``. This means, they are not included in ``batch.sh``. To
+     run these examples, reconfigure the firewall. See the example :ref:`example_370`.
 
-   * All examples comprise additional files not shown in the files' tree. See them for more details.
+   * All examples comprise additional files not shown in the files' tree. See them to learn more details.
 
-   * The examples comprise ``batch.sh`` that runs the commands and creates the output.
+   * The examples comprise ``batch.sh`` that runs the commands and creates the output for
+     the examples.
 
    * Most plays in ``batch.sh`` are idempotent. The output of such a play may show status ``ok``
-     instead of expected ``changed`` if the play has already been run.
+     instead of expected ``changed`` if the play has been run repeatedly.
 
    * The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
 
    * The playbooks in the collection, because of the Ansible collection naming conventions, use
      underscores ``_`` in their filenames. For example, ``pb_iocage_template.yml``.
 
-   * To avoid connection errors in examples where DHCP is used, ``host_key_checking = false`` is set
-     in ``ansible.cfg``
+   * To avoid connection errors in examples where DHCP is used, ``host_key_checking =
+     false`` can be set in ``ansible.cfg``.
 
 .. hint:: See :ref:`dg_update_examples`.
   
