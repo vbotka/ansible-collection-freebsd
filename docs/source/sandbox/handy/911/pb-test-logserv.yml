@@ -3,7 +3,7 @@
     
   tasks:
 
-    - name: Run commands
+    - name: Run commands.
       register: out
       ansible.builtin.shell: "{{ item }}"
       loop:

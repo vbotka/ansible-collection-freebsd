@@ -3,8 +3,6 @@
   |--@state_down:
   |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
-  |  |--ansible-syslogng
-  |  |--ansible-zero
   |--@log_client:
   |  |--bar
   |  |--foo

@@ -9,8 +9,6 @@ ok: [iocage_05] =>
         state_down:
           - ansible-pull-syslogng-client
           - ansible-pull-syslogng-server
-          - ansible-syslogng
-          - ansible-zero
 
 TASK [Display jails that shall be started.] ************************************
 ok: [iocage_05] => 

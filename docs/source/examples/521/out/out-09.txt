@@ -9,11 +9,11 @@ TASK [Debug.] ******************************************************************
 ok: [bar] => 
     out.stderr: |-
         count=1, rate = 333333.33 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.50027, (average) msg size=256, bandwidth=0.50 kB/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500245, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 250000.00 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500159, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500406, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,24 +21,58 @@ TASK [Get log files paths.] ****************************************************
 ok: [log-server]
 
 TASK [Get log files.] **********************************************************
-changed: [log-server] => (item=/var/log/remote/10.10.99.100/2026_05_11.log)
-changed: [log-server] => (item=/var/log/remote/localhost/2026_05_11.log)
-changed: [log-server] => (item=/var/log/remote/10.10.99.123/2026_05_11.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.159/2026_05_13.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.160/2026_05_13.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.100/2026_05_11.log']) => 
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.159/2026_05_13.log']) => 
     msg: |-
-        May 11 03:01:09 10.10.99.100 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778461269, stamp: 2026-05-11T03:01:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 13 06:00:12 10.10.99.159 syslog-ng[43636]: syslog-ng starting up; version='4.11.0'
+        May 13 06:00:12 10.10.99.159 syslog-ng[43636]: Syslog connection established; fd='19', server='AF_INET(10.10.99.158:514)', local='AF_INET(0.0.0.0:0)'
+        May 13 05:54:47 10.10.99.159 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: ansible-pull-
+        May 13 06:00:13 10.10.99.159 ansible:
+        May 13 05:54:48 10.10.99.159 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
+        May 13 05:54:48 10.10.99.159 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
+        May 13 05:54:48 10.10.99.159 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:49 10.10.99.159 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+        May 13 05:54:49 10.10.99.159 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        May 13 05:54:49 10.10.99.159 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+        May 13 05:54:49 10.10.99.159 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:50 10.10.99.159 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+        May 13 05:54:50 10.10.99.159 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:51 10.10.99.159 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslog-ng] ******************
+        May 13 05:54:51 10.10.99.159 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        May 13 05:54:52 10.10.99.159 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
+        May 13 05:54:52 10.10.99.159 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:52 10.10.99.159 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        May 13 05:54:52 10.10.99.159 ansible: n=ansible INFO| localhost.my.domain        : ok=6    changed=4    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0
+        May 13 06:00:30 10.10.99.159 1 2026-05-13T06:00:30.057232+02:00 a91068f5-7b85-4bd9-8070-1378202b569c ansible-ansible.legacy.command 44119 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.158 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 13 06:00:30 10.10.99.159 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778644830, stamp: 2026-05-13T06:00:30 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_05_11.log']) => 
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.160/2026_05_13.log']) => 
     msg: |-
-        May 11 03:00:55 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778461255, stamp: 2026-05-11T03:00:55 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.123/2026_05_11.log']) => 
-    msg: |-
-        May 11 03:01:09 10.10.99.123 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778461269, stamp: 2026-05-11T03:01:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 13 06:00:12 10.10.99.160 syslog-ng[43637]: syslog-ng starting up; version='4.11.0'
+        May 13 06:00:12 10.10.99.160 syslog-ng[43637]: Syslog connection established; fd='19', server='AF_INET(10.10.99.158:514)', local='AF_INET(0.0.0.0:0)'
+        May 13 05:54:47 10.10.99.160 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: ansible-pull-
+        May 13 06:00:13 10.10.99.160 ansible:
+        May 13 05:54:48 10.10.99.160 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
+        May 13 05:54:48 10.10.99.160 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
+        May 13 05:54:48 10.10.99.160 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:49 10.10.99.160 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+        May 13 05:54:49 10.10.99.160 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        May 13 05:54:49 10.10.99.160 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+        May 13 05:54:49 10.10.99.160 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:50 10.10.99.160 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+        May 13 05:54:50 10.10.99.160 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:51 10.10.99.160 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslog-ng] ******************
+        May 13 05:54:51 10.10.99.160 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        May 13 05:54:52 10.10.99.160 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
+        May 13 05:54:52 10.10.99.160 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        May 13 05:54:52 10.10.99.160 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        May 13 05:54:52 10.10.99.160 ansible: n=ansible INFO| localhost.my.domain        : ok=6    changed=4    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0
+        May 13 06:00:30 10.10.99.160 1 2026-05-13T06:00:30.140301+02:00 5df1ea31-5a12-478c-a6e2-9bd072b8b629 ansible-ansible.legacy.command 44121 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.158 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 13 06:00:30 10.10.99.160 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778644830, stamp: 2026-05-13T06:00:30 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
