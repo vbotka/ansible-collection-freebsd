@@ -3,4 +3,4 @@
   tasks:
 
     - debug:
-        msg: "{{ inventory_hostname }} running at {{ iocage_tags.vmm }}"
+        msg: "{{ inventory_hostname }} running at {{ iocage_tags.vmm | d('UNDEFINED') }}"

@@ -4,10 +4,10 @@ PLAY [region_EU] ***************************************************************
 TASK [debug] *******************************************************************
 ok: [test_151] => 
     ansible_host: 10.10.99.165
-ok: [test_152] => 
-    ansible_host: 10.10.99.166
 ok: [test_153] => 
     ansible_host: 10.10.99.167
+ok: [test_152] => 
+    ansible_host: 10.10.99.166
 
 PLAY RECAP *********************************************************************
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

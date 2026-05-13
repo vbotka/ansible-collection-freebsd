@@ -3,7 +3,7 @@
 +======+==============================+======+=======+==========+==============+====================+=====+==========+==========+
 | None | ansible_client               | off  | down  | jail     | 15.0-RELEASE | -                  | -   | -        | yes      |
 +------+------------------------------+------+-------+----------+--------------+--------------------+-----+----------+----------+
-| None | ansible-pull-syslogng-client | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -        | yes      |
+| None | ansible-pull-syslogng-client | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -        | yes      |
 +------+------------------------------+------+-------+----------+--------------+--------------------+-----+----------+----------+
-| None | ansible-pull-syslogng-server | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -        | yes      |
+| None | ansible-pull-syslogng-server | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running) | -   | -        | yes      |
 +------+------------------------------+------+-------+----------+--------------+--------------------+-----+----------+----------+

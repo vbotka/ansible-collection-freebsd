@@ -18,9 +18,9 @@ Minor Changes
 --------------
 * Add attribute 'branch' to the dictionary 'plugins'.
 * Update pb_iocage_plugins.yml with the attribute 'branch'.
-* Docs. Update example 521.
-* Docs. Update sandbox 910 and 911.
+* Docs. Update example 013, 521.
 * Docs. Update sandbox 912 and 913 is obsolete.
+* Docs. Update sandbox 501 deny, review the configuration before enabled.
 
 
 0.8.20

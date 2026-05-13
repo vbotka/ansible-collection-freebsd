@@ -175,7 +175,7 @@ ok: [ansible-pull-syslogng-client] =>
         assign_localhost: '0'
         available: readonly
         basejail: '1'
-        boot: '1'
+        boot: '0'
         bpf: '1'
         children_max: '0'
         comment: none
@@ -223,7 +223,7 @@ ok: [ansible-pull-syslogng-client] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/ansible-pull-syslogng-client/data
         jail_zfs_mountpoint: none
-        last_started: '2026-05-08 07:31:07'
+        last_started: '2026-05-13 03:54:40'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86
@@ -322,7 +322,7 @@ ok: [ansible-pull-syslogng-server] =>
         assign_localhost: '0'
         available: readonly
         basejail: '1'
-        boot: '1'
+        boot: '0'
         bpf: '1'
         children_max: '0'
         comment: none
@@ -370,7 +370,7 @@ ok: [ansible-pull-syslogng-server] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/ansible-pull-syslogng-server/data
         jail_zfs_mountpoint: none
-        last_started: '2026-05-08 07:33:58'
+        last_started: '2026-05-13 03:59:25'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86
@@ -811,7 +811,7 @@ ok: [test_153] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/test_153/data
         jail_zfs_mountpoint: none
-        last_started: '2026-05-10 02:56:04'
+        last_started: '2026-05-13 05:13:48'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: 665d86

@@ -20,16 +20,16 @@ ok: [ansible-pull-syslogng-server] =>
         ansible_host: -
         release: 15.0
         iocage_tags: {}
-ok: [test_151] => 
-    msg: |-
-        inventory_hostname: test_151
-        ansible_host: 10.1.0.151
-        release: 15.0
-        iocage_tags: {'vmm': 'iocage_05'}
 ok: [test_152] => 
     msg: |-
         inventory_hostname: test_152
         ansible_host: 10.1.0.152
+        release: 15.0
+        iocage_tags: {'vmm': 'iocage_05'}
+ok: [test_151] => 
+    msg: |-
+        inventory_hostname: test_151
+        ansible_host: 10.1.0.151
         release: 15.0
         iocage_tags: {'vmm': 'iocage_05'}
 ok: [test_153] => 

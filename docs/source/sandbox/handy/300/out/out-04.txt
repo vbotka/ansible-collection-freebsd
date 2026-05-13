@@ -14,55 +14,45 @@ ok: [iocage_05] =>
         - iocage
         - list
         - --long
-        delta: '0:00:00.548365'
-        end: '2026-05-10 05:13:07.431956'
+        delta: '0:00:00.467221'
+        end: '2026-05-13 08:04:09.776703'
         failed: false
         msg: ''
         rc: 0
-        start: '2026-05-10 05:13:06.883591'
+        start: '2026-05-13 08:04:09.309482'
         stderr: ''
         stderr_lines: []
         stdout: |-
-            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-            | JID  |             NAME             | BOOT | STATE |   TYPE   |   RELEASE    |         IP4          | IP6 |    TEMPLATE    | BASEJAIL |
-            +======+==============================+======+=======+==========+==============+======================+=====+================+==========+
-            | None | ansible-pull-syslogng-client | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -              | yes      |
-            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-            | None | ansible-pull-syslogng-server | on   | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -              | yes      |
-            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-            | 10   | test_151                     | off  | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.165 | -   | ansible_client | no       |
-            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-            | 9    | test_152                     | off  | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.166 | -   | ansible_client | no       |
-            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-            | 8    | test_153                     | off  | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.167 | -   | ansible_client | no       |
-            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
+            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
+            | JID  |             NAME             | BOOT | STATE |   TYPE   |   RELEASE    |         IP4          | IP6 | TEMPLATE | BASEJAIL |
+            +======+==============================+======+=======+==========+==============+======================+=====+==========+==========+
+            | 26   | ansible_client               | off  | up    | jail     | 15.0-RELEASE | epair0b|10.10.99.130 | -   | -        | no       |
+            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
+            | None | ansible-pull-syslogng-client | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -        | yes      |
+            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
+            | None | ansible-pull-syslogng-server | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)   | -   | -        | yes      |
+            +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
         stdout_lines:
-        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
+        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
         - '| JID  |             NAME             | BOOT | STATE |   TYPE   |   RELEASE    |         IP4          |
-            IP6 |    TEMPLATE    | BASEJAIL |'
-        - +======+==============================+======+=======+==========+==============+======================+=====+================+==========+
-        - '| None | ansible-pull-syslogng-client | on   | down  | pluginv2 | 15.0-RELEASE
-            | DHCP (not running)   | -   | -              | yes      |'
-        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-        - '| None | ansible-pull-syslogng-server | on   | down  | pluginv2 | 15.0-RELEASE
-            | DHCP (not running)   | -   | -              | yes      |'
-        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-        - '| 10   | test_151                     | off  | up    | jail     | 15.0-RELEASE
-            | epair0b|10.10.99.165 | -   | ansible_client | no       |'
-        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-        - '| 9    | test_152                     | off  | up    | jail     | 15.0-RELEASE
-            | epair0b|10.10.99.166 | -   | ansible_client | no       |'
-        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
-        - '| 8    | test_153                     | off  | up    | jail     | 15.0-RELEASE
-            | epair0b|10.10.99.167 | -   | ansible_client | no       |'
-        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------------+----------+
+            IP6 | TEMPLATE | BASEJAIL |'
+        - +======+==============================+======+=======+==========+==============+======================+=====+==========+==========+
+        - '| 26   | ansible_client               | off  | up    | jail     | 15.0-RELEASE
+            | epair0b|10.10.99.130 | -   | -        | no       |'
+        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
+        - '| None | ansible-pull-syslogng-client | off  | down  | pluginv2 | 15.0-RELEASE
+            | DHCP (not running)   | -   | -        | yes      |'
+        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
+        - '| None | ansible-pull-syslogng-server | off  | down  | pluginv2 | 15.0-RELEASE
+            | DHCP (not running)   | -   | -        | yes      |'
+        - +------+------------------------------+------+-------+----------+--------------+----------------------+-----+----------+----------+
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_05] => 
     jails | to_yaml: |-
         ansible-pull-syslogng-client:
           basejail: 'yes'
-          boot: 'on'
+          boot: 'off'
           ip4: '-'
           ip4_dict:
             ip4: []
@@ -75,7 +65,7 @@ ok: [iocage_05] =>
           type: pluginv2
         ansible-pull-syslogng-server:
           basejail: 'yes'
-          boot: 'on'
+          boot: 'off'
           ip4: '-'
           ip4_dict:
             ip4: []
@@ -86,76 +76,34 @@ ok: [iocage_05] =>
           state: down
           template: '-'
           type: pluginv2
-        test_151:
+        ansible_client:
           basejail: 'no'
           boot: 'off'
-          ip4: 10.10.99.165
+          ip4: 10.10.99.130
           ip4_dict:
             ip4:
-            - {ifc: epair0b, ip: 10.10.99.165, mask: '-'}
+            - {ifc: epair0b, ip: 10.10.99.130, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '10'
+          jid: '26'
           release: 15.0-RELEASE
           state: up
-          template: ansible_client
-          type: jail
-        test_152:
-          basejail: 'no'
-          boot: 'off'
-          ip4: 10.10.99.166
-          ip4_dict:
-            ip4:
-            - {ifc: epair0b, ip: 10.10.99.166, mask: '-'}
-            msg: ''
-          ip6: '-'
-          jid: '9'
-          release: 15.0-RELEASE
-          state: up
-          template: ansible_client
-          type: jail
-        test_153:
-          basejail: 'no'
-          boot: 'off'
-          ip4: 10.10.99.167
-          ip4_dict:
-            ip4:
-            - {ifc: epair0b, ip: 10.10.99.167, mask: '-'}
-            msg: ''
-          ip6: '-'
-          jid: '8'
-          release: 15.0-RELEASE
-          state: up
-          template: ansible_client
+          template: '-'
           type: jail
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_05] => 
     jids | to_yaml: |-
-        ['10', '9', '8']
+        ['26']
 
 TASK [Jails service sshd rcvar.] ***********************************************
-ok: [iocage_05] => (item=10)
-ok: [iocage_05] => (item=9)
-ok: [iocage_05] => (item=8)
+ok: [iocage_05] => (item=26)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_05] => 
     service_out:
         changed: false
         deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         -   collection_name: ansible.builtin
             deprecator:
                 resolved_name: ansible.builtin
@@ -171,84 +119,26 @@ ok: [iocage_05] =>
                 module_args:
                     command: rcvar
                     env: null
-                    jail: '10'
+                    jail: '26'
                     list_enabled: false
                     script: sshd
                     synopsis: false
                     wait: 0.5
-            item: '10'
+            item: '26'
             rc: 0
             rcvar:
-                sshd_enable: 'YES'
+                sshd_enable: 'NO'
             stderr: ''
             stderr_lines: []
             stdout: |-
                 # sshd : Secure Shell Daemon
                 #
-                sshd_enable="YES"
+                sshd_enable="NO"
                 #   (default: "")
             stdout_lines:
             - '# sshd : Secure Shell Daemon'
             - '#'
-            - sshd_enable="YES"
-            - '#   (default: "")'
-            - ''
-        -   ansible_loop_var: item
-            changed: false
-            failed: false
-            invocation:
-                module_args:
-                    command: rcvar
-                    env: null
-                    jail: '9'
-                    list_enabled: false
-                    script: sshd
-                    synopsis: false
-                    wait: 0.5
-            item: '9'
-            rc: 0
-            rcvar:
-                sshd_enable: 'YES'
-            stderr: ''
-            stderr_lines: []
-            stdout: |-
-                # sshd : Secure Shell Daemon
-                #
-                sshd_enable="YES"
-                #   (default: "")
-            stdout_lines:
-            - '# sshd : Secure Shell Daemon'
-            - '#'
-            - sshd_enable="YES"
-            - '#   (default: "")'
-            - ''
-        -   ansible_loop_var: item
-            changed: false
-            failed: false
-            invocation:
-                module_args:
-                    command: rcvar
-                    env: null
-                    jail: '8'
-                    list_enabled: false
-                    script: sshd
-                    synopsis: false
-                    wait: 0.5
-            item: '8'
-            rc: 0
-            rcvar:
-                sshd_enable: 'YES'
-            stderr: ''
-            stderr_lines: []
-            stdout: |-
-                # sshd : Secure Shell Daemon
-                #
-                sshd_enable="YES"
-                #   (default: "")
-            stdout_lines:
-            - '# sshd : Secure Shell Daemon'
-            - '#'
-            - sshd_enable="YES"
+            - sshd_enable="NO"
             - '#   (default: "")'
             - ''
         skipped: false
@@ -256,12 +146,8 @@ ok: [iocage_05] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_05] => 
     jid_rcvar:
-        '10':
-            sshd_enable: 'YES'
-        '8':
-            sshd_enable: 'YES'
-        '9':
-            sshd_enable: 'YES'
+        '26':
+            sshd_enable: 'NO'
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

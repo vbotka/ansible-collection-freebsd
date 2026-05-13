@@ -8,7 +8,7 @@ ok: [ansible-pull-syslogng-client] =>
         ansible_host: -
 
         iocage_jid: None
-        iocage_boot: on
+        iocage_boot: off
         iocage_state: down
         iocage_type: pluginv2
         iocage_release: 15.0-RELEASE
@@ -17,20 +17,20 @@ ok: [ansible-pull-syslogng-client] =>
         iocage_ip6: -
         iocage_template: -
         iocage_basejail: yes
-ok: [ansible_client] => 
+ok: [test_151] => 
     msg: |-
-        inventory_hostname: ansible_client
-        ansible_host: -
+        inventory_hostname: test_151
+        ansible_host: 10.1.0.151
 
         iocage_jid: None
         iocage_boot: off
         iocage_state: down
         iocage_type: jail
         iocage_release: 15.0-RELEASE
-        iocage_ip4_dict: {'ip4': [], 'msg': '-'}
-        iocage_ip4: -
+        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '10.1.0.151', 'mask': '24'}], 'msg': ''}
+        iocage_ip4: 10.1.0.151
         iocage_ip6: -
-        iocage_template: -
+        iocage_template: ansible_client
         iocage_basejail: yes
 ok: [ansible-pull-syslogng-server] => 
     msg: |-
@@ -38,7 +38,7 @@ ok: [ansible-pull-syslogng-server] =>
         ansible_host: -
 
         iocage_jid: None
-        iocage_boot: on
+        iocage_boot: off
         iocage_state: down
         iocage_type: pluginv2
         iocage_release: 15.0-RELEASE
@@ -62,27 +62,27 @@ ok: [test_152] =>
         iocage_ip6: -
         iocage_template: ansible_client
         iocage_basejail: yes
-ok: [test_151] => 
+ok: [ansible_client] => 
     msg: |-
-        inventory_hostname: test_151
-        ansible_host: 10.1.0.151
+        inventory_hostname: ansible_client
+        ansible_host: -
 
         iocage_jid: None
         iocage_boot: off
         iocage_state: down
         iocage_type: jail
         iocage_release: 15.0-RELEASE
-        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '10.1.0.151', 'mask': '24'}], 'msg': ''}
-        iocage_ip4: 10.1.0.151
+        iocage_ip4_dict: {'ip4': [], 'msg': '-'}
+        iocage_ip4: -
         iocage_ip6: -
-        iocage_template: ansible_client
+        iocage_template: -
         iocage_basejail: yes
 ok: [test_153] => 
     msg: |-
         inventory_hostname: test_153
         ansible_host: 10.1.0.153
 
-        iocage_jid: 1
+        iocage_jid: 18
         iocage_boot: off
         iocage_state: up
         iocage_type: jail
