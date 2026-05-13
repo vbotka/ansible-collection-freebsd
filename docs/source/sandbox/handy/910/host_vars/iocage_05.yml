@@ -4,6 +4,7 @@ enabled_plugins:
 plugins:
   ansible-pull-syslogng-server:
     git: https://github.com/vbotka/iocage-plugins
+    branch: main
     properties:
       bpf: 1
       dhcp: 1

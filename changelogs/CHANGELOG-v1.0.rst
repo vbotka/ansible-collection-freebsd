@@ -16,7 +16,9 @@ Major Changes
 
 Minor Changes
 --------------
-
+* Add attribute 'branch' to the dictionary 'plugins'.
+* Update pb_iocage_plugins.yml with the attribute 'branch'.
+* Docs. Update sandbox 910 and 911.
 
 0.8.20
 ======
@@ -30,7 +32,7 @@ Major Changes
 
 Minor Changes
 --------------
-* Docs. Add sandbox 912 and 913. The same as 910 and 911 bu the repo
+* Docs. Add sandbox 912 and 913. The same as 910 and 911 but the repo
   https://github.com/vbotka/iocage-ix-plugins
 * Docs. Update sandbox 910 and 911
 * Docs. Update UG and sandbox README.
