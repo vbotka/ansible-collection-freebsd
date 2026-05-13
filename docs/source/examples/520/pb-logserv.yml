@@ -22,5 +22,5 @@
 
     - name: Configure and start Log Server.
       ansible.builtin.import_role:
-        name: vbotka.freebsd.postinstall
+        name: vbotka.freebsd_postinstall
         tasks_from: syslog-ng.yml

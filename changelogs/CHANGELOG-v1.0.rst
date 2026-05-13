@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Role postinstall upgraded to 2.8.7
 * Add attribute 'branch' to the dictionary 'plugins'.
 * Update pb_iocage_plugins.yml with the attribute 'branch'.
 * Docs. Update example 013, , 441, 442, 443, 520, 521.

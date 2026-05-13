@@ -2,8 +2,8 @@
 PLAY [Configure and start Log Client.] *****************************************
 
 TASK [Get custom facts] ********************************************************
-ok: [bar]
 ok: [foo]
+ok: [bar]
 
 TASK [debug] *******************************************************************
 ok: [bar] => 
@@ -18,36 +18,36 @@ ok: [foo] =>
 TASK [Debug.] ******************************************************************
 ok: [bar] => 
     msg: |-
-        log_serv: 10.10.99.121
+        log_serv: 10.10.99.199
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 ok: [foo] => 
     msg: |-
-        log_serv: 10.10.99.121
+        log_serv: 10.10.99.199
         fp_syslogd_enable: False
         fp_syslogng_enable: True
 
 TASK [Stop syslogd.] ***********************************************************
-ok: [foo]
 ok: [bar]
+ok: [foo]
 
 TASK [Disable syslogd.] ********************************************************
 ok: [bar]
 ok: [foo]
 
-TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+TASK [vbotka.freebsd_postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
 ok: [bar]
 ok: [foo]
 
-TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-changed: [foo]
+TASK [vbotka.freebsd_postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
 changed: [bar]
+changed: [foo]
 
-TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-ok: [bar]
+TASK [vbotka.freebsd_postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
 ok: [foo]
+ok: [bar]
 
-RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+RUNNING HANDLER [vbotka.freebsd_postinstall : Reload syslog-ng] ****************
 ok: [bar]
 ok: [foo]
 
