@@ -35,8 +35,8 @@ ok: [iocage_05] =>
             - notes=vmm=iocage_05 swarm=sw_01
             - type=jail
             - vnet=1
-            delta: '0:00:00.872912'
-            end: '2026-05-11 02:11:34.210099'
+            delta: '0:00:00.945023'
+            end: '2026-05-13 11:20:33.799872'
             failed: false
             invocation:
                 module_args:
@@ -60,17 +60,17 @@ ok: [iocage_05] =>
                     plugin: ansible-zero
             msg: ''
             rc: 0
-            start: '2026-05-11 02:11:33.337187'
+            start: '2026-05-13 11:20:32.854849'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                5da64365-6425-4602-bb41-0d6ffcd912f1 successfully cloned!
-                c925c0de-78f0-49b0-ad4d-d55b11875367 successfully cloned!
-                14367ff7-47c0-4cbf-86a8-29a44307f61e successfully cloned!
+                53fa80de-b537-462f-9925-a3b17a122271 successfully cloned!
+                67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae successfully cloned!
+                a87e3dfe-ab10-46b9-9921-1f1adc2011fe successfully cloned!
             stdout_lines:
-            - 5da64365-6425-4602-bb41-0d6ffcd912f1 successfully cloned!
-            - c925c0de-78f0-49b0-ad4d-d55b11875367 successfully cloned!
-            - 14367ff7-47c0-4cbf-86a8-29a44307f61e successfully cloned!
+            - 53fa80de-b537-462f-9925-a3b17a122271 successfully cloned!
+            - 67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae successfully cloned!
+            - a87e3dfe-ab10-46b9-9921-1f1adc2011fe successfully cloned!
         skipped: false
 
 TASK [Get iocage facts] ********************************************************
@@ -82,7 +82,7 @@ ok: [iocage_05]
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_05] => (item=sw_01) => 
     msg: |-
-        iocage start c925c0de-78f0-49b0-ad4d-d55b11875367 5da64365-6425-4602-bb41-0d6ffcd912f1 14367ff7-47c0-4cbf-86a8-29a44307f61e
+        iocage start 53fa80de-b537-462f-9925-a3b17a122271 67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae a87e3dfe-ab10-46b9-9921-1f1adc2011fe
 
 TASK [Start swarms] ************************************************************
 ok: [iocage_05] => (item=sw_01)
@@ -98,11 +98,11 @@ ok: [iocage_05] =>
             cmd:
             - iocage
             - start
-            - c925c0de-78f0-49b0-ad4d-d55b11875367
-            - 5da64365-6425-4602-bb41-0d6ffcd912f1
-            - 14367ff7-47c0-4cbf-86a8-29a44307f61e
-            delta: '0:00:07.154633'
-            end: '2026-05-11 02:11:47.006450'
+            - 53fa80de-b537-462f-9925-a3b17a122271
+            - 67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae
+            - a87e3dfe-ab10-46b9-9921-1f1adc2011fe
+            delta: '0:00:07.520716'
+            end: '2026-05-13 11:20:48.315514'
             failed: false
             invocation:
                 module_args:
@@ -111,7 +111,7 @@ ok: [iocage_05] =>
                     argv: null
                     chdir: null
                     cmd: |-
-                        iocage start c925c0de-78f0-49b0-ad4d-d55b11875367 5da64365-6425-4602-bb41-0d6ffcd912f1 14367ff7-47c0-4cbf-86a8-29a44307f61e
+                        iocage start 53fa80de-b537-462f-9925-a3b17a122271 67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae a87e3dfe-ab10-46b9-9921-1f1adc2011fe
                     creates: null
                     executable: null
                     expand_argument_vars: true
@@ -126,7 +126,7 @@ ok: [iocage_05] =>
                     plugin: ansible-zero
             msg: ''
             rc: 0
-            start: '2026-05-11 02:11:39.851817'
+            start: '2026-05-13 11:20:40.794798'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -136,55 +136,55 @@ ok: [iocage_05] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting c925c0de-78f0-49b0-ad4d-d55b11875367
+                * Starting 53fa80de-b537-462f-9925-a3b17a122271
                   + Started OK
                   + Using devfs_ruleset: 1000 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.10.99.174/24
-                * Starting 5da64365-6425-4602-bb41-0d6ffcd912f1
+                  + DHCP Address: 10.10.99.180/24
+                * Starting 67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae
                   + Started OK
                   + Using devfs_ruleset: 1001 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.10.99.106/24
-                * Starting 14367ff7-47c0-4cbf-86a8-29a44307f61e
+                  + DHCP Address: 10.10.99.181/24
+                * Starting a87e3dfe-ab10-46b9-9921-1f1adc2011fe
                   + Started OK
                   + Using devfs_ruleset: 1002 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 10.10.99.114/24
+                  + DHCP Address: 10.10.99.182/24
             stdout_lines:
-            - '* Starting c925c0de-78f0-49b0-ad4d-d55b11875367'
+            - '* Starting 53fa80de-b537-462f-9925-a3b17a122271'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1000 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.10.99.174/24'
-            - '* Starting 5da64365-6425-4602-bb41-0d6ffcd912f1'
+            - '  + DHCP Address: 10.10.99.180/24'
+            - '* Starting 67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1001 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.10.99.106/24'
-            - '* Starting 14367ff7-47c0-4cbf-86a8-29a44307f61e'
+            - '  + DHCP Address: 10.10.99.181/24'
+            - '* Starting a87e3dfe-ab10-46b9-9921-1f1adc2011fe'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1002 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 10.10.99.114/24'
+            - '  + DHCP Address: 10.10.99.182/24'
         skipped: false
 
 PLAY RECAP *********************************************************************

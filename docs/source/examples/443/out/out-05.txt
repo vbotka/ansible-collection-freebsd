@@ -2,10 +2,10 @@
   |--@ungrouped:
   |  |--ansible-zero
   |--@swarm_sw_01:
-  |  |--14367ff7-47c0-4cbf-86a8-29a44307f61e
-  |  |--5da64365-6425-4602-bb41-0d6ffcd912f1
-  |  |--c925c0de-78f0-49b0-ad4d-d55b11875367
+  |  |--53fa80de-b537-462f-9925-a3b17a122271
+  |  |--67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae
+  |  |--a87e3dfe-ab10-46b9-9921-1f1adc2011fe
   |--@vmm_iocage_05:
-  |  |--14367ff7-47c0-4cbf-86a8-29a44307f61e
-  |  |--5da64365-6425-4602-bb41-0d6ffcd912f1
-  |  |--c925c0de-78f0-49b0-ad4d-d55b11875367
+  |  |--53fa80de-b537-462f-9925-a3b17a122271
+  |  |--67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae
+  |  |--a87e3dfe-ab10-46b9-9921-1f1adc2011fe

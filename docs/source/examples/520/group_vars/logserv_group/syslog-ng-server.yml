@@ -1,0 +1,43 @@
+fp_syslogd: true
+fp_syslogd_enable: false
+fp_syslogd_conf_sanity: false
+
+fp_syslogng: true
+fp_syslogng_enable: true
+fp_syslogng_conf_template: syslog-ng.conf.j2
+fp_syslogng_conf:
+  header:
+    - '@version:4.8'
+    - '@include "scl.conf"'
+  options:
+    - threaded(yes)
+    - group("wheel")
+    - perm(0640)
+  source:
+    s_system:
+      - unix-dgram("/var/run/log")
+      - unix-dgram("/var/run/logpriv" perm(0600))
+      - internal()
+    s_ansible:
+      - file("/var/log/ansible.log" follow-freq(1) program-override("ansible"))
+    s_remote:
+      - tcp(port(514))
+  destination:
+    d_local:
+      - file("/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.log" create-dirs(yes))
+  filter:
+    f_messages:
+      - level(notice..emerg) and not facility(auth, authpriv, lpr, mail, news)
+    f_daemon:
+      - facility(daemon)
+  log:
+    - source: s_remote
+      destination: d_local
+    - source: s_system
+      filter: f_daemon
+      destination: d_local
+    - source: s_system
+      filter: f_messages
+      destination: d_local
+    - source: s_ansible
+      destination: d_local

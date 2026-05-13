@@ -37,7 +37,7 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Clone the
-iocage plugin ``ansible-syslogng``. The ``project`` keys are jail's aliases.
+`iocage plugin`_ ``ansible-syslogng``. The ``project`` keys are jail's aliases.
 
 .. code-block:: yaml
 
@@ -111,9 +111,9 @@ Tree
   │   │   ├── common.yml
   │   │   └── project.yml
   │   ├── logclient_group
-  │   │   └── syslog-ng.yml
+  │   │   └── syslog-ng-client.yml
   │   └── logserv_group
-  │       └── syslog-ng.yml
+  │       └── syslog-ng-server.yml
   ├── hosts
   │   └── 05_iocage.yml
   ├── host_vars
@@ -133,15 +133,15 @@ Synopsis
 
   In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
 
-  * Fetch the iocage plugin ``ansible-syslogng``
+  * Fetch the `iocage plugin`_ ``ansible-syslogng``
 
   In the playbook `vbotka.freebsd.pb_iocage_project_create_from_plugins.yml`_:
 
-  * Clone jails from the iocage plugin ``ansible-syslogng``
+  * Clone jails from the `iocage plugin`_ ``ansible-syslogng``
 
-* In the inventory group ``logserv_group`` configure `syslog-ng Server`_.
+* In the inventory group ``logserv_group`` configure `syslog-ng server`_.
 
-* In the inventory group ``logclient_group`` configure `syslog-ng Client`_.
+* In the inventory group ``logclient_group`` configure `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -165,7 +165,7 @@ Notes
 
 .. note::
 
-   TBD
+   The same ``syslog-ng`` configuration is used in :ref:`example_521`
 
 .. seealso::
 
@@ -225,13 +225,21 @@ group_vars
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/logserv_group/syslog-ng.yml
+.. literalinclude:: group_vars/logserv_group/syslog-ng-server.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/logclient_group/syslog-ng.yml
+.. note::
+
+   The same configuration from the repo `ansible-conf-syslogng-server`_ is used in :ref:`example_521`
+
+.. literalinclude:: group_vars/logclient_group/syslog-ng-client.yml
    :language: yaml+jinja
    :caption:
+
+.. note::
+
+   The same configuration from the repo `ansible-conf-syslogng-client`_ is used in :ref:`example_521`
 
 host_vars
 ^^^^^^^^^
@@ -377,9 +385,12 @@ Playbook output - Test Log Client
    :language: yaml
    :force:
 
+.. _iocage plugin: https://github.com/vbotka/iocage-plugins
+.. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
+.. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
 
-.. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-.. _syslog-ng Server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
+.. _syslog-ng client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
+.. _syslog-ng server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
 
 .. _syslog-ng - documentation: https://syslog-ng.github.io
 .. _syslog-ng client hosts: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html

@@ -2,42 +2,42 @@
 PLAY [Test the connection plugin jailexec.] ************************************
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [0b5478fa] => 
+ok: [4a8426e6] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 0b5478fa
+        ansible_host: 4a8426e6
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.171
+        iocage_ip4: 10.10.99.130
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
-ok: [1d208d0a] => 
+ok: [cbe505b1] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 1d208d0a
+        ansible_host: cbe505b1
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.172
+        iocage_ip4: 10.10.99.161
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
-ok: [eab83e55] => 
+ok: [f4073d63] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: eab83e55
+        ansible_host: f4073d63
         ansible_user: admin
 
         ansible_jail_host: iocage_05
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 10.10.99.169
+        iocage_ip4: 10.10.99.162
         iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
 
 PLAY RECAP *********************************************************************
-0b5478fa                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-1d208d0a                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-eab83e55                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4a8426e6                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+cbe505b1                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+f4073d63                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
