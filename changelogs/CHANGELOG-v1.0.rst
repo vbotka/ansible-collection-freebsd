@@ -16,7 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
-* Add setup/sync/; Create limited sollections for ansible-conf repos. See
+* Add setup/sync/; Create limited collections for ansible-conf repos. See
   setup/sync/README.md
 
 

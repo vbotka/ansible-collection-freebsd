@@ -385,7 +385,7 @@ Playbook output - Test Log Client
    :language: yaml
    :force:
 
-.. _iocage plugin: https://github.com/vbotka/iocage-plugins
+.. _iocage plugin: https://github.com/vbotka/iocage-plugins-devel
 .. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
 .. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
 
