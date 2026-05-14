@@ -1,6 +1,6 @@
 .. _example_521:
 
-521 Iocage plugins ansible-pull-syslogng-*
+521 iocage plugins ansible-pull-syslogng-*
 ------------------------------------------
 
 .. contents::

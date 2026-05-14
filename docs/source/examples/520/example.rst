@@ -1,6 +1,6 @@
 .. _example_520:
 
-520 Iocage plugin ansible-syslogng
+520 iocage plugin ansible-syslogng
 ----------------------------------
 
 .. contents::
