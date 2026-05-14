@@ -16,6 +16,8 @@ Major Changes
 
 Minor Changes
 --------------
+* Add setup/sync/; Create limited sollections for ansible-conf repos. See
+  setup/sync/README.md
 
 
 0.8.21
