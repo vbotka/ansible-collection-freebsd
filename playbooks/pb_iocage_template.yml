@@ -63,9 +63,11 @@
       ansible.builtin.import_tasks: pb_iocage_template/rc_conf.yml
 
     - name: Stop jails
+      when: act_stop | d(true) | bool
       tags: stop
       ansible.builtin.import_tasks: pb_iocage_template/stop.yml
 
     - name: Convert jails to templates
+      when: act_template | d(true) | bool
       tags: template
       ansible.builtin.import_tasks: pb_iocage_template/template.yml

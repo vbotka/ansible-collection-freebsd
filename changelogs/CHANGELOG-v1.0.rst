@@ -18,6 +18,9 @@ Minor Changes
 --------------
 * Add setup/sync/; Create limited collections for ansible-conf repos. See
   setup/sync/README.md
+* Update pb_iocage_template; skip missing templates attributes; allow undefined
+  act_user; optionally do not run stop and template tasks.
+* Add sandbox 914.
 
 
 0.8.21
