@@ -21,6 +21,7 @@ Minor Changes
 * Update pb_iocage_template; skip missing templates attributes; allow undefined
   act_user; optionally do not run stop and template tasks.
 * Add sandbox 914.
+* Docs. Fix links.
 
 
 0.8.21
