@@ -18,6 +18,8 @@
 * 911 Test ansible-pull, plugin ansible-pull-syslogng-client, repo ansible-conf-syslogng-client.git
 * 912 The same as 910, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
 * 913 The same as 911, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
+* 914 Template ansible-syslogng-server
+* 915 Template ansible-syslogng-client
 
 **Notes**
 
