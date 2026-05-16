@@ -1,0 +1,30 @@
+
+PLAY [Create Ansible client templates.] ****************************************
+
+TASK [Setup: Get iocage list of templates.] ************************************
+ok: [iocage_05]
+
+TASK [Pkglist: Create directories for pkglist files.] **************************
+ok: [iocage_05] => (item=ansible_syslogng_server /tmp/ansible/ansible_syslogng_server/pkgs-logserver.json)
+ok: [iocage_05] => (item=ansible_syslogng_client /tmp/ansible/ansible_syslogng_client/pkgs-logclient.json)
+
+TASK [Pkglist: Copy pkglist files.] ********************************************
+ok: [iocage_05] => (item=ansible_syslogng_server /tmp/ansible/ansible_syslogng_server/pkgs-logserver.json)
+ok: [iocage_05] => (item=ansible_syslogng_client /tmp/ansible/ansible_syslogng_client/pkgs-logclient.json)
+
+TASK [Create: Get iocage list of templates.] ***********************************
+ok: [iocage_05]
+
+TASK [Create: Create templates.] ***********************************************
+changed: [iocage_05] => (item=ansible_syslogng_server 15.0-RELEASE)
+changed: [iocage_05] => (item=ansible_syslogng_client 15.0-RELEASE)
+
+TASK [Start: Get iocage list of jails.] ****************************************
+ok: [iocage_05]
+
+TASK [Start: Start created templates.] *****************************************
+ok: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=7    changed=1    unreachable=0    failed=0    skipped=30   rescued=0    ignored=0   
+

@@ -1,0 +1,66 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [foo]
+changed: [bar]
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 250000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500094, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 200000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500257, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log-server]
+
+TASK [Get log files.] **********************************************************
+changed: [log-server] => (item=/var/log/remote/ansible-syslogng-server/2026_05_16.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.122/2026_05_16.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.193/2026_05_16.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log-server] => (item=['cat', '/var/log/remote/ansible-syslogng-server/2026_05_16.log']) => 
+    msg: |-
+        May 16 17:03:11 ansible-syslogng-server syslog-ng[395]: syslog-ng starting up; version='4.11.0'
+        May 16 17:03:12 ansible-syslogng-server syslog-ng[395]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
+        May 16 17:03:12 ansible-syslogng-server syslog-ng[395]: Loading the new configuration;
+        May 16 17:03:12 ansible-syslogng-server syslog-ng[395]: Configuration reload finished;
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.100631+02:00 ansible-syslogng-server dhclient 99539 - - receive_packet failed on epair0b: Device not configured
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.100912+02:00 ansible-syslogng-server dhclient 99539 - - ioctl(SIOCGIFFLAGS) on epair0b: Operation not permitted
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.101057+02:00 ansible-syslogng-server dhclient 99539 - - Interface epair0b no longer appears valid.
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.101205+02:00 ansible-syslogng-server dhclient 99539 - - No live interfaces to poll on - exiting.
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.101359+02:00 ansible-syslogng-server dhclient 99539 - - exiting.
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.102652+02:00 ansible-syslogng-server dhclient 99539 - - connection closed
+        May 16 17:03:26 ansible-syslogng-server 1 2026-05-16T17:03:26.102858+02:00 ansible-syslogng-server dhclient 99539 - - exiting.
+        May 16 17:03:26 ansible-syslogng-server syslog-ng[395]: syslog-ng shutting down; version='4.11.0'
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.122/2026_05_16.log']) => 
+    msg: |-
+        May 16 17:03:52 10.10.99.122 syslog-ng[5265]: syslog-ng starting up; version='4.11.0'
+        May 16 17:03:52 10.10.99.122 syslog-ng[5265]: Syslog connection established; fd='19', server='AF_INET(10.10.99.118:514)', local='AF_INET(0.0.0.0:0)'
+        May 16 17:04:09 10.10.99.122 1 2026-05-16T17:04:09.741075+02:00 foo ansible-ansible.legacy.command 5750 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.118 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 16 17:04:09 10.10.99.122 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778943849, stamp: 2026-05-16T17:04:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.193/2026_05_16.log']) => 
+    msg: |-
+        May 16 17:03:52 10.10.99.193 syslog-ng[5266]: syslog-ng starting up; version='4.11.0'
+        May 16 17:03:52 10.10.99.193 syslog-ng[5266]: Syslog connection established; fd='19', server='AF_INET(10.10.99.118:514)', local='AF_INET(0.0.0.0:0)'
+        May 16 17:04:09 10.10.99.193 1 2026-05-16T17:04:09.761288+02:00 bar ansible-ansible.legacy.command 5749 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.118 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 16 17:04:09 10.10.99.193 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778943849, stamp: 2026-05-16T17:04:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

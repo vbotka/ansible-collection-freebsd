@@ -1,0 +1,31 @@
+templates:
+  ansible_syslogng_server:
+    release: 15.0-RELEASE
+    pkglist: /tmp/ansible/ansible_syslogng_server/pkgs-logserver.json
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      notes: "vmm={{ inventory_hostname }}"
+  ansible_syslogng_client:
+    release: 15.0-RELEASE
+    pkglist: /tmp/ansible/ansible_syslogng_client/pkgs-logclient.json
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      notes: "vmm={{ inventory_hostname }}"
+
+act_stop: false
+act_template: false
+
+# jail properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+
+log_clients:
+  - foo
+  - bar

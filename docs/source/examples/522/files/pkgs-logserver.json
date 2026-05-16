@@ -1,0 +1,7 @@
+{
+    "pkgs": [
+        "lnav",
+        "sudo",
+	"syslog-ng"
+        ]
+}

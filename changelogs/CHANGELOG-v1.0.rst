@@ -20,7 +20,8 @@ Minor Changes
   setup/sync/README.md
 * Update pb_iocage_template; skip missing templates attributes; allow undefined
   act_user; optionally do not run stop and template tasks.
-* Add sandbox 914.
+* Add example 522.
+* Add sandbox 914 and 915.
 * Docs. Fix links.
 
 
