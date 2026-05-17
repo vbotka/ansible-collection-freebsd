@@ -49,11 +49,11 @@ Tree
   ├── iocage.ini
   ├── pb-create-jails.yml
   ├── pb-logclient-conf.yml
+  ├── pb-logclient-test.yml
   ├── pb-logclient.yml
+  ├── pb-logserver-test.yml
   ├── pb-logserver.yml
-  ├── pb-template-stop-convert.yml
-  ├── pb-test-logclient.yml
-  └── pb-test-logserv.yml
+  └── pb-template-stop-convert.yml
 
 Synopsis
 ^^^^^^^^
@@ -289,10 +289,10 @@ List jails
 .. literalinclude:: out/out-09.txt
    :language: sh
 
-Playbook pb-test-logserv.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-logserver-test.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-logserv.yml
+.. literalinclude:: pb-logserver-test.yml
    :language: yaml+jinja
 
 Playbook output - Test Log Server
@@ -300,16 +300,16 @@ Playbook output - Test Log Server
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-logserv.yml -i hosts -e debug=true
+   (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
 
 .. literalinclude:: out/out-10.txt
    :language: yaml
    :force:
 
-Playbook pb-test-logclient.yml
+Playbook pb-logclient-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-logclient.yml
+.. literalinclude:: pb-logclient-test.yml
    :language: yaml+jinja
 
 Playbook output - Test Log Clients
@@ -317,7 +317,7 @@ Playbook output - Test Log Clients
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-logclient.yml -i hosts
+   (env) > ansible-playbook pb-logclient-test.yml -i hosts
 
 .. literalinclude:: out/out-11.txt
    :language: yaml

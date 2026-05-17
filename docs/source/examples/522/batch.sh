@@ -31,7 +31,7 @@ ansible-playbook pb-logclient-conf.yml -i hosts -i iocage.ini -e debug=true | te
 ssh admin@$iocage_05 sudo iocage list -l | tee out/out-09.txt
 
 # Test Log Server
-ansible-playbook pb-test-logserv.yml -i hosts -e debug=true | tee out/out-10.txt
+ansible-playbook pb-logserver-test.yml -i hosts -e debug=true | tee out/out-10.txt
 
 # Test Log Clients
-ansible-playbook pb-test-logclient.yml -i hosts | tee out/out-11.txt
+ansible-playbook pb-logclient-test.yml -i hosts | tee out/out-11.txt
