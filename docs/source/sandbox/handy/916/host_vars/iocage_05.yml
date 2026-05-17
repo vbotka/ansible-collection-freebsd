@@ -1,0 +1,12 @@
+enabled_plugins:
+  - ansible-pull-init
+
+plugins:
+  ansible-pull-init:
+    git: https://github.com/vbotka/iocage-plugins-devel
+    branch: main
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      boot: 0
