@@ -1,6 +1,10 @@
 enabled_plugins:
   - ansible-pull-init
 
+classes:
+  - foo
+  - bar
+
 plugins:
   ansible-pull-init:
     git: https://github.com/vbotka/iocage-plugins-devel
@@ -10,3 +14,4 @@ plugins:
       dhcp: 1
       vnet: 1
       boot: 0
+      notes: "class={{ classes | join(',') }}"
