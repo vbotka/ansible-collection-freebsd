@@ -21,8 +21,9 @@ Minor Changes
 * Update pb_iocage_template; skip missing templates attributes; allow undefined
   act_user; optionally do not run stop and template tasks.
 * Add example 522.
-* Add sandbox 914 and 915.
+* Add sandbox 914, 915, 916.
 * Docs. Fix links.
+* Docs. Replace inventory iocage_classes regex_findall regex.
 
 
 0.8.21
