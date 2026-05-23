@@ -98,6 +98,10 @@ Requirements
 * `module vbotka.freebsd.service`_
 * role `vbotka.freebsd.postinstall`_
 
+.. important::
+
+   For security reasons, you might want to create private configuration repositories.
+
 Notes
 ^^^^^
 
