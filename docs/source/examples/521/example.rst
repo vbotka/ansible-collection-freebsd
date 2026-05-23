@@ -100,7 +100,8 @@ Requirements
 
 .. important::
 
-   For security reasons, you might want to create private configuration repositories.
+   For security reasons, you might want to create private repositories with the iocage plugins and
+   configurations.
 
 Notes
 ^^^^^
