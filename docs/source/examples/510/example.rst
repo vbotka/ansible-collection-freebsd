@@ -1,7 +1,7 @@
 .. _example_510:
 
-510 project ansible-pull
-------------------------
+510 template ansible_client_pull
+--------------------------------
 
 .. contents::
    :local:

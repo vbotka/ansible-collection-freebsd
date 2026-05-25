@@ -1,7 +1,7 @@
 templates:
   ansible_syslogng_client:
     release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_syslogng_server/pkgs.json
+    pkglist: /tmp/ansible/ansible_syslogng_client/pkgs.json
     properties:
       bpf: 1
       dhcp: 1

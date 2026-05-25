@@ -22,7 +22,7 @@
 * 913 The same as 911, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
 * 914 Template ansible-syslogng-server
 * 915 Template ansible-syslogng-client
-* 916 iocage plugin ansible-pull-init (WIP)
+* 916 Template ansible-pull-init
 
 **Notes**
 
