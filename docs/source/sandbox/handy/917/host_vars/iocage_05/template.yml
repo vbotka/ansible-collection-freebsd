@@ -1,0 +1,18 @@
+templates:
+  ansible_pull_repos:
+    release: 15.0-RELEASE
+    pkglist: /tmp/ansible/ansible_pull_repos/pkgs.json
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      notes: "{{ notes }}"
+
+notes: >
+  vmm={{ inventory_hostname }}
+  class=repos
+
+act_rcconf:
+  git_daemon_enable="YES"
+  git_daemon_directory="/usr/local/git"
+  git_daemon_flags="--syslog --base-path=/usr/local/git --export-all --reuseaddr --detach"

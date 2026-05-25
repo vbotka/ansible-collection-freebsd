@@ -22,7 +22,7 @@ Minor Changes
   act_user; optionally do not run stop and template tasks.
 * Add example 522.
 * Update example 521.
-* Add sandbox 914, 915, 916.
+* Add sandbox 914, 915, 916, 917.
 * Docs. Fix links.
 * Docs. Replace inventory iocage_classes regex_findall regex.
 * Upgrade role postinstall to 2.8.8
