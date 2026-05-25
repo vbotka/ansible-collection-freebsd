@@ -26,6 +26,7 @@ Minor Changes
 * Docs. Fix links.
 * Docs. Replace inventory iocage_classes regex_findall regex.
 * Upgrade role postinstall to 2.8.8
+* Update module iocage. Fix properties parsing.
 
 
 0.8.21
