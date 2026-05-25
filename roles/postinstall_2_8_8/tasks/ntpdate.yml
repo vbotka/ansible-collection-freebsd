@@ -1,0 +1,8 @@
+---
+- name: "Ntpdate: Configure rc.conf"
+  tags: fp_ntpdate_rcconf
+  vars:
+    _service: ntpdate
+  ansible.builtin.import_tasks: fn/rcconf.yml
+
+# EOF

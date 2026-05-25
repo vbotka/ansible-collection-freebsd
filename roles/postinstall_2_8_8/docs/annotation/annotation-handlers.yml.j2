@@ -1,0 +1,34 @@
+#jinja2: trim_blocks:False
+---
+myhandlers:
+  - file: main.yml
+    link: handlers-main.yml
+    path: handlers/main.yml
+    synopsis: |
+      Main task.
+    description: |
+      Import handlers.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+{% for f in my_files %}
+  - file: {{ f.base_name }}
+    link: {{ f.base_name }}
+    path: handlers/{{ f.path }}
+    synopsis: |
+      {{ lookup('vars', 'handler_' ~ f.file_name ~ '_synopsis', default='Configure ' ~ f.file_name) | indent(width=6) }}
+    description: |
+      {{ lookup('vars', 'handler_' ~ f.file_name ~ '_description', default='Description of the task.') | indent(width=6) }}
+    lines: {{ lookup('vars', 'handler_' ~ f.file_name ~ '_lines', default='1') }}
+    seealso:
+      {{ lookup('vars', 'handler_' ~ f.file_name ~ '_seealso', default={}) | from_yaml | to_nice_yaml(indent=2) | indent(6) }}
+    notes:
+      {{ lookup('vars', 'handler_' ~ f.file_name ~ '_note', default=[]) | from_yaml | to_nice_yaml(indent=2) | indent(6) }}
+    hints:
+      {{ lookup('vars', 'handler_' ~ f.file_name ~ '_hint', default=[]) | from_yaml | to_nice_yaml(indent=2) | indent(6) }}
+    warnings:
+      {{ lookup('vars', 'handler_' ~ f.file_name ~ '_warning', default=[]) | from_yaml | to_nice_yaml(indent=2) | indent(6) }}
+{% endfor %}
+...

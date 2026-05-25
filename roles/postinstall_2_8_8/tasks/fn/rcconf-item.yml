@@ -1,0 +1,12 @@
+---
+- name: "{{ oi.label }}"
+  community.general.sysrc:
+    path: "{{ oi.dest | d('/etc/rc.conf') }}"
+    name: "{{ item.key }}"
+    value: "{{ item.value | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+    delim: "{{ item.delim | d(omit) }}"
+  loop: "{{ oi.conf }}"
+  notify: "{{ oi.notify }}"
+
+# EOF
