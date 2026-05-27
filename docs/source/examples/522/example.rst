@@ -60,7 +60,7 @@ Synopsis
 
 * At a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_template.yml`_ create templates:
+  Use the role `vbotka.freebsd.iocage_template`_ to create templates:
 
   * ``ansible_syslogng_server``
   * ``ansible_syslogng_client``
@@ -76,11 +76,11 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* playbook `vbotka.freebsd.pb_iocage_template.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
 * `module vbotka.freebsd.service`_
 * role `vbotka.freebsd.postinstall`_
+* role `vbotka.freebsd.iocage_template`_
 
 Notes
 ^^^^^
@@ -156,12 +156,18 @@ files
    :language: json
    :caption:
 
-Playbook output - Create templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-template.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-template.yml
+   :language: yaml+jinja
+
+Playbook output - Create iocage templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini
+   (env) > ansible-playbook pb-iocage-template.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -341,8 +347,7 @@ Playbook output - Test Log Clients
 .. _syslog-ng - FreeBSD Wiki: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
 .. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng
 
-.. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml/
-
+.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
 .. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
 
