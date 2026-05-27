@@ -16,17 +16,19 @@ Major Changes
 
 Minor Changes
 --------------
+* Add playbook pb_iocage_project_create_from_templates.yml
+* Add role iocage_template
 * Add setup/sync/; Create limited collections for ansible-conf repos. See
   setup/sync/README.md
-* Update pb_iocage_template; skip missing templates attributes; allow undefined
-  act_user; optionally do not run stop and template tasks.
+* Update module iocage. Fix properties parsing.
+* Update playbook pb_iocage_template; skip missing templates attributes; allow
+  undefined act_user; optionally do not run stop and template tasks.
+* Upgrade role postinstall to 2.8.8
 * Add example 522.
 * Update example 521.
 * Add sandbox 914, 915, 916, 917.
 * Docs. Fix links.
 * Docs. Replace inventory iocage_classes regex_findall regex.
-* Upgrade role postinstall to 2.8.8
-* Update module iocage. Fix properties parsing.
 
 
 0.8.21

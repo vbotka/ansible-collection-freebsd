@@ -1,4 +1,6 @@
-templates:
+freebsd_iocage_mount: /zroot/iocage
+
+fit_templates:
   ansible_syslogng_server:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible_syslogng_server/pkgs-logserver.json
@@ -16,8 +18,8 @@ templates:
       vnet: 1
       notes: "vmm={{ inventory_hostname }}"
 
-act_stop: false
-act_template: false
+fit_stop: false
+fit_template: false
 
 # jail properties
 properties:

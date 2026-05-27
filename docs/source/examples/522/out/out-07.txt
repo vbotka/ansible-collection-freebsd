@@ -1,8 +1,5 @@
 @all:
   |--@ungrouped:
-  |--@state_down:
-  |  |--ansible-syslogng
-  |  |--ansible-zero
   |--@log_client:
   |  |--bar
   |  |--foo
@@ -10,9 +7,13 @@
   |  |--bar
   |  |--foo
   |  |--log-server
+  |  |--repos
+  |  |--repos-dev
   |--@vmm_iocage_05:
   |  |--bar
   |  |--foo
   |  |--log-server
+  |  |--repos
+  |  |--repos-dev
   |--@log_server:
   |  |--log-server

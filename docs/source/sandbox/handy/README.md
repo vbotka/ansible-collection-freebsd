@@ -23,6 +23,7 @@
 * 914 Template ansible-syslogng-server
 * 915 Template ansible-syslogng-client
 * 916 Template ansible-pull-init
+* 917 Template ansible-pull-repos
 
 **Notes**
 

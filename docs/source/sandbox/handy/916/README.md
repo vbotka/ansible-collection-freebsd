@@ -1,2 +1,1 @@
-# template ansible-pull-init
-
+# Template ansible-pull-init

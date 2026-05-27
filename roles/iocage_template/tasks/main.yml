@@ -1,0 +1,68 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+# tasks for freebsd_iocage_template (fit)
+
+- name: Setup.
+  tags: [always, fit_setup]
+  ansible.builtin.import_tasks: setup.yml
+
+- name: Display variables.
+  tags: fit_debug
+  ansible.builtin.import_tasks: debug.yml
+
+- name: Copy pkglist.
+  tags: fit_pkglist
+  ansible.builtin.import_tasks: pkglist.yml
+
+- name: Create jails.
+  tags: fit_create
+  ansible.builtin.import_tasks: create.yml
+
+- name: Start jails.
+  tags: fit_start
+  ansible.builtin.import_tasks: start.yml
+
+- name: Install packages.
+  when: fit_pkg_install | bool
+  tags: fit_pkg
+  ansible.builtin.import_tasks: pkg.yml
+
+- name: Create user.
+  tags: fit_user
+  ansible.builtin.import_tasks: user.yml
+
+- name: Configure public keys.
+  tags: fit_pk
+  ansible.builtin.import_tasks: pk.yml
+
+- name: Configure sudo.
+  when: fit_sudo | bool
+  tags: fit_sudo
+  ansible.builtin.import_tasks: sudo.yml
+
+- name: Configure dhclient.
+  tags: fit_dhclient
+  ansible.builtin.import_tasks: dhclient.yml
+
+- name: Execute commands.
+  tags: fit_commands
+  ansible.builtin.import_tasks: commands.yml
+
+- name: Configure /etc/rc.conf
+  tags: fit_rcconf
+  ansible.builtin.import_tasks: rc_conf.yml
+
+- name: Stop jails
+  when: fit_stop | bool
+  tags: fit_stop
+  ansible.builtin.import_tasks: stop.yml
+
+- name: Convert jails to templates
+  when: fit_template | bool
+  tags: fit_template
+  ansible.builtin.import_tasks: template.yml
+
+# EOF

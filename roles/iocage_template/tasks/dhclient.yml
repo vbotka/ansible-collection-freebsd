@@ -1,0 +1,24 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Dhclient: Configure hooks."
+  register: out
+  ansible.builtin.copy:
+    dest: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/root/etc/{{ item.1.key }}"
+    content: "{{ item.1.value }}"
+    owner: root
+    group: wheel
+    mode: "0644"
+    backup: true
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | subelements('value.dhclient', skip_missing=true) }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.key }}"
+
+- name: "Dhclient: Debug configure hooks fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: out

@@ -6,7 +6,7 @@
 VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
 
 # Create templates
-ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini | tee out/out-01.txt
+ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt
 
 # Configure templates.
 ansible-playbook pb-logserver.yml -i hosts | tee out/out-02.txt
