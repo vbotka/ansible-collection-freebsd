@@ -7,18 +7,12 @@
   when: fit_debug | bool
   ansible.builtin.debug:
     msg: |
+      fit_pkg_install: {{ fit_pkg_install }}
+      fit_sudo: {{ fit_sudo }}
+      fit_stop: {{ fit_stop }}
+      fit_template: {{ fit_template }}
+
       fit_templates:
         {{ fit_templates | to_nice_yaml(indent=2) | indent(2) }}
       fit_iocage_templates:
         {{ fit_iocage_templates | to_nice_yaml(indent=2) | indent(2) }}
-      fit_pkg: {{ fit_pkg }}
-      fit_pkg_install: {{ fit_pkg_install }}
-      fit_user: {{ fit_user }}
-      fit_pk: {{ fit_pk }}
-      fit_sudo: {{ fit_sudo }}
-      fit_commands:
-        {{ fit_commands | to_nice_yaml(indent=2) | indent(2) }}
-      fit_dhclient:
-        {{ fit_dhclient | to_nice_yaml(indent=2) | indent(2) }}
-      fit_rcconf:
-        {{ fit_rcconf | to_nice_yaml(indent=2) | indent(2) }}

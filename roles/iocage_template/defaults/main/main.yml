@@ -1,20 +1,15 @@
 ---
+# defaults for freebsd_iocage_template (fit)
+
 fit_debug: false
 fit_debug2: false
 
-fit_iocage_templates: "{{ out_templates.stdout | vbotka.freebsd.iocage('templates') }}"
-fit_iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
-
-fit_commands: []
-fit_dhclient: {}
-fit_pk: ''
-fit_pkg: []
 fit_pkg_install: false
-fit_rcconf: {}
 fit_sudo: false
-fit_user: ''
-
 fit_stop: true
 fit_template: true
+
+fit_iocage_templates: "{{ out_templates.stdout | vbotka.freebsd.iocage('templates') }}"
+fit_iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
 
 # EOF

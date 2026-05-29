@@ -3,6 +3,16 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
+- name: "Create: Get iocage list of jails."
+  register: out_jails
+  changed_when: false
+  ansible.builtin.command: iocage list --long
+
+- name: "Create: Display iocage_jails fit_debug={{ fit_debug }}"
+  when: fit_debug | bool
+  ansible.builtin.debug:
+    var: fit_iocage_jails
+
 - name: "Create: Create templates."
   register: out
   vbotka.freebsd.iocage:
@@ -12,7 +22,8 @@
     properties: "{{ item.value.properties | d(omit) }}"
     pkglist: "{{ item.value.pkglist | d(omit) }}"
   loop: "{{ fit_templates | dict2items
-                          | rejectattr('key', 'in', fit_iocage_templates) }}"
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | rejectattr('key', 'in', fit_iocage_jails) }}"
   loop_control:
     label: "{{ item.key }} {{ item.value.release }}"
 

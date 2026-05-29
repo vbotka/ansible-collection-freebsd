@@ -14,6 +14,13 @@
         dest: "{{ git_daemon_directory }}/{{ item.key }}"
       loop: "{{ repos[inventory_hostname] | dict2items }}"
 
+    - name: Git config safe.directory.
+      ansible.builtin.shell:
+        cmd: >
+          cd {{ git_daemon_directory }}/{{ item.key }};
+          git config --global --add safe.directory {{ git_daemon_directory }}/{{ item.key }}
+      loop: "{{ repos[inventory_hostname] | dict2items }}"
+
     - name: Change ownership of repos.
       ansible.builtin.file:
         path: "{{ git_daemon_directory }}/{{ item.key }}"

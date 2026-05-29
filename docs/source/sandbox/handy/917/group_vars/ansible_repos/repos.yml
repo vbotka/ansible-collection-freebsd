@@ -2,11 +2,15 @@ git_daemon_directory: /usr/local/git
 
 repos:
   repos:
+    ansible-conf-init:
+      repo: https://github.com/vbotka/ansible-conf-init.git
     ansible-conf-syslogng-server:
       repo: https://github.com/vbotka/ansible-conf-syslogng-server.git
     ansible-conf-syslogng-client:
       repo: https://github.com/vbotka/ansible-conf-syslogng-client.git
   repos-dev:
+    ansible-conf-init:
+      repo: https://github.com/vbotka/ansible-conf-init.git
     ansible-conf-syslogng-server:
       repo: https://github.com/vbotka/ansible-conf-syslogng-server.git
     ansible-conf-syslogng-client:

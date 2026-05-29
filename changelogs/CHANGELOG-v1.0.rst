@@ -26,7 +26,7 @@ Minor Changes
 * Upgrade role postinstall to 2.8.8
 * Add example 522.
 * Update example 521.
-* Add sandbox 914, 915, 916, 917.
+* Add sandbox 914, 915, 916, 917, 918.
 * Docs. Fix links.
 * Docs. Replace inventory iocage_classes regex_findall regex.
 

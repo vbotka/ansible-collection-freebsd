@@ -2,10 +2,10 @@
 PLAY [Clone repos.] ************************************************************
 
 TASK [Clone repos.] ************************************************************
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-server.git'}})
-changed: [repos-dev] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-server.git'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-client.git'}})
-changed: [repos-dev] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-client.git'}})
+ok: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-server.git'}})
+ok: [repos-dev] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-server.git'}})
+ok: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-client.git'}})
+ok: [repos-dev] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-client.git'}})
 
 TASK [Change ownership of repos.] **********************************************
 changed: [repos-dev] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-server.git'}})
@@ -14,6 +14,6 @@ changed: [repos-dev] => (item={'key': 'ansible-conf-syslogng-client', 'value': {
 changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'https://github.com/vbotka/ansible-conf-syslogng-client.git'}})
 
 PLAY RECAP *********************************************************************
-repos                      : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos-dev                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos-dev                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

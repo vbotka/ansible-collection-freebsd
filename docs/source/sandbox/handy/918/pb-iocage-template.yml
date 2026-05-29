@@ -1,0 +1,7 @@
+---
+- name: Create Ansible client templates.
+  hosts: iocage
+
+  roles:
+
+    - vbotka.freebsd.iocage_template

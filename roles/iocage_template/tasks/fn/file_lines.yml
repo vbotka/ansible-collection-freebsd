@@ -1,0 +1,22 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Fn/file_lines: Configure lines in files."
+  vars:
+    _ao: "{{ fit_file_options[outer_item.1.key]['assignment_operator'] }}"
+    _owner: "{{ fit_file_options[outer_item.1.key]['owner'] }}"
+    _group: "{{ fit_file_options[outer_item.1.key]['group'] }}"
+    _mode: "{{ fit_file_options[outer_item.1.key]['mode'] }}"
+  ansible.builtin.lineinfile:
+    path: "{{ freebsd_iocage_mount }}/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
+    regexp: ^\s*{{ item.key }}\s*{{ _ao }}\s*(.*)$
+    line: "{{ item.key }}{{ _ao }}{{ item.value }}" 
+    owner: "{{ _owner }}"
+    group: "{{ _group }}"
+    mode: "{{ _mode }}"
+    create: true
+  loop: "{{ outer_item.1.value | dict2items }}"
+  loop_control:
+    label: "{{ outer_item.0.key }} {{ outer_item.1.key }} {{ item.key }}={{ item.value }}"

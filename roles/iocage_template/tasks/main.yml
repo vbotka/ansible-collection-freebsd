@@ -13,9 +13,9 @@
   tags: fit_debug
   ansible.builtin.import_tasks: debug.yml
 
-- name: Copy pkglist.
-  tags: fit_pkglist
-  ansible.builtin.import_tasks: pkglist.yml
+- name: Copy pkglists.
+  tags: fit_pkglists
+  ansible.builtin.import_tasks: pkglists.yml
 
 - name: Create jails.
   tags: fit_create
@@ -38,6 +38,10 @@
   tags: fit_pk
   ansible.builtin.import_tasks: pk.yml
 
+- name: Configure lines in files.
+  tags: fit_file_lines
+  ansible.builtin.import_tasks: file_lines.yml
+
 - name: Configure sudo.
   when: fit_sudo | bool
   tags: fit_sudo
@@ -50,6 +54,10 @@
 - name: Execute commands.
   tags: fit_commands
   ansible.builtin.import_tasks: commands.yml
+
+- name: Configure firstboot.
+  tags: fit_firstboot
+  ansible.builtin.import_tasks: firstboot.yml
 
 - name: Configure /etc/rc.conf
   tags: fit_rcconf

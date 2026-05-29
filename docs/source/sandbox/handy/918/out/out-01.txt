@@ -10,9 +10,6 @@ ok: [iocage_05] => (item=ansible_pull_repos /tmp/ansible/ansible_pull_repos/pkgs
 TASK [vbotka.freebsd.iocage_template : Pkglist: Copy pkglist files.] ***********
 ok: [iocage_05] => (item=ansible_pull_repos /tmp/ansible/ansible_pull_repos/pkgs.json)
 
-TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
-ok: [iocage_05]
-
 TASK [vbotka.freebsd.iocage_template : Create: Create templates.] **************
 changed: [iocage_05] => (item=ansible_pull_repos 15.0-RELEASE)
 
@@ -22,13 +19,13 @@ ok: [iocage_05]
 TASK [vbotka.freebsd.iocage_template : Start: Start created templates.] ********
 ok: [iocage_05]
 
+TASK [vbotka.freebsd.iocage_template : User: Create user.] *********************
+changed: [iocage_05] => (item=ansible_pull_repos admin)
+
 TASK [vbotka.freebsd.iocage_template : Commands: Execute commands.] ************
 ok: [iocage_05] => (item=ansible_pull_repos > mkdir -p /usr/local/git)
 ok: [iocage_05] => (item=ansible_pull_repos > chown -R git_daemon:git_daemon /usr/local/git)
 ok: [iocage_05] => (item=ansible_pull_repos > chmod -R 755 /usr/local/git)
-
-TASK [vbotka.freebsd.iocage_template : Firstboot: Touch /firstboot.] ***********
-changed: [iocage_05] => (item=ansible_pull_repos)
 
 TASK [vbotka.freebsd.iocage_template : Rcconf: Configure /etc/rc.conf] *********
 changed: [iocage_05] => (item=ansible_pull_repos git_daemon_enable YES)
@@ -45,5 +42,5 @@ TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
 ok: [iocage_05] => (item=ansible_pull_repos)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=13   changed=3    unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
+iocage_05                  : ok=12   changed=3    unreachable=0    failed=0    skipped=23   rescued=0    ignored=0   
 
