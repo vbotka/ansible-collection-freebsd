@@ -2,10 +2,11 @@
 
 For example, create limited collection used in the repos
 
+* ansible-conf-init
 * ansible-conf-syslogng-server
 * ansible-conf-syslogng-client
 
-1) Export VBOTKA_FREEBSD_COLLECTION_PATH to the collection
+1) Export VBOTKA_FREEBSD_COLLECTION_PATH to the collection. For example,
 
 ```
 shell > export VBOTKA_FREEBSD_COLLECTION_PATH=/scratch/collections/ansible_collections/vbotka/freebsd
@@ -16,7 +17,7 @@ shell > export VBOTKA_FREEBSD_COLLECTION_PATH=/scratch/collections/ansible_colle
 ```
 shell > mkdir -p ${HOME}/tmp/vbotka.freebsd/setup/sync
 ```
-3) Copy the list of files and sync them
+3) Copy the list of files and sync them. For example, for the repos ansible-conf-syslogng-*
 
 ```
 shell > cd ${HOME}/tmp/vbotka.freebsd
@@ -24,7 +25,8 @@ shell > cp ${VBOTKA_FREEBSD_COLLECTION_PATH}/setup/sync/ansible-conf-syslogng.tx
 shell > rsync -avL --delete-excluded --include-from='setup/sync/ansible-conf-syslogng.txt' --exclude='*' ${VBOTKA_FREEBSD_COLLECTION_PATH}/ .
 ```
 
-4) Go to the repo of ansible-conf-syslogng-server, export the path, and install (update) the limited collection
+4) Go to the repo, for example, ansible-conf-syslogng-server, export the path to
+   the Ansible collections, and install (update) the limited collection
 
 ```
 shell > cd /scratch/vbotka/vbotka.ansible-conf-syslogng-server
