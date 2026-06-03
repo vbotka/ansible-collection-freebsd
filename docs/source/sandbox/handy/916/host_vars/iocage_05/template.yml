@@ -1,9 +1,0 @@
-templates:
-  ansible_pull_init:
-    release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_pull_init/pkgs.json
-    properties:
-      bpf: 1
-      dhcp: 1
-      vnet: 1
-      notes: "vmm={{ inventory_hostname }}"

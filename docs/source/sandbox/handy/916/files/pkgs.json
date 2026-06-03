@@ -1,7 +1,0 @@
-{
-    "pkgs": [
-        "git",
-	"py311-ansible",
-        "sudo"
-        ]
-}
