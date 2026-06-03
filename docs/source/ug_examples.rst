@@ -140,7 +140,6 @@ Examples
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
    examples/502/example.rst
-   examples/510/example.rst
    examples/520/example.rst
    521 iocage plugins ansible-pull* <examples/521/example.rst>
    522 templates ansible_syslogng_* <examples/522/example.rst>
