@@ -1,5 +1,5 @@
 ---
-- name: Create Ansible client templates.
+- name: Create iocage templates.
   hosts: iocage
 
   roles:
