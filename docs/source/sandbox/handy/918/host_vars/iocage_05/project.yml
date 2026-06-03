@@ -12,6 +12,7 @@ properties:
   bpf: 1
   dhcp: 1
   vnet: 1
+  boot: 1
 
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
 vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"

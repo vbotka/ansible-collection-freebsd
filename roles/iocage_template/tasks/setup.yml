@@ -18,3 +18,19 @@
 
     - name: "Setup: End host."
       ansible.builtin.meta: end_host
+
+- name: "Setup: Set iocage pool mount point."
+  block:
+
+    - name: "Setup: Get activated pool."  # noqa: risky-shell-pipe
+      register: out_pool
+      changed_when: false
+      ansible.builtin.shell: >
+        zfs list -H -o name |
+        grep '/iocage$' |
+        cut -d'/' -f1
+
+    - name: "Debug: Display get activated pool."
+      when: fit_debug2 | bool
+      ansible.builtin.debug:
+        var: out_pool

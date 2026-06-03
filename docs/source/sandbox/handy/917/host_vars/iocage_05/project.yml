@@ -3,15 +3,20 @@ project:
     class: [repos]
     template: ansible_pull_repos
     vmm: iocage_05
-  repos-dev:
+    properties:
+      vnet: 1
+      defaultrouter: 10.10.99.1
+      ip4_addr: "vnet0|10.10.99.201/24"
+      boot: 1
+  repos-devel:
     class: [repos]
     template: ansible_pull_repos
     vmm: iocage_05
-
-properties:
-  bpf: 1
-  dhcp: 1
-  vnet: 1
+    properties:
+      vnet: 1
+      defaultrouter: 10.10.99.1
+      ip4_addr: "vnet0|10.10.99.202/24"
+      boot: 1
 
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
 vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"

@@ -6,7 +6,7 @@
 - name: "Dhclient: Configure hooks."
   register: out
   ansible.builtin.copy:
-    dest: "{{ freebsd_iocage_mount }}/jails/{{ item.0.key }}/root/etc/{{ item.1.key }}"
+    dest: "{{ fit_iocage_mount }}/jails/{{ item.0.key }}/root/etc/{{ item.1.key }}"
     content: "{{ item.1.value }}"
     owner: root
     group: wheel

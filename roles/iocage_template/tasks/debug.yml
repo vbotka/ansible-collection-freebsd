@@ -14,5 +14,6 @@
 
       fit_templates:
         {{ fit_templates | to_nice_yaml(indent=2) | indent(2) }}
+      fit_iocage_mount: {{ fit_iocage_mount }}
       fit_iocage_templates:
         {{ fit_iocage_templates | to_nice_yaml(indent=2) | indent(2) }}

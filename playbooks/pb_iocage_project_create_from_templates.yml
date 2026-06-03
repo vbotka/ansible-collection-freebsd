@@ -6,6 +6,13 @@
 - name: Create and start project jails from iocage templates.
   hosts: iocage
 
+  vars:
+
+    iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
+    iocage_jails_started: "{{ iocage_jails | dict2items
+                                           | selectattr('value.state', 'eq', 'up')
+                                           | map(attribute='key') }}"
+
   tasks:
 
     - name: Display vars.  # noqa: run-once
@@ -49,7 +56,9 @@
               "vmm={{ inventory_hostname }}
               class={{ vmm[inventory_hostname][item]['class'] | join(',') }}"
             _properties: >
-              {{ properties | dictsort | map('join', '=') | join(' ') }}
+              {{ vmm[inventory_hostname][item]['properties']
+                 | d(properties)
+                 | dictsort | map('join', '=') | join(' ') }}
               notes={{ _notes }}
           ansible.builtin.command: >
             iocage create
@@ -63,8 +72,21 @@
           ansible.builtin.debug:
             var: iocage_jails_created
 
+        - name: Get iocage list of jails.
+          register: out_jails
+          changed_when: false
+          ansible.builtin.command: iocage list --long
+
+        - name: Display iocage_jails_started
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: iocage_jails_started
+
         - name: Start created jails.
+          when:
+            - iocage_jails_created | difference(iocage_jails_started) | length > 0
+            - start | d(true) | bool
           changed_when: false
           ansible.builtin.command: >
             iocage start
-            {{ iocage_jails_created | join(' ') }}
+            {{ iocage_jails_created | difference(iocage_jails_started) | join(' ') }}

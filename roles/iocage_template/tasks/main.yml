@@ -38,6 +38,10 @@
   tags: fit_pk
   ansible.builtin.import_tasks: pk.yml
 
+- name: Execute commands.
+  tags: fit_commands
+  ansible.builtin.import_tasks: commands.yml
+
 - name: Configure lines in files.
   tags: fit_file_lines
   ansible.builtin.import_tasks: file_lines.yml
@@ -51,13 +55,13 @@
   tags: fit_dhclient
   ansible.builtin.import_tasks: dhclient.yml
 
-- name: Execute commands.
-  tags: fit_commands
-  ansible.builtin.import_tasks: commands.yml
-
 - name: Configure firstboot.
   tags: fit_firstboot
   ansible.builtin.import_tasks: firstboot.yml
+
+- name: Configure cron.
+  tags: fit_cron
+  ansible.builtin.import_tasks: cron.yml
 
 - name: Configure /etc/rc.conf
   tags: fit_rcconf
