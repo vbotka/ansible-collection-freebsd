@@ -2,8 +2,8 @@
 PLAY [Create and start project jails from iocage templates.] *******************
 
 TASK [Create jails from templates.] ********************************************
-ok: [iocage_05] => (item=repos)
 ok: [iocage_05] => (item=repos-devel)
+ok: [iocage_05] => (item=repos)
 
 TASK [Get iocage list of jails.] ***********************************************
 ok: [iocage_05]

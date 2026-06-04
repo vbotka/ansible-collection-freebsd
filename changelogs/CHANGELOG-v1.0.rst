@@ -17,7 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Add playbook pb_iocage_project_create_from_templates.yml
-* Add role iocage_template
+* Add role iocage_template 1.0.0
 * Add setup/sync/; Create limited collections for ansible-conf repos. See
   setup/sync/README.md
 * Update module iocage. Fix properties parsing.

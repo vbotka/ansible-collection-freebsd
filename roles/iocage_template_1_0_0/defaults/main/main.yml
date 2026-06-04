@@ -1,0 +1,18 @@
+---
+# defaults for freebsd_iocage_template (fit)
+fit_role_version: 1.0.0
+
+fit_debug: false
+fit_debug2: false
+
+fit_pkg_install: false
+fit_sudo: false
+fit_stop: true
+fit_template: true
+fit_templates: []
+
+fit_iocage_mount: "/{{ out_pool.stdout }}/iocage"
+fit_iocage_templates: "{{ out_templates.stdout | vbotka.freebsd.iocage('templates') }}"
+fit_iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
+
+# EOF

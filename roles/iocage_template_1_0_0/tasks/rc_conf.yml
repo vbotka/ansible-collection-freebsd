@@ -1,0 +1,21 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Rcconf: Configure /etc/rc.conf"
+  register: out
+  community.general.sysrc:
+    path: "{{ fit_iocage_mount }}/jails/{{ item.0.key }}/root/etc/rc.conf"
+    name: "{{ item.1.key }}"
+    value: "{{ item.1.value }}"
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | subelements('value.rcconf', skip_missing=true) }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.key }} {{ item.1.value }}"
+
+- name: "Rcconf: Debug configure /etc/rc.conf fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: out
