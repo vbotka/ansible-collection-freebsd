@@ -101,7 +101,7 @@ Requirements
 .. important::
 
    For security reasons, you might want to create private repositories with the iocage plugins and
-   configurations.
+   configurations. See the example :ref:`example_523`
 
 Notes
 ^^^^^

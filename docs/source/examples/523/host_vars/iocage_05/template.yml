@@ -1,5 +1,3 @@
-freebsd_iocage_mount: /zroot/iocage
-
 fit_templates:
   ansible_pull_repos:
     release: 15.0-RELEASE

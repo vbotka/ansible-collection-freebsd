@@ -15,8 +15,9 @@
 Use case
 ^^^^^^^^
 
-Create ``iocage`` template ``ansible_pull_repos`` and configure `git-daemon`_. Create jails from the
-template and clone repos to the ``base-path``.
+Create a jail that provides git repos for `ansible-pull`_. Create `iocage`_ template
+``ansible_pull_repos`` and configure `git-daemon`_. Create jails from the template and clone repos
+to the `base-path`_.
 
 Tree
 ^^^^
@@ -47,17 +48,20 @@ Synopsis
 
   * Use the role `vbotka.freebsd.iocage_template`_ to create template ``ansible_pull_repos``
 
-  * In the playbook ``vbotka.freebsd.pb_iocage_project_create_from_templates.yml`` create jails from
+  * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
 
-* In the inventory group ``ansible_repos`` clone the repos that will be used by ``ansible-pull``.
+* In the inventory group ``ansible_repos`` clone the repos that will be used by `ansible-pull`_.
 
 Requirements
 ^^^^^^^^^^^^
 
+* role `vbotka.freebsd.iocage_template`_
+* playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
-* role `vbotka.freebsd.iocage_template`_
+
+
 
 .. note::
 
@@ -93,6 +97,11 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. note::
+
+   The repos are cloned from the local mirror at 172.16.0.151. To reproduce this example, create
+   your mirror and fit the IP to your needs. Optionally, for testing, clone the repos from GitHub.
+
 host_vars
 ^^^^^^^^^
 
@@ -103,6 +112,12 @@ host_vars
 .. literalinclude:: host_vars/iocage_05/template.yml
    :language: yaml
    :caption:
+
+.. important::
+
+   Running git daemon with these specific flags sets up a public, unauthenticated Git server. This
+   configuration is highly efficient for local mirroring, but it completely bypasses authentication
+   and authorization. Ensure the daemon is strictly read-only (which is the default).
 
 files
 ^^^^^
@@ -188,7 +203,13 @@ List repos
    :force:
 
 
-.. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
+.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
+.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
+
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _connection plugin vbotka.freebsd.jailexec: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/connection/jailexec/
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
+
+.. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
+.. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
+.. _base-path: https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath
+.. _iocage: https://iocage.readthedocs.io/en/latest/
