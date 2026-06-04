@@ -110,6 +110,7 @@ Examples
    :caption: Roles
 
    310 Configure and audit Ansible clients <examples/310/example.rst>
+   examples/311/example.rst
    320 Install and audit packages <examples/320/example.rst>
    321 Create package repo configuration <examples/321/example.rst>
    330 Clone jails and create inventory <examples/330/example.rst>
