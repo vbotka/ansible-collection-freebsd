@@ -16,7 +16,7 @@ compose:
   ansible_python_interpreter: "'auto_silent'"
 
 groups:
-  ansible_init: iocage_classes is contains('init')
+  init: iocage_classes is contains('init')
 
 keyed_groups:
   - prefix: state

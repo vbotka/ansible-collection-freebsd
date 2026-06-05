@@ -1,5 +1,5 @@
 
-PLAY [Create Ansible client templates.] ****************************************
+PLAY [Create iocage templates.] ************************************************
 
 TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
 ok: [iocage_05]
