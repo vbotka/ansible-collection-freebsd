@@ -1,23 +1,24 @@
-.. _example_523:
+.. _example_524:
 
-523 iocage template ansible_pull_repos
---------------------------------------
+524 iocage template ansible_init
+--------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: template ansible_pull_repos; Example 523
-.. index:: single: role vbotka.freebsd.iocage_template; Example 523
-.. index:: single: connection vbotka.freebsd.jailexec; Example 523
-.. index:: single: inventory vbotka.freebsd.iocage; Example 523
+.. index:: single: template ansible_init; Example 524
+.. index:: single: role vbotka.freebsd.iocage_template; Example 524
+.. index:: single: connection vbotka.freebsd.jailexec; Example 524
+.. index:: single: inventory vbotka.freebsd.iocage; Example 524
 
 Use case
 ^^^^^^^^
 
-Create a jail that provides git repos for `ansible-pull`_. Create `iocage`_ template
-``ansible_pull_repos`` and configure `git-daemon`_. Create jails from the template and clone repos
-to the `base-path`_.
+Create `iocage`_ template ``ansible_init``. Configure ``firstboot`` service ``ansible-init`` that
+runs ``ansible_pull`` and uses the repo ``ansible-conf-init``. Create jails from the template and
+configure the repo ``ansible-conf-init`` to pull configuration for there jails from the repo
+``ansible-conf-test``.
 
 Tree
 ^^^^
@@ -69,12 +70,7 @@ Requirements
 
 .. seealso::
 
-   GitHub repos:
-
-   * `ansible-conf-init`_
-   * `ansible-conf-syslogng-server`_
-   * `ansible-conf-syslogng-client`_
-   * `ansible-conf-test`_
+   TBD
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -95,19 +91,6 @@ hosts
    :language: yaml
    :caption:
 
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/ansible_repos/repos.yml
-   :language: yaml+jinja
-   :caption:
-
-.. note::
-
-   The repos are cloned from the local mirror at 172.16.0.151. To reproduce this example, create
-   your mirror and fit the IP to your needs. See :ref:`example_311`. Optionally, for testing, clone
-   the repos from GitHub.
-
 host_vars
 ^^^^^^^^^
 
@@ -124,13 +107,6 @@ host_vars
    Running git daemon with these specific flags sets up a public, unauthenticated Git server. This
    configuration is highly efficient for local mirroring, but it completely bypasses authentication
    and authorization. Ensure the daemon is strictly read-only (which is the default).
-
-files
-^^^^^
-
-.. literalinclude:: files/pkgs.json
-   :language: json
-   :caption:
 
 Playbook pb-iocage-template.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,34 +156,6 @@ List jails
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-Playbook pb-repos.yml
-^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-repos.yml
-   :language: yaml+jinja
-
-Playbook output - Clone repos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-repos.yml -i hosts
-
-.. literalinclude:: out/out-05.txt
-   :language: yaml
-   :force:
-
-List repos
-^^^^^^^^^^
-
-.. code-block:: console
-
-   shell > ssh admin@iocage_05 sudo iocage exec repos ls -la /usr/local/git
-
-.. literalinclude:: out/out-06.txt
-   :language: console
-   :force:
-
 
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
@@ -219,8 +167,3 @@ List repos
 .. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
 .. _base-path: https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath
 .. _iocage: https://iocage.readthedocs.io/en/latest/
-
-.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init
-.. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
-.. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
-.. _ansible-conf-test: https://github.com/vbotka/ansible-conf-test

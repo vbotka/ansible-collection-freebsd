@@ -145,6 +145,7 @@ Examples
    521 iocage plugins ansible-pull* <examples/521/example.rst>
    522 templates ansible_syslogng_* <examples/522/example.rst>
    523 template ansible_pull_repos <examples/523/example.rst>
+   524 template ansible_init <examples/524/example.rst>
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
