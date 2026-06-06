@@ -1,0 +1,26 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Debug start jails.
+  when: debug | d(false) | bool
+  ansible.builtin.debug:
+    msg: >
+      iocage start
+      {{ iocage_jails_to_be_started }}
+
+- name: Start jails.
+  when:
+    - start | d(true) | bool
+    - iocage_jails_to_be_started | trim | length > 0
+  changed_when: false
+  register: out_start
+  ansible.builtin.command: >
+    iocage start
+    {{ iocage_jails_to_be_started }}
+
+- name: Debug start jails.
+  when: debug | d(false) | bool
+  ansible.builtin.debug:
+    var: out_start | d('none')

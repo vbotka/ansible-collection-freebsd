@@ -1,0 +1,6 @@
+{
+    "pkgs": [
+	"py311-ansible",
+        "git"
+        ]
+}

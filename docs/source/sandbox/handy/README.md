@@ -23,7 +23,8 @@
 * 914 Template ansible_syslogng_server
 * 915 Template ansible_syslogng_client
 * 917 Template ansible_pull_repos
-* 918 Template ansible_init
+* 918 Template ansible_init (ai_db_host)
+* 919 Template ansible_init (ai_db_class)
 
 **Notes**
 
