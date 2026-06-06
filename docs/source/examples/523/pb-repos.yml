@@ -1,6 +1,6 @@
 ---
 - name: Clone repos.
-  hosts: ansible_repos
+  hosts: pull_repos
 
   tasks:
 

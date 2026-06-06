@@ -29,7 +29,7 @@ Tree
   ├── files
   │   └── pkgs.json
   ├── group_vars
-  │   └── ansible_repos
+  │   └── pull_repos
   │       └── repos.yml
   ├── hosts
   │   └── 05_iocage.yml
@@ -51,7 +51,7 @@ Synopsis
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
 
-* In the inventory group ``ansible_repos`` clone the repos that will be used by `ansible-pull`_.
+* In the inventory group ``pull_repos`` clone the repos that will be used by `ansible-pull`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -60,7 +60,6 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
-
 
 
 .. note::
@@ -98,7 +97,7 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/ansible_repos/repos.yml
+.. literalinclude:: group_vars/pull_repos/repos.yml
    :language: yaml+jinja
    :caption:
 

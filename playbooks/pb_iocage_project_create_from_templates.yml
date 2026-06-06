@@ -9,6 +9,7 @@
   vars:
     project_jails_present: "{{ project | intersect(groups.all) }}"
     project_jails_absent: "{{ project | difference(groups.all) }}"
+    iocage_mount: "/{{ out_pool.stdout }}/iocage"
     iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.all) }}"
     iocage_jails_created: "{{ out_created.results | map(attribute='stdout') | map('split') | map('first') }}"
     iocage_jails_to_be_started: >
@@ -20,6 +21,10 @@
 
   tasks:
 
+    - name: Setup.
+      tags: [always, setup]
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/setup.yml
+
     - name: Debug.  # noqa: run-once
       when: debug | d(false) | bool
       tags: [always, debug]
@@ -29,6 +34,14 @@
     - name: Create jails.
       tags: create
       ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/create.yml
+
+    - name: Create custom facts.
+      tags: facts
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/facts.yml
+
+    - name: Set jails properties.
+      tags: properties
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/properties.yml
 
     - name: Start jails.
       tags: start

@@ -6,7 +6,7 @@
 # VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
 
 # Create template
-ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt
+# ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt
 
 # List templates
 ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-02.txt
@@ -18,6 +18,6 @@ ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_templates.yml -i i
 ssh admin@$iocage_05 sudo iocage list -l | tee out/out-04.txt
 
 # Test
-sleep 2m
-ssh admin@$iocage_05 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt" | tee out/out-05.txt
-ssh admin@$iocage_05 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt
+sleep 90
+ssh admin@$iocage_05 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt" | tee out/out-05.txt
+ssh admin@$iocage_05 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt

@@ -1,11 +1,13 @@
 project:
-  foo:
+  baz:
     class: [test]
     template: ansible_init
+    custom_facts: class.fact.j2
     vmm: iocage_05
-  bar:
+  qux:
     class: [test]
     template: ansible_init
+    custom_facts: class.fact.j2
     vmm: iocage_05
 
 properties:

@@ -1,0 +1,32 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create custom facts.
+  vars:
+    custom_facts_dir: /usr/local/etc/ansible/facts.d
+    custom_facts_path: "{{ custom_facts_dir }}/iocage.fact"
+    _jails: "{{ vmm[inventory_hostname] | dict2items
+                                        | selectattr('value.custom_facts', 'defined') }}"
+  block:
+
+    - name: Create custom facts dirs.
+      ansible.builtin.file:
+        state: directory
+        path: "{{ iocage_mount }}/jails/{{ item.key }}/root{{ custom_facts_dir }}"
+        owner: root
+        group: wheel
+        mode: '0755'
+        recurse: true
+      loop: "{{ _jails }}"
+
+    - name: Create custom facts files.
+      ansible.builtin.copy:
+        dest: "{{ iocage_mount }}/jails/{{ item.key }}/root{{ custom_facts_path }}"
+        owner: root
+        group: wheel
+        mode: '0755'
+        content: |
+          {{ lookup('ansible.builtin.template', item.value.custom_facts) }}
+      loop: "{{ _jails }}"

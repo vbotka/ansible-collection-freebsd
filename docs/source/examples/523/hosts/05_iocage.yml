@@ -16,7 +16,7 @@ compose:
   ansible_python_interpreter: "'auto_silent'"
 
 groups:
-  ansible_repos: iocage_classes is contains('repos')
+  pull_repos: iocage_classes is contains('repos')
 
 keyed_groups:
   - prefix: state
