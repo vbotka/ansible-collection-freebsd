@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index:: single: ansible_init; Example 524
+.. index:: single: service ansible_init; Example 524
 .. index:: single: template ansible_init; Example 524
 .. index:: single: ansible-pull; Example 524
 .. index:: single: firstboot; Example 524
@@ -19,9 +20,9 @@ Use case
 ^^^^^^^^
 
 Create `iocage`_ template ``ansible_init``. Configure ``firstboot`` service ``ansible_init`` that
-runs ``ansible_pull`` and uses the repo ``ansible-conf-init``. Create jails from the template and
-configure the repo ``ansible-conf-init`` to pull the jails' configuration from the repo
-``ansible-conf-test``.
+runs ``ansible_pull`` and uses the repo ``ansible-conf-init``. Configure the repo
+``ansible-conf-init`` to pull the jails' configuration from the repo ``ansible-conf-test``. Create
+jails from the template.
 
 Tree
 ^^^^
@@ -52,8 +53,6 @@ Synopsis
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
-
-* In the inventory group ``pull_repos`` clone the repos that will be used by `ansible-pull`_.
 
 Requirements
 ^^^^^^^^^^^^

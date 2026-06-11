@@ -40,7 +40,6 @@ fit_firstboot:
           LC_ALL=en_US.UTF-8"
 
       ansible_init_start() {
-          exec >> /var/log/ansible-init.log 2>&1
           echo "Service ansible_init started."
           ansible-pull \
               -i hosts \
