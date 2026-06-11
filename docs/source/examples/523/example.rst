@@ -68,12 +68,7 @@ Requirements
 
 .. seealso::
 
-   GitHub repos:
-
-   * `ansible-conf-init`_
-   * `ansible-conf-syslogng-server`_
-   * `ansible-conf-syslogng-client`_
-   * `ansible-conf-test`_
+   TBD
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -103,7 +98,7 @@ group_vars
 
 .. note::
 
-   The repos are cloned from the local mirror at 172.16.0.151. To reproduce this example, create
+   The repos are cloned from the local mirror at ``git_server``. To reproduce this example, create
    your mirror and fit the IP to your needs. See :ref:`example_311`. Optionally, for testing, clone
    the repos from GitHub.
 
