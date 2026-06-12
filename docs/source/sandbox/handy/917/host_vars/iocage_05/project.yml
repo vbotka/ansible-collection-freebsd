@@ -1,7 +1,7 @@
 project:
   repos:
     class: [repos]
-    template: ansible_pull_repos
+    template: ansible_repos
     vmm: iocage_05
     properties:
       vnet: 1
@@ -10,7 +10,7 @@ project:
       boot: 1
   repos-devel:
     class: [repos]
-    template: ansible_pull_repos
+    template: ansible_repos
     vmm: iocage_05
     properties:
       vnet: 1

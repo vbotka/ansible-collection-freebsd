@@ -1,13 +1,13 @@
 .. _example_523:
 
-523 iocage template ansible_pull_repos
---------------------------------------
+523 iocage template ansible_repos
+---------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: template ansible_pull_repos; Example 523
+.. index:: single: template ansible_repos; Example 523
 .. index:: single: role vbotka.freebsd.iocage_template; Example 523
 .. index:: single: connection vbotka.freebsd.jailexec; Example 523
 .. index:: single: inventory vbotka.freebsd.iocage; Example 523
@@ -16,8 +16,8 @@ Use case
 ^^^^^^^^
 
 Create a jail that provides git repos for `ansible-pull`_. Create `iocage`_ template
-``ansible_pull_repos`` and configure `git-daemon`_. Create jails from the template and clone repos
-to the `base-path`_.
+``ansible_repos`` and configure `git-daemon`_. Create jails from the template and clone repos to the
+`base-path`_.
 
 Tree
 ^^^^
@@ -46,7 +46,7 @@ Synopsis
 
 * At a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create template ``ansible_pull_repos``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create template ``ansible_repos``
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
@@ -64,11 +64,17 @@ Requirements
 
 .. note::
 
-   TBD
+   * See the example :ref:`example_311`
 
 .. seealso::
 
-   TBD
+   GitHub repositories:
+
+   * `ansible-conf-init`_
+   * `ansible-conf-syslogng-server`_
+   * `ansible-conf-syslogng-client`_
+   * `ansible-conf-test`_
+
 
 ansible.cfg
 ^^^^^^^^^^^

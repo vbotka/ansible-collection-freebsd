@@ -1,4 +1,4 @@
-# Template ansible-init
+# Template ansible_init
 
 Use ai_db_class from the repo ansible-conf-init
 
@@ -9,4 +9,8 @@ ai_db_class:
     repo: ansible-conf-test
     repo_dest: /root
     repo_playbook: pb-test.yml
+
+ai_db_class_options:
+  at: ''
+  async: true
 ```

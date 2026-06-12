@@ -1,1 +1,1 @@
-# Template ansible-pull-repos
+# Template ansible_repos

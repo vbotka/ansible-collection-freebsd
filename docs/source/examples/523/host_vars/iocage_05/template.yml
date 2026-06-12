@@ -1,5 +1,5 @@
 fit_templates:
-  ansible_pull_repos:
+  ansible_repos:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible_pull_repos/pkgs.json
     commands: "{{ fit_commands }}"

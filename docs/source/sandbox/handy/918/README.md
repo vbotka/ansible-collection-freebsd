@@ -1,4 +1,4 @@
-# Template ansible-init
+# Template ansible_init
 
 Use ai_db_host from the repo ansible-conf-init
 

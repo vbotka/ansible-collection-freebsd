@@ -5,8 +5,8 @@ TASK [Setup: Get activated pool.] **********************************************
 ok: [iocage_05]
 
 TASK [Create jails.] ***********************************************************
-ok: [iocage_05] => (item=qux)
 ok: [iocage_05] => (item=baz)
+ok: [iocage_05] => (item=qux)
 
 TASK [Create custom facts dirs.] ***********************************************
 changed: [iocage_05] => (item={'key': 'baz', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})

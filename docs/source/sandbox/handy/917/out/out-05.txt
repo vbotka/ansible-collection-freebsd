@@ -2,34 +2,34 @@
 PLAY [Clone repos.] ************************************************************
 
 TASK [Clone repos.] ************************************************************
-changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.0.151/ansible-conf-init'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.0.151/ansible-conf-init'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-server'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-client'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.0.151/ansible-conf-test'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.0.151/ansible-conf-test'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://10.0.8.101/ansible-conf-init'}})
+changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://10.0.8.101/ansible-conf-init'}})
+changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-server'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-server'}})
+changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-client'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-client'}})
+changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://10.0.8.101/ansible-conf-test'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://10.0.8.101/ansible-conf-test'}})
 
 TASK [Git config safe.directory.] **********************************************
-changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.0.151/ansible-conf-init'}})
-changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.0.151/ansible-conf-init'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-server'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-client'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.0.151/ansible-conf-test'}})
-changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.0.151/ansible-conf-test'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://10.0.8.101/ansible-conf-init'}})
+changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://10.0.8.101/ansible-conf-init'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-server'}})
+changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-server'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-client'}})
+changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-client'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://10.0.8.101/ansible-conf-test'}})
+changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://10.0.8.101/ansible-conf-test'}})
 
 TASK [Change ownership of repos.] **********************************************
-changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.0.151/ansible-conf-init'}})
-changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.0.151/ansible-conf-init'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-server'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.0.151/ansible-conf-syslogng-client'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.0.151/ansible-conf-test'}})
-changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.0.151/ansible-conf-test'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://10.0.8.101/ansible-conf-init'}})
+changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://10.0.8.101/ansible-conf-init'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-server'}})
+changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-server'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-client'}})
+changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://10.0.8.101/ansible-conf-syslogng-client'}})
+changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://10.0.8.101/ansible-conf-test'}})
+changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://10.0.8.101/ansible-conf-test'}})
 
 PLAY RECAP *********************************************************************
 repos                      : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
