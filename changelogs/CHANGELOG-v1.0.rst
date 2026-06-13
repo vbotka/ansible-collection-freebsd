@@ -27,7 +27,7 @@ Minor Changes
 * Add example 311, 522, 523, 524, 525.
 * Update example 521.
 * Remove example 510.
-* Add sandbox 914, 915, 917, 918, and 919.
+* Add sandbox 914, 915, 917, 918, 919, and 920.
 * Remove sandbox 916.
 * Docs. Fix links.
 * Docs. Replace inventory iocage_classes regex_findall regex.

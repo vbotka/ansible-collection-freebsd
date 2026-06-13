@@ -1,5 +1,5 @@
 git_daemon_directory: /usr/local/git
-git_server: 10.0.8.101
+git_server: 192.168.98.2
 
 repos:
   repos:

@@ -1,0 +1,25 @@
+project:
+  log-server:
+    class: [log-server]
+    template: ansible_init
+    custom_facts: class.fact.j2
+    vmm: iocage_05
+  www-01:
+    class: [log-client]
+    template: ansible_init
+    custom_facts: class.fact.j2
+    vmm: iocage_05
+  www-02:
+    class: [log-client]
+    template: ansible_init
+    custom_facts: class.fact.j2
+    vmm: iocage_05
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+
+vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
+vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"
