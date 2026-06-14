@@ -45,6 +45,7 @@ fit_firstboot:
               -i hosts \
               -U ${ansible_init_host}/${ansible_init_repo} \
               -d ${ansible_init_dest}/${ansible_init_repo} \
+              -e "ansible_pull_mode=true" \
               ${ansible_init_playbook}
       }
 
