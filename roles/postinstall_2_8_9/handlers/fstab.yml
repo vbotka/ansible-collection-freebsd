@@ -1,0 +1,7 @@
+---
+# fstab
+# - name: mount all
+#  command: mount -a
+- name: Meta noop
+  listen: meta noop
+  ansible.builtin.meta: noop

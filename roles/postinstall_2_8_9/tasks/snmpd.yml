@@ -1,0 +1,32 @@
+---
+- name: Configure /usr/local/etc/snmpd.conf
+  tags: fp_snmpd_conf
+  notify: restart snmpd
+  block:
+
+    - name: "Snmpd: Copy snmpd.conf.example to snmpd.conf if not exist"
+      ansible.builtin.copy:
+        force: false
+        remote_src: true
+        src: /usr/local/share/snmp/snmpd.conf.example
+        dest: /usr/local/etc/snmpd.conf
+        owner: root
+        group: wheel
+        mode: "0644"
+
+    - name: "Snmpd: Configure /usr/local/etc/snmpd.conf"
+      ansible.builtin.lineinfile:
+        path: /usr/local/etc/snmpd.conf
+        regexp: ^\s*{{ item.key }}\s*=(.*)$
+        line: "{{ item.key }} {{ item.value }}"
+        state: "{{ item.state | d(omit) }}"
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_snmpd_conf }}"
+
+- name: "Snmpd: Configure rc.conf"
+  tags: fp_snmpd_rcconf
+  vars:
+    _service: snmpd
+  ansible.builtin.import_tasks: fn/rcconf.yml
+
+# EOF
