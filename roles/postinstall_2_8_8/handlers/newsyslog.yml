@@ -1,8 +1,0 @@
----
-- name: Create newsyslog # noqa: no-changed-when
-  listen: create newsyslog
-  ansible.builtin.command: newsyslog -C
-
-- name: Create all newsyslog # noqa: no-changed-when
-  listen: create all newsyslog
-  ansible.builtin.command: newsyslog -CC

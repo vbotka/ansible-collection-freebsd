@@ -1,5 +1,0 @@
----
-- name: Set hostname # noqa: no-changed-when
-  listen: set hostname
-  ansible.builtin.command:
-    cmd: hostname {{ rc_conf_hostname }}

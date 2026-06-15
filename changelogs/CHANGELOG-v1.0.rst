@@ -23,7 +23,7 @@ Minor Changes
 * Update module iocage. Fix properties parsing.
 * Update playbook pb_iocage_template; skip missing templates attributes; allow
   undefined act_user; optionally do not run stop and template tasks.
-* Upgrade role postinstall to 2.8.8
+* Upgrade role postinstall to 2.8.9
 * Add example 311, 522, 523, 524, 525.
 * Update example 521.
 * Remove example 510.
