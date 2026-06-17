@@ -9,9 +9,6 @@ ssh admin@$iocage_05 sudo iocage stop qux
 ssh admin@$iocage_05 sudo iocage destroy -f baz
 ssh admin@$iocage_05 sudo iocage destroy -f qux
 
-# Create template
-# ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt
-
 # List templates
 ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-02.txt
 
