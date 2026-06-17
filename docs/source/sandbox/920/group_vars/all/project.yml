@@ -6,8 +6,8 @@ project:
     vmm: iocage_05
     properties:
       vnet: 1
-      defaultrouter: 10.10.99.1
-      ip4_addr: 'vnet0|10.10.99.203/24'
+      defaultrouter: "{{ project_hosts.defaultrouter }}"
+      ip4_addr: 'vnet0|{{ project_hosts.log_server }}/24'
       boot: 1
   www-01:
     class: [log-client]

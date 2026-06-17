@@ -10,12 +10,12 @@ ok: [iocage_05] => (item=www-01)
 ok: [iocage_05] => (item=log-server)
 
 TASK [Create custom facts dirs.] ***********************************************
-changed: [iocage_05] => (item={'key': 'log-server', 'value': {'class': ['log-server'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05', 'properties': {'vnet': 1, 'defaultrouter': '10.10.99.1', 'ip4_addr': 'vnet0|10.10.99.203/24', 'boot': 1}}})
+changed: [iocage_05] => (item={'key': 'log-server', 'value': {'class': ['log-server'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05', 'properties': {'vnet': 1, 'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.10/24', 'boot': 1}}})
 changed: [iocage_05] => (item={'key': 'www-01', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
 changed: [iocage_05] => (item={'key': 'www-02', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
 
 TASK [Create custom facts files.] **********************************************
-changed: [iocage_05] => (item={'key': 'log-server', 'value': {'class': ['log-server'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05', 'properties': {'vnet': 1, 'defaultrouter': '10.10.99.1', 'ip4_addr': 'vnet0|10.10.99.203/24', 'boot': 1}}})
+changed: [iocage_05] => (item={'key': 'log-server', 'value': {'class': ['log-server'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05', 'properties': {'vnet': 1, 'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.10/24', 'boot': 1}}})
 changed: [iocage_05] => (item={'key': 'www-01', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
 changed: [iocage_05] => (item={'key': 'www-02', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
 
