@@ -1,5 +1,3 @@
-ansible_init_host: "git://10.10.99.201"
-
 fit_templates:
   ansible_init:
     release: 15.0-RELEASE
@@ -54,7 +52,7 @@ fit_firstboot:
 
 fit_rcconf:
   ansible_init_enable: "YES"
-  ansible_init_host: "{{ ansible_init_host }}"
+  ansible_init_host: "git://{{ project_hosts.repos }}"
 
 fit_cron:
   /etc/cron.d/at:

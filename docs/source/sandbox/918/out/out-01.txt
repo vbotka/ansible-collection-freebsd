@@ -49,7 +49,7 @@ changed: [iocage_05] => (item=ansible_init Run atrun execution daemon in 1 minut
 
 TASK [vbotka.freebsd.iocage_template : Rcconf: Configure /etc/rc.conf] *********
 changed: [iocage_05] => (item=ansible_init ansible_init_enable YES)
-changed: [iocage_05] => (item=ansible_init ansible_init_host git://10.10.99.201)
+changed: [iocage_05] => (item=ansible_init ansible_init_host git://172.16.99.21)
 
 TASK [vbotka.freebsd.iocage_template : Stop: Get iocage list of jails.] ********
 ok: [iocage_05]
