@@ -5,8 +5,8 @@ project:
     vmm: iocage_05
     properties:
       vnet: 1
-      defaultrouter: 10.10.99.1
-      ip4_addr: 'vnet0|10.10.99.201/24'
+      defaultrouter: "{{ project_hosts.defaultrouter }}"
+      ip4_addr: 'vnet0|{{ project_hosts.repos }}/24'
       boot: 1
   repos-devel:
     class: [repos]
@@ -14,8 +14,8 @@ project:
     vmm: iocage_05
     properties:
       vnet: 1
-      defaultrouter: 10.10.99.1
-      ip4_addr: 'vnet0|10.10.99.202/24'
+      defaultrouter: "{{ project_hosts.defaultrouter }}"
+      ip4_addr: 'vnet0|{{ project_hosts.repos_devel }}/24'
       boot: 1
 
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
