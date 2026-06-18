@@ -1,0 +1,15 @@
+
+PLAY [Stop and convert ansible_syslogng_* to templates.] ***********************
+
+TASK [Stop ansible_syslogng_client and ansible_syslogng_server] ****************
+changed: [iocage_05]
+
+TASK [Convert ansible_syslogng_client jail to template.] ***********************
+changed: [iocage_05]
+
+TASK [Convert ansible_syslogng_server jail to template.] ***********************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

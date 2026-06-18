@@ -1,0 +1,72 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [bar]
+changed: [foo]
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 166666.67 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500311, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500286, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log-server]
+
+TASK [Get log files.] **********************************************************
+changed: [log-server] => (item=/var/log/remote/ansible-syslogng-server/2026_05_27.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.122/2026_05_27.log)
+changed: [log-server] => (item=/var/log/remote/localhost/2026_05_27.log)
+changed: [log-server] => (item=/var/log/remote/10.10.99.193/2026_05_27.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log-server] => (item=['cat', '/var/log/remote/ansible-syslogng-server/2026_05_27.log']) => 
+    msg: |-
+        May 27 12:36:02 ansible-syslogng-server syslog-ng[46804]: syslog-ng starting up; version='4.11.0'
+        May 27 12:36:03 ansible-syslogng-server syslog-ng[46804]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
+        May 27 12:36:03 ansible-syslogng-server syslog-ng[46804]: Loading the new configuration;
+        May 27 12:36:03 ansible-syslogng-server syslog-ng[46804]: Configuration reload finished;
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.391473+02:00 ansible-syslogng-server dhclient 45056 - - receive_packet failed on epair0b: Device not configured
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.391671+02:00 ansible-syslogng-server dhclient 45056 - - ioctl(SIOCGIFFLAGS) on epair0b: Operation not permitted
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.391761+02:00 ansible-syslogng-server dhclient 45056 - - Interface epair0b no longer appears valid.
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.391855+02:00 ansible-syslogng-server dhclient 45056 - - No live interfaces to poll on - exiting.
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.391946+02:00 ansible-syslogng-server dhclient 45056 - - exiting.
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.392272+02:00 ansible-syslogng-server dhclient 45056 - - connection closed
+        May 27 12:36:31 ansible-syslogng-server 1 2026-05-27T12:36:31.392369+02:00 ansible-syslogng-server dhclient 45056 - - exiting.
+        May 27 12:36:31 ansible-syslogng-server syslog-ng[46804]: syslog-ng shutting down; version='4.11.0'
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.122/2026_05_27.log']) => 
+    msg: |-
+        May 27 12:45:24 10.10.99.122 syslog-ng[52092]: syslog-ng starting up; version='4.11.0'
+        May 27 12:45:24 10.10.99.122 syslog-ng[52092]: Syslog connection established; fd='19', server='AF_INET(10.10.99.118:514)', local='AF_INET(0.0.0.0:0)'
+        May 27 12:46:24 10.10.99.122 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1779878784, stamp: 2026-05-27T12:46:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        May 27 12:46:24 10.10.99.122 1 2026-05-27T12:46:24.816949+02:00 foo ansible-ansible.legacy.command 52656 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.118 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_05_27.log']) => 
+    msg: |-
+        May 27 12:46:08 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1779878768, stamp: 2026-05-27T12:46:08 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/10.10.99.193/2026_05_27.log']) => 
+    msg: |-
+        May 27 12:45:24 10.10.99.193 syslog-ng[52143]: syslog-ng starting up; version='4.11.0'
+        May 27 12:45:24 10.10.99.193 syslog-ng[52143]: Syslog connection established; fd='19', server='AF_INET(10.10.99.118:514)', local='AF_INET(0.0.0.0:0)'
+        May 27 12:46:24 10.10.99.193 1 2026-05-27T12:46:24.756304+02:00 bar ansible-ansible.legacy.command 52654 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.118 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        May 27 12:46:24 10.10.99.193 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1779878784, stamp: 2026-05-27T12:46:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -110,6 +110,7 @@ Examples
    :caption: Roles
 
    310 Configure and audit Ansible clients <examples/310/example.rst>
+   examples/311/example.rst
    320 Install and audit packages <examples/320/example.rst>
    321 Create package repo configuration <examples/321/example.rst>
    330 Clone jails and create inventory <examples/330/example.rst>
@@ -140,9 +141,13 @@ Examples
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
    examples/502/example.rst
-   examples/510/example.rst
    examples/520/example.rst
-   521 Iocage plugins ansible-pull* <examples/521/example.rst>
+   521 iocage plugins ansible-pull* <examples/521/example.rst>
+   522 templates ansible_syslogng_* <examples/522/example.rst>
+   523 template ansible_repos <examples/523/example.rst>
+   524 template ansible_init (hostname) <examples/524/example.rst>
+   525 template ansible_init (class) <examples/525/example.rst>
+   examples/526/example.rst
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage

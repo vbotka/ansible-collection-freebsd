@@ -1,0 +1,27 @@
+plugin: vbotka.freebsd.iocage
+host: iocage_05
+user: admin
+sudo: true
+get_properties: true
+inventory_hostname_tag: alias
+
+compose:
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+  iocage_classes: iocage_properties.notes | regex_findall('(?<=class=)\w+|(?<=,)\w+')
+# connection plugin vbotka.freebsd.jailexec
+  ansible_connection: "'vbotka.freebsd.jailexec'"
+  ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
+  ansible_jail_name: iocage_jid
+  ansible_jail_privilege_escalation: "'sudo'"
+# ansible options
+  ansible_python_interpreter: "'auto_silent'"
+
+groups:
+  log_client: iocage_classes is contains('log-client')
+  log_server: iocage_classes is contains('log-server')
+
+keyed_groups:
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm

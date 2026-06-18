@@ -1,0 +1,28 @@
+
+PLAY [Create and start project jails from iocage templates.] *******************
+
+TASK [Setup: Get activated pool.] **********************************************
+ok: [iocage_05]
+
+TASK [Create jails.] ***********************************************************
+ok: [iocage_05] => (item=qux)
+ok: [iocage_05] => (item=baz)
+
+TASK [Create custom facts dirs.] ***********************************************
+changed: [iocage_05] => (item={'key': 'baz', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+changed: [iocage_05] => (item={'key': 'qux', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+
+TASK [Create custom facts files.] **********************************************
+changed: [iocage_05] => (item={'key': 'baz', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+changed: [iocage_05] => (item={'key': 'qux', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+
+TASK [Set properties.] *********************************************************
+ok: [iocage_05] => (item=baz)
+ok: [iocage_05] => (item=qux)
+
+TASK [Start jails.] ************************************************************
+ok: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=6    changed=2    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

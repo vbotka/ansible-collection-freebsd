@@ -10,11 +10,11 @@
   |  |--bar
   |--@state_up:
   |  |--foo
-  |  |--log-server
   |  |--bar
+  |  |--log-server
   |--@vmm_iocage_05:
   |  |--foo
-  |  |--log-server
   |  |--bar
+  |  |--log-server
   |--@log_server:
   |  |--log-server

@@ -1,0 +1,36 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create directories and copy pkglist files.
+  when: _templates | length > 0
+  vars:
+    _templates: "{{ fit_templates | dict2items
+                                  | rejectattr('key', 'in', fit_iocage_templates)
+                                  | selectattr('value.pkglist', 'defined') }}"
+  block:
+
+    - name: "Pkglist: Create directories for pkglist files."
+      ansible.builtin.file:
+        state: directory
+        path: "{{ item.value.pkglist | dirname }}"
+        mode: "0755"
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.pkglist | dirname }}"
+
+    - name: "Pkglist: Copy pkglist files."
+      register: out
+      ansible.builtin.copy:
+        src: "{{ inventory_dir }}/files/{{ item.value.pkglist | basename }}"
+        dest: "{{ item.value.pkglist }}"
+        mode: "0644"
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.pkglist }}"
+
+    - name: "Pkglist: Debug copy pkglist files fit_debug2={{ fit_debug2 }}"
+      when: fit_debug2 | bool
+      ansible.builtin.debug:
+        var: out

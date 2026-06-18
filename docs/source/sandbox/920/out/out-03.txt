@@ -1,0 +1,32 @@
+
+PLAY [Create and start project jails from iocage templates.] *******************
+
+TASK [Setup: Get activated pool.] **********************************************
+ok: [iocage_05]
+
+TASK [Create jails.] ***********************************************************
+ok: [iocage_05] => (item=www-02)
+ok: [iocage_05] => (item=www-01)
+ok: [iocage_05] => (item=log-server)
+
+TASK [Create custom facts dirs.] ***********************************************
+changed: [iocage_05] => (item={'key': 'log-server', 'value': {'class': ['log-server'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05', 'properties': {'vnet': 1, 'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.10/24', 'boot': 1}}})
+changed: [iocage_05] => (item={'key': 'www-01', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+changed: [iocage_05] => (item={'key': 'www-02', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+
+TASK [Create custom facts files.] **********************************************
+changed: [iocage_05] => (item={'key': 'log-server', 'value': {'class': ['log-server'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05', 'properties': {'vnet': 1, 'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.10/24', 'boot': 1}}})
+changed: [iocage_05] => (item={'key': 'www-01', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+changed: [iocage_05] => (item={'key': 'www-02', 'value': {'class': ['log-client'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+
+TASK [Set properties.] *********************************************************
+ok: [iocage_05] => (item=log-server)
+ok: [iocage_05] => (item=www-01)
+ok: [iocage_05] => (item=www-02)
+
+TASK [Start jails.] ************************************************************
+ok: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=6    changed=2    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

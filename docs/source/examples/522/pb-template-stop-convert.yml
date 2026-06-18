@@ -1,0 +1,14 @@
+---
+- name: Stop and convert ansible_syslogng_* to templates.
+  hosts: iocage_05
+
+  tasks:
+
+    - name: Stop ansible_syslogng_client and ansible_syslogng_server
+      ansible.builtin.command: iocage stop ansible_syslogng_client ansible_syslogng_server
+
+    - name: Convert ansible_syslogng_client jail to template.
+      ansible.builtin.command: iocage set template=1 ansible_syslogng_client
+
+    - name: Convert ansible_syslogng_server jail to template.
+      ansible.builtin.command: iocage set template=1 ansible_syslogng_server

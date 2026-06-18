@@ -12,7 +12,7 @@
     group: wheel
     mode: "0644"
     backup: true
-  loop: "{{ templates | dict2items | subelements('value.dhclient') }}"
+  loop: "{{ templates | dict2items | subelements('value.dhclient', skip_missing=true) }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1.key }}"
 

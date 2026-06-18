@@ -1,0 +1,30 @@
+---
+- name: Create jails from iocage templates.
+  hosts: iocage_05
+
+  tasks:
+
+    - name: Create syslog-ng server.
+      vars:
+        _notes: >
+          "vmm={{ inventory_hostname }}
+          class=log-server"
+      ansible.builtin.command: >
+        iocage create
+        --name log-server
+        --template ansible_syslogng_server
+        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        notes={{ _notes }}
+
+    - name: Create syslog-ng clients.
+      vars:
+        _notes: >
+          "vmm={{ inventory_hostname }}
+          class=log-client"
+      ansible.builtin.command: >
+        iocage create
+        --name {{ item }}
+        --template ansible_syslogng_client
+        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        notes={{ _notes }}
+      loop: "{{ log_clients }}"

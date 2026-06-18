@@ -1,6 +1,6 @@
 .. _example_521:
 
-521 Iocage plugins ansible-pull-syslogng-*
+521 iocage plugins ansible-pull-syslogng-*
 ------------------------------------------
 
 .. contents::
@@ -98,6 +98,11 @@ Requirements
 * `module vbotka.freebsd.service`_
 * role `vbotka.freebsd.postinstall`_
 
+.. important::
+
+   For security reasons, you might want to create private repositories with the iocage plugins and
+   configurations. See the example :ref:`example_523`
+
 Notes
 ^^^^^
 
@@ -109,7 +114,9 @@ Notes
 
 .. note::
 
-   In this example, DHCP was provided by the iocage host. See :ref:`example_440`
+   * This example creates the same functionality as :ref:`example_522`. The ``iocage plugins`` are
+     used here instead of ``iocage templates``.
+   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`
 
 .. seealso::
 

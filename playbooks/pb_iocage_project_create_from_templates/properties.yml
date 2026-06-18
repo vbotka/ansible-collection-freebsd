@@ -1,0 +1,21 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Set properties.
+  changed_when: false
+  vars:
+    _notes: >
+      "vmm={{ inventory_hostname }}
+      class={{ vmm[inventory_hostname][item]['class'] | join(',') }}"
+    _properties: >
+      {{ vmm[inventory_hostname][item]['properties']
+         | d(properties)
+         | dictsort | map('join', '=') | join(' ') }}
+      notes={{ _notes }}
+  ansible.builtin.command: >
+    iocage set
+    {{ _properties }}
+    {{ item }}
+  loop: "{{ vmm[inventory_hostname].keys() }}"

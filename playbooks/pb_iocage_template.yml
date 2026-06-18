@@ -16,43 +16,43 @@
 
   tasks:
 
-    - name: Setup
+    - name: Setup.
       tags: [always, setup]
       ansible.builtin.import_tasks: pb_iocage_template/setup.yml
 
-    - name: Copy pkglist
+    - name: Copy pkglist.
       tags: pkglist
       ansible.builtin.import_tasks: pb_iocage_template/pkglist.yml
 
-    - name: Create jails
+    - name: Create jails.
       tags: create
       ansible.builtin.import_tasks: pb_iocage_template/create.yml
 
-    - name: Start jails
+    - name: Start jails.
       tags: start
       ansible.builtin.import_tasks: pb_iocage_template/start.yml
 
-    - name: Install packages
+    - name: Install packages.
       when: act_pkg_install | d(false) | bool
       tags: pkg
       ansible.builtin.import_tasks: pb_iocage_template/pkg.yml
 
-    - name: Create user
+    - name: Create user.
       when: act_user | d('') | length > 0
       tags: user
       ansible.builtin.import_tasks: pb_iocage_template/user.yml
 
-    - name: Configure public keys
+    - name: Configure public keys.
       when: act_pk | d('') | length > 0
       tags: pk
       ansible.builtin.import_tasks: pb_iocage_template/pk.yml
 
-    - name: Configure sudo
+    - name: Configure sudo.
       when: act_sudo | d(false) | bool
       tags: sudo
       ansible.builtin.import_tasks: pb_iocage_template/sudo.yml
 
-    - name: Configure dhclient
+    - name: Configure dhclient.
       when: act_dhclient | d({}) | length > 0
       tags: dhclient
       ansible.builtin.import_tasks: pb_iocage_template/dhclient.yml
@@ -62,10 +62,12 @@
       tags: rcconf
       ansible.builtin.import_tasks: pb_iocage_template/rc_conf.yml
 
-    - name: Stop jails
+    - name: Stop jails.
+      when: act_stop | d(true) | bool
       tags: stop
       ansible.builtin.import_tasks: pb_iocage_template/stop.yml
 
-    - name: Convert jails to templates
+    - name: Convert jails to templates.
+      when: act_template | d(true) | bool
       tags: template
       ansible.builtin.import_tasks: pb_iocage_template/template.yml
