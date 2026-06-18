@@ -10,12 +10,12 @@
 .. index:: single: ansible_init; Example 524
 .. index:: single: service ansible_init; Example 524
 .. index:: single: template ansible_init; Example 524
+.. index:: single: firstboot; Example 524
 .. index:: single: ansible-conf-init; Example 524
 .. index:: single: ansible-conf-test; Example 524
 .. index:: single: repo ansible-conf-init; Example 524
 .. index:: single: repo ansible-conf-test; Example 524
 .. index:: single: ansible-pull; Example 524
-.. index:: single: firstboot; Example 524
 .. index:: single: role vbotka.freebsd.iocage_template; Example 524
 .. index:: single: connection vbotka.freebsd.jailexec; Example 524
 .. index:: single: inventory vbotka.freebsd.iocage; Example 524
@@ -39,6 +39,7 @@ Tree
   │   └── pkgs.json
   ├── group_vars
   │   └── all
+  │       ├── hosts.yml
   │       └── project.yml
   ├── hosts
   │   └── 05_iocage.yml
@@ -53,10 +54,12 @@ Synopsis
 
 * At a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create template ``ansible_init``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible_init``
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
+
+  * Wait for ``ansible-pull`` to configure the jails and display the test files.
 
 Requirements
 ^^^^^^^^^^^^
@@ -100,6 +103,11 @@ hosts
 
 group_vars
 ^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/hosts.yml
+   :language: yaml
+   :caption:
+
 .. literalinclude:: group_vars/all/project.yml
    :language: yaml
    :caption:
