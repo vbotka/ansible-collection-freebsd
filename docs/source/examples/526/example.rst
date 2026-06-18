@@ -84,6 +84,11 @@ Requirements
    * `ansible-conf-syslogng-server`_
    * `ansible-conf-syslogng-client`_
 
+.. hint::
+
+   Update the configuration repositories to your needs. Synchronize the dictionary ``project_hosts``
+   in the files ``group_vars/all/hosts.yml`` in this example and in the repositories.
+
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -171,15 +176,21 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use the utility ``lnav`` on the log server to display all logfiles in the the directory
+   Use the ``lnav`` utility on the log server to display all logfiles in the the directory
    ``/var/log/remote`` ::
 
-     shell > lnav -r /var/log/remote/
+     shell > iocage console log-server
+     root@log-server:~ # lnav -r /var/log/remote/
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
 * See the Ansible logs ``/var/log/ansible.log``  in the jails.
+
+.. code-block:: console
+
+   shell > iocage console log-server
+   root@log-server:~ # cat /var/log/ansible.log
 
 * Update and pull the repositories. For example,
 
