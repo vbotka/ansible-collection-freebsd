@@ -74,6 +74,7 @@ Requirements
    * See `Practical rc.d scripting in BSD`_
    * See the option ``firstboot_sentinel`` in `man rc.conf`_
    * See the example :ref:`example_523`
+   * See the ``Troubleshooting`` section in :ref:`example_526`
 
 .. seealso::
 

@@ -16,7 +16,7 @@
 .. index:: single: repo ansible-conf-init; Example 525
 .. index:: single: repo ansible-conf-test; Example 525
 .. index:: single: ansible-pull; Example 525
-.. index:: single: role vbotka.freebsd.iocage_template; Example 525
+.. index:: single: pb_iocage_project_create_from_templates.yml; Example 525
 .. index:: single: connection vbotka.freebsd.jailexec; Example 525
 .. index:: single: inventory vbotka.freebsd.iocage; Example 525
 
@@ -48,7 +48,7 @@ Synopsis
 * At a managed node:
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
-    the template.
+    the template ``ansible_init``.
 
   * Wait for ``ansible-pull`` to configure the jails and display the test files.
 
@@ -72,6 +72,7 @@ Requirements
    * See `Practical rc.d scripting in BSD`_
    * See the option ``firstboot_sentinel`` in `man rc.conf`_
    * See the example :ref:`example_523`
+   * See the section ``Troubleshooting`` in :ref:`example_526`
 
 .. seealso::
 

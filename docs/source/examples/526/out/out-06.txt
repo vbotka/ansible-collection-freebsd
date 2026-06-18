@@ -1,0 +1,241 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [www-01]
+changed: [www-02]
+
+TASK [Debug.] ******************************************************************
+ok: [www-01] => 
+    out.stderr: |-
+        count=1, rate = 27027.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500354, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [www-02] => 
+    out.stderr: |-
+        count=1, rate = 27027.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500516, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log-server]
+
+TASK [Get log files.] **********************************************************
+changed: [log-server] => (item=/var/log/remote/localhost/2026_06_18.log)
+changed: [log-server] => (item=/var/log/remote/172.16.99.106/2026_06_18.log)
+changed: [log-server] => (item=/var/log/remote/172.16.99.105/2026_06_18.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_06_18.log']) => 
+    msg: |-
+        Jun 18 08:06:06 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1781762766, stamp: 2026-06-18T08:06:06 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/172.16.99.106/2026_06_18.log']) => 
+    msg: |-
+        Jun 18 07:25:05 172.16.99.106 syslog-ng[50267]: syslog-ng starting up; version='4.11.0'
+        Jun 18 07:25:05 172.16.99.106 syslog-ng[50267]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 18 07:25:06 172.16.99.106 1 2026-06-18T07:25:06.239636+02:00 www-02 ansible-vbotka.freebsd.service 50293 - - Invoked with script=syslog-ng command=reload list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Jun 18 07:25:06 172.16.99.106 syslog-ng[50267]: Loading the new configuration;
+        Jun 18 07:25:06 172.16.99.106 syslog-ng[50267]: Configuration reload finished;
+        Jun 18 07:25:06 172.16.99.106 syslog-ng[50267]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 18 07:25:07 172.16.99.106 1 2026-06-18T07:25:07.116326+02:00 www-02 ansible-vbotka.freebsd.service 50401 - - Invoked with script=syslogd command=stop list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Jun 18 07:22:12 172.16.99.106 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-02
+        Jun 18 07:22:12 172.16.99.106 ansible: n=ansible INFO| PLAY [ansible-init] ************************************************************
+        Jun 18 07:22:13 172.16.99.106 ansible: n=ansible INFO| TASK [Get hostname.] ***********************************************************
+        Jun 18 07:22:13 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| TASK [Get custom facts.] *******************************************************
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
+        Jun 18 07:25:07 172.16.99.106 ansible: |-
+        Jun 18 07:25:07 172.16.99.106 ansible: true
+        Jun 18 07:25:07 172.16.99.106 ansible: www-02
+        Jun 18 07:25:07 172.16.99.106 ansible: ['log-client']
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| TASK [Set ai_cmd] **************************************************************
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| TASK [Execute ai_cmd] **********************************************************
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| included: /root/ansible-conf-init/tasks/execute-cmd.yml for localhost.my.domain
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
+        Jun 18 07:22:14 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
+        Jun 18 07:25:07 172.16.99.106 ansible: |-
+        Jun 18 07:25:07 172.16.99.106 ansible:
+        Jun 18 07:25:07 172.16.99.106 ansible: True
+        Jun 18 07:25:07 172.16.99.106 ansible:      ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e "ansible_pull_mode=true" pb-logclient.yml &&  echo '[INFO] ansible-pull finished.'
+        Jun 18 07:22:15 172.16.99.106 ansible: n=ansible INFO| TASK [Execute command async=3600 poll=0] ***************************************
+        Jun 18 07:22:15 172.16.99.106 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:22:15 172.16.99.106 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        Jun 18 07:22:15 172.16.99.106 ansible: n=ansible INFO| localhost.my.domain        : ok=7    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+        Jun 18 07:22:15 172.16.99.106 ansible: n=ansible INFO| Starting Ansible Pull at 2026-06-18 07:22:15
+        Jun 18 07:22:15 172.16.99.106 ansible: n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e ansible_pull_mode=true pb-logclient.yml
+        Jun 18 07:22:16 172.16.99.106 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-02
+        Jun 18 07:22:18 172.16.99.106 ansible: n=ansible INFO| localhost.my.domain | CHANGED => {
+        Jun 18 07:25:07 172.16.99.106 ansible: "83c70d38783b19780c67d2c1fa40a365bbf59018",
+        Jun 18 07:25:07 172.16.99.106 ansible: {
+        Jun 18 07:25:07 172.16.99.106 ansible: "/usr/local/bin/python3.11"
+        Jun 18 07:25:07 172.16.99.106 ansible:
+        Jun 18 07:25:07 172.16.99.106 ansible: null,
+        Jun 18 07:25:07 172.16.99.106 ansible: true
+        Jun 18 07:25:07 172.16.99.106 ansible:
+        Jun 18 07:22:19 172.16.99.106 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-02
+        Jun 18 07:22:20 172.16.99.106 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
+        Jun 18 07:25:02 172.16.99.106 ansible: n=ansible INFO| TASK [Install packages.] *******************************************************
+        Jun 18 07:25:02 172.16.99.106 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:25:03 172.16.99.106 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
+        Jun 18 07:25:03 172.16.99.106 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:25:03 172.16.99.106 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+        Jun 18 07:25:03 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:25:04 172.16.99.106 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+        Jun 18 07:25:04 172.16.99.106 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:25:04 172.16.99.106 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+        Jun 18 07:25:04 172.16.99.106 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:25:06 172.16.99.106 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
+        Jun 18 07:25:06 172.16.99.106 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:25:06 172.16.99.106 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+        Jun 18 07:25:06 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:25:07 172.16.99.106 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
+        Jun 18 07:25:07 172.16.99.106 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:25:07 172.16.99.106 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        Jun 18 07:25:07 172.16.99.106 ansible: n=ansible INFO| localhost.my.domain        : ok=8    changed=5    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
+        Jun 18 07:25:09 172.16.99.106 1 2026-06-18T07:25:09.084447+02:00 www-02 ansible-async_wrapper.py 47558 - - Module complete (47558)
+        Jun 18 07:26:06 172.16.99.106 syslog-ng[50267]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 18 07:27:08 172.16.99.106 1 2026-06-18T07:27:08.559975+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:27:08 172.16.99.106 1 2026-06-18T07:27:08.566116+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:27:08 172.16.99.106 1 2026-06-18T07:27:08.619701+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 07:32:08 172.16.99.106 1 2026-06-18T07:32:08.674258+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:32:08 172.16.99.106 1 2026-06-18T07:32:08.679554+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:32:08 172.16.99.106 1 2026-06-18T07:32:08.734763+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 07:35:06 172.16.99.106 syslog-ng[50267]: Log statistics; processed='global(payload_reallocs)=0', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=72', dropped='global(internal_source)=0', processed='global(internal_source)=6', queued='global(internal_source)=0', processed='source(s_system)=15', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=72', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=72', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=241', processed='src.internal(s_system#2)=6', stamp='src.internal(s_system#2)=1781760366', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=72', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=72', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=111', queued='global(scratch_buffers_count)=0'
+        Jun 18 07:37:08 172.16.99.106 1 2026-06-18T07:37:08.815856+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:37:08 172.16.99.106 1 2026-06-18T07:37:08.821908+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:37:08 172.16.99.106 1 2026-06-18T07:37:08.842983+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 07:42:08 172.16.99.106 1 2026-06-18T07:42:08.884870+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:42:08 172.16.99.106 1 2026-06-18T07:42:08.888870+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:42:08 172.16.99.106 1 2026-06-18T07:42:08.944294+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 07:45:06 172.16.99.106 syslog-ng[50267]: Log statistics; processed='global(payload_reallocs)=2', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=79', dropped='global(internal_source)=0', processed='global(internal_source)=7', queued='global(internal_source)=0', processed='source(s_system)=22', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=79', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=79', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=1388', processed='src.internal(s_system#2)=7', stamp='src.internal(s_system#2)=1781760906', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=79', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=79', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=129', queued='global(scratch_buffers_count)=0'
+        Jun 18 07:47:09 172.16.99.106 1 2026-06-18T07:47:09.043352+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:47:09 172.16.99.106 1 2026-06-18T07:47:09.047998+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:47:09 172.16.99.106 1 2026-06-18T07:47:09.069560+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 07:52:09 172.16.99.106 1 2026-06-18T07:52:09.145796+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:52:09 172.16.99.106 1 2026-06-18T07:52:09.150417+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:52:09 172.16.99.106 1 2026-06-18T07:52:09.193674+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 07:55:06 172.16.99.106 syslog-ng[50267]: Log statistics; processed='global(payload_reallocs)=4', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=86', dropped='global(internal_source)=0', processed='global(internal_source)=8', queued='global(internal_source)=0', processed='source(s_system)=29', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=86', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=86', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=1389', processed='src.internal(s_system#2)=8', stamp='src.internal(s_system#2)=1781761506', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=86', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=86', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=144', queued='global(scratch_buffers_count)=0'
+        Jun 18 07:57:09 172.16.99.106 1 2026-06-18T07:57:09.252421+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:57:09 172.16.99.106 1 2026-06-18T07:57:09.256622+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 07:57:09 172.16.99.106 1 2026-06-18T07:57:09.278308+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 08:02:09 172.16.99.106 1 2026-06-18T08:02:09.351695+02:00 www-02 dhclient 47153 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 08:02:09 172.16.99.106 1 2026-06-18T08:02:09.355996+02:00 www-02 dhclient 47153 - - DHCPACK from 172.16.99.1
+        Jun 18 08:02:09 172.16.99.106 1 2026-06-18T08:02:09.411145+02:00 www-02 dhclient 47153 - - bound to 172.16.99.106 -- renewal in 300 seconds.
+        Jun 18 08:05:06 172.16.99.106 syslog-ng[50267]: Log statistics; processed='global(payload_reallocs)=6', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=93', dropped='global(internal_source)=0', processed='global(internal_source)=9', queued='global(internal_source)=0', processed='source(s_system)=36', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=93', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=93', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=1389', processed='src.internal(s_system#2)=9', stamp='src.internal(s_system#2)=1781762106', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=93', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=93', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=156', queued='global(scratch_buffers_count)=0'
+        Jun 18 08:06:37 172.16.99.106 1 2026-06-18T08:06:37.353467+02:00 www-02 ansible-ansible.legacy.command 54310 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 18 08:06:37 172.16.99.106 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1781762797, stamp: 2026-06-18T08:06:37 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log-server] => (item=['cat', '/var/log/remote/172.16.99.105/2026_06_18.log']) => 
+    msg: |-
+        Jun 18 07:24:36 172.16.99.105 syslog-ng[48961]: syslog-ng starting up; version='4.11.0'
+        Jun 18 07:24:36 172.16.99.105 syslog-ng[48961]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 18 07:24:36 172.16.99.105 1 2026-06-18T07:24:36.992223+02:00 www-01 ansible-vbotka.freebsd.service 48987 - - Invoked with script=syslog-ng command=reload list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Jun 18 07:24:37 172.16.99.105 syslog-ng[48961]: Loading the new configuration;
+        Jun 18 07:24:37 172.16.99.105 syslog-ng[48961]: Configuration reload finished;
+        Jun 18 07:24:37 172.16.99.105 syslog-ng[48961]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 18 07:24:37 172.16.99.105 1 2026-06-18T07:24:37.862935+02:00 www-01 ansible-vbotka.freebsd.service 49095 - - Invoked with script=syslogd command=stop list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Jun 18 07:22:01 172.16.99.105 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-01
+        Jun 18 07:22:01 172.16.99.105 ansible: n=ansible INFO| PLAY [ansible-init] ************************************************************
+        Jun 18 07:22:02 172.16.99.105 ansible: n=ansible INFO| TASK [Get hostname.] ***********************************************************
+        Jun 18 07:22:02 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| TASK [Get custom facts.] *******************************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
+        Jun 18 07:24:38 172.16.99.105 ansible: |-
+        Jun 18 07:24:38 172.16.99.105 ansible: true
+        Jun 18 07:24:38 172.16.99.105 ansible: www-01
+        Jun 18 07:24:38 172.16.99.105 ansible: ['log-client']
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| TASK [Set ai_cmd] **************************************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| TASK [Execute ai_cmd] **********************************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| included: /root/ansible-conf-init/tasks/execute-cmd.yml for localhost.my.domain
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
+        Jun 18 07:24:38 172.16.99.105 ansible: |-
+        Jun 18 07:24:38 172.16.99.105 ansible:
+        Jun 18 07:24:38 172.16.99.105 ansible: True
+        Jun 18 07:24:38 172.16.99.105 ansible:      ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e "ansible_pull_mode=true" pb-logclient.yml &&  echo '[INFO] ansible-pull finished.'
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| TASK [Execute command async=3600 poll=0] ***************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        Jun 18 07:22:04 172.16.99.105 ansible: n=ansible INFO| localhost.my.domain        : ok=7    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+        Jun 18 07:22:05 172.16.99.105 ansible: n=ansible INFO| Starting Ansible Pull at 2026-06-18 07:22:05
+        Jun 18 07:22:05 172.16.99.105 ansible: n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e ansible_pull_mode=true pb-logclient.yml
+        Jun 18 07:22:05 172.16.99.105 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-01
+        Jun 18 07:22:07 172.16.99.105 ansible: n=ansible INFO| localhost.my.domain | CHANGED => {
+        Jun 18 07:24:38 172.16.99.105 ansible: "83c70d38783b19780c67d2c1fa40a365bbf59018",
+        Jun 18 07:24:38 172.16.99.105 ansible: {
+        Jun 18 07:24:38 172.16.99.105 ansible: "/usr/local/bin/python3.11"
+        Jun 18 07:24:38 172.16.99.105 ansible:
+        Jun 18 07:24:38 172.16.99.105 ansible: null,
+        Jun 18 07:24:38 172.16.99.105 ansible: true
+        Jun 18 07:24:38 172.16.99.105 ansible:
+        Jun 18 07:22:09 172.16.99.105 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-01
+        Jun 18 07:22:10 172.16.99.105 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
+        Jun 18 07:24:32 172.16.99.105 ansible: n=ansible INFO| TASK [Install packages.] *******************************************************
+        Jun 18 07:24:32 172.16.99.105 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:24:34 172.16.99.105 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
+        Jun 18 07:24:34 172.16.99.105 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:24:34 172.16.99.105 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+        Jun 18 07:24:34 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:24:35 172.16.99.105 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+        Jun 18 07:24:35 172.16.99.105 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:24:35 172.16.99.105 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+        Jun 18 07:24:35 172.16.99.105 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:24:36 172.16.99.105 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
+        Jun 18 07:24:36 172.16.99.105 ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 18 07:24:37 172.16.99.105 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+        Jun 18 07:24:37 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:24:38 172.16.99.105 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
+        Jun 18 07:24:38 172.16.99.105 ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 18 07:24:38 172.16.99.105 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        Jun 18 07:24:38 172.16.99.105 ansible: n=ansible INFO| localhost.my.domain        : ok=8    changed=5    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
+        Jun 18 07:24:39 172.16.99.105 1 2026-06-18T07:24:39.811893+02:00 www-01 ansible-async_wrapper.py 46466 - - Module complete (46466)
+        Jun 18 07:24:52 172.16.99.105 1 2026-06-18T07:24:52.720754+02:00 www-01 ansible-ansible.legacy.command 49485 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 18 07:25:37 172.16.99.105 syslog-ng[48961]: Syslog connection failed; fd='5', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 18 07:26:37 172.16.99.105 syslog-ng[48961]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 18 07:26:57 172.16.99.105 1 2026-06-18T07:26:57.171129+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:26:57 172.16.99.105 1 2026-06-18T07:26:57.175634+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:26:57 172.16.99.105 1 2026-06-18T07:26:57.231338+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 07:31:57 172.16.99.105 1 2026-06-18T07:31:57.288274+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:31:57 172.16.99.105 1 2026-06-18T07:31:57.293955+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:31:57 172.16.99.105 1 2026-06-18T07:31:57.314658+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 07:34:37 172.16.99.105 syslog-ng[48961]: Log statistics; processed='global(payload_reallocs)=0', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=74', dropped='global(internal_source)=0', processed='global(internal_source)=7', queued='global(internal_source)=0', processed='source(s_system)=17', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=74', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=74', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=345', processed='src.internal(s_system#2)=7', stamp='src.internal(s_system#2)=1781760397', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=74', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=74', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=115', queued='global(scratch_buffers_count)=0'
+        Jun 18 07:36:57 172.16.99.105 1 2026-06-18T07:36:57.364133+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:36:57 172.16.99.105 1 2026-06-18T07:36:57.370243+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:36:57 172.16.99.105 1 2026-06-18T07:36:57.426575+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 07:41:57 172.16.99.105 1 2026-06-18T07:41:57.492710+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:41:57 172.16.99.105 1 2026-06-18T07:41:57.496402+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:41:57 172.16.99.105 1 2026-06-18T07:41:57.517137+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 07:44:37 172.16.99.105 syslog-ng[48961]: Log statistics; processed='global(payload_reallocs)=2', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=81', dropped='global(internal_source)=0', processed='global(internal_source)=8', queued='global(internal_source)=0', processed='source(s_system)=24', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=81', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=81', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=1388', processed='src.internal(s_system#2)=8', stamp='src.internal(s_system#2)=1781760877', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=81', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=81', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=132', queued='global(scratch_buffers_count)=0'
+        Jun 18 07:46:57 172.16.99.105 1 2026-06-18T07:46:57.551066+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:46:57 172.16.99.105 1 2026-06-18T07:46:57.555587+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:46:57 172.16.99.105 1 2026-06-18T07:46:57.611255+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 07:51:57 172.16.99.105 1 2026-06-18T07:51:57.737693+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:51:57 172.16.99.105 1 2026-06-18T07:51:57.742044+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:51:57 172.16.99.105 1 2026-06-18T07:51:57.798213+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 07:54:37 172.16.99.105 syslog-ng[48961]: Log statistics; processed='global(payload_reallocs)=4', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=88', dropped='global(internal_source)=0', processed='global(internal_source)=9', queued='global(internal_source)=0', processed='source(s_system)=31', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=88', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=88', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=1389', processed='src.internal(s_system#2)=9', stamp='src.internal(s_system#2)=1781761477', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=88', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=88', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=146', queued='global(scratch_buffers_count)=0'
+        Jun 18 07:56:57 172.16.99.105 1 2026-06-18T07:56:57.856568+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 07:56:57 172.16.99.105 1 2026-06-18T07:56:57.860626+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 07:56:57 172.16.99.105 1 2026-06-18T07:56:57.884374+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 08:01:57 172.16.99.105 1 2026-06-18T08:01:57.909026+02:00 www-01 dhclient 46031 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 18 08:01:57 172.16.99.105 1 2026-06-18T08:01:57.913347+02:00 www-01 dhclient 46031 - - DHCPACK from 172.16.99.1
+        Jun 18 08:01:57 172.16.99.105 1 2026-06-18T08:01:57.933926+02:00 www-01 dhclient 46031 - - bound to 172.16.99.105 -- renewal in 300 seconds.
+        Jun 18 08:04:37 172.16.99.105 syslog-ng[48961]: Log statistics; processed='global(payload_reallocs)=6', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=95', dropped='global(internal_source)=0', processed='global(internal_source)=10', queued='global(internal_source)=0', processed='source(s_system)=38', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=95', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=57', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=95', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=1389', processed='src.internal(s_system#2)=10', stamp='src.internal(s_system#2)=1781762077', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=95', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=95', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=158', queued='global(scratch_buffers_count)=0'
+        Jun 18 08:06:37 172.16.99.105 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1781762797, stamp: 2026-06-18T08:06:37 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 18 08:06:37 172.16.99.105 1 2026-06-18T08:06:37.353990+02:00 www-01 ansible-ansible.legacy.command 54311 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+log-server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www-01                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www-02                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

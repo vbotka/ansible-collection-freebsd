@@ -147,6 +147,7 @@ Examples
    523 template ansible_repos <examples/523/example.rst>
    524 template ansible_init (hostname) <examples/524/example.rst>
    525 template ansible_init (class) <examples/525/example.rst>
+   examples/526/example.rst
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage
