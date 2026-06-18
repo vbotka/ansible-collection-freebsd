@@ -22,6 +22,11 @@
 .. index:: single: connection vbotka.freebsd.jailexec; Example 526
 .. index:: single: inventory vbotka.freebsd.iocage; Example 526
 
+.. index:: single: syslog-ng; Example 526
+.. index:: single: loggen; Example 526
+.. index:: single: log server; Example 526
+.. index:: single: log client; Example 526
+
 Use case
 ^^^^^^^^
 
