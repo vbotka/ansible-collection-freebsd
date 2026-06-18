@@ -100,6 +100,11 @@ hosts
 
 group_vars
 ^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/hosts.yml
+   :language: yaml
+   :caption:
+
 .. literalinclude:: group_vars/all/project.yml
    :language: yaml
    :caption:

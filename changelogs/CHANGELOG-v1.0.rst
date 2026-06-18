@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Update example 526.
 
 
 0.8.22
