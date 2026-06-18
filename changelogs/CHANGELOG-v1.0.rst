@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Implement firstboot service ansible_init.
 
 Major Changes
 -------------
@@ -24,7 +25,7 @@ Minor Changes
 * Update playbook pb_iocage_template; skip missing templates attributes; allow
   undefined act_user; optionally do not run stop and template tasks.
 * Upgrade role postinstall to 2.8.9
-* Add example 311, 522, 523, 524, 525, and 526.
+* Add examples 311, 522, 523, 524, 525, and 526.
 * Update example 521.
 * Remove example 510.
 * Add sandbox 914, 915, 917, 918, 919, and 920.
