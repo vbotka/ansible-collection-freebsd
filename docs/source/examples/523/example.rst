@@ -29,6 +29,8 @@ Tree
   ├── files
   │   └── pkgs.json
   ├── group_vars
+  │   ├── all
+  │   │   └── hosts.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
@@ -46,7 +48,7 @@ Synopsis
 
 * At a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create template ``ansible_repos``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible_repos``
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
@@ -60,7 +62,6 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
-
 
 .. note::
 
@@ -97,6 +98,10 @@ hosts
 
 group_vars
 ^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/hosts.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: group_vars/pull_repos/repos.yml
    :language: yaml+jinja

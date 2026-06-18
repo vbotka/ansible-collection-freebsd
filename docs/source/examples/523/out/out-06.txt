@@ -1,7 +1,7 @@
 total 195
-drwxr-xr-x   6 git_daemon git_daemon  6 Jun 12 04:04 .
-drwxr-xr-x  11 root       wheel      11 Jun 12 04:04 ..
-drwxr-xr-x   5 git_daemon git_daemon 11 Jun 12 04:04 ansible-conf-init
-drwxr-xr-x   5 git_daemon git_daemon 11 Jun 12 04:04 ansible-conf-syslogng-client
-drwxr-xr-x   5 git_daemon git_daemon 11 Jun 12 04:04 ansible-conf-syslogng-server
-drwxr-xr-x   3 git_daemon git_daemon  9 Jun 12 04:04 ansible-conf-test
+drwxr-xr-x   6 git_daemon git_daemon  6 Jun 18 05:10 .
+drwxr-xr-x  11 root       wheel      11 Jun 18 05:09 ..
+drwxr-xr-x   6 git_daemon git_daemon 12 Jun 18 05:10 ansible-conf-init
+drwxr-xr-x   6 git_daemon git_daemon 12 Jun 18 05:10 ansible-conf-syslogng-client
+drwxr-xr-x   5 git_daemon git_daemon 11 Jun 18 05:10 ansible-conf-syslogng-server
+drwxr-xr-x   3 git_daemon git_daemon  9 Jun 18 05:10 ansible-conf-test

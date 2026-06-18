@@ -19,3 +19,6 @@ ssh admin@$iocage_05 sudo iocage list -l | tee out/out-04.txt
 
 # Clone repos
 ansible-playbook pb-repos.yml -i hosts | tee out/out-05.txt
+
+# List repos
+ssh admin@$iocage_05 sudo iocage exec repos ls -la /usr/local/git | tee out/out-06.txt
