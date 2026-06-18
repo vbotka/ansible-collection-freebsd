@@ -10,7 +10,7 @@ ssh admin@$iocage_05 sudo iocage destroy -f baz
 ssh admin@$iocage_05 sudo iocage destroy -f qux
 
 # List templates
-ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-02.txt
+# ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-02.txt
 
 # Create the project
 ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_templates.yml -i iocage.ini -i hosts | tee out/out-03.txt
