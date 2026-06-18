@@ -24,6 +24,12 @@ Configure and run a log server. Configure log clients and test them. Use `syslog
 templates ``ansible_syslogng_server`` and ``ansible_syslogng_client``. Create the jails from the
 templates.
 
+Quoting `syslog-ng - FreeBSD Wiki`_:
+
+    "One of the most typical use of syslog-ng is central log aggregation. ... It collects log
+    messages on TCP port 514 and saves them to directories and files based on sender host name and
+    current date."
+
 Tree
 ^^^^
 ::
@@ -82,20 +88,13 @@ Requirements
 * role `vbotka.freebsd.postinstall`_
 * role `vbotka.freebsd.iocage_template`_
 
-Notes
-^^^^^
-
-* Quoting `syslog-ng - FreeBSD Wiki`_:
-
-     One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
-     on TCP port 514 and saves them to directories and files based on sender host name and current
-     date.
-
 .. note::
 
-   * This example creates the same functionality as :ref:`example_521`. The ``iocage templates`` are
-     used here instead of ``iocage plugins``.
-   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`
+   * This example creates the same functionality as the example :ref:`example_521`. The ``iocage
+     templates`` are used here instead of ``iocage plugins``.
+
+   * The same functionality is created also in the example :ref:`example_526`.
+   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`.
 
 .. seealso::
 

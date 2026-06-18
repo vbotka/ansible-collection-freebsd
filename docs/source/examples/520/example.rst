@@ -99,6 +99,12 @@ Configure and run a log server. Configure log clients and test them. Use `syslog
 
      (env) > ansible-playbook pb-test-logclient.yml -i hosts
 
+Quoting `syslog-ng - FreeBSD Wiki`_:
+
+    "One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
+    on TCP port 514 and saves them to directories and files based on sender host name and current
+    date."
+
 Tree
 ^^^^
 ::
@@ -154,18 +160,13 @@ Requirements
 * `module vbotka.freebsd.service`_
 * role `vbotka.freebsd.postinstall`_
 
-Notes
-^^^^^
-
-* Quoting `syslog-ng - FreeBSD Wiki`_:
-
-     One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
-     on TCP port 514 and saves them to directories and files based on sender host name and current
-     date.
-
 .. note::
 
-   The same ``syslog-ng`` configuration is used in :ref:`example_521`
+   The same configuration of  ``syslog-ng`` is used in the examples:
+
+   * :ref:`example_521`
+   * :ref:`example_522`
+   * :ref:`example_526`
 
 .. seealso::
 

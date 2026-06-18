@@ -41,6 +41,12 @@ Use case
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Clone the
 `iocage plugins`_ ``ansible-pull-syslogng-server`` and ``ansible-pull-syslogng-client``.
 
+Quoting `syslog-ng - FreeBSD Wiki`_:
+
+    "One of the most typical use of syslog-ng is central log aggregation. ... It collects log
+    messages on TCP port 514 and saves them to directories and files based on sender host name and
+    current date."
+
 Tree
 ^^^^
 ::
@@ -103,20 +109,12 @@ Requirements
    For security reasons, you might want to create private repositories with the iocage plugins and
    configurations. See the example :ref:`example_523`
 
-Notes
-^^^^^
-
-* Quoting `syslog-ng - FreeBSD Wiki`_:
-
-     One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
-     on TCP port 514 and saves them to directories and files based on sender host name and current
-     date.
-
 .. note::
 
-   * This example creates the same functionality as :ref:`example_522`. The ``iocage plugins`` are
-     used here instead of ``iocage templates``.
-   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`
+   * This example creates the same functionality as the example :ref:`example_522`. The ``iocage
+     plugins`` are used here instead of ``iocage templates``.
+   * The same functionality is created also in the example :ref:`example_526`.
+   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`.
 
 .. seealso::
 
