@@ -16,7 +16,8 @@ Major Changes
 
 Minor Changes
 --------------
-* Update example 526.
+* Update pb_iocage_project_create_from_plugins.yml
+* Docs. Update examples 520, 521, 522, and 526.
 
 
 0.8.22

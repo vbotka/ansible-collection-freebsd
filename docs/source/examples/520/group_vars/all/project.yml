@@ -4,6 +4,13 @@ project:
     class: [logserv]
     plugin: ansible-syslogng
     vmm: iocage_05
+    properties:
+      dhcp: 0
+      vnet: 1
+      defaultrouter: "{{ project_hosts.defaultrouter }}"
+      ip4_addr: 'vnet0|{{ project_hosts.log_server }}/24'
+      type: jail
+      boot: 1
   foo:
     class: [logclient]
     plugin: ansible-syslogng

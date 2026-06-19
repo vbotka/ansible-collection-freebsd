@@ -50,7 +50,9 @@
               class={{ vmm[inventory_hostname][item]['class'] | join(',') }}
               alias={{ item }}"
             _properties: >
-              {{ properties | dictsort | map('join', '=') | join(' ') }}
+              {{ vmm[inventory_hostname][item]['properties']
+                 | d(properties)
+                 | dictsort | map('join', '=') | join(' ') }}
               notes={{ _notes }}
           ansible.builtin.command: >
             iocage clone
@@ -58,6 +60,11 @@
             --newmac
             {{ _properties }}
           loop: "{{ iocage_jails_absent }}"
+
+        - name: Display clone jails from plugins results.
+          when: debug2 | d(false) | bool
+          ansible.builtin.debug:
+            var: out
 
         - name: Display iocage_jails_created
           when: debug | d(false) | bool

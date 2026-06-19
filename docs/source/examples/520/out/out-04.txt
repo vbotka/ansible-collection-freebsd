@@ -11,57 +11,47 @@ ok: [ansible-syslogng] =>
         iocage_classes: []
 
         iocage_tags: {}
-ok: [ansible-zero] => 
-    msg: |-
-        ansible_host: ansible-zero
-        iocage_properties.host_hostname: ansible-zero
-        iocage_properties.host_hostuuid: ansible-zero
-        iocage_jid: None
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [bar] => 
-    msg: |-
-        ansible_host: bar
-        iocage_properties.host_hostname: aa3977f7-1efb-42d7-ba12-dd6dac8d4cfa
-        iocage_properties.host_hostuuid: aa3977f7-1efb-42d7-ba12-dd6dac8d4cfa
-        iocage_jid: 72
-        iocage_classes: [logclient]
-
-        iocage_tags: {alias: bar, class: logclient, vmm: iocage_05}
-ok: [foo] => 
-    msg: |-
-        ansible_host: foo
-        iocage_properties.host_hostname: c6b535de-791d-4ede-ba24-3b82389e6484
-        iocage_properties.host_hostuuid: c6b535de-791d-4ede-ba24-3b82389e6484
-        iocage_jid: 71
-        iocage_classes: [logclient]
-
-        iocage_tags: {alias: foo, class: logclient, vmm: iocage_05}
 ok: [logserv] => 
     msg: |-
         ansible_host: logserv
-        iocage_properties.host_hostname: e8778af5-b480-4f23-91d4-be3d0caffc26
-        iocage_properties.host_hostuuid: e8778af5-b480-4f23-91d4-be3d0caffc26
-        iocage_jid: 70
+        iocage_properties.host_hostname: 4c67f139-4f6e-4986-bbb6-789d88b88e50
+        iocage_properties.host_hostuuid: 4c67f139-4f6e-4986-bbb6-789d88b88e50
+        iocage_jid: 33
         iocage_classes: [logserv]
 
         iocage_tags: {alias: logserv, class: logserv, vmm: iocage_05}
+ok: [foo] => 
+    msg: |-
+        ansible_host: foo
+        iocage_properties.host_hostname: 7e3da83d-1271-4f05-9633-f291f69ccda4
+        iocage_properties.host_hostuuid: 7e3da83d-1271-4f05-9633-f291f69ccda4
+        iocage_jid: 32
+        iocage_classes: [logclient]
+
+        iocage_tags: {alias: foo, class: logclient, vmm: iocage_05}
+ok: [bar] => 
+    msg: |-
+        ansible_host: bar
+        iocage_properties.host_hostname: d474074e-6905-4d0f-a745-fa08877a8861
+        iocage_properties.host_hostuuid: d474074e-6905-4d0f-a745-fa08877a8861
+        iocage_jid: 31
+        iocage_classes: [logclient]
+
+        iocage_tags: {alias: bar, class: logclient, vmm: iocage_05}
 
 TASK [debug] *******************************************************************
 ok: [ansible-syslogng] => 
     msg: |-
-        all: ['ansible-syslogng', 'ansible-zero', 'bar', 'foo', 'logserv']
+        all: ['ansible-syslogng', 'logserv', 'foo', 'bar']
         ungrouped: []
-        state_down: ['ansible-syslogng', 'ansible-zero']
-        logclient_group: ['bar', 'foo']
-        state_up: ['bar', 'foo', 'logserv']
-        vmm_iocage_05: ['bar', 'foo', 'logserv']
+        state_down: ['ansible-syslogng']
         logserv_group: ['logserv']
+        state_up: ['logserv', 'foo', 'bar']
+        vmm_iocage_05: ['logserv', 'foo', 'bar']
+        logclient_group: ['foo', 'bar']
 
 PLAY RECAP *********************************************************************
 ansible-syslogng           : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible-zero               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 bar                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 foo                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 logserv                    : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

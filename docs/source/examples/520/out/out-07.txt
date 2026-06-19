@@ -2,50 +2,28 @@
 PLAY [Test Log Client.] ********************************************************
 
 TASK [Run loggen] **************************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [Debug.] ******************************************************************
-ok: [bar] => 
-    out.stderr: |-
-        count=1, rate = 27027.03 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500308, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 30303.03 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500339, (average) msg size=256, bandwidth=0.50 kB/sec
+        error [loggen_helper.c:connect_to_server:79] error connecting socket: Connection refused
+        error [socket_plugin.c:active_thread_func:332] can not connect to 172.16.99.10:514 (0x17120a409560)
+        Total runtime = 0.500147, count = 0
+ok: [bar] => 
+    out.stderr: |-
+        error [loggen_helper.c:connect_to_server:79] error connecting socket: Connection refused
+        error [socket_plugin.c:active_thread_func:332] can not connect to 172.16.99.10:514 (0x3d0714c09560)
+        Total runtime = 0.500188, count = 0
 
 PLAY [Display the logs.] *******************************************************
 
 TASK [Get log files paths.] ****************************************************
 ok: [logserv]
 
-TASK [Get log files.] **********************************************************
-changed: [logserv] => (item=/var/log/remote/10.10.99.126/2026_05_13.log)
-changed: [logserv] => (item=/var/log/remote/10.10.99.200/2026_05_13.log)
-
-TASK [Display log files.] ******************************************************
-ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.126/2026_05_13.log']) => 
-    msg: |-
-        May 13 13:20:04 10.10.99.126 syslog-ng[62336]: Loading the new configuration;
-        May 13 13:20:04 10.10.99.126 syslog-ng[62336]: Configuration reload finished;
-        May 13 13:20:04 10.10.99.126 syslog-ng[62336]: Syslog connection established; fd='20', server='AF_INET(10.10.99.143:514)', local='AF_INET(0.0.0.0:0)'
-        May 13 13:20:07 10.10.99.126 1 2026-05-13T13:20:07.254815+02:00 aa3977f7-1efb-42d7-ba12-dd6dac8d4cfa ansible-ansible.legacy.command 63708 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.143 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        May 13 13:20:07 10.10.99.126 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778671207, stamp: 2026-05-13T13:20:07 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [logserv] => (item=['cat', '/var/log/remote/10.10.99.200/2026_05_13.log']) => 
-    msg: |-
-        May 13 13:20:04 10.10.99.200 syslog-ng[61359]: Loading the new configuration;
-        May 13 13:20:04 10.10.99.200 syslog-ng[61359]: Configuration reload finished;
-        May 13 13:20:04 10.10.99.200 syslog-ng[61359]: Syslog connection established; fd='20', server='AF_INET(10.10.99.143:514)', local='AF_INET(0.0.0.0:0)'
-        May 13 13:20:07 10.10.99.200 1 2026-05-13T13:20:07.261130+02:00 c6b535de-791d-4ede-ba24-3b82389e6484 ansible-ansible.legacy.command 63709 - - Invoked with _raw_params=loggen -i -S -n 1 10.10.99.143 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        May 13 13:20:07 10.10.99.200 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1778671207, stamp: 2026-05-13T13:20:07 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 PLAY RECAP *********************************************************************
 bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-logserv                    : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+logserv                    : ok=1    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

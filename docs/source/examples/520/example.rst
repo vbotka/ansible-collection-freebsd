@@ -69,8 +69,7 @@ Configure and run a log server. Configure log clients and test them. Use `syslog
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml \
                               -i iocage.ini \
-                              -t project_plugins \
-                              --flush-cache
+                              -t project_plugins
 
 * Create the project
 
@@ -115,6 +114,7 @@ Tree
   ├── group_vars
   │   ├── all
   │   │   ├── common.yml
+  │   │   ├── hosts.yml
   │   │   └── project.yml
   │   ├── logclient_group
   │   │   └── syslog-ng-client.yml
@@ -122,9 +122,6 @@ Tree
   │       └── syslog-ng-server.yml
   ├── hosts
   │   └── 05_iocage.yml
-  ├── host_vars
-  │   └── iocage_05
-  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all-groups.yml
   ├── pb-logclient.yml
@@ -222,6 +219,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/hosts.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/all/project.yml
    :language: yaml+jinja
    :caption:
@@ -241,13 +242,6 @@ group_vars
 .. note::
 
    The same configuration from the repo `ansible-conf-syslogng-client`_ is used in :ref:`example_521`
-
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_05/iocage.yml
-   :language: yaml+jinja
-   :caption:
 
 Playbook output - Fetch the iocage plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -5,7 +5,7 @@
 
     - name: Run loggen
       register: out
-      ansible.builtin.command: "loggen -i -S -n 1 {{ log_serv }} 514"
+      ansible.builtin.command: "loggen -i -S -n 1 {{ project_hosts.log_server }} 514"
 
     - name: Debug.
       ansible.builtin.debug:
