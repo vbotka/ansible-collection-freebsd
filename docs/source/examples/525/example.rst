@@ -56,8 +56,8 @@ Synopsis
 
    The only difference compared to :ref:`example_524` is the dictionary used for the jails'
    configuration. In this example, the jails (baz and qux) are not included in the ``ai_db_host``
-   dictionary; instead, they are configured from the ``ai_db_class`` dictionary. See the repository
-   `ansible-conf-init`_.
+   dictionary; instead, they are configured from the ``ai_db_class`` dictionary. See the
+   `ansible-conf-init`_ repository.
 
 Requirements
 ^^^^^^^^^^^^

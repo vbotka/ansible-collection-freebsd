@@ -1,7 +1,7 @@
 .. _example_524:
 
-524 iocage template ansible_init (hostname)
--------------------------------------------
+524 iocage template ansible_init
+--------------------------------
 
 .. contents::
    :local:
