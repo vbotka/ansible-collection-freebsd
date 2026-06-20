@@ -8,12 +8,12 @@
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-server
-          alias=log-server"
+          class=log-server"
       ansible.builtin.command: >
         iocage clone
-        ansible-pull-syslogng-server
+        --name log-server
         --newmac
+        ansible-pull-syslogng-server
         {{ log_server_properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}
 
@@ -21,12 +21,12 @@
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-client
-          alias={{ item }}"
+          class=log-client"
       ansible.builtin.command: >
         iocage clone
-        ansible-pull-syslogng-client
+        --name {{ item }}
         --newmac
+        ansible-pull-syslogng-client
         {{ log_client_properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}
-      loop: "{{ log_client_aliases }}"
+      loop: "{{ log_clients }}"

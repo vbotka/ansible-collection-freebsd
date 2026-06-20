@@ -34,6 +34,6 @@ log_client_properties:
   boot: 1
   type: jail
 
-log_client_aliases:
+log_clients:
   - foo
   - bar
