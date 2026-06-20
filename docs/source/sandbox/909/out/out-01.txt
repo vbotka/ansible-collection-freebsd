@@ -14,8 +14,39 @@ TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
     msg: |-
         iocage_plugins:
+          ansible-pull-syslogng-client:
+              boot: 'off'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-pull-syslogng-server:
+              boot: 'off'
+              doc_url: '-'
+              ip4: 172.16.99.31
+              ip4_dict:
+                  ip4:
+                  -   ifc: vnet0
+                      ip: 172.16.99.31
+                      mask: '24'
+                  msg: ''
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
           ansible-syslogng:
-              boot: 'on'
+              boot: 'off'
               doc_url: '-'
               ip4: '-'
               ip4_dict:
@@ -29,7 +60,7 @@ ok: [iocage_05] =>
               template: '-'
               type: pluginv2
           ansible-test:
-              boot: 'on'
+              boot: 'off'
               doc_url: '-'
               ip4: '-'
               ip4_dict:
@@ -45,8 +76,10 @@ ok: [iocage_05] =>
 
         plugins:
           ansible-pull-test:
-              git: https://github.com/vbotka/iocage-plugins
+              branch: main
+              git: https://github.com/vbotka/iocage-plugins-devel
               properties:
+                  boot: 0
                   bpf: 1
                   dhcp: 1
                   vnet: 1
@@ -63,8 +96,10 @@ ok: [iocage_05] =>
         selected_plugins:
           -   key: ansible-pull-test
             value:
-                git: https://github.com/vbotka/iocage-plugins
+                branch: main
+                git: https://github.com/vbotka/iocage-plugins-devel
                 properties:
+                    boot: 0
                     bpf: 1
                     dhcp: 1
                     vnet: 1
@@ -75,7 +110,7 @@ ok: [iocage_05]
 TASK [Debug commands debug=true] ***********************************************
 ok: [iocage_05] => (item=ansible-pull-test) => 
     msg: |-
-        iocage fetch --plugin-name ansible-pull-test --git_repository https://github.com/vbotka/iocage-plugins bpf=1 dhcp=1 vnet=1
+        iocage fetch --plugin-name ansible-pull-test --git_repository https://github.com/vbotka/iocage-plugins-devel --branch main boot=0 bpf=1 dhcp=1 vnet=1
 
 TASK [Fetch enabled plugins.] **************************************************
 ok: [iocage_05] => (item=ansible-pull-test)

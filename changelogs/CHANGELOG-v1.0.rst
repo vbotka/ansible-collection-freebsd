@@ -18,6 +18,8 @@ Minor Changes
 --------------
 * Update pb_iocage_project_create_from_plugins.yml
 * Docs. Update examples 520, 521, 522, and 526.
+* Docs. Update sandbox 909.
+* Docs. Add project-hosts.yml
 
 
 0.8.22

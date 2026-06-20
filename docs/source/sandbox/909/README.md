@@ -1,50 +1,49 @@
 # iocage plugin ansible-pull-test
 
+## Troubleshooting
+
 * Run the batch.
 
 * Open console to the jail. For example,
 
 ```
-shell > iocage console c6f15d2e-d612-44dd-8c4c-7334541d78d9
+shell > iocage console caaf20a2-9744-4792-ac58-dd259f2cb617
 ```
 
 * Test ansible-pull in the jail created from the iocage plugin ansible-pull-test.
 
 ```
-root@c6f15d2e-d612-44dd-8c4c-7334541d78d9:~ # ansible-pull -U https://github.com/vbotka/ansible-conf-test.git \
-                                                           -d /root/ansible-conf-test \
-														   pb-test.yml
+root@caaf20a2-9744-4792-ac58-dd259f2cb617:~/ansible-conf-test # cd ansible-conf-test/
 
+root@caaf20a2-9744-4792-ac58-dd259f2cb617:~/ansible-conf-test # ansible-pull -i hosts -U https://github.com/vbotka/ansible-conf-test.git -d /root/ansible-conf-test pb-test.yml
+Starting Ansible Pull at 2026-06-20 11:35:33
+/usr/local/bin/ansible-pull -i hosts -U https://github.com/vbotka/ansible-conf-test.git -d /root/ansible-conf-test pb-test.yml
 [WARNING]: Could not match supplied host pattern, ignoring:
-c6f15d2e-d612-44dd-8c4c-7334541d78d9
-[WARNING]: Could not match supplied host pattern, ignoring: localhost.my.domain
-localhost | CHANGED => {
-    "after": "db2af8a89d18bcfcc2d81f5002dc06e42541953b",
-    "before": null,
-    "changed": true
+caaf20a2-9744-4792-ac58-dd259f2cb617
+localhost.my.domain | SUCCESS => {
+    "after": "48d2c9ea01ece7a9af3e29b5bf18f7df53fd203c",
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/local/bin/python3.11"
+    },
+    "before": "48d2c9ea01ece7a9af3e29b5bf18f7df53fd203c",
+    "changed": false,
+    "remote_url_changed": false
 }
-[WARNING]: No inventory was parsed, only implicit localhost is available
-[WARNING]: provided hosts list is empty, only localhost is available. Note that
-the implicit localhost does not match 'all'
 [WARNING]: Could not match supplied host pattern, ignoring:
-c6f15d2e-d612-44dd-8c4c-7334541d78d9
-[WARNING]: Could not match supplied host pattern, ignoring: localhost.my.domain
+caaf20a2-9744-4792-ac58-dd259f2cb617
 
-PLAY [Test ansible-pull] *******************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [localhost]
+PLAY [ansible-test] ************************************************************
 
 TASK [Hello world!] ************************************************************
-changed: [localhost]
+ok: [localhost.my.domain]
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+localhost.my.domain        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 ```
 Look at the file
 
 ```
-root@c6f15d2e-d612-44dd-8c4c-7334541d78d9:~ # cat /tmp/ansible-hello-world.txt 
-Hello world!
+root@caaf20a2-9744-4792-ac58-dd259f2cb617:~/ansible-conf-test # cat /tmp/ansible-hello-world.txt 
+[ansible-test] Hello world!
 ```
