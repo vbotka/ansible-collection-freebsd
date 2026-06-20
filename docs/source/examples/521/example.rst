@@ -57,13 +57,12 @@ Tree
   ├── group_vars
   │   └── all
   │       ├── common.yml
+  │       ├── hosts.yml
   │       └── syslog-ng.yml
   ├── hosts
   │   └── 05_iocage.yml
   ├── iocage.ini
-  ├── pb-conf-logclient.yml
   ├── pb-create-jails.yml
-  ├── pb-start-jails.yml
   ├── pb-test-logclient.yml
   └── pb-test-logserv.yml
 
@@ -83,7 +82,7 @@ Synopsis
 
 * In the inventory group ``log_server`` test `syslog-ng server`_.
 
-* In the inventory group ``log_client`` configure and test `syslog-ng client`_.
+* In the inventory group ``log_client`` test `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -149,6 +148,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/hosts.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/all/syslog-ng.yml
    :language: yaml+jinja
    :caption:
@@ -204,48 +207,6 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-Playbook pb-start-jails.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-start-jails.yml
-   :language: yaml+jinja
-
-Playbook output - Start jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-start-jails.yml -i hosts -i iocage.ini -e debug=true
-
-.. literalinclude:: out/out-05.txt
-   :language: yaml
-   :force:
-
-Playbook pb-conf-logclient.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-conf-logclient.yml
-   :language: yaml+jinja
-   :emphasize-lines: 21-23
-
-.. note::
-
-   The configuration file ``/usr/local/etc/syslog-ng.conf``, created by the iocage plugin
-   ``ansible-pull-syslogng-client`` from the repo `ansible-conf-syslogng-client`_, keeps the string
-   ``LOG_SERVER`` in the place of the log-server IP. The above play replaces this string with the
-   log-server IP.
-
-Playbook output - Configure, enable, and start Log Clients
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-conf-logclient.yml -i hosts -i iocage.ini -e debug=true
-
-.. literalinclude:: out/out-06.txt
-   :language: yaml
-   :force:
-
 List jails
 ^^^^^^^^^^
 
@@ -292,10 +253,11 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use the utility ``lnav`` on the log server to display all logfiles in the the directory
-   ``/var/log/remote`` ::
+   Use ``lnav`` utility on the log server to display all logfiles in the the directory
+   ``/var/log/remote``. For example, ::
 
-     shell > lnav -r /var/log/remote/
+     shell > iocage console c8a9d789-fa02-4ce3-af66-41c848f87b0f
+     root@c8a9d789-fa02-4ce3-af66-41c848f87b0f:~ # lnav -r /var/log/remote/
 
 
 .. _iocage plugins: https://github.com/vbotka/iocage-plugins

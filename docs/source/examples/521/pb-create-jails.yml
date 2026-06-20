@@ -14,10 +14,10 @@
         iocage clone
         ansible-pull-syslogng-server
         --newmac
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        {{ log_server_properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}
 
-    - name: Create syslog-clients.
+    - name: Create syslog-ng clients.
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
@@ -27,6 +27,6 @@
         iocage clone
         ansible-pull-syslogng-client
         --newmac
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        {{ log_client_properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}
-      loop: "{{ log_clients }}"
+      loop: "{{ log_client_aliases }}"

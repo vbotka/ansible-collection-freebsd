@@ -3,7 +3,8 @@
 
   vars:
 
-    log_server: "{{ hostvars['log-server']['iocage_ip4'] }}"
+#   log_server: "{{ hostvars['log-server']['iocage_ip4'] }}"
+    log_server: "{{ project_hosts.log_server }}"
 
   tasks:
 

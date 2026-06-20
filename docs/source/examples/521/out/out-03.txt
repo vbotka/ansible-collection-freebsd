@@ -4,7 +4,7 @@ PLAY [Create jails from iocage plugins.] ***************************************
 TASK [Create syslog-ng server.] ************************************************
 changed: [iocage_05]
 
-TASK [Create syslog-clients.] **************************************************
+TASK [Create syslog-ng clients.] ***********************************************
 changed: [iocage_05] => (item=foo)
 changed: [iocage_05] => (item=bar)
 
