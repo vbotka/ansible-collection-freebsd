@@ -12,7 +12,7 @@
           alias=test"
       ansible.builtin.command: >
         iocage clone
-        ansible-pull-test
         --newmac
+        ansible-pull-test
         {{ properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}

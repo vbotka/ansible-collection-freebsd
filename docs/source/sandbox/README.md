@@ -2,7 +2,7 @@
 
 **Content**
 
-* 001 - 899 ... docs/source/examples/ run the examples at handy box.
+* 001 - 899 ... docs/source/examples/ run the examples in sandbox.
 * 501 ... Configure the iocage host.
 
 * 901 Test the filter and module vbotka.freebsd.iocage
@@ -13,11 +13,9 @@
 * 906 Test iocage plugin ansible-test custom facts
 * 907 Test iocage plugins ansible-syslogng-client and ansible-syslogng-server (OBSOLETE)
 * 908 Test var enabled_plugins; simplified version of 907
-* 909 Test ansible-pull, iocage plugin ansible-pull-test, (WIP)
-* 910 Test ansible-pull, iocage plugin ansible-pull-syslogng-server, repo
-      ansible-conf-syslogng-server.git
-* 911 Test ansible-pull, iocage plugin ansible-pull-syslogng-client, repo
-      ansible-conf-syslogng-client.git
+* 909 Test ansible-pull, iocage plugin ansible-pull-test, repo ansible-conf-test
+* 910 Test ansible-pull, iocage plugin ansible-pull-syslogng-server, repo ansible-conf-syslogng-server.git
+* 911 Test ansible-pull, iocage plugin ansible-pull-syslogng-client, repo ansible-conf-syslogng-client.git
 * 912 The same as 910, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
 * 913 The same as 911, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
 * 914 Template ansible_syslogng_server
