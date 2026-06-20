@@ -26,11 +26,5 @@ ansible-inventory -i hosts --graph | tee out/out-06.txt
 # Display all groups
 ansible-playbook pb-all-groups.yml -i hosts | tee out/out-07.txt
 
-# Start Log Clients
-ansible-playbook pb-start-jails.yml -i hosts -i iocage.ini -e debug=true | tee out/out-08.txt
-
-# Configure Log Clients LOG_SERVER, enable, and start syslog-ng
-ansible-playbook pb-conf-logclient.yml -i hosts -e debug=true | tee out/out-09.txt
-
 # Test Log Clients
 ansible-playbook pb-test-logclient.yml -i hosts -e debug=true | tee out/out-10.txt

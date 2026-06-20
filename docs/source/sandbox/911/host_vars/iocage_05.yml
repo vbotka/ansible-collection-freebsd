@@ -3,7 +3,7 @@ enabled_plugins:
 
 plugins:
   ansible-pull-syslogng-client:
-    git: https://github.com/vbotka/iocage-plugins
+    git: https://github.com/vbotka/iocage-plugins-devel
     branch: main
     properties:
       bpf: 1

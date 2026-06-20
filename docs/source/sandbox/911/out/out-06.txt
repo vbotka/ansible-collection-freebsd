@@ -4,18 +4,17 @@
   |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
   |  |--ansible-pull-test
-  |  |--ansible-syslogng
   |  |--ansible-test
-  |  |--foo
-  |  |--bar
   |--@log_client:
   |  |--foo
+  |  |--bar
+  |--@state_up:
+  |  |--foo
+  |  |--log-server
   |  |--bar
   |--@vmm_iocage_05:
   |  |--foo
   |  |--log-server
   |  |--bar
   |--@log_server:
-  |  |--log-server
-  |--@state_up:
   |  |--log-server

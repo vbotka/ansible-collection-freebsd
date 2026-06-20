@@ -6,9 +6,9 @@ plugins:
     git: https://github.com/vbotka/iocage-plugins-devel
     branch: main
     properties:
-      vnet: 1
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_pull_syslogng_server'] }}/24"
+      vnet: 1
       boot: 0
 
 properties:
