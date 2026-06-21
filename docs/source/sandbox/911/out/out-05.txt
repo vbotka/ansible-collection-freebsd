@@ -1,26 +1,26 @@
 all:
   children:
-    log_client:
+    log_server:
       hosts:
-        bar:
+        log-server:
           ansible_connection: vbotka.freebsd.jailexec
           ansible_jail_host: iocage_05
-          ansible_jail_name: '41'
+          ansible_jail_name: '7'
           ansible_jail_privilege_escalation: sudo
           ansible_python_interpreter: auto_silent
           iocage_basejail: 'yes'
           iocage_boot: 'on'
           iocage_classes:
-          - log-client
-          iocage_ip4: 172.16.99.149
+          - log-server
+          iocage_ip4: 172.16.99.10
           iocage_ip4_dict:
             ip4:
-            - ifc: epair0b
-              ip: 172.16.99.149
-              mask: '-'
+            - ifc: vnet0
+              ip: 172.16.99.10
+              mask: '24'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '41'
+          iocage_jid: '7'
           iocage_properties:
             CONFIG_VERSION: '33'
             allow_chflags: '0'
@@ -47,7 +47,7 @@ all:
             available: readonly
             basejail: '1'
             boot: '1'
-            bpf: '1'
+            bpf: '0'
             children_max: '0'
             comment: none
             compression: 'on'
@@ -58,11 +58,11 @@ all:
             cputime: 'off'
             datasize: 'off'
             dedup: 'off'
-            defaultrouter: auto
+            defaultrouter: 172.16.99.1
             defaultrouter6: auto
             depends: none
             devfs_ruleset: '4'
-            dhcp: '1'
+            dhcp: '0'
             enforce_statfs: '2'
             exec_clean: '1'
             exec_created: /usr/bin/true
@@ -78,23 +78,23 @@ all:
             exec_system_user: root
             exec_timeout: '60'
             host_domainname: none
-            host_hostname: d1963e2b-bd95-4e8e-8bb5-10b287b02dc3
-            host_hostuuid: d1963e2b-bd95-4e8e-8bb5-10b287b02dc3
+            host_hostname: log-server
+            host_hostuuid: log-server
             host_time: '1'
             hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
             hostid_strict_check: '0'
             interfaces: vnet0:bridge0
             ip4: new
-            ip4_addr: none
+            ip4_addr: vnet0|172.16.99.10/24
             ip4_saddrsel: '1'
             ip6: new
             ip6_addr: none
             ip6_saddrsel: '1'
             ip_hostname: '0'
             jail_zfs: '0'
-            jail_zfs_dataset: iocage/jails/d1963e2b-bd95-4e8e-8bb5-10b287b02dc3/data
+            jail_zfs_dataset: iocage/jails/log-server/data
             jail_zfs_mountpoint: none
-            last_started: '2026-06-20 13:01:59'
+            last_started: '2026-06-21 02:17:41'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -115,7 +115,7 @@ all:
             nat_interface: none
             nat_prefix: '172.16'
             nmsgq: 'off'
-            notes: vmm=iocage_05 class=log-client alias=bar
+            notes: vmm=iocage_05 class=log-server
             nsem: 'off'
             nsemop: 'off'
             nshm: 'off'
@@ -124,7 +124,7 @@ all:
             origin: readonly
             owner: root
             pcpu: 'off'
-            plugin_name: d1963e2b-bd95-4e8e-8bb5-10b287b02dc3
+            plugin_name: log-server
             plugin_repository: https://github.com/vbotka/iocage-plugins-devel
             priority: '99'
             pseudoterminals: 'off'
@@ -153,7 +153,7 @@ all:
             used: readonly
             vmemoryuse: 'off'
             vnet: '1'
-            vnet0_mac: 665d86a35446 665d86a35447
+            vnet0_mac: 665d8679c5dd 665d8679c5de
             vnet0_mtu: auto
             vnet1_mac: none
             vnet1_mtu: auto
@@ -170,10 +170,9 @@ all:
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_tags:
-            alias: bar
-            class: log-client
+            class: log-server
             vmm: iocage_05
-          iocage_template: ansible-pull-syslogng-client
+          iocage_template: ansible-pull-syslogng-server
           iocage_type: jail
           project_hosts: &id001
             iocage_05:
@@ -182,183 +181,6 @@ all:
               log_server: 172.16.99.10
               repos: 172.16.99.21
               repos_devel: 172.16.99.22
-        foo:
-          ansible_connection: vbotka.freebsd.jailexec
-          ansible_jail_host: iocage_05
-          ansible_jail_name: '40'
-          ansible_jail_privilege_escalation: sudo
-          ansible_python_interpreter: auto_silent
-          iocage_basejail: 'yes'
-          iocage_boot: 'on'
-          iocage_classes:
-          - log-client
-          iocage_ip4: 172.16.99.148
-          iocage_ip4_dict:
-            ip4:
-            - ifc: epair0b
-              ip: 172.16.99.148
-              mask: '-'
-            msg: ''
-          iocage_ip6: '-'
-          iocage_jid: '40'
-          iocage_properties:
-            CONFIG_VERSION: '33'
-            allow_chflags: '0'
-            allow_mlock: '0'
-            allow_mount: '0'
-            allow_mount_devfs: '0'
-            allow_mount_fdescfs: '0'
-            allow_mount_fusefs: '0'
-            allow_mount_linprocfs: '0'
-            allow_mount_linsysfs: '0'
-            allow_mount_nullfs: '0'
-            allow_mount_procfs: '0'
-            allow_mount_tmpfs: '0'
-            allow_mount_zfs: '0'
-            allow_nfsd: '0'
-            allow_quotas: '0'
-            allow_raw_sockets: '0'
-            allow_set_hostname: '1'
-            allow_socket_af: '0'
-            allow_sysvipc: '0'
-            allow_tun: '0'
-            allow_vmm: '0'
-            assign_localhost: '0'
-            available: readonly
-            basejail: '1'
-            boot: '1'
-            bpf: '1'
-            children_max: '0'
-            comment: none
-            compression: 'on'
-            compressratio: readonly
-            coredumpsize: 'off'
-            count: '1'
-            cpuset: 'off'
-            cputime: 'off'
-            datasize: 'off'
-            dedup: 'off'
-            defaultrouter: auto
-            defaultrouter6: auto
-            depends: none
-            devfs_ruleset: '4'
-            dhcp: '1'
-            enforce_statfs: '2'
-            exec_clean: '1'
-            exec_created: /usr/bin/true
-            exec_fib: '0'
-            exec_jail_user: root
-            exec_poststart: /usr/bin/true
-            exec_poststop: /usr/bin/true
-            exec_prestart: /usr/bin/true
-            exec_prestop: /usr/bin/true
-            exec_start: /bin/sh /etc/rc
-            exec_stop: /bin/sh /etc/rc.shutdown
-            exec_system_jail_user: '0'
-            exec_system_user: root
-            exec_timeout: '60'
-            host_domainname: none
-            host_hostname: 5cab2862-6b06-4809-b0e8-cd2df6e86b39
-            host_hostuuid: 5cab2862-6b06-4809-b0e8-cd2df6e86b39
-            host_time: '1'
-            hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
-            hostid_strict_check: '0'
-            interfaces: vnet0:bridge0
-            ip4: new
-            ip4_addr: none
-            ip4_saddrsel: '1'
-            ip6: new
-            ip6_addr: none
-            ip6_saddrsel: '1'
-            ip_hostname: '0'
-            jail_zfs: '0'
-            jail_zfs_dataset: iocage/jails/5cab2862-6b06-4809-b0e8-cd2df6e86b39/data
-            jail_zfs_mountpoint: none
-            last_started: '2026-06-20 13:01:54'
-            localhost_ip: none
-            login_flags: -f root
-            mac_prefix: 665d86
-            maxproc: 'off'
-            memorylocked: 'off'
-            memoryuse: 'off'
-            min_dyn_devfs_ruleset: '1000'
-            mount_devfs: '1'
-            mount_fdescfs: '1'
-            mount_linprocfs: '0'
-            mount_procfs: '0'
-            mountpoint: readonly
-            msgqqueued: 'off'
-            msgqsize: 'off'
-            nat: '0'
-            nat_backend: ipfw
-            nat_forwards: none
-            nat_interface: none
-            nat_prefix: '172.16'
-            nmsgq: 'off'
-            notes: vmm=iocage_05 class=log-client alias=foo
-            nsem: 'off'
-            nsemop: 'off'
-            nshm: 'off'
-            nthr: 'off'
-            openfiles: 'off'
-            origin: readonly
-            owner: root
-            pcpu: 'off'
-            plugin_name: 5cab2862-6b06-4809-b0e8-cd2df6e86b39
-            plugin_repository: https://github.com/vbotka/iocage-plugins-devel
-            priority: '99'
-            pseudoterminals: 'off'
-            quota: none
-            readbps: 'off'
-            readiops: 'off'
-            release: 15.0-RELEASE
-            reservation: none
-            resolver: options tcp;nameserver 1.1.1.1;nameserver 8.8.8.8
-            rlimits: 'off'
-            rtsold: '0'
-            securelevel: '2'
-            shmsize: 'off'
-            stacksize: 'off'
-            state: up
-            stop_timeout: '30'
-            swapuse: 'off'
-            sync_state: none
-            sync_target: none
-            sync_tgt_zpool: none
-            sysvmsg: new
-            sysvsem: new
-            sysvshm: new
-            template: '0'
-            type: jail
-            used: readonly
-            vmemoryuse: 'off'
-            vnet: '1'
-            vnet0_mac: 665d86595fb5 665d86595fb6
-            vnet0_mtu: auto
-            vnet1_mac: none
-            vnet1_mtu: auto
-            vnet2_mac: none
-            vnet2_mtu: auto
-            vnet3_mac: none
-            vnet3_mtu: auto
-            vnet_default_interface: none
-            vnet_default_mtu: '1500'
-            vnet_interfaces: none
-            wallclock: 'off'
-            writebps: 'off'
-            writeiops: 'off'
-          iocage_release: 15.0-RELEASE
-          iocage_state: up
-          iocage_tags:
-            alias: foo
-            class: log-client
-            vmm: iocage_05
-          iocage_template: ansible-pull-syslogng-client
-          iocage_type: jail
-          project_hosts: *id001
-    log_server:
-      hosts:
-        log-server: {}
     state_down:
       hosts:
         ansible-pull-syslogng-client:
@@ -1034,27 +856,26 @@ all:
           project_hosts: *id001
     state_up:
       hosts:
-        bar: {}
-        foo: {}
-        log-server:
+        log-server: {}
+        test:
           ansible_connection: vbotka.freebsd.jailexec
           ansible_jail_host: iocage_05
-          ansible_jail_name: '33'
+          ansible_jail_name: '6'
           ansible_jail_privilege_escalation: sudo
           ansible_python_interpreter: auto_silent
           iocage_basejail: 'yes'
           iocage_boot: 'on'
           iocage_classes:
-          - log-server
-          iocage_ip4: 172.16.99.10
+          - ansible-pull
+          iocage_ip4: 172.16.99.143
           iocage_ip4_dict:
             ip4:
-            - ifc: vnet0
-              ip: 172.16.99.10
-              mask: '24'
+            - ifc: epair0b
+              ip: 172.16.99.143
+              mask: '-'
             msg: ''
           iocage_ip6: '-'
-          iocage_jid: '33'
+          iocage_jid: '6'
           iocage_properties:
             CONFIG_VERSION: '33'
             allow_chflags: '0'
@@ -1081,7 +902,7 @@ all:
             available: readonly
             basejail: '1'
             boot: '1'
-            bpf: '0'
+            bpf: '1'
             children_max: '0'
             comment: none
             compression: 'on'
@@ -1092,11 +913,11 @@ all:
             cputime: 'off'
             datasize: 'off'
             dedup: 'off'
-            defaultrouter: 172.16.99.1
+            defaultrouter: auto
             defaultrouter6: auto
             depends: none
             devfs_ruleset: '4'
-            dhcp: '0'
+            dhcp: '1'
             enforce_statfs: '2'
             exec_clean: '1'
             exec_created: /usr/bin/true
@@ -1112,23 +933,23 @@ all:
             exec_system_user: root
             exec_timeout: '60'
             host_domainname: none
-            host_hostname: c09c2104-30eb-4526-89d2-ee166269c82a
-            host_hostuuid: c09c2104-30eb-4526-89d2-ee166269c82a
+            host_hostname: test
+            host_hostuuid: test
             host_time: '1'
             hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
             hostid_strict_check: '0'
             interfaces: vnet0:bridge0
             ip4: new
-            ip4_addr: vnet0|172.16.99.10/24
+            ip4_addr: none
             ip4_saddrsel: '1'
             ip6: new
             ip6_addr: none
             ip6_saddrsel: '1'
             ip_hostname: '0'
             jail_zfs: '0'
-            jail_zfs_dataset: iocage/jails/c09c2104-30eb-4526-89d2-ee166269c82a/data
+            jail_zfs_dataset: iocage/jails/test/data
             jail_zfs_mountpoint: none
-            last_started: '2026-06-20 11:51:50'
+            last_started: '2026-06-21 02:15:58'
             localhost_ip: none
             login_flags: -f root
             mac_prefix: 665d86
@@ -1149,7 +970,7 @@ all:
             nat_interface: none
             nat_prefix: '172.16'
             nmsgq: 'off'
-            notes: vmm=iocage_05 class=log-server alias=log-server
+            notes: vmm=iocage_05 class=ansible-pull
             nsem: 'off'
             nsemop: 'off'
             nshm: 'off'
@@ -1158,7 +979,7 @@ all:
             origin: readonly
             owner: root
             pcpu: 'off'
-            plugin_name: c09c2104-30eb-4526-89d2-ee166269c82a
+            plugin_name: test
             plugin_repository: https://github.com/vbotka/iocage-plugins-devel
             priority: '99'
             pseudoterminals: 'off'
@@ -1167,7 +988,7 @@ all:
             readiops: 'off'
             release: 15.0-RELEASE
             reservation: none
-            resolver: options tcp;nameserver 1.1.1.1;nameserver 8.8.8.8
+            resolver: /etc/resolv.conf
             rlimits: 'off'
             rtsold: '0'
             securelevel: '2'
@@ -1187,7 +1008,7 @@ all:
             used: readonly
             vmemoryuse: 'off'
             vnet: '1'
-            vnet0_mac: 665d8675bd33 665d8675bd34
+            vnet0_mac: 665d86ae1b75 665d86ae1b76
             vnet0_mtu: auto
             vnet1_mac: none
             vnet1_mtu: auto
@@ -1204,14 +1025,12 @@ all:
           iocage_release: 15.0-RELEASE
           iocage_state: up
           iocage_tags:
-            alias: log-server
-            class: log-server
+            class: ansible-pull
             vmm: iocage_05
-          iocage_template: ansible-pull-syslogng-server
+          iocage_template: ansible-pull-test
           iocage_type: jail
           project_hosts: *id001
     vmm_iocage_05:
       hosts:
-        bar: {}
-        foo: {}
         log-server: {}
+        test: {}

@@ -1,19 +1,6 @@
 
 PLAY [Test Log Clients.] *******************************************************
-
-TASK [Run loggen] **************************************************************
-changed: [bar]
-changed: [foo]
-
-TASK [Debug.] ******************************************************************
-ok: [bar] => 
-    out.stderr: |-
-        count=1, rate = 32258.06 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.501008, (average) msg size=256, bandwidth=0.50 kB/sec
-ok: [foo] => 
-    out.stderr: |-
-        count=1, rate = 27777.78 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.501133, (average) msg size=256, bandwidth=0.50 kB/sec
+skipping: no hosts matched
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,77 +8,45 @@ TASK [Get log files paths.] ****************************************************
 ok: [log-server]
 
 TASK [Get log files.] **********************************************************
-changed: [log-server] => (item=/var/log/remote/172.16.99.149/2026_06_20.log)
-changed: [log-server] => (item=/var/log/remote/172.16.99.140/2026_06_20.log)
-changed: [log-server] => (item=/var/log/remote/172.16.99.148/2026_06_20.log)
+changed: [log-server] => (item=/var/log/remote/localhost/2026_06_21.log)
 changed: [log-server] => (item=/var/log/remote/localhost/2026_06_20.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log-server] => (item=['cat', '/var/log/remote/172.16.99.149/2026_06_20.log']) => 
+ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_06_21.log']) => 
     msg: |-
-        Jun 20 15:01:59 172.16.99.149 syslog-ng[74807]: syslog-ng starting up; version='4.11.0'
-        Jun 20 15:01:59 172.16.99.149 syslog-ng[74807]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 20 15:01:59 172.16.99.149 1 2026-06-20T15:01:59.308338+02:00 d1963e2b-bd95-4e8e-8bb5-10b287b02dc3 /usr/sbin/cron 74965 - - (CRON) WARNING (madvise() failed)
-        Jun 20 15:05:09 172.16.99.149 1 2026-06-20T15:05:09.003053+02:00 d1963e2b-bd95-4e8e-8bb5-10b287b02dc3 /usr/sbin/cron 75369 - - (root) CMD (/usr/libexec/atrun)
-        Jun 20 15:06:58 172.16.99.149 1 2026-06-20T15:06:58.994829+02:00 d1963e2b-bd95-4e8e-8bb5-10b287b02dc3 dhclient 74533 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
-        Jun 20 15:06:58 172.16.99.149 1 2026-06-20T15:06:58.999586+02:00 d1963e2b-bd95-4e8e-8bb5-10b287b02dc3 dhclient 74533 - - DHCPACK from 172.16.99.1
-        Jun 20 15:06:59 172.16.99.149 1 2026-06-20T15:06:59.023452+02:00 d1963e2b-bd95-4e8e-8bb5-10b287b02dc3 dhclient 74533 - - bound to 172.16.99.149 -- renewal in 299 seconds.
-        Jun 20 15:08:27 172.16.99.149 1 2026-06-20T15:08:27.294707+02:00 d1963e2b-bd95-4e8e-8bb5-10b287b02dc3 ansible-ansible.legacy.command 76267 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 20 15:08:27 172.16.99.149 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1781960907, stamp: 2026-06-20T15:08:27 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log-server] => (item=['cat', '/var/log/remote/172.16.99.140/2026_06_20.log']) => 
-    msg: |-
-        Jun 20 15:00:12 172.16.99.140 syslog-ng[72452]: syslog-ng starting up; version='4.11.0'
-        Jun 20 15:00:12 172.16.99.140 syslog-ng[72452]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 20 15:00:13 172.16.99.140 1 2026-06-20T15:00:13.220767+02:00 ansible-pull-syslogng-client ansible-vbotka.freebsd.service 72478 - - Invoked with script=syslog-ng command=reload list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Jun 20 15:00:13 172.16.99.140 syslog-ng[72452]: Loading the new configuration;
-        Jun 20 15:00:13 172.16.99.140 syslog-ng[72452]: Configuration reload finished;
-        Jun 20 15:00:14 172.16.99.140 1 2026-06-20T15:00:14.092030+02:00 ansible-pull-syslogng-client ansible-vbotka.freebsd.service 72586 - - Invoked with script=syslogd command=stop list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Jun 20 15:00:03 172.16.99.140 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: ansible-pull-
-        Jun 20 15:00:14 172.16.99.140 ansible:
-        Jun 20 15:00:03 172.16.99.140 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
-        Jun 20 15:00:09 172.16.99.140 ansible: n=ansible INFO| TASK [Install packages.] *******************************************************
-        Jun 20 15:00:09 172.16.99.140 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Jun 20 15:00:10 172.16.99.140 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
-        Jun 20 15:00:10 172.16.99.140 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Jun 20 15:00:10 172.16.99.140 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
-        Jun 20 15:00:10 172.16.99.140 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Jun 20 15:00:11 172.16.99.140 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-        Jun 20 15:00:11 172.16.99.140 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Jun 20 15:00:11 172.16.99.140 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-        Jun 20 15:00:11 172.16.99.140 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Jun 20 15:00:13 172.16.99.140 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
-        Jun 20 15:00:13 172.16.99.140 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Jun 20 15:00:13 172.16.99.140 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
-        Jun 20 15:00:13 172.16.99.140 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Jun 20 15:00:14 172.16.99.140 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
-        Jun 20 15:00:14 172.16.99.140 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Jun 20 15:00:14 172.16.99.140 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
-        Jun 20 15:00:14 172.16.99.140 ansible: n=ansible INFO| localhost.my.domain        : ok=8    changed=4    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log-server] => (item=['cat', '/var/log/remote/172.16.99.148/2026_06_20.log']) => 
-    msg: |-
-        Jun 20 15:01:54 172.16.99.148 syslog-ng[73830]: syslog-ng starting up; version='4.11.0'
-        Jun 20 15:01:54 172.16.99.148 syslog-ng[73830]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 20 15:01:54 172.16.99.148 1 2026-06-20T15:01:54.838337+02:00 5cab2862-6b06-4809-b0e8-cd2df6e86b39 /usr/sbin/cron 73988 - - (CRON) WARNING (madvise() failed)
-        Jun 20 15:05:06 172.16.99.148 1 2026-06-20T15:05:06.002971+02:00 5cab2862-6b06-4809-b0e8-cd2df6e86b39 /usr/sbin/cron 75370 - - (root) CMD (/usr/libexec/atrun)
-        Jun 20 15:06:54 172.16.99.148 1 2026-06-20T15:06:54.515864+02:00 5cab2862-6b06-4809-b0e8-cd2df6e86b39 dhclient 73556 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
-        Jun 20 15:06:54 172.16.99.148 1 2026-06-20T15:06:54.520186+02:00 5cab2862-6b06-4809-b0e8-cd2df6e86b39 dhclient 73556 - - DHCPACK from 172.16.99.1
-        Jun 20 15:06:54 172.16.99.148 1 2026-06-20T15:06:54.573336+02:00 5cab2862-6b06-4809-b0e8-cd2df6e86b39 dhclient 73556 - - bound to 172.16.99.148 -- renewal in 300 seconds.
-        Jun 20 15:08:27 172.16.99.148 1 2026-06-20T15:08:27.294674+02:00 5cab2862-6b06-4809-b0e8-cd2df6e86b39 ansible-ansible.legacy.command 76268 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 20 15:08:27 172.16.99.148 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1781960907, stamp: 2026-06-20T15:08:27 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 21 05:49:32 localhost syslog-ng[29477]: syslog-ng starting up; version='4.11.0'
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ok: [log-server] => (item=['cat', '/var/log/remote/localhost/2026_06_20.log']) => 
     msg: |-
-        Jun 20 15:02:15 localhost syslog-ng[59799]: I/O error occurred while reading; fd='23', error='Operation timed out (60)'
+        Jun 20 13:13:23 localhost syslog-ng[51446]: syslog-ng starting up; version='4.11.0'
+        Jun 20 13:13:24 localhost syslog-ng[51446]: Loading the new configuration;
+        Jun 20 13:13:24 localhost syslog-ng[51446]: Configuration reload finished;
+        Jun 20 13:13:13 localhost ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: ansible-pull-
+        Jun 20 13:13:25 localhost ansible:
+        Jun 20 13:13:14 localhost ansible: n=ansible INFO| PLAY [Configure and start Log Server.] *****************************************
+        Jun 20 13:13:19 localhost ansible: n=ansible INFO| TASK [Install packages.] *******************************************************
+        Jun 20 13:13:19 localhost ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 20 13:13:20 localhost ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
+        Jun 20 13:13:20 localhost ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 20 13:13:20 localhost ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+        Jun 20 13:13:20 localhost ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 20 13:13:22 localhost ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+        Jun 20 13:13:22 localhost ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 20 13:13:23 localhost ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+        Jun 20 13:13:23 localhost ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 20 13:13:24 localhost ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
+        Jun 20 13:13:24 localhost ansible: n=ansible INFO| changed: [localhost.my.domain]
+        Jun 20 13:13:24 localhost ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
+        Jun 20 13:13:25 localhost ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 20 13:13:25 localhost ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
+        Jun 20 13:13:25 localhost ansible: n=ansible INFO| ok: [localhost.my.domain]
+        Jun 20 13:13:25 localhost ansible: n=ansible INFO| PLAY RECAP *********************************************************************
+        Jun 20 13:13:25 localhost ansible: n=ansible INFO| localhost.my.domain        : ok=8    changed=4    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
+        Jun 20 13:13:29 localhost syslog-ng[51446]: syslog-ng shutting down; version='4.11.0'
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 PLAY RECAP *********************************************************************
-bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 log-server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

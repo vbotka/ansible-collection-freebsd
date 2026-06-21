@@ -2,9 +2,147 @@
 PLAY [Create jails from iocage plugins.] ***************************************
 
 TASK [Create jail.] ************************************************************
-changed: [iocage_05] => (item=foo)
-changed: [iocage_05] => (item=bar)
+[ERROR]: Task failed: Module failed: The command exited with a non-zero return code.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/911/pb-create-jails.yml:7:7
+
+5   tasks:
+6
+7     - name: Create jail.
+        ^ column 7
+
+failed: [iocage_05] (item=foo) => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.11
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - clone
+    - --name
+    - foo
+    - --newmac
+    - ansible-pull-syslogng-client
+    - boot=1
+    - bpf=1
+    - dhcp=1
+    - type=jail
+    - vnet=1
+    - notes=vmm=iocage_05 class=log-client
+    delta: '0:00:00.610536'
+    end: '2026-06-21 05:51:46.516764'
+    item: foo
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-06-21 05:51:45.906228'
+    stderr: |-
+        Traceback (most recent call last):
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 264, in _create_jail
+            su.check_call(snap_cmd, stderr=su.PIPE)
+          File "/usr/local/lib/python3.11/subprocess.py", line 413, in check_call
+            raise CalledProcessError(retcode, cmd)
+        subprocess.CalledProcessError: Command '['zfs', 'snapshot', '-r', 'zroot/iocage/jails/ansible-pull-syslogng-client@foo']' returned non-zero exit status 1.
+
+        During handling of the above exception, another exception occurred:
+
+        Traceback (most recent call last):
+          File "/usr/local/bin/iocage", line 10, in <module>
+            sys.exit(cli())
+                     ^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1157, in __call__
+            return self.main(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1078, in main
+            rv = self.invoke(ctx)
+                 ^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1688, in invoke
+            return _process_result(sub_ctx.command.invoke(sub_ctx))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1434, in invoke
+            return ctx.invoke(self.callback, **ctx.params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 783, in invoke
+            return __callback(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/iocage_cli/clone.py", line 71, in cli
+            ioc.IOCage(jail=source, skip_jails=True).create(
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/iocage.py", line 630, in create
+            ).create_jail()
+              ^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 98, in create_jail
+            return self._create_jail(jail_uuid, location)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 266, in _create_jail
+            raise RuntimeError(f'Jail: {jail_uuid} not found!')
+        RuntimeError: Jail: foo not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_05] (item=bar) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - clone
+    - --name
+    - bar
+    - --newmac
+    - ansible-pull-syslogng-client
+    - boot=1
+    - bpf=1
+    - dhcp=1
+    - type=jail
+    - vnet=1
+    - notes=vmm=iocage_05 class=log-client
+    delta: '0:00:00.607245'
+    end: '2026-06-21 05:51:48.143424'
+    item: bar
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-06-21 05:51:47.536179'
+    stderr: |-
+        Traceback (most recent call last):
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 264, in _create_jail
+            su.check_call(snap_cmd, stderr=su.PIPE)
+          File "/usr/local/lib/python3.11/subprocess.py", line 413, in check_call
+            raise CalledProcessError(retcode, cmd)
+        subprocess.CalledProcessError: Command '['zfs', 'snapshot', '-r', 'zroot/iocage/jails/ansible-pull-syslogng-client@bar']' returned non-zero exit status 1.
+
+        During handling of the above exception, another exception occurred:
+
+        Traceback (most recent call last):
+          File "/usr/local/bin/iocage", line 10, in <module>
+            sys.exit(cli())
+                     ^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1157, in __call__
+            return self.main(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1078, in main
+            rv = self.invoke(ctx)
+                 ^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1688, in invoke
+            return _process_result(sub_ctx.command.invoke(sub_ctx))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1434, in invoke
+            return ctx.invoke(self.callback, **ctx.params)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/click/core.py", line 783, in invoke
+            return __callback(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/iocage_cli/clone.py", line 71, in cli
+            ioc.IOCage(jail=source, skip_jails=True).create(
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/iocage.py", line 630, in create
+            ).create_jail()
+              ^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 98, in create_jail
+            return self._create_jail(jail_uuid, location)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 266, in _create_jail
+            raise RuntimeError(f'Jail: {jail_uuid} not found!')
+        RuntimeError: Jail: bar not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

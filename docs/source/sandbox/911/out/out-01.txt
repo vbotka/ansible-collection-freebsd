@@ -14,6 +14,20 @@ TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
     msg: |-
         iocage_plugins:
+          ansible-pull-syslogng-client:
+              boot: 'off'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
           ansible-pull-syslogng-server:
               boot: 'off'
               doc_url: '-'
@@ -80,30 +94,11 @@ ok: [iocage_05] =>
           - ansible-pull-syslogng-client
 
         selected_plugins:
-          -   key: ansible-pull-syslogng-client
-            value:
-                branch: main
-                git: https://github.com/vbotka/iocage-plugins-devel
-                properties:
-                    boot: 0
-                    bpf: 1
-                    dhcp: 1
-                    vnet: 1
+          []
 
 TASK [Check all required plugins are included in the dictionary plugins.] ******
 ok: [iocage_05]
 
-TASK [Debug commands debug=true] ***********************************************
-ok: [iocage_05] => (item=ansible-pull-syslogng-client) => 
-    msg: |-
-        iocage fetch --plugin-name ansible-pull-syslogng-client --git_repository https://github.com/vbotka/iocage-plugins-devel --branch main boot=0 bpf=1 dhcp=1 vnet=1
-
-TASK [Fetch enabled plugins.] **************************************************
-ok: [iocage_05] => (item=ansible-pull-syslogng-client)
-
-TASK [Stop fetched plugins.] ***************************************************
-ok: [iocage_05]
-
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

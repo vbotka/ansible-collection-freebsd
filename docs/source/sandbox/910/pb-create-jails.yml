@@ -4,15 +4,115 @@
 
   tasks:
 
+# See the notes below why alias testing is needed.
+
+    - name: Get inventory.
+      delegate_to: localhost
+      register: out
+      ansible.builtin.command:
+        cmd: ansible-inventory -i hosts --list --yaml
+        chdir: "{{ playbook_dir }}"
+
+    - name: Create list of aliases.
+      vars:
+        _regex: '(\w+)=([\w\-]+)'
+      ansible.builtin.set_fact:
+        alias: "{{ out.stdout
+                   | from_yaml
+                   | json_query('all.children.*.hosts[].*.iocage_properties.notes')
+                   | flatten
+                   | map('regex_findall', _regex)
+                   | select
+                   | map('community.general.dict')
+                   | json_query('[].alias') }}"
+
+    - name: Display aliases.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: alias
+
+    - name: End of host if alias log_server exists.
+      when: "'log_server' in alias"
+      block:
+
+        - name: Get iocage list of jails.
+          register:
+            iocage_jails: _task.result.stdout | vbotka.freebsd.iocage('jails')
+          changed_when: false
+          ansible.builtin.command: iocage list --long
+
+        - name: Debug.
+          ansible.builtin.debug:
+            msg: |
+              alias: {{ alias }}
+              log_server project IP: {{ project_hosts[inventory_hostname]['log_server'] }}
+              all jails IP: {{ iocage_jails | community.general.json_query('*.ip4') }}
+
+        - name: Display message.
+          ansible.builtin.debug:
+            msg: >-
+              Alias log_server exists. End of host.
+
+        - name: End of host.
+          ansible.builtin.meta: end_host
+
     - name: Create jail.
+      when: create | d(true) | bool
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
           class=log-server
-          alias=log-server"
+          alias=log_server"
       ansible.builtin.command: >
         iocage clone
         --newmac
         ansible-pull-syslogng-server
         {{ properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# The command fails
+#
+#   File "/usr/local/lib/python3.11/site-packages/iocage_lib/ioc_create.py", line 266, in _create_jail
+#     raise RuntimeError(f'Jail: {jail_uuid} not found!')
+# RuntimeError: Jail: log-server not found!
+#
+# when the option --name is used
+#
+#       --name log-server
+#
+# with the properties below
+#
+# properties:
+# ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
+# defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+# vnet: 1
+# boot: 1
+# type: jail
+#
+# As a workaround, the alias is used.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# The command works fine with the option --name (see 909)
+#
+#   - name: Create jail.
+#     vars:
+#       _notes: >
+#         "vmm={{ inventory_hostname }}
+#         class=ansible-pull"
+#     ansible.builtin.command: >
+#       iocage clone
+#       --name test
+#       --newmac
+#       ansible-pull-test
+#       {{ properties | dictsort | map('join', '=') | join(' ') }}
+#       notes={{ _notes }}
+#
+# when DHCP is used
+#
+# properties:
+#   bpf: 1
+#   dhcp: 1
+#   vnet: 1
+#   boot: 1
+#   type: jail
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

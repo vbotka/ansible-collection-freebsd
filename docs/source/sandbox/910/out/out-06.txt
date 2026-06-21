@@ -1,6 +1,7 @@
 @all:
   |--@ungrouped:
   |--@state_down:
+  |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
   |  |--ansible-pull-test
   |  |--ansible-test
@@ -8,5 +9,7 @@
   |  |--log-server
   |--@state_up:
   |  |--log-server
+  |  |--test
   |--@vmm_iocage_05:
   |  |--log-server
+  |  |--test

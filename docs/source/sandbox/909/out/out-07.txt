@@ -1,24 +1,11 @@
-
-PLAY [Start jails.] ************************************************************
-
-TASK [Display groups.] *********************************************************
-ok: [iocage_05] => 
-    msg: |-
-        ansible_pull: ['test']
-        state_down:
-          - ansible-pull-syslogng-client
-          - ansible-pull-syslogng-server
-          - ansible-pull-test
-          - ansible-syslogng
-          - ansible-test
-
-TASK [Display jails that shall be started.] ************************************
-ok: [iocage_05] => 
-    msg: |-
-        start_jails: []
-        start_uuid:
-          []
-
-PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-
+@all:
+  |--@ungrouped:
+  |--@state_down:
+  |  |--ansible-pull-syslogng-client
+  |  |--ansible-pull-syslogng-server
+  |  |--ansible-pull-test
+  |  |--ansible-test
+  |--@state_up:
+  |  |--log-server
+  |--@vmm_iocage_05:
+  |  |--log-server

@@ -14,6 +14,20 @@ TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
     msg: |-
         iocage_plugins:
+          ansible-pull-syslogng-client:
+              boot: 'off'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
           ansible-pull-syslogng-server:
               boot: 'off'
               doc_url: '-'

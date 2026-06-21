@@ -2,8 +2,12 @@
 
 . ../defaults/batch
 
-# Destroy jails
-# VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+
+# Stop foo and bar
+ssh admin@$iocage_05 sudo iocage stop foo bar
+
+# Destroy foo and bar
+ssh admin@$iocage_05 sudo iocage destroy -f foo bar
 
 # Fetch plugins
 ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_plugins -e debug=true | tee out/out-01.txt
@@ -18,7 +22,7 @@ ansible-playbook pb-create-jails.yml -i iocage.ini | tee out/out-03.txt
 ssh admin@$iocage_05 sudo iocage list -l | tee out/out-04.txt
 
 # Inventory
-ansible-inventory -i hosts --list --yaml | tee out/out-05.txt
+# ansible-inventory -i hosts --list --yaml | tee out/out-05.txt
 
 # Inventory graph
 ansible-inventory -i hosts --graph | tee out/out-06.txt
