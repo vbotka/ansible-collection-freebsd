@@ -1,23 +1,26 @@
 
-PLAY [Start jails.] ************************************************************
+PLAY [Test Log Server.] ********************************************************
 
-TASK [Display groups.] *********************************************************
-ok: [iocage_05] => 
-    msg: |-
-        log_server: ['log-server']
-        log_client: ['bar', 'foo']
-        state_down:
-          - ansible-pull-syslogng-client
-          - ansible-pull-syslogng-server
-          - ansible-syslogng
+TASK [Run commands.] ***********************************************************
+changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
+changed: [log_server] => (item=service syslog-ng status)
+changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
+changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
 
-TASK [Display jails that shall be started.] ************************************
-ok: [iocage_05] => 
+TASK [Debug.] ******************************************************************
+ok: [log_server] => 
     msg: |-
-        start_jails: []
-        start_uuid:
-          []
+        shell> rm -rf /var/log/remote/localhost/*
+
+        shell> service syslog-ng status
+        syslog_ng is running as pid 75230.
+
+        shell> loggen -i -S -n 1 localhost 514
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500442, (average) msg size=256, bandwidth=0.50 kB/sec
+
+        shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

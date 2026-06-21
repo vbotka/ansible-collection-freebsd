@@ -15,8 +15,8 @@ compose:
   ansible_jail_privilege_escalation: "'sudo'"
 
 groups:
-  log_server: iocage_classes is contains('log-server')
-  log_client: iocage_classes is contains('log-client')
+  log_servers: iocage_classes is contains('log-server')
+  log_clients: iocage_classes is contains('log-client')
 
 
 keyed_groups:

@@ -1,13 +1,13 @@
 
 PLAY [Create jails from iocage plugins.] ***************************************
 
-TASK [Create syslog-ng server.] ************************************************
-changed: [iocage_05]
-
-TASK [Create syslog-ng clients.] ***********************************************
+TASK [Create jail.] ************************************************************
 changed: [iocage_05] => (item=foo)
 changed: [iocage_05] => (item=bar)
 
+TASK [Create log_server] *******************************************************
+changed: [iocage_05]
+
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=2    changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

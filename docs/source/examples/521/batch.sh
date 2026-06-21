@@ -2,8 +2,11 @@
 
 . ../defaults/batch
 
-# Destroy jails
-VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
+# Stop foo and bar
+ssh admin@$iocage_05 sudo iocage stop foo bar
+
+# Destroy foo and bar
+ssh admin@$iocage_05 sudo iocage destroy -f foo bar
 
 # Fetch plugins
 ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_plugins -e debug=true | tee out/out-01.txt
@@ -12,23 +15,13 @@ ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_p
 ssh admin@$iocage_05 sudo iocage list -P | tee out/out-02.txt
 
 # Create jails
-ansible-playbook pb-create-jails.yml -i iocage.ini | tee out/out-03.txt
+ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts | tee out/out-03.txt
 
 # Inventory graph
 ansible-inventory -i hosts --graph | tee out/out-04.txt
 
-# Start jails
-# ansible-playbook pb-start-jails.yml -i hosts -i iocage.ini -e debug=true | tee out/out-05.txt
-
-# The Log Clients have to configured if ansible-pull runs without ansible_pull_mode=true
-# Configure Log Clients LOG_SERVER, enable, and start syslog-ng 
-# ansible-playbook pb-conf-logclient.yml -i hosts -i iocage.ini -e debug=true | tee out/out-06.txt
-
-# List jails
-ssh admin@$iocage_05 sudo iocage list -l | tee out/out-07.txt
-
 # Test Log Server
-ansible-playbook pb-test-logserv.yml -i hosts -e debug=true | tee out/out-08.txt
+ansible-playbook pb-test-logserv.yml -i hosts -e debug=true | tee out/out-05.txt
 
 # Test Log Clients
-ansible-playbook pb-test-logclient.yml -i hosts | tee out/out-09.txt
+ansible-playbook pb-test-logclient.yml -i hosts | tee out/out-06.txt

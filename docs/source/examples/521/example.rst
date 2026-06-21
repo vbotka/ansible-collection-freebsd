@@ -57,10 +57,12 @@ Tree
   ├── group_vars
   │   └── all
   │       ├── common.yml
-  │       ├── hosts.yml
-  │       └── syslog-ng.yml
+  │       └── project-hosts.yml
   ├── hosts
   │   └── 05_iocage.yml
+  ├── host_vars
+  │   └── iocage_05
+  │       └── syslog-ng.yml
   ├── iocage.ini
   ├── pb-create-jails.yml
   ├── pb-test-logclient.yml
@@ -80,9 +82,9 @@ Synopsis
 
   * Clone jails from the fetched iocage plugins
 
-* In the inventory group ``log_server`` test `syslog-ng server`_.
+* In the inventory group ``log_servers`` test `syslog-ng server`_.
 
-* In the inventory group ``log_client`` test `syslog-ng client`_.
+* In the inventory group ``log_clients`` test `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -100,8 +102,6 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_plugins.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
-* `module vbotka.freebsd.service`_
-* role `vbotka.freebsd.postinstall`_
 
 .. important::
 
@@ -120,7 +120,6 @@ Requirements
    * `syslog-ng - FreeBSD Wiki`_
    * `syslog-ng - documentation`_
    * `Configuring System Logging - FreeBSD Handbook`_
-   * documentation `Ansible role FreeBSD postinstall`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -148,11 +147,14 @@ group_vars
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/hosts.yml
+.. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/syslog-ng.yml
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/syslog-ng.yml
    :language: yaml+jinja
    :caption:
 
@@ -191,7 +193,7 @@ Playbook output - Create jails from iocage plugins
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-create-jails.yml.yml -i iocage.ini
+   (env) > ansible-playbook pb-create-jails.yml.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -207,16 +209,6 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
-
-.. code-block:: console
-
-   shell > ssh admin@iocage_05 sudo iocage list -l
-
-.. literalinclude:: out/out-07.txt
-   :language: sh
-
 Playbook pb-test-logserv.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -230,7 +222,7 @@ Playbook output - Test Log Server
 
    (env) > ansible-playbook pb-test-logserv.yml -i hosts -e debug=true
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
@@ -247,7 +239,7 @@ Playbook output - Test Log Clients
 
    (env) > ansible-playbook pb-test-logclient.yml -i hosts
 
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
@@ -258,6 +250,10 @@ Playbook output - Test Log Clients
 
      shell > iocage console c8a9d789-fa02-4ce3-af66-41c848f87b0f
      root@c8a9d789-fa02-4ce3-af66-41c848f87b0f:~ # lnav -r /var/log/remote/
+
+   To find the UUID, run ``iocage list -l`` and look for the jail created from the template
+   ``ansible-pull-syslogng-server``.
+
 
 
 .. _iocage plugins: https://github.com/vbotka/iocage-plugins
