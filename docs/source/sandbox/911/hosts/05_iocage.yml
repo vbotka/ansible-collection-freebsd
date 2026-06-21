@@ -17,8 +17,8 @@ compose:
   ansible_python_interpreter: "'auto_silent'"
 
 groups:
-  log_client: iocage_classes is contains('log-client')
-  log_server: iocage_classes is contains('log-server')
+  log_clients: iocage_classes is contains('log-client')
+  log_servers: iocage_classes is contains('log-server')
 
 keyed_groups:
   - prefix: state

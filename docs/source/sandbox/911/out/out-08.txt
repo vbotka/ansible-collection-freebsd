@@ -1,30 +1,51 @@
 
-PLAY [Start jails.] ************************************************************
+PLAY [Test Log Clients.] *******************************************************
 
-TASK [Display groups.] *********************************************************
-ok: [iocage_05] => 
+TASK [Run loggen] **************************************************************
+changed: [foo]
+changed: [bar]
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 27027.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500466, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 27027.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500492, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/172.16.99.140/2026_06_21.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.152/2026_06_21.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.140/2026_06_21.log']) => 
     msg: |-
-        log_client: ['foo', 'bar']
-        state_down:
-          - ansible-pull-syslogng-client
-          - ansible-pull-syslogng-server
-          - ansible-pull-test
-          - ansible-syslogng
-          - ansible-test
-          - foo
-          - bar
+        Jun 21 11:06:54 172.16.99.140 syslog-ng[60602]: syslog-ng starting up; version='4.11.0'
+        Jun 21 11:06:54 172.16.99.140 syslog-ng[60602]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 21 11:06:54 172.16.99.140 1 2026-06-21T11:06:54.740030+02:00 ce41b088-ed62-4a43-a99c-c61674c70b8a /usr/sbin/cron 60760 - - (CRON) WARNING (madvise() failed)
+        Jun 21 11:07:22 172.16.99.140 1 2026-06-21T11:07:22.941391+02:00 ce41b088-ed62-4a43-a99c-c61674c70b8a ansible-ansible.legacy.command 62222 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 21 11:07:22 172.16.99.140 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782032842, stamp: 2026-06-21T11:07:22 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
-TASK [Display jails that shall be started.] ************************************
-ok: [iocage_05] => 
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.152/2026_06_21.log']) => 
     msg: |-
-        start_jails: ['foo', 'bar']
-        start_uuid:
-          - 5adc1a62-20d9-4309-bb4e-e1bc3c511eac
-          - ca2a4fd3-3962-436d-84e5-0cbb4ae0382a
+        Jun 21 11:06:58 172.16.99.152 syslog-ng[61600]: syslog-ng starting up; version='4.11.0'
+        Jun 21 11:06:58 172.16.99.152 syslog-ng[61600]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 21 11:06:59 172.16.99.152 1 2026-06-21T11:06:59.117580+02:00 733e8fa8-ab1b-4fbe-b115-900ce716ab81 /usr/sbin/cron 61758 - - (CRON) WARNING (madvise() failed)
+        Jun 21 11:07:23 172.16.99.152 1 2026-06-21T11:07:23.288117+02:00 733e8fa8-ab1b-4fbe-b115-900ce716ab81 ansible-ansible.legacy.command 62223 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 21 11:07:23 172.16.99.152 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782032843, stamp: 2026-06-21T11:07:23 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
-TASK [Start jails.] ************************************************************
-changed: [iocage_05]
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

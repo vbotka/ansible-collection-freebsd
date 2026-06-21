@@ -1,65 +1,20 @@
-
-PLAY [Display all groups.] *****************************************************
-
-TASK [debug] *******************************************************************
-ok: [ansible-pull-syslogng-client] => 
-    msg: |-
-        ansible_host: ansible-pull-syslogng-client
-        iocage_properties.host_hostuuid: ansible-pull-syslogng-client
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [ansible-pull-syslogng-server] => 
-    msg: |-
-        ansible_host: ansible-pull-syslogng-server
-        iocage_properties.host_hostuuid: ansible-pull-syslogng-server
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [ansible-pull-test] => 
-    msg: |-
-        ansible_host: ansible-pull-test
-        iocage_properties.host_hostuuid: ansible-pull-test
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [test] => 
-    msg: |-
-        ansible_host: test
-        iocage_properties.host_hostuuid: test
-        iocage_classes: [ansible-pull]
-
-        iocage_tags: {class: ansible-pull, vmm: iocage_05}
-ok: [ansible-test] => 
-    msg: |-
-        ansible_host: ansible-test
-        iocage_properties.host_hostuuid: ansible-test
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [log-server] => 
-    msg: |-
-        ansible_host: log-server
-        iocage_properties.host_hostuuid: 80c6cb79-9b36-4c45-afbb-13f56a3ead55
-        iocage_classes: [log-server]
-
-        iocage_tags: {alias: log-server, class: log-server, vmm: iocage_05}
-
-TASK [debug] *******************************************************************
-ok: [ansible-pull-syslogng-client] => 
-    msg: |-
-        all: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server', 'ansible-pull-test', 'ansible-test', 'test', 'log-server']
-        ungrouped: []
-        state_down: ['ansible-pull-syslogng-client', 'ansible-pull-syslogng-server', 'ansible-pull-test', 'ansible-test']
-        state_up: ['test', 'log-server']
-        vmm_iocage_05: ['test', 'log-server']
-        log_server: ['log-server']
-
-PLAY RECAP *********************************************************************
-ansible-pull-syslogng-client : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible-pull-syslogng-server : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible-pull-test          : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible-test               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-log-server                 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
+@all:
+  |--@ungrouped:
+  |--@state_down:
+  |  |--ansible-pull-syslogng-client
+  |  |--ansible-pull-syslogng-server
+  |  |--ansible-pull-test
+  |  |--ansible-test
+  |--@log_clients:
+  |  |--bar
+  |  |--foo
+  |--@state_up:
+  |  |--bar
+  |  |--log_server
+  |  |--foo
+  |--@vmm_iocage_05:
+  |  |--bar
+  |  |--log_server
+  |  |--foo
+  |--@log_servers:
+  |  |--log_server
