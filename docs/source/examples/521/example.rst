@@ -65,8 +65,8 @@ Tree
   │       └── syslog-ng.yml
   ├── iocage.ini
   ├── pb-create-jails.yml
-  ├── pb-test-logclient.yml
-  └── pb-test-logserv.yml
+  ├── pb-logclient-test.yml
+  └── pb-logserver-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -209,10 +209,10 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-Playbook pb-test-logserv.yml
+Playbook pb-logserv-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-logserv.yml
+.. literalinclude:: pb-logserv-test.yml
    :language: yaml+jinja
 
 Playbook output - Test Log Server
@@ -220,16 +220,16 @@ Playbook output - Test Log Server
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-logserv.yml -i hosts -e debug=true
+   (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
-Playbook pb-test-logclient.yml
+Playbook pb-logclient-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-logclient.yml
+.. literalinclude:: pb-logclient-test.yml
    :language: yaml+jinja
 
 Playbook output - Test Log Clients
@@ -237,7 +237,7 @@ Playbook output - Test Log Clients
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-logclient.yml -i hosts
+   (env) > ansible-playbook pb-logclient-test.yml! -i hosts
 
 .. literalinclude:: out/out-06.txt
    :language: yaml

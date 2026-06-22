@@ -1,25 +1,26 @@
 
-PLAY [Configure, enable, and start Log Clients.] *******************************
+PLAY [Test Log Server.] ********************************************************
 
-TASK [Display vars.] ***********************************************************
-ok: [bar] => 
+TASK [Run commands.] ***********************************************************
+changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
+changed: [log_server] => (item=service syslog-ng status)
+changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
+changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
+
+TASK [Debug.] ******************************************************************
+ok: [log_server] => 
     msg: |-
-        log_server: 10.10.99.118
-        log_client: ['bar', 'foo']
+        shell> rm -rf /var/log/remote/localhost/*
 
-TASK [Configure LOG_SERVER] ****************************************************
-changed: [foo]
-changed: [bar]
+        shell> service syslog-ng status
+        syslog_ng is running as pid 80359.
 
-TASK [Enable syslog-ng] ********************************************************
-changed: [bar]
-changed: [foo]
+        shell> loggen -i -S -n 1 localhost 514
+        count=1, rate = 27777.78 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500335, (average) msg size=256, bandwidth=0.50 kB/sec
 
-TASK [Start syslog-ng] *********************************************************
-changed: [foo]
-changed: [bar]
+        shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
 
 PLAY RECAP *********************************************************************
-bar                        : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-foo                        : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

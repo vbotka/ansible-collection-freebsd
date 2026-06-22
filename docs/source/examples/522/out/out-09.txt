@@ -1,13 +1,43 @@
-+-----+------------+------+-------+------+--------------+----------------------+-----+-------------------------+----------+
-| JID |    NAME    | BOOT | STATE | TYPE |   RELEASE    |         IP4          | IP6 |        TEMPLATE         | BASEJAIL |
-+=====+============+======+=======+======+==============+======================+=====+=========================+==========+
-| 20  | bar        | on   | up    | jail | 15.0-RELEASE | epair0b|10.10.99.193 | -   | ansible_syslogng_client | no       |
-+-----+------------+------+-------+------+--------------+----------------------+-----+-------------------------+----------+
-| 19  | foo        | on   | up    | jail | 15.0-RELEASE | epair0b|10.10.99.122 | -   | ansible_syslogng_client | no       |
-+-----+------------+------+-------+------+--------------+----------------------+-----+-------------------------+----------+
-| 18  | log-server | on   | up    | jail | 15.0-RELEASE | epair0b|10.10.99.118 | -   | ansible_syslogng_server | no       |
-+-----+------------+------+-------+------+--------------+----------------------+-----+-------------------------+----------+
-| 13  | repos      | off  | up    | jail | 15.0-RELEASE | epair0b|10.10.99.134 | -   | ansible_pull_repos      | no       |
-+-----+------------+------+-------+------+--------------+----------------------+-----+-------------------------+----------+
-| 12  | repos-dev  | off  | up    | jail | 15.0-RELEASE | epair0b|10.10.99.136 | -   | ansible_pull_repos      | no       |
-+-----+------------+------+-------+------+--------------+----------------------+-----+-------------------------+----------+
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [foo]
+changed: [bar]
+
+TASK [Debug.] ******************************************************************
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500442, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500397, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/172.16.99.103/2026_06_22.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.160/2026_06_22.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.103/2026_06_22.log']) => 
+    msg: |-
+        Jun 22 12:57:59 172.16.99.103 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782125879, stamp: 2026-06-22T12:57:59 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.160/2026_06_22.log']) => 
+    msg: |-
+        Jun 22 12:57:59 172.16.99.160 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782125879, stamp: 2026-06-22T12:57:59 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

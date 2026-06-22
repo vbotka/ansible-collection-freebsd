@@ -1,3 +1,4 @@
+---
 - name: Test Log Server.
   hosts: log_servers
     

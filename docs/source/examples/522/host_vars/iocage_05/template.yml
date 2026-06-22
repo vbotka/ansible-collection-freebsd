@@ -1,28 +1,34 @@
 freebsd_iocage_mount: /zroot/iocage
 
 fit_templates:
-  ansible_syslogng_server:
+  ansible-syslogng-server:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible_syslogng_server/pkgs-logserver.json
     properties:
-      bpf: 1
-      dhcp: 1
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_syslogng_server'] }}/24"
       vnet: 1
-      notes: "vmm={{ inventory_hostname }}"
-  ansible_syslogng_client:
+      notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_server"
+  ansible-syslogng-client:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible_syslogng_client/pkgs-logclient.json
     properties:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: "vmm={{ inventory_hostname }}"
+      notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_client"
 
+# Do not stop jails. Configure them first. Then stop and convert them to templates.
 fit_stop: false
 fit_template: false
+      
+log_server_properties:
+  defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+  ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
+  vnet: 1
+  boot: 1
 
-# jail properties
-properties:
+log_client_properties:
   bpf: 1
   dhcp: 1
   vnet: 1
