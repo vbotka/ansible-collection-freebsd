@@ -20,6 +20,12 @@
       tags: [always, setup]
       ansible.builtin.import_tasks: pb_iocage_template/setup.yml
 
+    - name: Debug.  # noqa: run-once
+      when: debug | d(false) | bool
+      tags: [always, debug]
+      run_once: true
+      ansible.builtin.import_tasks: pb_iocage_template/debug.yml
+
     - name: Copy pkglist.
       tags: pkglist
       ansible.builtin.import_tasks: pb_iocage_template/pkglist.yml

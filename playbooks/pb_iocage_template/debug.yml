@@ -1,0 +1,12 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Debug
+  ansible.builtin.debug:
+    msg: |
+      templates:
+        {{ templates | to_nice_yaml(indent=2) | indent(2) }}
+      iocage_templates:
+        {{ iocage_templates | to_nice_yaml(indent=2) | indent(2) }}
