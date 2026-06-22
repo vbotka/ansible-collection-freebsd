@@ -4,8 +4,8 @@
 # MACROS
 ext_if = "wlan0"
 adh_if = "wlan1"
-vpn_if = "wg0"
 int_if = "bridge0"
+vpn_if = "wg0"
 vpn_from = "172.16.97.1"
 vpn_to = "172.16.97.2"
 vpn_port = "51820"
@@ -43,9 +43,10 @@ anchor "f2b/*"
 block $logall all
 pass inet proto icmp icmp-type $icmp_types
 pass inet6 proto icmp6 icmp6-type $icmp6_types
-pass in quick on $adh_if proto udp from $vpn_from to $vpn_to port $vpn_port
-pass in quick on $vpn_if proto tcp from any to any port $tcp_services flags S/SA
-pass in quick on $vpn_if proto tcp from any to any port $ssh_redirected_ports flags S/SA
+pass in quick on $adh_if proto udp from $vpn_from to $vpn_to port $vpn_port keep state
+pass in on $vpn_if proto tcp from any to any port $tcp_services flags S/SA keep state
+pass in on $vpn_if proto tcp from any to any port $ssh_redirected_ports flags S/SA keep state
+pass out on $vpn_if keep state
 pass from { self, $localnet, $jailnet } to any keep state
 
 # EOF

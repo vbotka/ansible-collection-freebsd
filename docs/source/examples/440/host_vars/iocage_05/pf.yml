@@ -39,8 +39,8 @@ pf_ssh_redirected_ports: '2200:2299'
 pf_macros:
   ext_if: "{{ pf_ext_if }}"
   adh_if: "{{ pf_adh_if }}"
-  vpn_if: "{{ pf_vpn_if }}"
   int_if: "{{ pf_int_if }}"
+  vpn_if: "{{ pf_vpn_if }}"
   vpn_from: "{{ pf_vpn_from }}"
   vpn_to: "{{ pf_vpn_to }}"
   vpn_port: "{{ pf_vpn_port }}"
@@ -82,9 +82,10 @@ pf_filtering:
   - block $logall all
   - pass inet proto icmp icmp-type $icmp_types
   - pass inet6 proto icmp6 icmp6-type $icmp6_types
-  - pass in quick on $adh_if proto udp from $vpn_from to $vpn_to port $vpn_port
-  - pass in quick on $vpn_if proto tcp from any to any port $tcp_services flags S/SA
-  - pass in quick on $vpn_if proto tcp from any to any port $ssh_redirected_ports flags S/SA
+  - pass in quick on $adh_if proto udp from $vpn_from to $vpn_to port $vpn_port keep state
+  - pass in quick on $vpn_if proto tcp from any to any port $tcp_services flags S/SA keep state
+  - pass in quick on $vpn_if proto tcp from any to any port $ssh_redirected_ports flags S/SA keep state
+  - pass out on $vpn_if keep state
   - pass from { self, $localnet, $jailnet } to any keep state
 
 # blacklistd
