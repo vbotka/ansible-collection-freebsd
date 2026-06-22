@@ -1,43 +1,67 @@
-# Ansible managed
-# template: default3-pf.conf.j2
 
-# MACROS
-ext_if = "wlan0"
-int_if = "bridge0"
-localnet = "172.16.0.0/24"
-jailnet = "10.10.99.0/24"
-logall = "log"
-icmp_types = "{ echoreq, unreach }"
-icmp6_types = "{ echoreq, unreach }"
-tcp_services = "{ ssh }"
-ssh_redirected_ports = "2200:2299"
+PLAY [Test role vbotka.freebsd.pf] *********************************************
 
-# TABLES
-table <sshabuse> persist
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
 
-# OPTIONS
-set skip on lo0
-set block-policy return
-set loginterface $ext_if
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Stat /etc/rc.d/blacklistd] ********
+ok: [iocage_05]
 
-# NORMALIZATION
-scrub in on $ext_if all fragment reassemble
+TASK [vbotka.freebsd.pf : Blacklistd: Backup /etc/blacklistd.conf.orig] ********
+ok: [iocage_05]
 
-# TRANSLATION
-nat on $ext_if from $localnet to any -> ($ext_if)
-nat on $ext_if from $jailnet to any -> ($ext_if)
-nat on $int_if from $jailnet to any -> ($int_if)
-include "/etc/pf/pf-rdr-ssh.conf"
+TASK [vbotka.freebsd.pf : Blacklistd: Configure /etc/blacklistd.conf] **********
+ok: [iocage_05]
 
-# FILTERING
-antispoof for $ext_if
-anchor "blacklistd/*" in on $ext_if
-anchor "f2b/*"
-block $logall all
-pass inet proto icmp icmp-type $icmp_types
-pass inet6 proto icmp6 icmp6-type $icmp6_types
-pass in on $ext_if proto tcp from $localnet to any port $tcp_services flags S/SA keep state
-pass in on $ext_if proto tcp from $localnet to any port $ssh_redirected_ports flags S/SA keep state
-pass from { self, $localnet, $jailnet } to any keep state
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Stat /usr/local/etc/rc.d/fail2ban] ***
+ok: [iocage_05]
 
-# EOF
+TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/fail2ban.local] ***
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Fail2ban: Configure /usr/local/etc/fail2ban/jail.local] ***
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-sshguard: Stat /usr/local/etc/rc.d/sshguard] ***
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Configure sshguard.conf] *****************************
+ok: [iocage_05] => (item={'key': 'BACKEND', 'value': '/usr/local/libexec/sshg-fw-pf'})
+ok: [iocage_05] => (item={'key': 'WHITELIST_FILE', 'value': '/usr/local/etc/sshguard.whitelist'})
+
+TASK [vbotka.freebsd.pf : Create directory /etc/pf] ****************************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Copy includes files to /etc/pf] **********************
+ok: [iocage_05] => (item={'key': 'pf_translation', 'value': 'pf-rdr-ssh.conf'})
+
+TASK [vbotka.freebsd.pf : Pfconf: Configure and validate rules using template default3-pf.conf.j2] ***
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Enable and start blacklistd.] *****
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-blacklistd: Configure blacklistd.] ************
+ok: [iocage_05] => (item={'name': 'blacklistd_flags', 'value': '-r'})
+
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Enable and start fail2ban.] *********
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-fail2ban: Configure fail2ban.] ****************
+ok: [iocage_05] => (item={'name': 'fail2ban_flags', 'value': ''})
+
+TASK [vbotka.freebsd.pf : Rcconf-sshguard: Enable and start sshguard.] *********
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-pf: Disable and stop pf.] *********************
+changed: [iocage_05]
+
+TASK [vbotka.freebsd.pf : Rcconf-pflog: Enable and start pflog.] ***************
+ok: [iocage_05]
+
+RUNNING HANDLER [vbotka.freebsd.pf : Disable and stop pf] **********************
+changed: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=20   changed=2    unreachable=0    failed=0    skipped=40   rescued=0    ignored=0   
+

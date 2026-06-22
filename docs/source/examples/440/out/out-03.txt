@@ -1,15 +1,9 @@
 
-PLAY [Test role vbotka.freebsd.pf] *********************************************
+PLAY [FreeBSD pf role setup.] **************************************************
 
-TASK [Gathering Facts] *********************************************************
-ok: [iocage_05]
-
-TASK [vbotka.freebsd.pf : Rcconf-pf: Enable and start pf.] *********************
-changed: [iocage_05]
-
-RUNNING HANDLER [vbotka.freebsd.pf : Start pf] *********************************
-changed: [iocage_05]
+TASK [Create pf-rdr-ssh.conf] **************************************************
+ok: [localhost]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=3    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -20,7 +20,6 @@
 .. index:: single: vbotka.freebsd.dhcp; Example 440
 .. index:: single: vbotka.freebsd.pf; Example 440
 
-
 Use case
 ^^^^^^^^
 
@@ -50,14 +49,14 @@ Synopsis
 ^^^^^^^^
 
 * The Ansible controller connects the iocage host ``iocage_05`` at the wlan interface configured in
-  ``/etc/rc.conf``
+  ``/etc/rc.conf``.
 
   .. code-block:: ini
 
     gateway_enable="YES"
-    defaultrouter="172.16.0.1"
+    defaultrouter="10.10.58.1"
     cloned_interfaces="bridge0"
-    ifconfig_bridge0="inet 10.10.99.1/24"
+    ifconfig_bridge0="inet 172.16.99.1/24"
     wlans_iwm0="wlan0"
     create_args_wlan0="country US"
     ifconfig_wlan0="WPA SYNCDHCP"
@@ -65,8 +64,8 @@ Synopsis
 
 * In the playbook ``pb-dhcp.yml`` at ``iocage_05`` configure:
 
-  * subnet 10.10.99.0/24
-  * routers [10.10.99.1]
+  * subnet 172.16.99.0/24
+  * routers [172.16.99.1]
   * range 100-200
 
 * In the playbook ``pb-pf.yml`` at ``iocage_05`` configure:
@@ -86,8 +85,7 @@ Requirements
 Notes
 ^^^^^
 
-* In this example, a cheap HW connected via WiFi is used for the iocage server
-  testing.
+* In this example, a cheap HW connected via WiFi is used for the iocage server testing.
 
 * Change this to fit the configuration to your needs:
 
@@ -174,7 +172,7 @@ Playbook output - Install packages
 
    (env) > ansible-playbook pb-dhcp.yml -i iocage.ini -t bsd_dhcpd_packages -e bsd_dhcpd_install=true
 
-.. literalinclude:: out/out-11.txt
+.. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
@@ -185,7 +183,7 @@ Playbook output - Configure DHCP
 
    (env) > ansible-playbook pb-dhcp.yml -i iocage.ini
 
-.. literalinclude:: out/out-12.txt
+.. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
@@ -202,7 +200,7 @@ Playbook output - Create files/pf-rdr-ssh.conf
 
    (env) > ansible-playbook pb-pf-setup.yml -i iocage.ini
 
-.. literalinclude:: out/out-13.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml
    :force:
 
@@ -219,7 +217,7 @@ Playbook output - Install packages
 
    (env) > ansible-playbook pb-pf.yml -i iocage.ini -t pf_packages -e pf_install=true
 
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
 
@@ -234,7 +232,7 @@ stale. Therefore, let us first configure the rules
 
    (env) > ansible-playbook pb-pf.yml -i iocage.ini -e pf_enable=false
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml
    :force:
 
@@ -245,7 +243,7 @@ Playbook output - Enable pf
 
    (env) > ansible-playbook pb-pf.yml -i iocage.ini -t pf_rcconf_pf
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
@@ -257,9 +255,9 @@ isc-dhcpd status
 
 .. code-block:: console
 
-   (env) > ssh admin@handy sudo service isc-dhcpd status
+   (env) > ssh admin@iocage_05 sudo service isc-dhcpd status
 
-.. literalinclude:: out/out-14.txt
+.. literalinclude:: out/out-07.txt
    :language: bash
 
 /usr/local/etc/dhcpd.conf
@@ -267,9 +265,9 @@ isc-dhcpd status
 
 .. code-block:: console
 
-   (env) > ssh admin@handy cat /usr/local/etc/dhcpd.conf
+   (env) > ssh admin@iocage_05 cat /usr/local/etc/dhcpd.conf
 
-.. literalinclude:: out/out-15.txt
+.. literalinclude:: out/out-08.txt
    :language: bash
 
 pf status
@@ -277,9 +275,9 @@ pf status
 
 .. code-block:: console
 
-   (env) > ssh admin@handy sudo service pf status
+   (env) > ssh admin@iocage_05 sudo service pf status
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-09.txt
    :language: bash
 
 /etc/pf.conf
@@ -287,31 +285,18 @@ pf status
 
 .. code-block:: console
 
-   (env) > ssh admin@handy cat /etc/pf.conf
+   (env) > ssh admin@iocage_05 cat /etc/pf.conf
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-10.txt
    :language: bash
 
-List jails
-""""""""""
+.. note::
 
-.. code-block:: console
+   SSH to a jail. For example, to a jail with the IP 172.16.99.114 use the command below::
 
-   (env) > ssh admin@handy sudo iocage list -l
+     shell > ssh -p 2214 admin@iocage_05
 
-.. literalinclude:: out/out-16.txt
-   :language: console
 
-SSH to a jail
-"""""""""""""
-
-.. code-block:: console
-
-   (env) > ssh -p 2200 admin@handy
-
-.. literalinclude:: out/out-17.txt
-   :language: console
-     
 .. _vbotka.freebsd.dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
 .. _vbotka.freebsd_dhcp: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_dhcp/
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
