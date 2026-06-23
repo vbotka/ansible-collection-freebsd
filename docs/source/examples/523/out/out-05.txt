@@ -1,37 +1,17 @@
-
-PLAY [Clone repos.] ************************************************************
-
-TASK [Clone repos.] ************************************************************
-changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.97.2/ansible-conf-init'}})
-changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.97.2/ansible-conf-init'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-server'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-client'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.97.2/ansible-conf-test'}})
-changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.97.2/ansible-conf-test'}})
-
-TASK [Git config safe.directory.] **********************************************
-changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.97.2/ansible-conf-init'}})
-changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.97.2/ansible-conf-init'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-server'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.97.2/ansible-conf-test'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.97.2/ansible-conf-test'}})
-
-TASK [Change ownership of repos.] **********************************************
-changed: [repos-devel] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.97.2/ansible-conf-init'}})
-changed: [repos] => (item={'key': 'ansible-conf-init', 'value': {'repo': 'git://172.16.97.2/ansible-conf-init'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-server', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-server'}})
-changed: [repos] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-client'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-syslogng-client', 'value': {'repo': 'git://172.16.97.2/ansible-conf-syslogng-client'}})
-changed: [repos] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.97.2/ansible-conf-test'}})
-changed: [repos-devel] => (item={'key': 'ansible-conf-test', 'value': {'repo': 'git://172.16.97.2/ansible-conf-test'}})
-
-PLAY RECAP *********************************************************************
-repos                      : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos-devel                : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| JID  |             NAME             | BOOT | STATE |   TYPE   |   RELEASE    |          IP4          | IP6 |     TEMPLATE      | BASEJAIL |
++======+==============================+======+=======+==========+==============+=======================+=====+===================+==========+
+| None | ansible-pull-syslogng-client | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)    | -   | -                 | yes      |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| None | ansible-pull-syslogng-server | off  | down  | pluginv2 | 15.0-RELEASE | vnet0|172.16.99.31/24 | -   | -                 | yes      |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| None | ansible-pull-test            | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)    | -   | -                 | yes      |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| None | ansible-test                 | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)    | -   | -                 | yes      |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| 39   | repos                        | on   | up    | jail     | 15.0-RELEASE | vnet0|172.16.99.21/24 | -   | ansible-repos     | no       |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| 40   | repos-devel                  | on   | up    | jail     | 15.0-RELEASE | vnet0|172.16.99.22/24 | -   | ansible-repos     | no       |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+
+| None | test                         | on   | down  | jail     | 15.0-RELEASE | DHCP (not running)    | -   | ansible-pull-test | yes      |
++------+------------------------------+------+-------+----------+--------------+-----------------------+-----+-------------------+----------+

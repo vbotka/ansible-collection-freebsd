@@ -1,5 +1,5 @@
 ---
-- name: Configure Log Client.
+- name: Configure and start Log Client.
   hosts: ansible_syslogng_client
     
   tasks:

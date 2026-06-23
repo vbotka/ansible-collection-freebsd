@@ -32,9 +32,6 @@
 .. index:: single: log server; Example 521
 .. index:: single: log client; Example 521
 
-.. index:: single: module vbotka.freebsd.service; Example 521
-.. index:: single: vbotka.freebsd.service; Example 521
-
 Use case
 ^^^^^^^^
 
@@ -209,10 +206,10 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-Playbook pb-logserv-test.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-logserver-test.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-logserv-test.yml
+.. literalinclude:: pb-logserver-test.yml
    :language: yaml+jinja
 
 Playbook output - Test Log Server

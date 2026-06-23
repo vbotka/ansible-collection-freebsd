@@ -1,16 +1,16 @@
 project:
   repos:
     class: [repos]
-    template: ansible_repos
+    template: ansible-repos
     vmm: iocage_05
     properties:
       vnet: 1
       defaultrouter: "{{ project_hosts.defaultrouter }}"
       ip4_addr: 'vnet0|{{ project_hosts.repos }}/24'
       boot: 1
-  repos-devel:
+  repos_devel:
     class: [repos]
-    template: ansible_repos
+    template: ansible-repos
     vmm: iocage_05
     properties:
       vnet: 1

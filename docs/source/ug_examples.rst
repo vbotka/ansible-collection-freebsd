@@ -143,10 +143,10 @@ Examples
    examples/501/example.rst
    examples/502/example.rst
    521 iocage plugins ansible-pull* <examples/521/example.rst>
-   522 templates ansible_syslogng_* <examples/522/example.rst>
-   523 template ansible_repos <examples/523/example.rst>
-   524 template ansible_init <examples/524/example.rst>
-   525 template ansible_init (class) <examples/525/example.rst>
+   522 templates ansible-syslogng-* <examples/522/example.rst>
+   523 template ansible-repos <examples/523/example.rst>
+   524 template ansible-init <examples/524/example.rst>
+   525 template ansible-init (class) <examples/525/example.rst>
    examples/526/example.rst
 
 

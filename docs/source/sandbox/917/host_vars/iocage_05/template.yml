@@ -1,7 +1,7 @@
 fit_templates:
-  ansible_repos:
+  ansible-repos:
     release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_pull_repos/pkgs.json
+    pkglist: /tmp/ansible/ansible-repos/pkgs.json
     commands: "{{ fit_commands }}"
     rcconf: "{{ fit_rcconf | dict2items }}"
     properties:

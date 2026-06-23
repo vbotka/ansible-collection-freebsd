@@ -1,0 +1,63 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [bar]
+changed: [foo]
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500366, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500504, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/localhost/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.163/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.103/2026_06_23.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_06_23.log']) => 
+    msg: |-
+        Jun 23 12:34:40 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782210880, stamp: 2026-06-23T12:34:40 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.163/2026_06_23.log']) => 
+    msg: |-
+        Jun 23 12:32:31 172.16.99.163 syslog-ng[86104]: syslog-ng starting up; version='4.11.0'
+        Jun 23 12:32:31 172.16.99.163 1 2026-06-23T12:32:31.923368+02:00 foo /usr/sbin/cron 86252 - - (CRON) WARNING (madvise() failed)
+        Jun 23 12:32:39 172.16.99.163 syslog-ng[86104]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 23 12:33:00 172.16.99.163 1 2026-06-23T12:33:00.000695+02:00 foo /usr/sbin/cron 88237 - - (operator) CMD (/usr/libexec/save-entropy)
+        Jun 23 12:33:39 172.16.99.163 syslog-ng[86104]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 23 12:35:04 172.16.99.163 1 2026-06-23T12:35:04.004287+02:00 foo /usr/sbin/cron 88801 - - (root) CMD (/usr/libexec/atrun)
+        Jun 23 12:35:11 172.16.99.163 1 2026-06-23T12:35:11.397836+02:00 foo ansible-ansible.legacy.command 88970 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 12:35:11 172.16.99.163 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782210911, stamp: 2026-06-23T12:35:11 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.103/2026_06_23.log']) => 
+    msg: |-
+        Jun 23 12:32:36 172.16.99.103 syslog-ng[87050]: syslog-ng starting up; version='4.11.0'
+        Jun 23 12:32:36 172.16.99.103 1 2026-06-23T12:32:36.895578+02:00 bar /usr/sbin/cron 87198 - - (CRON) WARNING (madvise() failed)
+        Jun 23 12:32:39 172.16.99.103 syslog-ng[87050]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 23 12:33:00 172.16.99.103 1 2026-06-23T12:33:00.008007+02:00 bar /usr/sbin/cron 88248 - - (operator) CMD (/usr/libexec/save-entropy)
+        Jun 23 12:33:39 172.16.99.103 syslog-ng[87050]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 23 12:35:00 172.16.99.103 1 2026-06-23T12:35:00.003294+02:00 bar /usr/sbin/cron 88796 - - (root) CMD (/usr/libexec/atrun)
+        Jun 23 12:35:11 172.16.99.103 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782210911, stamp: 2026-06-23T12:35:11 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 12:35:11 172.16.99.103 1 2026-06-23T12:35:11.397825+02:00 bar ansible-ansible.legacy.command 88971 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

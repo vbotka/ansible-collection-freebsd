@@ -1,13 +1,16 @@
 .. _example_522:
 
-522 iocage templates ansible_syslogng_*
+522 iocage templates ansible-syslogng-*
 ---------------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: pb_iocage_template.yml; Example 522
+.. index:: single: template ansible-syslogng-server; Example 522
+.. index:: single: template ansible-syslogng-client; Example 522
+.. index:: single: role vbotka.freebsd.iocage_template; Example 522
+
 .. index:: single: connection vbotka.freebsd.jailexec; Example 522
 .. index:: single: inventory vbotka.freebsd.iocage; Example 522
 
@@ -83,8 +86,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.postinstall`_
 * role `vbotka.freebsd.iocage_template`_
+* role `vbotka.freebsd.postinstall`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
 
@@ -198,8 +201,8 @@ Playbook pb-logclient.yml
 .. literalinclude:: pb-logclient.yml
    :language: yaml+jinja
 
-Playbook output - Configure Log Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Log Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -215,8 +218,8 @@ Playbook pb-template-stop-convert.yml
 .. literalinclude:: pb-template-stop-convert.yml
    :language: yaml+jinja
 
-Playbook output - Stop and convert ansible_syslogng_* to templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Convert ansible-syslogng-* to templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -263,6 +266,16 @@ Inventory graph
 .. literalinclude:: out/out-07.txt
    :language: sh
 
+List jails
+^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_05 sudo iocage list -l
+
+.. literalinclude:: out/out-08.txt
+   :language: sh
+
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -276,7 +289,7 @@ Playbook output - Test Log Server
 
    (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml
    :force:
 
@@ -293,7 +306,7 @@ Playbook output - Test Log Clients
 
    (env) > ansible-playbook pb-logclient-test.yml -i hosts
 
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-10.txt
    :language: yaml
    :force:
 

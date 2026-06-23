@@ -6,14 +6,14 @@ changed: [foo]
 changed: [bar]
 
 TASK [Debug.] ******************************************************************
-ok: [bar] => 
-    out.stderr: |-
-        count=1, rate = 27777.78 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500388, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 58823.53 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500128, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500578, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 166666.67 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500358, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,18 +21,42 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/172.16.99.154/2026_06_21.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.155/2026_06_21.log)
+changed: [log_server] => (item=/var/log/remote/localhost/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.168/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.165/2026_06_23.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.154/2026_06_21.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_06_23.log']) => 
     msg: |-
-        Jun 21 14:06:25 172.16.99.154 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782043585, stamp: 2026-06-21T14:06:25 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 10:17:19 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782202639, stamp: 2026-06-23T10:17:19 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.155/2026_06_21.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.168/2026_06_23.log']) => 
     msg: |-
-        Jun 21 14:06:26 172.16.99.155 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782043586, stamp: 2026-06-21T14:06:26 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 10:12:07 172.16.99.168 syslog-ng[69779]: syslog-ng starting up; version='4.11.0'
+        Jun 23 10:12:07 172.16.99.168 1 2026-06-23T10:12:07.419476+02:00 28c23cbf-cda6-4ef7-9597-de7f32d1046b /usr/sbin/cron 69937 - - (CRON) WARNING (madvise() failed)
+        Jun 23 10:12:10 172.16.99.168 syslog-ng[69779]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 23 10:13:10 172.16.99.168 syslog-ng[69779]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 23 10:15:02 172.16.99.168 1 2026-06-23T10:15:02.003144+02:00 28c23cbf-cda6-4ef7-9597-de7f32d1046b /usr/sbin/cron 70995 - - (root) CMD (/usr/libexec/atrun)
+        Jun 23 10:17:06 172.16.99.168 1 2026-06-23T10:17:06.947994+02:00 28c23cbf-cda6-4ef7-9597-de7f32d1046b dhclient 69484 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 23 10:17:06 172.16.99.168 1 2026-06-23T10:17:06.950971+02:00 28c23cbf-cda6-4ef7-9597-de7f32d1046b dhclient 69484 - - DHCPACK from 172.16.99.1
+        Jun 23 10:17:06 172.16.99.168 1 2026-06-23T10:17:06.961956+02:00 28c23cbf-cda6-4ef7-9597-de7f32d1046b dhclient 69484 - - bound to 172.16.99.168 -- renewal in 300 seconds.
+        Jun 23 10:17:48 172.16.99.168 1 2026-06-23T10:17:48.925205+02:00 28c23cbf-cda6-4ef7-9597-de7f32d1046b ansible-ansible.legacy.command 71577 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 10:17:48 172.16.99.168 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782202668, stamp: 2026-06-23T10:17:48 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.165/2026_06_23.log']) => 
+    msg: |-
+        Jun 23 10:12:01 172.16.99.165 syslog-ng[68781]: syslog-ng starting up; version='4.11.0'
+        Jun 23 10:12:01 172.16.99.165 1 2026-06-23T10:12:01.958261+02:00 a895d201-63bb-441f-9ba8-19659e49c5f1 /usr/sbin/cron 68939 - - (CRON) WARNING (madvise() failed)
+        Jun 23 10:12:10 172.16.99.165 syslog-ng[68781]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 23 10:13:10 172.16.99.165 syslog-ng[68781]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 23 10:15:02 172.16.99.165 1 2026-06-23T10:15:02.003047+02:00 a895d201-63bb-441f-9ba8-19659e49c5f1 /usr/sbin/cron 70998 - - (root) CMD (/usr/libexec/atrun)
+        Jun 23 10:17:01 172.16.99.165 1 2026-06-23T10:17:01.431092+02:00 a895d201-63bb-441f-9ba8-19659e49c5f1 dhclient 68492 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 23 10:17:01 172.16.99.165 1 2026-06-23T10:17:01.436917+02:00 a895d201-63bb-441f-9ba8-19659e49c5f1 dhclient 68492 - - DHCPACK from 172.16.99.1
+        Jun 23 10:17:01 172.16.99.165 1 2026-06-23T10:17:01.457980+02:00 a895d201-63bb-441f-9ba8-19659e49c5f1 dhclient 68492 - - bound to 172.16.99.165 -- renewal in 300 seconds.
+        Jun 23 10:17:48 172.16.99.165 1 2026-06-23T10:17:48.925471+02:00 a895d201-63bb-441f-9ba8-19659e49c5f1 ansible-ansible.legacy.command 71576 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 10:17:48 172.16.99.165 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782202668, stamp: 2026-06-23T10:17:48 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

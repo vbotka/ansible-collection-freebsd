@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Update pb_iocage_project_create_from_plugins.yml
+* Update pb_iocage_project_create_from_templates.yml; merge notes.
 * Update pb_iocage_template.yml; Add debug.yml
 * Docs. Update examples 440,441,521,522,526.
 * Docs. Remove example 520.

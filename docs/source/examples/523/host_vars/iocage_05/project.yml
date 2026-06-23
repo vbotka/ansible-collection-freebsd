@@ -1,21 +1,22 @@
 project:
   repos:
-    class: [repos]
-    template: ansible_repos
     vmm: iocage_05
+    template: ansible-repos
+    class: [repos]
     properties:
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['repos'] }}/24"
       vnet: 1
-      defaultrouter: "{{ project_hosts.defaultrouter }}"
-      ip4_addr: 'vnet0|{{ project_hosts.repos }}/24'
       boot: 1
   repos-devel:
-    class: [repos]
-    template: ansible_repos
     vmm: iocage_05
+    template: ansible-repos
+    class: [repos]
+    notes: alias=repos_devel
     properties:
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['repos_devel'] }}/24"
       vnet: 1
-      defaultrouter: "{{ project_hosts.defaultrouter }}"
-      ip4_addr: 'vnet0|{{ project_hosts.repos_devel }}/24'
       boot: 1
 
 vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"

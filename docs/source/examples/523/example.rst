@@ -1,14 +1,16 @@
 .. _example_523:
 
-523 iocage template ansible_repos
+523 iocage template ansible-repos
 ---------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: template ansible_repos; Example 523
+.. index:: single: template ansible-repos; Example 523
 .. index:: single: role vbotka.freebsd.iocage_template; Example 523
+.. index:: single: pb_iocage_project_create_from_templates; Example 523
+
 .. index:: single: connection vbotka.freebsd.jailexec; Example 523
 .. index:: single: inventory vbotka.freebsd.iocage; Example 523
 
@@ -16,7 +18,7 @@ Use case
 ^^^^^^^^
 
 Create a jail that provides git repos for `ansible-pull`_. Create `iocage`_ template
-``ansible_repos`` and configure `git-daemon`_. Create jails from the template and clone repos to the
+``ansible-repos`` and configure `git-daemon`_. Create jails from the template and clone repos to the
 `base-path`_.
 
 Tree
@@ -30,7 +32,8 @@ Tree
   │   └── pkgs.json
   ├── group_vars
   │   ├── all
-  │   │   └── hosts.yml
+  │   │   ├── common.yml
+  │   │   └── project-hosts.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
@@ -48,7 +51,7 @@ Synopsis
 
 * At a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible_repos``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible-repos``
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
@@ -99,7 +102,11 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/hosts.yml
+.. literalinclude:: group_vars/all/common.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
@@ -175,6 +182,15 @@ Playbook output - Create project jails from iocage templates
    :language: yaml
    :force:
 
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
 List jails
 ^^^^^^^^^^
 
@@ -182,7 +198,7 @@ List jails
 
    shell > ssh admin@iocage_05 sudo iocage list -l
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: sh
 
 Playbook pb-repos.yml
@@ -198,7 +214,7 @@ Playbook output - Clone repos
 
    (env) > ansible-playbook pb-repos.yml -i hosts
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
@@ -209,7 +225,7 @@ List repos
 
    shell > ssh admin@iocage_05 sudo iocage exec repos ls -la /usr/local/git
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: console
    :force:
 

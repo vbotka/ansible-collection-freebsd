@@ -1,53 +1,27 @@
 
-PLAY [Test Log Clients.] *******************************************************
+PLAY [Test Log Server.] ********************************************************
 
-TASK [Run loggen] **************************************************************
-changed: [foo]
-changed: [bar]
+TASK [Run commands.] ***********************************************************
+changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
+changed: [log_server] => (item=service syslog-ng status)
+changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
+changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
 
 TASK [Debug.] ******************************************************************
-ok: [bar] => 
-    out.stderr: |-
-        count=1, rate = 142857.14 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500442, (average) msg size=256, bandwidth=0.50 kB/sec
-ok: [foo] => 
-    out.stderr: |-
-        count=1, rate = 142857.14 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500436, (average) msg size=256, bandwidth=0.50 kB/sec
-
-PLAY [Display the logs.] *******************************************************
-
-TASK [Get log files paths.] ****************************************************
-ok: [log_server]
-
-TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/172.16.99.160/2026_06_23.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.103/2026_06_23.log)
-
-TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.160/2026_06_23.log']) => 
+ok: [log_server] => 
     msg: |-
-        Jun 23 06:40:42 172.16.99.160 syslog-ng[33736]: syslog-ng starting up; version='4.11.0'
-        Jun 23 06:40:43 172.16.99.160 1 2026-06-23T06:40:43.128140+02:00 foo /usr/sbin/cron 33884 - - (CRON) WARNING (madvise() failed)
-        Jun 23 06:40:50 172.16.99.160 syslog-ng[33736]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
-        Jun 23 06:41:50 172.16.99.160 syslog-ng[33736]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 23 06:41:56 172.16.99.160 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782189716, stamp: 2026-06-23T06:41:56 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-        Jun 23 06:41:56 172.16.99.160 1 2026-06-23T06:41:56.359653+02:00 foo ansible-ansible.legacy.command 36351 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        shell> rm -rf /var/log/remote/localhost/*
 
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.103/2026_06_23.log']) => 
-    msg: |-
-        Jun 23 06:40:47 172.16.99.103 syslog-ng[34661]: syslog-ng starting up; version='4.11.0'
-        Jun 23 06:40:47 172.16.99.103 1 2026-06-23T06:40:47.850503+02:00 bar /usr/sbin/cron 34809 - - (CRON) WARNING (madvise() failed)
-        Jun 23 06:40:50 172.16.99.103 syslog-ng[34661]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
-        Jun 23 06:41:50 172.16.99.103 syslog-ng[34661]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 23 06:41:57 172.16.99.103 1 2026-06-23T06:41:57.358869+02:00 bar ansible-ansible.legacy.command 36353 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 23 06:41:57 172.16.99.103 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782189717, stamp: 2026-06-23T06:41:57 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        shell> service syslog-ng status
+        syslog_ng is running as pid 87785.
 
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        shell> loggen -i -S -n 1 localhost 514
+        count=1, rate = 27027.03 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500373, (average) msg size=256, bandwidth=0.50 kB/sec
+
+        shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
+        Jun 23 12:34:40 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782210880, stamp: 2026-06-23T12:34:40 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
 PLAY RECAP *********************************************************************
-bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
