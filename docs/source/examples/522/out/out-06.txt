@@ -1,9 +1,9 @@
 
-PLAY [Create jails from iocage plugins.] ***************************************
+PLAY [Create jails from iocage templates.] *************************************
 
-TASK [Create jail.] ************************************************************
-changed: [iocage_05] => (item=bar)
+TASK [Create log_clients] ******************************************************
 changed: [iocage_05] => (item=foo)
+changed: [iocage_05] => (item=bar)
 
 TASK [Create log_server] *******************************************************
 changed: [iocage_05]

@@ -18,9 +18,9 @@ Minor Changes
 --------------
 * Update pb_iocage_project_create_from_plugins.yml
 * Update pb_iocage_template.yml; Add debug.yml
-* Docs. Update examples 440,441,521,522, and 526.
+* Docs. Update examples 440,441,521,522,526.
 * Docs. Remove example 520.
-* Docs. Update sandbox 202, 909, 910, 911.
+* Docs. Update sandbox 202,909,910,911,914,915.
 * Docs. Add project-hosts.yml
 
 
