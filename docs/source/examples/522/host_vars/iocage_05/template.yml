@@ -1,9 +1,7 @@
-freebsd_iocage_mount: /zroot/iocage
-
 fit_templates:
   ansible-syslogng-server:
     release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_syslogng_server/pkgs-logserver.json
+    pkglist: /tmp/ansible/ansible-syslogng-server/pkgs-logserver.json
     properties:
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_syslogng_server'] }}/24"
@@ -11,7 +9,7 @@ fit_templates:
       notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_server"
   ansible-syslogng-client:
     release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_syslogng_client/pkgs-logclient.json
+    pkglist: /tmp/ansible/ansible-syslogng-client/pkgs-logclient.json
     properties:
       bpf: 1
       dhcp: 1

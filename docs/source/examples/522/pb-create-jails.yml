@@ -1,5 +1,5 @@
 ---
-- name: Create jails from iocage plugins.
+- name: Create jails from iocage templates.
   hosts: iocage_05
 
   vars:
@@ -24,7 +24,7 @@
           ansible.builtin.debug:
             msg: "[INFO] {{ client_exist | join(', ') }} exist(s)."
 
-    - name: Create jail.
+    - name: Create log_clients
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}

@@ -2,25 +2,26 @@
 PLAY [Test Log Server.] ********************************************************
 
 TASK [Run commands.] ***********************************************************
-changed: [log-server] => (item=rm -rf /var/log/remote/localhost/*)
-changed: [log-server] => (item=service syslog-ng status)
-changed: [log-server] => (item=loggen -i -S -n 1 localhost 514)
-changed: [log-server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
+changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
+changed: [log_server] => (item=service syslog-ng status)
+changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
+changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
 
 TASK [Debug.] ******************************************************************
-ok: [log-server] => 
+ok: [log_server] => 
     msg: |-
         shell> rm -rf /var/log/remote/localhost/*
 
         shell> service syslog-ng status
-        syslog_ng is running as pid 21829.
+        syslog_ng is running as pid 19794.
 
         shell> loggen -i -S -n 1 localhost 514
         count=1, rate = 27777.78 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.50038, (average) msg size=256, bandwidth=0.50 kB/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500369, (average) msg size=256, bandwidth=0.50 kB/sec
 
         shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
+        Jun 23 05:43:08 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782186188, stamp: 2026-06-23T05:43:08 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
 PLAY RECAP *********************************************************************
-log-server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

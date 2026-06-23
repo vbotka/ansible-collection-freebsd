@@ -8,12 +8,12 @@ changed: [bar]
 TASK [Debug.] ******************************************************************
 ok: [bar] => 
     out.stderr: |-
-        count=1, rate = 27027.03 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500466, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 27777.78 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500408, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 27027.03 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500492, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 20408.16 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500435, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,26 +21,26 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/172.16.99.140/2026_06_21.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.152/2026_06_21.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.162/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.140/2026_06_23.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.140/2026_06_21.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.162/2026_06_23.log']) => 
     msg: |-
-        Jun 21 11:06:54 172.16.99.140 syslog-ng[60602]: syslog-ng starting up; version='4.11.0'
-        Jun 21 11:06:54 172.16.99.140 syslog-ng[60602]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 21 11:06:54 172.16.99.140 1 2026-06-21T11:06:54.740030+02:00 ce41b088-ed62-4a43-a99c-c61674c70b8a /usr/sbin/cron 60760 - - (CRON) WARNING (madvise() failed)
-        Jun 21 11:07:22 172.16.99.140 1 2026-06-21T11:07:22.941391+02:00 ce41b088-ed62-4a43-a99c-c61674c70b8a ansible-ansible.legacy.command 62222 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 21 11:07:22 172.16.99.140 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782032842, stamp: 2026-06-21T11:07:22 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 04:58:58 172.16.99.162 syslog-ng[16749]: syslog-ng starting up; version='4.11.0'
+        Jun 23 04:58:58 172.16.99.162 syslog-ng[16749]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 23 04:58:58 172.16.99.162 1 2026-06-23T04:58:58.520862+02:00 8b33de66-6fd2-483a-b30e-6a744a41512e /usr/sbin/cron 16907 - - (CRON) WARNING (madvise() failed)
+        Jun 23 04:59:27 172.16.99.162 1 2026-06-23T04:59:27.667396+02:00 8b33de66-6fd2-483a-b30e-6a744a41512e ansible-ansible.legacy.command 17426 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 04:59:27 172.16.99.162 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782183567, stamp: 2026-06-23T04:59:27 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.152/2026_06_21.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.140/2026_06_23.log']) => 
     msg: |-
-        Jun 21 11:06:58 172.16.99.152 syslog-ng[61600]: syslog-ng starting up; version='4.11.0'
-        Jun 21 11:06:58 172.16.99.152 syslog-ng[61600]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 21 11:06:59 172.16.99.152 1 2026-06-21T11:06:59.117580+02:00 733e8fa8-ab1b-4fbe-b115-900ce716ab81 /usr/sbin/cron 61758 - - (CRON) WARNING (madvise() failed)
-        Jun 21 11:07:23 172.16.99.152 1 2026-06-21T11:07:23.288117+02:00 733e8fa8-ab1b-4fbe-b115-900ce716ab81 ansible-ansible.legacy.command 62223 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 21 11:07:23 172.16.99.152 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782032843, stamp: 2026-06-21T11:07:23 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 04:58:54 172.16.99.140 syslog-ng[15751]: syslog-ng starting up; version='4.11.0'
+        Jun 23 04:58:54 172.16.99.140 syslog-ng[15751]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 23 04:58:54 172.16.99.140 1 2026-06-23T04:58:54.238308+02:00 8f4124c7-741a-4659-acfc-ce657c8ecb94 /usr/sbin/cron 15909 - - (CRON) WARNING (madvise() failed)
+        Jun 23 04:59:26 172.16.99.140 1 2026-06-23T04:59:26.878165+02:00 8f4124c7-741a-4659-acfc-ce657c8ecb94 ansible-ansible.legacy.command 17423 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 04:59:26 172.16.99.140 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782183566, stamp: 2026-06-23T04:59:26 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

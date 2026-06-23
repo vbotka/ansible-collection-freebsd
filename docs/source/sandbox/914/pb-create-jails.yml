@@ -4,14 +4,15 @@
 
   tasks:
 
-    - name: Create jail.
+    - name: Create log_server
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-server"
+          class=log-server
+          alias=log_server"
       ansible.builtin.command: >
         iocage create
         --name log-server
-        --template ansible_syslogng_server
+        --template ansible-syslogng-server
         {{ properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}

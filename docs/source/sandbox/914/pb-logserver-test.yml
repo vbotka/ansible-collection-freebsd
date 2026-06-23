@@ -1,5 +1,6 @@
+---
 - name: Test Log Server.
-  hosts: log_server
+  hosts: log_servers
     
   tasks:
 

@@ -8,10 +8,11 @@
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-client"
+          class=log-client
+          alias=log_client"
       ansible.builtin.command: >
         iocage create
         --name log-client
-        --template ansible_syslogng_client
+        --template ansible-syslogng-client
         {{ properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}

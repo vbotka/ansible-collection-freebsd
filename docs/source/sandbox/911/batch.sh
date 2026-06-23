@@ -30,4 +30,4 @@ ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts | tee out/out-03.txt
 ansible-inventory -i hosts --graph | tee out/out-07.txt
 
 # Test Log Clients
-ansible-playbook pb-test-logclient.yml -i hosts -e debug=true | tee out/out-08.txt
+ansible-playbook pb-logclient-test.yml -i hosts -e debug=true | tee out/out-08.txt

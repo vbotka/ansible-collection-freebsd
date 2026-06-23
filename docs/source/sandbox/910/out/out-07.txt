@@ -5,9 +5,11 @@
   |  |--ansible-pull-syslogng-server
   |  |--ansible-pull-test
   |  |--ansible-test
-  |--@log_servers:
-  |  |--log_server
   |--@state_up:
+  |  |--test
   |  |--log_server
   |--@vmm_iocage_05:
+  |  |--test
+  |  |--log_server
+  |--@log_servers:
   |  |--log_server

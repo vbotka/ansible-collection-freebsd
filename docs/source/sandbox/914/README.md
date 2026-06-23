@@ -1,1 +1,1 @@
-# Template ansible_syslogng_server
+# Template ansible-syslogng-server
