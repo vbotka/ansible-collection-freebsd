@@ -1,27 +1,23 @@
-
-PLAY [Test Log Server.] ********************************************************
-
-TASK [Run commands.] ***********************************************************
-changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
-changed: [log_server] => (item=service syslog-ng status)
-changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
-changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
-
-TASK [Debug.] ******************************************************************
-ok: [log_server] => 
-    msg: |-
-        shell> rm -rf /var/log/remote/localhost/*
-
-        shell> service syslog-ng status
-        syslog_ng is running as pid 70565.
-
-        shell> loggen -i -S -n 1 localhost 514
-        count=1, rate = 27777.78 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500423, (average) msg size=256, bandwidth=0.50 kB/sec
-
-        shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
-        Jun 23 10:17:19 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782202639, stamp: 2026-06-23T10:17:19 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-PLAY RECAP *********************************************************************
-log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| JID  |                 NAME                 | BOOT | STATE |   TYPE   |   RELEASE    |          IP4          | IP6 |           TEMPLATE           | BASEJAIL |
++======+======================================+======+=======+==========+==============+=======================+=====+==============================+==========+
+| 46   | 6a17c616-8459-464e-b0e9-b079e220a8c1 | on   | up    | jail     | 15.0-RELEASE | vnet0|172.16.99.10/24 | -   | ansible-pull-syslogng-server | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| None | ansible-pull-syslogng-client         | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)    | -   | -                            | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| None | ansible-pull-syslogng-server         | off  | down  | pluginv2 | 15.0-RELEASE | vnet0|172.16.99.31/24 | -   | -                            | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| None | ansible-pull-test                    | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)    | -   | -                            | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| None | ansible-test                         | off  | down  | pluginv2 | 15.0-RELEASE | DHCP (not running)    | -   | -                            | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| 44   | e4e6dacc-a61b-4678-ad2d-55a533281eb6 | on   | up    | jail     | 15.0-RELEASE | epair0b|172.16.99.165 | -   | ansible-pull-syslogng-client | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| 45   | f9d2ffae-d85f-471b-9bda-033f5e346306 | on   | up    | jail     | 15.0-RELEASE | epair0b|172.16.99.170 | -   | ansible-pull-syslogng-client | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| 39   | repos                                | on   | up    | jail     | 15.0-RELEASE | vnet0|172.16.99.21/24 | -   | ansible-repos                | no       |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| 40   | repos-devel                          | on   | up    | jail     | 15.0-RELEASE | vnet0|172.16.99.22/24 | -   | ansible-repos                | no       |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+
+| None | test                                 | on   | down  | jail     | 15.0-RELEASE | DHCP (not running)    | -   | ansible-pull-test            | yes      |
++------+--------------------------------------+------+-------+----------+--------------+-----------------------+-----+------------------------------+----------+

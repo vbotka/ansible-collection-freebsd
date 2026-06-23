@@ -206,6 +206,16 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
+List jails
+^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_05 sudo iocage list -l
+
+.. literalinclude:: out/out-05.txt
+   :language: sh
+
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -219,7 +229,7 @@ Playbook output - Test Log Server
 
    (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
@@ -234,9 +244,9 @@ Playbook output - Test Log Clients
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logclient-test.yml! -i hosts
+   (env) > ansible-playbook pb-logclient-test.yml -i hosts
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 

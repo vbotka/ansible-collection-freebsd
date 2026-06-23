@@ -1,0 +1,53 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [foo]
+changed: [bar]
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500346, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500312, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/172.16.99.165/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.170/2026_06_23.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.165/2026_06_23.log']) => 
+    msg: |-
+        Jun 23 13:16:51 172.16.99.165 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782213411, stamp: 2026-06-23T13:16:51 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 13:15:44 172.16.99.165 syslog-ng[91454]: syslog-ng starting up; version='4.11.0'
+        Jun 23 13:15:44 172.16.99.165 1 2026-06-23T13:15:44.664684+02:00 e4e6dacc-a61b-4678-ad2d-55a533281eb6 /usr/sbin/cron 91612 - - (CRON) WARNING (madvise() failed)
+        Jun 23 13:15:52 172.16.99.165 syslog-ng[91454]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 23 13:16:51 172.16.99.165 1 2026-06-23T13:16:51.963432+02:00 e4e6dacc-a61b-4678-ad2d-55a533281eb6 ansible-ansible.legacy.command 94396 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 13:16:52 172.16.99.165 syslog-ng[91454]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.170/2026_06_23.log']) => 
+    msg: |-
+        Jun 23 13:16:51 172.16.99.170 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782213411, stamp: 2026-06-23T13:16:51 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 23 13:15:49 172.16.99.170 syslog-ng[92452]: syslog-ng starting up; version='4.11.0'
+        Jun 23 13:15:49 172.16.99.170 1 2026-06-23T13:15:49.532990+02:00 f9d2ffae-d85f-471b-9bda-033f5e346306 /usr/sbin/cron 92610 - - (CRON) WARNING (madvise() failed)
+        Jun 23 13:15:52 172.16.99.170 syslog-ng[92452]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 23 13:16:51 172.16.99.170 1 2026-06-23T13:16:51.963432+02:00 f9d2ffae-d85f-471b-9bda-033f5e346306 ansible-ansible.legacy.command 94395 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 23 13:16:52 172.16.99.170 syslog-ng[92452]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
