@@ -142,7 +142,7 @@ Examples
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
    examples/502/example.rst
-   521 iocage plugins ansible-pull* <examples/521/example.rst>
+   521 iocage plugins ansible-pull-* <examples/521/example.rst>
    522 templates ansible-syslogng-* <examples/522/example.rst>
    523 template ansible-repos <examples/523/example.rst>
    524 template ansible-init <examples/524/example.rst>
