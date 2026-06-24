@@ -1,12 +1,12 @@
 project:
   foo:
-    class: [test]
-    template: ansible_init
     vmm: iocage_05
+    template: ansible-init
+    class: [test]
   bar:
-    class: [test]
-    template: ansible_init
     vmm: iocage_05
+    template: ansible-init
+    class: [test]
 
 properties:
   bpf: 1
