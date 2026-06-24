@@ -3,6 +3,7 @@ host: iocage_05
 user: admin
 sudo: true
 get_properties: true
+inventory_hostname_tag: alias
 
 compose:
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
