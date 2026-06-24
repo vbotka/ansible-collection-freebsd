@@ -1,8 +1,9 @@
 fit_templates:
-  ansible_init:
+  ansible-init:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible_init/pkgs.json
     cron: "{{ fit_cron | dict2items }}"
+    files: "{{ fit_files | dict2items }}"
     file_lines: "{{ fit_file_lines | dict2items }}"
     firstboot: "{{ fit_firstboot | dict2items }}"
     rcconf: "{{ fit_rcconf | dict2items }}"
@@ -13,7 +14,7 @@ fit_templates:
       notes: class=init
 
 fit_firstboot:
-  ansible_init:
+  ansible-init:
     content: |
       #!/bin/sh
       #
@@ -30,6 +31,7 @@ fit_firstboot:
 
       : ${ansible_init_repo:="ansible-conf-init"}
       : ${ansible_init_dest:="/root"}
+      : ${ansible_init_vars:="/root/ansible-vars"}
       : ${ansible_init_playbook:="pb-init.yml"}
 
       ansible_init_env="\
@@ -43,6 +45,7 @@ fit_firstboot:
               -i hosts \
               -U ${ansible_init_host}/${ansible_init_repo} \
               -d ${ansible_init_dest}/${ansible_init_repo} \
+              -e "my_vars=${ansible_init_vars}" \
               -e "ansible_pull_mode=true" \
               ${ansible_init_playbook}
       }
@@ -52,7 +55,7 @@ fit_firstboot:
 
 fit_rcconf:
   ansible_init_enable: "YES"
-  ansible_init_host: "git://{{ project_hosts.repos }}"
+  ansible_init_host: "git://{{ project_hosts[inventory_hostname]['repos'] }}"
 
 fit_cron:
   /etc/cron.d/at:
@@ -66,12 +69,21 @@ fit_cron:
       job: /usr/libexec/atrun
       exclusive: true
 
+fit_files:
+  /root/ansible-vars:
+    - project-hosts.yml
+    - hello-world.txt
+
 fit_file_lines:
   /root/.profile:
     LANG: en_US.UTF-8
     LC_ALL: en_US.UTF-8
 
 fit_file_options:
+  /root/ansible-vars:
+    owner: root
+    group: wheel
+    mode: '0750'
   /root/.profile:
     assignment_operator: '='
     owner: root

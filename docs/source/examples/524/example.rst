@@ -1,6 +1,6 @@
 .. _example_524:
 
-524 iocage template ansible_init
+524 iocage template ansible-init
 --------------------------------
 
 .. contents::
@@ -9,7 +9,7 @@
 
 .. index:: single: ansible_init; Example 524
 .. index:: single: service ansible_init; Example 524
-.. index:: single: template ansible_init; Example 524
+.. index:: single: template ansible-init; Example 524
 .. index:: single: firstboot; Example 524
 .. index:: single: ansible-conf-init; Example 524
 .. index:: single: ansible-conf-test; Example 524
@@ -23,7 +23,7 @@
 Use case
 ^^^^^^^^
 
-Create `iocage`_ template ``ansible_init``. Configure ``firstboot`` service ``ansible_init`` that
+Create `iocage`_ template ``ansible-init``. Configure ``firstboot`` service ``ansible_init`` that
 runs `ansible-pull`_ and uses the repo `ansible-conf-init`_. Configure the repo `ansible-conf-init`_
 to pull the jails' configuration from the repo `ansible-conf-test`_. Create jails from the
 template. Use the ``hostname`` to select the configuration. Run `ansible-pull`_ asynchronously.
@@ -36,10 +36,12 @@ Tree
   .
   ├── ansible.cfg
   ├── files
-  │   └── pkgs.json
+  │   ├── hello-world.txt
+  │   ├── pkgs.json
+  │   └── project-hosts.yml
   ├── group_vars
   │   └── all
-  │       ├── hosts.yml
+  │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
   │   └── 05_iocage.yml
@@ -54,12 +56,12 @@ Synopsis
 
 * At a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible_init``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible-init``
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
     the template.
 
-  * Wait for ``ansible-pull`` to configure the jails and display the test files.
+  * Wait for `ansible-pull`_ to configure the jails and display the test files.
 
 Requirements
 ^^^^^^^^^^^^
@@ -105,7 +107,7 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/hosts.yml
+.. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml
    :caption:
 
@@ -117,6 +119,21 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_05/template.yml
+   :language: yaml
+   :caption:
+
+files
+^^^^^
+
+.. literalinclude:: files/hello-world.txt
+   :language: yaml
+   :caption:
+
+.. literalinclude:: files/pkgs.json
+   :language: yaml
+   :caption:
+
+.. literalinclude:: files/project-hosts.yml
    :language: yaml
    :caption:
 

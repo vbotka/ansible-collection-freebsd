@@ -15,4 +15,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ fit_iocage_mount }}/jails/{{ outer_item.0.key }}/root{{ outer_item.1.key }}"
+    owner: "{{ fit_file_options[item]['owner'] | d(omit) }}"
+    group: "{{ fit_file_options[item]['group'] | d(omit) }}"
+    mode: "{{ fit_file_options[item]['mode'] | d(omit) }}"
   loop: "{{ outer_item.1.value }}"
