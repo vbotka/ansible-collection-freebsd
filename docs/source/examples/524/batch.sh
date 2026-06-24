@@ -3,13 +3,13 @@
 . ../defaults/batch
 
 # Stop jails foo and bar
-ssh admin@$iocage_05 sudo iocage stop foo
-ssh admin@$iocage_05 sudo iocage stop bar
+# ssh admin@$iocage_05 sudo iocage stop foo
+# ssh admin@$iocage_05 sudo iocage stop bar
 # Destroy jails foo and bar
-ssh admin@$iocage_05 sudo iocage destroy -f foo
-ssh admin@$iocage_05 sudo iocage destroy -f bar
-# Destroy template ansible_init
-ssh admin@$iocage_05 sudo iocage destroy -f ansible_init
+# ssh admin@$iocage_05 sudo iocage destroy -f foo
+# ssh admin@$iocage_05 sudo iocage destroy -f bar
+# Destroy template ansible-init
+# ssh admin@$iocage_05 sudo iocage destroy -f ansible-init
 
 # Create template
 ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt
