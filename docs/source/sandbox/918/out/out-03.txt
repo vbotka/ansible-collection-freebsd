@@ -6,6 +6,7 @@ ok: [iocage_05]
 
 TASK [Create jails.] ***********************************************************
 ok: [iocage_05] => (item=bar)
+ok: [iocage_05] => (item=foo)
 
 TASK [Set properties.] *********************************************************
 ok: [iocage_05] => (item=foo)

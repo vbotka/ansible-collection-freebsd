@@ -1,24 +1,27 @@
 project:
   log-server:
-    class: [log-server]
-    template: ansible_init
-    custom_facts: class.fact.j2
     vmm: iocage_05
+    template: ansible-init
+    class: [log-server]
+    custom_facts: class.fact.j2
     properties:
       vnet: 1
-      defaultrouter: "{{ project_hosts.defaultrouter }}"
-      ip4_addr: 'vnet0|{{ project_hosts.log_server }}/24'
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
       boot: 1
+    notes: "alias=log_server"
   www-01:
-    class: [log-client]
-    template: ansible_init
-    custom_facts: class.fact.j2
     vmm: iocage_05
+    template: ansible-init
+    class: [log-client]
+    custom_facts: class.fact.j2
+    notes: "alias=www_01"
   www-02:
-    class: [log-client]
-    template: ansible_init
-    custom_facts: class.fact.j2
     vmm: iocage_05
+    template: ansible-init
+    class: [log-client]
+    custom_facts: class.fact.j2
+    notes: "alias=www_02"
 
 properties:
   bpf: 1

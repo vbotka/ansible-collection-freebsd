@@ -45,8 +45,8 @@ fit_firstboot:
               -i hosts \
               -U ${ansible_init_host}/${ansible_init_repo} \
               -d ${ansible_init_dest}/${ansible_init_repo} \
-              -e "my_vars=${ansible_init_vars}" \
-              -e "ansible_pull_mode=true" \
+              -e "ai_vars=${ansible_init_vars}" \
+              -e "ai_pull_mode=true" \
               ${ansible_init_playbook}
       }
 
