@@ -41,7 +41,6 @@ Tree
   │   └── project-hosts.yml
   ├── group_vars
   │   └── all
-  │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
   │   └── 05_iocage.yml
@@ -107,10 +106,6 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/project-hosts.yml
-   :language: yaml
-   :caption:
-
 .. literalinclude:: group_vars/all/project.yml
    :language: yaml
    :caption:
@@ -126,11 +121,11 @@ files
 ^^^^^
 
 .. literalinclude:: files/hello-world.txt
-   :language: yaml
+   :language: text
    :caption:
 
 .. literalinclude:: files/pkgs.json
-   :language: yaml
+   :language: json
    :caption:
 
 .. literalinclude:: files/project-hosts.yml
