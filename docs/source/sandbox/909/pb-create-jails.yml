@@ -8,10 +8,10 @@
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=ansible-pull"
+          class=ansible-pull
+          alias=test"
       ansible.builtin.command: >
         iocage clone
-        --name test
         --newmac
         ansible-pull-test
         {{ properties | dictsort | map('join', '=') | join(' ') }}

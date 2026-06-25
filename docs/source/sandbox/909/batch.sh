@@ -20,14 +20,11 @@ ansible-playbook pb-create-jails.yml -i iocage.ini | tee out/out-03.txt
 # List jails
 # ssh admin@$iocage_05 sudo iocage list -l | tee out/out-04.txt
 
-# Inventory
-# ansible-inventory -i hosts --list --yaml | tee out/out-05.txt
-
 # Display all groups
-# ansible-playbook pb-all-groups.yml -i hosts | tee out/out-06.txt
+# ansible-playbook pb-all-groups.yml -i hosts | tee out/out-05.txt
 
 # Inventory graph
-ansible-inventory -i hosts --graph | tee out/out-07.txt
+ansible-inventory -i hosts --graph | tee out/out-06.txt
 
 # Start jails
-# ansible-playbook pb-start-jails.yml -i hosts -i iocage.ini -e debug=true | tee out/out-08.txt
+# ansible-playbook pb-start-jails.yml -i hosts -i iocage.ini -e debug=true | tee out/out-07.txt
