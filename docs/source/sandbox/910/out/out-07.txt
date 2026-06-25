@@ -6,10 +6,12 @@
   |  |--ansible-pull-test
   |  |--ansible-test
   |--@state_up:
-  |  |--test
+  |  |--repos
   |  |--log_server
+  |  |--repos_devel
   |--@vmm_iocage_05:
-  |  |--test
+  |  |--repos
   |  |--log_server
+  |  |--repos_devel
   |--@log_servers:
   |  |--log_server
