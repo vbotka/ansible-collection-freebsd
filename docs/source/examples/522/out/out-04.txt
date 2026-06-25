@@ -1,5 +1,5 @@
 
-PLAY [Stop and convert ansible-syslogng-server to template.] *******************
+PLAY [Stop and convert ansible-syslogng-* to templates.] ***********************
 
 TASK [Get iocage list of jails.] ***********************************************
 ok: [iocage_05]

@@ -3,10 +3,14 @@
 . ../defaults/batch
 
 # Stop foo and bar
-ssh admin@$iocage_05 sudo iocage stop foo bar log_server
+ssh admin@$iocage_05 sudo iocage stop foo
+ssh admin@$iocage_05 sudo iocage stop bar
+ssh admin@$iocage_05 sudo iocage stop log_server
 
 # Destroy foo and bar
-ssh admin@$iocage_05 sudo iocage destroy -f foo bar log_server
+ssh admin@$iocage_05 sudo iocage destroy -f foo
+ssh admin@$iocage_05 sudo iocage destroy -f bar
+ssh admin@$iocage_05 sudo iocage destroy -f log_server
 
 # Fetch plugins
 ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_plugins -e debug=true | tee out/out-01.txt
