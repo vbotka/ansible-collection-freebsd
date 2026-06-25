@@ -2,11 +2,11 @@
 
 . ../defaults/batch
 
-# Stop log_server, www-01, and www-02
+# Stop log-server, www-01, and www-02
 ssh admin@$iocage_05 sudo iocage stop log-server
 ssh admin@$iocage_05 sudo iocage stop www-01
 ssh admin@$iocage_05 sudo iocage stop www-02
-# Destroy log_server, www-01, and www-02
+# Destroy log-server, www-01, and www-02
 ssh admin@$iocage_05 sudo iocage destroy -f log-server
 ssh admin@$iocage_05 sudo iocage destroy -f www-01
 ssh admin@$iocage_05 sudo iocage destroy -f www-02

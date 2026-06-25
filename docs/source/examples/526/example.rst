@@ -9,7 +9,7 @@
 
 .. index:: single: ansible_init; Example 526
 .. index:: single: service ansible_init; Example 526
-.. index:: single: template ansible_init; Example 526
+.. index:: single: template ansible-init; Example 526
 .. index:: single: firstboot; Example 526
 .. index:: single: ansible-conf-init; Example 526
 .. index:: single: ansible-conf-syslogng-client; Example 526
@@ -30,10 +30,11 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible_init`` created in :ref:`example_524`. Configure the repo
-`ansible-conf-init`_ to pull the jails' configuration from the repos `ansible-conf-syslogng-server`_
-and `ansible-conf-syslogng-client`_. Create jails from the template. Use ``class=log-server`` and
-``class=log-client`` to select the configuration. Run `ansible-pull`_ asynchronously.
+Use the `iocage`_ template ``ansible-init`` created in :ref:`example_524`. Configure the repository
+`ansible-conf-init`_ to pull the jails' configuration from the repositories
+`ansible-conf-syslogng-server`_ and `ansible-conf-syslogng-client`_. Create jails from the
+template. Use ``class=log-server`` and ``class=log-client`` to select the configuration. Run
+`ansible-pull`_ asynchronously.
 
 Tree
 ^^^^
@@ -44,7 +45,8 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
-  │       ├── hosts.yml
+  │       ├── common.yml
+  │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
   │   └── 05_iocage.yml
@@ -58,14 +60,14 @@ Synopsis
 * At a managed node:
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
-    the template. ``ansible_init``.
+    the template. ``ansible-init``.
 
   * Wait for ``ansible-pull`` to configure the jails and display the logs.
 
 Requirements
 ^^^^^^^^^^^^
 
-* template ``ansible_init`` created in :ref:`example_524`
+* template ``ansible-init`` created in :ref:`example_524`
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
@@ -87,7 +89,7 @@ Requirements
 .. hint::
 
    Update the configuration repositories to your needs. Synchronize the dictionary ``project_hosts``
-   in the files ``group_vars/all/hosts.yml`` in this example and in the repositories.
+   in the files ``group_vars/all/project-hosts.yml`` in this example and in the repositories.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -111,7 +113,11 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/hosts.yml
+.. literalinclude:: group_vars/all/common.yml
+   :language: yaml
+   :caption:
+
+.. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml
    :caption:
 
@@ -130,6 +136,15 @@ Playbook output - Create project jails from iocage templates
    :language: yaml
    :force:
 
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
 List jails
 ^^^^^^^^^^
 
@@ -137,7 +152,7 @@ List jails
 
    shell > ssh admin@iocage_05 sudo iocage list -l
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: sh
 
 Playbook pb-logserver-test.yml
@@ -153,7 +168,7 @@ Playbook output - Test Log Server
    
    (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
    
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
 
@@ -170,7 +185,7 @@ Playbook output - Test Log Clients
 
    (env) > ansible-playbook pb-logclient-test.yml -i hosts
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 

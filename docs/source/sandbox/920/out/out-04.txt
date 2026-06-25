@@ -7,16 +7,14 @@
   |  |--ansible-test
   |--@state_up:
   |  |--repos
-  |  |--test
-  |  |--log_server
   |  |--repos_devel
+  |  |--log_server
   |  |--www_01
   |  |--www_02
   |--@vmm_iocage_05:
   |  |--repos
-  |  |--test
-  |  |--log_server
   |  |--repos_devel
+  |  |--log_server
   |  |--www_01
   |  |--www_02
   |--@log_servers:
