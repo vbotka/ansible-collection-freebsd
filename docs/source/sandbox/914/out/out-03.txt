@@ -1,12 +1,35 @@
 
-PLAY [Stop and convert ansible_syslogng_server to template.] *******************
+PLAY [Stop and convert ansible-syslogng-server to template.] *******************
 
-TASK [Stop ansible_syslogng_server] ********************************************
+TASK [Stop ansible-syslogng-server] ********************************************
 changed: [iocage_05]
 
-TASK [Convert ansible_syslogng_server jail to template.] ***********************
-changed: [iocage_05]
+TASK [Convert ansible-syslogng-server jail to template.] ***********************
+[ERROR]: Task failed: Module failed: The command exited with a non-zero return code.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/914/pb-logserver-stop-convert.yml:10:7
+
+ 8       ansible.builtin.command: iocage stop ansible-syslogng-server
+ 9
+10     - name: Convert ansible-syslogng-server jail to template.
+         ^ column 7
+
+fatal: [iocage_05]: FAILED! => 
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - template=1
+    - ansible-syslogng-server
+    delta: '0:00:00.414469'
+    end: '2026-06-25 06:21:34.834316'
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-06-25 06:21:34.419847'
+    stderr: ansible-syslogng-server is already a template!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=1    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 
