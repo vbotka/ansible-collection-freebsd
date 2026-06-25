@@ -17,6 +17,7 @@ Roles:
 * `custom_image`_ - Download, mount, and customize system images.
 * `dhcp`_ - Install and configure DHCP.
 * `iocage`_ - Install and configure iocage.
+* `iocage_template`_ - Create iocage templates.
 * `lib`_ - Library of tasks.
 * `network`_ - Configure network.
 * `packages`_ - Configure repos and install packages.
@@ -44,6 +45,7 @@ Various :ref:`ug_playbooks`.
 .. _custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
 .. _dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
 .. _iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
 .. _network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
