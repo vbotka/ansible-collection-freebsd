@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Add dictionary project-hosts.yml; Update examples 521-526.
 
 Major Changes
 -------------
