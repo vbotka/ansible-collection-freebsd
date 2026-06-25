@@ -118,6 +118,15 @@ Playbook output - Create project jails from iocage templates
    :language: yaml
    :force:
 
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
 List jails
 ^^^^^^^^^^
 
@@ -125,7 +134,7 @@ List jails
 
    shell > ssh admin@iocage_05 sudo iocage list -l
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: sh
 
 Display the test files
@@ -135,14 +144,14 @@ Display the test files
 
    shell > ssh admin@iocage_05 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt"
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: sh
 
 .. code-block:: console
 
    shell > ssh admin@iocage_05 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt"
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: sh
 
 
