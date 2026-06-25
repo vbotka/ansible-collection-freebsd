@@ -23,7 +23,7 @@
           ansible.builtin.debug:
             msg: "[INFO] {{ exist | join(', ') }} exist(s)."
 
-    - name: Create jail.
+    - name: Create log clients.
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
