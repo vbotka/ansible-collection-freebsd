@@ -12,8 +12,8 @@ plugins:
       boot: 0
 
 properties:
-  ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
   defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+  ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
   vnet: 1
   boot: 1
   type: jail

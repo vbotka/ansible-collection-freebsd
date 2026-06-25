@@ -1,7 +1,7 @@
 
 PLAY [Stop and convert ansible-syslogng-server to template.] *******************
 
-TASK [Start: Get iocage list of jails.] ****************************************
+TASK [Get iocage list of jails.] ***********************************************
 ok: [iocage_05]
 
 PLAY RECAP *********************************************************************

@@ -8,11 +8,10 @@ project:
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['repos'] }}/24"
       vnet: 1
       boot: 1
-  repos-devel:
+  repos_devel:
     vmm: iocage_05
     template: ansible-repos
     class: [repos]
-    notes: alias=repos_devel
     properties:
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['repos_devel'] }}/24"

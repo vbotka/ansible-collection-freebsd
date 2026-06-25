@@ -7,6 +7,11 @@
 
   tasks:
 
+    - name: Get iocage list of jails.
+      register: out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
     - name: Stop ansible-syslogng-client and convert it to template.
       when: iocage_jails is contains('ansible_syslogng_client')
       block:
