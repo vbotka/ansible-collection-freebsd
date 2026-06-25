@@ -8,7 +8,7 @@ TASK [Debug.] ******************************************************************
 ok: [log_client] => 
     out.stderr: |-
         count=1, rate = 142857.14 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500366, (average) msg size=256, bandwidth=0.50 kB/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500409, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -16,23 +16,16 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/localhost/2026_06_23.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.161/2026_06_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.163/2026_06_25.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_06_23.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.163/2026_06_25.log']) => 
     msg: |-
-        Jun 23 05:43:08 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782186188, stamp: 2026-06-23T05:43:08 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.161/2026_06_23.log']) => 
-    msg: |-
-        Jun 23 06:04:02 172.16.99.161 syslog-ng[21389]: syslog-ng starting up; version='4.11.0'
-        Jun 23 06:04:02 172.16.99.161 syslog-ng[21389]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 23 06:04:02 172.16.99.161 1 2026-06-23T06:04:02.250328+02:00 log-client /usr/sbin/cron 21537 - - (CRON) WARNING (madvise() failed)
-        Jun 23 06:05:13 172.16.99.161 1 2026-06-23T06:05:13.002832+02:00 log-client /usr/sbin/cron 21827 - - (root) CMD (/usr/libexec/atrun)
-        Jun 23 06:05:48 172.16.99.161 1 2026-06-23T06:05:48.765513+02:00 log-client ansible-ansible.legacy.command 22051 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 23 06:05:48 172.16.99.161 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782187548, stamp: 2026-06-23T06:05:48 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 25 06:50:18 172.16.99.163 syslog-ng[34260]: syslog-ng starting up; version='4.11.0'
+        Jun 25 06:50:18 172.16.99.163 syslog-ng[34260]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 25 06:50:19 172.16.99.163 1 2026-06-25T06:50:19.029346+02:00 log-client /usr/sbin/cron 34408 - - (CRON) WARNING (madvise() failed)
+        Jun 25 06:50:48 172.16.99.163 1 2026-06-25T06:50:48.157413+02:00 log-client ansible-ansible.legacy.command 34941 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 25 06:50:48 172.16.99.163 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782363048, stamp: 2026-06-25T06:50:48 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
