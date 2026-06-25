@@ -11,7 +11,7 @@
     grep '/iocage$' |
     cut -d'/' -f1
 
-- name: "Debug: Display get activated pool."
+- name: "Setup: Display activated pool mount point."
   when: debug | d(false) | bool
   ansible.builtin.debug:
     var: iocage_mount

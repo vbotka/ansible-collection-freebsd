@@ -8,7 +8,8 @@
   vars:
     _notes: >
       "vmm={{ inventory_hostname }}
-      class={{ vmm[inventory_hostname][item]['class'] | join(',') }}"
+      class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}
+      {{ vmm[inventory_hostname][item]['notes'] | d('') }}"
     _properties: >
       {{ vmm[inventory_hostname][item]['properties']
          | d(properties)

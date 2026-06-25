@@ -1,0 +1,39 @@
+enabled_plugins:
+  - ansible-pull-syslogng-client
+  - ansible-pull-syslogng-server
+
+plugins:
+  ansible-pull-syslogng-server:
+    git: https://github.com/vbotka/iocage-plugins
+    branch: main
+    properties:
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_pull_syslogng_server'] }}/24"
+      vnet: 1
+      boot: 0
+  ansible-pull-syslogng-client:
+    git: https://github.com/vbotka/iocage-plugins
+    branch: main
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      boot: 0
+
+log_server_properties:
+  defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+  ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
+  vnet: 1
+  boot: 1
+  type: jail
+
+log_client_properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+  type: jail
+
+log_clients:
+  - foo
+  - bar

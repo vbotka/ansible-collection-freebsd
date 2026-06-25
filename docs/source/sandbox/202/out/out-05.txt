@@ -1,0 +1,10 @@
+@all:
+  |--@ungrouped:
+  |  |--ansible-pull-syslogng-client
+  |  |--ansible-pull-syslogng-server
+  |  |--ansible-pull-test
+  |  |--ansible-test
+  |--@test:
+  |  |--test_151
+  |  |--test_152
+  |  |--test_153

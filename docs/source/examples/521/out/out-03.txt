@@ -1,13 +1,17 @@
 
 PLAY [Create jails from iocage plugins.] ***************************************
 
-TASK [Create syslog-ng server.] ************************************************
-changed: [iocage_05]
-
-TASK [Create syslog-clients.] **************************************************
-changed: [iocage_05] => (item=foo)
+TASK [Create log clients.] *****************************************************
 changed: [iocage_05] => (item=bar)
+changed: [iocage_05] => (item=foo)
+
+TASK [Assert log_server is in groups.log_servers] ******************************
+ok: [iocage_05]
+
+TASK [Display message.] ********************************************************
+ok: [iocage_05] => 
+    msg: '[INFO] log_server exists.'
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=3    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

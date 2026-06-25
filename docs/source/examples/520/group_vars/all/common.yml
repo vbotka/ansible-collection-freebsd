@@ -1,2 +1,0 @@
-ansible_python_interpreter: auto_silent
-log_serv: "{{ hostvars.logserv.iocage_ip4 }}"

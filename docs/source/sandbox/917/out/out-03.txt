@@ -6,11 +6,11 @@ ok: [iocage_05]
 
 TASK [Create jails.] ***********************************************************
 ok: [iocage_05] => (item=repos)
-ok: [iocage_05] => (item=repos-devel)
+ok: [iocage_05] => (item=repos_devel)
 
 TASK [Set properties.] *********************************************************
 ok: [iocage_05] => (item=repos)
-ok: [iocage_05] => (item=repos-devel)
+ok: [iocage_05] => (item=repos_devel)
 
 TASK [Start jails.] ************************************************************
 ok: [iocage_05]

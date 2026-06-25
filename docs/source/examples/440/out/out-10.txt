@@ -1,0 +1,44 @@
+# Ansible managed
+# template: default3-pf.conf.j2
+
+# MACROS
+ext_if = "wlan0"
+adh_if = "wlan1"
+int_if = "bridge0"
+localnet = "10.10.58.0/23"
+jailnet = "172.16.99.0/24"
+logall = "log"
+icmp_types = "{ echoreq, unreach }"
+icmp6_types = "{ echoreq, unreach }"
+tcp_services = "{ ssh }"
+ssh_redirected_ports = "2200:2299"
+
+# TABLES
+table <sshabuse> persist
+
+# OPTIONS
+set skip on lo0
+set block-policy return
+set loginterface $ext_if
+set limit frags 10000
+
+# NORMALIZATION
+scrub in on $ext_if all fragment reassemble no-df
+scrub out on $ext_if all max-mss 1440
+
+# TRANSLATION
+nat on $ext_if from $localnet to any -> ($ext_if)
+nat on $ext_if from $jailnet to any -> ($ext_if)
+nat on $int_if from $jailnet to any -> ($int_if)
+include "/etc/pf/pf-rdr-ssh.conf"
+
+# FILTERING
+antispoof for $ext_if
+anchor "blacklistd/*" in on $ext_if
+anchor "f2b/*"
+block $logall all
+pass inet proto icmp icmp-type $icmp_types
+pass inet6 proto icmp6 icmp6-type $icmp6_types
+pass from { self, $localnet, $jailnet } to any keep state
+
+# EOF

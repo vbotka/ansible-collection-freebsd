@@ -1,4 +1,0 @@
-@all:
-  |--@ungrouped:
-  |  |--ansible_client
-  |  |--syslog-ng

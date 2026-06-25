@@ -3,6 +3,7 @@ host: iocage_05
 user: admin
 sudo: true
 get_properties: true
+inventory_hostname_tag: alias
 
 compose:
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
@@ -12,13 +13,10 @@ compose:
   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
   ansible_jail_name: iocage_jid
   ansible_jail_privilege_escalation: "'sudo'"
-# ansible options
-  ansible_python_interpreter: "'auto_silent'"
 
 groups:
-  log_server: iocage_classes is contains('log-server')
-  log_client: iocage_classes is contains('log-client')
-  pull_repos: iocage_classes is contains('repos')
+  log_servers: iocage_classes is contains('log-server')
+  log_clients: iocage_classes is contains('log-client')
 
 keyed_groups:
   - prefix: state

@@ -26,28 +26,29 @@ Examples
 
 .. note::
 
-   * The examples that create jails use by default the iocage host setting created in the
-     example :ref:`example_440`. The firewall is on the external interface and on the
-     ``vnet`` bridge of the iocage host. The DHCP for the jails is on the bridge. The SSH
-     from the local network to the jails is redirected. The examples that do not use this
-     setting are marked ``.deny``. This means, they are not included in ``batch.sh``. To
-     run these examples, reconfigure the firewall. See the example :ref:`example_370`.
+   * The examples that create jails use the iocage host setting created in the example
+     :ref:`example_440` by default. The firewall is on both the external interface and the ``vnet``
+     bridge of the iocage host. DHCP for the jails is on the bridge, and SSH access from the local
+     network to the jails is redirected. Examples that do not use this setting are marked ``.deny``,
+     meaning they are excluded from ``batch.sh``. To run these examples, the firewall must be
+     reconfigured; see :ref:`example_370`.
 
-   * All examples comprise additional files not shown in the files' tree. See them to learn more details.
+   * All examples include additional files that are not displayed in the file tree. Review these
+     files for more details.
 
-   * The examples comprise ``batch.sh`` that runs the commands and creates the output for
-     the examples.
+   * The examples include a ``batch.sh`` script that executes the commands and generates the output
+     for each example.
 
-   * Most plays in ``batch.sh`` are idempotent. The output of such a play may show status ``ok``
-     instead of expected ``changed`` if the play has been run repeatedly.
+   * Most playbooks in ``batch.sh`` are idempotent. If a playbook is run repeatedly, the output may
+     display a status of ``ok`` instead of the expected ``changed``.
 
-   * The playbooks in the examples use dashes ``-`` in their filenames. For example, ``pb-iocage.yml``.
+   * The playbooks in the examples use dashes (``-``) in their filenames (e.g. ``pb-iocage.yml``).
 
-   * The playbooks in the collection, because of the Ansible collection naming conventions, use
-     underscores ``_`` in their filenames. For example, ``pb_iocage_template.yml``.
+   * Due to Ansible collection naming conventions, the playbooks in the collection use underscores
+     (``_``) in their filenames (e.g. ``pb_iocage_template.yml``).
 
-   * To avoid connection errors in examples where DHCP is used, ``host_key_checking =
-     false`` can be set in ``ansible.cfg``.
+   * To avoid connection errors in examples where DHCP is used, ``host_key_checking = false`` can be
+     configured in ``ansible.cfg``.
 
 .. hint:: See :ref:`dg_update_examples`.
   
@@ -141,12 +142,11 @@ Examples
    500 syslog-ng server and clients <examples/500/example.rst>
    examples/501/example.rst
    examples/502/example.rst
-   examples/520/example.rst
-   521 iocage plugins ansible-pull* <examples/521/example.rst>
-   522 templates ansible_syslogng_* <examples/522/example.rst>
-   523 template ansible_repos <examples/523/example.rst>
-   524 template ansible_init (hostname) <examples/524/example.rst>
-   525 template ansible_init (class) <examples/525/example.rst>
+   521 iocage plugins ansible-pull-* <examples/521/example.rst>
+   522 templates ansible-syslogng-* <examples/522/example.rst>
+   523 template ansible-repos <examples/523/example.rst>
+   524 template ansible-init <examples/524/example.rst>
+   525 template ansible-init (class) <examples/525/example.rst>
    examples/526/example.rst
 
 
@@ -156,7 +156,6 @@ Examples
 
 .. _Module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service
 .. _Module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl
-
 
 .. _Role vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache
 .. _Role vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate

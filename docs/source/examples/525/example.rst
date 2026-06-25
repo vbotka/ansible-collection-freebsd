@@ -1,6 +1,6 @@
 .. _example_525:
 
-525 iocage template ansible_init (class)
+525 iocage template ansible-init (class)
 ----------------------------------------
 
 .. contents::
@@ -9,7 +9,7 @@
 
 .. index:: single: ansible_init; Example 525
 .. index:: single: service ansible_init; Example 525
-.. index:: single: template ansible_init; Example 525
+.. index:: single: template ansible-init; Example 525
 .. index:: single: firstboot; Example 525
 .. index:: single: ansible-conf-init; Example 525
 .. index:: single: ansible-conf-test; Example 525
@@ -23,7 +23,7 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible_init`` created in :ref:`example_524`. Configure the repo
+Use the `iocage`_ template ``ansible-init`` created in :ref:`example_524`. Configure the repo
 `ansible-conf-init`_ to pull the jails' configuration from the repo `ansible-conf-test`_. Create
 jails from the template. Use ``class=test`` to select the configuration. Run `ansible-pull`_
 asynchronously.
@@ -48,21 +48,21 @@ Synopsis
 * At a managed node:
 
   * In the playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails from
-    the template ``ansible_init``.
+    the template ``ansible-init``.
 
-  * Wait for ``ansible-pull`` to configure the jails and display the test files.
+  * Wait for `ansible-pull`_ to configure the jails and display the test files.
 
 .. note::
 
    The only difference compared to :ref:`example_524` is the dictionary used for the jails'
    configuration. In this example, the jails (baz and qux) are not included in the ``ai_db_host``
-   dictionary; instead, they are configured from the ``ai_db_class`` dictionary. See the repository
-   `ansible-conf-init`_.
+   dictionary; instead, they are configured from the ``ai_db_class`` dictionary. See the
+   `ansible-conf-init`_ repository.
 
 Requirements
 ^^^^^^^^^^^^
 
-* template ``ansible_init`` created in :ref:`example_524`
+* template ``ansible-init`` created in :ref:`example_524`
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
@@ -102,6 +102,7 @@ hosts
 
 group_vars
 ^^^^^^^^^^
+
 .. literalinclude:: group_vars/all/project.yml
    :language: yaml
    :caption:
@@ -117,6 +118,15 @@ Playbook output - Create project jails from iocage templates
    :language: yaml
    :force:
 
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
 List jails
 ^^^^^^^^^^
 
@@ -124,7 +134,7 @@ List jails
 
    shell > ssh admin@iocage_05 sudo iocage list -l
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: sh
 
 Display the test files
@@ -134,14 +144,14 @@ Display the test files
 
    shell > ssh admin@iocage_05 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt"
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: sh
 
 .. code-block:: console
 
    shell > ssh admin@iocage_05 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt"
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: sh
 
 

@@ -1,14 +1,14 @@
 project:
   baz:
-    class: [test]
-    template: ansible_init
-    custom_facts: class.fact.j2
     vmm: iocage_05
+    template: ansible-init
+    class: [test]
+    custom_facts: class.fact.j2
   qux:
-    class: [test]
-    template: ansible_init
-    custom_facts: class.fact.j2
     vmm: iocage_05
+    template: ansible-init
+    class: [test]
+    custom_facts: class.fact.j2
 
 properties:
   bpf: 1

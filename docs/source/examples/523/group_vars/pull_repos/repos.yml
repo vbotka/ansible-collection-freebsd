@@ -11,7 +11,7 @@ repos:
       repo: git://{{ git_server }}/ansible-conf-syslogng-client
     ansible-conf-test:
       repo: git://{{ git_server }}/ansible-conf-test
-  repos-devel:
+  repos_devel:
     ansible-conf-init:
       repo: git://{{ git_server }}/ansible-conf-init
     ansible-conf-syslogng-server:

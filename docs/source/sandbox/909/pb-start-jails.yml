@@ -26,6 +26,7 @@
             {{ start_uuid | to_nice_yaml | indent(2) }}
 
     - name: Start jails.
+      when: start_jails | length > 0
       ansible.builtin.command: >
         iocage start
         {{ start_uuid | join(' ') }}

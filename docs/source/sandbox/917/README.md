@@ -1,1 +1,1 @@
-# Template ansible_repos
+# Template ansible-repos

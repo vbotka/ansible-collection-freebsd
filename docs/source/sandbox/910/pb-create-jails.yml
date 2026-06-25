@@ -4,15 +4,32 @@
 
   tasks:
 
+    - name: End of host if log_server exists.
+      when: groups.all is contains('log_server')
+      block:
+
+        - name: Assert log_server is in groups.log_servers
+          ansible.builtin.assert:
+            that: groups.log_servers is contains('log_server')
+            fail_msg: '[ERR] log_server not in groups.log_servers'
+            quiet: true
+
+        - name: Display message.
+          ansible.builtin.debug:
+            msg: '[INFO] log_server exists.'
+
+        - name: End of host.
+          ansible.builtin.meta: end_host
+
     - name: Create jail.
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
           class=log-server
-          alias=log-server"
+          alias=log_server"
       ansible.builtin.command: >
         iocage clone
-        ansible-pull-syslogng-server
         --newmac
+        ansible-pull-syslogng-server
         {{ properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}

@@ -1,7 +1,22 @@
-+-----+-------------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
-| JID |    NAME     | BOOT | STATE | TYPE |   RELEASE    |          IP4          | IP6 |   TEMPLATE    | BASEJAIL |
-+=====+=============+======+=======+======+==============+=======================+=====+===============+==========+
-| 5   | repos       | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.99.21/24 | -   | ansible_repos | no       |
-+-----+-------------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
-| 6   | repos-devel | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.99.22/24 | -   | ansible_repos | no       |
-+-----+-------------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
+@all:
+  |--@ungrouped:
+  |--@state_down:
+  |  |--ansible-pull-syslogng-client
+  |  |--ansible-pull-syslogng-server
+  |  |--ansible-pull-test
+  |  |--ansible-test
+  |--@state_up:
+  |  |--bar
+  |  |--foo
+  |  |--log_server
+  |  |--repos
+  |  |--repos_devel
+  |--@vmm_iocage_05:
+  |  |--bar
+  |  |--foo
+  |  |--log_server
+  |  |--repos
+  |  |--repos_devel
+  |--@pull_repos:
+  |  |--repos
+  |  |--repos_devel

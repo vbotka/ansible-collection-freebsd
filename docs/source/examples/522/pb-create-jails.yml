@@ -2,21 +2,29 @@
 - name: Create jails from iocage templates.
   hosts: iocage_05
 
+  vars:
+
+    client_exist: "{{ groups.all | intersect(log_clients) }}"
+
   tasks:
 
-    - name: Create syslog-ng server.
-      vars:
-        _notes: >
-          "vmm={{ inventory_hostname }}
-          class=log-server"
-      ansible.builtin.command: >
-        iocage create
-        --name log-server
-        --template ansible_syslogng_server
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
-        notes={{ _notes }}
+    - name: log_client exist.
+      when: client_exist | length > 0
+      block:
 
-    - name: Create syslog-ng clients.
+        - name: Assert log_client is in groups.log_clients
+          vars:
+            missing: "{{ client_exist | difference(groups.log_clients | d([])) }}"
+          ansible.builtin.assert:
+            that: missing | length == 0
+            fail_msg: "[ERR] {{ missing | join(', ') }} not in group log_clients"
+            quiet: true
+
+        - name: Display message.
+          ansible.builtin.debug:
+            msg: "[INFO] {{ client_exist | join(', ') }} exist(s)."
+
+    - name: Create log_clients
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
@@ -24,7 +32,36 @@
       ansible.builtin.command: >
         iocage create
         --name {{ item }}
-        --template ansible_syslogng_client
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        --template ansible-syslogng-client
+        {{ log_client_properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}
-      loop: "{{ log_clients }}"
+      loop: "{{ log_clients | difference(client_exist) }}"
+
+    - name: End of host if log_server exists.
+      when: groups.all is contains('log_server')
+      block:
+
+        - name: Assert log_server is in groups.log_servers
+          ansible.builtin.assert:
+            that: groups.log_servers | d([]) is contains('log_server')
+            fail_msg: '[ERR] log_server not in groups.log_servers'
+            quiet: true
+
+        - name: Display message.
+          ansible.builtin.debug:
+            msg: '[INFO] log_server exists.'
+
+        - name: End of host.
+          ansible.builtin.meta: end_host
+
+    - name: Create log_server
+      vars:
+        _notes: >
+          "vmm={{ inventory_hostname }}
+          class=log-server"
+      ansible.builtin.command: >
+        iocage create
+        --name log_server
+        --template ansible-syslogng-server
+        {{ log_server_properties | dictsort | map('join', '=') | join(' ') }}
+        notes={{ _notes }}

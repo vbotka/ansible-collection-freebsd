@@ -1,13 +1,16 @@
 .. _example_522:
 
-522 iocage templates ansible_syslogng_*
+522 iocage templates ansible-syslogng-*
 ---------------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: pb_iocage_template.yml; Example 522
+.. index:: single: template ansible-syslogng-server; Example 522
+.. index:: single: template ansible-syslogng-client; Example 522
+.. index:: single: role vbotka.freebsd.iocage_template; Example 522
+
 .. index:: single: connection vbotka.freebsd.jailexec; Example 522
 .. index:: single: inventory vbotka.freebsd.iocage; Example 522
 
@@ -21,8 +24,14 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Create
-templates ``ansible_syslogng_server`` and ``ansible_syslogng_client``. Create the jails from the
+templates ``ansible-syslogng-server`` and ``ansible-syslogng-client``. Create the jails from the
 templates.
+
+Quoting `syslog-ng - FreeBSD Wiki`_:
+
+    "One of the most typical use of syslog-ng is central log aggregation. ... It collects log
+    messages on TCP port 514 and saves them to directories and files based on sender host name and
+    current date."
 
 Tree
 ^^^^
@@ -36,7 +45,8 @@ Tree
   │   └── pkgs-logserver.json
   ├── group_vars
   │   └── all
-  │       └── common.yml
+  │       ├── common.yml
+  │       └── project-hosts.yml
   ├── hosts
   │   └── 05_iocage.yml
   ├── host_vars
@@ -48,12 +58,12 @@ Tree
   │       └── template.yml
   ├── iocage.ini
   ├── pb-create-jails.yml
-  ├── pb-logclient-conf.yml
+  ├── pb-iocage-template-stop-convert.yml
+  ├── pb-iocage-template.yml
   ├── pb-logclient-test.yml
   ├── pb-logclient.yml
   ├── pb-logserver-test.yml
-  ├── pb-logserver.yml
-  └── pb-template-stop-convert.yml
+  └── pb-logserver.yml
 
 Synopsis
 ^^^^^^^^
@@ -62,40 +72,31 @@ Synopsis
 
   Use the role `vbotka.freebsd.iocage_template`_ to create templates:
 
-  * ``ansible_syslogng_server``
-  * ``ansible_syslogng_client``
+  * ``ansible-syslogng-server``
+  * ``ansible-syslogng-client``
 
   In the playbook ``pb-create-jails.yml``:
 
   * Create jails from the created templates
 
-* In the inventory group ``log_server`` test `syslog-ng server`_.
+* In the inventory group ``log_servers`` configure and test `syslog-ng server`_.
 
-* In the inventory group ``log_client`` configure and test `syslog-ng client`_.
+* In the inventory group ``log_clients`` configure and test `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
 
+* role `vbotka.freebsd.iocage_template`_
+* role `vbotka.freebsd.postinstall`_
 * `inventory plugin vbotka.freebsd.iocage`_
 * `connection plugin vbotka.freebsd.jailexec`_
-* `module vbotka.freebsd.service`_
-* role `vbotka.freebsd.postinstall`_
-* role `vbotka.freebsd.iocage_template`_
-
-Notes
-^^^^^
-
-* Quoting `syslog-ng - FreeBSD Wiki`_:
-
-     One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
-     on TCP port 514 and saves them to directories and files based on sender host name and current
-     date.
 
 .. note::
 
-   * This example creates the same functionality as :ref:`example_521`. The ``iocage templates`` are
-     used here instead of ``iocage plugins``.
-   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`
+   * This example creates the same functionality as the example :ref:`example_521`. The ``iocage
+     templates`` are used here instead of ``iocage plugins``.
+   * The same functionality is created also in the example :ref:`example_526`.
+   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`.
 
 .. seealso::
 
@@ -127,6 +128,10 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/common.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
@@ -196,8 +201,8 @@ Playbook pb-logclient.yml
 .. literalinclude:: pb-logclient.yml
    :language: yaml+jinja
 
-Playbook output - Configure Log Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Log Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -207,18 +212,18 @@ Playbook output - Configure Log Client
    :language: yaml
    :force:
 
-Playbook pb-template-stop-convert.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-template-stop-convert.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-template-stop-convert.yml
+.. literalinclude:: pb-iocage-template-stop-convert.yml
    :language: yaml+jinja
 
-Playbook output - Stop and convert ansible_syslogng_* to templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Convert ansible-syslogng-* to templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-template-stop-convert.yml -i iocage.ini
+   (env) > ansible-playbook pb-iocage-template-stop-convert.yml -i iocage.ini
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -245,7 +250,7 @@ Playbook output - Create jails from iocage templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-create-jails.yml.yml -i iocage.ini
+   (env) > ansible-playbook pb-create-jails.yml.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
@@ -261,30 +266,6 @@ Inventory graph
 .. literalinclude:: out/out-07.txt
    :language: sh
 
-Playbook pb-logclient-conf.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-logclient-conf.yml
-   :language: yaml+jinja
-   :emphasize-lines: 21-23
-
-Playbook output - Configure, enable, and start Log Clients
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-logclient-conf.yml -i hosts -i iocage.ini -e debug=true
-
-.. literalinclude:: out/out-08.txt
-   :language: yaml
-   :force:
-
-.. note::
-
-   The configuration file ``/usr/local/etc/syslog-ng.conf``, in the template
-   ``ansible_syslogng_client``, keeps the string ``LOG_SERVER`` in the place of the log-server
-   IP. The above play replaces this string with the log-server IP.
-
 List jails
 ^^^^^^^^^^
 
@@ -292,7 +273,7 @@ List jails
 
    shell > ssh admin@iocage_05 sudo iocage list -l
 
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-08.txt
    :language: sh
 
 Playbook pb-logserver-test.yml
@@ -308,7 +289,7 @@ Playbook output - Test Log Server
 
    (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
 
-.. literalinclude:: out/out-10.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml
    :force:
 
@@ -325,16 +306,17 @@ Playbook output - Test Log Clients
 
    (env) > ansible-playbook pb-logclient-test.yml -i hosts
 
-.. literalinclude:: out/out-11.txt
+.. literalinclude:: out/out-10.txt
    :language: yaml
    :force:
 
 .. hint::
 
-   Use the utility ``lnav`` on the log server to display all logfiles in the the directory
-   ``/var/log/remote`` ::
+   Use ``lnav`` utility on the log server to display all logfiles in the the directory
+   ``/var/log/remote``::
 
-     shell > lnav -r /var/log/remote/
+     shell > iocage console log-server
+     root@log-server:~ # lnav -r /var/log/remote/
 
 
 .. _syslog-ng client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html

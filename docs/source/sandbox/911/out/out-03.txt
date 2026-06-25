@@ -6,5 +6,5 @@ changed: [iocage_05] => (item=foo)
 changed: [iocage_05] => (item=bar)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=1    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

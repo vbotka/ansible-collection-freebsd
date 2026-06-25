@@ -1,11 +1,23 @@
 ---
-- name: Stop and convert ansible_syslogng_client to template.
+- name: Stop and convert ansible-syslogng-client to template.
   hosts: iocage_05
+  vars:
+
+    iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
 
   tasks:
 
-    - name: Stop ansible_syslogng_client
-      ansible.builtin.command: iocage stop ansible_syslogng_client
+    - name: Get iocage list of jails.
+      register: out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
 
-    - name: Convert ansible_syslogng_client jail to template.
-      ansible.builtin.command: iocage set template=1 ansible_syslogng_client
+    - name: Stop ansible-syslogng-client and convert it to template.
+      when: iocage_jails is contains('ansible_syslogng_client')
+      block:
+
+        - name: Stop ansible-syslogng-client
+          ansible.builtin.command: iocage stop ansible-syslogng-client
+
+        - name: Convert ansible-syslogng-client jail to template.
+          ansible.builtin.command: iocage set template=1 ansible-syslogng-client

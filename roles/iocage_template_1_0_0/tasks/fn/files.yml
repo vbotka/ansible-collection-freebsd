@@ -1,0 +1,21 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Fn/files: Create directory."
+  ansible.builtin.file:
+    path: "{{ fit_iocage_mount }}/jails/{{ outer_item.0.key }}/root{{ outer_item.1.key }}"
+    state: directory
+    owner: "{{ fit_file_options[outer_item.1.key]['owner'] }}"
+    group: "{{ fit_file_options[outer_item.1.key]['group'] }}"
+    mode: "{{ fit_file_options[outer_item.1.key]['mode'] }}"
+
+- name: "Fn/files: Copy files."
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ fit_iocage_mount }}/jails/{{ outer_item.0.key }}/root{{ outer_item.1.key }}"
+    owner: "{{ fit_file_options[item]['owner'] | d(omit) }}"
+    group: "{{ fit_file_options[item]['group'] | d(omit) }}"
+    mode: "{{ fit_file_options[item]['mode'] | d(omit) }}"
+  loop: "{{ outer_item.1.value }}"

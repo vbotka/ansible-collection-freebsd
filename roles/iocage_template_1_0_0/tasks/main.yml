@@ -42,6 +42,10 @@
   tags: fit_commands
   ansible.builtin.import_tasks: commands.yml
 
+- name: Copy files.
+  tags: fit_files
+  ansible.builtin.import_tasks: files.yml
+
 - name: Configure lines in files.
   tags: fit_file_lines
   ansible.builtin.import_tasks: file_lines.yml

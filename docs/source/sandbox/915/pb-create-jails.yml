@@ -11,7 +11,7 @@
           class=log-client"
       ansible.builtin.command: >
         iocage create
-        --name log-client
-        --template ansible_syslogng_client
+        --name log_client
+        --template ansible-syslogng-client
         {{ properties | dictsort | map('join', '=') | join(' ') }}
         notes={{ _notes }}

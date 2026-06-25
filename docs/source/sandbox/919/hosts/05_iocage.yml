@@ -16,7 +16,7 @@ compose:
   ansible_python_interpreter: "'auto_silent'"
 
 groups:
-  pull_repos: iocage_classes is contains('repos')
+  pull_init: iocage_classes is contains('init')
   pull_test: iocage_classes is contains('test')
 
 keyed_groups:

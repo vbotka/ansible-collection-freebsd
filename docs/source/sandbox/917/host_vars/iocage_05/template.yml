@@ -1,14 +1,14 @@
 fit_templates:
-  ansible_repos:
+  ansible-repos:
     release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_pull_repos/pkgs.json
+    pkglist: /tmp/ansible/ansible-repos/pkgs.json
     commands: "{{ fit_commands }}"
     rcconf: "{{ fit_rcconf | dict2items }}"
     properties:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: class=repos
+      notes: class=repos alias=ansible_repos
 
 fit_rcconf:
   git_daemon_enable: "YES"

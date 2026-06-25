@@ -22,13 +22,13 @@ pf_type: default3
 pf_log_enable: true
 pf_ext_if: wlan0
 pf_int_if: bridge0
+pf_local_net: 10.10.58.0/23
+pf_jail_net: 172.16.99.0/24
 pf_log_all_blocked: log
 pf_pass_icmp_types: [echoreq, unreach]
 pf_pass_icmp6_types: [echoreq, unreach]
-pf_local_net: 172.16.0.0/24
-pf_jail_net: 10.10.99.0/24
 pf_tcp_services: [ssh]
-pf_ssh_redirected_ports: "2200:2299"
+pf_ssh_redirected_ports: '2200:2299'
 
 # macros
 pf_macros:
@@ -54,9 +54,11 @@ pf_options:
   - set skip on lo0
   - set block-policy return
   - set loginterface $ext_if
+  - set limit frags 10000
 
 pf_normalization:
-  - scrub in on $ext_if all fragment reassemble
+  - scrub in on $ext_if all fragment reassemble no-df
+  - scrub out on $ext_if all max-mss 1440
 
 pf_translation:
   - "{{ pf_rules_rdr }}"

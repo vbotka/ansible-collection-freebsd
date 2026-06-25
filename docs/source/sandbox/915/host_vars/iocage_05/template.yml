@@ -1,13 +1,14 @@
 templates:
-  ansible_syslogng_client:
+  ansible-syslogng-client:
     release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_syslogng_client/pkgs.json
+    pkglist: /tmp/ansible/ansible-syslogng-client/pkgs.json
     properties:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: "vmm={{ inventory_hostname }}"
+      notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_client"
 
+# Do not stop jails. Configure them first. Then stop and convert them to templates.
 act_stop: false
 act_template: false
 

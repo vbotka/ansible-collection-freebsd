@@ -14,7 +14,7 @@ TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
     msg: |-
         iocage_plugins:
-          ansible-syslogng:
+          ansible-pull-syslogng-client:
               boot: 'off'
               doc_url: '-'
               ip4: '-'
@@ -28,7 +28,38 @@ ok: [iocage_05] =>
               state: down
               template: '-'
               type: pluginv2
-          ansible-zero:
+          ansible-pull-syslogng-server:
+              boot: 'off'
+              doc_url: '-'
+              ip4: 172.16.99.31
+              ip4_dict:
+                  ip4:
+                  -   ifc: vnet0
+                      ip: 172.16.99.31
+                      mask: '24'
+                  msg: ''
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-pull-test:
+              boot: 'off'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-test:
               boot: 'off'
               doc_url: '-'
               ip4: '-'
@@ -57,8 +88,8 @@ ok: [iocage_05] =>
               git: https://github.com/vbotka/iocage-plugins
               properties:
                   boot: 0
-                  bpf: 1
-                  dhcp: 1
+                  defaultrouter: 172.16.99.1
+                  ip4_addr: vnet0|172.16.99.31/24
                   vnet: 1
 
 TASK [Set required plugins.] ***************************************************
@@ -72,43 +103,11 @@ ok: [iocage_05] =>
         - ansible-pull-syslogng-server
 
         selected_plugins:
-          -   key: ansible-pull-syslogng-client
-            value:
-                branch: main
-                git: https://github.com/vbotka/iocage-plugins
-                properties:
-                    boot: 0
-                    bpf: 1
-                    dhcp: 1
-                    vnet: 1
-        -   key: ansible-pull-syslogng-server
-            value:
-                branch: main
-                git: https://github.com/vbotka/iocage-plugins
-                properties:
-                    boot: 0
-                    bpf: 1
-                    dhcp: 1
-                    vnet: 1
+          []
 
 TASK [Check all required plugins are included in the dictionary plugins.] ******
 ok: [iocage_05]
 
-TASK [Debug commands debug=true] ***********************************************
-ok: [iocage_05] => (item=ansible-pull-syslogng-client) => 
-    msg: |-
-        iocage fetch --plugin-name ansible-pull-syslogng-client --git_repository https://github.com/vbotka/iocage-plugins --branch main boot=0 bpf=1 dhcp=1 vnet=1
-ok: [iocage_05] => (item=ansible-pull-syslogng-server) => 
-    msg: |-
-        iocage fetch --plugin-name ansible-pull-syslogng-server --git_repository https://github.com/vbotka/iocage-plugins --branch main boot=0 bpf=1 dhcp=1 vnet=1
-
-TASK [Fetch enabled plugins.] **************************************************
-ok: [iocage_05] => (item=ansible-pull-syslogng-client)
-ok: [iocage_05] => (item=ansible-pull-syslogng-server)
-
-TASK [Stop fetched plugins.] ***************************************************
-ok: [iocage_05]
-
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

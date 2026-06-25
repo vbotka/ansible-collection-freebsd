@@ -9,12 +9,12 @@ ok: [iocage_05] => (item=baz)
 ok: [iocage_05] => (item=qux)
 
 TASK [Create custom facts dirs.] ***********************************************
-changed: [iocage_05] => (item={'key': 'baz', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
-changed: [iocage_05] => (item={'key': 'qux', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+changed: [iocage_05] => (item={'key': 'baz', 'value': {'vmm': 'iocage_05', 'template': 'ansible-init', 'class': ['test'], 'custom_facts': 'class.fact.j2'}})
+changed: [iocage_05] => (item={'key': 'qux', 'value': {'vmm': 'iocage_05', 'template': 'ansible-init', 'class': ['test'], 'custom_facts': 'class.fact.j2'}})
 
 TASK [Create custom facts files.] **********************************************
-changed: [iocage_05] => (item={'key': 'baz', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
-changed: [iocage_05] => (item={'key': 'qux', 'value': {'class': ['test'], 'template': 'ansible_init', 'custom_facts': 'class.fact.j2', 'vmm': 'iocage_05'}})
+changed: [iocage_05] => (item={'key': 'baz', 'value': {'vmm': 'iocage_05', 'template': 'ansible-init', 'class': ['test'], 'custom_facts': 'class.fact.j2'}})
+changed: [iocage_05] => (item={'key': 'qux', 'value': {'vmm': 'iocage_05', 'template': 'ansible-init', 'class': ['test'], 'custom_facts': 'class.fact.j2'}})
 
 TASK [Set properties.] *********************************************************
 ok: [iocage_05] => (item=baz)
