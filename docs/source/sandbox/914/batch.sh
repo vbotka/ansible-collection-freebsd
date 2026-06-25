@@ -14,8 +14,6 @@ ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini | tee out/o
 ansible-playbook pb-logserver.yml -i hosts | tee out/out-02.txt
 
 # Stop and convert template.
-# THIS PLAY WILL CRASH IF TEMPLATE ansible-syslogng-server EXISTS.
-# THE batch.sh WILL PROCEED.
 ansible-playbook pb-logserver-stop-convert.yml -i iocage.ini | tee out/out-03.txt
 
 # List templates

@@ -58,12 +58,12 @@ Tree
   │       └── template.yml
   ├── iocage.ini
   ├── pb-create-jails.yml
+  ├── pb-iocage-template-stop-convert.yml
   ├── pb-iocage-template.yml
   ├── pb-logclient-test.yml
   ├── pb-logclient.yml
   ├── pb-logserver-test.yml
-  ├── pb-logserver.yml
-  └── pb-template-stop-convert.yml
+  └── pb-logserver.yml
 
 Synopsis
 ^^^^^^^^
@@ -212,10 +212,10 @@ Playbook output - Configure and start Log Client
    :language: yaml
    :force:
 
-Playbook pb-template-stop-convert.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-iocage-template-stop-convert.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-template-stop-convert.yml
+.. literalinclude:: pb-iocage-template-stop-convert.yml
    :language: yaml+jinja
 
 Playbook output - Convert ansible-syslogng-* to templates
@@ -223,7 +223,7 @@ Playbook output - Convert ansible-syslogng-* to templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-template-stop-convert.yml -i iocage.ini
+   (env) > ansible-playbook pb-iocage-template-stop-convert.yml -i iocage.ini
 
 .. literalinclude:: out/out-04.txt
    :language: yaml

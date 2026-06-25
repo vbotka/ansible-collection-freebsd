@@ -16,7 +16,7 @@ ansible-playbook pb-logserver.yml -i hosts | tee out/out-02.txt
 ansible-playbook pb-logclient.yml -i hosts | tee out/out-03.txt
 
 # Stop and convert templates.
-ansible-playbook pb-template-stop-convert.yml -i iocage.ini | tee out/out-04.txt
+ansible-playbook pb-iocage-template-stop-convert.yml -i iocage.ini | tee out/out-04.txt
 
 # List templates
 ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-05.txt
