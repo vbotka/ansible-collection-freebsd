@@ -11,7 +11,7 @@ fit_templates:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: class=init
+      notes: class=init alias=ansible_init
 
 fit_firstboot:
   ansible-init:
@@ -45,8 +45,8 @@ fit_firstboot:
               -i hosts \
               -U ${ansible_init_host}/${ansible_init_repo} \
               -d ${ansible_init_dest}/${ansible_init_repo} \
-              -e "my_vars=${ansible_init_vars}" \
-              -e "ansible_pull_mode=true" \
+              -e "ai_vars=${ansible_init_vars}" \
+              -e "ai_pull_mode=true" \
               ${ansible_init_playbook}
       }
 
