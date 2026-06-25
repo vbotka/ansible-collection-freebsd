@@ -33,14 +33,14 @@ Tree
   ├── group_vars
   │   ├── all
   │   │   ├── common.yml
-  │   │   └── project-hosts.yml
+  │   │   ├── project-hosts.yml
+  │   │   └── project.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
   │   └── 05_iocage.yml
   ├── host_vars
   │   └── iocage_05
-  │       ├── project.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -110,6 +110,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/project.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/pull_repos/repos.yml
    :language: yaml+jinja
    :caption:
@@ -122,10 +126,6 @@ group_vars
 
 host_vars
 ^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_05/project.yml
-   :language: yaml
-   :caption:
 
 .. literalinclude:: host_vars/iocage_05/template.yml
    :language: yaml
