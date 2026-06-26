@@ -192,7 +192,7 @@ Playbook output - Test Log Clients
 .. hint::
 
    Use the ``lnav`` utility on the log server to display all logfiles in the the directory
-   ``/var/log/remote`` ::
+   ``/var/log/remote``. Run the following commands on the iocage host: ::
 
      shell > iocage console log-server
      root@log-server:~ # lnav -r /var/log/remote/
@@ -224,46 +224,57 @@ Troubleshooting
 
    root@log-server:~ # service ansible_init start
    Service ansible_init started.
-   Starting Ansible Pull at 2026-06-18 07:47:59
-   /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-init -d /root/ansible-conf-init -e ansible_pull_mode=true pb-init.yml
+   Starting Ansible Pull at 2026-06-26 04:43:37
+   /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-init -d /root/ansible-conf-init -e ai_vars=/root/ansible-vars -e ai_pull_mode=true pb-init.yml
+   [WARNING]: Could not match supplied host pattern, ignoring: localhost.my.domain
+   [WARNING]: Could not match supplied host pattern, ignoring: log-server
+
    ...
    TASK [Display vars.] ***********************************************************
    ok: [localhost.my.domain] => 
        msg: |-
            ai_at:
            ai_async: True
-           ai_cmd:      ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-server -d /root/ansible-conf-syslogng-server -e "ansible_pull_mode=true" pb-logserv.yml &&  echo '[INFO] ansible-pull finished.'
+           ai_cmd:      ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-server -d /root/ansible-conf-syslogng-server -e "ai_vars=/root/ansible-vars" -e "ai_pull_mode=true" pb-logserv.yml &&  echo '[INFO] ansible-pull finished.'
 
    TASK [Execute command async=3600 poll=0] ***************************************
    changed: [localhost.my.domain]
 
    PLAY RECAP *********************************************************************
-   localhost.my.domain        : ok=7    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+   localhost.my.domain        : ok=8    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
 
 
-* See the Ansible log ``/var/log/ansible.log``. The warning is harmless.
+* See the Ansible log ``/var/log/ansible.log``. The warnings is harmless.
 
 .. code-block:: console
 
    root@log-server:~ # cat /var/log/ansible.log
    ...
-   2026-06-18 07:48:06,356 p=52659 u=root n=ansible INFO| Starting Ansible Pull at 2026-06-18 07:48:06
-   2026-06-18 07:48:06,356 p=52659 u=root n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-server -d /root/ansible-conf-syslogng-server -e ansible_pull_mode=true pb-logserv.yml
-   2026-06-18 07:48:06,866 p=52661 u=root n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: log-server
+   2026-06-26 04:31:12,561 p=21489 u=root n=ansible INFO| Starting Ansible Pull at 2026-06-26 04:31:12
+   2026-06-26 04:31:12,561 p=21489 u=root n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-server -d /root/ansible-conf-syslogng-server -e ai_vars=/root/ansible-vars -e ai_pull_mode=true pb-logserv.yml
+   2026-06-26 04:31:13,041 p=21491 u=root n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: log-server
    ...
-   2026-06-18 07:48:09,702 p=52697 u=root n=ansible INFO| PLAY [Configure and start Log Server.] *****************************************
-   2026-06-18 07:48:14,495 p=52697 u=root n=ansible INFO| TASK [Install packages.] *******************************************************
-   2026-06-18 07:48:14,497 p=52697 u=root n=ansible INFO| ok: [localhost.my.domain]
-   2026-06-18 07:48:15,373 p=52697 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
-   2026-06-18 07:48:15,374 p=52697 u=root n=ansible INFO| ok: [localhost.my.domain]
-   2026-06-18 07:48:15,506 p=52697 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
-   2026-06-18 07:48:15,508 p=52697 u=root n=ansible INFO| ok: [localhost.my.domain]
-   2026-06-18 07:48:16,232 p=52697 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-   2026-06-18 07:48:16,232 p=52697 u=root n=ansible INFO| ok: [localhost.my.domain]
-   2026-06-18 07:48:16,645 p=52697 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-   2026-06-18 07:48:16,647 p=52697 u=root n=ansible INFO| ok: [localhost.my.domain]
-   2026-06-18 07:48:16,706 p=52697 u=root n=ansible INFO| PLAY RECAP *********************************************************************
-   2026-06-18 07:48:16,706 p=52697 u=root n=ansible INFO| localhost.my.domain        : ok=5    changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
+   2026-06-26 04:43:45,845 p=28341 u=root n=ansible INFO| PLAY [Configure and start Log Server.] *****************************************
+   2026-06-26 04:43:45,880 p=28341 u=root n=ansible INFO| TASK [Include variables from ai_vars directory.] *******************************
+   2026-06-26 04:43:45,880 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain] => (item=/root/ansible-vars/project-hosts.yml)
+   2026-06-26 04:43:45,922 p=28341 u=root n=ansible INFO| TASK [Display vars.] ***********************************************************
+   2026-06-26 04:43:45,922 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain] => 
+       msg: |-
+           ai_pull_mode: true
+           ai_vars: /root/ansible-vars
+
+   2026-06-26 04:43:50,042 p=28341 u=root n=ansible INFO| TASK [Install packages.] *******************************************************
+   2026-06-26 04:43:50,043 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain]
+   2026-06-26 04:43:50,820 p=28341 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
+   2026-06-26 04:43:50,821 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain]
+   2026-06-26 04:43:50,919 p=28341 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+   2026-06-26 04:43:50,920 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain]
+   2026-06-26 04:43:51,585 p=28341 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+   2026-06-26 04:43:51,586 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain]
+   2026-06-26 04:43:51,955 p=28341 u=root n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+   2026-06-26 04:43:51,955 p=28341 u=root n=ansible INFO| ok: [localhost.my.domain]
+   2026-06-26 04:43:52,004 p=28341 u=root n=ansible INFO| PLAY RECAP *********************************************************************
+   2026-06-26 04:43:52,004 p=28341 u=root n=ansible INFO| localhost.my.domain        : ok=7    changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
 
 
 .. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/

@@ -1,5 +1,6 @@
 project:
   log-server:
+    notes: alias=log_server
     vmm: iocage_05
     template: ansible-init
     class: [log-server]
@@ -9,19 +10,18 @@ project:
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
       vnet: 1
       boot: 1
-    notes: "alias=log_server"
   www-01:
+    notes: alias=www_01
     vmm: iocage_05
     template: ansible-init
     class: [log-client]
     custom_facts: class.fact.j2
-    notes: "alias=www_01"
   www-02:
+    notes: alias=www_02
     vmm: iocage_05
     template: ansible-init
     class: [log-client]
     custom_facts: class.fact.j2
-    notes: "alias=www_02"
 
 properties:
   bpf: 1

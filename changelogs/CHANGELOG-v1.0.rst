@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Docs. Update UG and README.
+* Docs. Update examples 526.
 
 
 0.8.23
