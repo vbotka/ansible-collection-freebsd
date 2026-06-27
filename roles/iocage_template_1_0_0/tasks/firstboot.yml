@@ -14,7 +14,7 @@
     - name: "Firstboot: Create scripts."
       register: out
       ansible.builtin.copy:
-        dest: "{{ fit_iocage_mount }}/jails/{{ item.0.key }}/root/etc/rc.d/{{ item.1.key }}"
+        dest: "{{ fit_iocage_mount }}/iocage/jails/{{ item.0.key }}/root/etc/rc.d/{{ item.1.key }}"
         content: "{{ item.1.value.content }}"
         mode: '0555'
       loop: "{{ _templates }}"
@@ -29,7 +29,7 @@
     - name: "Firstboot: Touch /firstboot."
       register: out
       ansible.builtin.file:
-        path: "{{ fit_iocage_mount }}/jails/{{ item.0.key }}/root/firstboot"
+        path: "{{ fit_iocage_mount }}/iocage/jails/{{ item.0.key }}/root/firstboot"
         state: touch
         mode: '0600'
         modification_time: preserve

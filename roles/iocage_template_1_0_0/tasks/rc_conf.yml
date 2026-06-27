@@ -6,7 +6,7 @@
 - name: "Rcconf: Configure /etc/rc.conf"
   register: out
   community.general.sysrc:
-    path: "{{ fit_iocage_mount }}/jails/{{ item.0.key }}/root/etc/rc.conf"
+    path: "{{ fit_iocage_mount }}/iocage/jails/{{ item.0.key }}/root/etc/rc.conf"
     name: "{{ item.1.key }}"
     value: "{{ item.1.value }}"
   loop: "{{ fit_templates | dict2items

@@ -6,10 +6,13 @@ project:
     class: [log-server]
     custom_facts: class.fact.j2
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 1
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
       vnet: 1
-      boot: 1
   www-01:
     notes: alias=www_01
     vmm: iocage_05
@@ -24,6 +27,9 @@ project:
     custom_facts: class.fact.j2
 
 properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
   bpf: 1
   dhcp: 1
   vnet: 1

@@ -3,20 +3,26 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Set properties.
+- name: "Properties: Set properties."
   changed_when: false
+  register: out
   vars:
     _notes: >
       "vmm={{ inventory_hostname }}
       class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}
       {{ vmm[inventory_hostname][item]['notes'] | d('') }}"
-    _properties: >
-      {{ vmm[inventory_hostname][item]['properties']
-         | d(properties)
-         | dictsort | map('join', '=') | join(' ') }}
+    _properties: >-
+      {% for k, v in (vmm[inventory_hostname][item]['properties'] | d(properties)).items() %}
+      {{ k }}={{ v }}
+      {% endfor %}
       notes={{ _notes }}
   ansible.builtin.command: >
     iocage set
     {{ _properties }}
     {{ item }}
   loop: "{{ vmm[inventory_hostname].keys() }}"
+
+- name: "Properties: Debug set properties."
+  when: debug2 | d(false) | bool
+  ansible.builtin.debug:
+    var: out | d('none')

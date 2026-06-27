@@ -13,7 +13,7 @@
   ansible.builtin.debug:
     var: fit_iocage_jails
 
-- name: Stop created templates.
+- name: Stop created jails.
   when: _jails | length > 0
   vars:
     _jails_started: "{{ fit_iocage_jails | dict2items

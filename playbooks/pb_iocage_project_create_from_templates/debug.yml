@@ -3,13 +3,14 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Debug
+- name: "Debug: Display variables."
   ansible.builtin.debug:
     msg: |
       project:
         {{ project | to_nice_yaml(indent=2) | indent(2) }}
+      properties:
+        {{ properties | to_nice_yaml(indent=2) | indent(2) }}
       vmm:
         {{ vmm | to_nice_yaml(indent=2) | indent(2) }}
-      groups.all: {{ groups.all }}
-      project_jails_present: {{ project_jails_present }}
-      project_jails_absent: {{ project_jails_absent }}
+      groups:
+        {{ groups | to_nice_yaml(indent=2) | indent(2) }}

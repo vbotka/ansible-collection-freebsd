@@ -9,6 +9,9 @@ project:
     class: [test]
 
 properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
   bpf: 1
   dhcp: 1
   vnet: 1

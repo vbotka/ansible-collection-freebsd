@@ -1,0 +1,40 @@
+---
+# Copyright 2025 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Set boot and start jails.
+  when: iocage_jails_boot | length > 0
+  vars:
+    iocage_jails_boot: "{{ vmm[inventory_hostname]
+                           | dict2items
+                           | selectattr('value.boot', 'defined')
+                           | selectattr('value.boot')
+                           | map(attribute='key') }}"
+  block:
+
+    - name: "Boot: Display iocage_jails_boot"
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: iocage_jails_boot
+
+    - name: "Boot: Set boot=1"
+      changed_when: false
+      register: out
+      ansible.builtin.command: "iocage set boot=1 {{ item }}"
+      loop: "{{ iocage_jails_boot }}"
+
+    - name: "Boot: Debug set boot=1"
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')
+
+    - name: "Boot: Start jails."
+      changed_when: false
+      register: out
+      ansible.builtin.command: "iocage start {{ iocage_jails_boot | join(' ') }}"
+
+    - name: "Boot: Debug start jails."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')

@@ -11,6 +11,9 @@ project:
     custom_facts: class.fact.j2
 
 properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
   bpf: 1
   dhcp: 1
   vnet: 1

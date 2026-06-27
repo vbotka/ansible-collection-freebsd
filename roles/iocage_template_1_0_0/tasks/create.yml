@@ -13,7 +13,7 @@
   ansible.builtin.debug:
     var: fit_iocage_jails
 
-- name: "Create: Create templates."
+- name: "Create: Create jails."
   register: out
   vbotka.freebsd.iocage:
     state: present

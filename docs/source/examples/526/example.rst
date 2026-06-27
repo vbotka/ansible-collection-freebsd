@@ -243,8 +243,11 @@ Troubleshooting
    PLAY RECAP *********************************************************************
    localhost.my.domain        : ok=8    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
 
+.. note::
 
-* See the Ansible log ``/var/log/ansible.log``. The warnings is harmless.
+   The command ``service ansible_init start`` removes the the sentinel file ``/firstboot``.
+
+* See the Ansible log ``/var/log/ansible.log``. The warnings are harmless.
 
 .. code-block:: console
 

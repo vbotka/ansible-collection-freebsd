@@ -13,20 +13,25 @@
   ansible.builtin.debug:
     var: fit_iocage_jails
 
-- name: "Start: Start created templates."
-  when: _jails | length > 0
+- name: Start jails.
+  when: _jails_to_start | length > 0
   vars:
     _jails_started: "{{ fit_iocage_jails | dict2items
                                          | selectattr('value.state', 'eq', 'up')
                                          | map(attribute='key') }}"
-    _jails: "{{ fit_templates | difference(fit_iocage_templates)
-                              | difference(_jails_started) }}"
+    _jails_to_start: "{{ fit_templates | difference(fit_iocage_templates)
+                                       | difference(_jails_started) }}"
   block:
 
-    - name: "Start: Start created templates."
+    - name: "Start: Display jails to start fit_debug={{ fit_debug }}"
+      when: fit_debug | bool
+      ansible.builtin.debug:
+        var: _jails_to_start
+
+    - name: "Start: Start jails."
       register: out
       changed_when: false
-      ansible.builtin.command: "iocage start {{ _jails | join(' ') }}"
+      ansible.builtin.command: "iocage start {{ _jails_to_start | join(' ') }}"
 
     - name: "Start: Debug start jails fit_debug2={{ fit_debug2 }}"
       when: fit_debug2 | bool

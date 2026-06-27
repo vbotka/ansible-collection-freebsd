@@ -3,6 +3,7 @@ host: iocage_05
 user: admin
 sudo: true
 get_properties: true
+inventory_hostname_tag: alias
 
 compose:
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
@@ -17,7 +18,6 @@ compose:
 
 groups:
   pull_init: iocage_classes is contains('init')
-  pull_test: iocage_classes is contains('test')
 
 keyed_groups:
   - prefix: state
