@@ -7,7 +7,7 @@
   changed_when: false
   register: out
   vars:
-    _notes: >
+    _notes: >-
       "vmm={{ inventory_hostname }}
       class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}
       {{ vmm[inventory_hostname][item]['notes'] | d('') }}"

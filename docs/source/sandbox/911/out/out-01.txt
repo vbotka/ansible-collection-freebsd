@@ -1,0 +1,93 @@
+
+PLAY [Fetch and stop iocage plugins.] ******************************************
+
+TASK [One tag is required.] ****************************************************
+ok: [iocage_05]
+
+TASK [Test the tag is known.] **************************************************
+ok: [iocage_05]
+
+TASK [Get already fetched plugins.] ********************************************
+ok: [iocage_05]
+
+TASK [Debug fetched plugins debug=true] ****************************************
+ok: [iocage_05] => 
+    msg: |-
+        iocage_plugins:
+          ansible-pull-syslogng-client:
+              boot: 'off'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-pull-syslogng-server:
+              boot: 'off'
+              doc_url: '-'
+              ip4: 172.16.99.31
+              ip4_dict:
+                  ip4:
+                  -   ifc: vnet0
+                      ip: 172.16.99.31
+                      mask: '24'
+                  msg: ''
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+          ansible-pull-test:
+              boot: 'off'
+              doc_url: '-'
+              ip4: '-'
+              ip4_dict:
+                  ip4: []
+                  msg: DHCP (not running)
+              ip6: '-'
+              jid: None
+              portal: '-'
+              release: 15.0-RELEASE
+              state: down
+              template: '-'
+              type: pluginv2
+
+        plugins:
+          ansible-pull-syslogng-client:
+              branch: main
+              git: https://github.com/vbotka/iocage-plugins-devel
+              properties:
+                  boot: 0
+                  bpf: 1
+                  dhcp: 1
+                  ip4: disable
+                  ip6: disable
+                  ip6_addr: none
+                  vnet: 1
+
+TASK [Set required plugins.] ***************************************************
+ok: [iocage_05]
+
+TASK [Debug selected plugins debug=true] ***************************************
+ok: [iocage_05] => 
+    msg: |-
+        required_plugins:
+          - ansible-pull-syslogng-client
+
+        selected_plugins:
+          []
+
+TASK [Check all required plugins are included in the dictionary plugins.] ******
+ok: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+

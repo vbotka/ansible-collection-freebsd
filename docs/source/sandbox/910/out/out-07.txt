@@ -1,19 +1,16 @@
 @all:
   |--@ungrouped:
   |--@state_down:
+  |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
   |  |--ansible-pull-test
   |--@state_up:
   |  |--repos
   |  |--log_server
   |  |--repos_devel
-  |  |--www_01
-  |  |--www_02
   |--@vmm_iocage_05:
   |  |--repos
   |  |--log_server
   |  |--repos_devel
-  |  |--www_01
-  |  |--www_02
   |--@log_servers:
   |  |--log_server

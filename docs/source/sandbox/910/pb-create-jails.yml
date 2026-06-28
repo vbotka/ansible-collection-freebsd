@@ -23,13 +23,17 @@
 
     - name: Create jail.
       vars:
-        _notes: >
+        _notes: >-
           "vmm={{ inventory_hostname }}
           class=log-server
           alias=log_server"
+        _properties: >-
+          {% for k, v in properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
       ansible.builtin.command: >
         iocage clone
         --newmac
         ansible-pull-syslogng-server
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
-        notes={{ _notes }}
+        {{ _properties }}

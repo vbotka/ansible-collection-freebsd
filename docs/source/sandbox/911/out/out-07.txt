@@ -7,23 +7,17 @@
   |--@state_up:
   |  |--repos
   |  |--bar
-  |  |--foo
   |  |--log_server
+  |  |--foo
   |  |--repos_devel
-  |  |--www_01
-  |  |--www_02
   |--@vmm_iocage_05:
   |  |--repos
   |  |--bar
-  |  |--foo
   |  |--log_server
+  |  |--foo
   |  |--repos_devel
-  |  |--www_01
-  |  |--www_02
   |--@log_clients:
   |  |--bar
   |  |--foo
-  |  |--www_01
-  |  |--www_02
   |--@log_servers:
   |  |--log_server

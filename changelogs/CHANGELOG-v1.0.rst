@@ -20,7 +20,7 @@ Minor Changes
 * Update playbook pb_iocage_project_create_from_templates
 * Update role iocage_template
 * Docs. Update UG and README.
-* Docs. Update examples 523,524,525,526.
+* Docs. Update examples 521,523,524,525,526.
 * Docs. Update sandbox 907,908,909,910,911,917,918,919,920.
 
 
