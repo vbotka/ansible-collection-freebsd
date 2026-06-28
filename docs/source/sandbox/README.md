@@ -12,7 +12,7 @@
 * 905 Test ansible-pull, plugin ansible-syslogng, repo ansible-conf-syslogng-server.git
 * 906 Test iocage plugin ansible-test custom facts
 * 907 Test iocage plugins ansible-syslogng-client and ansible-syslogng-server (OBSOLETE)
-* 908 Test var enabled_plugins; simplified version of 907
+* 908 Test var enabled_plugins; simplified version of 907 (OBSOLETE)
 * 909 Test ansible-pull, iocage plugin ansible-pull-test, repo ansible-conf-test
 * 910 Test ansible-pull, iocage plugin ansible-pull-syslogng-server, repo ansible-conf-syslogng-server.git
 * 911 Test ansible-pull, iocage plugin ansible-pull-syslogng-client, repo ansible-conf-syslogng-client.git

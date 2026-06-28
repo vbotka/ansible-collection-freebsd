@@ -14,20 +14,6 @@ TASK [Debug fetched plugins debug=true] ****************************************
 ok: [iocage_05] => 
     msg: |-
         iocage_plugins:
-          ansible-pull-syslogng-client:
-              boot: 'off'
-              doc_url: '-'
-              ip4: '-'
-              ip4_dict:
-                  ip4: []
-                  msg: DHCP (not running)
-              ip6: '-'
-              jid: None
-              portal: '-'
-              release: 15.0-RELEASE
-              state: down
-              template: '-'
-              type: pluginv2
           ansible-pull-syslogng-server:
               boot: 'off'
               doc_url: '-'
@@ -59,20 +45,6 @@ ok: [iocage_05] =>
               state: down
               template: '-'
               type: pluginv2
-          ansible-test:
-              boot: 'off'
-              doc_url: '-'
-              ip4: '-'
-              ip4_dict:
-                  ip4: []
-                  msg: DHCP (not running)
-              ip6: '-'
-              jid: None
-              portal: '-'
-              release: 15.0-RELEASE
-              state: down
-              template: '-'
-              type: pluginv2
 
         plugins:
           ansible-pull-syslogng-server:
@@ -81,7 +53,10 @@ ok: [iocage_05] =>
               properties:
                   boot: 0
                   defaultrouter: 172.16.99.1
+                  ip4: disable
                   ip4_addr: vnet0|172.16.99.31/24
+                  ip6: disable
+                  ip6_addr: none
                   vnet: 1
 
 TASK [Set required plugins.] ***************************************************
