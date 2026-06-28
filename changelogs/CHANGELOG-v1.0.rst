@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Fix iocage properties, jail names and aliases.
 
 Major Changes
 -------------
