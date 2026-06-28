@@ -11,7 +11,7 @@
         - rm -rf /var/log/remote/localhost/*
         - service syslog-ng status
         - loggen -i -S -n 1 localhost 514
-        - sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
+        - sleep 5; find /var/log/remote/localhost/ -name *.log | xargs cat
 
     - name: Debug.
       when: debug | d(false) | bool

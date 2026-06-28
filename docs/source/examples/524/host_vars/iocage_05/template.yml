@@ -8,17 +8,20 @@ fit_templates:
     firstboot: "{{ fit_firstboot | dict2items }}"
     rcconf: "{{ fit_rcconf | dict2items }}"
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
       bpf: 1
       dhcp: 1
       vnet: 1
       notes: class=init alias=ansible_init
 
 fit_firstboot:
-  ansible-init:
+  ansible_init:
     content: |
       #!/bin/sh
       #
-      # PROVIDE: Pull and execute ansible-conf-init
+      # PROVIDE: Run ansible-pull
       # REQUIRE: FILESYSTEMS NETWORKING
       # KEYWORD: firstboot
 

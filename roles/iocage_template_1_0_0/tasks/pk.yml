@@ -34,7 +34,7 @@
       register: out
       ansible.posix.authorized_key:
         user: "{{ item.value.user }}"
-        path: "{{ fit_iocage_mount }}/jails/{{ item.key }}/root/home/{{ item.value.user }}/.ssh/authorized_keys"
+        path: "{{ fit_iocage_mount }}/iocage/jails/{{ item.key }}/root/home/{{ item.value.user }}/.ssh/authorized_keys"
         key: "{{ _act_pk }}"
         exclusive: true
       loop: "{{ _templates }}"

@@ -4,6 +4,7 @@
 * `custom_image`_
 * `dhcp`_
 * `iocage`_
+* `iocage_template`_
 * `lib`_
 * `network`_
 * `packages`_
@@ -25,6 +26,7 @@
 .. _custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
 .. _dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
 .. _iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
+.. _iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
 .. _network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/

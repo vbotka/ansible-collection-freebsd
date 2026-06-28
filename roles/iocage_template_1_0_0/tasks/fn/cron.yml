@@ -5,7 +5,7 @@
 
 - name: "Fn/cron: Remove exclusive jobs from cron files."
   ansible.builtin.lineinfile:
-    path: "{{ fit_iocage_mount }}/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
+    path: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
     regexp: "^.*{{ item.job | regex_escape }}.*$"
     state: absent
     backup: true
@@ -15,7 +15,7 @@
 
 - name: "Fn/cron: Configure cron files."
   ansible.builtin.cron:
-    cron_file: "{{ fit_iocage_mount }}/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
+    cron_file: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
     name: "{{ item.name }}"
     job: "{{ item.job }}"
     user: "{{ item.user | d(omit) }}"

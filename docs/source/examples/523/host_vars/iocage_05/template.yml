@@ -5,6 +5,9 @@ fit_templates:
     commands: "{{ fit_commands }}"
     rcconf: "{{ fit_rcconf | dict2items }}"
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
       bpf: 1
       dhcp: 1
       vnet: 1

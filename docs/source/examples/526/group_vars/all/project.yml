@@ -1,29 +1,35 @@
 project:
   log-server:
+    notes: alias=log_server
     vmm: iocage_05
     template: ansible-init
     class: [log-server]
     custom_facts: class.fact.j2
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 1
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
       vnet: 1
-      boot: 1
-    notes: "alias=log_server"
   www-01:
+    notes: alias=www_01
     vmm: iocage_05
     template: ansible-init
     class: [log-client]
     custom_facts: class.fact.j2
-    notes: "alias=www_01"
   www-02:
+    notes: alias=www_02
     vmm: iocage_05
     template: ansible-init
     class: [log-client]
     custom_facts: class.fact.j2
-    notes: "alias=www_02"
 
 properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
   bpf: 1
   dhcp: 1
   vnet: 1

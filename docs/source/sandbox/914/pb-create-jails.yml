@@ -4,14 +4,19 @@
 
   tasks:
 
-    - name: Create log_server
+    - name: Create log-server
       vars:
-        _notes: >
+        _notes: >-
           "vmm={{ inventory_hostname }}
-          class=log-server"
+          class=log-server
+          alias=log_server"
+        _properties: >-
+          {% for k, v in properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
       ansible.builtin.command: >
         iocage create
-        --name log_server
+        --name log-server
         --template ansible-syslogng-server
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
-        notes={{ _notes }}
+        {{ _properties }}

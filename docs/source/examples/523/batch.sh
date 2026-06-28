@@ -2,13 +2,13 @@
 
 . ../defaults/batch
 
-# Stop repos and repos_devel
+# Stop repos and repos-devel
 ssh admin@$iocage_05 sudo iocage stop repos
-ssh admin@$iocage_05 sudo iocage stop repos_devel
+ssh admin@$iocage_05 sudo iocage stop repos-devel
 
-# Destroy repos and repos_devel
+# Destroy repos and repos-devel
 ssh admin@$iocage_05 sudo iocage destroy -f repos
-ssh admin@$iocage_05 sudo iocage destroy -f repos_devel
+ssh admin@$iocage_05 sudo iocage destroy -f repos-devel
 
 # Create template
 ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt

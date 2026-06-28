@@ -3,6 +3,10 @@ templates:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible-syslogng-client/pkgs.json
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 0
       bpf: 1
       dhcp: 1
       vnet: 1
@@ -14,7 +18,10 @@ act_template: false
 
 # jail properties
 properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  boot: 1
   bpf: 1
   dhcp: 1
   vnet: 1
-  boot: 1

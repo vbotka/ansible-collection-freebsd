@@ -2,9 +2,6 @@
 
 . ../defaults/batch
 
-# Destroy jails
-VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
-
 # Fetch plugins
 ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_plugins -e debug=true | tee out/out-01.txt
 

@@ -1,7 +1,7 @@
 
 PLAY [Create jails from iocage plugins.] ***************************************
 
-TASK [Create jail.] ************************************************************
+TASK [Create log clients.] *****************************************************
 changed: [iocage_05] => (item=foo)
 changed: [iocage_05] => (item=bar)
 

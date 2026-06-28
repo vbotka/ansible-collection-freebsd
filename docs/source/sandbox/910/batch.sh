@@ -3,10 +3,10 @@
 . ../defaults/batch
 
 # Stop log-server
-# ssh admin@$iocage_05 sudo iocage stop log-server
+ssh admin@$iocage_05 sudo iocage stop log-server
 
 # Destroy log-server
-# ssh admin@$iocage_05 sudo iocage destroy -f log-server
+ssh admin@$iocage_05 sudo iocage destroy -f log-server
 
 # Fetch plugins
 ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_plugins -e debug=true | tee out/out-01.txt

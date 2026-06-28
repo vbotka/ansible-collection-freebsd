@@ -3,7 +3,8 @@ enabled_plugins:
 
 plugins:
   ansible-syslogng:
-    git: https://github.com/vbotka/iocage-plugins
+    git: https://github.com/vbotka/iocage-plugins-devel
+    branch: main
     properties:
       bpf: 1
       dhcp: 1

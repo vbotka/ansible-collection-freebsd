@@ -3,25 +3,25 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Display iocage_jails_absent
+- name: "Create: Display iocage_jails_absent"
   when: debug | d(false) | bool
   ansible.builtin.debug:
     var: iocage_jails_absent
 
-- name: All jails already created. End host.
+- name: "Create: All jails already created. End host."
   when: iocage_jails_absent | length == 0
   ansible.builtin.meta: end_host
 
-- name: Create jails.
+- name: "Create: Create jails."
   changed_when: false
-  register: out_created
+  register: out
   ansible.builtin.command: >
     iocage create
     --name {{ item }}
     --template {{ vmm[inventory_hostname][item]['template'] }}
   loop: "{{ iocage_jails_absent }}"
 
-- name: Display iocage_jails_created
-  when: debug | d(false) | bool
+- name: "Create: Debug create jails."
+  when: debug2 | d(false) | bool
   ansible.builtin.debug:
-    var: iocage_jails_created
+    var: out | d('none')

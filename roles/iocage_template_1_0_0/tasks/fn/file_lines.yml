@@ -10,7 +10,7 @@
     _group: "{{ fit_file_options[outer_item.1.key]['group'] }}"
     _mode: "{{ fit_file_options[outer_item.1.key]['mode'] }}"
   ansible.builtin.lineinfile:
-    path: "{{ fit_iocage_mount }}/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
+    path: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
     regexp: ^\s*{{ item.key }}\s*{{ _ao }}\s*(.*)$
     line: "{{ item.key }}{{ _ao }}{{ item.value }}"
     owner: "{{ _owner }}"

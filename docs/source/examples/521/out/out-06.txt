@@ -5,7 +5,7 @@ TASK [Run commands.] ***********************************************************
 changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
 changed: [log_server] => (item=service syslog-ng status)
 changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
-changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
+changed: [log_server] => (item=sleep 5; find /var/log/remote/localhost/ -name *.log | xargs cat)
 
 TASK [Debug.] ******************************************************************
 ok: [log_server] => 
@@ -13,14 +13,14 @@ ok: [log_server] =>
         shell> rm -rf /var/log/remote/localhost/*
 
         shell> service syslog-ng status
-        syslog_ng is running as pid 66051.
+        syslog_ng is running as pid 59400.
 
         shell> loggen -i -S -n 1 localhost 514
-        count=1, rate = 27777.78 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500377, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500228, (average) msg size=256, bandwidth=0.50 kB/sec
 
-        shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
-        Jun 25 10:47:51 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782377271, stamp: 2026-06-25T10:47:51 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        shell> sleep 5; find /var/log/remote/localhost/ -name *.log | xargs cat
+        Jun 28 10:53:09 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782636789, stamp: 2026-06-28T10:53:09 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
 PLAY RECAP *********************************************************************
 log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

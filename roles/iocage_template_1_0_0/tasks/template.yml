@@ -13,6 +13,5 @@
 
 - name: "Template: Debug set template fit_debug2={{ fit_debug2 }}"
   when: fit_debug2 | bool
-  tags: template_start
   ansible.builtin.debug:
     var: out

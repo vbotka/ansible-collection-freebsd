@@ -4,21 +4,20 @@
   |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
   |  |--ansible-pull-test
-  |  |--ansible-test
-  |--@log_servers:
-  |  |--log_server
   |--@state_up:
-  |  |--log_server
   |  |--repos
-  |  |--repos_devel
   |  |--bar
   |  |--foo
+  |  |--log_server
+  |  |--repos_devel
   |--@vmm_iocage_05:
-  |  |--log_server
   |  |--repos
-  |  |--repos_devel
   |  |--bar
   |  |--foo
+  |  |--log_server
+  |  |--repos_devel
   |--@log_clients:
   |  |--bar
   |  |--foo
+  |--@log_servers:
+  |  |--log_server
