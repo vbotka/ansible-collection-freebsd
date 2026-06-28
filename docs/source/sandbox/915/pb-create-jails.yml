@@ -4,14 +4,19 @@
 
   tasks:
 
-    - name: Create jail.
+    - name: Create log-client
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-client"
+          class=log-client
+          alias=log_client"
+        _properties: >-
+          {% for k, v in properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
       ansible.builtin.command: >
         iocage create
-        --name log_client
+        --name log-client
         --template ansible-syslogng-client
-        {{ properties | dictsort | map('join', '=') | join(' ') }}
-        notes={{ _notes }}
+        {{ _properties }}

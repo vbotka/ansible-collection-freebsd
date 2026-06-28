@@ -2,18 +2,18 @@
 PLAY [Test Log Clients.] *******************************************************
 
 TASK [Run loggen] **************************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [Debug.] ******************************************************************
 ok: [bar] => 
     out.stderr: |-
-        count=1, rate = 71428.57 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500303, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500452, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 166666.67 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500342, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500429, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,35 +21,59 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/localhost/2026_06_25.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.163/2026_06_25.log)
-changed: [log_server] => (item=/var/log/remote/log-server/2026_06_25.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.103/2026_06_25.log)
+changed: [log_server] => (item=/var/log/remote/localhost/2026_06_28.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.184/2026_06_28.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.103/2026_06_28.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_06_25.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_06_28.log']) => 
     msg: |-
-        Jun 25 11:06:04 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782378364, stamp: 2026-06-25T11:06:04 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 28 14:23:58 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782649438, stamp: 2026-06-28T14:23:58 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.163/2026_06_25.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.184/2026_06_28.log']) => 
     msg: |-
-        Jun 25 11:06:24 172.16.99.163 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782378384, stamp: 2026-06-25T11:06:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 28 14:12:28 172.16.99.184 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782648748, stamp: 2026-06-28T14:12:28 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 28 14:11:35 172.16.99.184 syslog-ng[89155]: syslog-ng starting up; version='4.11.0'
+        Jun 28 14:11:35 172.16.99.184 1 2026-06-28T14:11:35.457755+02:00 foo /usr/sbin/cron 89303 - - (CRON) WARNING (madvise() failed)
+        Jun 28 14:11:42 172.16.99.184 syslog-ng[89155]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 28 14:12:28 172.16.99.184 1 2026-06-28T14:12:28.818408+02:00 foo ansible-ansible.legacy.command 91801 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 28 14:12:42 172.16.99.184 syslog-ng[89155]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 28 14:15:11 172.16.99.184 1 2026-06-28T14:15:11.003847+02:00 foo /usr/sbin/cron 91856 - - (root) CMD (/usr/libexec/atrun)
+        Jun 28 14:16:34 172.16.99.184 1 2026-06-28T14:16:34.809042+02:00 foo dhclient 88873 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 28 14:16:34 172.16.99.184 1 2026-06-28T14:16:34.813740+02:00 foo dhclient 88873 - - DHCPACK from 172.16.99.1
+        Jun 28 14:16:34 172.16.99.184 1 2026-06-28T14:16:34.835214+02:00 foo dhclient 88873 - - bound to 172.16.99.184 -- renewal in 300 seconds.
+        Jun 28 14:20:01 172.16.99.184 1 2026-06-28T14:20:01.004591+02:00 foo /usr/sbin/cron 91893 - - (root) CMD (/usr/libexec/atrun)
+        Jun 28 14:21:34 172.16.99.184 1 2026-06-28T14:21:34.964845+02:00 foo dhclient 88873 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 28 14:21:34 172.16.99.184 1 2026-06-28T14:21:34.969362+02:00 foo dhclient 88873 - - DHCPACK from 172.16.99.1
+        Jun 28 14:21:35 172.16.99.184 1 2026-06-28T14:21:35.025172+02:00 foo dhclient 88873 - - bound to 172.16.99.184 -- renewal in 299 seconds.
+        Jun 28 14:21:35 172.16.99.184 syslog-ng[89155]: Log statistics; processed='global(payload_reallocs)=0', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=13', dropped='global(internal_source)=0', processed='global(internal_source)=3', queued='global(internal_source)=0', processed='source(s_system)=13', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=13', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=0', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=13', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=342', processed='src.internal(s_system#2)=3', stamp='src.internal(s_system#2)=1782648762', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=13', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=13', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=146', queued='global(scratch_buffers_count)=0'
+        Jun 28 14:22:00 172.16.99.184 1 2026-06-28T14:22:00.004436+02:00 foo /usr/sbin/cron 91936 - - (operator) CMD (/usr/libexec/save-entropy)
+        Jun 28 14:25:00 172.16.99.184 1 2026-06-28T14:25:00.884806+02:00 foo ansible-ansible.legacy.command 92511 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 28 14:25:00 172.16.99.184 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782649500, stamp: 2026-06-28T14:25:00 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/log-server/2026_06_25.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.103/2026_06_28.log']) => 
     msg: |-
-        Jun 25 11:05:29 log-server syslog-ng[85622]: syslog-ng starting up; version='4.11.0'
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.103/2026_06_25.log']) => 
-    msg: |-
-        Jun 25 11:06:24 172.16.99.103 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782378384, stamp: 2026-06-25T11:06:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-        Jun 25 11:05:26 172.16.99.103 syslog-ng[84887]: syslog-ng starting up; version='4.11.0'
-        Jun 25 11:05:26 172.16.99.103 1 2026-06-25T11:05:26.955616+02:00 bar /usr/sbin/cron 85035 - - (CRON) WARNING (madvise() failed)
-        Jun 25 11:05:29 172.16.99.103 syslog-ng[84887]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
-        Jun 25 11:06:24 172.16.99.103 1 2026-06-25T11:06:24.701882+02:00 bar ansible-ansible.legacy.command 86717 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 25 11:06:29 172.16.99.103 syslog-ng[84887]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 28 14:12:27 172.16.99.103 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782648747, stamp: 2026-06-28T14:12:27 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 28 14:11:40 172.16.99.103 syslog-ng[90080]: syslog-ng starting up; version='4.11.0'
+        Jun 28 14:11:40 172.16.99.103 1 2026-06-28T14:11:40.406632+02:00 bar /usr/sbin/cron 90228 - - (CRON) WARNING (madvise() failed)
+        Jun 28 14:11:42 172.16.99.103 syslog-ng[90080]: Syslog connection failed; fd='19', server='AF_INET(172.16.99.10:514)', error='Connection refused (61)', time_reopen='60'
+        Jun 28 14:12:27 172.16.99.103 1 2026-06-28T14:12:27.938282+02:00 bar ansible-ansible.legacy.command 91799 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 28 14:12:42 172.16.99.103 syslog-ng[90080]: Syslog connection established; fd='5', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 28 14:15:09 172.16.99.103 1 2026-06-28T14:15:09.004729+02:00 bar /usr/sbin/cron 91858 - - (root) CMD (/usr/libexec/atrun)
+        Jun 28 14:16:39 172.16.99.103 1 2026-06-28T14:16:39.845530+02:00 bar dhclient 89798 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 28 14:16:39 172.16.99.103 1 2026-06-28T14:16:39.850100+02:00 bar dhclient 89798 - - DHCPACK from 172.16.99.1
+        Jun 28 14:16:39 172.16.99.103 1 2026-06-28T14:16:39.906171+02:00 bar dhclient 89798 - - bound to 172.16.99.103 -- renewal in 300 seconds.
+        Jun 28 14:20:01 172.16.99.103 1 2026-06-28T14:20:01.003935+02:00 bar /usr/sbin/cron 91890 - - (root) CMD (/usr/libexec/atrun)
+        Jun 28 14:21:40 172.16.99.103 1 2026-06-28T14:21:40.046729+02:00 bar dhclient 89798 - - DHCPREQUEST on epair0b to 172.16.99.1 port 67
+        Jun 28 14:21:40 172.16.99.103 1 2026-06-28T14:21:40.050582+02:00 bar dhclient 89798 - - DHCPACK from 172.16.99.1
+        Jun 28 14:21:40 172.16.99.103 1 2026-06-28T14:21:40.068633+02:00 bar dhclient 89798 - - bound to 172.16.99.103 -- renewal in 300 seconds.
+        Jun 28 14:21:40 172.16.99.103 syslog-ng[90080]: Log statistics; processed='global(payload_reallocs)=0', memory_usage='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(received)=13', dropped='global(internal_source)=0', processed='global(internal_source)=3', queued='global(internal_source)=0', processed='source(s_system)=13', truncated_count='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='dst.network(d_network#0,tcp,172.16.99.10:514)=13', eps_last_1h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='source(s_ansible)=0', eps_last_24h='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='center(queued)=13', msg_size_max='dst.network(d_network#0,tcp,172.16.99.10:514)=342', processed='src.internal(s_system#2)=3', stamp='src.internal(s_system#2)=1782648762', dropped='dst.network(d_network#0,tcp,172.16.99.10:514)=0', queued='dst.network(d_network#0,tcp,172.16.99.10:514)=0', written='dst.network(d_network#0,tcp,172.16.99.10:514)=13', queued='global(scratch_buffers_bytes)=0', truncated_bytes='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='destination(d_network)=13', processed='global(msg_clones)=0', eps_since_start='dst.network(d_network#0,tcp,172.16.99.10:514)=0', processed='global(sdata_updates)=0', msg_size_avg='dst.network(d_network#0,tcp,172.16.99.10:514)=146', queued='global(scratch_buffers_count)=0'
+        Jun 28 14:22:00 172.16.99.103 1 2026-06-28T14:22:00.004444+02:00 bar /usr/sbin/cron 91938 - - (operator) CMD (/usr/libexec/save-entropy)
+        Jun 28 14:25:00 172.16.99.103 1 2026-06-28T14:25:00.003520+02:00 bar /usr/sbin/cron 92521 - - (root) CMD (/usr/libexec/atrun)
+        Jun 28 14:25:00 172.16.99.103 1 2026-06-28T14:25:00.884675+02:00 bar ansible-ansible.legacy.command 92510 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 28 14:25:00 172.16.99.103 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782649500, stamp: 2026-06-28T14:25:00 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

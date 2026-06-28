@@ -2,15 +2,15 @@
 
 . ../defaults/batch
 
-# Stop foo and bar
+# Stop foo, bar, and log-server
 ssh admin@$iocage_05 sudo iocage stop foo
 ssh admin@$iocage_05 sudo iocage stop bar
-ssh admin@$iocage_05 sudo iocage stop log_server
+ssh admin@$iocage_05 sudo iocage stop log-server
 
-# Destroy foo and bar
+# Destroy foo, bar, and log-server
 ssh admin@$iocage_05 sudo iocage destroy -f foo
 ssh admin@$iocage_05 sudo iocage destroy -f bar
-ssh admin@$iocage_05 sudo iocage destroy -f log_server
+ssh admin@$iocage_05 sudo iocage destroy -f log-server
 
 # Create templates
 ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt

@@ -28,13 +28,18 @@
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-client"
+          class=log-client
+          alias={{ item | replace('-', '_') }}"
+        _properties: >-
+          {% for k, v in log_client_properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
       ansible.builtin.command: >
         iocage create
         --name {{ item }}
         --template ansible-syslogng-client
-        {{ log_client_properties | dictsort | map('join', '=') | join(' ') }}
-        notes={{ _notes }}
+        {{ _properties }}
       loop: "{{ log_clients | difference(client_exist) }}"
 
     - name: End of host if log_server exists.
@@ -58,10 +63,15 @@
       vars:
         _notes: >
           "vmm={{ inventory_hostname }}
-          class=log-server"
+          class=log-server
+          alias=log_server"
+        _properties: >-
+          {% for k, v in log_server_properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
       ansible.builtin.command: >
         iocage create
-        --name log_server
+        --name log-server
         --template ansible-syslogng-server
-        {{ log_server_properties | dictsort | map('join', '=') | join(' ') }}
-        notes={{ _notes }}
+        {{ _properties }}

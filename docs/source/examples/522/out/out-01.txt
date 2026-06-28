@@ -4,10 +4,30 @@ PLAY [Create iocage templates.] ************************************************
 TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
 ok: [iocage_05]
 
-TASK [vbotka.freebsd.iocage_template : Setup: All templates already created.] ***
-ok: [iocage_05] => 
-    msg: All templates already created. End host.
+TASK [vbotka.freebsd.iocage_template : Setup: Get activated pool.] *************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.iocage_template : Pkglist: Create directories for pkglist files.] ***
+ok: [iocage_05] => (item=ansible-syslogng-server /tmp/ansible/ansible-syslogng-server)
+ok: [iocage_05] => (item=ansible-syslogng-client /tmp/ansible/ansible-syslogng-client)
+
+TASK [vbotka.freebsd.iocage_template : Pkglist: Copy pkglist files.] ***********
+ok: [iocage_05] => (item=ansible-syslogng-server /tmp/ansible/ansible-syslogng-server/pkgs-logserver.json)
+ok: [iocage_05] => (item=ansible-syslogng-client /tmp/ansible/ansible-syslogng-client/pkgs-logclient.json)
+
+TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
+changed: [iocage_05] => (item=ansible-syslogng-server 15.0-RELEASE)
+changed: [iocage_05] => (item=ansible-syslogng-client 15.0-RELEASE)
+
+TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.iocage_template : Start: Start jails.] ********************
+ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=8    changed=1    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
 

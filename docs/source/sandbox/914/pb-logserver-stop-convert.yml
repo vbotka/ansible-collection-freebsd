@@ -14,7 +14,7 @@
       ansible.builtin.command: iocage list --long
 
     - name: Stop ansible-syslogng-server and convert it to template.
-      when: iocage_jails is contains('ansible_syslogng_server')
+      when: iocage_jails is contains('ansible-syslogng-server')
       block:
 
         - name: Stop ansible-syslogng-server

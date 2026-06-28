@@ -3,6 +3,10 @@ fit_templates:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible-syslogng-server/pkgs-logserver.json
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 0
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_syslogng_server'] }}/24"
       vnet: 1
@@ -11,6 +15,10 @@ fit_templates:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible-syslogng-client/pkgs-logclient.json
     properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 0
       bpf: 1
       dhcp: 1
       vnet: 1
@@ -21,16 +29,22 @@ fit_stop: false
 fit_template: false
       
 log_server_properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  boot: 1
   defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
   ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
   vnet: 1
-  boot: 1
 
 log_client_properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  boot: 1
   bpf: 1
   dhcp: 1
   vnet: 1
-  boot: 1
 
 log_clients:
   - foo
