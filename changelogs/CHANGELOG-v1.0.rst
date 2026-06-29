@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Role iocage_template upgraded to 1.1.0
 
 
 0.8.24
