@@ -1,0 +1,17 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Template: Set template."
+  register: out
+  changed_when: false
+  ansible.builtin.command: "iocage set template=1 {{ item }}"
+  loop: "{{ fit_templates | difference(fit_iocage_templates) }}"
+  loop_control:
+    label: "{{ item }}"
+
+- name: "Template: Debug set template fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: out

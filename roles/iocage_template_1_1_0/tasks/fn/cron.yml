@@ -1,0 +1,31 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Fn/cron: Remove exclusive jobs from cron files."
+  ansible.builtin.lineinfile:
+    path: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
+    regexp: "^.*{{ item.job | regex_escape }}.*$"
+    state: absent
+    backup: true
+  loop: "{{ outer_item.1.value | selectattr('exclusive', 'defined') | selectattr('exclusive') }}"
+  loop_control:
+    label: "{{ outer_item.0.key }} {{ item.job }}"
+
+- name: "Fn/cron: Configure cron files."
+  ansible.builtin.cron:
+    cron_file: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
+    name: "{{ item.name }}"
+    job: "{{ item.job }}"
+    user: "{{ item.user | d(omit) }}"
+    minute: "{{ item.minute | d(omit) }}"
+    hour: "{{ item.hour | d(omit) }}"
+    day: "{{ item.day | d(omit) }}"
+    month: "{{ item.month | d(omit) }}"
+    weekday: "{{ item.weekday | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+    backup: true
+  loop: "{{ outer_item.1.value }}"
+  loop_control:
+    label: "{{ outer_item.0.key }} {{ item.name }}"
