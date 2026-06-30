@@ -8,9 +8,9 @@
   |  |--bar
   |  |--foo
   |  |--repos
-  |  |--repos_devel
+  |  |--repos-devel
   |--@vmm_iocage_05:
   |  |--bar
   |  |--foo
   |  |--repos
-  |  |--repos_devel
+  |  |--repos-devel

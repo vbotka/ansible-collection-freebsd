@@ -6,11 +6,15 @@
   |  |--ansible-pull-test
   |--@state_up:
   |  |--bar
+  |  |--baz
   |  |--foo
+  |  |--qux
   |  |--repos
-  |  |--repos_devel
+  |  |--repos-devel
   |--@vmm_iocage_05:
   |  |--bar
+  |  |--baz
   |  |--foo
+  |  |--qux
   |  |--repos
-  |  |--repos_devel
+  |  |--repos-devel

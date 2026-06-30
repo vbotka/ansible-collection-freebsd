@@ -7,8 +7,8 @@ changed: [log_client]
 TASK [Debug.] ******************************************************************
 ok: [log_client] => 
     out.stderr: |-
-        count=1, rate = 24390.24 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500335, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 142857.14 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500424, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -16,35 +16,17 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/172.16.99.193/2026_06_28.log)
-changed: [log_server] => (item=/var/log/remote/localhost/2026_06_28.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.161/2026_06_28.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.193/2026_06_30.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.193/2026_06_28.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.193/2026_06_30.log']) => 
     msg: |-
-        Jun 28 13:28:45 172.16.99.193 syslog-ng[75302]: syslog-ng starting up; version='4.11.0'
-        Jun 28 13:28:45 172.16.99.193 syslog-ng[75302]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 28 13:28:47 172.16.99.193 1 2026-06-28T13:28:47.251596+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 75330 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Jun 28 13:28:47 172.16.99.193 syslog-ng[75302]: Follow-mode file source not found, deferring open; filename='/var/log/ansible.log'
-        Jun 28 13:28:47 172.16.99.193 syslog-ng[75302]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
-        Jun 28 13:28:47 172.16.99.193 syslog-ng[75302]: Loading the new configuration;
-        Jun 28 13:28:47 172.16.99.193 syslog-ng[75302]: Configuration reload finished;
-        Jun 28 13:28:49 172.16.99.193 1 2026-06-28T13:28:49.169618+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 75440 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_06_28.log']) => 
-    msg: |-
-        Jun 28 13:09:38 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782644978, stamp: 2026-06-28T13:09:38 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.161/2026_06_28.log']) => 
-    msg: |-
-        Jun 28 13:29:01 172.16.99.161 syslog-ng[76658]: syslog-ng starting up; version='4.11.0'
-        Jun 28 13:29:01 172.16.99.161 syslog-ng[76658]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jun 28 13:29:01 172.16.99.161 1 2026-06-28T13:29:01.907928+02:00 log-client /usr/sbin/cron 76806 - - (CRON) WARNING (madvise() failed)
-        Jun 28 13:29:24 172.16.99.161 1 2026-06-28T13:29:24.024788+02:00 log-client ansible-ansible.legacy.command 77284 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jun 28 13:29:24 172.16.99.161 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782646164, stamp: 2026-06-28T13:29:24 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jun 30 11:21:34 172.16.99.193 syslog-ng[44039]: syslog-ng starting up; version='4.11.0'
+        Jun 30 11:21:34 172.16.99.193 syslog-ng[44039]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jun 30 11:21:35 172.16.99.193 1 2026-06-30T11:21:35.167544+02:00 log-client /usr/sbin/cron 44187 - - (CRON) WARNING (madvise() failed)
+        Jun 30 11:22:00 172.16.99.193 1 2026-06-30T11:22:00.003374+02:00 log-client /usr/sbin/cron 44667 - - (operator) CMD (/usr/libexec/save-entropy)
+        Jun 30 11:22:01 172.16.99.193 1 2026-06-30T11:22:01.950072+02:00 log-client ansible-ansible.legacy.command 44692 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jun 30 11:22:01 172.16.99.193 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782811321, stamp: 2026-06-30T11:22:01 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

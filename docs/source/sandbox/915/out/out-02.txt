@@ -1,27 +1,6 @@
 
 PLAY [Configure Log Client.] ***************************************************
-
-TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
-changed: [ansible_syslogng_client]
-
-TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
-ok: [ansible_syslogng_client]
-
-TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-changed: [ansible_syslogng_client]
-
-TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-changed: [ansible_syslogng_client]
-
-RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
-changed: [ansible_syslogng_client]
-
-RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
-ok: [ansible_syslogng_client]
-
-RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
-ok: [ansible_syslogng_client]
+skipping: no hosts matched
 
 PLAY RECAP *********************************************************************
-ansible_syslogng_client    : ok=7    changed=4    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
 
