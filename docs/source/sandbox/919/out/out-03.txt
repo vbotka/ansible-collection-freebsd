@@ -5,8 +5,8 @@ TASK [Setup: Get activated pool.] **********************************************
 ok: [iocage_05]
 
 TASK [Create: Create jails.] ***************************************************
-ok: [iocage_05] => (item=qux)
 ok: [iocage_05] => (item=baz)
+ok: [iocage_05] => (item=qux)
 
 TASK [Facts: Create custom facts dirs.] ****************************************
 changed: [iocage_05] => (item=baz)

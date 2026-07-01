@@ -1,0 +1,51 @@
+fit_templates:
+  ansible-init-example:
+    release: 15.0-RELEASE
+    files: "{{ fit_files | dict2items }}"
+    file_lines: "{{ fit_file_lines | dict2items }}"
+    rcconf: "{{ fit_rcconf | dict2items }}"
+    commands: "{{ fit_commands }}"
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+fit_commands:
+  - ASSUME_ALWAYS_YES=yes pkg install /usr/ports/packages/All/ansible-init-firstboot-1.0.pkg
+  - ASSUME_ALWAYS_YES=yes pkg install git
+  - touch /firstboot
+
+fit_rcconf:
+  ansible_init_enable: "YES"
+  ansible_init_host: "git://{{ project_hosts[inventory_hostname]['repos'] }}"
+  ansible_init_repo: ansible-conf-init-example
+
+fit_file_lines:
+  /root/.profile:
+    LANG: en_US.UTF-8
+    LC_ALL: en_US.UTF-8
+
+fit_files:
+  /root/ansible-vars:
+    - init.yml
+    - project-hosts.yml
+  /usr/ports/packages/All:
+    - ansible-init-firstboot-1.0.pkg
+
+fit_file_options:
+  /root/ansible-vars:
+    owner: root
+    group: wheel
+    mode: '0750'
+  /root/.profile:
+    assignment_operator: '='
+    owner: root
+    group: wheel
+    mode: '0644'
+  /usr/ports/packages/All:
+    owner: root
+    group: wheel
+    mode: '0755'

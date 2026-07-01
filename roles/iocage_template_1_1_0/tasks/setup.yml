@@ -26,7 +26,7 @@
       register: out_pool
       changed_when: false
       check_mode: false
-      ansible.builtin.shell: >
+      ansible.builtin.shell: >-
         zfs list -H -o name |
         grep '/iocage$' |
         cut -d'/' -f1

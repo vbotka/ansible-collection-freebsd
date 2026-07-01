@@ -49,10 +49,10 @@
     - name: "Pk: Chown .ssh"
       register: out
       changed_when: false
-      vbotka.freebsd.iocage:
-        state: exec
-        name: "{{ item.key }}"
-        cmd: "chown -R {{ item.value.user }}:{{ item.value.user }} /home/{{ item.value.user }}/.ssh"
+      ansible.builtin.command: >-
+        iocage exec
+        "{{ item.key }}"
+        "chown -R {{ item.value.user }}:{{ item.value.user }} /home/{{ item.value.user }}/.ssh"
       loop: "{{ _templates }}"
       loop_control:
         label: "{{ item.key }} {{ item.value.user }}"
@@ -61,3 +61,8 @@
       when: fit_debug2 | bool
       ansible.builtin.debug:
         var: out
+
+#     vbotka.freebsd.iocage:
+#       state: exec
+#       name: "{{ item.key }}"
+#       cmd: "chown -R {{ item.value.user }}:{{ item.value.user }} /home/{{ item.value.user }}/.ssh"

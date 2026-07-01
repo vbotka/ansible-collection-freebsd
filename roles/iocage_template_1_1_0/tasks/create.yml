@@ -15,12 +15,15 @@
 
 - name: "Create: Create jails."
   register: out
-  vbotka.freebsd.iocage:
-    state: present
-    name: "{{ item.key }}"
-    release: "{{ item.value.release }}"
-    properties: "{{ item.value.properties | d(omit) }}"
-    pkglist: "{{ item.value.pkglist | d(omit) }}"
+  changed_when: false
+  ansible.builtin.command: >-
+    iocage create
+    --name {{ item.key }}
+    --release {{ item.value.release }}
+    {% if item.value.pkglist is defined %} --pkglist {{ item.value.pkglist }}{% endif %}
+    {% if item.value.properties is defined %}
+    {% for k, v in item.value.properties.items() %} {{ k }}={{ v }}{% endfor %}
+    {% endif %}
   loop: "{{ fit_templates | dict2items
                           | rejectattr('key', 'in', fit_iocage_templates)
                           | rejectattr('key', 'in', fit_iocage_jails) }}"
@@ -31,3 +34,10 @@
   when: fit_debug2 | bool
   ansible.builtin.debug:
     var: out
+
+# vbotka.freebsd.iocage:
+#   state: present
+#   name: "{{ item.key }}"
+#   release: "{{ item.value.release }}"
+#   properties: "{{ item.value.properties | d(omit) }}"
+#   pkglist: "{{ item.value.pkglist | d(omit) }}"

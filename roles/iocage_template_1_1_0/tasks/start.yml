@@ -31,7 +31,9 @@
     - name: "Start: Start jails."
       register: out
       changed_when: false
-      ansible.builtin.command: "iocage start {{ _jails_to_start | join(' ') }}"
+      ansible.builtin.command: >-
+        iocage start
+        {{ _jails_to_start | join(' ') }}
 
     - name: "Start: Debug start jails fit_debug2={{ fit_debug2 }}"
       when: fit_debug2 | bool

@@ -1,0 +1,21 @@
+project:
+  foo:
+    vmm: iocage_05
+    template: ansible-init-devel
+    class: [test]
+  bar:
+    vmm: iocage_05
+    template: ansible-init-devel
+    class: [test]
+
+properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+
+vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
+vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"

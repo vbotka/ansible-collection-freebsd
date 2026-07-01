@@ -4,20 +4,26 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 - name: "User: Create user."
+  failed_when: not out.stderr | d('exists', true) is search('exists')
   register: out
-  vbotka.freebsd.iocage:
-    state: exec
-    name: "{{ item.key }}"
-    cmd: "pw useradd -n {{ item.value.user }} -s /bin/sh -m"
+  changed_when: false
+  ansible.builtin.command: >-
+    iocage exec
+    {{ item.key }}
+    "pw useradd -n {{ item.value.user }} -s /bin/sh -m"
   loop: "{{ fit_templates | dict2items
                           | rejectattr('key', 'in', fit_iocage_templates)
                           | selectattr('value.user', 'defined') }}"
 
   loop_control:
     label: "{{ item.key }} {{ item.value.user }}"
-  failed_when: not out.stderr | d('exists', true) is search('exists')
 
 - name: "User: Debug create user fit_debug2={{ fit_debug2 }}"
   when: fit_debug2 | bool
   ansible.builtin.debug:
     var: out
+
+# vbotka.freebsd.iocage:
+#   state: exec
+#   name: "{{ item.key }}"
+#   cmd: "pw useradd -n {{ item.value.user }} -s /bin/sh -m"

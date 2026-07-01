@@ -10,7 +10,7 @@
   ansible.builtin.import_tasks: setup.yml
 
 - name: Display variables.
-  tags: fit_debug
+  tags: [always, fit_debug]
   ansible.builtin.import_tasks: debug.yml
 
 - name: Copy pkglists.
@@ -37,10 +37,6 @@
 - name: Configure public keys.
   tags: fit_pk
   ansible.builtin.import_tasks: pk.yml
-
-- name: Execute commands.
-  tags: fit_commands
-  ansible.builtin.import_tasks: commands.yml
 
 - name: Copy files.
   tags: fit_files
@@ -70,6 +66,10 @@
 - name: Configure /etc/rc.conf
   tags: fit_rcconf
   ansible.builtin.import_tasks: rc_conf.yml
+
+- name: Execute commands.
+  tags: fit_commands
+  ansible.builtin.import_tasks: commands.yml
 
 - name: Stop jails
   when: fit_stop | bool

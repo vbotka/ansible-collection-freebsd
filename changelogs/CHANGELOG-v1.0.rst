@@ -18,9 +18,9 @@ Minor Changes
 --------------
 * Role iocage_template upgraded to 1.1.0
 * Update template ansible-init for the service ansible_init
-* Docs. Update examples 524,525,526.
-* Docs. Update sandbox 914,915,918,919,920.
-
+* Docs. Update examples 522,523,524,525,526.
+* Docs. Update sandbox 914,915,917,918,919,920.
+* Docs. Add sandbox 921,922.
 
 
 0.8.24

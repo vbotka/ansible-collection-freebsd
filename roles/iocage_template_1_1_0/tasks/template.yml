@@ -6,7 +6,10 @@
 - name: "Template: Set template."
   register: out
   changed_when: false
-  ansible.builtin.command: "iocage set template=1 {{ item }}"
+  ansible.builtin.command: >-
+    iocage set
+    template=1
+    {{ item }}
   loop: "{{ fit_templates | difference(fit_iocage_templates) }}"
   loop_control:
     label: "{{ item }}"

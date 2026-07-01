@@ -6,10 +6,10 @@
 - name: "Commands: Execute commands."
   changed_when: false
   register: out
-  vbotka.freebsd.iocage:
-    state: exec
-    name: "{{ item.0.key }}"
-    cmd: "{{ item.1 }}"
+  ansible.builtin.command: >-
+    iocage exec
+    {{ item.0.key }}
+    "{{ item.1 }}"
   loop: "{{ fit_templates | dict2items
                           | rejectattr('key', 'in', fit_iocage_templates)
                           | subelements('value.commands', skip_missing=true) }}"
@@ -20,3 +20,8 @@
   when: fit_debug2 | bool
   ansible.builtin.debug:
     var: out
+
+# vbotka.freebsd.iocage:
+#   state: exec
+#   name: "{{ item.0.key }}"
+#   cmd: "{{ item.1 }}"

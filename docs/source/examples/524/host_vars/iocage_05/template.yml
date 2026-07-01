@@ -14,7 +14,7 @@ fit_templates:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: class=init alias=ansible_init
+      notes: '"class=init alias=ansible_init"'
 
 fit_firstboot:
   ansible_init:

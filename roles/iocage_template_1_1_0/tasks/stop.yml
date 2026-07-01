@@ -26,7 +26,9 @@
     - name: "Stop: Stop jails."
       register: out
       changed_when: false
-      ansible.builtin.command: "iocage stop {{ _jails | join(' ') }}"
+      ansible.builtin.command: >-
+        iocage stop
+        {{ _jails | join(' ') }}
 
     - name: "Stop: Debug stop jails fit_debug2={{ fit_debug2 }}"
       when: fit_debug2 | bool
