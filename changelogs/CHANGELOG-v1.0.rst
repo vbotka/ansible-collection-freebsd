@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Update and test ansible_init service.
 
 Major Changes
 -------------
