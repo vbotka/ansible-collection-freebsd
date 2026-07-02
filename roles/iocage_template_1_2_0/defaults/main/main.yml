@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_iocage_template (fit)
-fit_role_version: 1.1.0
+fit_role_version: 1.2.0
 
 fit_debug: false
 fit_debug2: false

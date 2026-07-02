@@ -93,7 +93,7 @@ ansible_connection=ssh
 ansible_user=admin
 ansible_become=true
 ansible_become_method=sudo
-ansible_python_interpreter=/usr/local/bin/python3.11
+ansible_python_interpreter=auto_silent
 ```
 
 5) Install and configure the iocage host
