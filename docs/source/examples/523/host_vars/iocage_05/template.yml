@@ -11,7 +11,7 @@ fit_templates:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: class=repos alias=ansible_repos
+      notes: '"class=repos alias=ansible_repos"'
 
 fit_rcconf:
   git_daemon_enable: "YES"

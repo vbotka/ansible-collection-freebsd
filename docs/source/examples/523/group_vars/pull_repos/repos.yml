@@ -5,6 +5,8 @@ repos:
   repos:
     ansible-conf-init:
       repo: git://{{ git_server }}/ansible-conf-init
+    ansible-conf-init-example:
+      repo: git://{{ git_server }}/ansible-conf-init-example
     ansible-conf-syslogng-server:
       repo: git://{{ git_server }}/ansible-conf-syslogng-server
     ansible-conf-syslogng-client:
@@ -14,6 +16,8 @@ repos:
   repos_devel:
     ansible-conf-init:
       repo: git://{{ git_server }}/ansible-conf-init
+    ansible-conf-init-example:
+      repo: git://{{ git_server }}/ansible-conf-init-example
     ansible-conf-syslogng-server:
       repo: git://{{ git_server }}/ansible-conf-syslogng-server
     ansible-conf-syslogng-client:

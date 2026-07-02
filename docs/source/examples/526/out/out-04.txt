@@ -4,14 +4,21 @@
   |  |--ansible-pull-syslogng-client
   |  |--ansible-pull-syslogng-server
   |  |--ansible-pull-test
-  |  |--ansible-test
   |--@state_up:
+  |  |--bar
+  |  |--baz
+  |  |--foo
+  |  |--qux
   |  |--repos
   |  |--log_server
   |  |--repos_devel
   |  |--www_01
   |  |--www_02
   |--@vmm_iocage_05:
+  |  |--bar
+  |  |--baz
+  |  |--foo
+  |  |--qux
   |  |--repos
   |  |--log_server
   |  |--repos_devel

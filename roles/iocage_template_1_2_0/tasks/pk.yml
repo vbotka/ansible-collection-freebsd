@@ -1,0 +1,68 @@
+---
+# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Configure public keys.
+  vars:
+    _act_pk_dir_default: "{{ lookup('env', 'PWD') }}/files"
+    _act_pk_dir: "{{ act_pk_dir | d(_act_pk_dir_default) }}"
+    _act_pk_path: "{{ _act_pk_dir }}/{{ item.value.pk }}"
+    _act_pk: "{{ lookup('file', _act_pk_path) }}"
+    _act_pk_valid_regex_default: '^ssh-rsa\s+[A-Za-z0-9+\/]+[=]{0,3}(\s+.+)?\s*$'
+    _act_pk_valid_regex: "{{ act_pk_valid_regex | d(_act_pk_valid_regex_default) }}"
+    _act_pk_valid: "{{ _act_pk | regex_search(_act_pk_valid_regex) | d('', true) }}"
+
+    _templates: "{{ fit_templates | dict2items
+                                  | rejectattr('key', 'in', fit_iocage_templates)
+                                  | selectattr('value.user', 'defined')
+                                  | selectattr('value.pk', 'defined') }}"
+
+  block:
+
+    # TODO: This test fails if there are more keys in the file.
+    - name: "Pk: The keys are valid."
+      ansible.builtin.assert:
+        that: _act_pk_valid | length > 0
+        fail_msg: >
+          [ERR] Invalid key.
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.user }}"
+
+    - name: "Pk: Configure public keys."
+      register: out
+      ansible.posix.authorized_key:
+        user: "{{ item.value.user }}"
+        path: "{{ fit_iocage_mount }}/iocage/jails/{{ item.key }}/root/home/{{ item.value.user }}/.ssh/authorized_keys"
+        key: "{{ _act_pk }}"
+        exclusive: true
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.pk }}"
+
+    - name: "Pk: Debug configure public keys fit_debug2={{ fit_debug2 }}"
+      when: fit_debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Pk: Chown .ssh"
+      register: out
+      changed_when: false
+      ansible.builtin.command: >-
+        iocage exec
+        "{{ item.key }}"
+        "chown -R {{ item.value.user }}:{{ item.value.user }} /home/{{ item.value.user }}/.ssh"
+      loop: "{{ _templates }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.user }}"
+
+    - name: "Pk: Debug chown .ssh fit_debug2={{ fit_debug2 }}"
+      when: fit_debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+#     vbotka.freebsd.iocage:
+#       state: exec
+#       name: "{{ item.key }}"
+#       cmd: "chown -R {{ item.value.user }}:{{ item.value.user }} /home/{{ item.value.user }}/.ssh"

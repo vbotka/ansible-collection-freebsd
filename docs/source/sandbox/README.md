@@ -24,6 +24,8 @@
 * 918 Template ansible_init test (ai_db_host)
 * 919 Template ansible_init test (ai_db_class)
 * 920 Template ansible_init log-server log-client (ai_db_class)
+* 921 Template ansible_init_devel; test package ansible-init-firstboot-1.0.pkg
+* 922 Template ansible_init example; test package ansible-init-firstboot-1.0.pkg
 
 **Notes**
 

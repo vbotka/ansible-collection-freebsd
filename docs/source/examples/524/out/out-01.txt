@@ -17,7 +17,7 @@ TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
 ok: [iocage_05]
 
 TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
-changed: [iocage_05] => (item=ansible-init 15.0-RELEASE)
+ok: [iocage_05] => (item=ansible-init 15.0-RELEASE)
 
 TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
 ok: [iocage_05]
@@ -71,5 +71,5 @@ TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
 ok: [iocage_05] => (item=ansible-init)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=22   changed=9    unreachable=0    failed=0    skipped=30   rescued=0    ignored=0   
+iocage_05                  : ok=22   changed=8    unreachable=0    failed=0    skipped=30   rescued=0    ignored=0   
 

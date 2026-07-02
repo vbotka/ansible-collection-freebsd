@@ -27,6 +27,6 @@ ansible-inventory -i hosts --graph | tee out/out-04.txt
 ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
 
 # Test (if at=now set sleep 90)
-sleep 3
+sleep 5
 ssh admin@$iocage_05 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt
 ssh admin@$iocage_05 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt" | tee out/out-07.txt

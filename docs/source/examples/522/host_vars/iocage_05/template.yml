@@ -10,7 +10,7 @@ fit_templates:
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
       ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_syslogng_server'] }}/24"
       vnet: 1
-      notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_server"
+      notes: '"vmm={{ inventory_hostname }} alias=ansible_syslogng_server"'
   ansible-syslogng-client:
     release: 15.0-RELEASE
     pkglist: /tmp/ansible/ansible-syslogng-client/pkgs-logclient.json
@@ -22,7 +22,7 @@ fit_templates:
       bpf: 1
       dhcp: 1
       vnet: 1
-      notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_client"
+      notes: '"vmm={{ inventory_hostname }} alias=ansible_syslogng_client"'
 
 # Do not stop jails. Configure them first. Then stop and convert them to templates.
 fit_stop: false
