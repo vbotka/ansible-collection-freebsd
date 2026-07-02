@@ -49,14 +49,15 @@ fit_firstboot:
           LC_ALL=en_US.UTF-8"
 
       # Construct the arguments
-      command_args="-i hosts \
+      load_rc_config $name
+      command_args="\
+          -i hosts \
           -U ${ansible_init_host}/${ansible_init_repo} \
           -d ${ansible_init_dest}/${ansible_init_repo} \
           -e 'ai_vars=${ansible_init_vars}' \
           -e 'ai_pull_mode=true' \
           ${ansible_init_playbook}"
 
-      load_rc_config $name
       run_rc_command "$1"
 
 fit_rcconf:

@@ -33,7 +33,7 @@ fit_firstboot:
 
       # Default configuration settings
       : ${ansible_init_enable:="NO"}
-      : ${ansible_init_host:="git://localhost"}
+      : ${ansible_init_host:="http://localhost"}
       : ${ansible_init_repo:="ansible-conf-init"}
       : ${ansible_init_dest:="/root"}
       : ${ansible_init_vars:="/root/ansible-vars"}
@@ -49,6 +49,7 @@ fit_firstboot:
           LC_ALL=en_US.UTF-8"
 
       # Construct the arguments
+      load_rc_config $name
       command_args="\
           -i hosts \
           -U ${ansible_init_host}/${ansible_init_repo} \
@@ -57,7 +58,6 @@ fit_firstboot:
           -e 'ai_pull_mode=true' \
           ${ansible_init_playbook}"
 
-      load_rc_config $name
       run_rc_command "$1"
 
 fit_rcconf:
