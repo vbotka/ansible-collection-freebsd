@@ -1,0 +1,101 @@
+---
+# vars for freebsd_network
+
+# my_fn_regdomain: US
+
+# fn_debug: true
+# fn_backup_conf: yes
+
+# fn_gateway_enable: true
+# fn_defaultrouter: 10.1.0.15
+
+# Device
+# iwn - PCI Intel
+# run - USB Ralink RT5572(TP-Link WDN3200)
+# rum - USB Ralink RT2571W(D-Link DWL-G122 rev C1)
+# fn_wlans:
+#   - device: "iwn0"
+#     state: present
+#     interface: "wlan0"
+#   - device: "run0"
+#     state: present
+#     interface: "wlan1"
+#   - device: "rum0"
+#     state: present
+#     interface: "wlan2"
+
+# fn_interfaces:
+#   - interface: "wlan0"
+#     state: present
+#     options: "WPA"
+#     create: "country {{ my_fn_regdomain }}"
+#   - interface: "wlan1"
+#     state: present
+#     options: "WPA"
+#     create: "country {{ my_fn_regdomain }}"
+#   - interface: "wlan2"
+#     state: present
+#     options: "WPA"
+#     create: "country {{ my_fn_regdomain }}"
+#   - interface: "em0"
+#     state: present
+#     options: "DHCP"
+
+# 11.6. Virtual Hosts
+# https://www.freebsd.org/doc/handbook/configtuning-virtual-hosts.html
+# ifconfig_fxp0_aliases="inet 10.1.1.1-5/24 inet 202.0.75.17-20/28"
+# fn_aliases:
+#   - interface: "wlan0"
+#     aliases:
+#       - {alias: "alias1", options: "inet 10.1.0.51  netmask 255.255.255.255", state: "present"}
+#       - {alias: "alias2", options: "inet 10.1.0.52  netmask 255.255.255.255"}
+#       - {alias: "alias3", options: "inet 10.1.0.53  netmask 255.255.255.255"}
+#       - {alias: "alias4", options: "inet 10.1.0.71  netmask 255.255.255.255"}
+
+# 14.6. Managing Jails with ezjail (obsolete)
+# https://www.freebsd.org/doc/handbook/jails-ezjail.html
+# Jail and pf traffic out
+# https://www.reddit.com/r/freebsd/comments/a83sg6/jail_and_pf_traffic_out/
+# Options not needed because jail.conf does this automagically (and
+# dynamically) with the ipv4 entry
+# ipv4_addrs_lo1="10.2.2.1-9/29"
+
+# fn_cloned_interfaces:
+#   - interface: lo1
+#
+# Bridging
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-bridging
+# fn_cloned_interfaces:
+#   - interface: bridge0
+# fn_interfaces:
+#   - {interface: bridge0, options: inet 10.1.0.17/24, create: addm em0}
+#   - {interface: em0, options: up -tso -vlanhwtso}
+#
+# Link Aggregation and Failover
+# https://www.freebsd.org/doc/handbook/network-aggregation.html
+# fn_cloned_interfaces:
+#   - interface: lagg0
+# fn_interfaces:
+#   - {interface: lagg0, options: 'dhcp', create: 'laggproto loadbalance laggport ue0 laggport ue1'}
+#   - {interface: ue0, options: up}
+#   - {interface: ue1, options: up}
+#
+# 31.10. Common Address Redundancy Protocol (CARP)
+# https://docs.freebsd.org/en/books/handbook/advanced-networking/#carp
+# https://freebsdfoundation.org/wp-content/uploads/2022/11/zaborski_CARP.pdf
+
+# ethname MAC-based network name pinning
+# https://forums.freebsd.org/threads/how-to-associate-an-interface-name-with-its-mac.89337/
+# https://forum.opnsense.org/index.php?topic=27023.0
+#
+# fn_ethname: true
+# fn_ethname_enable: true
+# fn_ethname_cmd_enable: true
+# fn_ethname_cmd: start
+# fn_ethname_install: false
+# fn_ethname_name_mac:
+#   ue0: 3c:33:32:c7:20:19
+#   ue1: 40:86:cb:d2:53:90
+
+# EOF
+...
