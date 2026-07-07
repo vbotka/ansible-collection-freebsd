@@ -1,0 +1,97 @@
+---
+- name: "Syslogd: Debug fp_syslogd_debug={{ fp_syslogd_debug }}"
+  when: fp_syslogd_debug | bool
+  tags: fp_syslogd_debug
+  vars:
+    msg: |-
+      fp_syslogd_enable: {{ fp_syslogd_enable }}
+      fp_syslogd_notify: {{ fp_syslogd_notify }}
+      fp_syslogd_service_task: {{ fp_syslogd_service_task }}
+
+      fp_syslogd_rcconf:
+        {{ fp_syslogd_rcconf | to_yaml(indent=2) | indent(2) }}
+      fp_syslogd_conf_orig: {{ fp_syslogd_conf_orig }}
+      fp_syslogd_conf_sanity: {{ fp_syslogd_conf_sanity }}
+      fp_syslogd_conf_template: {{ fp_syslogd_conf_template }}
+      fp_syslogd_conf_file: {{ fp_syslogd_conf_file }}
+      fp_syslogd_conf:
+        {{ fp_syslogd_conf | to_yaml(indent=2) | indent(2) }}
+      fp_syslogd_confd:
+        {{ fp_syslogd_confd | to_yaml(indent=2) | indent(2) }}
+      fp_syslogd_newconf_orig: {{ fp_syslogd_newconf_orig }}
+      fp_syslogd_newconf:
+        {{ fp_syslogd_newconf | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: Configure syslogd
+  tags: fp_syslogd_conf
+  block:
+
+    - name: "Syslogd: Backup origin {{ fp_syslogd_conf_file }}"
+      when: fp_syslogd_conf_orig | bool
+      ansible.builtin.command:
+        cmd: "cp {{ fp_syslogd_conf_file }} {{ fp_syslogd_conf_file }}.orig"
+        creates: "{{ fp_syslogd_conf_file }}.orig"
+
+    - name: "Syslogd: Sanity fp_syslogd_conf is empty."
+      when: fp_syslogd_conf_sanity | bool
+      ansible.builtin.assert:
+        that: fp_syslogd_conf | length > 0
+        fail_msg: "[ERR] fp_syslogd_conf is empty."
+        quiet: true
+
+    - name: "Syslogd: Configure {{ fp_syslogd_conf_file }}"
+      when: fp_syslogd_conf | length > 0
+      notify: reload syslogd
+      ansible.builtin.template:
+        src: "{{ fp_syslogd_conf_template }}"
+        dest: "{{ fp_syslogd_conf_file }}"
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ fp_backup }}"
+
+    - name: "Syslogd: Create files in /etc/syslog.d/"
+      notify: reload syslogd
+      ansible.builtin.template:
+        src: "{{ item.template }}"
+        dest: /etc/syslog.d/{{ item.path }}
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ fp_backup }}"
+      loop: "{{ fp_syslogd_confd }}"
+      loop_control:
+        label: "{{ item.path }}"
+      vars:
+        fp_syslogd_conf: "{{ item.conf }}"
+
+- name: Configure newsyslog
+  tags: fp_syslogd_newconf
+  block:
+
+    - name: "Syslogd: Backup origin /etc/newsyslog.conf"
+      when: fp_syslogd_newconf_orig | bool
+      ansible.builtin.command:
+        cmd: cp /etc/newsyslog.conf /etc/newsyslog.conf.orig
+        creates: /etc/newsyslog.conf.orig
+
+    - name: "Syslogd: Configure /etc/newsyslog.conf"
+      when: fp_syslogd_newconf | length > 0
+      notify: create newsyslog
+      ansible.builtin.template:
+        src: newsyslog.conf.j2
+        dest: /etc/newsyslog.conf
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ fp_backup }}"
+
+- name: "Syslogd: Configure rc.conf"
+  tags: fp_syslogd_rcconf
+  vars:
+    _service: syslogd
+  ansible.builtin.import_tasks: fn/rcconf.yml
+
+# EOF
