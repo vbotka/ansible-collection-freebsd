@@ -1,5 +1,0 @@
-# {{ ansible_managed }}
-# {{ template_path }}
-{% for item in fp_nfsd_exports %}
-{{ item.mount_point }} {{ item.flags }}
-{% endfor %}
