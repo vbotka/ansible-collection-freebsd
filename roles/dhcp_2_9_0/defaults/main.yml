@@ -1,6 +1,6 @@
 ---
 # defaults freebsd_dhcp
-bsd_dhcpd_role_version: 2.8.0
+bsd_dhcpd_role_version: 2.9.0
 
 bsd_dhcpd_install: true
 bsd_dhcpd_sanity: true

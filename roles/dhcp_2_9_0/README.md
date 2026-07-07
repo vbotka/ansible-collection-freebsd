@@ -58,16 +58,16 @@ Test the syntax
 shell> ansible-playbook --syntax-check  freebsd-dhcp.yml
 ```
 
-Take a look at the variables
-
-```bash
-shell> ansible-playbook -t bsd_dhcpd_debug -e bsd_dhcpd_debug=true freebsd-dhcp.yml
-```
-
 Install packages
 
 ```bash
 shell> ansible-playbook -t bsd_dhcpd_packages -e bsd_dhcpd_install=true freebsd-dhcp.yml
+```
+
+Look at the variables
+
+```bash
+shell> ansible-playbook -t bsd_dhcpd_debug -e bsd_dhcpd_debug=true freebsd-dhcp.yml
 ```
 
 Dry run and see what will be configured
@@ -76,7 +76,7 @@ Dry run and see what will be configured
 shell> ansible-playbook --check --diff freebsd-dhcp.yml
 ```
 
-If this is what you want run the play
+If this is what you want, run the play
 
 ```bash
 shell> ansible-playbook freebsd-dhcp.yml
@@ -85,7 +85,7 @@ shell> ansible-playbook freebsd-dhcp.yml
 
 ## Firewall
 
-If you use the PF firewall add the following rules to /etc/pf.conf
+If you use the PF firewall, add the following rules to /etc/pf.conf
 
 ```
 dhcp_ports="{ bootps, bootpc }"
