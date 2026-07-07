@@ -15,7 +15,7 @@ Upgrade to Ansible 2.21
 Major Changes
 -------------
 * Supported versions: 14.4, 15.0, 15.1
-* Upgrade roles to 2.9.0: dhcp, network, packages, pf, postinstall
+* Upgrade roles to 2.9.0: dhcp, network, packages, pf, postinstall, zfs
 
 Minor Changes
 --------------
