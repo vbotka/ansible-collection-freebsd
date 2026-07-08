@@ -2,21 +2,21 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Debug iocage freebsd_iocage_debug=true] **********
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     msg: |-
-        freebsd_iocage_role_version: 1.2.0
+        freebsd_iocage_role_version: 1.3.0
         ansible_role_name: vbotka.freebsd.iocage
 
         ansible_facts.architecture: amd64
         ansible_facts.os_family: FreeBSD
         ansible_facts.distribution: FreeBSD
         ansible_facts.distribution_major_version: 15
-        ansible_facts.distribution_version: 15.0
-        ansible_facts.distribution_release: 15.0-RELEASE
-        ansible_facts.python_version: 3.11.14
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.11.15
 
         freebsd_install_method: packages
         freebsd_use_packages: True
@@ -97,5 +97,5 @@ ok: [iocage_05] =>
           - iocage.fact
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

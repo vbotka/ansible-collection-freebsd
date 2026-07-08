@@ -19,6 +19,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Docs. Update sandbox 001-003, 010-012
 
 
 0.8.25
