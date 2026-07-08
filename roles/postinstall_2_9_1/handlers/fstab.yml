@@ -1,0 +1,6 @@
+---
+- name: Add swap  # noqa: no-changed-when
+  listen: add swap
+  register: out
+  failed_when: out.rc not in [0, 1]
+  ansible.builtin.command: swapon -a
