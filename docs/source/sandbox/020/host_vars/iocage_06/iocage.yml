@@ -1,0 +1,5 @@
+names: [db1, db2]
+swarms:
+  db:
+    count: 2
+    template: ansible_client

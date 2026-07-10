@@ -146,9 +146,6 @@ host_vars
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is slow`_
-use the cache.
-
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
    :caption:
@@ -162,6 +159,11 @@ use the cache.
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
+
+.. note::
+
+   The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is
+   slow`_ use the cache.
 
 Playbook pb-iocage-swarms-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -16,6 +16,20 @@
         properties: "{{ [properties, item.properties|d({})] | combine }}"
       loop: "{{ clones }}"
 
+#   - name: Clone basejail.
+#     tags: clone
+#     vars:
+#       _properties: >-
+#         {% for k, v in ([properties, item.properties|d({})] | combine).items() %}
+#         {{ k }}={{ v }}
+#         {% endfor %}
+#     ansible.builtin.command: >-
+#       iocage clone
+#       --name {{ item.name }}
+#       {{ item.clone_from }}
+#       {{ _properties  }}
+#     loop: "{{ clones }}"
+
     - name: Start clones.
       tags: start
       vbotka.freebsd.iocage:

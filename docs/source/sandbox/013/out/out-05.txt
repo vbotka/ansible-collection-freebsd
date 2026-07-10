@@ -3,21 +3,15 @@ PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
 ok: [ansible_client] => 
-    msg: ansible_client running at iocage_05
-ok: [ansible-pull-syslogng-client] => 
-    msg: ansible-pull-syslogng-client running at UNDEFINED
-ok: [ansible-pull-syslogng-server] => 
-    msg: ansible-pull-syslogng-server running at UNDEFINED
-ok: [test_151] => 
-    msg: test_151 running at iocage_05
+    msg: ansible_client running at iocage_06
 ok: [test_152] => 
-    msg: test_152 running at iocage_05
+    msg: test_152 running at iocage_06
+ok: [test_151] => 
+    msg: test_151 running at iocage_06
 ok: [test_153] => 
-    msg: test_153 running at iocage_05
+    msg: test_153 running at iocage_06
 
 PLAY RECAP *********************************************************************
-ansible-pull-syslogng-client : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible-pull-syslogng-server : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

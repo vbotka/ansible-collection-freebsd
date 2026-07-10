@@ -138,6 +138,16 @@ Display custom fact script
 .. literalinclude:: out/out-05.txt
    :language: python
 
+.. hint::
+
+   Install ``lang/python`` :
+
+   "This is a meta port to the Python interpreter and provides
+   symbolic links to bin/python, bin/pydoc, bin/idle and so on to allow
+   compatibility with version agnostic python scripts."
+
+   -- FreeBSD Ports Description (lang/python)
+
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 

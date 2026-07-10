@@ -5,28 +5,28 @@ TASK [Gathering Facts] *********************************************************
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Activate: Activate iocage pool zroot] ************
-changed: [iocage_06]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Activate: Debug result freebsd_iocage_debug=true] ***
 ok: [iocage_06] => 
     result:
-        changed: true
+        changed: false
         cmd:
         - iocage
         - activate
         - zroot
-        delta: '0:00:00.815165'
-        end: '2026-07-08 16:33:27.816375'
+        delta: null
+        end: null
         failed: false
-        msg: ''
+        msg: Did not run command since '/zroot/iocage' exists
         rc: 0
-        start: '2026-07-08 16:33:27.001210'
+        start: null
         stderr: ''
         stderr_lines: []
-        stdout: ZFS pool 'zroot' successfully activated.
+        stdout: skipped, since /zroot/iocage exists
         stdout_lines:
-        - ZFS pool 'zroot' successfully activated.
+        - skipped, since /zroot/iocage exists
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

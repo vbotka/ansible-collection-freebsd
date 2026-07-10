@@ -20,45 +20,45 @@ ok: [ansible_client] =>
 ok: [test_152] => 
     msg: |-
         inventory_hostname: test_152
-        ansible_host: 172.16.99.242
+        ansible_host: 172.16.99.252
 
         iocage_jid: None
         iocage_boot: off
         iocage_state: down
         iocage_type: jail
         iocage_release: 15.1-RELEASE-p1
-        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '172.16.99.242', 'mask': '24'}], 'msg': ''}
-        iocage_ip4: 172.16.99.242
+        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '172.16.99.252', 'mask': '24'}], 'msg': ''}
+        iocage_ip4: 172.16.99.252
         iocage_ip6: -
         iocage_template: ansible_client
         iocage_basejail: yes
 ok: [test_151] => 
     msg: |-
         inventory_hostname: test_151
-        ansible_host: 172.16.99.241
+        ansible_host: 172.16.99.251
 
         iocage_jid: None
         iocage_boot: off
         iocage_state: down
         iocage_type: jail
         iocage_release: 15.1-RELEASE-p1
-        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '172.16.99.241', 'mask': '24'}], 'msg': ''}
-        iocage_ip4: 172.16.99.241
+        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '172.16.99.251', 'mask': '24'}], 'msg': ''}
+        iocage_ip4: 172.16.99.251
         iocage_ip6: -
         iocage_template: ansible_client
         iocage_basejail: yes
 ok: [test_153] => 
     msg: |-
         inventory_hostname: test_153
-        ansible_host: 172.16.99.243
+        ansible_host: 172.16.99.253
 
-        iocage_jid: 1
+        iocage_jid: 25
         iocage_boot: off
         iocage_state: up
         iocage_type: jail
         iocage_release: 15.1-RELEASE-p1
-        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '172.16.99.243', 'mask': '24'}], 'msg': ''}
-        iocage_ip4: 172.16.99.243
+        iocage_ip4_dict: {'ip4': [{'ifc': 'vnet0', 'ip': '172.16.99.253', 'mask': '24'}], 'msg': ''}
+        iocage_ip4: 172.16.99.253
         iocage_ip6: -
         iocage_template: ansible_client
         iocage_basejail: yes

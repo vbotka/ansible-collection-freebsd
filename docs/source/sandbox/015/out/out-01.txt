@@ -3,21 +3,15 @@ PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
 ok: [ansible_client] => 
-    iocage_ip4: 10.1.0.197
-ok: [ansible-pull-syslogng-client] => 
-    iocage_ip4: '-'
-ok: [ansible-pull-syslogng-server] => 
-    iocage_ip4: '-'
-ok: [test_151] => 
-    iocage_ip4: 10.1.0.151
+    iocage_ip4: 172.16.99.197
 ok: [test_152] => 
-    iocage_ip4: 10.1.0.152
+    iocage_ip4: 172.16.99.252
+ok: [test_151] => 
+    iocage_ip4: 172.16.99.251
 ok: [test_153] => 
-    iocage_ip4: 10.1.0.153
+    iocage_ip4: 172.16.99.253
 
 PLAY RECAP *********************************************************************
-ansible-pull-syslogng-client : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-ansible-pull-syslogng-server : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

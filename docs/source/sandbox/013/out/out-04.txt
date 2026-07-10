@@ -1,49 +1,49 @@
 
-PLAY [test_05] *****************************************************************
+PLAY [test] ********************************************************************
 
 TASK [debug] *******************************************************************
 ok: [test_151] => 
     msg: |-
         inventory_hostname: test_151
-        ansible_host: 10.1.0.151
-        release: 15.0
+        ansible_host: 172.16.99.251
+        release: 15.1
 
         iocage_tags:
-          vmm: iocage_05
+          vmm: iocage_06
 
         group_names:
-          - distro_05_15_0_RELEASE
-          - state_05_down
-          - test_05
-          - vmm_iocage_05
+          - distro_15_1_RELEASE_p1
+          - state_down
+          - test
+          - vmm_iocage_06
 ok: [test_153] => 
     msg: |-
         inventory_hostname: test_153
-        ansible_host: 10.1.0.153
-        release: 15.0
+        ansible_host: 172.16.99.253
+        release: 15.1
 
         iocage_tags:
-          vmm: iocage_05
+          vmm: iocage_06
 
         group_names:
-          - distro_05_15_0_RELEASE
-          - state_05_down
-          - test_05
-          - vmm_iocage_05
+          - distro_15_1_RELEASE_p1
+          - state_down
+          - test
+          - vmm_iocage_06
 ok: [test_152] => 
     msg: |-
         inventory_hostname: test_152
-        ansible_host: 10.1.0.152
-        release: 15.0
+        ansible_host: 172.16.99.252
+        release: 15.1
 
         iocage_tags:
-          vmm: iocage_05
+          vmm: iocage_06
 
         group_names:
-          - distro_05_15_0_RELEASE
-          - state_05_down
-          - test_05
-          - vmm_iocage_05
+          - distro_15_1_RELEASE_p1
+          - state_down
+          - test
+          - vmm_iocage_06
 
 PLAY RECAP *********************************************************************
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

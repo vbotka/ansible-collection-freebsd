@@ -2,9 +2,15 @@
 
 . ../defaults/batch
 
-# Destroy jails
-VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini
-ssh admin@$iocage_05 sudo iocage destroy -f ansible_client
+# Stop and destroy jails.
+# ssh admin@iocage_06 sudo iocage clean -jf
+ssh admin@iocage_06 sudo iocage stop test_151
+ssh admin@iocage_06 sudo iocage stop test_152
+ssh admin@iocage_06 sudo iocage stop test_153
+ssh admin@iocage_06 sudo iocage destroy -f test_151
+ssh admin@iocage_06 sudo iocage destroy -f test_152
+ssh admin@iocage_06 sudo iocage destroy -f test_153
+ssh admin@iocage_06 sudo iocage destroy -f ansible_client
 
 # Create basejails
 ansible-playbook pb-iocage-base.yml -i iocage.ini | tee out/out-01.txt

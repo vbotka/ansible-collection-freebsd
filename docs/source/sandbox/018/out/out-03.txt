@@ -2,28 +2,26 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Clone basejail.] *********************************************************
-changed: [iocage_05] => (item={'name': 'test_151', 'clone_from': 'ansible_client'})
-changed: [iocage_05] => (item={'name': 'test_152', 'clone_from': 'ansible_client'})
-changed: [iocage_05] => (item={'name': 'test_153', 'clone_from': 'ansible_client'})
+changed: [iocage_06] => (item={'name': 'test_151', 'clone_from': 'ansible_client'})
+changed: [iocage_06] => (item={'name': 'test_152', 'clone_from': 'ansible_client'})
+changed: [iocage_06] => (item={'name': 'test_153', 'clone_from': 'ansible_client'})
 
 TASK [Start clones.] ***********************************************************
-changed: [iocage_05] => (item=test_151)
-changed: [iocage_05] => (item=test_152)
-changed: [iocage_05] => (item=test_153)
+changed: [iocage_06] => (item=test_151)
+changed: [iocage_06] => (item=test_152)
+changed: [iocage_06] => (item=test_153)
 
 TASK [Create Ansible facts iocage_*] *******************************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Display jails.] **********************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     msg: |-
-        ansible_client None - 15.0-RELEASE down
-        ansible-pull-syslogng-client None DHCP (not running) 15.0-RELEASE down
-        ansible-pull-syslogng-server None DHCP (not running) 15.0-RELEASE down
-        test_151 19 epair0b|10.10.99.165 15.0-RELEASE up
-        test_152 20 epair0b|10.10.99.166 15.0-RELEASE up
-        test_153 21 epair0b|10.10.99.167 15.0-RELEASE up
+        ansible_client None - 15.1-RELEASE-p1 down
+        test_151 26 epair0b|172.16.99.100 15.1-RELEASE-p1 up
+        test_152 27 epair0b|172.16.99.101 15.1-RELEASE-p1 up
+        test_153 28 epair0b|172.16.99.102 15.1-RELEASE-p1 up
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

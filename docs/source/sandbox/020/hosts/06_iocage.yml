@@ -1,11 +1,11 @@
 plugin: vbotka.freebsd.iocage
-host: handy
+host: iocage_06
 user: admin
 cache: true
 cache_plugin: ansible.builtin.jsonfile
 cache_connection: /var/tmp/inventory_cache
 cache_timeout: 3600
-cache_prefix: iocage_05_
+cache_prefix: iocage_06_
 get_properties: true
 inventory_hostname_tag: alias
 hooks_results:

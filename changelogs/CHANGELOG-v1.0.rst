@@ -15,11 +15,13 @@ Upgrade to Ansible 2.21
 Major Changes
 -------------
 * Supported versions: 14.4, 15.0, 15.1
-* Upgrade roles to 2.9.*: dhcp, iocage, network, packages, pf, postinstall, zfs
+* Upgrade roles to 2.9.*: dhcp, network, packages, pf, postinstall, zfs
+* Upgrade roles to 1.3.*: iocage
 
 Minor Changes
 --------------
-* Docs. Update sandbox 001-003, 010-012
+* Docs. Update examples 013,020,040,202
+* Docs. Update sandbox 001-003,010-012
 
 
 0.8.25

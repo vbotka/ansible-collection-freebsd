@@ -91,7 +91,8 @@ Synopsis
   * create the inventory groups and compose variables
   * create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
   * display hosts, composed variables, and groups
-  * comment on hosts potentially overriding each other silently.
+
+* Comment on hosts potentially silently overriding each other.
 
 Requirements
 ^^^^^^^^^^^^

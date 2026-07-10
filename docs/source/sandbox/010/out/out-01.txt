@@ -5,22 +5,27 @@ TASK [Fetch releases] **********************************************************
 ok: [iocage_06] => (item=15.1-RELEASE)
 
 TASK [Create basejail] *********************************************************
-[ERROR]: Task failed: Module failed: too many values to unpack (expected 2)
-Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/010/pb-iocage-fetch-base-clone-list.yml:13:7
+changed: [iocage_06] => (item=ansible_client 15.1-RELEASE)
 
-11       loop: "{{ fetch }}"
-12
-13     - name: Create basejail
-         ^ column 7
+TASK [Clone from basejail] *****************************************************
+changed: [iocage_06] => (item=test_151 ansible_client)
+changed: [iocage_06] => (item=test_152 ansible_client)
+changed: [iocage_06] => (item=test_153 ansible_client)
 
-failed: [iocage_06] (item=ansible_client 15.1-RELEASE) => 
-    ansible_loop_var: item
-    changed: false
-    item:
-        name: ansible_client
-        release: 15.1-RELEASE
-    msg: 'Task failed: Module failed: too many values to unpack (expected 2)'
+TASK [Start clones] ************************************************************
+changed: [iocage_06] => (item=test_153)
+
+TASK [Create Ansible facts iocage_*] *******************************************
+ok: [iocage_06]
+
+TASK [Display lists of bases, plugins, templates, and jails.] ******************
+ok: [iocage_06] => 
+    msg: |-
+        ['15.1-RELEASE']
+        []
+        []
+        ['ansible_client', 'test_151', 'test_152', 'test_153']
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

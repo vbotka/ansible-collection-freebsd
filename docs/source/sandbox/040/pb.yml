@@ -21,9 +21,12 @@
       vars:
         info: "{{ lookup('vbotka.freebsd.galaxy_info', 'authors', 'version') }}"
 
-    - name: Error. Unknown attribute foo
-      debug:
-        var: info
-      ignore_errors: true
-      vars:
-        info: "{{ lookup('vbotka.freebsd.galaxy_info', 'foo') }}"
+#   - name: Error. Unknown attribute foo
+#     block:
+#        - set_fact:
+#           foo: "{{ query('vbotka.freebsd.galaxy_info', 'foo') }}"
+#        - debug:
+#           var: foo
+#      rescue:
+#        - debug:
+#           var: ansible_failed_result
