@@ -21,7 +21,7 @@ Major Changes
 Minor Changes
 --------------
 * Docs. Update examples 013,020,040,202
-* Docs. Update sandbox 001-003,010-012
+* Docs. Update sandbox 001-003,010-040
 
 
 0.8.25
