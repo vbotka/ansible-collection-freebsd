@@ -17,6 +17,7 @@ Major Changes
 * Supported versions: 14.4, 15.0, 15.1
 * Upgrade roles to 2.9.*: dhcp, network, packages, pf, postinstall, zfs
 * Upgrade roles to 1.3.*: iocage
+* Upgrade module iocage to 1.2.10
 
 Minor Changes
 --------------

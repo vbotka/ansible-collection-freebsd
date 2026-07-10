@@ -35,6 +35,12 @@
   loop_control:
     label: "{{ item.0.key }} {{ item.1 }} {{ _branch }}"
 
+- name: "Debug result debug2={{ debug2 }}"
+  when: debug2 | bool
+  tags: plugins_install
+  ansible.builtin.debug:
+    var: result
+
 - name: "Install plugins (not idempotent if patch exists)."
   tags: plugins_install
   register: result
@@ -45,6 +51,12 @@
   loop: "{{ plugins_install | dict2items | subelements('value') }}"
   loop_control:
     label: "{{ item.0.key }} {{ item.1 }}"
+
+- name: "Debug result debug2={{ debug2 }}"
+  when: debug2 | bool
+  tags: plugins_install
+  ansible.builtin.debug:
+    var: result
 
 - name: "Patch plugins (not idempotent if patch exists)."
   when: _patch | length > 0
