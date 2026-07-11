@@ -9,13 +9,13 @@ VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_
 (cd ../202 && ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini --flush-cache)
 
 # Status of templates
-ssh admin@$iocage_05 iocage list -lt | tee out/out-02.txt
+ssh admin@iocage_06 iocage list -lt | tee out/out-02.txt
 
 # Create swarms
 ansible-playbook pb-iocage-ansible-clients-v2.yml -i iocage.ini -t swarm -e swarm=true -e debug=true --flush-cache | tee out/out-03.txt
 
 # Status of swarms
-ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 ansible-inventory -i hosts --graph | tee out/out-06.txt
 
 # Test
