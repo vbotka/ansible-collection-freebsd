@@ -1,6 +1,6 @@
 @all:
   |--@ungrouped:
-  |--@test_05:
+  |--@test_06:
   |  |--test_151
   |  |--test_152
   |  |--test_153
