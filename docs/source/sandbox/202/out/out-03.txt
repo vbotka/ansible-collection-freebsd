@@ -9,6 +9,9 @@ changed: [iocage_06] => (item=test_153 ansible_client)
 TASK [Set iocage_jails] ********************************************************
 ok: [iocage_06]
 
+TASK [Start clones] ************************************************************
+ok: [iocage_06]
+
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

@@ -2,6 +2,9 @@
 
 . ../defaults/batch
 
+ssh admin@iocage_06 sudo iocage destroy -f test_151
+ssh admin@iocage_06 sudo iocage destroy -f test_152
+ssh admin@iocage_06 sudo iocage destroy -f test_153
 ssh admin@iocage_06 sudo iocage destroy -f ansible_client
 
 # Create templates
