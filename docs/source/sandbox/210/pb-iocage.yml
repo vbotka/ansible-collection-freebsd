@@ -1,5 +1,5 @@
 - name: Test empty iocage notes.
-  hosts: iocage_05
+  hosts: iocage_06
 
   tasks:
 

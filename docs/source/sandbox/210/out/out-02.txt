@@ -2,14 +2,14 @@
 PLAY [Test empty iocage notes.] ************************************************
 
 TASK [command] *****************************************************************
-changed: [iocage_05]
+changed: [iocage_06]
 
 TASK [debug] *******************************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     msg: |-
         out.stdout: none
         out.stdout type: str
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
