@@ -1,7 +1,7 @@
 - name: Display iocage datasets.
   hosts: iocage
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+  environment: {}
+  # CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
     
   tasks:
 
