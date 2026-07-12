@@ -2,22 +2,22 @@
 PLAY [Connect to the group test.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_151]
 ok: [test_153]
 ok: [test_152]
+ok: [test_151]
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_153]
-changed: [test_152]
 changed: [test_151]
+changed: [test_152]
+changed: [test_153]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [test_152] => 
-    msg: |-
-        test-152 test_152 792b42dd-47f2-1e43-bd8a-34e94790815f /usr/local/bin/python3.11
 ok: [test_151] => 
     msg: |-
         test-151 test_151 792b42dd-47f2-1e43-bd8a-34e94790815f /usr/local/bin/python3.11
+ok: [test_152] => 
+    msg: |-
+        test-152 test_152 792b42dd-47f2-1e43-bd8a-34e94790815f /usr/local/bin/python3.11
 ok: [test_153] => 
     msg: |-
         test-153 test_153 792b42dd-47f2-1e43-bd8a-34e94790815f /usr/local/bin/python3.11
@@ -28,9 +28,9 @@ changed: [test_151]
 changed: [test_153]
 
 TASK [ansible.builtin.command] *************************************************
+changed: [test_151]
 changed: [test_153]
 changed: [test_152]
-changed: [test_151]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [test_151] => 

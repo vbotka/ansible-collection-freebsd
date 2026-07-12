@@ -2,17 +2,17 @@
 PLAY [Connect to the group test.] **********************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_151]
 changed: [test_153]
+changed: [test_151]
 changed: [test_152]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [test_152] => 
-    msg: ansible_host=test_152 iocage_hooks=['172.16.99.103']
 ok: [test_151] => 
     msg: ansible_host=test_151 iocage_hooks=['172.16.99.100']
 ok: [test_153] => 
     msg: ansible_host=test_153 iocage_hooks=['172.16.99.102']
+ok: [test_152] => 
+    msg: ansible_host=test_152 iocage_hooks=['172.16.99.103']
 
 PLAY RECAP *********************************************************************
 test_151                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -14,7 +14,7 @@ ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini -e debug=tr
 ssh admin@iocage_06 sudo iocage list -lt | tee out/out-02.txt
 
 # Create clones
-ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t clone -e clone=true --flush-cache | tee out/out-03.txt
+ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t clone -e clone=true | tee out/out-03.txt
 
 # Status of clones
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-04.txt

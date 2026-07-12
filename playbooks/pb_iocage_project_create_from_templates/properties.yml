@@ -11,8 +11,12 @@
       "vmm={{ inventory_hostname }}
       class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}
       {{ vmm[inventory_hostname][item]['notes'] | d('') }}"
+    _properties_combined: |
+      {{ [vmm[inventory_hostname][item]['properties'] | d({}), properties | d({})]
+         | select
+         | combine(recursive=true) }}
     _properties: >-
-      {% for k, v in (vmm[inventory_hostname][item]['properties'] | d(properties)).items() %}
+      {% for k, v in _properties_combined.items() %}
       {{ k }}={{ v }}
       {% endfor %}
       notes={{ _notes }}

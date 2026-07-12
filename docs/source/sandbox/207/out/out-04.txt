@@ -42,13 +42,13 @@ ok: [iocage_06] =>
 
         groups.all: ['test_5', 'iocage_06']
         project_jails_present: []
-        project_jails_absent: ['http_5', 'db_5']
+        project_jails_absent: ['db_5', 'http_5']
 
 TASK [Display iocage_jails_absent] *********************************************
 ok: [iocage_06] => 
     iocage_jails_absent:
-    - http_5
     - db_5
+    - http_5
 
 TASK [Create jails.] ***********************************************************
 ok: [iocage_06]
@@ -56,12 +56,12 @@ ok: [iocage_06]
 TASK [Display iocage_jails_created] ********************************************
 ok: [iocage_06] => 
     iocage_jails_created:
-    - 921e488e
-    - 4fc095bd
+    - 05bffa2d
+    - b4b7a456
 
 TASK [Set notes.] **************************************************************
-ok: [iocage_06] => (item=http_5 alias=http_5 class=http,logclient vmm=iocage_06)
 ok: [iocage_06] => (item=db_5 alias=db_5 class=db,logclient vmm=iocage_06)
+ok: [iocage_06] => (item=http_5 alias=http_5 class=http,logclient vmm=iocage_06)
 
 TASK [Start created jails.] ****************************************************
 ok: [iocage_06]

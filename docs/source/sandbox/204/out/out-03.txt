@@ -42,8 +42,8 @@ ok: [iocage_06] =>
             - dhcp=1
             - vnet=1
             - notes=vmm=iocage_06  swarm=sw_01
-            delta: '0:00:01.050079'
-            end: '2026-07-11 15:18:04.530257'
+            delta: '0:00:01.085011'
+            end: '2026-07-12 12:59:19.592688'
             failed: false
             item:
                 key: sw_01
@@ -52,17 +52,17 @@ ok: [iocage_06] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2026-07-11 15:18:03.480178'
+            start: '2026-07-12 12:59:18.507677'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                8116872e successfully created!
-                e685842d successfully created!
-                63f88152 successfully created!
+                fe5bf111 successfully created!
+                5ac8b6a1 successfully created!
+                74854dfd successfully created!
             stdout_lines:
-            - 8116872e successfully created!
-            - e685842d successfully created!
-            - 63f88152 successfully created!
+            - fe5bf111 successfully created!
+            - 5ac8b6a1 successfully created!
+            - 74854dfd successfully created!
 
 TASK [Get iocage list of jails.] ***********************************************
 ok: [iocage_06]
@@ -71,9 +71,9 @@ TASK [Set dictionary iocage_jails] *********************************************
 ok: [iocage_06]
 
 TASK [Get properties of iocage jails.] *****************************************
-ok: [iocage_06] => (item=63f88152)
-ok: [iocage_06] => (item=8116872e)
-ok: [iocage_06] => (item=e685842d)
+ok: [iocage_06] => (item=5ac8b6a1)
+ok: [iocage_06] => (item=74854dfd)
+ok: [iocage_06] => (item=fe5bf111)
 
 TASK [Set dictionary iocage_jails_properties] **********************************
 ok: [iocage_06]
@@ -84,7 +84,7 @@ ok: [iocage_06]
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage start e685842d 8116872e 63f88152
+        iocage start fe5bf111 74854dfd 5ac8b6a1
 
 TASK [Start swarms.] ***********************************************************
 changed: [iocage_06] => (item=sw_01)
@@ -101,11 +101,11 @@ ok: [iocage_06] =>
             cmd:
             - iocage
             - start
-            - e685842d
-            - 8116872e
-            - 63f88152
-            delta: '0:00:12.346856'
-            end: '2026-07-11 15:18:21.692211'
+            - fe5bf111
+            - 74854dfd
+            - 5ac8b6a1
+            delta: '0:00:12.266095'
+            end: '2026-07-12 12:59:36.134167'
             failed: false
             item:
                 key: sw_01
@@ -114,7 +114,7 @@ ok: [iocage_06] =>
                     template: ansible_client
             msg: ''
             rc: 0
-            start: '2026-07-11 15:18:09.345355'
+            start: '2026-07-12 12:59:23.868072'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -124,55 +124,55 @@ ok: [iocage_06] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting e685842d
+                * Starting fe5bf111
                   + Started OK
                   + Using devfs_ruleset: 1000 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.106/24
-                * Starting 8116872e
+                  + DHCP Address: 172.16.99.131/24
+                * Starting 74854dfd
                   + Started OK
                   + Using devfs_ruleset: 1001 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.107/24
-                * Starting 63f88152
+                  + DHCP Address: 172.16.99.132/24
+                * Starting 5ac8b6a1
                   + Started OK
                   + Using devfs_ruleset: 1002 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.108/24
+                  + DHCP Address: 172.16.99.133/24
             stdout_lines:
-            - '* Starting e685842d'
+            - '* Starting fe5bf111'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1000 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.106/24'
-            - '* Starting 8116872e'
+            - '  + DHCP Address: 172.16.99.131/24'
+            - '* Starting 74854dfd'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1001 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.107/24'
-            - '* Starting 63f88152'
+            - '  + DHCP Address: 172.16.99.132/24'
+            - '* Starting 5ac8b6a1'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1002 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.108/24'
+            - '  + DHCP Address: 172.16.99.133/24'
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=15   changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   

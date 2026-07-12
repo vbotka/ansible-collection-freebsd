@@ -52,7 +52,7 @@ ok: [iocage_06] =>
             boot: 'off'
             ip4: vnet0|172.16.99.251/24
             ip6: '-'
-            jid: '24'
+            jid: '63'
             name: test_151
             release: 15.1-RELEASE-p1
             state: up
@@ -63,7 +63,7 @@ ok: [iocage_06] =>
             boot: 'off'
             ip4: vnet0|172.16.99.252/24
             ip6: '-'
-            jid: '23'
+            jid: '61'
             name: test_152
             release: 15.1-RELEASE-p1
             state: up
@@ -74,7 +74,7 @@ ok: [iocage_06] =>
             boot: 'off'
             ip4: vnet0|172.16.99.253/24
             ip6: '-'
-            jid: '25'
+            jid: '62'
             name: test_153
             release: 15.1-RELEASE-p1
             state: up

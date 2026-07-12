@@ -1,5 +1,8 @@
 plugin: ansible.builtin.constructed
+
 keyed_groups:
+  - prefix: state
+    key: iocage_state
   - prefix: swarm
     key: iocage_tags.swarm
   - prefix: vmm

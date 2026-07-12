@@ -5,12 +5,19 @@
 
 - name: Create clones host_hostname from template
   vars:
-    _notes: '"{{ [properties.notes | d(""),
-                  item.value.properties.notes | d("")] | select | join(" ") }}"'
-    _properties: '{{ [properties | d({}),
-                      item.value.properties | d({}),
-                      {"host_hostname": item.key},
-                      {"notes": _notes}] | select | combine(recursive=true) }}'
+    _notes: |-
+      "{{ [properties.notes | d(''), item.value.properties.notes | d('')]
+          | select
+          | join(' ') }}"
+    _properties_combined: |
+      {{ [properties | d({}), item.value.properties | d({}), {'host_hostname': item.key}]
+         | select
+         | combine(recursive=true) }}
+    _properties: >-
+      {% for k, v in _properties_combined.items() %}
+      {{ k }}={{ v }}
+      {% endfor %}
+      notes={{ _notes }}
     jails_name: "{{ out_create.results | map(attribute='stdout_lines')
                                        | flatten
                                        | map('split')
@@ -21,7 +28,7 @@
       iocage create
       --short
       --template {{ item.value.template }}
-      {{ _properties | dictsort | map('join', '=') | join(' ') }}
+      {{ _properties }}
     cmd_fstab: >
       iocage fstab
       -a {{ jails[item.0.key] }}

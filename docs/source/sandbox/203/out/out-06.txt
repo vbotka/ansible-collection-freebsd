@@ -1,10 +1,14 @@
 @all:
   |--@ungrouped:
+  |--@state_up:
+  |  |--b5ed00b5
+  |  |--b89cc48e
+  |  |--e8742e0e
   |--@swarm_sw_01:
-  |  |--8e082761
-  |  |--ccb7e279
-  |  |--e1ab170e
+  |  |--b5ed00b5
+  |  |--b89cc48e
+  |  |--e8742e0e
   |--@vmm_iocage_06:
-  |  |--8e082761
-  |  |--ccb7e279
-  |  |--e1ab170e
+  |  |--b5ed00b5
+  |  |--b89cc48e
+  |  |--e8742e0e

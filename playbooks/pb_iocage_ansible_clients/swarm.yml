@@ -5,26 +5,34 @@
 
 - name: Create swarms
   vars:
-    _notes: '"{{ [properties.notes | d(""),
-                  item.value.properties.notes | d(""),
-                  "swarm=" ~ item.key] | select | join(" ") }}"'
-    _properties: '{{ [properties | d({}),
-                      item.value.properties | d({}),
-                      {"notes": _notes}] | select | combine(recursive=true) }}'
-    _query: '[?value.swarm==`{{ item.key }}`].key'
+    _notes: |-
+      "{{ [properties.notes | d(''), item.value.properties.notes | d(''), 'swarm=' ~ item.key]
+          | select
+          | join(' ') }}"
+    _properties_combined: |
+      {{ [properties | d({}), item.value.properties | d({})]
+         | select
+         | combine(recursive=true) }}
+    _properties: >-
+      {% for k, v in _properties_combined.items() %}
+      {{ k }}={{ v }}
+      {% endfor %}
+      notes={{ _notes }}
+    _query: |
+      [?value.swarm==`{{ item.key }}`].key
     _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
     cmd_create_from_template: >
       iocage create
       --short
       --template {{ item.value.template }}
       --count {{ _count }}
-      {{ _properties | dictsort | map('join', '=') | join(' ') }}
+      {{ _properties }}
     cmd_clone_from_plugin: >
       iocage clone
       {{ item.value.plugin }}
       --newmac
       --count {{ _count }}
-      {{ _properties | dictsort | map('join', '=') | join(' ') }}
+      {{ _properties }}
     cmd_create: |
       {% if 'template' in item.value %}
       {{ cmd_create_from_template }}

@@ -1,6 +1,5 @@
 - name: Create pkglist file.
   hosts: iocage
-  remote_user: admin
 
   vars:
 

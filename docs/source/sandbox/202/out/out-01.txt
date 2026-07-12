@@ -120,15 +120,15 @@ ok: [iocage_06] =>
         ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: 172.16.99.115
+            ip4: 172.16.99.127
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 172.16.99.115
+                    ip: 172.16.99.127
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '26'
+            jid: '64'
             release: 15.1-RELEASE-p1
             state: up
             template: '-'
@@ -170,15 +170,15 @@ ok: [iocage_06] =>
         ansible_client:
             basejail: 'no'
             boot: 'off'
-            ip4: 172.16.99.115
+            ip4: 172.16.99.127
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 172.16.99.115
+                    ip: 172.16.99.127
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '26'
+            jid: '64'
             release: 15.1-RELEASE-p1
             state: up
             template: '-'

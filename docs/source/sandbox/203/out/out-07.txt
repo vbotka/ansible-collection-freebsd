@@ -2,23 +2,23 @@
 PLAY [Connect the swarm.] ******************************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [070d1cbe]
-changed: [f5cf9ce1]
-changed: [8c0cdb11]
+changed: [b5ed00b5]
+changed: [b89cc48e]
+changed: [e8742e0e]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [070d1cbe] => 
+ok: [b5ed00b5] => 
     msg: |-
-        ansible_host=iocage_05
-ok: [f5cf9ce1] => 
+        ansible_host=b5ed00b5
+ok: [b89cc48e] => 
     msg: |-
-        ansible_host=iocage_05
-ok: [8c0cdb11] => 
+        ansible_host=b89cc48e
+ok: [e8742e0e] => 
     msg: |-
-        ansible_host=iocage_05
+        ansible_host=e8742e0e
 
 PLAY RECAP *********************************************************************
-070d1cbe                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-8c0cdb11                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-f5cf9ce1                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+b5ed00b5                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+b89cc48e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e8742e0e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

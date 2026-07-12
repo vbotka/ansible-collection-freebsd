@@ -1,9 +1,1 @@
-plugin: vbotka.freebsd.iocage
-host: iocage_06
-user: admin
-get_properties: True
-hooks_results:
-  - /var/db/dhclient-hook.address.epair0b
-compose:
-  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
-  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+.06_iocage.yml.jailexec

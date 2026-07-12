@@ -45,14 +45,18 @@
           changed_when: false
           register: out
           vars:
-            _notes: >
+            _notes: >-
               "vmm={{ inventory_hostname }}
               class={{ vmm[inventory_hostname][item]['class'] | join(',') }}
               alias={{ item }}"
-            _properties: >
-              {{ vmm[inventory_hostname][item]['properties']
-                 | d(properties)
-                 | dictsort | map('join', '=') | join(' ') }}
+            _properties_combined: |
+              {{ [vmm[inventory_hostname][item]['properties'] | d({}), properties | d({})]
+                 | select
+                 | combine(recursive=true) }}
+            _properties: >-
+              {% for k, v in _properties_combined.items() %}
+              {{ k }}={{ v }}
+              {% endfor %}
               notes={{ _notes }}
           ansible.builtin.command: >
             iocage clone

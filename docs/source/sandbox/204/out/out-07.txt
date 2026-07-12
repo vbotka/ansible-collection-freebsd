@@ -1,6 +1,24 @@
 
 PLAY [Connect to the group test.] **********************************************
-skipping: no hosts matched
+
+TASK [ansible.builtin.command] *************************************************
+changed: [5ac8b6a1]
+changed: [fe5bf111]
+changed: [74854dfd]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [5ac8b6a1] => 
+    msg: |-
+        ansible_host=5ac8b6a1 iocage_tags={swarm: sw_01, vmm: iocage_06}
+ok: [fe5bf111] => 
+    msg: |-
+        ansible_host=fe5bf111 iocage_tags={swarm: sw_01, vmm: iocage_06}
+ok: [74854dfd] => 
+    msg: |-
+        ansible_host=74854dfd iocage_tags={swarm: sw_01, vmm: iocage_06}
 
 PLAY RECAP *********************************************************************
+5ac8b6a1                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+74854dfd                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+fe5bf111                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

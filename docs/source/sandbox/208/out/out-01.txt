@@ -20,6 +20,19 @@ ok: [iocage_06] =>
             state: down
             template: '-'
             type: template
+        ansible_client_apache:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+                ip4: []
+                msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
 
 TASK [Debug] *******************************************************************
 ok: [iocage_06] => 
@@ -43,6 +56,19 @@ ok: [iocage_06] =>
 
         iocage_templates:
           ansible_client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: '-'
+            ip4_dict:
+              ip4: []
+              msg: DHCP (not running)
+            ip6: '-'
+            jid: None
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible_client_apache:
             basejail: 'no'
             boot: 'off'
             ip4: '-'
@@ -102,7 +128,7 @@ ok: [iocage_06] =>
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '33'
+            jid: '79'
             release: 15.1-RELEASE-p1
             state: up
             template: '-'
@@ -152,7 +178,7 @@ ok: [iocage_06] =>
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '33'
+            jid: '79'
             release: 15.1-RELEASE-p1
             state: up
             template: '-'
