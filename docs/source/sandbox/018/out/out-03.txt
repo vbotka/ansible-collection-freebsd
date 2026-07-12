@@ -18,9 +18,9 @@ TASK [Display jails.] **********************************************************
 ok: [iocage_06] => 
     msg: |-
         ansible_client None - 15.1-RELEASE-p1 down
-        test_151 26 epair0b|172.16.99.100 15.1-RELEASE-p1 up
-        test_152 27 epair0b|172.16.99.101 15.1-RELEASE-p1 up
-        test_153 28 epair0b|172.16.99.102 15.1-RELEASE-p1 up
+        test_151 18 epair0b|172.16.99.100 15.1-RELEASE-p1 up
+        test_152 19 epair0b|172.16.99.103 15.1-RELEASE-p1 up
+        test_153 20 epair0b|172.16.99.102 15.1-RELEASE-p1 up
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

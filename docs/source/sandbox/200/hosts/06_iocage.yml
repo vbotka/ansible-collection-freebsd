@@ -1,8 +1,1 @@
-plugin: vbotka.freebsd.iocage
-host: iocage_06
-user: admin
-get_properties: true
-compose:
-  ansible_host: iocage_ip4
-groups:
-  test_06: inventory_hostname.startswith('test')
+.06_iocage.yml.jailexec

@@ -16,10 +16,10 @@ ok: [test_151] =>
           - state_down
           - test
           - vmm_iocage_06
-ok: [test_153] => 
+ok: [test_152] => 
     msg: |-
-        inventory_hostname: test_153
-        ansible_host: 172.16.99.253
+        inventory_hostname: test_152
+        ansible_host: 172.16.99.252
         release: 15.1
 
         iocage_tags:
@@ -30,10 +30,10 @@ ok: [test_153] =>
           - state_down
           - test
           - vmm_iocage_06
-ok: [test_152] => 
+ok: [test_153] => 
     msg: |-
-        inventory_hostname: test_152
-        ansible_host: 172.16.99.252
+        inventory_hostname: test_153
+        ansible_host: 172.16.99.253
         release: 15.1
 
         iocage_tags:

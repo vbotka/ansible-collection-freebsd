@@ -4,9 +4,6 @@
 
 # Stop and destroy jails.
 # ssh admin@iocage_06 sudo iocage clean -jf
-ssh admin@iocage_06 sudo iocage stop test_151
-ssh admin@iocage_06 sudo iocage stop test_152
-ssh admin@iocage_06 sudo iocage stop test_153
 ssh admin@iocage_06 sudo iocage destroy -f test_151
 ssh admin@iocage_06 sudo iocage destroy -f test_152
 ssh admin@iocage_06 sudo iocage destroy -f test_153

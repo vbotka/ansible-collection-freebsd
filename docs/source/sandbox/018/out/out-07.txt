@@ -7,13 +7,13 @@ ok: [ansible_client] =>
         ansible_client None 15.1-RELEASE-p1 - [] down '-'
 ok: [test_152] => 
     msg: |-
-        test_152 27 15.1-RELEASE-p1 172.16.99.101 ['172.16.99.101'] up ''
-ok: [test_151] => 
-    msg: |-
-        test_151 26 15.1-RELEASE-p1 172.16.99.100 ['172.16.99.100'] up ''
+        test_152 19 15.1-RELEASE-p1 172.16.99.103 ['172.16.99.103'] up ''
 ok: [test_153] => 
     msg: |-
-        test_153 28 15.1-RELEASE-p1 172.16.99.102 ['172.16.99.102'] up ''
+        test_153 20 15.1-RELEASE-p1 172.16.99.102 ['172.16.99.102'] up ''
+ok: [test_151] => 
+    msg: |-
+        test_151 18 15.1-RELEASE-p1 172.16.99.100 ['172.16.99.100'] up ''
 
 PLAY RECAP *********************************************************************
 ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

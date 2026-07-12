@@ -4,10 +4,10 @@ PLAY [all] *********************************************************************
 TASK [debug] *******************************************************************
 ok: [ansible_client] => 
     msg: ansible_client running at iocage_06
-ok: [test_152] => 
-    msg: test_152 running at iocage_06
 ok: [test_151] => 
     msg: test_151 running at iocage_06
+ok: [test_152] => 
+    msg: test_152 running at iocage_06
 ok: [test_153] => 
     msg: test_153 running at iocage_06
 

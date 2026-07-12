@@ -1,3 +1,10 @@
 plugin: ansible.builtin.constructed
+
 groups:
     test: inventory_hostname.startswith('test')
+
+keyed_groups:
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm

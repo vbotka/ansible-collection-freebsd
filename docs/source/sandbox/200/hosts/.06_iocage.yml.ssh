@@ -1,0 +1,9 @@
+plugin: vbotka.freebsd.iocage
+host: iocage_06
+user: admin
+get_properties: true
+compose:
+  ansible_host: iocage_ip4
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+groups:
+  test_06: inventory_hostname.startswith('test')

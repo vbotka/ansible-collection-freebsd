@@ -2,35 +2,26 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible-zero] => 
-    msg: |-
-        ansible-zero
-        {}
-ok: [syslog-ng] => 
-    msg: |-
-        syslog-ng
-        {}
 ok: [db1] => 
     msg: |-
-        4bf06305
-        {alias: db1, project: example_020, swarm: db, vmm: iocage_05}
+        78819214
+        {alias: db1, project: sandbox_020, swarm: db, vmm: iocage_06}
 ok: [db2] => 
     msg: |-
-        fec83ac1
-        {alias: db2, project: example_020, swarm: db, vmm: iocage_05}
+        15216d44
+        {alias: db2, project: sandbox_020, swarm: db, vmm: iocage_06}
 
 TASK [debug] *******************************************************************
-ok: [ansible-zero] => 
+ok: [db2] => 
     msg: |-
-        all: ['ansible-zero', 'syslog-ng', 'db1', 'db2']
-        ungrouped: ['ansible-zero', 'syslog-ng']
-        vmm_iocage_05: ['db1', 'db2']
-        project_example_020: ['db1', 'db2']
-        swarm_db: ['db1', 'db2']
+        all: ['db2', 'db1']
+        ungrouped: []
+        project_sandbox_020: ['db2', 'db1']
+        swarm_db: ['db2', 'db1']
+        state_down: ['db2', 'db1']
+        vmm_iocage_06: ['db2', 'db1']
 
 PLAY RECAP *********************************************************************
-ansible-zero               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

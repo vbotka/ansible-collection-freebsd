@@ -1,6 +1,5 @@
 - name: Connect the swarm.
   hosts: swarm_sw_01
-  gather_facts: false
   remote_user: admin
     
   tasks:

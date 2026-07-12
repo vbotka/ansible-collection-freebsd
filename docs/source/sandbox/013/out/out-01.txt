@@ -9,7 +9,7 @@ ok: [iocage_06] =>
     msg: |-
         releases: ['15.1-RELEASE']
         plugins: []
-        templates: []
+        templates: ['ansible_client_apache', 'ansible_client_pull']
         jails: ['ansible_client']
 
 PLAY RECAP *********************************************************************

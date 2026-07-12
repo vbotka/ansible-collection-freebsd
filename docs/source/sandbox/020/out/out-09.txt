@@ -1,13 +1,16 @@
 @all:
   |--@ungrouped:
-  |--@vmm_iocage_06:
-  |  |--db2
-  |  |--db1
   |--@project_sandbox_020:
-  |  |--db2
   |  |--db1
+  |  |--db2
   |--@swarm_db:
-  |  |--db2
   |  |--db1
+  |  |--db2
+  |--@state_down:
+  |  |--db1
+  |  |--db2
+  |--@vmm_iocage_06:
+  |  |--db1
+  |  |--db2
   |--@iocage:
   |  |--iocage_06

@@ -149,7 +149,7 @@ ok: [ansible_client] =>
         wallclock: 'off'
         writebps: 'off'
         writeiops: 'off'
-ok: [test_152] => 
+ok: [test_151] => 
     iocage_properties:
         CONFIG_VERSION: '33'
         allow_chflags: '0'
@@ -208,20 +208,20 @@ ok: [test_152] =>
         exec_timeout: '60'
         host_domainname: none
         host_hostname: ansible-client
-        host_hostuuid: test_152
+        host_hostuuid: test_151
         host_time: '1'
         hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
         hostid_strict_check: '0'
         interfaces: vnet0:bridge0
         ip4: new
-        ip4_addr: vnet0|172.16.99.252/24
+        ip4_addr: vnet0|172.16.99.251/24
         ip4_saddrsel: '1'
         ip6: new
         ip6_addr: none
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/test_152/data
+        jail_zfs_dataset: iocage/jails/test_151/data
         jail_zfs_mountpoint: none
         last_started: none
         localhost_ip: none
@@ -296,7 +296,7 @@ ok: [test_152] =>
         wallclock: 'off'
         writebps: 'off'
         writeiops: 'off'
-ok: [test_151] => 
+ok: [test_152] => 
     iocage_properties:
         CONFIG_VERSION: '33'
         allow_chflags: '0'
@@ -355,20 +355,20 @@ ok: [test_151] =>
         exec_timeout: '60'
         host_domainname: none
         host_hostname: ansible-client
-        host_hostuuid: test_151
+        host_hostuuid: test_152
         host_time: '1'
         hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
         hostid_strict_check: '0'
         interfaces: vnet0:bridge0
         ip4: new
-        ip4_addr: vnet0|172.16.99.251/24
+        ip4_addr: vnet0|172.16.99.252/24
         ip4_saddrsel: '1'
         ip6: new
         ip6_addr: none
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/test_151/data
+        jail_zfs_dataset: iocage/jails/test_152/data
         jail_zfs_mountpoint: none
         last_started: none
         localhost_ip: none
@@ -517,7 +517,7 @@ ok: [test_153] =>
         jail_zfs: '0'
         jail_zfs_dataset: iocage/jails/test_153/data
         jail_zfs_mountpoint: none
-        last_started: '2026-07-09 13:52:27'
+        last_started: '2026-07-12 05:36:55'
         localhost_ip: none
         login_flags: -f root
         mac_prefix: f6289d
