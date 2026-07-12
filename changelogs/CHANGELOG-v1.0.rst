@@ -22,7 +22,16 @@ Major Changes
 Minor Changes
 --------------
 * Docs. Update examples 013,020,040,202
-* Docs. Update sandbox 001-003,010-040,200,201,202,203,204,206,207,208,209,210
+* Docs. Update sandbox 001-003,010-040,200-204,206-210,300
+
+Bugfixes
+--------
+
+* Fix module service; Importing 'to_bytes' from 'ansible.module_utils._text' is
+  deprecated. Replaced by 'ansible.module_utils.common.text.converters'.
+
+Breaking Changes / Porting Guide
+--------------------------------
 
 
 0.8.25

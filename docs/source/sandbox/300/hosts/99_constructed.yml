@@ -1,3 +1,7 @@
 plugin: ansible.builtin.constructed
-groups:
-    up: iocage_state == 'up'
+
+keyed_groups:
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm

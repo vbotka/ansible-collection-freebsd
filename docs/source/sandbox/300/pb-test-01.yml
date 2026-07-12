@@ -1,5 +1,5 @@
 - name: Test module vbotka.freebsd.service. Get running jails sshd rcvar.
-  hosts: up
+  hosts: state_up
   remote_user: admin
 
   vars:

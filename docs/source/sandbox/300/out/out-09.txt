@@ -1,154 +1,114 @@
 
-PLAY [Test module vbotka.freebsd.service. Start apcupsd.] **********************
+PLAY [Test module vbotka.freebsd.service. Start smartd.] ***********************
 
-TASK [Get apcupsd rcvar.] ******************************************************
-ok: [iocage_05]
+TASK [Get smartd rcvar.] *******************************************************
+ok: [iocage_06]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     msg: |-
-        rcvar.rcvar: {'apcupsd_enable': 'NO'}
-        rcvar.rcvar.apcupsd_enable: NO
-        start_cmd_enable: False
-        start_cmd: onestart
+        rcvar.rcvar: {'smartd_enable': 'YES'}
+        rcvar.rcvar.smartd_enable: YES
+        start_cmd_enable: True
+        start_cmd: start
 
-TASK [Start apcupsd. By default wait 500ms to complete the command.] ***********
-changed: [iocage_05]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_05] => 
-    out:
-        changed: true
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
-        failed: false
-        onestart: Starting apcupsd.
-        rc: 0
-        state:
-            post: |-
-                apcupsd is running as pid 81131.
-            pre: |-
-                apcupsd is not running.
-        stderr: ''
-        stderr_lines: []
-        stdout: |-
-            Starting apcupsd.
-        stdout_lines:
-        - Starting apcupsd.
-
-TASK [Get apcupsd status.] *****************************************************
-ok: [iocage_05]
+TASK [Start smartd. By default wait 500ms to complete the command.] ************
+ok: [iocage_06]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     out:
         changed: false
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
+        failed: false
+        rc: 0
+        start: smartd already running?  (pid=24215).
+        stderr: |-
+            smartd already running?  (pid=24215).
+        stderr_lines:
+        - smartd already running?  (pid=24215).
+        stdout: ''
+        stdout_lines: []
+
+TASK [Get smartd status.] ******************************************************
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
         failed: false
         rc: 0
         status: running
         stderr: ''
         stderr_lines: []
         stdout: |-
-            apcupsd is running as pid 81131.
+            smartd is running as pid 24215.
         stdout_lines:
-        - apcupsd is running as pid 81131.
+        - smartd is running as pid 24215.
 
-TASK [Stop apcupsd. By default wait 500ms to complete the command.] ************
-changed: [iocage_05]
+TASK [Stop smartd. By default wait 500ms to complete the command.] *************
+changed: [iocage_06]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     out:
         changed: true
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         failed: false
         rc: 0
         state:
             post: |-
-                apcupsd is not running.
+                smartd is not running.
             pre: |-
-                apcupsd is running as pid 81131.
+                smartd is running as pid 24215.
         stderr: ''
         stderr_lines: []
         stdout: |-
-            Stopping apcupsd.
-            Waiting for PIDS: 81131.
+            Stopping smartd.
+            Waiting for PIDS: 24215.
         stdout_lines:
-        - Stopping apcupsd.
-        - 'Waiting for PIDS: 81131.'
-        stop: 'Waiting for PIDS: 81131'
+        - Stopping smartd.
+        - 'Waiting for PIDS: 24215.'
+        stop: 'Waiting for PIDS: 24215'
 
-TASK [Start apcupsd. Wait 200ms to complete the command.] **********************
-changed: [iocage_05]
+TASK [Start smartd. Wait 200ms to complete the command.] ***********************
+changed: [iocage_06]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     out:
         changed: true
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         failed: false
-        onestart: Starting apcupsd.
         rc: 0
+        start: Starting smartd.
         state:
             post: |-
-                apcupsd is running as pid 81414.
+                smartd is running as pid 26787.
             pre: |-
-                apcupsd is not running.
+                smartd is not running.
         stderr: ''
         stderr_lines: []
         stdout: |-
-            Starting apcupsd.
+            Starting smartd.
         stdout_lines:
-        - Starting apcupsd.
+        - Starting smartd.
 
-TASK [Get apcupsd status.] *****************************************************
-ok: [iocage_05]
+TASK [Get smartd status.] ******************************************************
+ok: [iocage_06]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     out:
         changed: false
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         failed: false
         rc: 0
         status: running
         stderr: ''
         stderr_lines: []
         stdout: |-
-            apcupsd is running as pid 81414.
+            smartd is running as pid 26787.
         stdout_lines:
-        - apcupsd is running as pid 81414.
+        - smartd is running as pid 26787.
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=12   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
