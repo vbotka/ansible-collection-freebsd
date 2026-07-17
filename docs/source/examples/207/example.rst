@@ -334,8 +334,8 @@ Playbook output - Display all groups
 .. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
 
-.. _Binary iocage: https://github.com/iocage/iocage/
-.. _binary iocage: https://github.com/iocage/iocage/
+.. _Binary iocage: https://github.com/freebsd/iocage/
+.. _binary iocage: https://github.com/freebsd/iocage/
 
 .. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases

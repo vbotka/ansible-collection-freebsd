@@ -118,4 +118,4 @@ Playbook output - display empty iocage_tags
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
-.. _Binary iocage: https://github.com/iocage/iocage/
+.. _Binary iocage: https://github.com/freebsd/iocage/

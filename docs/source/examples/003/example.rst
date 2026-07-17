@@ -129,6 +129,6 @@ Playbook output - Test sanity quietly
 
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _iocage: https://github.com/iocage/iocage/
+.. _iocage: https://github.com/freebsd/iocage/
 .. _ANSIBLE_DISPLAY_OK_HOSTS: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
 .. _ANSIBLE_DISPLAY_SKIPPED_HOSTS: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts

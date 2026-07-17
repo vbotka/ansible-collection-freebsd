@@ -191,8 +191,8 @@ Notes
 
 * The dash '-' is used in `binary iocage`_ to represent a missing value. See for example:
 
-  * `ioc_list.py#L259`_
-  * `ioc_list.py#L276`_
+  * `ioc_list.py#L258`_
+  * `ioc_list.py#L275`_
   * `inventory plugin vbotka.freebsd.iocage`_ uses it too
 
     .. code-block:: python
@@ -320,6 +320,6 @@ Playbook output - Display jails in the swarm
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _binary iocage: https://github.com/iocage/iocage/
-.. _ioc_list.py#L259: https://github.com/iocage/iocage/blob/master/iocage_lib/ioc_list.py#L259
-.. _ioc_list.py#L276: https://github.com/iocage/iocage/blob/master/iocage_lib/ioc_list.py#L276
+.. _binary iocage: https://github.com/freebsd/iocage/
+.. _ioc_list.py#L258: https://github.com/freebsd/iocage/blob/master/iocage_lib/ioc_list.py#L258
+.. _ioc_list.py#L275: https://github.com/freebsd/iocage/blob/master/iocage_lib/ioc_list.py#L275

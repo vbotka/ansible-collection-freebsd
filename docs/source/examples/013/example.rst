@@ -249,6 +249,6 @@ Playbook output - Display all jails
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _binary iocage: https://github.com/iocage/iocage/
+.. _binary iocage: https://github.com/freebsd/iocage/
 .. _groups:  https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups
 .. _group_names: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names

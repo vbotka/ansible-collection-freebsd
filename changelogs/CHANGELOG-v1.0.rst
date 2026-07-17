@@ -24,6 +24,7 @@ Minor Changes
 * Update playbooks _notes and _properties.
 * Docs. Update examples 013,020,040,202
 * Docs. Update sandbox 001-003,010-040,200-204,206-210,300
+* Docs. Update links to github.com/freebsd/iocage
 
 Bugfixes
 --------
