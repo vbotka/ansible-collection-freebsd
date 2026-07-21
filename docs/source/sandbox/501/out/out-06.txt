@@ -2,31 +2,31 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Sysctl: Include vbotka.freebsd.postinstall sysctl] ***********************
-included: vbotka.freebsd.postinstall for iocage_05
+included: vbotka.freebsd.postinstall for iocage_06
 
 TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Rcconf: Enable and Start zfs] ***********************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Pools: Get zpool status.] ***************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already in other pools.] ***
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Pools: Sanity: No fzfs_pools disks already mounted.] ***
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Pools: Sanity: fzfs_pools disks are unique.] ********
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Pools: WARNING | community.general.zpool skipped.] ***
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     msg: |-
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         # WARNING:
@@ -40,11 +40,11 @@ ok: [iocage_05] =>
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Manage: Sanity all pools available.] ****************
-ok: [iocage_05]
+ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=11   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+iocage_06                  : ok=11   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
 

@@ -3,4 +3,4 @@ fzfs_pools:
   zroot:
     vdevs:
       - disks:
-          - /dev/nda0p4
+          - /dev/nda0p5
