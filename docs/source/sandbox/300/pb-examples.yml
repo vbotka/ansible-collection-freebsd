@@ -57,9 +57,9 @@
 
     - debug:
         msg: |
-          groups.up: {{ groups.up }}
-          jid: {{ groups.up | map('extract', hostvars, 'iocage_jid') }}
-          vmm: {{ groups.up | map('extract', hostvars, ['iocage_tags', 'vmm']) }}
+          groups.state_up: {{ groups.state_up }}
+          jid: {{ groups.state_up | map('extract', hostvars, 'iocage_jid') }}
+          vmm: {{ groups.state_up | map('extract', hostvars, ['iocage_tags', 'vmm']) }}
 
     - name: Get sshd_enable values from the jails.
       delegate_to: "{{ hostvars[item].iocage_tags.vmm }}"
@@ -72,7 +72,7 @@
         env:
           HOME: /
           PATH: /sbin:/bin:/usr/sbin:/usr/bin
-      loop: "{{ groups.up }}"
+      loop: "{{ groups.state_up }}"
 
     - name: Display the dictionary. Use stdout.
       vars:

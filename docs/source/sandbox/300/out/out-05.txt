@@ -5,47 +5,21 @@ TASK [Get iocage list of jails] ************************************************
 ok: [iocage_06]
 
 TASK [Jails service list enabled] **********************************************
-ok: [iocage_06] => (item=4)
-ok: [iocage_06] => (item=6)
-ok: [iocage_06] => (item=5)
+ok: [iocage_06] => (item=3)
+ok: [iocage_06] => (item=1)
+ok: [iocage_06] => (item=2)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_06] => 
     service_out:
         changed: false
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         failed: false
         msg: All items completed
         results:
         -   ansible_loop_var: item
             changed: false
-            deprecations:
-            -   collection_name: ansible.builtin
-                deprecator:
-                    resolved_name: ansible.builtin
-                    type: null
-                msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-                version: '2.24'
             failed: false
-            item: '4'
+            item: '3'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -79,15 +53,8 @@ ok: [iocage_06] =>
             - /etc/rc.d/virecover
         -   ansible_loop_var: item
             changed: false
-            deprecations:
-            -   collection_name: ansible.builtin
-                deprecator:
-                    resolved_name: ansible.builtin
-                    type: null
-                msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-                version: '2.24'
             failed: false
-            item: '6'
+            item: '1'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -121,15 +88,8 @@ ok: [iocage_06] =>
             - /etc/rc.d/virecover
         -   ansible_loop_var: item
             changed: false
-            deprecations:
-            -   collection_name: ansible.builtin
-                deprecator:
-                    resolved_name: ansible.builtin
-                    type: null
-                msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-                version: '2.24'
             failed: false
-            item: '5'
+            item: '2'
             rc: 0
             stderr: ''
             stderr_lines: []
@@ -165,11 +125,11 @@ ok: [iocage_06] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_06] => 
     jid_service_enabled | to_yaml: |-
-        '4': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '1': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
-        '5': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '2': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
-        '6': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
+        '3': [cleanvar, cleartmp, cron, ip6addrctl, motd, netif, newsyslog, os-release, sshd,
           syslogd, utx, var_run, virecover]
 
 PLAY RECAP *********************************************************************

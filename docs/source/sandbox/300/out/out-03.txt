@@ -2,8 +2,8 @@
 PLAY [Test module vbotka.freebsd.service. Get running jails sshd rcvar.] *******
 
 TASK [Get sshd rcvar.] *********************************************************
-ok: [test_152]
 ok: [test_153]
+ok: [test_152]
 ok: [test_151]
 
 TASK [ansible.builtin.debug] ***************************************************
@@ -27,10 +27,10 @@ ok: [test_153] =>
         #   (default: "")
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [test_151] => 
+ok: [test_152] => 
     sshd_rcvar:
         sshd_enable: 'YES'
-ok: [test_152] => 
+ok: [test_151] => 
     sshd_rcvar:
         sshd_enable: 'YES'
 ok: [test_153] => 

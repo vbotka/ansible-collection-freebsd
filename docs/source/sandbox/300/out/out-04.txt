@@ -15,36 +15,36 @@ ok: [iocage_06] =>
         - iocage
         - list
         - --long
-        delta: '0:00:00.840861'
-        end: '2026-07-12 05:26:25.928126'
+        delta: '0:00:00.542487'
+        end: '2026-07-21 12:29:49.348652'
         failed: false
         msg: ''
         rc: 0
-        start: '2026-07-12 05:26:25.087265'
+        start: '2026-07-21 12:29:48.806165'
         stderr: ''
         stderr_lines: []
         stdout: |-
             +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
             | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |    TEMPLATE    | BASEJAIL |
             +=====+==========+======+=======+======+=================+=======================+=====+================+==========+
-            | 4   | test_151 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.100 | -   | ansible_client | no       |
+            | 3   | test_151 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.100 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
-            | 6   | test_152 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.103 | -   | ansible_client | no       |
+            | 1   | test_152 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.127 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
-            | 5   | test_153 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.102 | -   | ansible_client | no       |
+            | 2   | test_153 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.102 | -   | ansible_client | no       |
             +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
         stdout_lines:
         - +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
         - '| JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |          IP4          |
             IP6 |    TEMPLATE    | BASEJAIL |'
         - +=====+==========+======+=======+======+=================+=======================+=====+================+==========+
-        - '| 4   | test_151 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.100
+        - '| 3   | test_151 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.100
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
-        - '| 6   | test_152 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.103
+        - '| 1   | test_152 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.127
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
-        - '| 5   | test_153 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.102
+        - '| 2   | test_153 | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.102
             | -   | ansible_client | no       |'
         - +-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
 
@@ -60,7 +60,7 @@ ok: [iocage_06] =>
             - {ifc: epair0b, ip: 172.16.99.100, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '4'
+          jid: '3'
           release: 15.1-RELEASE-p1
           state: up
           template: ansible_client
@@ -68,13 +68,13 @@ ok: [iocage_06] =>
         test_152:
           basejail: 'no'
           boot: 'off'
-          ip4: 172.16.99.103
+          ip4: 172.16.99.127
           ip4_dict:
             ip4:
-            - {ifc: epair0b, ip: 172.16.99.103, mask: '-'}
+            - {ifc: epair0b, ip: 172.16.99.127, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '6'
+          jid: '1'
           release: 15.1-RELEASE-p1
           state: up
           template: ansible_client
@@ -88,7 +88,7 @@ ok: [iocage_06] =>
             - {ifc: epair0b, ip: 172.16.99.102, mask: '-'}
             msg: ''
           ip6: '-'
-          jid: '5'
+          jid: '2'
           release: 15.1-RELEASE-p1
           state: up
           template: ansible_client
@@ -97,50 +97,24 @@ ok: [iocage_06] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_06] => 
     jids | to_yaml: |-
-        ['4', '6', '5']
+        ['3', '1', '2']
 
 TASK [Jails service sshd rcvar.] ***********************************************
-ok: [iocage_06] => (item=4)
-ok: [iocage_06] => (item=6)
-ok: [iocage_06] => (item=5)
+ok: [iocage_06] => (item=3)
+ok: [iocage_06] => (item=1)
+ok: [iocage_06] => (item=2)
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_06] => 
     service_out:
         changed: false
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         failed: false
         msg: All items completed
         results:
         -   ansible_loop_var: item
             changed: false
-            deprecations:
-            -   collection_name: ansible.builtin
-                deprecator:
-                    resolved_name: ansible.builtin
-                    type: null
-                msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-                version: '2.24'
             failed: false
-            item: '4'
+            item: '3'
             rc: 0
             rcvar:
                 sshd_enable: 'YES'
@@ -159,15 +133,8 @@ ok: [iocage_06] =>
             - ''
         -   ansible_loop_var: item
             changed: false
-            deprecations:
-            -   collection_name: ansible.builtin
-                deprecator:
-                    resolved_name: ansible.builtin
-                    type: null
-                msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-                version: '2.24'
             failed: false
-            item: '6'
+            item: '1'
             rc: 0
             rcvar:
                 sshd_enable: 'YES'
@@ -186,15 +153,8 @@ ok: [iocage_06] =>
             - ''
         -   ansible_loop_var: item
             changed: false
-            deprecations:
-            -   collection_name: ansible.builtin
-                deprecator:
-                    resolved_name: ansible.builtin
-                    type: null
-                msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-                version: '2.24'
             failed: false
-            item: '5'
+            item: '2'
             rc: 0
             rcvar:
                 sshd_enable: 'YES'
@@ -215,11 +175,11 @@ ok: [iocage_06] =>
 TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_06] => 
     jid_rcvar:
-        '4':
+        '1':
             sshd_enable: 'YES'
-        '5':
+        '2':
             sshd_enable: 'YES'
-        '6':
+        '3':
             sshd_enable: 'YES'
 
 PLAY RECAP *********************************************************************

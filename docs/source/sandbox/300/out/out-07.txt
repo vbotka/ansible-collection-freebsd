@@ -11,13 +11,6 @@ TASK [ansible.builtin.debug] ***************************************************
 ok: [iocage_06] => 
     script_commands:
         changed: false
-        deprecations:
-        -   collection_name: ansible.builtin
-            deprecator:
-                resolved_name: ansible.builtin
-                type: null
-            msg: Importing 'to_bytes' from 'ansible.module_utils._text' is deprecated.
-            version: '2.24'
         failed: false
         rc: 0
         stderr: |-
