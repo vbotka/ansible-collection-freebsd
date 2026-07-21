@@ -1,0 +1,7 @@
+fp_packages:
+  - {list: custom, enabled: true}
+pkg_dict_amd64_dict:
+  custom:
+    - security/py-fail2ban
+    - security/sshguard
+    - sysutils/iocage
