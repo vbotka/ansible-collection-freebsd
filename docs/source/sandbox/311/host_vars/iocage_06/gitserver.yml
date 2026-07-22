@@ -1,0 +1,7 @@
+fp_gitserver: true
+fp_gitserver_dir_mode: '0755'
+
+fp_git_daemon_enable: true
+fp_git_daemon_rcconf:
+  - { name: git_daemon_directory, value: /usr/local/git }
+  - { name: git_daemon_flags, value: --syslog --base-path=/usr/local/git --export-all --reuseaddr --detach }
