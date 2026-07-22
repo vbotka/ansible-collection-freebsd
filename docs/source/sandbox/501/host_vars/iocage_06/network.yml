@@ -7,7 +7,9 @@ fn_wlans:
 fn_cloned_interfaces:
   - {interface: bridge0, state: value_present}
 
-
 fn_interfaces:
-  - {interface: wlan0, options: WPA SYNCDHCP, create: country US regdomain ETSI}
-  - {interface: bridge0, create: inet 172.16.99.1/24}
+  - interface: wlan0
+    options: WPA SYNCDHCP
+    create: country US regdomain ETSI
+  - interface: bridge0
+    options: inet 172.16.99.1/24

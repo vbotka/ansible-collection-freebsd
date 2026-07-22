@@ -7,8 +7,8 @@ changed: [log_client]
 TASK [Debug.] ******************************************************************
 ok: [log_client] => 
     out.stderr: |-
-        count=1, rate = 28571.43 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500511, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 333333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500321, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -16,30 +16,36 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/172.16.99.197/2026_07_01.log)
-changed: [log_server] => (item=/var/log/remote/172.16.99.193/2026_07_01.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.138/2026_07_22.log)
+changed: [log_server] => (item=/var/log/remote/localhost/2026_07_22.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.139/2026_07_22.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.197/2026_07_01.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.138/2026_07_22.log']) => 
     msg: |-
-        Jul  1 12:49:42 172.16.99.197 syslog-ng[52509]: syslog-ng starting up; version='4.11.0'
-        Jul  1 12:49:42 172.16.99.197 syslog-ng[52509]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jul  1 12:49:43 172.16.99.197 1 2026-07-01T12:49:43.565720+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 52537 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Jul  1 12:49:43 172.16.99.197 syslog-ng[52509]: Follow-mode file source not found, deferring open; filename='/var/log/ansible.log'
-        Jul  1 12:49:43 172.16.99.197 syslog-ng[52509]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
-        Jul  1 12:49:43 172.16.99.197 syslog-ng[52509]: Loading the new configuration;
-        Jul  1 12:49:43 172.16.99.197 syslog-ng[52509]: Configuration reload finished;
-        Jul  1 12:49:44 172.16.99.197 1 2026-07-01T12:49:44.718849+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 52647 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Jul 22 13:37:18 172.16.99.138 syslog-ng[12419]: syslog-ng starting up; version='4.12.0'
+        Jul 22 13:37:18 172.16.99.138 syslog-ng[12419]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jul 22 13:37:20 172.16.99.138 1 2026-07-22T13:37:20.009651+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 12447 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Jul 22 13:37:20 172.16.99.138 syslog-ng[12419]: Follow-mode file source not found, deferring open; filename='/var/log/ansible.log'
+        Jul 22 13:37:20 172.16.99.138 syslog-ng[12419]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
+        Jul 22 13:37:20 172.16.99.138 syslog-ng[12419]: Loading the new configuration;
+        Jul 22 13:37:20 172.16.99.138 syslog-ng[12419]: Configuration reload finished;
+        Jul 22 13:37:21 172.16.99.138 1 2026-07-22T13:37:21.336341+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 12557 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.193/2026_07_01.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_07_22.log']) => 
     msg: |-
-        Jul  1 12:49:53 172.16.99.193 syslog-ng[53865]: syslog-ng starting up; version='4.11.0'
-        Jul  1 12:49:53 172.16.99.193 syslog-ng[53865]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Jul  1 12:49:54 172.16.99.193 1 2026-07-01T12:49:54.088004+02:00 log-client /usr/sbin/cron 54013 - - (CRON) WARNING (madvise() failed)
-        Jul  1 12:50:03 172.16.99.193 1 2026-07-01T12:50:03.002986+02:00 log-client /usr/sbin/cron 54173 - - (root) CMD (/usr/libexec/atrun)
-        Jul  1 12:50:11 172.16.99.193 1 2026-07-01T12:50:11.240713+02:00 log-client ansible-ansible.legacy.command 54393 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Jul  1 12:50:11 172.16.99.193 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782903011, stamp: 2026-07-01T12:50:11 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Jul 22 13:25:05 localhost syslog-ng[31487]: syslog-ng shutting down; version='4.12.0'
+        Jul 22 13:25:44 localhost syslog-ng[6220]: syslog-ng starting up; version='4.12.0'
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.139/2026_07_22.log']) => 
+    msg: |-
+        Jul 22 13:37:32 172.16.99.139 syslog-ng[13777]: syslog-ng starting up; version='4.12.0'
+        Jul 22 13:37:32 172.16.99.139 syslog-ng[13777]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Jul 22 13:37:32 172.16.99.139 1 2026-07-22T13:37:32.536651+02:00 log-client /usr/sbin/cron 13925 - - (CRON) WARNING (madvise() failed)
+        Jul 22 13:37:42 172.16.99.139 1 2026-07-22T13:37:42.015951+02:00 log-client ansible-ansible.legacy.command 14143 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Jul 22 13:37:42 172.16.99.139 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1784720262, stamp: 2026-07-22T13:37:42 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -1,6 +1,6 @@
 ---
 - name: Stop and convert ansible-syslogng-server to template.
-  hosts: iocage_05
+  hosts: iocage
 
   vars:
 

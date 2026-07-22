@@ -2,8 +2,8 @@
 PLAY [Create jails from iocage templates.] *************************************
 
 TASK [Create log-server] *******************************************************
-changed: [iocage_05]
+changed: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

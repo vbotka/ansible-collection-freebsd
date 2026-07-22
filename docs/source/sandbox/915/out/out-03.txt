@@ -2,14 +2,14 @@
 PLAY [Stop and convert ansible-syslogng-client to template.] *******************
 
 TASK [Get iocage list of jails.] ***********************************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Stop ansible-syslogng-client] ********************************************
-changed: [iocage_05]
+changed: [iocage_06]
 
 TASK [Convert ansible-syslogng-client jail to template.] ***********************
-changed: [iocage_05]
+changed: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

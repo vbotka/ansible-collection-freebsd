@@ -1,6 +1,7 @@
 ---
 - name: Stop and convert ansible-syslogng-client to template.
-  hosts: iocage_05
+  hosts: iocage
+
   vars:
 
     iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"

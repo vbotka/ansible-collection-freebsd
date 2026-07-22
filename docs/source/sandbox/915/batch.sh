@@ -14,13 +14,13 @@ ansible-playbook pb-logclient.yml -i hosts | tee out/out-02.txt
 ansible-playbook pb-logclient-stop-convert.yml -i iocage.ini | tee out/out-03.txt
 
 # List templates
-ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-04.txt
+ssh admin@iocage_06 sudo iocage list -lt | tee out/out-04.txt
 
 # Create jails
 ansible-playbook pb-create-jails.yml -i iocage.ini | tee out/out-05.txt
 
 # List jails
-ssh admin@$iocage_05 sudo iocage list -l | tee out/out-06.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-06.txt
 
 # Inventory graph
 ansible-inventory -i hosts --graph | tee out/out-07.txt

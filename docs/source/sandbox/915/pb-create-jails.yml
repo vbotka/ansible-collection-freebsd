@@ -1,6 +1,6 @@
 ---
 - name: Create jails from iocage templates.
-  hosts: iocage_05
+  hosts: iocage
 
   tasks:
 
