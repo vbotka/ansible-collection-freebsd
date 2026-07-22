@@ -1,0 +1,20 @@
+enabled_plugins:
+  - ansible-pull-test
+
+plugins:
+  ansible-pull-test:
+    git: https://github.com/vbotka/iocage-plugins-devel
+    branch: main
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      boot: 0
+
+# jail properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+  type: jail

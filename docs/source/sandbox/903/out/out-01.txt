@@ -2,17 +2,17 @@
 PLAY [iocage] ******************************************************************
 
 TASK [vbotka.freebsd.iocage] ***************************************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [debug] *******************************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     ansible_facts.iocage_jails:
         test_151:
             basejail: 'no'
             boot: 'off'
-            ip4: epair0b|10.10.99.139
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '15'
+            jid: None
             name: test_151
             properties:
                 CONFIG_VERSION: '33'
@@ -42,7 +42,7 @@ ok: [iocage_05] =>
                 boot: '0'
                 bpf: '1'
                 children_max: '0'
-                cloned_release: 15.0-RELEASE
+                cloned_release: 15.1-RELEASE
                 comment: none
                 compression: 'on'
                 compressratio: readonly
@@ -52,7 +52,7 @@ ok: [iocage_05] =>
                 cputime: 'off'
                 datasize: 'off'
                 dedup: 'off'
-                defaultrouter: 10.10.99.1
+                defaultrouter: 172.16.99.1
                 defaultrouter6: auto
                 depends: none
                 devfs_ruleset: '4'
@@ -75,7 +75,7 @@ ok: [iocage_05] =>
                 host_hostname: test-151
                 host_hostuuid: test_151
                 host_time: '1'
-                hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
+                hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
                 hostid_strict_check: '0'
                 interfaces: vnet0:bridge0
                 ip4: new
@@ -88,10 +88,10 @@ ok: [iocage_05] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/test_151/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-05-04 01:30:30'
+                last_started: '2026-07-21 10:29:35'
                 localhost_ip: none
                 login_flags: -f root
-                mac_prefix: 665d86
+                mac_prefix: f6289d
                 maxproc: 'off'
                 memorylocked: 'off'
                 memoryuse: 'off'
@@ -109,7 +109,7 @@ ok: [iocage_05] =>
                 nat_interface: none
                 nat_prefix: '172.16'
                 nmsgq: 'off'
-                notes: vmm=iocage_05
+                notes: vmm=iocage_06
                 nsem: 'off'
                 nsemop: 'off'
                 nshm: 'off'
@@ -125,7 +125,7 @@ ok: [iocage_05] =>
                 quota: none
                 readbps: 'off'
                 readiops: 'off'
-                release: 15.0-RELEASE
+                release: 15.1-RELEASE-p1
                 reservation: none
                 resolver: /etc/resolv.conf
                 rlimits: 'off'
@@ -134,7 +134,7 @@ ok: [iocage_05] =>
                 shmsize: 'off'
                 source_template: ansible_client
                 stacksize: 'off'
-                state: up
+                state: down
                 stop_timeout: '30'
                 swapuse: 'off'
                 sync_state: none
@@ -148,7 +148,7 @@ ok: [iocage_05] =>
                 used: readonly
                 vmemoryuse: 'off'
                 vnet: '1'
-                vnet0_mac: 665d86c58284 665d86c58285
+                vnet0_mac: f6289dc58284 f6289dc58285
                 vnet0_mtu: auto
                 vnet1_mac: none
                 vnet1_mtu: auto
@@ -162,16 +162,16 @@ ok: [iocage_05] =>
                 wallclock: 'off'
                 writebps: 'off'
                 writeiops: 'off'
-            release: 15.0-RELEASE
-            state: up
+            release: 15.1-RELEASE-p1
+            state: down
             template: ansible_client
             type: jail
         test_152:
             basejail: 'no'
             boot: 'off'
-            ip4: epair0b|10.10.99.101
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '17'
+            jid: None
             name: test_152
             properties:
                 CONFIG_VERSION: '33'
@@ -201,7 +201,7 @@ ok: [iocage_05] =>
                 boot: '0'
                 bpf: '1'
                 children_max: '0'
-                cloned_release: 15.0-RELEASE
+                cloned_release: 15.1-RELEASE
                 comment: none
                 compression: 'on'
                 compressratio: readonly
@@ -211,7 +211,7 @@ ok: [iocage_05] =>
                 cputime: 'off'
                 datasize: 'off'
                 dedup: 'off'
-                defaultrouter: 10.10.99.1
+                defaultrouter: 172.16.99.1
                 defaultrouter6: auto
                 depends: none
                 devfs_ruleset: '4'
@@ -234,7 +234,7 @@ ok: [iocage_05] =>
                 host_hostname: test-152
                 host_hostuuid: test_152
                 host_time: '1'
-                hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
+                hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
                 hostid_strict_check: '0'
                 interfaces: vnet0:bridge0
                 ip4: new
@@ -247,10 +247,10 @@ ok: [iocage_05] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/test_152/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-05-04 01:30:35'
+                last_started: '2026-07-21 10:29:28'
                 localhost_ip: none
                 login_flags: -f root
-                mac_prefix: 665d86
+                mac_prefix: f6289d
                 maxproc: 'off'
                 memorylocked: 'off'
                 memoryuse: 'off'
@@ -268,7 +268,7 @@ ok: [iocage_05] =>
                 nat_interface: none
                 nat_prefix: '172.16'
                 nmsgq: 'off'
-                notes: vmm=iocage_05
+                notes: vmm=iocage_06
                 nsem: 'off'
                 nsemop: 'off'
                 nshm: 'off'
@@ -284,7 +284,7 @@ ok: [iocage_05] =>
                 quota: none
                 readbps: 'off'
                 readiops: 'off'
-                release: 15.0-RELEASE
+                release: 15.1-RELEASE-p1
                 reservation: none
                 resolver: /etc/resolv.conf
                 rlimits: 'off'
@@ -293,7 +293,7 @@ ok: [iocage_05] =>
                 shmsize: 'off'
                 source_template: ansible_client
                 stacksize: 'off'
-                state: up
+                state: down
                 stop_timeout: '30'
                 swapuse: 'off'
                 sync_state: none
@@ -307,7 +307,7 @@ ok: [iocage_05] =>
                 used: readonly
                 vmemoryuse: 'off'
                 vnet: '1'
-                vnet0_mac: 665d86be2ced 665d86be2cee
+                vnet0_mac: f6289dbe2ced f6289dbe2cee
                 vnet0_mtu: auto
                 vnet1_mac: none
                 vnet1_mtu: auto
@@ -321,16 +321,16 @@ ok: [iocage_05] =>
                 wallclock: 'off'
                 writebps: 'off'
                 writeiops: 'off'
-            release: 15.0-RELEASE
-            state: up
+            release: 15.1-RELEASE-p1
+            state: down
             template: ansible_client
             type: jail
         test_153:
             basejail: 'no'
             boot: 'off'
-            ip4: epair0b|10.10.99.103
+            ip4: DHCP (not running)
             ip6: '-'
-            jid: '16'
+            jid: None
             name: test_153
             properties:
                 CONFIG_VERSION: '33'
@@ -360,7 +360,7 @@ ok: [iocage_05] =>
                 boot: '0'
                 bpf: '1'
                 children_max: '0'
-                cloned_release: 15.0-RELEASE
+                cloned_release: 15.1-RELEASE
                 comment: none
                 compression: 'on'
                 compressratio: readonly
@@ -370,7 +370,7 @@ ok: [iocage_05] =>
                 cputime: 'off'
                 datasize: 'off'
                 dedup: 'off'
-                defaultrouter: 10.10.99.1
+                defaultrouter: 172.16.99.1
                 defaultrouter6: auto
                 depends: none
                 devfs_ruleset: '4'
@@ -393,7 +393,7 @@ ok: [iocage_05] =>
                 host_hostname: test-153
                 host_hostuuid: test_153
                 host_time: '1'
-                hostid: 4c4c4544-0057-3810-8046-b2c04f4a5232
+                hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
                 hostid_strict_check: '0'
                 interfaces: vnet0:bridge0
                 ip4: new
@@ -406,10 +406,10 @@ ok: [iocage_05] =>
                 jail_zfs: '0'
                 jail_zfs_dataset: iocage/jails/test_153/data
                 jail_zfs_mountpoint: none
-                last_started: '2026-05-04 01:30:33'
+                last_started: '2026-07-21 10:29:31'
                 localhost_ip: none
                 login_flags: -f root
-                mac_prefix: 665d86
+                mac_prefix: f6289d
                 maxproc: 'off'
                 memorylocked: 'off'
                 memoryuse: 'off'
@@ -427,7 +427,7 @@ ok: [iocage_05] =>
                 nat_interface: none
                 nat_prefix: '172.16'
                 nmsgq: 'off'
-                notes: vmm=iocage_05
+                notes: vmm=iocage_06
                 nsem: 'off'
                 nsemop: 'off'
                 nshm: 'off'
@@ -443,7 +443,7 @@ ok: [iocage_05] =>
                 quota: none
                 readbps: 'off'
                 readiops: 'off'
-                release: 15.0-RELEASE
+                release: 15.1-RELEASE-p1
                 reservation: none
                 resolver: /etc/resolv.conf
                 rlimits: 'off'
@@ -452,7 +452,7 @@ ok: [iocage_05] =>
                 shmsize: 'off'
                 source_template: ansible_client
                 stacksize: 'off'
-                state: up
+                state: down
                 stop_timeout: '30'
                 swapuse: 'off'
                 sync_state: none
@@ -466,7 +466,7 @@ ok: [iocage_05] =>
                 used: readonly
                 vmemoryuse: 'off'
                 vnet: '1'
-                vnet0_mac: 665d864c63ed 665d864c63ee
+                vnet0_mac: f6289d4c63ed f6289d4c63ee
                 vnet0_mtu: auto
                 vnet1_mac: none
                 vnet1_mtu: auto
@@ -480,14 +480,11 @@ ok: [iocage_05] =>
                 wallclock: 'off'
                 writebps: 'off'
                 writeiops: 'off'
-            release: 15.0-RELEASE
-            state: up
+            release: 15.1-RELEASE-p1
+            state: down
             template: ansible_client
             type: jail
 
-TASK [debug] *******************************************************************
-skipping: [iocage_05]
-
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

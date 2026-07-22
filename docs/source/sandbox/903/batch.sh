@@ -3,4 +3,4 @@
 . ../defaults/batch
 
 # Display iocage_* vars
-ansible-playbook pb-vars-iocage.yml | tee out/out-01.txt
+ansible-playbook -i iocage.ini pb-vars-iocage.yml | tee out/out-01.txt

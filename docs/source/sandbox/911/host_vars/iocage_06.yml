@@ -1,0 +1,31 @@
+enabled_plugins:
+  - ansible-pull-syslogng-client
+
+plugins:
+  ansible-pull-syslogng-client:
+    git: https://github.com/vbotka/iocage-plugins-devel
+    branch: main
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 0
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+# jail properties
+properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  type: jail
+  boot: 1
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+# log clients' aliases
+log_clients:
+  - foo
+  - bar

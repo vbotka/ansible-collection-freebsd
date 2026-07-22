@@ -1,15 +1,9 @@
 plugin: vbotka.freebsd.iocage
-host: iocage_05
+host: iocage_06
 user: admin
 sudo: true
 get_properties: true
 inventory_hostname_tag: alias
-# cache
-# cache: true
-# cache_plugin: ansible.builtin.jsonfile
-# cache_connection: /var/tmp/inventory_cache
-# cache_timeout: 3600
-# cache_prefix: iocage_05_
 
 compose:
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
@@ -23,7 +17,7 @@ compose:
   ansible_python_interpreter: "'auto_silent'"
 
 groups:
-  ansible_pull: iocage_classes is contains('ansible-pull')
+  log_servers: iocage_classes is contains('log-server')
 
 keyed_groups:
   - prefix: state
