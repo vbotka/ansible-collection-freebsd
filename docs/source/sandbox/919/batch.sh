@@ -3,14 +3,14 @@
 . ../defaults/batch
 
 # Stop jails baz and qux
-ssh admin@$iocage_05 sudo iocage stop baz
-ssh admin@$iocage_05 sudo iocage stop qux
+# ssh admin@iocage_06 sudo iocage stop baz
+# ssh admin@iocage_06 sudo iocage stop qux
 # Destroy jails baz and qux
-ssh admin@$iocage_05 sudo iocage destroy -f baz
-ssh admin@$iocage_05 sudo iocage destroy -f qux
+ssh admin@iocage_06 sudo iocage destroy -f baz
+ssh admin@iocage_06 sudo iocage destroy -f qux
 
 # List templates
-# ssh admin@$iocage_05 sudo iocage list -lt | tee out/out-02.txt
+# ssh admin@iocage_06 sudo iocage list -lt | tee out/out-02.txt
 
 # Create the project
 ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_templates.yml -i iocage.ini -i hosts | tee out/out-03.txt
@@ -19,9 +19,9 @@ ansible-playbook vbotka.freebsd.pb_iocage_project_create_from_templates.yml -i i
 ansible-inventory -i hosts --graph | tee out/out-04.txt
 
 # List jails
-ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 
 # Test (if at=now set sleep 90)
 sleep 3
-ssh admin@$iocage_05 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt
-ssh admin@$iocage_05 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt" | tee out/out-07.txt
+ssh admin@iocage_06 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt
+ssh admin@iocage_06 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt" | tee out/out-07.txt
