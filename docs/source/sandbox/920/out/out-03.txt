@@ -1,0 +1,32 @@
+
+PLAY [Create and start project jails from iocage templates.] *******************
+
+TASK [Setup: Get activated pool.] **********************************************
+ok: [iocage_06]
+
+TASK [Create: Create jails.] ***************************************************
+ok: [iocage_06] => (item=www-01)
+ok: [iocage_06] => (item=www-02)
+ok: [iocage_06] => (item=log-server)
+
+TASK [Facts: Create custom facts dirs.] ****************************************
+changed: [iocage_06] => (item=log-server)
+changed: [iocage_06] => (item=www-01)
+changed: [iocage_06] => (item=www-02)
+
+TASK [Facts: Create custom facts files.] ***************************************
+changed: [iocage_06] => (item=log-server)
+changed: [iocage_06] => (item=www-01)
+changed: [iocage_06] => (item=www-02)
+
+TASK [Properties: Set properties.] *********************************************
+ok: [iocage_06] => (item=log-server)
+ok: [iocage_06] => (item=www-01)
+ok: [iocage_06] => (item=www-02)
+
+TASK [Start: Start jails.] *****************************************************
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=6    changed=2    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

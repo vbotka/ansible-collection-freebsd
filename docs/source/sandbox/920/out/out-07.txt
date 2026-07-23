@@ -1,0 +1,61 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [log_client]
+changed: [www_01]
+changed: [www_02]
+
+TASK [Debug.] ******************************************************************
+ok: [log_client] => 
+    out.stderr: |-
+        count=1, rate = 200000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500142, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [www_02] => 
+    out.stderr: |-
+        count=1, rate = 111111.11 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500549, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [www_01] => 
+    out.stderr: |-
+        count=1, rate = 333333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500351, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/172.16.99.139/2026_07_23.log)
+changed: [log_server] => (item=/var/log/remote/localhost/2026_07_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.147/2026_07_23.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.146/2026_07_23.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.139/2026_07_23.log']) => 
+    msg: |-
+        Jul 23 11:37:22 172.16.99.139 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1784799442, stamp: 2026-07-23T11:37:22 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/localhost/2026_07_23.log']) => 
+    msg: |-
+        Jul 23 11:37:05 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1784799425, stamp: 2026-07-23T11:37:05 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.147/2026_07_23.log']) => 
+    msg: |-
+        Jul 23 11:37:22 172.16.99.147 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1784799442, stamp: 2026-07-23T11:37:22 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.146/2026_07_23.log']) => 
+    msg: |-
+        Jul 23 11:37:22 172.16.99.146 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1784799442, stamp: 2026-07-23T11:37:22 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+log_client                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_01                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_02                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,7 +1,7 @@
 project:
   log-server:
     notes: alias=log_server
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [log-server]
     custom_facts: class.fact.j2
@@ -12,13 +12,13 @@ project:
       boot: 1
   www-01:
     notes: alias=www_01
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [log-client]
     custom_facts: class.fact.j2
   www-02:
     notes: alias=www_02
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [log-client]
     custom_facts: class.fact.j2
