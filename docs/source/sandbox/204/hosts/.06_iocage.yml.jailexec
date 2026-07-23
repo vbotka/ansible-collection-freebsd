@@ -9,6 +9,7 @@ compose:
   iocage_classes: iocage_properties.notes | regex_findall('(?<=class=)[\w\-]+|(?<=,)[\w\-]+')
 # connection plugin vbotka.freebsd.jailexec
   ansible_connection: "'vbotka.freebsd.jailexec'"
+  ansible_ssh_user: "'admin'"
   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
   ansible_jail_name: iocage_jid
   ansible_jail_privilege_escalation: "'sudo'"

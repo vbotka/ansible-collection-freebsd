@@ -1,10 +1,10 @@
 project:
   foo:
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [test]
   bar:
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [test]
 

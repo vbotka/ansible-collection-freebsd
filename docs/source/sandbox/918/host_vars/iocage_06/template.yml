@@ -1,7 +1,7 @@
 fit_templates:
   ansible-init:
-    release: 15.0-RELEASE
-    pkglist: /tmp/ansible/ansible_init/pkgs-15_0.json
+    release: 15.1-RELEASE
+    pkglist: /tmp/ansible/ansible_init/pkgs-15_1.json
     cron: "{{ fit_cron | dict2items }}"
     files: "{{ fit_files | dict2items }}"
     file_lines: "{{ fit_file_lines | dict2items }}"
