@@ -1,0 +1,65 @@
+
+PLAY [Create iocage templates.] ************************************************
+
+TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Setup: Get activated pool.] *************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
+ok: [iocage_06] => (item=ansible-init-devel 15.1-RELEASE)
+
+TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Start: Start jails.] ********************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Files: Copy files.] *********************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/files.yml for iocage_06 => (item=ansible-init-devel)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/files.yml for iocage_06 => (item=ansible-init-devel)
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Create directory.] ************
+changed: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Copy files.] ******************
+changed: [iocage_06] => (item=project-hosts.yml)
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Create directory.] ************
+changed: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Copy files.] ******************
+changed: [iocage_06] => (item=py312-ansible-init-firstboot-1.0.pkg)
+
+TASK [vbotka.freebsd.iocage_template : Lines: Configure lines in files.] *******
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/file_lines.yml for iocage_06 => (item=ansible-init-devel)
+
+TASK [vbotka.freebsd.iocage_template : Fn/file_lines: Configure lines in files.] ***
+changed: [iocage_06] => (item=ansible-init-devel /root/.profile LANG=en_US.UTF-8)
+changed: [iocage_06] => (item=ansible-init-devel /root/.profile LC_ALL=en_US.UTF-8)
+
+TASK [vbotka.freebsd.iocage_template : Rcconf: Configure /etc/rc.conf] *********
+changed: [iocage_06] => (item=ansible-init-devel ansible_init_enable YES)
+changed: [iocage_06] => (item=ansible-init-devel ansible_init_host git://172.16.99.21)
+
+TASK [vbotka.freebsd.iocage_template : Commands: Execute commands.] ************
+ok: [iocage_06] => (item=ansible-init-devel > ASSUME_ALWAYS_YES=yes pkg install /usr/ports/packages/All/py312-ansible-init-firstboot-1.0.pkg)
+ok: [iocage_06] => (item=ansible-init-devel > ASSUME_ALWAYS_YES=yes pkg install git)
+ok: [iocage_06] => (item=ansible-init-devel > touch /firstboot)
+
+TASK [vbotka.freebsd.iocage_template : Stop: Get iocage list of jails.] ********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Stop: Stop jails.] **********************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
+ok: [iocage_06] => (item=ansible-init-devel)
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=19   changed=6    unreachable=0    failed=0    skipped=34   rescued=0    ignored=0   
+

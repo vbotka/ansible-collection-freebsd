@@ -1,0 +1,24 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--bar
+  |  |--baz
+  |  |--foo
+  |  |--log-client
+  |  |--log-server
+  |  |--qux
+  |  |--repos
+  |  |--repos-devel
+  |  |--www-01
+  |  |--www-02
+  |--@vmm_iocage_06:
+  |  |--bar
+  |  |--baz
+  |  |--foo
+  |  |--log-client
+  |  |--log-server
+  |  |--qux
+  |  |--repos
+  |  |--repos-devel
+  |  |--www-01
+  |  |--www-02

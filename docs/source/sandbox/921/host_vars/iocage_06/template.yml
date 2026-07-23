@@ -1,6 +1,6 @@
 fit_templates:
   ansible-init-devel:
-    release: 15.0-RELEASE
+    release: 15.1-RELEASE
     files: "{{ fit_files | dict2items }}"
     file_lines: "{{ fit_file_lines | dict2items }}"
     rcconf: "{{ fit_rcconf | dict2items }}"
@@ -15,7 +15,7 @@ fit_templates:
       notes: '"class=init alias=ansible_init_devel"'
 
 fit_commands:
-  - ASSUME_ALWAYS_YES=yes pkg install /usr/ports/packages/All/py311-ansible-init-firstboot-1.0.pkg
+  - ASSUME_ALWAYS_YES=yes pkg install /usr/ports/packages/All/py312-ansible-init-firstboot-1.0.pkg
   - ASSUME_ALWAYS_YES=yes pkg install git
   - touch /firstboot
 
@@ -32,7 +32,7 @@ fit_files:
   /root/ansible-vars:
     - project-hosts.yml
   /usr/ports/packages/All:
-    - py311-ansible-init-firstboot-1.0.pkg
+    - py312-ansible-init-firstboot-1.0.pkg
 
 fit_file_options:
   /root/ansible-vars:
