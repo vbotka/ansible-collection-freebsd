@@ -1,11 +1,11 @@
 project:
   baz:
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [test]
     custom_facts: class.fact.j2
   qux:
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-init
     class: [test]
     custom_facts: class.fact.j2

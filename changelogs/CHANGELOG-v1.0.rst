@@ -22,7 +22,7 @@ Major Changes
 Minor Changes
 --------------
 * Update playbooks _notes and _properties.
-* Docs. Update examples 013,020,040,202,523.
+* Docs. Update examples 013,020,040,202,523-525.
 * Docs. Update sandbox 001-003,010-040,200-204,206-210,300,370,501,
   903-911,914-915,917-921.
 * Docs. Add sandbox 311.

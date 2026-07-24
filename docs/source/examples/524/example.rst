@@ -37,16 +37,16 @@ Tree
   ├── ansible.cfg
   ├── files
   │   ├── hello-world.txt
-  │   ├── pkgs.json
+  │   ├── pkgs-15_1.json
   │   └── project-hosts.yml
   ├── group_vars
   │   └── all
   │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
-  │   └── 05_iocage.yml
+  │   └── 06_iocage.yml
   ├── host_vars
-  │   └── iocage_05
+  │   └── iocage_06
   │       └── template.yml
   ├── iocage.ini
   └── pb-iocage-template.yml
@@ -100,7 +100,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/05_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml
    :caption:
 
@@ -118,7 +118,7 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_05/template.yml
+.. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml
    :caption:
 
@@ -129,7 +129,7 @@ files
    :language: text
    :caption:
 
-.. literalinclude:: files/pkgs.json
+.. literalinclude:: files/pkgs-15_1.json
    :language: json
    :caption:
 
@@ -159,7 +159,7 @@ List templates
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -lt
+   shell > ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: sh
@@ -189,7 +189,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -l
+   shell > ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -199,14 +199,14 @@ Display the test files
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt"
+   shell > ssh admin@iocage_06 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-06.txt
    :language: sh
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt"
+   shell > ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-07.txt
    :language: sh

@@ -39,7 +39,7 @@ Tree
   │   └── all
   │       └── project.yml
   ├── hosts
-  │   └── 05_iocage.yml
+  │   └── 06_iocage.yml
   └── iocage.ini
 
 Synopsis
@@ -96,7 +96,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/05_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml
    :caption:
 
@@ -132,7 +132,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -l
+   shell > ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -142,14 +142,14 @@ Display the test files
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt"
+   shell > ssh admin@iocage_06 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-06.txt
    :language: sh
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt"
+   shell > ssh admin@iocage_06 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-07.txt
    :language: sh

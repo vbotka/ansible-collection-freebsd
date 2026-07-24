@@ -2,74 +2,74 @@
 PLAY [Create iocage templates.] ************************************************
 
 TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Setup: Get activated pool.] *************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Pkglist: Create directories for pkglist files.] ***
-ok: [iocage_05] => (item=ansible-init /tmp/ansible/ansible_init)
+ok: [iocage_06] => (item=ansible-init /tmp/ansible/ansible_init)
 
 TASK [vbotka.freebsd.iocage_template : Pkglist: Copy pkglist files.] ***********
-ok: [iocage_05] => (item=ansible-init /tmp/ansible/ansible_init/pkgs.json)
+ok: [iocage_06] => (item=ansible-init /tmp/ansible/ansible_init/pkgs-15_1.json)
 
 TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
-ok: [iocage_05] => (item=ansible-init 15.0-RELEASE)
+ok: [iocage_06] => (item=ansible-init 15.1-RELEASE)
 
 TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Start: Start jails.] ********************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Files: Copy files.] *********************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/files.yml for iocage_05 => (item=ansible-init)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/files.yml for iocage_06 => (item=ansible-init)
 
 TASK [vbotka.freebsd.iocage_template : Fn/files: Create directory.] ************
-changed: [iocage_05]
+changed: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Fn/files: Copy files.] ******************
-changed: [iocage_05] => (item=project-hosts.yml)
-changed: [iocage_05] => (item=hello-world.txt)
+changed: [iocage_06] => (item=project-hosts.yml)
+changed: [iocage_06] => (item=hello-world.txt)
 
 TASK [vbotka.freebsd.iocage_template : Lines: Configure lines in files.] *******
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/file_lines.yml for iocage_05 => (item=ansible-init)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/file_lines.yml for iocage_06 => (item=ansible-init)
 
 TASK [vbotka.freebsd.iocage_template : Fn/file_lines: Configure lines in files.] ***
-changed: [iocage_05] => (item=ansible-init /root/.profile LANG=en_US.UTF-8)
-changed: [iocage_05] => (item=ansible-init /root/.profile LC_ALL=en_US.UTF-8)
+changed: [iocage_06] => (item=ansible-init /root/.profile LANG=en_US.UTF-8)
+changed: [iocage_06] => (item=ansible-init /root/.profile LC_ALL=en_US.UTF-8)
 
 TASK [vbotka.freebsd.iocage_template : Firstboot: Create scripts.] *************
-changed: [iocage_05] => (item=ansible-init ansible_init)
+changed: [iocage_06] => (item=ansible-init ansible_init)
 
 TASK [vbotka.freebsd.iocage_template : Firstboot: Touch /firstboot.] ***********
-changed: [iocage_05] => (item=ansible-init)
+changed: [iocage_06] => (item=ansible-init)
 
 TASK [vbotka.freebsd.iocage_template : Cron: Configure cron files.] ************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/cron.yml for iocage_05 => (item=ansible-init)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/cron.yml for iocage_06 => (item=ansible-init)
 
 TASK [vbotka.freebsd.iocage_template : Fn/cron: Remove exclusive jobs from cron files.] ***
-changed: [iocage_05] => (item=ansible-init /usr/libexec/atrun)
+changed: [iocage_06] => (item=ansible-init /usr/libexec/atrun)
 
 TASK [vbotka.freebsd.iocage_template : Fn/cron: Configure cron files.] *********
-changed: [iocage_05] => (item=ansible-init Run atrun execution daemon in 1 minute intervals.)
+changed: [iocage_06] => (item=ansible-init Run atrun execution daemon in 1 minute intervals.)
 
 TASK [vbotka.freebsd.iocage_template : Rcconf: Configure /etc/rc.conf] *********
-changed: [iocage_05] => (item=ansible-init ansible_init_enable YES)
-changed: [iocage_05] => (item=ansible-init ansible_init_host git://172.16.99.21)
+changed: [iocage_06] => (item=ansible-init ansible_init_enable YES)
+changed: [iocage_06] => (item=ansible-init ansible_init_host git://172.16.99.21)
 
 TASK [vbotka.freebsd.iocage_template : Stop: Get iocage list of jails.] ********
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Stop: Stop jails.] **********************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
-ok: [iocage_05] => (item=ansible-init)
+ok: [iocage_06] => (item=ansible-init)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=22   changed=8    unreachable=0    failed=0    skipped=30   rescued=0    ignored=0   
+iocage_06                  : ok=22   changed=8    unreachable=0    failed=0    skipped=30   rescued=0    ignored=0   
 
