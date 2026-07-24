@@ -38,9 +38,9 @@ Tree
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
-  │   └── 05_iocage.yml
+  │   └── 06_iocage.yml
   ├── host_vars
-  │   └── iocage_05
+  │   └── iocage_06
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -95,7 +95,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/05_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml
    :caption:
 
@@ -127,7 +127,7 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_05/template.yml
+.. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml
    :caption:
 
@@ -166,7 +166,7 @@ List templates
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -lt
+   shell > ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: sh
@@ -196,7 +196,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -l
+   shell > ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -223,7 +223,7 @@ List repos
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage exec repos ls -la /usr/local/git
+   shell > ssh admin@iocage_06 sudo iocage exec repos ls -la /usr/local/git
 
 .. literalinclude:: out/out-07.txt
    :language: console

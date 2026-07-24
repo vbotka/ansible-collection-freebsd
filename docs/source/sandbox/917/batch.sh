@@ -8,7 +8,10 @@
 
 # Destroy repos and repos-devel
 ssh admin@iocage_06 sudo iocage destroy -f repos
-ssh adminiocage_06 sudo iocage destroy -f repos-devel
+ssh admin@iocage_06 sudo iocage destroy -f repos-devel
+
+# Destroy template
+# ssh admin@iocage_06 sudo iocage destroy -f ansible-repos
 
 # Create template
 ansible-playbook pb-iocage-template.yml -i iocage.ini | tee out/out-01.txt

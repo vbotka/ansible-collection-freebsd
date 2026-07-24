@@ -1,6 +1,6 @@
 project:
   repos:
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-repos
     class: [repos]
     properties:
@@ -13,7 +13,7 @@ project:
       vnet: 1
   repos-devel:
     notes: alias=repos_devel
-    vmm: iocage_05
+    vmm: iocage_06
     template: ansible-repos
     class: [repos]
     properties:

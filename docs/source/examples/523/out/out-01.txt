@@ -2,48 +2,48 @@
 PLAY [Create iocage templates.] ************************************************
 
 TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Setup: Get activated pool.] *************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Pkglist: Create directories for pkglist files.] ***
-ok: [iocage_05] => (item=ansible-repos /tmp/ansible/ansible-repos)
+ok: [iocage_06] => (item=ansible-repos /tmp/ansible/ansible-repos)
 
 TASK [vbotka.freebsd.iocage_template : Pkglist: Copy pkglist files.] ***********
-ok: [iocage_05] => (item=ansible-repos /tmp/ansible/ansible-repos/pkgs.json)
+ok: [iocage_06] => (item=ansible-repos /tmp/ansible/ansible-repos/pkgs.json)
 
 TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
-changed: [iocage_05] => (item=ansible-repos 15.0-RELEASE)
+ok: [iocage_06] => (item=ansible-repos 15.1-RELEASE)
 
 TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Start: Start jails.] ********************
-ok: [iocage_05]
-
-TASK [vbotka.freebsd.iocage_template : Commands: Execute commands.] ************
-ok: [iocage_05] => (item=ansible-repos > mkdir -p /usr/local/git)
-ok: [iocage_05] => (item=ansible-repos > chown -R git_daemon:git_daemon /usr/local/git)
-ok: [iocage_05] => (item=ansible-repos > chmod -R 755 /usr/local/git)
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Rcconf: Configure /etc/rc.conf] *********
-changed: [iocage_05] => (item=ansible-repos git_daemon_enable YES)
-changed: [iocage_05] => (item=ansible-repos git_daemon_directory /usr/local/git)
-changed: [iocage_05] => (item=ansible-repos git_daemon_flags --syslog --base-path=/usr/local/git --export-all --reuseaddr --detach)
+changed: [iocage_06] => (item=ansible-repos git_daemon_enable YES)
+changed: [iocage_06] => (item=ansible-repos git_daemon_directory /usr/local/git)
+changed: [iocage_06] => (item=ansible-repos git_daemon_flags --syslog --base-path=/usr/local/git --export-all --reuseaddr --detach)
+
+TASK [vbotka.freebsd.iocage_template : Commands: Execute commands.] ************
+ok: [iocage_06] => (item=ansible-repos > mkdir -p /usr/local/git)
+ok: [iocage_06] => (item=ansible-repos > chown -R git_daemon:git_daemon /usr/local/git)
+ok: [iocage_06] => (item=ansible-repos > chmod -R 755 /usr/local/git)
 
 TASK [vbotka.freebsd.iocage_template : Stop: Get iocage list of jails.] ********
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Stop: Stop jails.] **********************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
-ok: [iocage_05] => (item=ansible-repos)
+ok: [iocage_06] => (item=ansible-repos)
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=13   changed=2    unreachable=0    failed=0    skipped=34   rescued=0    ignored=0   
+iocage_06                  : ok=13   changed=1    unreachable=0    failed=0    skipped=34   rescued=0    ignored=0   
 
