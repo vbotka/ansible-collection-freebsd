@@ -49,7 +49,7 @@ Tree
   │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
-  │   └── 05_iocage.yml
+  │   └── 06_iocage.yml
   ├── iocage.ini
   ├── pb-logclient-test.yml
   └── pb-logserver-test.yml
@@ -106,7 +106,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/05_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml
    :caption:
 
@@ -150,7 +150,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -l
+   shell > ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh

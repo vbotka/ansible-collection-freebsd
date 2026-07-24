@@ -1,9 +1,5 @@
 @all:
   |--@ungrouped:
-  |--@state_down:
-  |  |--ansible-pull-syslogng-client
-  |  |--ansible-pull-syslogng-server
-  |  |--ansible-pull-test
   |--@state_up:
   |  |--bar
   |  |--baz
@@ -14,7 +10,7 @@
   |  |--repos_devel
   |  |--www_01
   |  |--www_02
-  |--@vmm_iocage_05:
+  |--@vmm_iocage_06:
   |  |--bar
   |  |--baz
   |  |--foo
