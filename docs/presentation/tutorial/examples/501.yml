@@ -1,0 +1,13 @@
+501:
+  example: '501'
+  name: iocage host
+  case: |
+    Configure iocage host.
+  requirements:
+    - role ``vbotka.freebsd.iocage``
+    - role ``vbotka.freebsd.network``
+    - role ``vbotka.freebsd.pf``
+    - role ``vbotka.freebsd.postinstall``
+    - role ``vbotka.freebsd.zfs``
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/501
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/501/example.html

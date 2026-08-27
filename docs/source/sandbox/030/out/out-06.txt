@@ -1,0 +1,148 @@
+
+PLAY [Get custom facts] ********************************************************
+
+TASK [Get custom facts] ********************************************************
+ok: [iocage_06]
+
+TASK [Debug] *******************************************************************
+ok: [iocage_06] => 
+    ansible_local.iocage:
+        jails: |-
+            +-----+------+------+-------+------+---------+-----+-----+----------+----------+
+            | JID | NAME | BOOT | STATE | TYPE | RELEASE | IP4 | IP6 | TEMPLATE | BASEJAIL |
+            +=====+======+======+=======+======+=========+=====+=====+==========+==========+
+            +-----+------+------+-------+------+---------+-----+-----+----------+----------+
+        plugins: |-
+            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+            | JID | NAME | BOOT | STATE | TYPE | RELEASE | IP4 | IP6 | TEMPLATE | PORTAL | DOC_URL |
+            +=====+======+======+=======+======+=========+=====+=====+==========+========+=========+
+            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+        releases: |-
+            15.0-RELEASE
+            15.1-RELEASE
+        templates: |-
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | JID  |          NAME           | BOOT | STATE |   TYPE   |     RELEASE     |          IP4          | IP6 | TEMPLATE | BASEJAIL |
+            +======+=========================+======+=======+==========+=================+=======================+=====+==========+==========+
+            | None | ansible-client          | off  | down  | template | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | None | ansible-init            | off  | down  | template | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | None | ansible-nginx           | off  | down  | template | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | None | ansible-pkg-repo        | off  | down  | template | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | None | ansible-repos           | off  | down  | template | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | None | ansible-syslogng-client | off  | down  | template | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+            | None | ansible-syslogng-server | off  | down  | template | 15.1-RELEASE-p1 | vnet0|172.16.99.41/24 | -   | -        | no       |
+            +------+-------------------------+------+-------+----------+-----------------+-----------------------+-----+----------+----------+
+
+TASK [Debug] *******************************************************************
+ok: [iocage_06] => 
+    ansible_local.iocage | vbotka.freebsd.iocage:
+        jails: {}
+        plugins: {}
+        releases:
+        - 15.0-RELEASE
+        - 15.1-RELEASE
+        templates:
+            ansible-client:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+            ansible-init:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+            ansible-nginx:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+            ansible-pkg-repo:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+            ansible-repos:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+            ansible-syslogng-client:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+            ansible-syslogng-server:
+                basejail: 'no'
+                boot: 'off'
+                ip4: 172.16.99.41
+                ip4_dict:
+                    ip4:
+                    -   ifc: vnet0
+                        ip: 172.16.99.41
+                        mask: '24'
+                    msg: ''
+                ip6: '-'
+                jid: None
+                release: 15.1-RELEASE-p1
+                state: down
+                template: '-'
+                type: template
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

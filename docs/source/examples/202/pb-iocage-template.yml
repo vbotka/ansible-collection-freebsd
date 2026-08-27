@@ -1,0 +1,25 @@
+- name: Add iocage_01 to the group iocage.
+  hosts: iocage
+
+  tasks:
+
+    - name: Add iocage_01 to the group iocage.
+      run_once: true
+      ansible.builtin.add_host:
+        name: iocage_01
+        groups: iocage
+        ansible_host: 10.1.0.18
+        ansible_user: admin
+        ansible_become: true
+        ansible_python_interpreter: auto_silent
+
+- name: Set inventory_dir.
+  hosts: iocage
+
+  tasks:
+
+    - ansible.builtin.set_fact:
+        inventory_dir: "{{ playbook_dir }}"
+
+- name: Create Ansible client templates in the group iocage.
+  import_playbook: vbotka.freebsd.pb_iocage_template.yml

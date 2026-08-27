@@ -1,0 +1,10 @@
+{
+    "pkgs": [
+	"git",
+        "python312",
+	"python",
+	"python3",
+        "py312-ansible",
+        "sudo"
+        ]
+}

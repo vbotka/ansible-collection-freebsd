@@ -1,0 +1,36 @@
+fzfs_enable: true
+
+fzfs_pools:
+  zroot:
+    vdevs:
+      - disks: [/dev/ada0p4, /dev/ada1p4]
+  iocage:
+    vdevs:
+      - disks: [/dev/ada2, /dev/ada3]
+
+fzfs_manage:
+  - name: zroot/export
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /export
+  - name: iocage/ports
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/ports
+  - name: iocage/src
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/src
+  - name: iocage/obj
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/obj
+  - name: iocage/poudriere
+    state: present
+    extra_zfs_properties:
+      compression: 'on'
+      mountpoint: /usr/local/poudriere

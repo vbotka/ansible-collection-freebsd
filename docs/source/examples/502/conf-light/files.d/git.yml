@@ -1,0 +1,5 @@
+git:
+  path: /etc/rc.conf
+  sysrc: "{{ cl_git_daemon_dict }}"
+  handlers:
+    - restart git_daemon

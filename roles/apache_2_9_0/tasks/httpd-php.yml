@@ -1,0 +1,17 @@
+---
+- name: "Httpd-php: Config PHP in {{ apache_conf_path ~ '/Includes/' }}"
+  notify: "reload {{ ansible_role_name }}"
+  ansible.builtin.blockinfile:
+    dest: "{{ apache_conf_path }}/Includes/{{ item.includefile }}"
+    block: "{{ item.block }}"
+    owner: root
+    group: www
+    mode: "0640"
+    create: true
+    backup: "{{ apache_backup_conf }}"
+    state: "{{ item.state }}"
+  loop: "{{ apache_php_blocks }}"
+  loop_control:
+    label: "{{ item.includefile }} {{ item.state }}"
+
+# EOF

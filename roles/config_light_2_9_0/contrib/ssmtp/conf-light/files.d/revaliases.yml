@@ -1,0 +1,9 @@
+---
+revaliases:
+  path: /etc/ssmtp/revaliases
+  force: true
+  owner: root
+  group: mail
+  mode: u=rw,g=r
+  template:
+    path: revaliases.j2

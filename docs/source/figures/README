@@ -1,0 +1,12 @@
+# Convert fig to svg
+
+fig2dev -L svg pb-init.fig pb-init.svg
+
+
+# Use it in RST
+
+.. figure:: figures/pb-init.svg
+   :alt: Playbook pb-init.yml Workflow
+   :align: center
+   :width: 80%
+

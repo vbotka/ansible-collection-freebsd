@@ -1,0 +1,36 @@
+---
+- name: "Files-patch: Debug patch in cl_files.values() cl_debug={{ cl_debug }}"
+  when: cl_debug | bool
+  ansible.builtin.debug:
+    msg: "{{ cl_files.values() | selectattr('patch', 'defined') | list }}"
+
+- name: "Files-patch: Patch."
+  register: cl_results_patch
+  notify: "{{ item.handlers | d(omit) }}"
+  ansible.posix.patch:
+    dest: "{{ item.path }}"
+    src: "{{ item.patch.src }}"
+    basedir: "{{ item.patch.basedir | d(omit) }}"
+    binary: "{{ item.patch.binary | d(omit) }}"
+    ignore_whitespace: "{{ item.patch.ignore_whitespace | d(omit) }}"
+    remote_src: "{{ item.patch.remote_src | d(omit) }}"
+    state: "{{ item.patch.state | d(omit) }}"
+    strip: "{{ item.patch.strip | d(omit) }}"
+    # backup: "{{ cl_backup }}"
+  loop: "{{ cl_files.values() | selectattr('patch', 'defined') | list }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+- name: Debug
+  when: cl_debug | bool
+  block:
+
+    - name: "Files-patch: Debug cl_results_patch cl_debug={{ cl_debug }}"
+      ansible.builtin.debug:
+        var: cl_results_patch
+
+    - name: "Files-patch: Debug changed patch patch cl_debug={{ cl_debug }}"
+      ansible.builtin.debug:
+        msg: "{{ cl_results_patch | d([]) | json_query('[?changed].invocation.module_args.path') }}"
+
+# EOF

@@ -1,0 +1,475 @@
+
+PLAY [Test module vbotka.freebsd.service. Set dictionary jid_rcvar.] ***********
+
+TASK [Get iocage list of jails.] ***********************************************
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    iocage_list_out:
+        ansible_facts:
+            discovered_interpreter_python: /usr/local/bin/python3.12
+        changed: false
+        changed_when_result: false
+        cmd:
+        - iocage
+        - list
+        - --long
+        delta: '0:00:00.634091'
+        end: '2026-08-27 11:29:53.512024'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2026-08-27 11:29:52.877933'
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | JID  |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
+            +======+===============+======+=======+======+=================+=======================+=====+==================+==========+
+            | None | 09caf271      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -                | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | None | 1718af82      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -                | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 22   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 21   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 18   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 19   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 28   | test-151      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.189 | -   | ansible-client   | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 27   | test-152      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.188 | -   | ansible-client   | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 26   | test-153      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.187 | -   | ansible-client   | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 23   | www-01        | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.116 | -   | ansible-init     | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+            | 24   | www-02        | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.147 | -   | ansible-init     | no       |
+            +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        stdout_lines:
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| JID  |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          |
+            IP6 |     TEMPLATE     | BASEJAIL |'
+        - +======+===============+======+=======+======+=================+=======================+=====+==================+==========+
+        - '| None | 09caf271      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not
+            running)    | -   | -                | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| None | 1718af82      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not
+            running)    | -   | -                | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 22   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24
+            | -   | ansible-init     | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 21   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24
+            | -   | ansible-pkg-repo | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 18   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24
+            | -   | ansible-repos    | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 19   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24
+            | -   | ansible-repos    | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 28   | test-151      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.189
+            | -   | ansible-client   | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 27   | test-152      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.188
+            | -   | ansible-client   | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 26   | test-153      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.187
+            | -   | ansible-client   | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 23   | www-01        | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.116
+            | -   | ansible-init     | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+        - '| 24   | www-02        | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.147
+            | -   | ansible-init     | no       |'
+        - +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    jails | to_yaml: |-
+        09caf271:
+          basejail: 'no'
+          boot: 'off'
+          ip4: '-'
+          ip4_dict:
+            ip4: []
+            msg: DHCP (not running)
+          ip6: '-'
+          jid: None
+          release: 15.1-RELEASE-p1
+          state: down
+          template: '-'
+          type: jail
+        1718af82:
+          basejail: 'no'
+          boot: 'off'
+          ip4: '-'
+          ip4_dict:
+            ip4: []
+            msg: DHCP (not running)
+          ip6: '-'
+          jid: None
+          release: 15.1-RELEASE-p1
+          state: down
+          template: '-'
+          type: jail
+        log-server-01:
+          basejail: 'no'
+          boot: 'on'
+          ip4: 172.16.99.10
+          ip4_dict:
+            ip4:
+            - {ifc: vnet0, ip: 172.16.99.10, mask: '24'}
+            msg: ''
+          ip6: '-'
+          jid: '22'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-init
+          type: jail
+        pkg-repo:
+          basejail: 'no'
+          boot: 'on'
+          ip4: 172.16.99.23
+          ip4_dict:
+            ip4:
+            - {ifc: vnet0, ip: 172.16.99.23, mask: '24'}
+            msg: ''
+          ip6: '-'
+          jid: '21'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-pkg-repo
+          type: jail
+        repos:
+          basejail: 'no'
+          boot: 'on'
+          ip4: 172.16.99.21
+          ip4_dict:
+            ip4:
+            - {ifc: vnet0, ip: 172.16.99.21, mask: '24'}
+            msg: ''
+          ip6: '-'
+          jid: '18'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-repos
+          type: jail
+        repos-devel:
+          basejail: 'no'
+          boot: 'on'
+          ip4: 172.16.99.22
+          ip4_dict:
+            ip4:
+            - {ifc: vnet0, ip: 172.16.99.22, mask: '24'}
+            msg: ''
+          ip6: '-'
+          jid: '19'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-repos
+          type: jail
+        test-151:
+          basejail: 'no'
+          boot: 'off'
+          ip4: 172.16.99.189
+          ip4_dict:
+            ip4:
+            - {ifc: epair0b, ip: 172.16.99.189, mask: '-'}
+            msg: ''
+          ip6: '-'
+          jid: '28'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-client
+          type: jail
+        test-152:
+          basejail: 'no'
+          boot: 'off'
+          ip4: 172.16.99.188
+          ip4_dict:
+            ip4:
+            - {ifc: epair0b, ip: 172.16.99.188, mask: '-'}
+            msg: ''
+          ip6: '-'
+          jid: '27'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-client
+          type: jail
+        test-153:
+          basejail: 'no'
+          boot: 'off'
+          ip4: 172.16.99.187
+          ip4_dict:
+            ip4:
+            - {ifc: epair0b, ip: 172.16.99.187, mask: '-'}
+            msg: ''
+          ip6: '-'
+          jid: '26'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-client
+          type: jail
+        www-01:
+          basejail: 'no'
+          boot: 'on'
+          ip4: 172.16.99.116
+          ip4_dict:
+            ip4:
+            - {ifc: epair0b, ip: 172.16.99.116, mask: '-'}
+            msg: ''
+          ip6: '-'
+          jid: '23'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-init
+          type: jail
+        www-02:
+          basejail: 'no'
+          boot: 'on'
+          ip4: 172.16.99.147
+          ip4_dict:
+            ip4:
+            - {ifc: epair0b, ip: 172.16.99.147, mask: '-'}
+            msg: ''
+          ip6: '-'
+          jid: '24'
+          release: 15.1-RELEASE-p1
+          state: up
+          template: ansible-init
+          type: jail
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    jids | to_yaml: |-
+        ['22', '21', '18', '19', '28', '27', '26', '23', '24']
+
+TASK [Jails service sshd rcvar.] ***********************************************
+ok: [iocage_06] => (item=22)
+ok: [iocage_06] => (item=21)
+ok: [iocage_06] => (item=18)
+ok: [iocage_06] => (item=19)
+ok: [iocage_06] => (item=28)
+ok: [iocage_06] => (item=27)
+ok: [iocage_06] => (item=26)
+ok: [iocage_06] => (item=23)
+ok: [iocage_06] => (item=24)
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    service_out:
+        changed: false
+        failed: false
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '22'
+            rc: 0
+            rcvar:
+                sshd_enable: 'NO'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="NO"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="NO"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '21'
+            rc: 0
+            rcvar:
+                sshd_enable: 'NO'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="NO"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="NO"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '18'
+            rc: 0
+            rcvar:
+                sshd_enable: 'NO'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="NO"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="NO"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '19'
+            rc: 0
+            rcvar:
+                sshd_enable: 'NO'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="NO"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="NO"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '28'
+            rc: 0
+            rcvar:
+                sshd_enable: 'YES'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="YES"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="YES"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '27'
+            rc: 0
+            rcvar:
+                sshd_enable: 'YES'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="YES"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="YES"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '26'
+            rc: 0
+            rcvar:
+                sshd_enable: 'YES'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="YES"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="YES"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '23'
+            rc: 0
+            rcvar:
+                sshd_enable: 'NO'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="NO"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="NO"
+            - '#   (default: "")'
+            - ''
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            item: '24'
+            rc: 0
+            rcvar:
+                sshd_enable: 'NO'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                # sshd : Secure Shell Daemon
+                #
+                sshd_enable="NO"
+                #   (default: "")
+            stdout_lines:
+            - '# sshd : Secure Shell Daemon'
+            - '#'
+            - sshd_enable="NO"
+            - '#   (default: "")'
+            - ''
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    jid_rcvar:
+        '18':
+            sshd_enable: 'NO'
+        '19':
+            sshd_enable: 'NO'
+        '21':
+            sshd_enable: 'NO'
+        '22':
+            sshd_enable: 'NO'
+        '23':
+            sshd_enable: 'NO'
+        '24':
+            sshd_enable: 'NO'
+        '26':
+            sshd_enable: 'YES'
+        '27':
+            sshd_enable: 'YES'
+        '28':
+            sshd_enable: 'YES'
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

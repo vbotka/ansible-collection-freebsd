@@ -1,0 +1,10 @@
+502:
+  example: '502'
+  name: Branch server
+  case: |
+    Install and configure syslog-ng and git servers in the branch-server.
+  requirements:
+    - role ``vbotka.freebsd.config_light``
+    - role ``vbotka.freebsd.postinstall``
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/502
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/502/example.html

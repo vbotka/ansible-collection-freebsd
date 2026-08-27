@@ -1,0 +1,192 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_05]
+
+TASK [Reject jails with empty notes] *******************************************
+ok: [iocage_05]
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        iocage clone ansible-syslogng --newmac --count 3 bpf=1 dhcp=1 notes="vmm=iocage_05 swarm=sw_01" type=jail vnet=1
+
+TASK [Create swarms] ***********************************************************
+ok: [iocage_05] => (item=sw_01)
+
+TASK [Debug create swarms debug=true] ******************************************
+ok: [iocage_05] => 
+    out:
+        changed: false
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            cmd:
+            - iocage
+            - clone
+            - ansible-syslogng
+            - --newmac
+            - --count
+            - '3'
+            - bpf=1
+            - dhcp=1
+            - notes=vmm=iocage_05 swarm=sw_01
+            - type=jail
+            - vnet=1
+            delta: '0:00:00.850221'
+            end: '2026-05-10 11:40:10.640831'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage clone ansible-syslogng --newmac --count 3 bpf=1 dhcp=1 notes="vmm=iocage_05 swarm=sw_01" type=jail vnet=1
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    plugin: ansible-syslogng
+            msg: ''
+            rc: 0
+            start: '2026-05-10 11:40:09.790610'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                f4458363-ba6b-4afd-9d9b-e634863a27d6 successfully cloned!
+                c31e173e-b36d-49ee-9efa-e6a8bc0338fa successfully cloned!
+                850e6bf1-5300-47f9-8cbc-f451cfa3560f successfully cloned!
+            stdout_lines:
+            - f4458363-ba6b-4afd-9d9b-e634863a27d6 successfully cloned!
+            - c31e173e-b36d-49ee-9efa-e6a8bc0338fa successfully cloned!
+            - 850e6bf1-5300-47f9-8cbc-f451cfa3560f successfully cloned!
+        skipped: false
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_05]
+
+TASK [Reject jails with empty notes] *******************************************
+ok: [iocage_05]
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        iocage start f4458363-ba6b-4afd-9d9b-e634863a27d6 c31e173e-b36d-49ee-9efa-e6a8bc0338fa 850e6bf1-5300-47f9-8cbc-f451cfa3560f
+
+TASK [Start swarms] ************************************************************
+ok: [iocage_05] => (item=sw_01)
+
+TASK [Debug start swarms debug=true] *******************************************
+ok: [iocage_05] => 
+    out:
+        changed: false
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            cmd:
+            - iocage
+            - start
+            - f4458363-ba6b-4afd-9d9b-e634863a27d6
+            - c31e173e-b36d-49ee-9efa-e6a8bc0338fa
+            - 850e6bf1-5300-47f9-8cbc-f451cfa3560f
+            delta: '0:00:07.435921'
+            end: '2026-05-10 11:40:24.526438'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage start f4458363-ba6b-4afd-9d9b-e634863a27d6 c31e173e-b36d-49ee-9efa-e6a8bc0338fa 850e6bf1-5300-47f9-8cbc-f451cfa3560f
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    plugin: ansible-syslogng
+            msg: ''
+            rc: 0
+            start: '2026-05-10 11:40:17.090517'
+            stderr: |-
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+            stderr_lines:
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            stdout: |-
+                * Starting f4458363-ba6b-4afd-9d9b-e634863a27d6
+                  + Started OK
+                  + Using devfs_ruleset: 1000 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.10.99.191/24
+                * Starting c31e173e-b36d-49ee-9efa-e6a8bc0338fa
+                  + Started OK
+                  + Using devfs_ruleset: 1001 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.10.99.183/24
+                * Starting 850e6bf1-5300-47f9-8cbc-f451cfa3560f
+                  + Started OK
+                  + Using devfs_ruleset: 1002 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.10.99.192/24
+            stdout_lines:
+            - '* Starting f4458363-ba6b-4afd-9d9b-e634863a27d6'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1000 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.10.99.191/24'
+            - '* Starting c31e173e-b36d-49ee-9efa-e6a8bc0338fa'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1001 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.10.99.183/24'
+            - '* Starting 850e6bf1-5300-47f9-8cbc-f451cfa3560f'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1002 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.10.99.192/24'
+        skipped: false
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=10   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

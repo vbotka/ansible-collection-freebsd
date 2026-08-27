@@ -1,0 +1,17 @@
+@all:
+  |--@ungrouped:
+  |--@pull_repos:
+  |  |--repos
+  |  |--repos_devel
+  |--@state_up:
+  |  |--repos
+  |  |--repos_devel
+  |  |--log_server_01
+  |  |--www_02
+  |  |--www_01
+  |--@vmm_iocage_06:
+  |  |--repos
+  |  |--repos_devel
+  |  |--log_server_01
+  |  |--www_02
+  |  |--www_01

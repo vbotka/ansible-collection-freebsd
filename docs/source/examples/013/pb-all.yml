@@ -1,0 +1,16 @@
+- hosts: all
+
+  tasks:
+
+    - debug:
+        msg: |
+          inventory_hostname: {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
+          release: {{ release }}
+          iocage_tags: {{ iocage_tags }}
+
+    - debug:
+        msg: |
+          groups:
+            {{ groups | to_yaml(indent=2) | indent(2) }}
+      run_once: true

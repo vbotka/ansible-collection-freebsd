@@ -1,0 +1,18 @@
+
+PLAY [Install packages.] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [fd032233]
+ok: [bdf104a6]
+ok: [b2b1ef56]
+
+TASK [Install rsnapshot packages.] *********************************************
+changed: [fd032233 -> iocage_04(10.1.0.29)]
+changed: [b2b1ef56 -> iocage_04(10.1.0.29)]
+changed: [bdf104a6 -> iocage_04(10.1.0.29)]
+
+PLAY RECAP *********************************************************************
+b2b1ef56                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+bdf104a6                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+fd032233                   : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

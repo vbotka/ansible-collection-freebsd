@@ -1,0 +1,6 @@
+- hosts: region_US
+
+  tasks:
+
+    - debug:
+        var: ansible_host

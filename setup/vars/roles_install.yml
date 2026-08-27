@@ -1,0 +1,17 @@
+---
+roles_install:
+  - apache
+  - certificate
+  - config_light
+  - custom_image
+  - dhcp
+  - iocage
+  - iocage_template
+  - lib
+  - network
+  - packages
+  - pf
+  - postinstall
+  - poudriere
+  - rsnapshot
+  - zfs

@@ -1,0 +1,10 @@
+---
+# Create plackage lists.
+
+- name: "Pkglists: Create package lists."
+  ansible.builtin.include_tasks: pkglist.yml
+  loop: "{{ poudriere_pkg_arch }}"
+  loop_control:
+    loop_var: pkg_arch
+
+# EOF

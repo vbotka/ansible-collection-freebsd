@@ -1,0 +1,67 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Configure public keys.
+  vars:
+    _act_user: "{{ item.value.act_user | d(act_user) | d('UNDEFINED') }}"
+    _act_pk_dir_default: "{{ lookup('env', 'PWD') }}/files"
+    _act_pk_dir: "{{ act_pk_dir | d(_act_pk_dir_default) }}"
+    _act_pk_path: "{{ _act_pk_dir }}/{{ item.value.act_pk | d(act_pk) }}"
+    _act_pk: "{{ lookup('file', _act_pk_path) }}"
+    _act_pk_valid_regex_default: '^ssh-rsa\s+[A-Za-z0-9+\/]+[=]{0,3}(\s+.+)?\s*$'
+    _act_pk_valid_regex: "{{ act_pk_valid_regex | d(_act_pk_valid_regex_default) }}"
+    _act_pk_valid: "{{ _act_pk | regex_search(_act_pk_valid_regex) | d('', true) }}"
+
+  block:
+
+    - name: "Pk: Debug public key debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        msg: |
+          _act_user: {{ _act_user }}
+          _act_pk_dir_default: {{ _act_pk_dir_default }}
+          _act_pk_dir: {{ _act_pk_dir }}
+          _act_pk_path: {{ _act_pk_path }}
+          _act_pk: {{ _act_pk }}
+          _act_pk_valid_regex: {{ _act_pk_valid_regex }}
+          _act_pk_valid: {{ _act_pk_valid }}
+
+    # TODO: This test fails if there are more keys in the file.
+    - name: "Pk: The keys are valid."
+      ansible.builtin.assert:
+        that: _act_pk_valid | length > 0
+        fail_msg: >
+          [ERR] Invalid key.
+
+    - name: "Pk: Configure public keys."
+      register: out
+      ansible.posix.authorized_key:
+        user: "{{ _act_user }}"
+        path: "{{ freebsd_iocage_mount }}/jails/{{ item.key }}/root/home/{{ _act_user }}/.ssh/authorized_keys"
+        key: "{{ _act_pk }}"
+        exclusive: true
+      loop: "{{ templates | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ _act_user }}"
+
+    - name: "Pk: Debug configure public keys debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Pk: Chown .ssh"
+      register: out
+      changed_when: false
+      vbotka.freebsd.iocage:
+        state: exec
+        name: "{{ item.key }}"
+        cmd: "chown -R {{ _act_user }}:{{ _act_user }} /home/{{ _act_user }}/.ssh"
+      loop: "{{ templates | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ _act_user }}"
+
+    - name: "Pk: Debug chown .ssh debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

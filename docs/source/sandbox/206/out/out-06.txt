@@ -1,0 +1,39 @@
+
+PLAY [swarm_sw_01] *************************************************************
+
+TASK [ansible.builtin.command] *************************************************
+changed: [db4aea34]
+changed: [880dd8cc]
+changed: [test_151]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [880dd8cc] => 
+    msg: |-
+        out.stdout: 880dd8cc
+        ansible_host: 880dd8cc
+        iocage_hooks: ['172.16.99.127']
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
+ok: [test_151] => 
+    msg: |-
+        out.stdout: test-151
+        ansible_host: test_151
+        iocage_hooks: ['-']
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
+ok: [db4aea34] => 
+    msg: |-
+        out.stdout: db4aea34
+        ansible_host: db4aea34
+        iocage_hooks: ['172.16.99.134']
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
+
+PLAY RECAP *********************************************************************
+880dd8cc                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db4aea34                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_151                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

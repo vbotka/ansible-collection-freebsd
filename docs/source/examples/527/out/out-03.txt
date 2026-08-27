@@ -1,0 +1,24 @@
+
+PLAY [Create and start project jails from iocage templates.] *******************
+
+TASK [Setup: Get activated pool.] **********************************************
+ok: [iocage_06]
+
+TASK [Create: Create jails.] ***************************************************
+ok: [iocage_06] => (item=pkg-repo)
+
+TASK [Ai-vars-class: Create ansible init vars dirs.] ***************************
+changed: [iocage_06] => (item=pkg-repo)
+
+TASK [Ai-vars-jail: Create ansible init vars dirs.] ****************************
+ok: [iocage_06] => (item=pkg-repo)
+
+TASK [Properties: Set properties.] *********************************************
+ok: [iocage_06] => (item=pkg-repo)
+
+TASK [Start: Start jails.] *****************************************************
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=6    changed=1    unreachable=0    failed=0    skipped=23   rescued=0    ignored=0   
+

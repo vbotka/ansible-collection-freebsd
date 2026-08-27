@@ -1,0 +1,121 @@
+#!/bin/sh
+# {{ ansible_managed }}
+
+version="1.1.0"
+ifname=$1
+cmd=$2
+# TODO: test prams
+
+{% if wpacli_action_script_log_to_file %}
+logtofile="1"
+{% else %}
+logtofile="0"
+{% endif %}
+logfile="{{ wpacli_action_script_logfile }}"
+
+{% if wpacli_action_script_ntp_set %}
+ntp_set="1"
+{% else %}
+ntp_set="0"
+{% endif %}
+ntp_server="{{ wpacli_action_script_ntp_server }}"
+ntpdate_flags="{{ wpacli_action_script_ntpdate_flags }}"
+
+# functions
+log() {
+    if [ "$logtofile" = "1" ]; then
+	my_date=`date +"%b %d %T"`
+	printf "$my_date $ifname: $cmd: $message \n" >> $logfile
+    fi
+}
+
+routing_restart() {
+    cmd="/etc/rc.d/routing restart"
+    message=`$cmd 2>&1`
+    log
+}
+
+dhclient_forcestart() {
+    cmd="/etc/rc.d/dhclient forcestart $ifname"  # NOTE 1
+    message=`$cmd 2>&1`
+    log
+}
+
+dhclient_forcestop() {
+    cmd="/etc/rc.d/dhclient forcestop $ifname"
+    message=`$cmd 2>&1`
+    log
+}
+
+ntpd_stop() {
+    cmd="/etc/rc.d/ntpd stop"
+    message=`$cmd 2>&1`
+    log
+}
+
+ntpd_start() {
+    cmd="/etc/rc.d/ntpd start"
+    message=`$cmd 2>&1`
+    log
+}
+
+ntpdate_settimeofday() {
+    cmd="/usr/sbin/ntpdate $ntpdate_flags $ntp_server"
+    message=`$cmd 2>&1`
+    log
+}
+
+log_SSID() {
+    if [ "$logtofile" = "1" ]; then
+	ssid=`wpa_cli -i$ifname status | grep ^ssid= | cut -f2- -d=`
+	my_date=`date +"%b %d %T"`
+	printf "$my_date $ifname: SSID: $ssid \n" >> $logfile
+    fi
+}
+
+# log interface and command
+if [ "$logtofile" = "1" ]; then
+    my_date=`date +"%b %d %T"`
+    printf "$my_date $ifname: $cmd \n" >> $logfile
+fi
+
+# wpa_supplicant reports connection to SSID. Start dhclient and
+# restart routing
+if [ "$cmd" = "CONNECTED" ]; then
+    log_SSID
+    dhclient_forcestart
+    routing_restart
+    if [ "$ntp_set" = "1" ]; then  # NOTE 3
+	ntpd_stop
+	ntpdate_settimeofday
+	ntpd_start
+    fi
+fi
+
+# wpa_supplicant reports disconnection from SSID. Stop dhclient and
+# restart routing
+if [ "$cmd" = "DISCONNECTED" ]; then
+    dhclient_forcestop
+    routing_restart
+fi
+
+exit 0
+
+# NOTE 1
+# We don't want /etc/network.subr to handle DHCP. Therefor we instruct
+# ifconfig, in rc.conf, to configure WPA only
+#      ifconfig_wlan1="WPA"
+# When we use "/etc/rc.d/dhclient start wlan1" it complains
+#      'wlan1' is not a DHCP-enabled interface
+# Hence we use /etc/rc.d/dhclient forcestart $ifname in this script.
+
+# NOTE 2
+# Example how to activate the script
+# wpa_cli -B -i wlan1 -a /root/bin/wpa_action.sh
+
+# NOTE 3
+# In a wifi-only system, /etc/rc.d/ntpdate will time-out if it
+# executes before /etc/rc.d/wpa_supplicant connects to the network
+# (See rcorder /etc/rc.d/*)
+
+# EOF

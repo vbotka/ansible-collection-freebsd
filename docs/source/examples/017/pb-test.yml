@@ -1,0 +1,13 @@
+- hosts: test
+
+  tasks:
+
+    - debug:
+        var: iocage_ip4
+
+    - debug:
+        msg: |
+          {% for group in groups %}
+          {{ group }}: {{ groups[group] }}
+          {% endfor %}
+      run_once: true

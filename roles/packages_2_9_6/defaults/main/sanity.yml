@@ -1,0 +1,4 @@
+---
+# Sanity. Various tests.
+pkg_sanity: true
+pkg_sanity_version_community_general: true

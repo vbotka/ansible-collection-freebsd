@@ -1,0 +1,10 @@
+---
+- name: Fetch packages to repo.
+  hosts: fetch_pkg_repo
+
+  tasks:
+
+    - name: Fetch packages to repo.
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.packages
+        tasks_from: pkg-fetch.yml

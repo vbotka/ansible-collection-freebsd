@@ -1,0 +1,378 @@
+
+PLAY [Iocage fetch releases, create basejail, and clone jails.] ****************
+
+TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
+ok: [iocage_06] => (item=iocage fetch --release 15.0-RELEASE)
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage/tasks/runner.yml:41:7
+
+39         success_msg: "[OK]  All commands are iocage."
+40
+41     - name: "Runner: Run listed commands."
+         ^ column 7
+
+failed: [iocage_06] (item=iocage create --release 15.1-RELEASE --name ansible-client) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - create
+    - --release
+    - 15.1-RELEASE
+    - --name
+    - ansible-client
+    delta: '0:00:00.595999'
+    end: '2026-08-27 10:22:19.976500'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage create --release 15.1-RELEASE --name ansible-client
+        creates: /zroot/iocage/jails/ansible-client
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:19.380501'
+    stderr: 'Jail: ansible-client already exists!'
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+changed: [iocage_06] => (item=iocage set vnet=1 ansible-client)
+changed: [iocage_06] => (item=iocage set defaultrouter=172.16.99.1 ansible-client)
+changed: [iocage_06] => (item=iocage set notes=vmm=iocage_06 ansible-client)
+changed: [iocage_06] => (item=iocage set ip4_addr=vnet0|172.16.99.250/24 ansible-client)
+failed: [iocage_06] (item=iocage clone ansible-client --name test_101) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - clone
+    - ansible-client
+    - --name
+    - test_101
+    delta: '0:00:00.642227'
+    end: '2026-08-27 10:22:27.329617'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage clone ansible-client --name test_101
+        creates: /zroot/iocage/jails/test_101
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:26.687390'
+    stderr: |-
+        You cannot clone a template, use create -t instead.
+        cannot open 'zroot/iocage/jails/ansible-client': dataset does not exist
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage clone ansible-client --name test_102) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - clone
+    - ansible-client
+    - --name
+    - test_102
+    delta: '0:00:00.648395'
+    end: '2026-08-27 10:22:28.528229'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage clone ansible-client --name test_102
+        creates: /zroot/iocage/jails/test_102
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:27.879834'
+    stderr: |-
+        You cannot clone a template, use create -t instead.
+        cannot open 'zroot/iocage/jails/ansible-client': dataset does not exist
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage clone ansible-client --name test_103) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - clone
+    - ansible-client
+    - --name
+    - test_103
+    delta: '0:00:00.673940'
+    end: '2026-08-27 10:22:30.133409'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage clone ansible-client --name test_103
+        creates: /zroot/iocage/jails/test_103
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:29.459469'
+    stderr: |-
+        You cannot clone a template, use create -t instead.
+        cannot open 'zroot/iocage/jails/ansible-client': dataset does not exist
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set vnet=1 test_101) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - vnet=1
+    - test_101
+    delta: '0:00:00.579991'
+    end: '2026-08-27 10:22:31.450329'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set vnet=1 test_101
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:30.870338'
+    stderr: jail 'test_101' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set defaultrouter=172.16.99.1 test_101) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - defaultrouter=172.16.99.1
+    - test_101
+    delta: '0:00:00.572987'
+    end: '2026-08-27 10:22:34.079646'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set defaultrouter=172.16.99.1 test_101
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:33.506659'
+    stderr: jail 'test_101' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set notes=vmm=iocage_06 test_101) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - notes=vmm=iocage_06
+    - test_101
+    delta: '0:00:00.615764'
+    end: '2026-08-27 10:22:35.747397'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set notes=vmm=iocage_06 test_101
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:35.131633'
+    stderr: jail 'test_101' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set ip4_addr=vnet0|172.16.99.251/24 test_101) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - ip4_addr=vnet0|172.16.99.251/24
+    - test_101
+    delta: '0:00:00.575786'
+    end: '2026-08-27 10:22:37.128595'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set ip4_addr=vnet0|172.16.99.251/24 test_101
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:36.552809'
+    stderr: jail 'test_101' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set vnet=1 test_102) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - vnet=1
+    - test_102
+    delta: '0:00:00.605043'
+    end: '2026-08-27 10:22:38.509560'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set vnet=1 test_102
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:37.904517'
+    stderr: jail 'test_102' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set defaultrouter=172.16.99.1 test_102) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - defaultrouter=172.16.99.1
+    - test_102
+    delta: '0:00:00.546781'
+    end: '2026-08-27 10:22:39.872327'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set defaultrouter=172.16.99.1 test_102
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:39.325546'
+    stderr: jail 'test_102' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set notes=vmm=iocage_06 test_102) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - notes=vmm=iocage_06
+    - test_102
+    delta: '0:00:00.545809'
+    end: '2026-08-27 10:22:41.221264'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set notes=vmm=iocage_06 test_102
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:40.675455'
+    stderr: jail 'test_102' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set ip4_addr=vnet0|172.16.99.252/24 test_102) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - ip4_addr=vnet0|172.16.99.252/24
+    - test_102
+    delta: '0:00:00.581825'
+    end: '2026-08-27 10:22:42.407766'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set ip4_addr=vnet0|172.16.99.252/24 test_102
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:41.825941'
+    stderr: jail 'test_102' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set vnet=1 test_103) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - vnet=1
+    - test_103
+    delta: '0:00:00.537069'
+    end: '2026-08-27 10:22:43.665223'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set vnet=1 test_103
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:43.128154'
+    stderr: jail 'test_103' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set defaultrouter=172.16.99.1 test_103) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - defaultrouter=172.16.99.1
+    - test_103
+    delta: '0:00:00.588260'
+    end: '2026-08-27 10:22:45.056431'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set defaultrouter=172.16.99.1 test_103
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:44.468171'
+    stderr: jail 'test_103' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set notes=vmm=iocage_06 test_103) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - notes=vmm=iocage_06
+    - test_103
+    delta: '0:00:00.605862'
+    end: '2026-08-27 10:22:46.387588'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set notes=vmm=iocage_06 test_103
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:45.781726'
+    stderr: jail 'test_103' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+failed: [iocage_06] (item=iocage set ip4_addr=vnet0|172.16.99.253/24 test_103) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - set
+    - ip4_addr=vnet0|172.16.99.253/24
+    - test_103
+    delta: '0:00:00.615935'
+    end: '2026-08-27 10:22:47.820502'
+    failed_when_result: true
+    failed_when_suppressed_exception: (traceback unavailable)
+    item:
+        cmd: iocage set ip4_addr=vnet0|172.16.99.253/24 test_103
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 10:22:47.204567'
+    stderr: jail 'test_103' not found!
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=2    rescued=1    ignored=0   
+

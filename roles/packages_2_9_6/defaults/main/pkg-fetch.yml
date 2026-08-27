@@ -1,0 +1,17 @@
+---
+# Fetch packages.
+pkg_fetch: false
+
+# Fetch all lists from pkg_dict
+pkg_fetch_dict_all: false
+
+# Fetch selected lists from pkg_dict
+pkg_fetch_dict_select: []
+
+# Fetch list of packages
+pkg_fetch_list: []
+
+pkg_fetch_dir: /usr/local/repo
+pkg_fetch_dir_owner: root
+pkg_fetch_dir_group: wheel
+pkg_fetch_dir_mode: '0755'

@@ -1,0 +1,38 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [syslog-ng] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: syslog-ng
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [ansible-zero] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: ansible-zero
+        iocage_classes: []
+
+        iocage_tags: {}
+ok: [test_5] => 
+    msg: |-
+        ansible_host: -
+        iocage_properties.host_hostuuid: test_5
+        iocage_classes: []
+
+        iocage_tags: {}
+
+TASK [debug] *******************************************************************
+ok: [ansible-zero] => 
+    msg: |-
+        all: ['ansible-zero', 'syslog-ng', 'test_5']
+        ungrouped: []
+        state_down: ['ansible-zero', 'syslog-ng', 'test_5']
+
+PLAY RECAP *********************************************************************
+ansible-zero               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+syslog-ng                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_5                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

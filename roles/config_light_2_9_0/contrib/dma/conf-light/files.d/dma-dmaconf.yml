@@ -1,0 +1,8 @@
+---
+dma_dmaconf:
+  path: /usr/local/etc/dma/dma.conf
+  create: true
+  owner: root
+  group: mail
+  mode: "0644"
+  lines: "{{ cl_dma_dmaconf_lines }}"

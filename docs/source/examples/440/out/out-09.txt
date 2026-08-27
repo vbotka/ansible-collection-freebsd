@@ -1,0 +1,35 @@
+Status: Enabled for 0 days 00:30:26           Debug: Urgent
+
+Interface Stats for wlan0             IPv4             IPv6
+  Bytes In                               0                0
+  Bytes Out                              0                0
+  Packets In
+    Passed                            8733                0
+    Blocked                             34                0
+  Packets Out
+    Passed                               0                0
+    Blocked                            184                0
+
+State Table                          Total             Rate
+  current entries                       46               
+  searches                           13083            7.2/s
+  inserts                             1154            0.6/s
+  removals                            1108            0.6/s
+Counters
+  match                               1192            0.7/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                              0            0.0/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  map-failed                             0            0.0/s
+  translate                              0            0.0/s

@@ -1,0 +1,10 @@
+---
+cimage_customize:
+  loaderconf: "{{ cimage_loaderconf }}"
+  wpasupconf: "{{ cimage_wpasupconf }}"
+  rcconf: "{{ cimage_rcconf }}"
+  postinstall: "{{ cimage_postinstall }}"
+
+cimage_postinstall: []
+
+# EOF

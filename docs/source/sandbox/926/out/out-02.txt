@@ -1,0 +1,24 @@
+
+PLAY [Test filter yaml_to_nginx] ***********************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    msg: |-
+        worker_processes auto;
+        events {
+            worker_connections 1024;
+        }
+        http {
+            include /etc/nginx/mime.types;
+            server {
+                listen 80;
+                server_name example.com www.example.com;
+                location / {
+                    return 200 'Hello from Crossplane!';
+                }
+            }
+        }
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

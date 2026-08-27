@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+# bsd_cimage_loaderconf_data
+{% for item in cl_loaderconf_data %}
+{{ item }}
+{% endfor %}
+
+# bsd_cimage_loaderconf_sysctl
+{% for item in cl_loaderconf_sysctl %}
+{{ item }}
+{% endfor %}
+
+# bsd_cimage_loaderconf_modules
+{% for item in cl_loaderconf_modules %}
+{{ item }}_load="YES"
+{% endfor %}
+
+# EOF

@@ -1,0 +1,6 @@
+---
+network_subr:
+  path: "{{ bsd_cimage_mount_path }}/etc/network.subr"
+  patch:
+    src: "{{ playbook_dir }}/files/network.subr.patch"
+    basedir: "{{ bsd_cimage_mount_path }}/etc"

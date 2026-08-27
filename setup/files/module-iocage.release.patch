@@ -1,0 +1,189 @@
+diff --git a/setup/distfiles/modules/iocage.py b/setup/distfiles/modules/iocage.py
+index 71d1f73..83b56dd 100644
+--- a/setup/distfiles/modules/iocage.py
++++ b/setup/distfiles/modules/iocage.py
+@@ -34,7 +34,7 @@ DOCUMENTATION = r'''
+ module: iocage
+ short_description: FreeBSD iocage jail handling
+ description:
+-  - The M(iocage) module is wrapper to B(iocage) command.
++  - The M(vbotka.freebsd.iocage) module is wrapper to B(iocage) command.
+ options:
+   state:
+     description:
+@@ -88,7 +88,7 @@ options:
+     type: dict
+   args:
+     description:
+-      - Additional arguments of M(iocage) applied to the O(state). They will be applied
++      - Additional arguments of M(vbotka.freebsd.iocage) applied to the O(state). They will be applied
+         to the sub-command B(create) if the O(state) is V(basejail, thickjail, template, present).
+         If the same Ansible task also fetches a release as apart of the creation
+         the arguments will not be applied to the sub-command B(fetch). Use separate task
+@@ -168,7 +168,7 @@ author:
+ 
+ EXAMPLES = r'''
+ - name: Create Ansible facts iocage_*. This is the default state.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: facts
+ 
+ - name: Display lists of bases, plugins, templates, and jails
+@@ -180,29 +180,29 @@ EXAMPLES = r'''
+       {{ iocage_jails.keys() | list }}
+ 
+ - name: Fetch the remote host's version of base
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: fetched
+ 
+ - name: Fetch base 13.0-RELEASE
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: fetched
+     release: 13.0-RELEASE
+ 
+ - name: Fetch only components base.txz and doc.txz of the base 13.0-RELEASE
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: fetched
+     release: 13.0-RELEASE
+     components: 'base.txz,doc.txz'
+ 
+ - name: Fetch plugin Tarsnap. Keep jails on failure.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: fetched
+     plugin: Tarsnap
+     args: -k
+ 
+ - name: Update or fetch components base.txz and doc.txz of the remote host's release.
+         Fetch plugin Tarsnap. Keep jails on failure.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: fetched
+     bupdate: true
+     components: 'base.txz,doc.txz'
+@@ -210,53 +210,53 @@ EXAMPLES = r'''
+     args: -k
+ 
+ - name: Update the jail. This will start the jail.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: present
+     bupdate: true
+     name: foo
+ 
+ - name: Start jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: started
+     name: foo
+ 
+ - name: Start all jails
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: started
+     name: ALL
+ 
+ - name: Start all jails with boot=on
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: started
+     args: '--rc'
+ 
+ - name: Stop jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: stopped
+     name: foo
+ 
+ - name: Stop all jails
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: stopped
+     name: ALL
+ 
+ - name: Stop all jails with boot=on
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: stopped
+     args: '--rc'
+ 
+ - name: Restart jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: restarted
+     name: foo
+ 
+ - name: Restart all jails
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: restarted
+     name: ALL
+ 
+ - name: Set IP address of the jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: set
+     name: foo
+     properties:
+@@ -266,7 +266,7 @@ EXAMPLES = r'''
+ 
+ - name: Create jail without cloning, install packages, and set properties.
+         Use release of the remote host.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: present
+     name: foo
+     pkglist: /path/to/pkglist.json
+@@ -278,7 +278,7 @@ EXAMPLES = r'''
+ 
+ - name: Create template, install packages, and set properties.
+         Use release of the remote host.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: template
+     name: tplfoo
+     pkglist: /path/to/pkglist.json
+@@ -290,7 +290,7 @@ EXAMPLES = r'''
+ 
+ - name: Create the jail from the template tplfoo.
+         Install packages and set properties.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: cloned
+     name: foo
+     clone_from: tplfoo
+@@ -303,7 +303,7 @@ EXAMPLES = r'''
+ 
+ - name: Create the jail from the template tplfoo.
+         The name is automatically generated.
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: cloned
+     clone_from: tplfoo
+   register: result
+@@ -312,19 +312,19 @@ EXAMPLES = r'''
+     jname: "{{ result.uuid_short }}"
+ 
+ - name: Execute command in running jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: exec
+     name: foo
+     cmd: service sshd start
+ 
+ - name: Execute pkg command in running jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: pkg
+     name: foo
+     cmd: info
+ 
+ - name: Destroy jail
+-  iocage:
++  vbotka.freebsd.iocage:
+     state: absent
+     name: foo
+ '''

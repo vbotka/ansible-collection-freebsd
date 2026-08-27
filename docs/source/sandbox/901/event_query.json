@@ -1,0 +1,13 @@
+.ansible_facts.iocage_jails[] | {
+    name: .name,
+    canonical_facts: {
+        hostid: .properties.hostid
+    },
+    facts: {
+	device_type: "jail",
+	basejail: .basejail,
+	template: .template,
+	boot: .boot,
+	notes: .properties.notes
+    }
+}

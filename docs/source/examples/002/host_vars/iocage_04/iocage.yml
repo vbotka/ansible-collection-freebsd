@@ -1,0 +1,2 @@
+freebsd_iocage_pool: iocage
+freebsd_iocage_pool_mount: /iocage

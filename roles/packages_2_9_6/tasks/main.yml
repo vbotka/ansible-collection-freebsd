@@ -1,0 +1,70 @@
+---
+# tasks for freebsd_packages
+
+- name: Set pkg_* variables.
+  tags: [pkg_vars, always]
+  ansible.builtin.import_tasks: vars.yml
+
+- name: Sanity tests.
+  when: pkg_sanity | bool
+  tags: pkg_sanity
+  ansible.builtin.import_tasks: sanity.yml
+
+- name: Display variables.
+  when: pkg_debug | bool
+  tags: pkg_debug
+  ansible.builtin.import_tasks: debug.yml
+
+- name: Copy keys.
+  tags: pkg_keys
+  ansible.builtin.import_tasks: keys.yml
+
+- name: Configuration.
+  tags: pkg_conf
+  ansible.builtin.import_tasks: conf.yml
+
+- name: Fetch packages.
+  when: pkg_fetch | bool
+  tags: pkg_fetch
+  ansible.builtin.import_tasks: pkg-fetch.yml
+
+- name: Deinstall packages.
+  when: pkg_list_deinstall | length > 0
+  tags: pkg_delete
+  module_defaults:
+    community.general.pkgng:
+      annotation: "{{ pkg_annotation | d(omit) }}"
+      autoremove: "{{ pkg_autoremove | d(omit) }}"
+      cached: "{{ pkg_cached | d(omit) }}"
+      chroot: "{{ pkg_chroot | d(omit) }}"
+      ignore_osver: "{{ pkg_ignore_osver | d(omit) }}"
+      jail: "{{ pkg_jail | d(omit) }}"
+      pkgsite: "{{ pkg_pkgsite | d(omit) }}"
+      rootdir: "{{ pkg_rootdir | d(omit) }}"
+      state: "{{ pkg_state | d(omit) }}"
+      use_globs: "{{ pkg_use_globs | d(omit) }}"
+  ansible.builtin.import_tasks: pkg-delete.yml
+
+- name: Install packages.
+  when: (pkg_dict_all | bool) or (pkg_dict_select | length > 0) or (pkg_list | length > 0)
+  tags: pkg_install
+  module_defaults:
+    community.general.pkgng:
+      annotation: "{{ pkg_annotation | d(omit) }}"
+      autoremove: "{{ pkg_autoremove | d(omit) }}"
+      cached: "{{ pkg_cached | d(omit) }}"
+      chroot: "{{ pkg_chroot | d(omit) }}"
+      ignore_osver: "{{ pkg_ignore_osver | d(omit) }}"
+      jail: "{{ pkg_jail | d(omit) }}"
+      pkgsite: "{{ pkg_pkgsite | d(omit) }}"
+      rootdir: "{{ pkg_rootdir | d(omit) }}"
+      state: "{{ pkg_state | d(omit) }}"
+      use_globs: "{{ pkg_use_globs | d(omit) }}"
+  ansible.builtin.import_tasks: pkg-install.yml
+
+- name: Status and audit.
+  when: pkg_stat | bool
+  tags: pkg_stat
+  ansible.builtin.import_tasks: stat.yml
+
+# EOF

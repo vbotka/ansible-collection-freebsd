@@ -1,0 +1,13 @@
+---
+# Configure /etc/rc.conf
+
+# This role notifies no handlers to reload network changes. Use the
+# role vbotka.freebsd_network to configure network.
+# https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network/
+
+freebsd_iocage_rcconf:
+  - {regexp: cloned_interfaces, val: bridge0}
+  - {regexp: ifconfig_bridge0, val: addm em0 up}
+  - {regexp: ifconfig_em0, val: up}
+
+# EOF

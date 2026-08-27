@@ -1,0 +1,33 @@
+
+PLAY [Test role vbotka.freebsd.custom_image] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [images.example.com]
+
+TASK [Mount: Attach memory disk] ***********************************************
+included: vbotka.freebsd.lib for images.example.com
+
+TASK [vbotka.freebsd.lib : Al_mdconfig: Default variables.] ********************
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.lib : Al_mdconfig: List memory disks.] ********************
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.lib : Al_mdconfig: Create empty memory disks dictionary.] ***
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.lib : Al_mdconfig: Attach memory disk.] *******************
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.lib : Al_mdconfig: Add memory disk to dictionary.] ********
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.custom_image : Mount: Set variable cimage_mount_dev] ******
+ok: [images.example.com]
+
+TASK [vbotka.freebsd.custom_image : Mount: Mount partitions md0] ***************
+changed: [images.example.com] => (item={'partition': 's2a', 'fstype': 'ufs', 'mountpoint': '/mnt3'})
+
+PLAY RECAP *********************************************************************
+images.example.com         : ok=9    changed=1    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0   
+

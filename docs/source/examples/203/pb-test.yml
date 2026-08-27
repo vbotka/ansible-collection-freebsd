@@ -1,0 +1,18 @@
+- name: Connect to the group test.
+  hosts: swarm_sw_01
+  gather_facts: false
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    
+  tasks:
+
+    - ansible.builtin.command: hostname
+      register: out_host
+    
+    - ansible.builtin.debug:
+        msg: >
+          ansible_host={{ ansible_host }}
+          iocage_tags={{ iocage_tags | to_yaml }}

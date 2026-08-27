@@ -1,0 +1,4 @@
+ansible_python_interpreter: auto_silent
+
+freebsd_pkgng_cached: false
+freebsd_pkgng_use_globs: false

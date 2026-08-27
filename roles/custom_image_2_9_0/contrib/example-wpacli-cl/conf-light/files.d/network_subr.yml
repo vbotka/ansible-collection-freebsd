@@ -1,0 +1,6 @@
+---
+network_subr:
+  path: "{{ cimage_mount_path }}/etc/network.subr"
+  patch:
+    src: "{{ playbook_dir }}/files/network.subr.patch"
+    basedir: "{{ cimage_mount_path }}/etc"

@@ -1,0 +1,6 @@
+
+PLAY [Configure and start Log Server.] *****************************************
+skipping: no hosts matched
+
+PLAY RECAP *********************************************************************
+

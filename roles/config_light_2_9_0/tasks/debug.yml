@@ -1,0 +1,91 @@
+---
+- name: "Debug: Config Light."
+  vars:
+    msg: |-
+      cl_role_version: {{ cl_role_version }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+
+      cl_supported_linux_family: {{ cl_supported_linux_family }}
+      cl_supported_modules_pkg: {{ cl_supported_modules_pkg }}
+      cl_collections:
+        {{ cl_collections | to_nice_yaml(indent=2) | indent(2) }}
+
+      cl_sanity: {{ cl_sanity }}
+      cl_sanity_quiet: {{ cl_sanity_quiet }}
+      cl_sanity_collections: {{ cl_sanity_collections }}
+      cl_sanity_modules_pkg: {{ cl_sanity_modules_pkg }}
+      cl_sanity_yamllint: {{ cl_sanity_yamllint }}
+
+      cl_setup: {{ cl_setup }}
+      cl_install: {{ cl_install }}
+      cl_backup: {{ cl_backup }}
+      cl_copyfile_delete: {{ cl_copyfile_delete }}
+      cl_template_delete: {{ cl_template_delete }}
+
+      cl_handlers:
+        {{ cl_handlers | to_nice_yaml(indent=2) | indent(2) }}
+      cl_packages:
+        {{ cl_packages | to_nice_yaml(indent=2) | indent(2) }}
+      cl_services:
+        {{ cl_services | to_nice_yaml(indent=2) | indent(2) }}
+      cl_files:
+        {{ cl_files | to_nice_yaml(indent=2) | indent(2) }}
+      cl_states:
+        {{ cl_states | to_nice_yaml(indent=2) | indent(2) }}
+
+      cl_dird: {{ cl_dird }}
+      cl_dird_owner: {{ cl_dira_owner | default('UNDEFINED') }}
+      cl_dird_group: {{ cl_dira_group | default('UNDEFINED') }}
+      cl_dird_dmode: {{ cl_dira_dmode }}
+
+      cl_handlersd_dir: {{ cl_handlersd_dir }}
+      cl_packagesd_dir: {{ cl_packagesd_dir }}
+      cl_servicesd_dir: {{ cl_servicesd_dir }}
+      cl_filesd_dir: {{ cl_filesd_dir }}
+      cl_statesd_dir: {{ cl_statesd_dir }}
+
+      cl_dira: {{ cl_dira }}
+      cl_dira_owner: {{ cl_dira_owner | default('UNDEFINED') }}
+      cl_dira_group: {{ cl_dira_group | default('UNDEFINED') }}
+      cl_dira_dmode: {{ cl_dira_dmode }}
+      cl_dira_fmode: {{ cl_dira_fmode }}
+      cl_assemble_regexp: {{ cl_assemble_regexp }}
+
+      cl_handlersd: {{ cl_handlersd }}
+      cl_handlers_delete_all: {{ cl_handlers_delete_all }}
+      cl_handlers_delete: {{ cl_handlers_delete }}
+      cl_handlers_create: {{ cl_handlers_create }}
+
+      cl_packagesd: {{ cl_packagesd }}
+      cl_servicesd: {{ cl_servicesd }}
+      cl_filesd: {{ cl_filesd }}
+      cl_statesd: {{ cl_statesd }}
+      cl_all_delete: {{ cl_all_delete }}
+      cl_packagesd_delete: {{ cl_packagesd_delete }}
+      cl_servicesd_delete: {{ cl_servicesd_delete }}
+      cl_filesd_delete: {{ cl_filesd_delete }}
+      cl_statesd_delete: {{ cl_statesd_delete }}
+
+      cl_yamllint: {{ cl_yamllint }}
+      cl_assemble_validate: {{ cl_assemble_validate | default('UNDEFINED') }}
+      cl_handlers_validate: {{ cl_handlers_validate | default('UNDEFINED') }}
+
+      cl_files_order:
+        {{ cl_files_order | to_nice_yaml(indent=2) | indent(2) }}
+
+      install_retries: {{ install_retries }}
+      install_delay: {{ install_delay }}
+
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_use_packages: {{ freebsd_use_packages }}
+      cl_rcconfd: {{ cl_rcconfd }}
+      cl_rcconfd_dir: {{ cl_rcconfd_dir }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF

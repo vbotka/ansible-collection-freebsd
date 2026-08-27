@@ -1,0 +1,30 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+# PLEASE BE AWARE OF THE FOLLOWING RULE:
+# This file requires tabs between elements
+
+{% for k,v in rsnapshot_conf_dict.items() | sort %}
+{% if v is community.general.ansible_type('list[str]') %}
+{% for i in v %}
+{{ k }}{{ tab }}{{ tab }}{{ i }}
+{% endfor %}
+{% elif k is match('retain_') %}
+{{ k | split('_') | first }}{{ tab }}{{ tab }}{{ k | split('_') | last }}{{ tab }}{{ v }}
+{% elif k is match('snapshot_root') %}
+snapshot_root{{ tab }}{{ tab }}{{ rsnapshot_snapshot_root_test }}
+{% else %}
+{{ k }}{{ tab }}{{ tab }}{{ v }}
+{% endif %}
+{% endfor %}
+
+### BACKUP POINTS/SCRIPTS
+{% for item  in rsnapshot_backup_points_test %}
+backup{{ tab }}{{ item.dir }}{{ tab }}{{ tab }}{{ item.host }}
+{% endfor %}
+
+### EXCLUDE
+{% for item  in rsnapshot_exclude %}
+exclude{{ tab }}{{ item.regex }}
+{% endfor %}
+
+# EOF

@@ -1,0 +1,12 @@
+---
+
+# Stat enable
+freebsd_iocage_stat: false
+
+# End host if stat fails
+freebsd_iocage_stat_fatal: true
+
+# Jail headers
+freebsd_iocage_jail_header: [jid, name, boot, state, type, release, ip4, ip6, template, basejail]
+
+# EOF

@@ -1,0 +1,46 @@
+
+PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [cd830e86]
+ok: [e319a4b9]
+ok: [d61cdd48]
+
+TASK [Vars: Include OS vars.] **************************************************
+included: vbotka.freebsd.lib for cd830e86, d61cdd48, e319a4b9
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
+ok: [cd830e86]
+ok: [e319a4b9]
+ok: [d61cdd48]
+
+TASK [vbotka.freebsd.rsnapshot : Configure: Create directory /export/backup/snapshots] ***
+changed: [cd830e86]
+changed: [e319a4b9]
+changed: [d61cdd48]
+
+TASK [vbotka.freebsd.rsnapshot : Configure: Create configuration /usr/local/etc/rsnapshot.conf] ***
+changed: [d61cdd48]
+changed: [e319a4b9]
+changed: [cd830e86]
+
+TASK [vbotka.freebsd.rsnapshot : Test: Create test directory /export/backup/snapshots-test] ***
+changed: [cd830e86]
+changed: [e319a4b9]
+changed: [d61cdd48]
+
+TASK [vbotka.freebsd.rsnapshot : Test: Create test backup_points] **************
+changed: [e319a4b9] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [d61cdd48] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [cd830e86] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+
+TASK [vbotka.freebsd.rsnapshot : Test: Create test configuration /usr/local/etc/rsnapshot-test.conf] ***
+changed: [cd830e86]
+changed: [e319a4b9]
+changed: [d61cdd48]
+
+PLAY RECAP *********************************************************************
+cd830e86                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+d61cdd48                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+e319a4b9                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+

@@ -1,0 +1,26 @@
+
+PLAY [Iocage list datasets.] ***************************************************
+
+TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
+changed: [iocage_06] => (item=iocage list -rh)
+changed: [iocage_06] => (item=iocage list -lh)
+changed: [iocage_06] => (item=iocage list -Ph)
+changed: [iocage_06] => (item=iocage list -th)
+
+TASK [Set lists] ***************************************************************
+ok: [iocage_06]
+
+PLAY [Create group test] *******************************************************
+
+PLAY [Use group test] **********************************************************
+skipping: no hosts matched
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=4    changed=1    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

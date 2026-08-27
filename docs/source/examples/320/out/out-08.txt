@@ -1,0 +1,147 @@
+
+PLAY [Test role vbotka.freebsd.packages.] **************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [iocage_04] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python311
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
+ok: [iocage_04] => 
+    pkg_audit:
+        iocage_04:
+            packages:
+                expat:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.7.4
+                        cve:
+                        - CVE-2026-25210
+                        - CVE-2026-24515
+                        description: expat -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/027c6c07-065b-11f1-baae-589cfc023192.html
+                    reverse dependencies:
+                    - apache24
+                    - mod_php83
+                    - apr
+                    - avahi-app
+                    - samba416
+                    - sssd2
+                    - sudo-sssd
+                    - dbus-glib
+                    - dbus
+                    - libarchive
+                    - git
+                    - py311-iocage
+                    version: 2.7.3
+                python311:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.11.14_2
+                        cve:
+                        - CVE-2026-0865
+                        - CVE-2026-1299
+                        description: python -- several security vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/bfe9adc8-0224-11f1-8790-c5fb948922ad.html
+                    reverse dependencies:
+                    - py311-acme
+                    - py311-setuptools
+                    - py311-pyrfc3339
+                    - py311-pytz
+                    - py311-josepy
+                    - acme-tiny
+                    - py311-iocage
+                    - py311-requests
+                    - py311-urllib3
+                    - py311-texttable
+                    - py311-gitpython
+                    - py311-gitdb
+                    - py311-smmap
+                    - py311-six
+                    - py311-jsonschema
+                    - py311-jsonschema-specifications
+                    - py311-referencing
+                    - py311-rpds-py
+                    - py311-pysocks
+                    - py311-netifaces
+                    - py311-coloredlogs
+                    - py311-humanfriendly
+                    - py311-click
+                    - py311-charset-normalizer
+                    - py311-fail2ban
+                    - py311-sqlite3
+                    - py311-pyinotify
+                    - python
+                    - python3
+                    - sssd2
+                    - sudo-sssd
+                    - samba416
+                    - tevent
+                    - ldb25
+                    - tdb
+                    - talloc
+                    - py311-dnspython
+                    - py311-aioquic
+                    - py311-pyopenssl
+                    - py311-httpx
+                    - py311-httpcore
+                    - py311-anyio
+                    - py311-typing-extensions
+                    - py311-truststore
+                    - py311-trio
+                    - py311-sortedcontainers
+                    - py311-socksio
+                    - py311-sniffio
+                    - py311-service-identity
+                    - py311-pylsqpack
+                    - py311-cryptography
+                    - py311-cffi
+                    - py311-pycparser
+                    - py311-pyasn1-modules
+                    - py311-pyasn1
+                    - glib
+                    - avahi-app
+                    - dbus-glib
+                    - gamin
+                    - py311-packaging
+                    - py311-outcome
+                    - py311-markdown
+                    - py311-idna
+                    - py311-h2
+                    - py311-hyperframe
+                    - py311-hpack
+                    - py311-h11
+                    - py311-certifi
+                    - py311-attrs
+                    - py311-async_generator
+                    - git
+                    version: 3.11.14_1
+            pkg_count: 2
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

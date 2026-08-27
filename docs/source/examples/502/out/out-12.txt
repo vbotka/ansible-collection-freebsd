@@ -1,0 +1,18 @@
+
+PLAY [Configure and start Log Server.] *****************************************
+
+TASK [Install syslog-ng] *******************************************************
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
+ok: [branch-server.example.com]
+
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
+ok: [branch-server.example.com]
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

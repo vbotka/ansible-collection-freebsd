@@ -1,0 +1,28 @@
+
+PLAY [Test the SSH redirection to the jails.] **********************************
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [0a3ea428] => 
+    msg: |-
+        iocage_ip4=10.10.99.106
+        ansible_host=iocage_05
+        ansible_port=2206
+        ansible_connection=ssh
+ok: [93d13878] => 
+    msg: |-
+        iocage_ip4=10.10.99.108
+        ansible_host=iocage_05
+        ansible_port=2208
+        ansible_connection=ssh
+ok: [ffb2c114] => 
+    msg: |-
+        iocage_ip4=10.10.99.107
+        ansible_host=iocage_05
+        ansible_port=2207
+        ansible_connection=ssh
+
+PLAY RECAP *********************************************************************
+0a3ea428                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+93d13878                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ffb2c114                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+. ../defaults/batch
+
+# Destroy jails
+VBOTKA_FREEBSD_BATCH=true ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_destroy_all_jails.yml
+
+ssh admin@iocage_06 sudo iocage destroy -f ansible_client
+
+# Create template
+(cd ../202 && ansible-playbook -i iocage.ini -l iocage_06 vbotka.freebsd.pb_iocage_template.yml)
+
+# Create jails
+ansible-playbook -i iocage.ini -t swarm -e swarm=true --flush-cache vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-11.txt
+
+# Status of jails
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-01.txt
+ansible-inventory -i hosts -i iocage.ini --graph --flush-cache | tee out/out-02.txt
+
+# Update repos
+ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini | tee out/out-12.txt
+
+# Install and configure lighttpd
+ansible-playbook -i hosts -t cl_setup -e cl_setup=true pb.yml | tee out/out-03.txt
+# ansible-playbook pb.yml -i hosts -t cl_sanity -e cl_sanity=true | tee out/out-04.txt
+# ansible-playbook pb.yml -i hosts -l test_111 -t cl_debug -e cl_debug=true | tee out/out-05.txt
+# ansible-playbook pb.yml -i hosts -i iocage.ini -t cl_packages -e cl_install=true | tee out/out-06.txt
+# ansible-playbook pb.yml -i hosts -t cl_states | tee out/out-07.txt
+# ansible-playbook pb.yml -i hosts -t cl_files | tee out/out-08.txt
+# ansible-playbook pb.yml -i hosts -t cl_services | tee out/out-09.txt
+
+ansible-playbook -i hosts -i iocage.ini pb.yml | tee out/out-10.txt
+
+# Clean up
+sudo rm conf-light/assemble/*
+sudo rm ../../../../roles/config_light/handlers/*
+sudo touch ../../../../roles/config_light/handlers/main.yml

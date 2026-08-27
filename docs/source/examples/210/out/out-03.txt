@@ -1,0 +1,16 @@
+
+PLAY [Test empty iocage notes.] ************************************************
+
+TASK [debug] *******************************************************************
+ok: [test_4] => 
+    msg: |-
+        iocage_properties.notes: none
+        iocage_properties.notes type: str
+
+TASK [debug] *******************************************************************
+ok: [test_4] => 
+    iocage_tags: {}
+
+PLAY RECAP *********************************************************************
+test_4                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,1 @@
+syslog_ng is running as pid 86002.

@@ -1,0 +1,2 @@
+# In production, put the password into the vault.
+ansible_become_password: admin

@@ -1,0 +1,17 @@
+- name: Install packages in jails.
+  hosts: state_up
+  gather_facts: true
+    
+  tasks:
+
+    - name: Install packages
+      delegate_to: "{{ iocage_tags.vmm }}"
+      register: out
+      community.general.pkgng:
+        name: "{{ act_pkg }}"
+        jail: "{{ iocage_jid }}"
+        use_globs: false
+        cached: true
+
+    - ansible.builtin.debug:
+        var: out

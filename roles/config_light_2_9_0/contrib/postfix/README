@@ -1,0 +1,5 @@
+# Assemble data, create handlers, and display variables
+shell> ansible-playbook pb.yml -t cl_debug -e cl_setup=true -e cl_debug=true
+
+# Assemble data, create handlers, check sanity, and display variables
+shell> ansible-playbook pb.yml -t cl_debug -e cl_setup=true -e cl_sanity=true -e cl_debug=true

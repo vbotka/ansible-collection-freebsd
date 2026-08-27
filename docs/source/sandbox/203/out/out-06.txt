@@ -1,0 +1,22 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--8b5001bf
+  |  |--e0608335
+  |  |--f0ac466f
+  |  |--test_153
+  |  |--pkg_repo
+  |  |--test_152
+  |  |--test_151
+  |--@swarm_sw_01:
+  |  |--8b5001bf
+  |  |--e0608335
+  |  |--f0ac466f
+  |--@vmm_iocage_06:
+  |  |--8b5001bf
+  |  |--e0608335
+  |  |--f0ac466f
+  |  |--test_153
+  |  |--pkg_repo
+  |  |--test_152
+  |  |--test_151

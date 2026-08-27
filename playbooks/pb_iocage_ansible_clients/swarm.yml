@@ -1,0 +1,143 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create swarms
+  vars:
+    _notes: |-
+      "{{ [properties.notes | d(''), item.value.properties.notes | d(''), 'swarm=' ~ item.key]
+          | select
+          | join(' ') }}"
+    _target: [notes]
+    _properties_combined: |
+      {{ [properties | d({}), item.value.properties | d({})]
+         | community.general.remove_keys(target=_target)
+         | select
+         | combine(recursive=true) }}
+    _properties: >-
+      {% for k, v in _properties_combined.items() %}
+      {{ k }}={{ v }}
+      {% endfor %}
+      notes={{ _notes }}
+    _query: |
+      [?value.swarm==`{{ item.key }}`].key
+    _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
+    cmd_create_from_template: >
+      iocage create
+      --short
+      --template {{ item.value.template }}
+      --count {{ _count }}
+      {{ _properties }}
+    cmd_clone_from_plugin: >
+      iocage clone
+      {{ item.value.plugin }}
+      --newmac
+      --count {{ _count }}
+      {{ _properties }}
+    cmd_create: |
+      {% if 'template' in item.value %}
+      {{ cmd_create_from_template }}
+      {% elif 'plugin' in item.value %}
+      {{ cmd_clone_from_plugin }}
+      {% endif %}
+
+  block:
+
+    - name: Get iocage facts
+      vbotka.freebsd.iocage:
+
+    - name: Reject jails with empty notes
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ ansible_facts.iocage_jails
+                          | dict2items
+                          | rejectattr('value.properties.notes', 'equalto', 'none')
+                          | items2dict }}"
+
+    - name: "Debug iocage_jails and _tags debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        msg: |
+          iocage_jails:
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+          _tags:
+            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: "Debug cmd_create debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_create }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Create swarms
+      when:
+        - not dry_run | bool
+        - _count | int > 0
+      changed_when: false
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_create }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: "Debug create swarms debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out
+
+- name: Start swarms
+  vars:
+    _query: '[?value.swarm==`{{ item.key }}`].key'
+    _jails: "{{ _tags | dict2items | community.general.json_query(_query) | difference(_started) }}"
+    cmd_start: >
+      iocage start
+      {{ _jails | join(' ') }}
+
+  block:
+
+    - name: Get iocage facts
+      vbotka.freebsd.iocage:
+
+    - name: Reject jails with empty notes
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ ansible_facts.iocage_jails
+                          | dict2items
+                          | rejectattr('value.properties.notes', 'equalto', 'none')
+                          | items2dict }}"
+
+    - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        msg: |
+          iocage_jails:
+            {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
+          _started: {{ _started }}
+          _tags:
+            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+
+    - name: "Debug cmd_start debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: "{{ cmd_start }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Start swarms
+      when:
+        - not dry_run | bool
+        - _jails | length > 0
+      changed_when: false
+      register: out
+      ansible.builtin.command:
+        cmd: "{{ cmd_start }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: "Debug start swarms debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: out

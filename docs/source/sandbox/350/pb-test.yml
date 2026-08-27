@@ -1,0 +1,6 @@
+- name: Test role vbotka.freebsd.rsnapshot
+  hosts: state_up
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.rsnapshot

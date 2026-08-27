@@ -1,0 +1,252 @@
+# FreeBSD collection
+
+---
+
+## Proposed FreeBSD collection
+
+* Ansible Galaxy: \
+  [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+* GitHub: \
+  [https://github.com/vbotka/ansible-collection-freebsd/](https://github.com/vbotka/ansible-collection-freebsd/)
+* Read The Docs: \
+  [https://ansible-collection-freebsd.readthedocs.io/en/latest/](https://ansible-collection-freebsd.readthedocs.io/en/latest/)
+
+---
+
+## Collection Content
+
+* [Plugins](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_plugins.html):
+  - module iocage - iocage jail handling.
+  - module service - Control or list system services.
+  - module ucl - CRUD-like interface for managing UCL files.
+  - inventory iocage - iocage inventory source.
+  - filter iocage - Parse iocage lists.
+  - lookup galaxy_info - Get the meta data from galaxy.yml
+* [Roles](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_roles.html)
+* [Playbooks](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_playbooks.html)
+
+Note: The proposed FreeBSD collection is a work in progress.
+
+---
+
+## We focus on the ``iocage`` plugins
+
+* [inventory iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage) - iocage inventory source.
+* [module iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
+* [filter iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - Parse iocage lists.
+
+---
+
+## inventory iocage
+
+* Get inventory hosts from the ``iocage`` jail manager running on ``host``.
+
+* Properly documented in [ansible-collection-freebsd.readthedocs.io](https://ansible-collection-freebsd.readthedocs.io/en/latest/ug_inventory_iocage.html)
+
+* Included also in the collection community.general as [community.general.iocage](https://docs.ansible.com/projects/ansible/latest/collections/community/general/iocage_inventory.html)
+
+* Also documented in [docs.ansible.com](https://docs.ansible.com/projects/ansible/latest/collections/community/general/docsite/guide_iocage_inventory.html)
+
+* License GPLv3
+
+* Extends fragments:
+
+```yaml
+extends_documentation_fragment:
+  - ansible.builtin.constructed
+  - ansible.builtin.inventory_cache
+```
+
+---
+
+## inventory iocage - Basics
+
+* Get the inventory from the command line
+
+```console
+shell> ssh admin@10.1.0.73 iocage list -l
+```
+
+* Configure inventory plugin ``hosts/02_iocage.yml``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+```
+
+* Display the inventory
+
+```console
+shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+```
+
+---
+
+## inventory iocage - DHCP
+
+* As admin at the controller, list the jails. The IP4 tab says “… address requires root”. Use sudo if enabled
+
+```console
+shell> ssh admin@10.1.0.73 sudo iocage list -l
+```
+
+* Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``sudo``
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+sudo: true
+```
+
+* Display the inventory
+
+```console
+shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+```
+
+---
+
+## inventory iocage - Hooks
+
+* When ``sudo`` is not enabled, update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``hooks_results``
+
+\small
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+```
+
+\normalsize
+
+* Example of a hook ``/etc/dhclient-exit-hooks``
+
+\small
+
+```sh
+case "$reason" in
+    "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+    echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+    ;;
+esac
+```
+
+\normalsize
+
+* Display the inventory
+
+\small
+
+```console
+shell> ansible-inventory -i hosts/02_iocage.yml --list --yaml
+```
+
+\normalsize
+
+---
+
+## inventory iocage - Properties
+
+Optionally, get the ``iocage properties``. Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``get_properties``. Compose the variable ``ansible_host``
+
+\small
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+get_properties: true
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') |
+                ternary(iocage_ip4, iocage_hooks.0)
+```
+
+\normalsize
+
+---
+
+## inventory iocage - Tags
+
+Use ``property notes`` to store ``tags``. Update the inventory configuration ``hosts/02_iocage.yml``. Compose the dictionary ``iocage_tags`` and create ``groups``. The ``properties`` are required. Enable the parameter ``get_properties``
+
+\small
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+get_properties: true
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') |
+                ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes |
+                split | map('split', '='))
+keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm
+  - prefix: project
+    key: iocage_tags.project
+```
+
+\normalsize
+
+---
+
+## inventory iocage - Aliases
+
+The tag ``alias`` is used to create inventory aliases. Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter ``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the inventory alias.
+
+\small
+
+```yaml
+plugin: vbotka.freebsd.iocage
+host: 10.1.0.73
+user: admin
+get_properties: true
+inventory_hostname_tag: alias
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+compose:
+  ansible_host: (iocage_hooks.0 == '-') |
+                ternary(iocage_ip4, iocage_hooks.0)
+  iocage_tags: dict(iocage_properties.notes | split | map('split', '='))
+keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm
+  - prefix: project
+    key: iocage_tags.project
+```
+
+\normalsize
+
+---
+
+## module iocage
+
+* FreeBSD iocage jail handling.
+
+* See the in-line documentation on [galaxy.ansible.com](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/)
+
+* Implements most of the ``iocage`` options.
+
+* See the in-line examples.
+
+---
+
+## filter iocage
+
+* This filter parses ``iocage`` list output.
+
+* See the in-line documentation on [galaxy.ansible.com](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/)
+
+* See the in-line examples.
+

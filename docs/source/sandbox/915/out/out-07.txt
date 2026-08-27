@@ -1,0 +1,12 @@
+@all:
+  |--@ungrouped:
+  |--@log_servers:
+  |  |--log_server
+  |--@state_up:
+  |  |--log_server
+  |  |--log_client
+  |--@vmm_iocage_06:
+  |  |--log_server
+  |  |--log_client
+  |--@log_clients:
+  |  |--log_client

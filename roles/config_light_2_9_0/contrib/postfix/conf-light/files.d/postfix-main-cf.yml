@@ -1,0 +1,12 @@
+---
+postfix_main_cf:
+  path: /usr/local/etc/postfix/main.cf
+  create: true
+  owner: root
+  group: wheel
+  mode: "0644"
+  handlers:
+    - postfix_freebsd reload postfix
+  lines:
+    - regexp: ^myhostname\s*=\s*(.*)$
+      line: myhostname = {{ cl_myhostname }}

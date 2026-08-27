@@ -1,0 +1,46 @@
+rsnapshot_conf_vars:
+  - config_version
+  - snapshot_root
+  - include_conf
+  - no_create_root
+  - cmd_rsync
+  - cmd_ssh
+  - cmd_cp
+  - cmd_rm
+  - cmd_logger
+  - cmd_du
+  - cmd_rsnapshot_diff
+  - cmd_preexec
+  - cmd_postexec
+  - linux_lvm_cmd_lvcreate
+  - linux_lvm_cmd_lvremove
+  - linux_lvm_cmd_mount
+  - linux_lvm_cmd_umount
+  - retain,hourly
+  - retain,daily
+  - retain,weekly
+  - retain,monthly
+  - link_dest
+  - sync_first
+  - verbose
+  - loglevel
+  - logfile
+  - include
+  - exclude
+  - include_file
+  - exclude_file
+  - rsync_short_args
+  - rsync_long_args
+  - ssh_args
+  - du_args
+  - lockfile
+  - stop_on_stale_lockfile
+  - one_fs
+  - use_lazy_deletes
+  - rsync_numtries
+  - linux_lvm_snapshotsize
+  - linux_lvm_snapshotname
+  - linux_lvm_vgpath
+  - linux_lvm_mountpath
+
+# EOF

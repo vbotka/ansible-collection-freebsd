@@ -1,0 +1,14 @@
+- name: Test Log Client.
+  hosts: logclient
+  remote_user: admin
+  become: true
+    
+  tasks:
+
+    - name: Run loggen
+      register: out
+      ansible.builtin.command: "loggen -i -S -n 1 {{ log_serv }} 514"
+
+    - name: Debug.
+      ansible.builtin.debug:
+        var: out.stderr

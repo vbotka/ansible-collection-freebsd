@@ -1,0 +1,24 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Setup: Get iocage list of templates."
+  register: out_templates
+  changed_when: false
+  ansible.builtin.command: iocage list --template --long
+
+- name: "Setup: Display iocage_templates debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: iocage_templates
+
+- name: End host if all templates already created.
+  when: templates | difference(iocage_templates) | length == 0
+  block:
+
+    - name: "Setup: All templates already created."
+      ansible.builtin.debug:
+        msg: All templates already created. End host.
+
+    - name: "Setup: End host."
+      ansible.builtin.meta: end_host

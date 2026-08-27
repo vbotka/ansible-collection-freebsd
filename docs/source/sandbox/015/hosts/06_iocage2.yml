@@ -1,0 +1,18 @@
+plugin: vbotka.freebsd.iocage2
+host: iocage_06
+user: admin
+get_properties: False
+cache: True
+cache_plugin: ansible.builtin.jsonfile
+cache_connection: /var/tmp/inventory_cache
+cache_timeout: 3600
+cache_prefix: iocage_06_
+compose:
+  ansible_host: iocage_ip4
+groups:
+    test: inventory_hostname.startswith('test')
+keyed_groups:
+  - prefix: distro
+    key: iocage_release
+  - prefix: state
+    key: iocage_state

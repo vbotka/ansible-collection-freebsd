@@ -1,0 +1,27 @@
+templates:
+  ansible-syslogng-server:
+    release: 15.1-RELEASE
+    pkglist: /tmp/ansible/ansible-syslogng-server/pkgs.json
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 0
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_syslogng_server'] }}/24"
+      vnet: 1
+      notes: "vmm={{ inventory_hostname }} alias=ansible_syslogng_server"
+
+# Do not stop jails. Configure them first. Then stop and convert them to templates.
+act_stop: false
+act_template: false
+
+# jail properties
+properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  boot: 1
+  defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+  ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
+  vnet: 1

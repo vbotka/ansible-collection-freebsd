@@ -1,0 +1,5 @@
+---
+plugins_install:
+  connection: []
+  inventory: [iocage]
+  modules: [iocage, ucl]

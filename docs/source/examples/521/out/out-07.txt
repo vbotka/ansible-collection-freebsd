@@ -1,0 +1,43 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [foo]
+changed: [bar]
+
+TASK [Debug.] ******************************************************************
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 166666.67 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500381, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 125000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500329, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/172.16.99.192/2026_06_28.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.191/2026_06_28.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.192/2026_06_28.log']) => 
+    msg: |-
+        Jun 28 10:52:06 172.16.99.192 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782636726, stamp: 2026-06-28T10:52:06 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.191/2026_06_28.log']) => 
+    msg: |-
+        Jun 28 10:52:06 172.16.99.191 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1782636726, stamp: 2026-06-28T10:52:06 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

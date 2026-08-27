@@ -1,0 +1,7 @@
+NOTES:
+
+The test is disabled in batch.sh because it fails over VPN. SSH from
+the localnet is needed to forward the SSH jail port.
+
+Update ansible_host in hosts/06_iocage2.yml if you can SSH to the host
+from localnet and run pb-test.yml

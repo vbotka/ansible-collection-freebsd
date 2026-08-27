@@ -1,0 +1,12 @@
+README
+======
+
+* In docs/source/conf.py, update the version and release 
+
+* In docs, create html documentation
+
+  shell> make html
+
+* In a browser, see the documentation docs/build/html/index.html
+
+# EOF

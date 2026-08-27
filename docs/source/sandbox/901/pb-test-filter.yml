@@ -1,0 +1,24 @@
+- name: Test filter vbotka.freebsd.iocage
+  hosts: iocage
+
+  vars:
+
+    debug: false
+    debug2: false
+    iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+
+  tasks:
+
+    - name: "Get iocage list of jails."
+      register: out
+      changed_when: false
+      ansible.builtin.command: iocage list --long
+
+    - name: "Debug iocage list of jails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: "Debug iocage list of jails"
+      ansible.builtin.debug:
+        var: iocage_jails

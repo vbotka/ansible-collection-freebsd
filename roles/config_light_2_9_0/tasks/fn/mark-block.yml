@@ -1,0 +1,33 @@
+---
+- name: "Mark-block: Check begin marker {{ item.1.marker }}"
+  register: checkmarker
+  ignore_errors: true
+  changed_when: false
+  ansible.builtin.command:
+    cmd: >
+      grep -q '# BEGIN ANSIBLE MANAGED BLOCK {{ item.1.marker }}' {{ item.0.path }}
+
+- name: Create markers.
+  when:
+    - not ansible_check_mode
+    - checkmarker.rc != 0
+  block:
+
+    - name: "Mark-block: Create begin marker {{ item.1.marker }}"
+      ansible.builtin.replace:
+        path: "{{ item.0.path }}"
+        regexp: "{{ item.1.regex1 }}"
+        replace: |-
+          {{ '#' }} BEGIN ANSIBLE MANAGED BLOCK {{ item.1.marker }}
+          {{ item.1.replace1 }}
+
+    - name: "Mark-block: Create end marker {{ item.1.marker }}"
+      ansible.builtin.replace:
+        path: "{{ item.0.path }}"
+        regexp: ({{ item.1.regex1 }}[\s\S]*?){{ item.1.regex2 }}
+        replace: |-
+          \g<1>
+          {{ item.1.replace2 }}
+          {{ '#' }} END ANSIBLE MANAGED BLOCK {{ item.1.marker }}
+
+# EOF

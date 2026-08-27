@@ -1,0 +1,139 @@
+
+PLAY [Test module vbotka.freebsd.service. Get running jails sshd rcvar.] *******
+
+TASK [Get sshd rcvar.] *********************************************************
+ok: [test-153]
+ok: [www-02]
+ok: [pkg-repo]
+ok: [log-server-01]
+ok: [test-152]
+ok: [repos]
+ok: [www-01]
+ok: [test-151]
+ok: [repos-devel]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test-153] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="YES"
+        #   (default: "")
+ok: [repos-devel] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="NO"
+        #   (default: "")
+ok: [pkg-repo] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="NO"
+        #   (default: "")
+ok: [log-server-01] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="NO"
+        #   (default: "")
+ok: [www-02] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="NO"
+        #   (default: "")
+ok: [test-152] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="YES"
+        #   (default: "")
+ok: [repos] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="NO"
+        #   (default: "")
+ok: [www-01] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="NO"
+        #   (default: "")
+ok: [test-151] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="YES"
+        #   (default: "")
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [www-02] => 
+    sshd_rcvar:
+        sshd_enable: 'NO'
+ok: [repos-devel] => 
+    sshd_rcvar:
+        sshd_enable: 'NO'
+ok: [test-153] => 
+    sshd_rcvar:
+        sshd_enable: 'YES'
+ok: [pkg-repo] => 
+    sshd_rcvar:
+        sshd_enable: 'NO'
+ok: [log-server-01] => 
+    sshd_rcvar:
+        sshd_enable: 'NO'
+ok: [repos] => 
+    sshd_rcvar:
+        sshd_enable: 'NO'
+ok: [test-152] => 
+    sshd_rcvar:
+        sshd_enable: 'YES'
+ok: [www-01] => 
+    sshd_rcvar:
+        sshd_enable: 'NO'
+ok: [test-151] => 
+    sshd_rcvar:
+        sshd_enable: 'YES'
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test-153] => 
+    out.rcvar:
+        sshd_enable: 'YES'
+ok: [pkg-repo] => 
+    out.rcvar:
+        sshd_enable: 'NO'
+ok: [repos-devel] => 
+    out.rcvar:
+        sshd_enable: 'NO'
+ok: [log-server-01] => 
+    out.rcvar:
+        sshd_enable: 'NO'
+ok: [test-152] => 
+    out.rcvar:
+        sshd_enable: 'YES'
+ok: [www-02] => 
+    out.rcvar:
+        sshd_enable: 'NO'
+ok: [repos] => 
+    out.rcvar:
+        sshd_enable: 'NO'
+ok: [www-01] => 
+    out.rcvar:
+        sshd_enable: 'NO'
+ok: [test-151] => 
+    out.rcvar:
+        sshd_enable: 'YES'
+
+PLAY RECAP *********************************************************************
+log-server-01              : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+pkg-repo                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+repos                      : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+repos-devel                : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+test-151                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+test-152                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+test-153                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+www-01                     : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+www-02                     : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

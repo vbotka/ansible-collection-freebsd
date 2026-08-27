@@ -1,0 +1,11 @@
+208:
+  example: '208'
+  name: Create iocage template for ansible-pull
+  case: |
+    * Create iocage template ``ansible_client_pull`` that will use ``ansible-pull``.
+  requirements:
+    - playbook ``vbotka.freebsd.pb_iocage_template.yml``
+    - module ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/208
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/208/example.html

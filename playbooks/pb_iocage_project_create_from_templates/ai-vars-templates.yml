@@ -1,0 +1,45 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create ansible init vars from templates.
+  vars:
+    iocage_jails_vars: "{{ vmm[inventory_hostname]
+                           | dict2items
+                           | selectattr('value.ai_vars_templates', 'defined') }}"
+
+  block:
+
+    - name: "Ai-vars-templates: Create ansible init vars dirs."
+      register: out
+      ansible.builtin.file:
+        state: directory
+        path: "{{ iocage_mount }}/iocage/jails/{{ item.key }}/root{{ ai_vars }}"
+        owner: root
+        group: wheel
+        mode: '0750'
+      loop: "{{ iocage_jails_vars }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: "Ai-vars-templates: Debug create ansible init vars dirs."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')
+
+    - name: "Ai-vars-templates: Create ansible init vars from templates."
+      register: out
+      ansible.builtin.template:
+        src: "{{ ai_vars_templates }}/{{ item.1 }}.j2"
+        dest: "{{ iocage_mount }}/iocage/jails/{{ item.0.key }}/root{{ ai_vars }}/{{ item.1 }}"
+        owner: root
+        group: wheel
+        mode: '0640'
+      loop: "{{ iocage_jails_vars | subelements('value.ai_vars_templates') }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1 }}"
+
+    - name: "Ai-vars-templates: Debug create ansible init vars from templates."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')

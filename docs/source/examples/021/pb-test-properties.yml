@@ -1,0 +1,7 @@
+- name: Display properties.
+  hosts: all
+
+  tasks:
+
+    - debug:
+        var: iocage_properties

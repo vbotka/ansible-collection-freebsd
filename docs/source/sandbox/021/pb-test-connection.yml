@@ -1,0 +1,11 @@
+- name: Test connection and get hostname.
+  hosts: all
+
+  tasks:
+
+    - command: hostname
+      register: out
+
+    - debug:
+        msg: |
+          {{ inventory_hostname }} {{ out.stdout }}

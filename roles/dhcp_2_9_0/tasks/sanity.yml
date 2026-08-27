@@ -1,0 +1,37 @@
+---
+- name: "Sanity: Package(s) not present and installation disabled."
+  when: not bsd_dhcpd_install | bool
+  block:
+
+    - name: "Sanity: Collect installed packages."
+      ansible.builtin.package_facts:
+
+    - name: "Sanity: Set my_missing_packages"
+      ansible.builtin.set_fact:
+        my_missing_packages: "{{ bsd_dhcpd_packages |
+                                 map('reverse') |
+                                 map('regex_replace', my_regex, my_replace) |
+                                 map('reverse') |
+                                 difference(ansible_facts.packages.keys() | list) |
+                                 list }}"
+      vars:
+        my_regex: ^(.*)/(.*)$
+        my_replace: \1
+
+    - name: "Sanity: Fail."
+      ansible.builtin.fail:
+        msg: "[ERR] Packages {{ my_missing_packages }} not installed and installation disabled. Host failed."
+      when:
+        - my_missing_packages | length > 0
+        - bsd_dhcpd_sanity_fatal | bool
+
+    - name: "Sanity: Debug. End host when missing packages."
+      ansible.builtin.debug:
+        msg: "[ERR] Packages {{ my_missing_packages }} not installed and installation disabled. End of host."
+      when: my_missing_packages | length > 0
+
+    - name: "Sanity: End host."
+      ansible.builtin.meta: end_host
+      when: my_missing_packages | length > 0
+
+# EOF

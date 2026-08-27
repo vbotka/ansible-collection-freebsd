@@ -1,0 +1,10 @@
+- name: Test connection.
+  hosts: test
+
+  tasks:
+
+    - command: hostname
+      register: out
+
+    - debug:
+        var: out.stdout

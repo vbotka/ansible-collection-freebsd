@@ -1,0 +1,3 @@
+plugin: vbotka.freebsd.iocage
+host: iocage_06
+user: admin

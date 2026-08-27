@@ -1,0 +1,35 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [log_client]
+
+TASK [Debug.] ******************************************************************
+ok: [log_client] => 
+    out.stderr: |-
+        count=1, rate = 333333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.50023, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/ip-172-16-99-138/2026_08_27.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-138/2026_08_27.log']) => 
+    msg: |-
+        Aug 27 10:33:05 ip-172-16-99-138 syslog-ng[97930]: syslog-ng starting up; version='4.12.0'
+        Aug 27 10:33:05 ip-172-16-99-138 syslog-ng[97930]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Aug 27 10:33:05 ip-172-16-99-138 1 2026-08-27T10:33:05.806160+02:00 log-client /usr/sbin/cron 98078 - - (CRON) WARNING (madvise() failed)
+        Aug 27 10:33:10 ip-172-16-99-138 1 2026-08-27T10:33:10.559164+02:00 log-client ansible-ansible.legacy.command 98152 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
+        Aug 27 10:33:10 ip-172-16-99-138 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1787819590, stamp: 2026-08-27T10:33:10 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+log_client                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

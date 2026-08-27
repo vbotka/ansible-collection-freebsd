@@ -1,0 +1,8 @@
+plugin: vbotka.freebsd.iocage2
+host: iocage_06
+user: admin
+get_properties: true
+compose:
+  ansible_host: iocage_ip4
+  release: iocage_release | split('-') | first
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))

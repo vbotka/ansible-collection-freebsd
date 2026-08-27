@@ -1,0 +1,43 @@
+fit_pkg_install: true
+
+fit_templates:
+  ansible-pkg-repo:
+    release: 15.1-RELEASE
+    pkg:
+      - nginx-lite
+      - python312
+      - python
+      - python3
+    templates: "{{ fit_file_templates | dict2items }}"
+    commands: "{{ fit_commands }}"
+    rcconf: "{{ fit_rcconf | dict2items }}"
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      notes: '"class=pkg-repo alias=ansible_pkg_repo"'
+
+fit_rcconf:
+  nginx_enable: "YES"
+
+fit_commands:
+  - mkdir -p /usr/local/www/pkgrepo
+  - chown www:www /usr/local/www/pkgrepo
+  - chmod 755 /usr/local/www/pkgrepo
+
+fit_file_templates:
+  /usr/local/etc/nginx:
+    - nginx.conf
+
+fit_file_options:
+  /usr/local/etc/nginx:
+    owner: root
+    group: wheel
+    mode: '0755'
+  /usr/local/etc/nginx/nginx.conf:
+    owner: root
+    group: wheel
+    mode: '0644'

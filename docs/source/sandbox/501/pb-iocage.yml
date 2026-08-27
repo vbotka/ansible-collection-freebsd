@@ -1,0 +1,6 @@
+- name: Configure iocage.
+  hosts: iocage
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.iocage

@@ -1,0 +1,39 @@
+# {{ ansible_managed }}
+
+# The user that gets all the mails (UID < 1000, usually the admin)
+# root=username@gmail.com
+root={{ cl_ssmtp_postmaster_address }}
+
+# The mail server (where the mail is sent to), both port 465 or 587 should be acceptable
+# See also https://support.google.com/mail/answer/78799
+# mailhub=smtp.gmail.com:587
+mailhub={{ cl_ssmtp_mailhub }}
+
+# The address where the mail appears to come from for user authentication.
+# rewriteDomain=gmail.com
+rewriteDomain={{ cl_ssmtp_rewriteDomain }}
+
+# The full hostname.  Must be correctly formed, fully qualified domain
+# name or GMail will reject connection.
+# hostname=yourlocalhost.yourlocaldomain.tld
+hostname={{ cl_ssmtp_srv }}
+
+# Use SSL/TLS before starting negotiation
+#UseTLS=Yes
+#UseSTARTTLS=Yes
+UseTLS={{ cl_ssmtp_UseTLS }}
+UseSTARTTLS={{ cl_ssmtp_UseSTARTTLS }}
+
+# Username/Password
+#AuthUser=username
+#AuthPass=password
+#AuthMethod=LOGIN
+AuthUser={{ cl_ssmtp_AuthUser }}
+AuthPass={{ cl_ssmtp_AuthPass }}
+AuthMethod={{ cl_ssmtp_AuthMethod }}
+
+# Email 'From header's can override the default domain?
+#FromLineOverride=yes
+FromLineOverride={{ cl_ssmtp_FromLineOverride }}
+
+# EOF

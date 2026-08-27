@@ -1,0 +1,9 @@
+---
+mailerconf:
+  path: /etc/mail/mailer.conf
+  template:
+    path: mailer.conf.j2
+    force: true
+  owner: root
+  group: wheel
+  mode: "0644"

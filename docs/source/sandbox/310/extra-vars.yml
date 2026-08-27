@@ -1,0 +1,5 @@
+fp_install: true
+fp_users: true
+fp_authorized_key: true
+fp_sudoers: true
+fp_dhclient: true

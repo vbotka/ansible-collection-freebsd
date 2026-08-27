@@ -1,0 +1,12 @@
+
+PLAY [Test role vbotka.freebsd.dhcp] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.dhcp : Packages: Install dhcp packages.] ******************
+ok: [iocage_05] => (item=net/isc-dhcp44-server)
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

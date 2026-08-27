@@ -1,0 +1,9 @@
+---
+wpa_action_sh:
+  path: "{{ bsd_cimage_mount_path }}{{ wpacli_action_script_dir }}/{{ wpacli_action_script_file }}"
+  force: true
+  owner: root
+  group: wheel
+  mode: "0750"
+  template:
+    path: 1.1.0-wpa_action.sh.j2

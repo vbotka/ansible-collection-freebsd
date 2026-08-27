@@ -1,0 +1,78 @@
+---
+# vars samples for freebsd_poudriere
+
+# poudriere_install: true
+# poudriere_debug: false
+# poudriere_backup_conf: true
+
+# freebsd_install_method: packages
+
+# poudriere_conf_URL_BASE: 10.1.0.17
+# poudriere_cert_cn: build.d3.example.com
+# poudriere_conf_NO_ZFS: "no"
+# poudriere_conf_ZPOOL: zroot
+# poudriere_conf_USE_TMPFS: "no"
+
+# poudriere_make_conf:
+#   - "OPTIONS_UNSET+=\t\t\tDOCS NLS X11 EXAMPLES"
+#   - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
+#   - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
+#   - "DEFAULT_VERSIONS+=\t\temacs=nox"
+#   - "DEFAULT_VERSIONS+=\t\tphp=7.2"
+#   - "DEFAULT_VERSIONS+=\t\tssl=openssl"
+
+# poudriere_pkg_arch:
+#   - i386
+#   - amd64
+
+# SEE: Role vbotka.freebsd_postinstall variables /defaults/main/pkgdict_*.yml
+
+# pkg_list_amd64: []
+# pkg_dict_amd64:
+#   - pkglist: minimal
+#     packages:
+#       - shells/bash
+#       - devel/git
+#       - archivers/gtar
+#       - ports-mgmt/pkg
+#       - ports-mgmt/portmaster
+#       - ports-mgmt/portupgrade
+#       - net/rsync
+#       - ftp/wget
+#   - pkglist: ansible
+#     packages:
+#       - sysutils/ansible
+#       - sysutils/py-ansible-lint
+#       - sysutils/py-ansible-runner
+
+# pkg_list_i386: []
+# pkg_dict_i386:
+#   - pkglist: minimal
+#     packages:
+#       - shells/bash
+#       - devel/git
+#       - archivers/gtar
+#       - ports-mgmt/pkg
+#       - ports-mgmt/portmaster
+#       - ports-mgmt/portupgrade
+#       - net/rsync
+#       - ftp/wget
+#   - pkglist: ansible
+#     packages:
+#       - sysutils/ansible
+#       - sysutils/py-ansible-lint
+#       - sysutils/py-ansible-runner
+
+# pkglist_enable_amd64:
+#   - apcups
+#   - linux
+#   - devel
+#   - joomla
+#   - yazvs
+#   - nginx
+#   - docker
+#   - snmpd
+
+# pkglist_enable_i386: "{{ pkglist_enable_amd64 }}"
+
+# EOF

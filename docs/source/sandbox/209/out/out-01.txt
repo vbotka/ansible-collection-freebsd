@@ -1,0 +1,30 @@
+
+PLAY [Create pkglist file.] ****************************************************
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    pkgs:
+    - archivers/gtar
+    - devel/git@default
+    - ftp/wget
+    - net/rsync
+    - ports-mgmt/pkg
+    - ports-mgmt/portmaster
+    - ports-mgmt/portupgrade
+    - security/sudo
+    - shells/bash
+    - www/apache24
+    - www/mod_php84
+
+TASK [vbotka.freebsd.iocage : Pkglist: Sanity. All package lists are in dictionary.] ***
+ok: [iocage_06 -> localhost]
+
+TASK [vbotka.freebsd.iocage : Pkglist: Create dictionary for pkglist files.] ***
+ok: [iocage_06 -> localhost]
+
+TASK [vbotka.freebsd.iocage : Pkglist: Create pkglist file.] *******************
+ok: [iocage_06 -> localhost]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

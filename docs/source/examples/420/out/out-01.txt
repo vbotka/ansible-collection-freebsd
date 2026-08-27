@@ -1,0 +1,120 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get pool.] ***************************************************************
+ok: [iocage_04]
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_04] => (item=www-1 ansible_client_apache) => 
+    msg: |-
+        iocage create --short --template ansible_client_apache notes="vmm=iocage_04 alias=www-1 class=http" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+
+TASK [Create clones host_hostname] *********************************************
+changed: [iocage_04] => (item=www-1 ansible_client_apache)
+
+TASK [Debug create clones host_hostname debug2=true] ***************************
+ok: [iocage_04] => 
+    out_create:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client_apache
+            - notes=vmm=iocage_04 alias=www-1 class=http
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            - host_hostname=www-1
+            delta: '0:00:00.371485'
+            end: '2026-02-25 00:03:13.688762'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage create --short --template ansible_client_apache notes="vmm=iocage_04 alias=www-1 class=http" bpf=1 dhcp=1 vnet=1 host_hostname=www-1
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: www-1
+                value:
+                    template: ansible_client_apache
+            msg: ''
+            rc: 0
+            start: '2026-02-25 00:03:13.317277'
+            stderr: ''
+            stderr_lines: []
+            stdout: c21bd13b successfully created!
+            stdout_lines:
+            - c21bd13b successfully created!
+        skipped: false
+
+TASK [Debug add fstab host_hostname debug2=true] *******************************
+ok: [iocage_04] => 
+    out_fstab:
+        changed: false
+        results: []
+        skipped: true
+        skipped_reason: No items in the list
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_04] => 
+    msg: |-
+        iocage start c21bd13b
+
+TASK [Start clones host_hostname] **********************************************
+changed: [iocage_04]
+
+TASK [Debug start clones host_hostname debug2=true] ****************************
+ok: [iocage_04] => 
+    out_start:
+        changed: true
+        cmd:
+        - iocage
+        - start
+        - c21bd13b
+        delta: '0:00:11.612697'
+        end: '2026-02-25 00:03:25.725450'
+        failed: false
+        msg: ''
+        rc: 0
+        start: '2026-02-25 00:03:14.112753'
+        stderr: No default gateway found for ipv6.
+        stderr_lines:
+        - No default gateway found for ipv6.
+        stdout: |-
+            * Starting c21bd13b
+              + Started OK
+              + Using devfs_ruleset: 1000 (iocage generated default)
+              + Configuring VNET OK
+              + Using IP options: vnet
+              + Starting services OK
+              + Executing poststart OK
+              + DHCP Address: 10.1.0.233/24
+        stdout_lines:
+        - '* Starting c21bd13b'
+        - '  + Started OK'
+        - '  + Using devfs_ruleset: 1000 (iocage generated default)'
+        - '  + Configuring VNET OK'
+        - '  + Using IP options: vnet'
+        - '  + Starting services OK'
+        - '  + Executing poststart OK'
+        - '  + DHCP Address: 10.1.0.233/24'
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=8    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+

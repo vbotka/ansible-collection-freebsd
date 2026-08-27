@@ -1,0 +1,47 @@
+# Proof of concepts.
+
+## Content
+
+001 - 899 ... docs/source/examples/ run the examples in sandbox.
+501 ......... Configure the iocage host.
+
+901 Test the filter and module vbotka.freebsd.iocage
+902 Use ansible_port to forward the SSH connection from the iocage host to the jails.
+903 Display iocage data-sets collected by the module vbotka.freebsd.iocage
+904 Test connection plugin jailexec
+905 Test ansible-pull, plugin ansible-syslogng, repo ansible-conf-syslogng-server.git
+906 Test iocage plugin ansible-test custom facts
+
+907 Test iocage plugins ansible-syslogng-client and ansible-syslogng-server (OBSOLETE)
+908 Test var enabled_plugins; simplified version of 907 (OBSOLETE)
+
+909 Test ansible-pull, iocage plugin ansible-pull-test, repo ansible-conf-test
+910 Test ansible-pull, iocage plugin ansible-pull-syslogng-server,
+    repo ansible-conf-syslogng-server.git
+911 Test ansible-pull, iocage plugin ansible-pull-syslogng-client,
+    repo ansible-conf-syslogng-client.git
+
+912 The same as 910, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
+913 The same as 911, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
+
+914 Template ansible-syslogng-server
+915 Template ansible-syslogng-client
+917 Template ansible-repos
+
+918 Template ansible-init test (ai_db_host)
+919 Template ansible-init test (ai_db_class)
+920 Template ansible-init log-server log-client (ai_db_class)
+921 Template ansible-init-devel; test package ansible-init-firstboot-1.0.pkg
+922 Template ansible-init-example; test package ansible-init-firstboot-1.0.pkg
+
+923 Inventory plugin iocage2
+924 Template ansible-pkg-repo
+925 Repo ansible-conf-roles
+926 Filters dict_to_ast and ast_to_nginx
+927 Filters to_ucl and from_ucl
+
+## Notes
+
+* Use the 'timestamp' callback to see the tasks timing.
+  shell> export ANSIBLE_STDOUT_CALLBACK=community.general.timestamp
+  shell> ./batch.sh

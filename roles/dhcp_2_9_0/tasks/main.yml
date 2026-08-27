@@ -1,0 +1,26 @@
+---
+# tasks freebsd_dhcp
+
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  tags: [bsd_dhcpd_sanity, always]
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: bsd_dhcpd_debug | bool
+  tags: bsd_dhcpd_debug
+
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
+  when: bsd_dhcpd_install | bool
+  tags: bsd_dhcpd_packages
+
+- name: Import rcconf.yml
+  ansible.builtin.import_tasks: rcconf.yml
+  tags: bsd_dhcpd_rcconf
+
+- name: Import conf.yml
+  ansible.builtin.import_tasks: conf.yml
+  tags: bsd_dhcpd_conf
+
+# EOF

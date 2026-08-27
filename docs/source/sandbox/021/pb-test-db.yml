@@ -1,0 +1,7 @@
+- name: Test group swarm_db
+  hosts: swarm_db
+
+  tasks:
+
+    - debug:
+        var: iocage_properties.host_hostuuid

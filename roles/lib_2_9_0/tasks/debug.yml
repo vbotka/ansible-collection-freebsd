@@ -1,0 +1,21 @@
+---
+# All rights reserved (c) 2020-2026, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Ansible lib Debug.
+  vars:
+    msg: |-
+      al_role_version: {{ al_role_version }}
+      ansible_facts.architecture: {{ ansible_facts.architecture }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF
+...

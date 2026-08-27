@@ -1,0 +1,32 @@
+---
+- name: Configure /etc/rc.conf or etc/rc.conf.d/dhcpd
+  vars:
+    _path: "{{ bsd_dhcpd_rcconfd | bool | ternary('/etc/rc.conf.d/dhcpd', '/etc/rc.conf') }}"
+  block:
+
+    - name: "Rcconf: Enable and start dhcpd"
+      when: bsd_dhcpd_enable | bool
+      notify: start dhcpd
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: dhcpd_enable
+        value: "YES"
+
+    - name: "Rcconf: Disable and stop dhcpd"
+      when: not bsd_dhcpd_enable | bool
+      notify: disable and stop dhcpd
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: dhcpd_enable
+        value: "NO"
+
+    - name: "Rcconf: Configure dhcpd."
+      notify: restart dhcpd
+      community.general.sysrc:
+        path: "{{ _path }}"
+        name: "{{ item.name }}"
+        value: "{{ item.value | d(omit) }}"
+        state: "{{ item.state | d(omit) }}"
+      loop: "{{ bsd_dhcpd_rcconf }}"
+
+# EOF

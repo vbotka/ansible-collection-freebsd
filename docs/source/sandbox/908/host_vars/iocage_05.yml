@@ -1,0 +1,18 @@
+enabled_plugins:
+  - ansible-syslogng
+
+plugins:
+  ansible-syslogng:
+    git: https://github.com/vbotka/iocage-plugins-devel
+    branch: main
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+# jail properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  type: jail

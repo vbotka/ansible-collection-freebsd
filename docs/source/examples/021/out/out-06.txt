@@ -1,0 +1,63 @@
+
+PLAY [Test connection and get hostname.] ***************************************
+
+TASK [command] *****************************************************************
+changed: [pkg_repo]
+changed: [repos_devel]
+[ERROR]: Task failed: Cannot access jail 'None': Shared connection to iocage_06 closed.
+
+Task failed.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/021/pb-test-connection.yml:6:7
+
+4   tasks:
+5
+6     - command: hostname
+        ^ column 7
+
+<<< caused by >>>
+
+Cannot access jail 'None': Shared connection to iocage_06 closed.
+
+fatal: [db1]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_06 closed.'
+    unreachable: true
+fatal: [db2]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_06 closed.'
+    unreachable: true
+changed: [www_02]
+changed: [log_server_01]
+changed: [repos]
+changed: [www_01]
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        repos repos
+ok: [repos_devel] => 
+    msg: |-
+        repos_devel repos-devel
+ok: [pkg_repo] => 
+    msg: |-
+        pkg_repo pkg-repo
+ok: [www_02] => 
+    msg: |-
+        www_02 www-02
+ok: [log_server_01] => 
+    msg: |-
+        log_server_01 log-server-01
+ok: [www_01] => 
+    msg: |-
+        www_01 www-01
+
+PLAY RECAP *********************************************************************
+db1                        : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+log_server_01              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg_repo                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos_devel                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_01                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_02                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,11 @@
+@all:
+  |--@ungrouped:
+  |  |--ansible-syslogng
+  |--@swarm_sw_01:
+  |  |--850e6bf1-5300-47f9-8cbc-f451cfa3560f
+  |  |--c31e173e-b36d-49ee-9efa-e6a8bc0338fa
+  |  |--f4458363-ba6b-4afd-9d9b-e634863a27d6
+  |--@vmm_iocage_05:
+  |  |--850e6bf1-5300-47f9-8cbc-f451cfa3560f
+  |  |--c31e173e-b36d-49ee-9efa-e6a8bc0338fa
+  |  |--f4458363-ba6b-4afd-9d9b-e634863a27d6

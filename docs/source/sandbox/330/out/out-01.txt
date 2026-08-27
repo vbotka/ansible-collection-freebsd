@@ -1,0 +1,41 @@
+
+PLAY [Iocage fetch releases, create basejail, and clone jails.] ****************
+
+TASK [Debug] *******************************************************************
+ok: [iocage_06] => 
+    msg: |-
+        freebsd_iocage_runner_exec: fetch,create,clone
+        freebsd_iocage_runner_cmd:
+          clone:
+          - cmd: iocage clone ansible-client --name test_101
+            creates: /zroot/iocage/jails/test_101
+          - cmd: iocage clone ansible-client --name test_102
+            creates: /zroot/iocage/jails/test_102
+          - cmd: iocage clone ansible-client --name test_103
+            creates: /zroot/iocage/jails/test_103
+          - cmd: iocage set vnet=1 test_101
+          - cmd: iocage set defaultrouter=172.16.99.1 test_101
+          - cmd: iocage set notes=vmm=iocage_06 test_101
+          - cmd: iocage set ip4_addr=vnet0|172.16.99.251/24 test_101
+          - cmd: iocage set vnet=1 test_102
+          - cmd: iocage set defaultrouter=172.16.99.1 test_102
+          - cmd: iocage set notes=vmm=iocage_06 test_102
+          - cmd: iocage set ip4_addr=vnet0|172.16.99.252/24 test_102
+          - cmd: iocage set vnet=1 test_103
+          - cmd: iocage set defaultrouter=172.16.99.1 test_103
+          - cmd: iocage set notes=vmm=iocage_06 test_103
+          - cmd: iocage set ip4_addr=vnet0|172.16.99.253/24 test_103
+          create:
+          - cmd: iocage create --release 15.1-RELEASE --name ansible-client
+            creates: /zroot/iocage/jails/ansible-client
+          - cmd: iocage set vnet=1 ansible-client
+          - cmd: iocage set defaultrouter=172.16.99.1 ansible-client
+          - cmd: iocage set notes=vmm=iocage_06 ansible-client
+          - cmd: iocage set ip4_addr=vnet0|172.16.99.250/24 ansible-client
+          fetch:
+          - cmd: iocage fetch --release 15.0-RELEASE
+            creates: /zroot/iocage/releases/15.0-RELEASE
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

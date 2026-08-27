@@ -1,0 +1,13 @@
+10:
+  example: '010'
+  name: Clone basejails and create inventory
+  case: |
+    Fetch releases, create basejails, clone jails from the basejails, and start the jails. Use the
+    inventory plugin ``vbotka.freebsd.iocage`` to create the inventory. Display the created inventory.
+  requirements:
+    - module ``vbotka.freebsd.iocage``
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - activated binary ``iocage``
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/010
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/010/example.html

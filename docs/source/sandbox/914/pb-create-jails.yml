@@ -1,0 +1,22 @@
+---
+- name: Create jails from iocage templates.
+  hosts: iocage
+
+  tasks:
+
+    - name: Create log-server
+      vars:
+        _notes: >-
+          "vmm={{ inventory_hostname }}
+          class=log-server
+          alias=log_server"
+        _properties: >-
+          {% for k, v in properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
+      ansible.builtin.command: >
+        iocage create
+        --name log-server
+        --template ansible-syslogng-server
+        {{ _properties }}

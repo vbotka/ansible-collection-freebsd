@@ -1,0 +1,38 @@
+---
+- name: "Debug fzfs_debug={{ fzfs_debug }}"
+  vars:
+    msg: |-
+      fzfs_role_version: {{ fzfs_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
+      ansible_facts.architecture: {{ ansible_facts.architecture }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+
+      fzfs_enable: {{ fzfs_enable }}
+      fzfs_debug2: {{ fzfs_debug2 }}
+      fzfs_pools_sanity: {{ fzfs_pools_sanity }}
+      fzfs_assert_quiet: {{ fzfs_assert_quiet }}
+      fzfs_facts_ds: {{ fzfs_facts_ds }}
+      fzfs_facts_recurse: {{ fzfs_facts_recurse }}
+      fzfs_mount_all: {{ fzfs_mount_all }}
+      fzfs_sysctl_tuneables_warning: "{{ fzfs_sysctl_tuneables_warning }}"
+
+      fzfs_sysctl_conf:
+        {{ fzfs_sysctl_conf | to_yaml(indent=2) | indent(2) }}
+      fzfs_rcconf:
+        {{ fzfs_rcconf | to_yaml(indent=2) | indent(2) }}
+      fzfs_pools:
+        {{ fzfs_pools | to_yaml(indent=2) | indent(2) }}
+      fzfs_manage:
+        {{ fzfs_manage | to_yaml(indent=2) | indent(2) }}
+      fzfs_mountpoints:
+        {{ fzfs_mountpoints | to_yaml(indent=2) | indent(2) }}
+
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF

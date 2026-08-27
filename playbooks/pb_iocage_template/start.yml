@@ -1,0 +1,33 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Start: Get iocage list of jails."
+  register: out_jails
+  changed_when: false
+  ansible.builtin.command: iocage list --long
+
+- name: "Start: Display iocage_jails debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: iocage_jails
+
+- name: "Start: Start created templates."
+  when: _jails | length > 0
+  vars:
+    jails_started: "{{ iocage_jails
+                       | dict2items
+                       | selectattr('value.state', 'eq', 'up')
+                       | map(attribute='key') }}"
+    _jails: "{{ templates | difference(jails_started) }}"
+  block:
+
+    - name: "Start: Start created templates."
+      register: out
+      changed_when: false
+      ansible.builtin.command: "iocage start {{ _jails | join(' ') }}"
+
+    - name: "Start: Debug start jails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

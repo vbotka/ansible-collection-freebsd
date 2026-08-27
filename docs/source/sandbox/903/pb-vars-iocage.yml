@@ -1,0 +1,15 @@
+- hosts: iocage
+
+  tasks:
+
+    - vbotka.freebsd.iocage:
+       
+    - debug:
+        var: ansible_facts.iocage_jails
+       
+    - debug:
+        msg: |
+          {% for var in q('varnames', 'iocage_*') %}
+          {{ var }}: {{ lookup('vars', var) }}
+          {% endfor %}
+      when: debug | d(false) | bool

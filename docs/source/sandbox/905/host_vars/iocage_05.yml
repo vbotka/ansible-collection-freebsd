@@ -1,0 +1,19 @@
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  notes: "vmm={{ inventory_hostname }}"
+  type: jail
+
+swarms:
+  sw_01:
+    count: 3
+    plugin: ansible-syslogng
+
+plugins:
+  ansible-syslogng:
+    git: https://github.com/vbotka/iocage-plugins
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1

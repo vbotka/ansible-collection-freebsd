@@ -1,0 +1,10 @@
+2:
+  example: '002'
+  name: Activate ``iocage``
+  case: |
+    Use the role ``vbotka.freebsd.iocage`` to activate ``iocage``.
+  requirements:
+    - root privilege in the managed nodes
+    - binary iocage
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/002
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/002/example.html

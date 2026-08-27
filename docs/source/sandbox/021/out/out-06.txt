@@ -1,0 +1,27 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [db2] => 
+    msg: |-
+        52328c1c
+        {alias: db2, project: sandbox_020, swarm: db, vmm: iocage_06}
+ok: [db1] => 
+    msg: |-
+        d4bf3587
+        {alias: db1, project: sandbox_020, swarm: db, vmm: iocage_06}
+
+TASK [debug] *******************************************************************
+ok: [db1] => 
+    msg: |-
+        all: ['db1', 'db2']
+        ungrouped: []
+        project_sandbox_020: ['db1', 'db2']
+        swarm_db: ['db1', 'db2']
+        state_down: ['db1', 'db2']
+        vmm_iocage_06: ['db1', 'db2']
+
+PLAY RECAP *********************************************************************
+db1                        : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

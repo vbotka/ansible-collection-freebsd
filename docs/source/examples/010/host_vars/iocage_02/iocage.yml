@@ -1,0 +1,26 @@
+fetch:
+  - 14.3-RELEASE
+
+basejails:
+  - name: ansible_client
+    release: 14.3-RELEASE
+
+clones:
+  - name: test_111
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'em0|10.1.0.111/24'
+  - name: test_112
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'em0|10.1.0.112/24'
+  - name: test_113
+    clone_from: ansible_client
+    properties:
+      ip4_addr: 'em0|10.1.0.113/24'
+
+start:
+  - test_113
+
+iocage_env:
+  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

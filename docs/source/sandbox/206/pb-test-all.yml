@@ -1,0 +1,9 @@
+- hosts: all
+  remote_user: admin
+    
+  tasks:
+
+    - ansible.builtin.debug:
+        msg: |
+          ansible_host: {{ ansible_host }}
+          iocage_hooks: {{ iocage_hooks }}

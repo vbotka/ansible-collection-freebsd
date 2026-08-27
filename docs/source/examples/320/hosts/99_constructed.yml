@@ -1,0 +1,3 @@
+plugin: ansible.builtin.constructed
+groups:
+    up: iocage_state == 'up'

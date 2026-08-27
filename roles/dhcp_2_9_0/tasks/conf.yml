@@ -1,0 +1,13 @@
+---
+- name: "Conf: Configure /usr/local/etc/dhcpd.conf from {{ bsd_dhcpd_template }}"
+  notify: restart dhcpd
+  ansible.builtin.template:
+    dest: /usr/local/etc/dhcpd.conf
+    src: "{{ bsd_dhcpd_template }}"
+    owner: root
+    group: wheel
+    mode: "0644"
+    backup: "{{ bsd_dhcpd_backup_conf }}"
+    validate: /usr/local/sbin/dhcpd -t -cf %s
+
+# EOF

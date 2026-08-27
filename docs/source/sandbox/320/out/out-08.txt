@@ -1,0 +1,887 @@
+
+PLAY [Test role vbotka.freebsd.packages.] **************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [iocage_06] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python312
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
+ok: [iocage_06] => 
+    pkg_audit:
+        iocage_06:
+            packages:
+                emacs-nox:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 28.1,3 : < 30.2_4,3'
+                        cve:
+                        - CVE-2026-6861
+                        description: Emacs -- Heap out-of-bounds write when rendering
+                            SVG images
+                        url: https://vuxml.FreeBSD.org/freebsd/c7be43b0-78f0-11f1-8898-1c697a616631.html
+                    reverse dependencies: []
+                    version: 30.2_2,3
+                expat:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.8.2
+                        cve:
+                        - CVE-2026-56412
+                        - CVE-2026-56411
+                        - CVE-2026-56410
+                        - CVE-2026-56409
+                        - CVE-2026-56408
+                        - CVE-2026-56407
+                        - CVE-2026-56406
+                        - CVE-2026-56405
+                        - CVE-2026-56404
+                        - CVE-2026-56403
+                        - CVE-2026-56132
+                        - CVE-2026-56131
+                        - CVE-2026-50219
+                        description: Multiple vulnerability found in Expat
+                        url: https://vuxml.FreeBSD.org/freebsd/d06b1fa2-731f-11f1-a0d2-589cfc10a551.html
+                    reverse dependencies:
+                    - python312
+                    - py312-crossplane
+                    - python3
+                    - python
+                    - py312-libzfs
+                    - py312-ansible-lint
+                    - py312-yamllint
+                    - py312-wcmatch
+                    - py312-ansible-compat
+                    - py312-subprocess-tee
+                    - py312-ruamel.yaml
+                    - py312-ruamel.yaml.clib
+                    - py312-rich
+                    - py312-black
+                    - py312-regex
+                    - py312-pytokens
+                    - py312-pygments
+                    - py312-ansible-runner
+                    - py312-pexpect
+                    - py312-ptyprocess
+                    - py312-psutil
+                    - py312-platformdirs
+                    - py312-pathspec
+                    - py312-mypy_extensions
+                    - py312-markdown-it-py
+                    - py312-mdurl
+                    - py312-daemon
+                    - py312-lockfile
+                    - py312-filelock
+                    - py312-colorama
+                    - py312-bracex
+                    - gettext-tools
+                    - meson
+                    - ninja
+                    - py312-wheel
+                    - py312-build
+                    - py312-pyproject-hooks
+                    - py312-installer
+                    - py312-flit-core
+                    - gdb
+                    - samba416
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    - xfce
+                    - talloc
+                    - tevent
+                    - py312-markdown
+                    - py312-iocage
+                    - py312-dnspython
+                    - py312-httpx
+                    - py312-httpcore
+                    - py312-anyio
+                    - py312-truststore
+                    - py312-trio
+                    - py312-texttable
+                    - py312-sortedcontainers
+                    - py312-socksio
+                    - py312-sniffio
+                    - py312-gitpython
+                    - py312-gitdb
+                    - py312-smmap
+                    - py312-six
+                    - py312-aioquic
+                    - py312-service-identity
+                    - py312-jsonschema
+                    - py312-jsonschema-specifications
+                    - py312-referencing
+                    - py312-rpds-py
+                    - py312-pylsqpack
+                    - py312-outcome
+                    - py312-netifaces
+                    - py312-h2
+                    - py312-hyperframe
+                    - py312-coloredlogs
+                    - py312-humanfriendly
+                    - py312-hpack
+                    - py312-h11
+                    - py312-click
+                    - py312-attrs
+                    - py312-async_generator
+                    - acme-tiny
+                    - py312-acme
+                    - py312-requests
+                    - py312-urllib3
+                    - py312-pyopenssl
+                    - py312-typing-extensions
+                    - py312-setuptools
+                    - py312-pyrfc3339
+                    - py312-pytz
+                    - py312-pysocks
+                    - py312-josepy
+                    - py312-idna
+                    - py312-charset-normalizer
+                    - py312-certifi
+                    - py312-ansible
+                    - py312-ansible-core
+                    - py312-toml
+                    - py312-resolvelib
+                    - py312-pyyaml
+                    - py312-cryptography
+                    - py312-cffi
+                    - py312-pycparser
+                    - py312-passlib
+                    - py312-packaging
+                    - py312-Jinja2
+                    - py312-markupsafe
+                    - py312-importlib-resources
+                    - py312-Babel
+                    - apache24
+                    - mod_php83
+                    - apr
+                    - mesa-dri
+                    - xorg
+                    - xorg-server
+                    - xf86-video-vesa
+                    - xorg-drivers
+                    - xf86-video-scfb
+                    - xf86-input-mouse
+                    - xf86-input-libinput
+                    - xf86-input-keyboard
+                    - mesa-libs
+                    - wayland
+                    - libva
+                    - ffmpeg
+                    - firefox
+                    - xfce4-settings
+                    - xfce4-power-manager
+                    - xfce4-panel
+                    - xfce4-notifyd
+                    - qt6-base
+                    - bsdisks
+                    - polkit-qt-1-qt6
+                    - libxfce4windowing
+                    - xfce4-session
+                    - gtk4
+                    - vte3
+                    - xfce4-terminal
+                    - gcr
+                    - gtk-layer-shell
+                    - gtk3
+                    - lightdm-gtk-greeter
+                    - xfce4-wm
+                    - xfce4-appfinder
+                    - xfce-icons-elementary
+                    - mousepad
+                    - libexo
+                    - garcon
+                    - libxfce4menu
+                    - libwnck3
+                    - libdbusmenu
+                    - gtksourceview4
+                    - gspell
+                    - libxkbcommon
+                    - vulkan-loader
+                    - libplacebo
+                    - gstreamer1-plugins-gl
+                    - polkit
+                    - accountsservice
+                    - lightdm
+                    - upower
+                    - colord
+                    - libudisks
+                    - consolekit2
+                    - libarchive
+                    - libgepub
+                    - xfce4-tumbler
+                    - avahi-app
+                    - cups
+                    - gtk2
+                    - gtk-murrine-engine
+                    - greybird-theme
+                    - dbus-glib
+                    - dbus
+                    - at-spi2-core
+                    - git
+                    - fontconfig
+                    - libass
+                    - xterm
+                    - xorg-apps
+                    - font-xfree86-type1
+                    - xorg-fonts-type1
+                    - xorg-fonts
+                    - font-winitzki-cyrillic
+                    - xorg-fonts-cyrillic
+                    - font-sun-misc
+                    - xorg-fonts-miscbitmaps
+                    - font-sony-misc
+                    - font-screen-cyrillic
+                    - font-schumacher-misc
+                    - font-mutt-misc
+                    - font-misc-misc
+                    - xcalc
+                    - font-misc-meltho
+                    - xorg-fonts-truetype
+                    - font-misc-ethiopic
+                    - font-misc-cyrillic
+                    - font-micro-misc
+                    - font-jis-misc
+                    - font-isas-misc
+                    - font-ibm-type1
+                    - font-dec-misc
+                    - font-daewoo-misc
+                    - font-cursor-misc
+                    - font-cronyx-cyrillic
+                    - font-bitstream-type1
+                    - font-bitstream-75dpi
+                    - xorg-fonts-75dpi
+                    - font-bitstream-100dpi
+                    - xorg-fonts-100dpi
+                    - font-bh-type1
+                    - font-bh-ttf
+                    - font-bh-lucidatypewriter-75dpi
+                    - font-bh-lucidatypewriter-100dpi
+                    - font-bh-75dpi
+                    - font-bh-100dpi
+                    - font-arabic-misc
+                    - font-adobe-utopia-type1
+                    - font-adobe-utopia-75dpi
+                    - font-adobe-utopia-100dpi
+                    - font-adobe-75dpi
+                    - font-adobe-100dpi
+                    - dejavu
+                    - poppler-glib
+                    - poppler
+                    - librsvg2-rust
+                    - pango
+                    - gstreamer1-plugins-bad
+                    - cairo
+                    - py311-pygobject
+                    - graphene
+                    - py311-pycairo
+                    - libbluray
+                    - libgd
+                    - libgphoto2
+                    - libXft
+                    - xorg-libraries
+                    - xclock
+                    - x11perf
+                    - links
+                    version: 2.8.1
+                ffmpeg:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 8.1.2,1
+                        cve:
+                        - CVE-2026-8461
+                        description: ffmpeg -- Out-of-bounds write
+                        url: https://vuxml.FreeBSD.org/freebsd/ba8d239f-709f-11f1-a30e-28d2443e6cfa.html
+                    reverse dependencies:
+                    - firefox
+                    version: 8.1,1
+                firefox:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 153.0.0,2
+                        cve:
+                        - CVE-2026-16412
+                        description: Mozilla -- Memory safety bugs
+                        url: https://vuxml.FreeBSD.org/freebsd/b36c7feb-8aa2-11f1-a744-b42e991fc52e.html
+                    reverse dependencies: []
+                    version: 152.0.4,2
+                giflib:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 6.1.3
+                        cve:
+                        - CVE-2026-26740
+                        description: giflib -- Buffer Overflow vulnerability
+                        url: https://vuxml.FreeBSD.org/freebsd/dd6096e6-8555-11f1-b4c7-00a0980083d7.html
+                    reverse dependencies:
+                    - libjxl
+                    - ffmpeg
+                    - firefox
+                    - webp
+                    - libgd
+                    - libgphoto2
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    - xfce
+                    - links
+                    version: 5.2.2
+                gstreamer1:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.28.2
+                        cve:
+                        - CVE-2026-46472
+                        - CVE-2026-46470
+                        - CVE-2026-46469
+                        - CVE-2026-39044
+                        - CVE-2026-39043
+                        - CVE-2026-5056
+                        description: gstreamer1 -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/05aadfcc-55f5-11f1-915c-8974b59277b5.html
+                    reverse dependencies:
+                    - gtk4
+                    - vte3
+                    - xfce4-terminal
+                    - xfce
+                    - gcr
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    - xfce4-tumbler
+                    - gstreamer1-plugins-gl
+                    - gstreamer1-plugins-bad
+                    - gstreamer1-plugins
+                    version: 1.28.1_1
+                gstreamer1-plugins:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.28.3
+                        description: gstreamer1 -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/ea4c5b9d-55f7-11f1-915c-8974b59277b5.html
+                    reverse dependencies:
+                    - gtk4
+                    - vte3
+                    - xfce4-terminal
+                    - xfce
+                    - gcr
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    - xfce4-tumbler
+                    - gstreamer1-plugins-gl
+                    - gstreamer1-plugins-bad
+                    version: 1.28.1
+                gstreamer1-plugins-bad:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.28.3
+                        description: gstreamer1 -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/ea4c5b9d-55f7-11f1-915c-8974b59277b5.html
+                    reverse dependencies:
+                    - gtk4
+                    - vte3
+                    - xfce4-terminal
+                    - xfce
+                    - gcr
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    version: 1.28.1
+                libXfont2:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.0.8
+                        cve:
+                        - CVE-2026-56003
+                        - CVE-2026-56002
+                        - CVE-2026-56001
+                        description: libXfont2 -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/9a1fdf39-7b10-11f1-a315-589cfc10a551.html
+                    reverse dependencies:
+                    - xorg-libraries
+                    - xorg
+                    - xorg-server
+                    - xf86-video-vesa
+                    - xorg-drivers
+                    - xf86-video-scfb
+                    - xf86-input-mouse
+                    - xf86-input-libinput
+                    - xf86-input-keyboard
+                    version: 2.0.6
+                openexr:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.4.14
+                        cve:
+                        - CVE-2026-59183
+                        - CVE-2026-59184
+                        - CVE-2026-59186
+                        - CVE-2026-59187
+                        - CVE-2026-59189
+                        - CVE-2026-59981
+                        - CVE-2026-59982
+                        - CVE-2026-59983
+                        - CVE-2026-59984
+                        - CVE-2026-59985
+                        - CVE-2026-61555
+                        - CVE-2026-61703
+                        - CVE-2026-62986
+                        - CVE-2026-68513
+                        - CVE-2026-68514
+                        description: OpenEXR -- 3.4.14 fixes multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/56449320-97c5-11f1-84d7-3c7c3fba4204.html
+                    reverse dependencies:
+                    - libjxl
+                    - ffmpeg
+                    - firefox
+                    version: 3.4.13
+                poppler:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 26.04.0_1
+                        cve:
+                        - CVE-2026-10118
+                        description: 'Poppler: integer overflow in tilingPatternFill'
+                        url: https://vuxml.FreeBSD.org/freebsd/74d0291e-7f81-11f1-83e9-901b0e13f1a0.html
+                    reverse dependencies:
+                    - poppler-glib
+                    - xfce4-tumbler
+                    - thunar
+                    - xfce4-desktop
+                    - xfce
+                    version: 25.10.0_1
+                poppler-glib:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 26.04.0_1
+                        cve:
+                        - CVE-2026-10118
+                        description: 'Poppler: integer overflow in tilingPatternFill'
+                        url: https://vuxml.FreeBSD.org/freebsd/74d0291e-7f81-11f1-83e9-901b0e13f1a0.html
+                    reverse dependencies:
+                    - xfce4-tumbler
+                    - thunar
+                    - xfce4-desktop
+                    - xfce
+                    version: 25.10.0_1
+                py312-setuptools:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 78.1.1
+                        cve:
+                        - CVE-2025-47273
+                        description: py-setuptools -- Improper Limitation of a Pathname
+                            to a Restricted Directory ('Path Traversal')
+                        url: https://vuxml.FreeBSD.org/freebsd/690144e9-4f88-11f1-982e-00a098b42aeb.html
+                    reverse dependencies:
+                    - py312-acme
+                    version: 63.1.0_3
+                python311:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies:
+                    - python
+                    - py311-urllib3
+                    - py311-texttable
+                    - py311-gitpython
+                    - py311-gitdb
+                    - py311-smmap
+                    - py311-jsonschema-specifications
+                    - py311-referencing
+                    - py311-rpds-py
+                    - py311-pysocks
+                    - py311-netifaces
+                    - py311-click
+                    - py311-fail2ban
+                    - py311-sqlite3
+                    - py311-pyinotify
+                    - Imath
+                    - openexr
+                    - libjxl
+                    - ffmpeg
+                    - firefox
+                    - py311-numpy
+                    - py311-boost-libs
+                    - llvm19
+                    - mesa-dri
+                    - xorg
+                    - xorg-server
+                    - xf86-video-vesa
+                    - xorg-drivers
+                    - xf86-video-scfb
+                    - xf86-input-mouse
+                    - xf86-input-libinput
+                    - xf86-input-keyboard
+                    - spirv-llvm-translator-llvm19
+                    - xfce4-settings
+                    - xfce
+                    - qt6-base
+                    - bsdisks
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    - polkit-qt-1-qt6
+                    - libdbusmenu
+                    - xfce4-panel
+                    - xfce4-power-manager
+                    - xfce4-notifyd
+                    - gtk4
+                    - vte3
+                    - xfce4-terminal
+                    - gcr
+                    - gtk3
+                    - lightdm-gtk-greeter
+                    - xfce4-session
+                    - xfce4-wm
+                    - xfce4-appfinder
+                    - xfce-icons-elementary
+                    - mousepad
+                    - libxfce4windowing
+                    - libexo
+                    - garcon
+                    - libxfce4menu
+                    - libwnck3
+                    - gtksourceview4
+                    - gtk-layer-shell
+                    - gspell
+                    - tevent
+                    - samba416
+                    - tdb
+                    - graphene
+                    - gstreamer1-plugins-gl
+                    - py311-pygobject
+                    - pygobject-common
+                    - py311-aioquic
+                    - py311-pyopenssl
+                    - py311-httpcore
+                    - py311-anyio
+                    - py311-typing-extensions
+                    - py311-truststore
+                    - py311-trio
+                    - py311-sortedcontainers
+                    - py311-socksio
+                    - py311-sniffio
+                    - libinput
+                    - py311-pyudev
+                    - py311-six
+                    - py311-service-identity
+                    - py311-pylsqpack
+                    - py311-cryptography
+                    - py311-cffi
+                    - py311-pycparser
+                    - py311-pycairo
+                    - py311-pyasn1-modules
+                    - py311-pyasn1
+                    - py311-outcome
+                    - libwacom
+                    - py311-libevdev
+                    - py311-idna
+                    - py311-h2
+                    - py311-hyperframe
+                    - py311-hpack
+                    - py311-h11
+                    - py311-evdev
+                    - py311-certifi
+                    - py311-attrs
+                    - py311-async_generator
+                    - gtk2
+                    - gtk-murrine-engine
+                    - greybird-theme
+                    - libsecret
+                    - json-glib
+                    - gstreamer1-plugins-bad
+                    - libgusb
+                    - colord
+                    - gobject-introspection
+                    - libproxy
+                    - glib-networking
+                    - libsoup3
+                    - libgepub
+                    - xfce4-tumbler
+                    - git
+                    - py312-iocage
+                    - glib
+                    - syslog-ng
+                    - lightdm
+                    - accountsservice
+                    - libxklavier
+                    - xfce4-conf
+                    - upower
+                    - poppler-glib
+                    - libudisks
+                    - consolekit2
+                    - polkit
+                    - librsvg2-rust
+                    - pango
+                    - cairo
+                    - gstreamer1-plugins
+                    - libxfce4util
+                    - gstreamer1
+                    - libgudev
+                    - libnotify
+                    - libgtop
+                    - libgsf
+                    - avahi-app
+                    - cups
+                    - at-spi2-core
+                    - dbus-glib
+                    - enchant2
+                    - harfbuzz
+                    - libass
+                    - gtk-update-icon-cache
+                    - adwaita-icon-theme
+                    - adwaita-icon-theme-legacy
+                    - gsettings-desktop-schemas
+                    - gdk-pixbuf-extra
+                    - gamin
+                    - desktop-file-utils
+                    - libavif
+                    - links
+                    - gdk-pixbuf2
+                    - shared-mime-info
+                    - py311-packaging
+                    version: 3.11.15_2
+                python312:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.12.13_4
+                        cve:
+                        - CVE-2026-6100
+                        description: Python -- use-after-free vulnerability in decompressors
+                            under memory pressure
+                        url: https://vuxml.FreeBSD.org/freebsd/b8e9f33c-375d-11f1-a119-e36228bfe7d4.html
+                    reverse dependencies:
+                    - py312-crossplane
+                    - python3
+                    - python
+                    - py312-libzfs
+                    - py312-ansible-lint
+                    - py312-yamllint
+                    - py312-wcmatch
+                    - py312-ansible-compat
+                    - py312-subprocess-tee
+                    - py312-ruamel.yaml
+                    - py312-ruamel.yaml.clib
+                    - py312-rich
+                    - py312-black
+                    - py312-regex
+                    - py312-pytokens
+                    - py312-pygments
+                    - py312-ansible-runner
+                    - py312-pexpect
+                    - py312-ptyprocess
+                    - py312-psutil
+                    - py312-platformdirs
+                    - py312-pathspec
+                    - py312-mypy_extensions
+                    - py312-markdown-it-py
+                    - py312-mdurl
+                    - py312-daemon
+                    - py312-lockfile
+                    - py312-filelock
+                    - py312-colorama
+                    - py312-bracex
+                    - gettext-tools
+                    - meson
+                    - ninja
+                    - py312-wheel
+                    - py312-build
+                    - py312-pyproject-hooks
+                    - py312-installer
+                    - py312-flit-core
+                    - gdb
+                    - samba416
+                    - gvfs
+                    - thunar
+                    - xfce4-desktop
+                    - xfce
+                    - talloc
+                    - tevent
+                    - py312-markdown
+                    - py312-iocage
+                    - py312-dnspython
+                    - py312-httpx
+                    - py312-httpcore
+                    - py312-anyio
+                    - py312-truststore
+                    - py312-trio
+                    - py312-texttable
+                    - py312-sortedcontainers
+                    - py312-socksio
+                    - py312-sniffio
+                    - py312-gitpython
+                    - py312-gitdb
+                    - py312-smmap
+                    - py312-six
+                    - py312-aioquic
+                    - py312-service-identity
+                    - py312-jsonschema
+                    - py312-jsonschema-specifications
+                    - py312-referencing
+                    - py312-rpds-py
+                    - py312-pylsqpack
+                    - py312-outcome
+                    - py312-netifaces
+                    - py312-h2
+                    - py312-hyperframe
+                    - py312-coloredlogs
+                    - py312-humanfriendly
+                    - py312-hpack
+                    - py312-h11
+                    - py312-click
+                    - py312-attrs
+                    - py312-async_generator
+                    - acme-tiny
+                    - py312-acme
+                    - py312-requests
+                    - py312-urllib3
+                    - py312-pyopenssl
+                    - py312-typing-extensions
+                    - py312-setuptools
+                    - py312-pyrfc3339
+                    - py312-pytz
+                    - py312-pysocks
+                    - py312-josepy
+                    - py312-idna
+                    - py312-charset-normalizer
+                    - py312-certifi
+                    - py312-ansible
+                    - py312-ansible-core
+                    - py312-toml
+                    - py312-resolvelib
+                    - py312-pyyaml
+                    - py312-cryptography
+                    - py312-cffi
+                    - py312-pycparser
+                    - py312-passlib
+                    - py312-packaging
+                    - py312-Jinja2
+                    - py312-markupsafe
+                    - py312-importlib-resources
+                    - py312-Babel
+                    version: 3.12.13_3
+                rsync:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 3.5.0
+                        cve:
+                        - CVE-2026-70454
+                        - CVE-2026-70462
+                        - CVE-2026-70460
+                        - CVE-2026-70463
+                        - CVE-2026-70452
+                        - CVE-2026-70453
+                        - CVE-2026-70455
+                        - CVE-2026-70464
+                        - CVE-2026-70459
+                        - CVE-2026-70457
+                        - CVE-2026-70456
+                        - CVE-2026-70458
+                        - CVE-2026-70461
+                        - CVE-2026-53794
+                        - CVE-2026-53792
+                        - CVE-2026-53790
+                        - CVE-2026-53791
+                        - CVE-2026-53789
+                        - CVE-2026-53788
+                        - CVE-2026-53798
+                        - CVE-2026-53786
+                        - CVE-2026-53783
+                        - CVE-2026-53801
+                        - CVE-2026-53800
+                        - CVE-2026-53799
+                        - CVE-2026-53797
+                        - CVE-2026-53796
+                        - CVE-2026-53795
+                        - CVE-2026-53793
+                        - CVE-2026-53784
+                        - CVE-2026-53785
+                        - CVE-2026-53803
+                        - CVE-2026-53802
+                        description: net/rsync -- multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/fee67ad5-a05e-11f1-ad2b-40b034429ecf.html
+                    reverse dependencies: []
+                    version: 3.4.4
+                srt:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 1.5.6
+                        cve:
+                        - CVE-2026-55868
+                        - CVE-2026-55869
+                        description: srt -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/037b7b00-84d4-11f1-8f76-345a6001a2f9.html
+                    reverse dependencies:
+                    - ffmpeg
+                    - firefox
+                    version: 1.5.4
+                xorg-server:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 21.1.24,1
+                        cve:
+                        - CVE-2026-56000
+                        - CVE-2026-55999
+                        description: xorg-server -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/d6354a08-7ad4-11f1-a315-589cfc10a551.html
+                    reverse dependencies:
+                    - xf86-video-vesa
+                    - xorg-drivers
+                    - xorg
+                    - xf86-video-scfb
+                    - xf86-input-mouse
+                    - xf86-input-libinput
+                    - xf86-input-keyboard
+                    version: 21.1.23,1
+            pkg_count: 18
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

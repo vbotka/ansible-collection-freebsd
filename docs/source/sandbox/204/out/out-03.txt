@@ -1,0 +1,71 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage list of jails.] ***********************************************
+ok: [iocage_06]
+
+TASK [Set dictionary iocage_jails] *********************************************
+ok: [iocage_06]
+
+TASK [Set dictionary iocage_jails_properties] **********************************
+ok: [iocage_06]
+
+TASK [Combine iocage_jails and iocage_jails_properties] ************************
+ok: [iocage_06]
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_06] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_06  swarm=sw_01"
+
+TASK [Create swarms.] **********************************************************
+[ERROR]: Task failed: Module failed: The command exited with a non-zero return code.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/204/pb-iocage-ansible-clients-v2/swarm.yml:41:7
+
+39         label: "{{ item.key }}"
+40
+41     - name: Create swarms.
+         ^ column 7
+
+failed: [iocage_06] (item=sw_01) => 
+    ansible_loop_var: item
+    changed: true
+    cmd:
+    - iocage
+    - create
+    - --short
+    - --template
+    - ansible_client
+    - --count
+    - '3'
+    - bpf=1
+    - dhcp=1
+    - vnet=1
+    - notes=vmm=iocage_06  swarm=sw_01
+    delta: '0:00:00.622694'
+    end: '2026-08-27 09:30:47.415399'
+    item:
+        key: sw_01
+        value:
+            count: 3
+            template: ansible_client
+    msg: The command exited with a non-zero return code.
+    rc: 1
+    start: '2026-08-27 09:30:46.792705'
+    stderr: |-
+        Template: ansible_client not found!
+        Created Templates:
+          ansible-client
+          ansible-init
+          ansible-nginx
+          ansible-pkg-repo
+          ansible-repos
+          ansible-syslogng-client
+          ansible-syslogng-server
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=5    changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+

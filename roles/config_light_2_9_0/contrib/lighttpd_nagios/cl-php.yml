@@ -1,0 +1,34 @@
+---
+# php
+
+# Services
+cl_php_fpm_enable: true
+cl_service_php_fpm_enable: "{{ cl_php_fpm_enable|bool }}"
+cl_service_php_fpm_state: started
+
+# /etc/rc.conf
+cl_php_fpm_rcconf_lines: []
+cl_php_fpm_rcconf_dict:
+  - { key: php_fpm_enable, value: '"{{ cl_php_fpm_enable }}"' }
+
+# /usr/local/etc/php-fpm.d/www.conf
+cl_php_fpm_wwwconf_copy:
+  path: /usr/local/etc/php-fpm.d/www.conf.default
+  remote_src: true
+  force: false
+cl_php_fpm_wwwconf_dict:
+  - { key: listen, value: /var/run/php-fpm.sock }
+  - { key: listen.owner, value: www }
+  - { key: listen.group, value: www }
+  - { key: listen.mode, value: "0660" }
+
+# /usr/local/etc/php.ini
+cl_php_phpini_copy:
+  path: /usr/local/etc/php.ini-production
+  remote_src: true
+  force: false
+cl_php_phpini_dict:
+  - { key: cgi.fix_pathinfo, value: 1 }
+  - { key: open_basedir, value: /usr/local/www:/usr/local/www/nagios }
+
+# EOF

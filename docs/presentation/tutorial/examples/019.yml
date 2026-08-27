@@ -1,0 +1,13 @@
+19:
+  example: '019'
+  name: Inventory option use_vars_plugins
+  case: |
+    The option ``use_vars_plugins``, responsible for reading ``host_vars`` and ``group_vars``
+    directories, is not available in the inventory plugin ``vbotka.freebsd.iocage`` because the
+    ``constructed fragment`` doesn't provide it.
+
+    - Use the inventory plugin ``ansible.builtin.constructed`` to read ``group_vars``.
+    - Use the variable ``region`` to create the groups ``region_EU`` and ``region_US``.
+  requirements: []
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/019
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/019/example.html

@@ -1,0 +1,185 @@
+
+PLAY [Install packages in jails.] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [test_153]
+ok: [test_151]
+ok: [test_152]
+
+TASK [Install packages] ********************************************************
+changed: [test_152 -> iocage_06]
+changed: [test_153 -> iocage_06]
+changed: [test_151 -> iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test_151] => 
+    out:
+        changed: true
+        failed: false
+        msg: installed 1 package
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            The following 1 package(s) will be affected (of 0 checked):
+
+            New packages to be INSTALLED:
+                    python311: 3.11.16 [FreeBSD-ports]
+
+            Number of packages to be installed: 1
+
+            The process will require 202 MiB more space.
+            27 MiB to be downloaded.
+            [test-151] [1/1] Fetching python311-3.11.16: .......... done
+            Checking integrity... done (0 conflicting)
+            [test-151] [1/1] Installing python311-3.11.16...
+            [test-151] [1/1] Extracting python311-3.11.16: .......... done
+            =====
+            Message from python311-3.11.16:
+
+            --
+            Note that some standard Python modules are provided as separate ports
+            as they require additional dependencies. They are available as:
+
+            py311-gdbm       databases/py-gdbm@py311
+            py311-sqlite3    databases/py-sqlite3@py311
+            py311-tkinter    x11-toolkits/py-tkinter@py311
+        stdout_lines:
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'New packages to be INSTALLED:'
+        - "\tpython311: 3.11.16 [FreeBSD-ports]"
+        - ''
+        - 'Number of packages to be installed: 1'
+        - ''
+        - The process will require 202 MiB more space.
+        - 27 MiB to be downloaded.
+        - '[test-151] [1/1] Fetching python311-3.11.16: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[test-151] [1/1] Installing python311-3.11.16...'
+        - '[test-151] [1/1] Extracting python311-3.11.16: .......... done'
+        - =====
+        - 'Message from python311-3.11.16:'
+        - ''
+        - --
+        - Note that some standard Python modules are provided as separate ports
+        - 'as they require additional dependencies. They are available as:'
+        - ''
+        - py311-gdbm       databases/py-gdbm@py311
+        - py311-sqlite3    databases/py-sqlite3@py311
+        - py311-tkinter    x11-toolkits/py-tkinter@py311
+ok: [test_153] => 
+    out:
+        changed: true
+        failed: false
+        msg: installed 1 package
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            The following 1 package(s) will be affected (of 0 checked):
+
+            New packages to be INSTALLED:
+                    python311: 3.11.16 [FreeBSD-ports]
+
+            Number of packages to be installed: 1
+
+            The process will require 202 MiB more space.
+            27 MiB to be downloaded.
+            [test-153] [1/1] Fetching python311-3.11.16: .......... done
+            Checking integrity... done (0 conflicting)
+            [test-153] [1/1] Installing python311-3.11.16...
+            [test-153] [1/1] Extracting python311-3.11.16: .......... done
+            =====
+            Message from python311-3.11.16:
+
+            --
+            Note that some standard Python modules are provided as separate ports
+            as they require additional dependencies. They are available as:
+
+            py311-gdbm       databases/py-gdbm@py311
+            py311-sqlite3    databases/py-sqlite3@py311
+            py311-tkinter    x11-toolkits/py-tkinter@py311
+        stdout_lines:
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'New packages to be INSTALLED:'
+        - "\tpython311: 3.11.16 [FreeBSD-ports]"
+        - ''
+        - 'Number of packages to be installed: 1'
+        - ''
+        - The process will require 202 MiB more space.
+        - 27 MiB to be downloaded.
+        - '[test-153] [1/1] Fetching python311-3.11.16: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[test-153] [1/1] Installing python311-3.11.16...'
+        - '[test-153] [1/1] Extracting python311-3.11.16: .......... done'
+        - =====
+        - 'Message from python311-3.11.16:'
+        - ''
+        - --
+        - Note that some standard Python modules are provided as separate ports
+        - 'as they require additional dependencies. They are available as:'
+        - ''
+        - py311-gdbm       databases/py-gdbm@py311
+        - py311-sqlite3    databases/py-sqlite3@py311
+        - py311-tkinter    x11-toolkits/py-tkinter@py311
+ok: [test_152] => 
+    out:
+        changed: true
+        failed: false
+        msg: installed 1 package
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            The following 1 package(s) will be affected (of 0 checked):
+
+            New packages to be INSTALLED:
+                    python311: 3.11.16 [FreeBSD-ports]
+
+            Number of packages to be installed: 1
+
+            The process will require 202 MiB more space.
+            27 MiB to be downloaded.
+            [test-152] [1/1] Fetching python311-3.11.16: .......... done
+            Checking integrity... done (0 conflicting)
+            [test-152] [1/1] Installing python311-3.11.16...
+            [test-152] [1/1] Extracting python311-3.11.16: .......... done
+            =====
+            Message from python311-3.11.16:
+
+            --
+            Note that some standard Python modules are provided as separate ports
+            as they require additional dependencies. They are available as:
+
+            py311-gdbm       databases/py-gdbm@py311
+            py311-sqlite3    databases/py-sqlite3@py311
+            py311-tkinter    x11-toolkits/py-tkinter@py311
+        stdout_lines:
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'New packages to be INSTALLED:'
+        - "\tpython311: 3.11.16 [FreeBSD-ports]"
+        - ''
+        - 'Number of packages to be installed: 1'
+        - ''
+        - The process will require 202 MiB more space.
+        - 27 MiB to be downloaded.
+        - '[test-152] [1/1] Fetching python311-3.11.16: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[test-152] [1/1] Installing python311-3.11.16...'
+        - '[test-152] [1/1] Extracting python311-3.11.16: .......... done'
+        - =====
+        - 'Message from python311-3.11.16:'
+        - ''
+        - --
+        - Note that some standard Python modules are provided as separate ports
+        - 'as they require additional dependencies. They are available as:'
+        - ''
+        - py311-gdbm       databases/py-gdbm@py311
+        - py311-sqlite3    databases/py-sqlite3@py311
+        - py311-tkinter    x11-toolkits/py-tkinter@py311
+
+PLAY RECAP *********************************************************************
+test_151                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_152                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_153                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,79 @@
+---
+# All rights reserved (c) 2021, Vladimir Botka <vbotka@gmail.com>
+# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Ansible playbook: pb-wifi-basic-cl.yml
+#
+# Description:
+#
+#   Configures wireless network in the mounted system image.
+#
+# Requirements:
+#
+#   * role: vbotka.config_light
+#
+# Example:
+#
+#   * Fit the variables to your needs
+#   * Mount the system image to *cimage_mount_path*
+#     shell> ansible-playbook pb-default.yml -t cimage_mount
+#   * Configures wireless network in the system image
+#     shell> ansible-playbook pb-wifi-basic-cl.yml
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic-cl.yml
+
+- name: Configure wireless network in the mounted system image
+  hosts: images.example.com
+
+  connection: ssh
+  remote_user: admin
+  become: true
+  become_user: root
+  become_method: ansible.builtin.sudo
+
+  vars:
+    cl_dird: "{{ playbook_dir }}/conf-light"
+    cl_assemble_validate: ansible-lint -x 205 %s
+    cl_loaderconf_modules: "{{ cimage_loaderconf_modules }}"
+    cl_loaderconf_data: "{{ cimage_loaderconf_data }}"
+    cl_loaderconf_sysctl: "{{ cimage_loaderconf_sysctl }}"
+    cl_wpasupconf_global: []
+    cl_wpasupconf_wlan0: "{{ cimage_wpasupconf_data| selectattr('dev', 'eq', 'wlan0')|first }}"
+
+    cimage_sanity: false
+    cimage_install: false
+    cimage_debug: true
+    cimage_debug_classified: true
+
+    cimage_mount_path: /mnt3
+
+    cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
+    cimage_loaderconf_data:
+      - hw.usb.template=3
+      - umodem_load="YES"
+      - boot_multicons="YES"
+      - boot_serial="YES"
+      - beastie_disable="YES"
+      - loader_color="NO"
+      - legal.realtek.license_ack=1
+    cimage_loaderconf_sysctl: []
+    cimage_rcconf_data:
+      - { key: wlans_rtwn0, value: '"wlan0"' }
+      - { key: ifconfig_wlan0, value: '"WPA SYNCDHCP"' }
+
+    cimage_wpasupconf_data:
+      - dev: wlan0
+        network:
+          - conf:
+              - { key: ssid, value: '"my_access_point"' }
+              - { key: psk, value: '"my_password"' }
+              - { key: disabled, value: "0" }
+    cimage_wpasupconf_link: true
+    cimage_wpasupconf_link_dev: wlan0
+
+  roles:
+    - vbotka.config_light
+
+# EOF

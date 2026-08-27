@@ -1,0 +1,173 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_04]
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_04] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible_client --count 2 notes="vmm=iocage_04 swarm=sw_01" bpf=1 dhcp=1 vnet=1
+
+TASK [Create swarms] ***********************************************************
+changed: [iocage_04] => (item=sw_01)
+
+TASK [Debug create swarms debug=true] ******************************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - create
+            - --short
+            - --template
+            - ansible_client
+            - --count
+            - '2'
+            - notes=vmm=iocage_04 swarm=sw_01
+            - bpf=1
+            - dhcp=1
+            - vnet=1
+            delta: '0:00:00.764700'
+            end: '2026-02-24 23:30:41.101203'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage create --short --template ansible_client --count 2 notes="vmm=iocage_04 swarm=sw_01" bpf=1 dhcp=1 vnet=1
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    properties:
+                        bpf: 1
+                        dhcp: 1
+                        vnet: 1
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2026-02-24 23:30:40.336503'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                2f6cf965 successfully created!
+                e4c59701 successfully created!
+            stdout_lines:
+            - 2f6cf965 successfully created!
+            - e4c59701 successfully created!
+        skipped: false
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_04]
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_04] => (item=sw_01) => 
+    msg: |-
+        iocage start e4c59701 2f6cf965
+
+TASK [Start swarms] ************************************************************
+changed: [iocage_04] => (item=sw_01)
+
+TASK [Debug start swarms debug=true] *******************************************
+ok: [iocage_04] => 
+    out:
+        changed: true
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            cmd:
+            - iocage
+            - start
+            - e4c59701
+            - 2f6cf965
+            delta: '0:00:08.353942'
+            end: '2026-02-24 23:30:52.553598'
+            failed: false
+            invocation:
+                module_args:
+                    _raw_params: null
+                    _uses_shell: false
+                    argv: null
+                    chdir: null
+                    cmd: |-
+                        iocage start e4c59701 2f6cf965
+                    creates: null
+                    executable: null
+                    expand_argument_vars: true
+                    removes: null
+                    stdin: null
+                    stdin_add_newline: true
+                    strip_empty_ends: true
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    properties:
+                        bpf: 1
+                        dhcp: 1
+                        vnet: 1
+                    template: ansible_client
+            msg: ''
+            rc: 0
+            start: '2026-02-24 23:30:44.199656'
+            stderr: |-
+                No default gateway found for ipv6.
+                No default gateway found for ipv6.
+            stderr_lines:
+            - No default gateway found for ipv6.
+            - No default gateway found for ipv6.
+            stdout: |-
+                * Starting e4c59701
+                  + Started OK
+                  + Using devfs_ruleset: 1001 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.200/24
+                * Starting 2f6cf965
+                  + Started OK
+                  + Using devfs_ruleset: 1002 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 10.1.0.228/24
+            stdout_lines:
+            - '* Starting e4c59701'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1001 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.200/24'
+            - '* Starting 2f6cf965'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1002 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 10.1.0.228/24'
+        skipped: false
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=8    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

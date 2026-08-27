@@ -1,0 +1,110 @@
+
+PLAY [Test module vbotka.freebsd.service. Start smartd.] ***********************
+
+TASK [Get smartd rcvar.] *******************************************************
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    msg: |-
+        rcvar.rcvar: {'smartd_enable': 'YES'}
+        rcvar.rcvar.smartd_enable: YES
+        start_cmd_enable: True
+        start_cmd: start
+
+TASK [Start smartd. By default wait 500ms to complete the command.] ************
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        rc: 0
+        start: smartd already running?  (pid=5651).
+        stderr: |-
+            smartd already running?  (pid=5651).
+        stderr_lines:
+        - smartd already running?  (pid=5651).
+        stdout: ''
+        stdout_lines: []
+
+TASK [Get smartd status.] ******************************************************
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        rc: 0
+        status: running
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            smartd is running as pid 5651.
+        stdout_lines:
+        - smartd is running as pid 5651.
+
+TASK [Stop smartd. By default wait 500ms to complete the command.] *************
+changed: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out:
+        changed: true
+        failed: false
+        rc: 0
+        state:
+            post: smartd is not running.
+            pre: smartd is running as pid 5651.
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Stopping smartd.
+            Waiting for PIDS: 5651.
+        stdout_lines:
+        - Stopping smartd.
+        - 'Waiting for PIDS: 5651.'
+        stop: 'Waiting for PIDS: 5651'
+
+TASK [Start smartd. Wait 200ms to complete the command.] ***********************
+changed: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out:
+        changed: true
+        failed: false
+        rc: 0
+        start: Starting smartd.
+        state:
+            post: smartd is running as pid 72186.
+            pre: smartd is not running.
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            Starting smartd.
+        stdout_lines:
+        - Starting smartd.
+
+TASK [Get smartd status.] ******************************************************
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        rc: 0
+        status: running
+        stderr: ''
+        stderr_lines: []
+        stdout: |-
+            smartd is running as pid 72186.
+        stdout_lines:
+        - smartd is running as pid 72186.
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

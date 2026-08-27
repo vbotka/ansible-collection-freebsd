@@ -1,0 +1,9 @@
+
+PLAY [Stop and convert ansible-syslogng-* to templates.] ***********************
+
+TASK [Get iocage list of jails.] ***********************************************
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=1    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+

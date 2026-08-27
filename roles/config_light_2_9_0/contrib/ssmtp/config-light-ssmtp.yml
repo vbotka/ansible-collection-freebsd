@@ -1,0 +1,35 @@
+---
+
+# sSMTP - Simple SMTP
+# https://wiki.debian.org/sSMTP
+
+# linux-postinstall FQDN
+lp_fqdn: srv.example.com
+
+# NEVER USE PLAINTEXT PASSWORD. USE VAULT INSTEAD
+smtp_client_password_mail_example_com: PASSWORD
+
+# conf-light/files.d/ssmtp-conf
+cl_ssmtp_srv: mail.example.com
+cl_ssmtp_srv_domain: example.com
+
+cl_ssmtp_postmaster_address: postmaster@{{ lp_fqdn }}
+cl_ssmtp_mailhub: "{{ cl_ssmtp_srv }}:587"
+cl_ssmtp_rewriteDomain: "{{ cl_ssmtp_srv_domain }}"
+
+cl_ssmtp_usetls: true
+cl_ssmtp_usestarttls: true
+
+cl_ssmtp_authuser: smtp_client
+cl_ssmtp_authpass: "{{ smtp_client_password_mail_example_com }}"
+cl_ssmtp_authmethod: LOGIN
+
+cl_ssmtp_FromLineOverride: true
+
+# conf-light/files.d/revaliases
+cl_ssmtp_revaliases:
+  - root:root@{{ cl_ssmtp_srv_domain }}:{{ cl_ssmtp_srv }}:587
+  - admin:admin@{{ cl_ssmtp_srv_domain }}:{{ cl_ssmtp_srv }}:587
+  - user1:user1@{{ cl_ssmtp_srv_domain }}:{{ cl_ssmtp_srv }}:587
+
+# EOF

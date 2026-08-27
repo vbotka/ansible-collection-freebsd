@@ -1,0 +1,30 @@
+git_daemon_directory: /usr/local/git
+git_server: 172.16.97.3
+
+repos:
+  repos:
+    ansible-conf-init:
+      repo: git://{{ git_server }}/ansible-conf-init
+    ansible-conf-init-example:
+      repo: git://{{ git_server }}/ansible-conf-init-example
+    ansible-conf-roles:
+      repo: git://{{ git_server }}/ansible-conf-roles
+    ansible-conf-syslogng-server:
+      repo: git://{{ git_server }}/ansible-conf-syslogng-server
+    ansible-conf-syslogng-client:
+      repo: git://{{ git_server }}/ansible-conf-syslogng-client
+    ansible-conf-test:
+      repo: git://{{ git_server }}/ansible-conf-test
+  repos_devel:
+    ansible-conf-init:
+      repo: git://{{ git_server }}/ansible-conf-init
+    ansible-conf-init-example:
+      repo: git://{{ git_server }}/ansible-conf-init-example
+    ansible-conf-roles:
+      repo: git://{{ git_server }}/ansible-conf-roles
+    ansible-conf-syslogng-server:
+      repo: git://{{ git_server }}/ansible-conf-syslogng-server
+    ansible-conf-syslogng-client:
+      repo: git://{{ git_server }}/ansible-conf-syslogng-client
+    ansible-conf-test:
+      repo: git://{{ git_server }}/ansible-conf-test

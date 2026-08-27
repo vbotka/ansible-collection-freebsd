@@ -1,0 +1,31 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Stop clones
+  register: out
+  vbotka.freebsd.iocage:
+    state: stopped
+    name: "{{ item.key }}"
+  loop: "{{ clones | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Debug stop clones debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out
+
+- name: Destroy clones
+  register: out
+  vbotka.freebsd.iocage:
+    state: absent
+    name: "{{ item.key }}"
+  loop: "{{ clones | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Debug destroy clones debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

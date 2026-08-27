@@ -1,0 +1,46 @@
+- name: Test iocage variables.
+  hosts: localhost
+
+  vars:
+
+    iocage_vars:
+      - iocage_jid
+      - iocage_boot
+      - iocage_type
+      - iocage_release
+      - iocage_ip4_dict
+      - iocage_ip4
+      - iocage_ip6
+      - iocage_template
+      - iocage_basejail
+
+  tasks:
+
+    - include_vars:
+        file: /tmp/ansible/sandbox-923/iocage-test_153.yml
+        name: iocage
+
+    - include_vars:
+        file: /tmp/ansible/sandbox-923/iocage2-test_153.yml
+        name: iocage2
+
+    - debug:
+        msg: |
+          {{ iocage.inventory_hostname }} {{ iocage2.inventory_hostname }}
+          {{ iocage.ansible_host }} {{ iocage2.ansible_host }}
+
+          {% for k in iocage_vars %}
+          {% if iocage[k] == iocage2[k] %}
+          [OK]  {{ k }} {{ iocage[k] }}
+          {% else %}
+          [ERR] {{ k }} {{ iocage[k] }} {{ iocage2[k] }}
+          {% endif %}
+          {% endfor %}
+
+          {% for k, v in iocage.iocage_properties.items() %}
+          {% if v == iocage2.iocage_properties[k] %}
+          [OK]  {{ k }} {{ v }}
+          {% else %}
+          [ERR] {{ k }} {{ v }} {{ iocage2.iocage_properties[k] }}
+          {% endif %}
+          {% endfor %}

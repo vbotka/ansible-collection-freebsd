@@ -1,0 +1,57 @@
+
+PLAY [iocage] ******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Pkg: Install iocage packages.] *******************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Pkg: Debug Install iocage packages freebsd_iocage_debug=true] ***
+ok: [iocage_06] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: |-
+            pkg: sqlite error while executing CREATE INDEX packages_origin ON packages(origin COLLATE NOCASE);CREATE INDEX packages_name ON packages(name COLLATE NOCASE);CREATE INDEX packages_uid_nocase ON packages(name COLLATE NOCASE, origin COLLATE NOCASE);CREATE INDEX packages_version_nocase ON packages(name COLLATE NOCASE, version);CREATE INDEX packages_uid ON packages(name, origin);CREATE INDEX packages_version ON packages(name, version);CREATE UNIQUE INDEX packages_digest ON packages(manifestdigest); in file pkgdb.c:2570: UNIQUE constraint failed: packages.manifestdigest
+        stderr_lines:
+        - 'pkg: sqlite error while executing CREATE INDEX packages_origin ON packages(origin
+            COLLATE NOCASE);CREATE INDEX packages_name ON packages(name COLLATE NOCASE);CREATE
+            INDEX packages_uid_nocase ON packages(name COLLATE NOCASE, origin COLLATE
+            NOCASE);CREATE INDEX packages_version_nocase ON packages(name COLLATE NOCASE,
+            version);CREATE INDEX packages_uid ON packages(name, origin);CREATE INDEX
+            packages_version ON packages(name, version);CREATE UNIQUE INDEX packages_digest
+            ON packages(manifestdigest); in file pkgdb.c:2570: UNIQUE constraint failed:
+            packages.manifestdigest'
+        stdout: |-
+            Updating FreeBSD-ports repository catalogue...
+            FreeBSD-ports repository is up to date.
+            Updating FreeBSD-ports-kmods repository catalogue...
+            FreeBSD-ports-kmods repository is up to date.
+            Updating FreeBSD-base repository catalogue...
+            FreeBSD-base repository is up to date.
+            Updating local repository catalogue...
+            Fetching meta.conf: . done
+            Fetching data: .......... done
+            Processing entries: .......... done
+            local repository update completed. 433 packages processed.
+            All repositories are up to date.
+        stdout_lines:
+        - Updating FreeBSD-ports repository catalogue...
+        - FreeBSD-ports repository is up to date.
+        - Updating FreeBSD-ports-kmods repository catalogue...
+        - FreeBSD-ports-kmods repository is up to date.
+        - Updating FreeBSD-base repository catalogue...
+        - FreeBSD-base repository is up to date.
+        - Updating local repository catalogue...
+        - 'Fetching meta.conf: . done'
+        - 'Fetching data: .......... done'
+        - 'Processing entries: .......... done'
+        - local repository update completed. 433 packages processed.
+        - All repositories are up to date.
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

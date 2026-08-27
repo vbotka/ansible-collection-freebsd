@@ -1,0 +1,66 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create and start project jails from iocage templates.
+  hosts: iocage
+
+  vars:
+
+    iocage_mount: "/{{ out_pool.stdout }}"
+    iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups['vmm_' ~ inventory_hostname] | d([])) }}"
+    iocage_jails_to_be_started: >
+      {% for jail,opts in vmm[inventory_hostname].items() -%}
+      {% if opts.properties.boot | d(properties.boot | d(0)) == 1 -%}
+      {{ jail }}
+      {% endif -%}
+      {% endfor -%}
+    custom_facts_dir: /usr/local/etc/ansible/facts.d
+    custom_facts_path: "{{ custom_facts_dir }}/iocage.fact"
+    ai_vars: /root/ansible-vars
+    ai_vars_files: "{{ lookup('env', 'PWD') }}/files"
+    ai_vars_templates: "{{ lookup('env', 'PWD') }}/templates"
+
+  tasks:
+
+    - name: Setup.
+      tags: [always, setup]
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/setup.yml
+
+    - name: Debug.  # noqa: run-once
+      when: debug | d(false) | bool
+      tags: [always, debug]
+      run_once: true
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/debug.yml
+
+    - name: Create jails.
+      tags: create
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/create.yml
+
+    - name: Create custom facts.
+      tags: facts
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/facts.yml
+
+    - name: Create ansible init vars.
+      tags: ai_vars
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/ai-vars.yml
+
+    - name: Create ansible init vars from templates.
+      tags: ai_vars_templates
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/ai-vars-templates.yml
+
+    - name: Create ansible init vars for class.
+      tags: ai_vars_class
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/ai-vars-class.yml
+
+    - name: Create ansible init vars for jail.
+      tags: ai_vars_jail
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/ai-vars-jail.yml
+
+    - name: Set jails properties.
+      tags: properties
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/properties.yml
+
+    - name: Start jails.
+      tags: start
+      ansible.builtin.import_tasks: pb_iocage_project_create_from_templates/start.yml

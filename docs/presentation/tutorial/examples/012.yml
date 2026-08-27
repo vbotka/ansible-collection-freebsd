@@ -1,0 +1,11 @@
+12:
+  example: '012'
+  extend: example 010
+  name: Display ``iocage_properties``
+  case: |
+    Enable and display ``iocage_properties``.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - jails created in example 010
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/012
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/012/example.html

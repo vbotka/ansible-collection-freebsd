@@ -1,0 +1,105 @@
+
+PLAY [Test role vbotka.freebsd.config_light] ***********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Setup: Create directories in /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light] ***
+changed: [2e45f6b5 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light)
+changed: [2e45f6b5 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/handlers.d)
+changed: [2e45f6b5 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/packages.d)
+changed: [2e45f6b5 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/services.d)
+changed: [2e45f6b5 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/files.d)
+changed: [2e45f6b5 -> localhost] => (item=/export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/states.d)
+
+TASK [vbotka.freebsd.config_light : Setup: Create directory /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble] ***
+changed: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Setup: Create directory /scratch/collections/ansible_collections/vbotka/freebsd/roles/config_light/handlers] ***
+changed: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Setup: Create handlers/main.yml] ***********
+changed: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-handlers: Assemble handlers to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/handlersd] ***
+changed: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-handlers: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/handlersd to cl_handlersd_items] ***
+ok: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-handlers: Combine cl_handlers with cl_handlersd_items.] ***
+ok: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Setup: Create handlers listed in cl_handlers.] ***
+changed: [2e45f6b5 -> localhost] => (item=handlers-auto-lighttpd_freebsd.yml)
+
+TASK [vbotka.freebsd.config_light : Setup: Include handlers in handlers/main.yml] ***
+changed: [2e45f6b5 -> localhost] => (item=handlers-auto-lighttpd_freebsd.yml)
+
+TASK [vbotka.freebsd.config_light : Vars-packages: Assemble packages to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/packagesd.2e45f6b5] ***
+changed: [2e45f6b5 -> localhost]
+changed: [4898ae56 -> localhost]
+changed: [4705e8af -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-packages: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/packagesd.2e45f6b5 to cl_packagesd_items] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-packages: Combine cl_packages with cl_packagesd_items.] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-states: Assemble states to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/statesd.2e45f6b5] ***
+changed: [2e45f6b5 -> localhost]
+changed: [4898ae56 -> localhost]
+changed: [4705e8af -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-states: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/statesd.2e45f6b5 to cl_statesd_items] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-states: Combine cl_statess with cl_statesd_items.] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-services: Assemble services to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/servicesd.2e45f6b5] ***
+changed: [4705e8af -> localhost]
+changed: [2e45f6b5 -> localhost]
+changed: [4898ae56 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-services: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/servicesd.2e45f6b5 to cl_cervicesd_items] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-services: Combine cl_services with cl_servicesd_items.] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-files: Assemble files to /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/filesd.2e45f6b5] ***
+changed: [4898ae56 -> localhost]
+changed: [4705e8af -> localhost]
+changed: [2e45f6b5 -> localhost]
+
+TASK [vbotka.freebsd.config_light : Vars-files: Include files from /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/340/conf-light/assemble/filesd.2e45f6b5 to cl_filesd_items] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+TASK [vbotka.freebsd.config_light : Vars-files: Combine cl_files with cl_filesd_items.] ***
+ok: [2e45f6b5]
+ok: [4705e8af]
+ok: [4898ae56]
+
+PLAY RECAP *********************************************************************
+2e45f6b5                   : ok=22   changed=11   unreachable=0    failed=0    skipped=17   rescued=0    ignored=0   
+4705e8af                   : ok=13   changed=4    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+4898ae56                   : ok=13   changed=4    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+

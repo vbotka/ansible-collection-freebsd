@@ -1,0 +1,9 @@
+210:
+  example: '210'
+  name: Test empty iocage notes
+  case: |
+    * Test empty iocage notes. Create ``iocage_tags``. The result should be an empty dictionary.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/210
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/210/example.html

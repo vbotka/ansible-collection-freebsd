@@ -1,0 +1,55 @@
+
+PLAY [Test module vbotka.freebsd.service. Get running jails sshd rcvar.] *******
+
+TASK [Get sshd rcvar.] *********************************************************
+ok: [test-153]
+ok: [test-151]
+ok: [test-152]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test-152] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="YES"
+        #   (default: "")
+ok: [test-153] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="YES"
+        #   (default: "")
+ok: [test-151] => 
+    out.stdout: |-
+        # sshd : Secure Shell Daemon
+        #
+        sshd_enable="YES"
+        #   (default: "")
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test-152] => 
+    sshd_rcvar:
+        sshd_enable: 'YES'
+ok: [test-151] => 
+    sshd_rcvar:
+        sshd_enable: 'YES'
+ok: [test-153] => 
+    sshd_rcvar:
+        sshd_enable: 'YES'
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test-153] => 
+    out.rcvar:
+        sshd_enable: 'YES'
+ok: [test-152] => 
+    out.rcvar:
+        sshd_enable: 'YES'
+ok: [test-151] => 
+    out.rcvar:
+        sshd_enable: 'YES'
+
+PLAY RECAP *********************************************************************
+test-151                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+test-152                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+test-153                   : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

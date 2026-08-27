@@ -1,0 +1,9 @@
+properties:
+  notes: "vmm={{ inventory_hostname }}"
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+clones_host_hostname:
+  www-2:
+    template: ansible_client_apache

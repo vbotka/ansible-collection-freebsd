@@ -1,0 +1,6 @@
+---
+ansible_python_interpreter: auto_silent
+debug: false
+debug2: false
+collection_dir: "{{ playbook_dir.split('/')[:-1] | join('/') }}"
+assert_quiet: true

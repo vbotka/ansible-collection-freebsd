@@ -1,0 +1,17 @@
+project:
+  pkg-repo:
+    notes: alias=pkg_repo
+    vmm: iocage_06
+    template: ansible-pkg-repo
+    class: [pkg-repo]
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      boot: 1
+      defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['pkg_repo'] }}/24"
+      vnet: 1
+
+vmm_groups: "{{ dict(project | dict2items | groupby('value.vmm')) }}"
+vmm: "{{ dict(vmm_groups.keys() | zip(vmm_groups.values() | map('items2dict'))) }}"

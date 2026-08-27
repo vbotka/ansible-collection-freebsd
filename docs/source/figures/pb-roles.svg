@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: fig2dev Version 3.2.9a -->
+<!-- CreationDate: 2026-08-22 14:21:05 -->
+<!-- Magnification: 1.05 -->
+<svg	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="113pt" height="265pt"
+	viewBox="6330 11 1783 4196">
+<g fill="none">
+<!-- Line -->
+<rect x="6627" y="23" width="1143" height="572" fill="#ffffff"/>
+<!-- Line -->
+<rect x="6627" y="3623" width="1143" height="572" fill="#ffffff"/>
+<!-- Arc -->
+<path d="M 7770,23 A 286 286 0 1 1 7770 595" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Arc -->
+<path d="M 6627,595 A 286 286 0 0 1 6627 23" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polygon points=" 6387,923 8101,923 8101,1558 6387,1558" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polygon points=" 6342,1823 8056,1823 8056,2458 6342,2458" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polygon points=" 6342,2723 8056,2723 8056,3358 6342,3358" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Arc -->
+<path d="M 7770,3623 A 286 286 0 1 1 7770 4195" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Arc -->
+<path d="M 6627,4195 A 286 286 0 0 1 6627 3623" fill="#ffffff"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<defs>
+<clipPath id="cp0">
+	<path clip-rule="evenodd" d="M 6330,11 H 8113 V 4207 H 6330 z
+		M 7230,808 7200,928 7170,808 7193,952 7207,952z"/>
+</clipPath>
+</defs>
+<polyline points=" 7200,585 7200,945" clip-path="url(#cp0)"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Forward arrow to point 7200,945 -->
+<polyline points=" 7230,808 7200,928 7170,808"
+	stroke="#000000" stroke-width="8px" stroke-miterlimit="8"/>
+<!-- Line -->
+<defs>
+<clipPath id="cp1">
+	<path clip-rule="evenodd" d="M 6330,11 H 8113 V 4207 H 6330 z
+		M 7230,1708 7200,1828 7170,1708 7193,1852 7207,1852z"/>
+</clipPath>
+</defs>
+<polyline points=" 7200,1575 7200,1845" clip-path="url(#cp1)"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Forward arrow to point 7200,1845 -->
+<polyline points=" 7230,1708 7200,1828 7170,1708"
+	stroke="#000000" stroke-width="8px" stroke-miterlimit="8"/>
+<!-- Line -->
+<defs>
+<clipPath id="cp2">
+	<path clip-rule="evenodd" d="M 6330,11 H 8113 V 4207 H 6330 z
+		M 7230,2608 7200,2728 7170,2608 7193,2752 7207,2752z"/>
+</clipPath>
+</defs>
+<polyline points=" 7200,2475 7200,2745" clip-path="url(#cp2)"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Forward arrow to point 7200,2745 -->
+<polyline points=" 7230,2608 7200,2728 7170,2608"
+	stroke="#000000" stroke-width="8px" stroke-miterlimit="8"/>
+<!-- Line -->
+<defs>
+<clipPath id="cp3">
+	<path clip-rule="evenodd" d="M 6330,11 H 8113 V 4207 H 6330 z
+		M 7230,3508 7200,3628 7170,3508 7193,3652 7207,3652z"/>
+</clipPath>
+</defs>
+<polyline points=" 7200,3375 7200,3645" clip-path="url(#cp3)"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Forward arrow to point 7200,3645 -->
+<polyline points=" 7230,3508 7200,3628 7170,3508"
+	stroke="#000000" stroke-width="8px" stroke-miterlimit="8"/>
+<!-- Text -->
+<text xml:space="preserve" x="6975" y="360" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">START</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="1125" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">Load YAML files</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="2025" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">Display: ai_pull_mode</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="2205" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">                ai_vars</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="2385" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">                ai_conf_roles</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="2925" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">Iterate ai_conf_roles</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="3105" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">include every role/task</text>
+<!-- Text -->
+<text xml:space="preserve" x="7020" y="3960" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">END</text>
+<!-- Text -->
+<text xml:space="preserve" x="6525" y="1350" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="133" text-anchor="start">from ai_vars dir</text>
+<!-- Line -->
+<polyline points=" 6627,23 7770,23"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7770,595 6627,595"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6627,3623 7770,3623"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7770,4195 6627,4195"
+	stroke="#000000" stroke-width="8px"/>
+</g>
+</svg>

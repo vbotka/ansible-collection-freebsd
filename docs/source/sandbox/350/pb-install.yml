@@ -1,0 +1,19 @@
+- name: Install packages.
+  hosts: state_up
+  gather_facts: true
+
+  tasks:
+
+    - name: Install rsnapshot packages.
+      delegate_to: "{{ iocage_tags.vmm }}"
+      register: out
+      community.general.pkgng:
+        name: "{{ rsnapshot_packages }}"
+        jail: "{{ iocage_jid }}"
+        cached: "{{ freebsd_pkgng_cached }}"
+        use_globs: "{{ freebsd_pkgng_use_globs }}"
+
+    - name: Debug.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: out

@@ -1,0 +1,31 @@
+
+PLAY [Test connection and get hostname.] ***************************************
+
+TASK [command] *****************************************************************
+[ERROR]: Task failed: Cannot access jail 'None': Shared connection to iocage_06 closed.
+
+Task failed.
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/021/pb-test-connection.yml:6:7
+
+4   tasks:
+5
+6     - command: hostname
+        ^ column 7
+
+<<< caused by >>>
+
+Cannot access jail 'None': Shared connection to iocage_06 closed.
+
+fatal: [db2]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_06 closed.'
+    unreachable: true
+fatal: [db1]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Cannot access jail ''None'': Shared connection to iocage_06 closed.'
+    unreachable: true
+
+PLAY RECAP *********************************************************************
+db1                        : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+

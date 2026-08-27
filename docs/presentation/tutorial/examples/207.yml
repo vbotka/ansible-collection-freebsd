@@ -1,0 +1,15 @@
+207:
+  example: '207'
+  name: Create DHCP jails with auto UUID, iocage_tags, alias and class
+  case: |
+    * At multiple iocage hosts, create and run VNET jails with a DHCP interface from the template
+      ``ansible_client``.
+    * Use the dictionary ``iocage_tags`` and option ``inventory_hostname_tag`` to create ``inventory aliases``.
+    * Group the jails by iocage hosts, states, and classes.
+    * Declare the project in a single dictionary. The dictionary keys are jails' aliases.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - templates created in example 202
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/207
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/207/example.html

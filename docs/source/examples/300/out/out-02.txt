@@ -1,0 +1,27 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--test-153
+  |  |--repos-devel
+  |  |--pkg-repo
+  |  |--log-server-01
+  |  |--www-02
+  |  |--test-152
+  |  |--repos
+  |  |--www-01
+  |  |--test-151
+  |--@vmm_iocage_06:
+  |  |--test-153
+  |  |--1718af82
+  |  |--repos-devel
+  |  |--09caf271
+  |  |--pkg-repo
+  |  |--log-server-01
+  |  |--www-02
+  |  |--test-152
+  |  |--repos
+  |  |--www-01
+  |  |--test-151
+  |--@state_down:
+  |  |--1718af82
+  |  |--09caf271

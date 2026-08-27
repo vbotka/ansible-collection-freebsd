@@ -1,0 +1,172 @@
+Version                 : 2.2.2
+libpkg                  : 2.2.2
+libcurl                 : libcurl/8.14.1 OpenSSL/3.0.16 zlib/1.3.1
+libarchive              : libarchive 3.7.7
+sqlite                  : 3.50.1
+openssl                 : OpenSSL 3.0.16 11 Feb 2025
+PKG_DBDIR = "/var/db/pkg";
+PKG_CACHEDIR = "/var/cache/pkg";
+PORTSDIR = "/usr/ports";
+INDEXDIR = "";
+INDEXFILE = "INDEX-14";
+HANDLE_RC_SCRIPTS = false;
+DEFAULT_ALWAYS_YES = false;
+ASSUME_ALWAYS_YES = false;
+REPOS_DIR [
+    "/etc/pkg/",
+    "/usr/local/etc/pkg/repos/",
+]
+PLIST_KEYWORDS_DIR = "";
+SYSLOG = true;
+DEVELOPER_MODE = false;
+VULNXML_SITE = "https://vuxml.freebsd.org/freebsd/vuln.xml.xz";
+FETCH_RETRY = 3;
+PKG_PLUGINS_DIR = "/usr/local/lib/pkg/";
+PKG_ENABLE_PLUGINS = true;
+PLUGINS [
+]
+DEBUG_SCRIPTS = false;
+PLUGINS_CONF_DIR = "/usr/local/etc/pkg/";
+PERMISSIVE = false;
+REPO_AUTOUPDATE = true;
+NAMESERVER = "";
+HTTP_USER_AGENT = "pkg/2.2.2";
+EVENT_PIPE = "";
+FETCH_TIMEOUT = 30;
+UNSET_TIMESTAMP = false;
+SSH_RESTRICT_DIR = "";
+PKG_ENV {
+}
+PKG_SSH_ARGS = "";
+DEBUG_LEVEL = 0;
+ALIAS {
+    all-depends = "query %dn-%dv";
+    annotations = "info -A";
+    build-depends = "info -qd";
+    cinfo = "info -Cx";
+    comment = "query -i \"%c\"";
+    csearch = "search -Cx";
+    desc = "query -i \"%e\"";
+    download = "fetch";
+    iinfo = "info -ix";
+    isearch = "search -ix";
+    prime-list = "query -e '%a = 0' '%n'";
+    prime-origins = "query -e '%a = 0' '%o'";
+    leaf = "query -e '%#r == 0' '%n-%v'";
+    list = "info -ql";
+    noauto = "query -e '%a == 0' '%n-%v'";
+    options = "query -i \"%n - %Ok: %Ov\"";
+    origin = "info -qo";
+    orphans = "version -vRl?";
+    provided-depends = "info -qb";
+    rall-depends = "rquery %dn-%dv";
+    raw = "info -R";
+    rcomment = "rquery -i \"%c\"";
+    rdesc = "rquery -i \"%e\"";
+    required-depends = "info -qr";
+    roptions = "rquery -i \"%n - %Ok: %Ov\"";
+    shared-depends = "info -qB";
+    show = "info -f -k";
+    size = "info -sq";
+    unmaintained = "query -e '%m = \"ports@FreeBSD.org\"' '%o (%w)'";
+    runmaintained = "rquery -e '%m = \"ports@FreeBSD.org\"' '%o (%w)'";
+}
+CUDF_SOLVER = "";
+SAT_SOLVER = "";
+RUN_SCRIPTS = true;
+CASE_SENSITIVE_MATCH = false;
+LOCK_WAIT = 1;
+LOCK_RETRIES = 5;
+SQLITE_PROFILE = false;
+WORKERS_COUNT = 0;
+READ_LOCK = false;
+IP_VERSION = 0;
+AUTOMERGE = true;
+MERGETOOL = "";
+VERSION_SOURCE = "";
+CONSERVATIVE_UPGRADE = true;
+FORCE_CAN_REMOVE_VITAL = true;
+PKG_CREATE_VERBOSE = false;
+AUTOCLEAN = false;
+DOT_FILE = "";
+REPOSITORIES {
+}
+VALID_URL_SCHEME [
+    "pkg+http",
+    "pkg+https",
+    "https",
+    "http",
+    "file",
+    "ssh",
+    "tcp",
+]
+WARN_SIZE_LIMIT = 1048576;
+METALOG = "";
+IGNORE_OSVERSION = false;
+BACKUP_LIBRARIES = false;
+BACKUP_LIBRARY_PATH = "/usr/local/lib/compat/pkg";
+PKG_TRIGGERS_DIR = "/usr/local/share/pkg/triggers";
+PKG_TRIGGERS_ENABLE = true;
+AUDIT_IGNORE_GLOB [
+]
+AUDIT_IGNORE_REGEX [
+]
+COMPRESSION_FORMAT = "";
+COMPRESSION_LEVEL = -1;
+ARCHIVE_SYMLINK = false;
+REPO_ACCEPT_LEGACY_PKG = false;
+FILES_IGNORE_GLOB [
+]
+FILES_IGNORE_REGEX [
+]
+SHLIB_PROVIDE_PATHS_NATIVE [
+]
+SHLIB_PROVIDE_PATHS_COMPAT_32 [
+]
+SHLIB_PROVIDE_PATHS_COMPAT_LINUX [
+]
+SHLIB_PROVIDE_PATHS_COMPAT_LINUX_32 [
+]
+SHLIB_PROVIDE_IGNORE_GLOB [
+]
+SHLIB_PROVIDE_IGNORE_REGEX [
+]
+SHLIB_REQUIRE_IGNORE_GLOB [
+]
+SHLIB_REQUIRE_IGNORE_REGEX [
+]
+PKG_DEBUG_FLAGS [
+    "all",
+]
+COMPRESSION_THREADS = -1;
+PKG_REINSTALL_ON_OPTIONS_CHANGE = true;
+TRACK_LINUX_COMPAT_SHLIBS = false;
+ABI = "FreeBSD:14:amd64";
+ALTABI = "freebsd:14:x86:64";
+OSVERSION = "1403000";
+
+
+Repositories:
+  FreeBSD: { 
+    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:14:amd64/quarterly",
+    enabled         : yes,
+    priority        : 0,
+    mirror_type     : "SRV",
+    signature_type  : "FINGERPRINTS",
+    fingerprints    : "/usr/share/keys/pkg"
+  }
+  FreeBSD-kmods: { 
+    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:14:amd64/kmods_quarterly_3",
+    enabled         : yes,
+    priority        : 0,
+    mirror_type     : "SRV",
+    signature_type  : "FINGERPRINTS",
+    fingerprints    : "/usr/share/keys/pkg"
+  }
+  build: { 
+    url             : "http://10.1.0.195/packages/143amd64-default-devel",
+    enabled         : yes,
+    priority        : 0,
+    signature_type  : "PUBKEY",
+    pubkey          : "/usr/local/etc/ssl/crt/build.example.com-sk.crt"
+  }

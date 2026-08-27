@@ -1,0 +1,7 @@
+fzfs_enable: true
+fzfs_pools:
+  iocage:
+    vdevs:
+      - disks:
+          - /dev/ada2
+          - /dev/ada3

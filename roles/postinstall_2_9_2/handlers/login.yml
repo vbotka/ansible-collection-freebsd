@@ -1,0 +1,5 @@
+---
+- name: Rebuild login_conf # noqa: no-changed-when
+  listen: rebuild login_conf
+  ansible.builtin.command:
+    cmd: /usr/bin/cap_mkdb /etc/login.conf

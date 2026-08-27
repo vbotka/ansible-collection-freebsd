@@ -1,0 +1,65 @@
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
+ok: [iocage_04] => 
+    msg: |-
+        fzfs_role_version: 2.8.2
+        ansible_role_name: vbotka.freebsd.zfs
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.0
+        ansible_facts.distribution_release: 15.0-RELEASE-p1
+        ansible_facts.python_version: 3.11.14
+
+        fzfs_enable: True
+        fzfs_debug2: False
+        fzfs_pools_sanity: True
+        fzfs_assert_quiet: True
+        fzfs_facts_ds: False
+        fzfs_facts_recurse: True
+        fzfs_mount_all: True
+        fzfs_sysctl_tuneables_warning: "True"
+
+        fzfs_sysctl_conf:
+          []
+
+        fzfs_rcconf:
+          []
+
+        fzfs_pools:
+          iocage:
+            vdevs:
+            - disks: [/dev/ada2, /dev/ada3]
+          zroot:
+            vdevs:
+            - disks: [/dev/ada0p4, /dev/ada1p4]
+
+        fzfs_manage:
+          - extra_zfs_properties: {compression: 'on', mountpoint: /export}
+            name: zroot/export
+            state: present
+          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/ports}
+            name: iocage/ports
+            state: present
+          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/src}
+            name: iocage/src
+            state: present
+          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/obj}
+            name: iocage/obj
+            state: present
+          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/local/poudriere}
+            name: iocage/poudriere
+            state: present
+
+        fzfs_mountpoints:
+          []
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

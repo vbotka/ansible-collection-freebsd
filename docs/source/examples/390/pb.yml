@@ -1,0 +1,34 @@
+- name: Role vbotka.freebsd.poudriere
+  hosts: build
+  gather_facts: true
+
+  vars:
+
+    pkg_dict_amd64:
+      - pkglist: ansible
+        packages:
+          - sysutils/ansible
+          - sysutils/py-ansible-runner
+      - pkglist: minimal
+        packages:
+          - archivers/gtar
+          - devel/git
+          - ftp/wget
+          - net/rsync
+          - ports-mgmt/pkg
+          - ports-mgmt/portmaster
+          - ports-mgmt/portupgrade
+          - security/sudo
+          - shells/bash
+
+    pkg_dict_arm:
+      - pkglist: ansible
+        packages:
+          - sysutils/ansible
+      - pkglist: minimal
+        packages:
+          - ports-mgmt/pkg
+          - shells/bash
+
+  roles:
+    - vbotka.freebsd.poudriere

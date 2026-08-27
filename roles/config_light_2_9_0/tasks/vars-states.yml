@@ -1,0 +1,47 @@
+---
+- name: Assemble states.
+  delegate_to: localhost
+
+  block:
+    - name: "Vars-states: Delete {{ cl_statesd }}"
+      when: cl_all_delete | bool or cl_statesd_delete | bool
+      ansible.builtin.file:
+        state: absent
+        path: "{{ cl_statesd }}"
+
+    - name: "Vars-states: Assemble states to {{ cl_statesd }}"
+      ansible.builtin.assemble:
+        regexp: "{{ cl_assemble_regexp }}"
+        src: "{{ cl_statesd_dir }}"
+        dest: "{{ cl_statesd }}"
+        owner: "{{ cl_dira_owner | d(omit) }}"
+        group: "{{ cl_dira_group | d(omit) }}"
+        mode: "{{ cl_dira_fmode }}"
+        validate: "{{ cl_assemble_validate | d(omit, true) }}"
+
+  rescue:
+
+    - name: "Vars-states: Failed assemble states to {{ cl_states }}"
+      ansible.builtin.debug:
+        msg: |-
+          [ERR] Can not assemble states. End of play.
+          {{ ansible_failed_result }}
+
+    - name: "Vars-states: End of play."
+      ansible.builtin.meta: end_play
+
+- name: "Vars-states: Include files from {{ cl_statesd ~ ' to cl_statesd_items' }}"
+  ansible.builtin.include_vars:
+    file: "{{ cl_statesd }}"
+    name: cl_statesd_items
+
+- name: "Vars-states: Combine cl_statess with cl_statesd_items."
+  ansible.builtin.set_fact:
+    cl_states: "{{ cl_states | combine(cl_statesd_items | d({})) }}"
+
+- name: "Vars-states: Debug cl_debug={{ cl_debug }}"
+  when: cl_debug | bool
+  ansible.builtin.debug:
+    var: cl_states
+
+# EOF

@@ -1,0 +1,42 @@
+---
+# TODO: Remove items from /etc/rc.conf if state not present.
+
+- name: "Interfaces: Configure wlans in {{ _path }}"
+  tags: fn_wlans
+  community.general.sysrc:
+    name: "wlans_{{ item.device }}"
+    value: "{{ item.interface | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_wlans }}"
+
+- name: "Interfaces: Configure interfaces create_args in {{ _path }}"
+  tags: fn_create_args
+  community.general.sysrc:
+    name: "create_args_{{ item.interface }}"
+    value: "{{ item.create | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_interfaces | selectattr('create', 'defined') }}"
+
+- name: "Interfaces: Configure interfaces options in {{ _path }}"
+  tags: fn_ifconfig_interface
+  community.general.sysrc:
+    name: "ifconfig_{{ item.interface }}"
+    value: "{{ item.options | d(omit) }}"
+    state: "{{ item.state | d(omit) }}"
+  loop: "{{ fn_interfaces | selectattr('options', 'defined') }}"
+
+- name: "Interfaces: Configure interface aliases in {{ _path }}"
+  tags: fn_ifconfig_aliases
+  community.general.sysrc:
+    name: "ifconfig_{{ item.0.interface }}_{{ item.1.alias }}"
+    value: "{{ item.1.options | d(omit) }}"
+    state: "{{ item.1.state | d(omit) }}"
+  loop: "{{ fn_aliases | subelements('aliases') }}"
+  loop_control:
+    label: >
+      {{ item.0.interface }}
+      {{ item.1.alias }}
+      {{ item.1.options | d('UNDEFINED') }}
+      {{ item.1.state | d('present') }}
+
+# EOF

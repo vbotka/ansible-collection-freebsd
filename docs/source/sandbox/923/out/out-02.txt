@@ -1,0 +1,25 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--foo
+  |  |--bar
+  |  |--repos
+  |  |--test_153
+  |  |--repos_devel
+  |  |--pkg_repo
+  |--@vmm_iocage_06:
+  |  |--foo
+  |  |--bar
+  |  |--repos
+  |  |--test_153
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--test_152
+  |  |--test_151
+  |--@test:
+  |  |--test_153
+  |  |--test_152
+  |  |--test_151
+  |--@state_down:
+  |  |--test_152
+  |  |--test_151

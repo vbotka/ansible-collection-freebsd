@@ -1,0 +1,4 @@
+#!/bin/sh
+cat << EOF
+{{ dict([['class', item.value.class]]) | to_nice_json }}
+EOF

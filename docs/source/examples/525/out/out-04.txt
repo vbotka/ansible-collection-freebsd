@@ -1,0 +1,35 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--foo
+  |  |--baz
+  |  |--bar
+  |  |--repos
+  |  |--qux
+  |  |--test_153
+  |  |--log_server
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--www_02
+  |  |--test_152
+  |  |--www_01
+  |  |--test_151
+  |--@vmm_iocage_06:
+  |  |--foo
+  |  |--baz
+  |  |--bar
+  |  |--repos
+  |  |--qux
+  |  |--test_153
+  |  |--log_server
+  |  |--db1
+  |  |--repos_devel
+  |  |--db2
+  |  |--pkg_repo
+  |  |--www_02
+  |  |--test_152
+  |  |--www_01
+  |  |--test_151
+  |--@state_down:
+  |  |--db1
+  |  |--db2

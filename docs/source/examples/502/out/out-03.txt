@@ -1,0 +1,21 @@
+
+PLAY [Create Branch Server.] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname branch-server.example.com: No address associated with hostname
+
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: ssh: Could not resolve hostname branch-server.example.com: No address associated with hostname
+
+fatal: [branch-server.example.com]: UNREACHABLE! => 
+    changed: false
+    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
+        branch-server.example.com: No address associated with hostname'
+    unreachable: true
+
+PLAY RECAP *********************************************************************
+branch-server.example.com  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+

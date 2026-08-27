@@ -1,0 +1,43 @@
+---
+- name: Create jails from iocage plugins.
+  hosts: iocage
+  
+  vars:
+
+    exist: "{{ groups.all | intersect(log_clients) }}"
+
+  tasks:
+
+    - name: log_client exist.
+      when: exist | length > 0
+      block:
+
+        - name: Assert log_client is in groups.log_clients
+          vars:
+            missing: "{{ exist | difference(groups.log_clients) }}"
+          ansible.builtin.assert:
+            that: missing | length == 0
+            fail_msg: "[ERR] {{ missing | join(', ') }} not in group log_clients"
+            quiet: true
+
+        - name: Display message.
+          ansible.builtin.debug:
+            msg: "[INFO] {{ exist | join(', ') }} exist(s)."
+
+    - name: Create log clients.
+      vars:
+        _notes: >-
+          "vmm={{ inventory_hostname }}
+          class=log-client
+          alias={{ item }}"
+        _properties: >-
+          {% for k, v in properties.items() %}
+          {{ k }}={{ v }}
+          {% endfor %}
+          notes={{ _notes }}
+      ansible.builtin.command: >
+        iocage clone
+        --newmac
+        ansible-pull-syslogng-client
+        {{ _properties }}
+      loop: "{{ log_clients | difference(exist) }}"

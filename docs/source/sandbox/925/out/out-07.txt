@@ -1,0 +1,39 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+[ERROR]: Task failed: Module failed: Error executing command: [Errno 2] No such file or directory: b'loggen'
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/sandbox/925/pb-logclient-test.yml:11:7
+
+ 9   tasks:
+10
+11     - name: Run loggen
+         ^ column 7
+
+fatal: [www_02]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.12
+    changed: false
+    cmd: loggen -i -S -n 1 172.16.99.10 514
+    msg: Error executing command.
+    rc: 2
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+fatal: [www_01]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.12
+    changed: false
+    cmd: loggen -i -S -n 1 172.16.99.10 514
+    msg: Error executing command.
+    rc: 2
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+
+PLAY RECAP *********************************************************************
+www_01                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+www_02                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

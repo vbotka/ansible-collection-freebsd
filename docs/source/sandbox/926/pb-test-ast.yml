@@ -1,0 +1,23 @@
+- name: Test filter yaml_to_nginx
+  hosts: localhost
+
+  vars:
+
+    nginx_conf:
+      worker_processes: ['auto']
+      events:
+        worker_connections: ['1024']
+      http:
+        include: ['/etc/nginx/mime.types']
+        server:
+          listen: ['80']
+          server_name: ['example.com', 'www.example.com']
+          location /:
+            return: ['200', 'Hello from Crossplane!']
+      
+  tasks:
+
+    - debug:
+
+        msg: |
+          {{ nginx_conf | vbotka.freebsd.dict_to_ast | to_yaml }}

@@ -1,0 +1,12 @@
+
+PLAY [Configure login.conf] ****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.postinstall : Login: Create local .login_conf] ************
+ok: [iocage_06] => (item=admin)
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

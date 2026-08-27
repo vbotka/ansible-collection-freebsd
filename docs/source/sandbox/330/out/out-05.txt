@@ -1,0 +1,28 @@
+
+PLAY [Iocage list datasets.] ***************************************************
+
+TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
+changed: [iocage_06] => (item=iocage list -rh)
+changed: [iocage_06] => (item=iocage list -lh)
+changed: [iocage_06] => (item=iocage list -Ph)
+changed: [iocage_06] => (item=iocage list -th)
+
+TASK [Set lists] ***************************************************************
+ok: [iocage_06]
+
+TASK [Display lists] ***********************************************************
+ok: [iocage_06] => 
+    msg: |-
+        iocage_releases: ['15.0-RELEASE', '15.1-RELEASE']
+        iocage_jails:
+          {}
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=5    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+

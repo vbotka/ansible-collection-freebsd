@@ -1,0 +1,67 @@
+
+PLAY [Test Log Clients.] *******************************************************
+
+TASK [Run loggen] **************************************************************
+changed: [www_02]
+changed: [bar]
+changed: [foo]
+changed: [www_01]
+
+TASK [Debug.] ******************************************************************
+ok: [www_02] => 
+    out.stderr: |-
+        count=1, rate = 33333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.50015, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [foo] => 
+    out.stderr: |-
+        count=1, rate = 333333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500218, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 333333.33 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500234, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [www_01] => 
+    out.stderr: |-
+        count=1, rate = 200000.00 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500146, (average) msg size=256, bandwidth=0.50 kB/sec
+
+PLAY [Display the logs.] *******************************************************
+
+TASK [Get log files paths.] ****************************************************
+ok: [log_server]
+
+TASK [Get log files.] **********************************************************
+changed: [log_server] => (item=/var/log/remote/ip-172-16-99-138/2026_08_27.log)
+changed: [log_server] => (item=/var/log/remote/ip-172-16-99-143/2026_08_27.log)
+changed: [log_server] => (item=/var/log/remote/ip-172-16-99-147/2026_08_27.log)
+changed: [log_server] => (item=/var/log/remote/ip-172-16-99-116/2026_08_27.log)
+
+TASK [Display log files.] ******************************************************
+ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-138/2026_08_27.log']) => 
+    msg: |-
+        Aug 27 11:36:54 ip-172-16-99-138 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1787823414, stamp: 2026-08-27T11:36:54 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-143/2026_08_27.log']) => 
+    msg: |-
+        Aug 27 11:36:54 ip-172-16-99-143 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1787823414, stamp: 2026-08-27T11:36:54 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-147/2026_08_27.log']) => 
+    msg: |-
+        Aug 27 11:36:54 ip-172-16-99-147 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1787823414, stamp: 2026-08-27T11:36:54 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-116/2026_08_27.log']) => 
+    msg: |-
+        Aug 27 11:36:54 ip-172-16-99-116 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1787823414, stamp: 2026-08-27T11:36:54 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+PLAY RECAP *********************************************************************
+bar                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+foo                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_01                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_02                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,6 @@
+---
+# Configure /etc/rc.conf
+
+freebsd_iocage_rcconf: []
+
+# EOF

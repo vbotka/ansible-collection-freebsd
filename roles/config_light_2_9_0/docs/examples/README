@@ -1,0 +1,10 @@
+Create source/example-*.rst
+---------------------------
+
+* Put the data into the file examples/examples.yml
+* Create template examples/example-*.rst.j2
+* Include the file in source/examples.rst
+* Create source/example-*.rst
+  shell> ansible-playbook playbook-examples.yml
+
+# EOF

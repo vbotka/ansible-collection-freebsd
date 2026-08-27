@@ -1,0 +1,45 @@
+---
+- name: "Files-ucl: Debug ucl in cl_files.values() cl_debug={{ cl_debug }}"
+  when: cl_debug|bool
+  ansible.builtin.debug:
+    msg: "{{ cl_files.values() | selectattr('ucl', 'defined') | list }}"
+
+- name: "Files-ucl: UCL files cl_files.values()"
+  register: cl_results_ucl
+  notify: "{{ item.0.handlers | d(omit) }}"
+  vbotka.freebsd.ucl:
+    path: "{{ item.0.path }}"
+    chdir: "{{ item.1.chdir | d(omit) }}"
+    upath: "{{ item.1.upath | d(omit) }}"
+    ipath: "{{ item.1.ipath | d(omit) }}"
+    icontent: "{{ item.1.icontent | d(omit) }}"
+    value: "{{ item.1.value | d(omit) }}"
+    vtype: "{{ item.1.vtype | d(omit) }}"
+    merge: "{{ item.1.merge | d(omit) }}"
+    state: "{{ item.1.state | d(omit) }}"
+    delimiter: "{{ item.1.delimiter | d(omit) }}"
+    lang: "{{ item.1.lang | d(omit) }}"
+    owner: "{{ item.0.owner | d(omit) }}"
+    group: "{{ item.0.group | d(omit) }}"
+    mode: "{{ item.0.mode | d(omit) }}"
+    attributes: "{{ item.0.attributes | d(omit) }}"
+    create: "{{ item.0.create | d(omit) }}"
+    validate: "{{ item.0.validate | d(omit) }}"
+    # backup: "{{ cl_backup }}"
+  loop: "{{ cl_files.values() | list | subelements('ucl', skip_missing=true) }}"
+  loop_control:
+    label: "{{ item.0.path }} {{ item.1.upath | d('UNDEFINED') }}"
+
+- name: Debug
+  when: cl_debug | bool
+  block:
+
+    - name: "Files-ucl: Debug cl_results_ucl cl_debug={{ cl_debug }}"
+      ansible.builtin.debug:
+        var: cl_results_ucl
+
+    - name: "Files-ucl: Debug changed ucl paths cl_debug={{ cl_debug }}"
+      ansible.builtin.debug:
+        msg: "{{ cl_results_ucl.results | d([]) | json_query('[?changed].invocation.module_args.path') }}"
+
+# EOF

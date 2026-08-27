@@ -1,0 +1,36 @@
+freebsd_iocage_pool: zroot
+freebsd_iocage_pool_mount: /zroot
+freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
+
+properties:
+  vnet: 1
+  defaultrouter: 172.16.99.1
+  notes: "vmm={{ inventory_hostname }}"
+
+fetch:
+  - 15.0-RELEASE
+
+basejails:
+  - name: ansible-client
+    release: 15.1-RELEASE
+    properties:
+      vnet: 1
+      defaultrouter: 172.16.99.1
+      ip4_addr: 'vnet0|172.16.99.250/24'
+
+clones:
+  - name: test_101
+    clone_from: ansible-client
+    properties:
+      ip4_addr: 'vnet0|172.16.99.251/24'
+  - name: test_102
+    clone_from: ansible-client
+    properties:
+      ip4_addr: 'vnet0|172.16.99.252/24'
+  - name: test_103
+    clone_from: ansible-client
+    properties:
+      ip4_addr: 'vnet0|172.16.99.253/24'
+
+start:
+  - test_103

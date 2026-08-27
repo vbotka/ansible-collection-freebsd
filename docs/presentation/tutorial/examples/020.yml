@@ -1,0 +1,13 @@
+20:
+  example: '020'
+  name: Get inventory aliases from notes
+  case: |
+    Get the ``inventory aliases`` from the ``iocage property notes``. In the inventory plugin
+    ``vbotka.freebsd.iocage``, use the option ``inventory_hostname_tag`` to tell the plugin
+    which tag to use.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - templates created in example 202
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/020
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/020/example.html

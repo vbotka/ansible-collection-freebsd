@@ -1,0 +1,32 @@
+---
+galaxy_info:
+  namespace: vbotka
+  role_name: ansible_lib
+  author: Vladimir Botka
+  description: Ansible library of tasks.
+  company: https://botka.info
+  github_branch: master
+  license: BSD
+  min_ansible_version: "2.21"
+  platforms:
+    - name: FreeBSD
+      versions:
+        - 14.4
+        - 15.0
+        - 15.1
+    - name: Ubuntu
+      versions:
+        - resolute
+        - noble
+        - jammy
+    - name: EL
+      versions:
+        - 7
+        - 8
+  galaxy_tags:
+    - freebsd
+    - linux
+    - ubuntu
+dependencies: []
+collections:
+  - community.general

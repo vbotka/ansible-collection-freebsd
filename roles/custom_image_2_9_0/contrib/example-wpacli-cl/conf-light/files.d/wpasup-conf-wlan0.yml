@@ -1,0 +1,9 @@
+---
+wpasup_conf_wlan0:
+  path: "{{ cimage_mount_path }}/etc/wpa_supplicant.conf.wlan0"
+  force: true
+  owner: root
+  group: wheel
+  mode: "0640"
+  template:
+    path: wpa_supplicant.conf.wlan0.j2

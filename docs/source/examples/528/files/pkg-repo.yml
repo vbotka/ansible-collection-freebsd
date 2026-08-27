@@ -1,0 +1,7 @@
+pkg_repos_conf_clean: true
+pkg_repos_conf:
+  - name: pkg-repo
+    conf:
+      - {key: 'url', value: '"http://{{ project_hosts.pkg_repo }}"'}
+      - {key: 'enabled', value: 'yes'}
+      - {key: 'signature_type', value: '"none"'}

@@ -1,0 +1,14 @@
+- hosts: all
+  remote_user: admin
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+
+  tasks:
+
+    - command: uname -a
+      register: out
+
+    - debug:
+        var: out.stdout

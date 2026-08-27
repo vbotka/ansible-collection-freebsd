@@ -1,0 +1,33 @@
+pkg_fetch: true
+pkg_fetch_dir: /usr/local/www/pkgrepo
+pkg_fetch_list: []
+pkg_fetch_dict_select:
+  - minimal
+  - syslog
+  - other
+  - python
+pkg_dict:
+  - pkglist: minimal
+    packages:
+    - shells/bash
+    - devel/git@default
+    - archivers/gtar
+    - ports-mgmt/pkg
+    - ports-mgmt/portmaster
+    - ports-mgmt/portupgrade
+    - net/rsync
+    - security/sudo
+    - ftp/wget
+  - pkglist: syslog
+    packages:
+      - sysutils/syslog-ng
+      - sysutils/lnav
+  - pkglist: other
+    packages:
+      - www/nginx
+      - www/nginx-lite
+  - pkglist: python
+    packages:
+      - lang/python312
+      - lang/python
+      - lang/python3

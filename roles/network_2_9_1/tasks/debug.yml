@@ -1,0 +1,36 @@
+---
+- name: "FreeBSD Network Debug"
+  vars:
+    msg: |-
+      fn_role_version {{ fn_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
+
+      ansible_facts.architecture: {{ ansible_facts.architecture }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+
+      fn_rcconfd: {{ fn_rcconfd }}
+      fn_rcconfd_dir: {{ fn_rcconfd_dir }}
+      fn_backup_conf: {{ fn_backup_conf }}
+      fn_netif_sleep: {{ fn_netif_sleep }}
+      fn_wlans:
+        {{ fn_wlans | to_yaml(indent=2) | indent(2) }}
+      fn_interfaces:
+        {{ fn_interfaces | to_yaml(indent=2) | indent(2) }}
+      fn_aliases:
+        {{ fn_aliases | to_yaml(indent=2) | indent(2) }}
+      fn_cloned_interfaces:
+        {{ fn_cloned_interfaces | to_yaml(indent=2) | indent(2) }}
+      fn_defaultrouter: {{ fn_defaultrouter }}
+      fn_gateway_enable: {{ fn_gateway_enable }}
+      fn_static_routes_list: {{ fn_static_routes_list }}
+      fn_static_routes:
+        {{ fn_static_routes | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF

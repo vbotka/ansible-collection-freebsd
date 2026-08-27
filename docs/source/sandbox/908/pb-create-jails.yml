@@ -1,0 +1,44 @@
+---
+- name: Create jails from iocage plugins.
+  hosts: iocage_05
+
+  tasks:
+
+    - name: Create log server.
+      vars:
+        _notes: >
+          "vmm={{ inventory_hostname }}
+          class=logserv
+          alias=logserv"
+      ansible.builtin.command: >
+        iocage clone
+        ansible-syslogng
+        --newmac
+        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        notes={{ _notes }}
+
+    - name: Create log client foo.
+      vars:
+        _notes: >
+          "vmm={{ inventory_hostname }}
+          class=logclient
+          alias=foo"
+      ansible.builtin.command: >
+        iocage clone
+        ansible-syslogng
+        --newmac
+        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        notes={{ _notes }}
+
+    - name: Create log client bar.
+      vars:
+        _notes: >
+          "vmm={{ inventory_hostname }}
+          class=logclient
+          alias=bar"
+      ansible.builtin.command: >
+        iocage clone
+        ansible-syslogng
+        --newmac
+        {{ properties | dictsort | map('join', '=') | join(' ') }}
+        notes={{ _notes }}

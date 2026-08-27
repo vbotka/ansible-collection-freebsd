@@ -1,0 +1,24 @@
+enabled_plugins:
+  - ansible-syslogng-server
+  - ansible-syslogng-client
+
+plugins:
+  ansible-syslogng-server:
+    git: https://github.com/vbotka/iocage-plugins
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+  ansible-syslogng-client:
+    git: https://github.com/vbotka/iocage-plugins
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+# jail properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  type: jail

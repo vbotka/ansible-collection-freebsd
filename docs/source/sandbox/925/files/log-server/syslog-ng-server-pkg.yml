@@ -1,0 +1,5 @@
+pkg_pkgsite: pkg-repo
+pkg_cached: true
+pkg_list:
+  - lnav
+  - syslog-ng

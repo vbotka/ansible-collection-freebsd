@@ -1,0 +1,22 @@
+pkg_fetch: true
+pkg_fetch_dir: /usr/local/repo
+pkg_list: []
+pkg_dict_select:
+  - minimal
+  - syslog
+pkg_dict:
+  - pkglist: minimal
+    packages:
+    - shells/bash
+    - devel/git@default
+    - archivers/gtar
+    - ports-mgmt/pkg
+    - ports-mgmt/portmaster
+    - ports-mgmt/portupgrade
+    - net/rsync
+    - security/sudo
+    - ftp/wget
+  - pkglist: syslog
+    packages:
+      - sysutils/syslog-ng
+      - sysutils/lnav

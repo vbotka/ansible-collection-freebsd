@@ -1,0 +1,97 @@
+---
+- name: "Packages_fetch: Create {{ pkg_fetch_dir }}"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ pkg_fetch_dir }}"
+    owner: "{{ pkg_fetch_dir_owner }}"
+    group: "{{ pkg_fetch_dir_group }}"
+    mode: "{{ pkg_fetch_dir_mode }}"
+
+- name: Fetch all lists from pkg_dict
+  when: pkg_fetch_dict_all | bool
+  tags: pkg_fetch_all
+  block:
+
+    - name: "Packages_fetch: Debug all lists from pkg_dict pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ item.packages }}
+      loop: "{{ pkg_dict }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+
+    - name: "Packages_fetch: Fetch all lists from pkg_dict"
+      register: result
+      changed_when: >
+        'No packages are required to be fetched.' not in result.stdout_lines
+      notify: Generate repo metadata
+      ansible.builtin.command: >-
+        pkg fetch -y -d -o {{ pkg_fetch_dir }} {{ item.packages | join(' ') }}
+      loop: "{{ pkg_dict }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+
+    - name: "Packages_fetch: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Fetch selected lists from pkg_dict"
+  when: pkg_fetch_dict_select | length > 0
+  tags: pkg_fetch_selected
+  block:
+
+    - name: "Packages_fetch: Debug selected lists from pkg_dict pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ item.packages }}
+      loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_fetch_dict_select) }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+
+    - name: "Packages_fetch: Fetch selected lists from pkg_dict"
+      register: result
+      changed_when: >
+        'No packages are required to be fetched.' not in result.stdout_lines
+      notify: Generate repo metadata
+      ansible.builtin.command: >-
+        pkg fetch -y -d -o {{ pkg_fetch_dir }} {{ item.packages | join(' ') }}
+      loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_fetch_dict_select) }}"
+      loop_control:
+        label: "{{ item.pkglist }}"
+
+    - name: "Packages_fetch: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Fetch list pkg_list"
+  when: pkg_fetch_list | length > 0
+  tags: pkg_fetch_list
+  block:
+
+    - name: "Packages_fetch: Debug list pkg_fetch_list pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        msg: |
+          {{ pkg_fetch_list }}
+
+    - name: "Packages_fetch: Fetch list pkg_list"
+      register: result
+      changed_when: >
+        'No packages are required to be fetched.' not in result.stdout_lines
+      notify: Generate repo metadata
+      ansible.builtin.command: >-
+        pkg fetch -y -d -o {{ pkg_fetch_dir }} {{ pkg_fetch_list | join(' ') }}
+
+    - name: "Packages_fetch: Debug result pkg_debug={{ pkg_debug }}"
+      when: pkg_debug | bool
+      ansible.builtin.debug:
+        var: result
+
+- name: "Packages_fetch: Generate repository metadata."
+  ansible.builtin.meta: flush_handlers
+
+# EOF

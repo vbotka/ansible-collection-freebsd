@@ -1,0 +1,7 @@
+{
+{% for k, v in freebsd_iocage_defaults.items() %}
+    "{{ k }}": {% if v is integer %}{{ v }}{% else %}"{{ v }}"{% endif %}{% if not loop.last %},
+{% endif %}
+{% endfor %}
+
+}

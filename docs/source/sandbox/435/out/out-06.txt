@@ -1,0 +1,23 @@
+
+PLAY [Configure Nginx servers.] ************************************************
+
+TASK [vbotka.freebsd_nginx : Conf: Configure Nginx.] ***************************
+changed: [www_01] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
+
+TASK [vbotka.freebsd_nginx : Service: Enable and Start Nginx.] *****************
+changed: [www_01]
+changed: [www_02]
+
+RUNNING HANDLER [vbotka.freebsd_nginx : Enable and start nginx] ****************
+changed: [www_01]
+changed: [www_02]
+
+RUNNING HANDLER [vbotka.freebsd_nginx : Reload nginx] **************************
+ok: [www_02]
+ok: [www_01]
+
+PLAY RECAP *********************************************************************
+www_01                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+www_02                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

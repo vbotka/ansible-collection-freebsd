@@ -1,0 +1,9 @@
+# Ansible managed
+
+build: {
+  url: "http://10.1.0.195/packages/143amd64-default-devel",
+  enabled: yes,
+  signature_type: "pubkey",
+  pubkey: "/usr/local/etc/ssl/crt/build.example.com-sk.crt"
+}
+# EOF

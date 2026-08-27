@@ -1,0 +1,14 @@
+- name: List templates.
+  hosts: iocage
+
+  vars:
+
+    iocage_templates: "{{ out.stdout | vbotka.freebsd.iocage('templates') }}"
+    
+  tasks:
+
+    - ansible.builtin.command: iocage list -lt
+      register: out
+    
+    - ansible.builtin.debug:
+        var: iocage_templates

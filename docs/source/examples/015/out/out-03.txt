@@ -1,0 +1,90 @@
+{
+    "_meta": {
+        "hostvars": {
+            "ansible_client": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.198",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.198",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.3-RELEASE-p1",
+                "iocage_state": "down",
+                "iocage_template": "-",
+                "iocage_type": "jail"
+            },
+            "test_131": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.131",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.131",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.3-RELEASE-p1",
+                "iocage_state": "down",
+                "iocage_template": "ansible_client",
+                "iocage_type": "jail"
+            },
+            "test_132": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.132",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.132",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.3-RELEASE-p1",
+                "iocage_state": "down",
+                "iocage_template": "ansible_client",
+                "iocage_type": "jail"
+            },
+            "test_133": {
+                "iocage_basejail": "yes",
+                "iocage_boot": "off",
+                "iocage_ip4": "10.1.0.133",
+                "iocage_ip4_dict": {
+                    "ip4": [
+                        {
+                            "ifc": "vnet0",
+                            "ip": "10.1.0.133",
+                            "mask": "24"
+                        }
+                    ],
+                    "msg": ""
+                },
+                "iocage_ip6": "-",
+                "iocage_jid": "None",
+                "iocage_release": "14.3-RELEASE-p1",
+                "iocage_state": "down",
+                "iocage_template": "ansible_client",
+                "iocage_type": "jail"
+            }
+        }
+    }
+}

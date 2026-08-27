@@ -1,0 +1,11 @@
+- name: Test role vbotka.freebsd.postinstall
+  hosts: up
+  gather_facts: true
+  remote_user: admin
+  become: true
+
+  vars:
+    ansible_python_interpreter: auto_silent
+
+  roles:
+    - vbotka.freebsd.postinstall

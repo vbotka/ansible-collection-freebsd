@@ -1,0 +1,11 @@
+@all:
+  |--@ungrouped:
+  |  |--ansible-zero
+  |--@swarm_sw_01:
+  |  |--53fa80de-b537-462f-9925-a3b17a122271
+  |  |--67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae
+  |  |--a87e3dfe-ab10-46b9-9921-1f1adc2011fe
+  |--@vmm_iocage_05:
+  |  |--53fa80de-b537-462f-9925-a3b17a122271
+  |  |--67f95bed-b2b8-41e3-a7b1-d7476cb5a5ae
+  |  |--a87e3dfe-ab10-46b9-9921-1f1adc2011fe

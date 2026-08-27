@@ -1,0 +1,24 @@
+fit_templates:
+  ansible-repos:
+    release: 15.1-RELEASE
+    pkglist: /tmp/ansible/ansible-repos/pkgs.json
+    commands: "{{ fit_commands }}"
+    rcconf: "{{ fit_rcconf | dict2items }}"
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      notes: '"class=repos alias=ansible_repos"'
+
+fit_rcconf:
+  git_daemon_enable: "YES"
+  git_daemon_directory: "/usr/local/git"
+  git_daemon_flags: "--syslog --base-path=/usr/local/git --export-all --reuseaddr --detach"
+
+fit_commands:
+  - mkdir -p /usr/local/git
+  - chown -R git_daemon:git_daemon /usr/local/git
+  - chmod -R 755 /usr/local/git

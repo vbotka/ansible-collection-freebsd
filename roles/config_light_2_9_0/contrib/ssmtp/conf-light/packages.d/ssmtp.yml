@@ -1,0 +1,5 @@
+---
+ssmtp:
+  module: pkgng
+  name:
+    - mail/ssmtp

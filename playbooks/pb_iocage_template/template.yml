@@ -1,0 +1,17 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Template: Set template."
+  register: out
+  changed_when: false
+  ansible.builtin.command: "iocage set template=1 {{ item.key }}"
+  loop: "{{ templates | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Template: Debug set template debug2={{ debug2 }}"
+  when: debug2 | bool
+  tags: template_start
+  ansible.builtin.debug:
+    var: out

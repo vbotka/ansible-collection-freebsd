@@ -1,0 +1,16 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Get iocage facts
+  vbotka.freebsd.iocage:
+
+- name: "Display iocage_jails dictionary debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: ansible_facts.iocage_jails
+
+- name: "Display iocage_jails keys debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    var: ansible_facts.iocage_jails.keys()

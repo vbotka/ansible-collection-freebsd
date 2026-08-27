@@ -1,0 +1,48 @@
+freebsd_iocage_pool: pool2
+freebsd_iocage_pool_mount: /mnt/pool2
+freebsd_iocage_mount: /mnt/pool2/iocage
+
+templates:
+  ansible_client:
+    release: 13.5-RELEASE
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+    dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
+    pkglist: /tmp/ansible/ansible_client/pkgs.json
+
+# ansible client template defaults
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  iocage_enable: "YES"
+  sshd_enable: "YES"
+act_dhclient:
+  dhclient-exit-hooks: |
+    case "$reason" in
+        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+        ;;
+    esac
+
+# clones default properties
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  notes: "vmm={{ inventory_hostname }}"
+
+clones:
+  test_101: {clone_from: ansible_client}
+  test_102: {clone_from: ansible_client}
+  test_103: {clone_from: ansible_client}
+
+start: "{{ clones.keys() }}"
+
+swarms: {}
+
+# In production, put the password into the vault.
+ansible_become_password: admin

@@ -1,0 +1,232 @@
+
+PLAY [Get custom facts] ********************************************************
+
+TASK [Get custom facts] ********************************************************
+ok: [iocage_04]
+ok: [iocage_02]
+
+TASK [Debug] *******************************************************************
+ok: [iocage_02] => 
+    ansible_local.iocage:
+        jails: |-
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | JID  |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
+            +======+==========+======+=======+======+=================+====================+=====+================+==========+
+            | None | 24ceb6f1 | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | None | 29712c80 | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | None | b65059d4 | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | None | d58e1d10 | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | None | fba6f241 | off  | down  | jail | 14.3-RELEASE-p8 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+        plugins: |-
+            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+            | JID | NAME | BOOT | STATE | TYPE | RELEASE | IP4 | IP6 | TEMPLATE | PORTAL | DOC_URL |
+            +=====+======+======+=======+======+=========+=====+=====+==========+========+=========+
+            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+        releases: |-
+            14.2-RELEASE
+            14.3-RELEASE
+        templates: |-
+            +------+----------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+            | JID  |      NAME      | BOOT | STATE |   TYPE   |     RELEASE     |        IP4         | IP6 | TEMPLATE | BASEJAIL |
+            +======+================+======+=======+==========+=================+====================+=====+==========+==========+
+            | None | ansible_client | off  | down  | template | 14.3-RELEASE-p8 | DHCP (not running) | -   | -        | no       |
+            +------+----------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+ok: [iocage_04] => 
+    ansible_local.iocage:
+        jails: |-
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | JID  |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
+            +======+==========+======+=======+======+=================+====================+=====+================+==========+
+            | None | 026a1357 | off  | down  | jail | 15.0-RELEASE-p3 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+            | None | ff5a1f63 | off  | down  | jail | 15.0-RELEASE-p3 | DHCP (not running) | -   | ansible_client | no       |
+            +------+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
+        plugins: |-
+            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+            | JID | NAME | BOOT | STATE | TYPE | RELEASE | IP4 | IP6 | TEMPLATE | PORTAL | DOC_URL |
+            +=====+======+======+=======+======+=========+=====+=====+==========+========+=========+
+            +-----+------+------+-------+------+---------+-----+-----+----------+--------+---------+
+        releases: |-
+            14.3-RELEASE
+            15.0-RELEASE
+        templates: |-
+            +------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+            | JID  |         NAME          | BOOT | STATE |   TYPE   |     RELEASE     |        IP4         | IP6 | TEMPLATE | BASEJAIL |
+            +======+=======================+======+=======+==========+=================+====================+=====+==========+==========+
+            | None | ansible_client        | off  | down  | template | 15.0-RELEASE-p3 | DHCP (not running) | -   | -        | no       |
+            +------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+            | None | ansible_client_apache | off  | down  | template | 15.0-RELEASE-p3 | DHCP (not running) | -   | -        | no       |
+            +------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+            | None | ansible_client_pull   | off  | down  | template | 15.0-RELEASE-p3 | DHCP (not running) | -   | -        | no       |
+            +------+-----------------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
+
+TASK [Debug] *******************************************************************
+ok: [iocage_04] => 
+    ansible_local.iocage | vbotka.freebsd.iocage:
+        jails:
+            026a1357:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE-p3
+                state: down
+                template: ansible_client
+                type: jail
+            ff5a1f63:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE-p3
+                state: down
+                template: ansible_client
+                type: jail
+        plugins: {}
+        releases:
+        - 14.3-RELEASE
+        - 15.0-RELEASE
+        templates:
+            ansible_client:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE-p3
+                state: down
+                template: '-'
+                type: template
+            ansible_client_apache:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE-p3
+                state: down
+                template: '-'
+                type: template
+            ansible_client_pull:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 15.0-RELEASE-p3
+                state: down
+                template: '-'
+                type: template
+ok: [iocage_02] => 
+    ansible_local.iocage | vbotka.freebsd.iocage:
+        jails:
+            24ceb6f1:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 14.3-RELEASE-p8
+                state: down
+                template: ansible_client
+                type: jail
+            29712c80:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 14.3-RELEASE-p8
+                state: down
+                template: ansible_client
+                type: jail
+            b65059d4:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 14.3-RELEASE-p8
+                state: down
+                template: ansible_client
+                type: jail
+            d58e1d10:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 14.3-RELEASE-p8
+                state: down
+                template: ansible_client
+                type: jail
+            fba6f241:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 14.3-RELEASE-p8
+                state: down
+                template: ansible_client
+                type: jail
+        plugins: {}
+        releases:
+        - 14.2-RELEASE
+        - 14.3-RELEASE
+        templates:
+            ansible_client:
+                basejail: 'no'
+                boot: 'off'
+                ip4: '-'
+                ip4_dict:
+                    ip4: []
+                    msg: DHCP (not running)
+                ip6: '-'
+                jid: None
+                release: 14.3-RELEASE-p8
+                state: down
+                template: '-'
+                type: template
+
+PLAY RECAP *********************************************************************
+iocage_02                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

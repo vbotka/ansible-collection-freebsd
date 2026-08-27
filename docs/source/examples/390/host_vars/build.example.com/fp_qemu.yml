@@ -1,0 +1,9 @@
+fp_qemu: true
+
+fp_qemu_rcvar: qemu_user_static
+fp_qemu_user_static_install: true
+fp_qemu_user_static_enable: true
+
+fp_packages:
+  - {list: qemu, enabled: false}
+  - {list: qemu_user_static, enabled: true}

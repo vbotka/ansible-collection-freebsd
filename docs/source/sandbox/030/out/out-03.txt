@@ -1,0 +1,4 @@
+        freebsd_iocage_role_version: 1.3.0
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.python_version: 3.12.13

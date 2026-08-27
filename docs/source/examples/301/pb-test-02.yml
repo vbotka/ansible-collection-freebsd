@@ -1,0 +1,11 @@
+- name: Test module vbotka.freebsd.ucl
+  hosts: iocage
+    
+  tasks:
+
+    - name: Disable FreeBSD-ports repository.
+      register: out
+      vbotka.freebsd.ucl:
+        path: /etc/pkg/FreeBSD.conf
+        upath: FreeBSD-ports.enabled
+        value: false

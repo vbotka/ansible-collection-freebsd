@@ -1,0 +1,31 @@
+---
+- name: "Sanity: Only FreeBSD family supported"
+  ansible.builtin.assert:
+    that: ansible_facts.os_family == 'FreeBSD'
+    fail_msg: "[ERR] Only FreeBSD family supported."
+    quiet: "{{ cimage_sanity_quiet | bool }}"
+
+- name: "Sanity: Stat image"
+  register: st
+  ansible.builtin.stat:
+    path: "{{ cimage_dir }}/{{ cimage_mount_file }}"
+
+- name: "Sanity: Image exists"
+  ansible.builtin.assert:
+    that: st.stat.exists
+    fail_msg: "[ERR] {{ cimage_dir }}/{{ cimage_mount_file }} does not exist."
+    quiet: "{{ cimage_sanity_quiet | bool }}"
+
+- name: "Sanity: Image is regular file or link"
+  ansible.builtin.assert:
+    that: st.stat.isreg or st.stat.islnk
+    fail_msg: "[ERR] {{ cimage_dir }}/{{ cimage_mount_file }} is neither a file nor symbolic link."
+    quiet: "{{ cimage_sanity_quiet | bool }}"
+
+- name: "Sanity: Image is not writable"
+  ansible.builtin.assert:
+    that: st.stat.writeable
+    fail_msg: "[ERR] {{ cimage_dir }}/{{ cimage_mount_file }} is not writable."
+    quiet: "{{ cimage_sanity_quiet | bool }}"
+
+# EOF

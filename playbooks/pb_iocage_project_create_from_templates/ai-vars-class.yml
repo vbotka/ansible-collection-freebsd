@@ -1,0 +1,48 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create ansible init vars for class.
+  vars:
+    iocage_jails_vars: "{{ vmm[inventory_hostname]
+                           | dict2items
+                           | selectattr('value.class', 'defined') }}"
+
+  block:
+
+    - name: "Ai-vars-class: Create ansible init vars dirs."
+      register: out
+      ansible.builtin.file:
+        state: directory
+        path: "{{ iocage_mount }}/iocage/jails/{{ item.key }}/root{{ ai_vars }}"
+        owner: root
+        group: wheel
+        mode: '0750'
+      loop: "{{ iocage_jails_vars }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: "Ai-vars-class: Debug create ansible init vars dirs."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')
+
+    - name: "Ai-vars-class: Create ansible init vars for class."
+      when: (ai_vars_files ~ '/' ~ item.1) is directory
+      ansible.posix.synchronize:
+        src: "{{ ai_vars_files }}/{{ item.1 }}/"
+        dest: "{{ iocage_mount }}/iocage/jails/{{ item.0.key }}/root{{ ai_vars }}/"
+        rsync_opts:
+          - --include=*.yml
+          - --include=*.yaml
+          - --exclude=*
+          - --chown=root:wheel
+          - --chmod=F0640
+      loop: "{{ iocage_jails_vars | subelements('value.class') }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1 }}"
+
+    - name: "Ai-vars-class: Debug create ansible init vars for class."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')

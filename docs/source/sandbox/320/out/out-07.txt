@@ -1,0 +1,158 @@
+
+PLAY [Test role vbotka.freebsd.packages] ***************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [test_151]
+ok: [test_153]
+ok: [test_152]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [test_152]
+ok: [test_151]
+ok: [test_153]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [test_152] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python312
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [test_151] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python312
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+ok: [test_153] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python312
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+ok: [test_151]
+ok: [test_153]
+ok: [test_152]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
+ok: [test_151] => 
+    pkg_audit:
+        test_151:
+            packages:
+                python311:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies: []
+                    version: 3.11.16
+                python312:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies: []
+                    version: 3.12.14
+            pkg_count: 2
+        test_152:
+            packages:
+                python311:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies: []
+                    version: 3.11.16
+                python312:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies: []
+                    version: 3.12.14
+            pkg_count: 2
+        test_153:
+            packages:
+                python311:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies: []
+                    version: 3.11.16
+                python312:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15366
+                        description: Python -- imaplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies: []
+                    version: 3.12.14
+            pkg_count: 2
+
+PLAY RECAP *********************************************************************
+test_151                   : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_152                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_153                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

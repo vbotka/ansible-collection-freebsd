@@ -1,0 +1,15 @@
+
+PLAY [Test module vbotka.freebsd.ucl] ******************************************
+
+TASK [Disable FreeBSD-ports repository.] ***************************************
+--- before: /etc/pkg/FreeBSD.conf (content)
++++ after: /etc/pkg/FreeBSD.conf (content)
+@@ -1 +1 @@
+-   enabled = true;
++   enabled = false;
+
+changed: [iocage_04]
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

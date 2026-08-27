@@ -1,0 +1,8 @@
+Update examples
+===============
+Update examples according the tested changes in the sanbox.
+
+batch.sh
+========
+
+On error, stamp the example .error instead of .done

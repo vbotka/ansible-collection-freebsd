@@ -1,0 +1,54 @@
+
+PLAY [Test module vbotka.freebsd.service. Get running jails sendmail rcvar(s).] ***
+
+TASK [Get sendmail rcvar(s).] **************************************************
+ok: [repos-devel]
+ok: [log-server-01]
+ok: [www-02]
+ok: [test-153]
+ok: [pkg-repo]
+ok: [repos]
+ok: [www-01]
+ok: [test-152]
+ok: [test-151]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [test-153] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [repos-devel] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [log-server-01] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [pkg-repo] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [www-02] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [test-152] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [www-01] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [repos] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+ok: [test-151] => 
+    out.rcvar:
+        sendmail_enable: 'NO'
+
+PLAY RECAP *********************************************************************
+log-server-01              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg-repo                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos-devel                : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-151                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-152                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-153                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www-01                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www-02                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

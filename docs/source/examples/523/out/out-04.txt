@@ -1,0 +1,34 @@
+@all:
+  |--@ungrouped:
+  |--@pull_repos:
+  |  |--repos
+  |  |--repos_devel
+  |--@state_up:
+  |  |--repos
+  |  |--test_153
+  |  |--log_server
+  |  |--repos_devel
+  |  |--foo
+  |  |--pkg_repo
+  |  |--www_02
+  |  |--bar
+  |  |--test_152
+  |  |--www_01
+  |  |--test_151
+  |--@vmm_iocage_06:
+  |  |--repos
+  |  |--test_153
+  |  |--log_server
+  |  |--db1
+  |  |--repos_devel
+  |  |--db2
+  |  |--foo
+  |  |--pkg_repo
+  |  |--www_02
+  |  |--bar
+  |  |--test_152
+  |  |--www_01
+  |  |--test_151
+  |--@state_down:
+  |  |--db1
+  |  |--db2

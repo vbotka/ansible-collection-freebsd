@@ -1,0 +1,48 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: .configure.yml
+#
+# Description:
+#
+#   Configure collection vbotka.freebsd
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-collection-freebsd/setup/.configure.yml
+
+- name: Configure the collection vbotka.freebsd
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  # debugger: on_failed
+
+  vars_files:
+    - configure.yml
+    - checksum.yml
+    - plugins.yml
+    - plugins_install.yml
+    - roles.yml
+    - roles_install.yml
+
+  vars:
+
+    bsd_admin_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+    bsd_roles_dir: "{{ bsd_admin_home }}/.ansible/roles"
+
+  tasks:
+
+    - name: Confirm that you know what you are doing.
+      tags: always
+      ansible.builtin.assert:
+        that: i_know_what_i_am_doing | d(false) | bool
+        fail_msg: Confirm that you know what you are doing.
+
+    - name: Update roles tag in vars/roles_latest.yml from local repos
+      when: update_roles_tag_local | d(false) | bool
+      tags: update_roles_tag_local
+      ansible.builtin.import_tasks: tasks/conf-update_roles_tag_local.yml
+
+# EOF

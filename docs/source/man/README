@@ -1,0 +1,2 @@
+ansible-doc -t module vbotka.freebsd.iocage | col -bx > man/module-iocage.txt
+ansible-doc -t inventory vbotka.freebsd.iocage | col -bx > man/inventory-iocage.txt

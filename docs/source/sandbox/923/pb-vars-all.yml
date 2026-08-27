@@ -1,0 +1,34 @@
+- name: Create test files.
+  hosts: test
+
+  vars:
+
+    test_dir: /tmp/ansible/sandbox-923
+
+  tasks:
+
+    - debug:
+        msg: |
+          inventory_hostname: {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
+
+          {% for var in q('varnames', 'iocage_*') %}
+          {{ var }}: {{ lookup('vars', var) }}
+          {% endfor %}
+
+    - file:
+        state: directory
+        path: "{{ test_dir }}"
+      delegate_to: localhost
+      run_once: true
+        
+    - copy:
+        dest: "{{ test_dir }}/{{ test_file_prefix | d('') }}{{ inventory_hostname }}.yml"
+        content: |
+          inventory_hostname: {{ inventory_hostname }}
+          ansible_host: {{ ansible_host }}
+
+          {% for var in q('varnames', 'iocage_*') %}
+          {{ var }}: {{ lookup('vars', var) }}
+          {% endfor %}
+      delegate_to: localhost

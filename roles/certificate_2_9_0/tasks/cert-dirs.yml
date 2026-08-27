@@ -1,0 +1,31 @@
+---
+- name: "Cert-dirs: Create public directories {{ certificate_dir }}"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ item }}"
+    owner: "{{ certificate_owner }}"
+    group: "{{ certificate_group }}"
+    mode: "{{ certificate_dir_mode }}"
+  loop:
+    - "{{ certificate_dir }}"
+    - "{{ certificate_dir }}/certs"
+    - "{{ certificate_dir }}/csr"
+
+- name: "Cert-dirs: Link certs to crt in {{ certificate_dir }}"
+  when: certificate_link_crt | bool
+  ansible.builtin.file:
+    state: link
+    src: "{{ certificate_dir }}/certs"
+    dest: "{{ certificate_dir }}/crt"
+    owner: "{{ certificate_owner }}"
+    group: "{{ certificate_group }}"
+
+- name: "Cert-dirs: Create {{ certificate_dir ~ '/private' }}"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ certificate_private_dir }}"
+    owner: "{{ certificate_private_owner }}"
+    group: "{{ certificate_private_group }}"
+    mode: "{{ certificate_private_dir_mode }}"
+
+# EOF

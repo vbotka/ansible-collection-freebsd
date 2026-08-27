@@ -1,0 +1,26 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Create: Get iocage list of templates."
+  register: out_templates
+  changed_when: false
+  ansible.builtin.command: iocage list --template --long
+
+- name: "Create: Create templates."
+  register: out
+  vbotka.freebsd.iocage:
+    state: present
+    name: "{{ item.key }}"
+    release: "{{ item.value.release }}"
+    properties: "{{ item.value.properties | d(omit) }}"
+    pkglist: "{{ item.value.pkglist | d(omit) }}"
+  loop: "{{ templates | dict2items
+                      | rejectattr('key', 'in', iocage_templates) }}"
+  loop_control:
+    label: "{{ item.key }} {{ item.value.release }}"
+
+- name: "Create: Debug create templates debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    var: out

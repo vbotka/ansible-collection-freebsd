@@ -1,0 +1,8 @@
+---
+# Activate iocage if true
+freebsd_iocage_activate: false
+
+# End the host if the activation fails
+freebsd_iocage_activate_fatal: true
+
+# EOF

@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+# cimage_loaderconf_data
+{% for item in cimage_loaderconf_data %}
+{{ item }}
+{% endfor %}
+
+# cimage_loaderconf_sysctl
+{% for item in cimage_loaderconf_sysctl %}
+{{ item }}
+{% endfor %}
+
+# cimage_loaderconf_modules
+{% for item in cimage_loaderconf_modules %}
+{{ item }}_load="YES"
+{% endfor %}
+
+# EOF

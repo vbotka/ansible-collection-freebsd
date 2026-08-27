@@ -1,0 +1,40 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Create ansible init vars for jail.
+  vars:
+    iocage_jails_vars: "{{ vmm[inventory_hostname] | list }}"
+
+  block:
+
+    - name: "Ai-vars-jail: Create ansible init vars dirs."
+      register: out
+      ansible.builtin.file:
+        state: directory
+        path: "{{ iocage_mount }}/iocage/jails/{{ item }}/root{{ ai_vars }}"
+        owner: root
+        group: wheel
+        mode: '0750'
+      loop: "{{ iocage_jails_vars }}"
+
+    - name: "Ai-vars-jail: Debug create ansible init vars dirs."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')
+
+    - name: "Ai-vars-jail: Create ansible init vars for jail."
+      when: (ai_vars_files ~ '/' ~ item) is directory
+      ansible.posix.synchronize:
+        src: "{{ ai_vars_files }}/{{ item }}/"
+        dest: "{{ iocage_mount }}/iocage/jails/{{ item }}/root{{ ai_vars }}/"
+        rsync_opts:
+          - --include=*.yml
+          - --include=*.yaml
+          - --exclude=*
+      loop: "{{ iocage_jails_vars }}"
+
+    - name: "Ai-vars-jail: Debug create ansible init vars for jail."
+      when: debug2 | d(false) | bool
+      ansible.builtin.debug:
+        var: out | d('none')

@@ -1,0 +1,23 @@
+---
+# FreeBSD vars for rsnapshot
+
+rsnapshot_packages:
+  - sysutils/rsnapshot
+
+rsnapshot_snapshot_root_group: wheel
+rsnapshot_snapshot_root_mode: "0700"
+
+rsnapshot_config_file: /usr/local/etc/rsnapshot.conf
+rsnapshot_config_file_test: /usr/local/etc/rsnapshot-test.conf
+rsnapshot_config_file_owner: root
+rsnapshot_config_file_group: wheel
+rsnapshot_config_file_mode: "0644"
+
+rsnapshot_cmd_cp: /bin/cp
+rsnapshot_cmd_rm: /bin/rm
+rsnapshot_cmd_rsync: /usr/local/bin/rsync
+rsnapshot_cmd_ssh: /usr/bin/ssh
+rsnapshot_cmd_logger: /usr/bin/logger
+
+# EOF
+...

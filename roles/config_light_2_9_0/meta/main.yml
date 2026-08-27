@@ -1,0 +1,30 @@
+---
+galaxy_info:
+  namespace: vbotka
+  role_name: config_light
+  author: Vladimir Botka
+  description: Install packages, configure files, services, and handlers.
+  company: https://botka.info
+  github_branch: master
+  license: BSD
+  min_ansible_version: "2.21"
+  platforms:
+    - name: FreeBSD
+      versions:
+        - 14.4
+        - 15.0
+        - 15.1
+    - name: Ubuntu
+      versions:
+        - resolute
+        - nobel
+        - jammy
+  galaxy_tags:
+    - freebsd
+    - ubuntu
+    - configuration
+dependencies: []
+collections:
+  - ansible.posix
+  - community.general
+  - vbotka.freebsd

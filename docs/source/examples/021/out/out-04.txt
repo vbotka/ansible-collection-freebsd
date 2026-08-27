@@ -1,0 +1,58 @@
+
+PLAY [Display all groups.] *****************************************************
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        repos
+        {class: repos, vmm: iocage_06}
+ok: [repos_devel] => 
+    msg: |-
+        repos-devel
+        {alias: repos_devel, class: repos, vmm: iocage_06}
+ok: [db1] => 
+    msg: |-
+        1718af82
+        {alias: db1, project: sandbox_020, swarm: db, vmm: iocage_06}
+ok: [db2] => 
+    msg: |-
+        09caf271
+        {alias: db2, project: sandbox_020, swarm: db, vmm: iocage_06}
+ok: [pkg_repo] => 
+    msg: |-
+        pkg-repo
+        {alias: pkg_repo, class: pkg-repo, vmm: iocage_06}
+ok: [log_server_01] => 
+    msg: |-
+        log-server-01
+        {alias: log_server_01, class: log-server, vmm: iocage_06}
+ok: [www_02] => 
+    msg: |-
+        www-02
+        {alias: www_02, class: log-client, vmm: iocage_06}
+ok: [www_01] => 
+    msg: |-
+        www-01
+        {alias: www_01, class: log-client, vmm: iocage_06}
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        all: ['repos', 'db1', 'repos_devel', 'db2', 'pkg_repo', 'log_server_01', 'www_02', 'www_01']
+        ungrouped: []
+        state_up: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01', 'www_02', 'www_01']
+        vmm_iocage_06: ['repos', 'db1', 'repos_devel', 'db2', 'pkg_repo', 'log_server_01', 'www_02', 'www_01']
+        project_sandbox_020: ['db1', 'db2']
+        swarm_db: ['db1', 'db2']
+        state_down: ['db1', 'db2']
+
+PLAY RECAP *********************************************************************
+db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server_01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg_repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos_devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_01                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_02                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

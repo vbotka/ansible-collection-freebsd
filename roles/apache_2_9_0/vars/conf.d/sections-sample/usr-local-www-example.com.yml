@@ -1,0 +1,36 @@
+---
+my_apache_sections:
+  content:
+    - sections:
+        - name: Directory
+          param: /usr/local/www/www1.example.com
+          content:
+            - options:
+                - DirectoryIndex: index.php index.html index.htm
+                - AddType: application/x-httpd-php .php
+                - AddType: application/x-httpd-php-source .phps
+                - Options: Indexes FollowSymLinks
+                - AllowOverride: All
+                - Require: all granted
+    - sections:
+        - name: Directory
+          param: /usr/local/www/www2.example.com
+          content:
+            - options:
+                - DirectoryIndex: index.php index.html index.htm
+                - AddType: application/x-httpd-php .php
+                - AddType: application/x-httpd-php-source .phps
+                - Options: Indexes FollowSymLinks
+                - AllowOverride: All
+                - Require: all granted
+    - sections:
+        - name: Directory
+          param: /usr/local/www/www3.example.com
+          content:
+            - options:
+                - DirectoryIndex: index.php index.html index.htm
+                - AddType: application/x-httpd-php .php
+                - AddType: application/x-httpd-php-source .phps
+                - Options: Indexes FollowSymLinks
+                - AllowOverride: All
+                - Require: all granted

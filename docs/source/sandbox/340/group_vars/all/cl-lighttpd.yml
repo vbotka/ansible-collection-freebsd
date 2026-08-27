@@ -1,0 +1,20 @@
+cl_service_lighttpd_enable: true
+cl_service_lighttpd_state: start
+
+# /usr/local/etc/lighttpd/lighttpd.conf
+cl_lighttpd_server_port: '80'
+cl_lighttpd_server_useipv6: disable
+cl_lighttpd_server_username: www
+cl_lighttpd_server_groupname: www
+cl_lighttpd_server_document_root: /usr/local/www/lighttpd
+cl_lighttpd_lighttpdconf_dict:
+  - {key: server.port, value: '"{{ cl_lighttpd_server_port }}"'}
+  - {key: server.use-ipv6, value: '"{{ cl_lighttpd_server_useipv6 }}"'}
+  - {key: server.username, value: '"{{ cl_lighttpd_server_username }}"'}
+  - {key: server.groupname, value: '"{{ cl_lighttpd_server_groupname }}"'}
+  - {key: server.document-root, value: '"{{ cl_lighttpd_server_document_root }}"'}
+
+# /etc/rc.conf
+cl_lighttpd_rcconf_lighttpd_enable: 'YES'
+cl_lighttpd_rcconf_dict:
+  - {key: lighttpd_enable, value: '"{{ cl_lighttpd_rcconf_lighttpd_enable }}"'}

@@ -1,0 +1,130 @@
+
+PLAY [Display iocage datasets.] ************************************************
+
+TASK [Get iocage datasets.] ****************************************************
+ok: [iocage_06]
+
+TASK [Display iocage datasets (omit properties).] ******************************
+ok: [iocage_06] => 
+    msg: |-
+        iocage_releases: ['15.0-RELEASE', '15.1-RELEASE']
+        iocage_plugins:
+          {}
+
+        iocage_templates:
+          ansible-client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-client
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible-init:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-init
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible-nginx:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-nginx
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible-pkg-repo:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-pkg-repo
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible-repos:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-repos
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible-syslogng-client:
+            basejail: 'no'
+            boot: 'off'
+            ip4: DHCP (not running)
+            ip6: '-'
+            jid: None
+            name: ansible-syslogng-client
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+          ansible-syslogng-server:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|172.16.99.41/24
+            ip6: '-'
+            jid: None
+            name: ansible-syslogng-server
+            release: 15.1-RELEASE-p1
+            state: down
+            template: '-'
+            type: template
+
+        iocage_jails:
+          test-151:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|172.16.99.251/24
+            ip6: '-'
+            jid: '13'
+            name: test-151
+            release: 15.1-RELEASE-p1
+            state: up
+            template: ansible-client
+            type: jail
+          test-152:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|172.16.99.252/24
+            ip6: '-'
+            jid: '12'
+            name: test-152
+            release: 15.1-RELEASE-p1
+            state: up
+            template: ansible-client
+            type: jail
+          test-153:
+            basejail: 'no'
+            boot: 'off'
+            ip4: vnet0|172.16.99.253/24
+            ip6: '-'
+            jid: '14'
+            name: test-153
+            release: 15.1-RELEASE-p1
+            state: up
+            template: ansible-client
+            type: jail
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

@@ -1,0 +1,12 @@
+---
+
+# clean enable
+freebsd_iocage_clean: false
+
+# clean jails
+freebsd_iocage_clean_jails: {}
+
+# clean files
+freebsd_iocage_clean_files: []
+
+# EOF

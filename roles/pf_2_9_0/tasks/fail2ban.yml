@@ -1,0 +1,31 @@
+---
+- name: Fail if fail2ban is enabled and no service exists.
+  ansible.builtin.import_tasks: stat-fail2ban.yml
+
+- name: Configure /usr/local/etc/fail2ban/
+  notify: reload fail2ban
+  block:
+
+    - name: "Fail2ban: Configure /usr/local/etc/fail2ban/fail2ban.local"
+      vars:
+        ini: "{{ pf_fail2ban_local_conf }}"
+      ansible.builtin.template:
+        dest: /usr/local/etc/fail2ban/fail2ban.local
+        src: "{{ pf_fail2ban_local_template }}"
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ pf_backup_conf }}"
+
+    - name: "Fail2ban: Configure /usr/local/etc/fail2ban/jail.local"
+      vars:
+        ini: "{{ pf_fail2ban_jail_local_conf }}"
+      ansible.builtin.template:
+        dest: /usr/local/etc/fail2ban/jail.local
+        src: "{{ pf_fail2ban_jail_local_template }}"
+        owner: root
+        group: wheel
+        mode: "0644"
+        backup: "{{ pf_backup_conf }}"
+
+# EOF

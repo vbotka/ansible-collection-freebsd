@@ -1,0 +1,8 @@
+---
+rc_conf:
+  path: "{{ cimage_mount_path }}/etc/rc.conf"
+  force: true
+  owner: root
+  group: wheel
+  mode: "0644"
+  dict: "{{ cimage_rcconf_data }}"

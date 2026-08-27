@@ -1,0 +1,8 @@
+names: [www_p1, www_p2, www_p3, www_d1, www_d2]
+swarms:
+  www_prod:
+    count: 3
+    template: ansible_client
+  www_devel:
+    count: 2
+    template: ansible_client

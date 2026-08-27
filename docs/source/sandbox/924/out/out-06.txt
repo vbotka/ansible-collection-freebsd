@@ -1,0 +1,719 @@
+
+PLAY [Fetch packages to repo.] *************************************************
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Create /usr/local/www/pkgrepo] ***
+changed: [pkg_repo]
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Debug selected lists from pkg_dict pkg_debug=true] ***
+ok: [pkg_repo] => (item=minimal) => 
+    msg:
+    - shells/bash
+    - devel/git@default
+    - archivers/gtar
+    - ports-mgmt/pkg
+    - ports-mgmt/portmaster
+    - ports-mgmt/portupgrade
+    - net/rsync
+    - security/sudo
+    - ftp/wget
+ok: [pkg_repo] => (item=syslog) => 
+    msg:
+    - sysutils/syslog-ng
+    - sysutils/lnav
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Fetch selected lists from pkg_dict] ***
+changed: [pkg_repo] => (item=minimal)
+changed: [pkg_repo] => (item=syslog)
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Debug result pkg_debug=true] ***
+ok: [pkg_repo] => 
+    result:
+        changed: true
+        failed: false
+        msg: All items completed
+        results:
+        -   ansible_loop_var: item
+            changed: true
+            changed_when_result: true
+            cmd:
+            - pkg
+            - fetch
+            - -y
+            - -d
+            - -o
+            - /usr/local/www/pkgrepo
+            - shells/bash
+            - devel/git@default
+            - archivers/gtar
+            - ports-mgmt/pkg
+            - ports-mgmt/portmaster
+            - ports-mgmt/portupgrade
+            - net/rsync
+            - security/sudo
+            - ftp/wget
+            delta: '0:02:46.294375'
+            end: '2026-08-27 11:08:02.577560'
+            failed: false
+            item:
+                packages:
+                - shells/bash
+                - devel/git@default
+                - archivers/gtar
+                - ports-mgmt/pkg
+                - ports-mgmt/portmaster
+                - ports-mgmt/portupgrade
+                - net/rsync
+                - security/sudo
+                - ftp/wget
+                pkglist: minimal
+            msg: ''
+            rc: 0
+            start: '2026-08-27 11:05:16.283185'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                [pkg-repo] Installing pkg-2.7.5...
+                [pkg-repo] Extracting pkg-2.7.5: .......... done
+                Updating FreeBSD-ports repository catalogue...
+                FreeBSD-ports repository is up to date.
+                Updating FreeBSD-ports-kmods repository catalogue...
+                FreeBSD-ports-kmods repository is up to date.
+                All repositories are up to date.
+                Updating database digests format: . done
+                The following packages will be fetched:
+
+                New packages to be FETCHED:
+                        abseil: 20250127.1_1 (1 MiB: 0.65% of the 167 MiB to download)
+                        adcli: 0.9.2_3 (96 KiB: 0.06% of the 167 MiB to download)
+                        avahi-app: 0.8_6 (374 KiB: 0.22% of the 167 MiB to download)
+                        bash: 5.3.15 (2 MiB: 1.12% of the 167 MiB to download)
+                        bind-tools: 9.20.27 (2 MiB: 0.93% of the 167 MiB to download)
+                        brotli: 1.2.0,1 (388 KiB: 0.23% of the 167 MiB to download)
+                        c-ares: 1.34.6 (223 KiB: 0.13% of the 167 MiB to download)
+                        curl: 8.21.0 (2 MiB: 1.09% of the 167 MiB to download)
+                        cyrus-sasl: 2.1.28_6 (1 MiB: 0.61% of the 167 MiB to download)
+                        cyrus-sasl-gssapi: 2.1.28 (20 KiB: 0.01% of the 167 MiB to download)
+                        db5: 5.3.28_10 (12 MiB: 7.48% of the 167 MiB to download)
+                        dbus: 1.16.2_4,1 (317 KiB: 0.19% of the 167 MiB to download)
+                        dbus-glib: 0.114 (176 KiB: 0.10% of the 167 MiB to download)
+                        ding-libs: 0.7.0 (106 KiB: 0.06% of the 167 MiB to download)
+                        duktape-lib: 2.7.0_1 (252 KiB: 0.15% of the 167 MiB to download)
+                        expat: 2.8.2 (131 KiB: 0.08% of the 167 MiB to download)
+                        fstrm: 0.6.1_1 (69 KiB: 0.04% of the 167 MiB to download)
+                        gamin: 0.1.10_10 (56 KiB: 0.03% of the 167 MiB to download)
+                        gdbm: 1.26 (252 KiB: 0.15% of the 167 MiB to download)
+                        gettext-runtime: 1.0_1 (299 KiB: 0.17% of the 167 MiB to download)
+                        git: 2.54.0 (9 MiB: 5.36% of the 167 MiB to download)
+                        glib: 2.86.4,2 (11 MiB: 6.30% of the 167 MiB to download)
+                        gmp: 6.3.0 (504 KiB: 0.29% of the 167 MiB to download)
+                        gnome_subr: 1.0 (2 KiB: 0.00% of the 167 MiB to download)
+                        gnutls: 3.8.13 (3 MiB: 1.62% of the 167 MiB to download)
+                        gtar: 1.35_1 (775 KiB: 0.45% of the 167 MiB to download)
+                        indexinfo: 0.3.1_1 (6 KiB: 0.00% of the 167 MiB to download)
+                        jansson: 2.15.1_1 (63 KiB: 0.04% of the 167 MiB to download)
+                        jose: 15 (112 KiB: 0.07% of the 167 MiB to download)
+                        jsoncpp: 1.9.6_1 (132 KiB: 0.08% of the 167 MiB to download)
+                        krb5: 1.22.2_3 (4 MiB: 2.53% of the 167 MiB to download)
+                        ldb25: 2.5.3_2 (191 KiB: 0.11% of the 167 MiB to download)
+                        libICE: 1.1.2,1 (98 KiB: 0.06% of the 167 MiB to download)
+                        libSM: 1.2.6,1 (26 KiB: 0.02% of the 167 MiB to download)
+                        libX11: 1.8.13_1,1 (2 MiB: 1.00% of the 167 MiB to download)
+                        libXau: 1.0.12 (12 KiB: 0.01% of the 167 MiB to download)
+                        libXdmcp: 1.1.5 (16 KiB: 0.01% of the 167 MiB to download)
+                        libarchive: 3.8.7,1 (539 KiB: 0.32% of the 167 MiB to download)
+                        libcbor: 0.14.0 (84 KiB: 0.05% of the 167 MiB to download)
+                        libdaemon: 0.14_1 (35 KiB: 0.02% of the 167 MiB to download)
+                        libedit: 3.1.20260512,1 (155 KiB: 0.09% of the 167 MiB to download)
+                        libevent: 2.1.13 (351 KiB: 0.21% of the 167 MiB to download)
+                        libffi: 3.6.0 (50 KiB: 0.03% of the 167 MiB to download)
+                        libfido2: 1.17.0 (269 KiB: 0.16% of the 167 MiB to download)
+                        libgcrypt: 1.12.2 (1 MiB: 0.71% of the 167 MiB to download)
+                        libgpg-error: 1.61 (393 KiB: 0.23% of the 167 MiB to download)
+                        libiconv: 1.18_1 (741 KiB: 0.43% of the 167 MiB to download)
+                        libidn2: 2.3.8 (161 KiB: 0.09% of the 167 MiB to download)
+                        libinotify: 20240724_3 (27 KiB: 0.02% of the 167 MiB to download)
+                        liblz4: 1.10.0_2,1 (178 KiB: 0.10% of the 167 MiB to download)
+                        libnghttp2: 1.69.0 (140 KiB: 0.08% of the 167 MiB to download)
+                        libpsl: 0.22.0 (67 KiB: 0.04% of the 167 MiB to download)
+                        libssh2: 1.11.1_1,3 (244 KiB: 0.14% of the 167 MiB to download)
+                        libsunacl: 1.0.1_1 (8 KiB: 0.00% of the 167 MiB to download)
+                        libtasn1: 4.21.0 (178 KiB: 0.10% of the 167 MiB to download)
+                        libunistring: 1.4.2 (743 KiB: 0.44% of the 167 MiB to download)
+                        libunwind: 20250904 (210 KiB: 0.12% of the 167 MiB to download)
+                        liburcu: 0.15.3_1 (171 KiB: 0.10% of the 167 MiB to download)
+                        libuuid: 2.42.2 (49 KiB: 0.03% of the 167 MiB to download)
+                        libuv: 1.52.1 (143 KiB: 0.08% of the 167 MiB to download)
+                        libxcb: 1.17.0 (1 MiB: 0.65% of the 167 MiB to download)
+                        libxml2: 2.15.3 (908 KiB: 0.53% of the 167 MiB to download)
+                        libyaml: 0.2.5 (77 KiB: 0.05% of the 167 MiB to download)
+                        lmdb0: 0.9.35 (113 KiB: 0.07% of the 167 MiB to download)
+                        mpdecimal: 4.0.1 (157 KiB: 0.09% of the 167 MiB to download)
+                        nettle: 3.10.2 (2 MiB: 1.00% of the 167 MiB to download)
+                        openldap26-client: 2.6.13 (1 MiB: 0.64% of the 167 MiB to download)
+                        p11-kit: 0.26.2 (709 KiB: 0.41% of the 167 MiB to download)
+                        p5-Authen-SASL: 2.1900 (44 KiB: 0.03% of the 167 MiB to download)
+                        p5-Crypt-URandom: 0.54 (17 KiB: 0.01% of the 167 MiB to download)
+                        p5-Digest-HMAC: 1.05 (15 KiB: 0.01% of the 167 MiB to download)
+                        p5-Error: 0.17030 (27 KiB: 0.02% of the 167 MiB to download)
+                        p5-IO-Socket-SSL: 2.099 (198 KiB: 0.12% of the 167 MiB to download)
+                        p5-MIME-Base32: 1.303 (8 KiB: 0.00% of the 167 MiB to download)
+                        p5-MIME-Base64: 3.16 (22 KiB: 0.01% of the 167 MiB to download)
+                        p5-Mozilla-CA: 20260813 (106 KiB: 0.06% of the 167 MiB to download)
+                        p5-Net-SSLeay: 1.94 (279 KiB: 0.16% of the 167 MiB to download)
+                        p5-URI: 5.34 (103 KiB: 0.06% of the 167 MiB to download)
+                        pcre2: 10.47_1 (1 MiB: 0.86% of the 167 MiB to download)
+                        perl5: 5.42.3 (16 MiB: 9.53% of the 167 MiB to download)
+                        pkg: 2.7.5 (6 MiB: 3.60% of the 167 MiB to download)
+                        polkit: 127 (176 KiB: 0.10% of the 167 MiB to download)
+                        popt: 1.19_1 (72 KiB: 0.04% of the 167 MiB to download)
+                        portmaster: 3.35 (43 KiB: 0.02% of the 167 MiB to download)
+                        portupgrade: 2.4.16_4,2 (94 KiB: 0.05% of the 167 MiB to download)
+                        protobuf: 29.6,1 (3 MiB: 1.52% of the 167 MiB to download)
+                        protobuf-c: 1.5.1_4 (203 KiB: 0.12% of the 167 MiB to download)
+                        py312-aioquic: 1.3.0_1 (228 KiB: 0.13% of the 167 MiB to download)
+                        py312-anyio: 4.14.1 (274 KiB: 0.16% of the 167 MiB to download)
+                        py312-async_generator: 1.10_1 (49 KiB: 0.03% of the 167 MiB to download)
+                        py312-attrs: 26.1.0 (109 KiB: 0.06% of the 167 MiB to download)
+                        py312-certifi: 2026.6.17 (130 KiB: 0.08% of the 167 MiB to download)
+                        py312-cffi: 2.0.0 (276 KiB: 0.16% of the 167 MiB to download)
+                        py312-cryptography: 48.0.1,1 (2 MiB: 0.94% of the 167 MiB to download)
+                        py312-dnspython: 2.8.0_1,1 (529 KiB: 0.31% of the 167 MiB to download)
+                        py312-h11: 0.16.0 (56 KiB: 0.03% of the 167 MiB to download)
+                        py312-h2: 4.3.0 (104 KiB: 0.06% of the 167 MiB to download)
+                        py312-hpack: 4.2.0 (60 KiB: 0.04% of the 167 MiB to download)
+                        py312-httpcore: 1.0.9 (115 KiB: 0.07% of the 167 MiB to download)
+                        py312-httpx: 0.28.1_2 (156 KiB: 0.09% of the 167 MiB to download)
+                        py312-hyperframe: 6.1.0 (25 KiB: 0.01% of the 167 MiB to download)
+                        py312-idna: 3.18 (84 KiB: 0.05% of the 167 MiB to download)
+                        py312-markdown: 3.10.2 (180 KiB: 0.11% of the 167 MiB to download)
+                        py312-outcome: 1.3.0_2 (14 KiB: 0.01% of the 167 MiB to download)
+                        py312-packaging: 26.2 (190 KiB: 0.11% of the 167 MiB to download)
+                        py312-pycparser: 2.23 (225 KiB: 0.13% of the 167 MiB to download)
+                        py312-pylsqpack: 0.3.24 (83 KiB: 0.05% of the 167 MiB to download)
+                        py312-pyopenssl: 26.2.0,1 (100 KiB: 0.06% of the 167 MiB to download)
+                        py312-service-identity: 26.1.0 (20 KiB: 0.01% of the 167 MiB to download)
+                        py312-sniffio: 1.3.1 (13 KiB: 0.01% of the 167 MiB to download)
+                        py312-socksio: 1.0.0_1 (23 KiB: 0.01% of the 167 MiB to download)
+                        py312-sortedcontainers: 2.4.0_1 (49 KiB: 0.03% of the 167 MiB to download)
+                        py312-trio: 0.33.0 (1 MiB: 0.62% of the 167 MiB to download)
+                        py312-truststore: 0.10.4 (37 KiB: 0.02% of the 167 MiB to download)
+                        py312-typing-extensions: 4.15.0 (87 KiB: 0.05% of the 167 MiB to download)
+                        python312: 3.12.14 (37 MiB: 21.88% of the 167 MiB to download)
+                        readline: 8.3.3 (478 KiB: 0.28% of the 167 MiB to download)
+                        realmd: 0.17.1_1 (231 KiB: 0.14% of the 167 MiB to download)
+                        rsync: 3.4.4_1 (414 KiB: 0.24% of the 167 MiB to download)
+                        ruby: 3.4.9_2,1 (9 MiB: 5.63% of the 167 MiB to download)
+                        ruby34-bdb: 0.6.6_9 (422 KiB: 0.25% of the 167 MiB to download)
+                        samba416: 4.16.11_12 (15 MiB: 8.93% of the 167 MiB to download)
+                        sssd2: 2.13.1 (2 MiB: 1.17% of the 167 MiB to download)
+                        sudo: 1.9.17p2_2 (2 MiB: 1.05% of the 167 MiB to download)
+                        sudo-sssd: 1.9.17p2_2 (2 MiB: 1.06% of the 167 MiB to download)
+                        talloc: 2.4.1_1 (49 KiB: 0.03% of the 167 MiB to download)
+                        tdb: 1.4.9_1,1 (84 KiB: 0.05% of the 167 MiB to download)
+                        tevent: 0.15.0_1 (59 KiB: 0.03% of the 167 MiB to download)
+                        utf8proc: 2.11.3 (84 KiB: 0.05% of the 167 MiB to download)
+                        wget: 1.25.0 (777 KiB: 0.45% of the 167 MiB to download)
+                        xorgproto: 2025.1 (237 KiB: 0.14% of the 167 MiB to download)
+                        xxhash: 0.8.3 (103 KiB: 0.06% of the 167 MiB to download)
+                        zstd: 1.5.7_2 (511 KiB: 0.30% of the 167 MiB to download)
+
+                Number of packages to be fetched: 133
+
+                The process will require 167 MiB more space.
+                167 MiB to be downloaded.
+                [pkg-repo] Fetching duktape-lib-2.7.0_1: .......... done
+                [pkg-repo] Fetching wget-1.25.0: .......... done
+                [pkg-repo] Fetching p5-Net-SSLeay-1.94: .......... done
+                [pkg-repo] Fetching libxcb-1.17.0: .......... done
+                [pkg-repo] Fetching py312-typing-extensions-4.15.0: .......... done
+                [pkg-repo] Fetching mpdecimal-4.0.1: .......... done
+                [pkg-repo] Fetching py312-cryptography-48.0.1,1: .......... done
+                [pkg-repo] Fetching py312-h11-0.16.0: ........ done
+                [pkg-repo] Fetching libidn2-2.3.8: .......... done
+                [pkg-repo] Fetching p5-URI-5.34: .......... done
+                [pkg-repo] Fetching py312-truststore-0.10.4: ..... done
+                [pkg-repo] Fetching libuv-1.52.1: .......... done
+                [pkg-repo] Fetching samba416-4.16.11_12: .......... done
+                [pkg-repo] Fetching libyaml-0.2.5: .......... done
+                [pkg-repo] Fetching nettle-3.10.2: .......... done
+                [pkg-repo] Fetching py312-hpack-4.2.0: ........ done
+                [pkg-repo] Fetching p5-Crypt-URandom-0.54: ... done
+                [pkg-repo] Fetching libunistring-1.4.2: .......... done
+                [pkg-repo] Fetching python312-3.12.14: .......... done
+                [pkg-repo] Fetching polkit-127: .......... done
+                [pkg-repo] Fetching py312-idna-3.18: .......... done
+                [pkg-repo] Fetching libarchive-3.8.7,1: .......... done
+                [pkg-repo] Fetching py312-outcome-1.3.0_2: .. done
+                [pkg-repo] Fetching libiconv-1.18_1: .......... done
+                [pkg-repo] Fetching p5-Error-0.17030: .... done
+                [pkg-repo] Fetching libcbor-0.14.0: .......... done
+                [pkg-repo] Fetching git-2.54.0: .......... done
+                [pkg-repo] Fetching libtasn1-4.21.0: .......... done
+                [pkg-repo] Fetching py312-pylsqpack-0.3.24: .......... done
+                [pkg-repo] Fetching p5-Authen-SASL-2.1900: ...... done
+                [pkg-repo] Fetching portupgrade-2.4.16_4,2: .......... done
+                [pkg-repo] Fetching cyrus-sasl-gssapi-2.1.28: ... done
+                [pkg-repo] Fetching gnome_subr-1.0: . done
+                [pkg-repo] Fetching krb5-1.22.2_3: .......... done
+                [pkg-repo] Fetching libxml2-2.15.3: .......... done
+                [pkg-repo] Fetching py312-service-identity-26.1.0: ... done
+                [pkg-repo] Fetching libnghttp2-1.69.0: .......... done
+                [pkg-repo] Fetching py312-anyio-4.14.1: .......... done
+                [pkg-repo] Fetching tdb-1.4.9_1,1: .......... done
+                [pkg-repo] Fetching py312-pycparser-2.23: .......... done
+                [pkg-repo] Fetching ruby-3.4.9_2,1: .......... done
+                [pkg-repo] Fetching gnutls-3.8.13: .......... done
+                [pkg-repo] Fetching db5-5.3.28_10: .......... done
+                [pkg-repo] Fetching bind-tools-9.20.27: .......... done
+                [pkg-repo] Fetching libX11-1.8.13_1,1: .......... done
+                [pkg-repo] Fetching py312-cffi-2.0.0: .......... done
+                [pkg-repo] Fetching xorgproto-2025.1: .......... done
+                [pkg-repo] Fetching liburcu-0.15.3_1: .......... done
+                [pkg-repo] Fetching xxhash-0.8.3: .......... done
+                [pkg-repo] Fetching ldb25-2.5.3_2: .......... done
+                [pkg-repo] Fetching p5-Digest-HMAC-1.05: .. done
+                [pkg-repo] Fetching libpsl-0.22.0: ......... done
+                [pkg-repo] Fetching protobuf-c-1.5.1_4: .......... done
+                [pkg-repo] Fetching bash-5.3.15: .......... done
+                [pkg-repo] Fetching libfido2-1.17.0: .......... done
+                [pkg-repo] Fetching utf8proc-2.11.3: .......... done
+                [pkg-repo] Fetching py312-markdown-3.10.2: .......... done
+                [pkg-repo] Fetching py312-dnspython-2.8.0_1,1: .......... done
+                [pkg-repo] Fetching py312-async_generator-1.10_1: ....... done
+                [pkg-repo] Fetching libevent-2.1.13: .......... done
+                [pkg-repo] Fetching libinotify-20240724_3: .... done
+                [pkg-repo] Fetching gdbm-1.26: .......... done
+                [pkg-repo] Fetching py312-trio-0.33.0: .......... done
+                [pkg-repo] Fetching avahi-app-0.8_6: .......... done
+                [pkg-repo] Fetching abseil-20250127.1_1: .......... done
+                [pkg-repo] Fetching p5-IO-Socket-SSL-2.099: .......... done
+                [pkg-repo] Fetching p5-MIME-Base32-1.303: .. done
+                [pkg-repo] Fetching py312-aioquic-1.3.0_1: .......... done
+                [pkg-repo] Fetching dbus-1.16.2_4,1: .......... done
+                [pkg-repo] Fetching libedit-3.1.20260512,1: .......... done
+                [pkg-repo] Fetching sssd2-2.13.1: .......... done
+                [pkg-repo] Fetching talloc-2.4.1_1: ....... done
+                [pkg-repo] Fetching popt-1.19_1: ......... done
+                [pkg-repo] Fetching jsoncpp-1.9.6_1: .......... done
+                [pkg-repo] Fetching rsync-3.4.4_1: .......... done
+                [pkg-repo] Fetching liblz4-1.10.0_2,1: .......... done
+                [pkg-repo] Fetching libgcrypt-1.12.2: .......... done
+                [pkg-repo] Fetching fstrm-0.6.1_1: ......... done
+                [pkg-repo] Fetching py312-pyopenssl-26.2.0,1: .......... done
+                [pkg-repo] Fetching py312-httpcore-1.0.9: .......... done
+                [pkg-repo] Fetching libunwind-20250904: .......... done
+                [pkg-repo] Fetching zstd-1.5.7_2: .......... done
+                [pkg-repo] Fetching py312-socksio-1.0.0_1: ... done
+                [pkg-repo] Fetching pcre2-10.47_1: .......... done
+                [pkg-repo] Fetching libgpg-error-1.61: .......... done
+                [pkg-repo] Fetching brotli-1.2.0,1: .......... done
+                [pkg-repo] Fetching curl-8.21.0: .......... done
+                [pkg-repo] Fetching gmp-6.3.0: .......... done
+                [pkg-repo] Fetching jose-15: .......... done
+                [pkg-repo] Fetching libuuid-2.42.2: ....... done
+                [pkg-repo] Fetching py312-h2-4.3.0: .......... done
+                [pkg-repo] Fetching gettext-runtime-1.0_1: .......... done
+                [pkg-repo] Fetching jansson-2.15.1_1: ........ done
+                [pkg-repo] Fetching ruby34-bdb-0.6.6_9: .......... done
+                [pkg-repo] Fetching py312-attrs-26.1.0: .......... done
+                [pkg-repo] Fetching py312-sniffio-1.3.1: .. done
+                [pkg-repo] Fetching lmdb0-0.9.35: .......... done
+                [pkg-repo] Fetching p11-kit-0.26.2: .......... done
+                [pkg-repo] Fetching dbus-glib-0.114: .......... done
+                [pkg-repo] Fetching pkg-2.7.5: .......... done
+                [pkg-repo] Fetching indexinfo-0.3.1_1: . done
+                [pkg-repo] Fetching cyrus-sasl-2.1.28_6: .......... done
+                [pkg-repo] Fetching p5-MIME-Base64-3.16: ... done
+                [pkg-repo] Fetching libXau-1.0.12: .. done
+                [pkg-repo] Fetching libICE-1.1.2,1: .......... done
+                [pkg-repo] Fetching py312-sortedcontainers-2.4.0_1: ....... done
+                [pkg-repo] Fetching ding-libs-0.7.0: .......... done
+                [pkg-repo] Fetching realmd-0.17.1_1: .......... done
+                [pkg-repo] Fetching c-ares-1.34.6: .......... done
+                [pkg-repo] Fetching adcli-0.9.2_3: .......... done
+                [pkg-repo] Fetching py312-certifi-2026.6.17: .......... done
+                [pkg-repo] Fetching py312-packaging-26.2: .......... done
+                [pkg-repo] Fetching openldap26-client-2.6.13: .......... done
+                [pkg-repo] Fetching libSM-1.2.6,1: .... done
+                [pkg-repo] Fetching py312-httpx-0.28.1_2: .......... done
+                [pkg-repo] Fetching protobuf-29.6,1: .......... done
+                [pkg-repo] Fetching glib-2.86.4,2: .......... done
+                [pkg-repo] Fetching tevent-0.15.0_1: ........ done
+                [pkg-repo] Fetching perl5-5.42.3: .......... done
+                [pkg-repo] Fetching gtar-1.35_1: .......... done
+                [pkg-repo] Fetching sudo-sssd-1.9.17p2_2: .......... done
+                [pkg-repo] Fetching py312-hyperframe-6.1.0: .... done
+                [pkg-repo] Fetching p5-Mozilla-CA-20260813: .......... done
+                [pkg-repo] Fetching libffi-3.6.0: ....... done
+                [pkg-repo] Fetching portmaster-3.35: ...... done
+                [pkg-repo] Fetching sudo-1.9.17p2_2: .......... done
+                [pkg-repo] Fetching readline-8.3.3: .......... done
+                [pkg-repo] Fetching libdaemon-0.14_1: ..... done
+                [pkg-repo] Fetching libssh2-1.11.1_1,3: .......... done
+                [pkg-repo] Fetching libXdmcp-1.1.5: ... done
+                [pkg-repo] Fetching expat-2.8.2: .......... done
+                [pkg-repo] Fetching libsunacl-1.0.1_1: . done
+                [pkg-repo] Fetching gamin-0.1.10_10: ....... done
+            stdout_lines:
+            - '[pkg-repo] Installing pkg-2.7.5...'
+            - '[pkg-repo] Extracting pkg-2.7.5: .......... done'
+            - Updating FreeBSD-ports repository catalogue...
+            - FreeBSD-ports repository is up to date.
+            - Updating FreeBSD-ports-kmods repository catalogue...
+            - FreeBSD-ports-kmods repository is up to date.
+            - All repositories are up to date.
+            - 'Updating database digests format: . done'
+            - 'The following packages will be fetched:'
+            - ''
+            - 'New packages to be FETCHED:'
+            - "\tabseil: 20250127.1_1 (1 MiB: 0.65% of the 167 MiB to download)"
+            - "\tadcli: 0.9.2_3 (96 KiB: 0.06% of the 167 MiB to download)"
+            - "\tavahi-app: 0.8_6 (374 KiB: 0.22% of the 167 MiB to download)"
+            - "\tbash: 5.3.15 (2 MiB: 1.12% of the 167 MiB to download)"
+            - "\tbind-tools: 9.20.27 (2 MiB: 0.93% of the 167 MiB to download)"
+            - "\tbrotli: 1.2.0,1 (388 KiB: 0.23% of the 167 MiB to download)"
+            - "\tc-ares: 1.34.6 (223 KiB: 0.13% of the 167 MiB to download)"
+            - "\tcurl: 8.21.0 (2 MiB: 1.09% of the 167 MiB to download)"
+            - "\tcyrus-sasl: 2.1.28_6 (1 MiB: 0.61% of the 167 MiB to download)"
+            - "\tcyrus-sasl-gssapi: 2.1.28 (20 KiB: 0.01% of the 167 MiB to download)"
+            - "\tdb5: 5.3.28_10 (12 MiB: 7.48% of the 167 MiB to download)"
+            - "\tdbus: 1.16.2_4,1 (317 KiB: 0.19% of the 167 MiB to download)"
+            - "\tdbus-glib: 0.114 (176 KiB: 0.10% of the 167 MiB to download)"
+            - "\tding-libs: 0.7.0 (106 KiB: 0.06% of the 167 MiB to download)"
+            - "\tduktape-lib: 2.7.0_1 (252 KiB: 0.15% of the 167 MiB to download)"
+            - "\texpat: 2.8.2 (131 KiB: 0.08% of the 167 MiB to download)"
+            - "\tfstrm: 0.6.1_1 (69 KiB: 0.04% of the 167 MiB to download)"
+            - "\tgamin: 0.1.10_10 (56 KiB: 0.03% of the 167 MiB to download)"
+            - "\tgdbm: 1.26 (252 KiB: 0.15% of the 167 MiB to download)"
+            - "\tgettext-runtime: 1.0_1 (299 KiB: 0.17% of the 167 MiB to download)"
+            - "\tgit: 2.54.0 (9 MiB: 5.36% of the 167 MiB to download)"
+            - "\tglib: 2.86.4,2 (11 MiB: 6.30% of the 167 MiB to download)"
+            - "\tgmp: 6.3.0 (504 KiB: 0.29% of the 167 MiB to download)"
+            - "\tgnome_subr: 1.0 (2 KiB: 0.00% of the 167 MiB to download)"
+            - "\tgnutls: 3.8.13 (3 MiB: 1.62% of the 167 MiB to download)"
+            - "\tgtar: 1.35_1 (775 KiB: 0.45% of the 167 MiB to download)"
+            - "\tindexinfo: 0.3.1_1 (6 KiB: 0.00% of the 167 MiB to download)"
+            - "\tjansson: 2.15.1_1 (63 KiB: 0.04% of the 167 MiB to download)"
+            - "\tjose: 15 (112 KiB: 0.07% of the 167 MiB to download)"
+            - "\tjsoncpp: 1.9.6_1 (132 KiB: 0.08% of the 167 MiB to download)"
+            - "\tkrb5: 1.22.2_3 (4 MiB: 2.53% of the 167 MiB to download)"
+            - "\tldb25: 2.5.3_2 (191 KiB: 0.11% of the 167 MiB to download)"
+            - "\tlibICE: 1.1.2,1 (98 KiB: 0.06% of the 167 MiB to download)"
+            - "\tlibSM: 1.2.6,1 (26 KiB: 0.02% of the 167 MiB to download)"
+            - "\tlibX11: 1.8.13_1,1 (2 MiB: 1.00% of the 167 MiB to download)"
+            - "\tlibXau: 1.0.12 (12 KiB: 0.01% of the 167 MiB to download)"
+            - "\tlibXdmcp: 1.1.5 (16 KiB: 0.01% of the 167 MiB to download)"
+            - "\tlibarchive: 3.8.7,1 (539 KiB: 0.32% of the 167 MiB to download)"
+            - "\tlibcbor: 0.14.0 (84 KiB: 0.05% of the 167 MiB to download)"
+            - "\tlibdaemon: 0.14_1 (35 KiB: 0.02% of the 167 MiB to download)"
+            - "\tlibedit: 3.1.20260512,1 (155 KiB: 0.09% of the 167 MiB to download)"
+            - "\tlibevent: 2.1.13 (351 KiB: 0.21% of the 167 MiB to download)"
+            - "\tlibffi: 3.6.0 (50 KiB: 0.03% of the 167 MiB to download)"
+            - "\tlibfido2: 1.17.0 (269 KiB: 0.16% of the 167 MiB to download)"
+            - "\tlibgcrypt: 1.12.2 (1 MiB: 0.71% of the 167 MiB to download)"
+            - "\tlibgpg-error: 1.61 (393 KiB: 0.23% of the 167 MiB to download)"
+            - "\tlibiconv: 1.18_1 (741 KiB: 0.43% of the 167 MiB to download)"
+            - "\tlibidn2: 2.3.8 (161 KiB: 0.09% of the 167 MiB to download)"
+            - "\tlibinotify: 20240724_3 (27 KiB: 0.02% of the 167 MiB to download)"
+            - "\tliblz4: 1.10.0_2,1 (178 KiB: 0.10% of the 167 MiB to download)"
+            - "\tlibnghttp2: 1.69.0 (140 KiB: 0.08% of the 167 MiB to download)"
+            - "\tlibpsl: 0.22.0 (67 KiB: 0.04% of the 167 MiB to download)"
+            - "\tlibssh2: 1.11.1_1,3 (244 KiB: 0.14% of the 167 MiB to download)"
+            - "\tlibsunacl: 1.0.1_1 (8 KiB: 0.00% of the 167 MiB to download)"
+            - "\tlibtasn1: 4.21.0 (178 KiB: 0.10% of the 167 MiB to download)"
+            - "\tlibunistring: 1.4.2 (743 KiB: 0.44% of the 167 MiB to download)"
+            - "\tlibunwind: 20250904 (210 KiB: 0.12% of the 167 MiB to download)"
+            - "\tliburcu: 0.15.3_1 (171 KiB: 0.10% of the 167 MiB to download)"
+            - "\tlibuuid: 2.42.2 (49 KiB: 0.03% of the 167 MiB to download)"
+            - "\tlibuv: 1.52.1 (143 KiB: 0.08% of the 167 MiB to download)"
+            - "\tlibxcb: 1.17.0 (1 MiB: 0.65% of the 167 MiB to download)"
+            - "\tlibxml2: 2.15.3 (908 KiB: 0.53% of the 167 MiB to download)"
+            - "\tlibyaml: 0.2.5 (77 KiB: 0.05% of the 167 MiB to download)"
+            - "\tlmdb0: 0.9.35 (113 KiB: 0.07% of the 167 MiB to download)"
+            - "\tmpdecimal: 4.0.1 (157 KiB: 0.09% of the 167 MiB to download)"
+            - "\tnettle: 3.10.2 (2 MiB: 1.00% of the 167 MiB to download)"
+            - "\topenldap26-client: 2.6.13 (1 MiB: 0.64% of the 167 MiB to download)"
+            - "\tp11-kit: 0.26.2 (709 KiB: 0.41% of the 167 MiB to download)"
+            - "\tp5-Authen-SASL: 2.1900 (44 KiB: 0.03% of the 167 MiB to download)"
+            - "\tp5-Crypt-URandom: 0.54 (17 KiB: 0.01% of the 167 MiB to download)"
+            - "\tp5-Digest-HMAC: 1.05 (15 KiB: 0.01% of the 167 MiB to download)"
+            - "\tp5-Error: 0.17030 (27 KiB: 0.02% of the 167 MiB to download)"
+            - "\tp5-IO-Socket-SSL: 2.099 (198 KiB: 0.12% of the 167 MiB to download)"
+            - "\tp5-MIME-Base32: 1.303 (8 KiB: 0.00% of the 167 MiB to download)"
+            - "\tp5-MIME-Base64: 3.16 (22 KiB: 0.01% of the 167 MiB to download)"
+            - "\tp5-Mozilla-CA: 20260813 (106 KiB: 0.06% of the 167 MiB to download)"
+            - "\tp5-Net-SSLeay: 1.94 (279 KiB: 0.16% of the 167 MiB to download)"
+            - "\tp5-URI: 5.34 (103 KiB: 0.06% of the 167 MiB to download)"
+            - "\tpcre2: 10.47_1 (1 MiB: 0.86% of the 167 MiB to download)"
+            - "\tperl5: 5.42.3 (16 MiB: 9.53% of the 167 MiB to download)"
+            - "\tpkg: 2.7.5 (6 MiB: 3.60% of the 167 MiB to download)"
+            - "\tpolkit: 127 (176 KiB: 0.10% of the 167 MiB to download)"
+            - "\tpopt: 1.19_1 (72 KiB: 0.04% of the 167 MiB to download)"
+            - "\tportmaster: 3.35 (43 KiB: 0.02% of the 167 MiB to download)"
+            - "\tportupgrade: 2.4.16_4,2 (94 KiB: 0.05% of the 167 MiB to download)"
+            - "\tprotobuf: 29.6,1 (3 MiB: 1.52% of the 167 MiB to download)"
+            - "\tprotobuf-c: 1.5.1_4 (203 KiB: 0.12% of the 167 MiB to download)"
+            - "\tpy312-aioquic: 1.3.0_1 (228 KiB: 0.13% of the 167 MiB to download)"
+            - "\tpy312-anyio: 4.14.1 (274 KiB: 0.16% of the 167 MiB to download)"
+            - "\tpy312-async_generator: 1.10_1 (49 KiB: 0.03% of the 167 MiB to download)"
+            - "\tpy312-attrs: 26.1.0 (109 KiB: 0.06% of the 167 MiB to download)"
+            - "\tpy312-certifi: 2026.6.17 (130 KiB: 0.08% of the 167 MiB to download)"
+            - "\tpy312-cffi: 2.0.0 (276 KiB: 0.16% of the 167 MiB to download)"
+            - "\tpy312-cryptography: 48.0.1,1 (2 MiB: 0.94% of the 167 MiB to download)"
+            - "\tpy312-dnspython: 2.8.0_1,1 (529 KiB: 0.31% of the 167 MiB to download)"
+            - "\tpy312-h11: 0.16.0 (56 KiB: 0.03% of the 167 MiB to download)"
+            - "\tpy312-h2: 4.3.0 (104 KiB: 0.06% of the 167 MiB to download)"
+            - "\tpy312-hpack: 4.2.0 (60 KiB: 0.04% of the 167 MiB to download)"
+            - "\tpy312-httpcore: 1.0.9 (115 KiB: 0.07% of the 167 MiB to download)"
+            - "\tpy312-httpx: 0.28.1_2 (156 KiB: 0.09% of the 167 MiB to download)"
+            - "\tpy312-hyperframe: 6.1.0 (25 KiB: 0.01% of the 167 MiB to download)"
+            - "\tpy312-idna: 3.18 (84 KiB: 0.05% of the 167 MiB to download)"
+            - "\tpy312-markdown: 3.10.2 (180 KiB: 0.11% of the 167 MiB to download)"
+            - "\tpy312-outcome: 1.3.0_2 (14 KiB: 0.01% of the 167 MiB to download)"
+            - "\tpy312-packaging: 26.2 (190 KiB: 0.11% of the 167 MiB to download)"
+            - "\tpy312-pycparser: 2.23 (225 KiB: 0.13% of the 167 MiB to download)"
+            - "\tpy312-pylsqpack: 0.3.24 (83 KiB: 0.05% of the 167 MiB to download)"
+            - "\tpy312-pyopenssl: 26.2.0,1 (100 KiB: 0.06% of the 167 MiB to download)"
+            - "\tpy312-service-identity: 26.1.0 (20 KiB: 0.01% of the 167 MiB to download)"
+            - "\tpy312-sniffio: 1.3.1 (13 KiB: 0.01% of the 167 MiB to download)"
+            - "\tpy312-socksio: 1.0.0_1 (23 KiB: 0.01% of the 167 MiB to download)"
+            - "\tpy312-sortedcontainers: 2.4.0_1 (49 KiB: 0.03% of the 167 MiB to download)"
+            - "\tpy312-trio: 0.33.0 (1 MiB: 0.62% of the 167 MiB to download)"
+            - "\tpy312-truststore: 0.10.4 (37 KiB: 0.02% of the 167 MiB to download)"
+            - "\tpy312-typing-extensions: 4.15.0 (87 KiB: 0.05% of the 167 MiB to download)"
+            - "\tpython312: 3.12.14 (37 MiB: 21.88% of the 167 MiB to download)"
+            - "\treadline: 8.3.3 (478 KiB: 0.28% of the 167 MiB to download)"
+            - "\trealmd: 0.17.1_1 (231 KiB: 0.14% of the 167 MiB to download)"
+            - "\trsync: 3.4.4_1 (414 KiB: 0.24% of the 167 MiB to download)"
+            - "\truby: 3.4.9_2,1 (9 MiB: 5.63% of the 167 MiB to download)"
+            - "\truby34-bdb: 0.6.6_9 (422 KiB: 0.25% of the 167 MiB to download)"
+            - "\tsamba416: 4.16.11_12 (15 MiB: 8.93% of the 167 MiB to download)"
+            - "\tsssd2: 2.13.1 (2 MiB: 1.17% of the 167 MiB to download)"
+            - "\tsudo: 1.9.17p2_2 (2 MiB: 1.05% of the 167 MiB to download)"
+            - "\tsudo-sssd: 1.9.17p2_2 (2 MiB: 1.06% of the 167 MiB to download)"
+            - "\ttalloc: 2.4.1_1 (49 KiB: 0.03% of the 167 MiB to download)"
+            - "\ttdb: 1.4.9_1,1 (84 KiB: 0.05% of the 167 MiB to download)"
+            - "\ttevent: 0.15.0_1 (59 KiB: 0.03% of the 167 MiB to download)"
+            - "\tutf8proc: 2.11.3 (84 KiB: 0.05% of the 167 MiB to download)"
+            - "\twget: 1.25.0 (777 KiB: 0.45% of the 167 MiB to download)"
+            - "\txorgproto: 2025.1 (237 KiB: 0.14% of the 167 MiB to download)"
+            - "\txxhash: 0.8.3 (103 KiB: 0.06% of the 167 MiB to download)"
+            - "\tzstd: 1.5.7_2 (511 KiB: 0.30% of the 167 MiB to download)"
+            - ''
+            - 'Number of packages to be fetched: 133'
+            - ''
+            - The process will require 167 MiB more space.
+            - 167 MiB to be downloaded.
+            - '[pkg-repo] Fetching duktape-lib-2.7.0_1: .......... done'
+            - '[pkg-repo] Fetching wget-1.25.0: .......... done'
+            - '[pkg-repo] Fetching p5-Net-SSLeay-1.94: .......... done'
+            - '[pkg-repo] Fetching libxcb-1.17.0: .......... done'
+            - '[pkg-repo] Fetching py312-typing-extensions-4.15.0: .......... done'
+            - '[pkg-repo] Fetching mpdecimal-4.0.1: .......... done'
+            - '[pkg-repo] Fetching py312-cryptography-48.0.1,1: .......... done'
+            - '[pkg-repo] Fetching py312-h11-0.16.0: ........ done'
+            - '[pkg-repo] Fetching libidn2-2.3.8: .......... done'
+            - '[pkg-repo] Fetching p5-URI-5.34: .......... done'
+            - '[pkg-repo] Fetching py312-truststore-0.10.4: ..... done'
+            - '[pkg-repo] Fetching libuv-1.52.1: .......... done'
+            - '[pkg-repo] Fetching samba416-4.16.11_12: .......... done'
+            - '[pkg-repo] Fetching libyaml-0.2.5: .......... done'
+            - '[pkg-repo] Fetching nettle-3.10.2: .......... done'
+            - '[pkg-repo] Fetching py312-hpack-4.2.0: ........ done'
+            - '[pkg-repo] Fetching p5-Crypt-URandom-0.54: ... done'
+            - '[pkg-repo] Fetching libunistring-1.4.2: .......... done'
+            - '[pkg-repo] Fetching python312-3.12.14: .......... done'
+            - '[pkg-repo] Fetching polkit-127: .......... done'
+            - '[pkg-repo] Fetching py312-idna-3.18: .......... done'
+            - '[pkg-repo] Fetching libarchive-3.8.7,1: .......... done'
+            - '[pkg-repo] Fetching py312-outcome-1.3.0_2: .. done'
+            - '[pkg-repo] Fetching libiconv-1.18_1: .......... done'
+            - '[pkg-repo] Fetching p5-Error-0.17030: .... done'
+            - '[pkg-repo] Fetching libcbor-0.14.0: .......... done'
+            - '[pkg-repo] Fetching git-2.54.0: .......... done'
+            - '[pkg-repo] Fetching libtasn1-4.21.0: .......... done'
+            - '[pkg-repo] Fetching py312-pylsqpack-0.3.24: .......... done'
+            - '[pkg-repo] Fetching p5-Authen-SASL-2.1900: ...... done'
+            - '[pkg-repo] Fetching portupgrade-2.4.16_4,2: .......... done'
+            - '[pkg-repo] Fetching cyrus-sasl-gssapi-2.1.28: ... done'
+            - '[pkg-repo] Fetching gnome_subr-1.0: . done'
+            - '[pkg-repo] Fetching krb5-1.22.2_3: .......... done'
+            - '[pkg-repo] Fetching libxml2-2.15.3: .......... done'
+            - '[pkg-repo] Fetching py312-service-identity-26.1.0: ... done'
+            - '[pkg-repo] Fetching libnghttp2-1.69.0: .......... done'
+            - '[pkg-repo] Fetching py312-anyio-4.14.1: .......... done'
+            - '[pkg-repo] Fetching tdb-1.4.9_1,1: .......... done'
+            - '[pkg-repo] Fetching py312-pycparser-2.23: .......... done'
+            - '[pkg-repo] Fetching ruby-3.4.9_2,1: .......... done'
+            - '[pkg-repo] Fetching gnutls-3.8.13: .......... done'
+            - '[pkg-repo] Fetching db5-5.3.28_10: .......... done'
+            - '[pkg-repo] Fetching bind-tools-9.20.27: .......... done'
+            - '[pkg-repo] Fetching libX11-1.8.13_1,1: .......... done'
+            - '[pkg-repo] Fetching py312-cffi-2.0.0: .......... done'
+            - '[pkg-repo] Fetching xorgproto-2025.1: .......... done'
+            - '[pkg-repo] Fetching liburcu-0.15.3_1: .......... done'
+            - '[pkg-repo] Fetching xxhash-0.8.3: .......... done'
+            - '[pkg-repo] Fetching ldb25-2.5.3_2: .......... done'
+            - '[pkg-repo] Fetching p5-Digest-HMAC-1.05: .. done'
+            - '[pkg-repo] Fetching libpsl-0.22.0: ......... done'
+            - '[pkg-repo] Fetching protobuf-c-1.5.1_4: .......... done'
+            - '[pkg-repo] Fetching bash-5.3.15: .......... done'
+            - '[pkg-repo] Fetching libfido2-1.17.0: .......... done'
+            - '[pkg-repo] Fetching utf8proc-2.11.3: .......... done'
+            - '[pkg-repo] Fetching py312-markdown-3.10.2: .......... done'
+            - '[pkg-repo] Fetching py312-dnspython-2.8.0_1,1: .......... done'
+            - '[pkg-repo] Fetching py312-async_generator-1.10_1: ....... done'
+            - '[pkg-repo] Fetching libevent-2.1.13: .......... done'
+            - '[pkg-repo] Fetching libinotify-20240724_3: .... done'
+            - '[pkg-repo] Fetching gdbm-1.26: .......... done'
+            - '[pkg-repo] Fetching py312-trio-0.33.0: .......... done'
+            - '[pkg-repo] Fetching avahi-app-0.8_6: .......... done'
+            - '[pkg-repo] Fetching abseil-20250127.1_1: .......... done'
+            - '[pkg-repo] Fetching p5-IO-Socket-SSL-2.099: .......... done'
+            - '[pkg-repo] Fetching p5-MIME-Base32-1.303: .. done'
+            - '[pkg-repo] Fetching py312-aioquic-1.3.0_1: .......... done'
+            - '[pkg-repo] Fetching dbus-1.16.2_4,1: .......... done'
+            - '[pkg-repo] Fetching libedit-3.1.20260512,1: .......... done'
+            - '[pkg-repo] Fetching sssd2-2.13.1: .......... done'
+            - '[pkg-repo] Fetching talloc-2.4.1_1: ....... done'
+            - '[pkg-repo] Fetching popt-1.19_1: ......... done'
+            - '[pkg-repo] Fetching jsoncpp-1.9.6_1: .......... done'
+            - '[pkg-repo] Fetching rsync-3.4.4_1: .......... done'
+            - '[pkg-repo] Fetching liblz4-1.10.0_2,1: .......... done'
+            - '[pkg-repo] Fetching libgcrypt-1.12.2: .......... done'
+            - '[pkg-repo] Fetching fstrm-0.6.1_1: ......... done'
+            - '[pkg-repo] Fetching py312-pyopenssl-26.2.0,1: .......... done'
+            - '[pkg-repo] Fetching py312-httpcore-1.0.9: .......... done'
+            - '[pkg-repo] Fetching libunwind-20250904: .......... done'
+            - '[pkg-repo] Fetching zstd-1.5.7_2: .......... done'
+            - '[pkg-repo] Fetching py312-socksio-1.0.0_1: ... done'
+            - '[pkg-repo] Fetching pcre2-10.47_1: .......... done'
+            - '[pkg-repo] Fetching libgpg-error-1.61: .......... done'
+            - '[pkg-repo] Fetching brotli-1.2.0,1: .......... done'
+            - '[pkg-repo] Fetching curl-8.21.0: .......... done'
+            - '[pkg-repo] Fetching gmp-6.3.0: .......... done'
+            - '[pkg-repo] Fetching jose-15: .......... done'
+            - '[pkg-repo] Fetching libuuid-2.42.2: ....... done'
+            - '[pkg-repo] Fetching py312-h2-4.3.0: .......... done'
+            - '[pkg-repo] Fetching gettext-runtime-1.0_1: .......... done'
+            - '[pkg-repo] Fetching jansson-2.15.1_1: ........ done'
+            - '[pkg-repo] Fetching ruby34-bdb-0.6.6_9: .......... done'
+            - '[pkg-repo] Fetching py312-attrs-26.1.0: .......... done'
+            - '[pkg-repo] Fetching py312-sniffio-1.3.1: .. done'
+            - '[pkg-repo] Fetching lmdb0-0.9.35: .......... done'
+            - '[pkg-repo] Fetching p11-kit-0.26.2: .......... done'
+            - '[pkg-repo] Fetching dbus-glib-0.114: .......... done'
+            - '[pkg-repo] Fetching pkg-2.7.5: .......... done'
+            - '[pkg-repo] Fetching indexinfo-0.3.1_1: . done'
+            - '[pkg-repo] Fetching cyrus-sasl-2.1.28_6: .......... done'
+            - '[pkg-repo] Fetching p5-MIME-Base64-3.16: ... done'
+            - '[pkg-repo] Fetching libXau-1.0.12: .. done'
+            - '[pkg-repo] Fetching libICE-1.1.2,1: .......... done'
+            - '[pkg-repo] Fetching py312-sortedcontainers-2.4.0_1: ....... done'
+            - '[pkg-repo] Fetching ding-libs-0.7.0: .......... done'
+            - '[pkg-repo] Fetching realmd-0.17.1_1: .......... done'
+            - '[pkg-repo] Fetching c-ares-1.34.6: .......... done'
+            - '[pkg-repo] Fetching adcli-0.9.2_3: .......... done'
+            - '[pkg-repo] Fetching py312-certifi-2026.6.17: .......... done'
+            - '[pkg-repo] Fetching py312-packaging-26.2: .......... done'
+            - '[pkg-repo] Fetching openldap26-client-2.6.13: .......... done'
+            - '[pkg-repo] Fetching libSM-1.2.6,1: .... done'
+            - '[pkg-repo] Fetching py312-httpx-0.28.1_2: .......... done'
+            - '[pkg-repo] Fetching protobuf-29.6,1: .......... done'
+            - '[pkg-repo] Fetching glib-2.86.4,2: .......... done'
+            - '[pkg-repo] Fetching tevent-0.15.0_1: ........ done'
+            - '[pkg-repo] Fetching perl5-5.42.3: .......... done'
+            - '[pkg-repo] Fetching gtar-1.35_1: .......... done'
+            - '[pkg-repo] Fetching sudo-sssd-1.9.17p2_2: .......... done'
+            - '[pkg-repo] Fetching py312-hyperframe-6.1.0: .... done'
+            - '[pkg-repo] Fetching p5-Mozilla-CA-20260813: .......... done'
+            - '[pkg-repo] Fetching libffi-3.6.0: ....... done'
+            - '[pkg-repo] Fetching portmaster-3.35: ...... done'
+            - '[pkg-repo] Fetching sudo-1.9.17p2_2: .......... done'
+            - '[pkg-repo] Fetching readline-8.3.3: .......... done'
+            - '[pkg-repo] Fetching libdaemon-0.14_1: ..... done'
+            - '[pkg-repo] Fetching libssh2-1.11.1_1,3: .......... done'
+            - '[pkg-repo] Fetching libXdmcp-1.1.5: ... done'
+            - '[pkg-repo] Fetching expat-2.8.2: .......... done'
+            - '[pkg-repo] Fetching libsunacl-1.0.1_1: . done'
+            - '[pkg-repo] Fetching gamin-0.1.10_10: ....... done'
+        -   ansible_loop_var: item
+            changed: true
+            changed_when_result: true
+            cmd:
+            - pkg
+            - fetch
+            - -y
+            - -d
+            - -o
+            - /usr/local/www/pkgrepo
+            - sysutils/syslog-ng
+            - sysutils/lnav
+            delta: '0:00:11.936998'
+            end: '2026-08-27 11:08:15.621163'
+            failed: false
+            item:
+                packages:
+                - sysutils/syslog-ng
+                - sysutils/lnav
+                pkglist: syslog
+            msg: ''
+            rc: 0
+            start: '2026-08-27 11:08:03.684165'
+            stderr: ''
+            stderr_lines: []
+            stdout: |-
+                Updating FreeBSD-ports repository catalogue...
+                FreeBSD-ports repository is up to date.
+                Updating FreeBSD-ports-kmods repository catalogue...
+                FreeBSD-ports-kmods repository is up to date.
+                All repositories are up to date.
+                The following packages will be fetched:
+
+                New packages to be FETCHED:
+                        ivykis: 0.43.2_1 (79 KiB: 1.25% of the 6 MiB to download)
+                        json-c: 0.19 (75 KiB: 1.19% of the 6 MiB to download)
+                        lnav: 0.14.0 (4 MiB: 58.62% of the 6 MiB to download)
+                        sqlite3: 3.53.3,1 (1 MiB: 21.79% of the 6 MiB to download)
+                        syslog-ng: 4.12.0_1 (1 MiB: 17.15% of the 6 MiB to download)
+
+                Number of packages to be fetched: 5
+
+                The process will require 6 MiB more space.
+                6 MiB to be downloaded.
+                [pkg-repo] Fetching ivykis-0.43.2_1: .......... done
+                [pkg-repo] Fetching sqlite3-3.53.3,1: .......... done
+                [pkg-repo] Fetching lnav-0.14.0: .......... done
+                [pkg-repo] Fetching syslog-ng-4.12.0_1: .......... done
+                [pkg-repo] Fetching json-c-0.19: .......... done
+            stdout_lines:
+            - Updating FreeBSD-ports repository catalogue...
+            - FreeBSD-ports repository is up to date.
+            - Updating FreeBSD-ports-kmods repository catalogue...
+            - FreeBSD-ports-kmods repository is up to date.
+            - All repositories are up to date.
+            - 'The following packages will be fetched:'
+            - ''
+            - 'New packages to be FETCHED:'
+            - "\tivykis: 0.43.2_1 (79 KiB: 1.25% of the 6 MiB to download)"
+            - "\tjson-c: 0.19 (75 KiB: 1.19% of the 6 MiB to download)"
+            - "\tlnav: 0.14.0 (4 MiB: 58.62% of the 6 MiB to download)"
+            - "\tsqlite3: 3.53.3,1 (1 MiB: 21.79% of the 6 MiB to download)"
+            - "\tsyslog-ng: 4.12.0_1 (1 MiB: 17.15% of the 6 MiB to download)"
+            - ''
+            - 'Number of packages to be fetched: 5'
+            - ''
+            - The process will require 6 MiB more space.
+            - 6 MiB to be downloaded.
+            - '[pkg-repo] Fetching ivykis-0.43.2_1: .......... done'
+            - '[pkg-repo] Fetching sqlite3-3.53.3,1: .......... done'
+            - '[pkg-repo] Fetching lnav-0.14.0: .......... done'
+            - '[pkg-repo] Fetching syslog-ng-4.12.0_1: .......... done'
+            - '[pkg-repo] Fetching json-c-0.19: .......... done'
+
+RUNNING HANDLER [vbotka.freebsd.packages : Generate repo metadata] *************
+ok: [pkg_repo]
+
+PLAY RECAP *********************************************************************
+pkg_repo                   : ok=5    changed=2    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

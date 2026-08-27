@@ -1,0 +1,63 @@
+---
+# certificate tasks
+
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
+  tags: [certificate_vars, always]
+
+- name: Import help.yml
+  ansible.builtin.import_tasks: help.yml
+  tags: always
+
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
+  when: certificate_debug | bool
+  tags: certificate_debug
+
+- name: Import pkg.yml
+  ansible.builtin.import_tasks: pkg.yml
+  when: certificate_install | bool
+  tags: [certificate_pkg, certificate_setup]
+
+- name: Import cert-dirs.yml
+  ansible.builtin.import_tasks: cert-dirs.yml
+  tags: [certificate_dirs, certificate_setup]
+
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: certificate_sanity | bool
+  tags: [certificate_sanity, certificate_setup]
+
+- name: Import cert-command.yml
+  ansible.builtin.import_tasks: cert-command.yml
+  tags: certificate_command
+
+- name: Import privatekey.yml
+  ansible.builtin.import_tasks: cert-openssl-privatekey.yml
+  tags: [certificate_openssl_privatekey, certificate_openssl]
+
+- name: Import cert-openssl-privatekey-info.yml
+  ansible.builtin.import_tasks: cert-openssl-privatekey-info.yml
+  tags: certificate_openssl_privatekey_info
+
+- name: Import cert-openssl-csr.yml
+  ansible.builtin.import_tasks: cert-openssl-csr.yml
+  tags: [certificate_openssl_csr, certificate_openssl]
+
+- name: Import cert-openssl-csr-info.yml
+  ansible.builtin.import_tasks: cert-openssl-csr-info.yml
+  tags: certificate_openssl_csr_info
+
+- name: Import cert-openssl-certificate.yml
+  ansible.builtin.import_tasks: cert-openssl-certificate.yml
+  tags: [certificate_openssl_certificate, certificate_openssl]
+
+- name: Import cert-openssl-certificate-info.yml
+  ansible.builtin.import_tasks: cert-openssl-certificate-info.yml
+  tags: certificate_openssl_certificate_info
+
+- name: Import cert-openssl-stat.yml
+  ansible.builtin.import_tasks: cert-openssl-stat.yml
+  tags: certificate_openssl_stat
+
+# EOF

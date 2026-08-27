@@ -1,0 +1,6 @@
+- name: Test role vbotka.freebsd.postinstall
+  hosts: state_up
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.postinstall

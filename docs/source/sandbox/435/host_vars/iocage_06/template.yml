@@ -1,0 +1,26 @@
+fit_pkg_install: true
+# fit_pkg_cached: true
+# fit_pkg_pkgsite: local
+
+fit_templates:
+  ansible-nginx:
+    release: 15.1-RELEASE
+    pkg:
+      - www/nginx-lite
+      - lang/python312
+      - lang/python
+      - lang/python3
+    commands: "{{ fit_commands }}"
+    properties:
+      ip4: disable
+      ip6: disable
+      ip6_addr: none
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+      notes: '"class=nginx alias=ansible_nginx"'
+
+fit_commands:
+  - mkdir -p /usr/local/www/nginx
+  - chown -R root:www /usr/local/www
+  - chmod -R 755 /usr/local/www

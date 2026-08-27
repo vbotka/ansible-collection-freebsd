@@ -1,0 +1,19 @@
+---
+
+task_packages-freebsd_synopsis: |2
+  <TBD>
+
+task_packages-freebsd_description: |2
+  <TBD>
+
+task_packages-freebsd_lines: 3,17
+
+task_packages-freebsd_seealso:
+  handlers: []
+  templates: []
+  others:
+    - <TBD>
+
+task_packages-freebsd_note: []
+task_packages-freebsd_hint: []
+task_packages-freebsd_warning: []

@@ -1,0 +1,6 @@
+- name: Create Branch Server.
+  hosts: branch-server.example.com
+  gather_facts: true
+
+  roles:
+    - vbotka.freebsd.config_light

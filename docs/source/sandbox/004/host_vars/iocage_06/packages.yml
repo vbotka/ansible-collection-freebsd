@@ -1,0 +1,8 @@
+pkg_repos_conf_clean: true
+pkg_backup_conf: true
+pkg_repos_conf:
+  - name: local
+    conf:
+      - {key: 'url', value: '"file:///usr/local/repo"'}
+      - {key: 'enabled', value: 'yes'}
+      - {key: 'signature_type', value: '"none"'}

@@ -1,0 +1,185 @@
+.. _example_201:
+
+201 Display iocage datasets
+---------------------------
+
+Extending example :ref:`example_200`.
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. index:: single: pb-iocage-display-datasets.yml; Example 201
+.. index:: single: module vbotka.freebsd.iocage; Example 201
+
+.. index:: single: variable iocage_jails; Example 201
+.. index:: single: iocage_jails; Example 201
+.. index:: single: variable iocage_plugins; Example 201
+.. index:: single: iocage_plugins; Example 201
+.. index:: single: variable iocage_releases; Example 201
+.. index:: single: iocage_releases; Example 201
+.. index:: single: variable iocage_templates; Example 201
+.. index:: single: iocage_templates; Example 201
+
+Use case
+^^^^^^^^
+
+Get and display ``iocage`` datasets.
+
+Tree
+^^^^
+
+::
+
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── iocage.ini
+  └── pb-iocage-display-datasets.yml
+
+Synopsis
+^^^^^^^^
+
+* At two managed nodes:
+
+  * iocage_02
+  * iocage_04
+
+  In the playbook ``pb-iocage-display-datasets.yml``, use the `module vbotka.freebsd.iocage`_ to:
+
+  * create and display ``iocage`` lists and dictionaries.
+
+Notes
+^^^^^
+
+* ``root`` is not needed to run ``iocage list ...`` on the ``iocage`` hosts when DHCP isn't used.
+
+* Quoting from `man iocage`_:  ::
+
+         list    List  the  specified dataset type. By default, all jails are listed.
+
+                 Options:
+
+                 [--http]              Changes [-R | --remote] to use HTTP.
+
+                 [-H | -h | --header]  Used in scripting. Use tabs for separators.
+
+                 [-P | --plugins]      Shows plugins installed on the system.
+
+                 [-PRO]                Lists official plugins available for download.
+
+                 [-R | --remote]       Shows available RELEASE options for remote.
+
+                 [-b | -r | --base | --release | dataset_type]
+                                       List all bases.
+
+                 [-l | --long]         Shows JID, NAME, BOOT, STATE, TYPE, RELEASE, IP4,
+		                       IP6, and TEMPLATE  information.
+
+                 [-q | --quick]        Lists all jails with less processing and fields.
+
+                 [-s | --sort TEXT]    Sorts the list by the given type.
+
+                 [-t | --template | dataset_type]
+                                       Lists all templates.
+
+Datasets at iocage_02
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -r
+
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -P
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -lt
+
+.. literalinclude:: out/out-05.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+
+Datasets at iocage_04
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -r
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -P
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -lt
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-08.txt
+   :language: bash
+
+ansible.cfg
+^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
+   :language: ini
+
+.. note::
+
+   * The escalation ``become=true`` is not necessary.
+   * ``root`` is not needed to run ``iocage list ...`` when DHCP isn't used.
+   * ``admin`` executes the module ``vbotka.freebsd.iocage`` on the iocage
+     hosts and creates the variables ``iocage_*``
+
+Playbook pb-iocage-display-datasets.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-display-datasets.yml
+   :language: yaml
+
+Playbook output - Display iocage datasets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb-iocage-display-datasets.yml -i iocage.ini
+
+.. literalinclude:: out/out-09.txt
+   :language: yaml
+   :force:
+
+.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
+.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

@@ -1,0 +1,25 @@
+nginx_install: false
+nginx_enable: true
+nginx_debug: false
+nginx_backup_conf: true
+
+nginx_packages:
+  - www/nginx-lite
+
+nginx_conf:
+  - path: "{{ nginx_conf_dir }}/nginx/nginx.conf"
+    conf:
+      worker_processes: ['1']
+      events:
+        worker_connections: ['1024']
+      http:
+        include: ['mime.types']
+        default_type: ['application/octet-stream']
+        sendfile: ['on']
+        keepalive_timeout: ['65']
+        server:
+          listen: ['80']
+          server_name: ['localhost']
+          location /:
+            root: ['/usr/local/www/nginx']
+            index: ['index.html', 'index.htm']

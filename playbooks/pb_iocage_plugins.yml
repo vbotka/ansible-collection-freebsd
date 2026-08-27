@@ -1,0 +1,51 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: Fetch and stop iocage plugins.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  vars:
+
+    debug: false
+    tags_known: ['fetched_plugins', 'enabled_plugins', 'swarm_plugins', 'project_plugins']
+
+    iocage_plugins: "{{ out.stdout | vbotka.freebsd.iocage('plugins') }}"
+    selected_plugins: "{{ plugins | dict2items
+                                  | selectattr('key', 'in', required_plugins)
+                                  | rejectattr('key', 'in', iocage_plugins) }}"
+
+    cmd_fetch: >
+      iocage fetch
+      --plugin-name {{ item.key }}
+      --git_repository {{ item.value.git }}
+      --branch {{ item.value.branch }}
+      {{ item.value.properties | dictsort | map('join', '=') | join(' ') }}
+
+  tasks:
+
+    - name: Check tags.
+      tags: always
+      ansible.builtin.import_tasks: pb_iocage_plugins/check_tags.yml
+
+    - name: Get already fetched plugins.
+      tags:
+        - fetched_plugins
+        - always
+      ansible.builtin.import_tasks: pb_iocage_plugins/get_plugins.yml
+
+    - name: Fetch enabled plugins.
+      tags: enabled_plugins
+      when: enabled_plugins | d([]) | length > 0
+      ansible.builtin.import_tasks: pb_iocage_plugins/fetch_plugins.yml
+
+    - name: Fetch plugins required by swarm.
+      tags: swarm_plugins
+      when: selected_plugins | length > 0
+      ansible.builtin.import_tasks: pb_iocage_plugins/swarm_plugins.yml
+
+    - name: Fetch plugins required by project.
+      tags: project_plugins
+      when: selected_plugins | length > 0
+      ansible.builtin.import_tasks: pb_iocage_plugins/project_plugins.yml

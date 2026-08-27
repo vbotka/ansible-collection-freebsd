@@ -1,0 +1,64 @@
+---
+- name: "Debug bsd_dhcpd_debug={{ bsd_dhcpd_debug | bool }}"
+  vars:
+    msg: |-
+      bsd_dhcpd_role_version: {{ bsd_dhcpd_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
+
+      ansible_facts.architecture: {{ ansible_facts.architecture }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_use_packages: {{ freebsd_use_packages | d(true) }}
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+
+      bsd_dhcpd_install: {{ bsd_dhcpd_install }}
+      bsd_dhcpd_sanity: {{ bsd_dhcpd_sanity }}
+      bsd_dhcpd_sanity_fatal: {{ bsd_dhcpd_sanity_fatal }}
+      bsd_dhcpd_enable: {{ bsd_dhcpd_enable }}
+      bsd_dhcpd_backup_conf: {{ bsd_dhcpd_backup_conf }}
+      bsd_dhcpd_service: {{ bsd_dhcpd_service }}
+      bsd_dhcpd_rcconfd: {{ bsd_dhcpd_rcconfd }}
+      bsd_dhcpd_rcconf:
+        {{ bsd_dhcpd_rcconf | to_yaml(indent=2) | indent(2) }}
+
+      bsd_dhcpd_template: {{ bsd_dhcpd_template }}
+      bsd_dhcpd_domain_name: {{ bsd_dhcpd_domain_name }}
+      bsd_dhcpd_domain_name_servers: {{ bsd_dhcpd_domain_name_servers }}
+      bsd_dhcpd_netbios_name_servers: {{ bsd_dhcpd_netbios_name_servers }}
+      bsd_dhcpd_default_lease_time: {{ bsd_dhcpd_default_lease_time }}
+      bsd_dhcpd_max_lease_time: {{ bsd_dhcpd_max_lease_time }}
+      bsd_dhcpd_ddns_update_style: {{ bsd_dhcpd_ddns_update_style }}
+      bsd_dhcpd_always_broadcast: {{ bsd_dhcpd_always_broadcast }}
+      bsd_dhcpd_log_facility: {{ bsd_dhcpd_log_facility }}
+      bsd_dhcpd_authoritative: {{ bsd_dhcpd_authoritative }}
+
+      bsd_dhcpd_wired_lan_subnet: {{ bsd_dhcpd_wired_lan_subnet }}
+      bsd_dhcpd_wired_lan_netmask: {{ bsd_dhcpd_wired_lan_netmask }}
+      bsd_dhcpd_wired_lan_routers: {{ bsd_dhcpd_wired_lan_routers }}
+      bsd_dhcpd_wired_lan_subnet_from: {{ bsd_dhcpd_wired_lan_subnet_from }}
+      bsd_dhcpd_wired_lan_subnet_to: {{ bsd_dhcpd_wired_lan_subnet_to }}
+      bsd_dhcpd_wired_lan_subnet_broadcast: {{ bsd_dhcpd_wired_lan_subnet_broadcast }}
+
+      bsd_dhcpd_wireless_subnet: {{ bsd_dhcpd_wireless_subnet }}
+      bsd_dhcpd_wireless_netmask: {{ bsd_dhcpd_wireless_netmask }}
+      bsd_dhcpd_wireless_routers: {{ bsd_dhcpd_wireless_routers }}
+      bsd_dhcpd_wireless_subnet_from: {{ bsd_dhcpd_wireless_subnet_from }}
+      bsd_dhcpd_wireless_subnet_to: {{ bsd_dhcpd_wireless_subnet_to }}
+      bsd_dhcpd_wireless_subnet_broadcast: {{ bsd_dhcpd_wireless_subnet_broadcast }}
+
+      bsd_dhcpd_assigned_ip:
+        {{ bsd_dhcpd_assigned_ip | to_yaml(indent=2) | indent(2) }}
+      bsd_dhcpd_version: {{ bsd_dhcpd_version }}
+      bsd_dhcpd_packages:
+        {{ bsd_dhcpd_packages | to_nice_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF

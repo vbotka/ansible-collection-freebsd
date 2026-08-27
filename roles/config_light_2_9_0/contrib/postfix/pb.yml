@@ -1,0 +1,12 @@
+---
+- name: Install and configure Postfix
+  hosts: srv.example.com
+  gather_facts: true
+  connection: ssh
+  remote_user: admin
+  become: true
+  become_user: root
+  become_method: ansible.builtin.sudo
+
+  roles:
+    - vbotka.config_light

@@ -1,0 +1,22 @@
+
+PLAY [Configure and start git_daemon] ******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
+
+TASK [Install git.] ************************************************************
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.postinstall : Gitserver: Create /usr/local/git] ***********
+ok: [iocage_05]
+
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure git_daemon in /etc/rc.conf] ***
+ok: [iocage_05] => (item={'name': 'git_daemon_directory', 'value': '/usr/local/git'})
+ok: [iocage_05] => (item={'name': 'git_daemon_flags', 'value': '--syslog --base-path=/usr/local/git --export-all --reuseaddr --detach'})
+
+TASK [vbotka.freebsd.postinstall : Rcconf: Configure git_daemon_enable in /etc/rc.conf] ***
+ok: [iocage_05]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=5    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

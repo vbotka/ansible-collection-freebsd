@@ -1,0 +1,119 @@
+
+PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [cd830e86]
+ok: [e319a4b9]
+ok: [d61cdd48]
+
+TASK [Vars: Include OS vars.] **************************************************
+included: vbotka.freebsd.lib for cd830e86, d61cdd48, e319a4b9
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
+ok: [cd830e86]
+ok: [d61cdd48]
+ok: [e319a4b9]
+
+TASK [vbotka.freebsd.rsnapshot : Debug] ****************************************
+ok: [cd830e86] => 
+    msg: |-
+        rsnapshot_role_version: 2.9.0
+        ansible_role_name: vbotka.freebsd.rsnapshot
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.14
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
+
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
+
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-test.conf.j2
+ok: [d61cdd48] => 
+    msg: |-
+        rsnapshot_role_version: 2.9.0
+        ansible_role_name: vbotka.freebsd.rsnapshot
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.14
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
+
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
+
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-test.conf.j2
+ok: [e319a4b9] => 
+    msg: |-
+        rsnapshot_role_version: 2.9.0
+        ansible_role_name: vbotka.freebsd.rsnapshot
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.14
+
+        freebsd_install_method: packages
+        freebsd_use_packages: True
+        freebsd_cached: False
+        freebsd_state: present
+        freebsd_use_globs: False
+        freebsd_install_retries: 10
+        freebsd_install_delay: 5
+        linux_install_retries: 10
+        linux_install_delay: 5
+
+        rsnapshot_install: False
+        rsnapshot_packages:
+          - sysutils/rsnapshot
+
+        rsnapshot_supported_linux_family: ['Debian', 'RedHat']
+        rsnapshot_backup_conf: False
+        rsnapshot_config_template: rsnapshot.conf.j2
+        rsnapshot_config_version: 1.2
+        rsnapshot_test: True
+        rsnapshot_config_template_test: rsnapshot-test.conf.j2
+
+PLAY RECAP *********************************************************************
+cd830e86                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+d61cdd48                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+e319a4b9                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

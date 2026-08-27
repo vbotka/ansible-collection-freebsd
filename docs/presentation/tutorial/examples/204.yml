@@ -1,0 +1,16 @@
+204:
+  example: '204'
+  extend: example 203
+  name: Create DHCP jails with auto UUID and iocage_tags v2
+  case: |
+
+    * Instead of the module ``vbotka.freebsd.iocage`` create the variable ``iocage_jails`` using the
+      filter ``vbotka.freebsd.iocage``
+
+  requirements:
+    - filter ``vbotka.freebsd.iocage``
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - templates created in exmaple 202
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/204
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/204/example.html

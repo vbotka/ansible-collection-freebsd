@@ -1,0 +1,65 @@
+all:
+  children:
+    ungrouped:
+      hosts:
+        ansible_client:
+          iocage_basejail: 'yes'
+          iocage_boot: 'off'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: '-'
+          iocage_ip6: '-'
+          iocage_jid: None
+          iocage_release: 15.1-RELEASE-p1
+          iocage_state: down
+          iocage_template: '-'
+          iocage_type: jail
+        test_151:
+          iocage_basejail: 'yes'
+          iocage_boot: 'off'
+          iocage_ip4: 172.16.99.100
+          iocage_ip4_dict:
+            ip4:
+            - ifc: epair0b
+              ip: 172.16.99.100
+              mask: '-'
+            msg: ''
+          iocage_ip6: '-'
+          iocage_jid: '8'
+          iocage_release: 15.1-RELEASE-p1
+          iocage_state: up
+          iocage_template: ansible_client
+          iocage_type: jail
+        test_152:
+          iocage_basejail: 'yes'
+          iocage_boot: 'off'
+          iocage_ip4: 172.16.99.127
+          iocage_ip4_dict:
+            ip4:
+            - ifc: epair0b
+              ip: 172.16.99.127
+              mask: '-'
+            msg: ''
+          iocage_ip6: '-'
+          iocage_jid: '9'
+          iocage_release: 15.1-RELEASE-p1
+          iocage_state: up
+          iocage_template: ansible_client
+          iocage_type: jail
+        test_153:
+          iocage_basejail: 'yes'
+          iocage_boot: 'off'
+          iocage_ip4: 172.16.99.102
+          iocage_ip4_dict:
+            ip4:
+            - ifc: epair0b
+              ip: 172.16.99.102
+              mask: '-'
+            msg: ''
+          iocage_ip6: '-'
+          iocage_jid: '10'
+          iocage_release: 15.1-RELEASE-p1
+          iocage_state: up
+          iocage_template: ansible_client
+          iocage_type: jail

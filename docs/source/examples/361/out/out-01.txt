@@ -1,0 +1,33 @@
+
+PLAY [Test role vbotka.freebsd.network] ****************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_03]
+
+TASK [vbotka.freebsd.postinstall : Sanity: Unknown run tags] *******************
+ok: [iocage_03]
+
+TASK [vbotka.freebsd.postinstall : Resolvconf: Stat file /etc/resolv.conf] *****
+ok: [iocage_03]
+
+TASK [vbotka.freebsd.postinstall : Resolvconf: Clean file /etc/resolv.conf] ****
+changed: [iocage_03]
+
+TASK [vbotka.freebsd.postinstall : Resolvconf: Present lines in /etc/resolv.conf] ***
+changed: [iocage_03] => (item={'key': 'nameserver', 'value': '10.1.0.1'})
+
+TASK [vbotka.freebsd.postinstall : Resolvconf: Stat file /etc/resolvconf.conf] ***
+ok: [iocage_03]
+
+TASK [vbotka.freebsd.postinstall : Resolvconf: Clean file /etc/resolvconf.conf] ***
+changed: [iocage_03]
+
+TASK [vbotka.freebsd.postinstall : Resolvconf: Present lines in /etc/resolvconf.conf] ***
+changed: [iocage_03] => (item={'key': 'resolvconf', 'value': 'NO'})
+
+RUNNING HANDLER [vbotka.freebsd.postinstall : Resolvconf apply] ****************
+changed: [iocage_03]
+
+PLAY RECAP *********************************************************************
+iocage_03                  : ok=9    changed=5    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+

@@ -1,0 +1,162 @@
+
+PLAY [Test role vbotka.freebsd.packages] ***************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [test_151]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [test_151]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [test_151] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python312
+          - ports-mgmt/pkg
+          - security/sudo
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
+ok: [test_151]
+
+TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
+ok: [test_151]
+
+TASK [vbotka.freebsd.packages : Debug pkg_debug=true] **************************
+ok: [test_151] => 
+    msg: |-
+        pkg_role_version: 2.9.6
+        pkg_version_community_general: 9.3.0
+
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.14
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_fetch: False
+        pkg_fetch_dir: /usr/local/repo
+        pkg_fetch_dir_owner: root
+        pkg_fetch_dir_group: wheel
+        pkg_fetch_dir_mode: 0755
+        pkg_fetch_dict_all: False
+        pkg_fetch_dict_select:
+          []
+
+        pkg_fetch_list:
+          []
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_06"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: True
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 23
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: False
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_repos_conf_ucl:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [security/sudo, lang/python312, ports-mgmt/pkg]
+
+        pkg_list_deinstall:
+          []
+
+TASK [vbotka.freebsd.packages : Keys: Debug pkg_debug=true] ********************
+ok: [test_151] => 
+    msg: |-
+        pkg_keys:
+          {}
+
+TASK [vbotka.freebsd.packages : Conf: Debug pkg_debug=true] ********************
+ok: [test_151] => 
+    msg: |-
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_backup_conf: False
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_repos_conf_ucl:
+          []
+
+TASK [vbotka.freebsd.packages : Packages_install: Debug list pkg_list pkg_debug=true] ***
+ok: [test_151] => 
+    pkg_list:
+    - security/sudo
+    - lang/python312
+    - ports-mgmt/pkg
+
+TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
+ok: [test_151 -> iocage_06]
+
+TASK [vbotka.freebsd.packages : Packages_install: Debug result pkg_debug=true] ***
+ok: [test_151] => 
+    result:
+        attempts: 1
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+
+PLAY RECAP *********************************************************************
+test_151                   : ok=11   changed=0    unreachable=0    failed=0    skipped=46   rescued=0    ignored=0   
+

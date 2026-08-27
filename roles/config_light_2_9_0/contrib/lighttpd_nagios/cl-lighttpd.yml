@@ -1,0 +1,135 @@
+---
+# lighttpd
+# https://www.lighttpd.net/
+
+# Services
+cl_lighttpd_enable: true
+cl_service_lighttpd_enable: "{{ cl_lighttpd_enable|bool }}"
+cl_service_lighttpd_state: started
+
+# /etc/rc.conf
+cl_lighttpd_rcconf_lines: []
+cl_lighttpd_rcconf_dict:
+  - { key: lighttpd_enable, value: '"{{ cl_lighttpd_enable }}"' }
+
+# /usr/local/etc/lighttpd/lighttpd.conf
+cl_lighttpd_lighttpdconf_copy:
+  path: /usr/local/etc/lighttpd/lighttpd.conf.sample
+  remote_src: true
+  force: false
+cl_lighttpd_server_bind: localhost
+cl_lighttpd_server_port: 80
+cl_lighttpd_server_useipv6: disable
+cl_lighttpd_server_username: www
+cl_lighttpd_server_groupname: www
+cl_lighttpd_server_document_root: /usr/local/www
+cl_lighttpd_static_file_exclude_extensions: ( ".php", ".pl", ".fcgi", ".scgi", ".cgi" )
+cl_lighttpd_lighttpdconf_lines:
+  - regexp: ^\s*server.document-root\s*=\s*(.*)$ # multiple keys in sample !!!
+    line: server.document-root = "{{ cl_lighttpd_server_document_root }}"
+  - line: include "nagios.conf"
+cl_lighttpd_lighttpdconf_dicts:
+  - { key: server.bind, value: '"{{ cl_lighttpd_server_bind }}"' }
+  - { key: server.port, value: "{{ cl_lighttpd_server_port }}" }
+  - { key: server.use-ipv6, value: '"{{ cl_lighttpd_server_useipv6 }}"' }
+  - { key: server.username, value: '"{{ cl_lighttpd_server_username }}"' }
+  - { key: server.groupname, value: '"{{ cl_lighttpd_server_groupname }}"' }
+  - { key: static-file.exclude-extensions, value: "{{ cl_lighttpd_static_file_exclude_extensions }}" }
+
+# /usr/local/etc/lighttpd/nagios.conf
+cl_lighttpd_nagiosconf_blocks:
+  - marker: alias.url
+    block: |
+      alias.url =(
+          "/nagios/cgi-bin" => "/usr/local/www/nagios/cgi-bin",
+          "/nagios" => "/usr/local/www/nagios"
+          )
+  - marker: cgi.assign
+    block: |
+      $HTTP["url"] =~ "^/nagios/cgi-bin" {
+          cgi.assign += ( "" => "" )
+      }
+  - marker: auth
+    block: |
+      $HTTP["url"] =~ "nagios" {
+          auth.backend = "plain"
+          auth.backend.plain.userfile = "/usr/local/etc/nagios/passwd"
+          auth.require = ( "" => (
+              "method" => "basic",
+              "realm" => "nagios",
+              "require" => "user=nagiosadmin"
+              )
+          )
+      }
+# Option: Encrypted password
+#         auth.backend = "htpasswd"
+#         auth.backend.htpasswd.userfile = "/usr/local/etc/nagios/htpasswd.users"
+
+# /usr/local/etc/lighttpd/modules.conf
+cl_lighttpd_modulesconf_copy:
+  path: /usr/local/etc/lighttpd/modules.conf.sample
+  remote_src: true
+  force: false
+cl_lighttpd_modulesconf_markers:
+  - marker: server.modules
+    regex1: server.modules\s*=\s*\(
+    replace1: server.modules = (
+    regex2: \)
+    replace2: )
+cl_lighttpd_modulesconf_lines:
+  - regexp: ^\s*#*\s*include\s+"conf.d/cgi.conf"\s*$
+    line: include "conf.d/cgi.conf"
+  - regexp: ^\s*#*\s*include\s+"conf.d/fastcgi.conf"\s*$
+    line: include "conf.d/fastcgi.conf"
+cl_lighttpd_modulesconf_server_modules:
+  - mod_access
+  - mod_alias
+  - mod_auth
+  - mod_setenv
+cl_lighttpd_modulesconf_blocks:
+  - marker: server.modules
+    block: |
+      server.modules = (
+      {% for module in cl_lighttpd_modulesconf_server_modules %}
+        "{{ module }}",
+      {% endfor %}
+      )
+
+# /usr/local/etc/lighttpd/conf.d/cgi.conf
+cl_lighttpd_cgiconf_copy:
+  path: /usr/local/etc/lighttpd/conf.d/cgi.conf.sample
+  remote_src: true
+  force: false
+cl_lighttpd_cgiconf_markers:
+  - marker: cgi.assign
+    regex1: cgi.assign (.*?),
+    replace1: cgi.assign \g<1>,
+    regex2: \)
+    replace2: )
+cl_lighttpd_cgiconf_blocks:
+  - marker: cgi.assign
+    block: |
+      {{ '#' }} cgi.assign = ( ".pl"  => "/usr/bin/perl",
+      {{ '#' }}                ".cgi" => "/usr/bin/perl",
+      {{ '#' }}                ".rb"  => "/usr/bin/ruby",
+      {{ '#' }}                ".erb" => "/usr/bin/eruby",
+      {{ '#' }}                ".py"  => "/usr/local/bin/python" )
+
+# /usr/local/etc/lighttpd/conf.d/fastcgi.conf
+cl_lighttpd_fastcgiconf_copy:
+  path: /usr/local/etc/lighttpd/conf.d/fastcgi.conf.sample
+  remote_src: true
+  force: false
+cl_lighttpd_fastcgiconf_blocks:
+  - marker: fastcgi.server
+    block: |
+      fastcgi.server += ( ".php" =>
+              ("localhost" =>
+              (
+                      "socket" => "/var/run/lighttpd/sockets/php-fpm.sock",
+                      "bin-path" => "/usr/local/bin/php-cgi",
+                      "broken-scriptfilename" => "enable"
+               ))
+      )
+
+# EOF

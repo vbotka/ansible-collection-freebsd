@@ -1,0 +1,11 @@
+510:
+  example: '510'
+  name: Project ansible-pull
+  case: |
+    Use the template ``ansible_client_pull`` to create project jails.
+  requirements:
+    - inventory plugin ``vbotka.freebsd.iocage``
+    - root privilege in the managed nodes
+    - templates ``ansible_client_pull`` created in example 208
+  source: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/examples/510
+  results: https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/510/example.html

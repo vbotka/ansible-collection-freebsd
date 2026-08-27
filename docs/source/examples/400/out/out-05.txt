@@ -1,0 +1,69 @@
+
+PLAY [Configure ZFS.] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Facts: Run zfs_facts] *******************************
+ok: [iocage_04] => (item=iocage)
+ok: [iocage_04] => (item=zroot)
+
+TASK [vbotka.freebsd.zfs : Facts: Get dictionary of datasets] ******************
+ok: [iocage_04]
+
+TASK [vbotka.freebsd.zfs : Facts: Debug list of datasets fzfs_debug=true] ******
+ok: [iocage_04] => 
+    fzfs_datasets | to_nice_yaml: |-
+        iocage:
+            iocage: /iocage
+            iocage/iocage: /iocage/iocage
+            iocage/iocage/download: /iocage/iocage/download
+            iocage/iocage/download/14.3-RELEASE: /iocage/iocage/download/14.3-RELEASE
+            iocage/iocage/download/15.0-RELEASE: /iocage/iocage/download/15.0-RELEASE
+            iocage/iocage/images: /iocage/iocage/images
+            iocage/iocage/jails: /iocage/iocage/jails
+            iocage/iocage/log: /iocage/iocage/log
+            iocage/iocage/releases: /iocage/iocage/releases
+            iocage/iocage/releases/14.3-RELEASE: /iocage/iocage/releases/14.3-RELEASE
+            iocage/iocage/releases/14.3-RELEASE/root: /iocage/iocage/releases/14.3-RELEASE/root
+            iocage/iocage/releases/15.0-RELEASE: /iocage/iocage/releases/15.0-RELEASE
+            iocage/iocage/releases/15.0-RELEASE/root: /iocage/iocage/releases/15.0-RELEASE/root
+            iocage/iocage/releases/15.0-RELEASE/root@ansible_client: null
+            iocage/iocage/releases/15.0-RELEASE/root@ansible_client_apache: null
+            iocage/iocage/releases/15.0-RELEASE/root@ansible_client_pull: null
+            iocage/iocage/templates: /iocage/iocage/templates
+            iocage/iocage/templates/ansible_client: /iocage/iocage/templates/ansible_client
+            iocage/iocage/templates/ansible_client/root: /iocage/iocage/templates/ansible_client/root
+            iocage/iocage/templates/ansible_client_apache: /iocage/iocage/templates/ansible_client_apache
+            iocage/iocage/templates/ansible_client_apache/root: /iocage/iocage/templates/ansible_client_apache/root
+            iocage/iocage/templates/ansible_client_pull: /iocage/iocage/templates/ansible_client_pull
+            iocage/iocage/templates/ansible_client_pull/root: /iocage/iocage/templates/ansible_client_pull/root
+            iocage/obj: /usr/obj
+            iocage/ports: /usr/ports
+            iocage/poudriere: /usr/local/poudriere
+            iocage/src: /usr/src
+        zroot:
+            zroot: /zroot
+            zroot/ROOT: none
+            zroot/ROOT/default: /
+            zroot/export: /export
+            zroot/home: /home
+            zroot/home/admin: /home/admin
+            zroot/home/asadmin: /home/asadmin
+            zroot/tmp: /tmp
+            zroot/usr: /usr
+            zroot/usr/ports: /usr/ports
+            zroot/usr/src: /usr/src
+            zroot/var: /var
+            zroot/var/audit: /var/audit
+            zroot/var/crash: /var/crash
+            zroot/var/log: /var/log
+            zroot/var/mail: /var/mail
+            zroot/var/tmp: /var/tmp
+
+PLAY RECAP *********************************************************************
+iocage_04                  : ok=5    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+

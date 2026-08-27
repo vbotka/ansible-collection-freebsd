@@ -1,0 +1,11 @@
+pkg_keys:
+  /usr/local/etc/ssl/crt:
+    - build.example.com-sk.crt
+
+pkg_repos_conf:
+  - name: build
+    conf:
+      - {key: url, value: '"http://10.1.0.195/packages/143amd64-default-devel"'}
+      - {key: enabled, value: 'yes'}
+      - {key: signature_type, value: '"pubkey"'}
+      - {key: pubkey, value: '"/usr/local/etc/ssl/crt/build.example.com-sk.crt"'}

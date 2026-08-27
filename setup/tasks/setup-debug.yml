@@ -1,0 +1,39 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Debug debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    msg: |-
+      collection_dir: {{ collection_dir }}
+
+      plugins_install:
+        {{ plugins_install | to_nice_yaml(indent=2) | indent(2) }}
+      roles_install:
+        {{ roles_install | to_nice_yaml(indent=2) | indent(2) }}
+
+- name: "Debug extended debug2={{ debug2 }}"
+  when: debug2 | bool
+  ansible.builtin.debug:
+    msg: |-
+      assert_quiet: {{ assert_quiet }}
+      plugins_dir_mode: {{ plugins_dir_mode }}
+      plugins_file_mode: {{ plugins_file_mode }}
+      roles_dir_mode: {{ roles_dir_mode }}
+
+      plugins:
+        {{ plugins | to_nice_yaml(indent=2) | indent(2) }}
+      branch:
+        {{ branch | to_nice_yaml(indent=2) | indent(2) }}
+      checksum:
+        {{ checksum | to_nice_yaml(indent=2) | indent(2) }}
+      patch:
+        {{ patch | to_nice_yaml(indent=2) | indent(2) }}
+      roles:
+        {{ roles | to_nice_yaml(indent=2) | indent(2) }}
+      clean_role_files_enable: {{ clean_role_files_enable }}
+      clean_role_files:
+        {{ clean_role_files | to_nice_yaml(indent=2) | indent(2) }}
+
+# EOF

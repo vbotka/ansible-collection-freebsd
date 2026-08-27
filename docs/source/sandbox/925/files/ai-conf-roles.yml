@@ -1,0 +1,3 @@
+ai_conf_roles:
+  vbotka.freebsd.packages: [conf, pkg-install]
+  vbotka.freebsd.postinstall: [syslogd, syslog-ng]

@@ -1,0 +1,232 @@
+.. _example_524:
+
+524 iocage template ansible-init
+--------------------------------
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. index:: single: ansible_init; Example 524
+.. index:: single: service ansible_init; Example 524
+.. index:: single: template ansible-init; Example 524
+.. index:: single: firstboot; Example 524
+.. index:: single: ansible-conf-init; Example 524
+.. index:: single: ansible-conf-test; Example 524
+.. index:: single: repo ansible-conf-init; Example 524
+.. index:: single: repo ansible-conf-test; Example 524
+.. index:: single: ansible-pull; Example 524
+.. index:: single: role vbotka.freebsd.iocage_template; Example 524
+.. index:: single: connection vbotka.freebsd.jailexec; Example 524
+.. index:: single: inventory vbotka.freebsd.iocage2; Example 524
+
+Use case
+^^^^^^^^
+
+Create `iocage`_ template ``ansible-init``. Configure ``firstboot`` service
+``ansible_init`` that runs `ansible-pull`_ and uses the repo
+`ansible-conf-init`_. Configure the repo `ansible-conf-init`_ to pull the jails'
+configuration from the repo `ansible-conf-test`_. Create jails from the
+template. Use the ``hostname`` to select the configuration. Run `ansible-pull`_
+asynchronously.
+
+Tree
+^^^^
+::
+   
+  shell > tree .
+  .
+  ├── ansible.cfg
+  ├── files
+  │   ├── pkgs-15_0.json
+  │   └── pkgs-15_1.json
+  ├── group_vars
+  │   └── all
+  │       ├── project-hosts.yml
+  │       └── project.yml
+  ├── hosts
+  │   └── 06_iocage2.yml
+  ├── host_vars
+  │   └── iocage_06
+  │       └── template.yml
+  ├── iocage.ini
+  ├── pb-iocage-template.yml
+  └── templates
+      └── project-hosts.yml.j2
+
+Synopsis
+^^^^^^^^
+
+* At a managed node:
+
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible-init``
+
+  * In the playbook
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails
+    from the template.
+
+  * Wait for `ansible-pull`_ to configure the jails and display the test files.
+
+Requirements
+^^^^^^^^^^^^
+
+* role `vbotka.freebsd.iocage_template`_
+* playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
+* `inventory plugin vbotka.freebsd.iocage2`_
+* :ref:`ug_connection_jailexec`
+
+.. note::
+
+   * See `Practical rc.d scripting in BSD`_
+   * See the option ``firstboot_sentinel`` in `man rc.conf`_
+
+.. seealso::
+
+   * The example :ref:`example_523`
+   * The ``Troubleshooting`` section in :ref:`example_526`
+   * GitHub repositories:
+
+     - `ansible-conf-init`_
+     - `ansible-conf-test`_
+
+ansible.cfg
+^^^^^^^^^^^
+
+.. literalinclude:: ansible.cfg
+   :language: ini
+
+Inventory iocage.ini
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: iocage.ini
+   :language: ini
+
+hosts
+^^^^^
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml
+   :caption:
+
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/project-hosts.yml
+   :language: yaml
+   :caption:
+
+.. literalinclude:: group_vars/all/project.yml
+   :language: yaml
+   :caption:
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_06/template.yml
+   :language: yaml
+   :caption:
+
+templates
+^^^^^^^^^
+
+.. literalinclude:: templates/project-hosts.yml.j2
+   :language: jinja
+   :caption:
+
+files
+^^^^^
+
+.. literalinclude:: files/pkgs-15_1.json
+   :language: json
+   :caption:
+
+Playbook pb-iocage-template.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-template.yml
+   :language: yaml+jinja
+
+Playbook output - Create iocage templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini pb-iocage-template.yml
+
+.. literalinclude:: out/out-01.txt
+   :language: yaml
+   :force:
+      
+List templates
+^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage list -lt
+
+.. literalinclude:: out/out-02.txt
+   :language: sh
+
+Playbook output - Create project jails from iocage templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+
+.. literalinclude:: out/out-03.txt
+   :language: yaml
+   :force:
+
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
+List jails
+^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage list -l
+
+.. literalinclude:: out/out-05.txt
+   :language: sh
+
+Display the test files
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt"
+
+.. literalinclude:: out/out-06.txt
+   :language: sh
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt"
+
+.. literalinclude:: out/out-07.txt
+   :language: sh
+
+
+.. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/
+.. _man rc.conf: https://man.freebsd.org/cgi/man.cgi?rc.conf
+
+.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
+.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
+
+.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
+
+.. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
+.. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
+.. _base-path: https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath
+.. _iocage: https://iocage.readthedocs.io/en/latest/
+
+.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init
+.. _ansible-conf-test: https://github.com/vbotka/ansible-conf-test

@@ -1,0 +1,10 @@
+---
+plugins_no: 4
+plugins:
+  connection:
+    jailexec: https://raw.githubusercontent.com/chofstede/ansible_jailexec
+  inventory:
+    iocage: preinstalled in distfiles
+  modules:
+    iocage: https://raw.githubusercontent.com/vbotka/ansible-iocage
+    ucl: https://raw.githubusercontent.com/vbotka/ansible-ucl

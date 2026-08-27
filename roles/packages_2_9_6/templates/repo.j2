@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+
+{% for repo in pkg_default_repo_conf %}
+{{ repo.name }}: {
+{% for conf in repo.conf %}
+  {{ conf.key }}: {{ conf.value }}{% if not loop.last %},{% endif %}
+
+{% endfor %}
+}
+{% endfor %}
+
+# EOF

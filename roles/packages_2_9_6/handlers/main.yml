@@ -1,0 +1,10 @@
+---
+# handlers for freebsd_packages
+
+- name: Generate repo metadata
+  changed_when: false
+  ansible.builtin.command: >-
+    pkg repo {{ pkg_fetch_dir }}
+
+# EOF
+...
