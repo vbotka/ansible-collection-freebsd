@@ -1,0 +1,58 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Debug nginx_debug={{ nginx_debug }}"
+  vars:
+    msg: |-
+      nginx_role_version: {{ nginx_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
+
+      ansible_facts.architecture: {{ ansible_facts.architecture }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_use_packages: {{ freebsd_use_packages | d(true) }}
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+      freebsd_pkgsite: {{ freebsd_pkgsite | d('UNDEFINED') }}"
+      freebsd_cached: {{ freebsd_cached | d('UNDEFINED') }}"
+      freebsd_use_globs: {{ freebsd_use_globs | d('UNDEFINED') }}"
+
+      nginx_install: {{ nginx_install }}
+      nginx_packages:
+        {{ nginx_packages | to_yaml(indent=2) | indent(2) }}
+      nginx_enable: {{ nginx_enable }}
+      nginx_service: {{ nginx_service }}
+      nginx_user: {{ nginx_user }}
+      nginx_backup_conf: {{ nginx_backup_conf }}
+
+      nginx_conf_dir: {{ nginx_conf_dir }}
+      nginx_conf_owner: {{ nginx_conf_owner }}
+      nginx_conf_group: {{ nginx_conf_group }}
+      nginx_conf_mode: {{ nginx_conf_mode }}
+      nginx_conf_dir_mode: {{ nginx_conf_dir_mode }}
+      nginx_conf_template_default: {{ nginx_conf_template_default }}
+
+      nginx_data_owner: {{ nginx_data_owner }}
+      nginx_data_group: {{ nginx_data_group }}
+      nginx_data_mode: {{ nginx_data_mode }}
+      nginx_data_dir_mode: {{ nginx_data_dir_mode }}
+
+      nginx_files:
+        {{ nginx_files | to_nice_yaml(indent=2) | indent(2) }}
+      nginx_rcconf:
+        {{ nginx_rcconf | to_nice_yaml(indent=2) | indent(2) }}
+      nginx_conf:
+        {{ nginx_conf | to_yaml(indent=2) | indent(2) }}
+
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+# EOF
+...

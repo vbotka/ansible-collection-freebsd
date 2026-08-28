@@ -9,6 +9,7 @@ __pycache__/
 .vagrant
 build
 dest
+jailexec.py
 vagrant*
 pk_admins.txt.san
 vars/main.yml

@@ -9,6 +9,7 @@ roles_install:
   - iocage_template
   - lib
   - network
+  - nginx
   - packages
   - pf
   - postinstall

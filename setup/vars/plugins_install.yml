@@ -1,5 +1,5 @@
 ---
 plugins_install:
-  connection: []
+  connection: [jailexec]
   inventory: [iocage]
   modules: [iocage, ucl]
