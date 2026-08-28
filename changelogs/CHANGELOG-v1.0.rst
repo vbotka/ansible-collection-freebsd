@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Add role nginx 1.0.1
+* Update filters: ast_to_nginx, dict_to_ast
 * Docs. Add example and sandbox 435. Test Nginx.
 
 Bugfixes

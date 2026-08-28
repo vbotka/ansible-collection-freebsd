@@ -25,6 +25,7 @@ build_ignore:
   - TODO
   - ATTIC
   - dest
+  - jailexec.py
   - files/pk_admins.txt.san
   - playbooks/sensitive
   - roles/*/docs

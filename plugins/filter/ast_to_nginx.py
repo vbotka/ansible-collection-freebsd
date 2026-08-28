@@ -13,11 +13,24 @@ requirements:
   - crossplane
 description:
   - Converts crossplane AST (Abstract Syntax Tree) list to NGINX config.
+positional: _input, indent, tabs
 options:
   _input:
     description:
       - AST list.
+    type: list
+    elements: dict
     required: true
+  indent:
+    description:
+      - Number of spaces for indentation.
+    type: int
+    default: 4
+  tabs:
+    description:
+      - Whether to use tabs instead of spaces.
+    type: bool
+    default: false
 """
 
 EXAMPLES = r"""
@@ -90,6 +103,8 @@ _value:
   description:
     - NGINX config.
     - An empty string if the input is not a list.
+  type: str
+  returned: always
 """
 
 import crossplane
