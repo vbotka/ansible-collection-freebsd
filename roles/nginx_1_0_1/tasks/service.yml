@@ -1,0 +1,27 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Service: Enable and Start Nginx."
+  when: nginx_enable | bool
+  notify: enable and start nginx
+  community.general.sysrc:
+    name: "{{ nginx_service }}_enable"
+    value: 'YES'
+
+- name: "Service: Disable and Stop Nginx."
+  when: not nginx_enable | bool
+  notify: disable and stop nginx
+  community.general.sysrc:
+    name: "{{ nginx_service }}_enable"
+    value: 'NO'
+
+- name: "Service: Configure Nginx service."
+  notify: reload nginx
+  community.general.sysrc:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ nginx_rcconf | dict2items }}"
+
+# EOF
+...

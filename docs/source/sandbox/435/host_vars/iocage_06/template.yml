@@ -10,7 +10,7 @@ fit_templates:
       - lang/python312
       - lang/python
       - lang/python3
-    commands: "{{ fit_commands }}"
+    files: "{{ fit_files | dict2items }}"
     properties:
       ip4: disable
       ip6: disable
@@ -20,7 +20,16 @@ fit_templates:
       vnet: 1
       notes: '"class=nginx alias=ansible_nginx"'
 
-fit_commands:
-  - mkdir -p /usr/local/www/nginx
-  - chown -R root:www /usr/local/www
-  - chmod -R 755 /usr/local/www
+fit_files:
+  /usr/local/www/nginx:
+    - index.html
+
+fit_file_options:
+  /usr/local/www/nginx:
+    owner: root
+    group: www
+    mode: '0755'
+  /usr/local/www/nginx/index.yml:
+    owner: root
+    group: www
+    mode: '0644'

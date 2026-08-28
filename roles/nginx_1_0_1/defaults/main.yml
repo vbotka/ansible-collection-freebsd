@@ -1,0 +1,43 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# defaults for vbotka.freebsd_nginx
+nginx_role_version: 1.0.1
+
+nginx_install: false
+nginx_enable: false
+nginx_debug: false
+nginx_backup_conf: false
+
+freebsd_install_method: packages
+# freebsd_install_method: ports
+freebsd_use_packages: true
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+freebsd_use_globs: false
+
+nginx_packages:
+  - www/nginx
+
+nginx_service: nginx
+nginx_user: www
+
+nginx_conf_dir: /usr/local/etc
+nginx_conf_owner: root
+nginx_conf_group: wheel
+nginx_conf_mode: '0644'
+nginx_conf_dir_mode: '0755'
+nginx_conf_template_default: default.j2
+
+nginx_data_owner: www
+nginx_data_group: wheel
+nginx_data_mode: '0640'
+nginx_data_dir_mode: '0750'
+
+nginx_files: []
+nginx_conf: []
+nginx_rcconf: {}
+
+# EOF
+...

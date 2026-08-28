@@ -1,0 +1,33 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# handlers for vbotka.freebsd_nginx
+- name: Enable and start nginx
+  listen: enable and start nginx
+  vbotka.freebsd.service:
+    script: "{{ nginx_service }}"
+    command: start
+
+- name: Disable and stop nginx
+  listen: disable and stop nginx
+  vbotka.freebsd.service:
+    script: "{{ nginx_service }}"
+    command: stop
+
+- name: Restart nginx
+  listen: restart nginx
+  when: nginx_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ nginx_service }}"
+    command: restart
+
+- name: Reload nginx
+  listen: reload nginx
+  when: nginx_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ nginx_service }}"
+    command: reload
+
+# EOF
+...

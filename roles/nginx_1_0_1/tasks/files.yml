@@ -1,0 +1,17 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Files: Create files."
+  ansible.builtin.file:
+    state: "{{ item.state }}"
+    path: "{{ item.path }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  loop: "{{ nginx_files }}"
+  loop_control:
+    label: "{{ item.state }} {{ item.path }} {{ item.owner }} {{ item.group }} {{ item.mode }}"
+
+# EOF
+...

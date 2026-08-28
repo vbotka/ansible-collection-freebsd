@@ -4,4 +4,4 @@
 
   roles:
 
-    - vbotka.freebsd_nginx
+    - vbotka.freebsd.nginx

@@ -25,10 +25,14 @@ ok: [iocage_06]
 TASK [vbotka.freebsd.iocage_template : Pkg: Install packages.] *****************
 changed: [iocage_06] => (item=ansible-nginx)
 
-TASK [vbotka.freebsd.iocage_template : Commands: Execute commands.] ************
-ok: [iocage_06] => (item=ansible-nginx > mkdir -p /usr/local/www/nginx)
-ok: [iocage_06] => (item=ansible-nginx > chown -R root:www /usr/local/www)
-ok: [iocage_06] => (item=ansible-nginx > chmod -R 755 /usr/local/www)
+TASK [vbotka.freebsd.iocage_template : Files: Copy files.] *********************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/files.yml for iocage_06 => (item=ansible-nginx)
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Create directory.] ************
+changed: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Copy files.] ******************
+changed: [iocage_06] => (item=index.html)
 
 TASK [vbotka.freebsd.iocage_template : Stop: Get iocage list of jails.] ********
 ok: [iocage_06]
@@ -40,5 +44,5 @@ TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
 ok: [iocage_06] => (item=ansible-nginx)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=12   changed=1    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+iocage_06                  : ok=14   changed=3    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
 

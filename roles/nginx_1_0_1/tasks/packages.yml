@@ -1,0 +1,45 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Packages: Debug nginx_debug={{ nginx_debug }}"
+  when: nginx_debug | bool
+  vars:
+    msg: |-
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_use_packages: {{ freebsd_use_packages }}
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+      freebsd_pkgsite: {{ freebsd_pkgsite | d('UNDEFINED') }}
+      freebsd_cached: {{ freebsd_cached | d('UNDEFINED') }}
+      freebsd_use_globs: {{ freebsd_use_globs | d('UNDEFINED') }}
+      nginx_packages:
+        {{ nginx_packages | to_yaml(indent=2) | indent(2) }}
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+- name: "Packages: Install Nginx packages."
+  when: freebsd_install_method | lower == 'packages'
+  register: result
+  until: result is succeeded
+  retries: "{{ freebsd_install_retries }}"
+  delay: "{{ freebsd_install_delay }}"
+  community.general.pkgng:
+    name: "{{ nginx_packages }}"
+    pkgsite: "{{ freebsd_pkgsite | d(omit) }}"
+    cached: "{{ freebsd_cached | d(omit) }}"
+    use_globs: "{{ freebsd_use_globs | d(omit) }}"
+
+- name: "Packages: Install Nginx ports."
+  when: freebsd_install_method | lower == 'ports'
+  register: result
+  until: result is succeeded
+  retries: "{{ freebsd_install_retries }}"
+  delay: "{{ freebsd_install_delay }}"
+  community.general.portinstall:
+    name: "{{ item }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  loop: "{{ nginx_packages }}"
+
+# EOF
+...

@@ -1,0 +1,52 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# vars samples for vbotka.freebsd_nginx
+freebsd_cached: true
+
+nginx_packages:
+  - www/nginx-lite
+
+nginx_files:
+  - path: "{{ nginx_conf_dir }}/nginx/conf.d"
+    state: directory
+    owner: "{{ nginx_conf_owner }}"
+    group: "{{ nginx_conf_group }}"
+    mode: "{{ nginx_conf_dir_mode }}"
+  - path: /usr/local/www/nginx
+    state: directory
+    owner: "{{ nginx_data_owner }}"
+    group: "{{ nginx_data_group }}"
+    mode: "{{ nginx_data_dir_mode }}"
+
+nginx_conf:
+  - path: "{{ nginx_conf_dir }}/nginx/nginx.conf"
+    conf:
+      worker_processes: ['1']
+      events:
+        worker_connections: ['1024']
+      http:
+        include: ['mime.types']
+        default_type: ['application/octet-stream']
+        sendfile: ['on']
+        keepalive_timeout: ['65']
+        server:
+          listen: ['80']
+          server_name: ['localhost']
+          location /:
+            root: ['/usr/local/www/nginx']
+            index: ['index.html', 'index.htm']
+
+nginx_rcconf:
+  nginx_profiles: ''
+  nginx_pid_prefix: ''
+  nginxlimits_enable: 'NO'
+  nginx_reload_quiet: 'NO'
+  nginx_flags: ''
+  nginxlimits_args: '-e -U www'
+  nginx_http_accept_enable: 'NO'
+  nginx_sig_stop: 'TERM'
+
+# EOF
+...

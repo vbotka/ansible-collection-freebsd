@@ -1,0 +1,24 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Conf: Configure Nginx."
+  notify: reload nginx
+  ansible.builtin.template:
+    src: "{{ item.template | d(nginx_conf_template_default) }}"
+    dest: "{{ item.path }}"
+    owner: "{{ nginx_conf_owner }}"
+    group: "{{ nginx_conf_group }}"
+    mode: "{{ nginx_conf_mode }}"
+    validate: 'sh -c "/usr/local/sbin/nginx -t" _ %s'
+    backup: "{{ nginx_backup_conf }}"
+  loop: "{{ nginx_conf }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+# Note on validaton:
+# A snippet cannot be passed directly to nginx -t -c %s because it lacks
+# the root events {} and http {} context blocks.
+
+# EOF
+...
