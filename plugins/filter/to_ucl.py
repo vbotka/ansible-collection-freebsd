@@ -1,24 +1,38 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from __future__ import absolute_import, division, print_function
+from __future__ import annotations
+from typing import Any
 from ansible.errors import AnsibleFilterError
 
 DOCUMENTATION = r"""
 name: to_ucl
-short_description: Converts YAML dictionary to UCL string
-version_added: 1.0.0
+short_description: Converts Python/YAML data structure to UCL string
+version_added: "1.0.0"
 author:
   - Vladimir Botka (@vbotka)
 requirements:
   - ucl
 description:
-  - Converts YAML dictionary to UCL string.
+  - Converts a Python/YAML dictionary or list into a Universal Configuration Language (UCL) formatted string.
+positional: _input, emitter
 options:
   _input:
     description:
-      - YAML dictionary.
+      - Python dictionary or data structure to convert.
+    type: raw
     required: true
+  emitter:
+    description:
+      - UCL output format style.
+    type: str
+    default: config
+    choices:
+      - config
+      - json
+      - compact_json
+      - yaml
+      - msgpack
 """
 
 EXAMPLES = r"""
@@ -45,12 +59,16 @@ result:
       enabled = true;
       priority = 100;
   }
+
+result_json: "{{ pkg_repo_config | vbotka.freebsd.to_ucl('json') }}"
 """
 
 RETURN = r"""
 _value:
   description:
-    - UCL string.
+    - UCL formatted string (or bytes in case of msgpack).
+  type: str
+  returned: always
 """
 
 try:
@@ -60,19 +78,47 @@ except ImportError:
     HAS_LIBUCL = False
 
 
-def to_ucl(data, emitter='config'):
-    """Converts Python dictionary to UCL format."""
+def _to_primitive(val: Any) -> Any:
+    """Recursively converts Ansible/custom objects into native Python primitives for UCL serialization."""
+    if isinstance(val, dict):
+        return {str(k): _to_primitive(v) for k, v in val.items()}
+    if isinstance(val, (list, tuple, set)):
+        return [_to_primitive(item) for item in val]
+    if isinstance(val, str):
+        return str(val)
+    if isinstance(val, bool):
+        return bool(val)
+    if isinstance(val, int):
+        return int(val)
+    if isinstance(val, float):
+        return float(val)
+    if val is None:
+        return None
+    return str(val)
+
+
+def _safe_ucl_dump(data: Any, emitter_flag: int) -> str | bytes:
+    """Safely dumps data using available ucl functions."""
+    if hasattr(ucl, "dump"):
+        return ucl.dump(data, emitter_flag)
+    if hasattr(ucl, "dumps"):
+        return ucl.dumps(data, emitter_flag)
+    raise AttributeError("The installed 'ucl' module does not provide 'dump' or 'dumps'.")
+
+
+def to_ucl(data: Any, emitter: str = "config") -> str | bytes:
+    """Converts Python dictionary or structure to UCL format."""
     if not HAS_LIBUCL:
         raise AnsibleFilterError(
             "The 'ucl' Python module is required on the controller to use 'to_ucl'."
         )
 
-    emitters = {
-        'config': ucl.UCL_EMIT_CONFIG,
-        'json': ucl.UCL_EMIT_JSON,
-        'compact_json': ucl.UCL_EMIT_JSON_COMPACT,
-        'yaml': ucl.UCL_EMIT_YAML,
-        'msgpack': ucl.UCL_EMIT_MSGPACK,
+    emitters: dict[str, int] = {
+        "config": getattr(ucl, "UCL_EMIT_CONFIG", 0),
+        "json": getattr(ucl, "UCL_EMIT_JSON", 1),
+        "compact_json": getattr(ucl, "UCL_EMIT_JSON_COMPACT", 2),
+        "yaml": getattr(ucl, "UCL_EMIT_YAML", 3),
+        "msgpack": getattr(ucl, "UCL_EMIT_MSGPACK", 4),
     }
 
     if emitter not in emitters:
@@ -81,48 +127,17 @@ def to_ucl(data, emitter='config'):
         )
 
     try:
-        return ucl.dumps(data, emitters[emitter])
+        clean_data = _to_primitive(data)
+        return _safe_ucl_dump(clean_data, emitters[emitter])
     except Exception as err:
-        raise AnsibleFilterError(f"Failed to convert data to UCL: {err}")
+        raise AnsibleFilterError(
+            f"Failed to convert data to UCL: {err}",
+            orig_exc=err,
+        ) from err
 
 
-class FilterModule(object):
-    def filters(self):
+class FilterModule:
+    def filters(self) -> dict[str, Any]:
         return {
-            'to_ucl': to_ucl,
+            "to_ucl": to_ucl,
         }
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# ucl 0.8.1 needs the below helper.
-#
-# /home/user/penv/lib/python3.13/site-packages/ucl-dumps.pth
-# import _ucl_patch
-#
-# /home/user/penv/lib/python3.13/site-packages/_ucl_patch.py
-# import ucl
-#
-# def _to_primitive(val):
-#     if isinstance(val, dict):
-#         return {str(k): _to_primitive(v) for k, v in val.items()}
-#     elif isinstance(val, (list, tuple, set)):
-#         return [_to_primitive(item) for item in val]
-#     elif isinstance(val, str):
-#         return str(val)
-#     elif isinstance(val, bool):
-#         return bool(val)
-#     elif isinstance(val, int):
-#         return int(val)
-#     elif isinstance(val, float):
-#         return float(val)
-#     return val
-#
-# def _safe_dumps(obj, *args, **kwargs):
-#     clean_obj = _to_primitive(obj)
-#     return ucl.dump(clean_obj, *args, **kwargs)
-#
-# def _safe_loads(data, *args, **kwargs):
-#     return ucl.load(data, *args, **kwargs)
-#
-# setattr(ucl, "dumps", _safe_dumps)
-# setattr(ucl, "loads", _safe_loads)
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

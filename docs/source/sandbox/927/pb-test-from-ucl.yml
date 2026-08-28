@@ -1,4 +1,4 @@
-- name: Test to_ucl filter.
+- name: Test from_ucl filter.
   hosts: localhost
 
   vars:

@@ -1,23 +1,26 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from __future__ import absolute_import, division, print_function
+from __future__ import annotations
+from typing import Any
 from ansible.errors import AnsibleFilterError
 
 DOCUMENTATION = r"""
 name: from_ucl
-short_description: Parse UCL string into a YAML dictionary
-version_added: 1.0.0
+short_description: Parse UCL string into a Python dictionary
+version_added: "1.0.0"
 author:
   - Vladimir Botka (@vbotka)
 requirements:
   - ucl
 description:
-  - Parse UCL string into a YAML dictionary.
+  - Parse a Universal Configuration Language (UCL) string into a dictionary/data structure.
+positional: _input
 options:
   _input:
     description:
-      - UCL string.
+      - UCL string to parse.
+    type: str
     required: true
 """
 
@@ -63,7 +66,9 @@ result:
 RETURN = r"""
 _value:
   description:
-    - YAML dictionary.
+    - Parsed Python dictionary or data structure from UCL.
+  type: raw
+  returned: always
 """
 
 try:
@@ -73,56 +78,38 @@ except ImportError:
     HAS_LIBUCL = False
 
 
-def from_ucl(data):
+def _safe_ucl_load(data: str | bytes) -> Any:
+    """Safely calls ucl.loads or ucl.load depending on module interface."""
+    if hasattr(ucl, "loads"):
+        return ucl.loads(data)
+    if hasattr(ucl, "load"):
+        return ucl.load(data)
+    raise AttributeError("The installed 'ucl' module does not provide 'load' or 'loads'.")
+
+
+def from_ucl(data: Any) -> Any:
     """Parse UCL string into a Python dictionary."""
     if not HAS_LIBUCL:
         raise AnsibleFilterError(
             "The 'ucl' Python module is required on the controller to use 'from_ucl'."
         )
 
+    if not isinstance(data, (str, bytes)):
+        raise AnsibleFilterError(
+            f"Invalid input type for 'from_ucl': expected str or bytes, got {type(data).__name__}"
+        )
+
     try:
-        return ucl.loads(data)
+        return _safe_ucl_load(data)
     except Exception as err:
-        raise AnsibleFilterError(f"Failed to parse UCL string: {err}")
+        raise AnsibleFilterError(
+            f"Failed to parse UCL string: {err}",
+            orig_exc=err,
+        ) from err
 
 
-class FilterModule(object):
-    def filters(self):
+class FilterModule:
+    def filters(self) -> dict[str, Any]:
         return {
-            'from_ucl': from_ucl,
+            "from_ucl": from_ucl,
         }
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# ucl 0.8.1 needs the below helper.
-#
-# /home/user/penv/lib/python3.13/site-packages/ucl-dumps.pth
-# import _ucl_patch
-#
-# /home/user/penv/lib/python3.13/site-packages/_ucl_patch.py
-# import ucl
-#
-# def _to_primitive(val):
-#     if isinstance(val, dict):
-#         return {str(k): _to_primitive(v) for k, v in val.items()}
-#     elif isinstance(val, (list, tuple, set)):
-#         return [_to_primitive(item) for item in val]
-#     elif isinstance(val, str):
-#         return str(val)
-#     elif isinstance(val, bool):
-#         return bool(val)
-#     elif isinstance(val, int):
-#         return int(val)
-#     elif isinstance(val, float):
-#         return float(val)
-#     return val
-#
-# def _safe_dumps(obj, *args, **kwargs):
-#     clean_obj = _to_primitive(obj)
-#     return ucl.dump(clean_obj, *args, **kwargs)
-#
-# def _safe_loads(data, *args, **kwargs):
-#     return ucl.load(data, *args, **kwargs)
-#
-# setattr(ucl, "dumps", _safe_dumps)
-# setattr(ucl, "loads", _safe_loads)
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

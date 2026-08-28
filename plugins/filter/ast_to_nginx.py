@@ -6,7 +6,7 @@ from __future__ import annotations
 DOCUMENTATION = r"""
 name: ast_to_nginx
 short_description: Converts AST list to NGINX config
-version_added: 1.0.0
+version_added: "1.0.0"
 author:
   - Vladimir Botka (@vbotka)
 requirements:
