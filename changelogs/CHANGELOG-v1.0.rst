@@ -17,7 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Add role nginx 1.0.1
-* Docs. Add sandbox 435. Test Nginx.
+* Docs. Add example and sandbox 435. Test Nginx.
 
 Bugfixes
 --------

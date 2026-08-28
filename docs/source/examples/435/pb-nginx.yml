@@ -1,0 +1,7 @@
+---
+- name: Configure Nginx servers.
+  hosts: nginx
+
+  roles:
+
+    - vbotka.freebsd.nginx

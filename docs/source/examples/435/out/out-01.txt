@@ -1,0 +1,48 @@
+
+PLAY [Create iocage templates.] ************************************************
+
+TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Setup: Get activated pool.] *************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Create: Get iocage list of jails.] ******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
+ok: [iocage_06] => (item=ansible-nginx 15.1-RELEASE)
+
+TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Start: Start jails.] ********************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Pkg: Get iocage list of jails.] *********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Pkg: Install packages.] *****************
+changed: [iocage_06] => (item=ansible-nginx)
+
+TASK [vbotka.freebsd.iocage_template : Files: Copy files.] *********************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/files.yml for iocage_06 => (item=ansible-nginx)
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Create directory.] ************
+changed: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Fn/files: Copy files.] ******************
+changed: [iocage_06] => (item=index.html)
+
+TASK [vbotka.freebsd.iocage_template : Stop: Get iocage list of jails.] ********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Stop: Stop jails.] **********************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
+ok: [iocage_06] => (item=ansible-nginx)
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=14   changed=3    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+

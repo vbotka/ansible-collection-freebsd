@@ -22,6 +22,7 @@ Examples
 :410-: `Role vbotka.freebsd.lib`_
 :420-: `Role vbotka.freebsd.apache`_
 :430-: `Role vbotka.freebsd.certificate`_
+:435-: `Role vbotka.freebsd.nginx`_
 :440-: `Role vbotka.freebsd.dhcp`_
 :500-: Infrastructure
 
@@ -132,6 +133,7 @@ Examples
    422 Configure Apache server PHP <examples/422/example.rst>
    423 Configure Apache server build <examples/423/example.rst>
    430 Configure Apache server SSL <examples/430/example.rst>
+   435 Configure Nginx server <examples/435/example.rst>
    examples/440/example.rst
    examples/441/example.rst
    examples/442/example.rst
@@ -170,6 +172,7 @@ Examples
 .. _Role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _Role vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
 .. _Role vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
+.. _Role vbotka.freebsd.nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/nginx/
 .. _Role vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
 .. _Role vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
 .. _Role vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
