@@ -19,6 +19,7 @@ Minor Changes
 
 Bugfixes
 --------
+* Update filter ast_to_nginx. Protect the dependency import.
 
 Breaking Changes / Porting Guide
 --------------------------------
