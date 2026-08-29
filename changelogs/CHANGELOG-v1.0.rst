@@ -16,12 +16,13 @@ Major Changes
 
 Minor Changes
 --------------
+* Update filter iocage formatting.
+* Update filter documentation wording.
+* Docs. Update included content.
 
 Bugfixes
 --------
 * Update filter ast_to_nginx. Protect the dependency import.
-* Update filter iocage formatting.
-* Update filter documentation wording.
 
 Breaking Changes / Porting Guide
 --------------------------------

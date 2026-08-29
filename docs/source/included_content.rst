@@ -6,11 +6,11 @@ Plugins:
 * `module ucl`_ - CRUD-like interface for managing UCL files.
 * `inventory iocage`_ - iocage inventory source.
 * `inventory iocage2`_ - iocage inventory source (libzfs & iocage_lib).
-* `filter ast_to_nginx`_ - Convert AST list to NGINX config.
-* `filter dict_to_ast`_ - Convert YAML dictionary to AST list.
-* `filter from_ucl`_ - Parse UCL string into a YAML dictionary.
-* `filter iocage`_ - Parse iocage lists.
-* `filter to_ucl`_ - Convert YAML dictionary to UCL string.
+* `filter ast_to_nginx`_ - Converts AST list to NGINX config.
+* `filter dict_to_ast`_ - Converts YAML dictionary to AST list.
+* `filter from_ucl`_ - Parses UCL string to YAML dictionary.
+* `filter iocage`_ - Parses iocage lists.
+* `filter to_ucl`_ - Converts YAML dictionary to UCL string.
 * `lookup galaxy_info`_ - Get the meta data from galaxy.yml
 
 Roles:
@@ -19,7 +19,7 @@ Roles:
 * `certificate`_ - Generate and/or check OpenSSL certificates.
 * `config_light`_ - Install packages, configure files, services, and handlers.
 * `custom_image`_ - Download, mount, and customize system images.
-* `dhcp`_ - Install and configure DHCP.
+* `dhcp`_ - Install, configure, and run DHCP server.
 * `iocage`_ - Install and configure iocage.
 * `iocage_template`_ - Create iocage templates.
 * `lib`_ - Library of tasks.
