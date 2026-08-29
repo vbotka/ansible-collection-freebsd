@@ -20,6 +20,7 @@ Minor Changes
 Bugfixes
 --------
 * Update filter ast_to_nginx. Protect the dependency import.
+* Update filter iocage formatting.
 
 Breaking Changes / Porting Guide
 --------------------------------
