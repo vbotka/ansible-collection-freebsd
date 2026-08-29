@@ -21,6 +21,7 @@ Bugfixes
 --------
 * Update filter ast_to_nginx. Protect the dependency import.
 * Update filter iocage formatting.
+* Update filter documentation wording.
 
 Breaking Changes / Porting Guide
 --------------------------------

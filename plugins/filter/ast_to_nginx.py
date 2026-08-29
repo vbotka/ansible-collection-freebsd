@@ -15,7 +15,7 @@ author:
 requirements:
   - crossplane
 description:
-  - Converts crossplane AST (Abstract Syntax Tree) list to NGINX config.
+  - Converts crossplane AST (Abstract Syntax Tree) list into NGINX config.
 positional: _input, indent, tabs
 options:
   _input:
