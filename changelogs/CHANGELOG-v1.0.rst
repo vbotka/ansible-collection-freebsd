@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Update and fix plugins. Update documentation.
 
 Major Changes
 -------------
