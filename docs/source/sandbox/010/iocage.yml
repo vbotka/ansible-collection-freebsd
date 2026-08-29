@@ -1,4 +1,4 @@
-plugin: vbotka.freebsd.iocage
+plugin: vbotka.freebsd.iocage2
 host: iocage_06
 user: admin
 compose:

@@ -2,9 +2,9 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Clone basejail.] *********************************************************
-changed: [iocage_06] => (item={'name': 'test_151', 'clone_from': 'ansible_client'})
-changed: [iocage_06] => (item={'name': 'test_152', 'clone_from': 'ansible_client'})
-changed: [iocage_06] => (item={'name': 'test_153', 'clone_from': 'ansible_client'})
+changed: [iocage_06] => (item={'name': 'test_151', 'clone_from': 'ansible-client'})
+changed: [iocage_06] => (item={'name': 'test_152', 'clone_from': 'ansible-client'})
+changed: [iocage_06] => (item={'name': 'test_153', 'clone_from': 'ansible-client'})
 
 TASK [Start clones.] ***********************************************************
 changed: [iocage_06] => (item=test_151)
@@ -17,10 +17,13 @@ ok: [iocage_06]
 TASK [Display jails.] **********************************************************
 ok: [iocage_06] => 
     msg: |-
-        ansible_client None - 15.1-RELEASE-p1 down
-        test_151 8 epair0b|172.16.99.100 15.1-RELEASE-p1 up
-        test_152 9 epair0b|172.16.99.127 15.1-RELEASE-p1 up
-        test_153 10 epair0b|172.16.99.102 15.1-RELEASE-p1 up
+        ansible-client None - 15.1-RELEASE-p1 down
+        log-server-01 11 vnet0|172.16.99.10/24 15.1-RELEASE-p1 up
+        test_151 33 epair0b|172.16.99.100 15.1-RELEASE-p1 up
+        test_152 34 epair0b|172.16.99.127 15.1-RELEASE-p1 up
+        test_153 35 epair0b|172.16.99.102 15.1-RELEASE-p1 up
+        www-01 12 epair0b|172.16.99.116 15.1-RELEASE-p1 up
+        www-02 13 epair0b|172.16.99.147 15.1-RELEASE-p1 up
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

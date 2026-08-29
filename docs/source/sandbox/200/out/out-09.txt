@@ -7,9 +7,9 @@ ok: [test_153]
 ok: [test_151]
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_153]
 changed: [test_152]
 changed: [test_151]
+changed: [test_153]
 
 TASK [ansible.builtin.debug] ***************************************************
 ok: [test_153] => 
@@ -18,18 +18,18 @@ ok: [test_153] =>
         host_hostuuid: test-153
         hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
         discovered_interpreter_python: /usr/local/bin/python3.12
-ok: [test_151] => 
-    msg: |-
-        hostname: test-151
-        host_hostuuid: test-151
-        hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
-        discovered_interpreter_python: /usr/local/bin/python3.12
 ok: [test_152] => 
     msg: |-
         hostname: test-152
         host_hostuuid: test-152
         hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
         discovered_interpreter_python: /usr/local/bin/python3.12
+ok: [test_151] => 
+    msg: |-
+        hostname: test-151
+        host_hostuuid: test-151
+        hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
+        discovered_interpreter_python: /usr/local/bin/python3.12
 
 TASK [ansible.builtin.command] *************************************************
 changed: [test_152]
@@ -37,17 +37,17 @@ changed: [test_151]
 changed: [test_153]
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_151]
 changed: [test_153]
 changed: [test_152]
+changed: [test_151]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [test_152] => 
-    msg: |-
-        test-152 root root
 ok: [test_153] => 
     msg: |-
         test-153 root root
+ok: [test_152] => 
+    msg: |-
+        test-152 root root
 ok: [test_151] => 
     msg: |-
         test-151 root root

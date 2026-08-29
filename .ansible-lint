@@ -2,19 +2,29 @@
 verbosity: 1
 quiet: false
 use_default_rules: true
+ignore_list:
+  - parameter-state-invalid-choice:plugins/modules/iocage.py
+  - missing-gplv3-license:plugins/modules/iocage.py
 skip_list:
   - var-naming[no-role-prefix]
   - schema[meta]
 exclude_paths:
   - dest
   - docs
-  - plugins/inventory/iocage.py
-  - setup/roles/devel
+# - plugins/inventory/iocage.py
 
 # rulesdir:
 #   - $HOME/.ansible/ansible-lint-rules
 
-# Notes of skip_list
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Notes of skip_list:
 #
 # * schema[meta]: $.galaxy_info.platforms[0].versions[0] 12.4 is not one
 #   of ['6.1', '7.1', '7.2', 'all'].
+#
+# Notes on ignore_list:
+# 
+# plugins/modules/iocage.py
+# ERROR: plugins/modules/iocage.py:0:0: parameter-state-invalid-choice: Argument
+# 'state' inc# ludes the value 'get' as a choice
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

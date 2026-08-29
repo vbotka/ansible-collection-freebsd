@@ -19,6 +19,7 @@ Minor Changes
 --------------
 * Update filter iocage formatting.
 * Update filter documentation wording.
+* Update module iocage.
 * Update README.md
 * Docs. Update included content.
 

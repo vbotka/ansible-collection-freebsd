@@ -38,8 +38,8 @@ ok: [iocage_06] =>
             - vnet=1
             - defaultrouter=172.16.99.1
             - notes=vmm=iocage_06 swarm=sw_01
-            delta: '0:00:01.241093'
-            end: '2026-08-18 06:15:23.558509'
+            delta: '0:00:01.628794'
+            end: '2026-08-29 13:54:12.276971'
             failed: false
             item:
                 key: sw_01
@@ -48,17 +48,17 @@ ok: [iocage_06] =>
                     template: ansible-client
             msg: ''
             rc: 0
-            start: '2026-08-18 06:15:22.317416'
+            start: '2026-08-29 13:54:10.648177'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                f0ac466f successfully created!
-                e0608335 successfully created!
-                8b5001bf successfully created!
+                e072ce12 successfully created!
+                4ec5cf17 successfully created!
+                b69877b4 successfully created!
             stdout_lines:
-            - f0ac466f successfully created!
-            - e0608335 successfully created!
-            - 8b5001bf successfully created!
+            - e072ce12 successfully created!
+            - 4ec5cf17 successfully created!
+            - b69877b4 successfully created!
 
 TASK [Get iocage facts] ********************************************************
 ok: [iocage_06]
@@ -69,7 +69,7 @@ ok: [iocage_06]
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage start 8b5001bf e0608335 f0ac466f
+        iocage start 4ec5cf17 b69877b4 e072ce12
 
 TASK [Start swarms] ************************************************************
 ok: [iocage_06] => (item=sw_01)
@@ -87,11 +87,11 @@ ok: [iocage_06] =>
             cmd:
             - iocage
             - start
-            - 8b5001bf
-            - e0608335
-            - f0ac466f
-            delta: '0:00:10.947629'
-            end: '2026-08-18 06:15:49.251254'
+            - 4ec5cf17
+            - b69877b4
+            - e072ce12
+            delta: '0:00:10.275552'
+            end: '2026-08-29 13:54:40.904006'
             failed: false
             item:
                 key: sw_01
@@ -100,7 +100,7 @@ ok: [iocage_06] =>
                     template: ansible-client
             msg: ''
             rc: 0
-            start: '2026-08-18 06:15:38.303625'
+            start: '2026-08-29 13:54:30.628454'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -110,55 +110,55 @@ ok: [iocage_06] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting 8b5001bf
+                * Starting 4ec5cf17
                   + Started OK
-                  + Using devfs_ruleset: 1004 (iocage generated default)
+                  + Using devfs_ruleset: 1009 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.200/24
-                * Starting e0608335
+                  + DHCP Address: 172.16.99.126/24
+                * Starting b69877b4
                   + Started OK
-                  + Using devfs_ruleset: 1005 (iocage generated default)
+                  + Using devfs_ruleset: 1010 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.101/24
-                * Starting f0ac466f
+                  + DHCP Address: 172.16.99.103/24
+                * Starting e072ce12
                   + Started OK
-                  + Using devfs_ruleset: 1006 (iocage generated default)
+                  + Using devfs_ruleset: 1011 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.104/24
+                  + DHCP Address: 172.16.99.128/24
             stdout_lines:
-            - '* Starting 8b5001bf'
+            - '* Starting 4ec5cf17'
             - '  + Started OK'
-            - '  + Using devfs_ruleset: 1004 (iocage generated default)'
+            - '  + Using devfs_ruleset: 1009 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.200/24'
-            - '* Starting e0608335'
+            - '  + DHCP Address: 172.16.99.126/24'
+            - '* Starting b69877b4'
             - '  + Started OK'
-            - '  + Using devfs_ruleset: 1005 (iocage generated default)'
+            - '  + Using devfs_ruleset: 1010 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.101/24'
-            - '* Starting f0ac466f'
+            - '  + DHCP Address: 172.16.99.103/24'
+            - '* Starting e072ce12'
             - '  + Started OK'
-            - '  + Using devfs_ruleset: 1006 (iocage generated default)'
+            - '  + Using devfs_ruleset: 1011 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.104/24'
+            - '  + DHCP Address: 172.16.99.128/24'
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=10   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

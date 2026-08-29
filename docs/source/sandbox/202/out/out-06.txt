@@ -3,8 +3,8 @@ PLAY [Connect to the group test.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [test_152]
-ok: [test_153]
 ok: [test_151]
+ok: [test_153]
 
 TASK [ansible.builtin.command] *************************************************
 changed: [test_153]
@@ -35,9 +35,9 @@ ok: [test_151] =>
         iocage_hooks: ['172.16.99.189']
 
 TASK [ansible.builtin.command] *************************************************
-changed: [test_151]
 changed: [test_153]
 changed: [test_152]
+changed: [test_151]
 
 TASK [ansible.builtin.command] *************************************************
 changed: [test_152]
@@ -48,12 +48,12 @@ TASK [ansible.builtin.debug] ***************************************************
 ok: [test_153] => 
     msg: |-
         test-153 root root
-ok: [test_151] => 
-    msg: |-
-        test-151 root root
 ok: [test_152] => 
     msg: |-
         test-152 root root
+ok: [test_151] => 
+    msg: |-
+        test-151 root root
 
 PLAY RECAP *********************************************************************
 test_151                   : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
