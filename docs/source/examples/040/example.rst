@@ -30,12 +30,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the managed node ``iocage_04`` in the playbook ``pb.yml`` use the `lookup
+At a managed node, in the playbook ``pb.yml`` use the `lookup
 vbotka.freebsd.galaxy_info`_ to:
 
   * display the complete meta data dictionary from galaxy.yml
   * display the attributes authors and version.
-  * fail with unknown attribute.
 
 Requirements
 ^^^^^^^^^^^^
@@ -66,7 +65,7 @@ Playbook output - Display the meta data from galaxy.yml
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i hosts
+   (env) > ansible-playbook -i hosts pb.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

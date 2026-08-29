@@ -24,6 +24,9 @@ Minor Changes
 Bugfixes
 --------
 * Update filter ast_to_nginx. Protect the dependency import.
+* Update lookup galaxy_info. Checks for MANIFEST.json first (using
+  collection_info metadata format) and falls back to galaxy.yml (for editable
+  development checkouts). Fix documentation.
 
 Breaking Changes / Porting Guide
 --------------------------------

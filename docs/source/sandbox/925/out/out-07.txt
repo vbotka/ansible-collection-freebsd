@@ -10,7 +10,7 @@ Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/sour
 11     - name: Run loggen
          ^ column 7
 
-fatal: [www_02]: FAILED! => 
+fatal: [www_01]: FAILED! => 
     ansible_facts:
         discovered_interpreter_python: /usr/local/bin/python3.12
     changed: false
@@ -21,7 +21,7 @@ fatal: [www_02]: FAILED! =>
     stderr_lines: <omitted>
     stdout: ''
     stdout_lines: <omitted>
-fatal: [www_01]: FAILED! => 
+fatal: [www_02]: FAILED! => 
     ansible_facts:
         discovered_interpreter_python: /usr/local/bin/python3.12
     changed: false

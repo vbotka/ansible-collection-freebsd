@@ -22,6 +22,6 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 
 # Test. Adjust the sleep time to your system. Most of the time is consumed by installing the
 # packages. If you schedule ansible_pull at=now add 90 to sleep for cron.
-sleep 30
-ansible-playbook pb-logserver-test.yml -i hosts -e debug=true | tee out/out-06.txt
-ansible-playbook pb-logclient-test.yml -i hosts | tee out/out-07.txt
+sleep 40
+ansible-playbook -i hosts -e debug=true pb-logserver-test.yml | tee out/out-06.txt
+ansible-playbook -i hosts pb-logclient-test.yml | tee out/out-07.txt
