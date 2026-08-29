@@ -17,16 +17,20 @@ plugins:
 * [module ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/) - CRUD-like interface for managing UCL files.
 * [inventory iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/) - iocage inventory source.
 * [inventory iocage2](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/) - iocage inventory source (libzfs & iocage_lib).
-* [filter ast_to_nginx](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/) - Convert AST list to NGINX config.
-* [filter dict_to_ast](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/) - Convert YAML dictionary to AST list.
-* [filter iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - Parse iocage lists.
+* [filter ast_to_nginx](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/) - Converts AST list to NGINX config.
+* [filter dict_to_ast](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/) - Converts YAML dictionary to AST list.
+* [filter from_ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/) - Parses UCL string to YAML dictionary.
+* [filter iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/) - Parses iocage lists.
+* [filter to_ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/) - Converts YAML dictionary to UCL string.
 * [lookup galaxy_info](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/lookup/galaxy_info/) - Get galaxy.yml meta data.
 
 roles:
 
 * [apache](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/) - Install, configure, and run Apache HTTP server.
+* [certificate](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/) - Generate and/or check OpenSSL certificates.
 * [config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/) - Install packages, configure files, services, and handlers.
 * [custom_image](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/) - Download, mount, and customize system images.
+* [dhcp](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/) - Install, configure, and run DHCP server.
 * [iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - Install and configure iocage.
 * [iocage_template](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/) - Create iocage templates.
 * [lib](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/) - Library of tasks.
@@ -44,7 +48,10 @@ various [playbooks](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 
 ## Copyright and License
 
-Copyright (c) 2021-2026 Vladimir Botka <vbotka@gmail.com>
+This collection is primarily licensed and distributed as a whole under the **GNU
+General Public License v3.0 or later** (GPL-3.0-or-later). Individual files or
+components within this collection may be licensed under different licenses,
+including the **BSD 2-Clause License** (BSD-2-Clause)
 
 * Plugins running on the controller are licensed under the **GNU General Public License v3.0 or later** (`GPL-3.0-or-later`).
 * Modules, roles, and playbooks are licensed under the **BSD 2-Clause License** (`BSD-2-Clause`).

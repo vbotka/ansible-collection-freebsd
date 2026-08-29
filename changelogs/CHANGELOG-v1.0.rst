@@ -18,6 +18,7 @@ Minor Changes
 --------------
 * Update filter iocage formatting.
 * Update filter documentation wording.
+* Update README.md
 * Docs. Update included content.
 
 Bugfixes
