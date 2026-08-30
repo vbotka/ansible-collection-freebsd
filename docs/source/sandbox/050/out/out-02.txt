@@ -1,0 +1,17 @@
+
+PLAY [Test the connection plugin vbotka.freebsd.jailexec] **********************
+
+TASK [command] *****************************************************************
+changed: [b55fcbd0]
+changed: [32185461]
+
+TASK [debug] *******************************************************************
+ok: [32185461] => 
+    out.stdout: '32185461'
+ok: [b55fcbd0] => 
+    out.stdout: b55fcbd0
+
+PLAY RECAP *********************************************************************
+32185461                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+b55fcbd0                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

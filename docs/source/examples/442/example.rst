@@ -33,7 +33,7 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   └── pb-test.yml
 
@@ -51,14 +51,14 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_connection_jailexec`
-* `inventory plugin vbotka.freebsd.iocage`_
+* `inventory plugin vbotka.freebsd.iocage2`_
 * root privilege in the managed nodes
 
 Notes
 ^^^^^
 
-The only difference between this example and the example :ref:`example_441` are the
-following three lines in the file ``hosts/05_iocage.yml``
+The only difference between this example and the example :ref:`example_441` are
+the following three lines in the inventory configuration file
 
 .. code-block:: yaml
 
@@ -76,12 +76,12 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Jails at iocage_05
+Jails at iocage_06
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_05]# iocage list -l
+   [iocage_06]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -89,7 +89,7 @@ Jails at iocage_05
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/05_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml
    :caption:
    :emphasize-lines: 7-9
@@ -132,4 +132,4 @@ Playbook output - Test jailexec connection plugin
    :force:
 
 
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

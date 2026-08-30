@@ -1,0 +1,10 @@
+- name: Test the connection plugin vbotka.freebsd.jailexec
+  hosts: jails
+
+  tasks:
+
+    - command: hostname
+      register: out
+
+    - debug:
+        var: out.stdout

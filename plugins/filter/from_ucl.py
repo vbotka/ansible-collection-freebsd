@@ -7,14 +7,14 @@ from ansible.errors import AnsibleFilterError
 
 DOCUMENTATION = r"""
 name: from_ucl
-short_description: Parse UCL string into a Python dictionary
+short_description: Parses UCL string to a Python dictionary
 version_added: "1.0.0"
 author:
   - Vladimir Botka (@vbotka)
 requirements:
   - ucl
 description:
-  - Parse a Universal Configuration Language (UCL) string into a dictionary/data structure.
+  - Parses a Universal Configuration Language (UCL) string into a dictionary/data structure.
 positional: _input
 options:
   _input:

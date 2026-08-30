@@ -2,20 +2,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
-
-import re
 from typing import Any
-
 from ansible.errors import AnsibleFilterError
 
 DOCUMENTATION = r"""
 name: iocage
-short_description: Parse iocage lists
+short_description: Parses iocage lists
 version_added: "1.0.0"
 author:
   - Vladimir Botka (@vbotka)
 description:
-  - Parses FreeBSD C(iocage) list command outputs into structured dictionaries or lists.
+  - Parses FreeBSD C(iocage list) command outputs into structured dictionaries or lists.
 positional: _input, dataset
 options:
   _input:
@@ -74,6 +71,8 @@ _value:
   type: raw
   returned: always
 """
+
+import re
 
 
 def _parse_ip4(ip4_raw: str) -> dict[str, Any]:

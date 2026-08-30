@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
-ansible-playbook pb-test-01.yml -i iocage.ini | tee out/out-01.txt
-ansible-playbook pb-test-02.yml -i iocage.ini  --check --diff | tee out/out-02.txt
+ansible-playbook -i iocage.ini pb-test-01.yml | tee out/out-01.txt
+ansible-playbook -i iocage.ini pb-test-02.yml --check --diff | tee out/out-02.txt

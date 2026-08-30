@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 ansible-playbook pb.yml -t cimage_debug -e cimage_debug=true | tee out/out-01.txt

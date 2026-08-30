@@ -10,61 +10,67 @@ ok: [iocage_06]
 TASK [Debug cmd_create debug=true] *********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage create --short --template ansible_client --count 3  bpf=1  dhcp=1  vnet=1  notes="vmm=iocage_06 swarm=sw_01"
+        iocage create --short --template ansible-client --count -1  bpf=1  dhcp=1  vnet=1  notes="vmm=iocage_06 swarm=sw_01"
 
-TASK [Create swarms] ***********************************************************
-[ERROR]: Task failed: Module failed: The command exited with a non-zero return code.
-Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/swarm.yml:73:7
+TASK [Debug create swarms debug=true] ******************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        msg: All items skipped
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            false_condition: _count | int > 0
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    properties:
+                        bpf: 1
+                        dhcp: 1
+                        vnet: 1
+                    template: ansible-client
+            skip_reason: Conditional result was False
+            skipped: true
+        skipped: true
 
-71         label: "{{ item.key }}"
-72
-73     - name: Create swarms
-         ^ column 7
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_06]
 
-failed: [iocage_06] (item=sw_01) => 
-    ansible_loop_var: item
-    changed: false
-    changed_when_result: false
-    cmd:
-    - iocage
-    - create
-    - --short
-    - --template
-    - ansible_client
-    - --count
-    - '3'
-    - bpf=1
-    - dhcp=1
-    - vnet=1
-    - notes=vmm=iocage_06 swarm=sw_01
-    delta: '0:00:00.626444'
-    end: '2026-08-27 09:31:13.127496'
-    item:
-        key: sw_01
-        value:
-            count: 3
-            properties:
-                bpf: 1
-                dhcp: 1
-                vnet: 1
-            template: ansible_client
-    msg: The command exited with a non-zero return code.
-    rc: 1
-    start: '2026-08-27 09:31:12.501052'
-    stderr: |-
-        Template: ansible_client not found!
-        Created Templates:
-          ansible-client
-          ansible-init
-          ansible-nginx
-          ansible-pkg-repo
-          ansible-repos
-          ansible-syslogng-client
-          ansible-syslogng-server
-    stderr_lines: <omitted>
-    stdout: ''
-    stdout_lines: <omitted>
+TASK [Reject jails with empty notes] *******************************************
+ok: [iocage_06]
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_06] => (item=sw_01) => 
+    msg: |-
+        iocage start
+
+TASK [Debug start swarms debug=true] *******************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        msg: All items skipped
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            false_condition: _jails | length > 0
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    properties:
+                        bpf: 1
+                        dhcp: 1
+                        vnet: 1
+                    template: ansible-client
+            skip_reason: Conditional result was False
+            skipped: true
+        skipped: true
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=3    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=8    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

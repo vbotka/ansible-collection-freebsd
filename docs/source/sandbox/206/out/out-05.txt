@@ -1,2 +1,29 @@
 @all:
   |--@ungrouped:
+  |--@state_up:
+  |  |--test-153
+  |  |--e072ce12
+  |  |--log-server-01
+  |  |--www-02
+  |  |--4ec5cf17
+  |  |--test_151
+  |  |--test-152
+  |  |--www-01
+  |  |--b69877b4
+  |  |--test-151
+  |--@vmm_iocage_06:
+  |  |--test-153
+  |  |--e072ce12
+  |  |--log-server-01
+  |  |--www-02
+  |  |--4ec5cf17
+  |  |--test_151
+  |  |--test-152
+  |  |--www-01
+  |  |--b69877b4
+  |  |--test-151
+  |--@swarm_sw_01:
+  |  |--e072ce12
+  |  |--4ec5cf17
+  |  |--test_151
+  |  |--b69877b4

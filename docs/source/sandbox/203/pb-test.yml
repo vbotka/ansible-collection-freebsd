@@ -1,6 +1,5 @@
 - name: Connect to the group swarm_sw_01
   hosts: swarm_sw_01
-  remote_user: admin
   gather_facts: true
     
   tasks:

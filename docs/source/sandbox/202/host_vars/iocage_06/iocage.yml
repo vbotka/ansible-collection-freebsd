@@ -18,6 +18,8 @@ templates:
 act_pkg_install: true
 act_pkg:
   - python312
+  - python
+  - python3
   - sudo
 
 # ansible client template defaults

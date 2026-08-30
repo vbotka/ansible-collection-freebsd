@@ -6,8 +6,8 @@ ok: [iocage_06]
 
 TASK [Create: Create jails.] ***************************************************
 ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
+ok: [iocage_06] => (item=www-01)
 
 TASK [Facts: Create custom facts dirs.] ****************************************
 changed: [iocage_06] => (item=log-server-01)

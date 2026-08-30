@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 shopt -s globstar
 
@@ -20,6 +20,16 @@ echo copy_orig="$copy_orig"
 echo destroy_jails="$destroy_jails"
 echo destroy_templates="$destroy_templates"
 echo run_batch="$run_batch"
+
+read -r -n 1 -p "Running all examples. Continue? [y/N]: " response
+echo ""
+
+if [[ "$response" =~ ^[Yy]$ ]]; then
+    echo "Running all examples."
+else
+    echo "Aborted."
+    exit 0
+fi
 
 # Copy orig files
 if [[ $copy_orig == true ]]; then

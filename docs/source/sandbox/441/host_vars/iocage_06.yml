@@ -1,0 +1,11 @@
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  notes: "vmm={{ inventory_hostname }}"
+  defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+
+swarms:
+  sw_01:
+    count: 3
+    template: ansible-client

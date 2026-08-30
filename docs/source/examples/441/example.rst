@@ -46,11 +46,14 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── project-hosts.yml
   ├── hosts
-  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   └── iocage_05.yml
+  │   └── iocage_06.yml
   ├── iocage.ini
   └── pb-test.yml
 
@@ -79,15 +82,15 @@ Requirements
 
 * playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
-* `inventory plugin vbotka.freebsd.iocage`_
+* `inventory plugin vbotka.freebsd.iocage2`_
 * root privilege in the managed nodes
 * template ``ansible_client`` created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-The only difference between this example and the example :ref:`example_442` are the
-following two lines in the file ``hosts/05_iocage.yml``
+The only difference between this example and the example :ref:`example_442` are
+the following two lines in the inventory configuration file
 
 .. code-block:: yaml
 
@@ -98,12 +101,12 @@ following two lines in the file ``hosts/05_iocage.yml``
 
    example :ref:`example_050`
 
-Templates at iocage_05
+Templates at iocage_06
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_05]# iocage list -lt
+   [iocage_06]# iocage list -lt
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -120,10 +123,17 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/project-hosts.yml
+   :language: yaml
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_05.yml
+.. literalinclude:: host_vars/iocage_06.yml
    :language: yaml
    :emphasize-lines: 6
    :caption:
@@ -140,22 +150,22 @@ Playbook output - Create and start swarms
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
+   (env) > ansible-playbook -i iocage.ini \
                             -t swarm \
                             -e swarm=true \
-                            -e debug=true
+                            -e debug=true \
+			    vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
-Jails at iocage_05
+Jails at iocage_06
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_05]# iocage list -l
+   [iocage_06]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -163,7 +173,7 @@ Jails at iocage_05
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts/05_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml
    :caption:
    :emphasize-lines: 9,10
@@ -177,7 +187,7 @@ Inventory hosts
    * For example, from the controller, the following command connects to the jail at
      <bsd_dhcpd_subnet>.106::
 
-       shell> ssh -p 2206 admin@iocage_05
+       shell> ssh -p 2206 admin@iocage_06
 
    * See the variable ``bsd_dhcpd_subnet`` in the example :ref:`example_440`
 		  
@@ -216,12 +226,12 @@ Playbook output - Test SSH redirection
 
    The below play stops and destroys the jails in ``swarms`` ::
 
-     ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                      -i iocage.ini \
+     ansible-playbook -i iocage.ini \
                       -t swarm_destroy \
-                      -e swarm_destroy=true
+                      -e swarm_destroy=true \
+		      vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
+.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

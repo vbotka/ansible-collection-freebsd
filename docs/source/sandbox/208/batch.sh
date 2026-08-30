@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 # Destroy jails
-VBOTKA_FREEBSD_BATCH=true ansible-playbook -i iocage.ini --flush-cache vbotka.freebsd.pb_iocage_destroy_all_jails.yml
+# VBOTKA_FREEBSD_BATCH=true ansible-playbook -i iocage.ini --flush-cache vbotka.freebsd.pb_iocage_destroy_all_jails.yml
 ssh admin@iocage_06 sudo iocage destroy -f ansible-client-pull
 
 # Create templates

@@ -12,6 +12,7 @@ ok: [iocage_06] =>
         - TODO
         - ATTIC
         - dest
+        - jailexec.py
         - files/pk_admins.txt.san
         - playbooks/sensitive
         - roles/*/docs
@@ -47,14 +48,14 @@ ok: [iocage_06] =>
         - freebsd
         - iocage
         - infrastructure
-        version: 1.0.0
+        version: 1.0.2
 
 TASK [Get the attributes authors and version.] *********************************
 ok: [iocage_06] => 
     msg: |-
         type: list
         authors: ['Vladimir Botka <vbotka@gmail.com>']
-        version: 1.0.0
+        version: 1.0.2
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

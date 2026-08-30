@@ -15,12 +15,12 @@ failed: [log_server_01] (item=service syslog-ng status) =>
     ansible_loop_var: item
     changed: true
     cmd: service syslog-ng status
-    delta: '0:00:00.018357'
-    end: '2026-08-27 11:12:07.074346'
+    delta: '0:00:01.026788'
+    end: '2026-08-29 12:09:46.308892'
     item: service syslog-ng status
     msg: The command exited with a non-zero return code.
     rc: 1
-    start: '2026-08-27 11:12:07.055989'
+    start: '2026-08-29 12:09:45.282104'
     stderr: ''
     stderr_lines: <omitted>
     stdout: |-
@@ -31,12 +31,12 @@ failed: [log_server_01] (item=loggen -i -S -n 1 localhost 514) =>
     ansible_loop_var: item
     changed: true
     cmd: loggen -i -S -n 1 localhost 514
-    delta: '0:00:00.004445'
-    end: '2026-08-27 11:12:08.680773'
+    delta: '0:00:00.003954'
+    end: '2026-08-29 12:09:46.763209'
     item: loggen -i -S -n 1 localhost 514
     msg: The command exited with a non-zero return code.
     rc: 127
-    start: '2026-08-27 11:12:08.676328'
+    start: '2026-08-29 12:09:46.759255'
     stderr: '/bin/sh: loggen: not found'
     stderr_lines: <omitted>
     stdout: ''

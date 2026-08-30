@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 VBOTKA_FREEBSD_BATCH=true ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_destroy_all_jails.yml

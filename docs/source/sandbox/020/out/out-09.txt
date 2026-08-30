@@ -1,21 +1,5 @@
 @all:
   |--@ungrouped:
-  |--@state_up:
-  |  |--repos
-  |  |--log_server_01
-  |  |--pkg_repo
-  |  |--repos_devel
-  |  |--www_01
-  |  |--www_02
-  |--@vmm_iocage_06:
-  |  |--repos
-  |  |--db2
-  |  |--db1
-  |  |--log_server_01
-  |  |--pkg_repo
-  |  |--repos_devel
-  |  |--www_01
-  |  |--www_02
   |--@project_sandbox_020:
   |  |--db2
   |  |--db1
@@ -23,6 +7,9 @@
   |  |--db2
   |  |--db1
   |--@state_down:
+  |  |--db2
+  |  |--db1
+  |--@vmm_iocage_06:
   |  |--db2
   |  |--db1
   |--@iocage:

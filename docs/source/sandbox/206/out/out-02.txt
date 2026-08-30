@@ -2,34 +2,11 @@
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
 TASK [Create clones from template] *********************************************
-[ERROR]: Task failed: Module failed: Unable to create jail.
-basejail 'ansible_client' doesn't exist.
-Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_ansible_clients/clone.yml:5:3
+changed: [iocage_06] => (item=test_151 ansible-client)
 
-3 # SPDX-License-Identifier: BSD-2-Clause
-4
-5 - name: Create clones from template
-    ^ column 3
-
-failed: [iocage_06] (item=test_151 ansible_client) => 
-    ansible_facts:
-        discovered_interpreter_python: /usr/local/bin/python3.12
-    ansible_loop_var: item
-    changed: false
-    item:
-        key: test_151
-        value:
-            clone_from: ansible_client
-            properties:
-                bpf: 1
-                defaultrouter: 172.16.99.1
-                ip4_addr: vnet0|172.16.99.151/24
-                notes: swarm=sw_01
-                vnet: 1
-    msg: |-
-        Unable to create jail.
-        basejail 'ansible_client' doesn't exist.
+TASK [Set iocage_jails] ********************************************************
+ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

@@ -5,8 +5,8 @@ TASK [Create swarms.] **********************************************************
 changed: [iocage_06] => (item={'key': 'db', 'value': {'count': 2, 'template': 'ansible-client'}})
 
 TASK [Create tags.] ************************************************************
-changed: [iocage_06] => (item=1718af82 vmm=iocage_06 project=sandbox_020 swarm=db alias=db1)
-changed: [iocage_06] => (item=09caf271 vmm=iocage_06 project=sandbox_020 swarm=db alias=db2)
+changed: [iocage_06] => (item=cbf2fb0c vmm=iocage_06 project=sandbox_020 swarm=db alias=db1)
+changed: [iocage_06] => (item=828ef935 vmm=iocage_06 project=sandbox_020 swarm=db alias=db2)
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

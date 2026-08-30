@@ -1,22 +1,20 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
-# Destroy jails
-# VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
-
 # Create templates
-# (cd ../202 && ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini --flush-cache)
+# (cd ../202 && ansible-playbook -i iocage.ini --flush-cache vbotka.freebsd.pb_iocage_template.yml)
 
 # Status of templates
-ssh admin@$iocage_05 iocage list -lt | tee out/out-01.txt
+ssh admin@iocage_06 iocage list -lt | tee out/out-01.txt
 
 # Create swarms
-ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t swarm -e swarm=true -e debug=true --flush-cache | tee out/out-02.txt
+ansible-playbook -i iocage.ini -t swarm -e swarm=true -e debug=true --flush-cache vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-02.txt
 
 # Status of swarms
-ssh admin@$iocage_05 sudo iocage list -l | tee out/out-03.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-03.txt
 ansible-inventory -i hosts --graph | tee out/out-04.txt
 
 # Test
-ansible-playbook pb-test.yml -i hosts  --flush-cache | tee out/out-05.txt
+ansible-playbook -i hosts --flush-cache pb-test.yml | tee out/out-05.txt

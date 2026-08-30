@@ -3,9 +3,9 @@ PLAY [Test group swarm_db] *****************************************************
 
 TASK [debug] *******************************************************************
 ok: [db1] => 
-    iocage_properties.host_hostuuid: d4bf3587
+    iocage_properties.host_hostuuid: '32185461'
 ok: [db2] => 
-    iocage_properties.host_hostuuid: 52328c1c
+    iocage_properties.host_hostuuid: b55fcbd0
 
 PLAY RECAP *********************************************************************
 db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 ssh admin@$iocage_04 sudo iocage start ALL

@@ -1,24 +1,58 @@
 
-PLAY [Connect the swarm.] ******************************************************
+PLAY [Connect to the group swarm_sw_01] ****************************************
 
-TASK [ansible.builtin.command] *************************************************
-changed: [b5ed00b5]
-changed: [b89cc48e]
-changed: [e8742e0e]
+TASK [Gathering Facts] *********************************************************
+[ERROR]: Task failed: Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2203' (ED25519) to the list of known hosts.
+vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
 
-TASK [ansible.builtin.debug] ***************************************************
-ok: [b5ed00b5] => 
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2203' (ED25519) to the list of known hosts.
+vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+
+fatal: [b69877b4]: UNREACHABLE! => 
+    changed: false
     msg: |-
-        ansible_host=b5ed00b5
-ok: [b89cc48e] => 
+        Task failed: Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2203' (ED25519) to the list of known hosts.
+        vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+    unreachable: true
+[ERROR]: Task failed: Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2228' (ED25519) to the list of known hosts.
+vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2228' (ED25519) to the list of known hosts.
+vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+
+fatal: [e072ce12]: UNREACHABLE! => 
+    changed: false
     msg: |-
-        ansible_host=b89cc48e
-ok: [e8742e0e] => 
+        Task failed: Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2228' (ED25519) to the list of known hosts.
+        vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+    unreachable: true
+[ERROR]: Task failed: Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2226' (ED25519) to the list of known hosts.
+vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+
+Task failed.
+
+<<< caused by >>>
+
+Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2226' (ED25519) to the list of known hosts.
+vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+
+fatal: [4ec5cf17]: UNREACHABLE! => 
+    changed: false
     msg: |-
-        ansible_host=e8742e0e
+        Task failed: Failed to connect to the host via ssh: Warning: Permanently added '[10.30.10.69]:2226' (ED25519) to the list of known hosts.
+        vlado@10.30.10.69: Permission denied (publickey,keyboard-interactive).
+    unreachable: true
 
 PLAY RECAP *********************************************************************
-b5ed00b5                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-b89cc48e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-e8742e0e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4ec5cf17                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+b69877b4                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+e072ce12                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 

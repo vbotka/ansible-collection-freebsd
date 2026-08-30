@@ -1,11 +1,6 @@
 - name: Connect to the group test.
   hosts: test
-  remote_user: admin
   gather_facts: true
-
-  vars:
-
-    ansible_python_interpreter: auto_silent
     
   tasks:
 

@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 # ansible-playbook -i iocage.ini -t bsd_dhcpd_packages -e bsd_dhcpd_install=install pb-dhcp.yml | tee out/out-01.txt

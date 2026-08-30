@@ -7,32 +7,6 @@ ok: [iocage_06]
 TASK [Setup: Display iocage_templates debug=true] ******************************
 ok: [iocage_06] => 
     iocage_templates:
-        ansible-client-apache:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
-        ansible-client-pull:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
         ansible-init:
             basejail: 'no'
             boot: 'off'
@@ -42,6 +16,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-init
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -55,6 +30,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-init-devel
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -68,6 +44,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-init-example
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -81,6 +58,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-nginx
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -94,6 +72,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-pkg-repo
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -107,6 +86,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-repos
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -120,6 +100,7 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-syslogng-client
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -136,6 +117,7 @@ ok: [iocage_06] =>
                 msg: ''
             ip6: '-'
             jid: None
+            name: ansible-syslogng-server
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -161,32 +143,6 @@ ok: [iocage_06] =>
             release: 15.1-RELEASE
 
         iocage_templates:
-          ansible-client-apache:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-              ip4: []
-              msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
-          ansible-client-pull:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-              ip4: []
-              msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: template
           ansible-init:
             basejail: 'no'
             boot: 'off'
@@ -196,6 +152,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-init
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -209,6 +166,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-init-devel
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -222,6 +180,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-init-example
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -235,6 +194,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-nginx
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -248,6 +208,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-pkg-repo
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -261,6 +222,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-repos
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -274,6 +236,7 @@ ok: [iocage_06] =>
               msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-syslogng-client
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -290,6 +253,7 @@ ok: [iocage_06] =>
               msg: ''
             ip6: '-'
             jid: None
+            name: ansible-syslogng-server
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
@@ -307,32 +271,6 @@ ok: [iocage_06]
 TASK [Start: Display iocage_jails debug=true] **********************************
 ok: [iocage_06] => 
     iocage_jails:
-        09caf271:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
-        1718af82:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
         ansible-client:
             basejail: 'no'
             boot: 'off'
@@ -342,105 +280,10 @@ ok: [iocage_06] =>
                 msg: DHCP (not running)
             ip6: '-'
             jid: None
+            name: ansible-client
             release: 15.1-RELEASE-p1
             state: down
             template: '-'
-            type: jail
-        log-server-01:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.10
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.10
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '22'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
-            type: jail
-        pkg-repo:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.23
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.23
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '21'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-pkg-repo
-            type: jail
-        repos:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.21
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.21
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '18'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-repos
-            type: jail
-        repos-devel:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.22
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.22
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '19'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-repos
-            type: jail
-        www-01:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.116
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 172.16.99.116
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '23'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
-            type: jail
-        www-02:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.147
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 172.16.99.147
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '24'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
             type: jail
 
 TASK [Start: Start created templates.] *****************************************
@@ -452,143 +295,22 @@ ok: [iocage_06]
 TASK [Pkg: Display iocage_jails debug=true] ************************************
 ok: [iocage_06] => 
     iocage_jails:
-        09caf271:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
-        1718af82:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
         ansible-client:
             basejail: 'no'
             boot: 'off'
-            ip4: 172.16.99.125
+            ip4: 172.16.99.133
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 172.16.99.125
+                    ip: 172.16.99.133
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '25'
+            jid: '7'
+            name: ansible-client
             release: 15.1-RELEASE-p1
             state: up
             template: '-'
-            type: jail
-        log-server-01:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.10
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.10
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '22'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
-            type: jail
-        pkg-repo:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.23
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.23
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '21'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-pkg-repo
-            type: jail
-        repos:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.21
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.21
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '18'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-repos
-            type: jail
-        repos-devel:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.22
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.22
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '19'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-repos
-            type: jail
-        www-01:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.116
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 172.16.99.116
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '23'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
-            type: jail
-        www-02:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.147
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 172.16.99.147
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '24'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
             type: jail
 
 TASK [Pkg: Install packages.] **************************************************
@@ -623,143 +345,22 @@ ok: [iocage_06]
 TASK [Stop: Display iocage_jails debug=true] ***********************************
 ok: [iocage_06] => 
     iocage_jails:
-        09caf271:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
-        1718af82:
-            basejail: 'no'
-            boot: 'off'
-            ip4: '-'
-            ip4_dict:
-                ip4: []
-                msg: DHCP (not running)
-            ip6: '-'
-            jid: None
-            release: 15.1-RELEASE-p1
-            state: down
-            template: '-'
-            type: jail
         ansible-client:
             basejail: 'no'
             boot: 'off'
-            ip4: 172.16.99.125
+            ip4: 172.16.99.133
             ip4_dict:
                 ip4:
                 -   ifc: epair0b
-                    ip: 172.16.99.125
+                    ip: 172.16.99.133
                     mask: '-'
                 msg: ''
             ip6: '-'
-            jid: '25'
+            jid: '7'
+            name: ansible-client
             release: 15.1-RELEASE-p1
             state: up
             template: '-'
-            type: jail
-        log-server-01:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.10
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.10
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '22'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
-            type: jail
-        pkg-repo:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.23
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.23
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '21'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-pkg-repo
-            type: jail
-        repos:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.21
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.21
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '18'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-repos
-            type: jail
-        repos-devel:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.22
-            ip4_dict:
-                ip4:
-                -   ifc: vnet0
-                    ip: 172.16.99.22
-                    mask: '24'
-                msg: ''
-            ip6: '-'
-            jid: '19'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-repos
-            type: jail
-        www-01:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.116
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 172.16.99.116
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '23'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
-            type: jail
-        www-02:
-            basejail: 'no'
-            boot: 'on'
-            ip4: 172.16.99.147
-            ip4_dict:
-                ip4:
-                -   ifc: epair0b
-                    ip: 172.16.99.147
-                    mask: '-'
-                msg: ''
-            ip6: '-'
-            jid: '24'
-            release: 15.1-RELEASE-p1
-            state: up
-            template: ansible-init
             type: jail
 
 TASK [Stop: Stop jails.] *******************************************************

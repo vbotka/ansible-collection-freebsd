@@ -2,36 +2,52 @@
 PLAY [Test the SSH redirection to the jails.] **********************************
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [4a8426e6] => 
+ok: [a730c895] => 
     msg: |-
         ansible_connection: ssh
-        ansible_host: iocage_05
-        ansible_port: 2230
+        ansible_host: iocage_06
+        ansible_port: 2251
         ansible_user: admin
 
-        iocage_ip4: 10.10.99.130
-        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
-ok: [cbe505b1] => 
+        iocage_ip4: 172.16.99.151
+        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+ok: [5b7a65b6] => 
     msg: |-
         ansible_connection: ssh
-        ansible_host: iocage_05
-        ansible_port: 2261
+        ansible_host: iocage_06
+        ansible_port: 2245
         ansible_user: admin
 
-        iocage_ip4: 10.10.99.161
-        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
-ok: [f4073d63] => 
+        iocage_ip4: 172.16.99.145
+        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+ok: [9b516a9a] => 
     msg: |-
         ansible_connection: ssh
-        ansible_host: iocage_05
-        ansible_port: 2262
+        ansible_host: iocage_06
+        ansible_port: 2252
         ansible_user: admin
 
-        iocage_ip4: 10.10.99.162
-        iocage_tags: {'vmm': 'iocage_05', 'swarm': 'sw_01'}
+        iocage_ip4: 172.16.99.152
+        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+
+TASK [ansible.builtin.command] *************************************************
+changed: [a730c895]
+changed: [9b516a9a]
+changed: [5b7a65b6]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [a730c895] => 
+    out.stdout: FreeBSD a730c895 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+ok: [9b516a9a] => 
+    out.stdout: FreeBSD 9b516a9a 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+ok: [5b7a65b6] => 
+    out.stdout: FreeBSD 5b7a65b6 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
 
 PLAY RECAP *********************************************************************
-4a8426e6                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-cbe505b1                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-f4073d63                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+5b7a65b6                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+9b516a9a                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+a730c895                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

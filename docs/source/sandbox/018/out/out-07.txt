@@ -2,22 +2,34 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
-    msg: |-
-        ansible_client None 15.1-RELEASE-p1 - [] down '-'
-ok: [test_151] => 
-    msg: |-
-        test_151 8 15.1-RELEASE-p1 172.16.99.100 ['172.16.99.100'] up ''
 ok: [test_153] => 
     msg: |-
-        test_153 10 15.1-RELEASE-p1 172.16.99.102 ['172.16.99.102'] up ''
+        test_153 35 15.1-RELEASE-p1 - [] up ''
+ok: [log-server-01] => 
+    msg: |-
+        log-server-01 11 15.1-RELEASE-p1 172.16.99.10 ['172.16.99.10'] up ''
+ok: [www-02] => 
+    msg: |-
+        www-02 13 15.1-RELEASE-p1 - [] up ''
+ok: [test_151] => 
+    msg: |-
+        test_151 33 15.1-RELEASE-p1 - [] up ''
+ok: [ansible-client] => 
+    msg: |-
+        ansible-client None 15.1-RELEASE-p1 - [] down ''
+ok: [www-01] => 
+    msg: |-
+        www-01 12 15.1-RELEASE-p1 - [] up ''
 ok: [test_152] => 
     msg: |-
-        test_152 9 15.1-RELEASE-p1 172.16.99.127 ['172.16.99.127'] up ''
+        test_152 34 15.1-RELEASE-p1 - [] up ''
 
 PLAY RECAP *********************************************************************
-ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server-01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www-01                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www-02                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

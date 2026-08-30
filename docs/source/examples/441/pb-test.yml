@@ -13,3 +13,9 @@
 
           iocage_ip4: {{ iocage_ip4 }}
           iocage_tags: {{ iocage_tags }}
+
+    - ansible.builtin.command: uname -a
+      register: out
+
+    - ansible.builtin.debug:
+        var: out.stdout
