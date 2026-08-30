@@ -1,0 +1,30 @@
+all:
+  children:
+    ungrouped:
+      hosts:
+        '32185461':
+          iocage_basejail: 'no'
+          iocage_boot: 'off'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: ''
+          iocage_ip6: '-'
+          iocage_jid: '2'
+          iocage_release: 15.1-RELEASE-p1
+          iocage_state: up
+          iocage_template: ansible-client
+          iocage_type: jail
+        b55fcbd0:
+          iocage_basejail: 'no'
+          iocage_boot: 'off'
+          iocage_ip4: '-'
+          iocage_ip4_dict:
+            ip4: []
+            msg: ''
+          iocage_ip6: '-'
+          iocage_jid: '3'
+          iocage_release: 15.1-RELEASE-p1
+          iocage_state: up
+          iocage_template: ansible-client
+          iocage_type: jail

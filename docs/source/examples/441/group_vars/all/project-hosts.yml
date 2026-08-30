@@ -1,0 +1,7 @@
+project_hosts:
+  iocage_06:
+    defaultrouter: 172.16.99.1
+    log_server: 172.16.99.10
+    repos: 172.16.99.21
+    repos_devel: 172.16.99.22
+    pkg_repo: 172.16.99.23

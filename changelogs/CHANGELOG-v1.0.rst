@@ -20,6 +20,7 @@ Minor Changes
 * Update filter iocage formatting.
 * Update filter documentation.
 * Update modules: iocage, ucl.
+* Update connection jailexec metadata.
 * Update README.md
 * Docs. Update included content.
 * Tests. Add ignore.txt
@@ -30,7 +31,7 @@ Bugfixes
 * Update lookup galaxy_info. Checks for MANIFEST.json first (using
   collection_info metadata format) and falls back to galaxy.yml (for editable
   development checkouts). Fix documentation.
-* Fix ansible-test sanity
+* Fix ansible-test sanity.
 
 Breaking Changes / Porting Guide
 --------------------------------

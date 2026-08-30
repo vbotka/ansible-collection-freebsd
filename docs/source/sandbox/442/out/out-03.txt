@@ -1,0 +1,59 @@
+
+PLAY [Test the connection plugin jailexec.] ************************************
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [2205c0f0] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: 2205c0f0
+        ansible_user: admin
+
+        ansible_jail_host: iocage_06
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: -
+        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+ok: [7daa07e7] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: 7daa07e7
+        ansible_user: admin
+
+        ansible_jail_host: iocage_06
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: -
+        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+ok: [73d166ed] => 
+    msg: |-
+        ansible_connection: vbotka.freebsd.jailexec
+        ansible_host: 73d166ed
+        ansible_user: admin
+
+        ansible_jail_host: iocage_06
+        ansible_jail_privilege_escalation: sudo
+
+        iocage_ip4: -
+        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+
+TASK [ansible.builtin.command] *************************************************
+changed: [73d166ed]
+changed: [2205c0f0]
+changed: [7daa07e7]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [2205c0f0] => 
+    out.stdout: FreeBSD 2205c0f0 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+ok: [7daa07e7] => 
+    out.stdout: FreeBSD 7daa07e7 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+ok: [73d166ed] => 
+    out.stdout: FreeBSD 73d166ed 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+
+PLAY RECAP *********************************************************************
+2205c0f0                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+73d166ed                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+7daa07e7                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

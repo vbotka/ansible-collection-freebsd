@@ -1,0 +1,68 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_06]
+
+TASK [Reject jails with empty notes] *******************************************
+ok: [iocage_06]
+
+TASK [Debug cmd_create debug=true] *********************************************
+ok: [iocage_06] => (item=sw_01) => 
+    msg: |-
+        iocage create --short --template ansible-client --count 0  bpf=1  dhcp=1  vnet=1  defaultrouter=172.16.99.1  notes="vmm=iocage_06 swarm=sw_01"
+
+TASK [Debug create swarms debug=true] ******************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        msg: All items skipped
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            false_condition: _count | int > 0
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible-client
+            skip_reason: Conditional result was False
+            skipped: true
+        skipped: true
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_06]
+
+TASK [Reject jails with empty notes] *******************************************
+ok: [iocage_06]
+
+TASK [Debug cmd_start debug=true] **********************************************
+ok: [iocage_06] => (item=sw_01) => 
+    msg: |-
+        iocage start
+
+TASK [Debug start swarms debug=true] *******************************************
+ok: [iocage_06] => 
+    out:
+        changed: false
+        failed: false
+        msg: All items skipped
+        results:
+        -   ansible_loop_var: item
+            changed: false
+            failed: false
+            false_condition: _jails | length > 0
+            item:
+                key: sw_01
+                value:
+                    count: 3
+                    template: ansible-client
+            skip_reason: Conditional result was False
+            skipped: true
+        skipped: true
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=8    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+
