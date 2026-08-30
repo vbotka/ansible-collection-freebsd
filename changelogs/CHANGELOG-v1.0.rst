@@ -30,6 +30,7 @@ Bugfixes
 * Update lookup galaxy_info. Checks for MANIFEST.json first (using
   collection_info metadata format) and falls back to galaxy.yml (for editable
   development checkouts). Fix documentation.
+* Fix ansible-test sanity
 
 Breaking Changes / Porting Guide
 --------------------------------

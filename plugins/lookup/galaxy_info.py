@@ -1,11 +1,8 @@
-# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# Copyright (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
-from importlib import import_module
-from typing import Any
-from ansible.errors import AnsibleLookupError
-from ansible.plugins.lookup import LookupBase
 
 DOCUMENTATION = r"""
 name: galaxy_info
@@ -50,6 +47,11 @@ _raw:
 import json
 import os
 import yaml
+
+from importlib import import_module
+from typing import Any
+from ansible.errors import AnsibleLookupError
+from ansible.plugins.lookup import LookupBase
 
 
 class LookupModule(LookupBase):
