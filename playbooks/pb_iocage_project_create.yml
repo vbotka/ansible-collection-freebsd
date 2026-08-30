@@ -50,7 +50,7 @@
           ansible.builtin.command: >
             iocage create
             --short
-            --template {{ project_template | d('ansible_client') }}
+            --template {{ project_template | d('ansible-client') }}
             --count {{ iocage_jails_absent | length }}
             {{ properties | dictsort | map('join', '=') | join(' ') }}
 

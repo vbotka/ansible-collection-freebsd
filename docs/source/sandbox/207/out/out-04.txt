@@ -16,7 +16,7 @@ ok: [iocage_06] =>
             - logclient
             vmm: iocage_06
 
-        project_template: ansible_client
+        project_template: ansible-client
         project_create_iocage_tags: False
         vmm:
           iocage_06:
@@ -51,49 +51,21 @@ ok: [iocage_06] =>
     - db_5
 
 TASK [Create jails.] ***********************************************************
-[ERROR]: Task failed: Module failed: The command exited with a non-zero return code.
-Origin: /scratch/collections/ansible_collections/vbotka/freebsd/playbooks/pb_iocage_project_create.yml:47:11
+ok: [iocage_06]
 
-45           ansible.builtin.meta: end_host
-46
-47         - name: Create jails.
-             ^ column 11
+TASK [Display iocage_jails_created] ********************************************
+ok: [iocage_06] => 
+    iocage_jails_created:
+    - 46ff9022
+    - 00e22b9a
 
-fatal: [iocage_06]: FAILED! => 
-    ansible_facts:
-        discovered_interpreter_python: /usr/local/bin/python3.12
-    changed: false
-    changed_when_result: false
-    cmd:
-    - iocage
-    - create
-    - --short
-    - --template
-    - ansible_client
-    - --count
-    - '2'
-    - bpf=1
-    - dhcp=1
-    - vnet=1
-    delta: '0:00:01.179358'
-    end: '2026-08-27 09:31:24.841012'
-    msg: The command exited with a non-zero return code.
-    rc: 1
-    start: '2026-08-27 09:31:23.661654'
-    stderr: |-
-        Template: ansible_client not found!
-        Created Templates:
-          ansible-client
-          ansible-init
-          ansible-nginx
-          ansible-pkg-repo
-          ansible-repos
-          ansible-syslogng-client
-          ansible-syslogng-server
-    stderr_lines: <omitted>
-    stdout: ''
-    stdout_lines: <omitted>
+TASK [Set notes.] **************************************************************
+ok: [iocage_06] => (item=http_5 alias=http_5 class=http,logclient vmm=iocage_06)
+ok: [iocage_06] => (item=db_5 alias=db_5 class=db,logclient vmm=iocage_06)
+
+TASK [Start created jails.] ****************************************************
+ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

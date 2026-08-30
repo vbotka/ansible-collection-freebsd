@@ -16,6 +16,8 @@ Major Changes
 
 Minor Changes
 --------------
+* Update pb_iocage_project_create.yml; change default template ansible_client to
+  ansible-client.
 
 Bugfixes
 --------
