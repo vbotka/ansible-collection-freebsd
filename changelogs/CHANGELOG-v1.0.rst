@@ -22,6 +22,7 @@ Minor Changes
 * Update module iocage.
 * Update README.md
 * Docs. Update included content.
+* Tests. Add ignore.txt
 
 Bugfixes
 --------
