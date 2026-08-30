@@ -18,8 +18,8 @@ Major Changes
 Minor Changes
 --------------
 * Update filter iocage formatting.
-* Update filter documentation wording.
-* Update module iocage.
+* Update filter documentation.
+* Update modules: iocage, ucl.
 * Update README.md
 * Docs. Update included content.
 * Tests. Add ignore.txt

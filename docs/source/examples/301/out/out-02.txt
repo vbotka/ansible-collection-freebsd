@@ -4,12 +4,18 @@ PLAY [Test module vbotka.freebsd.ucl] ******************************************
 TASK [Disable FreeBSD-ports repository.] ***************************************
 --- before: /etc/pkg/FreeBSD.conf (content)
 +++ after: /etc/pkg/FreeBSD.conf (content)
-@@ -1 +1 @@
--   enabled = true;
-+   enabled = false;
+@@ -3,7 +3,7 @@
+     mirror_type = "srv";
+     signature_type = "fingerprints";
+     fingerprints = "/usr/share/keys/pkg";
+-    enabled = true;
++    enabled = false;
+ }
+ FreeBSD-ports-kmods {
+     url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
 
-changed: [iocage_04]
+changed: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

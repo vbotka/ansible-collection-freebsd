@@ -76,7 +76,7 @@ Playbook output - Get FreeBSD.url
 
 .. code-block:: console
 
-  (env) > ansible-playbook pb-test-01.yml -i iocage.ini
+  (env) > ansible-playbook -i iocage.ini pb-test-01.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -93,7 +93,7 @@ Playbook output - Disable FreeBSD repository
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-02.yml -i iocage.ini --check --diff
+   (env) > ansible-playbook -i iocage.ini --check --diff pb-test-02.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
