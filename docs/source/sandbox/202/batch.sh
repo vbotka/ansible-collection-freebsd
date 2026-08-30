@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 ssh admin@iocage_06 sudo iocage destroy -f test-151

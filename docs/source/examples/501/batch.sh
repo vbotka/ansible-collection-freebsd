@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 ansible-playbook pb-login.yml -i iocage.ini | tee out/out-01.txt

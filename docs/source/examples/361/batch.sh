@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# shellcheck disable=SC1091
 . ../defaults/batch
 
 ansible-playbook pb-postinstall.yml -i iocage.ini -t fp_resolvconf -e fp_resolvconf_conf_clean=true -e fp_resolv_conf_clean=true | tee out/out-01.txt
