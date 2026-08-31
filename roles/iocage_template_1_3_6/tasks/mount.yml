@@ -1,0 +1,34 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Mount: Create mountpoints."
+  ansible.builtin.file:
+    path: "{{ fit_iocage_mount }}/iocage/jails/{{ item.0.key }}/root{{ item.1.value }}"
+    state: directory
+    owner: "{{ fit_file_options[item.1.value]['owner'] }}"
+    group: "{{ fit_file_options[item.1.value]['group'] }}"
+    mode: "{{ fit_file_options[item.1.value]['mode'] }}"
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | subelements('value.mount', skip_missing=true) }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.key }} {{ item.1.value }}"
+
+- name: "Mount: Mount filesystems."
+  changed_when: false
+  register: out
+  ansible.builtin.command: >-
+    iocage fstab
+    -a {{ item.0.key }}
+     {{ item.1.key }} {{ item.1.value }} nullfs rw 0 0
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | subelements('value.mount', skip_missing=true) }}"
+  loop_control:
+    label: "{{ item.0.key }} {{ item.1.key }} {{ item.1.value }}"
+
+- name: "Commands: Debug execute commands fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: out

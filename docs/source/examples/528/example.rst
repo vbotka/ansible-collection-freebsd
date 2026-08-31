@@ -84,27 +84,19 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* jail ``repos`` created in :ref:`example_523`
 * template ``ansible-init`` created in :ref:`example_524`
+* jail ``pkg-repo`` created in :ref:`example_527`
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
 
 .. note::
 
-   Neither the inventory nor the connection plugin is required to create the
-   project. The inventory plugin is used to list the jails and create groups for
-   the test playbooks. The configuration also serves as an example of the
-   connection plugin.
+   * See `Practical rc.d scripting in BSD`_
+   * See the option ``firstboot_sentinel`` in `man rc.conf`_
 
 .. seealso::
-
-
-   * `Practical rc.d scripting in BSD`_
-   * The option ``firstboot_sentinel`` in `man rc.conf`_
-   * The examples:
-
-     - :ref:`example_523`
-     - :ref:`example_527`
 
    * The ``Troubleshooting`` section in :ref:`example_526`
    * GitHub repositories:
@@ -274,8 +266,8 @@ Playbook output - Test Log Clients
    Use the ``lnav`` utility on the log server to display all logfiles in the the directory
    ``/var/log/remote``. Run the following commands on the iocage host: ::
 
-     shell > iocage console log-server
-     root@log-server:~ # lnav -r /var/log/remote/
+     shell > iocage console log-server-01
+     root@log-server-01:~ # lnav -r /var/log/remote/
 
 
 .. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/

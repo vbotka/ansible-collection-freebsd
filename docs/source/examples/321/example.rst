@@ -7,7 +7,7 @@
    :local:
    :depth: 1
 
-.. index:: single: pkg repositories; Example 321
+.. index:: single: pkg repo; Example 321
 .. index:: single: signature_type; Example 321
 .. index:: single: pubkey; Example 321
 .. index:: single: mirror_type; Example 321

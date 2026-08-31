@@ -154,6 +154,7 @@ Examples
    526 Log srv/client (ansible-init) <examples/526/example.rst>
    527 template ansible-pkg-repo <examples/527/example.rst>
    528 Log srv/client (ansible-conf-roles) <examples/528/example.rst>
+   529 template ansible-init (local repo) <examples/529/example.rst>
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

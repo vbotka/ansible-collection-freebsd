@@ -1,6 +1,6 @@
 project:
-  log-server:
-    notes: alias=log_server
+  log-server-01:
+    notes: alias=log_server_01
     vmm: iocage_06
     template: ansible-init
     class: [log-server]

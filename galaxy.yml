@@ -1,7 +1,7 @@
 ---
 name: freebsd
 namespace: vbotka
-version: 1.0.2
+version: 1.0.3
 readme: README.md
 authors:
   - Vladimir Botka <vbotka@gmail.com>
@@ -25,10 +25,11 @@ build_ignore:
   - TODO
   - ATTIC
   - dest
-  - jailexec.py
   - files/pk_admins.txt.san
   - playbooks/sensitive
+  - plugins/connection/jailexec.py
   - roles/*/docs
+  - setup/distfiles/connection/jailexec.py
   - '.ansible'
   - '.ansible-lint'
   - '.deny'

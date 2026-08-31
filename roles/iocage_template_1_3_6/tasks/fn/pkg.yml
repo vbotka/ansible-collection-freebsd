@@ -1,0 +1,19 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Fn/pkg: Update repos."
+  changed_when: false
+  register: out
+  ansible.builtin.command: >-
+    iocage exec
+    {{ outer_item.0.key }}
+    /bin/sh -c "ASSUME_ALWAYS_YES=yes pkg update -r {{ item | splitext | first }}"
+  loop: "{{ outer_item.1.value }}"
+  loop_control:
+    label: "{{ item | splitext | first }}"
+
+- name: "Fn/pkg: Debug update repos fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: out

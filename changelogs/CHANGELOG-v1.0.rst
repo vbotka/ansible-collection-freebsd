@@ -5,6 +5,34 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+1.0.3
+=====
+
+Release Summary
+---------------
+Upgrade role iocage_template. Mount and configure pkg repo.
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+* Upgrade role iocage_template to 1.3.6
+* Update pb_iocage_project_create.yml; change default template ansible_client to
+  ansible-client.
+* Docs. Update examples 523-528
+* Docs. Add example 529 and sandbox 928; mount fs and configure repo in
+  ansible-init.
+* Docs. Update project-hosts.yml in sandbox.
+* Update galaxy.yml; do not distribute jailexec.
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 1.0.2
 =====
 

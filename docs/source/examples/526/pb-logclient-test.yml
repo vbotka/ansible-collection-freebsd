@@ -4,7 +4,7 @@
 
   vars:
 
-    log_server: "{{ hostvars['log_server']['iocage_ip4'] }}"
+    log_server: "{{ hostvars['log_server_01']['iocage_ip4'] }}"
 
   tasks:
 
@@ -17,7 +17,7 @@
         var: out.stderr
 
 - name: Display the logs.
-  hosts: log_server
+  hosts: log_servers
     
   tasks:
 

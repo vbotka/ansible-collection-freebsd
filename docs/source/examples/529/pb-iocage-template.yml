@@ -1,0 +1,8 @@
+---
+- name: Create iocage templates.
+  hosts: iocage
+  gather_facts: true
+
+  roles:
+
+    - vbotka.freebsd.iocage_template

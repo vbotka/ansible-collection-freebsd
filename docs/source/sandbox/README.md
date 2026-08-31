@@ -39,6 +39,7 @@
 925 Repo ansible-conf-roles
 926 Filters dict_to_ast and ast_to_nginx
 927 Filters to_ucl and from_ucl
+928 Template ansible-init (local pkg repo)
 
 ## Notes
 
