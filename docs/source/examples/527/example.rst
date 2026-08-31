@@ -7,7 +7,7 @@
    :local:
    :depth: 1
 
-.. index:: single: pkg repositories; Example 527
+.. index:: single: pkg repo; Example 527
 .. index:: single: template ansible-pkg-repo; Example 527
 .. index:: single: role vbotka.freebsd.iocage_template; Example 527
 .. index:: single: pb_iocage_project_create_from_templates; Example 527
