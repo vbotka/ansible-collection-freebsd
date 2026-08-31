@@ -19,6 +19,7 @@ Minor Changes
 * Update pb_iocage_project_create.yml; change default template ansible_client to
   ansible-client.
 * Docs. Update examples 523-528
+* Docs. Update project-hosts.yml in sandbox.
 * Update galaxy.yml; do not distribute jailexec.
 
 Bugfixes
