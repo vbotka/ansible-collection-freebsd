@@ -67,6 +67,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* jail ``repos`` created in :ref:`example_523`
 * template ``ansible-init`` created in :ref:`example_524`
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage2`_
@@ -79,7 +80,6 @@ Requirements
 
 .. seealso::
 
-   * The example :ref:`example_523`
    * The ``Troubleshooting`` section in :ref:`example_526`
    * GitHub repositories:
 

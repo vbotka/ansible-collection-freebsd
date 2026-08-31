@@ -5,42 +5,42 @@ TASK [Setup: Get activated pool.] **********************************************
 ok: [iocage_06]
 
 TASK [Create: Create jails.] ***************************************************
+ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=log-server)
 ok: [iocage_06] => (item=www-02)
 
 TASK [Facts: Create custom facts dirs.] ****************************************
-changed: [iocage_06] => (item=log-server)
+changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
 TASK [Facts: Create custom facts files.] ***************************************
-changed: [iocage_06] => (item=log-server)
+changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
 TASK [Ai-vars-templates: Create ansible init vars dirs.] ***********************
-changed: [iocage_06] => (item=log-server)
+changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
 TASK [Ai-vars-templates: Create ansible init vars from templates.] *************
-changed: [iocage_06] => (item=log-server project-hosts.yml)
+changed: [iocage_06] => (item=log-server-01 project-hosts.yml)
 changed: [iocage_06] => (item=www-01 project-hosts.yml)
 changed: [iocage_06] => (item=www-02 project-hosts.yml)
 
 TASK [Ai-vars-class: Create ansible init vars dirs.] ***************************
-ok: [iocage_06] => (item=log-server)
+ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
 
 TASK [Ai-vars-jail: Create ansible init vars dirs.] ****************************
-ok: [iocage_06] => (item=log-server)
+ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
 
 TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item=log-server)
+ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
 

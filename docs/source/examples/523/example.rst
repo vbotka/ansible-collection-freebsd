@@ -32,7 +32,6 @@ Tree
   │   └── pkgs.json
   ├── group_vars
   │   ├── all
-  │   │   ├── common.yml
   │   │   ├── project-hosts.yml
   │   │   └── project.yml
   │   └── pull_repos
@@ -103,10 +102,6 @@ hosts
 
 group_vars
 ^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/common.yml
-   :language: yaml+jinja
-   :caption:
 
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja

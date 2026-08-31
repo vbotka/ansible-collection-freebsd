@@ -2,26 +2,25 @@
 PLAY [Test Log Server.] ********************************************************
 
 TASK [Run commands.] ***********************************************************
-changed: [log_server] => (item=rm -rf /var/log/remote/localhost/*)
-changed: [log_server] => (item=service syslog-ng status)
-changed: [log_server] => (item=loggen -i -S -n 1 localhost 514)
-changed: [log_server] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
+changed: [log_server_01] => (item=rm -rf /var/log/remote/localhost/*)
+changed: [log_server_01] => (item=service syslog-ng status)
+changed: [log_server_01] => (item=loggen -i -S -n 1 localhost 514)
+changed: [log_server_01] => (item=sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat)
 
 TASK [Debug.] ******************************************************************
-ok: [log_server] => 
+ok: [log_server_01] => 
     msg: |-
         shell> rm -rf /var/log/remote/localhost/*
 
         shell> service syslog-ng status
-        syslog_ng is running as pid 79746.
+        syslog_ng is running as pid 42412.
 
         shell> loggen -i -S -n 1 localhost 514
-        count=1, rate = 500000.00 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500308, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 47619.05 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.50036, (average) msg size=256, bandwidth=0.50 kB/sec
 
         shell> sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
-        Aug 27 11:57:46 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1787824666, stamp: 2026-08-27T11:57:46 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
 PLAY RECAP *********************************************************************
-log_server                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server_01              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

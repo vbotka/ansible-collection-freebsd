@@ -13,7 +13,20 @@
 .. index:: single: pb_iocage_project_create_from_templates; Example 527
 
 .. index:: single: connection vbotka.freebsd.jailexec; Example 527
+.. index:: single: vbotka.freebsd.jailexec; Example 527
+.. index:: single: jailexec; Example 527
+
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 527
+
+.. index:: single: filter vbotka.freebsd.dict_to_ast; Example 527
+.. index:: single: vbotka.freebsd.dict_to_ast; Example 527
+.. index:: single: dict_to_ast; Example 527
+
+.. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 527
+.. index:: single: vbotka.freebsd.ast_to_nginx; Example 527
+.. index:: single: ast_to_nginx; Example 527
+
+.. index:: single: Nginx; Example 527
 
 Use case
 ^^^^^^^^
@@ -31,6 +44,7 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   ├── all
+  │   │   ├── nginx.yml
   │   │   ├── project-hosts.yml
   │   │   └── project.yml
   │   └── fetch_pkg_repo
@@ -91,6 +105,16 @@ hosts
 group_vars
 ^^^^^^^^^^
 
+.. literalinclude:: group_vars/all/nginx.yml
+   :language: yaml+jinja
+   :caption:
+
+.. important::
+
+   This configuration is minimal and functional for an isolated lab or trusted
+   internal LAN, but it poses several security risks in production or shared
+   network environments.
+
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
@@ -116,12 +140,6 @@ templates
 .. literalinclude:: templates/nginx.conf.j2
    :language: jinja
    :caption:
-
-.. important::
-
-   This configuration is minimal and functional for an isolated lab or trusted
-   internal LAN, but it poses several security risks in production or shared
-   network environments.
 
 Playbook pb-iocage-template.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
