@@ -1,0 +1,57 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Pkg: Get iocage list of jails."
+  register: out_jails
+  changed_when: false
+  ansible.builtin.command: iocage list --long
+
+- name: "Pkg: Display iocage_jails fit_debug={{ fit_debug }}"
+  when: fit_debug | bool
+  ansible.builtin.debug:
+    var: fit_iocage_jails
+
+- name: "Pkg: Configure repos."
+  ansible.builtin.include_tasks:
+    file: fn/templates.yml
+    apply:
+      tags: fit_pkg
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | subelements('value.pkg_conf', skip_missing=true) }}"
+  loop_control:
+    loop_var: outer_item
+    label: "{{ outer_item.0.key }}"
+
+- name: "Pkg: Update repos."
+  ansible.builtin.include_tasks:
+    file: fn/pkg.yml
+    apply:
+      tags: fit_pkg
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | subelements('value.pkg_conf', skip_missing=true) }}"
+  loop_control:
+    loop_var: outer_item
+    label: "{{ outer_item.0.key }}"
+
+- name: "Pkg: Install packages."
+  register: out
+  community.general.pkgng:
+    name: "{{ item.value.pkg }}"
+    jail: "{{ fit_iocage_jails[item.key]['jid'] }}"
+    cached: "{{ fit_pkg_cached | bool | d(omit) }}"
+    ignore_osver: "{{ fit_pkg_ignore_osver | d(omit) }}"
+    pkgsite: "{{ fit_pkg_pkgsite | d(omit) }}"
+    use_globs: false
+  loop: "{{ fit_templates | dict2items
+                          | rejectattr('key', 'in', fit_iocage_templates)
+                          | selectattr('value.pkg', 'defined') }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: "Pkg: Debug install packages fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: out
