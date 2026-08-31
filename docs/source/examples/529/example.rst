@@ -21,7 +21,9 @@
 Use case
 ^^^^^^^^
 
-Create `iocage`_ template ``ansible-init``. Configure ``firstboot`` service ``ansible_init`` that runs `ansible-pull`_ and uses the repo `ansible-conf-init`_. Mount, configure, and update local repository.
+Create `iocage`_ template ``ansible-init``. Enable ``firstboot`` service
+``ansible_init`` that runs `ansible-pull`_ from the repositories on
+``project_hosts.repos``. Mount, configure, and update local package repository.
 
 Tree
 ^^^^

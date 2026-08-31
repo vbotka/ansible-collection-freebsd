@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Docs. Update example 529.
 
 Bugfixes
 --------
