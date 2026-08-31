@@ -25,10 +25,11 @@ build_ignore:
   - TODO
   - ATTIC
   - dest
-  - jailexec.py
   - files/pk_admins.txt.san
   - playbooks/sensitive
+  - plugins/connection/jailexec.py
   - roles/*/docs
+  - setup/distfiles/connection/jailexec.py
   - '.ansible'
   - '.ansible-lint'
   - '.deny'
