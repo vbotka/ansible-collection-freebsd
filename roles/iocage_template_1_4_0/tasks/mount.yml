@@ -6,9 +6,9 @@
   ansible.builtin.file:
     path: "{{ fit_iocage_mount }}/iocage/jails/{{ item.0.key }}/root{{ item.1.value }}"
     state: directory
-    owner: "{{ fit_file_options[item.1.value]['owner'] }}"
-    group: "{{ fit_file_options[item.1.value]['group'] }}"
-    mode: "{{ fit_file_options[item.1.value]['mode'] }}"
+    owner: "{{ fit_dir_inode[item.1.value]['owner'] | d(fit_dir_default.owner) }}"
+    group: "{{ fit_dir_inode[item.1.value]['group'] | d(fit_dir_default.group) }}"
+    mode: "{{ fit_dir_inode[item.1.value]['mode'] | d(fit_dir_default.mode) }}"
   loop: "{{ fit_templates | dict2items
                           | rejectattr('key', 'in', fit_iocage_templates)
                           | subelements('value.mount', skip_missing=true) }}"

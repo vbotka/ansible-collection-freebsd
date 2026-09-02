@@ -10,13 +10,16 @@ This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.
 
 ## Requirements
 
-Works out of the box in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+Works out of the box in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/).
 
 ## Examples
 
 * [522 iocage templates ansible-syslogng-*](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/522/example.html)
 * [523 iocage template ansible-repos](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/523/example.html)
+* [527 iocage template ansible-pkg-repo](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/527/example.html)
 * [524 iocage template ansible-init](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/524/example.html)
+* [529 iocage template ansible-init](https://ansible-collection-freebsd.readthedocs.io/en/latest/examples/529/example.html)
+
 
 ### Collections
 

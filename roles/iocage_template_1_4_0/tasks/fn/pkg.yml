@@ -8,10 +8,10 @@
   ansible.builtin.command: >-
     iocage exec
     {{ outer_item.0.key }}
-    /bin/sh -c "ASSUME_ALWAYS_YES=yes pkg update -r {{ item | splitext | first }}"
+    /bin/sh -c "ASSUME_ALWAYS_YES=yes pkg update -r {{ item.dest | splitext | first }}"
   loop: "{{ outer_item.1.value }}"
   loop_control:
-    label: "{{ item | splitext | first }}"
+    label: "{{ item.dest | splitext | first }}"
 
 - name: "Fn/pkg: Debug update repos fit_debug2={{ fit_debug2 }}"
   when: fit_debug2 | bool

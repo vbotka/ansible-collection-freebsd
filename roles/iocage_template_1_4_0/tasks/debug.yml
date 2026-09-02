@@ -24,6 +24,15 @@
       fit_pkg_ignore_osver: {{ fit_pkg_ignore_osver | d('UNDEFINED') }}
       fit_pkg_pkgsite: {{ fit_pkg_pkgsite | d('UNDEFINED') }}
 
+      fit_dir_default:
+        {{ fit_dir_default | to_nice_yaml(indent=2) | indent(2) }}
+      fit_file_default:
+        {{ fit_file_default | to_nice_yaml(indent=2) | indent(2) }}
+      fit_dir_options:
+        {{ fit_dir_options | to_nice_yaml(indent=2) | indent(2) }}
+      fit_file_options:
+        {{ fit_file_options | to_nice_yaml(indent=2) | indent(2) }}
+
       fit_templates:
         {{ fit_templates | to_nice_yaml(indent=2) | indent(2) }}
       fit_iocage_mount: {{ fit_iocage_mount }}

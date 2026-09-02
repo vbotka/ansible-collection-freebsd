@@ -4,6 +4,10 @@
 
 # tasks for freebsd_iocage_template (fit)
 
+- name: Display fit_templates.
+  tags: fit_debug0
+  ansible.builtin.import_tasks: debug0.yml
+
 - name: Setup.
   tags: [always, fit_setup]
   ansible.builtin.import_tasks: setup.yml

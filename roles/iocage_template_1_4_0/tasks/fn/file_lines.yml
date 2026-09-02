@@ -4,10 +4,10 @@
 
 - name: "Fn/file_lines: Configure lines in files."
   vars:
-    _ao: "{{ fit_file_options[outer_item.1.key]['assignment_operator'] }}"
-    _owner: "{{ fit_file_options[outer_item.1.key]['owner'] }}"
-    _group: "{{ fit_file_options[outer_item.1.key]['group'] }}"
-    _mode: "{{ fit_file_options[outer_item.1.key]['mode'] }}"
+    _ao: "{{ fit_file_options[outer_item.1.key]['assignment_operator'] | d(fit_file_default.assignment_operator) }}"
+    _owner: "{{ fit_file_options[outer_item.1.key]['owner'] | d(fit_file_default.owner) }}"
+    _group: "{{ fit_file_options[outer_item.1.key]['group'] | d(fit_file_default.group) }}"
+    _mode: "{{ fit_file_options[outer_item.1.key]['mode'] | d(fit_file_default.mode) }}"
   ansible.builtin.lineinfile:
     path: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root/{{ outer_item.1.key }}"
     regexp: ^\s*{{ item.key }}\s*{{ _ao }}\s*(.*)$
@@ -18,4 +18,4 @@
     create: true
   loop: "{{ outer_item.1.value | dict2items }}"
   loop_control:
-    label: "{{ outer_item.0.key }} {{ outer_item.1.key }} {{ item.key }}={{ item.value }}"
+    label: "{{ outer_item.0.key }} {{ outer_item.1.key }} {{ item.key }}{{ _ao }}{{ item.value }}"

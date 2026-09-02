@@ -1,0 +1,26 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Fn/templates: Debug outer_item fit_debug2={{ fit_debug2 }}"
+  when: fit_debug2 | bool
+  ansible.builtin.debug:
+    var: outer_item
+
+- name: "Fn/templates: Create directory."
+  ansible.builtin.file:
+    path: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root{{ outer_item.1.key }}"
+    state: directory
+    owner: "{{ fit_dir_options[outer_item.1.key]['owner'] | d(fit_dir_default.owner) }}"
+    group: "{{ fit_dir_options[outer_item.1.key]['group'] | d(fit_dir_default.group) }}"
+    mode: "{{ fit_dir_options[outer_item.1.key]['mode'] | d(fit_dir_default.mode) }}"
+
+- name: "Fn/templates: Template files."
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ fit_iocage_mount }}/iocage/jails/{{ outer_item.0.key }}/root{{ outer_item.1.key }}/{{ item.dest }}"
+    owner: "{{ fit_file_options[item]['owner'] | d(fit_file_default.owner) }}"
+    group: "{{ fit_file_options[item]['group'] | d(fit_file_default.group) }}"
+    mode: "{{ fit_file_options[item]['mode'] | d(fit_file_default.mode) }}"
+    backup: true
+  loop: "{{ outer_item.1.value }}"
