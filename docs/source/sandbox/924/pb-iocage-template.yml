@@ -5,4 +5,4 @@
 
   roles:
 
-    - vbotka.freebsd_iocage_template
+    - vbotka.freebsd.iocage_template

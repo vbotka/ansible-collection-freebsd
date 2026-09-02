@@ -3,4 +3,4 @@
     file: "{{ playbook_dir }}/conf.d/{{ oitem }}/template.yml"
 
 - include_role:
-    name: vbotka.freebs_iocage_template
+    name: vbotka.freebsd.iocage_template
