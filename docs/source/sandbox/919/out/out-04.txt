@@ -6,15 +6,13 @@
   |  |--bar
   |  |--repos
   |  |--qux
-  |  |--log_server
   |  |--repos_devel
-  |  |--log_client
+  |  |--pkg_repo
   |--@vmm_iocage_06:
   |  |--foo
   |  |--baz
   |  |--bar
   |  |--repos
   |  |--qux
-  |  |--log_server
   |  |--repos_devel
-  |  |--log_client
+  |  |--pkg_repo

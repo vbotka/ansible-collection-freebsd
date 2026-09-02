@@ -1,0 +1,40 @@
+fit_pkg_install: true
+fit_pkg_pkgsite: local
+fit_pkg_cached: true
+
+fit_pkg_conf:
+  /usr/local/etc/pkg/repos:
+    - {src: local.conf.j2, dest: local.conf}
+
+fit_dir_options:
+  /usr/local/www/nginx:
+    owner: root
+    group: www
+    mode: '0755'
+  /usr/local/repo:
+    owner: root
+    group: wheel
+    mode: '0755'
+  /usr/local/etc/pkg/repos:
+    owner: root
+    group: wheel
+    mode: '0755'
+
+fit_file_options:
+  /usr/local/www/nginx/index.yml:
+    owner: root
+    group: www
+    mode: '0644'
+  /usr/local/etc/nginx/nginx-pkg-repo.conf:
+    owner: root
+    group: wheel
+    mode: '0644'
+  /root/.profile:
+    assignment_operator: '='
+    owner: root
+    group: wheel
+    mode: '0644'
+  /usr/local/etc/pkg/repos/local.conf:
+    owner: root
+    group: wheel
+    mode: '0644'

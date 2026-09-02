@@ -10,7 +10,7 @@ ssh admin@iocage_06 sudo iocage stop pkg-repo
 ssh admin@iocage_06 sudo iocage destroy -f pkg-repo
 
 # Destroy template
-ssh admin@iocage_06 sudo iocage destroy -f ansible-pkg-repo
+# ssh admin@iocage_06 sudo iocage destroy -f ansible-pkg-repo
 
 # Create template
 ansible-playbook -i iocage.ini -e fit_debug=true pb-iocage-template.yml | tee out/out-01.txt

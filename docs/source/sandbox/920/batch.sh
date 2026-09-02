@@ -5,6 +5,7 @@
 
 # Destroy log-server, www-01, and www-02
 ssh admin@iocage_06 sudo iocage destroy -f log-server
+ssh admin@iocage_06 sudo iocage destroy -f log-server-01
 ssh admin@iocage_06 sudo iocage destroy -f www-01
 ssh admin@iocage_06 sudo iocage destroy -f www-02
 

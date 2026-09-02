@@ -6,12 +6,8 @@
   |--@state_up:
   |  |--repos
   |  |--repos_devel
-  |  |--log_server_01
-  |  |--www_02
-  |  |--www_01
+  |  |--pkg_repo
   |--@vmm_iocage_06:
   |  |--repos
   |  |--repos_devel
-  |  |--log_server_01
-  |  |--www_02
-  |  |--www_01
+  |  |--pkg_repo

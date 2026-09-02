@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Docs. Update example 529.
+* Development version role iocage_template tested in examples and sandbox.
 
 Bugfixes
 --------

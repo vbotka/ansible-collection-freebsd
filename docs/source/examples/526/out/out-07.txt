@@ -2,194 +2,38 @@
 PLAY [Test Log Clients.] *******************************************************
 
 TASK [Run loggen] **************************************************************
-changed: [www_01]
-changed: [www_02]
+[ERROR]: Task failed: Module failed: Error executing command: [Errno 2] No such file or directory: b'loggen'
+Origin: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/526/pb-logclient-test.yml:11:7
 
-TASK [Debug.] ******************************************************************
-ok: [www_02] => 
-    out.stderr: |-
-        count=1, rate = 333333.33 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500246, (average) msg size=256, bandwidth=0.50 kB/sec
-ok: [www_01] => 
-    out.stderr: |-
-        count=1, rate = 34482.76 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500335, (average) msg size=256, bandwidth=0.50 kB/sec
+ 9   tasks:
+10
+11     - name: Run loggen
+         ^ column 7
 
-PLAY [Display the logs.] *******************************************************
-
-TASK [Get log files paths.] ****************************************************
-ok: [log_server_01]
-
-TASK [Get log files.] **********************************************************
-changed: [log_server_01] => (item=/var/log/remote/ip-172-16-99-154/2026_08_31.log)
-changed: [log_server_01] => (item=/var/log/remote/ip-172-16-99-147/2026_08_31.log)
-
-TASK [Display log files.] ******************************************************
-ok: [log_server_01] => (item=['cat', '/var/log/remote/ip-172-16-99-154/2026_08_31.log']) => 
-    msg: |-
-        Aug 31 08:11:29 ip-172-16-99-154 syslog-ng[43233]: syslog-ng starting up; version='4.12.0'
-        Aug 31 08:11:29 ip-172-16-99-154 syslog-ng[43233]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Aug 31 08:11:30 ip-172-16-99-154 1 2026-08-31T08:11:30.581734+02:00 www-01 ansible-vbotka.freebsd.service 43429 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Aug 31 08:10:51 ip-172-16-99-154 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-01
-        Aug 31 08:10:51 ip-172-16-99-154 ansible: n=ansible INFO| PLAY [ansible-init] ************************************************************
-        Aug 31 08:10:52 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Get hostname.] ***********************************************************
-        Aug 31 08:10:52 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Get custom facts.] *******************************************************
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Include variables from ai_vars directory.] *******************************
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain] => (item=/root/ansible-vars/project-hosts.yml)
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: |-
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: true
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: /root/ansible-vars
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: www-01
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: ['log-client']
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: {'defaultrouter': '172.16.99.1', 'log_server': '172.16.99.10', 'repos': '172.16.99.21', 'repos_devel': '172.16.99.22', 'ansible_pull_syslogng_server': '172.16.99.31'}
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Set ai_cmd] **************************************************************
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Execute ai_cmd] **********************************************************
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| included: /root/ansible-conf-init/tasks/execute-cmd.yml for localhost.my.domain
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
-        Aug 31 08:10:54 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: |-
-        Aug 31 08:11:30 ip-172-16-99-154 ansible:
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: True
-        Aug 31 08:11:30 ip-172-16-99-154 ansible:      ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e "ai_vars=/root/ansible-vars" -e "ai_pull_mode=true" pb-logclient.yml &&  echo '[INFO] ansible-pull finished.'
-        Aug 31 08:10:55 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Execute command async=3600 poll=0] ***************************************
-        Aug 31 08:10:55 ip-172-16-99-154 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:10:55 ip-172-16-99-154 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
-        Aug 31 08:10:55 ip-172-16-99-154 ansible: n=ansible INFO| localhost.my.domain        : ok=8    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
-        Aug 31 08:10:56 ip-172-16-99-154 ansible: n=ansible INFO| Starting Ansible Pull at 2026-08-31 08:10:56
-        Aug 31 08:10:56 ip-172-16-99-154 ansible: n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e ai_vars=/root/ansible-vars -e ai_pull_mode=true pb-logclient.yml
-        Aug 31 08:10:57 ip-172-16-99-154 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-01
-        Aug 31 08:10:58 ip-172-16-99-154 ansible: n=ansible INFO| localhost.my.domain | CHANGED => {
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: "6279622d9cef92c88a0c66814247d5e81b510542",
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: {
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: "/usr/local/bin/python3.12"
-        Aug 31 08:11:30 ip-172-16-99-154 ansible:
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: null,
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: true
-        Aug 31 08:11:30 ip-172-16-99-154 ansible:
-        Aug 31 08:11:00 ip-172-16-99-154 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-01
-        Aug 31 08:11:01 ip-172-16-99-154 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
-        Aug 31 08:11:01 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Include variables from ai_vars directory.] *******************************
-        Aug 31 08:11:01 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain] => (item=/root/ansible-vars/project-hosts.yml)
-        Aug 31 08:11:01 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
-        Aug 31 08:11:01 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: |-
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: true
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: /root/ansible-vars
-        Aug 31 08:11:22 ip-172-16-99-154 ansible: n=ansible INFO| TASK [Install packages.] *******************************************************
-        Aug 31 08:11:22 ip-172-16-99-154 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:26 ip-172-16-99-154 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
-        Aug 31 08:11:26 ip-172-16-99-154 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:26 ip-172-16-99-154 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
-        Aug 31 08:11:26 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:28 ip-172-16-99-154 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-        Aug 31 08:11:28 ip-172-16-99-154 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:28 ip-172-16-99-154 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-        Aug 31 08:11:28 ip-172-16-99-154 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
-        Aug 31 08:11:30 ip-172-16-99-154 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:30 ip-172-16-99-154 syslog-ng[43233]: Loading the new configuration;
-        Aug 31 08:11:30 ip-172-16-99-154 syslog-ng[43233]: Configuration reload finished;
-        Aug 31 08:11:31 ip-172-16-99-154 1 2026-08-31T08:11:31.598825+02:00 www-01 ansible-vbotka.freebsd.service 43714 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Aug 31 08:11:31 ip-172-16-99-154 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
-        Aug 31 08:11:31 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:32 ip-172-16-99-154 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
-        Aug 31 08:11:32 ip-172-16-99-154 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:32 ip-172-16-99-154 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
-        Aug 31 08:11:32 ip-172-16-99-154 ansible: n=ansible INFO| localhost.my.domain        : ok=10   changed=5    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
-        Aug 31 08:11:33 ip-172-16-99-154 1 2026-08-31T08:11:33.559230+02:00 www-01 ansible-async_wrapper.py 40248 - - Module complete (40248)
-        Aug 31 08:11:51 ip-172-16-99-154 1 2026-08-31T08:11:51.687943+02:00 www-01 ansible-ansible.legacy.command 44374 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Aug 31 08:11:51 ip-172-16-99-154 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1788156711, stamp: 2026-08-31T08:11:51 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server_01] => (item=['cat', '/var/log/remote/ip-172-16-99-147/2026_08_31.log']) => 
-    msg: |-
-        Aug 31 08:11:37 ip-172-16-99-147 syslog-ng[44054]: syslog-ng starting up; version='4.12.0'
-        Aug 31 08:11:37 ip-172-16-99-147 syslog-ng[44054]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Aug 31 08:11:04 ip-172-16-99-147 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-02
-        Aug 31 08:11:04 ip-172-16-99-147 ansible: n=ansible INFO| PLAY [ansible-init] ************************************************************
-        Aug 31 08:11:05 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Get hostname.] ***********************************************************
-        Aug 31 08:11:05 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Get custom facts.] *******************************************************
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Include variables from ai_vars directory.] *******************************
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain] => (item=/root/ansible-vars/project-hosts.yml)
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: |-
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: true
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: /root/ansible-vars
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: www-02
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: ['log-client']
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: {'defaultrouter': '172.16.99.1', 'log_server': '172.16.99.10', 'repos': '172.16.99.21', 'repos_devel': '172.16.99.22', 'ansible_pull_syslogng_server': '172.16.99.31'}
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Set ai_cmd] **************************************************************
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Execute ai_cmd] **********************************************************
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| included: /root/ansible-conf-init/tasks/execute-cmd.yml for localhost.my.domain
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
-        Aug 31 08:11:06 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: |-
-        Aug 31 08:11:38 ip-172-16-99-147 ansible:
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: True
-        Aug 31 08:11:38 ip-172-16-99-147 ansible:      ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e "ai_vars=/root/ansible-vars" -e "ai_pull_mode=true" pb-logclient.yml &&  echo '[INFO] ansible-pull finished.'
-        Aug 31 08:11:07 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Execute command async=3600 poll=0] ***************************************
-        Aug 31 08:11:07 ip-172-16-99-147 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:07 ip-172-16-99-147 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
-        Aug 31 08:11:07 ip-172-16-99-147 ansible: n=ansible INFO| localhost.my.domain        : ok=8    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
-        Aug 31 08:11:07 ip-172-16-99-147 ansible: n=ansible INFO| Starting Ansible Pull at 2026-08-31 08:11:07
-        Aug 31 08:11:07 ip-172-16-99-147 ansible: n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-client -d /root/ansible-conf-syslogng-client -e ai_vars=/root/ansible-vars -e ai_pull_mode=true pb-logclient.yml
-        Aug 31 08:11:08 ip-172-16-99-147 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-02
-        Aug 31 08:11:10 ip-172-16-99-147 ansible: n=ansible INFO| localhost.my.domain | CHANGED => {
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: "6279622d9cef92c88a0c66814247d5e81b510542",
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: {
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: "/usr/local/bin/python3.12"
-        Aug 31 08:11:38 ip-172-16-99-147 ansible:
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: null,
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: true
-        Aug 31 08:11:38 ip-172-16-99-147 ansible:
-        Aug 31 08:11:11 ip-172-16-99-147 ansible: n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: www-02
-        Aug 31 08:11:13 ip-172-16-99-147 ansible: n=ansible INFO| PLAY [Configure Log Client.] ***************************************************
-        Aug 31 08:11:13 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Include variables from ai_vars directory.] *******************************
-        Aug 31 08:11:13 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain] => (item=/root/ansible-vars/project-hosts.yml)
-        Aug 31 08:11:13 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Display vars.] ***********************************************************
-        Aug 31 08:11:13 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain] =>
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: |-
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: true
-        Aug 31 08:11:38 ip-172-16-99-147 ansible: /root/ansible-vars
-        Aug 31 08:11:31 ip-172-16-99-147 ansible: n=ansible INFO| TASK [Install packages.] *******************************************************
-        Aug 31 08:11:31 ip-172-16-99-147 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:32 ip-172-16-99-147 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslogd_enable in /etc/rc.conf] ***
-        Aug 31 08:11:32 ip-172-16-99-147 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:32 ip-172-16-99-147 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Sanity fp_syslogng_conf is empty.] ***
-        Aug 31 08:11:32 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:35 ip-172-16-99-147 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Syslog-ng: Configure /usr/local/etc/syslog-ng.conf] ***
-        Aug 31 08:11:35 ip-172-16-99-147 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:36 ip-172-16-99-147 ansible: n=ansible INFO| TASK [vbotka.freebsd.postinstall : Rcconf: Configure syslog_ng_enable in /etc/rc.conf] ***
-        Aug 31 08:11:36 ip-172-16-99-147 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:37 ip-172-16-99-147 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Start syslog-ng] *****************
-        Aug 31 08:11:37 ip-172-16-99-147 ansible: n=ansible INFO| changed: [localhost.my.domain]
-        Aug 31 08:11:38 ip-172-16-99-147 1 2026-08-31T08:11:38.422658+02:00 www-02 ansible-vbotka.freebsd.service 44079 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Aug 31 08:11:38 ip-172-16-99-147 syslog-ng[44054]: Loading the new configuration;
-        Aug 31 08:11:38 ip-172-16-99-147 syslog-ng[44054]: Configuration reload finished;
-        Aug 31 08:11:39 ip-172-16-99-147 1 2026-08-31T08:11:39.506269+02:00 www-02 ansible-vbotka.freebsd.service 44186 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Aug 31 08:11:39 ip-172-16-99-147 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Reload syslog-ng] ****************
-        Aug 31 08:11:39 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:40 ip-172-16-99-147 ansible: n=ansible INFO| RUNNING HANDLER [vbotka.freebsd.postinstall : Stop syslogd] ********************
-        Aug 31 08:11:40 ip-172-16-99-147 ansible: n=ansible INFO| ok: [localhost.my.domain]
-        Aug 31 08:11:40 ip-172-16-99-147 ansible: n=ansible INFO| PLAY RECAP *********************************************************************
-        Aug 31 08:11:40 ip-172-16-99-147 ansible: n=ansible INFO| localhost.my.domain        : ok=10   changed=5    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
-        Aug 31 08:11:41 ip-172-16-99-147 1 2026-08-31T08:11:41.439313+02:00 www-02 ansible-async_wrapper.py 41385 - - Module complete (41385)
-        Aug 31 08:11:51 ip-172-16-99-147 1 2026-08-31T08:11:51.946932+02:00 www-02 ansible-ansible.legacy.command 44376 - - Invoked with _raw_params=loggen -i -S -n 1 172.16.99.10 514 _uses_shell=False expand_argument_vars=True stdin_add_newline=True strip_empty_ends=True cmd=None argv=None chdir=None executable=None creates=None removes=None stdin=None
-        Aug 31 08:11:51 ip-172-16-99-147 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1788156711, stamp: 2026-08-31T08:11:51 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
-        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+fatal: [www_01]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.12
+    changed: false
+    cmd: loggen -i -S -n 1 172.16.99.10 514
+    msg: Error executing command.
+    rc: 2
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
+fatal: [www_02]: FAILED! => 
+    ansible_facts:
+        discovered_interpreter_python: /usr/local/bin/python3.12
+    changed: false
+    cmd: loggen -i -S -n 1 172.16.99.10 514
+    msg: Error executing command.
+    rc: 2
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: ''
+    stdout_lines: <omitted>
 
 PLAY RECAP *********************************************************************
-log_server_01              : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_01                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_02                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_01                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+www_02                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 

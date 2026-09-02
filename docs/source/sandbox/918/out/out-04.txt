@@ -4,13 +4,11 @@
   |  |--foo
   |  |--bar
   |  |--repos
-  |  |--log_server
   |  |--repos_devel
-  |  |--log_client
+  |  |--pkg_repo
   |--@vmm_iocage_06:
   |  |--foo
   |  |--bar
   |  |--repos
-  |  |--log_server
   |  |--repos_devel
-  |  |--log_client
+  |  |--pkg_repo

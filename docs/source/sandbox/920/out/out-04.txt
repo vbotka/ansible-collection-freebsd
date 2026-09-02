@@ -8,7 +8,7 @@
   |  |--qux
   |  |--log_server
   |  |--repos_devel
-  |  |--log_client
+  |  |--pkg_repo
   |  |--www_02
   |  |--www_01
   |--@vmm_iocage_06:
@@ -19,12 +19,11 @@
   |  |--qux
   |  |--log_server
   |  |--repos_devel
-  |  |--log_client
+  |  |--pkg_repo
   |  |--www_02
   |  |--www_01
   |--@log_servers:
   |  |--log_server
   |--@log_clients:
-  |  |--log_client
   |  |--www_02
   |  |--www_01

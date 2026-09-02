@@ -51,8 +51,8 @@ ok: [pkg_repo] =>
             - net/rsync
             - security/sudo
             - ftp/wget
-            delta: '0:02:46.294375'
-            end: '2026-08-27 11:08:02.577560'
+            delta: '0:01:33.554376'
+            end: '2026-09-02 12:13:43.061843'
             failed: false
             item:
                 packages:
@@ -68,18 +68,499 @@ ok: [pkg_repo] =>
                 pkglist: minimal
             msg: ''
             rc: 0
-            start: '2026-08-27 11:05:16.283185'
-            stderr: ''
-            stderr_lines: []
+            start: '2026-09-02 12:12:09.507467'
+            stderr: |-
+                pkg: git: duplicate dependency listing: python312
+                pkg: git: duplicate dependency listing: python312
+                pkg: git: duplicate dependency listing: perl5
+                pkg: git: duplicate dependency listing: python312
+                pkg: git: duplicate dependency listing: python312
+                pkg: git: duplicate dependency listing: perl5
+                pkg: sssd2: duplicate dependency listing: python312
+                pkg: sssd2: duplicate dependency listing: python312
+                pkg: sssd2: duplicate dependency listing: bind-tools
+                pkg: sssd2: duplicate dependency listing: python312
+                pkg: sssd2: duplicate dependency listing: python312
+                pkg: sssd2: duplicate dependency listing: bind-tools
+                pkg: sssd2: duplicate dependency listing: python312
+                pkg: sssd2: duplicate dependency listing: python312
+                pkg: sssd2: duplicate dependency listing: bind-tools
+                pkg: tevent: duplicate dependency listing: python312
+                pkg: tevent: duplicate dependency listing: python312
+                pkg: tevent: duplicate dependency listing: python312
+                pkg: tevent: duplicate dependency listing: python312
+                pkg: tevent: duplicate dependency listing: python312
+                pkg: tevent: duplicate dependency listing: python312
+                pkg: talloc: duplicate dependency listing: python312
+                pkg: talloc: duplicate dependency listing: python312
+                pkg: talloc: duplicate dependency listing: python312
+                pkg: talloc: duplicate dependency listing: python312
+                pkg: talloc: duplicate dependency listing: python312
+                pkg: talloc: duplicate dependency listing: python312
+                pkg: tdb: duplicate dependency listing: python312
+                pkg: tdb: duplicate dependency listing: python312
+                pkg: tdb: duplicate dependency listing: python312
+                pkg: tdb: duplicate dependency listing: python312
+                pkg: tdb: duplicate dependency listing: python312
+                pkg: tdb: duplicate dependency listing: python312
+                pkg: samba416: duplicate dependency listing: python312
+                pkg: samba416: duplicate dependency listing: python312
+                pkg: samba416: duplicate dependency listing: python312
+                pkg: samba416: duplicate dependency listing: python312
+                pkg: samba416: duplicate dependency listing: python312
+                pkg: samba416: duplicate dependency listing: python312
+                pkg: py312-markdown: duplicate dependency listing: python312
+                pkg: py312-markdown: duplicate dependency listing: python312
+                pkg: py312-markdown: duplicate dependency listing: python312
+                pkg: py312-markdown: duplicate dependency listing: python312
+                pkg: py312-markdown: duplicate dependency listing: python312
+                pkg: py312-markdown: duplicate dependency listing: python312
+                pkg: py312-dnspython: duplicate dependency listing: python312
+                pkg: py312-dnspython: duplicate dependency listing: python312
+                pkg: py312-dnspython: duplicate dependency listing: python312
+                pkg: py312-dnspython: duplicate dependency listing: python312
+                pkg: py312-dnspython: duplicate dependency listing: python312
+                pkg: py312-dnspython: duplicate dependency listing: python312
+                pkg: py312-trio: duplicate dependency listing: python312
+                pkg: py312-trio: duplicate dependency listing: python312
+                pkg: py312-trio: duplicate dependency listing: python312
+                pkg: py312-trio: duplicate dependency listing: python312
+                pkg: py312-trio: duplicate dependency listing: python312
+                pkg: py312-trio: duplicate dependency listing: python312
+                pkg: py312-sortedcontainers: duplicate dependency listing: python312
+                pkg: py312-sortedcontainers: duplicate dependency listing: python312
+                pkg: py312-sortedcontainers: duplicate dependency listing: python312
+                pkg: py312-sortedcontainers: duplicate dependency listing: python312
+                pkg: py312-sortedcontainers: duplicate dependency listing: python312
+                pkg: py312-sortedcontainers: duplicate dependency listing: python312
+                pkg: py312-sniffio: duplicate dependency listing: python312
+                pkg: py312-sniffio: duplicate dependency listing: python312
+                pkg: py312-sniffio: duplicate dependency listing: python312
+                pkg: py312-sniffio: duplicate dependency listing: python312
+                pkg: py312-sniffio: duplicate dependency listing: python312
+                pkg: py312-sniffio: duplicate dependency listing: python312
+                pkg: py312-outcome: duplicate dependency listing: python312
+                pkg: py312-outcome: duplicate dependency listing: python312
+                pkg: py312-outcome: duplicate dependency listing: python312
+                pkg: py312-outcome: duplicate dependency listing: python312
+                pkg: py312-outcome: duplicate dependency listing: python312
+                pkg: py312-outcome: duplicate dependency listing: python312
+                pkg: py312-attrs: duplicate dependency listing: python312
+                pkg: py312-attrs: duplicate dependency listing: python312
+                pkg: py312-attrs: duplicate dependency listing: python312
+                pkg: py312-attrs: duplicate dependency listing: python312
+                pkg: py312-attrs: duplicate dependency listing: python312
+                pkg: py312-attrs: duplicate dependency listing: python312
+                pkg: py312-idna: duplicate dependency listing: python312
+                pkg: py312-idna: duplicate dependency listing: python312
+                pkg: py312-idna: duplicate dependency listing: python312
+                pkg: py312-idna: duplicate dependency listing: python312
+                pkg: py312-idna: duplicate dependency listing: python312
+                pkg: py312-idna: duplicate dependency listing: python312
+                pkg: py312-cffi: duplicate dependency listing: python312
+                pkg: py312-cffi: duplicate dependency listing: python312
+                pkg: py312-cffi: duplicate dependency listing: python312
+                pkg: py312-cffi: duplicate dependency listing: python312
+                pkg: py312-cffi: duplicate dependency listing: python312
+                pkg: py312-cffi: duplicate dependency listing: python312
+                pkg: py312-pycparser: duplicate dependency listing: python312
+                pkg: py312-pycparser: duplicate dependency listing: python312
+                pkg: py312-pycparser: duplicate dependency listing: python312
+                pkg: py312-pycparser: duplicate dependency listing: python312
+                pkg: py312-pycparser: duplicate dependency listing: python312
+                pkg: py312-pycparser: duplicate dependency listing: python312
+                pkg: py312-async_generator: duplicate dependency listing: python312
+                pkg: py312-async_generator: duplicate dependency listing: python312
+                pkg: py312-async_generator: duplicate dependency listing: python312
+                pkg: py312-async_generator: duplicate dependency listing: python312
+                pkg: py312-async_generator: duplicate dependency listing: python312
+                pkg: py312-async_generator: duplicate dependency listing: python312
+                pkg: py312-httpx: duplicate dependency listing: python312
+                pkg: py312-httpx: duplicate dependency listing: python312
+                pkg: py312-httpx: duplicate dependency listing: python312
+                pkg: py312-httpx: duplicate dependency listing: python312
+                pkg: py312-httpx: duplicate dependency listing: python312
+                pkg: py312-httpx: duplicate dependency listing: python312
+                pkg: py312-socksio: duplicate dependency listing: python312
+                pkg: py312-socksio: duplicate dependency listing: python312
+                pkg: py312-socksio: duplicate dependency listing: python312
+                pkg: py312-socksio: duplicate dependency listing: python312
+                pkg: py312-socksio: duplicate dependency listing: python312
+                pkg: py312-socksio: duplicate dependency listing: python312
+                pkg: py312-httpcore: duplicate dependency listing: python312
+                pkg: py312-httpcore: duplicate dependency listing: python312
+                pkg: py312-httpcore: duplicate dependency listing: python312
+                pkg: py312-httpcore: duplicate dependency listing: python312
+                pkg: py312-httpcore: duplicate dependency listing: python312
+                pkg: py312-httpcore: duplicate dependency listing: python312
+                pkg: py312-h2: duplicate dependency listing: python312
+                pkg: py312-h2: duplicate dependency listing: python312
+                pkg: py312-h2: duplicate dependency listing: python312
+                pkg: py312-h2: duplicate dependency listing: python312
+                pkg: py312-h2: duplicate dependency listing: python312
+                pkg: py312-h2: duplicate dependency listing: python312
+                pkg: py312-hyperframe: duplicate dependency listing: python312
+                pkg: py312-hyperframe: duplicate dependency listing: python312
+                pkg: py312-hyperframe: duplicate dependency listing: python312
+                pkg: py312-hyperframe: duplicate dependency listing: python312
+                pkg: py312-hyperframe: duplicate dependency listing: python312
+                pkg: py312-hyperframe: duplicate dependency listing: python312
+                pkg: py312-hpack: duplicate dependency listing: python312
+                pkg: py312-hpack: duplicate dependency listing: python312
+                pkg: py312-hpack: duplicate dependency listing: python312
+                pkg: py312-hpack: duplicate dependency listing: python312
+                pkg: py312-hpack: duplicate dependency listing: python312
+                pkg: py312-hpack: duplicate dependency listing: python312
+                pkg: py312-h11: duplicate dependency listing: python312
+                pkg: py312-h11: duplicate dependency listing: python312
+                pkg: py312-h11: duplicate dependency listing: python312
+                pkg: py312-h11: duplicate dependency listing: python312
+                pkg: py312-h11: duplicate dependency listing: python312
+                pkg: py312-h11: duplicate dependency listing: python312
+                pkg: py312-certifi: duplicate dependency listing: python312
+                pkg: py312-certifi: duplicate dependency listing: python312
+                pkg: py312-certifi: duplicate dependency listing: python312
+                pkg: py312-certifi: duplicate dependency listing: python312
+                pkg: py312-certifi: duplicate dependency listing: python312
+                pkg: py312-certifi: duplicate dependency listing: python312
+                pkg: py312-anyio: duplicate dependency listing: python312
+                pkg: py312-anyio: duplicate dependency listing: python312
+                pkg: py312-anyio: duplicate dependency listing: python312
+                pkg: py312-anyio: duplicate dependency listing: python312
+                pkg: py312-anyio: duplicate dependency listing: python312
+                pkg: py312-anyio: duplicate dependency listing: python312
+                pkg: py312-typing-extensions: duplicate dependency listing: python312
+                pkg: py312-typing-extensions: duplicate dependency listing: python312
+                pkg: py312-typing-extensions: duplicate dependency listing: python312
+                pkg: py312-typing-extensions: duplicate dependency listing: python312
+                pkg: py312-typing-extensions: duplicate dependency listing: python312
+                pkg: py312-typing-extensions: duplicate dependency listing: python312
+                pkg: py312-truststore: duplicate dependency listing: python312
+                pkg: py312-truststore: duplicate dependency listing: python312
+                pkg: py312-truststore: duplicate dependency listing: python312
+                pkg: py312-truststore: duplicate dependency listing: python312
+                pkg: py312-truststore: duplicate dependency listing: python312
+                pkg: py312-truststore: duplicate dependency listing: python312
+                pkg: py312-cryptography: duplicate dependency listing: python312
+                pkg: py312-cryptography: duplicate dependency listing: python312
+                pkg: py312-cryptography: duplicate dependency listing: python312
+                pkg: py312-cryptography: duplicate dependency listing: python312
+                pkg: py312-cryptography: duplicate dependency listing: python312
+                pkg: py312-cryptography: duplicate dependency listing: python312
+                pkg: py312-aioquic: duplicate dependency listing: python312
+                pkg: py312-aioquic: duplicate dependency listing: python312
+                pkg: py312-aioquic: duplicate dependency listing: python312
+                pkg: py312-aioquic: duplicate dependency listing: python312
+                pkg: py312-aioquic: duplicate dependency listing: python312
+                pkg: py312-aioquic: duplicate dependency listing: python312
+                pkg: py312-service-identity: duplicate dependency listing: python312
+                pkg: py312-service-identity: duplicate dependency listing: python312
+                pkg: py312-service-identity: duplicate dependency listing: python312
+                pkg: py312-service-identity: duplicate dependency listing: python312
+                pkg: py312-service-identity: duplicate dependency listing: python312
+                pkg: py312-service-identity: duplicate dependency listing: python312
+                pkg: py312-pyopenssl: duplicate dependency listing: python312
+                pkg: py312-pyopenssl: duplicate dependency listing: python312
+                pkg: py312-pyopenssl: duplicate dependency listing: python312
+                pkg: py312-pyopenssl: duplicate dependency listing: python312
+                pkg: py312-pyopenssl: duplicate dependency listing: python312
+                pkg: py312-pyopenssl: duplicate dependency listing: python312
+                pkg: py312-pylsqpack: duplicate dependency listing: python312
+                pkg: py312-pylsqpack: duplicate dependency listing: python312
+                pkg: py312-pylsqpack: duplicate dependency listing: python312
+                pkg: py312-pylsqpack: duplicate dependency listing: python312
+                pkg: py312-pylsqpack: duplicate dependency listing: python312
+                pkg: py312-pylsqpack: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: p5-IO-Socket-SSL: duplicate dependency listing: perl5
+                pkg: p5-IO-Socket-SSL: duplicate dependency listing: p5-Mozilla-CA
+                pkg: p5-IO-Socket-SSL: duplicate dependency listing: perl5
+                pkg: p5-IO-Socket-SSL: duplicate dependency listing: p5-Mozilla-CA
+                pkg: p5-IO-Socket-SSL: duplicate dependency listing: perl5
+                pkg: p5-IO-Socket-SSL: duplicate dependency listing: p5-Mozilla-CA
+                pkg: p5-URI: duplicate dependency listing: perl5
+                pkg: p5-URI: duplicate dependency listing: perl5
+                pkg: p5-MIME-Base64: duplicate dependency listing: perl5
+                pkg: p5-MIME-Base64: duplicate dependency listing: perl5
+                pkg: p5-MIME-Base32: duplicate dependency listing: perl5
+                pkg: p5-MIME-Base32: duplicate dependency listing: perl5
+                pkg: p5-Net-SSLeay: duplicate dependency listing: perl5
+                pkg: p5-Net-SSLeay: duplicate dependency listing: perl5
+                pkg: p5-Mozilla-CA: duplicate dependency listing: perl5
+                pkg: p5-Mozilla-CA: duplicate dependency listing: perl5
+                pkg: p5-Mozilla-CA: duplicate dependency listing: perl5
+                pkg: p5-Error: duplicate dependency listing: perl5
+                pkg: p5-Error: duplicate dependency listing: perl5
+                pkg: p5-Authen-SASL: duplicate dependency listing: perl5
+                pkg: p5-Authen-SASL: duplicate dependency listing: perl5
+                pkg: p5-Digest-HMAC: duplicate dependency listing: perl5
+                pkg: p5-Digest-HMAC: duplicate dependency listing: perl5
+                pkg: p5-Crypt-URandom: duplicate dependency listing: perl5
+                pkg: p5-Crypt-URandom: duplicate dependency listing: perl5
+            stderr_lines:
+            - 'pkg: git: duplicate dependency listing: python312'
+            - 'pkg: git: duplicate dependency listing: python312'
+            - 'pkg: git: duplicate dependency listing: perl5'
+            - 'pkg: git: duplicate dependency listing: python312'
+            - 'pkg: git: duplicate dependency listing: python312'
+            - 'pkg: git: duplicate dependency listing: perl5'
+            - 'pkg: sssd2: duplicate dependency listing: python312'
+            - 'pkg: sssd2: duplicate dependency listing: python312'
+            - 'pkg: sssd2: duplicate dependency listing: bind-tools'
+            - 'pkg: sssd2: duplicate dependency listing: python312'
+            - 'pkg: sssd2: duplicate dependency listing: python312'
+            - 'pkg: sssd2: duplicate dependency listing: bind-tools'
+            - 'pkg: sssd2: duplicate dependency listing: python312'
+            - 'pkg: sssd2: duplicate dependency listing: python312'
+            - 'pkg: sssd2: duplicate dependency listing: bind-tools'
+            - 'pkg: tevent: duplicate dependency listing: python312'
+            - 'pkg: tevent: duplicate dependency listing: python312'
+            - 'pkg: tevent: duplicate dependency listing: python312'
+            - 'pkg: tevent: duplicate dependency listing: python312'
+            - 'pkg: tevent: duplicate dependency listing: python312'
+            - 'pkg: tevent: duplicate dependency listing: python312'
+            - 'pkg: talloc: duplicate dependency listing: python312'
+            - 'pkg: talloc: duplicate dependency listing: python312'
+            - 'pkg: talloc: duplicate dependency listing: python312'
+            - 'pkg: talloc: duplicate dependency listing: python312'
+            - 'pkg: talloc: duplicate dependency listing: python312'
+            - 'pkg: talloc: duplicate dependency listing: python312'
+            - 'pkg: tdb: duplicate dependency listing: python312'
+            - 'pkg: tdb: duplicate dependency listing: python312'
+            - 'pkg: tdb: duplicate dependency listing: python312'
+            - 'pkg: tdb: duplicate dependency listing: python312'
+            - 'pkg: tdb: duplicate dependency listing: python312'
+            - 'pkg: tdb: duplicate dependency listing: python312'
+            - 'pkg: samba416: duplicate dependency listing: python312'
+            - 'pkg: samba416: duplicate dependency listing: python312'
+            - 'pkg: samba416: duplicate dependency listing: python312'
+            - 'pkg: samba416: duplicate dependency listing: python312'
+            - 'pkg: samba416: duplicate dependency listing: python312'
+            - 'pkg: samba416: duplicate dependency listing: python312'
+            - 'pkg: py312-markdown: duplicate dependency listing: python312'
+            - 'pkg: py312-markdown: duplicate dependency listing: python312'
+            - 'pkg: py312-markdown: duplicate dependency listing: python312'
+            - 'pkg: py312-markdown: duplicate dependency listing: python312'
+            - 'pkg: py312-markdown: duplicate dependency listing: python312'
+            - 'pkg: py312-markdown: duplicate dependency listing: python312'
+            - 'pkg: py312-dnspython: duplicate dependency listing: python312'
+            - 'pkg: py312-dnspython: duplicate dependency listing: python312'
+            - 'pkg: py312-dnspython: duplicate dependency listing: python312'
+            - 'pkg: py312-dnspython: duplicate dependency listing: python312'
+            - 'pkg: py312-dnspython: duplicate dependency listing: python312'
+            - 'pkg: py312-dnspython: duplicate dependency listing: python312'
+            - 'pkg: py312-trio: duplicate dependency listing: python312'
+            - 'pkg: py312-trio: duplicate dependency listing: python312'
+            - 'pkg: py312-trio: duplicate dependency listing: python312'
+            - 'pkg: py312-trio: duplicate dependency listing: python312'
+            - 'pkg: py312-trio: duplicate dependency listing: python312'
+            - 'pkg: py312-trio: duplicate dependency listing: python312'
+            - 'pkg: py312-sortedcontainers: duplicate dependency listing: python312'
+            - 'pkg: py312-sortedcontainers: duplicate dependency listing: python312'
+            - 'pkg: py312-sortedcontainers: duplicate dependency listing: python312'
+            - 'pkg: py312-sortedcontainers: duplicate dependency listing: python312'
+            - 'pkg: py312-sortedcontainers: duplicate dependency listing: python312'
+            - 'pkg: py312-sortedcontainers: duplicate dependency listing: python312'
+            - 'pkg: py312-sniffio: duplicate dependency listing: python312'
+            - 'pkg: py312-sniffio: duplicate dependency listing: python312'
+            - 'pkg: py312-sniffio: duplicate dependency listing: python312'
+            - 'pkg: py312-sniffio: duplicate dependency listing: python312'
+            - 'pkg: py312-sniffio: duplicate dependency listing: python312'
+            - 'pkg: py312-sniffio: duplicate dependency listing: python312'
+            - 'pkg: py312-outcome: duplicate dependency listing: python312'
+            - 'pkg: py312-outcome: duplicate dependency listing: python312'
+            - 'pkg: py312-outcome: duplicate dependency listing: python312'
+            - 'pkg: py312-outcome: duplicate dependency listing: python312'
+            - 'pkg: py312-outcome: duplicate dependency listing: python312'
+            - 'pkg: py312-outcome: duplicate dependency listing: python312'
+            - 'pkg: py312-attrs: duplicate dependency listing: python312'
+            - 'pkg: py312-attrs: duplicate dependency listing: python312'
+            - 'pkg: py312-attrs: duplicate dependency listing: python312'
+            - 'pkg: py312-attrs: duplicate dependency listing: python312'
+            - 'pkg: py312-attrs: duplicate dependency listing: python312'
+            - 'pkg: py312-attrs: duplicate dependency listing: python312'
+            - 'pkg: py312-idna: duplicate dependency listing: python312'
+            - 'pkg: py312-idna: duplicate dependency listing: python312'
+            - 'pkg: py312-idna: duplicate dependency listing: python312'
+            - 'pkg: py312-idna: duplicate dependency listing: python312'
+            - 'pkg: py312-idna: duplicate dependency listing: python312'
+            - 'pkg: py312-idna: duplicate dependency listing: python312'
+            - 'pkg: py312-cffi: duplicate dependency listing: python312'
+            - 'pkg: py312-cffi: duplicate dependency listing: python312'
+            - 'pkg: py312-cffi: duplicate dependency listing: python312'
+            - 'pkg: py312-cffi: duplicate dependency listing: python312'
+            - 'pkg: py312-cffi: duplicate dependency listing: python312'
+            - 'pkg: py312-cffi: duplicate dependency listing: python312'
+            - 'pkg: py312-pycparser: duplicate dependency listing: python312'
+            - 'pkg: py312-pycparser: duplicate dependency listing: python312'
+            - 'pkg: py312-pycparser: duplicate dependency listing: python312'
+            - 'pkg: py312-pycparser: duplicate dependency listing: python312'
+            - 'pkg: py312-pycparser: duplicate dependency listing: python312'
+            - 'pkg: py312-pycparser: duplicate dependency listing: python312'
+            - 'pkg: py312-async_generator: duplicate dependency listing: python312'
+            - 'pkg: py312-async_generator: duplicate dependency listing: python312'
+            - 'pkg: py312-async_generator: duplicate dependency listing: python312'
+            - 'pkg: py312-async_generator: duplicate dependency listing: python312'
+            - 'pkg: py312-async_generator: duplicate dependency listing: python312'
+            - 'pkg: py312-async_generator: duplicate dependency listing: python312'
+            - 'pkg: py312-httpx: duplicate dependency listing: python312'
+            - 'pkg: py312-httpx: duplicate dependency listing: python312'
+            - 'pkg: py312-httpx: duplicate dependency listing: python312'
+            - 'pkg: py312-httpx: duplicate dependency listing: python312'
+            - 'pkg: py312-httpx: duplicate dependency listing: python312'
+            - 'pkg: py312-httpx: duplicate dependency listing: python312'
+            - 'pkg: py312-socksio: duplicate dependency listing: python312'
+            - 'pkg: py312-socksio: duplicate dependency listing: python312'
+            - 'pkg: py312-socksio: duplicate dependency listing: python312'
+            - 'pkg: py312-socksio: duplicate dependency listing: python312'
+            - 'pkg: py312-socksio: duplicate dependency listing: python312'
+            - 'pkg: py312-socksio: duplicate dependency listing: python312'
+            - 'pkg: py312-httpcore: duplicate dependency listing: python312'
+            - 'pkg: py312-httpcore: duplicate dependency listing: python312'
+            - 'pkg: py312-httpcore: duplicate dependency listing: python312'
+            - 'pkg: py312-httpcore: duplicate dependency listing: python312'
+            - 'pkg: py312-httpcore: duplicate dependency listing: python312'
+            - 'pkg: py312-httpcore: duplicate dependency listing: python312'
+            - 'pkg: py312-h2: duplicate dependency listing: python312'
+            - 'pkg: py312-h2: duplicate dependency listing: python312'
+            - 'pkg: py312-h2: duplicate dependency listing: python312'
+            - 'pkg: py312-h2: duplicate dependency listing: python312'
+            - 'pkg: py312-h2: duplicate dependency listing: python312'
+            - 'pkg: py312-h2: duplicate dependency listing: python312'
+            - 'pkg: py312-hyperframe: duplicate dependency listing: python312'
+            - 'pkg: py312-hyperframe: duplicate dependency listing: python312'
+            - 'pkg: py312-hyperframe: duplicate dependency listing: python312'
+            - 'pkg: py312-hyperframe: duplicate dependency listing: python312'
+            - 'pkg: py312-hyperframe: duplicate dependency listing: python312'
+            - 'pkg: py312-hyperframe: duplicate dependency listing: python312'
+            - 'pkg: py312-hpack: duplicate dependency listing: python312'
+            - 'pkg: py312-hpack: duplicate dependency listing: python312'
+            - 'pkg: py312-hpack: duplicate dependency listing: python312'
+            - 'pkg: py312-hpack: duplicate dependency listing: python312'
+            - 'pkg: py312-hpack: duplicate dependency listing: python312'
+            - 'pkg: py312-hpack: duplicate dependency listing: python312'
+            - 'pkg: py312-h11: duplicate dependency listing: python312'
+            - 'pkg: py312-h11: duplicate dependency listing: python312'
+            - 'pkg: py312-h11: duplicate dependency listing: python312'
+            - 'pkg: py312-h11: duplicate dependency listing: python312'
+            - 'pkg: py312-h11: duplicate dependency listing: python312'
+            - 'pkg: py312-h11: duplicate dependency listing: python312'
+            - 'pkg: py312-certifi: duplicate dependency listing: python312'
+            - 'pkg: py312-certifi: duplicate dependency listing: python312'
+            - 'pkg: py312-certifi: duplicate dependency listing: python312'
+            - 'pkg: py312-certifi: duplicate dependency listing: python312'
+            - 'pkg: py312-certifi: duplicate dependency listing: python312'
+            - 'pkg: py312-certifi: duplicate dependency listing: python312'
+            - 'pkg: py312-anyio: duplicate dependency listing: python312'
+            - 'pkg: py312-anyio: duplicate dependency listing: python312'
+            - 'pkg: py312-anyio: duplicate dependency listing: python312'
+            - 'pkg: py312-anyio: duplicate dependency listing: python312'
+            - 'pkg: py312-anyio: duplicate dependency listing: python312'
+            - 'pkg: py312-anyio: duplicate dependency listing: python312'
+            - 'pkg: py312-typing-extensions: duplicate dependency listing: python312'
+            - 'pkg: py312-typing-extensions: duplicate dependency listing: python312'
+            - 'pkg: py312-typing-extensions: duplicate dependency listing: python312'
+            - 'pkg: py312-typing-extensions: duplicate dependency listing: python312'
+            - 'pkg: py312-typing-extensions: duplicate dependency listing: python312'
+            - 'pkg: py312-typing-extensions: duplicate dependency listing: python312'
+            - 'pkg: py312-truststore: duplicate dependency listing: python312'
+            - 'pkg: py312-truststore: duplicate dependency listing: python312'
+            - 'pkg: py312-truststore: duplicate dependency listing: python312'
+            - 'pkg: py312-truststore: duplicate dependency listing: python312'
+            - 'pkg: py312-truststore: duplicate dependency listing: python312'
+            - 'pkg: py312-truststore: duplicate dependency listing: python312'
+            - 'pkg: py312-cryptography: duplicate dependency listing: python312'
+            - 'pkg: py312-cryptography: duplicate dependency listing: python312'
+            - 'pkg: py312-cryptography: duplicate dependency listing: python312'
+            - 'pkg: py312-cryptography: duplicate dependency listing: python312'
+            - 'pkg: py312-cryptography: duplicate dependency listing: python312'
+            - 'pkg: py312-cryptography: duplicate dependency listing: python312'
+            - 'pkg: py312-aioquic: duplicate dependency listing: python312'
+            - 'pkg: py312-aioquic: duplicate dependency listing: python312'
+            - 'pkg: py312-aioquic: duplicate dependency listing: python312'
+            - 'pkg: py312-aioquic: duplicate dependency listing: python312'
+            - 'pkg: py312-aioquic: duplicate dependency listing: python312'
+            - 'pkg: py312-aioquic: duplicate dependency listing: python312'
+            - 'pkg: py312-service-identity: duplicate dependency listing: python312'
+            - 'pkg: py312-service-identity: duplicate dependency listing: python312'
+            - 'pkg: py312-service-identity: duplicate dependency listing: python312'
+            - 'pkg: py312-service-identity: duplicate dependency listing: python312'
+            - 'pkg: py312-service-identity: duplicate dependency listing: python312'
+            - 'pkg: py312-service-identity: duplicate dependency listing: python312'
+            - 'pkg: py312-pyopenssl: duplicate dependency listing: python312'
+            - 'pkg: py312-pyopenssl: duplicate dependency listing: python312'
+            - 'pkg: py312-pyopenssl: duplicate dependency listing: python312'
+            - 'pkg: py312-pyopenssl: duplicate dependency listing: python312'
+            - 'pkg: py312-pyopenssl: duplicate dependency listing: python312'
+            - 'pkg: py312-pyopenssl: duplicate dependency listing: python312'
+            - 'pkg: py312-pylsqpack: duplicate dependency listing: python312'
+            - 'pkg: py312-pylsqpack: duplicate dependency listing: python312'
+            - 'pkg: py312-pylsqpack: duplicate dependency listing: python312'
+            - 'pkg: py312-pylsqpack: duplicate dependency listing: python312'
+            - 'pkg: py312-pylsqpack: duplicate dependency listing: python312'
+            - 'pkg: py312-pylsqpack: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: p5-IO-Socket-SSL: duplicate dependency listing: perl5'
+            - 'pkg: p5-IO-Socket-SSL: duplicate dependency listing: p5-Mozilla-CA'
+            - 'pkg: p5-IO-Socket-SSL: duplicate dependency listing: perl5'
+            - 'pkg: p5-IO-Socket-SSL: duplicate dependency listing: p5-Mozilla-CA'
+            - 'pkg: p5-IO-Socket-SSL: duplicate dependency listing: perl5'
+            - 'pkg: p5-IO-Socket-SSL: duplicate dependency listing: p5-Mozilla-CA'
+            - 'pkg: p5-URI: duplicate dependency listing: perl5'
+            - 'pkg: p5-URI: duplicate dependency listing: perl5'
+            - 'pkg: p5-MIME-Base64: duplicate dependency listing: perl5'
+            - 'pkg: p5-MIME-Base64: duplicate dependency listing: perl5'
+            - 'pkg: p5-MIME-Base32: duplicate dependency listing: perl5'
+            - 'pkg: p5-MIME-Base32: duplicate dependency listing: perl5'
+            - 'pkg: p5-Net-SSLeay: duplicate dependency listing: perl5'
+            - 'pkg: p5-Net-SSLeay: duplicate dependency listing: perl5'
+            - 'pkg: p5-Mozilla-CA: duplicate dependency listing: perl5'
+            - 'pkg: p5-Mozilla-CA: duplicate dependency listing: perl5'
+            - 'pkg: p5-Mozilla-CA: duplicate dependency listing: perl5'
+            - 'pkg: p5-Error: duplicate dependency listing: perl5'
+            - 'pkg: p5-Error: duplicate dependency listing: perl5'
+            - 'pkg: p5-Authen-SASL: duplicate dependency listing: perl5'
+            - 'pkg: p5-Authen-SASL: duplicate dependency listing: perl5'
+            - 'pkg: p5-Digest-HMAC: duplicate dependency listing: perl5'
+            - 'pkg: p5-Digest-HMAC: duplicate dependency listing: perl5'
+            - 'pkg: p5-Crypt-URandom: duplicate dependency listing: perl5'
+            - 'pkg: p5-Crypt-URandom: duplicate dependency listing: perl5'
             stdout: |-
-                [pkg-repo] Installing pkg-2.7.5...
-                [pkg-repo] Extracting pkg-2.7.5: .......... done
                 Updating FreeBSD-ports repository catalogue...
-                FreeBSD-ports repository is up to date.
+                [pkg-repo] Fetching meta.conf: . done
+                [pkg-repo] Fetching data: .......... done
+                Processing entries: .......... done
+                FreeBSD-ports repository update completed. 37816 packages processed.
                 Updating FreeBSD-ports-kmods repository catalogue...
-                FreeBSD-ports-kmods repository is up to date.
+                [pkg-repo] Fetching meta.conf: . done
+                [pkg-repo] Fetching data: ..... done
+                Processing entries: .......... done
+                FreeBSD-ports-kmods repository update completed. 239 packages processed.
+                Updating local repository catalogue...
+                local repository is up to date.
                 All repositories are up to date.
-                Updating database digests format: . done
                 The following packages will be fetched:
 
                 New packages to be FETCHED:
@@ -355,14 +836,19 @@ ok: [pkg_repo] =>
                 [pkg-repo] Fetching libsunacl-1.0.1_1: . done
                 [pkg-repo] Fetching gamin-0.1.10_10: ....... done
             stdout_lines:
-            - '[pkg-repo] Installing pkg-2.7.5...'
-            - '[pkg-repo] Extracting pkg-2.7.5: .......... done'
             - Updating FreeBSD-ports repository catalogue...
-            - FreeBSD-ports repository is up to date.
+            - '[pkg-repo] Fetching meta.conf: . done'
+            - '[pkg-repo] Fetching data: .......... done'
+            - 'Processing entries: .......... done'
+            - FreeBSD-ports repository update completed. 37816 packages processed.
             - Updating FreeBSD-ports-kmods repository catalogue...
-            - FreeBSD-ports-kmods repository is up to date.
+            - '[pkg-repo] Fetching meta.conf: . done'
+            - '[pkg-repo] Fetching data: ..... done'
+            - 'Processing entries: .......... done'
+            - FreeBSD-ports-kmods repository update completed. 239 packages processed.
+            - Updating local repository catalogue...
+            - local repository is up to date.
             - All repositories are up to date.
-            - 'Updating database digests format: . done'
             - 'The following packages will be fetched:'
             - ''
             - 'New packages to be FETCHED:'
@@ -649,8 +1135,8 @@ ok: [pkg_repo] =>
             - /usr/local/www/pkgrepo
             - sysutils/syslog-ng
             - sysutils/lnav
-            delta: '0:00:11.936998'
-            end: '2026-08-27 11:08:15.621163'
+            delta: '0:00:05.514848'
+            end: '2026-09-02 12:13:49.040236'
             failed: false
             item:
                 packages:
@@ -659,14 +1145,40 @@ ok: [pkg_repo] =>
                 pkglist: syslog
             msg: ''
             rc: 0
-            start: '2026-08-27 11:08:03.684165'
-            stderr: ''
-            stderr_lines: []
+            start: '2026-09-02 12:13:43.525388'
+            stderr: |-
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: glib: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+                pkg: py312-packaging: duplicate dependency listing: python312
+            stderr_lines:
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: glib: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
+            - 'pkg: py312-packaging: duplicate dependency listing: python312'
             stdout: |-
                 Updating FreeBSD-ports repository catalogue...
                 FreeBSD-ports repository is up to date.
                 Updating FreeBSD-ports-kmods repository catalogue...
                 FreeBSD-ports-kmods repository is up to date.
+                Updating local repository catalogue...
+                local repository is up to date.
                 All repositories are up to date.
                 The following packages will be fetched:
 
@@ -691,6 +1203,8 @@ ok: [pkg_repo] =>
             - FreeBSD-ports repository is up to date.
             - Updating FreeBSD-ports-kmods repository catalogue...
             - FreeBSD-ports-kmods repository is up to date.
+            - Updating local repository catalogue...
+            - local repository is up to date.
             - All repositories are up to date.
             - 'The following packages will be fetched:'
             - ''

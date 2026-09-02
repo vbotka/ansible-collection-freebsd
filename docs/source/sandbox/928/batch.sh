@@ -4,7 +4,7 @@
 . ../defaults/batch
 
 # Destroy template ansible-init
-ssh admin@iocage_06 sudo iocage destroy -f ansible-init
+# ssh admin@iocage_06 sudo iocage destroy -f ansible-init
 
 # Create template
 ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt

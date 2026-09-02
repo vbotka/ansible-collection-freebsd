@@ -1,15 +1,11 @@
 @all:
   |--@ungrouped:
+  |--@pull_repos:
+  |  |--repos
+  |  |--repos_devel
   |--@state_up:
-  |  |--foo
-  |  |--bar
   |  |--repos
   |  |--repos_devel
   |--@vmm_iocage_06:
-  |  |--foo
-  |  |--bar
-  |  |--repos
-  |  |--repos_devel
-  |--@pull_repos:
   |  |--repos
   |  |--repos_devel

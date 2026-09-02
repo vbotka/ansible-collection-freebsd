@@ -7,6 +7,9 @@
   |  |--repos
   |  |--qux
   |  |--repos_devel
+  |  |--pkg_repo
+  |  |--www_02
+  |  |--www_01
   |--@vmm_iocage_06:
   |  |--foo
   |  |--baz
@@ -14,3 +17,6 @@
   |  |--repos
   |  |--qux
   |  |--repos_devel
+  |  |--pkg_repo
+  |  |--www_02
+  |  |--www_01

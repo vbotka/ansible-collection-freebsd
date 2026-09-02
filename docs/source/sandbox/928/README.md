@@ -1,3 +1,3 @@
 # Template ansible-init
 
-Configure local pkg repo.
+Install packages from local repo.
