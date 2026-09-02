@@ -1,13 +1,17 @@
 @all:
   |--@ungrouped:
-  |--@pull_repos:
-  |  |--repos
-  |  |--repos_devel
   |--@state_up:
+  |  |--baz
   |  |--repos
+  |  |--qux
   |  |--repos_devel
   |  |--pkg_repo
   |--@vmm_iocage_06:
+  |  |--baz
   |  |--repos
+  |  |--qux
   |  |--repos_devel
   |  |--pkg_repo
+  |--@pull_repos:
+  |  |--repos
+  |  |--repos_devel

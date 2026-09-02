@@ -51,8 +51,8 @@ ok: [pkg_repo] =>
             - net/rsync
             - security/sudo
             - ftp/wget
-            delta: '0:01:19.961517'
-            end: '2026-09-02 14:52:03.646859'
+            delta: '0:01:38.935738'
+            end: '2026-09-02 15:41:54.692498'
             failed: false
             item:
                 packages:
@@ -68,7 +68,7 @@ ok: [pkg_repo] =>
                 pkglist: minimal
             msg: ''
             rc: 0
-            start: '2026-09-02 14:50:43.685342'
+            start: '2026-09-02 15:40:15.756760'
             stderr: |-
                 pkg: git: duplicate dependency listing: python312
                 pkg: git: duplicate dependency listing: python312
@@ -1135,8 +1135,8 @@ ok: [pkg_repo] =>
             - /usr/local/www/pkgrepo
             - sysutils/syslog-ng
             - sysutils/lnav
-            delta: '0:00:04.636526'
-            end: '2026-09-02 14:52:08.765288'
+            delta: '0:00:04.045026'
+            end: '2026-09-02 15:41:59.559674'
             failed: false
             item:
                 packages:
@@ -1145,7 +1145,7 @@ ok: [pkg_repo] =>
                 pkglist: syslog
             msg: ''
             rc: 0
-            start: '2026-09-02 14:52:04.128762'
+            start: '2026-09-02 15:41:55.514648'
             stderr: |-
                 pkg: glib: duplicate dependency listing: python312
                 pkg: glib: duplicate dependency listing: python312

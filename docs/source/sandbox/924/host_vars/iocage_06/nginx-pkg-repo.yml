@@ -1,18 +1,1 @@
-nginx_pkg_repo_conf:
-  worker_processes: ['1']
-  events:
-    worker_connections: ['256']
-    use: ['kqueue']
-  http:
-    include: ['mime.types']
-    default_type: ['application/octet-stream']
-    sendfile: ['on']
-    tcp_nopush: ['on']
-    tcp_nodelay: ['on']
-    keepalive_timeout: ['15']
-    server:
-      listen: ['80']
-      server_name: ['{{ project_hosts[inventory_hostname]["pkg_repo"] }}']
-      location /:
-        root: ['/usr/local/www/pkgrepo']
-        autoindex: ['on']
+../../../929/host_vars/iocage_06/nginx-pkg-repo.yml
