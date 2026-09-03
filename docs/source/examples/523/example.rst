@@ -17,7 +17,7 @@
 Use case
 ^^^^^^^^
 
-Create a jail that provides git repos for `ansible-pull`_. Create `iocage`_
+Create a jail that serves Git repositories for `ansible-pull`_. Create `iocage`_
 template ``ansible-repos`` and configure `git-daemon`_. Create jails from the
 template and clone repos to the `base-path`_.
 
@@ -26,24 +26,25 @@ Tree
 ::
    
   shell > tree .
-  .
   ├── ansible.cfg
-  ├── files
-  │   └── pkgs.json
   ├── group_vars
   │   ├── all
   │   │   ├── project-hosts.yml
-  │   │   └── project.yml
+  │   │   ├── project.yml
+  │   │   └── template.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
   │   └── 06_iocage2.yml
   ├── host_vars
   │   └── iocage_06
+  │       ├── local-pkg-conf.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
-  └── pb-repos.yml
+  ├── pb-repos.yml
+  └── templates
+      └── local.conf.j2
 
 Synopsis
 ^^^^^^^^
@@ -80,7 +81,6 @@ Requirements
    * `ansible-conf-syslogng-client`_
    * `ansible-conf-test`_
 
-
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -111,6 +111,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/template.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/pull_repos/repos.yml
    :language: yaml+jinja
    :caption:
@@ -125,6 +129,10 @@ group_vars
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+   :language: yaml
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml
    :caption:
@@ -137,11 +145,11 @@ host_vars
    authorization. Ensure the daemon is strictly read-only (which is
    the default).
 
-files
-^^^^^
+templates
+^^^^^^^^^
 
-.. literalinclude:: files/pkgs.json
-   :language: json
+.. literalinclude:: templates/local.conf.j2
+   :language: jinja
    :caption:
 
 Playbook pb-iocage-template.yml
