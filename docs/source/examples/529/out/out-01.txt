@@ -1,9 +1,6 @@
 
 PLAY [Create iocage templates.] ************************************************
 
-TASK [Gathering Facts] *********************************************************
-ok: [iocage_06]
-
 TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
 ok: [iocage_06]
 
@@ -15,12 +12,6 @@ ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Create: Create jails.] ******************
 ok: [iocage_06] => (item=ansible-init 15.1-RELEASE)
-
-TASK [vbotka.freebsd.iocage_template : Mount: Create mountpoints.] *************
-changed: [iocage_06] => (item=ansible-init /usr/local/repo /usr/local/repo)
-
-TASK [vbotka.freebsd.iocage_template : Mount: Mount filesystems.] **************
-ok: [iocage_06] => (item=ansible-init /usr/local/repo /usr/local/repo)
 
 TASK [vbotka.freebsd.iocage_template : Start: Get iocage list of jails.] *******
 ok: [iocage_06]
@@ -38,7 +29,7 @@ TASK [vbotka.freebsd.iocage_template : Fn/templates: Create directory.] ********
 changed: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Fn/templates: Template files.] **********
-changed: [iocage_06] => (item=local.conf)
+changed: [iocage_06] => (item={'src': 'local.conf.j2', 'dest': 'local.conf'})
 
 TASK [vbotka.freebsd.iocage_template : Pkg: Update repos.] *********************
 included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/pkg.yml for iocage_06 => (item=ansible-init)
@@ -85,5 +76,5 @@ TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
 ok: [iocage_06] => (item=ansible-init)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=27   changed=10   unreachable=0    failed=0    skipped=36   rescued=0    ignored=0   
+iocage_06                  : ok=24   changed=9    unreachable=0    failed=0    skipped=40   rescued=0    ignored=0   
 

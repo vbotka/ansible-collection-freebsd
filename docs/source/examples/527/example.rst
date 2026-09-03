@@ -31,7 +31,7 @@
 Use case
 ^^^^^^^^
 
-Create a jail that provides pkg repo for other jails. Create `iocage`_ template
+Create a jail that serves pkg repo for other jails. Create `iocage`_ template
 ``ansible-pkg-repo`` and configure web server to publish the repo. Create a jail
 from the template and fetch packages to the repo.
 
@@ -44,21 +44,24 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   ├── all
-  │   │   ├── nginx.yml
   │   │   ├── project-hosts.yml
-  │   │   └── project.yml
+  │   │   ├── project.yml
+  │   │   └── template.yml
   │   └── fetch_pkg_repo
   │       └── pkg-repo.yml
   ├── hosts
   │   └── 06_iocage2.yml
   ├── host_vars
   │   └── iocage_06
+  │       ├── local-pkg-conf.yml
+  │       ├── nginx-pkg-repo.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── pb-pkg-repo.yml
   └── templates
-      └── nginx.conf.j2
+      ├── local.conf.j2
+      └── nginx-pkg-repo.conf.j2
 
 Synopsis
 ^^^^^^^^
@@ -105,21 +108,15 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/nginx.yml
-   :language: yaml+jinja
-   :caption:
-
-.. important::
-
-   This configuration is minimal and functional for an isolated lab or trusted
-   internal LAN, but it poses several security risks in production or shared
-   network environments.
-
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/project.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/all/template.yml
    :language: yaml+jinja
    :caption:
 
@@ -130,6 +127,20 @@ group_vars
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/nginx-pkg-repo.yml
+   :language: yaml+jinja
+   :caption:
+
+.. important::
+
+   This configuration is minimal and functional for an isolated lab or trusted
+   internal LAN, but it poses several security risks in production or shared
+   network environments.
+
 .. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml
    :caption:
@@ -137,7 +148,11 @@ host_vars
 templates
 ^^^^^^^^^
 
-.. literalinclude:: templates/nginx.conf.j2
+.. literalinclude:: templates/local.conf.j2
+   :language: jinja
+   :caption:
+
+.. literalinclude:: templates/nginx-pkg-repo.conf.j2
    :language: jinja
    :caption:
 
