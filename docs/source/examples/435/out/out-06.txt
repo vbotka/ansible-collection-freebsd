@@ -10,8 +10,8 @@ changed: [www_02]
 changed: [www_01]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
-changed: [www_01]
 changed: [www_02]
+changed: [www_01]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
 ok: [www_01]

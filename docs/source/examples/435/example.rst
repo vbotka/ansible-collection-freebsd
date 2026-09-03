@@ -30,17 +30,21 @@ Tree
   ├── group_vars
   │   ├── all
   │   │   ├── project-hosts.yml
-  │   │   └── project.yml
+  │   │   ├── project.yml
+  │   │   └── templates.yml
   │   └── nginx
   │       └── nginx.yml
   ├── hosts
   │   └── 06_iocage2.yml
   ├── host_vars
   │   └── iocage_06
+  │       ├── local-pkg-conf.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
-  └── pb-nginx.yml
+  ├── pb-nginx.yml
+  └── templates
+      └── local.conf.j2
 
 Synopsis
 ^^^^^^^^
@@ -105,12 +109,20 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/templates.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/nginx/nginx.yml
    :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+   :language: yaml
+   :caption:
 
 .. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml
@@ -121,6 +133,13 @@ files
 
 .. literalinclude:: files/index.html
    :language: html
+   :caption:
+
+templates
+^^^^^^^^^
+
+.. literalinclude:: templates/local.conf.j2
+   :language: jinja
    :caption:
 
 Playbook pb-iocage-template.yml
@@ -217,7 +236,7 @@ Results
      [iocage_06]# iocage exec www-01 service nginx status
      nginx is running as pid 51207.
 
-* Test the server is working
+* Test the server is working. See the IP in the list of the jails.
 
   .. code-block:: console
 

@@ -18,7 +18,7 @@ Minor Changes
 --------------
 * Role iocage_template upgraded to 1.4.0
 * Docs. Add example 530.
-* Docs. Update example 529.
+* Docs. Update examples 435, 529.
 
 Bugfixes
 --------
