@@ -5,7 +5,7 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-1.1.0
+1.0.4
 =====
 
 Release Summary
@@ -13,10 +13,10 @@ Release Summary
 
 Major Changes
 -------------
-* Role iocage_template upgraded to 1.4.0
 
 Minor Changes
 --------------
+* Role iocage_template upgraded to 1.4.0
 * Docs. Update example 529.
 * Role iocage_template 1.4.0 tested in sandbox 435, 917-929.
 
@@ -25,7 +25,7 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
-* See GitHub Release Notes ansible-freebsd-iocage-template.
+* See ansible-freebsd-iocage-template changelog on GitHub.
 
 
 1.0.3
