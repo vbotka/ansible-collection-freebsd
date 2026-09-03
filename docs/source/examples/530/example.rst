@@ -68,6 +68,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * role `vbotka.freebsd.iocage_template`_
+* package repository created in :ref:`example_322`
 
 Notes
 ^^^^^
