@@ -135,11 +135,11 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_06/nginx-pkg-repo.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 templates

@@ -1,5 +1,5 @@
 ---
-pkg_role_version: 2.9.6
+pkg_role_version: 2.9.7
 
 # requirements >=
 pkg_version_community_general: 9.3.0

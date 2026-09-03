@@ -14,13 +14,25 @@ pkg_default_repo:
     - {key: fingerprints, value: '"/usr/share/keys/pkg"'}
     - {key: enabled, value: "{{ pkg_default_repo_enabled }}"}
 
-# Crete repos in /usr/local/etc/pkg/repos
+# Crete repo /usr/local/etc/pkg/repos/local.conf
+# Use template repos.j2 (default)
 pkg_repos_conf:
   - name: local
     conf:
       - {key: 'url', value: '"file:///usr/local/repo"'}
       - {key: 'enabled', value: 'yes'}
       - {key: 'signature_type', value: '"none"'}
+
+# Crete repo /usr/local/etc/pkg/repos/local.conf
+# Use template repos_to_ucl.j2
+# pkg_repos_template: repos_to_ucl.j2
+# pkg_repos_conf:
+#   - name: local
+#     conf:
+#       local:
+#         url: 'file:///usr/local/repo'
+#         enabled: 'yes'
+#         signature_type: 'none'
 
 # Update repos
 pkg_repos_conf_ucl:
@@ -36,3 +48,4 @@ pkg_dict_all: false
 pkg_dict_select:
   - ansible
   - minimal
+

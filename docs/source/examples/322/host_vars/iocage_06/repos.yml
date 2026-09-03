@@ -1,0 +1,8 @@
+pkg_repos_template: repos_to_ucl.j2
+pkg_repos_conf:
+  - name: local
+    conf:
+      local:
+        url: 'file:///usr/local/repo'
+        enabled: 'yes'
+        signature_type: 'none'

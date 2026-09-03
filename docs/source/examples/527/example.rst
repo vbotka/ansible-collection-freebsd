@@ -85,6 +85,7 @@ Requirements
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * `inventory plugin vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
+* package repository created in :ref:`example_322`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -238,7 +239,7 @@ List repo
    shell > ssh admin@iocage_06 fetch -qo - http://172.16.99.23/
 
 .. literalinclude:: out/out-07.txt
-   :language: console
+   :language: html
    :force:
 
 

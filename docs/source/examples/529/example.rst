@@ -54,8 +54,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* local package repository on the managed node.
 * role `vbotka.freebsd.iocage_template`_
+* package repository created in :ref:`example_322`
 
 .. note::
 

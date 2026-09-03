@@ -1,0 +1,15 @@
+
+PLAY [Role vbotka.freebsd.nginx] ***********************************************
+
+TASK [vbotka.freebsd.nginx : Packages: Install Nginx packages.] ****************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
+ok: [iocage_06] => (item=/usr/local/etc/nginx/nginx.conf)
+
+TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+

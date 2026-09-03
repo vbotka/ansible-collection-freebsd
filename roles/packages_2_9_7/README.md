@@ -1,6 +1,5 @@
 # freebsd_packages
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_packages)
 [![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-packages.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-packages)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-packages)](https://github.com/vbotka/ansible-freebsd-packages/tags)
 

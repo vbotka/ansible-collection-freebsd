@@ -1,0 +1,29 @@
+
+PLAY [Role vbotka.freebsd.packages] ********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.packages : Conf: Create directories] **********************
+ok: [iocage_06] => (item=/usr/local/etc/pkg)
+ok: [iocage_06] => (item=/usr/local/etc/pkg/repos)
+
+TASK [vbotka.freebsd.packages : Conf: Configure /usr/local/etc/pkg/repos] ******
+ok: [iocage_06] => (item=local)
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Create /usr/local/repo] ********
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Fetch selected lists from pkg_dict] ***
+ok: [iocage_06] => (item=minimal)
+ok: [iocage_06] => (item=syslog)
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Fetch list pkg_list] ***********
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+
