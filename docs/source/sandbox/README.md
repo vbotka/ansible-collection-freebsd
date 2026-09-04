@@ -36,7 +36,6 @@
 
 923 Inventory plugin iocage2
 924 * Template ansible-pkg-repo
-925 Repo ansible-conf-roles log-server log-client
 928 * Template ansible-init (local pkg repo)
 929 Templates all
 
