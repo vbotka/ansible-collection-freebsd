@@ -1,0 +1,18 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--foo
+  |  |--baz
+  |  |--bar
+  |  |--repos
+  |  |--qux
+  |  |--repos_devel
+  |  |--pkg_repo
+  |--@vmm_iocage_06:
+  |  |--foo
+  |  |--baz
+  |  |--bar
+  |  |--repos
+  |  |--qux
+  |  |--repos_devel
+  |  |--pkg_repo

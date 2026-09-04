@@ -1,0 +1,6 @@
+---
+- include_vars:
+    file: "{{ playbook_dir }}/conf.d/{{ oitem }}/template.yml"
+
+- include_role:
+    name: vbotka.freebsd.iocage_template

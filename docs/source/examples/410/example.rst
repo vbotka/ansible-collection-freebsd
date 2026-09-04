@@ -14,8 +14,8 @@
 Use case
 ^^^^^^^^
 
-Create list of variables from files in the directory ``conf.d``. Use the role `vbotka.freebsd.lib`_
-tasks `al_include_confd_vars_list.yml`_
+Create list of variables from files in the directory ``conf.d``. Use the role
+`vbotka.freebsd.lib`_ tasks `al_include_confd_vars_list.yml`_
 
 .. code-block:: yaml
 
@@ -57,7 +57,8 @@ Requirements
 Notes
 ^^^^^
 
-The variables' names are not collected. The resulting list comprises the variables' values only.
+Variable names are not collected. The resulting list contains only the variable
+values.
 
 .. note::
 

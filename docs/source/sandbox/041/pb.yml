@@ -1,0 +1,36 @@
+---
+- name: Test filter project.
+  hosts: localhost
+  connection: local
+
+  vars:
+
+    project:
+      logserv-1:
+        class: [logserv]
+        vmm: iocage_01
+      http-1:
+        class: [http, logclient]
+        vmm: iocage_02
+      db-1:
+        class: [db, logclient]
+        vmm: iocage_02
+      http-2:
+        class: [http, logclient]
+        vmm: iocage_04
+      db-2:
+        class: [db, logclient]
+        vmm: iocage_04
+    
+    vmm: "{{ (project | vbotka.freebsd.project).vmm }}"
+    class: "{{ (project | vbotka.freebsd.project).class }}"
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ vmm | to_yaml(indent=2) }}
+
+    - debug:
+        msg: |
+          {{ class | to_yaml(indent=2) }}

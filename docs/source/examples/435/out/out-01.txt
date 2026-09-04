@@ -22,6 +22,21 @@ ok: [iocage_06]
 TASK [vbotka.freebsd.iocage_template : Pkg: Get iocage list of jails.] *********
 ok: [iocage_06]
 
+TASK [vbotka.freebsd.iocage_template : Pkg: Configure repos.] ******************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/templates.yml for iocage_06 => (item=ansible-nginx)
+
+TASK [vbotka.freebsd.iocage_template : Fn/templates: Create directory.] ********
+changed: [iocage_06]
+
+TASK [vbotka.freebsd.iocage_template : Fn/templates: Template files.] **********
+changed: [iocage_06] => (item={'src': 'local.conf.j2', 'dest': 'local.conf'})
+
+TASK [vbotka.freebsd.iocage_template : Pkg: Update repos.] *********************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/iocage_template/tasks/fn/pkg.yml for iocage_06 => (item=ansible-nginx)
+
+TASK [vbotka.freebsd.iocage_template : Fn/pkg: Update repos.] ******************
+ok: [iocage_06] => (item=local)
+
 TASK [vbotka.freebsd.iocage_template : Pkg: Install packages.] *****************
 changed: [iocage_06] => (item=ansible-nginx)
 
@@ -44,5 +59,5 @@ TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
 ok: [iocage_06] => (item=ansible-nginx)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=14   changed=3    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+iocage_06                  : ok=19   changed=5    unreachable=0    failed=0    skipped=44   rescued=0    ignored=0   
 

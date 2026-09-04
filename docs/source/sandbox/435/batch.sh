@@ -8,7 +8,7 @@ ssh admin@iocage_06 sudo iocage destroy -f www-01
 ssh admin@iocage_06 sudo iocage destroy -f www-02
 
 # Destroy template
-ssh admin@iocage_06 sudo iocage destroy -f ansible-nginx
+# ssh admin@iocage_06 sudo iocage destroy -f ansible-nginx
 
 # Create template
 ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt

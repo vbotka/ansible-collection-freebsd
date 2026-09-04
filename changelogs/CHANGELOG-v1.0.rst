@@ -5,6 +5,36 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+1.0.4
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+* Add filter project. Add example 041.
+* Role iocage_template upgraded to 1.4.0
+* Role packages upgraded to 2.9.7
+* Docs. Add Preamble.
+* Docs. Add UG chapter Project hosts.
+* Docs. Add examples 042,043,322,530.
+* Docs. Update examples 435,523,527,529.
+* Docs. Update UG with the filter project.
+* Docs. Update examples with the filter project.
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+* See ansible-freebsd-iocage-template changelog on GitHub.
+* See ansible-freebsd-packages changelog on GitHub.
+
+
 1.0.3
 =====
 

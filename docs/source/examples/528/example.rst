@@ -17,7 +17,15 @@
 .. index:: single: repo ansible-conf-roles; Example 528
 .. index:: single: ansible-pull; Example 528
 .. index:: single: pb_iocage_project_create_from_templates.yml Example 528
+
+.. index:: single: filter vbotka.freebsd.project; Example 528
+.. index:: single: vbotka.freebsd.project; Example 528
+.. index:: single: project; Example 528
+
 .. index:: single: connection vbotka.freebsd.jailexec; Example 528
+.. index:: single: vbotka.freebsd.jailexec; Example 528
+.. index:: single: jailexec; Example 528
+
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 528
 
 .. index:: single: ai_db_host; Example 528
@@ -88,7 +96,8 @@ Requirements
 * template ``ansible-init`` created in :ref:`example_524`
 * jail ``pkg-repo`` created in :ref:`example_527`
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `inventory plugin vbotka.freebsd.iocage2`_
+* `filter vbotka.freebsd.project`_
+* `inventory vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
 
 .. note::
@@ -276,7 +285,8 @@ Playbook output - Test Log Clients
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
+.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
+.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 
 .. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
 .. _iocage: https://iocage.readthedocs.io/en/latest/

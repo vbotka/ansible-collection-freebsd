@@ -1,0 +1,17 @@
+
+PLAY [Test from_ucl filter.] ***************************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    msg:
+        FreeBSD:
+            enabled: true
+            fingerprints: /usr/share/keys/pkg
+            mirror_type: srv
+            priority: 100
+            signature_type: fingerprints
+            url: pkg+http://pkg.FreeBSD.org/${ABI}/quarterly
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

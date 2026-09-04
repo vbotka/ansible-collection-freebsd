@@ -1,0 +1,40 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# defaults for freebsd_iocage_template (fit)
+fit_role_version: 1.4.0
+
+fit_debug: false
+fit_debug0: false
+fit_debug2: false
+
+fit_sudo: false
+fit_stop: true
+fit_template: true
+fit_templates: []
+
+fit_dir_default:
+  owner: root
+  group: wheel
+  mode: '0755'
+
+fit_file_default:
+  owner: root
+  group: wheel
+  mode: '0644'
+  assignment_operator: ' '
+
+fit_dir_options: {}
+fit_file_options: {}
+
+fit_pkg_install: false
+# fit_pkg_cached: false
+# fit_pkg_ignore_osver: false
+# fit_pkg_pkgsite: string
+
+fit_iocage_mount: "/{{ out_pool.stdout }}"
+fit_iocage_templates: "{{ out_templates.stdout | vbotka.freebsd.iocage('templates') }}"
+fit_iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
+
+# EOF

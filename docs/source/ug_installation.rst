@@ -19,9 +19,11 @@ Upgrade the collection if already installed. For example,
    Starting galaxy collection install process
    Process install dependency map
    Starting collection install process
-   'vbotka.freebsd:0.5.0' is already installed, skipping.
-   'ansible.posix:2.0.0' is already installed, skipping.
-   'community.general:10.2.0' is already installed, skipping.
+   'vbotka.freebsd:1.0.4' is already installed, skipping.
+   'ansible.posix:2.2.2' is already installed, skipping.
+   'ansible.utils:6.1.0' is already installed, skipping.
+   'community.general:13.3.0' is already installed, skipping.
+   'community.library_inventory_filtering_v1:1.1.5' is already installed, skipping.
   
 .. seealso::
 

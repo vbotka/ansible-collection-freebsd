@@ -1,7 +1,7 @@
 .. _example_321:
 
-321 Create package repository configuration
--------------------------------------------
+321 Configure package repository for Poudriere
+----------------------------------------------
 
 .. contents::
    :local:
@@ -17,7 +17,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.packages`_ to create a package' repository configuration.
+Use the role `vbotka.freebsd.packages`_ to configure a package repository for
+``Poudriere``.
 
 Tree
 ^^^^
@@ -38,8 +39,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the managed node ``iocage_04`` in the playbook ``pb-repos.yml`` create the package' repository
-configuration.
+At a managed node use the role `vbotka.freebsd.packages`_ to configure a package
+repository for ``Poudriere``.
 
 Requirements
 ^^^^^^^^^^^^

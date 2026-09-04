@@ -23,12 +23,13 @@ Some roles in the namespace `vbotka`_ are documented at `readtthedocs.io`_
 Configuration samples
 ---------------------
 
-Most of the roles in the namespace `vbotka`_ provide (sometimes) commented configuration samples in
-roles' ``vars`` directories.
+Most roles in the ``vbotka`` namespace provide commented configuration samples in
+their ``vars`` directories.
 
 .. hint::
+
    * See the roles' ``README`` files.
-   * See this collection ``Index`` what examples are available.
+   * See the collection ``Index`` for available examples.
 
 
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/

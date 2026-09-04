@@ -11,13 +11,20 @@
 .. index:: single: role vbotka.freebsd.iocage_template; Example 523
 .. index:: single: pb_iocage_project_create_from_templates; Example 523
 
+.. index:: single: filter vbotka.freebsd.project; Example 523
+.. index:: single: vbotka.freebsd.project; Example 523
+.. index:: single: project; Example 523
+
 .. index:: single: connection vbotka.freebsd.jailexec; Example 523
+.. index:: single: vbotka.freebsd.jailexec; Example 523
+.. index:: single: jailexec; Example 523
+
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 523
 
 Use case
 ^^^^^^^^
 
-Create a jail that provides git repos for `ansible-pull`_. Create `iocage`_
+Create a jail that serves Git repositories for `ansible-pull`_. Create `iocage`_
 template ``ansible-repos`` and configure `git-daemon`_. Create jails from the
 template and clone repos to the `base-path`_.
 
@@ -26,24 +33,25 @@ Tree
 ::
    
   shell > tree .
-  .
   ├── ansible.cfg
-  ├── files
-  │   └── pkgs.json
   ├── group_vars
   │   ├── all
   │   │   ├── project-hosts.yml
-  │   │   └── project.yml
+  │   │   ├── project.yml
+  │   │   └── template.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
   │   └── 06_iocage2.yml
   ├── host_vars
   │   └── iocage_06
+  │       ├── local-pkg-conf.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
-  └── pb-repos.yml
+  ├── pb-repos.yml
+  └── templates
+      └── local.conf.j2
 
 Synopsis
 ^^^^^^^^
@@ -64,8 +72,10 @@ Requirements
 
 * role `vbotka.freebsd.iocage_template`_
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `inventory plugin vbotka.freebsd.iocage2`_
+* `filter vbotka.freebsd.project`_
+* `inventory vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
+* package repository created in :ref:`example_322`
 
 .. note::
 
@@ -79,7 +89,6 @@ Requirements
    * `ansible-conf-syslogng-server`_
    * `ansible-conf-syslogng-client`_
    * `ansible-conf-test`_
-
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -111,6 +120,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/template.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/pull_repos/repos.yml
    :language: yaml+jinja
    :caption:
@@ -125,8 +138,12 @@ group_vars
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/template.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. important::
@@ -137,11 +154,11 @@ host_vars
    authorization. Ensure the daemon is strictly read-only (which is
    the default).
 
-files
-^^^^^
+templates
+^^^^^^^^^
 
-.. literalinclude:: files/pkgs.json
-   :language: json
+.. literalinclude:: templates/local.conf.j2
+   :language: jinja
    :caption:
 
 Playbook pb-iocage-template.yml
@@ -233,7 +250,8 @@ List repos
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
+.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
+.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 
 .. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
 .. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon

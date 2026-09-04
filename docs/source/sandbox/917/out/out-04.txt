@@ -1,17 +1,17 @@
 @all:
   |--@ungrouped:
+  |--@state_up:
+  |  |--baz
+  |  |--repos
+  |  |--qux
+  |  |--repos_devel
+  |  |--pkg_repo
+  |--@vmm_iocage_06:
+  |  |--baz
+  |  |--repos
+  |  |--qux
+  |  |--repos_devel
+  |  |--pkg_repo
   |--@pull_repos:
   |  |--repos
   |  |--repos_devel
-  |--@state_up:
-  |  |--repos
-  |  |--repos_devel
-  |  |--log_server_01
-  |  |--www_02
-  |  |--www_01
-  |--@vmm_iocage_06:
-  |  |--repos
-  |  |--repos_devel
-  |  |--log_server_01
-  |  |--www_02
-  |  |--www_01

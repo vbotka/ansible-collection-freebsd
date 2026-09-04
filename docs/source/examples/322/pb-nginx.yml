@@ -1,0 +1,6 @@
+- name: Role vbotka.freebsd.nginx
+  hosts: iocage
+
+  roles:
+
+    - vbotka.freebsd.nginx

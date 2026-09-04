@@ -1,0 +1,28 @@
+nginx_install: true
+nginx_enable: true
+nginx_debug: false
+nginx_backup_conf: true
+
+nginx_packages:
+  - www/nginx-lite
+
+nginx_conf:
+  - path: "{{ nginx_conf_dir }}/nginx/nginx.conf"
+    conf:
+      worker_processes: ['1']
+      events:
+        worker_connections: ['256']
+        use: ['kqueue']
+      http:
+        include: ['mime.types']
+        default_type: ['application/octet-stream']
+        sendfile: ['on']
+        tcp_nopush: ['on']
+        tcp_nodelay: ['on']
+        keepalive_timeout: ['15']
+        server:
+          listen: ['80']
+          server_name: ['{{ project_hosts[inventory_hostname]["local_pkg_repo"] }}']
+          location /:
+            root: ['{{ pkg_fetch_dir }}']
+            autoindex: ['on']

@@ -13,15 +13,15 @@
 .. index:: single: service ansible_init; Example 529
 .. index:: single: template ansible-init; Example 529
 .. index:: single: firstboot; Example 529
-.. index:: single: ansible-conf-init; Example 529
-.. index:: single: repo ansible-conf-init; Example 529
 .. index:: single: ansible-pull; Example 529
 .. index:: single: role vbotka.freebsd.iocage_template; Example 529
 
 Use case
 ^^^^^^^^
 
-Create `iocage`_ template ``ansible-init``. Configure ``firstboot`` service ``ansible_init`` that runs `ansible-pull`_ and uses the repo `ansible-conf-init`_. Mount, configure, and update local repository.
+Create `iocage`_ template ``ansible-init``. Enable ``firstboot`` service
+``ansible_init`` that runs `ansible-pull`_ from the repositories on
+``project_hosts.repos``.
 
 Tree
 ^^^^
@@ -30,11 +30,15 @@ Tree
   shell > tree .
   .
   ├── ansible.cfg
+  ├── files
+  │   └── ansible-init.sh
   ├── group_vars
   │   └── all
-  │       └── project-hosts.yml
+  │       ├── project-hosts.yml
+  │       └── template.yml
   ├── host_vars
   │   └── iocage_06
+  │       ├── local-pkg-conf.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -44,17 +48,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
-
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
-    ``ansible-init``
+* At a managed node, use the role `vbotka.freebsd.iocage_template`_ to create
+  the template ``ansible-init``
 
 Requirements
 ^^^^^^^^^^^^
 
-* local package repository on the managed node.
-* jail ``repos`` created in :ref:`example_523`
 * role `vbotka.freebsd.iocage_template`_
+* package repository created in :ref:`example_322`
 
 .. note::
 
@@ -83,11 +84,26 @@ group_vars
    :language: yaml
    :caption:
 
+.. literalinclude:: group_vars/all/template.yml
+   :language: yaml
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/template.yml
-   :language: yaml
+   :language: yaml+jinja
+   :caption:
+
+files
+^^^^^
+
+.. literalinclude:: files/ansible-init.sh
+   :language: sh
    :caption:
 
 templates

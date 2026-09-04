@@ -26,6 +26,7 @@ Plugins
    dict_to_ast <ug_filter_dict_to_ast>
    from_ucl <ug_filter_from_ucl>
    iocage <ug_filter_iocage>
+   project <ug_filter_project>
    to_ucl <ug_filter_to_ucl>
 
 .. toctree::
