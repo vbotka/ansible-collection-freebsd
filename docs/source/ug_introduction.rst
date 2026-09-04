@@ -50,7 +50,7 @@ The collection is shipped with:
          BSD support is important to us at Ansible. ... we have an active BSD community
          and strive to be as BSD-friendly as possible.
 
-     Search `latest Ansible docs`_ for ``FreeBSD`` to learn the current FreeBSD support.
+     Search the `official Ansible documentation`_ for the current status of ``FreeBSD`` support.
 
 
 .. _Ansible distribution: https://docs.ansible.com/ansible/latest/collections/index.html
@@ -68,7 +68,7 @@ The collection is shipped with:
 .. _venv — Creation of virtual environments: https://docs.python.org/3/library/venv.html#module-venv
 .. _community.general.yaml: https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html
 .. _Ansible claims: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#bsd-efforts-and-contributions
-.. _latest Ansible docs: https://docs.ansible.com/ansible/latest/
+.. _official Ansible documentation: https://docs.ansible.com/ansible/latest/
 .. _Jails and Containers - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/jails/
 .. _result_format=yaml: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format
 
