@@ -43,6 +43,8 @@ Examples
 
    examples/040/example.rst
    examples/041/example.rst
+   examples/042/example.rst
+   examples/043/example.rst
    examples/050/example.rst
 
 .. toctree::

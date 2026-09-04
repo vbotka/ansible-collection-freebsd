@@ -83,9 +83,15 @@ Requirements
 
 * role `vbotka.freebsd.iocage_template`_
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
+* filter `vbotka.freebsd.dict_to_ast`_
+* filter `vbotka.freebsd.ast_to_nginx`_
 * `inventory plugin vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
 * package repository created in :ref:`example_322`
+
+.. seealso::
+
+   Example :ref:`example_042`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -247,6 +253,8 @@ List repo
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
 .. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
+.. _vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
+.. _vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
 
 .. _iocage: https://iocage.readthedocs.io/en/latest/
 

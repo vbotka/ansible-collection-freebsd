@@ -26,7 +26,7 @@
 
 914 Template ansible-syslogng-server
 915 Template ansible-syslogng-client
-917 Template ansible-repos
+917 * Template ansible-repos
 
 918 Template ansible-init test (ai_db_host)
 919 Template ansible-init test (ai_db_class)
@@ -35,13 +35,10 @@
 922 Template ansible-init-example; test package ansible-init-firstboot-1.0.pkg
 
 923 Inventory plugin iocage2
-924 Template ansible-pkg-repo
+924 * Template ansible-pkg-repo
 925 Repo ansible-conf-roles log-server log-client
-926 Filters dict_to_ast and ast_to_nginx
-927 Filters to_ucl and from_ucl
-928 Template ansible-init (local pkg repo)
+928 * Template ansible-init (local pkg repo)
 929 Templates all
-930 Filter project
 
 ## Notes
 

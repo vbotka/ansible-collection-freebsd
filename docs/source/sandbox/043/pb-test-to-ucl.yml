@@ -1,5 +1,6 @@
 - name: Test to_ucl filter.
   hosts: localhost
+  connection: local
 
   vars:
 

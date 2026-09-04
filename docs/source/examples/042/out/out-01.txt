@@ -1,0 +1,35 @@
+
+PLAY [Test filter dict_to_ast] *************************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    msg: |-
+        ast:
+          - args: [auto]
+            directive: worker_processes
+          - args: []
+            block:
+            - args: ['1024']
+              directive: worker_connections
+            directive: events
+          - args: []
+            block:
+            - args: [/etc/nginx/mime.types]
+              directive: include
+            - args: []
+              block:
+              - args: ['80']
+                directive: listen
+              - args: [example.com, www.example.com]
+                directive: server_name
+              - args: [/]
+                block:
+                - args: ['200', Hello from Crossplane!]
+                  directive: return
+                directive: location
+              directive: server
+            directive: http
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

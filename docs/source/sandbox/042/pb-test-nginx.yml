@@ -1,5 +1,6 @@
-- name: Test filter yaml_to_nginx
+- name: Test filter ast_to_nginx
   hosts: localhost
+  connection: local
 
   vars:
 
@@ -18,7 +19,6 @@
   tasks:
 
     - debug:
-
         msg: |
           {{ nginx_conf | vbotka.freebsd.dict_to_ast
                         | vbotka.freebsd.ast_to_nginx }}

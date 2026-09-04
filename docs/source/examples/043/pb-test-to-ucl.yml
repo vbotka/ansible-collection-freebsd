@@ -1,5 +1,6 @@
-- name: Test from_ucl filter.
+- name: Test to_ucl filter.
   hosts: localhost
+  connection: local
 
   vars:
 
@@ -11,11 +12,9 @@
         fingerprints: "/usr/share/keys/pkg"
         enabled: true
         priority: 100
-    pkg_repo_ucl: |
-      {{ pkg_repo_config | vbotka.freebsd.to_ucl }}
 
   tasks:
 
     - debug:
         msg: |
-          {{ pkg_repo_ucl | vbotka.freebsd.from_ucl }}
+          {{ pkg_repo_config | vbotka.freebsd.to_ucl }}

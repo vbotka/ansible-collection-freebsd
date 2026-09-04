@@ -12,6 +12,9 @@
 .. index:: single: vbotka.freebsd.packages; Example 322
 .. index:: single: role vbotka.freebsd.nginx; Example 322
 .. index:: single: vbotka.freebsd.nginx; Example 322
+.. index:: single: filter vbotka.freebsd.to_ucl; Example 322
+.. index:: single: vbotka.freebsd.to_ucl; Example 322
+.. index:: single: to_ucl; Example 322
 
 Use case
 ^^^^^^^^
@@ -54,6 +57,7 @@ Requirements
 
 * role `vbotka.freebsd.nginx`_
 * role `vbotka.freebsd.packages`_
+* filter `vbotka.freebsd.to_ucl`_
 
 Notes
 ^^^^^
@@ -68,6 +72,7 @@ TBD
 
    * `man pkg`_
    * `man pkg.conf`_
+   * Example :ref:`example_043`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -148,6 +153,7 @@ List repo
 
 .. _vbotka.freebsd.nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/nginx/
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
+.. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/ 
 
 .. _man pkg: https://man.freebsd.org/cgi/man.cgi?pkg(8)
 .. _man pkg.conf: https://man.freebsd.org/cgi/man.cgi?pkg.conf(5)
