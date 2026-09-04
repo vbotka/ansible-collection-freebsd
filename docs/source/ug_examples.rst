@@ -4,55 +4,12 @@ Examples
 ********
 
 :001-: Manage iocage
-:010-: `Module`_, `Inventory`_ and `Filter`_ ``vbotka.freebsd.iocage``
-:021-: ``Inventory`` `vbotka.freebsd.iocage2`_
+:010-: iocage plugins
 :040-: Other plugins
 :200-: Ansible client
 :300-: Modules
-:310-: `Role vbotka.freebsd.postinstall`_
-:320-: `Role vbotka.freebsd.packages`_
-:330-: `Role vbotka.freebsd.iocage`_
-:340-: `Role vbotka.freebsd.config_light`_
-:350-: `Role vbotka.freebsd.rsnapshot`_
-:360-: `Role vbotka.freebsd.network`_
-:370-: `Role vbotka.freebsd.pf`_
-:380-: `Role vbotka.freebsd.custom_image`_
-:390-: `Role vbotka.freebsd.poudriere`_
-:400-: `Role vbotka.freebsd.zfs`_
-:410-: `Role vbotka.freebsd.lib`_
-:420-: `Role vbotka.freebsd.apache`_
-:430-: `Role vbotka.freebsd.certificate`_
-:435-: `Role vbotka.freebsd.nginx`_
-:440-: `Role vbotka.freebsd.dhcp`_
+:310-: Roles
 :500-: Infrastructure
-
-.. note::
-
-   * The examples that create jails use the iocage host setting created in the example
-     :ref:`example_440` by default. The firewall is on both the external interface and the ``vnet``
-     bridge of the iocage host. DHCP for the jails is on the bridge, and SSH access from the local
-     network to the jails is redirected. Examples that do not use this setting are marked ``.deny``,
-     meaning they are excluded from ``batch.sh``. To run these examples, the firewall must be
-     reconfigured; see :ref:`example_370`.
-
-   * All examples include additional files that are not displayed in the file tree. Review these
-     files for more details.
-
-   * The examples include a ``batch.sh`` script that executes the commands and generates the output
-     for each example.
-
-   * Most playbooks in ``batch.sh`` are idempotent. If a playbook is run repeatedly, the output may
-     display a status of ``ok`` instead of the expected ``changed``.
-
-   * The playbooks in the examples use dashes (``-``) in their filenames (e.g. ``pb-iocage.yml``).
-
-   * Due to Ansible collection naming conventions, the playbooks in the collection use underscores
-     (``_``) in their filenames (e.g. ``pb_iocage_template.yml``).
-
-   * To avoid connection errors in examples where DHCP is used, ``host_key_checking = false`` can be
-     configured in ``ansible.cfg``.
-
-.. hint:: See :ref:`dg_update_examples`.
   
 .. toctree::
    :maxdepth: 1
@@ -158,6 +115,13 @@ Examples
    528 Log srv/client (ansible-conf-roles) <examples/528/example.rst>
    529 template ansible-init (local repo) <examples/529/example.rst>
    530 Creat all templates <examples/530/example.rst>
+
+.. _ug_examples_notes:
+.. include:: ug_examples_notes.rst
+
+.. hint::
+
+   See :ref:`dg_update_examples`.
 
 
 .. _Module: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
