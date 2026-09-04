@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
-
 from ansible.errors import AnsibleFilterError
 
 DOCUMENTATION = r"""
@@ -29,19 +28,19 @@ EXAMPLES = r"""
 - name: Transform project dictionary
   vars:
     project:
-      logserv_1:
+      logserv-1:
         class: [logserv]
         vmm: iocage_01
-      http_1:
+      http-1:
         class: [http, logclient]
         vmm: iocage_02
-      db_1:
+      db-1:
         class: [db, logclient]
         vmm: iocage_02
-      http_2:
+      http-2:
         class: [http, logclient]
         vmm: iocage_04
-      db_2:
+      db-2:
         class: [db, logclient]
         vmm: iocage_04
   ansible.builtin.set_fact:
@@ -68,14 +67,14 @@ RETURN = r"""
         type: dict
         sample:
           iocage_01:
-            logserv_1:
+            logserv-1:
               class: [logserv]
               vmm: iocage_01
           iocage_02:
-            db_1:
+            db-1:
               class: [db, logclient]
               vmm: iocage_02
-            http_1:
+            http-1:
               class: [http, logclient]
               vmm: iocage_02
       class:
@@ -85,18 +84,18 @@ RETURN = r"""
         type: dict
         sample:
           db:
-            - db_1
-            - db_2
+            - db-1
+            - db-2
           http:
-            - http_1
-            - http_2
+            - http-1
+            - http-2
           logclient:
-            - http_1
-            - db_1
-            - http_2
-            - db_2
+            - db-1
+            - db-2
+            - http-1
+            - http-2
           logserv:
-            - logserv_1
+            - logserv-1
 """
 
 

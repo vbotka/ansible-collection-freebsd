@@ -6,19 +6,19 @@
   vars:
 
     project:
-      logserv_1:
+      logserv-1:
         class: [logserv]
         vmm: iocage_01
-      http_1:
+      http-1:
         class: [http, logclient]
         vmm: iocage_02
-      db_1:
+      db-1:
         class: [db, logclient]
         vmm: iocage_02
-      http_2:
+      http-2:
         class: [http, logclient]
         vmm: iocage_04
-      db_2:
+      db-2:
         class: [db, logclient]
         vmm: iocage_04
     

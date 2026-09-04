@@ -45,11 +45,7 @@ Requirements
 Notes
 ^^^^^
 
-TBD
-
-.. seealso::
-
-   * :ref:`ug_concepts_project`
+See :ref:`ug_concepts_project`.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -62,6 +58,7 @@ Playbook pb.yml
 
 .. literalinclude:: pb.yml
    :language: yaml
+   :emphasize-lines: 8-23,25-26
 
 Playbook output - Test filter project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -72,6 +69,7 @@ Playbook output - Test filter project
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
+   :emphasize-lines: 6-25,29-33
 
 
 .. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
