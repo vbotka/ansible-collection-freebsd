@@ -85,6 +85,7 @@ Examples
    :caption: Plugins
 
    examples/040/example.rst
+   examples/041/example.rst
    examples/050/example.rst
 
 .. toctree::
