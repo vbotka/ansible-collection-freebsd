@@ -12,11 +12,9 @@
 .. index:: single: role vbotka.freebsd.iocage_template; Example 527
 .. index:: single: pb_iocage_project_create_from_templates; Example 527
 
-.. index:: single: connection vbotka.freebsd.jailexec; Example 527
-.. index:: single: vbotka.freebsd.jailexec; Example 527
-.. index:: single: jailexec; Example 527
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 527
+.. index:: single: filter vbotka.freebsd.project; Example 527
+.. index:: single: vbotka.freebsd.project; Example 527
+.. index:: single: project; Example 527
 
 .. index:: single: filter vbotka.freebsd.dict_to_ast; Example 527
 .. index:: single: vbotka.freebsd.dict_to_ast; Example 527
@@ -25,6 +23,12 @@
 .. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 527
 .. index:: single: vbotka.freebsd.ast_to_nginx; Example 527
 .. index:: single: ast_to_nginx; Example 527
+
+.. index:: single: connection vbotka.freebsd.jailexec; Example 527
+.. index:: single: vbotka.freebsd.jailexec; Example 527
+.. index:: single: jailexec; Example 527
+
+.. index:: single: inventory vbotka.freebsd.iocage2; Example 527
 
 .. index:: single: Nginx; Example 527
 
@@ -83,9 +87,10 @@ Requirements
 
 * role `vbotka.freebsd.iocage_template`_
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* filter `vbotka.freebsd.dict_to_ast`_
-* filter `vbotka.freebsd.ast_to_nginx`_
-* `inventory plugin vbotka.freebsd.iocage2`_
+* `filter vbotka.freebsd.dict_to_ast`_
+* `filter vbotka.freebsd.ast_to_nginx`_
+* `filter vbotka.freebsd.project`_
+* `inventory vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
 * package repository created in :ref:`example_322`
 
@@ -252,9 +257,10 @@ List repo
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
-.. _vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
+.. _filter vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
+.. _filter vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
+.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
+.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 
 .. _iocage: https://iocage.readthedocs.io/en/latest/
 

@@ -16,13 +16,14 @@ Major Changes
 
 Minor Changes
 --------------
-* Add filter project. Add UG example 041 and sandbox 930.
+* Add filter project. Add example 041.
 * Role iocage_template upgraded to 1.4.0
 * Role packages upgraded to 2.9.7
 * Docs. Add examples 042,043,322,530.
 * Docs. Update examples 435,523,527,529.
 * Docs. Add preamble.
 * Docs. Update UG with the filter project.
+* Docs. Update examples with the filter project.
 
 Bugfixes
 --------

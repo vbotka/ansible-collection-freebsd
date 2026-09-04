@@ -11,7 +11,14 @@
 .. index:: single: role vbotka.freebsd.iocage_template; Example 523
 .. index:: single: pb_iocage_project_create_from_templates; Example 523
 
+.. index:: single: filter vbotka.freebsd.project; Example 523
+.. index:: single: vbotka.freebsd.project; Example 523
+.. index:: single: project; Example 523
+
 .. index:: single: connection vbotka.freebsd.jailexec; Example 523
+.. index:: single: vbotka.freebsd.jailexec; Example 523
+.. index:: single: jailexec; Example 523
+
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 523
 
 Use case
@@ -65,7 +72,8 @@ Requirements
 
 * role `vbotka.freebsd.iocage_template`_
 * playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `inventory plugin vbotka.freebsd.iocage2`_
+* `filter vbotka.freebsd.project`_
+* `inventory vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
 * package repository created in :ref:`example_322`
 
@@ -242,7 +250,8 @@ List repos
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
 
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
+.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
+.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 
 .. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
 .. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon

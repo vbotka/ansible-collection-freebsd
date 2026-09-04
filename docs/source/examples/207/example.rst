@@ -7,8 +7,6 @@
    :local:
    :depth: 1
 
-.. index:: single: project; Example 207
-
 .. index:: single: template ansible_client; Example 207
 .. index:: single: ansible_client; Example 207
 .. index:: single: DHCP; Example 207
@@ -18,6 +16,10 @@
 .. index:: single: alias; Example 207
 .. index:: single: inventory alias; Example 207
 .. index:: single: inventory class; Example 207
+
+.. index:: single: filter vbotka.freebsd.project; Example 207
+.. index:: single: vbotka.freebsd.project; Example 207
+.. index:: single: project; Example 207
 
 .. index:: single: inventory vbotka.freebsd.iocage; Example 207
 .. index:: single: inventory ansible.builtin.constructed; Example 207
