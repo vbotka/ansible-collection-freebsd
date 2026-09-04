@@ -3,7 +3,7 @@
 [![Documentation Status](https://readthedocs.org/projects/ansible-collection-freebsd/badge/?version=latest)](https://ansible-collection-freebsd.readthedocs.io/en/latest/?badge=latest)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-collection-freebsd)](https://github.com/vbotka/ansible-collection-freebsd/tags)
 
-[Ansible Galaxy](https://galaxy.ansible.com/vbotka/freebsd/)|
+[Ansible Galaxy](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd)|
 [Documentation](https://ansible-collection-freebsd.readthedocs.io)|
 [Release Notes](https://github.com/vbotka/ansible-collection-freebsd/blob/master/changelogs/CHANGELOG.md)
 
