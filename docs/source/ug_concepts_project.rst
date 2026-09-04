@@ -3,14 +3,14 @@
 Project
 -------
 
-.. index:: single: variable project; project
-.. index:: single: project; project
-.. index:: single: variable vmm; project
-.. index:: single: vmm; project
-.. index:: single: variable class; project
-.. index:: single: class; project
-.. index:: single: filter vbotka.freebsd.project; project
-.. index:: single: vbotka.freebsd.project; project
+.. index:: single: variable project; Project
+.. index:: single: project; Project
+.. index:: single: variable vmm; Project
+.. index:: single: vmm; Project
+.. index:: single: variable class; Project
+.. index:: single: class; Project
+.. index:: single: filter vbotka.freebsd.project; Project
+.. index:: single: vbotka.freebsd.project; Project
 
 .. contents::
    :local:
