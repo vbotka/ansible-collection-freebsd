@@ -11,33 +11,24 @@
 904 Test connection plugin jailexec
 905 Test ansible-pull, plugin ansible-syslogng, repo ansible-conf-syslogng-server.git
 906 Test iocage plugin ansible-test custom facts
-
 907 Test iocage plugins ansible-syslogng-client and ansible-syslogng-server (OBSOLETE)
 908 Test var enabled_plugins; simplified version of 907 (OBSOLETE)
-
 909 Test ansible-pull, iocage plugin ansible-pull-test, repo ansible-conf-test
 910 Test ansible-pull, iocage plugin ansible-pull-syslogng-server,
     repo ansible-conf-syslogng-server.git
 911 Test ansible-pull, iocage plugin ansible-pull-syslogng-client,
     repo ansible-conf-syslogng-client.git
-
 912 The same as 910, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
 913 The same as 911, but the repo https://github.com/vbotka/iocage-ix-plugins (OBSOLETE)
-
 914 Template ansible-syslogng-server
 915 Template ansible-syslogng-client
-917 * Template ansible-repos
-
-918 Template ansible-init test (ai_db_host)
-919 Template ansible-init test (ai_db_class)
-920 Template ansible-init log-server log-client (ai_db_class)
+917 * Template ansible-repos (linked to 929)
 921 Template ansible-init-devel; test package ansible-init-firstboot-1.0.pkg
 922 Template ansible-init-example; test package ansible-init-firstboot-1.0.pkg
-
 923 Inventory plugin iocage2
-924 * Template ansible-pkg-repo
-928 * Template ansible-init (local pkg repo)
-929 Templates all
+924 * Template ansible-pkg-repo (linked to 929)
+928 * Template ansible-init (local pkg repo) (linked to 929)
+929 Templates create all
 
 ## Notes
 
