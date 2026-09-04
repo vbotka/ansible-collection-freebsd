@@ -8,6 +8,11 @@ version |release|
 | Ansible Galaxy: `vbotka.freebsd`_
 | GitHub: `ansible-collection-freebsd`_
 
+Preamble
+########
+
+.. include:: preamble.rst
+
 Included content
 ################
 
