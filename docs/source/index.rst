@@ -48,12 +48,12 @@ See `GPL-3.0-or-later`_ and `BSD-2-Clause`_ for full license texts.
    dg
    copyright
    legalnotice
+   Index <genindex>
 
 Indices and tables
 ##################
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
 .. _collection: https://galaxy.ansible.com/vbotka/freebsd/
