@@ -1,9 +1,10 @@
 Hooks
 ^^^^^
 
-The iocage utility internally opens a console to a jail to get the jail's DHCP address. This
-requires root. If you run the command ``iocage list -l`` as unprivileged user, you'll see the message
-``DHCP (running -- address requires root)``. If you are not granted the root privilege, use
+The iocage utility internally opens a console to a jail to retrieve its DHCP
+address. This requires root. If you run the command ``iocage list -l`` as
+unprivileged user, you'll see the message ``DHCP (running -- address requires
+root)``. If you are not granted the root privilege, use
 ``/etc/dhclient-exit-hooks``. For example,
 
 .. code-block:: console
@@ -59,12 +60,13 @@ of ``sudo``
 
 .. note::
 
-   The option ``hooks_results`` expects the ``poolname`` to be mounted to ``/poolname``. For
-   example, if you activate the pool ``zroot``, this plugin expects to find the ``hooks_results``
-   items in the path ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname`` to a
-   different path, the easiest remedy is to create a symlink.
+   The option ``hooks_results`` expects the ``poolname`` to be mounted
+   to ``/poolname``. For example, if you activate the pool ``zroot``,
+   this plugin expects to find the ``hooks_results`` items in the path
+   ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname``
+   to a different path, the easiest remedy is to create a symlink.
 
-As admin at the controller, display the inventory
+As an admin on the controller, display the inventory
 
 .. code-block:: console
 

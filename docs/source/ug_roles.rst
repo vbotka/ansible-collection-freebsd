@@ -16,7 +16,7 @@ This collection is shipped with the roles:
 Documented roles
 ----------------
 
-Some roles in the namespace `vbotka`_ are documented at `readtthedocs.io`_
+Some roles in the namespace `vbotka`_ are documented on `Read the Docs`_.
 
 .. include:: roles_documented.rst
 
@@ -28,9 +28,9 @@ their ``vars`` directories.
 
 .. hint::
 
-   * See the roles' ``README`` files.
+   * See the ``README`` file for each role.
    * See the collection ``Index`` for available examples.
 
 
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-.. _readtthedocs.io: https://rtfd.io
+.. _Read the Docs: https://rtfd.io

@@ -21,10 +21,12 @@ The collection is shipped with:
 
 .. note::
 
-   * The above **Requirements** list the collections required by the roles.
-   * All listed collections are included in the standard `Ansible distribution`_.
-   * The roles may require other roles not listed here. See the roles' ``requirements.yml`` files
-     and install the missing roles manually when needed.
+   * All collections listed in the above **Requirements** are included in the
+     standard `Ansible distribution`_.
+
+   * The roles may require other collections and/or roles not listed
+     here. See the roles ``requirements.yml`` files and install the
+     missing collections and/or roles manually when needed.
 
 .. seealso::
 

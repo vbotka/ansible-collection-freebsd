@@ -11,6 +11,7 @@ The ``connection plugin vbotka.freebsd.jailexec`` connects the jails without SSH
 Dynamic inventory configuration example:
 
 .. code-block:: yaml
+   :emphasize-lines: 12-16
 
    plugin: vbotka.freebsd.iocage2
    host: iocage_06
@@ -41,10 +42,9 @@ Dynamic inventory configuration example:
      - prefix: vmm
        key: iocage_tags.vmm
 
-
-| ansible_ssh_user: User for SSH login to jail host
-| ansible_jail_host: FreeBSD host that runs the jails
-| ansible_jail_name: Name of the jail to connect to
+:``ansible_ssh_user``: User for SSH login to the jail host.
+:``ansible_jail_host``: FreeBSD host that runs the jails.
+:``ansible_jail_name``: Name of the jail to connect to.
 
 .. seealso::
    * `man jexec`_

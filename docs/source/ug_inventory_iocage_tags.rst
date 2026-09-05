@@ -16,7 +16,7 @@ We will use the format ``notes="tag1=value1 tag2=value2 ..."``.
 
 .. note:: The iocage tags have nothing to do with the `Ansible tags`_.
 
-As root at the iocage host, set the jails' ``notes``. For example,
+As root on the iocage host, set the ``notes`` for each jail. For example,
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -28,8 +28,9 @@ As root at the iocage host, set the jails' ``notes``. For example,
    shell> iocage set notes="vmm=iocage_02 project=bar" srv_3
    notes: none -> vmm=iocage_02 project=bar
 
-Update the inventory configuration ``hosts/02_iocage.yml``. Compose the dictionary ``iocage_tags``
-and create groups. The properties are required. Enable the parameter ``get_properties``
+Update the inventory configuration ``hosts/02_iocage.yml``. Compose the
+dictionary ``iocage_tags`` and create groups. The properties are
+required. Enable the parameter ``get_properties``
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4,9

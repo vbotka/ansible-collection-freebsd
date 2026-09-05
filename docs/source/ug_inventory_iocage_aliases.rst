@@ -8,8 +8,8 @@ Quoting `Inventory aliases`_:
 
 .. note::
 
-   Given the host ``foo.example.com`` with the IP address ``10.1.0.11`` resolves via DNS or
-   /etc/hosts, all below inventory entries are correct
+   Assuming the host ``foo.example.com`` (IP address ``10.1.0.11``) resolves via
+   DNS or /etc/hosts, all of the following inventory entries are valid.
 
    .. code-block:: console
 
@@ -24,7 +24,7 @@ Quoting `Inventory aliases`_:
    * Ansible test `ansible.utils.resolvable`_ – Test if an IP or name can be resolved.
    * `Connection methods and details`_
 
-Optionally, as root at the iocage host, stop and destroy all jails
+Optionally, as root on the iocage host, stop and destroy all jails
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -139,11 +139,13 @@ Set ``notes`` in the jails. The tag ``alias`` is used to create `inventory alias
 
 .. note::
 
-   The inventory option ``inventory_hostname_tag`` requires the ``notes`` format ``t1=v1 t2=v2 ...``
+   The inventory option ``inventory_hostname_tag`` requires the ``notes`` format
+   ``t1=v1 t2=v2 ...``
 
 Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
-``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the `inventory alias`_. The
-``properties`` are required. Enable the parameter ``get_properties``
+``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the
+`inventory alias`_. The ``properties`` are required. Enable the parameter
+``get_properties``
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4,5
@@ -166,7 +168,11 @@ Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
 
 .. note::
 
-   Declare the dictionary ``iocage_tags`` depending on the ``notes`` format.
+   Declare the ``iocage_tags`` dictionary based on the format of the ``notes``.
+
+   There are other options. For example: ::
+
+     iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
 
 Display tags and groups. Create the playbook ``pb-test-groups.yml``
 

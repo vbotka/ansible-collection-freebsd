@@ -1,4 +1,4 @@
-.. _dg_create_collection_docsite:
+.. _ag_create_collection_docsite:
 
 Create collection docsite
 *************************
@@ -13,6 +13,7 @@ Create the collection docsite in this directory
 
 .. code:: console
 
+   (env) > cd ~/.ansible/collections/ansible_collections/vbotka/freebsd/
    (env) > python3 -m pip install ansible-core antsibull-docs
    (env) > export ANSIBLE_COLLECTIONS_PATH=~/.ansible/collections
    (env) > antsibull-docs lint-collection-docs --plugin-docs .
@@ -23,9 +24,15 @@ Create the collection docsite in this directory
    (env) > python3 -m pip install -r requirements.txt
    (env) > ./build.sh
 
-Upon successful build, open the local page in a browser ::
-  
-  file:///<path_to_collections>/collections/ansible_collections/vbotka/freebsd/dest/build/html/collections/vbotka/freebsd/index.html
+Upon successful build, you'll see the message ::
+
+  The HTML pages are in build/html.
+  ~/.ansible/collections/ansible_collections/vbotka/freebsd/dest
+
+
+Open the local doc page in a browser ::
+
+  ~/.ansible/collections/ansible_collections/vbotka/freebsd/dest/build/html/index.html
 
 .. seealso::
 
