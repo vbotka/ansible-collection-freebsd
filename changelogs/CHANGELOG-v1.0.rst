@@ -10,18 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
-
-Major Changes
--------------
-
-Minor Changes
---------------
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
+Documentation update.
 
 
 1.0.4
