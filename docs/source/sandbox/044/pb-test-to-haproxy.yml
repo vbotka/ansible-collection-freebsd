@@ -1,0 +1,13 @@
+---
+- name: Test HAProxy filter plugin
+  hosts: localhost
+
+  vars_files:
+
+    - vars/haproxy_data.yml
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ haproxy_config_data | vbotka.freebsd.to_haproxy }}

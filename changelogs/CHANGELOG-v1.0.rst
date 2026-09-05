@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Add filter to_haproxy.py
 
 Bugfixes
 --------

@@ -1,0 +1,61 @@
+---
+haproxy_config_data:
+  global:
+    log: "/var/run/log local0"
+    maxconn: 4096
+    user: "nobody"
+    group: "nobody"
+    daemon: true
+
+  defaults:
+    log: "global"
+    mode: "http"
+    retries: 3
+    options:
+      httplog: true
+      dontlognull: true
+    timeouts:
+      connect: "5s"
+      client: "30s"
+      server: "30s"
+
+  frontends:
+    http_front:
+      bind: "*:80"
+      
+      # 1. ACL declarations
+      acls:
+        is_api: "path_beg /api"
+        is_static: "path_beg /static || path_end -i .jpg .png .css"
+
+      # 2. Conditional backend rules (evaluated in sequence)
+      use_backends:
+        - backend: "api_servers"
+          condition: "if is_api"
+        - backend: "static_servers"
+          condition: "if is_static"
+
+      # 3. Default fallback
+      default_backend: "web_servers"
+
+  backends:
+    web_servers:
+      balance: "roundrobin"
+      servers:
+        web1:
+          address: "10.0.1.10:8080"
+          check: true
+
+    api_servers:
+      balance: "roundrobin"
+      servers:
+        api1:
+          address: "10.0.2.10:8080"
+          check: true
+
+    static_servers:
+      balance: "roundrobin"
+      servers:
+        static1:
+          address: "10.0.3.10:8080"
+          check: true
