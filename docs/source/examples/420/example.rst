@@ -35,7 +35,7 @@ Tree
   ├── host_vars
   │   ├── iocage_06
   │   │   └── ansible-client-apache.yml
-  │   └── www-1
+  │   └── www_1
   │       └── apache.yml
   ├── iocage.ini
   └── pb-apache.yml
@@ -87,7 +87,7 @@ The value of the iocage tag ``alias`` is used as the inventory alias.
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 10
+   :emphasize-lines: 5
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
