@@ -15,8 +15,7 @@
          | community.general.remove_keys(target=_target)
          | select
          | combine(recursive=true) }}
-    _properties: |-
-      {{ [_properties_combined, {'notes': _notes}] | combine }}
+    _properties: "{{ [_properties_combined, {'notes': _notes}] | combine }}"
   vbotka.freebsd.iocage:
     state: cloned
     clone_from: "{{ item.value.clone_from }}"

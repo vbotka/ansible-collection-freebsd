@@ -6,7 +6,7 @@ bsd_linux_version_default: c7
 bsd_mysql_version_default: "8.0"
 bsd_perl_version_default: "5.42"
 bsd_php_version_default: "8.4"
-bsd_python_version_default: "3.11"
+bsd_python_version_default: "3.12"
 bsd_ssl_version_default: openssl
 
 # Default versions from /usr/ports/Mk/bsd.default-versions.mk if

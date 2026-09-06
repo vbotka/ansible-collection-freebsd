@@ -16,7 +16,9 @@ Major Changes
 
 Minor Changes
 --------------
+* Update playbook pb_iocage_ansible_clients
 * Add filter to_haproxy.py
+* Docs. Update examples 209,420
 
 Bugfixes
 --------

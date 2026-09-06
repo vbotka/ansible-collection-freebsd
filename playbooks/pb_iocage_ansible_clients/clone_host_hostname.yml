@@ -8,15 +8,17 @@
       "{{ [properties.notes | d(''), item.value.properties.notes | d('')]
           | select
           | join(' ') }}"
+    _target: [notes]
     _properties_combined: |
-      {{ [properties | d({}), item.value.properties | d({}), {'host_hostname': item.key}]
+      {{ [properties | d({}), item.value.properties | d({})]
+         | community.general.remove_keys(target=_target)
          | select
          | combine(recursive=true) }}
-    _properties: >-
-      {% for k, v in _properties_combined.items() %}
-      {{ k }}={{ v }}
-      {% endfor %}
-      notes={{ _notes }}
+    _properties_dict: "{{ [_properties_combined, {'notes': _notes}] | combine }}"
+    _properties: "{{ _properties_dict.keys()
+                     | zip(_properties_dict.values())
+                     | map('join', '=')
+                     | join(' ') }}"
     jails_name: "{{ out_create.results | map(attribute='stdout_lines')
                                        | flatten
                                        | map('split')

@@ -18,8 +18,8 @@
 Use case
 ^^^^^^^^
 
- Use iocage property ``host_hostname`` to create a jail. Use the role `vbotka.freebsd.apache`_ to
- configure `Apache HTTP Server`_.
+ Use iocage property ``host_hostname`` to create a jail. Use the role
+ `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_.
 
 Tree
 ^^^^
@@ -30,10 +30,10 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 04_iocage.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_04
+  │   ├── iocage_06
   │   │   └── ansible-client-apache.yml
   │   └── www-1
   │       └── apache.yml
@@ -49,7 +49,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible_client_apache`` created in :ref:`example_209`
+* Template ``ansible-client-apache`` created in :ref:`example_209`
 
 Notes
 ^^^^^
@@ -79,15 +79,29 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+The value of the iocage tag ``alias`` is used as the inventory alias.
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 10
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/ansible-client-apache.yml
-   :language: yaml
+.. literalinclude:: host_vars/iocage_06/ansible-client-apache.yml
+   :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/www-1/apache.yml
-   :language: yaml
+.. literalinclude:: host_vars/www_1/apache.yml
+   :language: yaml+jinja
    :caption:
 
 Create and start jails
@@ -95,29 +109,14 @@ Create and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
+   (env) > ansible-playbook -i iocage.ini \
 			    -t clone_host_hostname -e clone_host_hostname=true \
-			    -e debug=true -e debug2=true
+			    -e debug=true -e debug2=true \
+			    vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-The value of the iocage tag ``alias`` is used as the inventory
-alias. If the command ``iocage list`` is slow use the cache.
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
-   :caption:
-   :emphasize-lines: 10
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
-   :caption:
 
 Playbook pb-apache.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -130,20 +129,39 @@ Playbook output - Create server
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-apache.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-apache.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-03.txt
+   :language: sh
+
+List jails
+^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
 Results
 ^^^^^^^
 
-* Test the configuration. Replace ``www-1`` with an ``IP`` if it doesn't resolve.
+* Test the configuration.
 
   .. code-block:: console
 
-     (env) > ssh admin@www-1 sudo service apache24 configtest
+     [iocage_06]# iocage exec 2540d279 service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
 
@@ -151,12 +169,16 @@ Results
 
   .. code-block:: console
 
-     (env) > ssh admin@www-1 sudo service apache24 status
-     apache24 is running as pid 62481.
+     [iocage_06]# iocage exec 2540d279 service apache24 status
+     apache24 is running as pid 57456.
 
-* In a browser, open the page ``http://www-1/``. The content should be ::
+* Test the server is working. See the IP in the list of the jails.
 
-    It works!
+  .. code-block:: console
+
+     [iocage_06]# lynx 172.16.99.161
+
+     It works!
 
 
 .. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/

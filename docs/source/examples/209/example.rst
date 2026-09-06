@@ -10,18 +10,17 @@
 .. index:: single: pkglist; Example 209
 .. index:: single: pkgs.json; Example 209
 .. index:: single: role vbotka.freebsd.iocage; Example 209
-
-.. index:: single: ansible_client_apache; Example 209
-.. index:: single: template ansible_client_apache; Example 209
+.. index:: single: template ansible-client-apache; Example 209
+.. index:: single: ansible-client-apache; Example 209
 .. index:: single: pb_iocage_template.yml; Example 209
-
 .. index:: single: Apache HTTP Server; Example 209
 
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to create `iocage`_ list of packages for `Automatic Package
-Installation`_. Create Ansible template for `Apache HTTP server`_.
+Use the `role vbotka.freebsd.iocage`_ to create `iocage`_ list of packages for
+`Automatic Package Installation`_. Create Ansible template for `Apache HTTP
+server`_.
 
 Tree
 ^^^^
@@ -36,11 +35,11 @@ Tree
   │   └── pkgs.json
   ├── group_vars
   │   └── all
-  │       ├── pkgdict.yml
   │       ├── pkgdict_versions.yml
+  │       ├── pkgdict.yml
   │       └── pkglist.yml
   ├── host_vars
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   └── pb-pkglist.yml
@@ -48,16 +47,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the control node use:
+On a managed node:
 
-* `role vbotka.freebsd.iocage`_:
+* use the `role vbotka.freebsd.iocage`_ to create `iocage`_ list of packages
+  ``files/pkgs.json`` for `Automatic Package Installation`_ of the `Apache HTTP
+  Server`_.
 
-  * to create `iocage`_ list of packages ``files/pkgs.json`` for `Automatic Package Installation`_
-    of the `Apache HTTP Server`_.
-
-* playbook `vbotka.freebsd.pb_iocage_template.yml`_:
-
-  * to create Ansible template ``ansible_client_apache``.
+* use the playbook `vbotka.freebsd.pb_iocage_template.yml`_ to create Ansible
+  template ``ansible-client-apache``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -74,12 +71,13 @@ Notes
   * `role vbotka.freebsd.packages`_ to install packages
   * `role vbotka.freebsd.iocage`_ to install packages in jails.
 
-* The inventory ``iocage.ini`` is not needed to create the file ``pkgs.json``. It would be
-  sufficient to run the play at the ``localhost``. It is used here because normally the files
-  ``pkgs.json``, after being created, are used in the ``iocage`` managed nodes.
+* The inventory ``iocage.ini`` is not needed to create the file
+  ``pkgs.json``. It would be sufficient to run the play at the ``localhost``. It
+  is used here because normally the files ``pkgs.json``, after being created,
+  are used in the ``iocage`` managed nodes.
 
-* This example covers the simplest case of creating the common file ``pkgs.json`` for all managed
-  nodes in the group ``iocage``.
+* This example covers the simplest case of creating the common file
+  ``pkgs.json`` for all managed nodes in the group ``iocage``.
 
 * See the tasks ``playbooks/pb_iocage_template/pkglist.yml`` how the ``template`` attribute
   ``pkglist`` is used.
@@ -119,7 +117,7 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml
    :caption:
 
@@ -134,7 +132,7 @@ Playbook output - Create pkgs.json
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-pkglist.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -152,12 +150,21 @@ Playbook output - Create template
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_template.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
+List templates
+^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: sh
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _role vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere/
