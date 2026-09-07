@@ -1,0 +1,11 @@
+properties:
+  notes: vmm={{ inventory_hostname }} class=http
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+create_hosts:
+  www-2:
+    template: ansible-client-apache
+    properties:
+      notes: alias=www_2
