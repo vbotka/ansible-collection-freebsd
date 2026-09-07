@@ -4,7 +4,7 @@ properties:
   dhcp: 1
   vnet: 1
 
-clones_host_hostname:
+create_hosts:
   www-3:
     template: ansible-client-apache
     properties:

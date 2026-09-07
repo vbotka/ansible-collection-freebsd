@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Create clones host_hostname from template
+- name: Create jails from template
   vars:
     _notes: |-
       "{{ [properties.notes | d(''), item.value.properties.notes | d('')]
@@ -23,11 +23,11 @@
                                        | flatten
                                        | map('split')
                                        | map('first') }}"
-    jails_hostname: "{{ clones_host_hostname.keys() }}"
+    jails_hostname: "{{ create_hosts.keys() }}"
     jails: "{{ dict(jails_hostname | zip(jails_name)) }}"
     cmd_create: >
       iocage create
-      --short
+      --name {{ item.key }}
       --template {{ item.value.template }}
       {{ _properties }}
     cmd_fstab: >
@@ -47,31 +47,36 @@
       when: debug | bool
       ansible.builtin.debug:
         msg: "{{ cmd_create }}"
-      loop: "{{ clones_host_hostname | dict2items }}"
+      loop: "{{ create_hosts | dict2items }}"
       loop_control:
         label: "{{ item.key }} {{ item.value.template }}"
 
-    - name: Create clones host_hostname
+    - name: Create jails
       when: not dry_run | bool
       changed_when: false
       register: out_create
       ansible.builtin.command:
         cmd: "{{ cmd_create }}"
-      loop: "{{ clones_host_hostname | dict2items }}"
+      loop: "{{ create_hosts | dict2items }}"
       loop_control:
         label: "{{ item.key }} {{ item.value.template }}"
 
-    - name: "Debug create clones host_hostname debug2={{ debug2 }}"
+    - name: "Debug create jails debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out_create
+
+    - name: "Debug jails dictionary debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: jails
 
     - name: Create mount points.
       ansible.builtin.file:
         state: directory
         path: "/{{ out_pool.stdout }}/iocage/jails/{{ jails[item.0.key] }}/root/{{ item.1.file }}"
         mode: "0755"
-      loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
+      loop: "{{ create_hosts | dict2items | subelements('value.fstab', skip_missing=true) }}"
       loop_control:
         label: "{{ item.0.key }} {{ item.1.file }}"
 
@@ -79,7 +84,7 @@
       when: debug | bool
       ansible.builtin.debug:
         msg: "{{ cmd_fstab }}"
-      loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
+      loop: "{{ create_hosts | dict2items | subelements('value.fstab', skip_missing=true) }}"
       loop_control:
         label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
 
@@ -89,7 +94,7 @@
       register: out_fstab
       ansible.builtin.command:
         cmd: "{{ cmd_fstab }}"
-      loop: "{{ clones_host_hostname | dict2items | subelements('value.fstab', skip_missing=true) }}"
+      loop: "{{ create_hosts | dict2items | subelements('value.fstab', skip_missing=true) }}"
       loop_control:
         label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
 
@@ -103,14 +108,14 @@
       ansible.builtin.debug:
         msg: "{{ cmd_start }}"
 
-    - name: Start clones host_hostname
+    - name: Start created hosts
       when: not dry_run | bool
       changed_when: false
       register: out_start
       ansible.builtin.command:
         cmd: "{{ cmd_start }}"
 
-    - name: "Debug start clones host_hostname debug2={{ debug2 }}"
+    - name: "Debug start created hosts debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         var: out_start

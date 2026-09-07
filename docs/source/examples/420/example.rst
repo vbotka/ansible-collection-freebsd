@@ -43,7 +43,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts one jail.
+On a managed node:
+
+* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and
+  starts one jail.
+
 * The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in the jail.
 
 Requirements
@@ -54,9 +58,11 @@ Requirements
 Notes
 ^^^^^
 
-* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
+* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new
+  jail".
 
-* ``iocage`` property ``host_hostname`` provides "The hostname of the jail. Default: UUID".
+* ``iocage`` property ``host_hostname`` provides "The hostname of the
+  jail. Default: UUID".
 
 * Make sure DHCP and dynamic DNS are configured so that ``host_hostname`` and
   ``--name`` resolve.
@@ -124,8 +130,8 @@ Playbook pb-apache.yml
 .. literalinclude:: pb-apache.yml
    :language: yaml
 
-Playbook output - Create server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -157,11 +163,11 @@ List jails
 Results
 ^^^^^^^
 
-* Test the configuration.
+* Test the configuration
 
   .. code-block:: console
 
-     [iocage_06]# iocage exec 2540d279 service apache24 configtest
+     [iocage_06]# iocage exec <JID> service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
 
@@ -169,14 +175,14 @@ Results
 
   .. code-block:: console
 
-     [iocage_06]# iocage exec 2540d279 service apache24 status
+     [iocage_06]# iocage exec <JID> service apache24 status
      apache24 is running as pid 57456.
 
 * Test the server is working. See the IP in the list of the jails.
 
   .. code-block:: console
 
-     [iocage_06]# lynx 172.16.99.161
+     [iocage_06]# lynx <IP>
 
      It works!
 

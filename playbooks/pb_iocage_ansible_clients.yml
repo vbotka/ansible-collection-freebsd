@@ -46,10 +46,10 @@
       tags: clone
       ansible.builtin.import_tasks: pb_iocage_ansible_clients/clone.yml
 
-    - name: Create and start clones with host_hostname
-      when: clone_host_hostname | bool
-      tags: clone_host_hostname
-      ansible.builtin.import_tasks: pb_iocage_ansible_clients/clone_host_hostname.yml
+    - name: Create and start jails with name
+      when: create_host | bool
+      tags: create_host
+      ansible.builtin.import_tasks: pb_iocage_ansible_clients/create_host.yml
 
     - name: Stop and destroy clones
       when: clone_destroy | bool

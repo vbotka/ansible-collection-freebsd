@@ -1,0 +1,11 @@
+- name: Create data for Apache HTTP Server.
+  hosts: www
+
+  tasks:
+
+    - copy:
+        src: /usr/local/www/apache24/data/
+        dest: /usr/local/www/apache24/data-foo-bar
+        owner: www
+        group: www
+        remote_src: true
