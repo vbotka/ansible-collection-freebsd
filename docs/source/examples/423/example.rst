@@ -242,7 +242,7 @@ Results
      Performing sanity check on apache24 configuration:
      Syntax OK
 
-* If the URL reolves, open the logs. For example,
+* If the URL resolves, open the logs. For example,
 
 | https://build.foo.bar/logs/bulk/143amd64-default-devel/2025-08-12_13h34m10s/build.html
 
