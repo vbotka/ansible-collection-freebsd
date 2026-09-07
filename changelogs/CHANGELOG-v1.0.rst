@@ -10,21 +10,17 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Add filter ast_to_haproxy.py. Update playbooks and docs.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
+* Add filter ast_to_haproxy.py
 * Update playbook pb_iocage_ansible_clients
-* Add filter to_haproxy.py
+* Docs. Add sandbox 044. Test filter ast_to_haproxy
 * Docs. Update examples 209,420,421,422,423,430
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
 
 
 1.0.5

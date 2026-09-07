@@ -1,10 +1,9 @@
 
-PLAY [Test HAProxy filter plugin] **********************************************
+PLAY [Convert YAML dict to AST then convert AST to HAProxy.] *******************
 
 TASK [debug] *******************************************************************
 ok: [localhost] => 
-    msg: |4-
-
+    msg: |-
         global
             log /var/run/log local0
             maxconn 4096
@@ -12,36 +11,29 @@ ok: [localhost] =>
             group nobody
             daemon
 
-
         defaults
+            log global
             mode http
+            retries 3
             option httplog
             option dontlognull
-            log global
-            retries 3
             timeout connect 5s
             timeout client 30s
             timeout server 30s
-
 
         frontend http_front
             bind *:80
             acl is_api path_beg /api
             acl is_static path_beg /static || path_end -i .jpg .png .css
-            use_backend api_servers if is_api
-            use_backend static_servers if is_static
             default_backend web_servers
-
 
         backend web_servers
             balance roundrobin
             server web1 10.0.1.10:8080 check
 
-
         backend api_servers
             balance roundrobin
             server api1 10.0.2.10:8080 check
-
 
         backend static_servers
             balance roundrobin

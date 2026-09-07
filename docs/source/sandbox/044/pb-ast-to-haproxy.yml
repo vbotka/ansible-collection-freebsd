@@ -1,0 +1,15 @@
+---
+- name: Convert YAML dict to AST then convert AST to HAProxy.
+  hosts: localhost
+
+  vars_files:
+
+    - vars/haproxy_data.yml
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ haproxy_conf
+             | vbotka.freebsd.dict_to_ast
+             | vbotka.freebsd.ast_to_haproxy }}
