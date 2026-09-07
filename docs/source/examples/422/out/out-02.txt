@@ -1,21 +1,9 @@
 
-PLAY [Create Apache HTTP Server.] **********************************************
+PLAY [Create data/php.info for Apache HTTP Server.] ****************************
 
-TASK [Gathering Facts] *********************************************************
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-4: Temporary failure in name resolution
-
-Task failed.
-
-<<< caused by >>>
-
-Failed to connect to the host via ssh: ssh: Could not resolve hostname www-4: Temporary failure in name resolution
-
-fatal: [www-4]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
-        www-4: Temporary failure in name resolution'
-    unreachable: true
+TASK [copy] ********************************************************************
+changed: [www_4]
 
 PLAY RECAP *********************************************************************
-www-4                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+www_4                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

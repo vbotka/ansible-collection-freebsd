@@ -5,7 +5,7 @@ properties:
   vnet: 1
 
 create_hosts:
-  www-1:
+  www-4:
     template: ansible-client-apache
     properties:
-      notes: alias=www_1
+      notes: alias=www_4

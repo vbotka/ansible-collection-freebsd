@@ -1,0 +1,8 @@
+- name: Create data/php.info for Apache HTTP Server.
+  hosts: www_4
+
+  tasks:
+
+    - copy:
+        src: info.php
+        dest: /usr/local/www/apache24/data

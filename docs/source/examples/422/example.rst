@@ -13,15 +13,11 @@
 .. index:: single: role vbotka.freebsd.apache; Example 422
 .. index:: single: vbotka.freebsd.apache; Example 422
 
-.. index:: single: iocage host_hostname; Example 422
-.. index:: single: host_hostname; Example 422
-
 
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure PHP in `Apache HTTP Server`_. Use iocage property
-``host_hostname`` to create a jail.
+Use the role `vbotka.freebsd.apache`_ to configure PHP in `Apache HTTP Server`_.
 
 Tree
 ^^^^
@@ -31,35 +27,38 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
+  ├── files
+  │   └── info.php
   ├── hosts
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_04
+  │   ├── iocage_06
   │   │   └── ansible-client-apache.yml
   │   └── www-4
   │       └── apache.yml
   ├── iocage.ini
-  └── pb-apache.yml
+  ├── pb-apache.yml
+  └── pb-data.yml
 
 Synopsis
 ^^^^^^^^
 
+On a managed node:
+
 * The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts one jail.
-* The playbook ``pb-apache.yml`` configures PHP in the `Apache HTTP Server`_ in the jail.
+* The playbook ``pb-data.yml`` creates the file data/info.php
+* The playbook ``pb-apache.yml`` configures PHP in the `Apache HTTP Server`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible_client_apache`` created in :ref:`example_209`
+* Template ``ansible-client-apache`` created in :ref:`example_209`
 
 Notes
 ^^^^^
 
-* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
-
-* ``iocage`` property ``host_hostname`` provides "The hostname of the jail. Default: UUID".
-
-* Make sure DHCP and dynamic DNS are configured so that ``host_hostname`` and
-  ``--name`` resolve.
+TBD
 
 .. seealso::
 
@@ -82,14 +81,25 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/ansible-client-apache.yml
+.. literalinclude:: host_vars/iocage_06/ansible-client-apache.yml
    :language: yaml
    :caption:
 
-.. literalinclude:: host_vars/www-4/apache.yml
+.. literalinclude:: host_vars/www_4/apache.yml
    :language: yaml
    :caption:
 
@@ -98,47 +108,66 @@ Create and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
-                            -t clone_host_hostname -e clone_host_hostname=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t clone_host_hostname -e clone_host_hostname=true \
+			    vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+Playbook pb-data.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: hosts
-   :language: ini
-   :caption:
+.. literalinclude:: pb-data.yml
+   :language: yaml+jinja
 
-Playbook pb-apache.yml
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-apache.yml
-   :language: yaml
-
-Playbook output - Create server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create data/php.info for Apache HTTP Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-apache.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-data.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
    :force:
 
-Create info.php
-^^^^^^^^^^^^^^^
+Playbook pb-apache.yml
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-apache.yml
+   :language: yaml+jinja
+
+Playbook output - Configure and start server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ssh admin@www-4 cat /usr/local/www/apache24/data/info.php
-   <?php
-   phpinfo();
-   ?>
+   (env) > ansible-playbook -i hosts pb-apache.yml
+
+.. literalinclude:: out/out-03.txt
+   :language: yaml
+   :force:
+
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: sh
+
+List jails
+^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage list -l
+
+.. literalinclude:: out/out-05.txt
+   :language: sh
 
 Results
 ^^^^^^^
@@ -147,12 +176,12 @@ Results
 
   .. code-block:: console
 
-     (env) > ssh admin@www-4 sudo service apache24 configtest
+     [iocage_06]# iocage exec www-4 service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
 
 * In a browser, open the page ``http://www-4/info.php``. The content should be
-  similar to this one
+  similar to this one if the URL resolves.
 
 .. image:: screenshot_php.png
     :width: 100%

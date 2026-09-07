@@ -1,5 +1,5 @@
 
-PLAY [Create Apache HTTP Server.] **********************************************
+PLAY [Configure and start Apache HTTP Server.] *********************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [www_3]

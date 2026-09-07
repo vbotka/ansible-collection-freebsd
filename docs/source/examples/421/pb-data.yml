@@ -1,5 +1,5 @@
 - name: Create data for Apache HTTP Server.
-  hosts: www
+  hosts: www_3
 
   tasks:
 

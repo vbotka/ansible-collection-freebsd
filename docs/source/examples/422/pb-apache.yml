@@ -1,5 +1,5 @@
-- name: Create Apache HTTP Server.
-  hosts: www
+- name: Configure and start Apache HTTP Server.
+  hosts: www_4
   gather_facts: true
 
   roles:

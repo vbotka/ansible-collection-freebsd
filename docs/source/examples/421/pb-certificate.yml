@@ -1,5 +1,5 @@
 - name: Create SSL certificate.
-  hosts: www
+  hosts: www_3
   gather_facts: true
 
   roles:

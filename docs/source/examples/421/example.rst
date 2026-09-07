@@ -195,7 +195,7 @@ Playbook output - Create data for Apache HTTP Server
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-apache.yml
+   (env) > ansible-playbook -i hosts pb-data.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
@@ -276,8 +276,8 @@ Results
 
      The browser will complain about self-signed certificate.
 
-* In a browser, open the page ``https://www.foo.bar/``. If the URL resolves the
-  content should be ::
+* In a browser, open the page ``https://www.foo.bar/``. If the URL
+  resolves the content should be ::
 
     It works!
 

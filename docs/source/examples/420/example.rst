@@ -18,8 +18,7 @@
 Use case
 ^^^^^^^^
 
- Use iocage property ``host_hostname`` to create a jail. Use the role
- `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_.
+Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_.
 
 Tree
 ^^^^
@@ -167,7 +166,7 @@ Results
 
   .. code-block:: console
 
-     [iocage_06]# iocage exec <JID> service apache24 configtest
+     [iocage_06]# iocage exec www-1 service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
 
@@ -175,7 +174,7 @@ Results
 
   .. code-block:: console
 
-     [iocage_06]# iocage exec <JID> service apache24 status
+     [iocage_06]# iocage exec www-1 service apache24 status
      apache24 is running as pid 57456.
 
 * Test the server is working. See the IP in the list of the jails.

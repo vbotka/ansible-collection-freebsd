@@ -5,6 +5,9 @@
 # Destroy jails
 # VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
 
+# Destroy www-3
+ssh admin@iocage_06 sudo iocage destroy -f www-3
+
 # Create jails
 ansible-playbook -i iocage.ini -t create_host -e create_host=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-01.txt
 
