@@ -19,8 +19,9 @@ Minor Changes
 --------------
 * Add filter ast_to_haproxy.py
 * Update playbook pb_iocage_ansible_clients
+* Docs. Add UG chapter ug_filter_ast_to_haproxy.
 * Docs. Add sandbox 044. Test filter ast_to_haproxy
-* Docs. Update examples 209,420,421,422,423,430
+* Docs. Update examples 209,420,421,422,423,430.
 
 
 1.0.5

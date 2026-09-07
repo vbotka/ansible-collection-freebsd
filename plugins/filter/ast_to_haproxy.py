@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
 from ansible.errors import AnsibleFilterError

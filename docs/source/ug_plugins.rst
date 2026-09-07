@@ -22,6 +22,7 @@ Plugins
    :maxdepth: 1
    :caption: Filter plugins
 
+   ast_to_haproxy <ug_filter_ast_to_haproxy>
    ast_to_nginx <ug_filter_ast_to_nginx>
    dict_to_ast <ug_filter_dict_to_ast>
    from_ucl <ug_filter_from_ucl>
