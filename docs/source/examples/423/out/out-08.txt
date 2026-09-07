@@ -1,0 +1,25 @@
+@all:
+  |--@ungrouped:
+  |--@state_up:
+  |  |--repos
+  |  |--www_1
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--www_5
+  |  |--log_server_01
+  |  |--www_4
+  |  |--www_3
+  |--@vmm_iocage_06:
+  |  |--repos
+  |  |--www_1
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--www_5
+  |  |--log_server_01
+  |  |--www_4
+  |  |--www_3
+  |--@www:
+  |  |--www_1
+  |  |--www_5
+  |  |--www_4
+  |  |--www_3

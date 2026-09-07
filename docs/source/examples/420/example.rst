@@ -115,19 +115,19 @@ Create and start jails
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-			    -t clone_host_hostname -e clone_host_hostname=true \
+			    -t create_host -e create_host=true \
 			    -e debug=true -e debug2=true \
 			    vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-apache.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-apache.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure and start server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,7 +137,7 @@ Playbook output - Configure and start server
    (env) > ansible-playbook -i hosts pb-apache.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Inventory graph

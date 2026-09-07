@@ -2,20 +2,33 @@
 PLAY [Create SSL certificate.] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
+ok: [www_5]
 
-Task failed.
+TASK [Vars: Include OS vars] ***************************************************
+included: vbotka.freebsd.lib for www_5
 
-<<< caused by >>>
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
+ok: [www_5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
+ok: [www_5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
 
-Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
+ok: [www_5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
 
-fatal: [www-5]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
-        www-5: Temporary failure in name resolution'
-    unreachable: true
+TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
+ok: [www_5]
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-privatekey: Generate OpenSSL private keys.] ***
+changed: [www_5] => (item=file:/usr/local/etc/ssl/private/www-5.key CN:www-5)
+changed: [www_5] => (item=file:/usr/local/etc/ssl/private/build.foo.bar.key CN:build.foo.bar)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-csr: Generate OpenSSL Certificate Signing Request.] ***
+changed: [www_5] => (item= file:/usr/local/etc/ssl/csr/www-5.csr CN:www-5)
+changed: [www_5] => (item= file:/usr/local/etc/ssl/csr/build.foo.bar.csr CN:build.foo.bar)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-certificate: Generate and/or check OpenSSL certificates.] ***
+changed: [www_5] => (item= file:/usr/local/etc/ssl/certs/www-5.crt CN:www-5)
+changed: [www_5] => (item= file:/usr/local/etc/ssl/certs/build.foo.bar.crt CN:build.foo.bar)
 
 PLAY RECAP *********************************************************************
-www-5                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+www_5                      : ok=8    changed=3    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
 

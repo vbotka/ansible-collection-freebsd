@@ -1,5 +1,5 @@
 properties:
-  notes: "vmm={{ inventory_hostname }}"
+  notes: vmm={{ inventory_hostname }} class=http
   bpf: 1
   dhcp: 1
   vnet: 1
@@ -7,9 +7,11 @@ properties:
   allow_mount_zfs: 1
   jail_zfs: 1
 
-clones_host_hostname:
+create_hosts:
   www-5:
-    template: ansible_client_apache
+    template: ansible-client-apache
+    properties:
+      notes: alias=www_5
     fstab:
       - spec: /usr/local/poudriere
         file: /usr/local/poudriere

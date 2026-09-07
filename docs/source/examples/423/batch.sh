@@ -2,24 +2,32 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
-
 # Destroy jails
 # VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
 
+# Destroy www-5
+ssh admin@iocage_06 sudo iocage destroy -f www-5
+
 # Create jails
-ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t clone_host_hostname -e clone_host_hostname=true | tee out/out-01.txt
+ansible-playbook -i iocage.ini -t create_host -e create_host=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-01.txt
 
 # Display certificate variables
-ansible-playbook pb-certificate.yml -i hosts -t certificate_debug -e certificate_debug=true  --flush-cache | tee out/out-02.txt
+ansible-playbook -i hosts -t certificate_debug -e certificate_debug=true pb-certificate.yml | tee out/out-02.txt
 
 # Install packages, create directories, and test sanity
-ansible-playbook pb-certificate.yml -i hosts -t certificate_setup | tee out/out-03.txt
+ansible-playbook -i hosts -t certificate_setup pb-certificate.yml | tee out/out-03.txt
 
 # Create OpenSSL private keys, CSRs, and certificatses by openssl_* modules
-ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl | tee out/out-04.txt
+ansible-playbook -i hosts -t certificate_openssl pb-certificate.yml | tee out/out-04.txt
 
 # Display status of files OpenSSL private keys, CSRs, and certificates
-ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl_stat | tee out/out-05.txt
+ansible-playbook -i hosts -t certificate_openssl_stat pb-certificate.yml | tee out/out-05.txt
 
 # Create Apache HTTP Server
-ansible-playbook pb-apache.yml -i hosts | tee out/out-07.txt
+ansible-playbook -i hosts pb-apache.yml | tee out/out-07.txt
+
+# Inventory graph
+ansible-inventory -i hosts --graph | tee out/out-08.txt
+
+# List jails
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-09.txt

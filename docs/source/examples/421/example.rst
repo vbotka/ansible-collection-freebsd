@@ -125,11 +125,11 @@ Create and start the jail
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t clone_host_hostname -e clone_host_hostname=true \
+                            -t create_host -e create_host=true \
 			    vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-certificate.yml
@@ -148,7 +148,7 @@ Playbook output - Display variables
 			    pb-certificate.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Setup
@@ -159,7 +159,7 @@ Playbook output - Setup
    (env) > ansible-playbook -i hosts -t certificate_setup pb-certificate.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Create certificate
@@ -170,7 +170,7 @@ Playbook output - Create certificate
    (env) > ansible-playbook -i hosts -t certificate_openssl pb-certificate.yml
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Display status
@@ -181,7 +181,7 @@ Playbook output - Display status
    (env) > ansible-playbook -i hosts -t certificate_openssl_stat pb-certificate.yml
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-data.yml
@@ -198,7 +198,7 @@ Playbook output - Create data for Apache HTTP Server
    (env) > ansible-playbook -i hosts pb-data.yml
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-apache.yml
@@ -215,7 +215,7 @@ Playbook output - Configure and start server
    (env) > ansible-playbook -i hosts pb-apache.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Inventory graph

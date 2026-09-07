@@ -18,15 +18,11 @@
 .. index:: single: role vbotka.freebsd.certificate; Example 423
 .. index:: single: vbotka.freebsd.certificate; Example 423
 
-.. index:: single: clones_host_hostname; Example 423
-.. index:: single: iocage host_hostname; Example 423
 .. index:: single: fstab; Example 423
 .. index:: single: mount; Example 423
-.. index:: single: iocage host_hostname; Example 423
 .. index:: single: iocage allow_mount; Example 423
 .. index:: single: iocage allow_mount_zfs; Example 423
 .. index:: single: iocage jail_zfs; Example 423
-.. index:: single: host_hostname; Example 423
 .. index:: single: allow_mount; Example 423
 .. index:: single: allow_mount_zfs; Example 423
 .. index:: single: jail_zfs; Example 423
@@ -35,9 +31,9 @@
 Use case
 ^^^^^^^^
 
-Use iocage property ``host_hostname`` to create a jail. Mount host directory
-``/usr/local/poudriere`` in the jail.  Use the role `vbotka.freebsd.certificate`_ to create SSL
-certificate for ``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure `Apache
+Mount host directory ``/usr/local/poudriere`` in the jail.  Use the role
+`vbotka.freebsd.certificate`_ to create SSL certificate for
+``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure `Apache
 HTTP Server Virtual Host`_ ``build.foo.bar`` to access ``/usr/local/poudriere``.
 
 Tree
@@ -49,10 +45,12 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_04
+  │   ├── iocage_06
   │   │   └── ansible-client-apache.yml
-  │   └── www-5
+  │   └── www_5
   │       ├── apache.yml
   │       └── certificate.yml
   ├── iocage.ini
@@ -62,28 +60,28 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts one jail. Mounts
-  host directory ``/usr/local/poudriere`` in the jail.
+On a managed node:
 
-* The playbook ``pb-certificate.yml`` creates SSL certificate for ``build.foo.bar``.
+* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates
+  and starts one jail. Mounts host directory ``/usr/local/poudriere``
+  in the jail.
 
-* The playbook ``pb-apache.yml`` uses the certificate and configures `Apache HTTP Server Virtual
-  Host`_ ``build.foo.bar`` in the jail.
+* The playbook ``pb-certificate.yml`` creates SSL certificate for
+  ``build.foo.bar``.
+
+* The playbook ``pb-apache.yml`` uses the certificate, configures, and
+  starts `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` in the
+  jail.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible_client_apache`` created in :ref:`example_209`
+* Template ``ansible-client-apache`` created in :ref:`example_209`
 
 Notes
 ^^^^^
 
-* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new jail".
-
-* ``iocage`` property ``host_hostname`` provides "The hostname of the jail. Default: UUID".
-
-* Make sure DHCP and dynamic DNS are configured so that ``host_hostname`` and
-  ``--name`` resolve.
+TBD
 
 .. seealso::
 
@@ -106,19 +104,30 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/ansible-client-apache.yml
-   :language: yaml
+.. literalinclude:: host_vars/iocage_06/ansible-client-apache.yml
+   :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/www-5/apache.yml
-   :language: yaml
+.. literalinclude:: host_vars/www_5/apache.yml
+   :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/www-5/certificate.yml
-   :language: yaml
+.. literalinclude:: host_vars/www_5/certificate.yml
+   :language: yaml+jinja
    :caption:
 
 Create and start the jail
@@ -126,37 +135,31 @@ Create and start the jail
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
-                            -t clone_host_hostname -e clone_host_hostname=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t create_host -e create_host=true \
+			    vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts
-   :language: ini
-   :caption:
 
 Playbook pb-certificate.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-certificate.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-certificate.yml -i hosts \
-                            -t certificate_debug -e certificate_debug=true
+   (env) > ansible-playbook -i hosts \
+                            -t certificate_debug -e certificate_debug=true \
+			    pb-certificate.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Setup
@@ -164,10 +167,10 @@ Playbook output - Setup
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-certificate.yml -i hosts -t certificate_setup
+   (env) > ansible-playbook -i hosts -t certificate_setup pb-certificate.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Create certificate
@@ -175,10 +178,10 @@ Playbook output - Create certificate
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl
+   (env) > ansible-playbook -i hosts -t certificate_openssl pb-certificate.yml
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Display status
@@ -186,28 +189,47 @@ Playbook output - Display status
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-certificate.yml -i hosts -t certificate_openssl_stat
+   (env) > ansible-playbook -i hosts -t certificate_openssl_stat pb-certificate.yml
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-apache.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-apache.yml
-   :language: yaml
+   :language: yaml+jinja
 
-Playbook output - Create server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-apache.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-apache.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
+
+Inventory graph
+^^^^^^^^^^^^^^^
+.. code-block:: console
+
+   shell > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-08.txt
+   :language: sh
+
+List jails
+^^^^^^^^^^
+
+.. code-block:: console
+
+   shell > ssh admin@iocage_06 sudo iocage list -l
+
+.. literalinclude:: out/out-09.txt
+   :language: sh
       
 Results
 ^^^^^^^
@@ -216,32 +238,19 @@ Results
 
   .. code-block:: console
 
-     (env) > ssh admin@www-5 sudo service apache24 configtest
+     [iocage_06]# iocage exec www-5 service apache24 configtest
      Performing sanity check on apache24 configuration:
      Syntax OK
 
-* The virtual host ``build.foo.bar`` must resolve. For example,
-
-  .. code-block:: console
-
-     (env) > nslookup www-5
-     Server:         127.0.0.53
-     Address:        127.0.0.53#53
-
-     Non-authoritative answer:
-     Name:    www-5.example.com
-     Address: 10.1.0.159
-
-     (env) > grep build.foo.bar /etc/hosts
-     10.1.0.159 build.foo.bar
-
-* In a browser, open the logs. For example,
+* If the URL reolves, open the logs. For example,
 
 | https://build.foo.bar/logs/bulk/143amd64-default-devel/2025-08-12_13h34m10s/build.html
 
 .. image:: screenshot_build.png
     :width: 100%
     :align: center
+
+|
 
 .. seealso::
 

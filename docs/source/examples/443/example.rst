@@ -114,7 +114,7 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_05.yml
-   :language: yaml
+   :language: yaml+yaml
    :caption:
    :emphasize-lines: 6
 
@@ -134,7 +134,7 @@ Playbook output - Fetch plugins
 			    -e debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+yaml
    :force:
 
 .. note::
@@ -163,7 +163,7 @@ Playbook output - Create and start swarms
                             -e debug=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+yaml
    :force:
 
 Jails at iocage_05
@@ -180,7 +180,7 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/05_iocage.yml
-   :language: yaml
+   :language: yaml+yaml
    :caption:
    :emphasize-lines: 9
 
@@ -190,7 +190,7 @@ Inventory hosts
    instead.
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+yaml
    :caption:
 
 Display inventory
@@ -207,7 +207,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+yaml
 
 Playbook output - Test connection plugin jailexec
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,7 +217,7 @@ Playbook output - Test connection plugin jailexec
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+yaml
    :force:
 
 .. hint::

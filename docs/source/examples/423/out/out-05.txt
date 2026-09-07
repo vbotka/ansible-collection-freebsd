@@ -2,20 +2,49 @@
 PLAY [Create SSL certificate.] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-[ERROR]: Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
+ok: [www_5]
 
-Task failed.
+TASK [Vars: Include OS vars] ***************************************************
+included: vbotka.freebsd.lib for www_5
 
-<<< caused by >>>
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults] ***
+ok: [www_5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/default.yml)
+ok: [www_5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults/FreeBSD.yml)
 
-Failed to connect to the host via ssh: ssh: Could not resolve hostname www-5: Temporary failure in name resolution
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path_incr: vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars] ***
+ok: [www_5] => (item=/scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/vars/defaults.yml)
 
-fatal: [www-5]: UNREACHABLE! => 
-    changed: false
-    msg: 'Task failed: Failed to connect to the host via ssh: ssh: Could not resolve hostname
-        www-5: Temporary failure in name resolution'
-    unreachable: true
+TASK [vbotka.freebsd.certificate : Vars: Add certificate_data_simple to certificate_data] ***
+ok: [www_5]
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat: Get status of OpenSSL private keys, CSRs, and certificates.] ***
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/fn/cert-openssl-stat-item.yml for www_5 => (item=CN:www-5)
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/certificate/tasks/fn/cert-openssl-stat-item.yml for www_5 => (item=CN:build.foo.bar)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate.] ***
+ok: [www_5] => (item=/usr/local/etc/ssl/private/www-5.key)
+ok: [www_5] => (item=/usr/local/etc/ssl/csr/www-5.csr)
+ok: [www_5] => (item=/usr/local/etc/ssl/certs/www-5.crt)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
+ok: [www_5] => 
+    msg: |-
+        - {exists: true, file: /usr/local/etc/ssl/private/www-5.key}
+        - {exists: true, file: /usr/local/etc/ssl/csr/www-5.csr}
+        - {exists: true, file: /usr/local/etc/ssl/certs/www-5.crt}
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Get status of OpenSSL private key, CSR, and certificate.] ***
+ok: [www_5] => (item=/usr/local/etc/ssl/private/build.foo.bar.key)
+ok: [www_5] => (item=/usr/local/etc/ssl/csr/build.foo.bar.csr)
+ok: [www_5] => (item=/usr/local/etc/ssl/certs/build.foo.bar.crt)
+
+TASK [vbotka.freebsd.certificate : Cert-openssl-stat-item: Display status of OpenSSL private key, CSR, and certificate.] ***
+ok: [www_5] => 
+    msg: |-
+        - {exists: true, file: /usr/local/etc/ssl/private/build.foo.bar.key}
+        - {exists: true, file: /usr/local/etc/ssl/csr/build.foo.bar.csr}
+        - {exists: true, file: /usr/local/etc/ssl/certs/build.foo.bar.crt}
 
 PLAY RECAP *********************************************************************
-www-5                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+www_5                      : ok=11   changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 
