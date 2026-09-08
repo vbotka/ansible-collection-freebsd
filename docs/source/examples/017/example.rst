@@ -96,17 +96,17 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 1
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 1
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. hint::
@@ -119,7 +119,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,7 +129,7 @@ Playbook output - Display groups
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

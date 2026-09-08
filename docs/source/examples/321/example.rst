@@ -80,21 +80,21 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04/repos.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
    :caption: (env) > ansible-playbook pb.yml -i iocage.ini -t pkg_keys,pkg_conf
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Repository build.conf at iocage_04
@@ -102,7 +102,7 @@ Repository build.conf at iocage_04
 
 .. literalinclude:: out/out-02.txt
    :caption: /usr/local/etc/pkg/repos/build.conf
-   :language: yaml
+   :language: yaml+jinja
 
 Configuration at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -104,15 +104,15 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/ansible-client-apache.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/www_2/apache.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/www_2/certificate.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Create and start the jail
@@ -229,7 +229,7 @@ Results
                           -text -noout -certopt no_pubkey,no_sigdump'
 
   .. literalinclude:: out/out-06.txt
-     :language: yaml
+     :language: yaml+jinja
 
 * Test the configuration:
 

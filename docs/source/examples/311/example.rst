@@ -77,7 +77,7 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_05/gitserver.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. seealso::
@@ -88,7 +88,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure and start git_daemon
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,7 +98,7 @@ Playbook output - Configure and start git_daemon
    (env) > ansible-playbook pb.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Display service status

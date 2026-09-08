@@ -133,18 +133,18 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Display inventory
@@ -161,7 +161,7 @@ Playbook pb-pkg-update.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-pkg-update.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Update repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -171,14 +171,14 @@ Playbook output - Update repo
    (env) > ansible-playbook pb-pkg-update.yml -i iocage.ini -e debug=true
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,7 +192,7 @@ Limit the inventory to the jail ``test_111``:
                                            -e pkg_debug=true
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Install packages
@@ -205,7 +205,7 @@ The inventory ``iocage.ini`` is needed to delegate the ``Install list pkg_list``
    (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::
@@ -223,7 +223,7 @@ Enable debug and limit the inventory to the jail ``test_111``:
                                            -e pkg_debug=true
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Audit installed packages
@@ -239,14 +239,14 @@ There are no installed packages with known vulnerabilities:
                                            -e pkg_debug=true
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-02.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Audit installed packages at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -260,7 +260,7 @@ There are 9 packages with known vulnerabilities:
                                            -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
 
 .. literalinclude:: out/out-08.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

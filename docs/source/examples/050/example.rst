@@ -63,7 +63,7 @@ Dynamic inventory of the jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02-iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Inventory jailexec.ini
@@ -81,13 +81,13 @@ Display the inventory of jails
    (env) > ansible-inventory --list --yaml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Test jailexec connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,4 +97,4 @@ Playbook output - Test jailexec connection
    (env) > ansible-playbook -i jailexec.ini pb.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja

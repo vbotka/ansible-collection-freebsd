@@ -100,18 +100,18 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-iocage-fetch-base-clone.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-fetch-base-clone.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,7 +123,7 @@ Playbook output - Display variables
                                                            -e debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Runner
@@ -135,7 +135,7 @@ Playbook output - Runner
                                                            -t runner
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note:: The commands ``iocage set ...`` are not idempotent.
@@ -170,7 +170,7 @@ Playbook pb-iocage-list.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-list.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,14 +180,14 @@ Playbook output - Display iocage_jails
    (env) > ansible-playbook pb-iocage-list.yml -i iocage.ini -e debug=true
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 1,4,31
 
 Playbook output - Create and use group
@@ -198,7 +198,7 @@ Playbook output - Create and use group
    (env) > ansible-playbook pb-test.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

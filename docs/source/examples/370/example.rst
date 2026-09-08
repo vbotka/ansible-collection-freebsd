@@ -93,14 +93,14 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -110,7 +110,7 @@ Playbook output - Install packages
    (env) > ansible-playbook pb.yml -i iocage.ini -t pf_packages -e pf_install=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Configure pf
@@ -125,7 +125,7 @@ session to go stale. Therefore, configure the rules first before enabling the se
    (env) > ansible-playbook pb.yml -i iocage.ini -e pf_enable=false
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Enable pf
@@ -136,7 +136,7 @@ Playbook output - Enable pf
    (env) > ansible-playbook pb.yml -i iocage.ini -t pf_rcconf_pf
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Result

@@ -110,15 +110,15 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 2
 
@@ -126,11 +126,11 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: hosts/group_vars/test_02/region.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/group_vars/test_04/region.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. hint::
@@ -152,7 +152,7 @@ Playbook pb-test-all.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - List groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,14 +162,14 @@ Playbook output - List groups
    (env) > ansible-playbook pb-test-all.yml -i hosts
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-EU.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-EU.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - EU running hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -181,7 +181,7 @@ Limit the EU region to running hosts.
    (env) > ansible-playbook pb-test-EU.yml -i hosts -l test_up
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

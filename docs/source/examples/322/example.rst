@@ -85,18 +85,18 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/project-hosts.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/repos.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_06/fetch.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_06/nginx.yml
@@ -107,7 +107,7 @@ Playbook pb-packages.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-packages.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create repo and fetch packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -117,13 +117,13 @@ Playbook output - Create repo and fetch packages
    (env) > ansible-playbook -i iocage.ini -t pkg_conf,pkg_fetch pb-packages.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook pb-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-nginx.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure Nginx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -133,7 +133,7 @@ Playbook output - Configure Nginx
    (env) > ansible-playbook -i iocage.ini pb-nginx.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
 
 List repo
 ^^^^^^^^^

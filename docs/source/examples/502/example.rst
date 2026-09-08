@@ -102,42 +102,42 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/branch-server.example.com/common.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/branch-server.example.com/cl-common.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/branch-server.example.com/cl-git-daemon.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/branch-server.example.com/syslog-ng.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Configuration conf-light
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: conf-light/files.d/git.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/handlers.d/git.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/packages.d/git.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/services.d/git.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/states.d/git-dir.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Update repos
@@ -148,7 +148,7 @@ Update repos
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_vmm_repos.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-config-light.yml
@@ -167,7 +167,7 @@ Assemble data and create handlers.
    (env) > ansible-playbook pb-config-light.yml -t cl_setup -e cl_setup=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Branch Server
@@ -178,7 +178,7 @@ Playbook output - Branch Server
    (env) > ansible-playbook pb-config-light.yml
 
 .. literalinclude:: out/out-10.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Test service git_daemon
@@ -205,7 +205,7 @@ Playbook output - Log server
    (env) > ansible-playbook pb-log-server.yml -e install=true
 
 .. literalinclude:: out/out-12.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Test service syslog-ng
@@ -222,7 +222,7 @@ Playbook pb-git-repos.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-git-repos.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Git repositories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,7 +232,7 @@ Playbook output - Git repositories
    (env) > ansible-playbook pb-git-repos.yml -e install=true
 
 .. literalinclude:: out/out-14.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

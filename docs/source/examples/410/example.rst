@@ -87,15 +87,15 @@ conf.d
 ^^^^^^
 
 .. literalinclude:: conf.d/devel.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf.d/production.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf.d/qa.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Expected results
@@ -138,7 +138,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,7 +148,7 @@ Playbook output - Display variables
    (env) > ansible-playbook pb.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 44-53, 105-120
    :force:
 

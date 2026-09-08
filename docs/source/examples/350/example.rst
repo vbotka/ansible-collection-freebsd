@@ -96,15 +96,15 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/common.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/rsnapshot.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Create and start jails
@@ -116,7 +116,7 @@ Create and start jails
                             -t swarm -e swarm=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_04
@@ -133,11 +133,11 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Display inventory
@@ -155,7 +155,7 @@ Playbook pb-install.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-install.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -167,14 +167,14 @@ The inventory ``iocage.ini`` is needed when a task is delegated to an iocage hos
    (env) > ansible-playbook pb-install.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,7 +184,7 @@ Playbook output - Display variables
    (env) > ansible-playbook pb-test.yml -i hosts -t rsnapshot_debug -e rsnapshot_debug=true
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Configure rsnapshot
@@ -195,7 +195,7 @@ Playbook output - Configure rsnapshot
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Results

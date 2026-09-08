@@ -103,29 +103,29 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/pkglist.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/pkgdict.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/pkgdict_versions.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-pkglist.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-pkglist.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create pkgs.json
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,7 +135,7 @@ Playbook output - Create pkgs.json
    (env) > ansible-playbook -i iocage.ini pb-pkglist.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Result
@@ -153,7 +153,7 @@ Playbook output - Create template
    (env) > ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_template.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 List templates

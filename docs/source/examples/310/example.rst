@@ -118,18 +118,18 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. seealso::
@@ -150,7 +150,7 @@ Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - By default do nothing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -160,7 +160,7 @@ Playbook output - By default do nothing
    (env) > ansible-playbook pb-test-01.yml -i hosts
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-02.yml
@@ -169,7 +169,7 @@ Playbook pb-test-02.yml
 Use the module `community.general.pkgng`_ to demonstrate installation in a jail.
 
 .. literalinclude:: pb-test-02.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Install packages by community.general.pkgng
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -181,7 +181,7 @@ The inventory ``iocage.ini`` is needed to delegate the ``Install packages`` task
    (env) > ansible-playbook pb-test-02.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-03.yml
@@ -190,7 +190,7 @@ Playbook pb-test-03.yml
 Use the imported tasks ``packages.yml`` from the role `vbotka.freebsd.postinstall`_.
 
 .. literalinclude:: pb-test-03.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Import vbotka.freebsd_postinstall packages.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -200,7 +200,7 @@ Playbook output - Import vbotka.freebsd_postinstall packages.yml
    (env) > ansible-playbook pb-test-03.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::
@@ -246,7 +246,7 @@ Test the configuration step by step. Run the plays below with the options ``--ch
 Put the extra variables into the file ``extra-vars.yml``:
 
 .. literalinclude:: extra-vars.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Run the play:
 
@@ -258,7 +258,7 @@ Run the play:
             -e @extra-vars.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Optionally, disable the `display_ok_hosts`_ option:
@@ -272,7 +272,7 @@ Optionally, disable the `display_ok_hosts`_ option:
             -e @extra-vars.yml
 
 .. literalinclude:: out/out-08.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 The plays above show that, depending on your use case, it is possible to:

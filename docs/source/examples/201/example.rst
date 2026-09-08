@@ -168,7 +168,7 @@ Playbook pb-iocage-display-datasets.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-display-datasets.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,7 +178,7 @@ Playbook output - Display iocage datasets
    (env) > ansible-playbook pb-iocage-display-datasets.yml -i iocage.ini
 
 .. literalinclude:: out/out-09.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/

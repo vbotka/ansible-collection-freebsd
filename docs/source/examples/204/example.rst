@@ -50,7 +50,7 @@ Instead of using the `module vbotka.freebsd.iocage`_, create the variable ``ioca
 `filter vbotka.freebsd.iocage`_:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 **Test filter vbotka.freebsd.iocage**
@@ -58,17 +58,17 @@ Instead of using the `module vbotka.freebsd.iocage`_, create the variable ``ioca
 Given the input ``vars/iocage_datasets.yml``:
 
 .. literalinclude:: vars/iocage_datasets.yml
-   :language: yaml
+   :language: yaml+jinja
 
 The playbook ``pb-test-filter.yml`` below:
 
 .. literalinclude:: pb-test-filter.yml
-   :language: yaml
+   :language: yaml+jinja
 
 outputs:
 
 .. literalinclude:: out/out-pb-test-filter.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Tree
@@ -174,14 +174,14 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-iocage-ansible-clients-v2.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-ansible-clients-v2.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -193,7 +193,7 @@ Playbook output - Create and start jails
                             -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_02
@@ -220,17 +220,17 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,9
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,9
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -251,7 +251,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -261,7 +261,7 @@ Playbook output - Display iocage_tags
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

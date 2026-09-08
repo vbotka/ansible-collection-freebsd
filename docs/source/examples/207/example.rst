@@ -208,44 +208,44 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/project.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_01/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 9,10
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 9,10
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 9,10
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -278,7 +278,7 @@ Playbook output - Create and start project jails
    ``ansible.builtin.command`` with the ``iocage`` option ``--count``.
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-all.yml
@@ -304,7 +304,7 @@ Playbook output - Display all groups
    * Flush the cache; otherwise, jails created in the previous play will not be included.
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Stop and destroy jails
@@ -318,7 +318,7 @@ Playbook output - Stop and destroy jails
 .. seealso:: The playbook :ref:`ug_pb-iocage-project-destroy`
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Display remaining groups
@@ -329,7 +329,7 @@ Playbook output - Display remaining groups
    (env) > ansible-playbook -i hosts pb-test-all.yml --flush-cache
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

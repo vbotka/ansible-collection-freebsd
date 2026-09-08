@@ -152,18 +152,18 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_05/dhcp.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_05/pf.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-dhcp.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-dhcp.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,7 +173,7 @@ Playbook output - Install packages
    (env) > ansible-playbook pb-dhcp.yml -i iocage.ini -t bsd_dhcpd_packages -e bsd_dhcpd_install=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Configure DHCP
@@ -184,14 +184,14 @@ Playbook output - Configure DHCP
    (env) > ansible-playbook pb-dhcp.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-pf-setup.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-pf-setup.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create files/pf-rdr-ssh.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -201,14 +201,14 @@ Playbook output - Create files/pf-rdr-ssh.conf
    (env) > ansible-playbook pb-pf-setup.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-pf.yml
 ^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-pf.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -218,7 +218,7 @@ Playbook output - Install packages
    (env) > ansible-playbook pb-pf.yml -i iocage.ini -t pf_packages -e pf_install=true
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Configure pf
@@ -233,7 +233,7 @@ session to go stale. Therefore, configure the rules first before enabling the se
    (env) > ansible-playbook pb-pf.yml -i iocage.ini -e pf_enable=false
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Enable pf
@@ -244,7 +244,7 @@ Playbook output - Enable pf
    (env) > ansible-playbook pb-pf.yml -i iocage.ini -t pf_rcconf_pf
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Results

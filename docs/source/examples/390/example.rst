@@ -92,7 +92,7 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/build.example.com/poudriere.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. seealso::
@@ -101,7 +101,7 @@ host_vars
    `vbotka.freebsd_postinstall`_.
 
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb.yml
@@ -110,7 +110,7 @@ Playbook pb.yml
 Limit ``pkg_dict_*`` for testing.
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 .. toctree::
    :caption: Playbook output
@@ -139,7 +139,7 @@ Playbook pb-postinstall.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-postinstall.yml
-   :language: yaml
+   :language: yaml+jinja
 
 .. toctree::
    :caption: Playbook output

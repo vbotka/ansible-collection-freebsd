@@ -78,7 +78,7 @@ Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-   :language: yaml
+   :language: yaml+jinja
 
 .. seealso::
 
@@ -94,7 +94,7 @@ Playbook output - Display variables
                                           -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. seealso::
@@ -111,7 +111,7 @@ Playbook output - Install iocage
                                           -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note:: This ``debug`` output shows the ``result`` of an already installed package.

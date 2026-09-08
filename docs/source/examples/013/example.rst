@@ -122,12 +122,12 @@ Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. 
 ``iocage_tags`` can be created from ``iocage_properties.notes``.
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 6,10,19
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,8,17
 
@@ -138,18 +138,18 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-iocage-base.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-base.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create basejails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,14 +159,14 @@ Playbook output - Create basejails
    (env) > ansible-playbook pb-iocage-base.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-iocage-clone.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-clone.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Clone jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -176,14 +176,14 @@ Playbook output - Clone jails
    (env) > ansible-playbook pb-iocage-clone.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-all.yml
 ^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-all.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables and groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -193,7 +193,7 @@ Playbook output - Display variables and groups
    (env) > ansible-playbook pb-all.yml -i hosts
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note::
@@ -206,7 +206,7 @@ Playbook pb-ansible-client.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-ansible-client.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_tags and group_names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +216,7 @@ Playbook output - Display iocage_tags and group_names
    (env) > ansible-playbook pb-ansible-client.yml -i hosts
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note::
@@ -231,7 +231,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display all jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -241,7 +241,7 @@ Playbook output - Display all jails
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

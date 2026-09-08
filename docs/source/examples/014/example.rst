@@ -73,7 +73,7 @@ Inventory iocage.yml
 Enable cache.
 
 .. literalinclude:: iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 7-11
 
 .. hint::
@@ -124,7 +124,7 @@ If ``cache`` is enabled, the inventory and variables are provided by the cache i
            ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
    :emphasize-lines: 1,3
 

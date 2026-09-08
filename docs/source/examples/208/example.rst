@@ -96,7 +96,7 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -141,7 +141,7 @@ Limit the inventory to ``iocage_04``:
                             -e debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Templates at iocage_04

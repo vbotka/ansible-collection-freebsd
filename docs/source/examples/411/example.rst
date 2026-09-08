@@ -90,15 +90,15 @@ al_vars
 ^^^^^^^
 
 .. literalinclude:: al_vars/team/devel
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: al_vars/team/production
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: al_vars/team/qa
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Expected results
@@ -124,7 +124,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,7 +134,7 @@ Playbook output - Display variables
    (env) > ansible-playbook pb.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 26-38
    :force:
 

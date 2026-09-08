@@ -52,14 +52,14 @@ Inventory iocage.yml
 Enable ``get_properties``. See :ref:`ug_inventory_iocage`.
 
 .. literalinclude:: iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 4
 
 Playbook pb-vars-properties.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-properties.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,7 +69,7 @@ Playbook output - Display iocage_properties
    (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_133
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

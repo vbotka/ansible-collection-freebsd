@@ -109,18 +109,18 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-iocage-clone-list.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-clone-list.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Clone, start, and list
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -160,7 +160,7 @@ Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP (running -- add
 root)``. Also enable ``sudo_preserve_env: true`` if ``env`` is used.
 
 .. literalinclude:: iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 4,5
 
 .. hint::
@@ -180,13 +180,13 @@ Display inventory
    (env) > ansible-inventory -i iocage.yml --list --yaml
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_* variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -196,7 +196,7 @@ Playbook output - Display iocage_* variables
    (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_02
@@ -223,7 +223,7 @@ Playbook output - Display iocage_* variables (stopped jails)
    (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-09.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

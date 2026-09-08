@@ -68,7 +68,7 @@ Playbook pb-test-ast.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-ast.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 7-17
 
 Playbook output - Test filter dict_to_ast
@@ -79,14 +79,14 @@ Playbook output - Test filter dict_to_ast
    (env) > ansible-playbook -i localhost, pb-test-ast.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 6-30
 
 Playbook pb-test-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-nginx.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 7-17
 
 Playbook output - Test filter ast_to_nginx
@@ -97,7 +97,7 @@ Playbook output - Test filter ast_to_nginx
    (env) > ansible-playbook -i localhost, pb-test-nginx.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 6-19
 
 

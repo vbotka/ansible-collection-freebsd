@@ -87,14 +87,14 @@ Playbook output - Display empty notes
    (env) > ansible-playbook -i iocage.ini pb-iocage.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-test.yml
@@ -111,7 +111,7 @@ Playbook output - Display empty iocage_tags
    (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

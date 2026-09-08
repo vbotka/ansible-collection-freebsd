@@ -69,7 +69,7 @@ Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Get FreeBSD.url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,14 +79,14 @@ Playbook output - Get FreeBSD.url
    (env) > ansible-playbook -i iocage.ini pb-test-01.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-02.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Disable FreeBSD repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -96,7 +96,7 @@ Playbook output - Disable FreeBSD repository
    (env) > ansible-playbook -i iocage.ini --check --diff pb-test-02.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

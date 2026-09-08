@@ -122,7 +122,7 @@ hosts
 ^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 group_vars
@@ -140,15 +140,15 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/ansible_syslogng_client/syslog-ng-client.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/ansible_syslogng_server/syslog-ng-server.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_06/template.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 files
@@ -176,7 +176,7 @@ Playbook output - Create iocage templates
    (env) > ansible-playbook -i iocage.ini pb-iocage-template.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-logserver.yml
@@ -193,7 +193,7 @@ Playbook output - Configure and start Log Server
    (env) > ansible-playbook -i hosts pb-logserver.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-logclient.yml
@@ -210,7 +210,7 @@ Playbook output - Configure and start Log Client
    (env) > ansible-playbook -i hosts pb-logclient.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-iocage-template-stop-convert.yml
@@ -227,7 +227,7 @@ Playbook output - Convert ansible-syslogng-* to templates
    (env) > ansible-playbook -i iocage.ini pb-iocage-template-stop-convert.yml
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 List templates
@@ -254,7 +254,7 @@ Playbook output - Create jails from iocage templates
    (env) > ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Inventory graph
@@ -291,7 +291,7 @@ Playbook output - Test Log Server
    (env) > ansible-playbook -i hosts -e debug=true pb-logserver-test.yml
 
 .. literalinclude:: out/out-09.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-logclient-test.yml
@@ -308,7 +308,7 @@ Playbook output - Test Log Clients
    (env) > ansible-playbook -i hosts pb-logclient-test.yml
 
 .. literalinclude:: out/out-10.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

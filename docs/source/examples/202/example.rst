@@ -196,12 +196,12 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 24-29
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 24-29
 
@@ -244,7 +244,7 @@ Playbook output - Create templates
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Templates at iocage_02
@@ -276,7 +276,7 @@ Playbook output - Clone and start jails
                             -t clone -e clone=true
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_02
@@ -303,15 +303,15 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Display inventory
@@ -328,7 +328,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display list iocage_hooks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -338,7 +338,7 @@ Playbook output - Display list iocage_hooks
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-08.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

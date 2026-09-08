@@ -78,7 +78,7 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/images.example.com
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note:: The default values of ``cimage_download`` and ``cimage_unpack`` are ``true``. Set them to
@@ -91,7 +91,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,7 +101,7 @@ Playbook output - Display variables
    (env) > ansible-playbook pb.yml -t cimage_debug -e cimage_debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Download images
@@ -112,7 +112,7 @@ Playbook output - Download images
    (env) > ansible-playbook pb.yml -t cimage_download -e cimage_download=true
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Unpack images
@@ -123,7 +123,7 @@ Playbook output - Unpack images
    (env) > ansible-playbook pb.yml -t cimage_unpack -e cimage_unpack=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Mount image
@@ -134,7 +134,7 @@ Playbook output - Mount image
    (env) > ansible-playbook pb.yml -t cimage_mount
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Customize image
@@ -145,7 +145,7 @@ Playbook output - Customize image
    (env) > ansible-playbook pb.yml -t cimage_customize
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Umount image
@@ -156,7 +156,7 @@ Playbook output - Umount image
    (env) > ansible-playbook pb.yml -t cimage_umount
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Mount, customize, and umount image
@@ -171,7 +171,7 @@ disk is detached.
    (env) > ansible-playbook pb.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Write the image file to USB

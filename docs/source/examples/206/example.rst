@@ -230,7 +230,7 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Create and start clones
@@ -242,7 +242,7 @@ Create and start clones
                             -t clone -e clone=true
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Create and start swarms
@@ -254,7 +254,7 @@ Create and start swarms
                             -t swarm -e swarm=true -e debug=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_04
@@ -271,7 +271,7 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,9
 
@@ -293,7 +293,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display jails in the swarm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -303,7 +303,7 @@ Playbook output - Display jails in the swarm
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

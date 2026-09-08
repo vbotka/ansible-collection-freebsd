@@ -52,7 +52,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display the metadata from galaxy.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,6 +62,6 @@ Playbook output - Display the metadata from galaxy.yml
    (env) > ansible-playbook -i hosts pb.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
 
 .. _lookup vbotka.freebsd.galaxy_info: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/lookup/galaxy_info/

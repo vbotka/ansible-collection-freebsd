@@ -94,14 +94,14 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_03.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-postinstall.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-postinstall.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure resolv.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -126,14 +126,14 @@ these variables.
                                               -e fp_resolv_conf_clean=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-network.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-network.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure loadbalance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -143,7 +143,7 @@ Playbook output - Configure loadbalance
    (env) > ansible-playbook pb-network.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Result

@@ -136,26 +136,26 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/cl-common.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/cl-lighttpd.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/common.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Create and start jails
@@ -185,11 +185,11 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Display inventory
@@ -210,45 +210,45 @@ Update repos
    (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini
 
 .. literalinclude:: out/out-12.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Configuration conf-light
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: conf-light/files.d/lighttpd-index.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/files.d/lighttpd-lighttpd-annotated-conf.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/files.d/lighttpd-lighttpd-conf.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/handlers.d/lighttpd-freebsd.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/packages.d/lighttpd.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/services.d/lighttpd.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: conf-light/states.d/lighttpd-server-document-root.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Setup
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -260,7 +260,7 @@ Assemble data and create handlers.
    (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Install and configure lighttpd
@@ -274,7 +274,7 @@ jails to their iocage hosts.
    (env) > ansible-playbook pb.yml -i hosts -i iocage.ini
 
 .. literalinclude:: out/out-10.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Results

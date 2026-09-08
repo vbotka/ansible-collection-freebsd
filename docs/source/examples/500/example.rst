@@ -161,15 +161,15 @@ hosts
 ^^^^^
 
 .. literalinclude:: hosts/01_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
@@ -192,7 +192,7 @@ Flush the cache if you created the ``project`` and have not refreshed it yet.
    (env) > ansible-playbook pb-all-groups.yml -i hosts --flush-cache
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 group_vars
@@ -226,7 +226,7 @@ Install the package if you are running this play for the first time.
    (env) > ansible-playbook pb-logserv.yml -i hosts -e install=true
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Test the Log Server
@@ -270,7 +270,7 @@ Install the package if you are running this play for the first time.
    (env) > ansible-playbook pb-logclient.yml -i hosts -i iocage.ini -e install=true -e debug=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-logclient.yml
@@ -287,7 +287,7 @@ Playbook output - Test Log Client
    (env) > ansible-playbook pb-test-logclient.yml -i hosts
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Example directory listing on the log server:

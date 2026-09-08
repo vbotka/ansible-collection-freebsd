@@ -112,14 +112,14 @@ hosts
 ^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/project.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 templates
@@ -137,7 +137,7 @@ Playbook output - Create project jails from iocage templates
    (env) > ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Inventory graph

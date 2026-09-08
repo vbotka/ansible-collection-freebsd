@@ -55,13 +55,13 @@ Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook pb-vars-all.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-all.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_* variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,7 +71,7 @@ Playbook output - Display iocage_* variables
    (env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_133
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

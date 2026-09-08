@@ -75,11 +75,11 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -93,7 +93,7 @@ Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Activate iocage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,7 +106,7 @@ Playbook output - Activate iocage
                                           -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note:: This ``debug`` output shows the ``result`` of an already activated `iocage`_.

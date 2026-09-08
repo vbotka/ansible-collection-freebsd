@@ -100,7 +100,7 @@ Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +113,7 @@ Playbook output - Display versions
            | grep version
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create custom fact scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,7 +125,7 @@ Playbook output - Create custom fact scripts
                                           -e freebsd_iocage_facts=true
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Display custom fact script
@@ -152,7 +152,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display custom facts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,7 +162,7 @@ Playbook output - Display custom facts
    (env) > ansible-playbook pb-test.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

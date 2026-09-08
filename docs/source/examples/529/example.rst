@@ -83,11 +83,11 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/project-hosts.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/template.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
@@ -129,7 +129,7 @@ Playbook output - Create iocage templates
    (env) > ansible-playbook -i iocage.ini pb-iocage-template.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 List templates

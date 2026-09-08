@@ -161,18 +161,18 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04/loader.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/zfs.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-loader.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-loader.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - loader.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,7 +182,7 @@ Playbook output - loader.conf
    (env) > ansible-playbook pb-loader.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note::
@@ -195,7 +195,7 @@ Playbook pb-zfs.yml
 ^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-zfs.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,7 +205,7 @@ Playbook output - Display variables
    (env) > ansible-playbook pb-zfs.yml -i iocage.ini -t fzfs_debug -e fzfs_debug=true
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Configure ZFS
@@ -216,7 +216,7 @@ Playbook output - Configure ZFS
    (env) > ansible-playbook pb-zfs.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - List pools
@@ -227,7 +227,7 @@ Playbook output - List pools
    (env) > ansible-playbook pb-zfs.yml -t fzfs_facts_pools -e fzfs_debug=true
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - List datasets
@@ -238,7 +238,7 @@ Playbook output - List datasets
    (env) > ansible-playbook pb-zfs.yml -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

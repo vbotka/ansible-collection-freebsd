@@ -136,7 +136,7 @@ hosts
 ^^^^^
 
 .. literalinclude:: hosts/05_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 group_vars
@@ -168,7 +168,7 @@ Playbook output - Fetch iocage plugins
                             -e debug=true
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 List iocage plugins
@@ -195,7 +195,7 @@ Playbook output - Clone jails from iocage plugins
    (env) > ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Inventory graph
@@ -232,7 +232,7 @@ Playbook output - Test Log Server
    (env) > ansible-playbook pb-logserver-test.yml -i hosts -e debug=true
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-logclient-test.yml
@@ -249,7 +249,7 @@ Playbook output - Test Log Clients
    (env) > ansible-playbook pb-logclient-test.yml -i hosts
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

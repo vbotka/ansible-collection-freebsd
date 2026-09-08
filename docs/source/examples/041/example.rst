@@ -56,7 +56,7 @@ Playbook pb.yml
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 8-23,25-26
 
 Playbook output - Test filter project
@@ -67,7 +67,7 @@ Playbook output - Test filter project
    (env) > ansible-playbook -i localhost, pb.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 6-25,29-33
 
 

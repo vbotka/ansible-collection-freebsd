@@ -77,11 +77,11 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -94,7 +94,7 @@ Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Test sanity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,7 +105,7 @@ Playbook output - Test sanity
                                           -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook output - Test sanity quietly
@@ -119,7 +119,7 @@ Playbook output - Test sanity quietly
                                           -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. seealso::

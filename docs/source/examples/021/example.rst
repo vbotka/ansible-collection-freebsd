@@ -93,26 +93,26 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/swarms.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 10
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Jails at iocage_06
@@ -139,7 +139,7 @@ Playbook pb-test-all.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display all groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -149,14 +149,14 @@ Playbook output - Display all groups
    (env) > ansible-playbook -i hosts --flush-cache pb-test-all.yml
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-db.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-db.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Group swarm_db
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,14 +166,14 @@ Playbook output - Group swarm_db
    (env) > ansible-playbook -i hosts pb-test-db.yml
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-connection.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-connection.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Test connection and get hostname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -183,7 +183,7 @@ Playbook output - Test connection and get hostname
    (env) > ansible-playbook -i hosts pb-test-connection.yml
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

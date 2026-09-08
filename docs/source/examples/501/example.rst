@@ -129,34 +129,34 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04/loader.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/login.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/network.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/packages.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/pf.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/zfs.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -188,38 +188,38 @@ host_vars
      errors: No known data errors
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbooks
 ^^^^^^^^^
 
 .. literalinclude:: pb-login.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: pb-packages.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: pb-loader.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: pb-network.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: pb-pf.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: pb-zfs.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: pb-iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook outputs
@@ -233,7 +233,7 @@ Configure /home/admin/.login_conf
    (env) > ansible-playbook pb-login.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Install packages
@@ -244,7 +244,7 @@ Install packages
    (env) > ansible-playbook pb-packages.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. _example_501_loader:
@@ -257,7 +257,7 @@ Configure /boot/loader.conf
    (env) > ansible-playbook pb-loader.yml -i iocage.ini
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. note::
@@ -274,7 +274,7 @@ Configure network
    (env) > ansible-playbook pb-network.yml -i iocage.ini
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Configure pf
@@ -285,7 +285,7 @@ Configure pf
    (env) > ansible-playbook pb-pf.yml -i iocage.ini
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Configure ZFS
@@ -296,7 +296,7 @@ Configure ZFS
    (env) > ansible-playbook pb-zfs.yml -i iocage.ini
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. seealso::
@@ -313,7 +313,7 @@ Activate iocage
                                          -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Fetch release
@@ -333,14 +333,14 @@ iocage sanity test
    (env) > ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity
 
 .. literalinclude:: out/out-09.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 All playbooks
 ^^^^^^^^^^^^^
 
 .. literalinclude:: pb-all.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 All playbooks output
@@ -351,7 +351,7 @@ All playbooks output
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb-all.yml -i iocage.ini
 
 .. literalinclude:: out/out-10.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

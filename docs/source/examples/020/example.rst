@@ -111,26 +111,26 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/swarms.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 10
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -142,7 +142,7 @@ Playbook pb-iocage-swarms-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-swarms-create.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -152,7 +152,7 @@ Playbook output - Create swarms
    (env) > ansible-playbook -i iocage.ini pb-iocage-swarms-create.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::
@@ -175,7 +175,7 @@ Playbook pb-test-all.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-all.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - All groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -185,14 +185,14 @@ Playbook output - All groups
    (env) > ansible-playbook -i hosts pb-test-all.yml
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-iocage-swarms-destroy.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-swarms-destroy.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -204,7 +204,7 @@ Destroy the swarms if you do not need them anymore.
    (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-08.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 

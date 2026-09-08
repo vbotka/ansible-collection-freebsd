@@ -183,7 +183,7 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook output - Create and start swarms
@@ -198,7 +198,7 @@ Playbook output - Create and start swarms
                             -e debug=true
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_02
@@ -225,17 +225,17 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,9
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,9
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. note::
@@ -256,7 +256,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -266,7 +266,7 @@ Playbook output - Display iocage_tags
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

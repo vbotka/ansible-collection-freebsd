@@ -99,11 +99,11 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Display inventory
@@ -120,7 +120,7 @@ Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-01.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display sshd rcvar in jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,14 +134,14 @@ how to use the filter ``community.general.jc``.
    (env) > ansible-playbook -i hosts pb-test-01.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-02.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-02.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Create jid_rcvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -151,14 +151,14 @@ Playbook output - Create jid_rcvar
    (env) > ansible-playbook -i iocage.ini -e debug=true pb-test-02.yml
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-03.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-03.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display enabled services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -168,14 +168,14 @@ Playbook output - Display enabled services
    (env) > ansible-playbook -i iocage.ini -e debug=true pb-test-03.yml
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-04.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-04.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display sshd status
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -185,14 +185,14 @@ Playbook output - Display sshd status
    (env) > ansible-playbook -i iocage.ini pb-test-04.yml
 
 .. literalinclude:: out/out-06.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-05.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-05.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display sshd commands synopsis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -202,14 +202,14 @@ Playbook output - Display sshd commands synopsis
    (env) > ansible-playbook -i iocage.ini pb-test-05.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-06.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-06.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display sendmail rcvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -219,14 +219,14 @@ Playbook output - Display sendmail rcvar
    (env) > ansible-playbook -i hosts pb-test-06.yml
 
 .. literalinclude:: out/out-08.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-test-07.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-07.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Start apcupsd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -236,7 +236,7 @@ Playbook output - Start apcupsd
    (env) > ansible-playbook -i iocage.ini pb-test-07.yml
 
 .. literalinclude:: out/out-09.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. _module vbotka.freebsd.service: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)

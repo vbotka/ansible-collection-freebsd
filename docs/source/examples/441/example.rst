@@ -127,7 +127,7 @@ hosts
 ^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 9,10
 
@@ -145,21 +145,21 @@ hosts
    * See the variable ``bsd_dhcpd_subnet`` in :ref:`example_440`.
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/project-hosts.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 6
    :caption:
 
@@ -182,7 +182,7 @@ Playbook output - Create and start swarms
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_06
@@ -209,7 +209,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Test SSH redirection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -219,7 +219,7 @@ Playbook output - Test SSH redirection
    (env) > ansible-playbook pb-test.yml -i hosts
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 .. hint::

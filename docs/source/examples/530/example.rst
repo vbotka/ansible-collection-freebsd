@@ -174,7 +174,7 @@ Playbook output - Create iocage templates
    (env) > ansible-playbook -i iocage.ini pb-iocage-template.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 List templates

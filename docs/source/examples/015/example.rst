@@ -67,12 +67,12 @@ Inventory hosts
 Set a unique ``cache_prefix``.
 
 .. literalinclude:: hosts/02_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 7-11
 
 .. literalinclude:: hosts/04_iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 5-9
 
@@ -82,7 +82,7 @@ Playbook pb-vars-ip4.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-ip4.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display iocage_ip4
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -92,7 +92,7 @@ Playbook output - Display iocage_ip4
    (env) > ansible-playbook pb-vars-ip4.yml -i hosts
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
 
 .. note::
 

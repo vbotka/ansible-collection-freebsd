@@ -135,18 +135,18 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-iocage-fetch-base-clone-list.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-iocage-fetch-base-clone-list.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Fetch, create, clone, and start
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -156,7 +156,7 @@ Playbook output - Fetch, create, clone, and start
    (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Jails at iocage_02
@@ -185,7 +185,7 @@ Inventory iocage.yml
 The jails at ``iocage_04``:
 
 .. literalinclude:: iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 2
 
 .. seealso::
@@ -197,7 +197,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -207,7 +207,7 @@ Playbook output - Display groups
    (env) > ansible-playbook pb-test.yml -i iocage.yml
 
 .. literalinclude:: out/out-04.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
    :emphasize-lines: 30-35
 

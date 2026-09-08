@@ -72,21 +72,21 @@ group_vars
 ^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04.yml
-   :language: yaml
+   :language: yaml+jinja
    :caption:
 
 Playbook pb-loader.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-loader.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure loader.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -96,14 +96,14 @@ Playbook output - Configure loader.conf
    (env) > ansible-playbook pb-loader.yml -i iocage.ini
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Playbook pb-network.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-network.yml
-   :language: yaml
+   :language: yaml+jinja
 
 Playbook output - Configure network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +113,7 @@ Playbook output - Configure network
    (env) > ansible-playbook pb-network.yml -i iocage.ini
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :force:
 
 Result

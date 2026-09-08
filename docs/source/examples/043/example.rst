@@ -61,7 +61,7 @@ Playbook pb-test-to-ucl.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-to-ucl.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 7-15,20
 
 Playbook output - Test filter to_ucl
@@ -72,14 +72,14 @@ Playbook output - Test filter to_ucl
    (env) > ansible-playbook -i localhost, pb-test-to-ucl.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 6-13
 
 Playbook pb-test-from-ucl.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test-from-ucl.yml
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 7-16,22
 
 Playbook output - Test filter from_ucl
@@ -90,7 +90,7 @@ Playbook output - Test filter from_ucl
    (env) > ansible-playbook -i localhost, pb-test-from-ucl.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml
+   :language: yaml+jinja
    :emphasize-lines: 6-12
 
 
