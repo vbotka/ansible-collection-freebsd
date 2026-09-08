@@ -3,37 +3,40 @@
 Update iocage module
 ********************
 
-* Clone the git repository https://github.com/vbotka/ansible-iocage.git
+* Clone the Git repository: https://github.com/vbotka/ansible-iocage.git
 
-* Switch to the branch *current*
+* Switch to the branch ``current``.
 
-* Make changes to the branch *current* or create a new branch
+* Make changes to the ``current`` branch or create a new branch.
 
-* Update the code and commit the changes. You are encouraged to submit a PR.
+* Update the code and commit your changes. (Pull requests are welcome!)
 
-* Calculate ``iocage.py`` hash. For example, ::
+* Calculate the ``iocage.py`` hash. For example::
 
     shell> sha512sum iocage.py
 
-* To incorporate your changes, update in the collection:
+* To incorporate your changes, update the following in the collection:
 
-  * the checksum ``setup/vars/checksum.yml``
+  * The checksum in ``setup/vars/checksum.yml``
 
-  * the patches ``setup/files/module-iocage.*.patch`` if needed
+  * The patches in ``setup/files/module-iocage.*.patch`` (if needed)
 
-  * the dictionary ``plugins.modules.iocage`` in the file ``setup/vars/plugins.yml``
+  * The dictionary entry ``plugins.modules.iocage`` in ``setup/vars/plugins.yml``
 
-* See ``setup/vars/plugins_install.yml`` and update ``plugins/modules/iocage.py`` ::
+* Review ``setup/vars/plugins_install.yml`` and update ``plugins/modules/iocage.py``::
 
     shell> cd setup
     shell> ansible-playbook setup.yml -t plugins
 
-.. note:: The ``plugins`` tasks are not idempotent if a patch is present.
+.. note::
+
+   The ``plugins`` tasks are not idempotent if a patch is present.
 
 .. warning::
 
-   * The collection upgrade will override the changes. Backup your changes before you upgrade the
-     collection.
+   * Upgrading the collection will overwrite your changes. Back up your changes
+     before upgrading.
 
-   * This collection does not provide an upgrade procedure to preserve changes. After the upgrade,
-     you are responsible for restoring your changes.
+   * This collection does not provide an upgrade procedure that preserves local
+     modifications. You are responsible for restoring your changes after an
+     upgrade.

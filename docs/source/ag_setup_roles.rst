@@ -9,9 +9,9 @@ Roles
 
 Namespace vbotka
 ^^^^^^^^^^^^^^^^
-  
-If you want to install other roles from the namespace `vbotka`_, see ``setup/vars/roles.yml``. The
-dictionary ``bsd_roles`` keeps the tested roles
+
+To install other roles from the `vbotka`_ namespace, see ``setup/vars/roles.yml``. The
+dictionary ``bsd_roles`` maintains the list of tested roles:
 
 .. code-block:: yaml
    :force:
@@ -32,7 +32,7 @@ dictionary ``bsd_roles`` keeps the tested roles
        name: config_light
        scm: git
        src: https://github.com/vbotka/ansible-config-light
-       version: 2.7.
+       version: 2.7.1
        ...
      - galaxy: vbotka.freebsd_custom_image
        name: custom_image
@@ -46,31 +46,31 @@ dictionary ``bsd_roles`` keeps the tested roles
        version: 2.6.2
        ...
 
-Put the roles you want to install into the list ``bsd_roles_install`` in
-``setup/vars/roles_linstall.yml`` and run the play
+Add the roles you want to install to the ``bsd_roles_install`` list in
+``setup/vars/roles_install.yml`` and run the playbook:
 
 .. code-block:: console
 
    shell> cd setup
    shell> ansible-playbook setup.yml -t roles
 
-Manually remove obsolete versions from the directory ``roles``.
+Manually remove obsolete versions from the ``roles`` directory.
 
 Naming convention
 """""""""""""""""
 
-The naming convention is simple:
+The naming convention is structured as follows:
 
-* The GitHub repositories' names always start with ``ansible-``. If a role works with FreeBSD only,
-  the GitHub name starts with ``ansible-freebsd``.
+* GitHub repository names always begin with ``ansible-``. If a role targets FreeBSD exclusively,
+  the repository name begins with ``ansible-freebsd-``.
 
-* The Ansible Galaxy roles' names start with the namespace ``vbotka`` and follow with the GitHub name
-  without the prefix ``ansible-`` where dashes ``-`` are replaced with underscores ``_``.
+* Ansible Galaxy role names start with the namespace ``vbotka`` followed by the repository name,
+  omitting the ``ansible-`` prefix and replacing hyphens (``-``) with underscores (``_``).
 
-* The collection roles' names start with ``vbotka.freebsd`` and follow with the last parts of the
-  GitHub names where dashes ``-`` are replaced by underscores ``_``.
+* Collection role names start with ``vbotka.freebsd.`` followed by the trailing segment of the
+  GitHub repository name, with hyphens (``-``) replaced by underscores (``_``).
 
-For example,
+For example:
 
 .. csv-table::
    :header: "GitHub vbotka", "Galaxy vbotka", "Collection vbotka.freebsd"
@@ -80,28 +80,28 @@ For example,
    "ansible-config-light", "vbotka.config_light", "vbotka.freebsd.config_light"
    "ansible-freebsd-custom-image", "vbotka.freebsd_custom_image", "vbotka.freebsd.custom_image"
 
-The roles imported in the Ansible Galaxy namespace `vbotka`_ and included in the collection
-`vbotka.freebsd`_ are identical. You can use them in parallel or interchange them without
-restrictions.
+Roles imported into the Ansible Galaxy namespace `vbotka`_ and those included in the
+`vbotka.freebsd`_ collection are identical. They can be used interchangeably or in parallel
+without restriction.
 
 .. note::
 
-   The roles' files ``README.md`` are imported in the collection documentation. The titles might
-   be misleading because they keep the Galaxy names. For example, the role
-   `vbotka.freebsd.custom_image`_ documentation says:
+   Role ``README.md`` files are imported directly into the collection documentation. Their titles
+   may appear misleading because they retain their Galaxy role names. For example, the
+   `vbotka.freebsd.custom_image`_ documentation heading displays:
 
    .. code-block:: text
-      
-     freebsd_custom_image
-     --------------------
 
-     This role is included in the collection vbotka.freebsd as vbotka.freebsd.custom_image
+      freebsd_custom_image
+      --------------------
+
+      This role is included in the collection vbotka.freebsd as vbotka.freebsd.custom_image
 
 Role vbotka.ansible_lib
 """""""""""""""""""""""
 
-The role `vbotka.ansible_lib`_ comprises independent tasks. The purpose is providing reusable tasks
-that can be imported or included in playbooks and other roles.
+The `vbotka.ansible_lib`_ role provides independent, reusable tasks that can be imported or included
+in playbooks and other roles.
 
 .. csv-table::
    :header: "GitHub vbotka", "Galaxy vbotka", "Collection vbotka.freebsd"
@@ -109,8 +109,9 @@ that can be imported or included in playbooks and other roles.
 
    "ansible-lib", "vbotka.ansible_lib", "vbotka.freebsd.lib"
 
-Some roles depend on it. If such roles are included in the collection `vbotka.freebsd`_ they are
-modified to use the dictionary ``<name>_ansible_lib``. For example, the dictionary ``rsnapshot_ansible_lib``
+Several roles depend on it. When included in the `vbotka.freebsd`_ collection, dependent roles
+are configured to reference the ``<name>_ansible_lib`` mapping. For example, the ``rsnapshot_ansible_lib``
+dictionary:
 
 .. code-block:: yaml
 
@@ -118,8 +119,8 @@ modified to use the dictionary ``<name>_ansible_lib``. For example, the dictiona
      vbotka.rsnapshot: vbotka.ansible_lib
      vbotka.freebsd.rsnapshot: vbotka.freebsd.lib
 
-is used to select ``vbotka.ansible_lib`` or ``vbotka.freebsd.lib`` depending on the role running in
-the collection or not. For example,
+resolves to ``vbotka.ansible_lib`` or ``vbotka.freebsd.lib`` depending on whether the role is running
+inside the collection context:
 
 .. code-block:: yaml
 
@@ -137,8 +138,8 @@ the collection or not. For example,
 Other dependent roles
 """""""""""""""""""""
 
-There are other dependent roles. For example, the role `vbotka.freebsd.zfs`_ depends on the role
-`vbotka.freebsd.postinstall`_. The dictionary ``fzfs_freebsd_postinstall``
+Other inter-role dependencies follow the same pattern. For example, the `vbotka.freebsd.zfs`_ role
+depends on `vbotka.freebsd.postinstall`_. The ``fzfs_freebsd_postinstall`` dictionary:
 
 .. code-block:: yaml
 
@@ -146,8 +147,7 @@ There are other dependent roles. For example, the role `vbotka.freebsd.zfs`_ dep
      vbotka.freebsd_zfs: vbotka.freebsd_postinstall
      vbotka.freebsd.zfs: vbotka.freebsd.postinstall
 
-is used to select ``vbotka.freebsd_postinstall`` or ``vbotka.freebsd.postinstall`` depending on the
-role running in the collection or not. For example,
+resolves to ``vbotka.freebsd_postinstall`` or ``vbotka.freebsd.postinstall`` based on the runtime context:
 
 .. code-block:: yaml
 
@@ -164,7 +164,7 @@ role running in the collection or not. For example,
 Other roles
 ^^^^^^^^^^^
 
-If you want to install other roles into this collection update the dictionary ``bsd_roles``.
+To add custom or external roles to this collection, update the ``bsd_roles`` dictionary.
 
 .. seealso::
 
@@ -172,16 +172,13 @@ If you want to install other roles into this collection update the dictionary ``
 
 .. note::
 
-   To install roles outside this collection see
+   To install roles outside this collection, see
    `Installing roles <https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#installing-roles>`_.
 
 .. warning::
 
-   * The collection upgrade will override the changes. Backup your changes before you upgrade the
-     collection.
-
-   * This collection does not provide an upgrade procedure that preserve changes. After the upgrade,
-     you are responsible for restoring your changes.
+   * Upgrading the collection will overwrite your changes. Back up your modifications before upgrading.
+   * This collection does not provide an upgrade procedure that preserves local modifications. You are responsible for reapplying your changes after an upgrade.
 
 
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289

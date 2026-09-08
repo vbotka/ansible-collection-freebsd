@@ -16,8 +16,8 @@ iocage
 
 .. hint::
 
-   In the ``Index`` search ``clone jails``, ``base jails``, and ``thick jails`` to see what examples are
-   available.
+   In the ``Index`` search ``clone jails``, ``base jails``, and ``thick jails``
+   to see what examples are available.
 
 
 .. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8

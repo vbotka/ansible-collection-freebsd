@@ -8,10 +8,10 @@ Plugins
    :depth: 1
 
 Tested plugins
-^^^^^^^^^^^^^^^
-  
-If you want to install plugins into this collection, see ``setup/vars/plugins.yml``. The dictionary
-``plugins`` keeps tested plugins
+^^^^^^^^^^^^^^
+
+To install plugins into this collection, see ``setup/vars/plugins.yml``. The
+dictionary ``plugins`` tracks tested plugins:
 
 .. code-block:: yaml
 
@@ -22,8 +22,8 @@ If you want to install plugins into this collection, see ``setup/vars/plugins.ym
        iocage: https://raw.githubusercontent.com/vbotka/ansible-iocage
        ucl: https://raw.githubusercontent.com/vbotka/ansible-ucl
 
-Put the plugins you want to install into the dictionary ``plugins_install`` in
-``setup/vars/plugins_install.yml`` and run the play
+Specify the plugins you want to install in the ``plugins_install`` dictionary
+located in ``setup/vars/plugins_install.yml``, then run the playbook:
 
 .. code-block:: console
 
@@ -33,21 +33,20 @@ Put the plugins you want to install into the dictionary ``plugins_install`` in
 Other plugins
 ^^^^^^^^^^^^^
 
-If you want to install other plugins into this collection, update the dictionary ``plugins``. In
-addition to this, you have to update:
+To install other plugins into this collection, update the ``plugins``
+dictionary. In addition, update the following files:
 
 * ``setup/vars/branch.yml``
-
 * ``setup/vars/checksum.yml``
-
-* ``setup/vars/patch.yml`` and ``setup/files`` if necessary.
+* ``setup/vars/patch.yml`` and ``setup/files`` (if necessary)
 
 .. seealso:: :ref:`dg_update_iocage_module`
 
 .. warning::
 
-   * The collection upgrade will override the changes. Backup your changes before you upgrade the
-     collection.
+   * Upgrading the collection will overwrite your changes. Back up your changes
+     before upgrading.
 
-   * This collection does not provide an upgrade procedure that preserve changes. After the upgrade,
-     you are responsible for restoring your changes.
+   * This collection does not provide an upgrade procedure that preserves custom
+     modifications. You are responsible for restoring your changes after an
+     upgrade.

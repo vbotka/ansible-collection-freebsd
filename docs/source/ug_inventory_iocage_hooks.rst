@@ -1,25 +1,23 @@
 Hooks
 ^^^^^
 
-The iocage utility internally opens a console to a jail to retrieve its DHCP
-address. This requires root. If you run the command ``iocage list -l`` as
-unprivileged user, you'll see the message ``DHCP (running -- address requires
-root)``. If you are not granted the root privilege, use
-``/etc/dhclient-exit-hooks``. For example,
-
-.. code-block:: console
-
-   shell> cat /zroot/iocage/jails/srv_1/root/etc/dhclient-exit-hooks
+The ``iocage`` utility internally opens a console to a jail to retrieve its DHCP
+address, an operation that requires root privileges. If you run ``iocage list
+-l`` as an unprivileged user, the IP4 field displays ``DHCP (running -- address
+requires root)``.  If granting root or ``sudo`` privileges is not desired,
+configure ``/etc/dhclient-exit-hooks`` inside the jail to record the assigned
+address. For example:
 
 .. code-block:: sh
 
+   # /zroot/iocage/jails/srv_1/root/etc/dhclient-exit-hooks
    case "$reason" in
        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
-       echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+       echo "$new_ip_address" > "/var/db/dhclient-hook.address.$interface"
        ;;
    esac
 
-where ``/zroot/iocage`` is the activated pool
+where ``/zroot/iocage`` is the activated ZFS pool:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -47,8 +45,8 @@ where ``/zroot/iocage`` is the activated pool
 
 .. seealso:: `man dhclient-script`_
 
-Create the inventory configuration ``hosts/02_iocage.yml``. Use the option ``hooks_results`` instead
-of ``sudo``
+Update the inventory configuration ``hosts/02_iocage.yml`` to use the
+``hooks_results`` parameter instead of ``sudo``:
 
 .. code-block:: yaml
 
@@ -60,13 +58,13 @@ of ``sudo``
 
 .. note::
 
-   The option ``hooks_results`` expects the ``poolname`` to be mounted
-   to ``/poolname``. For example, if you activate the pool ``zroot``,
-   this plugin expects to find the ``hooks_results`` items in the path
-   ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname``
-   to a different path, the easiest remedy is to create a symlink.
+   The ``hooks_results`` parameter expects the active pool to be mounted at
+   ``/<poolname>``. For example, if you activate the pool ``zroot``, the plugin
+   expects to find ``hooks_results`` files at
+   ``/zroot/iocage/jails/<name>/root``.  If your pool is mounted elsewhere,
+   create a symlink to this path.
 
-As an admin on the controller, display the inventory
+As admin on the control node, display the inventory:
 
 .. code-block:: console
 
@@ -124,7 +122,8 @@ As an admin on the controller, display the inventory
              iocage_template: ansible_client
              iocage_type: jail
 
-Update the inventory configuration ``hosts/02_iocage.yml``. Compose the variable ``ansible_host``
+Update ``hosts/02_iocage.yml`` to compose ``ansible_host`` from the hook
+output:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 7
@@ -137,7 +136,7 @@ Update the inventory configuration ``hosts/02_iocage.yml``. Compose the variable
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-Test the jails. Create the playbook ``pb-test-uname.yml``
+To test connectivity to the jails, create the playbook ``pb-test-uname.yml``:
 
 .. code-block:: yaml
 
@@ -145,36 +144,35 @@ Test the jails. Create the playbook ``pb-test-uname.yml``
      remote_user: admin
 
      vars:
-
        ansible_python_interpreter: auto_silent
 
      tasks:
-
-       - command: uname -a
+       - name: Run uname
+         ansible.builtin.command: uname -a
          register: out
 
-       - debug:
+       - name: Display uname output
+         ansible.builtin.debug:
            var: out.stdout
 
 .. seealso:: `Managing BSD hosts with Ansible`_
 
-Run the playbook
+Run the playbook:
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts/02_iocage.yml pb-test-uname.yml
 
-.. code-block:: yaml
-   :force:
+.. code-block:: text
 
    PLAY [all] **********************************************************************************************************
 
-   TASK [command] ******************************************************************************************************
+   TASK [Run uname] ****************************************************************************************************
    changed: [srv_3]
    changed: [srv_1]
    changed: [srv_2]
 
-   TASK [debug] ********************************************************************************************************
+   TASK [Display uname] ************************************************************************************************
    ok: [srv_1] =>
        out.stdout: FreeBSD srv-1 14.2-RELEASE-p1 FreeBSD 14.2-RELEASE-p1 GENERIC amd64
    ok: [srv_3] =>
@@ -187,7 +185,9 @@ Run the playbook
    srv_2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
    srv_3                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
-.. note:: This playbook and the inventory configuration work also for the `Shared IP jails`_.
+.. note:: 
+
+   This playbook and inventory configuration also work with `Shared IP jails`_.
 
 
 .. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script

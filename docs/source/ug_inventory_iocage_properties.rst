@@ -1,8 +1,8 @@
 Properties
 ^^^^^^^^^^
 
-Optionally, get the iocage properties. Update the inventory configuration
-``hosts/02_iocage.yml``. Use the parameter ``get_properties``
+To retrieve all iocage jail properties, enable the ``get_properties`` parameter
+in the inventory configuration file ``hosts/02_iocage.yml``:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4
@@ -16,7 +16,7 @@ Optionally, get the iocage properties. Update the inventory configuration
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-Display the properties. Create the playbook ``pb-test-properties.yml``
+To inspect the retrieved properties, create the playbook ``pb-test-properties.yml``:
 
 .. code-block:: yaml
 
@@ -24,26 +24,24 @@ Display the properties. Create the playbook ``pb-test-properties.yml``
      remote_user: admin
 
      vars:
-
        ansible_python_interpreter: auto_silent
 
      tasks:
-
-       - debug:
+       - name: Display iocage properties
+         ansible.builtin.debug:
            var: iocage_properties
 
-Run the playbook. Limit the inventory to ``srv_3``
+Run the playbook, limiting execution to ``srv_3``:
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts/02_iocage.yml -l srv_3 pb-test-properties.yml
 
-.. code-block:: yaml
-   :force:
+.. code-block:: text
 
    PLAY [all] **********************************************************************************************************
 
-   TASK [debug] ********************************************************************************************************
+   TASK [Display iocage properties] ************************************************************************************
    ok: [srv_3] =>
        iocage_properties:
            CONFIG_VERSION: '33'

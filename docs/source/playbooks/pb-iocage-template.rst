@@ -19,7 +19,7 @@ Synopsis
 ^^^^^^^^
 
 This playbook creates `iocage templates`_ from the dictionary ``templates``. For
-example,
+example:
 
 .. code-block:: yaml
 
@@ -34,7 +34,7 @@ example,
        rcconf: "{{ act_rcconf | dict2items }}"
        pkglist: /tmp/ansible/ansible_client/pkgs.json
 
-creates the template ``ansible_client``
+This configuration creates the template ``ansible_client``:
 
 .. code-block:: console
 
@@ -53,20 +53,19 @@ creates the template ``ansible_client``
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook ``pb_iocage_template.yml`` what
-   examples are available.
+   Look at the ``Index`` and search the playbook ``pb_iocage_template.yml`` to
+   see what examples are available.
 
 .. important::
 
-   This playbook provides entry-level functionality to test the iocage
-   templates. Use the role `vbotka.freebsd.iocage_template`_ for advanced use
-   cases.
+   This playbook provides entry-level functionality to test iocage templates.
+   Use the role `vbotka.freebsd.iocage_template`_ for advanced use cases.
 
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A few variables are required to configure a template for Ansible clients. See
-the playbook tasks to learn details.
+A few variables are required to configure a template for Ansible
+clients. Inspect the playbook tasks for specific implementation details.
 
 .. code-block:: yaml
 
@@ -84,10 +83,9 @@ the playbook tasks to learn details.
    * `Understanding privilege escalation`_
 
 act_pkg
-""""""""
+"""""""
 
-Install a list of packages. Put the list into the ``template`` attribute
-``act_pkg``. For example,
+Install a list of packages by defining the ``template`` attribute ``act_pkg``:
 
 .. code-block:: yaml
 
@@ -98,8 +96,9 @@ Install a list of packages. Put the list into the ``template`` attribute
          - lang/python311
        ...
 
-If this attribute is missing, the variable ``act_pkg`` is used. Below is the
-minimal list for an ansible client. Set the Python version to your needs
+If this attribute is omitted, the variable ``act_pkg`` is used instead. Below is
+the minimal package list for an Ansible client (adjust the Python version as
+needed):
 
 .. code-block:: yaml
 
@@ -107,30 +106,33 @@ minimal list for an ansible client. Set the Python version to your needs
      - security/sudo
      - lang/python311
 
-Fit the list to your needs. Usually, you want to add ``gtar`` and other
-archivers. See the module `ansible.builtin.unarchive`_. If you want to use the
-collection `community.crypto`_ add ``py-openssl``
+Adjust the package list to your requirements. Archiving tools like ``gtar`` are
+typically needed (see `ansible.builtin.unarchive`_). If using the collection
+`community.crypto`_, include ``security/py-openssl``:
 
 .. code-block:: yaml
 
    act_pkg:
      - lang/python311
+     - lang/python3
+     - lang/python
      - security/sudo
      - archivers/gtar
      - security/py-openssl
 
-Enable the installation by setting ``act_pkg_install=true`` (default=false).
+Enable package installation by setting ``act_pkg_install: true`` (defaults to
+``false``).
 
 Notes:
 
-* As a first choice, use ``pkglist``. Use ``act_pkg`` to install additional
-  packages in an already created jail.
+* Prefer ``pkglist`` during template creation. Use ``act_pkg`` to install
+  additional packages in an already created jail.
 
-* The module `community.general.pkgng`_ is jail-aware. Quoting: ::
+* The module `community.general.pkgng`_ is jail-aware::
 
     jail: Pkg will execute in the given jail name or ID.
 
-* It seems that a short UUID doesn't work as a name. Use the ID instead ::
+* A short UUID does not work as a jail name; pass the ID instead::
 
     jail: "{{ iocage_jails[item.key]['jid'] }}"
 
@@ -138,12 +140,12 @@ Notes:
 
    * `Setting the Python interpreter`_
    * `Understanding privilege escalation`_
-    
+
 act_user
 """"""""
 
-Create a user in the jail. Usually, this user is used as the ``remote_user`` to
-connect to the jail.
+Create a dedicated user in the jail, typically used as ``remote_user`` for
+Ansible connections:
 
 .. code-block:: yaml
 
@@ -152,12 +154,11 @@ connect to the jail.
 .. seealso::
 
    * `Setting a remote user`_
-  
+
 act_pk
 """"""
 
-A path to a file comprising the public keys allowed to connect to the
-``act_user`` in the jail.
+Path to a file containing public SSH keys authorized to connect as ``act_user``:
 
 .. code-block:: yaml
 
@@ -165,20 +166,21 @@ A path to a file comprising the public keys allowed to connect to the
 
 .. warning::
 
-   The module `ansible.posix.authorized_key`_, used in this task, is not
-   jail-aware. The user ``act_user`` must exist on the iocage host. Otherwise,
-   the module `ansible.posix.authorized_key`_ will crash.
+   The `ansible.posix.authorized_key`_ module used in this task is not
+   jail-aware.  The user specified in ``act_user`` must also exist on the iocage
+   host; otherwise, the module will fail.
 
 act_sudo
 """"""""
 
-Add ``act_user`` to ``<dataset>/root/usr/local/etc/sudoers``
+Grant sudo permissions to ``act_user`` in
+``<dataset>/root/usr/local/etc/sudoers``:
 
 .. code-block:: yaml
 
    act_sudo: true
 
-The below passwordless entry will be created
+This creates the following passwordless entry:
 
 .. code-block:: yaml
 
@@ -186,12 +188,12 @@ The below passwordless entry will be created
 
 .. note::
 
-   See `Understanding privilege escalation`_
-  
+   See `Understanding privilege escalation`_.
+
 act_rcconf
 """"""""""
 
-Configure ``<dataset>/root/etc/rc.conf``
+Configure settings in ``<dataset>/root/etc/rc.conf``:
 
 .. code-block:: yaml
 
@@ -202,7 +204,7 @@ Configure ``<dataset>/root/etc/rc.conf``
 act_dhclient
 """"""""""""
 
-Create ``dhclient`` hooks in ``<dataset>/root/etc/``
+Create ``dhclient`` hooks in ``<dataset>/root/etc/``:
 
 .. code-block:: yaml
 
@@ -216,26 +218,26 @@ Create ``dhclient`` hooks in ``<dataset>/root/etc/``
 
 .. note::
 
-   * These ``hooks`` are needed to configure ``hooks_results`` in `inventory
-     plugin vbotka.freebsd.iocage`_
+   * These hooks are required to configure ``hooks_results`` in the `inventory
+     plugin vbotka.freebsd.iocage`_.
 
-   * See `man dhclient-script`_
+   * See `man dhclient-script`_.
 
 pkglist
 ^^^^^^^
 
-``pkglist`` is an optional attribute of the dictionary ``templates``. The value
-is a path on the iocage host where the file ``pkgs.json`` will be copied to. See
-the option ``--pkglist`` in `man iocage`_
+``pkglist`` is an optional attribute of the ``templates`` dictionary. Its value
+is the destination path on the iocage host where ``pkgs.json`` is copied. See
+the ``--pkglist`` option in `man iocage`_:
 
-.. code-block::
+.. code-block:: yaml
 
    templates:
      ansible_client:
        pkglist: /tmp/ansible/ansible_client/pkgs.json
        ...
 
-Create the file ``files/pkgs.json``. For example,
+Create the package list in ``files/pkgs.json``:
 
 .. code-block:: json
 
@@ -243,11 +245,11 @@ Create the file ``files/pkgs.json``. For example,
        "pkgs": [
            "python311",
            "sudo"
-           ]
+       ]
    }
 
-The playbook tasks ``pkglist.yml`` expects the path ``files/pkgs.json`` to be
-relative to the inventory
+The task file ``pkglist.yml`` expects ``files/pkgs.json`` relative to the
+inventory directory:
 
 .. code-block:: yaml
 
@@ -260,9 +262,8 @@ relative to the inventory
        _templates: "{{ templates | dict2items
                                  | selectattr('value.pkglist', 'defined') }}"
 
-Fit the list to your needs. Usually, you want to add ``gtar`` and other
-archivers. See the module `ansible.builtin.unarchive`_. Add ``py-openssl`` if
-you want to use the collection `community.crypto`_
+Customize the packages as needed. For example, add ``gtar`` for
+`ansible.builtin.unarchive`_ or ``py-openssl`` for `community.crypto`_:
 
 .. code-block:: json
 
@@ -272,55 +273,55 @@ you want to use the collection `community.crypto`_
            "sudo",
            "gtar",
            "py-openssl"
-           ]
+       ]
    }
 
 .. note::
 
-   ``iocage`` tests DNS on installing the packages::
+   ``iocage`` tests DNS resolution before installing packages::
 
-     Testing Host DNS response to pkg.freebsd.org
-     2025/08/06 01:18:12 (INFO) Testing ansible_client's SRV response to pkg.freebsd.org
-     2025/08/06 01:18:12 (INFO) Testing ansible_client's DNSSEC response to pkg.freebsd.org
+      Testing Host DNS response to pkg.freebsd.org
+      2025/08/06 01:18:12 (INFO) Testing ansible_client's SRV response to pkg.freebsd.org
+      2025/08/06 01:18:12 (INFO) Testing ansible_client's DNSSEC response to pkg.freebsd.org
 
 .. seealso::
 
-  `Install package inside jail vs install package from outside`_
+   `Install package inside jail vs install package from outside`_
 
 Workflow
 ^^^^^^^^
 
-The last tasks ``template.yml`` convert the jails to templates. If you start the
-play again the first tasks ``setup.yml`` ends the host(s) if all templates have
-already been created. If you want to reconfigure already created template set
-``template=0`` manually. For example,
+The final tasks in ``template.yml`` convert the created jails into templates. If
+the playbook is run again, the initial tasks in ``setup.yml`` will end the play
+for hosts whose templates already exist.
+
+To reconfigure an existing template, unset its template state manually:
 
 .. code-block:: console
 
    shell> iocage set template=0 ansible_client
 
-If a running jail is needed start it
+If the jail must be running to apply changes, start it:
 
 .. code-block:: console
 
    shell> iocage start ansible_client
 
-Then, use the playbook tags to execute selected tasks. For example, to install
-additional packages, create the list of the packages ``act_pkg`` and run the
-play
+Then use playbook tags to run the desired tasks. For example, to install
+additional packages defined in ``act_pkg``:
 
 .. code-block:: console
 
    (env) > ansible-playbook pb_iocage_template.yml -t pkg -e act_pkg_install=true
 
-After the reconfiguration stop the jail and convert it to the template manually
+After completing modifications, stop the jail and convert it back to a template:
 
 .. code-block:: console
 
    shell> iocage stop ansible_client
    shell> iocage set template=1 ansible_client
 
-, or by the play
+Alternatively, perform the stop and template conversion via the playbook:
 
 .. code-block:: console
 

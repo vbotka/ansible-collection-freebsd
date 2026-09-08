@@ -1,8 +1,8 @@
 Basics
 ^^^^^^
 
-As root at the iocage host, create three `VNET jails`_ with a DHCP interface from the template
-``ansible_client``
+As root on the iocage host, create three `VNET jails`_ with a DHCP interface
+from the template ``ansible_client``:
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -18,7 +18,7 @@ As root at the iocage host, create three `VNET jails`_ with a DHCP interface fro
 
    `Configuring a VNET Jail`_
 
-As admin at the controller, list the jails
+As admin on the control node, list the jails:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -34,7 +34,7 @@ As admin at the controller, list the jails
    | None | srv_3 | off  | down  | jail | 14.2-RELEASE-p3 | DHCP (not running) | -   | ansible_client | no       |
    +------+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Create the inventory configuration ``hosts/02_iocage.yml``
+Create the inventory configuration file ``hosts/02_iocage.yml``:
 
 .. code-block:: yaml
 
@@ -42,7 +42,7 @@ Create the inventory configuration ``hosts/02_iocage.yml``
    host: 10.1.0.73
    user: admin
 
-Display the inventory
+Display the inventory:
 
 .. code-block:: console
 
@@ -94,7 +94,7 @@ Display the inventory
              iocage_template: ansible_client
              iocage_type: jail
 
-Optionally, create `Shared IP jails`_
+Alternatively, create `Shared IP jails`_:
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -109,9 +109,9 @@ Optionally, create `Shared IP jails`_
 .. code-block:: console
    :emphasize-lines: 1
 
-    shell> iocage list -l
-   +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------  +
-   | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL   |
+   shell> iocage list -l
+   +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+   | JID  | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
    +======+=======+======+=======+======+=================+===================+=====+================+==========+
    | None | srv_1 | off  | down  | jail | 14.2-RELEASE-p3 | em0|10.1.0.101/24 | -   | ansible_client | no       |
    +------+-------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
@@ -125,11 +125,11 @@ Optionally, create `Shared IP jails`_
    `Configuring a Shared IP Jail`_
 
 .. hint::
-     
-   If iocage needs environment variable(s), use the parameter `env`_. For example,
+
+   If ``iocage`` requires specific environment variables, define them using the `env`_ parameter:
 
    .. code-block:: yaml
-   
+
       plugin: vbotka.freebsd.iocage
       host: 10.1.0.73
       user: admin

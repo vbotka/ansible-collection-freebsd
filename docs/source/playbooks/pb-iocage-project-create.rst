@@ -11,14 +11,18 @@ pb_iocage_project_create
 Synopsis
 ^^^^^^^^
 
-This playbook creates jails in a ``project``.
+This playbook creates jails in a project.
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook ``pb_iocage_project_create.yml`` what examples are available.
+   Look at the ``Index`` and search the playbook
+   ``pb_iocage_project_create.yml`` to see what examples are available.
 
 Example
 ^^^^^^^
+
+Define the hosts, assigned classes, and target VMM hosts in the ``project``
+dictionary:
 
 .. code-block:: yaml
 
@@ -38,3 +42,9 @@ Example
      db_2:
        class: [db, logclient]
        vmm: iocage_04
+
+Execute the playbook:
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb_iocage_project_create.yml

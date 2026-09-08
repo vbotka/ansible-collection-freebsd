@@ -8,15 +8,17 @@ Quoting `man iocage`_:
    PROPERTIES
    ...
    notes="any string"
-         Custom notes for miscellaneous tagging.
-         Default: none
-         Source: local
+          Custom notes for miscellaneous tagging.
+          Default: none
+          Source: local
 
-We will use the format ``notes="tag1=value1 tag2=value2 ..."``.
+We use the format ``notes="tag1=value1 tag2=value2 ..."``.
 
-.. note:: The iocage tags have nothing to do with the `Ansible tags`_.
+.. note::
 
-As root on the iocage host, set the ``notes`` for each jail. For example,
+   The iocage tags are not related to `Ansible tags`_.
+
+As root on the iocage host, set the ``notes`` property for each jail:
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -28,9 +30,9 @@ As root on the iocage host, set the ``notes`` for each jail. For example,
    shell> iocage set notes="vmm=iocage_02 project=bar" srv_3
    notes: none -> vmm=iocage_02 project=bar
 
-Update the inventory configuration ``hosts/02_iocage.yml``. Compose the
-dictionary ``iocage_tags`` and create groups. The properties are
-required. Enable the parameter ``get_properties``
+Update the inventory configuration file ``hosts/02_iocage.yml``. Enable the
+``get_properties`` parameter to retrieve jail properties, compose the
+``iocage_tags`` dictionary, and define ``keyed_groups``:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4,9
@@ -50,7 +52,7 @@ required. Enable the parameter ``get_properties``
      - prefix: project
        key: iocage_tags.project
 
-Display tags and groups. Create the playbook ``pb-test-groups.yml``
+To verify the tags and groups, create the playbook ``pb-test-groups.yml``:
 
 .. code-block:: yaml+jinja
 
@@ -58,33 +60,32 @@ Display tags and groups. Create the playbook ``pb-test-groups.yml``
      remote_user: admin
 
      vars:
-
        ansible_python_interpreter: auto_silent
 
      tasks:
-
-       - debug:
+       - name: Display iocage tags
+         ansible.builtin.debug:
            var: iocage_tags
 
-       - debug:
+       - name: Display inventory groups
+         ansible.builtin.debug:
            msg: |
              {% for group in groups %}
              {{ group }}: {{ groups[group] }}
              {% endfor %}
          run_once: true
 
-Run the playbook
+Run the playbook:
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts/02_iocage.yml pb-test-groups.yml
 
-.. code-block:: yaml
-   :force:
+.. code-block:: text
 
    PLAY [all] **********************************************************************************************************
 
-   TASK [debug] ********************************************************************************************************
+   TASK [Display iocage tags] ******************************************************************************************
    ok: [srv_1] =>
        iocage_tags:
            project: foo
@@ -98,7 +99,7 @@ Run the playbook
            project: bar
            vmm: iocage_02
 
-   TASK [debug] ********************************************************************************************************
+   TASK [Display inventory groups] *************************************************************************************
    ok: [srv_1] =>
        msg: |-
            all: ['srv_1', 'srv_2', 'srv_3']

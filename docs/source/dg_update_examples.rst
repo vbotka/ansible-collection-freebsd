@@ -3,23 +3,23 @@
 Update examples
 ***************
 
-Run the script ``docs/source/examples/batch.sh``
+Run the script ``docs/source/examples/batch.sh``.
 
 Environment
 -----------
 
-See the script how the environment is used
+Inspect the script to see how the following environment variables are used:
 
-* VBOTKA_FREEBSD_BATCH
-* VBOTKA_FREEBSD_COPY_ORIG
-* VBOTKA_FREEBSD_DESTROY_JAILS
-* VBOTKA_FREEBSD_DESTROY_TEMPLATES
-* VBOTKA_FREEBSD_RUN_BATCH
+* ``VBOTKA_FREEBSD_BATCH``
+* ``VBOTKA_FREEBSD_COPY_ORIG``
+* ``VBOTKA_FREEBSD_DESTROY_JAILS``
+* ``VBOTKA_FREEBSD_DESTROY_TEMPLATES``
+* ``VBOTKA_FREEBSD_RUN_BATCH``
 
 host_key_checking
 -----------------
 
-Disable `HOST_KEY_CHECKING`_ in ``ansible.cfg`` to avoid connection errors in the examples
+Disable `HOST_KEY_CHECKING`_ in ``ansible.cfg`` to avoid connection errors in the examples:
 
 .. code-block:: ini
    :emphasize-lines: 5
@@ -29,19 +29,19 @@ Disable `HOST_KEY_CHECKING`_ in ``ansible.cfg`` to avoid connection errors in th
    callback_result_format = yaml
    display_skipped_hosts = false
    host_key_checking = false
-   
+
    [connection]
    pipelining = true
 
 Contribute examples
 -------------------
 
-To fit the examples to your needs, update:
+To adapt the examples to your environment, update:
 
 * ``ansible_host`` in ``iocage.ini`` files
 * ``host`` in ``hosts/*.yml`` files
-* IPs in the file ``docs/source/examples/defaults/batch``
-* ``files/*``
+* IPs in ``docs/source/examples/defaults/batch``
+* Files in ``files/*``
 
 Update files
 ------------
@@ -88,9 +88,8 @@ Update files
 
    The ``*.orig`` files are excluded from:
 
-      * the collection (see ``galaxy.yml``) and
-
-      * the git (see ``.gitignore``).
+   * The collection (see ``galaxy.yml``)
+   * Git tracking (see ``.gitignore``)
 
 
 .. _HOST_KEY_CHECKING: https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking

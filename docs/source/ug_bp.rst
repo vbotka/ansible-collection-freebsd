@@ -6,13 +6,13 @@ Best Practice
 .. topic:: Binary Complexity vs. Module Coverage
 
    The ``iocage`` CLI contains an extensive set of subcommands and
-   options. Attempting to support all features natively within the ``iocage``
-   Ansible module is difficult to maintain and test.
+   options. Attempting to support every feature natively within the ``iocage``
+   Ansible module makes maintenance and automated testing difficult.
 
 .. topic:: Role Runner Tasks for Extended Features
 
-   For specialized workflows or edge cases not covered directly by the module,
-   use the ``runner`` tasks provided in the ``iocage`` role.
+   For specialized workflows or edge cases not supported directly by the
+   module, use the ``runner`` tasks provided by the ``iocage`` role.
 
 .. topic:: Handling Non-Idempotent Commands
 

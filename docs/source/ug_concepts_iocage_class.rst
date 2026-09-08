@@ -16,11 +16,11 @@ iocage classes
 List iocage_classes
 ^^^^^^^^^^^^^^^^^^^
 
-The variable ``iocage_classes`` is a list of jail's classes ``composed`` by an
-inventory plugin from the iocage tag ``class``. For example, the below
-``project``
+The variable ``iocage_classes`` is a list of jail classes ``composed`` by an
+inventory plugin from the iocage ``class`` tag. For example, given the following
+project definition:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    project:
      log-server-01:
@@ -29,10 +29,9 @@ inventory plugin from the iocage tag ``class``. For example, the below
        class: [log-server]
        ...
 
-set the jail's properties
+a task sets the jail properties and creates the ``notes`` field:
 
-.. code-block:: yaml
-
+.. code-block:: yaml+jinja
 
    - name: "Properties: Set properties."
      vars:
@@ -55,8 +54,7 @@ set the jail's properties
        {{ item }}
      loop: "{{ vmm[inventory_hostname].keys() }}"
 
-and creates ``notes``. (The iocage tag ``class`` is a string of comma-separated classes.)
-
+The ``class`` property inside ``notes`` is stored as a comma-separated string:
 
 .. code-block:: console
 
@@ -67,10 +65,10 @@ and creates ``notes``. (The iocage tag ``class`` is a string of comma-separated 
 Inventory groups
 ^^^^^^^^^^^^^^^^
 
-These ``notes`` can be used to compose the variable ``iocage_classes`` and
-create inventory groups, for example, the inventory group ``log_servers``
+These ``notes`` can be used to populate ``iocage_classes`` and construct
+inventory groups (for example, the ``log_servers`` inventory group):
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    get_properties: true
    inventory_hostname_tag: alias
@@ -85,7 +83,7 @@ create inventory groups, for example, the inventory group ``log_servers``
 Custom facts
 ^^^^^^^^^^^^
 
-The list of classes can be stored in ``custom facts``
+The list of classes can also be stored in local custom facts:
 
 .. code-block:: console
 
@@ -99,30 +97,27 @@ The list of classes can be stored in ``custom facts``
    }
    EOF
 
-and used by the FreeBSD service `ansible_init`_ to configure the jail
+These facts are then consumed by the FreeBSD `ansible_init`_ service to configure the jail:
 
-.. code-block:: console
+.. code-block:: yaml+jinja
 
-   root@log-server-01:~ # cat /root/ansible-conf-init/pb-init.yml 
-   
+   # /root/ansible-conf-init/pb-init.yml
    - name: ansible-init
      hosts: localhost.my.domain
-   
+
      vars:
-   
        ai_class: "{{ ansible_local.iocage.class | d([]) | intersect(ai_db_class) }}"
-   
+
      tasks:
-   
        - name: Get custom facts.
          ansible.builtin.setup:
            filter: ansible_local
 
        ...
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
-   root@log-server-01:~ # cat /root/ansible-vars/ai-db-class.yml 
+   # /root/ansible-vars/ai-db-class.yml
    ai_db_class:
      log-server:
        repo_host: "git://{{ project_hosts.repos }}"
@@ -160,31 +155,31 @@ and used by the FreeBSD service `ansible_init`_ to configure the jail
 Class variables
 ^^^^^^^^^^^^^^^
 
-The classes can be also used to group configuration. For example, for
-``log-client`` and ``log-server`` server
+Classes can also be used to organize configuration files. For example, separating
+configurations for ``log-client`` and ``log-server``:
 
-.. code-block:: console
+.. code-block:: text
 
    ├── ansible.cfg
    ├── files
-   │   ├── ai-conf-roles.yml
-   │   ├── ai-db-class.yml
-   │   ├── log-client
-   │   │   ├── syslog-ng-client-pkg.yml
-   │   │   └── syslog-ng-client.yml
-   │   ├── log-server
-   │   │   ├── syslog-ng-server-pkg.yml
-   │   │   └── syslog-ng-server.yml
-   │   └── pkg-repo.yml
+   │   ├── ai-conf-roles.yml
+   │   ├── ai-db-class.yml
+   │   ├── log-client
+   │   │   ├── syslog-ng-client-pkg.yml
+   │   │   └── syslog-ng-client.yml
+   │   ├── log-server
+   │   │   ├── syslog-ng-server-pkg.yml
+   │   │   └── syslog-ng-server.yml
+   │   └── pkg-repo.yml
    ├── group_vars
-   │   └── all
-   │       ├── project-hosts.yml
-   │       └── project.yml
+   │   └── all
+   │       ├── project-hosts.yml
+   │       └── project.yml
    └── templates
        └── project-hosts.yml.j2
 
 These configuration files are automatically copied to ``ai_vars`` when a project
-is created. For example,
+is created:
 
 .. code-block:: console
 

@@ -8,7 +8,7 @@ Project hosts
 
 
 The ``project_hosts`` variable stores jail IP addresses for iocage hosts. For
-example,
+example:
 
 .. code-block:: yaml
 
@@ -22,8 +22,7 @@ example,
        pkg_repo: 172.16.99.23
 
 The template below can be used to provide jails with the fixed IP
-addresses for a project running on a particular host.
-
+addresses for a project running on a particular host:
 
 .. code-block:: yaml+jinja
 

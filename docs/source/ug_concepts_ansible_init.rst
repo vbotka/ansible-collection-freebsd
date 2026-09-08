@@ -16,10 +16,10 @@ Introduction
 ^^^^^^^^^^^^
 
 `ansible_init`_ is a lightweight, cloud-init style FreeBSD rc(8) initialization
-service designed for the unattended, automated configuration of freshly deployed
+service designed for unattended, automated configuration of freshly deployed
 FreeBSD instances.
 
-By leveraging the native FreeBSD ``firstboot`` framework and Ansible's pulling
+By leveraging the native FreeBSD ``firstboot`` framework and Ansible's pull
 execution model (``ansible-pull``), this service eliminates the need for an
 external orchestration server to push configuration changes. Instead, the newly
 booted system configures itself locally.
@@ -31,52 +31,53 @@ The service coordinates the handover between system initialization and
 configuration management::
 
   [ Provisioning Layer ] ──> Instance Boots ──> rc.d/ansible_init runs
-                                                     │
-                                                     ▼
-                                      Clones Remote Git Repository
-                                                     │
-                                                     ▼
-                                      Executes Playbook Locally
-                                                     │
-                                                     ▼
-                                      [ System Fully Configured ]
+                                                       │
+                                                       ▼
+                                         Clones Remote Git Repository
+                                                       │
+                                                       ▼
+                                         Executes Playbook Locally
+                                                       │
+                                                       ▼
+                                         [ System Fully Configured ]
 
-Bootstrap Condition: The script is flagged with the "KEYWORD: firstboot" macro.
-It triggers dynamically on systems where the marker file /firstboot exists in
-the root directory.
+* **Bootstrap Condition:** The script is flagged with the ``KEYWORD: firstboot``
+  rc(8) setting. It triggers dynamically on systems where the marker file
+  ``/firstboot`` exists in the root directory.
 
-Execution Hook: It blocks the final multi-user runlevel sequence until the
-networking layer is available (REQUIRE: NETWORKING).
+* **Execution Hook:** It delays the final multi-user runlevel sequence until the
+  networking layer is available (``REQUIRE: NETWORKING``).
 
-Local Compilation: Rather than exposing an open SSH port for an internal control
-node, ansible_init pulls down your infrastructure-as-code repository via
-standard Git/HTTPS channels, compiles variables locally, and executes the target
-playbooks against localhost.
+* **Local Execution:** Rather than requiring an open SSH port for an external
+  control node, ``ansible_init`` pulls down your infrastructure-as-code repository
+  via standard Git/HTTPS protocols, resolves variables locally, and executes the
+  target playbooks against ``localhost``.
 
-Self-Termination: Upon a successful complete execution, the underlying FreeBSD
-firstboot framework removes the /firstboot trigger file, ensuring the
-initialization tasks run exactly once in the lifecycle of the instance.
+* **Self-Termination:** Upon successful execution, the underlying FreeBSD
+  ``firstboot`` framework removes the ``/firstboot`` trigger file, ensuring the
+  initialization tasks run exactly once during the lifecycle of the instance.
 
 Example
 ^^^^^^^
+
 This example demonstrates how to bootstrap a FreeBSD system within an isolated
 provisioning network using a local Git daemon.
 
 What This Example Accomplishes
 """"""""""""""""""""""""""""""
 
-1. It creates an infrastructure-as-code repository containing a custom Ansible
-   configuration, inventory file, and an example playbook.
-2. It configures the host to export this repository over the lightweight,
-   unauthenticated git:// protocol.
-3. It configures the ansible_init rc service to hook into that local repository.
-4. Upon execution, ansible-pull clones the repository and executes a task that
-   generates a file (/tmp/ansible-hello-world.txt).
+1. Creates an infrastructure-as-code repository containing a custom Ansible
+   configuration, inventory file, and example playbook.
+2. Configures the host to export this repository over the lightweight,
+   unauthenticated ``git://`` protocol.
+3. Configures the ``ansible_init`` rc service to pull from that local repository.
+4. On execution, ``ansible-pull`` clones the repository and runs a task that
+   generates the file ``/tmp/ansible-hello-world.txt``.
 
 Install Git and create local Git repository
 """""""""""""""""""""""""""""""""""""""""""
 
-::
+.. code-block:: console
 
    # ls -la /usr/local/git/ansible-conf-example/
    total 230
@@ -89,12 +90,12 @@ Install Git and create local Git repository
 
 .. seealso::
 
-   The `Example`_
+   The `Example`_ directory in the ``ansible_init`` repository.
 
 Configure git_daemon in /etc/rc.conf and start it
 """""""""""""""""""""""""""""""""""""""""""""""""
 
-::
+.. code-block:: sh
 
    git_daemon_enable="YES"
    git_daemon_directory="/usr/local/git"
@@ -103,7 +104,7 @@ Configure git_daemon in /etc/rc.conf and start it
 Configure ansible_init in /etc/rc.conf
 """"""""""""""""""""""""""""""""""""""
 
-::
+.. code-block:: sh
 
    ansible_init_enable="YES"
    ansible_init_host="git://localhost"
@@ -113,32 +114,31 @@ Configure ansible_init in /etc/rc.conf
 Start ansible_init
 """"""""""""""""""
 
-::
+.. code-block:: console
 
    # service ansible_init start
 
-The ``ansible-pull`` execution ``clones`` the ``repository`` into the local
-directory ``/root/ansible-conf-example`` and executes the playbook. As a result,
-the file ``/tmp/ansible-hello-world.txt`` is created:
+During execution, ``ansible-pull`` clones the repository into the local directory
+``/root/ansible-conf-example`` and runs the playbook, creating
+``/tmp/ansible-hello-world.txt``:
 
-::
+.. code-block:: console
 
    # cat /tmp/ansible-hello-world.txt
    [ansible-test] Hello world!
 
 .. seealso::
 
-   * repository `ansible_init`_
-   * repository `ansible-conf-init-example`_
-   * repository `ansible-conf-test`_
-   * example :ref:`example_524`
+   * Repository `ansible_init`_
+   * Repository `ansible-conf-init-example`_
+   * Repository `ansible-conf-test`_
+   * Example :ref:`example_524`
 
 .. warning::
 
-   The git:// protocol does not support encryption or authentication.  While
-   perfect for fast local prototyping or isolated provisioning networks, you
-   should change your ansible_init_host parameter to https:// for production
-   deployments.
+   The ``git://`` protocol does not provide encryption or authentication. While
+   suitable for fast local prototyping or isolated provisioning networks, use
+   ``https://`` (or SSH) for ``ansible_init_host`` in production environments.
 
 
 .. _ansible_init: https://github.com/vbotka/ansible_init/

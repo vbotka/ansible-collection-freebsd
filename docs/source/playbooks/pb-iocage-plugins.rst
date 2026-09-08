@@ -14,7 +14,7 @@ pb_iocage_plugins
 Synopsis
 ^^^^^^^^
 
-This playbook fetches ``iocage plugins``.
+This playbook fetches iocage plugins.
 
 Examples
 ^^^^^^^^
@@ -22,7 +22,7 @@ Examples
 enabled_plugins
 """""""""""""""
 
-Use the tag ``enabled_plugins`` to fetch the enabled iocage plugins. For example,
+Define the list of plugins in ``enabled_plugins``:
 
 .. code-block:: yaml
 
@@ -30,10 +30,16 @@ Use the tag ``enabled_plugins`` to fetch the enabled iocage plugins. For example
      - ansible-pull-syslogng-client
      - ansible-pull-syslogng-server
 
+Use the playbook tag ``enabled_plugins`` to fetch the enabled iocage plugins:
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb_iocage_plugins.yml -t enabled_plugins
+
 project_plugins
 """""""""""""""
 
-Use the tag ``project_plugins`` to fetch the iocage plugins required by a ``project``. For example,
+Define the required plugins within the ``project`` dictionary:
 
 .. code-block:: yaml
 
@@ -51,10 +57,16 @@ Use the tag ``project_plugins`` to fetch the iocage plugins required by a ``proj
        plugin: ansible-syslogng
        vmm: iocage_05
 
+Use the playbook tag ``project_plugins`` to fetch plugins required by a project:
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb_iocage_plugins.yml -t project_plugins
+
 swarm_plugins
 """""""""""""
 
-Use the tag ``swarm_plugins`` to fetch the iocage plugins required by a ``swarm``. For example,
+Define the required plugins within the ``swarms`` dictionary:
 
 .. code-block:: yaml
 
@@ -63,10 +75,16 @@ Use the tag ``swarm_plugins`` to fetch the iocage plugins required by a ``swarm`
        count: 3
        plugin: ansible-zero
 
+Use the playbook tag ``swarm_plugins`` to fetch plugins required by a swarm:
+
+.. code-block:: console
+
+   (env) > ansible-playbook pb_iocage_plugins.yml -t swarm_plugins
+
 plugins
 """""""
 
-Declare the plugins in a dictionary. For example,
+Declare plugin details, repositories, and properties in the ``plugins`` dictionary:
 
 .. code-block:: yaml
 
@@ -88,7 +106,7 @@ Declare the plugins in a dictionary. For example,
 
 .. hint::
 
-   To find the examples, search in the ``Index``:
+   To find examples, search in the ``Index``:
 
    * pb_iocage_plugins.yml
    * tag enabled_plugins
@@ -97,7 +115,4 @@ Declare the plugins in a dictionary. For example,
 
 .. seealso::
 
-   * `man iocage`_
-
-
-.. _man iocage: https://man.freebsd.org/cgi/man.cgi?iocage(8)
+   * `man iocage <https://man.freebsd.org/cgi/man.cgi?iocage(8)>`_

@@ -19,10 +19,10 @@ Project
 project dictionary
 ^^^^^^^^^^^^^^^^^^
 
-The ``project`` variable is a dictionary of jails. The ``vmm`` attribute stores
-the host on which the jail is running.
+The ``project`` variable is a dictionary of jails. The ``vmm`` attribute defines
+the host on which each jail is running:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    project:
      logserv-1:
@@ -44,15 +44,15 @@ the host on which the jail is running.
 vmm dictionary
 ^^^^^^^^^^^^^^
 
-Declare ``vmm`` as a dictionary of hosts running the jails.
+The ``vmm`` dictionary groups jails under the hosts running them. Defining:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    vmm: "{{ (project | vbotka.freebsd.project).vmm }}"
 
-gives
+produces:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    vmm:
      iocage_01:
@@ -77,14 +77,13 @@ gives
 class dictionary
 ^^^^^^^^^^^^^^^^
 
-Declare ``class`` as a dictionary mapping classes to their members.
+The ``class`` dictionary maps classes to their member jails. Defining:
 
+.. code-block:: yaml+jinja
 
-.. code-block:: yaml
-   
    class: "{{ (project | vbotka.freebsd.project).class }}"
 
-gives
+produces:
 
 .. code-block:: yaml
 

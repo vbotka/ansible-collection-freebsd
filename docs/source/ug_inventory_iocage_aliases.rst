@@ -3,15 +3,16 @@ Aliases
 
 Quoting `Inventory aliases`_:
 
-  The `inventory_hostname`_ is the unique identifier for a host in Ansible, this can be an IP or a
-  hostname, but also just an ``alias`` or short name for the host.
+  The `inventory_hostname`_ is the unique identifier for a host in Ansible. This
+  can be an IP address or a hostname, or simply an ``alias`` or short name for the
+  host.
 
 .. note::
 
    Assuming the host ``foo.example.com`` (IP address ``10.1.0.11``) resolves via
-   DNS or /etc/hosts, all of the following inventory entries are valid.
+   DNS or ``/etc/hosts``, all of the following inventory entries are valid:
 
-   .. code-block:: console
+   .. code-block:: ini
 
       foo.example.com
       10.1.0.11
@@ -24,7 +25,7 @@ Quoting `Inventory aliases`_:
    * Ansible test `ansible.utils.resolvable`_ – Test if an IP or name can be resolved.
    * `Connection methods and details`_
 
-Optionally, as root on the iocage host, stop and destroy all jails
+Optionally, as root on the iocage host, stop and destroy all existing test jails:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -61,8 +62,8 @@ Optionally, as root on the iocage host, stop and destroy all jails
    Destroying srv_2
    Destroying srv_3
 
-Create three VNET jails with a DHCP interface from the template ``ansible_client``. Use the option
-``--count``
+Create three VNET jails with a DHCP interface from the template
+``ansible_client`` using the ``--count`` option:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -72,7 +73,7 @@ Create three VNET jails with a DHCP interface from the template ``ansible_client
    9d94cc9e successfully created!
    052b9557 successfully created!
 
-The names are random. Start the jails
+Because ``--short`` assigns random UUID prefixes as names, start the jails using ``ALL``:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -107,7 +108,7 @@ The names are random. Start the jails
      + DHCP Address: 10.1.0.115/24
    Please convert back to a jail before trying to start ansible_client
 
-List the jails
+List the running jails:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -123,7 +124,7 @@ List the jails
    | 209 | 9d94cc9e | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.115 | -   | ansible_client | no       |
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Set ``notes`` in the jails. The tag ``alias`` is used to create `inventory aliases`_
+Set ``notes`` on each jail. The ``alias`` tag is used by the plugin to assign `inventory aliases`_:
 
 .. code-block:: console
    :emphasize-lines: 1,4,7
@@ -139,13 +140,12 @@ Set ``notes`` in the jails. The tag ``alias`` is used to create `inventory alias
 
 .. note::
 
-   The inventory option ``inventory_hostname_tag`` requires the ``notes`` format
-   ``t1=v1 t2=v2 ...``
+   The inventory parameter ``inventory_hostname_tag`` expects space-delimited
+   key-value pairs in ``notes`` (``key1=val1 key2=val2 ...``).
 
-Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
-``inventory_hostname_tag`` to ``alias``. This tag keeps the value of the
-`inventory alias`_. The ``properties`` are required. Enable the parameter
-``get_properties``
+Update the inventory configuration file ``hosts/02_iocage.yml``. Set
+``inventory_hostname_tag: alias`` so that each host is named by its alias.
+Enable ``get_properties: true`` so the plugin retrieves jail properties:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4,5
@@ -168,13 +168,14 @@ Update the inventory configuration ``hosts/02_iocage.yml``. Set the parameter
 
 .. note::
 
-   Declare the ``iocage_tags`` dictionary based on the format of the ``notes``.
+   Construct the ``iocage_tags`` dictionary according to the format used in
+   ``notes``. Alternative approaches can also be used, such as regex extraction:
 
-   There are other options. For example: ::
+   .. code-block:: yaml
 
-     iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+      iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
 
-Display tags and groups. Create the playbook ``pb-test-groups.yml``
+To verify the resolved tags and inventory groups, create the playbook ``pb-test-groups.yml``:
 
 .. code-block:: yaml+jinja
 
@@ -182,35 +183,34 @@ Display tags and groups. Create the playbook ``pb-test-groups.yml``
      remote_user: admin
 
      vars:
-
        ansible_python_interpreter: auto_silent
 
      tasks:
-
-       - debug:
+       - name: Display host properties and tags
+         ansible.builtin.debug:
            msg: |
              iocage_properties.host_hostname: {{ iocage_properties.host_hostname }}
              iocage_tags: {{ iocage_tags }}
 
-       - debug:
+       - name: Display inventory groups
+         ansible.builtin.debug:
            msg: |
              {% for group in groups %}
              {{ group }}: {{ groups[group] }}
              {% endfor %}
          run_once: true
 
-Run the playbook
+Run the playbook:
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts/02_iocage.yml pb-test-groups.yml
 
-.. code-block:: yaml
-   :force:
+.. code-block:: text
 
    PLAY [all] **********************************************************************************************************
 
-   TASK [debug] ********************************************************************************************************
+   TASK [Display host properties and tags] *****************************************************************************
    ok: [srv_1] =>
        msg: |-
            iocage_properties.host_hostname: 052b9557
@@ -224,7 +224,7 @@ Run the playbook
            iocage_properties.host_hostname: 9d94cc9e
            iocage_tags: {'vmm': 'iocage_02', 'project': 'bar', 'alias': 'srv_3'}
 
-   TASK [debug] ********************************************************************************************************
+   TASK [Display inventory groups] *************************************************************************************
    ok: [srv_1] =>
        msg: |-
            all: ['srv_1', 'srv_2', 'srv_3']
@@ -240,9 +240,7 @@ Run the playbook
 
 
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _inventory alias: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-
 .. _ansible.utils.resolvable: https://docs.ansible.com/ansible/latest/collections/ansible/utils/resolvable_test.html
 .. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
 .. _inventory_hostname: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-inventory_hostname

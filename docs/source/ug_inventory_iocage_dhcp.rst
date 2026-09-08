@@ -1,7 +1,7 @@
 DHCP
 ^^^^
 
-As root at the iocage host, start the jails
+As root on the iocage host, start the jails:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -36,7 +36,7 @@ As root at the iocage host, start the jails
      + DHCP Address: 10.1.0.169/24
    Please convert back to a jail before trying to start ansible_client
 
-List the jails
+List the running jails:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -52,7 +52,9 @@ List the jails
    | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-As admin at the controller, list the jails. The IP4 tab says "... address requires root"
+As admin on the control node, query the jail list without root privileges. Note
+that the ``IP4`` column indicates that reading DHCP addresses requires root
+access:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -68,7 +70,7 @@ As admin at the controller, list the jails. The IP4 tab says "... address requir
    | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible_client | no       |
    +-----+-------+------+-------+------+-----------------+-----------------------------------------+-----+----------------+----------+
 
-Use sudo if enabled
+Run the command with ``sudo`` to display the IP addresses:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -84,7 +86,8 @@ Use sudo if enabled
    | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``sudo``
+Update the inventory configuration file ``hosts/02_iocage.yml`` to enable the
+``sudo`` parameter:
 
 .. code-block:: yaml
    :emphasize-lines: 4
@@ -94,7 +97,7 @@ Update the inventory configuration ``hosts/02_iocage.yml``. Use the parameter ``
    user: admin
    sudo: true
 
-Display the inventory
+Display the inventory:
 
 .. code-block:: console
 
@@ -155,8 +158,8 @@ Display the inventory
              iocage_template: ansible_client
              iocage_type: jail
 
-If the parameter ``env`` is used and ``sudo`` is enabled, enable also ``sudo_preserve_env``. For
-example,
+If the ``env`` parameter is defined and ``sudo`` is enabled, also enable
+``sudo_preserve_env``:
 
 .. code-block:: yaml
    :emphasize-lines: 6-7
@@ -169,7 +172,7 @@ example,
    sudo: true
    sudo_preserve_env: true
 
-In this case, make sure the sudo tag ``SETENV`` is used
+In this case, verify that the user's sudoers entry includes the ``SETENV`` tag:
 
 .. code-block:: console
    :emphasize-lines: 1

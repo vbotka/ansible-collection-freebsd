@@ -21,7 +21,7 @@ pb_iocage_ansible_clients
 Synopsis
 ^^^^^^^^
 
-This playbook creates ``jails`` from the ``templates``.
+This playbook creates jails from templates.
 
 Examples
 ^^^^^^^^
@@ -29,7 +29,7 @@ Examples
 clones
 """"""
 
-Use the dictionary ``clones``. For example,
+Use the dictionary ``clones``. For example:
 
 .. code-block:: yaml
 
@@ -47,13 +47,13 @@ Use the dictionary ``clones``. For example,
        properties:
          ip4_addr: 'em0|10.1.0.113/24'
 
-Use the playbook tag ``clone`` to execute selected tasks
+Use the playbook tag ``clone`` to execute selected tasks:
 
 .. code-block:: console
 
    (env) > ansible-playbook pb_iocage_ansible_clients.yml -t clone -e clone=true
 
-creates the clones
+Verify the created clones:
 
 .. code-block:: console
 
@@ -70,8 +70,8 @@ creates the clones
 
 swarms
 """"""
-  
-Use the dictionary ``swarms``. For example,
+
+Use the dictionary ``swarms``. For example:
 
 .. code-block:: yaml
 
@@ -80,13 +80,14 @@ Use the dictionary ``swarms``. For example,
        count: 3
        template: ansible_client
 
-Use the playbook tag ``swarm`` to execute selected tasks
+Use the playbook tag ``swarm`` to execute selected tasks:
 
 .. code-block:: console
 
    (env) > ansible-playbook pb_iocage_ansible_clients.yml -t swarm -e swarm=true
 
-creates 3 jails from the template ``ansible_client``. The names are generated automatically 
+This creates 3 jails from the template ``ansible_client``. The names are generated
+automatically:
 
 .. code-block:: console
 
@@ -104,12 +105,14 @@ creates 3 jails from the template ``ansible_client``. The names are generated au
 clone_host_hostname
 """""""""""""""""""
 
-Use the dictionary ``clone_host_hostname``. The keys are used to create hostnames. Create ``fstab``
-entries. See the ``iocage`` property ``host_hostname``. For example,
+(WIP)
+
+Use the dictionary ``clone_host_hostname`` to define hostnames via keys and configure
+``fstab`` entries. Refer to the ``iocage`` property ``host_hostname``. For example:
 
 .. code-block:: yaml
 
-   clones_host_hostname:
+   clone_host_hostname:
      www-5:
        template: ansible_client_apache
        fstab:
@@ -118,7 +121,7 @@ entries. See the ``iocage`` property ``host_hostname``. For example,
            type: nullfs
            options: ro 0 0
 
-Use the playbook tag ``clone_host_hostname`` to execute selected tasks
+Use the playbook tag ``clone_host_hostname`` to execute selected tasks:
 
 .. code-block:: console
 
@@ -128,7 +131,7 @@ Use the playbook tag ``clone_host_hostname`` to execute selected tasks
 default properties
 """"""""""""""""""
 
-The dictionary ``properties`` keeps the default properties. For example,
+The dictionary ``properties`` stores default configuration settings:
 
 .. code-block:: yaml
 
@@ -137,7 +140,7 @@ The dictionary ``properties`` keeps the default properties. For example,
      vnet: 1
      defaultrouter: 10.1.0.10
 
-, get the DHCP address
+To configure DHCP addressing instead:
 
 .. code-block:: yaml
 
@@ -147,7 +150,7 @@ The dictionary ``properties`` keeps the default properties. For example,
      dhcp: 1
      vnet: 1
 
-, or mount datasets
+To enable ZFS dataset mounting inside the jail:
 
 .. code-block:: yaml
 
@@ -166,8 +169,8 @@ The dictionary ``properties`` keeps the default properties. For example,
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook ``pb_iocage_ansible_client.yml`` to see what
-   examples are available.
+   Look at the ``Index`` and search the playbook
+   ``pb_iocage_ansible_clients.yml`` to see all available examples.
 
 Workflow
 ^^^^^^^^
