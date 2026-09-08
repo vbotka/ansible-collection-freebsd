@@ -1,5 +1,5 @@
 ---
-- name: Create jails from iocage plugins.
+- name: Clone jails from iocage plugins.
   hosts: iocage_05
 
   vars:
@@ -24,7 +24,7 @@
           ansible.builtin.debug:
             msg: "[INFO] {{ client_exist | join(', ') }} exist(s)."
 
-    - name: Create log clients.
+    - name: Clone log clients.
       vars:
         _notes: >-
           "vmm={{ inventory_hostname }}
@@ -59,7 +59,7 @@
         - name: End of host.
           ansible.builtin.meta: end_host
 
-    - name: Create log_server
+    - name: Clone log_server
       vars:
         _notes: >-
           "vmm={{ inventory_hostname }}

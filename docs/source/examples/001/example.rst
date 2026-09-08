@@ -13,7 +13,7 @@
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to install the package `iocage`_.
+Use the `role vbotka.freebsd.iocage`_ to install the `iocage`_ package.
 
 Tree
 ^^^^
@@ -29,26 +29,26 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the managed node ``iocage_04``
-  
+* On the managed node ``iocage_04``:
+
   In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
-  * display variables
-  * install `iocage`_ package.
+  * Display variables
+  * Install the `iocage`_ package
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege in the managed nodes.
+* Root privileges on the managed nodes
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the run-strings to limit the play to the manged node ``iocage_02``
+* Put ``-l iocage_02`` into the command arguments to limit the play to the managed node ``iocage_02``.
 * Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
-* By default, ``iocage`` installation is enabled ``freebsd_iocage_install: true``
-* By default, ``debug`` is disabled ``freebsd_iocage_debug: false``
+* By default, ``iocage`` installation is enabled: ``freebsd_iocage_install: true``.
+* By default, ``debug`` is disabled: ``freebsd_iocage_debug: false``.
 
 .. seealso::
 
@@ -114,7 +114,7 @@ Playbook output - Install iocage
    :language: yaml
    :force:
 
-.. note:: This ``debug`` shows the ``result`` of already installed package.
+.. note:: This ``debug`` output shows the ``result`` of an already installed package.
 
 
 .. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/

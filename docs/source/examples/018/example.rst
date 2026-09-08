@@ -3,7 +3,7 @@
 018 Clone basejails. Use DHCP.
 ------------------------------
 
-Extending example :ref:`example_010`.
+Extending :ref:`example_010`.
 
 .. contents::
    :local:
@@ -49,29 +49,29 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
 
   In the playbook ``pb-iocage-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * clone 3 jails from the basejail
-  * start all jails
-  * display lists of jails.
+  * Clone 3 jails from the basejail ``ansible_client``
+  * Start all jails
+  * Display lists of jails
 
-* At the iocage host ``iocage_02``
+* On the iocage host ``iocage_02``:
 
   In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
-  * create the inventory groups and compose variables
-  * display the hosts and composed variables in the group ``test``.
+  * Create inventory groups and compose variables
+  * Display the hosts and composed variables in the group ``test``
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails ``ansible_client`` created in :ref:`example_010`
+* Jails ``ansible_client`` created in :ref:`example_010`
 
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
@@ -122,7 +122,7 @@ Playbook pb-iocage-clone-list.yml
 .. literalinclude:: pb-iocage-clone-list.yml
    :language: yaml
 
-Playbook output - clone, start, and list
+Playbook output - Clone, start, and list
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -157,7 +157,7 @@ Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP (running -- address requires
-root)``. Enable also ``sudo_preserve_env: true`` if ``env`` is used.
+root)``. Also enable ``sudo_preserve_env: true`` if ``env`` is used.
 
 .. literalinclude:: iocage.yml
    :language: yaml
@@ -165,13 +165,12 @@ root)``. Enable also ``sudo_preserve_env: true`` if ``env`` is used.
 
 .. hint::
 
-   * Optionally, limit admins sudo to the command ``iocage list`` ::
+   * Optionally, limit admin sudo access to the command ``iocage list``::
 
        shell> grep iocage /usr/local/etc/sudoers
        admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
 
-   * The tag ``SETENV``, to preserve the environment, is needed when ``env`` is used.
-
+   * The ``SETENV`` tag, to preserve the environment, is needed when ``env`` is used.
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -189,8 +188,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml
 
-Playbook output - vars iocage_*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage_* variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -203,7 +202,7 @@ Playbook output - vars iocage_*
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
 
-If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
+If a jail is stopped, the IP4 column displays: ``DHCP (not running)``.
 
 .. code-block:: console
 
@@ -216,8 +215,8 @@ If a jail is stopped, the IP4 tab says: ``DHCP (not running)``.
 .. literalinclude:: out/out-08.txt
    :language: bash
 
-Playbook output - vars iocage_*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage_* variables (stopped jails)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -231,5 +230,3 @@ Playbook output - vars iocage_*
 .. _iocage: https://www.freshports.org/sysutils/iocage/
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/

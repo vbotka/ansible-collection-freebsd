@@ -19,7 +19,7 @@
 Use case
 ^^^^^^^^
 
-Install ``git``. Use the role `vbotka.freebsd.postinstall`_ to configure and start `git_daemon`_
+Install ``git``. Use the role `vbotka.freebsd.postinstall`_ to configure and start `git_daemon`_.
 
 Tree
 ^^^^
@@ -30,36 +30,36 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_05
-  │       └── gitserver.yml
+  │   └── iocage_05
+  │       └── gitserver.yml
   ├── iocage.ini
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the remote host install ``git``.
-* Use the role `vbotka.freebsd.postinstall`_ to configure  and start `git_daemon`_
+* On the remote host, install ``git``.
+* Use the role `vbotka.freebsd.postinstall`_ to configure and start `git_daemon`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-TBD
+* TBD
 
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. note::
 
    | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_.
    | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
+   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
-   * documentation `Ansible role FreeBSD postinstall`_
+   * `Ansible role FreeBSD postinstall`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -106,7 +106,7 @@ Display service status
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 service git_daemon status
+   shell> ssh admin@iocage_05 service git_daemon status
 
 .. literalinclude:: out/out-02.txt
    :language: console
@@ -122,7 +122,4 @@ Display service status
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
 .. _default variables: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-variables.html
-.. _display_ok_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
-.. _display_skipped_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts

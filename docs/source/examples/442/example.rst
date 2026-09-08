@@ -1,9 +1,9 @@
 .. _example_442:
 
-442 Connection jailexec instead of ssh
+442 Connection jailexec instead of SSH
 --------------------------------------
 
-| Extending example :ref:`example_441`.
+| Extending :ref:`example_441`.
 
 .. contents::
    :local:
@@ -22,7 +22,7 @@
 Use case
 ^^^^^^^^
 
-Use the :ref:`ug_connection_jailexec` instead of the default ``ansible.builtin.ssh``.
+Use :ref:`ug_connection_jailexec` instead of the default ``ansible.builtin.ssh``.
 
 Tree
 ^^^^
@@ -33,42 +33,42 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 06_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* Create dynamic inventory to connect the jails by :ref:`ug_connection_jailexec`
+* Create a dynamic inventory to connect to the jails via :ref:`ug_connection_jailexec`.
 
-* At all created jails, in the playbook ``pb-test.yml``:
+* For all created jails, in the playbook ``pb-test.yml``:
 
   * connect to the jails
-  * display basic configuration of the jails.
+  * display the basic configuration of the jails.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_connection_jailexec`
-* `inventory plugin vbotka.freebsd.iocage2`_
-* root privilege in the managed nodes
+* `Inventory plugin vbotka.freebsd.iocage2`_
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-The only difference between this example and the example :ref:`example_441` are
-the following three lines in the inventory configuration file
+The only difference between this example and :ref:`example_441` is
+the following three lines in the inventory configuration file:
 
 .. code-block:: yaml
 
    ansible_connection: "'vbotka.freebsd.jailexec'"
-   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none'
+   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none'))
    ansible_jail_privilege_escalation: "'sudo'"
 
 .. seealso::
 
-   example :ref:`example_050`
+   Example :ref:`example_050`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -96,10 +96,10 @@ Inventory hosts
 
 .. note::
 
-   * The default value of the option ``ansible_jail_privilege_escalation`` is ``doas``
-   * See :ref:`ug_connection_jailexec`
+   * The default value of the option ``ansible_jail_privilege_escalation`` is ``doas``.
+   * See :ref:`ug_connection_jailexec`.
    * In FreeBSD, ``doas`` is not installed by default.
-		  
+
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:

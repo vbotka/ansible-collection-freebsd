@@ -26,24 +26,24 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── iocage.yml
+  │   └── all
+  │       └── iocage.yml
   ├── host_vars
-  │   └── iocage_04.yml
+  │   └── iocage_04.yml
   ├── iocage.ini
   ├── pb-loader.yml
   └── pb-network.yml
-  
+
 Synopsis
 ^^^^^^^^
 
 * Configure ``/boot/loader.conf``
-* Configure bridge.
+* Configure bridge interfaces.
 
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege in the managed nodes.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -76,13 +76,14 @@ group_vars
    :caption:
 
 host_vars
+^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_04.yml
    :language: yaml
    :caption:
 
 Playbook pb-loader.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-loader.yml
    :language: yaml
@@ -118,7 +119,7 @@ Playbook output - Configure network
 Result
 ^^^^^^
 
-MACs are sanitized.
+MAC addresses are sanitized.
 
 .. code-block:: console
 
@@ -127,7 +128,7 @@ MACs are sanitized.
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-     
+
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _vbotka.freebsd_network: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd

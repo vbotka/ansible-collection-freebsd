@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Use the `lookup vbotka.freebsd.galaxy_info`_ to get the meta data from ``galaxy.yml``.
+Use the `lookup vbotka.freebsd.galaxy_info`_ plugin to get the metadata from ``galaxy.yml``.
 
 Tree
 ^^^^
@@ -24,23 +24,17 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── host
+  ├── hosts
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-At a managed node, in the playbook ``pb.yml`` use the `lookup
-vbotka.freebsd.galaxy_info`_ to:
+On a managed node, in the playbook ``pb.yml``, use the `lookup
+vbotka.freebsd.galaxy_info`_ plugin to:
 
-  * display the complete meta data dictionary from galaxy.yml
-  * display the attributes authors and version.
-
-Requirements
-^^^^^^^^^^^^
-
-Notes
-^^^^^
+* Display the complete metadata dictionary from ``galaxy.yml``
+* Display the attributes ``authors`` and ``version``
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -60,8 +54,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output - Display the meta data from galaxy.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display the metadata from galaxy.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

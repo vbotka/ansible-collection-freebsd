@@ -3,6 +3,8 @@
 502 branch-server
 -----------------
 
+(WIP)
+
 .. contents::
    :local:
    :depth: 1
@@ -19,31 +21,30 @@
 .. index:: single: git server; Example 502
 .. index:: single: git_daemon; Example 502
 
-
 Use case
 ^^^^^^^^
 
-Install and configure ``syslog-ng`` and ``git`` servers in the ``branch-server``.
+Install and configure ``syslog-ng`` and ``git`` servers on ``branch-server``.
 
 Tree
 ^^^^
 
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── conf-light
-  │   ├── files.d
-  │   │   └── git.yml
-  │   ├── handlers.d
-  │   │   └── git.yml
-  │   ├── packages.d
-  │   │   └── git.yml
-  │   ├── services.d
-  │   │   └── git.yml
-  │   └── states.d
-  │       └── git-dir.yml
+  │   ├── files.d
+  │   │   └── git.yml
+  │   ├── handlers.d
+  │   │   └── git.yml
+  │   ├── packages.d
+  │   │   └── git.yml
+  │   ├── services.d
+  │   │   └── git.yml
+  │   └── states.d
+  │       └── git-dir.yml
   ├── hosts
   ├── host_vars
   │   └── branch-server.example.com
@@ -58,16 +59,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the managed node ``branch-server.example.com``:
+* On the managed node ``branch-server.example.com``:
 
-  * install ``devel/git`` and configure ``git server``
-  * install ``sysutils/syslog-ng`` and configure ``log server``.
-  * create ``git`` repositories.
+  * Install ``devel/git`` and configure the Git server.
+  * Install ``sysutils/syslog-ng`` and configure the log server.
+  * Create Git repositories.
 
 Requirements
 ^^^^^^^^^^^^
 
-roles:
+Roles:
 
 * `vbotka.freebsd.config_light`_
 * `vbotka.freebsd.postinstall`_
@@ -75,9 +76,9 @@ roles:
 Notes
 ^^^^^
 
-* This git server is configured to use the ``git`` protocol. See `Git on the Server - The protocols`_.
+* This Git server is configured to use the ``git`` protocol. See `Git on the Server - The protocols`_.
 
-* In FreeBSD, the service, user, and group name is ``git_daemon``. See `Using GIT on FreeBSD`_.
+* In FreeBSD, the service, user, and group names are ``git_daemon``. See `Using GIT on FreeBSD`_.
 
 .. seealso::
 
@@ -122,15 +123,19 @@ Configuration conf-light
 .. literalinclude:: conf-light/files.d/git.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/handlers.d/git.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/packages.d/git.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/services.d/git.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/states.d/git-dir.yml
    :language: yaml
    :caption:
@@ -140,7 +145,7 @@ Update repos
 
 .. code-block:: console
 
-   ansible-playbook vbotka.freebsd.pb_iocage_update_vmm_repos.yml
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_vmm_repos.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -185,7 +190,7 @@ Test service git_daemon
 
 .. literalinclude:: out/out-11.txt
    :language: console
-      
+
 Playbook pb-log-server.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -213,7 +218,13 @@ Test service syslog-ng
 .. literalinclude:: out/out-13.txt
    :language: console
 
-Playbook output - Git ropositories
+Playbook pb-git-repos.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-git-repos.yml
+   :language: yaml
+
+Playbook output - Git repositories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

@@ -3,7 +3,7 @@
 012 Display iocage_properties
 -----------------------------
 
-Extending example :ref:`example_010`.
+Extending :ref:`example_010`.
 
 .. contents::
    :local:
@@ -38,7 +38,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails created in :ref:`example_010`
+* Jails created in :ref:`example_010`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -49,17 +49,17 @@ ansible.cfg
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable ``get_properties``. See :ref:`ug_inventory_iocage`
+Enable ``get_properties``. See :ref:`ug_inventory_iocage`.
 
 .. literalinclude:: iocage.yml
-    :language: yaml
-    :emphasize-lines: 4
+   :language: yaml
+   :emphasize-lines: 4
 
 Playbook pb-vars-properties.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-vars-properties.yml
-    :language: yaml
+   :language: yaml
 
 Playbook output - Display iocage_properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,8 +69,8 @@ Playbook output - Display iocage_properties
    (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_133
 
 .. literalinclude:: out/out-01.txt
-    :language: yaml
-    :force:
+   :language: yaml
+   :force:
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

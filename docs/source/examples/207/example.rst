@@ -57,10 +57,10 @@
 Use case
 ^^^^^^^^
 
-At multiple iocage hosts, create and run VNET jails with a DHCP interface from the template
-``ansible_client``. Use the dictionary ``iocage_tags`` and option ``inventory_hostname_tag`` to
-create `inventory aliases`_. Group the jails by iocage hosts, states, and classes. Declare the
-project in a single dictionary. The dictionary keys are jails' aliases. For example,
+On multiple iocage hosts, create and run VNET jails with a DHCP interface from the template
+``ansible_client``. Use the dictionary ``iocage_tags`` and the option ``inventory_hostname_tag`` to
+create `Inventory aliases`_. Group the jails by iocage hosts, states, and classes. Declare the
+project in a single dictionary. The dictionary keys are jail aliases. For example:
 
 .. code-block:: yaml
 
@@ -90,27 +90,27 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── project.yml
+  │   └── all
+  │       └── project.yml
   ├── hosts
-  │   ├── 01_iocage.yml
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   ├── iocage_02
+  │   │   └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
   ├── iocage.ini
   └── pb-test-all.yml
 
 Synopsis
 ^^^^^^^^
 
-* At three managed nodes:
+* On three managed nodes:
 
   * iocage_01
   * iocage_02
@@ -118,43 +118,43 @@ Synopsis
 
   In the playbook ``vbotka.freebsd.pb_iocage_project_create.yml``, use:
 
-  * `inventory plugin vbotka.freebsd.iocage`_ to create inventory hosts
-  * inventory plugin `ansible.builtin.constructed`_ to create groups and compose variables:
+  * The `inventory plugin vbotka.freebsd.iocage`_ to create inventory hosts
+  * The inventory plugin `ansible.builtin.constructed`_ to create groups and compose variables:
 
     * ``ansible_host``
     * ``iocage_tags``
     * ``iocage_classes``
 
-  * module ``ansible.builtin.command`` and the `binary iocage`_ to:
+  * The module ``ansible.builtin.command`` and the `Binary iocage`_ CLI to:
 
-    * create jails
-    * set notes
-    * start jails
+    * Create jails
+    * Set notes
+    * Start jails
 
-* At all jails:
+* On all jails:
 
   In the playbook ``pb-test-all.yml``, display:
 
-  * variables:
+  * Variables:
 
     * ``ansible_host``
     * ``iocage_properties.host_hostuuid``
     * ``iocage_tags``
     * ``iocage_classes``
 
-  * inventory groups.
+  * Inventory groups
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* templates created in :ref:`example_202`
+* Root privileges on the managed nodes
+* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-Templates created in :ref:`example_202` are used in this example.
+* Templates created in :ref:`example_202` are used in this example.
 
 .. seealso::
 
@@ -250,7 +250,7 @@ Inventory hosts
 
 .. note::
 
-   This example is tested with present jails
+   This example is tested with pre-existing jails:
 
    .. code-block:: console
 
@@ -270,11 +270,12 @@ Playbook output - Create and start project jails
                             -i hosts -i iocage.ini -e debug=true
 
 .. seealso:: The playbook :ref:`ug_pb-iocage-project-create`
+
 .. note::
 
-   The inventory ``-i hosts`` provides the group of all created jails. The play can use it and
-   create only the missing project jails. This makes the play idempotent despite the module
-   ``ansible.builtin.command`` and ``iocage`` option ``--count`` being used.
+   The inventory ``-i hosts`` provides the group of all existing jails, allowing the play to
+   create only missing project jails. This makes the play idempotent despite using the module
+   ``ansible.builtin.command`` with the ``iocage`` option ``--count``.
 
 .. literalinclude:: out/out-04.txt
    :language: yaml
@@ -300,7 +301,7 @@ Playbook output - Display all groups
 .. note::
 
    * The inventory configuration files ``hosts/*.yml`` enable cache.
-   * Flush the cache. Otherwise, the jails created in the previous play won't be included.
+   * Flush the cache; otherwise, jails created in the previous play will not be included.
 
 .. literalinclude:: out/out-05.txt
    :language: yaml
@@ -320,8 +321,8 @@ Playbook output - Stop and destroy jails
    :language: yaml
    :force:
 
-Playbook output - Display all groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display remaining groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -332,13 +333,8 @@ Playbook output - Display all groups
    :force:
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-
 .. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-
 .. _Binary iocage: https://github.com/freebsd/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/
-
-.. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property

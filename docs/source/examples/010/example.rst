@@ -46,7 +46,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
@@ -54,33 +54,33 @@ Synopsis
   In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the `module vbotka.freebsd.iocage`_
   to:
 
-  * fetch the release
-  * create basejail
-  * clone 3 jails from the basejail
-  * start 1 jail
-  * display lists of bases, plugins, templates, and jails.
+  * Fetch the release
+  * Create a basejail
+  * Clone 3 jails from the basejail
+  * Start 1 jail
+  * Display lists of bases, plugins, templates, and jails
 
-* At the managed node ``iocage_04``
-  
+* On the managed node ``iocage_04``:
+
   In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
-  * create the inventory groups and compose variables
-  * display the hosts and composed variables in the group ``test``
-  * display all created groups.
+  * Create inventory groups and compose variables
+  * Display the hosts and composed variables in the group ``test``
+  * Display all created groups
 
 Requirements
 ^^^^^^^^^^^^
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* activated `binary iocage`_.
+* Root privileges on the managed nodes
+* An activated `binary iocage`_
 
 Notes
 ^^^^^
 
-The fetching of a release is a quite time-consuming process. Optionally, fetch the releases manually
-before you run the play. For example,
+Fetching a release is quite time-consuming. Optionally, fetch the releases manually
+before running the playbook. For example:
 
 .. code-block:: console
 
@@ -148,7 +148,7 @@ Playbook pb-iocage-fetch-base-clone-list.yml
 .. literalinclude:: pb-iocage-fetch-base-clone-list.yml
    :language: yaml
 
-Playbook output - fetch, create, clone, and start
+Playbook output - Fetch, create, clone, and start
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -182,7 +182,7 @@ Jails at iocage_04
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-The jails at ``iocage_04``
+The jails at ``iocage_04``:
 
 .. literalinclude:: iocage.yml
    :language: yaml
@@ -214,7 +214,6 @@ Playbook output - Display groups
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/freebsd/iocage/
 .. _Inventory plugin ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins

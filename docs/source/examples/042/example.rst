@@ -14,12 +14,11 @@
 .. index:: single: vbotka.freebsd.ast_to_nginx; Example 042
 .. index:: single: ast_to_nginx; Example 042
 
-
 Use case
 ^^^^^^^^
 
-Use filter `vbotka.freebsd.dict_to_ast`_ and filter
-`vbotka.freebsd.ast_to_nginx`_ to create Nginx configuration.
+Use the filter `vbotka.freebsd.dict_to_ast`_ and the filter
+`vbotka.freebsd.ast_to_nginx`_ to create an NGINX configuration.
 
 Tree
 ^^^^
@@ -35,29 +34,29 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the playbook ``pb-test-ast.yml`` use the filter
-  `vbotka.freebsd.dict_to_ast`_ to convert YAML dictionary into a
+* In the playbook ``pb-test-ast.yml``, use the filter
+  `vbotka.freebsd.dict_to_ast`_ to convert a YAML dictionary into a
   crossplane-compatible AST (Abstract Syntax Tree) list for NGINX configuration
   generation.
 
-* In the playbook ``pb-test-nginx.yml`` use the filter
-  `vbotka.freebsd.ast_to_nginx`_ to convert crossplane AST (Abstract Syntax
-  Tree) list into NGINX config.
+* In the playbook ``pb-test-nginx.yml``, use the filter
+  `vbotka.freebsd.ast_to_nginx`_ to convert a crossplane AST (Abstract Syntax
+  Tree) list into an NGINX configuration.
 
 Requirements
 ^^^^^^^^^^^^
 
-* filter `vbotka.freebsd.dict_to_ast`_
-* filter `vbotka.freebsd.ast_to_nginx`_
+* Filter `vbotka.freebsd.dict_to_ast`_
+* Filter `vbotka.freebsd.ast_to_nginx`_
 
 Notes
 ^^^^^
 
-The filter ``ast_to_nginx`` requires `package crossplane`_.
+The filter ``ast_to_nginx`` requires the Python `package crossplane`_.
 
 .. seealso::
 
-   Example :ref:`example_527`
+   * Example :ref:`example_527`
 
 ansible.cfg
 ^^^^^^^^^^^

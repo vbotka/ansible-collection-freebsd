@@ -3,7 +3,7 @@
 020 Get inventory aliases from notes
 ------------------------------------
 
-Extending example :ref:`example_016`.
+Extending :ref:`example_016`.
 
 .. contents::
    :local:
@@ -23,13 +23,11 @@ Extending example :ref:`example_016`.
 
 .. index:: single: option iocage --count; Example 020
 
-
 Use case
 ^^^^^^^^
 
-Get the `inventory aliases`_ from the `iocage property notes`_. In the `inventory plugin
-vbotka.freebsd.iocage2`_, use the option ``inventory_hostname_tag`` to tell the plugin which tag to
-use.
+Get the `Inventory aliases`_ from the `Set Jail Property`_ ``notes``. In the `inventory plugin
+vbotka.freebsd.iocage2`_, use the option ``inventory_hostname_tag`` to specify which tag to use.
 
 Tree
 ^^^^
@@ -40,14 +38,14 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── swarms.yml
+  │   └── all
+  │       └── swarms.yml
   ├── hosts
-  │   ├── 06_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   └── iocage_06
-  │       └── iocage.yml
+  │   └── iocage_06
+  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-iocage-swarms-create.yml
   ├── pb-iocage-swarms-destroy.yml
@@ -57,25 +55,25 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
-  * create jails using a template and the option ``--count``
-  * at each jail, create property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
-  * put the inventory alias into the tag ``alias=<alias>``
+  * Create jails using a template and the ``--count`` option
+  * For each jail, set the property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
+  * Put the inventory alias into the tag ``alias=<alias>``
 
-* In the `inventory plugin vbotka.freebsd.iocage2`_, get the inventory aliases from the tag ``alias``
+* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the inventory aliases from the tag ``alias``
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups.
+* In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups
 
-* Display the jails and groups.
+* Display the jails and groups
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage2`_
-* root privilege in the managed nodes
-* templates created in :ref:`example_202`.
- 
+* Root privileges on the managed nodes
+* Templates created in :ref:`example_202`
+
 Notes
 ^^^^^
 
@@ -122,7 +120,7 @@ host_vars
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml
    :caption:
-  
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
@@ -137,8 +135,8 @@ Inventory hosts
 
 .. note::
 
-   The value of the iocage tag ``alias`` is used as the inventory alias. If the `iocage list is
-   slow`_ use the cache.
+   The value of the iocage tag ``alias`` is used as the inventory alias. If `iocage list is
+   slow`_, use the cache.
 
 Playbook pb-iocage-swarms-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,7 +157,7 @@ Playbook output - Create swarms
 
 .. hint::
 
-   Run the below command to see the complete inventory ::
+   Run the command below to see the complete inventory::
 
      shell> ansible-inventory -i hosts --list --yaml
 
@@ -199,7 +197,7 @@ Playbook pb-iocage-swarms-destroy.yml
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Destroy the swarms if you don't need them any more.
+Destroy the swarms if you do not need them anymore.
 
 .. code-block:: console
 
@@ -212,8 +210,6 @@ Destroy the swarms if you don't need them any more.
 
 .. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _iocage property notes: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _iocage list is slow: https://forums.freebsd.org/threads/freebsd-13-1-extremally-slow.86723

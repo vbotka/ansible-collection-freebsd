@@ -14,15 +14,15 @@
 Use case
 ^^^^^^^^
 
-Create a dictionary of variables from nested directories in ``al_vars``. Use the role
-`vbotka.freebsd.lib`_ tasks `al_include_dir_vars.yml`_
+Create a dictionary of variables from nested directories in ``al_vars``. Use the task file
+`al_include_dir_vars.yml`_ from the role `vbotka.freebsd.lib`_:
 
 .. code-block:: yaml
 
    - name: Create dict of vars from nested directories in al_vars
      vars:
        al_include_dir_vars_dir: "{{ playbook_dir }}/al_vars"
-     include_role:
+     ansible.builtin.include_role:
        name: vbotka.freebsd.lib
        tasks_from: al_include_dir_vars
 
@@ -31,32 +31,32 @@ Tree
 
 ::
 
-  shell > tree .
+  shell> tree .
   .
   ├── al_vars
-  │   └── team
-  │       ├── devel
-  │       ├── production
-  │       └── qa
+  │   └── team
+  │       ├── devel
+  │       ├── production
+  │       └── qa
   ├── ansible.cfg
   ├── example.rst
   ├── hosts
   ├── out
-  │   └── out-01.txt
+  │   └── out-01.txt
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the managed node:
+* On the managed node:
 
-  * Create a dictionary of variables from nested directories in the controller's directory ``al_vars``
+  * Create a dictionary of variables from nested directories in the controller's directory ``al_vars``.
   * Display the created dictionary.
-  
+
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.lib`_
+* Role `vbotka.freebsd.lib`_
 
 Notes
 ^^^^^
@@ -65,8 +65,8 @@ TBD
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_
-   | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_
+   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_.
+   | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
@@ -76,13 +76,13 @@ TBD
 
 ansible.cfg
 ^^^^^^^^^^^
-   
+
 .. literalinclude:: ansible.cfg
    :language: ini
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
-   
+
 .. literalinclude:: hosts
    :language: ini
 

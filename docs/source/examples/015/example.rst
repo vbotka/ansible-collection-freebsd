@@ -1,9 +1,9 @@
 .. _example_015:
 
-015 Multiple inventory cache
-----------------------------
+015 Multiple inventory caches
+-----------------------------
 
-Extending example :ref:`example_014`.
+Extending :ref:`example_014`.
 
 .. contents::
    :local:
@@ -26,7 +26,7 @@ Extending example :ref:`example_014`.
 Use case
 ^^^^^^^^
 
-Enabled cache in multiple inventory files.
+Enable caching across multiple inventory files.
 
 Tree
 ^^^^
@@ -37,23 +37,23 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   └── 04_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 04_iocage.yml
   └── pb-vars-ip4.yml
 
 Synopsis
 ^^^^^^^^
 
-At two managed nodes:
+On two managed nodes:
 
-* get the dynamic inventory by the `inventory plugin vbotka.freebsd.iocage`_
-* configure and test ``cache``
+* Fetch dynamic inventory using the `inventory plugin vbotka.freebsd.iocage`_
+* Configure and test ``cache``
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails created in :ref:`example_010`
+* Jails created in :ref:`example_010`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -64,7 +64,7 @@ ansible.cfg
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-Set unique ``cache_prefix``
+Set a unique ``cache_prefix``.
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
@@ -76,7 +76,7 @@ Set unique ``cache_prefix``
    :caption:
    :emphasize-lines: 5-9
 
-.. warning:: Common ``cache_prefix`` would make the cache files to override each other repeatedly.
+.. warning:: Using a common ``cache_prefix`` causes the cache files to overwrite each other repeatedly.
 
 Playbook pb-vars-ip4.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,12 +97,12 @@ Playbook output - Display iocage_ip4
 .. note::
 
    * The inventory files in ``hosts`` are evaluated in alphabetical order.
-   * The jail ``ansible_client`` from ``iocage_04`` overrides the one from ``iocage_02``
+   * The jail ``ansible_client`` defined in ``04_iocage.yml`` overrides the one from ``02_iocage.yml``.
 
 Cache
 ^^^^^
 
-Look at the cache. For example,
+Inspect the cache files. For example:
 
 .. code-block:: console
 
@@ -113,7 +113,7 @@ Look at the cache. For example,
 
 .. code-block:: console
 
-   shell> cat cat /var/tmp/inventory_cache/iocage_04_vbotka.freebsd.iocage_a5393s_d0c35
+   shell> cat /var/tmp/inventory_cache/iocage_04_vbotka.freebsd.iocage_a5393s_d0c35
 
 .. literalinclude:: out/out-03.txt
    :language: json

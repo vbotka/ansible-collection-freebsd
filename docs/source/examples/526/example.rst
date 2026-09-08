@@ -18,7 +18,7 @@
 .. index:: single: repo ansible-conf-syslogng-client; Example 526
 .. index:: single: repo ansible-conf-syslogng-server; Example 526
 .. index:: single: ansible-pull; Example 526
-.. index:: single: pb_iocage_project_create_from_templates.yml Example 526
+.. index:: single: pb_iocage_project_create_from_templates.yml; Example 526
 
 .. index:: single: filter vbotka.freebsd.project; Example 526
 .. index:: single: vbotka.freebsd.project; Example 526
@@ -47,17 +47,18 @@ jails' configuration from the repositories `ansible-conf-syslogng-server`_ and
 
 Tree
 ^^^^
+
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       ├── project-hosts.yml
-  │       └── project.yml
+  │   └── all
+  │       ├── project-hosts.yml
+  │       └── project.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   └── 06_iocage2.yml
   ├── iocage.ini
   ├── pb-logclient-test.yml
   ├── pb-logserver-test.yml
@@ -67,36 +68,36 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails
-    from the template. ``ansible-init``.
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_, create jails
+    from the template ``ansible-init``.
 
   * Wait for ``ansible-pull`` to configure the jails and display the logs.
 
 Requirements
 ^^^^^^^^^^^^
 
-* jail ``repos`` created in :ref:`example_523`
-* template ``ansible-init`` created in :ref:`example_524`
-* playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `filter vbotka.freebsd.project`_
-* `inventory vbotka.freebsd.iocage2`_
-* :ref:`ug_connection_jailexec`
+* Jail ``repos`` created in :ref:`example_523`.
+* Template ``ansible-init`` created in :ref:`example_524`.
+* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* `Filter vbotka.freebsd.project`_.
+* `Inventory vbotka.freebsd.iocage2`_.
+* :ref:`ug_connection_jailexec`.
 
 .. note::
 
-   * See `Practical rc.d scripting in BSD`_
-   * See the option ``firstboot_sentinel`` in `man rc.conf`_
+   * See `Practical rc.d scripting in BSD`_.
+   * See the option ``firstboot_sentinel`` in `man rc.conf`_.
 
 .. seealso::
 
    * GitHub repositories:
 
-     - `ansible-conf-init`_
-     - `ansible-conf-syslogng-server`_
-     - `ansible-conf-syslogng-client`_
+     * `ansible-conf-init`_
+     * `ansible-conf-syslogng-server`_
+     * `ansible-conf-syslogng-client`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -148,9 +149,10 @@ Playbook output - Create project jails from iocage templates
 
 Inventory graph
 ^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
    :language: sh
@@ -160,14 +162,14 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
 
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   
+
 .. literalinclude:: pb-logserver-test.yml
    :language: yaml+jinja
 
@@ -175,9 +177,9 @@ Playbook output - Test Log Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
-   
+
    (env) > ansible-playbook -i hosts -e debug=true pb-logserver-test.yml
-   
+
 .. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
@@ -201,23 +203,23 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use the ``lnav`` utility on the log server to display all logfiles in the the directory
-   ``/var/log/remote``. Run the following commands on the iocage host: ::
+   Use the ``lnav`` utility on the log server to display all log files in the
+   ``/var/log/remote`` directory. Run the following commands on the iocage host::
 
-     shell > iocage console log-server-01
+     shell> iocage console log-server-01
      root@log-server-01:~ # lnav -r /var/log/remote/
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-* See the Ansible logs ``/var/log/ansible.log``  in the jails.
+* Inspect the Ansible log ``/var/log/ansible.log`` in the jails:
 
 .. code-block:: console
 
-   shell > iocage console log-server-01
+   shell> iocage console log-server-01
    root@log-server-01:~ # cat /var/log/ansible.log
 
-* Update and pull the repositories. For example,
+* Update and pull the repositories. For example:
 
 .. code-block:: console
 
@@ -228,7 +230,7 @@ Troubleshooting
    root@log-server-01:~/ansible-conf-syslogng-server # git pull
    Already up to date.
 
-* Start the service ``ansible_init``
+* Start the service ``ansible_init``:
 
 .. code-block:: console
 
@@ -255,9 +257,9 @@ Troubleshooting
 
 .. note::
 
-   The command ``service ansible_init start`` removes the the sentinel file ``/firstboot``.
+   The command ``service ansible_init start`` removes the sentinel file ``/firstboot``.
 
-* See the Ansible log ``/var/log/ansible.log``. The warnings are harmless.
+* Review the Ansible log ``/var/log/ansible.log``. The warnings are harmless:
 
 .. code-block:: console
 
@@ -295,7 +297,7 @@ Troubleshooting
    2026-08-31 08:10:41,390 p=39114 u=root n=ansible INFO| TASK [Execute command async=3600 poll=0] ***************************************
    2026-08-31 08:10:41,390 p=39114 u=root n=ansible INFO| changed: [localhost.my.domain]
    2026-08-31 08:10:41,405 p=39114 u=root n=ansible INFO| PLAY RECAP *********************************************************************
-   2026-08-31 08:10:41,405 p=39114 u=root n=ansible INFO| localhost.my.domain        : ok=8    changed=1    unreachable=0    failed=0    ski   pped=3    rescued=0    ignored=0   
+   2026-08-31 08:10:41,405 p=39114 u=root n=ansible INFO| localhost.my.domain        : ok=8    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
    2026-08-31 08:10:42,470 p=39178 u=root n=ansible INFO| Starting Ansible Pull at 2026-08-31 08:10:42
    2026-08-31 08:10:42,470 p=39178 u=root n=ansible INFO| /usr/local/bin/ansible-pull -i hosts -U git://172.16.99.21/ansible-conf-syslogng-server -d /root/ansible-conf-syslogng-server -e ai_vars=/root/ansible-vars -e ai_pull_mode=true pb-logserv.yml
    2026-08-31 08:10:43,308 p=39180 u=root n=ansible WARNING| [WARNING]: Could not match supplied host pattern, ignoring: log-server-01
@@ -338,11 +340,12 @@ Troubleshooting
    2026-08-31 08:11:22,792 p=40141 u=root n=ansible INFO| PLAY RECAP *********************************************************************
    2026-08-31 08:11:22,792 p=40141 u=root n=ansible INFO| localhost.my.domain        : ok=10   changed=5    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
 
+
 .. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/
 .. _man rc.conf: https://man.freebsd.org/cgi/man.cgi?rc.conf
 
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
+.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
 
 .. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
 .. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

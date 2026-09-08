@@ -6,6 +6,7 @@
 .. contents::
    :local:
    :depth: 1
+
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 021
 .. index:: single: inventory ansible.builtin.constructed; Example 021
 .. index:: single: connection vbotka.freebsd.jailexec; Example 021
@@ -14,8 +15,8 @@
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage2`_, use the option ``inventory_hostname_tag`` to tell
-the plugin which tag to create `inventory aliases`_ from.
+In the `inventory plugin vbotka.freebsd.iocage2`_, use the option ``inventory_hostname_tag`` to specify
+which tag to create `Inventory aliases`_ from.
 
 Tree
 ^^^^
@@ -26,14 +27,14 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── swarms.yml
+  │   └── all
+  │       └── swarms.yml
   ├── hosts
-  │   ├── 06_iocage2.yml
-  │   └── 99_constructed.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   └── iocage_06
-  │       └── iocage.yml
+  │   └── iocage_06
+  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-test-all.yml
   ├── pb-test-connection.yml
@@ -42,7 +43,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the `inventory plugin vbotka.freebsd.iocage2`_, get the inventory aliases from the tag ``alias``
+* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the inventory aliases from the tag ``alias``.
 * In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups.
 * Display the jails and groups.
 * Test the connection.
@@ -52,9 +53,9 @@ Requirements
 
 * `inventory plugin vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
-* root privilege in the managed nodes
-* Jails created in :ref:`example_020`.
- 
+* Root privileges on the managed nodes
+* Jails created in :ref:`example_020`
+
 Notes
 ^^^^^
 
@@ -101,9 +102,9 @@ host_vars
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml
    :caption:
-  
-hosts
-^^^^^
+
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml
@@ -188,8 +189,5 @@ Playbook output - Test connection and get hostname
 
 .. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _iocage property notes: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property

@@ -24,26 +24,26 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── vault.yml
+  │   └── all
+  │       └── vault.yml
   ├── hosts
   ├── host_vars
-  │   └── images.example.com
+  │   └── images.example.com
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* Use the playbook ``pb.yml`` at ``images.example.com`` to customize FreeBSD image:
+* Use the playbook ``pb.yml`` on ``images.example.com`` to customize a FreeBSD image:
 
-  * configure wireless adapter `RTL8188EU`_
-  * configure wpa_supplicant
-  * connect to AP
-    
+  * Configure the wireless adapter `RTL8188EU`_
+  * Configure wpa_supplicant
+  * Connect to the access point
+
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege in the managed nodes.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -84,8 +84,8 @@ host_vars
 .. note:: The default values of ``cimage_download`` and ``cimage_unpack`` are ``true``. Set them to
           ``false`` and enable them when needed.
 
-.. hint:: Put the variables ``my_access_point`` and ``my_password`` into an `vault`_ file. For
-          example, ``group_vars/all/vault.yml``
+.. hint:: Put the variables ``my_access_point`` and ``my_password`` into a `vault`_ file. For
+          example, ``group_vars/all/vault.yml``.
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
@@ -163,8 +163,8 @@ Playbook output - Mount, customize, and umount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The play is not idempotent when the image is unmounted. The default is ``cimage_umount=true``. In
-this case, at least 3 tasks are ``changed``. The image is mounted, unmounted, and the memory disk is
-detached.
+this case, at least three tasks report ``changed``. The image is mounted, unmounted, and the memory
+disk is detached.
 
 .. code-block:: console
 
@@ -185,8 +185,8 @@ Write the image file to USB
    5120+0 records out
    5368709120 bytes transferred in 150.164342 secs (35752224 bytes/sec)
 
-.. note:: FreeBSD was used to write the image. In Linux, use ``bs=1M``
- 
+.. note:: FreeBSD was used to write the image. In Linux, use ``bs=1M``.
+
 .. seealso::
 
    * `Writing an Image File to USB`_
@@ -195,7 +195,7 @@ Write the image file to USB
 Result
 ^^^^^^
 
-MACs are sanitized.
+MAC addresses are sanitized.
 
 .. code-block:: console
 
@@ -204,7 +204,7 @@ MACs are sanitized.
 .. literalinclude:: out/out-08.txt
    :language: bash
 
-     
+
 .. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
 .. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_custom_image/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd

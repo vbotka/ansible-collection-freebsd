@@ -1,11 +1,11 @@
 
-PLAY [Create jails from iocage plugins.] ***************************************
+PLAY [Clone jails from iocage plugins.] ****************************************
 
-TASK [Create log clients.] *****************************************************
+TASK [Clone log clients.] ******************************************************
 changed: [iocage_05] => (item=foo)
 changed: [iocage_05] => (item=bar)
 
-TASK [Create log_server] *******************************************************
+TASK [Clone log_server] ********************************************************
 changed: [iocage_05]
 
 PLAY RECAP *********************************************************************

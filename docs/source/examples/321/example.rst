@@ -29,34 +29,34 @@ Tree
   .
   ├── ansible.cfg
   ├── files
-  │   └── build.example.com-sk.crt
+  │   └── build.example.com-sk.crt
   ├── host_vars
-  │   └── iocage_04
-  │       └── repos.yml
+  │   └── iocage_04
+  │       └── repos.yml
   ├── iocage.ini
-  └── pb-repos.yml
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-At a managed node use the role `vbotka.freebsd.packages`_ to configure a package
+On a managed node, use the role `vbotka.freebsd.packages`_ to configure a package
 repository for ``Poudriere``.
 
 Requirements
 ^^^^^^^^^^^^
 
-TBD
+* TBD
 
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. note::
 
    | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
+   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
@@ -93,7 +93,7 @@ Playbook output - Create repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-   :caption: shell> ansible-playbook pb.yml -i iocage.ini -t pkg_keys,pkg_conf
+   :caption: (env) > ansible-playbook pb.yml -i iocage.ini -t pkg_keys,pkg_conf
    :language: yaml
    :force:
 
@@ -101,21 +101,21 @@ Repository build.conf at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
-   :caption:  /usr/local/etc/pkg/repos/build.conf
+   :caption: /usr/local/etc/pkg/repos/build.conf
    :language: yaml
 
 Configuration at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-   :caption:  [iocage_04]# pkg -vv
+   :caption: [iocage_04]# pkg -vv
    :language: sh
 
 Update repos at iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
-   :caption:  [iocage_04]# pkg update -f
+   :caption: [iocage_04]# pkg update -f
    :language: console
 
 

@@ -16,7 +16,7 @@
 .. index:: single: repo ansible-conf-init; Example 528
 .. index:: single: repo ansible-conf-roles; Example 528
 .. index:: single: ansible-pull; Example 528
-.. index:: single: pb_iocage_project_create_from_templates.yml Example 528
+.. index:: single: pb_iocage_project_create_from_templates.yml; Example 528
 
 .. index:: single: filter vbotka.freebsd.project; Example 528
 .. index:: single: vbotka.freebsd.project; Example 528
@@ -43,33 +43,34 @@ Use case
 Use the `iocage`_ template ``ansible-init`` created in
 :ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
 jails' configuration from the repository `ansible-conf-roles`_. Create jails
-from the template. Put the configuration files for the class ``log-server`` and
+from the template. Put the configuration files for the classes ``log-server`` and
 ``log-client`` into the jails' directories ``/root/ansible-vars``. Run
 `ansible-pull`_ asynchronously.
 
 Tree
 ^^^^
+
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── files
-  │   ├── ai-conf-roles.yml
-  │   ├── ai-db-class.yml
-  │   ├── log-client
-  │   │   ├── syslog-ng-client-pkg.yml
-  │   │   └── syslog-ng-client.yml
-  │   ├── log-server
-  │   │   ├── syslog-ng-server-pkg.yml
-  │   │   └── syslog-ng-server.yml
-  │   └── pkg-repo.yml
+  │   ├── ai-conf-roles.yml
+  │   ├── ai-db-class.yml
+  │   ├── log-client
+  │   │   ├── syslog-ng-client-pkg.yml
+  │   │   └── syslog-ng-client.yml
+  │   ├── log-server
+  │   │   ├── syslog-ng-server-pkg.yml
+  │   │   └── syslog-ng-server.yml
+  │   └── pkg-repo.yml
   ├── group_vars
-  │   └── all
-  │       ├── project-hosts.yml
-  │       └── project.yml
+  │   └── all
+  │       ├── project-hosts.yml
+  │       └── project.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   └── 06_iocage2.yml
   ├── iocage.ini
   ├── pb-logclient-test.yml
   ├── pb-logserver-test.yml
@@ -79,10 +80,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_, create jails
     from the template ``ansible-init``.
 
   * Configure the jails to use the ``pkg-repo`` created in :ref:`example_527`.
@@ -92,18 +93,18 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* jail ``repos`` created in :ref:`example_523`
-* template ``ansible-init`` created in :ref:`example_524`
-* jail ``pkg-repo`` created in :ref:`example_527`
-* playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `filter vbotka.freebsd.project`_
-* `inventory vbotka.freebsd.iocage2`_
-* :ref:`ug_connection_jailexec`
+* Jail ``repos`` created in :ref:`example_523`.
+* Template ``ansible-init`` created in :ref:`example_524`.
+* Jail ``pkg-repo`` created in :ref:`example_527`.
+* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* `Filter vbotka.freebsd.project`_.
+* `Inventory vbotka.freebsd.iocage2`_.
+* :ref:`ug_connection_jailexec`.
 
 .. note::
 
-   * See `Practical rc.d scripting in BSD`_
-   * See the option ``firstboot_sentinel`` in `man rc.conf`_
+   * See `Practical rc.d scripting in BSD`_.
+   * See the option ``firstboot_sentinel`` in `man rc.conf`_.
 
 .. seealso::
 
@@ -175,7 +176,6 @@ files
    reads this file from ``/root/ansible-vars``. The repository does not provide
    a default ``ai_conf_roles`` dictionary.
 
-
 .. literalinclude:: files/pkg-repo.yml
    :language: yaml
    :caption:
@@ -219,9 +219,10 @@ Playbook output - Create project jails from iocage templates
 
 Inventory graph
 ^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
    :language: sh
@@ -231,14 +232,14 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
 
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   
+
 .. literalinclude:: pb-logserver-test.yml
    :language: yaml+jinja
 
@@ -246,9 +247,9 @@ Playbook output - Test Log Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
-   
+
    (env) > ansible-playbook -i hosts -e debug=true pb-logserver-test.yml
-   
+
 .. literalinclude:: out/out-06.txt
    :language: yaml
    :force:
@@ -272,10 +273,10 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use the ``lnav`` utility on the log server to display all logfiles in the the directory
-   ``/var/log/remote``. Run the following commands on the iocage host: ::
+   Use the ``lnav`` utility on the log server to display all log files in the
+   ``/var/log/remote`` directory. Run the following commands on the iocage host::
 
-     shell > iocage console log-server-01
+     shell> iocage console log-server-01
      root@log-server-01:~ # lnav -r /var/log/remote/
 
 
@@ -283,7 +284,7 @@ Playbook output - Test Log Clients
 .. _man rc.conf: https://man.freebsd.org/cgi/man.cgi?rc.conf
 
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
+.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
 
 .. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
 .. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

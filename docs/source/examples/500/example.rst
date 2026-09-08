@@ -28,7 +28,7 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Use the jails
-created in the example :ref:`example_207`. The ``project`` keys are jail's aliases.
+created in example :ref:`example_207`. The ``project`` keys are jail aliases.
 
 .. code-block:: yaml
 
@@ -49,21 +49,21 @@ created in the example :ref:`example_207`. The ``project`` keys are jail's alias
        class: [db, logclient]
        vmm: iocage_04
 
-* Destroy all jails
+* Destroy all jails:
 
   .. code-block:: console
 
      (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml \
                               -i iocage.ini \
-			      --flush-cache
+                              --flush-cache
 
-* Create ``ansible_client`` templates. Run the play in :ref:`example_202`
+* Create ``ansible-client`` templates. Run the play in :ref:`example_202`:
 
   .. code-block:: console
 
      (env) > ansible-playbook pb-iocage-template.yml -i iocage.ini
 
-* Create the project. Run the play in :ref:`example_207`
+* Create the project. Run the play in :ref:`example_207`:
 
   .. code-block:: console
 
@@ -73,29 +73,29 @@ Tree
 ^^^^
 
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── group_vars
-  │   ├── all
-  │   │   └── common.yml
-  │   ├── logclient
-  │   │   └── syslog-ng.yml
-  │   └── logserv
-  │       └── syslog-ng.yml
+  │   ├── all
+  │   │   └── common.yml
+  │   ├── logclient
+  │   │   └── syslog-ng.yml
+  │   └── logserv
+  │       └── syslog-ng.yml
   ├── hosts
-  │   ├── 01_iocage.yml
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 01_iocage.yml
+  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_01
-  │   │   └── iocage.yml
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   ├── iocage_01
+  │   │   └── iocage.yml
+  │   ├── iocage_02
+  │   │   └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all-groups.yml
   ├── pb-logclient.yml
@@ -107,21 +107,21 @@ Synopsis
 
 * In the inventory group ``logserv``:
 
-  * install `sysutils/syslog-ng`_
-  * configure `syslog-ng Server`_.
+  * Install `sysutils/syslog-ng`_.
+  * Configure `syslog-ng Server`_.
 
 * In the inventory group ``logclient``:
 
-  * install `sysutils/syslog-ng`_
-  * configure `syslog-ng Client`_.
+  * Install `sysutils/syslog-ng`_.
+  * Configure `syslog-ng Client`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage`_
-* `module vbotka.freebsd.service`_
-* role `vbotka.freebsd.postinstall`_
-* jails created in the project :ref:`example_207`
+* `Inventory plugin vbotka.freebsd.iocage`_.
+* `Module vbotka.freebsd.service`_.
+* Role `vbotka.freebsd.postinstall`_.
+* Jails created in the project :ref:`example_207`.
 
 Notes
 ^^^^^
@@ -143,7 +143,7 @@ Notes
    * `syslog-ng - FreeBSD Wiki`_
    * `syslog-ng - documentation`_
    * `Configuring System Logging - FreeBSD Handbook`_
-   * documentation `Ansible role FreeBSD postinstall`_
+   * Documentation `Ansible role FreeBSD postinstall`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -185,7 +185,7 @@ Playbook pb-all-groups.yml
 Playbook output - Display groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Flush the cache if you created the ``project`` and haven't refreshed it yet.
+Flush the cache if you created the ``project`` and have not refreshed it yet.
 
 .. code-block:: console
 
@@ -211,7 +211,7 @@ group_vars
    :caption:
 
 Playbook pb-logserv.yml
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-logserv.yml
    :language: yaml+jinja
@@ -219,7 +219,7 @@ Playbook pb-logserv.yml
 Playbook output - Log Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the package if you're running this play for the first time.
+Install the package if you are running this play for the first time.
 
 .. code-block:: console
 
@@ -242,6 +242,7 @@ Test the Log Server
    (env) > ssh admin@4b07a142 loggen -i -S -n 1 localhost 514
    count=1, rate = 100000.00 msg/sec
    average rate = 1.95 msg/sec, count=1, time=0.512063, (average) msg size=256, bandwidth=0.49 kB/sec
+
 .. code-block:: console
 
    (env) > ssh admin@4b07a142 sudo cat /var/log/remote/localhost/2025_08_12.log
@@ -262,7 +263,7 @@ Playbook pb-logclient.yml
 Playbook output - Log Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the package if you’re running this play for the first time.
+Install the package if you are running this play for the first time.
 
 .. code-block:: console
 
@@ -289,7 +290,7 @@ Playbook output - Test Log Client
    :language: yaml
    :force:
 
-Example of the directory at the Log Server.
+Example directory listing on the log server:
 
 .. code-block:: console
 

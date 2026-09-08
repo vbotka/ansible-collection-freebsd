@@ -1,10 +1,10 @@
 .. _example_441:
 
-441 Redirect SHH to jails
+441 Redirect SSH to jails
 -------------------------
 
-| Extending example :ref:`example_440`.
-| Extending example :ref:`example_203`.
+| Extending :ref:`example_440`.
+| Extending :ref:`example_203`.
 
 .. contents::
    :local:
@@ -35,8 +35,8 @@ Use case
 ^^^^^^^^
 
 Create multiple jails with auto UUID names. In the inventory, compose the variables
-``ansible_host`` and ``ansible_port`` to connect the jails via the redirected SSH
-ports. See the example :ref:`example_440` how ``pf`` is configured.
+``ansible_host`` and ``ansible_port`` to connect to the jails via redirected SSH
+ports. See :ref:`example_440` for how ``pf`` is configured.
 
 Tree
 ^^^^
@@ -47,50 +47,50 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── project-hosts.yml
+  │   └── all
+  │       └── project-hosts.yml
   ├── hosts
-  │   ├── 06_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   └── iocage_06.yml
+  │   └── iocage_06.yml
   ├── iocage.ini
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
-  
+
   * create jails
   * start jails
   * optionally, stop and destroy the jails.
 
-* Create dynamic inventory to redirect SSH to the jails.
+* Create a dynamic inventory to redirect SSH to the jails.
 
-* At all created jails:
+* For all created jails:
 
   In the playbook ``pb-test.yml``:
 
   * connect to the created jails
-  * display basic configuration of the jails.
+  * display the basic configuration of the jails.
 
 Requirements
 ^^^^^^^^^^^^
 
-* playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage2`_
-* root privilege in the managed nodes
-* template ``ansible_client`` created in :ref:`example_202`
+* Root privileges on the managed nodes.
+* Template ``ansible_client`` created in :ref:`example_202`.
 
 Notes
 ^^^^^
 
-The only difference between this example and the example :ref:`example_442` are
-the following two lines in the inventory configuration file
+The only difference between this example and :ref:`example_442` is
+the following two lines in the inventory configuration file:
 
 .. code-block:: yaml
 
@@ -99,7 +99,7 @@ the following two lines in the inventory configuration file
 
 .. seealso::
 
-   example :ref:`example_050`
+   Example :ref:`example_050`
 
 Templates at iocage_06
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -123,6 +123,31 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml
+   :caption:
+   :emphasize-lines: 9,10
+
+.. note::
+
+   * In :ref:`example_440`, the variables ``ssh_rdr_start=2200`` and
+     ``dhcp_ip_start=100`` are used in the playbook ``pb-pf-setup.yml`` to calculate the
+     ports to redirect SSH from, and to create the file ``pf-rdr-ssh.conf``.
+
+   * For example, from the controller, the following command connects to the jail at
+     ``<bsd_dhcpd_subnet>.106``::
+
+       shell> ssh -p 2206 admin@iocage_06
+
+   * See the variable ``bsd_dhcpd_subnet`` in :ref:`example_440`.
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml
+   :caption:
+
 group_vars
 ^^^^^^^^^^
 
@@ -140,10 +165,10 @@ host_vars
 
 .. hint::
 
-   If the default iocage option ``defaultrouter=auto`` doesn't work set it. This may be
-   needed if the jails are provided with the DHCP on the bridge. In this case, the
+   If the default iocage option ``defaultrouter=auto`` does not work, set it explicitly. This may be
+   needed if the jails are assigned IP addresses via DHCP on the bridge. In this case, the
    defaultrouter for the jails is the IP address of the bridge. pf must provide NAT and
-   redirection. See example :ref:`example_440`.
+   redirection. See :ref:`example_440`.
 
 Playbook output - Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,7 +179,7 @@ Playbook output - Create and start swarms
                             -t swarm \
                             -e swarm=true \
                             -e debug=true \
-			    vbotka.freebsd.pb_iocage_ansible_clients.yml
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -169,31 +194,6 @@ Jails at iocage_06
 
 .. literalinclude:: out/out-03.txt
    :language: bash
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml
-   :caption:
-   :emphasize-lines: 9,10
-
-.. note::
-
-   * In the example :ref:`example_440`, the variables ``ssh_rdr_start=2200`` and
-     ``dhcp_ip_start=100`` are used in the playbook ``pb-pf-setup.yml`` to calculate the
-     ports to redirect SSH from, and to create the file ``pf-rdr-ssh.conf``.
-
-   * For example, from the controller, the following command connects to the jail at
-     <bsd_dhcpd_subnet>.106::
-
-       shell> ssh -p 2206 admin@iocage_06
-
-   * See the variable ``bsd_dhcpd_subnet`` in the example :ref:`example_440`
-		  
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml
-   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -224,12 +224,12 @@ Playbook output - Test SSH redirection
 
 .. hint::
 
-   The below play stops and destroys the jails in ``swarms`` ::
+   The following play stops and destroys the jails in ``swarms``::
 
      ansible-playbook -i iocage.ini \
                       -t swarm_destroy \
                       -e swarm_destroy=true \
-		      vbotka.freebsd.pb_iocage_ansible_clients.yml
+                      vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/

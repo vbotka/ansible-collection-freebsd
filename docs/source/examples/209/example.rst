@@ -18,9 +18,9 @@
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to create `iocage`_ list of packages for
-`Automatic Package Installation`_. Create Ansible template for `Apache HTTP
-server`_.
+Use the `role vbotka.freebsd.iocage`_ to create an `iocage`_ package list for
+`Automatic Package Installation`_. Create an Ansible template for the `Apache HTTP
+Server`_.
 
 Tree
 ^^^^
@@ -31,16 +31,16 @@ Tree
   .
   ├── ansible.cfg
   ├── files
-  │   ├── pk_admins.txt
-  │   └── pkgs.json
+  │   ├── pk_admins.txt
+  │   └── pkgs.json
   ├── group_vars
-  │   └── all
-  │       ├── pkgdict_versions.yml
-  │       ├── pkgdict.yml
-  │       └── pkglist.yml
+  │   └── all
+  │       ├── pkgdict_versions.yml
+  │       ├── pkgdict.yml
+  │       └── pkglist.yml
   ├── host_vars
-  │   └── iocage_06
-  │       └── iocage.yml
+  │   └── iocage_06
+  │       └── iocage.yml
   ├── iocage.ini
   └── pb-pkglist.yml
 
@@ -49,18 +49,18 @@ Synopsis
 
 On a managed node:
 
-* use the `role vbotka.freebsd.iocage`_ to create `iocage`_ list of packages
+* Use the `role vbotka.freebsd.iocage`_ to create the `iocage`_ package list
   ``files/pkgs.json`` for `Automatic Package Installation`_ of the `Apache HTTP
   Server`_.
 
-* use the playbook `vbotka.freebsd.pb_iocage_template.yml`_ to create Ansible
+* Use the playbook `vbotka.freebsd.pb_iocage_template.yml`_ to create the Ansible
   template ``ansible-client-apache``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* playbook `vbotka.freebsd.pb_iocage_template.yml`_
+* Playbook `vbotka.freebsd.pb_iocage_template.yml`_
 
 Notes
 ^^^^^
@@ -69,18 +69,18 @@ Notes
 
   * `role vbotka.freebsd.poudriere`_ to build packages
   * `role vbotka.freebsd.packages`_ to install packages
-  * `role vbotka.freebsd.iocage`_ to install packages in jails.
+  * `role vbotka.freebsd.iocage`_ to install packages in jails
 
 * The inventory ``iocage.ini`` is not needed to create the file
-  ``pkgs.json``. It would be sufficient to run the play at the ``localhost``. It
-  is used here because normally the files ``pkgs.json``, after being created,
-  are used in the ``iocage`` managed nodes.
+  ``pkgs.json``. It would be sufficient to run the play on ``localhost``. It
+  is used here because normally the ``pkgs.json`` files, after being created,
+  are used on the ``iocage`` managed nodes.
 
-* This example covers the simplest case of creating the common file
-  ``pkgs.json`` for all managed nodes in the group ``iocage``.
+* This example covers the simplest case of creating a common ``pkgs.json`` file
+  for all managed nodes in the group ``iocage``.
 
-* See the tasks ``playbooks/pb_iocage_template/pkglist.yml`` how the ``template`` attribute
-  ``pkglist`` is used.
+* See the tasks in ``playbooks/pb_iocage_template/pkglist.yml`` to see how the ``template``
+  attribute ``pkglist`` is used.
 
 .. seealso::
 
@@ -161,7 +161,7 @@ List templates
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -lt
+   shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: sh

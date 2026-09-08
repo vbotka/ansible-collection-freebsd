@@ -30,12 +30,11 @@ Synopsis
 ^^^^^^^^
 
 Restructure a dictionary of jails and their hosts defined with ``vmm`` and
-``class`` attributes.
+``class`` attributes:
 
-  * Groups full service specifications under their respective host (``vmm``).
-
-  * Inverts the ``class`` attribute into a reverse-lookup dictionary mapping class
-    names to lists of ``jails``.
+* Group full service specifications under their respective host (``vmm``).
+* Invert the ``class`` attribute into a reverse-lookup dictionary mapping class
+  names to lists of ``jails``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -45,7 +44,7 @@ Requirements
 Notes
 ^^^^^
 
-See :ref:`ug_concepts_project`.
+* See :ref:`ug_concepts_project`.
 
 ansible.cfg
 ^^^^^^^^^^^

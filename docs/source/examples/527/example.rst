@@ -35,31 +35,32 @@
 Use case
 ^^^^^^^^
 
-Create a jail that serves pkg repo for other jails. Create `iocage`_ template
-``ansible-pkg-repo`` and configure web server to publish the repo. Create a jail
-from the template and fetch packages to the repo.
+Create a jail that serves a package repository for other jails. Create the `iocage`_ template
+``ansible-pkg-repo`` and configure a web server to publish the repository. Create a jail
+from the template and fetch packages into the repository.
 
 Tree
 ^^^^
+
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── group_vars
-  │   ├── all
-  │   │   ├── project-hosts.yml
-  │   │   ├── project.yml
-  │   │   └── template.yml
-  │   └── fetch_pkg_repo
-  │       └── pkg-repo.yml
+  │   ├── all
+  │   │   ├── project-hosts.yml
+  │   │   ├── project.yml
+  │   │   └── template.yml
+  │   └── fetch_pkg_repo
+  │       └── pkg-repo.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   └── 06_iocage2.yml
   ├── host_vars
-  │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       ├── nginx-pkg-repo.yml
-  │       └── template.yml
+  │   └── iocage_06
+  │       ├── local-pkg-conf.yml
+  │       ├── nginx-pkg-repo.yml
+  │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── pb-pkg-repo.yml
@@ -70,29 +71,29 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
   * Use the role `vbotka.freebsd.iocage_template`_ to create the template
-    ``ansible-pkg-repo``
+    ``ansible-pkg-repo``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
     create a jail from the template.
 
-* In the inventory group ``fetch_pkg_repo`` fetch the selected packages to the
-  repo.
+* In the inventory group ``fetch_pkg_repo``, fetch the selected packages into the
+  repository.
 
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.iocage_template`_
-* playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `filter vbotka.freebsd.dict_to_ast`_
-* `filter vbotka.freebsd.ast_to_nginx`_
-* `filter vbotka.freebsd.project`_
-* `inventory vbotka.freebsd.iocage2`_
-* :ref:`ug_connection_jailexec`
-* package repository created in :ref:`example_322`
+* Role `vbotka.freebsd.iocage_template`_.
+* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* `Filter vbotka.freebsd.dict_to_ast`_.
+* `Filter vbotka.freebsd.ast_to_nginx`_.
+* `Filter vbotka.freebsd.project`_.
+* `Inventory vbotka.freebsd.iocage2`_.
+* :ref:`ug_connection_jailexec`.
+* Package repository created in :ref:`example_322`.
 
 .. seealso::
 
@@ -184,13 +185,13 @@ Playbook output - Create iocage templates
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
-      
+
 List templates
 ^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -lt
+   shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: sh
@@ -208,9 +209,10 @@ Playbook output - Create project jails from iocage templates
 
 Inventory graph
 ^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
    :language: sh
@@ -220,7 +222,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -247,7 +249,7 @@ List repo
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 fetch -qo - http://172.16.99.23/
+   shell> ssh admin@iocage_06 fetch -qo - http://172.16.99.23/
 
 .. literalinclude:: out/out-07.txt
    :language: html
@@ -255,7 +257,7 @@ List repo
 
 
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
+.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
 
 .. _filter vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
 .. _filter vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
@@ -263,8 +265,3 @@ List repo
 .. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 
 .. _iocage: https://iocage.readthedocs.io/en/latest/
-
-.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init
-.. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
-.. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
-.. _ansible-conf-test: https://github.com/vbotka/ansible-conf-test

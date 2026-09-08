@@ -20,7 +20,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_. Build packages.
+Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_ and build packages.
 
 Tree
 ^^^^
@@ -32,34 +32,34 @@ Tree
   ├── ansible.cfg
   ├── hosts
   ├── host_vars
-  │   └── build.example.com
-  │       ├── fp_qemu.yml
-  │       └── poudriere.yml
+  │   └── build.example.com
+  │       ├── fp_qemu.yml
+  │       └── poudriere.yml
   ├── pb-postinstall.yml
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the managed node ``build.example.com``:
+* On the managed node ``build.example.com``:
 
-  * in the playbook ``pb.yml``, use the role `vbotka.freebsd.poudriere`_ to install and configure
+  * In the playbook ``pb.yml``, use the role `vbotka.freebsd.poudriere`_ to install and configure
     `poudriere`_.
 
-  * in the playbook ``pb-postinstall.yml``, use the role `vbotka.freebsd.postinstall`_ to install and
+  * In the playbook ``pb-postinstall.yml``, use the role `vbotka.freebsd.postinstall`_ to install and
     configure `QEMU`_.
 
-  * build packages.
-    
+  * Build packages.
+
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege in the managed node ``build.example.com``.
+* Root privileges on the managed node ``build.example.com``.
 
 Notes
 ^^^^^
 
-* Building ARM (armv6, armv7, and aarch64) packages on amd64 needs `QEMU`_.
+* Building ARM (armv6, armv7, and aarch64) packages on amd64 requires `QEMU`_.
 
 .. seealso::
 
@@ -132,7 +132,7 @@ Limit ``pkg_dict_*`` for testing.
 
    SSL certificate and signing key <result_tree_ssl>
    poudriere.conf <result_conf>
-   package lists <result_pkglist>
+   Package lists <result_pkglist>
    make.conf <result_make>
 
 Playbook pb-postinstall.yml
@@ -145,8 +145,8 @@ Playbook pb-postinstall.yml
    :caption: Playbook output
    :maxdepth: 1
 
-   install QEMU <qemu_install>
-   run QEMU <qemu_run>
+   Install QEMU <qemu_install>
+   Run QEMU <qemu_run>
 
 Build packages
 ^^^^^^^^^^^^^^
@@ -163,7 +163,7 @@ Build packages
 
 .. seealso::
 
-   * `Export data`_ how to configure apache24.
+   * `Export data`_ on how to configure apache24.
    * :ref:`example_423`
 
 

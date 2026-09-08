@@ -31,34 +31,34 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_04.yml
+  │   └── iocage_04.yml
   ├── iocage.ini
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host ``iocage_04`` at IP 10.1.0.29 configured in
-  ``/etc/rc.conf``
+* The Ansible controller connects to the iocage host ``iocage_04`` at IP 10.1.0.29 configured in
+  ``/etc/rc.conf``:
 
   .. code-block:: ini
 
-    cloned_interfaces="bridge0"
-    create_args_bridge0="addm igb0"
-    ifconfig_bridge0="inet 10.1.0.29/24"
-    ifconfig_igb0="up -tso -vlanhwtso"
+     cloned_interfaces="bridge0"
+     create_args_bridge0="addm igb0"
+     ifconfig_bridge0="inet 10.1.0.29/24"
+     ifconfig_igb0="up -tso -vlanhwtso"
 
-* In the playbook ``pb.yml`` at ``iocage_04`` configure:
+* In the playbook ``pb.yml`` for ``iocage_04``, configure:
 
   * blacklistd, fail2ban, and sshguard
-  * nat
+  * NAT
   * log all blocked
   * pass from localnet to any
-    
+
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege in the managed nodes.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -116,9 +116,9 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Firewall starting and restarting breaks the ssh connections. See the handlers for details. As a
-consequence, both handlers starting and reloading don't work properly and the ssh connection will
-stale. Therefore, let us first configure the rules
+Starting and restarting the firewall breaks active SSH connections (see the handlers for details).
+Consequently, both the start and reload handlers can fail to complete cleanly, causing the SSH
+session to go stale. Therefore, configure the rules first before enabling the service:
 
 .. code-block:: console
 
@@ -162,7 +162,7 @@ pf status
 .. literalinclude:: out/out-05.txt
    :language: bash
 
-     
+
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
 .. _vbotka.freebsd_pf: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_pf/
 .. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd

@@ -19,7 +19,7 @@
 Use case
 ^^^^^^^^
 
-Create local package repository and fetch packages. Configure a web server to
+Create a local package repository and fetch packages. Configure a web server to
 publish the repository.
 
 Tree
@@ -31,13 +31,13 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── project-hosts.yml
+  │   └── all
+  │       └── project-hosts.yml
   ├── host_vars
-  │   └── iocage_06
-  │       ├── fetch.yml
-  │       ├── nginx.yml
-  │       └── repos.yml
+  │   └── iocage_06
+  │       ├── fetch.yml
+  │       ├── nginx.yml
+  │       └── repos.yml
   ├── iocage.ini
   ├── pb-nginx.yml
   └── pb-packages.yml
@@ -45,28 +45,23 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
-  - Use the role `vbotka.freebsd.packages`_ to configure a package repo and
+  * Use the role `vbotka.freebsd.packages`_ to configure a package repository and
     fetch packages.
-
-  - Use the role `vbotka.freebsd.nginx`_ to publish the repo.
+  * Use the role `vbotka.freebsd.nginx`_ to publish the repository.
 
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.nginx`_
-* role `vbotka.freebsd.packages`_
-* filter `vbotka.freebsd.to_ucl`_
+* Role `vbotka.freebsd.nginx`_
+* Role `vbotka.freebsd.packages`_
+* Filter `vbotka.freebsd.to_ucl`_
 
 Notes
 ^^^^^
 
-TBD
-
-.. note::
-
-   TBD
+* TBD
 
 .. seealso::
 
@@ -114,12 +109,12 @@ Playbook pb-packages.yml
 .. literalinclude:: pb-packages.yml
    :language: yaml
 
-Playbook output - Create repo and fetch packages 
+Playbook output - Create repo and fetch packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   shell> ansible-playbook -i iocage.ini -t pkg_conf,pkg_fetch pb-packages.yml
+   (env) > ansible-playbook -i iocage.ini -t pkg_conf,pkg_fetch pb-packages.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
@@ -135,7 +130,7 @@ Playbook output - Configure Nginx
 
 .. code-block:: console
 
-   shell> ansible-playbook -i iocage.ini pb-nginx.yml
+   (env) > ansible-playbook -i iocage.ini pb-nginx.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
@@ -153,7 +148,7 @@ List repo
 
 .. _vbotka.freebsd.nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/nginx/
 .. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
-.. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/ 
+.. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 
 .. _man pkg: https://man.freebsd.org/cgi/man.cgi?pkg(8)
 .. _man pkg.conf: https://man.freebsd.org/cgi/man.cgi?pkg.conf(5)

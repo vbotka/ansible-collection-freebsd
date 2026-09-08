@@ -31,7 +31,7 @@
 Use case
 ^^^^^^^^
 
-Create `iocage`_ template ``ansible-init``. Configure ``firstboot`` service
+Create the `iocage`_ template ``ansible-init``. Configure a ``firstboot`` service
 ``ansible_init`` that runs `ansible-pull`_ and uses the repo
 `ansible-conf-init`_. Configure the repo `ansible-conf-init`_ to pull the jails'
 configuration from the repo `ansible-conf-test`_. Create jails from the
@@ -40,23 +40,24 @@ asynchronously.
 
 Tree
 ^^^^
+
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── files
-  │   ├── pkgs-15_0.json
-  │   └── pkgs-15_1.json
+  │   ├── pkgs-15_0.json
+  │   └── pkgs-15_1.json
   ├── group_vars
-  │   └── all
-  │       ├── project-hosts.yml
-  │       └── project.yml
+  │   └── all
+  │       ├── project-hosts.yml
+  │       └── project.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   └── 06_iocage2.yml
   ├── host_vars
-  │   └── iocage_06
-  │       └── template.yml
+  │   └── iocage_06
+  │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   └── templates
@@ -65,12 +66,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible-init``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible-init``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_ create jails
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_, create jails
     from the template.
 
   * Wait for `ansible-pull`_ to configure the jails and display the test files.
@@ -78,25 +79,25 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* jail ``repos`` created in :ref:`example_523`
-* role `vbotka.freebsd.iocage_template`_
-* playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
-* `filter vbotka.freebsd.project`_
-* `inventory vbotka.freebsd.iocage2`_
-* :ref:`ug_connection_jailexec`
+* Jail ``repos`` created in :ref:`example_523`.
+* Role `vbotka.freebsd.iocage_template`_.
+* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* `Filter vbotka.freebsd.project`_.
+* `Inventory vbotka.freebsd.iocage2`_.
+* :ref:`ug_connection_jailexec`.
 
 .. note::
 
-   * See `Practical rc.d scripting in BSD`_
-   * See the option ``firstboot_sentinel`` in `man rc.conf`_
+   * See `Practical rc.d scripting in BSD`_.
+   * See the option ``firstboot_sentinel`` in `man rc.conf`_.
 
 .. seealso::
 
    * The ``Troubleshooting`` section in :ref:`example_526`
    * GitHub repositories:
 
-     - `ansible-conf-init`_
-     - `ansible-conf-test`_
+     * `ansible-conf-init`_
+     * `ansible-conf-test`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -165,13 +166,13 @@ Playbook output - Create iocage templates
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
-      
+
 List templates
 ^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -lt
+   shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: sh
@@ -189,9 +190,10 @@ Playbook output - Create project jails from iocage templates
 
 Inventory graph
 ^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
    :language: sh
@@ -201,7 +203,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -211,14 +213,14 @@ Display the test files
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt"
+   shell> ssh admin@iocage_06 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-06.txt
    :language: sh
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt"
+   shell> ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-07.txt
    :language: sh
@@ -228,7 +230,7 @@ Display the test files
 .. _man rc.conf: https://man.freebsd.org/cgi/man.cgi?rc.conf
 
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_plugins.yml/
+.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
 
 .. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
 .. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

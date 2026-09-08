@@ -14,8 +14,8 @@
 Use case
 ^^^^^^^^
 
-Create list of variables from files in the directory ``conf.d``. Use the role
-`vbotka.freebsd.lib`_ tasks `al_include_confd_vars_list.yml`_
+Create a list of variables from files in the ``conf.d`` directory. Use the task file
+`al_include_confd_vars_list.yml`_ from the role `vbotka.freebsd.lib`_:
 
 .. code-block:: yaml
 
@@ -31,28 +31,28 @@ Tree
 
 ::
 
-  shell > tree .
+  shell> tree .
   .
   ├── ansible.cfg
   ├── conf.d
-  │   ├── devel.yml
-  │   ├── production.yml
-  │   └── qa.yml
+  │   ├── devel.yml
+  │   ├── production.yml
+  │   └── qa.yml
   ├── hosts
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the managed node:
+* On the managed node:
 
-  * Create a list of variables' values from files in the controller's directory ``conf.d``
+  * Create a list of variable values from files in the controller's directory ``conf.d``.
   * Display the created list.
-  
+
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.lib`_
+* Role `vbotka.freebsd.lib`_
 
 Notes
 ^^^^^
@@ -62,8 +62,8 @@ values.
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_
-   | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_
+   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_.
+   | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
@@ -73,13 +73,13 @@ values.
 
 ansible.cfg
 ^^^^^^^^^^^
-   
+
 .. literalinclude:: ansible.cfg
    :language: ini
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
-   
+
 .. literalinclude:: hosts
    :language: ini
 

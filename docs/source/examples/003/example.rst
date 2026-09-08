@@ -25,35 +25,35 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   ├── iocage_02
+  │   │   └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
   ├── iocage.ini
   └── pb-iocage.yml
 
 Synopsis
 ^^^^^^^^
 
-* At the managed node ``iocage_04``
-  
-  In the playbook ``pb-iocage.yml``, use the role ``vbotka.freebsd.iocage`` to:
+* On the managed node ``iocage_04``:
 
-  * audit the `iocage`_ configuration.
+  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
+
+  * Audit the `iocage`_ configuration
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* binary `iocage`_.
+* Root privileges on the managed nodes
+* The `iocage`_ binary
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the run-strings to run the play on the iocage host ``iocage_02``
+* Put ``-l iocage_02`` into the command arguments to run the play on the iocage host ``iocage_02``.
 * Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
-* By default, sanity testing is enabled ``freebsd_iocage_sanity: true``
+* By default, sanity testing is enabled: ``freebsd_iocage_sanity: true``.
 
 .. seealso::
 
@@ -86,7 +86,7 @@ host_vars
 
 .. note::
 
-   By default, the activation testing is disabled ::
+   By default, activation testing is disabled::
 
      freebsd_iocage_sanity_zfs_pool_active: false
 

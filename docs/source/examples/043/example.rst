@@ -17,7 +17,7 @@
 Use case
 ^^^^^^^^
 
-Test filters `vbotka.freebsd.to_ucl`_ and `vbotka.freebsd.from_ucl`_
+Test the filters `vbotka.freebsd.to_ucl`_ and `vbotka.freebsd.from_ucl`_.
 
 Tree
 ^^^^
@@ -33,24 +33,23 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the playbook ``pb-test-to-ucl.yml`` test the filter `vbotka.freebsd.to_ucl`_
-
-* In the playbook ``pb-test-from-ucl.yml`` test the filter `vbotka.freebsd.from_ucl`_
+* In the playbook ``pb-test-to-ucl.yml``, test the filter `vbotka.freebsd.to_ucl`_.
+* In the playbook ``pb-test-from-ucl.yml``, test the filter `vbotka.freebsd.from_ucl`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* filter `vbotka.freebsd.to_ucl`_
-* filter `vbotka.freebsd.from_ucl`_
+* Filter `vbotka.freebsd.to_ucl`_
+* Filter `vbotka.freebsd.from_ucl`_
 
 Notes
 ^^^^^
 
-The filters ``to_ucl`` and ``from_ucl`` require `package ucl`_.
+The filters ``to_ucl`` and ``from_ucl`` require the Python `package ucl`_.
 
 .. seealso::
 
-   Example :ref:`example_322`
+   * Example :ref:`example_322`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -65,7 +64,7 @@ Playbook pb-test-to-ucl.yml
    :language: yaml
    :emphasize-lines: 7-15,20
 
-Playbook output - Test to_ucl filter
+Playbook output - Test filter to_ucl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -83,7 +82,7 @@ Playbook pb-test-from-ucl.yml
    :language: yaml
    :emphasize-lines: 7-16,22
 
-Playbook output - Test from_ucl filter
+Playbook output - Test filter from_ucl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

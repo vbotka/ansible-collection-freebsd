@@ -49,19 +49,19 @@ Tree
   │   ├── 04_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
   ├── iocage.ini
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-In the playbook:
+In the playbooks:
 
-* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ create and start jails.
-* `vbotka.freebsd.pb_iocage_update_repos.yml`_ update repositories.
-* ``pb.yml`` at the jails, install and configure `lighttpd`_.
+* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_: Create and start jails.
+* `vbotka.freebsd.pb_iocage_update_repos.yml`_: Update repositories.
+* ``pb.yml``: In the jails, install and configure `lighttpd`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -71,33 +71,33 @@ Requirements
 Notes
 ^^^^^
 
-* Jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if the
-  jail was created by ``iocage``. Use JID instead ::
+* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if the
+  jail was created by ``iocage``. Use the JID instead::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The play ``pb.yml` runs in the jails. The inventory ``iocage.ini`` is needed when a task is
-  delegated to an iocage host ::
+* The play ``pb.yml`` runs inside the jails. The inventory ``iocage.ini`` is needed when a task is
+  delegated to an iocage host::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
 
-* Disable `use_globs`_ ::
+* Disable `use_globs`_::
 
     freebsd_pkgng_use_globs: false
 
-  to use the packages in the form `pkg-origin`_ ::
+  to specify packages in `pkg-origin`_ format::
 
     lighttpd:
       module: pkgng
       name:
         - www/lighttpd
 
-* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the repositories. Then, use the
-  `cached`_ local package base instead of fetching an updated one ::
+* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the repositories. Afterwards, use the
+  `cached`_ local package database instead of fetching an updated one::
 
     freebsd_pkgng_cached: true
 
-* The directories ``handlers``, ``setup``, and ``files`` are group-writable ::
+* The directories ``handlers``, ``setup``, and ``files`` are group-writable::
 
     cl_dird_group: adm
     cl_dird_dmode: "0770"
@@ -106,22 +106,22 @@ Notes
     cl_dira_fmode: "0660"
     cl_handlers_dir_group: adm
 
-  The user running the plays must be a member of the group ``adm`` ::
+  The user running the plays must be a member of the group ``adm``::
 
-    shell> > groups admin
+    shell> groups admin
     admin : admin adm dialout
 
-  Fit the ownership and permissions in ``cl-common.yml`` to your needs.
-    
+  Adjust the ownership and permissions in ``cl-common.yml`` to your needs.
+
 .. seealso::
 
-   * documentation `Ansible role Config Light`_
-   * module `community.general.pkgng`_
+   * `Ansible role Config Light`_
+   * Module `community.general.pkgng`_
 
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the option `display_skipped_hosts`_
+Do not display skipped hosts. See the `display_skipped_hosts`_ option.
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -138,12 +138,15 @@ group_vars
 .. literalinclude:: group_vars/all/ansible-client.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: group_vars/all/cl-common.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: group_vars/all/cl-lighttpd.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: group_vars/all/common.yml
    :language: yaml
    :caption:
@@ -184,6 +187,7 @@ Inventory hosts
 .. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml
    :caption:
@@ -203,7 +207,7 @@ Update repos
 
 .. code-block:: console
 
-   ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini
 
 .. literalinclude:: out/out-12.txt
    :language: yaml
@@ -215,21 +219,27 @@ Configuration conf-light
 .. literalinclude:: conf-light/files.d/lighttpd-index.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/files.d/lighttpd-lighttpd-annotated-conf.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/files.d/lighttpd-lighttpd-conf.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/handlers.d/lighttpd-freebsd.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/packages.d/lighttpd.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/services.d/lighttpd.yml
    :language: yaml
    :caption:
+
 .. literalinclude:: conf-light/states.d/lighttpd-server-document-root.yml
    :language: yaml
    :caption:
@@ -256,7 +266,7 @@ Assemble data and create handlers.
 Playbook output - Install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the tasks 'Manage FreeBSD packages' from the
+The inventory ``iocage.ini`` is needed to delegate the tasks "Manage FreeBSD packages" from the
 jails to their iocage hosts.
 
 .. code-block:: console
@@ -270,20 +280,20 @@ jails to their iocage hosts.
 Results
 ^^^^^^^
 
-Open the page in a browser. For example, http://10.1.0.111/. The content should be ::
+Open the page in a browser, for example, ``http://10.1.0.111/``. The content should be::
 
   Lighttpd works!
 
 .. note::
 
-   The role and the configuration data in the examples are idempotent. Once the application is
-   installed and configured, ansible-playbook shouldn’t report any changes. To speedup the playbook,
+   The role and configuration data in the examples are idempotent. Once the application is
+   installed and configured, ``ansible-playbook`` should not report any changes. To speed up the playbook,
    disable setup, sanity, debug, and install. This way, the role will audit the required
-   infrastructure ::
+   infrastructure::
 
      (env) > ansible-playbook pb.yml -i hosts
 
-   Optionally, do not display OK hosts. See `display_ok_hosts`_ ::
+   Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_::
 
      (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb.yml -i hosts
 
@@ -298,7 +308,7 @@ Open the page in a browser. For example, http://10.1.0.111/. The content should 
      59a3f932: ok=32   changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
      test_111: ok=32   changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
 
-     
+
 .. _lighttpd: https://www.lighttpd.net/
 .. _Ansible role Config Light: https://ansible-config-light.readthedocs.io/en/latest/index.html
 

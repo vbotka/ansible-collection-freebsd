@@ -33,13 +33,13 @@ Tree
 
 ::
 
-  shell > tree .
+  shell> tree .
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_04
-  │       ├── loader.yml
-  │       └── zfs.yml
+  │   └── iocage_04
+  │       ├── loader.yml
+  │       └── zfs.yml
   ├── iocage.ini
   ├── pb-loader.yml
   └── pb-zfs.yml
@@ -47,31 +47,31 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the managed host ``iocage_04``
+* On the managed host ``iocage_04``:
 
-  * create ZFS pools:
+  * Create ZFS pools:
 
     * ``zroot``
     * ``iocage``
 
-  * create and mount ZFS datasets:
+  * Create and mount ZFS datasets:
 
-    * ``zroot/export``      mount /export
-    * ``iocage/ports``      mount /usr/ports
-    * ``iocage/src``        mount /usr/src
-    * ``iocage/obj``        mount /usr/obj
-    * ``iocage/poudriere``  mount /usr/local/poudriere
+    * ``zroot/export``      mounted on ``/export``
+    * ``iocage/ports``      mounted on ``/usr/ports``
+    * ``iocage/src``        mounted on ``/usr/src``
+    * ``iocage/obj``        mounted on ``/usr/obj``
+    * ``iocage/poudriere``  mounted on ``/usr/local/poudriere``
 
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.zfs`_
-* role `vbotka.freebsd.postinstall`_
+* Role `vbotka.freebsd.zfs`_
+* Role `vbotka.freebsd.postinstall`_
 
 Notes
 ^^^^^
 
-The role `vbotka.freebsd.postinstall`_ is used to configure ``/boot/loader.conf``
+The role `vbotka.freebsd.postinstall`_ is used to configure ``/boot/loader.conf``.
 
 .. note::
 
@@ -92,7 +92,7 @@ Known issues
 
 * `zpool state=present is not idempotent #10771`_
 
-The module `community.general.zpool`_ can't create correct diff. For example,
+The module `community.general.zpool`_ cannot create a correct diff. For example:
 
 .. code-block:: yaml
    :force:
@@ -101,12 +101,11 @@ The module `community.general.zpool`_ can't create correct diff. For example,
    {'before': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2']}, {'type': 'stripe', 'disks': ['/dev/ada3']}]},
     'after': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2', '/dev/ada3']}]}}
 
-
-This makes the module not idempotent. It crashes when running repeatedly. For example,
+This makes the module non-idempotent. It crashes when run repeatedly. For example:
 
 .. code-block:: yaml
    :force:
-      
+
    failed: [srv.example.org] (item=iocage) =>
        ansible_loop_var: item
        changed: false
@@ -127,11 +126,11 @@ This makes the module not idempotent. It crashes when running repeatedly. For ex
        ...
 
 Setting ``force: true`` doesn't help. At the moment, the only workaround is to skip the module if
-the pool already exists. You'll see a warning. For example,
+the pool already exists. You will see a warning. For example:
 
 .. code-block:: yaml
    :force:
-      
+
    TASK [vbotka.freebsd_zfs : Pools: WARNING | community.general.zpool skipped.] ****
    ok: [srv.example.org] =>
        msg: |-
@@ -148,7 +147,7 @@ the pool already exists. You'll see a warning. For example,
 
 ansible.cfg
 ^^^^^^^^^^^
-   
+
 .. literalinclude:: ansible.cfg
    :language: ini
 
@@ -160,11 +159,11 @@ Inventory iocage.ini
 
 host_vars
 ^^^^^^^^^
-  
+
 .. literalinclude:: host_vars/iocage_04/loader.yml
    :language: yaml
    :caption:
-  
+
 .. literalinclude:: host_vars/iocage_04/zfs.yml
    :language: yaml
    :caption:
@@ -188,10 +187,10 @@ Playbook output - loader.conf
 
 .. note::
 
-   Reboot if you see the message ::
+   Reboot if you see the message::
 
      [MESSAGE] Reboot to activate configuration in /boot/loader.conf
-      
+
 Playbook pb-zfs.yml
 ^^^^^^^^^^^^^^^^^^^
 

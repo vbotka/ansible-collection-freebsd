@@ -3,7 +3,7 @@
 204 Create DHCP jails with auto UUID and iocage_tags v2
 -------------------------------------------------------
 
-Extending example :ref:`example_203`
+Extending :ref:`example_203`.
 
 .. contents::
    :local:
@@ -46,8 +46,8 @@ Extending example :ref:`example_203`
 Use case
 ^^^^^^^^
 
-Instead of the `module vbotka.freebsd.iocage`_ create the variable ``iocage_jails`` using the
-`filter vbotka.freebsd.iocage`_
+Instead of using the `module vbotka.freebsd.iocage`_, create the variable ``iocage_jails`` using the
+`filter vbotka.freebsd.iocage`_:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
    :language: yaml
@@ -55,17 +55,17 @@ Instead of the `module vbotka.freebsd.iocage`_ create the variable ``iocage_jail
 
 **Test filter vbotka.freebsd.iocage**
 
-Given the input ``vars/iocage_datasets.yml``
+Given the input ``vars/iocage_datasets.yml``:
 
 .. literalinclude:: vars/iocage_datasets.yml
    :language: yaml
 
-The below playbook ``pb-test-filter.yml``
+The playbook ``pb-test-filter.yml`` below:
 
 .. literalinclude:: pb-test-filter.yml
    :language: yaml
 
-gives
+outputs:
 
 .. literalinclude:: out/out-pb-test-filter.txt
    :language: yaml
@@ -80,17 +80,17 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── iocage.yml
+  │   └── all
+  │       └── iocage.yml
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-iocage-ansible-clients-v2
-  │   ├── iocage_jails.yml
-  │   ├── swarm_destroy.yml
-  │   └── swarm.yml
+  │   ├── iocage_jails.yml
+  │   ├── swarm_destroy.yml
+  │   └── swarm.yml
   ├── pb-iocage-ansible-clients-v2.yml
   ├── pb-test.yml
   ├── pb-test-filter.yml
@@ -100,39 +100,39 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
 
   In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
 
-  * module ``ansible.builtin.command`` to:
+  * Module ``ansible.builtin.command`` to:
 
-    * create variable ``iocage_jails``
-    * create jails
-    * start jails
-    * optionally, stop and destroy the jails.
+    * Create the variable ``iocage_jails``
+    * Create jails
+    * Start jails
+    * Optionally, stop and destroy the jails
 
-* At all created jails:
+* On all created jails:
 
   In the playbook ``pb-test.yml``:
 
-  * connect to the created jails
-  * display the basic jails' configuration.
+  * Connect to the created jails
+  * Display basic jail configuration
 
 Requirements
 ^^^^^^^^^^^^
 
 * `filter vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* templates created in :ref:`example_202`
+* Root privileges on the managed nodes
+* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-Templates created in :ref:`example_202` are used in this example.
+* Templates created in :ref:`example_202` are used in this example.
 
 .. seealso::
 
@@ -248,7 +248,7 @@ Display inventory
    :language: bash
 
 Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
    :language: yaml
@@ -266,7 +266,7 @@ Playbook output - Display iocage_tags
 
 .. hint::
 
-   The below command stops and destroys the jails in ``swarms`` ::
+   The command below stops and destroys the jails in ``swarms``::
 
      ansible-playbook pb-iocage-ansible-clients-v2.yml \
                       -i iocage.ini \
@@ -275,5 +275,4 @@ Playbook output - Display iocage_tags
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/freebsd/iocage/

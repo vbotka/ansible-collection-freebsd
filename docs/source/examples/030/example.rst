@@ -3,7 +3,7 @@
 030 Create custom facts
 -----------------------
 
-Extending example :ref:`example_020`.
+Extending :ref:`example_020`.
 
 .. contents::
    :local:
@@ -16,7 +16,7 @@ Extending example :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Create custom facts to provide a dictionary of iocage datasets lists. Use the `filter
+Create custom facts to provide a dictionary of iocage dataset lists. Use the `filter
 vbotka.freebsd.iocage`_ to parse them.
 
 Tree
@@ -34,35 +34,35 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage.yml`` use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
-  * create custom facts scripts.
+  * Create custom fact scripts
 
   In the playbook ``pb-test.yml``:
 
-  * get the custom facts
-  * use the `filter vbotka.freebsd.iocage`_ to parse the custom facts
-  * create the inventory group ``test`` and compose variables
-  * display the hosts and composed variables in the group ``test``
-  * display all groups.
+  * Get the custom facts
+  * Use the `filter vbotka.freebsd.iocage`_ to parse the custom facts
+  * Create the inventory group ``test`` and compose variables
+  * Display the hosts and composed variables in the group ``test``
+  * Display all groups
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
 * `filter vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* jails created in previous examples.
+* Root privileges on the managed nodes
+* Jails created in previous examples
 
 Notes
 ^^^^^
 
-* See `Adding custom facts`_
+* See `Adding custom facts`_.
 
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
@@ -140,7 +140,7 @@ Display custom fact script
 
 .. hint::
 
-   Install ``lang/python`` :
+   Install ``lang/python``:
 
    "This is a meta port to the Python interpreter and provides
    symbolic links to bin/python, bin/pydoc, bin/idle and so on to allow

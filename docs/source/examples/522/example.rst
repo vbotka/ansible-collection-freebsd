@@ -24,7 +24,7 @@ Use case
 ^^^^^^^^
 
 Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Create
-templates ``ansible-syslogng-server`` and ``ansible-syslogng-client``. Create the jails from the
+templates ``ansible-syslogng-server`` and ``ansible-syslogng-client``. Create jails from the
 templates.
 
 Quoting `syslog-ng - FreeBSD Wiki`_:
@@ -35,27 +35,28 @@ Quoting `syslog-ng - FreeBSD Wiki`_:
 
 Tree
 ^^^^
+
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── files
-  │   ├── pkgs-logclient.json
-  │   └── pkgs-logserver.json
+  │   ├── pkgs-logclient.json
+  │   └── pkgs-logserver.json
   ├── group_vars
-  │   └── all
-  │       ├── common.yml
-  │       └── project-hosts.yml
+  │   └── all
+  │       ├── common.yml
+  │       └── project-hosts.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   └── 06_iocage2.yml
   ├── host_vars
-  │   ├── ansible_syslogng_client
-  │   │   └── syslog-ng-client.yml
-  │   ├── ansible_syslogng_server
-  │   │   └── syslog-ng-server.yml
-  │   └── iocage_06
-  │       └── template.yml
+  │   ├── ansible_syslogng_client
+  │   │   └── syslog-ng-client.yml
+  │   ├── ansible_syslogng_server
+  │   │   └── syslog-ng-server.yml
+  │   └── iocage_06
+  │       └── template.yml
   ├── iocage.ini
   ├── pb-create-jails.yml
   ├── pb-iocage-template-stop-convert.yml
@@ -68,7 +69,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
   Use the role `vbotka.freebsd.iocage_template`_ to create templates:
 
@@ -77,25 +78,25 @@ Synopsis
 
   In the playbook ``pb-create-jails.yml``:
 
-  * Create jails from the created templates
+  * Create jails from the created templates.
 
-* In the inventory group ``log_servers`` configure and test `syslog-ng server`_.
+* In the inventory group ``log_servers``, configure and test `syslog-ng server`_.
 
-* In the inventory group ``log_clients`` configure and test `syslog-ng client`_.
+* In the inventory group ``log_clients``, configure and test `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.iocage_template`_
-* role `vbotka.freebsd.postinstall`_
-* `inventory plugin vbotka.freebsd.iocage2`_
-* :ref:`ug_connection_jailexec`
+* Role `vbotka.freebsd.iocage_template`_.
+* Role `vbotka.freebsd.postinstall`_.
+* `Inventory plugin vbotka.freebsd.iocage2`_.
+* :ref:`ug_connection_jailexec`.
 
 .. note::
 
-   * This example creates the same functionality as the example :ref:`example_521`. The ``iocage
-     templates`` are used here instead of ``iocage plugins``.
-   * The same functionality is created also in the example :ref:`example_526`.
+   * This example creates the same functionality as :ref:`example_521`. Here, ``iocage
+     templates`` are used instead of ``iocage plugins``.
+   * The same functionality is also created in :ref:`example_526`.
    * In this example, DHCP was provided by the iocage host. See :ref:`example_440`.
 
 .. seealso::
@@ -103,7 +104,7 @@ Requirements
    * `syslog-ng - FreeBSD Wiki`_
    * `syslog-ng - documentation`_
    * `Configuring System Logging - FreeBSD Handbook`_
-   * documentation `Ansible role FreeBSD postinstall`_
+   * Documentation `Ansible role FreeBSD postinstall`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -228,13 +229,13 @@ Playbook output - Convert ansible-syslogng-* to templates
 .. literalinclude:: out/out-04.txt
    :language: yaml
    :force:
-      
+
 List templates
 ^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -lt
+   shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -250,7 +251,7 @@ Playbook output - Create jails from iocage templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml.yml
+   (env) > ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml
@@ -261,7 +262,7 @@ Inventory graph
 
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-07.txt
    :language: sh
@@ -271,7 +272,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-08.txt
    :language: sh
@@ -312,10 +313,10 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use ``lnav`` utility on the log server to display all logfiles in the the directory
-   ``/var/log/remote``::
+   Use the ``lnav`` utility on the ``log-server`` to display all log files in
+   the ``/var/log/remote`` directory::
 
-     shell > iocage console log-server
+     shell> iocage console log-server
      root@log-server:~ # lnav -r /var/log/remote/
 
 

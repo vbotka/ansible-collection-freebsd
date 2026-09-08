@@ -47,20 +47,21 @@ Quoting `syslog-ng - FreeBSD Wiki`_:
 
 Tree
 ^^^^
+
 ::
-   
-  shell > tree .
+
+  shell> tree .
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       ├── common.yml
-  │       └── project-hosts.yml
+  │   └── all
+  │       ├── common.yml
+  │       └── project-hosts.yml
   ├── hosts
-  │   └── 05_iocage.yml
+  │   └── 05_iocage.yml
   ├── host_vars
-  │   └── iocage_05
-  │       └── syslog-ng.yml
+  │   └── iocage_05
+  │       └── syslog-ng.yml
   ├── iocage.ini
   ├── pb-create-jails.yml
   ├── pb-logclient-test.yml
@@ -69,20 +70,20 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node:
+* On a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_ fetch the `iocage plugins`_:
+  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_, fetch the `iocage plugins`_:
 
   * ``ansible-pull-syslogng-server``
   * ``ansible-pull-syslogng-client``
 
   In the playbook ``pb-create-jails.yml``:
 
-  * Clone jails from the fetched iocage plugins
+  * Clone jails from the fetched iocage plugins.
 
-* In the inventory group ``log_servers`` test `syslog-ng server`_.
+* In the inventory group ``log_servers``, test `syslog-ng server`_.
 
-* In the inventory group ``log_clients`` test `syslog-ng client`_.
+* In the inventory group ``log_clients``, test `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -97,20 +98,20 @@ Requirements
   * `ansible-conf-syslogng-server`_
   * `ansible-conf-syslogng-client`_
 
-* playbook `vbotka.freebsd.pb_iocage_plugins.yml`_
-* `inventory plugin vbotka.freebsd.iocage`_
-* :ref:`ug_connection_jailexec`
+* Playbook `vbotka.freebsd.pb_iocage_plugins.yml`_.
+* `Inventory plugin vbotka.freebsd.iocage`_.
+* :ref:`ug_connection_jailexec`.
 
 .. important::
 
    For security reasons, you might want to create private repositories with the iocage plugins and
-   configurations. See the example :ref:`example_523`
+   configurations. See :ref:`example_523`.
 
 .. note::
 
-   * This example creates the same functionality as the example :ref:`example_522`. The ``iocage
-     plugins`` are used here instead of ``iocage templates``.
-   * The same functionality is created also in the example :ref:`example_526`.
+   * This example provides the same functionality as :ref:`example_522`. Here, ``iocage
+     plugins`` are used instead of ``iocage templates``.
+   * The same functionality is also created in :ref:`example_526`.
    * In this example, DHCP was provided by the iocage host. See :ref:`example_440`.
 
 .. seealso::
@@ -175,7 +176,7 @@ List iocage plugins
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -P
+   shell> ssh admin@iocage_05 sudo iocage list -P
 
 .. literalinclude:: out/out-02.txt
    :language: sh
@@ -186,12 +187,12 @@ Playbook pb-create-jails.yml
 .. literalinclude:: pb-create-jails.yml
    :language: yaml+jinja
 
-Playbook output - Create jails from iocage plugins
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Clone jails from iocage plugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-create-jails.yml.yml -i iocage.ini -i hosts
+   (env) > ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts
 
 .. literalinclude:: out/out-03.txt
    :language: yaml
@@ -202,7 +203,7 @@ Inventory graph
 
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
    :language: sh
@@ -212,7 +213,7 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_05 sudo iocage list -l
+   shell> ssh admin@iocage_05 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
    :language: sh
@@ -253,15 +254,14 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use ``lnav`` utility on the log server to display all logfiles in the the directory
-   ``/var/log/remote``. For example, ::
+   Use the ``lnav`` utility on the log server to display all log files in the
+   ``/var/log/remote`` directory. For example::
 
-     shell > iocage console c8a9d789-fa02-4ce3-af66-41c848f87b0f
+     shell> iocage console c8a9d789-fa02-4ce3-af66-41c848f87b0f
      root@c8a9d789-fa02-4ce3-af66-41c848f87b0f:~ # lnav -r /var/log/remote/
 
-   To find the UUID, run ``iocage list -l`` and look for the jail created from the template
+   To find the UUID, run ``iocage list -l`` and look for the jail cloned from the plugin
    ``ansible-pull-syslogng-server``.
-
 
 
 .. _iocage plugins: https://github.com/vbotka/iocage-plugins

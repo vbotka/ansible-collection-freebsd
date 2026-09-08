@@ -8,7 +8,7 @@
    :depth: 1
 
 .. index:: single: local pkg repo; Example 530
-.. index:: single: template ansible-pkg-repos; Example 530
+.. index:: single: template ansible-pkg-repo; Example 530
 .. index:: single: template ansible-repos; Example 530
 .. index:: single: template ansible-init; Example 530
 .. index:: single: template ansible-nginx; Example 530
@@ -24,31 +24,32 @@ Tree
 ::
 
   shell> tree .
+  .
   ├── ansible.cfg
   ├── conf.d
-  │   ├── 435
-  │   │   └── template.yml
-  │   ├── 523
-  │   │   └── template.yml
-  │   ├── 527
-  │   │   └── template.yml
-  │   └── 529
-  │       └── template.yml
+  │   ├── 435
+  │   │   └── template.yml
+  │   ├── 523
+  │   │   └── template.yml
+  │   ├── 527
+  │   │   └── template.yml
+  │   └── 529
+  │       └── template.yml
   ├── files
-  │   ├── ansible-init.sh
-  │   └── index.html
+  │   ├── ansible-init.sh
+  │   └── index.html
   ├── group_vars
-  │   └── all
-  │       ├── project-hosts.yml
-  │       └── template.yml
+  │   └── all
+  │       ├── project-hosts.yml
+  │       └── template.yml
   ├── host_vars
-  │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       └── nginx-pkg-repo.yml
+  │   └── iocage_06
+  │       ├── local-pkg-conf.yml
+  │       └── nginx-pkg-repo.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── tasks
-  │   └── create_template.yml
+  │   └── create_template.yml
   └── templates
       ├── local.conf.j2
       └── nginx-pkg-repo.conf.j2
@@ -56,19 +57,19 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At a managed node use the role `vbotka.freebsd.iocage_template`_ to create the
+* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to create the
   templates:
 
-  - ansible-init
-  - ansible-nginx
-  - ansible-pkg-repo
-  - ansible-repos
+  * ``ansible-init``
+  * ``ansible-nginx``
+  * ``ansible-pkg-repo``
+  * ``ansible-repos``
 
 Requirements
 ^^^^^^^^^^^^
 
-* role `vbotka.freebsd.iocage_template`_
-* package repository created in :ref:`example_322`
+* Role `vbotka.freebsd.iocage_template`_.
+* Package repository created in :ref:`example_322`.
 
 Notes
 ^^^^^
@@ -175,17 +176,17 @@ Playbook output - Create iocage templates
 .. literalinclude:: out/out-01.txt
    :language: yaml
    :force:
-      
+
 List templates
 ^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -lt
+   shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
    :language: sh
 
 
-.. _iocage: https://iocage.readthedocs.io/en/latest/ 
+.. _iocage: https://iocage.readthedocs.io/en/latest/
 .. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/

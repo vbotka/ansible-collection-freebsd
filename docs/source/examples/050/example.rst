@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Test the :ref:`ug_connection_jailexec`
+Test the :ref:`ug_connection_jailexec`.
 
 Tree
 ^^^^
@@ -25,20 +25,20 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 01-iocage.ini
-  │   └── 02-iocage.yml
+  │   ├── 01-iocage.ini
+  │   └── 02-iocage.yml
   ├── jailexec.ini
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-At an iocage node test the :ref:`ug_connection_jailexec`
+On an iocage node, test the :ref:`ug_connection_jailexec`.
 
 Requirements
 ^^^^^^^^^^^^
 
-TBD
+* TBD
 
 Notes
 ^^^^^
@@ -56,7 +56,7 @@ Inventory of iocage nodes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01-iocage.ini
-   :language: yaml
+   :language: ini
    :caption:
 
 Dynamic inventory of the jails
@@ -89,8 +89,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml
 
-Playbook output
-^^^^^^^^^^^^^^^
+Playbook output - Test jailexec connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

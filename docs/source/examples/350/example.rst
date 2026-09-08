@@ -45,9 +45,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts jails.
-* The playbook ``pb-install.yml`` installs `rsnapshot`_ in running jails.
-* The playbook ``pb-test.yml`` configures `rsnapshot`_ in running jails.
+In the playbooks:
+
+* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_: Create and start jails.
+* ``pb-install.yml``: Install `rsnapshot`_ in running jails.
+* ``pb-test.yml``: Configure `rsnapshot`_ in running jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -57,21 +59,21 @@ Requirements
 Notes
 ^^^^^
 
-* The jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if
-  the jail was created by ``iocage``. Use JID instead ::
+* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if
+  the jail was created by ``iocage``. Use the JID instead::
 
     jail: "{{ iocage_jid }}"
 
-* The plays run at the jails. The inventory ``iocage.ini`` is needed when a task is delegated to
-  an iocage host ::
+* The plays run inside the jails. The inventory ``iocage.ini`` is needed when a task is delegated to
+  an iocage host::
 
     delegate_to: "{{ iocage_tags.vmm }}"
 
-* Disable `use_globs`_ ::
+* Disable `use_globs`_::
 
     freebsd_pkgng_use_globs: false
 
-  to use the packages in the form `pkg-origin`_ ::
+  to specify packages in `pkg-origin`_ format::
 
     rsnapshot_packages:
       - sysutils/rsnapshot
@@ -79,7 +81,7 @@ Notes
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the option `display_skipped_hosts`_
+Do not display skipped hosts. See the `display_skipped_hosts`_ option.
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -110,7 +112,7 @@ Create and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage \
+   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini \
                             -t swarm -e swarm=true
 
 .. literalinclude:: out/out-01.txt
@@ -158,9 +160,9 @@ Playbook pb-install.yml
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed when a task is delegated to an iocage host
+The inventory ``iocage.ini`` is needed when a task is delegated to an iocage host:
 
-.. code:: console
+.. code-block:: console
 
    (env) > ansible-playbook pb-install.yml -i hosts -i iocage.ini
 
@@ -172,7 +174,7 @@ Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
-   :language: bash
+   :language: yaml
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -199,18 +201,15 @@ Playbook output - Configure rsnapshot
 Results
 ^^^^^^^
 
-TBD
+* TBD
 
 .. _rsnapshot: https://rsnapshot.org/
-.. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsanpshot/
+.. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
 
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml
 
 .. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
 .. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
-.. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
 .. _use_globs: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs
-.. _display_ok_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
 .. _display_skipped_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts
 .. _pkg-origin: https://man.freebsd.org/cgi/man.cgi?query=pkg-install

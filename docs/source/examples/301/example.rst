@@ -32,16 +32,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At a managed node :
+On a managed node:
 
-* playbook ``pb-test-01.yml``: get ``FreeBSD.url`` from ``/etc/pkg/FreeBSD.conf``
-* playbook ``pb-test-02.yml``: update ``FreeBSD.enabled`` in ``/etc/pkg/FreeBSD.conf``
+* Playbook ``pb-test-01.yml``: Get ``FreeBSD.url`` from ``/etc/pkg/FreeBSD.conf``.
+* Playbook ``pb-test-02.yml``: Update ``FreeBSD.enabled`` in ``/etc/pkg/FreeBSD.conf``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `module vbotka.freebsd.ucl`_
-* installed `uclcmd`_
+* Installed `uclcmd`_
 
 Notes
 ^^^^^
@@ -50,8 +50,8 @@ Notes
 
 .. seealso::
 
-  * `uclcmd Command line tool for working with UCL config files`_
-  * `UCL (Universal Configuration Language)`_
+   * `uclcmd Command line tool for working with UCL config files`_
+   * `UCL (Universal Configuration Language)`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -76,7 +76,7 @@ Playbook output - Get FreeBSD.url
 
 .. code-block:: console
 
-  (env) > ansible-playbook -i iocage.ini pb-test-01.yml
+   (env) > ansible-playbook -i iocage.ini pb-test-01.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml

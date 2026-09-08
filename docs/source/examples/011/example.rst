@@ -3,7 +3,7 @@
 011 Display variables iocage_*
 ------------------------------
 
-Extending example :ref:`example_010`.
+Extending :ref:`example_010`.
 
 .. contents::
    :local:
@@ -43,7 +43,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails created in :ref:`example_010`
+* Jails created in :ref:`example_010`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -63,8 +63,8 @@ Playbook pb-vars-all.yml
 .. literalinclude:: pb-vars-all.yml
    :language: yaml
 
-Playbook output - Display iocage_* vars
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage_* variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

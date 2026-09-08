@@ -40,14 +40,14 @@
 Use case
 ^^^^^^^^
 
-Configure iocage host.
+Configure an iocage host.
 
 Tree
 ^^^^
 
 ::
 
-  shell > tree .
+  shell> tree .
   .
   ├── ansible.cfg
   ├── group_vars
@@ -75,17 +75,17 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the managed node ``iocage_04``:
+On the managed node ``iocage_04``:
 
-* configure ``/home/admin/.login_conf``
-* install packages
-* configure ``/boot/loader.conf``
-* configure network
-* configure ``pf``
-* create ZFS pool ``iocage``
-* activate iocage pool ``iocage``
-* fetch release
-* test ``iocage`` sanity.
+* Configure ``/home/admin/.login_conf``
+* Install packages
+* Configure ``/boot/loader.conf``
+* Configure network
+* Configure ``pf``
+* Create ZFS pool ``iocage``
+* Activate iocage pool ``iocage``
+* Fetch release
+* Test ``iocage`` sanity.
 
 Requirements
 ^^^^^^^^^^^^
@@ -104,7 +104,7 @@ Notes
 * The role `vbotka.freebsd.postinstall`_ is used to:
 
   * configure ``/home/admin/.login_conf``
-  * install packages
+  * install ``packages``
   * configure ``/boot/loader.conf``
 
 .. seealso::
@@ -112,68 +112,68 @@ Notes
    * Forum `pf and bridge`_
    * `man if_bridge`_
    * `Changing how I use IP address with FreeBSD's vnet`_
-    
+
 ansible.cfg
 ^^^^^^^^^^^
-   
+
 .. literalinclude:: ansible.cfg
    :language: ini
 
 Inventory iocage.ini
 ^^^^^^^^^^^^^^^^^^^^
-   
+
 .. literalinclude:: iocage.ini
    :language: ini
 
 group_vars
 ^^^^^^^^^^
-  
+
 .. literalinclude:: group_vars/all/iocage.yml
    :language: yaml
    :caption:
 
 host_vars
 ^^^^^^^^^
-  
+
 .. literalinclude:: host_vars/iocage_04/loader.yml
    :language: yaml
    :caption:
-  
+
 .. literalinclude:: host_vars/iocage_04/login.yml
    :language: yaml
    :caption:
-  
+
 .. literalinclude:: host_vars/iocage_04/network.yml
    :language: yaml
    :caption:
-  
+
 .. literalinclude:: host_vars/iocage_04/packages.yml
    :language: yaml
    :caption:
-  
+
 .. literalinclude:: host_vars/iocage_04/pf.yml
    :language: yaml
    :caption:
-  
+
 .. literalinclude:: host_vars/iocage_04/zfs.yml
    :language: yaml
    :caption:
 
 .. note::
 
-   Destroy the GPT tables on the disks you want to create the pool from. For example, ::
+   Destroy the GPT tables on the disks you want to create the pool from. For example::
 
      [iocage_04]# gpart destroy -F ada2
      [iocage_04]# gpart destroy -F ada3
 
-   Otherwise, you'll see the bellow complains in the dmesg ::
+   Otherwise, you will see the warnings below in dmesg::
 
      GEOM: ada2: the primary GPT table is corrupt or invalid.
      GEOM: ada2: using the secondary instead -- recovery strongly advised.
      GEOM: ada3: the primary GPT table is corrupt or invalid.
      GEOM: ada3: using the secondary instead -- recovery strongly advised.
 
-   There is no reason for any GPT tables if the whole disks are used by a pool ::
+   There is no reason to have GPT tables if whole disks are dedicated to a pool::
 
      [iocage_04]# zpool status iocage
        pool: iocage
@@ -222,8 +222,8 @@ Playbooks
    :language: yaml
    :caption:
 
-Playbooks' outputs
-^^^^^^^^^^^^^^^^^^
+Playbook outputs
+^^^^^^^^^^^^^^^^
 
 Configure /home/admin/.login_conf
 """""""""""""""""""""""""""""""""
@@ -248,7 +248,7 @@ Install packages
    :force:
 
 .. _example_501_loader:
-      
+
 Configure /boot/loader.conf
 """""""""""""""""""""""""""
 
@@ -262,7 +262,7 @@ Configure /boot/loader.conf
 
 .. note::
 
-   Reboot if you see this message ::
+   Reboot if you see this message::
 
      [MESSAGE] Reboot to activate configuration in /boot/loader.conf
 
@@ -309,8 +309,8 @@ Activate iocage
 .. code-block:: console
 
    (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
-                                          -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
-                                          -e freebsd_iocage_debug=true
+                                         -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
+                                         -e freebsd_iocage_debug=true
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
@@ -320,13 +320,13 @@ Fetch release
 """""""""""""
 
 .. note:: This example is not updated to the current release and serves
-          a demonstration purpose only.
+          demonstration purposes only.
 
 .. literalinclude:: out/out-08.txt
    :language: console
 
-Sanity iocage
-"""""""""""""
+iocage sanity test
+""""""""""""""""""
 
 .. code-block:: console
 
@@ -354,7 +354,7 @@ All playbooks output
    :language: yaml
    :force:
 
-      
+
 .. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
 .. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/

@@ -3,7 +3,7 @@
 013 Tags and custom groups
 --------------------------
 
-Extending example :ref:`example_010`.
+Extending :ref:`example_010`.
 
 .. contents::
    :local:
@@ -38,8 +38,8 @@ Use the property ``notes`` to create tags:
 
 In the inventory plugin:
 
-* compose the variable ``iocage_tags``
-* create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``
+* Compose the variable ``iocage_tags``
+* Create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``
 
 Tree
 ^^^^
@@ -50,13 +50,13 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   └── 04_iocage.yml
+  │   ├── 02_iocage.yml
+  │   └── 04_iocage.yml
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   ├── iocage_02
+  │   │   └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all.yml
   ├── pb-ansible-client.yml
@@ -67,18 +67,18 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
 
   In the playbook ``pb-iocage-base.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * create basejail ``ansible_client``
+  * Create the basejail ``ansible_client``
 
   In the playbook ``pb-iocage-clone.yml``, use the `module vbotka.freebsd.iocage`_ to:
 
-  * clone 3 jails from the basejail ``ansible_client``
+  * Clone 3 jails from the basejail ``ansible_client``
 
   In the playbooks:
 
@@ -88,9 +88,9 @@ Synopsis
 
   use the `inventory plugin vbotka.freebsd.iocage`_ to:
 
-  * create the inventory groups and compose variables
-  * create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
-  * display hosts, composed variables, and groups
+  * Create inventory groups and compose variables
+  * Create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
+  * Display hosts, composed variables, and groups
 
 * Comment on hosts potentially silently overriding each other.
 
@@ -99,9 +99,9 @@ Requirements
 
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* activated `binary iocage`_
-* fetched releases.
+* Root privileges on the managed nodes
+* An activated `binary iocage`_
+* Fetched releases
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -110,7 +110,7 @@ ansible.cfg
    :language: ini
 
 Inventory iocage.ini
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: iocage.ini
    :language: ini
@@ -119,7 +119,7 @@ Inventory hosts
 ^^^^^^^^^^^^^^^
 
 Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. Then, the dictionary
-``iocage_tags`` can be created from ``iocage_properties.notes``
+``iocage_tags`` can be created from ``iocage_properties.notes``.
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml
@@ -131,8 +131,8 @@ Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. 
    :caption:
    :emphasize-lines: 4,8,17
 
-.. note:: The structure of the ``notes`` is up to you. If you change it, fit the declaration of
-          ``iocage_tags`` in the inventory.
+.. note:: The structure of ``notes`` is arbitrary. If you change it, adjust the declaration of
+          ``iocage_tags`` in the inventory accordingly.
 
 host_vars
 ^^^^^^^^^
@@ -199,8 +199,8 @@ Playbook output - Display variables and groups
 .. note::
 
    * The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
-   * The jail ``ansible_client`` from ``iocage_02`` overrides the one from ``iocage_01``
-   * See the special variable `groups`_
+   * The jail ``ansible_client`` defined in ``04_iocage.yml`` overrides the one from ``02_iocage.yml``.
+   * See the special variable `groups`_.
 
 Playbook pb-ansible-client.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,12 +221,11 @@ Playbook output - Display iocage_tags and group_names
 
 .. note::
 
-   * The structure of the inventory hosts and groups is flat. The jail ``ansible-client`` is the
+   * The structure of the inventory hosts and groups is flat. The jail ``ansible_client`` is the
      same in all groups.
+   * See the special variable `group_names`_.
 
-   * See the special variable `group_names`_
-
-.. warning:: There are no internal checks of the hosts overriding each other. The consistency is up to you.
+.. warning:: There are no internal checks for hosts overriding each other. Maintaining inventory consistency is up to the user.
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -248,7 +247,6 @@ Playbook output - Display all jails
 
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _binary iocage: https://github.com/freebsd/iocage/
-.. _groups:  https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups
+.. _groups: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups
 .. _group_names: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names

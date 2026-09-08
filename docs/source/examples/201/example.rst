@@ -3,7 +3,7 @@
 201 Display iocage datasets
 ---------------------------
 
-Extending example :ref:`example_200`.
+Extending :ref:`example_200`.
 
 .. contents::
    :local:

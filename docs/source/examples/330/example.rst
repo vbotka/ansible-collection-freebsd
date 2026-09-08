@@ -44,35 +44,36 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
+
   In the playbook ``pb-iocage-fetch-base-clone.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
-  * fetch the release
-  * create basejail
-  * clone 3 jails from the basejail.
+  * Fetch the release
+  * Create a basejail
+  * Clone three jails from the basejail
 
   In the playbook ``pb-iocage-list.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
-  * create the lists of bases and jails
-  * optionally, display the lists.
+  * Create lists of bases and jails
+  * Optionally, display the lists
 
-  In the playbook ``pb-test-01.yml``:
+  In the playbook ``pb-test.yml``:
 
-  * create the inventory group ``test`` and compose variables
-  * display the hosts and composed variables in the group ``test``
-  * display all groups.
+  * Create the inventory group ``test`` and compose variables
+  * Display the hosts and composed variables in the group ``test``
+  * Display all groups
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* activated ``iocage``
+* Root privileges on the managed nodes
+* Activated ``iocage``
 
 Notes
 ^^^^^
 
-* This example demonstrates a functionality similar to :ref:`example_010`.
+* This example demonstrates functionality similar to :ref:`example_010`.
 
 * The `role vbotka.freebsd.iocage`_ is preinstalled in this collection.
 
@@ -141,7 +142,7 @@ Playbook output - Runner
 
 .. hint::
 
-   See the log on the remote host ::
+   See the log on the remote host::
 
      shell> tail -f /var/log/iocage.log
 

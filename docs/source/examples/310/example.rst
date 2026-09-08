@@ -22,9 +22,9 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.postinstall`_ to audit basic configuration of Ansible clients. The role
-is idempotent. Successful result means no changes are reported. This example implements the same
-configuration as the example :ref:`example_200`.
+Use the role `vbotka.freebsd.postinstall`_ to audit the basic configuration of Ansible clients. The
+role is idempotent. A successful result means no changes are reported. This example implements the
+same configuration as :ref:`example_200`.
 
 Tree
 ^^^^
@@ -51,44 +51,44 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At all running jails:
+In all running jails:
 
-* playbook ``pb-test-01.yml``: test the role does nothing by default
-* playbook ``pb-test-02.yml``: install packages using the module `community.general.pkgng`_
-* playbook ``pb-test-03.yml``: Install packages importing `vbotka.freebsd.postinstall`_
-* playbook ``pb-test-01.yml``:
+* Playbook ``pb-test-01.yml``: Test that the role does nothing by default.
+* Playbook ``pb-test-02.yml``: Install packages using the module `community.general.pkgng`_.
+* Playbook ``pb-test-03.yml``: Install packages by importing `vbotka.freebsd.postinstall`_.
+* Playbook ``pb-test-01.yml``:
 
-  * install packages
-  * create user
-  * configure public keys
-  * configure sudo
-  * configure dhclient.
+  * Install packages
+  * Create user
+  * Configure public keys
+  * Configure sudo
+  * Configure dhclient
 
 Requirements
 ^^^^^^^^^^^^
 
-* running jails at the iocage host.
+* Running jails on the iocage host
 
 Notes
 ^^^^^
 
-* Jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if the
-  jail was created by ``iocage``. Use JID instead.
+* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if the
+  jail was created by ``iocage``. Use the JID instead.
 
-* The below plays run at the jails. The inventory ``iocage.ini`` is needed when a task is delegated
-  to an iocage host.
+* The plays below run inside the jails. The inventory ``iocage.ini`` is needed when a task is
+  delegated to an iocage host.
 
-* The public key in ``files/pk_admins.txt`` is sanitized.
+* The public key in ``files/pk_admins.txt`` has been sanitized.
 
 .. note::
 
    | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_.
    | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
+   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
-   * documentation `Ansible role FreeBSD postinstall`_
+   * `Ansible role FreeBSD postinstall`_
 
 Jails at iocage_04
 ^^^^^^^^^^^^^^^^^^
@@ -103,7 +103,7 @@ Jails at iocage_04
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the option `display_skipped_hosts`_
+Do not display skipped hosts. See the `display_skipped_hosts`_ option.
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -166,16 +166,15 @@ Playbook output - By default do nothing
 Playbook pb-test-02.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the module `community.general.pkgng`_ to demonstrate the installation in a jail.
+Use the module `community.general.pkgng`_ to demonstrate installation in a jail.
 
 .. literalinclude:: pb-test-02.yml
    :language: yaml
 
-
 Playbook output - Install packages by community.general.pkgng
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the tasks ``Install packages``.
+The inventory ``iocage.ini`` is needed to delegate the ``Install packages`` tasks.
 
 .. code-block:: console
 
@@ -188,7 +187,7 @@ The inventory ``iocage.ini`` is needed to delegate the tasks ``Install packages`
 Playbook pb-test-03.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the imported tasks ``packages.yml`` from the role `vbotka.freebsd.postinstall`_
+Use the imported tasks ``packages.yml`` from the role `vbotka.freebsd.postinstall`_.
 
 .. literalinclude:: pb-test-03.yml
    :language: yaml
@@ -206,86 +205,84 @@ Playbook output - Import vbotka.freebsd_postinstall packages.yml
 
 .. hint::
 
-   Try ``pb-test-01.yml``, set tags ``-t fp_packages``, and enable the import ``-e fp_install=true``
-   ::
+   Try ``pb-test-01.yml``, set the tag ``-t fp_packages``, and enable the import with ``-e fp_install=true``::
 
      (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage.ini -t fp_packages -e fp_install=true
 
-   If the role ``vbotka.freebsd_postinstall`` is installed, try it ::
+   If the role ``vbotka.freebsd_postinstall`` is installed, try using it::
 
      - name: Install packages
        ansible.builtin.import_role:
          name: vbotka.freebsd_postinstall
          tasks_from: packages
 
-   Both options should give the same result.
-
+   Both options should yield the same result.
 
 Install packages, create user, configure public keys, sudo, and dhclient hooks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Test the configuration step by step. Run the below plays with options ``--check --diff`` first.
+Test the configuration step by step. Run the plays below with the options ``--check --diff`` first.
 
-* Install packages ::
+* Install packages::
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage.ini -t fp_packages -e fp_install=true
+    (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage.ini -t fp_packages -e fp_install=true
 
-* Create user ::
+* Create user::
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_users -e fp_users=true
+    (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_users -e fp_users=true
 
-* Configure public keys ::
+* Configure public keys::
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_authorized_key -e fp_authorized_key=true
+    (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_authorized_key -e fp_authorized_key=true
 
-* Configure sudo ::
+* Configure sudo::
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_sudoers -e fp_sudoers=true
+    (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_sudoers -e fp_sudoers=true
 
 * Configure dhclient hooks::
 
-  (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_dhclient_hooks -e fp_dhclient=true
+    (env) > ansible-playbook pb-test-01.yml -i hosts -t fp_dhclient_hooks -e fp_dhclient=true
 
-Put the extra variables into the file ``extra-vars.yml``
+Put the extra variables into the file ``extra-vars.yml``:
 
 .. literalinclude:: extra-vars.yml
    :language: yaml
 
-Run the play
+Run the play:
 
 .. code-block:: console
 
    (env) > ansible-playbook pb-test-01.yml \
-           -i hosts -i iocage.ini \                                            
-           -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
-           -e @extra-vars.yml
+            -i hosts -i iocage.ini \
+            -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \
+            -e @extra-vars.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml
    :force:
 
-Optionally, disable the option `display_ok_hosts`_
+Optionally, disable the `display_ok_hosts`_ option:
 
 .. code-block:: console
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
-           ansible-playbook pb-test-01.yml \
-           -i hosts -i iocage.ini \                                            
-           -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \  
-           -e @extra-vars.yml
+            ansible-playbook pb-test-01.yml \
+            -i hosts -i iocage.ini \
+            -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \
+            -e @extra-vars.yml
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
    :force:
 
-The above plays show that, depending on a use case, it's possible to:
+The plays above show that, depending on your use case, it is possible to:
 
-* Use tags to select tasks-groups from the role.
-* Import selected tasks-groups from the role.
-* Create tasks using modules.
+* Use tags to select task groups from the role.
+* Import selected task groups from the role.
+* Create tasks using standalone modules.
 
-The first option is flexible in briefly selecting the functionality from the command line. On the
-other hand, the import provides a faster execution at the cost of flexibility.
+The first option is flexible for quickly selecting functionality from the command line. On the
+other hand, importing tasks provides faster execution at the cost of command-line flexibility.
 
 
 .. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/

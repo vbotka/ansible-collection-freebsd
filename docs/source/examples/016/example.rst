@@ -3,13 +3,13 @@
 016 Multiple inventory constructed
 ----------------------------------
 
-Extending example :ref:`example_015`.
+Extending :ref:`example_015`.
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: inventory ansible.builtin.constructed; Example 016
+.. index:: single: inventory ansible.builtin.constructed; Example 016
 .. index:: single: option compose; Example 016
 .. index:: single: compose; Example 016
 .. index:: single: option groups; Example 016
@@ -18,7 +18,7 @@ Extending example :ref:`example_015`.
 Use case
 ^^^^^^^^
 
-Create inventory groups using the inventory plugin `ansible.builtin.constructed`_ after the two
+Create inventory groups using the inventory plugin `ansible.builtin.constructed`_ after loading the two
 `inventory plugin vbotka.freebsd.iocage`_ configuration files.
 
 Tree
@@ -30,38 +30,38 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails (managed nodes):
+* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails (managed nodes):
 
-  * ``test_111:113`` from the host ``iocage_02`` 
-  * ``test_131:133`` from the host ``iocage_04`` 
+  * ``test_111:113`` from host ``iocage_02``
+  * ``test_131:133`` from host ``iocage_04``
 
   and creates the inventory groups ``test_02`` and ``test_04``.
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
-  * ``test`` comprising hosts starting ``'test'``
-  * ``test_up`` comprising running hosts starting ``'test'``.
+  * ``test`` comprising hosts whose names start with ``'test'``
+  * ``test_up`` comprising running hosts whose names start with ``'test'``
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails created in :ref:`example_010`
+* Jails created in :ref:`example_010`
 
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in the alphabetical order.
-* See :ref:`example_015`
-* The `inventory plugin vbotka.freebsd.iocage`_ doesn't provide the option `use_vars_plugins`_.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
+* See :ref:`example_015`.
+* The `inventory plugin vbotka.freebsd.iocage`_ does not provide the option `use_vars_plugins`_.
 * See :ref:`example_019`.
 
 Jails at iocage_02

@@ -23,7 +23,7 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   └── 04_iocage.yml
+  │   └── 04_iocage.yml
   ├── iocage.ini
   ├── pb-iocage.yml
   └── pb-test.yml
@@ -31,13 +31,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At the managed node ``iocage_04`` in the playbook:
+* On the managed node ``iocage_04``:
 
-  * ``pb-iocage.yml``, use the command ``iocage get notes test_4`` and display the result
-
-  * ``pb-test.yml``, use `inventory plugin vbotka.freebsd.iocage`_ to create and display
-    ``iocage_tags``
-
+  * In the playbook ``pb-iocage.yml``, run the command ``iocage get notes test_4`` and display the result.
+  * In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to create and display ``iocage_tags``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -47,7 +44,7 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. seealso::
 
@@ -82,7 +79,7 @@ Playbook pb-iocage.yml
 .. literalinclude:: pb-iocage.yml
    :language: yaml+jinja
 
-Playbook output - display empty notes
+Playbook output - Display empty notes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -95,6 +92,7 @@ Playbook output - display empty notes
 
 Inventory hosts
 ^^^^^^^^^^^^^^^
+
 .. literalinclude:: hosts/04_iocage.yml
    :language: yaml
    :caption:
@@ -105,7 +103,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - display empty iocage_tags
+Playbook output - Display empty iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

@@ -3,7 +3,7 @@
 014 Inventory cache
 -------------------
 
-Extending example :ref:`example_010`.
+Extending :ref:`example_010`.
 
 .. contents::
    :local:
@@ -28,7 +28,7 @@ Extending example :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Enable and test inventory cache.
+Enable and test the inventory cache.
 
 Tree
 ^^^^
@@ -45,16 +45,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At a managed node:
+On a managed node:
 
-* get the dynamic inventory by the `inventory plugin vbotka.freebsd.iocage`_
-* configure and test ``cache``
+* Fetch dynamic inventory using the `inventory plugin vbotka.freebsd.iocage`_
+* Configure and test ``cache``
 
 Requirements
 ^^^^^^^^^^^^
 
 * `inventory plugin vbotka.freebsd.iocage`_
-* jails created in :ref:`example_010`
+* Jails created in :ref:`example_010`
 
 .. seealso::
 
@@ -70,7 +70,7 @@ ansible.cfg
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable cache
+Enable cache.
 
 .. literalinclude:: iocage.yml
    :language: yaml
@@ -78,8 +78,8 @@ Enable cache
 
 .. hint::
 
-   If you do not configure ``cache_plugin``, Ansible falls back to caching inventory with the `fact
-   cache plugin`_ you configured. For example,
+   If you do not configure ``cache_plugin``, Ansible falls back to caching inventory with the configured `fact
+   cache plugin`_. For example:
 
    .. code-block:: ini
 
@@ -96,11 +96,11 @@ Playbook pb-vars-ip4.yml
    :language: yaml+jinja
    :caption:
 
-Playbook output - Clear cache 
+Playbook output - Clear cache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this particular case, it takes 4s to create the dynamic inventory and construct the variables
-after the ``cache`` was cleared (flushed).
+In this particular case, it takes 4 seconds to create the dynamic inventory and construct the variables
+after the ``cache`` has been cleared (flushed).
 
 .. code-block:: console
 
@@ -115,7 +115,7 @@ after the ``cache`` was cleared (flushed).
 Playbook output - Cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the ``cache`` is enabled, the inventory and variables are provided by the cache immediately
+If ``cache`` is enabled, the inventory and variables are provided by the cache immediately.
 
 .. code-block:: console
 
@@ -135,7 +135,7 @@ If the ``cache`` is enabled, the inventory and variables are provided by the cac
 Cache
 ^^^^^
 
-Look at the cache. For example,
+Inspect the cache file. For example:
 
 .. code-block:: console
 
@@ -144,13 +144,13 @@ Look at the cache. For example,
 .. literalinclude:: out/out-03.txt
    :language: json
 
-The cache format has changed since Ansible 2.19. Use the below playbook to read the cache
+The cache format changed in Ansible 2.19. Use the playbook below to inspect the cache:
 
 .. literalinclude:: pb-cache-dump.yml
    :language: yaml+jinja
    :caption:
 
-For example,
+For example:
 
 .. code-block:: console
 
@@ -165,7 +165,7 @@ For example,
    ok: [localhost]
 
    TASK [debug] *******************************************************************
-   ok: [localhost] => 
+   ok: [localhost] =>
        cache.__payload__ | from_yaml:
            _meta:
                hostvars:
@@ -189,5 +189,4 @@ For example,
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
 .. _Inventory plugins: https://docs.ansible.com/ansible/latest/plugins/inventory.html#inventory-plugins
 .. _fact cache plugin: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-fact-cache-plugins
-
 .. _--flush-cache: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html#cmdoption-ansible-playbook-flush-cache

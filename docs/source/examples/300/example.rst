@@ -42,18 +42,18 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At all running jails in the managed node:
+In all running jails on the managed node:
 
-  * playbook ``pb-test-01.yml``: display sshd rcvar.
-  * playbook ``pb-test-06.yml``: display sendmail rcvar.
+* Playbook ``pb-test-01.yml``: Display ``sshd`` ``rcvar``
+* Playbook ``pb-test-06.yml``: Display ``sendmail`` ``rcvar``
 
-At the managed node:
+On the managed node:
 
-  * playbook ``pb-test-02.yml``: display sshd rcvar
-  * playbook ``pb-test-03.yml``: display enabled services
-  * playbook ``pb-test-04.yml``: display sshd status
-  * playbook ``pb-test-05.yml``: display sshd commands synopsis
-  * playbook ``pb-test-07.yml``: start apcupsd.
+* Playbook ``pb-test-02.yml``: Display ``sshd`` ``rcvar``
+* Playbook ``pb-test-03.yml``: Display enabled services
+* Playbook ``pb-test-04.yml``: Display ``sshd`` status
+* Playbook ``pb-test-05.yml``: Display ``sshd`` command synopsis
+* Playbook ``pb-test-07.yml``: Start ``apcupsd``
 
 Requirements
 ^^^^^^^^^^^^
@@ -62,12 +62,12 @@ Requirements
 * `filter vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage2`_
 * :ref:`ug_connection_jailexec`
-* running jails at the iocage host.
+* Running jails on the iocage host
 
 Notes
 ^^^^^
 
-* Jail name doesn't work in iocage jails. Use JID instead.
+* Jail names do not work in iocage jails. Use the JID instead.
 
 .. seealso::
 
@@ -95,8 +95,8 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-hosts
-^^^^^
+Inventory hosts
+^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml
@@ -122,12 +122,12 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml
 
-Playbook output - jails sshd rcvar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display sshd rcvar in jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The key and value of ``rcvar`` is returned in 1) the attribute ``rcvar`` of the registered variable
-``out.rcvar`` and in 2) the ``stdout``. Usually, you'll use the first option. The second option shows
-how to use the filter``community.general.jc``.
+The key and value of ``rcvar`` are returned in 1) the attribute ``rcvar`` of the registered variable
+``out.rcvar`` and in 2) ``stdout``. Usually, you will use the first option. The second option shows
+how to use the filter ``community.general.jc``.
 
 .. code-block:: console
 
@@ -143,7 +143,7 @@ Playbook pb-test-02.yml
 .. literalinclude:: pb-test-02.yml
    :language: yaml
 
-Playbook output - create jid_rcvar
+Playbook output - Create jid_rcvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -160,8 +160,8 @@ Playbook pb-test-03.yml
 .. literalinclude:: pb-test-03.yml
    :language: yaml
 
-Playbook output - enabled services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display enabled services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -177,8 +177,8 @@ Playbook pb-test-04.yml
 .. literalinclude:: pb-test-04.yml
    :language: yaml
 
-Playbook output - sshd status
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display sshd status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -194,8 +194,8 @@ Playbook pb-test-05.yml
 .. literalinclude:: pb-test-05.yml
    :language: yaml
 
-Playbook output - sshd commands synopsis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display sshd commands synopsis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -211,12 +211,12 @@ Playbook pb-test-06.yml
 .. literalinclude:: pb-test-06.yml
    :language: yaml
 
-Playbook output - sendmail rcvar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display sendmail rcvar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   shell> ansible-playbook -i hosts pb-test-06.yml
+   (env) > ansible-playbook -i hosts pb-test-06.yml
 
 .. literalinclude:: out/out-08.txt
    :language: yaml
@@ -228,7 +228,7 @@ Playbook pb-test-07.yml
 .. literalinclude:: pb-test-07.yml
    :language: yaml
 
-Playbook output - start apcupsd
+Playbook output - Start apcupsd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -239,7 +239,7 @@ Playbook output - start apcupsd
    :language: yaml
    :force:
 
-.. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
-.. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _man service: https://man.freebsd.org/cgi/man.cgi?service(8)
+.. _module vbotka.freebsd.service: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
+.. _filter vbotka.freebsd.iocage: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/)
+.. _inventory plugin vbotka.freebsd.iocage2: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/)
+.. _man service: [https://man.freebsd.org/cgi/man.cgi?service(8](https://man.freebsd.org/cgi/man.cgi?service(8))

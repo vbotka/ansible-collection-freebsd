@@ -40,58 +40,58 @@ Tree
 Synopsis
 ^^^^^^^^
 
-At the managed node ``iocage_02``:
+On the managed node ``iocage_02``:
 
-* playbook ``pb-pkg-update.yml``:
+* Playbook ``pb-pkg-update.yml``:
 
-  * upgrade the package ``ports-mgmt/pkg``
-  * update FreeBSD repository catalogue (default `cached`_ = false).
+  * Upgrade the package ``ports-mgmt/pkg``
+  * Update FreeBSD repository catalogue (default `cached`_ = false)
 
-At all running jails:
-    
-* playbook ``pb-test-01.yml``:
+In all running jails:
 
-  * display variables
-  * install packages
-  * audit installed packages.
+* Playbook ``pb-test-01.yml``:
 
-At the managed node ``iocage_02``:
+  * Display variables
+  * Install packages
+  * Audit installed packages
 
-* playbook ``pb-test-02.yml``:
+On the managed node ``iocage_02``:
 
-  * audit installed packages.
+* Playbook ``pb-test-02.yml``:
+
+  * Audit installed packages
 
 Requirements
 ^^^^^^^^^^^^
 
-* Running jails at the iocage host.
+* Running jails on the iocage host
 
 Notes
 ^^^^^
 
-* Jail name doesn't work in the parameter `name`_ of the module `community.general.pkgng`_ if the
-  jail was created by *iocage*. Use JID instead ::
+* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if the
+  jail was created by *iocage*. Use the JID instead::
 
     pkg_jail: "{{ iocage_jid }}"
 
-  The play ``pb-test-01.yml`` runs in the jails. The inventory ``iocage.ini`` is needed when a task
-  is delegated to an iocage host ::
+  The play ``pb-test-01.yml`` runs inside the jails. The inventory ``iocage.ini`` is needed when a task
+  is delegated to an iocage host::
 
     pkg_delegate: "{{ iocage_tags.vmm }}"
 
-* Disable `use_globs`_ ::
+* Disable `use_globs`_::
 
     pkg_use_globs: false
 
-  to use the packages in the form `pkg-origin`_ ::
+  to specify packages in `pkg-origin`_ format::
 
     pkg_list:
       - security/sudo
       - lang/python311
       - ports-mgmt/pkg
 
-* The playbook ``pb-pkg-update.yml`` updates the repositories. Then, use the `cached`_ local package
-  base instead of fetching an updated one ::
+* The playbook ``pb-pkg-update.yml`` updates the repositories. Afterwards, use the `cached`_ local package
+  database instead of fetching an updated one::
 
     pkg_cached: true
 
@@ -99,11 +99,11 @@ Notes
 
    | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
+   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
-   * module `community.general.pkgng`_
+   * Module `community.general.pkgng`_
 
 Jails at iocage_02
 ^^^^^^^^^^^^^^^^^^
@@ -118,7 +118,7 @@ Jails at iocage_02
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the option `display_skipped_hosts`_
+Do not display skipped hosts. See the `display_skipped_hosts`_ option.
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -183,7 +183,7 @@ Playbook pb-test-01.yml
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Limit the inventory to one jail ``test_111``
+Limit the inventory to the jail ``test_111``:
 
 .. code-block:: console
 
@@ -198,7 +198,7 @@ Limit the inventory to one jail ``test_111``
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the tasks ``Install list pkg_list``
+The inventory ``iocage.ini`` is needed to delegate the ``Install list pkg_list`` task.
 
 .. code-block:: console
 
@@ -210,12 +210,12 @@ The inventory ``iocage.ini`` is needed to delegate the tasks ``Install list pkg_
 
 .. hint::
 
-   Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_
+   Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_.
 
-Playbook output - Install packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Install packages with debug
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Enable debug and limit the inventory to one jail ``test_111``
+Enable debug and limit the inventory to the jail ``test_111``:
 
 .. code-block:: console
 
@@ -229,7 +229,7 @@ Enable debug and limit the inventory to one jail ``test_111``
 Playbook output - Audit installed packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are no installed packages with known vulnerabilities
+There are no installed packages with known vulnerabilities:
 
 .. code-block:: console
 
@@ -251,7 +251,7 @@ Playbook pb-test-02.yml
 Playbook output - Audit installed packages at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are 9 packages with known vulnerabilities
+There are 9 packages with known vulnerabilities:
 
 .. code-block:: console
 

@@ -48,24 +48,24 @@ Tree
   .
   ├── ansible.cfg
   ├── files
-  │   ├── pk_admins.txt
-  │   └── pkgs.json
+  │   ├── pk_admins.txt
+  │   └── pkgs.json
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   ├── iocage_02
+  │   │   └── iocage.yml
+  │   └── iocage_04
+  │       └── iocage.yml
   ├── iocage.ini
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
@@ -73,35 +73,35 @@ Synopsis
   In the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
-  * ``vbotka.freebsd.iocage`` exec tasks to create a user and set .ssh ownership.
+  * ``vbotka.freebsd.iocage`` exec tasks to create a user and set ``.ssh`` ownership.
   * ``ansible.posix.authorized_key`` to configure public keys.
-  * ``community.general.sysrc`` to configure /etc/rc.conf
-  * ``ansible.builtin.lineinfile`` to configure /usr/local/etc/sudoers
+  * ``community.general.sysrc`` to configure ``/etc/rc.conf``.
+  * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use the `module
   vbotka.freebsd.iocage`_ to:
 
-  * create jails from the iocage templates
-  * start all jails
-  * optionally, display the lists of jails.
+  * Create jails from the iocage templates
+  * Start all jails
+  * Optionally, display the lists of jails
 
-* At all created jails:
+* On all created jails:
 
   In the playbook ``pb-test.yml``:
 
-  * connect created jails
-  * display basic configuration of the jails.
+  * Connect to created jails
+  * Display basic configuration of the jails
 
 Requirements
 ^^^^^^^^^^^^
 
-* playbook `vbotka.freebsd.pb_iocage_template.yml`_
-* playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* Playbook `vbotka.freebsd.pb_iocage_template.yml`_
+* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
 * `module vbotka.freebsd.iocage`_
 * `inventory plugin vbotka.freebsd.iocage`_
-* root privilege in the managed nodes
-* activated ``iocage``
-* fetched releases.
+* Root privileges on the managed nodes
+* An activated ``iocage`` installation
+* Fetched releases
 
 Notes
 ^^^^^
@@ -132,7 +132,7 @@ files
 ^^^^^
 
 .. literalinclude:: files/pkgs.json
-   :language: yaml
+   :language: json
    :caption:
 
 host_vars
@@ -148,19 +148,19 @@ host_vars
 
 .. note::
 
-   The variables ``act_*`` are used to configure the template
+   The variables ``act_*`` are used to configure the template:
 
    * The user ``act_user`` will be created in the template.
-   * The user ``act_user`` will serve as Ansible ``remote_user``
-   * The file ``act_pk`` provides the public keys allowed to ssh to ``act_user`` in a jail.
+   * The user ``act_user`` will serve as the Ansible ``remote_user``.
+   * The file ``act_pk`` provides the public keys allowed to SSH to ``act_user`` in a jail.
 
 .. warning::
 
    * The user ``act_user`` must exist on the ``iocage`` host. Otherwise,
      the module ``ansible.posix.authorized_key`` will crash. See
-     ``playbooks/pb_iocage_template/pk.yml``
+     ``playbooks/pb_iocage_template/pk.yml``.
 
-   * The file ``files/pk_admins.txt`` was sanitized. Fit the public keys to your needs ::
+   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the public keys to your needs::
 
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller
@@ -287,7 +287,7 @@ Playbook output - Display test vars
 
 .. hint::
 
-   The below command stops and destroys the cloned jails ::
+   The command below stops and destroys the cloned jails::
 
      ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
                       -i iocage.ini \

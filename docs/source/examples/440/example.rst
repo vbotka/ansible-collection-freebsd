@@ -24,7 +24,7 @@ Use case
 ^^^^^^^^
 
 Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role `vbotka.freebsd.pf`_ to
-configure pf. Redirect the ports from the local network to the SSH in the jails.
+configure pf. Redirect ports from the local network to SSH services in the jails.
 
 Tree
 ^^^^
@@ -48,60 +48,60 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects the iocage host ``iocage_05`` at the wlan interface configured in
-  ``/etc/rc.conf``.
+* The Ansible controller connects to the iocage host ``iocage_05`` on the WLAN interface configured in
+  ``/etc/rc.conf``:
 
   .. code-block:: ini
 
-    gateway_enable="YES"
-    defaultrouter="10.10.58.1"
-    cloned_interfaces="bridge0"
-    ifconfig_bridge0="inet 172.16.99.1/24"
-    wlans_iwm0="wlan0"
-    create_args_wlan0="country US"
-    ifconfig_wlan0="WPA SYNCDHCP"
-    dhcpd_ifaces="bridge0"
+     gateway_enable="YES"
+     defaultrouter="10.10.58.1"
+     cloned_interfaces="bridge0"
+     ifconfig_bridge0="inet 172.16.99.1/24"
+     wlans_iwm0="wlan0"
+     create_args_wlan0="country US"
+     ifconfig_wlan0="WPA SYNCDHCP"
+     dhcpd_ifaces="bridge0"
 
-* In the playbook ``pb-dhcp.yml`` at ``iocage_05`` configure:
+* In the playbook ``pb-dhcp.yml`` on ``iocage_05``, configure:
 
   * subnet 172.16.99.0/24
   * routers [172.16.99.1]
   * range 100-200
 
-* In the playbook ``pb-pf.yml`` at ``iocage_05`` configure:
+* In the playbook ``pb-pf.yml`` on ``iocage_05``, configure:
 
   * blacklistd, fail2ban, and sshguard
-  * nat
+  * NAT
   * log all blocked
   * allow SSH from the external network
   * pass from localnet and jails' vnet to any
-  * redirect ssh ports to jails
-    
+  * redirect SSH ports to jails
+
 Requirements
 ^^^^^^^^^^^^
 
-* root privilege in the managed nodes.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-* In this example, a cheap HW connected via WiFi is used for the iocage server testing.
+* In this example, an inexpensive machine connected via Wi-Fi is used to test the iocage host.
 
-* Change this to fit the configuration to your needs:
+* Adjust the following settings to match your network environment:
 
-  * ``/etc/rc.conf`` :
+  * ``/etc/rc.conf``:
 
     * defaultrouter
     * ifconfig_bridge0
 
-  * ``dhcp.yml`` :
+  * ``dhcp.yml``:
 
     * bsd_dhcpd_subnet
     * bsd_dhcpd_subnet_from
     * bsd_dhcpd_subnet_to
     * bsd_dhcpd_routers
 
-  * ``pf.yml`` :
+  * ``pf.yml``:
 
     * pf_local_net
     * pf_jail_net
@@ -146,7 +146,7 @@ files
 .. note::
 
    * The above listing is limited to the first 10 lines.
-   * See the playbook ``pb-pf-setup.yml`` below how to create the file.
+   * See the playbook ``pb-pf-setup.yml`` below for how to create the file.
 
 host_vars
 ^^^^^^^^^
@@ -224,9 +224,9 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Firewall starting and restarting breaks the ssh connections. See the handlers for details. As a
-consequence, both handlers starting and reloading don't work properly and the ssh connection will
-stale. Therefore, let us first configure the rules
+Starting and restarting the firewall breaks active SSH connections (see the handlers for details).
+Consequently, both the start and reload handlers can fail to complete cleanly, causing the SSH
+session to go stale. Therefore, configure the rules first before enabling the service:
 
 .. code-block:: console
 
@@ -292,9 +292,9 @@ pf status
 
 .. note::
 
-   SSH to a jail. For example, to a jail with the IP 172.16.99.114 use the command below::
+   To connect via SSH to a jail (for example, a jail at IP 172.16.99.114), run::
 
-     shell > ssh -p 2214 admin@iocage_05
+     shell> ssh -p 2214 admin@iocage_05
 
 
 .. _vbotka.freebsd.dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/

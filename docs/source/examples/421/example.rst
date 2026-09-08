@@ -17,12 +17,11 @@
 .. index:: single: role vbotka.freebsd.certificate; Example 421
 .. index:: single: vbotka.freebsd.certificate; Example 421
 
-
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.certificate`_ to create SSL certificate. Use the
-role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server Virtual Host`_
+Use the role `vbotka.freebsd.certificate`_ to create an SSL certificate. Use the
+role `vbotka.freebsd.apache`_ to configure an `Apache HTTP Server Virtual Host`_
 ``www.foo.bar``.
 
 Tree
@@ -34,14 +33,14 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 06_iocage2.yml
-  │   └── 99_constructed.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_06
-  │   │   └── ansible-client-apache.yml
-  │   └── www_3
-  │       ├── apache.yml
-  │       └── certificate.yml
+  │   ├── iocage_06
+  │   │   └── ansible-client-apache.yml
+  │   └── www_3
+  │       ├── apache.yml
+  │       └── certificate.yml
   ├── iocage.ini
   ├── pb-apache.yml
   ├── pb-certificate.yml
@@ -53,20 +52,20 @@ Synopsis
 On a managed node:
 
 * The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and
-  starts one jail.
+  starts a jail.
 
-* The playbook ``pb-certificate.yml`` creates SSL certificate for
+* The playbook ``pb-certificate.yml`` creates an SSL certificate for
   ``www.foo.bar``.
 
 * The playbook ``pb-data.yml`` creates data for ``www.foo.bar``.
 
-* The playbook ``pb-apache.yml`` uses the certificate, configures, and starts
-  `Apache HTTP Server Virtual Host`_ ``www.foo.bar`` in the jail.
+* The playbook ``pb-apache.yml`` uses the certificate, then configures and starts
+  the `Apache HTTP Server Virtual Host`_ ``www.foo.bar`` in the jail.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible-client-apache`` created in :ref:`example_209`
+* Template ``ansible-client-apache`` created in :ref:`example_209`.
 
 Notes
 ^^^^^
@@ -126,7 +125,7 @@ Create and start the jail
 
    (env) > ansible-playbook -i iocage.ini \
                             -t create_host -e create_host=true \
-			    vbotka.freebsd.pb_iocage_ansible_clients.yml
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -145,7 +144,7 @@ Playbook output - Display variables
 
    (env) > ansible-playbook -i hosts \
                             -t certificate_debug -e certificate_debug=true \
-			    pb-certificate.yml
+                            pb-certificate.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -202,7 +201,7 @@ Playbook output - Create data for Apache HTTP Server
    :force:
 
 Playbook pb-apache.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-apache.yml
    :language: yaml+jinja
@@ -220,9 +219,10 @@ Playbook output - Configure and start server
 
 Inventory graph
 ^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-08.txt
    :language: sh
@@ -232,15 +232,15 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-09.txt
    :language: sh
-      
+
 Results
 ^^^^^^^
 
-* Test the configuration
+* Test the configuration:
 
   .. code-block:: console
 
@@ -248,14 +248,14 @@ Results
      Performing sanity check on apache24 configuration:
      Syntax OK
 
-* Test the server is running
+* Test that the server is running:
 
   .. code-block:: console
 
      [iocage_06]# iocage exec www-3 service apache24 status
      apache24 is running as pid 24921.
 
-* Test the server is working. See the IP in the list of the jails.
+* Test that the server is working (see the IP in the list of jails):
 
   .. code-block:: console
 
@@ -263,7 +263,7 @@ Results
 
      It works!
 
-* Test SSL
+* Test SSL:
 
   .. code-block:: console
 
@@ -271,13 +271,12 @@ Results
 
      It works!
 
-
   .. note::
 
-     The browser will complain about self-signed certificate.
+     The browser will complain about the self-signed certificate.
 
 * In a browser, open the page ``https://www.foo.bar/``. If the URL
-  resolves the content should be ::
+  resolves, the content should be::
 
     It works!
 

@@ -27,13 +27,12 @@
 .. index:: single: allow_mount_zfs; Example 423
 .. index:: single: jail_zfs; Example 423
 
-
 Use case
 ^^^^^^^^
 
-Mount host directory ``/usr/local/poudriere`` in the jail.  Use the role
-`vbotka.freebsd.certificate`_ to create SSL certificate for
-``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure `Apache
+Mount the host directory ``/usr/local/poudriere`` in the jail. Use the role
+`vbotka.freebsd.certificate`_ to create an SSL certificate for
+``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure an `Apache
 HTTP Server Virtual Host`_ ``build.foo.bar`` to access ``/usr/local/poudriere``.
 
 Tree
@@ -45,14 +44,14 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 06_iocage2.yml
-  │   └── 99_constructed.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_06
-  │   │   └── ansible-client-apache.yml
-  │   └── www_5
-  │       ├── apache.yml
-  │       └── certificate.yml
+  │   ├── iocage_06
+  │   │   └── ansible-client-apache.yml
+  │   └── www_5
+  │       ├── apache.yml
+  │       └── certificate.yml
   ├── iocage.ini
   ├── pb-apache.yml
   └── pb-certificate.yml
@@ -63,20 +62,20 @@ Synopsis
 On a managed node:
 
 * The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates
-  and starts one jail. Mounts host directory ``/usr/local/poudriere``
+  and starts a jail, and mounts the host directory ``/usr/local/poudriere``
   in the jail.
 
-* The playbook ``pb-certificate.yml`` creates SSL certificate for
+* The playbook ``pb-certificate.yml`` creates an SSL certificate for
   ``build.foo.bar``.
 
-* The playbook ``pb-apache.yml`` uses the certificate, configures, and
-  starts `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` in the
+* The playbook ``pb-apache.yml`` uses the certificate, then configures and
+  starts the `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` in the
   jail.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible-client-apache`` created in :ref:`example_209`
+* Template ``ansible-client-apache`` created in :ref:`example_209`.
 
 Notes
 ^^^^^
@@ -137,7 +136,7 @@ Create and start the jail
 
    (env) > ansible-playbook -i iocage.ini \
                             -t create_host -e create_host=true \
-			    vbotka.freebsd.pb_iocage_ansible_clients.yml
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -156,7 +155,7 @@ Playbook output - Display variables
 
    (env) > ansible-playbook -i hosts \
                             -t certificate_debug -e certificate_debug=true \
-			    pb-certificate.yml
+                            pb-certificate.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -196,7 +195,7 @@ Playbook output - Display status
    :force:
 
 Playbook pb-apache.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-apache.yml
    :language: yaml+jinja
@@ -214,9 +213,10 @@ Playbook output - Configure and start server
 
 Inventory graph
 ^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   shell > ansible-inventory -i hosts --graph
+   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-08.txt
    :language: sh
@@ -226,15 +226,15 @@ List jails
 
 .. code-block:: console
 
-   shell > ssh admin@iocage_06 sudo iocage list -l
+   shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-09.txt
    :language: sh
-      
+
 Results
 ^^^^^^^
 
-* Test the configuration
+* Test the configuration:
 
   .. code-block:: console
 
@@ -242,13 +242,13 @@ Results
      Performing sanity check on apache24 configuration:
      Syntax OK
 
-* If the URL resolves, open the logs. For example,
+* If the URL resolves, open the logs. For example:
 
 | https://build.foo.bar/logs/bulk/143amd64-default-devel/2025-08-12_13h34m10s/build.html
 
 .. image:: screenshot_build.png
-    :width: 100%
-    :align: center
+   :width: 100%
+   :align: center
 
 |
 

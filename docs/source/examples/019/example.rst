@@ -3,7 +3,7 @@
 019 Inventory option use_vars_plugins
 -------------------------------------
 
-Extending example :ref:`example_016`.
+Extending :ref:`example_016`.
 
 .. contents::
    :local:
@@ -27,7 +27,7 @@ Use case
 
 The option `use_vars_plugins`_, responsible for reading ``host_vars`` and ``group_vars``
 directories, is not available in the `inventory plugin vbotka.freebsd.iocage`_ because the
-`constructed fragment`_ doesn't provide it.
+`constructed fragment`_ does not provide it.
 
 * Use the inventory plugin `ansible.builtin.constructed`_ to read ``group_vars``.
 * Use the variable ``region`` to create the groups ``region_EU`` and ``region_US``.
@@ -41,33 +41,33 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
-  │   ├── 99_constructed.yml
-  │   └── group_vars
-  │       ├── test_02
-  │       │   └── region.yml
-  │       └── test_04
-  │           └── region.yml
+  │   ├── 02_iocage.yml
+  │   ├── 04_iocage.yml
+  │   ├── 99_constructed.yml
+  │   └── group_vars
+  │       ├── test_02
+  │       │   └── region.yml
+  │       └── test_04
+  │           └── region.yml
   ├── pb-test-all.yml
   └── pb-test-EU.yml
 
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ gets the jails (managed nodes):
+* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails (managed nodes):
 
-  * ``test_111:113`` from the host ``iocage_02`` 
-  * ``test_131:133`` from the host ``iocage_04``
+  * ``test_111:113`` from host ``iocage_02``
+  * ``test_131:133`` from host ``iocage_04``
 
-  and creates inventory groups ``test_02`` and ``test_04``
+  and creates inventory groups ``test_02`` and ``test_04``.
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
 
-  * ``test`` comprising hosts starting ``'test'``
-  * ``test_up`` comprising running hosts starting ``'test'``
-  * ``region_EU`` comprising hosts where the variable ``region=EU``
-  * ``region_US`` comprising hosts where the variable ``region=US``
+  * ``test`` comprising hosts whose names start with ``'test'``
+  * ``test_up`` comprising running hosts whose names start with ``'test'``
+  * ``region_EU`` comprising hosts where the variable ``region`` is ``'EU'``
+  * ``region_US`` comprising hosts where the variable ``region`` is ``'US'``
 
 Notes
 ^^^^^
@@ -105,7 +105,7 @@ ansible.cfg
 
 .. literalinclude:: ansible.cfg
    :language: ini
-  
+
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
@@ -135,7 +135,7 @@ group_vars
 
 .. hint::
 
-   Run the below command to see the complete inventory ::
+   Run the command below to see the complete inventory::
 
      shell> ansible-inventory -i hosts --list --yaml
 
@@ -143,8 +143,8 @@ group_vars
 
    In the inventory plugin `ansible.builtin.constructed`_:
 
-      * The option `use_vars_plugins`_ reads the **inventory** ``group_vars`` and ``host_vars``
-      * The **playbook** ``group_vars`` and ``host_vars`` will be silently ignored.
+   * The option `use_vars_plugins`_ reads the **inventory** ``group_vars`` and ``host_vars``.
+   * The **playbook** ``group_vars`` and ``host_vars`` will be silently ignored.
 
    See `Variable precedence. Where should I put a variable?`_
 
@@ -174,7 +174,7 @@ Playbook pb-test-EU.yml
 Playbook output - EU running hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Limit the EU region to running hosts
+Limit the EU region to running hosts.
 
 .. code-block:: console
 
