@@ -70,62 +70,106 @@ variables, or dynamically via inventory plugins.
 Usage Examples
 ~~~~~~~~~~~~~~
 
-Static Inventory Example (host_vars)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Given the running jails:
 
-To manage a jail named ``web_prod`` running on a remote host ``freebsd-node-01``:
+.. code-block:: console
 
-.. code-block:: yaml
+   shell> ssh admin@iocage_06 iocage list
+   +-----+---------------+-------+--------------+--------------+
+   | JID |     NAME      | STATE |   RELEASE    |     IP4      |
+   +=====+===============+=======+==============+==============+
+   | 1   | log-server-01 | up    | 15.1-RELEASE | 172.16.99.10 |
+   +-----+---------------+-------+--------------+--------------+
+   | 2   | pkg-repo      | up    | 15.1-RELEASE | 172.16.99.23 |
+   +-----+---------------+-------+--------------+--------------+
+   | 3   | repos         | up    | 15.1-RELEASE | 172.16.99.21 |
+   +-----+---------------+-------+--------------+--------------+
 
-   # host_vars/web_prod.yml
-   ansible_connection: vbotka.freebsd.jailexec
-   ansible_jail_host: freebsd-node-01.example.org
-   ansible_ssh_user: admin
-   ansible_jail_privilege_escalation: sudo
-   ansible_jail_name: web_prod
-   ansible_jail_user: root
-   ansible_python_interpreter: /usr/local/bin/python3
+Static Inventory
+^^^^^^^^^^^^^^^^
 
-Dynamic Inventory Example (vbotka.freebsd.iocage2)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The configuration stored in ``hosts.ini``:
 
-When paired with ``vbotka.freebsd.iocage2``, the connection variables are
-composed automatically from the metadata and running state of each iocage jail:
+.. code-block:: ini
+
+   log-server-01 ansible_jail_name=1
+   pkg-repo ansible_jail_name=2
+   repos ansible_jail_name=3
+
+   [vmm_iocage_06]
+   log-server-01
+   pkg-repo
+   repos
+
+   [vmm_iocage_06:vars]
+   ansible_connection=vbotka.freebsd.jailexec
+   ansible_ssh_user=admin
+   ansible_jail_host=iocage_06
+   ansible_jail_privilege_escalation=sudo
+
+creates the following inventory:
+
+.. code-block:: console
+
+   shell> ansible-inventory -i hosts.ini --graph
+   @all:
+     |--@ungrouped:
+     |--@vmm_iocage_06:
+     |  |--log-server-01
+     |  |--pkg-repo
+     |  |--repos
+
+Dynamic Inventory
+^^^^^^^^^^^^^^^^^
+
+When used with the inventory plugin ``vbotka.freebsd.iocage2``, the connection
+variables ``ansible_jail_host`` and ``ansible_jail_name`` are dynamically
+composed in ``hosts.iocage2.yml``:
 
 .. code-block:: yaml+jinja
-   :emphasize-lines: 12-16
+   :emphasize-lines: 10-11
 
    plugin: vbotka.freebsd.iocage2
    host: iocage_06
    user: admin
-   sudo: true
    get_properties: true
-   inventory_hostname_tag: alias
 
    compose:
      iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
-     iocage_classes: iocage_properties.notes | regex_findall('(?<=class=)[\w\-]+|(?<=,)[\w\-]+')
-     # connection plugin vbotka.freebsd.jailexec
      ansible_connection: "'vbotka.freebsd.jailexec'"
      ansible_ssh_user: "'admin'"
      ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
      ansible_jail_name: iocage_jid
      ansible_jail_privilege_escalation: "'sudo'"
-     # ansible options
-     ansible_python_interpreter: "'auto_silent'"
-
-   groups:
-     log_servers: iocage_classes is contains('log-server')
-     log_clients: iocage_classes is contains('log-client')
 
    keyed_groups:
-     - prefix: state
-       key: iocage_state
      - prefix: vmm
        key: iocage_tags.vmm
 
-Host-Level Prerequisites
-~~~~~~~~~~~~~~~~~~~~~~~~
+This creates the corresponding inventory:
+
+.. code-block:: console
+
+   shell> ansible-inventory -i hosts.iocage2.yml --graph
+   @all:
+     |--@ungrouped:
+     |--@vmm_iocage_06:
+     |  |--pkg-repo
+     |  |--log-server-01
+     |  |--repos
+
+.. note::
+
+   The iocage tag ``vmm`` is used to define ``ansible_jail_host``. For example,
+   inspecting the jail notes shows:
+
+   .. code-block:: console
+
+      shell> ssh admin@iocage_06 iocage get notes repos
+      vmm=iocage_06 class=repos
+
+Host-Level Options
+~~~~~~~~~~~~~~~~~~
 
 Because ``jexec`` is invoked via ``ansible_jail_privilege_escalation``, the
 account defined in ``ansible_ssh_user`` requires elevated privileges on the jail
@@ -139,7 +183,7 @@ Depending on host management policies, configure sudo permissions in
 
   .. code-block:: text
 
-     # cat /usr/local/etc/sudoers.d/admin
+     shell> cat /usr/local/etc/sudoers.d/admin
      admin ALL=(ALL) NOPASSWD: ALL
 
 * **Host unmanaged / restricted:** If you prefer least-privilege access
@@ -147,7 +191,7 @@ Depending on host management policies, configure sudo permissions in
 
   .. code-block:: text
 
-     # cat /usr/local/etc/sudoers.d/admin
+     shell> cat /usr/local/etc/sudoers.d/admin
      admin ALL=(ALL) NOPASSWD: /usr/sbin/jexec
 
 .. glossary::

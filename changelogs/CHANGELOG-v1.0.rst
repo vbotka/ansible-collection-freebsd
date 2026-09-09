@@ -16,7 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
-* Docs. Update UG connection jailexec.
+* Docs. Update UG connection jailexec. Update sandbox 021.
 * Docs. Update UG concept ansible_conf_roles.
 * Docs. Update UG example notes.
 
