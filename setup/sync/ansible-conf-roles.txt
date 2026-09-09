@@ -5,23 +5,21 @@ meta/**
 
 plugins/
 plugins/filter/
-plugins/filter/iocage.py
+plugins/filter/ast_to_nginx.py
+plugins/filter/dict_to_ast.py
+plugins/filter/from_ucl.py
+plugins/filter/to_ucl.py
 plugins/modules/
-plugins/modules/iocage.py
 plugins/modules/service.py
 plugins/modules/ucl.py
 
 roles/
-roles/apache/
-roles/apache/**
-roles/certificate/
-roles/certificate/**
 roles/lib/
 roles/lib/**
+roles/nginx/
+roles/nginx/**
 roles/packages/
 roles/packages/**
-roles/pf/
-roles/pf/**
 roles/postinstall/
 roles/postinstall/**
 

@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Docs. Update UG connection jailexec.
+* Docs. Update UG concept ansible_conf_roles.
 
 
 1.0.7
