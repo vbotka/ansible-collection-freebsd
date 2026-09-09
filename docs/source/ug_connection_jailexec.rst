@@ -168,6 +168,51 @@ This creates the corresponding inventory:
       shell> ssh admin@iocage_06 iocage get notes repos
       vmm=iocage_06 class=repos
 
+Playbook
+^^^^^^^^
+
+The playbook ``pb-test-connection.yml``
+
+.. code-block:: yaml+jinja
+
+   - name: Test connection and get hostname.
+     hosts: all
+     tasks:
+       - command: hostname
+         register:
+           hostname: _task.result.stdout
+       - debug:
+           var: hostname
+
+works with both options:
+
+.. code-block:: console
+
+   shell> ansible-playbook -i hosts.ini pb-test-connection.yml
+   shell> ansible-playbook -i hosts.iocage2.yml pb-test-connection.yml
+
+.. code-block:: yaml+jinja
+
+   PLAY [Test connection and get hostname.] ***************************************
+
+   TASK [command] *****************************************************************
+   changed: [log-server-01]
+   changed: [pkg-repo]
+   changed: [repos]
+
+   TASK [debug] *******************************************************************
+   ok: [pkg-repo] => 
+       hostname: pkg-repo
+   ok: [log-server-01] => 
+       hostname: log-server-01
+   ok: [repos] => 
+       hostname: repos
+
+   PLAY RECAP *********************************************************************
+   log-server-01              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+   pkg-repo                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+   repos                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
 Host-Level Options
 ~~~~~~~~~~~~~~~~~~
 
