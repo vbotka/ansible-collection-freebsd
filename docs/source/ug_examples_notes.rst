@@ -18,6 +18,10 @@
      ``.deny`` marker file and are excluded from ``batch.sh``. To run those
      examples, reconfigure the firewall as documented in :ref:`example_370`.
 
+   * To avoid connecting directly to a jail via SSH, the examples use the
+     dynamic inventory ``vbotka.freebsd.iocage2`` and connection plugin
+     ``vbotka.freebsd.jailexec`` as described in :ref:`ug_connection_jailexec`.
+
    * Playbook filenames in the standalone examples use hyphens (``-``) (for
      example, ``pb-iocage.yml``).
 
