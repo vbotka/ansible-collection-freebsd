@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Docs. Update UG connection jailexec.
 
 
 1.0.7
