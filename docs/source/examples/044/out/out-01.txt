@@ -1,0 +1,151 @@
+
+PLAY [Test filter dict_to_ast] *************************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    msg:
+    -   args: []
+        block:
+        -   args:
+            - /var/run/log local0
+            directive: log
+        -   args:
+            - '4096'
+            directive: maxconn
+        -   args:
+            - nobody
+            directive: user
+        -   args:
+            - nobody
+            directive: group
+        -   args: []
+            directive: daemon
+        directive: global
+    -   args: []
+        block:
+        -   args:
+            - global
+            directive: log
+        -   args:
+            - http
+            directive: mode
+        -   args:
+            - '3'
+            directive: retries
+        -   args: []
+            block:
+            -   args: []
+                directive: httplog
+            -   args: []
+                directive: dontlognull
+            directive: options
+        -   args: []
+            block:
+            -   args:
+                - 5s
+                directive: connect
+            -   args:
+                - 30s
+                directive: client
+            -   args:
+                - 30s
+                directive: server
+            directive: timeouts
+        directive: defaults
+    -   args: []
+        block:
+        -   args: []
+            block:
+            -   args:
+                - '*:80'
+                directive: bind
+            -   args: []
+                block:
+                -   args:
+                    - path_beg /api
+                    directive: is_api
+                -   args:
+                    - path_beg /static || path_end -i .jpg .png .css
+                    directive: is_static
+                directive: acls
+            -   args: []
+                block:
+                -   args:
+                    - api_servers
+                    directive: backend
+                -   args:
+                    - if is_api
+                    directive: condition
+                directive: use_backends
+            -   args: []
+                block:
+                -   args:
+                    - static_servers
+                    directive: backend
+                -   args:
+                    - if is_static
+                    directive: condition
+                directive: use_backends
+            -   args:
+                - web_servers
+                directive: default_backend
+            directive: http_front
+        directive: frontends
+    -   args: []
+        block:
+        -   args: []
+            block:
+            -   args:
+                - roundrobin
+                directive: balance
+            -   args: []
+                block:
+                -   args: []
+                    block:
+                    -   args:
+                        - 10.0.1.10:8080
+                        directive: address
+                    -   args: []
+                        directive: check
+                    directive: web1
+                directive: servers
+            directive: web_servers
+        -   args: []
+            block:
+            -   args:
+                - roundrobin
+                directive: balance
+            -   args: []
+                block:
+                -   args: []
+                    block:
+                    -   args:
+                        - 10.0.2.10:8080
+                        directive: address
+                    -   args: []
+                        directive: check
+                    directive: api1
+                directive: servers
+            directive: api_servers
+        -   args: []
+            block:
+            -   args:
+                - roundrobin
+                directive: balance
+            -   args: []
+                block:
+                -   args: []
+                    block:
+                    -   args:
+                        - 10.0.3.10:8080
+                        directive: address
+                    -   args: []
+                        directive: check
+                    directive: static1
+                directive: servers
+            directive: static_servers
+        directive: backends
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -10,14 +10,16 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Documentation update.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
+* Docs. Add example 044 Filter ast_to_haproxy
 * Docs. Update UG connection jailexec. Update sandbox 021.
-* Docs. Update UG concept ansible_conf_roles.
+* Docs. Update UG concept ansible_conf_roles
 * Docs. Update UG example notes.
 
 

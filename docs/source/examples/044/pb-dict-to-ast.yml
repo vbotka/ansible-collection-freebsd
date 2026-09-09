@@ -1,0 +1,13 @@
+---
+- name: Test filter dict_to_ast
+  hosts: localhost
+
+  vars_files:
+
+    - vars/haproxy_conf.yml
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ haproxy_conf | vbotka.freebsd.dict_to_ast }}
