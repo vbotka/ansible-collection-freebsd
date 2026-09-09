@@ -1,5 +1,6 @@
 galaxy.yml
-LICENSE
+LICENSES
+LICENSES/**
 meta/
 meta/**
 
