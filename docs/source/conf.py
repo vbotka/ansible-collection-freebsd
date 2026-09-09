@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-11;rgb:0707/3636/4242# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import sys
