@@ -4,5 +4,5 @@ pkg_repos_conf:
     conf:
       local:
         url: 'file:///usr/local/repo'
-        enabled: 'yes'
+        enabled: true
         signature_type: 'none'
