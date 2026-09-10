@@ -10,6 +10,7 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Bug fixing and documentation update.
 
 Major Changes
 -------------
@@ -23,11 +24,12 @@ Minor Changes
 
 Bugfixes
 --------
+* Fix filter to_ucl. Add option bool_as_yesno (default=false). Convert
+  true/false or quoted "yes"/"no" to bare yes/no.
 
 Breaking Changes / Porting Guide
 --------------------------------
-* Add option bool_as_yesno to filter to_ucl. Convert true/false or quoted
-  "yes"/"no" to bare yes/no.
+
 
 1.0.8
 =====
