@@ -51,7 +51,7 @@ pkg_repo_config:
     enabled: true
     priority: 100
 
-result: "{{ pkg_repo_config | vbotka.freebsd.to_ucl }}"
+result: "{{ pkg_repo_config | vbotka.freebsd.to_ucl(bool_as_yesno=true) }}"
 
 # gives:
 ---

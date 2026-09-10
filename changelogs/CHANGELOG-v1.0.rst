@@ -19,6 +19,7 @@ Minor Changes
 
 Bugfixes
 --------
+* Fix filter to_ucl documentation.
 
 Breaking Changes / Porting Guide
 --------------------------------
