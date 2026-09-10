@@ -76,6 +76,10 @@ connection plugin.
    states that "*jail_name: Jail name. Defaults to the inventory hostname ...*",
    ``jexec`` does not support iocage jail names. You must use the ``JID`` instead.
 
+.. seealso::
+
+   :ref:`ug_qa_jexec_iocage_name`
+
 Usage Examples
 ~~~~~~~~~~~~~~
 
