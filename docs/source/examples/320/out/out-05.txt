@@ -2,32 +2,38 @@
 PLAY [Test role vbotka.freebsd.packages] ***************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_113]
-ok: [test_112]
-ok: [test_111]
+ok: [repos_devel]
+ok: [repos]
+ok: [pkg_repo]
+ok: [log_server_01]
 
 TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
-ok: [test_111]
-ok: [test_112]
-ok: [test_113]
+ok: [repos_devel]
+ok: [log_server_01]
+ok: [repos]
+ok: [pkg_repo]
 
 TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
-ok: [test_113]
-ok: [test_112]
-ok: [test_111]
+ok: [repos_devel]
+ok: [log_server_01]
+ok: [repos]
+ok: [pkg_repo]
 
 TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
-ok: [test_111]
-ok: [test_112]
-ok: [test_113]
+ok: [repos_devel]
+ok: [pkg_repo]
+ok: [repos]
+ok: [log_server_01]
 
 TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
-ok: [test_112 -> iocage_02(10.1.0.73)]
-ok: [test_113 -> iocage_02(10.1.0.73)]
-ok: [test_111 -> iocage_02(10.1.0.73)]
+ok: [repos -> iocage_06]
+ok: [log_server_01 -> iocage_06]
+ok: [pkg_repo -> iocage_06]
+ok: [repos_devel -> iocage_06]
 
 PLAY RECAP *********************************************************************
-test_111                   : ok=5    changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
-test_112                   : ok=5    changed=0    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
-test_113                   : ok=5    changed=0    unreachable=0    failed=0    skipped=38   rescued=0    ignored=0   
+log_server_01              : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
+pkg_repo                   : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
+repos                      : ok=5    changed=0    unreachable=0    failed=0    skipped=52   rescued=0    ignored=0   
+repos_devel                : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
 

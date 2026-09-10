@@ -33,6 +33,11 @@ options:
       - compact_json
       - yaml
       - msgpack
+  bool_as_yesno:
+    description:
+      - Convert boolean values to 'yes'/'no' for FreeBSD-style config files.
+    type: bool
+    default: false
 """
 
 EXAMPLES = r"""
@@ -56,7 +61,7 @@ result:
       mirror_type = "srv";
       signature_type = "fingerprints";
       fingerprints = "/usr/share/keys/pkg";
-      enabled = true;
+      enabled = yes;
       priority = 100;
   }
 
@@ -71,6 +76,7 @@ _value:
   returned: always
 """
 
+import re
 try:
     import ucl
     HAS_LIBUCL = True
@@ -79,21 +85,15 @@ except ImportError:
 
 
 def _to_primitive(val: Any) -> Any:
-    """Recursively converts Ansible/custom objects into native Python primitives for UCL serialization."""
+    """Recursively converts Ansible/custom objects into native Python primitives."""
     if isinstance(val, dict):
         return {str(k): _to_primitive(v) for k, v in val.items()}
     if isinstance(val, (list, tuple, set)):
         return [_to_primitive(item) for item in val]
-    if isinstance(val, str):
-        return str(val)
     if isinstance(val, bool):
         return bool(val)
-    if isinstance(val, int):
-        return int(val)
-    if isinstance(val, float):
-        return float(val)
-    if val is None:
-        return None
+    if isinstance(val, (str, int, float)) or val is None:
+        return val
     return str(val)
 
 
@@ -106,7 +106,7 @@ def _safe_ucl_dump(data: Any, emitter_flag: int) -> str | bytes:
     raise AttributeError("The installed 'ucl' module does not provide 'dump' or 'dumps'.")
 
 
-def to_ucl(data: Any, emitter: str = "config") -> str | bytes:
+def to_ucl(data: Any, emitter: str = "config", bool_as_yesno: bool = False) -> str | bytes:
     """Converts Python dictionary or structure to UCL format."""
     if not HAS_LIBUCL:
         raise AnsibleFilterError(
@@ -128,7 +128,14 @@ def to_ucl(data: Any, emitter: str = "config") -> str | bytes:
 
     try:
         clean_data = _to_primitive(data)
-        return _safe_ucl_dump(clean_data, emitters[emitter])
+        out = _safe_ucl_dump(clean_data, emitters[emitter])
+
+        # Convert true/false or quoted "yes"/"no" to bare yes/no
+        if bool_as_yesno and emitter == "config" and isinstance(out, str):
+            out = re.sub(r'(=\s*)(?:true|"yes")\s*;', r'\1yes;', out)
+            out = re.sub(r'(=\s*)(?:false|"no")\s*;', r'\1no;', out)
+
+        return out
     except Exception as err:
         raise AnsibleFilterError(
             f"Failed to convert data to UCL: {err}",

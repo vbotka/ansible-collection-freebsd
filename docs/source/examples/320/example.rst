@@ -15,8 +15,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.packages`_ to install packages in Ansible clients. Audit installed
-packages.
+Use the role `vbotka.freebsd.packages`_ to install packages in Ansible
+clients. Audit installed packages.
 
 Tree
 ^^^^
@@ -30,17 +30,16 @@ Tree
   │   └── all
   │       └── ansible-client.yml
   ├── hosts
-  │   ├── 02_iocage.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-pkg-update.yml
-  ├── pb-test-01.yml
-  └── pb-test-02.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-On the managed node ``iocage_02``:
+On the managed node:
 
 * Playbook ``pb-pkg-update.yml``:
 
@@ -49,33 +48,28 @@ On the managed node ``iocage_02``:
 
 In all running jails:
 
-* Playbook ``pb-test-01.yml``:
+* Playbook ``pb-test.yml``:
 
   * Display variables
   * Install packages
   * Audit installed packages
 
-On the managed node ``iocage_02``:
-
-* Playbook ``pb-test-02.yml``:
-
-  * Audit installed packages
-
 Requirements
 ^^^^^^^^^^^^
 
-* Running jails on the iocage host
+* Running jails on the iocage host.
 
 Notes
 ^^^^^
 
-* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if the
-  jail was created by *iocage*. Use the JID instead::
+* Jail names do not work in the `name`_ parameter of the module
+  `community.general.pkgng`_ if the jail was created by ``iocage``. Use the
+  ``JID`` instead::
 
     pkg_jail: "{{ iocage_jid }}"
 
-  The play ``pb-test-01.yml`` runs inside the jails. The inventory ``iocage.ini`` is needed when a task
-  is delegated to an iocage host::
+  The play ``pb-test.yml`` runs inside the jails. The inventory
+  ``iocage.ini`` is needed when a task is delegated to an iocage host::
 
     pkg_delegate: "{{ iocage_tags.vmm }}"
 
@@ -87,11 +81,11 @@ Notes
 
     pkg_list:
       - security/sudo
-      - lang/python311
+      - lang/python312
       - ports-mgmt/pkg
 
-* The playbook ``pb-pkg-update.yml`` updates the repositories. Afterwards, use the `cached`_ local package
-  database instead of fetching an updated one::
+* The playbook ``pb-pkg-update.yml`` updates the repositories. Afterwards, use
+  the `cached`_ local package database instead of fetching an updated one::
 
     pkg_cached: true
 
@@ -99,18 +93,17 @@ Notes
 
    | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
-   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
    * Module `community.general.pkgng`_
 
-Jails at iocage_02
+Jails at iocage_06
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -l
+   [iocage_06]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -129,21 +122,21 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-group_vars
-^^^^^^^^^^
+hosts
+^^^^^
 
-.. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml+jinja
-   :caption:
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/ansible-client.yml
    :language: yaml+jinja
    :caption:
 
@@ -154,7 +147,7 @@ Display inventory
 
    (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
 
 Playbook pb-pkg-update.yml
@@ -168,28 +161,29 @@ Playbook output - Update repo
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-pkg-update.yml -i iocage.ini -e debug=true
+   (env) > ansible-playbook -i iocage.ini -e debug=true pb-pkg-update.yml
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
 
-Playbook pb-test-01.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-01.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Limit the inventory to the jail ``test_111``:
+Limit the inventory to a single jail:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i hosts -l test_111 \
-                                           -t pkg_debug \
-                                           -e pkg_debug=true
+   (env) > ansible-playbook -i hosts -l log_server_01 \
+                            -t pkg_debug \
+                            -e pkg_debug=true \
+                            pb-test.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -198,11 +192,12 @@ Limit the inventory to the jail ``test_111``:
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the ``Install list pkg_list`` task.
+The inventory ``iocage.ini`` is needed to delegate the ``Install list pkg_list``
+task.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage.ini
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-test.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -212,54 +207,17 @@ The inventory ``iocage.ini`` is needed to delegate the ``Install list pkg_list``
 
    Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_.
 
-Playbook output - Install packages with debug
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Enable debug and limit the inventory to the jail ``test_111``:
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-test-01.yml -i hosts -i iocage.ini -l test_111 \
-                                           -e pkg_debug=true
-
-.. literalinclude:: out/out-06.txt
-   :language: yaml+jinja
-   :force:
-
 Playbook output - Audit installed packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are no installed packages with known vulnerabilities:
-
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-01.yml -i hosts \
-                                           -t pkg_stat \
-                                           -e pkg_stat=true -e pkg_audit_enable=true \
-                                           -e pkg_debug=true
+   (env) > ansible-playbook -i hosts -l log_server_01 \
+                            -t pkg_stat \
+                            -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true \
+                            pb-test.yml
 
-.. literalinclude:: out/out-07.txt
-   :language: yaml+jinja
-   :force:
-
-Playbook pb-test-02.yml
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-test-02.yml
-   :language: yaml+jinja
-
-Playbook output - Audit installed packages at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-There are 9 packages with known vulnerabilities:
-
-.. code-block:: console
-
-   (env) > ansible-playbook pb-test-02.yml -i iocage.ini \
-                                           -t pkg_stat \
-                                           -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true
-
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 

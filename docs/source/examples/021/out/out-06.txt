@@ -2,18 +2,28 @@
 PLAY [Test connection and get hostname.] ***************************************
 
 TASK [command] *****************************************************************
-changed: [db1]
-changed: [db2]
+changed: [repos_devel]
+changed: [log_server_01]
+changed: [repos]
+changed: [pkg_repo]
 
 TASK [debug] *******************************************************************
-ok: [db1] => 
+ok: [pkg_repo] => 
     msg: |-
-        db1 cbf2fb0c
-ok: [db2] => 
+        pkg_repo pkg-repo
+ok: [log_server_01] => 
     msg: |-
-        db2 828ef935
+        log_server_01 log-server-01
+ok: [repos] => 
+    msg: |-
+        repos repos
+ok: [repos_devel] => 
+    msg: |-
+        repos_devel repos-devel
 
 PLAY RECAP *********************************************************************
-db1                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db2                        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server_01              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg_repo                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos_devel                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

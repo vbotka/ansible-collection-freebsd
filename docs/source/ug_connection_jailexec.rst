@@ -1,8 +1,20 @@
 .. _ug_connection_jailexec:
 
-.. index:: single: connection vbotka.freebsd.jailexec; Plugins
-.. index:: single: vbotka.freebsd.jailexec; Plugins
-.. index:: single: jailexec; Plugins
+.. index:: single: connection vbotka.freebsd.jailexec; connection jailexec
+.. index:: single: vbotka.freebsd.jailexec; connection jailexec
+.. index:: single: jailexec; connection jailexec
+.. index:: single: ansible_connection; connection jailexec
+.. index:: single: ansible_jail_host; connection jailexec
+.. index:: single: ansible_jail_name; connection jailexec
+.. index:: single: ansible_jail_privilege_escalation; connection jailexec
+.. index:: single: ansible_jail_user; connection jailexec
+.. index:: single: ansible_ssh_user; connection jailexec
+.. index:: single: option ansible_connection; connection jailexec
+.. index:: single: option ansible_jail_host; connection jailexec
+.. index:: single: option ansible_jail_name; connection jailexec
+.. index:: single: option ansible_jail_privilege_escalation; connection jailexec
+.. index:: single: option ansible_jail_user; connection jailexec
+.. index:: single: option ansible_ssh_user; connection jailexec
 
 connection vbotka.freebsd.jailexec
 ----------------------------------
@@ -17,18 +29,17 @@ Execution Architecture
 When a task executes against a host configured with ``vbotka.freebsd.jailexec``,
 the plugin performs the following pipeline:
 
-1. Opens a transport connection (typically SSH) to the physical host specified
-   by ``ansible_jail_host`` using ``ansible_ssh_user``.
+1. Opens a transport connection (typically SSH) to the jail host specified by
+   ``ansible_jail_host`` using ``ansible_ssh_user``.
 
-2. Applies the privilege escalation wrapper specified by
+2. Applies the privilege escalation specified by
    ``ansible_jail_privilege_escalation`` (such as ``sudo`` or ``doas``), since
    invoking ``jexec(8)`` requires root privileges on the FreeBSD host.
 
 3. Spawns the command inside the jail identified by ``ansible_jail_name`` using
    ``jexec [-u <jail_user>] <jid_or_name> <command>``.
 
-4. Transfers files and temporary script modules to and from the jail using
-   host-level filesystem paths or piped streams.
+4. Transfers files and temporary script modules to and from the jail.
 
 Configuration Options
 ~~~~~~~~~~~~~~~~~~~~~
@@ -39,42 +50,68 @@ connection plugin.
 
 .. list-table::
    :header-rows: 1
-   :widths: 30 20 15 35
+   :widths: 30 15 20 35
 
    * - Variable
      - Type
      - Default
      - Description
+
    * - ``ansible_connection``
      - string
      - (required)
      - Must be set to ``vbotka.freebsd.jailexec``.
+
    * - ``ansible_jail_host``
      - string
-     - ``localhost``
-     - Hostname or IP of the FreeBSD host running the jail. If set to ``localhost``, commands run locally on the host.
+     - (required)
+     - Hostname or IP of the FreeBSD host running the jail.
+
    * - ``ansible_jail_name``
-     - string / integer
+     - string
      - ``inventory_hostname``
-     - JID (Jail ID) of the target jail.
+     - Target jail name or numeric JID (Jail ID). Overrides
+       ``inventory_hostname``.
+
    * - ``ansible_jail_privilege_escalation``
      - string
-     - ``none``
-     - Privilege escalation command used on the host to execute ``jexec`` (e.g., ``sudo``, ``doas``).
+     - ``doas``
+     - Host-level wrapper to invoke ``jexec`` as root. Choices: ``doas``,
+       ``sudo``, ``none``.
+
    * - ``ansible_jail_user``
      - string
      - ``root``
-     - User account inside the jail used to execute commands.
+     - Target user inside the jail (resolved via ``jexec -U`` against the jail's
+       user database).
+
    * - ``ansible_ssh_user``
      - string
-     - current user
-     - User account for the initial SSH connection to ``ansible_jail_host``.
+     - (inherited)
+     - User account for SSH login to ``ansible_jail_host`` (inherited from
+       Ansible's built-in SSH connection plugin).
 
 .. note::
 
-   Although the plugin documentation (``ansible-doc -t connection vbotka.freebsd.jailexec``)
-   states that "*jail_name: Jail name. Defaults to the inventory hostname ...*",
-   ``jexec`` does not support iocage jail names. You must use the ``JID`` instead.
+   * **Jail Identification:** The plugin defaults ``ansible_jail_name`` to
+     ``inventory_hostname`` if unset. However, ``jexec(8)`` requires a numeric
+     Jail ID (``JID``) or a native FreeBSD jail name. Frameworks like
+     ``iocage`` maintain internal aliases that might not match the system jail
+     name known to the FreeBSD kernel. When managing ``iocage`` environments,
+     explicitly set ``ansible_jail_name: iocage_jid``.
+
+   * **Host vs. Jail Escalation:** ``ansible_jail_privilege_escalation``
+     (``doas`` or ``sudo``) executes on the **jail host**, not inside the jail.
+     Neither tool is needed inside the jail itself for privilege escalation;
+     the plugin invokes ``jexec -U <ansible_jail_user>`` directly from the host
+     as root. Set this to ``none`` if connecting to the jail host directly as
+     ``root``.
+
+   * **Inherited SSH Options:** Because ``jailexec`` subclasses the built-in
+     ``ssh`` plugin, all standard SSH connection variables (such as
+     ``ansible_ssh_user``, ``ansible_ssh_private_key_file``,
+     ``ansible_ssh_common_args``, and ``ansible_port``) apply to the connection
+     established with ``ansible_jail_host``.
 
 .. seealso::
 
@@ -134,7 +171,7 @@ creates the following inventory:
 
 .. note::
 
-   ``jexec`` does not work with iocage jail names. If you use the name
+   ``jexec`` does not work with iocage jail names. If you use the ``NAME``
    instead of the ``JID`` in ``hosts.ini``:
 
    .. code-block:: ini
@@ -267,29 +304,6 @@ Depending on host management policies, configure sudo permissions in
   .. code-block:: text
 
      admin ALL=(ALL) NOPASSWD: /usr/sbin/jexec
-
-Glossary
-~~~~~~~~
-
-.. glossary::
-
-   ansible_ssh_user
-     User account for SSH login to the jail host.
-
-   ansible_jail_host
-     FreeBSD host running the target jails.
-
-   ansible_jail_name
-     JID of the jail to connect to. When using dynamic inventories, passing
-     ``iocage_jid`` ensures operations target the currently active runtime
-     instance.
-
-   ansible_jail_privilege_escalation
-     Privilege escalation method used on the host to execute ``jexec`` (for
-     example, ``sudo`` or ``doas``).
-
-   ansible_jail_user
-     The user account inside the target jail that executes the module or command.
 
 .. note::
 

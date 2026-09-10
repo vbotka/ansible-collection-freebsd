@@ -16,9 +16,18 @@ Major Changes
 
 Minor Changes
 --------------
+* Role packages upgraded to 2.9.8
 * Docs. Update UG connection jailexec. Update sandbox 021.
 * Docs. Add UG Questions and Answers.
+* Docs. Update examples: 020,021,043,320,321,528.
 
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Add option bool_as_yesno to filter to_ucl. Convert true/false or quoted
+  "yes"/"no" to bare yes/no.
 
 1.0.8
 =====

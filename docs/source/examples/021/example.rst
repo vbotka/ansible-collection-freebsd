@@ -10,13 +10,20 @@
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 021
 .. index:: single: inventory ansible.builtin.constructed; Example 021
 .. index:: single: connection vbotka.freebsd.jailexec; Example 021
+.. index:: single: vbotka.freebsd.jailexec; Example 021
 .. index:: single: jailexec; Example 021
+.. index:: single: option inventory_hostname_tag; Example 021
+.. index:: single: inventory_hostname_tag; Example 021
+.. index:: single: iocage tag alias; Example 021
+.. index:: single: inventory alias; Example 021
+.. index:: single: alias; Example 021
 
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage2`_, use the option ``inventory_hostname_tag`` to specify
-which tag to create `Inventory aliases`_ from.
+In the `inventory plugin vbotka.freebsd.iocage2`_, use the option
+``inventory_hostname_tag`` to specify which tag to create `Inventory aliases`_
+from.
 
 Tree
 ^^^^
@@ -59,23 +66,14 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical
+  order.
 
 .. seealso::
 
    * `Inventory aliases`_
    * `Set Jail Property`_
    * :ref:`example_016`
-
-Templates at iocage_06
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -lt
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -89,6 +87,18 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 5
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 group_vars
 ^^^^^^^^^^
 
@@ -100,18 +110,6 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 10
-
-.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 

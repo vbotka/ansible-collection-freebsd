@@ -1,0 +1,13 @@
+pkg_keys:
+  /usr/local/etc/ssl/crt:
+    - build.example.com-sk.crt
+
+pkg_repos_template: repos_to_ucl.j2
+pkg_repos_conf:
+  - name: build
+    conf:
+      build:
+        url: file:///usr/local/poudriere/data/packages/151amd64-default-devel
+        enabled: true
+        signature_type: pubkey
+        pubkey: /usr/local/etc/ssl/crt/build.example.com-sk.crt

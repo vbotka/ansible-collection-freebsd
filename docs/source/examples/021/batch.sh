@@ -7,7 +7,7 @@
 # The template and jails are created in sandbox 020.
 
 # List templates
-ssh admin@iocage_06 sudo iocage list -lt | tee out/out-01.txt
+# ssh admin@iocage_06 sudo iocage list -lt | tee out/out-01.txt
 
 # Status of jails
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-02.txt

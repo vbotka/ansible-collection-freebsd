@@ -2,26 +2,34 @@
 PLAY [Display all groups.] *****************************************************
 
 TASK [debug] *******************************************************************
-ok: [db1] => 
+ok: [pkg_repo] => 
     msg: |-
-        cbf2fb0c
-        {alias: db1, project: sandbox_020, swarm: db, vmm: iocage_06}
-ok: [db2] => 
+        pkg-repo
+        {alias: pkg_repo, class: pkg-repo, vmm: iocage_06}
+ok: [log_server_01] => 
     msg: |-
-        828ef935
-        {alias: db2, project: sandbox_020, swarm: db, vmm: iocage_06}
+        log-server-01
+        {alias: log_server_01, class: log-server, vmm: iocage_06}
+ok: [repos] => 
+    msg: |-
+        repos
+        {class: repos, vmm: iocage_06}
+ok: [repos_devel] => 
+    msg: |-
+        repos-devel
+        {alias: repos_devel, class: repos, vmm: iocage_06}
 
 TASK [debug] *******************************************************************
-ok: [db2] => 
+ok: [repos] => 
     msg: |-
-        all: ['db2', 'db1']
+        all: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01']
         ungrouped: []
-        project_sandbox_020: ['db2', 'db1']
-        swarm_db: ['db2', 'db1']
-        state_up: ['db2', 'db1']
-        vmm_iocage_06: ['db2', 'db1']
+        state_up: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01']
+        vmm_iocage_06: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01']
 
 PLAY RECAP *********************************************************************
-db1                        : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db2                        : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server_01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg_repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos_devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

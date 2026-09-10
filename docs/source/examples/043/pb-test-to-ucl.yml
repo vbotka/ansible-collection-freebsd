@@ -17,4 +17,4 @@
 
     - debug:
         msg: |
-          {{ pkg_repo_config | vbotka.freebsd.to_ucl }}
+          {{ pkg_repo_config | vbotka.freebsd.to_ucl(bool_as_yesno=true) }}

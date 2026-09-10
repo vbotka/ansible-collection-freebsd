@@ -7,6 +7,6 @@ pkg_jail: "{{ iocage_jid }}"
 pkg_use_globs: false
 pkg_cached: true
 pkg_list:
-  - security/sudo
-  - lang/python311
-  - ports-mgmt/pkg
+  - lang/python312
+  - lang/python
+  - lang/python3

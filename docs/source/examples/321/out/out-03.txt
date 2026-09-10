@@ -1,14 +1,13 @@
-Version                 : 2.2.2
-libpkg                  : 2.2.2
-libcurl                 : libcurl/8.14.1 OpenSSL/3.0.16 zlib/1.3.1
-libarchive              : libarchive 3.7.7
-sqlite                  : 3.50.1
-openssl                 : OpenSSL 3.0.16 11 Feb 2025
+Version                 : 2.7.5
+libpkg                  : 2.7.5
+libarchive              : libarchive 3.8.7
+sqlite                  : 3.51.1
+openssl                 : OpenSSL 3.5.6 7 Apr 2026
 PKG_DBDIR = "/var/db/pkg";
 PKG_CACHEDIR = "/var/cache/pkg";
 PORTSDIR = "/usr/ports";
 INDEXDIR = "";
-INDEXFILE = "INDEX-14";
+INDEXFILE = "INDEX-15";
 HANDLE_RC_SCRIPTS = false;
 DEFAULT_ALWAYS_YES = false;
 ASSUME_ALWAYS_YES = false;
@@ -30,7 +29,7 @@ PLUGINS_CONF_DIR = "/usr/local/etc/pkg/";
 PERMISSIVE = false;
 REPO_AUTOUPDATE = true;
 NAMESERVER = "";
-HTTP_USER_AGENT = "pkg/2.2.2";
+HTTP_USER_AGENT = "pkg/2.7.5";
 EVENT_PIPE = "";
 FETCH_TIMEOUT = 30;
 UNSET_TIMESTAMP = false;
@@ -65,6 +64,7 @@ ALIAS {
     rdesc = "rquery -i \"%e\"";
     required-depends = "info -qr";
     roptions = "rquery -i \"%n - %Ok: %Ov\"";
+    sets = "info -d -C -x '^FreeBSD-set-'";
     shared-depends = "info -qB";
     show = "info -f -k";
     size = "info -sq";
@@ -74,7 +74,7 @@ ALIAS {
 CUDF_SOLVER = "";
 SAT_SOLVER = "";
 RUN_SCRIPTS = true;
-CASE_SENSITIVE_MATCH = false;
+CASE_SENSITIVE_MATCH = true;
 LOCK_WAIT = 1;
 LOCK_RETRIES = 5;
 SQLITE_PROFILE = false;
@@ -88,7 +88,9 @@ CONSERVATIVE_UPGRADE = true;
 FORCE_CAN_REMOVE_VITAL = true;
 PKG_CREATE_VERBOSE = false;
 AUTOCLEAN = false;
+AUTOREMOVE = false;
 DOT_FILE = "";
+DEBUG_SCHEDULER_DOT_FILE = "";
 REPOSITORIES {
 }
 VALID_URL_SCHEME [
@@ -103,9 +105,13 @@ VALID_URL_SCHEME [
 WARN_SIZE_LIMIT = 1048576;
 METALOG = "";
 IGNORE_OSVERSION = false;
+IGNORE_OSMAJOR = false;
 BACKUP_LIBRARIES = false;
 BACKUP_LIBRARY_PATH = "/usr/local/lib/compat/pkg";
-PKG_TRIGGERS_DIR = "/usr/local/share/pkg/triggers";
+PKG_TRIGGERS_DIR [
+    "/usr/share/pkg/triggers/",
+    "/usr/local/share/pkg/triggers",
+]
 PKG_TRIGGERS_ENABLE = true;
 AUDIT_IGNORE_GLOB [
 ]
@@ -113,7 +119,6 @@ AUDIT_IGNORE_REGEX [
 ]
 COMPRESSION_FORMAT = "";
 COMPRESSION_LEVEL = -1;
-ARCHIVE_SYMLINK = false;
 REPO_ACCEPT_LEGACY_PKG = false;
 FILES_IGNORE_GLOB [
 ]
@@ -141,32 +146,45 @@ PKG_DEBUG_FLAGS [
 COMPRESSION_THREADS = -1;
 PKG_REINSTALL_ON_OPTIONS_CHANGE = true;
 TRACK_LINUX_COMPAT_SHLIBS = false;
-ABI = "FreeBSD:14:amd64";
-ALTABI = "freebsd:14:x86:64";
-OSVERSION = "1403000";
+ABI = "FreeBSD:15:amd64";
+ALTABI = "freebsd:15:x86:64";
+OSVERSION = "1501000";
 
 
 Repositories:
-  FreeBSD: { 
-    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:14:amd64/quarterly",
+  FreeBSD-ports: { 
+    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/quarterly",
     enabled         : yes,
     priority        : 0,
     mirror_type     : "SRV",
     signature_type  : "FINGERPRINTS",
     fingerprints    : "/usr/share/keys/pkg"
   }
-  FreeBSD-kmods: { 
-    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:14:amd64/kmods_quarterly_3",
+  FreeBSD-ports-kmods: { 
+    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/kmods_quarterly_1",
     enabled         : yes,
     priority        : 0,
     mirror_type     : "SRV",
     signature_type  : "FINGERPRINTS",
     fingerprints    : "/usr/share/keys/pkg"
+  }
+  FreeBSD-base: { 
+    url             : "pkg+https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_1",
+    enabled         : yes,
+    priority        : 0,
+    mirror_type     : "SRV",
+    signature_type  : "FINGERPRINTS",
+    fingerprints    : "/usr/share/keys/pkgbase-15"
   }
   build: { 
-    url             : "http://10.1.0.195/packages/143amd64-default-devel",
+    url             : "file:///usr/local/poudriere/data/packages/151amd64-default-devel",
     enabled         : yes,
     priority        : 0,
     signature_type  : "PUBKEY",
     pubkey          : "/usr/local/etc/ssl/crt/build.example.com-sk.crt"
+  }
+  local: { 
+    url             : "file:///usr/local/repo",
+    enabled         : yes,
+    priority        : 0
   }

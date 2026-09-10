@@ -10,14 +10,15 @@ Extending :ref:`example_016`.
    :depth: 1
 
 .. index:: single: swarms; Example 020
-.. index:: single: inventory alias; Example 020
-.. index:: single: alias; Example 020
 .. index:: single: inventory vbotka.freebsd.iocage; Example 020
 .. index:: single: inventory ansible.builtin.constructed; Example 020
-.. index:: single: option inventory_hostname_tag; Example 020
-.. index:: single: inventory_hostname_tag; Example 020
 .. index:: single: option inventory_hostname_required; Example 020
 .. index:: single: inventory_hostname_required; Example 020
+.. index:: single: option inventory_hostname_tag; Example 020
+.. index:: single: inventory_hostname_tag; Example 020
+.. index:: single: iocage tag alias; Example 020
+.. index:: single: inventory alias; Example 020
+.. index:: single: alias; Example 020
 .. index:: single: option compose; Example 020
 .. index:: single: compose; Example 020
 

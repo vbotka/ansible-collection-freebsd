@@ -37,6 +37,9 @@
 .. index:: single: log server; Example 528
 .. index:: single: log client; Example 528
 
+.. index:: single: pkg repo; Example 528
+.. index:: single: pkg_repos_conf; Example 528
+
 Use case
 ^^^^^^^^
 
@@ -296,4 +299,4 @@ Playbook output - Test Log Clients
 .. _ansible-conf-roles: https://github.com/vbotka/ansible-conf-roles
 
 .. _Understanding variable precedence: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence
-.. _ansible.builtin.include_vars: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/include_vars_module.html#ansible-builtin-include-vars-module-load-variables-from-files-dynamically-within-a-task
+.. _ansible.builtin.include_vars: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/include_vars_module.html

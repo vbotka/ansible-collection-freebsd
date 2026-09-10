@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index:: single: pkg repo; Example 321
+.. index:: single: pkg_repos_conf; Example 321
 .. index:: single: signature_type; Example 321
 .. index:: single: pubkey; Example 321
 .. index:: single: mirror_type; Example 321
@@ -31,7 +32,7 @@ Tree
   ├── files
   │   └── build.example.com-sk.crt
   ├── host_vars
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── repos.yml
   ├── iocage.ini
   └── pb.yml
@@ -39,8 +40,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node, use the role `vbotka.freebsd.packages`_ to configure a package
-repository for ``Poudriere``.
+On a managed node, use the role `vbotka.freebsd.packages`_ to configure a
+package repository for ``Poudriere``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -56,7 +57,6 @@ Notes
 
    | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
-   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
@@ -79,7 +79,7 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/repos.yml
+.. literalinclude:: host_vars/iocage_06/repos.yml
    :language: yaml+jinja
    :caption:
 
@@ -93,29 +93,29 @@ Playbook output - Create repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-01.txt
-   :caption: (env) > ansible-playbook pb.yml -i iocage.ini -t pkg_keys,pkg_conf
+   :caption: (env) > ansible-playbook -i iocage.ini -t pkg_keys,pkg_conf pb.yml
    :language: yaml+jinja
    :force:
 
-Repository build.conf at iocage_04
+Repository build.conf at iocage_06
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
    :caption: /usr/local/etc/pkg/repos/build.conf
    :language: yaml+jinja
 
-Configuration at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration
+^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-03.txt
-   :caption: [iocage_04]# pkg -vv
+   :caption: [iocage_06]# pkg -vv
    :language: sh
 
-Update repos at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Update repos
+^^^^^^^^^^^^
 
 .. literalinclude:: out/out-04.txt
-   :caption: [iocage_04]# pkg update -f
+   :caption: [iocage_06]# pkg update -f
    :language: console
 
 
