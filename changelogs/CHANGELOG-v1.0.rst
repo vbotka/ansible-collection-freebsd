@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Docs. Update UG connection jailexec. Update sandbox 021.
 
 
 1.0.8

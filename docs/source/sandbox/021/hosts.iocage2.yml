@@ -2,6 +2,7 @@ plugin: vbotka.freebsd.iocage2
 host: iocage_06
 user: admin
 get_properties: true
+inventory_hostname_tag: alias
 
 compose:
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
@@ -9,6 +10,7 @@ compose:
   ansible_ssh_user: "'admin'"
   ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
   ansible_jail_name: iocage_jid
+# ansible_jail_name: iocage_properties.host_hostname
   ansible_jail_privilege_escalation: "'sudo'"
 
 keyed_groups:
