@@ -86,8 +86,8 @@ Use the playbook tag ``swarm`` to execute selected tasks:
 
    (env) > ansible-playbook pb_iocage_ansible_clients.yml -t swarm -e swarm=true
 
-This creates 3 jails from the template ``ansible_client``. The names are generated
-automatically:
+This creates 3 jails from the template ``ansible_client``. The names
+are generated automatically:
 
 .. code-block:: console
 
@@ -107,8 +107,9 @@ clone_host_hostname
 
 (WIP)
 
-Use the dictionary ``clone_host_hostname`` to define hostnames via keys and configure
-``fstab`` entries. Refer to the ``iocage`` property ``host_hostname``. For example:
+Use the dictionary ``clone_host_hostname`` to define hostnames via
+keys and configure ``fstab`` entries. Refer to the ``iocage`` property
+``host_hostname``. For example:
 
 .. code-block:: yaml
 
@@ -125,8 +126,8 @@ Use the playbook tag ``clone_host_hostname`` to execute selected tasks:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_ansible_clients.yml \
-                            -t clone_host_hostname -e clone_host_hostname=true
+   (env) > ansible-playbook -t clone_host_hostname -e clone_host_hostname=true \
+                            pb_iocage_ansible_clients.yml
 
 default properties
 """"""""""""""""""

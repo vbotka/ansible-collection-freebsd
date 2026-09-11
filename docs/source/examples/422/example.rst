@@ -16,7 +16,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure PHP in `Apache HTTP Server`_.
+Use the role `vbotka.freebsd.apache`_ to configure PHP in `Apache HTTP
+Server`_.
 
 Tree
 ^^^^
@@ -180,21 +181,11 @@ Results
      Performing sanity check on apache24 configuration:
      Syntax OK
 
-* In a browser, open the page ``http://www-4/info.php``. If the URL resolves,
-  the content should look similar to the screenshot below.
+* In a browser, open the page ``http://www-4/info.php``. If the URL
+  resolves, the content should look similar to the screenshot below.
 
 .. image:: screenshot_php.png
    :width: 100%
    :align: center
 
 |
-
-.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-
-.. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
-.. _FreeBSD Handbook 32.9.3.3. mod_php: https://docs.freebsd.org/en/books/handbook/network-servers/#_mod_php
-.. _Apache HTTP Server: https://httpd.apache.org/
-.. _PHP manual Apache PHP: https://www.php.net/manual/en/book.apache.php
-.. _PHP manual phpinfo: https://www.php.net/manual/en/function.phpinfo.php
-.. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

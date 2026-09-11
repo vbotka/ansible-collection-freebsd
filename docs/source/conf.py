@@ -157,3 +157,13 @@ texinfo_documents = [
      author, 'ansible-role-ansible', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+exclude_patterns = [
+    'links.rst',
+]
+
+from pathlib import Path
+
+links_path = Path(__file__).parent / "links.rst"
+if links_path.exists():
+    rst_epilog = links_path.read_text(encoding="utf-8")

@@ -19,7 +19,8 @@
 Use case
 ^^^^^^^^
 
-Install ``git``. Use the role `vbotka.freebsd.postinstall`_ to configure and start `git_daemon`_.
+Install ``git``. Use the role `vbotka.freebsd.postinstall`_ to
+configure and start `git_daemon`_.
 
 Tree
 ^^^^
@@ -39,7 +40,9 @@ Synopsis
 ^^^^^^^^
 
 * On the remote host, install ``git``.
-* Use the role `vbotka.freebsd.postinstall`_ to configure and start `git_daemon`_.
+
+* Use the role `vbotka.freebsd.postinstall`_ to configure and start
+  `git_daemon`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -53,7 +56,7 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
    | Please ensure the versions are identical before switching between them.
 
@@ -95,7 +98,7 @@ Playbook output - Configure and start git_daemon
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -111,15 +114,3 @@ Display service status
 .. literalinclude:: out/out-02.txt
    :language: console
    :force:
-
-
-.. _git_daemon: https://git-scm.com/book/en/v2/Git-on-the-Server-Git-Daemon
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-
-.. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _default variables: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-variables.html

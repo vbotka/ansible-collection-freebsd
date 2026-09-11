@@ -43,24 +43,26 @@ Extending :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage`_ configuration file, use the option
-``hooks_results`` to get the DHCP IP address. This option is common for all jails in this example:
+In the `inventory plugin vbotka.freebsd.iocage`_ configuration file,
+use the option ``hooks_results`` to get the DHCP IP address. This
+option is common for all jails in this example:
 
 .. code-block:: yaml
 
    hooks_results:
      - /var/db/dhclient-hook.address.epair0b
 
-It will silently fail in jails with fixed IP addresses. If the item fails, the result is the dash
-character '-':
+It will silently fail in jails with fixed IP addresses. If the item
+fails, the result is the dash character '-':
 
 .. code-block:: yaml
 
    iocage_hooks:
      - '-'
 
-This use case demonstrates the advantage of silently ignoring failed items over potential
-explicit error handling. Let the option ``compose`` pick what is needed:
+This use case demonstrates the advantage of silently ignoring failed
+items over potential explicit error handling. Let the option
+``compose`` pick what is needed:
 
 .. code-block:: yaml
 
@@ -69,7 +71,8 @@ explicit error handling. Let the option ``compose`` pick what is needed:
 
 **Fixed IP**
 
-One jail with a fixed IP is created from the template ``ansible_client`` in this example:
+One jail with a fixed IP is created from the template
+``ansible_client`` in this example:
 
 .. code-block:: yaml
 
@@ -82,7 +85,8 @@ One jail with a fixed IP is created from the template ``ansible_client`` in this
 
 **Automatically generated UUID**
 
-Two DHCP jails with generated UUIDs are created from the template ``ansible_client``:
+Two DHCP jails with generated UUIDs are created from the template
+``ansible_client``:
 
 .. code-block:: yaml
 
@@ -95,12 +99,15 @@ Two DHCP jails with generated UUIDs are created from the template ``ansible_clie
          dhcp: 1
          vnet: 1
 
-.. note:: The clone ``test_131`` belongs to the swarm ``sw_01``. Set ``count: 3`` to create two more jails
-          in the swarm ``sw_01``.
+.. note::
 
-The `module vbotka.freebsd.iocage`_ does not work with multiple names. We will use
-``ansible.builtin.command`` instead. Such a task is not idempotent anyway if the UUID is generated
-automatically. Example commands:
+   The clone ``test_131`` belongs to the swarm ``sw_01``. Set ``count:
+   3`` to create two more jails in the swarm ``sw_01``.
+
+The `module vbotka.freebsd.iocage`_ does not work with multiple
+names. We will use ``ansible.builtin.command`` instead. Such a task is
+not idempotent anyway if the UUID is generated automatically. Example
+commands:
 
 .. code-block:: bash
 
@@ -189,7 +196,8 @@ Notes
 
 * Templates created in :ref:`example_202` are used in this example.
 
-* The dash '-' is used in `binary iocage`_ to represent a missing value. See, for example:
+* The dash '-' is used in `binary iocage`_ to represent a missing
+  value. See, for example:
 
   * `ioc_list.py#L258`_
   * `ioc_list.py#L275`_
@@ -238,8 +246,9 @@ Create and start clones
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini \
-                            -t clone -e clone=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t clone -e clone=true \
+                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -250,8 +259,9 @@ Create and start swarms
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini \
-                            -t swarm -e swarm=true -e debug=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm -e swarm=true -e debug=true \
+                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -277,7 +287,8 @@ Inventory hosts
 
 .. note::
 
-   The option ``get_properties: True`` is needed to compose the dictionary ``iocage_tags``.
+   The option ``get_properties: True`` is needed to compose the
+   dictionary ``iocage_tags``.
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -300,7 +311,7 @@ Playbook output - Display jails in the swarm
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -310,13 +321,6 @@ Playbook output - Display jails in the swarm
 
    The command below stops and destroys the jails in ``swarms``::
 
-     ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini \
-                      -t swarm_destroy -e swarm_destroy=true
-
-
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/
-.. _ioc_list.py#L258: https://github.com/freebsd/iocage/blob/master/iocage_lib/ioc_list.py#L258
-.. _ioc_list.py#L275: https://github.com/freebsd/iocage/blob/master/iocage_lib/ioc_list.py#L275
+     ansible-playbook -i iocage.ini \
+                      -t swarm_destroy -e swarm_destroy=true \
+                       vbotka.freebsd.pb_iocage_ansible_clients.yml

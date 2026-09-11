@@ -18,8 +18,9 @@ Extending :ref:`example_015`.
 Use case
 ^^^^^^^^
 
-Create inventory groups using the inventory plugin `ansible.builtin.constructed`_ after loading the two
-`inventory plugin vbotka.freebsd.iocage`_ configuration files.
+Create inventory groups using the inventory plugin
+`ansible.builtin.constructed`_ after loading the two `inventory plugin
+vbotka.freebsd.iocage`_ configuration files.
 
 Tree
 ^^^^
@@ -38,14 +39,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails (managed nodes):
+* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails
+  (managed nodes):
 
   * ``test_111:113`` from host ``iocage_02``
   * ``test_131:133`` from host ``iocage_04``
 
   and creates the inventory groups ``test_02`` and ``test_04``.
 
-* The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
+* The inventory plugin `ansible.builtin.constructed`_ creates the
+  inventory groups:
 
   * ``test`` comprising hosts whose names start with ``'test'``
   * ``test_up`` comprising running hosts whose names start with ``'test'``
@@ -59,9 +62,11 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in
+  alphabetical order.
 * See :ref:`example_015`.
-* The `inventory plugin vbotka.freebsd.iocage`_ does not provide the option `use_vars_plugins`_.
+* The `inventory plugin vbotka.freebsd.iocage`_ does not provide the
+  option `use_vars_plugins`_.
 * See :ref:`example_019`.
 
 Jails at iocage_02
@@ -121,8 +126,3 @@ Playbook output - Display groups
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
-
-
-.. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _use_vars_plugins: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-use_vars_plugins

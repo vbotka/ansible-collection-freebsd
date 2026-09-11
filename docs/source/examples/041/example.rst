@@ -14,7 +14,8 @@
 Use case
 ^^^^^^^^
 
-Use the `filter vbotka.freebsd.project`_ to restructure a project dictionary.
+Use the `filter vbotka.freebsd.project`_ to restructure a project
+dictionary.
 
 Tree
 ^^^^
@@ -29,12 +30,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-Restructure a dictionary of jails and their hosts defined with ``vmm`` and
-``class`` attributes:
+Restructure a dictionary of jails and their hosts defined with ``vmm``
+and ``class`` attributes:
 
-* Group full service specifications under their respective host (``vmm``).
-* Invert the ``class`` attribute into a reverse-lookup dictionary mapping class
-  names to lists of ``jails``.
+* Group full service specifications under their respective host
+  (``vmm``).
+
+* Invert the ``class`` attribute into a reverse-lookup dictionary
+  mapping class names to lists of ``jails``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -69,6 +72,3 @@ Playbook output - Test filter project
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :emphasize-lines: 6-25,29-33
-
-
-.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/

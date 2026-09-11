@@ -17,7 +17,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_.
+Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP
+Server`_.
 
 Tree
 ^^^^
@@ -43,10 +44,11 @@ Synopsis
 
 On a managed node:
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and
-  starts a jail.
+* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates
+  and starts a jail.
 
-* The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in the jail.
+* The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in
+  the jail.
 
 Requirements
 ^^^^^^^^^^^^
@@ -56,14 +58,14 @@ Requirements
 Notes
 ^^^^^
 
-* ``iocage`` option ``--name`` provides "NAME instead of a UUID for the new
-  jail".
+* ``iocage`` option ``--name`` provides "NAME instead of a UUID for
+  the new jail".
 
 * ``iocage`` property ``host_hostname`` provides "The hostname of the
   jail. Default: UUID".
 
-* Make sure DHCP and dynamic DNS are configured so that ``host_hostname`` and
-  ``--name`` resolve.
+* Make sure DHCP and dynamic DNS are configured so that
+  ``host_hostname`` and ``--name`` resolve.
 
 .. seealso::
 
@@ -184,11 +186,3 @@ Results
      [iocage_06]# lynx <IP>
 
      It works!
-
-
-.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-
-.. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
-.. _Apache HTTP Server: https://httpd.apache.org/
-.. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

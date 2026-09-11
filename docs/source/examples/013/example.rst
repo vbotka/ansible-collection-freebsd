@@ -118,8 +118,9 @@ Inventory iocage.ini
 Inventory hosts
 ^^^^^^^^^^^^^^^
 
-Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. Then, the dictionary
-``iocage_tags`` can be created from ``iocage_properties.notes``.
+Enable ``get_properties: true`` to create the dictionary
+``iocage_properties``. Then, the dictionary ``iocage_tags`` can be created from
+``iocage_properties.notes``.
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -131,8 +132,10 @@ Enable ``get_properties: true`` to create the dictionary ``iocage_properties``. 
    :caption:
    :emphasize-lines: 4,8,17
 
-.. note:: The structure of ``notes`` is arbitrary. If you change it, adjust the declaration of
-          ``iocage_tags`` in the inventory accordingly.
+.. note::
+
+   The structure of ``notes`` is arbitrary. If you change it, adjust the
+   declaration of ``iocage_tags`` in the inventory accordingly.
 
 host_vars
 ^^^^^^^^^
@@ -198,8 +201,12 @@ Playbook output - Display variables and groups
 
 .. note::
 
-   * The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
-   * The jail ``ansible_client`` defined in ``04_iocage.yml`` overrides the one from ``02_iocage.yml``.
+   * The inventory files in the directory ``hosts`` are evaluated in
+     alphabetical order.
+
+   * The jail ``ansible_client`` defined in ``04_iocage.yml`` overrides the one
+     from ``02_iocage.yml``.
+
    * See the special variable `groups`_.
 
 Playbook pb-ansible-client.yml
@@ -221,11 +228,15 @@ Playbook output - Display iocage_tags and group_names
 
 .. note::
 
-   * The structure of the inventory hosts and groups is flat. The jail ``ansible_client`` is the
-     same in all groups.
+   * The structure of the inventory hosts and groups is flat. The jail
+     ``ansible_client`` is the same in all groups.
+
    * See the special variable `group_names`_.
 
-.. warning:: There are no internal checks for hosts overriding each other. Maintaining inventory consistency is up to the user.
+.. warning::
+
+   There are no internal checks for hosts overriding each other. Maintaining
+   inventory consistency is up to the user.
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -243,10 +254,3 @@ Playbook output - Display all jails
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
-
-
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/
-.. _groups: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups
-.. _group_names: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names

@@ -63,13 +63,14 @@ Notes
 ^^^^^
 
 * Jail names do not work in the `name`_ parameter of the module
-  `community.general.pkgng`_ if the jail was created by ``iocage``. Use the
-  ``JID`` instead::
+  `community.general.pkgng`_ if the jail was created by
+  ``iocage``. Use the ``JID`` instead::
 
     pkg_jail: "{{ iocage_jid }}"
 
   The play ``pb-test.yml`` runs inside the jails. The inventory
-  ``iocage.ini`` is needed when a task is delegated to an iocage host::
+  ``iocage.ini`` is needed when a task is delegated to an iocage
+  host::
 
     pkg_delegate: "{{ iocage_tags.vmm }}"
 
@@ -84,14 +85,15 @@ Notes
       - lang/python312
       - ports-mgmt/pkg
 
-* The playbook ``pb-pkg-update.yml`` updates the repositories. Afterwards, use
-  the `cached`_ local package database instead of fetching an updated one::
+* The playbook ``pb-pkg-update.yml`` updates the
+  repositories. Afterwards, use the `cached`_ local package database
+  instead of fetching an updated one::
 
     pkg_cached: true
 
 .. note::
 
-   | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.packages`_ is the role **packages** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
 
 .. seealso::
@@ -192,8 +194,8 @@ Limit the inventory to a single jail:
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the ``Install list pkg_list``
-task.
+The inventory ``iocage.ini`` is needed to delegate the ``Install list
+pkg_list`` task.
 
 .. code-block:: console
 
@@ -220,17 +222,3 @@ Playbook output - Audit installed packages
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
-
-
-.. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
-.. _vbotka.freebsd_packages: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_packages/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
-.. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
-.. _use_globs: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs
-.. _display_ok_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
-.. _display_skipped_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts
-.. _pkg-origin: https://man.freebsd.org/cgi/man.cgi?query=pkg-install

@@ -20,7 +20,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_ and build packages.
+Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_ and
+build packages.
 
 Tree
 ^^^^
@@ -43,11 +44,11 @@ Synopsis
 
 * On the managed node ``build.example.com``:
 
-  * In the playbook ``pb.yml``, use the role `vbotka.freebsd.poudriere`_ to install and configure
-    `poudriere`_.
+  * In the playbook ``pb.yml``, use the role
+    `vbotka.freebsd.poudriere`_ to install and configure `poudriere`_.
 
-  * In the playbook ``pb-postinstall.yml``, use the role `vbotka.freebsd.postinstall`_ to install and
-    configure `QEMU`_.
+  * In the playbook ``pb-postinstall.yml``, use the role
+    `vbotka.freebsd.postinstall`_ to install and configure `QEMU`_.
 
   * Build packages.
 
@@ -72,7 +73,7 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.poudriere`_ is the role **poudriere** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.poudriere`_ is the role **poudriere** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_poudriere`_ is the role **freebsd_poudriere** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
@@ -97,8 +98,8 @@ host_vars
 
 .. seealso::
 
-   The variables ``pkdict_*.yml`` in the directory `defaults/main`_ of the role
-   `vbotka.freebsd_postinstall`_.
+   The variables ``pkdict_*.yml`` in the directory `defaults/main`_ of
+   the role `vbotka.freebsd_postinstall`_.
 
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
    :language: yaml+jinja
@@ -165,24 +166,3 @@ Build packages
 
    * `Export data`_ on how to configure apache24.
    * :ref:`example_423`
-
-
-.. _vbotka.freebsd.poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere/
-.. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere/
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _poudriere: https://github.com/freebsd/poudriere/
-.. _Building Packages with Poudriere: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
-.. _QEMU: https://docs.freebsd.org/en/books/handbook/virtualization/#qemu-virtualization-host-guest
-.. _Ansible role FreeBSD Poudriere: https://ansible-freebsd-poudriere.readthedocs.io
-
-.. _man poudriere: https://man.freebsd.org/cgi/man.cgi?poudriere
-.. _FreeBSD ARM: https://wiki.freebsd.org/arm
-.. _Building Packages Through Emulation: https://wiki.freebsd.org/Ports/BuildingPackagesThroughEmulation
-.. _Building ARM Packages with Poudriere: https://forums.freebsd.org/threads/building-arm-packages-with-poudriere-the-simple-way.52994
-.. _Export data: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-export.html#export-data
-
-.. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main

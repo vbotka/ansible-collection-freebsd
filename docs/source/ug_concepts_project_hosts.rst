@@ -7,8 +7,8 @@ Project hosts
 .. index:: single: project_hosts; Project hosts
 
 
-The ``project_hosts`` variable stores jail IP addresses for iocage hosts. For
-example:
+The ``project_hosts`` variable stores jail IP addresses for iocage
+hosts. For example:
 
 .. code-block:: yaml
 

@@ -38,8 +38,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects to the iocage host ``iocage_04`` at IP 10.1.0.29 configured in
-  ``/etc/rc.conf``:
+* The Ansible controller connects to the iocage host ``iocage_04`` at
+  IP 10.1.0.29 configured in ``/etc/rc.conf``:
 
   .. code-block:: ini
 
@@ -67,7 +67,7 @@ TBD
 
 .. note::
 
-   | `vbotka.freebsd.pf`_ is the role **pf** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.pf`_ is the role **pf** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_pf`_ is the role **freebsd_pf** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
@@ -107,7 +107,9 @@ Playbook output - Install packages
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage.ini -t pf_packages -e pf_install=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t pf_packages -e pf_install=true \
+                            pb.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -116,13 +118,15 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting and restarting the firewall breaks active SSH connections (see the handlers for details).
-Consequently, both the start and reload handlers can fail to complete cleanly, causing the SSH
-session to go stale. Therefore, configure the rules first before enabling the service:
+Starting and restarting the firewall breaks active SSH connections
+(see the handlers for details).  Consequently, both the start and
+reload handlers can fail to complete cleanly, causing the SSH session
+to go stale. Therefore, configure the rules first before enabling the
+service:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage.ini -e pf_enable=false
+   (env) > ansible-playbook -i iocage.ini -e pf_enable=false pb.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -133,7 +137,7 @@ Playbook output - Enable pf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i iocage.ini -t pf_rcconf_pf
+   (env) > ansible-playbook -i iocage.ini -t pf_rcconf_pf pb.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -161,13 +165,3 @@ pf status
 
 .. literalinclude:: out/out-05.txt
    :language: bash
-
-
-.. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
-.. _vbotka.freebsd_pf: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_pf/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _Firewalls: https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-intro
-.. _pf and bridge: https://forums.freebsd.org/threads/pf-and-bridge-4.77952/
-.. _man 4 if_bridge: https://man.freebsd.org/cgi/man.cgi?query=if_bridge

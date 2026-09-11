@@ -36,12 +36,12 @@ Synopsis
 
 * In the playbook ``pb-test-ast.yml``, use the filter
   `vbotka.freebsd.dict_to_ast`_ to convert a YAML dictionary into a
-  crossplane-compatible AST (Abstract Syntax Tree) list for NGINX configuration
-  generation.
+  crossplane-compatible AST (Abstract Syntax Tree) list for NGINX
+  configuration generation.
 
 * In the playbook ``pb-test-nginx.yml``, use the filter
-  `vbotka.freebsd.ast_to_nginx`_ to convert a crossplane AST (Abstract Syntax
-  Tree) list into an NGINX configuration.
+  `vbotka.freebsd.ast_to_nginx`_ to convert a crossplane AST (Abstract
+  Syntax Tree) list into an NGINX configuration.
 
 Requirements
 ^^^^^^^^^^^^
@@ -99,8 +99,3 @@ Playbook output - Test filter ast_to_nginx
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
    :emphasize-lines: 6-19
-
-
-.. _vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
-.. _vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _package crossplane: https://pypi.org/project/crossplane/

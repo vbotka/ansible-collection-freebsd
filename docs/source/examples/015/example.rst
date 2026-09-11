@@ -117,6 +117,3 @@ Inspect the cache files. For example:
 
 .. literalinclude:: out/out-03.txt
    :language: json
-
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

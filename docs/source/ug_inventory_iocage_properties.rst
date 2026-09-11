@@ -1,8 +1,8 @@
 Properties
 ^^^^^^^^^^
 
-To retrieve all iocage jail properties, enable the ``get_properties`` parameter
-in the inventory configuration file ``hosts/02_iocage.yml``:
+To retrieve all iocage jail properties, enable the ``get_properties``
+parameter in the inventory configuration file ``hosts/02_iocage.yml``:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4
@@ -16,7 +16,8 @@ in the inventory configuration file ``hosts/02_iocage.yml``:
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-To inspect the retrieved properties, create the playbook ``pb-test-properties.yml``:
+To inspect the retrieved properties, create the playbook
+``pb-test-properties.yml``:
 
 .. code-block:: yaml
 

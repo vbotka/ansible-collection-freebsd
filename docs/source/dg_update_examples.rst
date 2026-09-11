@@ -90,6 +90,3 @@ Update files
 
    * The collection (see ``galaxy.yml``)
    * Git tracking (see ``.gitignore``)
-
-
-.. _HOST_KEY_CHECKING: https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking

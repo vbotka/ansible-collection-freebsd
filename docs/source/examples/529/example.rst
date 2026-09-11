@@ -19,9 +19,9 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Enable the ``firstboot`` service
-``ansible_init`` that runs `ansible-pull`_ from the repositories on
-``project_hosts.repos``.
+Create the `iocage`_ template ``ansible-init``. Enable the
+``firstboot`` service ``ansible_init`` that runs `ansible-pull`_ from
+the repositories on ``project_hosts.repos``.
 
 Tree
 ^^^^
@@ -49,8 +49,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to create
-  the template ``ansible-init``.
+* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to
+  create the template ``ansible-init``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -141,9 +141,3 @@ List templates
 
 .. literalinclude:: out/out-02.txt
    :language: sh
-
-
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
-.. _iocage: https://iocage.readthedocs.io/en/latest/
-.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init

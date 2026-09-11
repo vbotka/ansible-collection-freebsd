@@ -21,8 +21,8 @@ The collection is shipped with:
 
 .. note::
 
-   * All collections listed in the above **Requirements** are included in the
-     standard `Ansible distribution`_.
+   * All collections listed in the above **Requirements** are included
+     in the standard `Ansible distribution`_.
 
    * The roles may require other collections and/or roles not listed
      here. See the roles requirements.yml files and install the
@@ -40,7 +40,9 @@ The collection is shipped with:
 
 .. hint::
 
-   * Run Ansible in Python virtual environment. See `venv — Creation of virtual environments`_.
+   * Run Ansible in Python virtual environment. See `venv — Creation
+     of virtual environments`_.
+
    * Use `result_format=yaml`_
 
 .. important::
@@ -49,29 +51,9 @@ The collection is shipped with:
 
       .. code-block:: text
 
-         BSD support is important to us at Ansible. ... we have an active BSD community
-         and strive to be as BSD-friendly as possible.
+         BSD support is important to us at Ansible. ... we have an
+         active BSD community and strive to be as BSD-friendly as
+         possible.
 
-     Search the `official Ansible documentation`_ for the current status of FreeBSD support.
-
-
-.. _Ansible distribution: https://docs.ansible.com/ansible/latest/collections/index.html
-
-.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix
-.. _ansible.utils: https://docs.ansible.com/ansible/latest/collections/ansible/utils
-.. _community.crypto: https://docs.ansible.com/ansible/latest/collections/community/crypto
-.. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
-
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
-.. _FreeBSD Supported Production Releases: https://www.freebsd.org/releases/
-.. _Installing collections: https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html
-.. _Managing BSD hosts with Ansible: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html
-.. _Jails - FreeBSD Wiki: https://wiki.freebsd.org/Jails/
-.. _venv — Creation of virtual environments: https://docs.python.org/3/library/venv.html#module-venv
-.. _community.general.yaml: https://docs.ansible.com/ansible/latest/collections/community/general/yaml_callback.html
-.. _Ansible claims: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#bsd-efforts-and-contributions
-.. _official Ansible documentation: https://docs.ansible.com/ansible/latest/
-.. _Jails and Containers - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/jails/
-.. _result_format=yaml: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format
-
-.. _Sandbox: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/sandbox/
+     Search the `official Ansible documentation`_ for the current
+     status of FreeBSD support.

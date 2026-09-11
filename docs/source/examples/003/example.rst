@@ -101,8 +101,9 @@ Playbook output - Test sanity
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_sanity
+   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+                            -t freebsd_iocage_sanity \
+                             pb-iocage.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -115,8 +116,9 @@ Playbook output - Test sanity quietly
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
            ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-           ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_sanity
+           ansible-playbook -i iocage.ini -l iocage_04 \
+                            -t freebsd_iocage_sanity \
+			     pb-iocage.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -126,9 +128,3 @@ Playbook output - Test sanity quietly
 
    * `ANSIBLE_DISPLAY_OK_HOSTS`_
    * `ANSIBLE_DISPLAY_SKIPPED_HOSTS`_
-
-
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _iocage: https://github.com/freebsd/iocage/
-.. _ANSIBLE_DISPLAY_OK_HOSTS: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
-.. _ANSIBLE_DISPLAY_SKIPPED_HOSTS: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts

@@ -29,5 +29,3 @@ Upgrade the collection if already installed. For example,
 .. seealso::
 
    `Installing collections`_
-
-.. _Installing collections: https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html

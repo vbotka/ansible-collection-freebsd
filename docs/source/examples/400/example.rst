@@ -26,7 +26,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.zfs`_ to configure ZFS pools and datasets.
+Use the role `vbotka.freebsd.zfs`_ to configure ZFS pools and
+datasets.
 
 Tree
 ^^^^
@@ -71,13 +72,13 @@ Requirements
 Notes
 ^^^^^
 
-The role `vbotka.freebsd.postinstall`_ is used to configure ``/boot/loader.conf``.
+The role `vbotka.freebsd.postinstall`_ is used to configure
+``/boot/loader.conf``.
 
 .. note::
 
-   | `vbotka.freebsd.zfs`_ is the role **zfs** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.zfs`_ is the role **zfs** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_zfs`_ is the role **freebsd_zfs** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -92,7 +93,8 @@ Known issues
 
 * `zpool state=present is not idempotent #10771`_
 
-The module `community.general.zpool`_ cannot create a correct diff. For example:
+The module `community.general.zpool`_ cannot create a correct
+diff. For example:
 
 .. code-block:: yaml
    :force:
@@ -101,7 +103,8 @@ The module `community.general.zpool`_ cannot create a correct diff. For example:
    {'before': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2']}, {'type': 'stripe', 'disks': ['/dev/ada3']}]},
     'after': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2', '/dev/ada3']}]}}
 
-This makes the module non-idempotent. It crashes when run repeatedly. For example:
+This makes the module non-idempotent. It crashes when run
+repeatedly. For example:
 
 .. code-block:: yaml
    :force:
@@ -125,8 +128,9 @@ This makes the module non-idempotent. It crashes when run repeatedly. For exampl
        rc: 1
        ...
 
-Setting ``force: true`` doesn't help. At the moment, the only workaround is to skip the module if
-the pool already exists. You will see a warning. For example:
+Setting ``force: true`` doesn't help. At the moment, the only
+workaround is to skip the module if the pool already exists. You will
+see a warning. For example:
 
 .. code-block:: yaml
    :force:
@@ -179,7 +183,7 @@ Playbook output - loader.conf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-loader.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-loader.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -202,7 +206,7 @@ Playbook output - Display variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage.ini -t fzfs_debug -e fzfs_debug=true
+   (env) > ansible-playbook -i iocage.ini -t fzfs_debug -e fzfs_debug=true pb-zfs.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -213,7 +217,7 @@ Playbook output - Configure ZFS
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-zfs.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -224,7 +228,7 @@ Playbook output - List pools
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -t fzfs_facts_pools -e fzfs_debug=true
+   (env) > ansible-playbook -t fzfs_facts_pools -e fzfs_debug=treu pb-zfs.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -235,24 +239,8 @@ Playbook output - List datasets
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true
+   (env) > ansible-playbook -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true pb-zfs.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
-
-
-.. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs/
-.. _vbotka.freebsd_zfs: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_zfs/
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _The Z File System (ZFS): https://docs.freebsd.org/en/books/handbook/zfs/
-.. _FreeBSD Wiki ZFS: https://wiki.freebsd.org/ZFS
-.. _FreeBSD Wiki Category ZFS: https://wiki.freebsd.org/CategoryZfs
-
-.. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html
-
-.. _zpool state=present is not idempotent #10771: https://github.com/ansible-collections/community.general/issues/10771

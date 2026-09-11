@@ -46,8 +46,8 @@ Extending :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-Instead of using the `module vbotka.freebsd.iocage`_, create the variable ``iocage_jails`` using the
-`filter vbotka.freebsd.iocage`_:
+Instead of using the `module vbotka.freebsd.iocage`_, create the
+variable ``iocage_jails`` using the `filter vbotka.freebsd.iocage`_:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
    :language: yaml+jinja
@@ -188,9 +188,9 @@ Playbook output - Create and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-ansible-clients-v2.yml \
-                            -i iocage.ini \
-                            -t swarm -e swarm=true -e debug=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm -e swarm=true -e debug=true \
+                             pb-iocage-ansible-clients-v2.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -235,7 +235,8 @@ Inventory hosts
 
 .. note::
 
-   The option ``get_properties: True`` is needed to get the dictionary ``iocage_properties``.
+   The option ``get_properties: True`` is needed to get the dictionary
+   ``iocage_properties``.
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -268,11 +269,6 @@ Playbook output - Display iocage_tags
 
    The command below stops and destroys the jails in ``swarms``::
 
-     ansible-playbook pb-iocage-ansible-clients-v2.yml \
-                      -i iocage.ini \
-                      -t swarm_destroy -e swarm_destroy=true
-
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/
+     ansible-playbook -i iocage.ini \
+                      -t swarm_destroy -e swarm_destroy=true \
+                      pb-iocage-ansible-clients-v2.yml

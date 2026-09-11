@@ -30,10 +30,11 @@
 Use case
 ^^^^^^^^
 
-Mount the host directory ``/usr/local/poudriere`` in the jail. Use the role
-`vbotka.freebsd.certificate`_ to create an SSL certificate for
-``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure an `Apache
-HTTP Server Virtual Host`_ ``build.foo.bar`` to access ``/usr/local/poudriere``.
+Mount the host directory ``/usr/local/poudriere`` in the jail. Use the
+role `vbotka.freebsd.certificate`_ to create an SSL certificate for
+``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure
+an `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` to access
+``/usr/local/poudriere``.
 
 Tree
 ^^^^
@@ -62,15 +63,15 @@ Synopsis
 On a managed node:
 
 * The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates
-  and starts a jail, and mounts the host directory ``/usr/local/poudriere``
-  in the jail.
+  and starts a jail, and mounts the host directory
+  ``/usr/local/poudriere`` in the jail.
 
 * The playbook ``pb-certificate.yml`` creates an SSL certificate for
   ``build.foo.bar``.
 
-* The playbook ``pb-apache.yml`` uses the certificate, then configures and
-  starts the `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` in the
-  jail.
+* The playbook ``pb-apache.yml`` uses the certificate, then configures
+  and starts the `Apache HTTP Server Virtual Host`_ ``build.foo.bar``
+  in the jail.
 
 Requirements
 ^^^^^^^^^^^^
@@ -255,16 +256,3 @@ Results
 .. seealso::
 
    :ref:`example_390`
-
-
-.. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
-.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
-.. _vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-
-.. _How Do I Mount Host Datasets Inside Jails: https://www.truenas.com/community/threads/freenas-11-iocage-how-do-i-mount-host-datasets-inside-jails.55193/
-.. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
-.. _FreeBSD Handbook 32.9.2. Virtual Hosting: https://docs.freebsd.org/en/books/handbook/network-servers/#_virtual_hosting
-.. _Apache HTTP Server: https://httpd.apache.org/
-.. _Apache HTTP Server Virtual Host: https://httpd.apache.org/docs/2.4/vhosts/
-.. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

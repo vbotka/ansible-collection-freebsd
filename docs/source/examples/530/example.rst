@@ -57,8 +57,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to create the
-  templates:
+* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to
+  create the templates:
 
   * ``ansible-init``
   * ``ansible-nginx``
@@ -186,7 +186,3 @@ List templates
 
 .. literalinclude:: out/out-02.txt
    :language: sh
-
-
-.. _iocage: https://iocage.readthedocs.io/en/latest/
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/

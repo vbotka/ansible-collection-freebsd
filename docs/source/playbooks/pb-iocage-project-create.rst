@@ -16,13 +16,14 @@ This playbook creates jails in a project.
 .. hint::
 
    Look at the ``Index`` and search the playbook
-   ``pb_iocage_project_create.yml`` to see what examples are available.
+   ``pb_iocage_project_create.yml`` to see what examples are
+   available.
 
 Example
 ^^^^^^^
 
-Define the hosts, assigned classes, and target VMM hosts in the ``project``
-dictionary:
+Define the hosts, assigned classes, and target VMM hosts in the
+``project`` dictionary:
 
 .. code-block:: yaml
 

@@ -30,7 +30,3 @@ their ``vars`` directories.
 
    * See the ``README`` file for each role.
    * See the collection ``Index`` for available examples.
-
-
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-.. _Read the Docs: https://rtfd.io

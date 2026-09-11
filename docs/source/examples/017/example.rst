@@ -17,8 +17,8 @@
 Use case
 ^^^^^^^^
 
-Use the `inventory plugin community.general.iocage`_ instead of the `inventory plugin
-vbotka.freebsd.iocage`_.
+Use the `inventory plugin community.general.iocage`_ instead of the
+`inventory plugin vbotka.freebsd.iocage`_.
 
 Tree
 ^^^^
@@ -37,7 +37,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-The `inventory plugin community.general.iocage`_ should provide the same functionality.
+The `inventory plugin community.general.iocage`_ should provide the
+same functionality.
 
 .. warning::
 
@@ -124,7 +125,3 @@ Playbook output - Display jails and groups
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _inventory plugin community.general.iocage: https://docs.ansible.com/ansible/latest/collections/community/general/iocage_inventory.html

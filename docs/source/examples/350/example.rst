@@ -20,7 +20,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.rsnapshot`_ to install and configure `rsnapshot`_.
+Use the role `vbotka.freebsd.rsnapshot`_ to install and configure
+`rsnapshot`_.
 
 Tree
 ^^^^
@@ -59,13 +60,14 @@ Requirements
 Notes
 ^^^^^
 
-* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if
-  the jail was created by ``iocage``. Use the JID instead::
+* Jail names do not work in the `name`_ parameter of the module
+  `community.general.pkgng`_ if the jail was created by
+  ``iocage``. Use the JID instead::
 
     jail: "{{ iocage_jid }}"
 
-* The plays run inside the jails. The inventory ``iocage.ini`` is needed when a task is delegated to
-  an iocage host::
+* The plays run inside the jails. The inventory ``iocage.ini`` is
+  needed when a task is delegated to an iocage host::
 
     delegate_to: "{{ iocage_tags.vmm }}"
 
@@ -112,8 +114,9 @@ Create and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini \
-                            -t swarm -e swarm=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm -e swarm=true \
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -160,11 +163,12 @@ Playbook pb-install.yml
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed when a task is delegated to an iocage host:
+The inventory ``iocage.ini`` is needed when a task is delegated to an
+iocage host:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-install.yml -i hosts -i iocage.ini
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-install.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -181,7 +185,9 @@ Playbook output - Display variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts -t rsnapshot_debug -e rsnapshot_debug=true
+   (env) > ansible-playbook -i hosts \
+                            -t rsnapshot_debug -e rsnapshot_debug=true \
+                            pb-test.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -192,7 +198,7 @@ Playbook output - Configure rsnapshot
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -202,14 +208,3 @@ Results
 ^^^^^^^
 
 * TBD
-
-.. _rsnapshot: https://rsnapshot.org/
-.. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
-
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-
-.. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
-.. _use_globs: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs
-.. _display_skipped_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts
-.. _pkg-origin: https://man.freebsd.org/cgi/man.cgi?query=pkg-install

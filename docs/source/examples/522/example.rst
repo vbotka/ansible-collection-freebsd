@@ -23,14 +23,15 @@
 Use case
 ^^^^^^^^
 
-Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Create
-templates ``ansible-syslogng-server`` and ``ansible-syslogng-client``. Create jails from the
-templates.
+Configure and run a log server. Configure log clients and test
+them. Use `syslog-ng`_. Create templates ``ansible-syslogng-server``
+and ``ansible-syslogng-client``. Create jails from the templates.
 
 Quoting `syslog-ng - FreeBSD Wiki`_:
 
-    "One of the most typical use of syslog-ng is central log aggregation. ... It collects log
-    messages on TCP port 514 and saves them to directories and files based on sender host name and
+    "One of the most typical use of syslog-ng is central log
+    aggregation. ... It collects log messages on TCP port 514 and
+    saves them to directories and files based on sender host name and
     current date."
 
 Tree
@@ -94,10 +95,14 @@ Requirements
 
 .. note::
 
-   * This example creates the same functionality as :ref:`example_521`. Here, ``iocage
-     templates`` are used instead of ``iocage plugins``.
+   * This example creates the same functionality as
+     :ref:`example_521`. Here, ``iocage templates`` are used instead
+     of ``iocage plugins``.
+
    * The same functionality is also created in :ref:`example_526`.
-   * In this example, DHCP was provided by the iocage host. See :ref:`example_440`.
+
+   * In this example, DHCP was provided by the iocage host. See
+     :ref:`example_440`.
 
 .. seealso::
 
@@ -318,23 +323,3 @@ Playbook output - Test Log Clients
 
      shell> iocage console log-server
      root@log-server:~ # lnav -r /var/log/remote/
-
-
-.. _syslog-ng client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-.. _syslog-ng server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-
-.. _syslog-ng - documentation: https://syslog-ng.github.io
-.. _syslog-ng client hosts: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-
-.. _syslog-ng: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-.. _syslog-ng - FreeBSD Wiki: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-.. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng
-
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
-
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
-
-.. _Configuring System Logging - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/config/#configtuning-syslog

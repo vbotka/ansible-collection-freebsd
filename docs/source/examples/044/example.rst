@@ -17,7 +17,8 @@
 Use case
 ^^^^^^^^
 
-Use the filter `vbotka.freebsd.ast_to_haproxy`_ to create an HAProxy configuration.
+Use the filter `vbotka.freebsd.ast_to_haproxy`_ to create an HAProxy
+configuration.
 
 Tree
 ^^^^
@@ -35,8 +36,8 @@ Synopsis
 ^^^^^^^^
 
 In the playbook ``pb-ast-to-haproxy.yml``, use the filter
-`vbotka.freebsd.ast_to_haproxy`_ to convert an AST (Abstract Syntax Tree) list
-into an HAProxy configuration.
+`vbotka.freebsd.ast_to_haproxy`_ to convert an AST (Abstract Syntax
+Tree) list into an HAProxy configuration.
 
 Requirements
 ^^^^^^^^^^^^
@@ -81,7 +82,3 @@ Playbook output - Test filter ast_to_haproxy
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
    :emphasize-lines: 6-39
-
-.. _vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
-.. _vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
-.. _HAProxy: https://www.haproxy.org/

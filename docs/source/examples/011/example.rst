@@ -20,7 +20,8 @@ Extending :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Display all variables ``iocage_*`` created by the `inventory plugin vbotka.freebsd.iocage`_.
+Display all variables ``iocage_*`` created by the `inventory plugin
+vbotka.freebsd.iocage`_.
 
 Tree
 ^^^^
@@ -36,8 +37,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In a selected jail, display all variables ``iocage_*`` created by the inventory plugin in
-:ref:`example_010`.
+In a selected jail, display all variables ``iocage_*`` created by the
+inventory plugin in :ref:`example_010`.
 
 Requirements
 ^^^^^^^^^^^^
@@ -73,6 +74,3 @@ Playbook output - Display iocage_* variables
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

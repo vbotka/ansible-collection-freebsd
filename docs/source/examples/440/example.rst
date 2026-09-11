@@ -23,8 +23,9 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role `vbotka.freebsd.pf`_ to
-configure pf. Redirect ports from the local network to SSH services in the jails.
+Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role
+`vbotka.freebsd.pf`_ to configure pf. Redirect ports from the local
+network to SSH services in the jails.
 
 Tree
 ^^^^
@@ -48,8 +49,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects to the iocage host ``iocage_05`` on the WLAN interface configured in
-  ``/etc/rc.conf``:
+* The Ansible controller connects to the iocage host ``iocage_05`` on
+  the WLAN interface configured in ``/etc/rc.conf``:
 
   .. code-block:: ini
 
@@ -85,7 +86,8 @@ Requirements
 Notes
 ^^^^^
 
-* In this example, an inexpensive machine connected via Wi-Fi is used to test the iocage host.
+* In this example, an inexpensive machine connected via Wi-Fi is used
+  to test the iocage host.
 
 * Adjust the following settings to match your network environment:
 
@@ -109,11 +111,10 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.dhcp`_ is the role **dhcp** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.dhcp`_ is the role **dhcp** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_dhcp`_ is the role **freebsd_dhcp** in the namespace `vbotka`_.
-   | `vbotka.freebsd.pf`_ is the role **pf** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.pf`_ is the role **pf** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_pf`_ is the role **freebsd_pf** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -146,7 +147,9 @@ files
 .. note::
 
    * The above listing is limited to the first 10 lines.
-   * See the playbook ``pb-pf-setup.yml`` below for how to create the file.
+
+   * See the playbook ``pb-pf-setup.yml`` below for how to create the
+     file.
 
 host_vars
 ^^^^^^^^^
@@ -170,7 +173,9 @@ Playbook output - Install packages
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-dhcp.yml -i iocage.ini -t bsd_dhcpd_packages -e bsd_dhcpd_install=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t bsd_dhcpd_packages -e bsd_dhcpd_install=true \
+			     pb-dhcp.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -181,7 +186,7 @@ Playbook output - Configure DHCP
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-dhcp.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-dhcp.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -198,7 +203,7 @@ Playbook output - Create files/pf-rdr-ssh.conf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-pf-setup.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-pf-setup.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -215,7 +220,9 @@ Playbook output - Install packages
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-pf.yml -i iocage.ini -t pf_packages -e pf_install=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t pf_packages -e pf_install=true \
+			     pb-pf.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -224,13 +231,15 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting and restarting the firewall breaks active SSH connections (see the handlers for details).
-Consequently, both the start and reload handlers can fail to complete cleanly, causing the SSH
-session to go stale. Therefore, configure the rules first before enabling the service:
+Starting and restarting the firewall breaks active SSH connections
+(see the handlers for details).  Consequently, both the start and
+reload handlers can fail to complete cleanly, causing the SSH session
+to go stale. Therefore, configure the rules first before enabling the
+service:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-pf.yml -i iocage.ini -e pf_enable=false
+   (env) > ansible-playbook -i iocage.ini -e pf_enable=false pb-pf.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -241,7 +250,7 @@ Playbook output - Enable pf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-pf.yml -i iocage.ini -t pf_rcconf_pf
+   (env) > ansible-playbook -i iocage.ini -t pf_rcconf_pf pb-pf.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -292,21 +301,7 @@ pf status
 
 .. note::
 
-   To connect via SSH to a jail (for example, a jail at IP 172.16.99.114), run::
+   To connect via SSH to a jail (for example, a jail at IP
+   172.16.99.114), run::
 
      shell> ssh -p 2214 admin@iocage_05
-
-
-.. _vbotka.freebsd.dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
-.. _vbotka.freebsd_dhcp: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_dhcp/
-.. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
-.. _vbotka.freebsd_pf: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_pf/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _Installing and Configuring a DHCP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-dhcp-server
-.. _Firewalls: https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-intro
-.. _pf and bridge: https://forums.freebsd.org/threads/pf-and-bridge-4.77952/
-.. _man 4 if_bridge: https://man.freebsd.org/cgi/man.cgi?query=if_bridge
-
-.. _Dell XPS 13 9365 15.0-RELEASE dmesg: http://dmesgd.nycbug.org/index.cgi?do=view&id=8848

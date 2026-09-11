@@ -1,11 +1,12 @@
 Hooks
 ^^^^^
 
-The ``iocage`` utility internally opens a console to a jail to retrieve its DHCP
-address, an operation that requires root privileges. If you run ``iocage list
--l`` as an unprivileged user, the IP4 field displays ``DHCP (running -- address
-requires root)``.  If granting root or ``sudo`` privileges is not desired,
-configure ``/etc/dhclient-exit-hooks`` inside the jail to record the assigned
+The ``iocage`` utility internally opens a console to a jail to
+retrieve its DHCP address, an operation that requires root
+privileges. If you run ``iocage list -l`` as an unprivileged user, the
+IP4 field displays ``DHCP (running -- address requires root)``.  If
+granting root or ``sudo`` privileges is not desired, configure
+``/etc/dhclient-exit-hooks`` inside the jail to record the assigned
 address. For example:
 
 .. code-block:: sh
@@ -58,11 +59,11 @@ Update the inventory configuration ``hosts/02_iocage.yml`` to use the
 
 .. note::
 
-   The ``hooks_results`` parameter expects the active pool to be mounted at
-   ``/<poolname>``. For example, if you activate the pool ``zroot``, the plugin
-   expects to find ``hooks_results`` files at
-   ``/zroot/iocage/jails/<name>/root``.  If your pool is mounted elsewhere,
-   create a symlink to this path.
+   The ``hooks_results`` parameter expects the active pool to be
+   mounted at ``/<poolname>``. For example, if you activate the pool
+   ``zroot``, the plugin expects to find ``hooks_results`` files at
+   ``/zroot/iocage/jails/<name>/root``.  If your pool is mounted
+   elsewhere, create a symlink to this path.
 
 As admin on the control node, display the inventory:
 
@@ -122,8 +123,8 @@ As admin on the control node, display the inventory:
              iocage_template: ansible_client
              iocage_type: jail
 
-Update ``hosts/02_iocage.yml`` to compose ``ansible_host`` from the hook
-output:
+Update ``hosts/02_iocage.yml`` to compose ``ansible_host`` from the
+hook output:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 7
@@ -136,7 +137,8 @@ output:
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 
-To test connectivity to the jails, create the playbook ``pb-test-uname.yml``:
+To test connectivity to the jails, create the playbook
+``pb-test-uname.yml``:
 
 .. code-block:: yaml
 
@@ -187,9 +189,5 @@ Run the playbook:
 
 .. note:: 
 
-   This playbook and inventory configuration also work with `Shared IP jails`_.
-
-
-.. _man dhclient-script: https://man.freebsd.org/cgi/man.cgi?dhclient-script
-.. _Managing BSD hosts with Ansible: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#managing-bsd-hosts-with-ansible
-.. _Shared IP jails: https://freebsd.github.io/iocage/networking.html#configuring-a-shared-ip-jail
+   This playbook and inventory configuration also work with `Shared IP
+   jails`_.

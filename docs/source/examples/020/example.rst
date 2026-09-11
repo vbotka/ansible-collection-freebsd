@@ -27,8 +27,9 @@ Extending :ref:`example_016`.
 Use case
 ^^^^^^^^
 
-Get the `Inventory aliases`_ from the `Set Jail Property`_ ``notes``. In the `inventory plugin
-vbotka.freebsd.iocage2`_, use the option ``inventory_hostname_tag`` to specify which tag to use.
+Get the `Inventory aliases`_ from the `Set Jail Property`_
+``notes``. In the `inventory plugin vbotka.freebsd.iocage2`_, use the
+option ``inventory_hostname_tag`` to specify which tag to use.
 
 Tree
 ^^^^
@@ -59,12 +60,17 @@ Synopsis
 * On a managed node:
 
   * Create jails using a template and the ``--count`` option
-  * For each jail, set the property ``notes`` in the format ``tag1=val1 tag2=val2 ...``
+
+  * For each jail, set the property ``notes`` in the format
+    ``tag1=val1 tag2=val2 ...``
+
   * Put the inventory alias into the tag ``alias=<alias>``
 
-* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the inventory aliases from the tag ``alias``
+* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the
+  inventory aliases from the tag ``alias``
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups
+* In the inventory plugin `ansible.builtin.constructed`_, create the
+  inventory groups
 
 * Display the jails and groups
 
@@ -78,7 +84,8 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in
+  alphabetical order.
 
 .. seealso::
 
@@ -136,8 +143,8 @@ Inventory hosts
 
 .. note::
 
-   The value of the iocage tag ``alias`` is used as the inventory alias. If `iocage list is
-   slow`_, use the cache.
+   The value of the iocage tag ``alias`` is used as the inventory
+   alias. If `iocage list is slow`_, use the cache.
 
 Playbook pb-iocage-swarms-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -207,10 +214,3 @@ Destroy the swarms if you do not need them anymore.
 .. literalinclude:: out/out-08.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
-.. _iocage list is slow: https://forums.freebsd.org/threads/freebsd-13-1-extremally-slow.86723

@@ -16,7 +16,8 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-nginx``. Create jails from the template.
+Create the `iocage`_ template ``ansible-nginx``. Create jails from the
+template.
 
 Tree
 ^^^^
@@ -52,15 +53,15 @@ Synopsis
 
 * On a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
-    ``ansible-nginx``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the
+    template ``ansible-nginx``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_, create jails
-    from the template.
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    create jails from the template.
 
-* In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
-  configure the Nginx servers.
+* In the inventory group ``nginx``, use the role
+  `vbotka.freebsd.nginx`_ to configure the Nginx servers.
 
 Requirements
 ^^^^^^^^^^^^
@@ -176,7 +177,8 @@ Playbook output - Create project jails from iocage templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+   (env) > ansible-playbook -i iocage.ini -i hosts \
+                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -245,12 +247,3 @@ Results
      [iocage_06]# lynx 172.16.99.116
 
      It works!
-
-
-.. _iocage: https://iocage.readthedocs.io/en/latest/
-
-.. _vbotka.freebsd.nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/nginx/
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
-
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

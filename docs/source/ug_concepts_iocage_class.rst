@@ -16,9 +16,9 @@ iocage classes
 List iocage_classes
 ^^^^^^^^^^^^^^^^^^^
 
-The variable ``iocage_classes`` is a list of jail classes ``composed`` by an
-inventory plugin from the iocage ``class`` tag. For example, given the following
-project definition:
+The variable ``iocage_classes`` is a list of jail classes ``composed``
+by an inventory plugin from the iocage ``class`` tag. For example,
+given the following project definition:
 
 .. code-block:: yaml+jinja
 
@@ -54,7 +54,8 @@ a task sets the jail properties and creates the ``notes`` field:
        {{ item }}
      loop: "{{ vmm[inventory_hostname].keys() }}"
 
-The ``class`` property inside ``notes`` is stored as a comma-separated string:
+The ``class`` property inside ``notes`` is stored as a comma-separated
+string:
 
 .. code-block:: console
 
@@ -65,8 +66,9 @@ The ``class`` property inside ``notes`` is stored as a comma-separated string:
 Inventory groups
 ^^^^^^^^^^^^^^^^
 
-These ``notes`` can be used to populate ``iocage_classes`` and construct
-inventory groups (for example, the ``log_servers`` inventory group):
+These ``notes`` can be used to populate ``iocage_classes`` and
+construct inventory groups (for example, the ``log_servers`` inventory
+group):
 
 .. code-block:: yaml+jinja
 
@@ -97,7 +99,8 @@ The list of classes can also be stored in local custom facts:
    }
    EOF
 
-These facts are then consumed by the FreeBSD `ansible_init`_ service to configure the jail:
+These facts are then consumed by the FreeBSD `ansible_init`_ service
+to configure the jail:
 
 .. code-block:: yaml+jinja
 
@@ -155,8 +158,8 @@ These facts are then consumed by the FreeBSD `ansible_init`_ service to configur
 Class variables
 ^^^^^^^^^^^^^^^
 
-Classes can also be used to organize configuration files. For example, separating
-configurations for ``log-client`` and ``log-server``:
+Classes can also be used to organize configuration files. For example,
+separating configurations for ``log-client`` and ``log-server``:
 
 .. code-block:: text
 
@@ -178,8 +181,8 @@ configurations for ``log-client`` and ``log-server``:
    └── templates
        └── project-hosts.yml.j2
 
-These configuration files are automatically copied to ``ai_vars`` when a project
-is created:
+These configuration files are automatically copied to ``ai_vars`` when
+a project is created:
 
 .. code-block:: console
 
@@ -193,8 +196,3 @@ is created:
    -rw-r-----  1 root wheel  164 Aug 23 09:21 project-hosts.yml
    -rw-r-----  1 root wheel   72 Aug 19 11:03 syslog-ng-server-pkg.yml
    -rw-r-----  1 root wheel 1088 Aug 18 14:33 syslog-ng-server.yml
-
-
-.. _ansible_init: https://github.com/vbotka/ansible_init/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

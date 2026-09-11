@@ -22,8 +22,9 @@
 Use case
 ^^^^^^^^
 
-Fetch releases, create basejails, clone jails from the basejails, and start the jails. Use the
-`inventory plugin vbotka.freebsd.iocage`_ to create the inventory. Display the created inventory.
+Fetch releases, create basejails, clone jails from the basejails, and
+start the jails. Use the `inventory plugin vbotka.freebsd.iocage`_ to
+create the inventory. Display the created inventory.
 
 Tree
 ^^^^
@@ -51,8 +52,8 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the `module vbotka.freebsd.iocage`_
-  to:
+  In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the
+  `module vbotka.freebsd.iocage`_ to:
 
   * Fetch the release
   * Create a basejail
@@ -62,7 +63,8 @@ Synopsis
 
 * On the managed node ``iocage_04``:
 
-  In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-test.yml``, use the `inventory plugin
+  vbotka.freebsd.iocage`_ to:
 
   * Create inventory groups and compose variables
   * Display the hosts and composed variables in the group ``test``
@@ -79,8 +81,8 @@ Requirements
 Notes
 ^^^^^
 
-Fetching a release is quite time-consuming. Optionally, fetch the releases manually
-before running the playbook. For example:
+Fetching a release is quite time-consuming. Optionally, fetch the
+releases manually before running the playbook. For example:
 
 .. code-block:: console
 
@@ -153,7 +155,7 @@ Playbook output - Fetch, create, clone, and start
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone-list.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-iocage-fetch-base-clone-list.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -210,14 +212,3 @@ Playbook output - Display groups
    :language: yaml+jinja
    :force:
    :emphasize-lines: 30-35
-
-
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/
-.. _Inventory plugin ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#ansible-collections-ansible-builtin-constructed-inventory
-.. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
-.. _Fetch a Release: https://freebsd.github.io/iocage/basic-use.html#fetch-a-release
-.. _Create a Jail: https://freebsd.github.io/iocage/basic-use.html#create-a-jail
-.. _Start, Stop, or Restart a Jail: https://freebsd.github.io/iocage/basic-use.html#start-stop-or-restart-a-jail
-.. _Listing Jails: https://freebsd.github.io/iocage/basic-use.html#listing-jails

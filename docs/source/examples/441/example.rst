@@ -34,9 +34,10 @@
 Use case
 ^^^^^^^^
 
-Create multiple jails with auto UUID names. In the inventory, compose the variables
-``ansible_host`` and ``ansible_port`` to connect to the jails via redirected SSH
-ports. See :ref:`example_440` for how ``pf`` is configured.
+Create multiple jails with auto UUID names. In the inventory, compose
+the variables ``ansible_host`` and ``ansible_port`` to connect to the
+jails via redirected SSH ports. See :ref:`example_440` for how ``pf``
+is configured.
 
 Tree
 ^^^^
@@ -134,11 +135,12 @@ hosts
 .. note::
 
    * In :ref:`example_440`, the variables ``ssh_rdr_start=2200`` and
-     ``dhcp_ip_start=100`` are used in the playbook ``pb-pf-setup.yml`` to calculate the
-     ports to redirect SSH from, and to create the file ``pf-rdr-ssh.conf``.
+     ``dhcp_ip_start=100`` are used in the playbook
+     ``pb-pf-setup.yml`` to calculate the ports to redirect SSH from,
+     and to create the file ``pf-rdr-ssh.conf``.
 
-   * For example, from the controller, the following command connects to the jail at
-     ``<bsd_dhcpd_subnet>.106``::
+   * For example, from the controller, the following command connects
+     to the jail at ``<bsd_dhcpd_subnet>.106``::
 
        shell> ssh -p 2206 admin@iocage_06
 
@@ -165,10 +167,11 @@ host_vars
 
 .. hint::
 
-   If the default iocage option ``defaultrouter=auto`` does not work, set it explicitly. This may be
-   needed if the jails are assigned IP addresses via DHCP on the bridge. In this case, the
-   defaultrouter for the jails is the IP address of the bridge. pf must provide NAT and
-   redirection. See :ref:`example_440`.
+   If the default iocage option ``defaultrouter=auto`` does not work,
+   set it explicitly. This may be needed if the jails are assigned IP
+   addresses via DHCP on the bridge. In this case, the defaultrouter
+   for the jails is the IP address of the bridge. pf must provide NAT
+   and redirection. See :ref:`example_440`.
 
 Playbook output - Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +219,7 @@ Playbook output - Test SSH redirection
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -230,8 +233,3 @@ Playbook output - Test SSH redirection
                       -t swarm_destroy \
                       -e swarm_destroy=true \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml
-
-
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

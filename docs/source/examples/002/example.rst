@@ -37,7 +37,8 @@ Synopsis
 
 * On the managed node ``iocage_04``:
 
-  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role
+  vbotka.freebsd.iocage`_ to:
 
   * Activate `iocage`_
 
@@ -51,9 +52,14 @@ Requirements
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the command arguments to run the play on the managed node ``iocage_02``.
-* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
-* By default, ``iocage`` activation is disabled: ``freebsd_iocage_activate: false``.
+* Put ``-l iocage_02`` into the command arguments to run the play on
+  the managed node ``iocage_02``.
+
+* Remove the limits ``-l iocage_0*`` to run the play on all managed
+  nodes.
+
+* By default, ``iocage`` activation is disabled:
+  ``freebsd_iocage_activate: false``.
 
 .. seealso::
 
@@ -84,8 +90,11 @@ host_vars
 
 .. note::
 
-   * Activation will be skipped if the directory ``freebsd_iocage_mount`` exists.
-   * The variable ``freebsd_iocage_mount`` is declared in ``defaults/main/main.yml``::
+   * Activation will be skipped if the directory
+     ``freebsd_iocage_mount`` exists.
+
+   * The variable ``freebsd_iocage_mount`` is declared in
+     ``defaults/main/main.yml``::
 
        freebsd_iocage_mount: "{{ freebsd_iocage_pool_mount }}/iocage"
 
@@ -109,9 +118,6 @@ Playbook output - Activate iocage
    :language: yaml+jinja
    :force:
 
-.. note:: This ``debug`` output shows the ``result`` of an already activated `iocage`_.
+.. note::
 
-
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _iocage: https://freebsd.github.io/iocage/index.html
-.. _Activate iocage: https://freebsd.github.io/iocage/basic-use.html#activate-iocage
+   This ``debug`` output shows the ``result`` of an already activated `iocage`_.

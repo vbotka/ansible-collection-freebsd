@@ -16,7 +16,8 @@ This playbook destroys a project.
 .. hint::
 
    Look at the ``Index`` and search the playbook
-   ``pb_iocage_project_destroy.yml`` to see what examples are available.
+   ``pb_iocage_project_destroy.yml`` to see what examples are
+   available.
 
 Example
 ^^^^^^^

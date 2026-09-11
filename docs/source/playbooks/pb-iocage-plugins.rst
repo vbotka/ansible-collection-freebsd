@@ -30,11 +30,12 @@ Define the list of plugins in ``enabled_plugins``:
      - ansible-pull-syslogng-client
      - ansible-pull-syslogng-server
 
-Use the playbook tag ``enabled_plugins`` to fetch the enabled iocage plugins:
+Use the playbook tag ``enabled_plugins`` to fetch the enabled iocage
+plugins:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_plugins.yml -t enabled_plugins
+   (env) > ansible-playbook -t enabled_plugins pb_iocage_plugins.yml
 
 project_plugins
 """""""""""""""
@@ -57,11 +58,12 @@ Define the required plugins within the ``project`` dictionary:
        plugin: ansible-syslogng
        vmm: iocage_05
 
-Use the playbook tag ``project_plugins`` to fetch plugins required by a project:
+Use the playbook tag ``project_plugins`` to fetch plugins required by
+a project:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_plugins.yml -t project_plugins
+   (env) > ansible-playbook -t project_plugins pb_iocage_plugins.yml
 
 swarm_plugins
 """""""""""""
@@ -79,12 +81,13 @@ Use the playbook tag ``swarm_plugins`` to fetch plugins required by a swarm:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_plugins.yml -t swarm_plugins
+   (env) > ansible-playbook -t swarm_plugins pb_iocage_plugins.yml
 
 plugins
 """""""
 
-Declare plugin details, repositories, and properties in the ``plugins`` dictionary:
+Declare plugin details, repositories, and properties in the
+``plugins`` dictionary:
 
 .. code-block:: yaml
 
@@ -115,4 +118,4 @@ Declare plugin details, repositories, and properties in the ``plugins`` dictiona
 
 .. seealso::
 
-   * `man iocage <https://man.freebsd.org/cgi/man.cgi?iocage(8)>`_
+   * `man iocage`_

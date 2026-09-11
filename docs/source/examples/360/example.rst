@@ -52,7 +52,7 @@ TBD
 
 .. note::
 
-   | `vbotka.freebsd.network`_ is the role **network** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.network`_ is the role **network** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
    | Please make sure the versions are the same before you switch between them.
 
@@ -93,7 +93,7 @@ Playbook output - Configure loader.conf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-loader.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-loader.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -110,7 +110,7 @@ Playbook output - Configure network
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-network.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-network.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -127,9 +127,3 @@ MAC addresses are sanitized.
 
 .. literalinclude:: out/out-03.txt
    :language: bash
-
-
-.. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
-.. _vbotka.freebsd_network: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/

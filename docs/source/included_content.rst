@@ -32,34 +32,3 @@ Roles:
 * `zfs`_ - Configure ZFS storage pools and datasets.
 
 Various :ref:`ug_playbooks`.
-
-
-.. _module iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _module service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
-.. _module ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
-
-.. _inventory iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _inventory iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _filter ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _filter dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
-.. _filter from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
-.. _filter iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
-.. _filter to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
-.. _lookup galaxy_info: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/lookup/galaxy_info/
-
-.. _apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
-.. _certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
-.. _config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
-.. _custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/
-.. _dhcp: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/
-.. _iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
-.. _network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
-.. _nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/nginx/
-.. _packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
-.. _pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
-.. _postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _poudriere: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/poudriere/
-.. _rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
-.. _zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs/

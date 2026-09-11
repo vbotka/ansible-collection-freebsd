@@ -31,7 +31,8 @@ Synopsis
 
 * On the managed node ``iocage_04``:
 
-  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role
+  vbotka.freebsd.iocage`_ to:
 
   * Display variables
   * Install the `iocage`_ package
@@ -45,9 +46,15 @@ Requirements
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the command arguments to limit the play to the managed node ``iocage_02``.
-* Remove the limits ``-l iocage_0*`` to run the play on all managed nodes.
-* By default, ``iocage`` installation is enabled: ``freebsd_iocage_install: true``.
+* Put ``-l iocage_02`` into the command arguments to limit the play to
+  the managed node ``iocage_02``.
+
+* Remove the limits ``-l iocage_0*`` to run the play on all managed
+  nodes.
+
+* By default, ``iocage`` installation is enabled:
+  ``freebsd_iocage_install: true``.
+
 * By default, ``debug`` is disabled: ``freebsd_iocage_debug: false``.
 
 .. seealso::
@@ -114,18 +121,6 @@ Playbook output - Install iocage
    :language: yaml+jinja
    :force:
 
-.. note:: This ``debug`` output shows the ``result`` of an already installed package.
+.. note::
 
-
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _iocage: https://www.freshports.org/sysutils/iocage
-
-.. _Patterns. Targeting hosts and groups.: https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html
-.. _Variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
-.. _How to build your inventory: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html
-.. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
-.. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
-.. _Setting the Python interpreter: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#setting-the-python-interpreter
-
-.. _Ansible playbooks: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html
-.. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
+   This ``debug`` output shows the ``result`` of an already installed package.

@@ -40,7 +40,7 @@
 Use case
 ^^^^^^^^
 
-Configure an iocage host.
+Configure an ``iocage`` host.
 
 Tree
 ^^^^
@@ -161,7 +161,8 @@ host_vars
 
 .. note::
 
-   Destroy the GPT tables on the disks you want to create the pool from. For example::
+   Destroy the GPT tables on the disks you want to create the pool
+   from. For example::
 
      [iocage_04]# gpart destroy -F ada2
      [iocage_04]# gpart destroy -F ada3
@@ -173,7 +174,8 @@ host_vars
      GEOM: ada3: the primary GPT table is corrupt or invalid.
      GEOM: ada3: using the secondary instead -- recovery strongly advised.
 
-   There is no reason to have GPT tables if whole disks are dedicated to a pool::
+   There is no reason to have GPT tables if whole disks are dedicated
+   to a pool::
 
      [iocage_04]# zpool status iocage
        pool: iocage
@@ -230,7 +232,7 @@ Configure /home/admin/.login_conf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-login.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-login.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -241,7 +243,7 @@ Install packages
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-packages.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-packages.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -254,7 +256,7 @@ Configure /boot/loader.conf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-loader.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-loader.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -271,7 +273,7 @@ Configure network
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-network.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-network.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -282,7 +284,7 @@ Configure pf
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-pf.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-pf.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -293,7 +295,7 @@ Configure ZFS
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-zfs.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-zfs.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -308,9 +310,10 @@ Activate iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
-                                         -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
-                                         -e freebsd_iocage_debug=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
+                            -e freebsd_iocage_debug=true \
+                            pb-iocage.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja
@@ -330,7 +333,7 @@ iocage sanity test
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -t freebsd_iocage_sanity
+   (env) > ansible-playbook -i iocage.ini -t freebsd_iocage_sanity pb-iocage.yml
 
 .. literalinclude:: out/out-09.txt
    :language: yaml+jinja
@@ -353,16 +356,3 @@ All playbooks output
 .. literalinclude:: out/out-10.txt
    :language: yaml+jinja
    :force:
-
-
-.. _vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _vbotka.freebsd.network: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/network/
-.. _vbotka.freebsd.pf: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/pf/
-.. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs/
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-
-.. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html
-
-.. _pf and bridge: https://forums.freebsd.org/threads/pf-and-bridge-4.77952/
-.. _man if_bridge: https://man.freebsd.org/cgi/man.cgi?query=if_bridge
-.. _Changing how I use IP address with FreeBSD's vnet: https://dan.langille.org/2023/08/14/changing-how-i-use-ip-address-with-freebsds-vnet-so-ipv6-works/

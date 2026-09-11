@@ -3,14 +3,15 @@ Aliases
 
 Quoting `Inventory aliases`_:
 
-  The `inventory_hostname`_ is the unique identifier for a host in Ansible. This
-  can be an IP address or a hostname, or simply an ``alias`` or short name for the
-  host.
+  The `inventory_hostname`_ is the unique identifier for a host in
+  Ansible. This can be an IP address or a hostname, or simply an
+  ``alias`` or short name for the host.
 
 .. note::
 
-   Assuming the host ``foo.example.com`` (IP address ``10.1.0.11``) resolves via
-   DNS or ``/etc/hosts``, all of the following inventory entries are valid:
+   Assuming the host ``foo.example.com`` (IP address ``10.1.0.11``)
+   resolves via DNS or ``/etc/hosts``, all of the following inventory
+   entries are valid:
 
    .. code-block:: ini
 
@@ -22,10 +23,14 @@ Quoting `Inventory aliases`_:
 .. seealso::
 
    * Ansible special variable `inventory_hostname`_
-   * Ansible test `ansible.utils.resolvable`_ – Test if an IP or name can be resolved.
+
+   * Ansible test `ansible.utils.resolvable`_ – Test if an IP or name
+     can be resolved.
+
    * `Connection methods and details`_
 
-Optionally, as root on the iocage host, stop and destroy all existing test jails:
+Optionally, as root on the iocage host, stop and destroy all existing
+test jails:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -73,7 +78,8 @@ Create three VNET jails with a DHCP interface from the template
    9d94cc9e successfully created!
    052b9557 successfully created!
 
-Because ``--short`` assigns random UUID prefixes as names, start the jails using ``ALL``:
+Because ``--short`` assigns random UUID prefixes as names, start the
+jails using ``ALL``:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -124,7 +130,8 @@ List the running jails:
    | 209 | 9d94cc9e | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.115 | -   | ansible_client | no       |
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Set ``notes`` on each jail. The ``alias`` tag is used by the plugin to assign `inventory aliases`_:
+Set ``notes`` on each jail. The ``alias`` tag is used by the plugin to
+assign `inventory aliases`_:
 
 .. code-block:: console
    :emphasize-lines: 1,4,7
@@ -140,12 +147,14 @@ Set ``notes`` on each jail. The ``alias`` tag is used by the plugin to assign `i
 
 .. note::
 
-   The inventory parameter ``inventory_hostname_tag`` expects space-delimited
-   key-value pairs in ``notes`` (``key1=val1 key2=val2 ...``).
+   The inventory parameter ``inventory_hostname_tag`` expects
+   space-delimited key-value pairs in ``notes`` (``key1=val1 key2=val2
+   ...``).
 
 Update the inventory configuration file ``hosts/02_iocage.yml``. Set
-``inventory_hostname_tag: alias`` so that each host is named by its alias.
-Enable ``get_properties: true`` so the plugin retrieves jail properties:
+``inventory_hostname_tag: alias`` so that each host is named by its
+alias.  Enable ``get_properties: true`` so the plugin retrieves jail
+properties:
 
 .. code-block:: yaml+jinja
    :emphasize-lines: 4,5
@@ -168,14 +177,16 @@ Enable ``get_properties: true`` so the plugin retrieves jail properties:
 
 .. note::
 
-   Construct the ``iocage_tags`` dictionary according to the format used in
-   ``notes``. Alternative approaches can also be used, such as regex extraction:
+   Construct the ``iocage_tags`` dictionary according to the format
+   used in ``notes``. Alternative approaches can also be used, such as
+   regex extraction:
 
    .. code-block:: yaml
 
       iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
 
-To verify the resolved tags and inventory groups, create the playbook ``pb-test-groups.yml``:
+To verify the resolved tags and inventory groups, create the playbook
+``pb-test-groups.yml``:
 
 .. code-block:: yaml+jinja
 
@@ -237,10 +248,3 @@ Run the playbook:
    srv_1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
    srv_2                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
    srv_3                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
-
-.. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _ansible.utils.resolvable: https://docs.ansible.com/ansible/latest/collections/ansible/utils/resolvable_test.html
-.. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
-.. _inventory_hostname: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-inventory_hostname

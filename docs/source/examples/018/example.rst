@@ -54,7 +54,8 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-clone-list.yml``, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-clone-list.yml``, use the `module
+  vbotka.freebsd.iocage`_ to:
 
   * Clone 3 jails from the basejail ``ansible_client``
   * Start all jails
@@ -62,7 +63,8 @@ Synopsis
 
 * On the iocage host ``iocage_02``:
 
-  In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-test.yml``, use the `inventory plugin
+  vbotka.freebsd.iocage`_ to:
 
   * Create inventory groups and compose variables
   * Display the hosts and composed variables in the group ``test``
@@ -127,7 +129,7 @@ Playbook output - Clone, start, and list
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-clone-list.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-iocage-clone-list.yml
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -156,8 +158,9 @@ Jails at iocage_04
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP (running -- address requires
-root)``. Also enable ``sudo_preserve_env: true`` if ``env`` is used.
+Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP
+(running -- address requires root)``. Also enable ``sudo_preserve_env:
+true`` if ``env`` is used.
 
 .. literalinclude:: iocage.yml
    :language: yaml+jinja
@@ -170,7 +173,8 @@ root)``. Also enable ``sudo_preserve_env: true`` if ``env`` is used.
        shell> grep iocage /usr/local/etc/sudoers
        admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
 
-   * The ``SETENV`` tag, to preserve the environment, is needed when ``env`` is used.
+   * The ``SETENV`` tag, to preserve the environment, is needed when
+     ``env`` is used.
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -193,7 +197,7 @@ Playbook output - Display iocage_* variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.yml
+   (env) > ansible-playbook -i iocage.yml pb-test.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja
@@ -225,8 +229,3 @@ Playbook output - Display iocage_* variables (stopped jails)
 .. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
-
-
-.. _iocage: https://www.freshports.org/sysutils/iocage/
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

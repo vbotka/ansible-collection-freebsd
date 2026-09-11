@@ -25,12 +25,16 @@ Extending :ref:`example_016`.
 Use case
 ^^^^^^^^
 
-The option `use_vars_plugins`_, responsible for reading ``host_vars`` and ``group_vars``
-directories, is not available in the `inventory plugin vbotka.freebsd.iocage`_ because the
-`constructed fragment`_ does not provide it.
+The option `use_vars_plugins`_, responsible for reading ``host_vars``
+and ``group_vars`` directories, is not available in the `inventory
+plugin vbotka.freebsd.iocage`_ because the `constructed fragment`_
+does not provide it.
 
-* Use the inventory plugin `ansible.builtin.constructed`_ to read ``group_vars``.
-* Use the variable ``region`` to create the groups ``region_EU`` and ``region_US``.
+* Use the inventory plugin `ansible.builtin.constructed`_ to read
+  ``group_vars``.
+
+* Use the variable ``region`` to create the groups ``region_EU`` and
+  ``region_US``.
 
 Tree
 ^^^^
@@ -55,14 +59,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails (managed nodes):
+* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails
+  (managed nodes):
 
   * ``test_111:113`` from host ``iocage_02``
   * ``test_131:133`` from host ``iocage_04``
 
   and creates inventory groups ``test_02`` and ``test_04``.
 
-* The inventory plugin `ansible.builtin.constructed`_ creates the inventory groups:
+* The inventory plugin `ansible.builtin.constructed`_ creates the
+  inventory groups:
 
   * ``test`` comprising hosts whose names start with ``'test'``
   * ``test_up`` comprising running hosts whose names start with ``'test'``
@@ -72,7 +78,8 @@ Synopsis
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in
+  alphabetical order.
 
 .. seealso::
 
@@ -143,8 +150,11 @@ group_vars
 
    In the inventory plugin `ansible.builtin.constructed`_:
 
-   * The option `use_vars_plugins`_ reads the **inventory** ``group_vars`` and ``host_vars``.
-   * The **playbook** ``group_vars`` and ``host_vars`` will be silently ignored.
+   * The option `use_vars_plugins`_ reads the **inventory**
+     ``group_vars`` and ``host_vars``.
+
+   * The **playbook** ``group_vars`` and ``host_vars`` will be
+     silently ignored.
 
    See `Variable precedence. Where should I put a variable?`_
 
@@ -159,7 +169,7 @@ Playbook output - List groups
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-all.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test-all.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -178,17 +188,8 @@ Limit the EU region to running hosts.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-EU.yml -i hosts -l test_up
+   (env) > ansible-playbook -i hosts -l test_up pb-test-EU.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _use_vars_plugins: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-use_vars_plugins
-.. _constructed fragment: https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/doc_fragments/constructed.py
-.. _Documentation fragments: https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_documenting.html#documentation-fragments
-.. _Variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
-.. _vars plugin ansible.builtin.host_group_vars: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/host_group_vars_vars.html

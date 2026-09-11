@@ -39,11 +39,12 @@ Use case
 ^^^^^^^^
 
 Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
-jails' configuration from the repositories `ansible-conf-syslogng-server`_ and
+:ref:`example_524`. Configure the repository `ansible-conf-init`_ to
+pull the jails' configuration from the repositories
+`ansible-conf-syslogng-server`_ and
 `ansible-conf-syslogng-client`_. Create jails from the template. Use
-``class=log-server`` and ``class=log-client`` to select the configuration. Run
-`ansible-pull`_ asynchronously.
+``class=log-server`` and ``class=log-client`` to select the
+configuration. Run `ansible-pull`_ asynchronously.
 
 Tree
 ^^^^
@@ -71,8 +72,8 @@ Synopsis
 * On a managed node:
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_, create jails
-    from the template ``ansible-init``.
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    create jails from the template ``ansible-init``.
 
   * Wait for ``ansible-pull`` to configure the jails and display the logs.
 
@@ -141,7 +142,8 @@ Playbook output - Create project jails from iocage templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+   (env) > ansible-playbook -i iocage.ini -i hosts \
+                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -339,22 +341,3 @@ Troubleshooting
    2026-08-31 08:11:22,789 p=40141 u=root n=ansible INFO| ok: [localhost.my.domain]
    2026-08-31 08:11:22,792 p=40141 u=root n=ansible INFO| PLAY RECAP *********************************************************************
    2026-08-31 08:11:22,792 p=40141 u=root n=ansible INFO| localhost.my.domain        : ok=10   changed=5    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0
-
-
-.. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/
-.. _man rc.conf: https://man.freebsd.org/cgi/man.cgi?rc.conf
-
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
-
-.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
-.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-
-.. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
-.. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
-.. _base-path: https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath
-.. _iocage: https://iocage.readthedocs.io/en/latest/
-
-.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init
-.. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
-.. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client

@@ -5,7 +5,7 @@ vbotka.freebsd
 
 version |release|
 
-| Ansible Galaxy: `vbotka.freebsd`_
+| Ansible Galaxy: ``vbotka.freebsd``
 | GitHub: `ansible-collection-freebsd`_
 
 Preamble
@@ -38,10 +38,3 @@ License
    copyright
    legalnotice
    Index <genindex>
-
-
-.. _collection: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
-.. _vbotka.freebsd: https://galaxy.ansible.com/vbotka/freebsd/
-.. _share your feedback and report issues: https://github.com/vbotka/ansible-collection-freebsd/issues
-.. _Contributions are welcome: https://github.com/firstcontributions/first-contributions
-.. _ansible-collection-freebsd: https://github.com/vbotka/ansible-collection-freebsd

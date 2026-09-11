@@ -44,10 +44,11 @@ Use case
 ^^^^^^^^
 
 Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
-jails' configuration from the repository `ansible-conf-roles`_. Create jails
-from the template. Put the configuration files for the classes ``log-server`` and
-``log-client`` into the jails' directories ``/root/ansible-vars``. Run
+:ref:`example_524`. Configure the repository `ansible-conf-init`_ to
+pull the jails' configuration from the repository
+`ansible-conf-roles`_. Create jails from the template. Put the
+configuration files for the classes ``log-server`` and ``log-client``
+into the jails' directories ``/root/ansible-vars``. Run
 `ansible-pull`_ asynchronously.
 
 Tree
@@ -86,12 +87,14 @@ Synopsis
 * On a managed node:
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_, create jails
-    from the template ``ansible-init``.
+    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    create jails from the template ``ansible-init``.
 
-  * Configure the jails to use the ``pkg-repo`` created in :ref:`example_527`.
+  * Configure the jails to use the ``pkg-repo`` created in
+    :ref:`example_527`.
 
-  * Wait for ``ansible-pull`` to configure the jails and display the logs.
+  * Wait for ``ansible-pull`` to configure the jails and display the
+    logs.
 
 Requirements
 ^^^^^^^^^^^^
@@ -163,11 +166,12 @@ files
 
 .. note::
 
-   The playbook ``pb-init.yml`` (from the `ansible-conf-init`_ repository) reads
-   this file from ``/root/ansible-vars`` using the
-   `ansible.builtin.include_vars`_ module (precedence 18.). The ``ai_db_class``
-   dictionary overrides the values defined in the repository's
-   ``host_vars``. See `Understanding variable precedence`_.
+   The playbook ``pb-init.yml`` (from the `ansible-conf-init`_
+   repository) reads this file from ``/root/ansible-vars`` using the
+   `ansible.builtin.include_vars`_ module (precedence 18.). The
+   ``ai_db_class`` dictionary overrides the values defined in the
+   repository's ``host_vars``. See `Understanding variable
+   precedence`_.
 
 .. literalinclude:: files/ai-conf-roles.yml
    :language: yaml+jinja
@@ -175,9 +179,9 @@ files
 
 .. note::
 
-   The playbook ``pb-roles.yml`` (from the `ansible-conf-roles`_ repository)
-   reads this file from ``/root/ansible-vars``. The repository does not provide
-   a default ``ai_conf_roles`` dictionary.
+   The playbook ``pb-roles.yml`` (from the `ansible-conf-roles`_
+   repository) reads this file from ``/root/ansible-vars``. The
+   repository does not provide a default ``ai_conf_roles`` dictionary.
 
 .. literalinclude:: files/pkg-repo.yml
    :language: yaml+jinja
@@ -185,13 +189,14 @@ files
 
 .. note::
 
-   To install packages, the jails use the ``pkg-repo`` created in :ref:`example_527`.
+   To install packages, the jails use the ``pkg-repo`` created in
+   :ref:`example_527`.
 
 .. important::
 
-   This configuration is minimal and functional for an isolated lab or trusted
-   internal LAN, but it poses several security risks in production or shared
-   network environments.
+   This configuration is minimal and functional for an isolated lab or
+   trusted internal LAN, but it poses several security risks in
+   production or shared network environments.
 
 .. literalinclude:: files/log-client/syslog-ng-client-pkg.yml
    :language: yaml+jinja
@@ -214,7 +219,8 @@ Playbook output - Create project jails from iocage templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+   (env) > ansible-playbook -i iocage.ini -i hosts \
+                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -276,27 +282,9 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use the ``lnav`` utility on the log server to display all log files in the
-   ``/var/log/remote`` directory. Run the following commands on the iocage host::
+   Use the ``lnav`` utility on the log server to display all log files
+   in the ``/var/log/remote`` directory. Run the following commands on
+   the iocage host::
 
      shell> iocage console log-server-01
      root@log-server-01:~ # lnav -r /var/log/remote/
-
-
-.. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/
-.. _man rc.conf: https://man.freebsd.org/cgi/man.cgi?rc.conf
-
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
-
-.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
-.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-
-.. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
-.. _iocage: https://iocage.readthedocs.io/en/latest/
-
-.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init
-.. _ansible-conf-roles: https://github.com/vbotka/ansible-conf-roles
-
-.. _Understanding variable precedence: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence
-.. _ansible.builtin.include_vars: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/include_vars_module.html

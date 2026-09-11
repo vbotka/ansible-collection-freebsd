@@ -27,8 +27,9 @@
 Use case
 ^^^^^^^^
 
-Configure and run a log server. Configure log clients and test them. Use `syslog-ng`_. Use the jails
-created in example :ref:`example_207`. The ``project`` keys are jail aliases.
+Configure and run a log server. Configure log clients and test
+them. Use `syslog-ng`_. Use the jails created in example
+:ref:`example_207`. The ``project`` keys are jail aliases.
 
 .. code-block:: yaml
 
@@ -53,21 +54,21 @@ created in example :ref:`example_207`. The ``project`` keys are jail aliases.
 
   .. code-block:: console
 
-     (env) > ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml \
-                              -i iocage.ini \
-                              --flush-cache
+     (env) > ansible-playbook -i iocage.ini \
+                              --flush-cache \
+                              vbotka.freebsd.pb_iocage_destroy_all_jails.yml
 
 * Create ``ansible-client`` templates. Run the play in :ref:`example_202`:
 
   .. code-block:: console
 
-     (env) > ansible-playbook pb-iocage-template.yml -i iocage.ini
+     (env) > ansible-playbook -i iocage.ini pb-iocage-template.yml
 
 * Create the project. Run the play in :ref:`example_207`:
 
   .. code-block:: console
 
-     (env) > ansible-playbook pb-iocage-project-create.yml -i iocage.ini -i hosts
+     (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-project-create.yml
 
 Tree
 ^^^^
@@ -128,15 +129,15 @@ Notes
 
 * Quoting `syslog-ng - FreeBSD Wiki`_:
 
-     One of the most typical use of syslog-ng is central log aggregation. ... It collects log messages
-     on TCP port 514 and saves them to directories and files based on sender host name and current
-     date.
+     One of the most typical use of syslog-ng is central log
+     aggregation. ... It collects log messages on TCP port 514 and
+     saves them to directories and files based on sender host name and
+     current date.
 
 .. note::
 
-   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -189,7 +190,7 @@ Flush the cache if you created the ``project`` and have not refreshed it yet.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-all-groups.yml -i hosts --flush-cache
+   (env) > ansible-playbook -i hosts --flush-cache pb-all-groups.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -223,7 +224,7 @@ Install the package if you are running this play for the first time.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logserv.yml -i hosts -e install=true
+   (env) > ansible-playbook -i hosts -e install=true pb-logserv.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -267,7 +268,7 @@ Install the package if you are running this play for the first time.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-logclient.yml -i hosts -i iocage.ini -e install=true -e debug=true
+   (env) > ansible-playbook -i hosts -i iocage.ini -e install=true -e debug=true pb-logclient.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -284,7 +285,7 @@ Playbook output - Test Log Client
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test-logclient.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test-logclient.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -304,27 +305,3 @@ Example directory listing on the log server:
    drwxr-xr-x  3 root  wheel  17 Aug 12 01:30 ..
 
 .. note:: This example of the directory at the Log Server is not created dynamically. (TBD)
-
-
-.. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-.. _syslog-ng Server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-
-.. _syslog-ng - documentation: https://syslog-ng.github.io
-.. _syslog-ng client hosts: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-
-.. _syslog-ng: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-.. _syslog-ng - FreeBSD Wiki: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-.. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng
-
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall/
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-.. _Ansible role FreeBSD postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
-
-.. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
-.. _Configuring System Logging - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/config/#configtuning-syslog

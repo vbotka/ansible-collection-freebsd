@@ -11,25 +11,27 @@ iocage tags
    :local:
    :depth: 2
 
-An iocage tag is a key-value pair applied to a jail to store jail metadata.
-Each tag is a label consisting of a key and an optional value. When processed by
-the inventory plugin, these tags are stored in the ``iocage_tags`` dictionary.
+An iocage tag is a key-value pair applied to a jail to store jail
+metadata.  Each tag is a label consisting of a key and an optional
+value. When processed by the inventory plugin, these tags are stored
+in the ``iocage_tags`` dictionary.
 
-The format for iocage tags used in this guide is ``tag1=val1 tag2=val2 ...``.
-See the regular expression pattern in the `Dictionary iocage_tags`_ section
-below.
+The format for iocage tags used in this guide is ``tag1=val1 tag2=val2
+...``.  See the regular expression pattern in the `Dictionary
+iocage_tags`_ section below.
 
 .. note::
 
-   These tags are completely separate from `Ansible Tags`_. In this document, a
-   bare reference to *tag* refers to an Ansible tag, whereas *iocage tag(s)*
-   always references attributes stored in the ``iocage_tags`` dictionary.
+   These tags are completely separate from `Ansible Tags`_. In this
+   document, a bare reference to *tag* refers to an Ansible tag,
+   whereas *iocage tag(s)* always references attributes stored in the
+   ``iocage_tags`` dictionary.
 
 Property notes
 ^^^^^^^^^^^^^^
 
-The ``iocage`` property ``notes`` is used to store iocage tags. As described in
-`man iocage`_:
+The ``iocage`` property ``notes`` is used to store ``iocage tags``. As
+described in `man iocage`_:
 
 .. code-block:: text
 
@@ -62,8 +64,8 @@ or within the ``swarms`` dictionary:
        properties:
          notes: "vmm={{ inventory_hostname }}"
 
-When the playbook :ref:`ug_pb-iocage-ansible-client` provisions jails on host
-``iocage_02``:
+When the playbook :ref:`ug_pb-iocage-ansible-client` provisions jails
+on host ``iocage_02``:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -95,8 +97,9 @@ it populates the ``notes`` property:
 
 .. note::
 
-   The tasks in ``pb-iocage-ansible-clients/swarm.yml`` create the iocage tag
-   ``swarm`` automatically using keys from the ``swarms`` dictionary.
+   The tasks in ``pb-iocage-ansible-clients/swarm.yml`` create the
+   iocage tag ``swarm`` automatically using keys from the ``swarms``
+   dictionary.
 
 .. seealso::
 
@@ -106,8 +109,8 @@ Dictionary iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^
 
 In the `inventory plugin vbotka.freebsd.iocage`_, enable the parameter
-``get_properties``, compose the dictionary ``iocage_tags``, and use it to
-generate ``keyed_groups``:
+``get_properties``, compose the dictionary ``iocage_tags``, and use it
+to generate ``keyed_groups``:
 
 .. code-block:: yaml
 
@@ -148,8 +151,3 @@ which Ansible then uses to construct inventory groups:
 .. hint::
 
    Search for ``iocage_tags`` in the Index to find related examples.
-
-
-.. _Ansible Tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html
-.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

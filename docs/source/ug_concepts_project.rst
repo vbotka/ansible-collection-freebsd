@@ -19,8 +19,8 @@ Project
 project dictionary
 ^^^^^^^^^^^^^^^^^^
 
-The ``project`` variable is a dictionary of jails. The ``vmm`` attribute defines
-the host on which each jail is running:
+The ``project`` variable is a dictionary of jails. The ``vmm``
+attribute defines the host on which each jail is running:
 
 .. code-block:: yaml+jinja
 
@@ -44,7 +44,8 @@ the host on which each jail is running:
 vmm dictionary
 ^^^^^^^^^^^^^^
 
-The ``vmm`` dictionary groups jails under the hosts running them. Defining:
+The ``vmm`` dictionary groups jails under the hosts running
+them. Defining:
 
 .. code-block:: yaml+jinja
 

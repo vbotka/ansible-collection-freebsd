@@ -43,7 +43,8 @@ Requirements
 Notes
 ^^^^^
 
-* The jails are not dynamically updated in the inventory file ``jailexec.ini``.
+* The jails are not dynamically updated in the inventory file
+  ``jailexec.ini``.
 
 ansible.cfg
 ^^^^^^^^^^^

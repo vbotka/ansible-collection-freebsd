@@ -16,8 +16,8 @@ Extending :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Create custom facts to provide a dictionary of iocage dataset lists. Use the `filter
-vbotka.freebsd.iocage`_ to parse them.
+Create custom facts to provide a dictionary of iocage dataset
+lists. Use the `filter vbotka.freebsd.iocage`_ to parse them.
 
 Tree
 ^^^^
@@ -39,7 +39,8 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role
+  vbotka.freebsd.iocage`_ to:
 
   * Create custom fact scripts
 
@@ -107,9 +108,10 @@ Playbook output - Display versions
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
-                                          -t freebsd_iocage_debug \
-                                          -e freebsd_iocage_debug=true \
+   (env) > ansible-playbook -i iocage.ini \
+                            -t freebsd_iocage_debug \
+                            -e freebsd_iocage_debug=true \
+                            pb-iocage.yml \
            | grep version
 
 .. literalinclude:: out/out-03.txt
@@ -120,9 +122,10 @@ Playbook output - Create custom fact scripts
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini \
-                                          -t freebsd_iocage_facts \
-                                          -e freebsd_iocage_facts=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t freebsd_iocage_facts \
+                            -e freebsd_iocage_facts=true \
+                            pb-iocage.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -159,13 +162,8 @@ Playbook output - Display custom facts
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
-
-
-.. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _Adding custom facts: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts

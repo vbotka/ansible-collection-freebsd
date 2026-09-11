@@ -21,9 +21,9 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.certificate`_ to create an SSL certificate. Use the
-role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server - SSL/TLS Strong
-Encryption`_.
+Use the role `vbotka.freebsd.certificate`_ to create an SSL
+certificate. Use the role `vbotka.freebsd.apache`_ to configure
+`Apache HTTP Server - SSL/TLS Strong Encryption`_.
 
 Tree
 ^^^^
@@ -51,13 +51,14 @@ Synopsis
 
 On a managed node:
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and
-  starts a jail.
+* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates
+  and starts a jail.
 
-* The playbook ``pb-certificate.yml`` creates an SSL certificate in the jail.
+* The playbook ``pb-certificate.yml`` creates an SSL certificate in
+  the jail.
 
-* The playbook ``pb-apache.yml`` uses the certificate, then configures and starts
-  `Apache HTTP Server`_ in the jail.
+* The playbook ``pb-apache.yml`` uses the certificate, then configures
+  and starts `Apache HTTP Server`_ in the jail.
 
 Requirements
 ^^^^^^^^^^^^
@@ -262,14 +263,3 @@ Results
   the content should be::
 
     It works!
-
-
-.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
-.. _vbotka.freebsd.certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-
-.. _FreeBSD Handbook 32.9. Apache HTTP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache
-.. _FreeBSD Handbook 32.9.3.1. SSL support: https://docs.freebsd.org/en/books/handbook/network-servers/#_ssl_support
-.. _Apache HTTP Server: https://httpd.apache.org/
-.. _Apache HTTP Server - SSL/TLS Strong Encryption: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
-.. _man 8 iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

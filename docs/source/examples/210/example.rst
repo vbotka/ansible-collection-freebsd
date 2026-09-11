@@ -12,7 +12,8 @@
 Use case
 ^^^^^^^^
 
-Test empty iocage notes. Create ``iocage_tags``. The result should be an empty dictionary.
+Test empty iocage notes. Create ``iocage_tags``. The result should be
+an empty dictionary.
 
 Tree
 ^^^^
@@ -33,8 +34,11 @@ Synopsis
 
 * On the managed node ``iocage_04``:
 
-  * In the playbook ``pb-iocage.yml``, run the command ``iocage get notes test_4`` and display the result.
-  * In the playbook ``pb-test.yml``, use the `inventory plugin vbotka.freebsd.iocage`_ to create and display ``iocage_tags``.
+  * In the playbook ``pb-iocage.yml``, run the command ``iocage get
+    notes test_4`` and display the result.
+
+  * In the playbook ``pb-test.yml``, use the `inventory plugin
+    vbotka.freebsd.iocage`_ to create and display ``iocage_tags``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -113,7 +117,3 @@ Playbook output - Display empty iocage_tags
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
-.. _Binary iocage: https://github.com/freebsd/iocage/

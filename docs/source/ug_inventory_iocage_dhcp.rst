@@ -52,9 +52,9 @@ List the running jails:
    | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-As admin on the control node, query the jail list without root privileges. Note
-that the ``IP4`` column indicates that reading DHCP addresses requires root
-access:
+As admin on the control node, query the jail list without root
+privileges. Note that the ``IP4`` column indicates that reading DHCP
+addresses requires root access:
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -86,8 +86,8 @@ Run the command with ``sudo`` to display the IP addresses:
    | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
-Update the inventory configuration file ``hosts/02_iocage.yml`` to enable the
-``sudo`` parameter:
+Update the inventory configuration file ``hosts/02_iocage.yml`` to
+enable the ``sudo`` parameter:
 
 .. code-block:: yaml
    :emphasize-lines: 4
@@ -158,8 +158,8 @@ Display the inventory:
              iocage_template: ansible_client
              iocage_type: jail
 
-If the ``env`` parameter is defined and ``sudo`` is enabled, also enable
-``sudo_preserve_env``:
+If the ``env`` parameter is defined and ``sudo`` is enabled, also
+enable ``sudo_preserve_env``:
 
 .. code-block:: yaml
    :emphasize-lines: 6-7
@@ -172,7 +172,8 @@ If the ``env`` parameter is defined and ``sudo`` is enabled, also enable
    sudo: true
    sudo_preserve_env: true
 
-In this case, verify that the user's sudoers entry includes the ``SETENV`` tag:
+In this case, verify that the user's sudoers entry includes the
+``SETENV`` tag:
 
 .. code-block:: console
    :emphasize-lines: 1

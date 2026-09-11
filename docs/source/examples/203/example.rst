@@ -45,17 +45,18 @@ Use case
 
 **Automatically generated UUID**
 
-Automatically generate UUID names for jails. At each iocage host, create three jails from the
-template ``ansible_client``::
+Automatically generate UUID names for jails. At each iocage host,
+create three jails from the template ``ansible_client``::
 
   swarms:
     sw_01:
       count: 3
       template: ansible_client
 
-The module ``vbotka.freebsd.iocage`` does not work with multiple names. Use
-``ansible.builtin.command`` instead. If the UUID is generated automatically, such a task is not
-idempotent anyway. Example commands::
+The module ``vbotka.freebsd.iocage`` does not work with multiple
+names. Use ``ansible.builtin.command`` instead. If the UUID is
+generated automatically, such a task is not idempotent anyway. Example
+commands::
 
   iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
   iocage start cd31c2a2 d254f889 158ef36d
@@ -191,11 +192,11 @@ Playbook output - Create and start swarms
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
+   (env) > ansible-playbook -i iocage.ini \
                             -t swarm \
                             -e swarm=true \
-                            -e debug=true
+                            -e debug=true \
+                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -240,7 +241,8 @@ Inventory hosts
 
 .. note::
 
-   The option ``get_properties: True`` is needed to get the dictionary ``iocage_properties``.
+   The option ``get_properties: True`` is needed to get the dictionary
+   ``iocage_properties``.
 
 Display inventory
 ^^^^^^^^^^^^^^^^^
@@ -273,13 +275,7 @@ Playbook output - Display iocage_tags
 
    The command below stops and destroys the jails in ``swarms``::
 
-     ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                      -i iocage.ini \
+     ansible-playbook -i iocage.ini \
                       -t swarm_destroy \
-                      -e swarm_destroy=true
-
-
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml/
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-.. _binary iocage: https://github.com/freebsd/iocage/
+                      -e swarm_destroy=true \
+                       vbotka.freebsd.pb_iocage_ansible_clients.yml

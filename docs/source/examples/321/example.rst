@@ -55,7 +55,7 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.packages`_ is the role **packages** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.packages`_ is the role **packages** in the collection ``vbotka.freebsd``.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
 
 .. seealso::

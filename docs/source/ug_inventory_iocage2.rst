@@ -1,20 +1,23 @@
 .. _ug_inventory_iocage2:
+
 .. index:: single: inventory vbotka.freebsd.iocage2; Plugins
 
 Inventory vbotka.freebsd.iocage2
 --------------------------------
 
-This chapter highlights the core operational, performance, and architectural
-differences between the `inventory plugin vbotka.freebsd.iocage`_ and the
-`inventory plugin vbotka.freebsd.iocage2`_.
+This chapter highlights the core operational, performance, and
+architectural differences between the `inventory plugin
+vbotka.freebsd.iocage`_ and the `inventory plugin
+vbotka.freebsd.iocage2`_.
 
 Overview
 ^^^^^^^^
 
-While ``vbotka.freebsd.iocage`` relies on executing the high-level `iocage`_
-command-line utility via shell subprocesses, ``vbotka.freebsd.iocage2``
-communicates directly with the underlying FreeBSD system using native Python
-bindings (`filesystems/py-libzfs`_ and `sysutils/py-iocage`_).
+While ``vbotka.freebsd.iocage`` relies on executing the high-level
+`iocage`_ command-line utility via shell subprocesses,
+``vbotka.freebsd.iocage2`` communicates directly with the underlying
+FreeBSD system using native Python bindings (`filesystems/py-libzfs`_
+and `sysutils/py-iocage`_).
 
 Comparison Matrix
 ^^^^^^^^^^^^^^^^^
@@ -38,8 +41,8 @@ Direct libzfs Integration
 """""""""""""""""""""""""
 
 `vbotka.freebsd.iocage2` queries ZFS pool structures directly via
-``libzfs.ZFS()``.  It traverses ``<pool>/iocage/jails`` child datasets in
-memory, eliminating shell execution overhead and preventing stdout
+``libzfs.ZFS()``.  It traverses ``<pool>/iocage/jails`` child datasets
+in memory, eliminating shell execution overhead and preventing stdout
 string-parsing errors over SSH.
 
 Template Discovery
@@ -59,9 +62,11 @@ When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
 ``vbotka.freebsd.iocage2`` automatically inspects ``hooks_results``
 (e.g. ``/var/db/dhclient-hook.address.epair0b``).
 
-* Extracts the interface name directly from the hook filename (``epair0b``).
-* Populates ``iocage_ip4`` and ``iocage_ip4_dict`` dynamically so ``compose:
-  ansible_host: iocage_ip4`` works seamlessly.
+* Extracts the interface name directly from the hook filename
+  (``epair0b``).
+
+* Populates ``iocage_ip4`` and ``iocage_ip4_dict`` dynamically so
+  ``compose: ansible_host: iocage_ip4`` works seamlessly.
 
 .. note::
 
@@ -76,10 +81,3 @@ When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
    * `inventory plugin vbotka.freebsd.iocage2`_
    * `filesystems/py-libzfs`_
    * `sysutils/py-iocage`_
-
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2
-.. _iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
-.. _filesystems/py-libzfs: https://www.freshports.org/filesystems/py-libzfs/
-.. _sysutils/py-iocage: https://www.freshports.org/sysutils/py-iocage

@@ -14,8 +14,9 @@
 Use case
 ^^^^^^^^
 
-Create a dictionary of variables from nested directories in ``al_vars``. Use the task file
-`al_include_dir_vars.yml`_ from the role `vbotka.freebsd.lib`_:
+Create a dictionary of variables from nested directories in
+``al_vars``. Use the task file `al_include_dir_vars.yml`_ from the
+role `vbotka.freebsd.lib`_:
 
 .. code-block:: yaml
 
@@ -50,7 +51,9 @@ Synopsis
 
 * On the managed node:
 
-  * Create a dictionary of variables from nested directories in the controller's directory ``al_vars``.
+  * Create a dictionary of variables from nested directories in the
+    controller's directory ``al_vars``.
+
   * Display the created dictionary.
 
 Requirements
@@ -65,9 +68,8 @@ TBD
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.lib`_ is the role **lib** in the collection ``vbotka.freebsd``.
    | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -137,13 +139,3 @@ Playbook output - Display variables
    :language: yaml+jinja
    :emphasize-lines: 26-38
    :force:
-
-
-.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _al_include_dir_vars.yml: https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_dir_vars.yml
-
-.. _Special variable playbook_dir: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-playbook_dir

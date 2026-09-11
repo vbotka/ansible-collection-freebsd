@@ -16,7 +16,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.config_light`_ to install and configure `lighttpd`_.
+Use the role `vbotka.freebsd.config_light`_ to install and configure
+`lighttpd`_.
 
 Tree
 ^^^^
@@ -71,13 +72,15 @@ Requirements
 Notes
 ^^^^^
 
-* Jail names do not work in the `name`_ parameter of the module `community.general.pkgng`_ if the
-  jail was created by ``iocage``. Use the JID instead::
+* Jail names do not work in the `name`_ parameter of the module
+  `community.general.pkgng`_ if the jail was created by
+  ``iocage``. Use the JID instead::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The play ``pb.yml`` runs inside the jails. The inventory ``iocage.ini`` is needed when a task is
-  delegated to an iocage host::
+* The play ``pb.yml`` runs inside the jails. The inventory
+  ``iocage.ini`` is needed when a task is delegated to an iocage
+  host::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
 
@@ -92,8 +95,9 @@ Notes
       name:
         - www/lighttpd
 
-* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates the repositories. Afterwards, use the
-  `cached`_ local package database instead of fetching an updated one::
+* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates
+  the repositories. Afterwards, use the `cached`_ local package
+  database instead of fetching an updated one::
 
     freebsd_pkgng_cached: true
 
@@ -163,10 +167,9 @@ Create and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
-                            -t swarm \
-                            -e swarm=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm -e swarm=true \
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-11.txt
    :language: bash
@@ -207,7 +210,7 @@ Update repos
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_update_repos.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_update_repos.yml
 
 .. literalinclude:: out/out-12.txt
    :language: yaml+jinja
@@ -257,7 +260,9 @@ Assemble data and create handlers.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i hosts -t cl_setup -e cl_setup=true
+   (env) > ansible-playbook -i hosts \
+                            -t cl_setup -e cl_setup=true \
+                            pb.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -266,8 +271,8 @@ Assemble data and create handlers.
 Playbook output - Install and configure lighttpd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the tasks "Manage FreeBSD packages" from the
-jails to their iocage hosts.
+The inventory ``iocage.ini`` is needed to delegate the tasks "Manage
+FreeBSD packages" from the jails to their iocage hosts.
 
 .. code-block:: console
 
@@ -280,18 +285,20 @@ jails to their iocage hosts.
 Results
 ^^^^^^^
 
-Open the page in a browser, for example, ``http://10.1.0.111/``. The content should be::
+Open the page in a browser, for example, ``http://10.1.0.111/``. The
+content should be::
 
   Lighttpd works!
 
 .. note::
 
-   The role and configuration data in the examples are idempotent. Once the application is
-   installed and configured, ``ansible-playbook`` should not report any changes. To speed up the playbook,
-   disable setup, sanity, debug, and install. This way, the role will audit the required
-   infrastructure::
+   The role and configuration data in the examples are
+   idempotent. Once the application is installed and configured,
+   ``ansible-playbook`` should not report any changes. To speed up the
+   playbook, disable setup, sanity, debug, and install. This way, the
+   role will audit the required infrastructure::
 
-     (env) > ansible-playbook pb.yml -i hosts
+     (env) > ansible-playbook -i hosts pb.yml
 
    Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_::
 
@@ -307,23 +314,3 @@ Open the page in a browser, for example, ``http://10.1.0.111/``. The content sho
      0ed0d0ca: ok=32   changed=0    unreachable=0    failed=0    skipped=91   rescued=0    ignored=0
      59a3f932: ok=32   changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
      test_111: ok=32   changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
-
-
-.. _lighttpd: https://www.lighttpd.net/
-.. _Ansible role Config Light: https://ansible-config-light.readthedocs.io/en/latest/index.html
-
-.. _vbotka.freebsd.config_light: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/
-.. _vbotka.config_light: https://galaxy.ansible.com/ui/standalone/roles/vbotka/config_light/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-.. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml
-
-.. _community.general.pkgng: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
-.. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
-.. _use_globs: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs
-.. _display_ok_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
-.. _display_skipped_hosts: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts
-.. _pkg-origin: https://man.freebsd.org/cgi/man.cgi?query=pkg-install

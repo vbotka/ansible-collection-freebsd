@@ -22,8 +22,8 @@ Use case
 ^^^^^^^^
 
 In the `inventory plugin vbotka.freebsd.iocage2`_, use the option
-``inventory_hostname_tag`` to specify which tag to create `Inventory aliases`_
-from.
+``inventory_hostname_tag`` to specify which tag to create `Inventory
+aliases`_ from.
 
 Tree
 ^^^^
@@ -50,9 +50,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the inventory aliases from the tag ``alias``.
-* In the inventory plugin `ansible.builtin.constructed`_, create the inventory groups.
+* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the
+  inventory aliases from the tag ``alias``.
+
+* In the inventory plugin `ansible.builtin.constructed`_, create the
+  inventory groups.
+
 * Display the jails and groups.
+
 * Test the connection.
 
 Requirements
@@ -66,8 +71,8 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical
-  order.
+* The inventory files in the directory ``hosts`` are evaluated in
+  alphabetical order.
 
 .. seealso::
 
@@ -183,9 +188,3 @@ Playbook output - Test connection and get hostname
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
-.. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
-.. _Set Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property

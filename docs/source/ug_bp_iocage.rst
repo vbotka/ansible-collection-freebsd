@@ -16,10 +16,5 @@ iocage
 
 .. hint::
 
-   In the ``Index`` search ``clone jails``, ``base jails``, and ``thick jails``
-   to see what examples are available.
-
-
-.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
-.. _iocage - A FreeBSD Jail Manager: https://freebsd.github.io/iocage/
-.. _iocage jail type - base jail vs clone. Which to choose?: https://www.truenas.com/community/threads/iocage-jail-type-base-jail-vs-clone-which-to-choose.82639/
+   In the ``Index`` search ``clone jails``, ``base jails``, and
+   ``thick jails`` to see what examples are available.

@@ -1,8 +1,8 @@
 Basics
 ^^^^^^
 
-As root on the iocage host, create three `VNET jails`_ with a DHCP interface
-from the template ``ansible_client``:
+As root on the iocage host, create three `VNET jails`_ with a DHCP
+interface from the template ``ansible_client``:
 
 .. code-block:: console
    :emphasize-lines: 1,3,5
@@ -126,7 +126,8 @@ Alternatively, create `Shared IP jails`_:
 
 .. hint::
 
-   If ``iocage`` requires specific environment variables, define them using the `env`_ parameter:
+   If ``iocage`` requires specific environment variables, define them
+   using the `env`_ parameter:
 
    .. code-block:: yaml
 
@@ -135,11 +136,3 @@ Alternatively, create `Shared IP jails`_:
       user: admin
       env:
         CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
-
-
-.. _Configuring a VNET Jail: https://freebsd.github.io/iocage/networking.html#configuring-a-vnet-jail
-.. _VNET jails: https://freebsd.github.io/iocage/networking.html#configuring-a-vnet-jail
-.. _Configuring a Shared IP Jail: https://freebsd.github.io/iocage/networking.html#configuring-a-shared-ip-jail
-.. _Shared IP jails: https://freebsd.github.io/iocage/networking.html#configuring-a-shared-ip-jail
-
-.. _env: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage#parameters

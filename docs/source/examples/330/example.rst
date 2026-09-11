@@ -20,8 +20,9 @@
 Use case
 ^^^^^^^^
 
-Fetch releases, create basejails, clone from the basejails, and start the jails. Create and display
-the inventory. Use the `role vbotka.freebsd.iocage`_ instead of the :ref:`ug_plugins`.
+Fetch releases, create basejails, clone from the basejails, and start the
+jails. Create and display the inventory. Use the `role vbotka.freebsd.iocage`_
+instead of the :ref:`ug_plugins`.
 
 Tree
 ^^^^
@@ -46,13 +47,15 @@ Synopsis
 
 * On two managed nodes:
 
-  In the playbook ``pb-iocage-fetch-base-clone.yml``, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-fetch-base-clone.yml``, use the `role
+  vbotka.freebsd.iocage`_ to:
 
   * Fetch the release
   * Create a basejail
   * Clone three jails from the basejail
 
-  In the playbook ``pb-iocage-list.yml``, use the `role vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-list.yml``, use the `role vbotka.freebsd.iocage`_
+  to:
 
   * Create lists of bases and jails
   * Optionally, display the lists
@@ -118,9 +121,9 @@ Playbook output - Display variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage.ini \
-                                                           -t debug \
-                                                           -e debug=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -t debug -e debug=true \
+                            pb-iocage-fetch-base-clone.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -131,8 +134,9 @@ Playbook output - Runner
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-fetch-base-clone.yml -i iocage.ini \
-                                                           -t runner
+   (env) > ansible-playbook -i iocage.ini \
+                            -t runner \
+                            pb-iocage-fetch-base-clone.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -177,7 +181,9 @@ Playbook output - Display iocage_jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-list.yml -i iocage.ini -e debug=true
+   (env) > ansible-playbook -i iocage.ini \
+                            -e debug=true \
+                            pb-iocage-list.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -195,15 +201,8 @@ Playbook output - Create and use group
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
-
-
-.. _role vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
-.. _Fetch a Release: https://freebsd.github.io/iocage/basic-use.html#fetch-a-release
-.. _Create a Jail: https://freebsd.github.io/iocage/basic-use.html#create-a-jail
-.. _Start, Stop, or Restart a Jail: https://freebsd.github.io/iocage/basic-use.html#start-stop-or-restart-a-jail
-.. _Listing Jails: https://freebsd.github.io/iocage/basic-use.html#listing-jails

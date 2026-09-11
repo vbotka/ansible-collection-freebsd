@@ -37,7 +37,7 @@
 Use case
 ^^^^^^^^
 
-Create iocage templates for Ansible clients. Clone jails.
+Create `iocage`_ templates for Ansible clients. Clone jails.
 
 Tree
 ^^^^
@@ -70,7 +70,8 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the modules:
+  In the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the
+  modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
   * ``vbotka.freebsd.iocage`` exec tasks to create a user and set ``.ssh`` ownership.
@@ -78,8 +79,8 @@ Synopsis
   * ``community.general.sysrc`` to configure ``/etc/rc.conf``.
   * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use the `module
-  vbotka.freebsd.iocage`_ to:
+  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use
+  the `module vbotka.freebsd.iocage`_ to:
 
   * Create jails from the iocage templates
   * Start all jails
@@ -106,8 +107,9 @@ Requirements
 Notes
 ^^^^^
 
-* The playbook `vbotka.freebsd.pb_iocage_template.yml`_ expects to find the file ``pkgs.json`` in
-  the directory ``files``. See the tasks ``playbooks/pb_iocage_template_pkglist.yml`` and
+* The playbook `vbotka.freebsd.pb_iocage_template.yml`_ expects to
+  find the file ``pkgs.json`` in the directory ``files``. See the
+  tasks ``playbooks/pb_iocage_template_pkglist.yml`` and
   :ref:`ug_pb-iocage-template`.
 
 .. seealso::
@@ -156,11 +158,12 @@ host_vars
 
 .. warning::
 
-   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise,
-     the module ``ansible.posix.authorized_key`` will crash. See
-     ``playbooks/pb_iocage_template/pk.yml``.
+   * The user ``act_user`` must exist on the ``iocage``
+     host. Otherwise, the module ``ansible.posix.authorized_key`` will
+     crash. See ``playbooks/pb_iocage_template/pk.yml``.
 
-   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the public keys to your needs::
+   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the
+     public keys to your needs::
 
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller
@@ -170,7 +173,7 @@ Playbook output - Create templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_template.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -200,10 +203,10 @@ Playbook output - Clone and start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
+   (env) > ansible-playbook -i iocage.ini \
                             -t clone \
-                            -e clone=true
+                            -e clone=true \
+                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -214,10 +217,10 @@ Playbook output - List jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                            -i iocage.ini \
+   (env) > ansible-playbook -i iocage.ini \
                             -t list \
-                            -e debug=true
+                            -e debug=true \
+                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -289,18 +292,7 @@ Playbook output - Display test vars
 
    The command below stops and destroys the cloned jails::
 
-     ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml \
-                      -i iocage.ini \
+     ansible-playbook -i iocage.ini \
                       -t clone_destroy \
-                      -e clone_destroy=true
-
-
-.. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml
-.. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
-
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
-
-.. _Using Templates: https://freebsd.github.io/iocage/templates.html
-.. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
-.. _Understanding privilege escalation: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#become
+                      -e clone_destroy=true \
+                       vbotka.freebsd.pb_iocage_ansible_clients.yml

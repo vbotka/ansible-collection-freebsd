@@ -125,9 +125,10 @@ Playbook pb-test-01.yml
 Playbook output - Display sshd rcvar in jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The key and value of ``rcvar`` are returned in 1) the attribute ``rcvar`` of the registered variable
-``out.rcvar`` and in 2) ``stdout``. Usually, you will use the first option. The second option shows
-how to use the filter ``community.general.jc``.
+The key and value of ``rcvar`` are returned in 1) the attribute
+``rcvar`` of the registered variable ``out.rcvar`` and in 2)
+``stdout``. Usually, you will use the first option. The second option
+shows how to use the filter ``community.general.jc``.
 
 .. code-block:: console
 
@@ -238,8 +239,3 @@ Playbook output - Start apcupsd
 .. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
-
-.. _module vbotka.freebsd.service: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/)
-.. _filter vbotka.freebsd.iocage: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/)
-.. _inventory plugin vbotka.freebsd.iocage2: [https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/)
-.. _man service: [https://man.freebsd.org/cgi/man.cgi?service(8](https://man.freebsd.org/cgi/man.cgi?service(8))

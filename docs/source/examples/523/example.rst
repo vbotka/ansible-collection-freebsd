@@ -24,9 +24,10 @@
 Use case
 ^^^^^^^^
 
-Create a jail that serves Git repositories for `ansible-pull`_. Create the `iocage`_
-template ``ansible-repos`` and configure `git-daemon`_. Create jails from the
-template and clone repositories to the `base-path`_.
+Create a jail that serves Git repositories for `ansible-pull`_. Create
+the `iocage`_ template ``ansible-repos`` and configure
+`git-daemon`_. Create jails from the template and clone repositories
+to the `base-path`_.
 
 Tree
 ^^^^
@@ -60,14 +61,15 @@ Synopsis
 
 * On a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the template ``ansible-repos``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the
+    template ``ansible-repos``.
 
   * In the playbook
     `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
     create jails from the template.
 
-* In the inventory group ``pull_repos``, clone the repositories that will be
-  used by `ansible-pull`_.
+* In the inventory group ``pull_repos``, clone the repositories that
+  will be used by `ansible-pull`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -132,10 +134,11 @@ group_vars
 
 .. note::
 
-   The repositories are cloned from the local mirror at ``git_server``. To
-   reproduce this example, create your mirror and adjust the IP address to your
-   environment. See :ref:`example_311`. Optionally, for testing, clone the
-   repositories directly from GitHub.
+   The repositories are cloned from the local mirror at
+   ``git_server``. To reproduce this example, create your mirror and
+   adjust the IP address to your environment. See
+   :ref:`example_311`. Optionally, for testing, clone the repositories
+   directly from GitHub.
 
 host_vars
 ^^^^^^^^^
@@ -195,7 +198,8 @@ Playbook output - Create project jails from iocage templates
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+   (env) > ansible-playbook -i iocage.ini -i hosts \
+                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -248,20 +252,3 @@ List repos
 .. literalinclude:: out/out-07.txt
    :language: console
    :force:
-
-
-.. _vbotka.freebsd.iocage_template: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/
-.. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
-
-.. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
-.. _inventory vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-
-.. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
-.. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
-.. _base-path: https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath
-.. _iocage: https://iocage.readthedocs.io/en/latest/
-
-.. _ansible-conf-init: https://github.com/vbotka/ansible-conf-init
-.. _ansible-conf-syslogng-server: https://github.com/vbotka/ansible-conf-syslogng-server
-.. _ansible-conf-syslogng-client: https://github.com/vbotka/ansible-conf-syslogng-client
-.. _ansible-conf-test: https://github.com/vbotka/ansible-conf-test

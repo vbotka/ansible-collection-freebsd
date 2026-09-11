@@ -71,6 +71,3 @@ Playbook output - Display iocage_properties
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/

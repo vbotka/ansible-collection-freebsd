@@ -81,7 +81,7 @@ For example:
    "ansible-freebsd-custom-image", "vbotka.freebsd_custom_image", "vbotka.freebsd.custom_image"
 
 Roles imported into the Ansible Galaxy namespace `vbotka`_ and those included in the
-`vbotka.freebsd`_ collection are identical. They can be used interchangeably or in parallel
+``vbotka.freebsd`` collection are identical. They can be used interchangeably or in parallel
 without restriction.
 
 .. note::
@@ -109,7 +109,7 @@ in playbooks and other roles.
 
    "ansible-lib", "vbotka.ansible_lib", "vbotka.freebsd.lib"
 
-Several roles depend on it. When included in the `vbotka.freebsd`_ collection, dependent roles
+Several roles depend on it. When included in the ``vbotka.freebsd`` collection, dependent roles
 are configured to reference the ``<name>_ansible_lib`` mapping. For example, the ``rsnapshot_ansible_lib``
 dictionary:
 
@@ -138,8 +138,9 @@ inside the collection context:
 Other dependent roles
 """""""""""""""""""""
 
-Other inter-role dependencies follow the same pattern. For example, the `vbotka.freebsd.zfs`_ role
-depends on `vbotka.freebsd.postinstall`_. The ``fzfs_freebsd_postinstall`` dictionary:
+Other inter-role dependencies follow the same pattern. For example, the
+`vbotka.freebsd.zfs`_ role depends on `vbotka.freebsd.postinstall`_. The
+``fzfs_freebsd_postinstall`` dictionary:
 
 .. code-block:: yaml
 
@@ -147,7 +148,8 @@ depends on `vbotka.freebsd.postinstall`_. The ``fzfs_freebsd_postinstall`` dicti
      vbotka.freebsd_zfs: vbotka.freebsd_postinstall
      vbotka.freebsd.zfs: vbotka.freebsd.postinstall
 
-resolves to ``vbotka.freebsd_postinstall`` or ``vbotka.freebsd.postinstall`` based on the runtime context:
+resolves to ``vbotka.freebsd_postinstall`` or ``vbotka.freebsd.postinstall``
+based on the runtime context:
 
 .. code-block:: yaml
 
@@ -177,21 +179,9 @@ To add custom or external roles to this collection, update the ``bsd_roles`` dic
 
 .. warning::
 
-   * Upgrading the collection will overwrite your changes. Back up your modifications before upgrading.
-   * This collection does not provide an upgrade procedure that preserves local modifications. You are responsible for reapplying your changes after an upgrade.
+   * Upgrading the collection will overwrite your changes. Back up your
+     modifications before upgrading.
 
-
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib
-
-.. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs
-.. _vbotka.freebsd.postinstall: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/postinstall
-.. _vbotka.freebsd_zfs: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_zfs
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall
-
-.. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
-
-.. _Migrating Roles to Roles in Collections on Galaxy: https://docs.ansible.com/ansible/devel/dev_guide/migrating_roles.html
-.. _ansible_role_name: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-ansible_role_name
+   * This collection does not provide an upgrade procedure that preserves local
+     modifications. You are responsible for reapplying your changes after an
+     upgrade.

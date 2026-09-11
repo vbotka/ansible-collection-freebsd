@@ -14,7 +14,8 @@
 Use case
 ^^^^^^^^
 
-Use the `lookup vbotka.freebsd.galaxy_info`_ plugin to get the metadata from ``galaxy.yml``.
+Use the `lookup vbotka.freebsd.galaxy_info`_ plugin to get the
+metadata from ``galaxy.yml``.
 
 Tree
 ^^^^
@@ -63,5 +64,3 @@ Playbook output - Display the metadata from galaxy.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
-
-.. _lookup vbotka.freebsd.galaxy_info: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/lookup/galaxy_info/

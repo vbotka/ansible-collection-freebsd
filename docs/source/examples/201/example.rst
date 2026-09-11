@@ -45,14 +45,16 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-display-datasets.yml``, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-display-datasets.yml``, use the `module
+  vbotka.freebsd.iocage`_ to:
 
   * create and display ``iocage`` lists and dictionaries.
 
 Notes
 ^^^^^
 
-* ``root`` is not needed to run ``iocage list ...`` on the ``iocage`` hosts when DHCP isn't used.
+* ``root`` is not needed to run ``iocage list ...`` on the ``iocage``
+  hosts when DHCP isn't used.
 
 * Quoting from `man iocage`_:  ::
 
@@ -74,7 +76,7 @@ Notes
                                        List all bases.
 
                  [-l | --long]         Shows JID, NAME, BOOT, STATE, TYPE, RELEASE, IP4,
-		                       IP6, and TEMPLATE  information.
+                                       IP6, and TEMPLATE  information.
 
                  [-q | --quick]        Lists all jails with less processing and fields.
 
@@ -180,6 +182,3 @@ Playbook output - Display iocage datasets
 .. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
-
-.. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
-.. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage

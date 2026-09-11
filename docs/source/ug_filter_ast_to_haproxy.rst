@@ -13,10 +13,11 @@ Filter vbotka.freebsd.ast_to_haproxy
 Synopsis
 ^^^^^^^^
 
-The ``ast_to_haproxy`` filter translates an Abstract Syntax Tree (AST) structure
-into native `HAProxy`_ configuration syntax (``haproxy.cfg``). It is typically
-used in conjunction with ``dict_to_ast`` to generate configuration files from
-high-level YAML representations without relying on complex Jinja2 templates.
+The ``ast_to_haproxy`` filter translates an Abstract Syntax Tree (AST)
+structure into native `HAProxy`_ configuration syntax
+(``haproxy.cfg``). It is typically used in conjunction with
+``dict_to_ast`` to generate configuration files from high-level YAML
+representations without relying on complex Jinja2 templates.
 
 
 Parameters
@@ -43,35 +44,36 @@ Parameters
 Grammar & Transformations
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The filter applies several domain-specific normalizations to accommodate
-structured data trees:
+The filter applies several domain-specific normalizations to
+accommodate structured data trees:
 
 Section Containers
 
-   Plural section dictionaries (``frontends``, ``backends``, ``listens``) are
-   unwrapped into individual, singular top-level sections (``frontend <name>``,
-   ``backend <name>``, ``listen <name>``).
+   Plural section dictionaries (``frontends``, ``backends``,
+   ``listens``) are unwrapped into individual, singular top-level
+   sections (``frontend <name>``, ``backend <name>``, ``listen
+   <name>``).
 
 Directives & Sub-groups
 
-   * **Options & Timeouts:** Directives nested under ``options`` or ``timeouts``
-     maps are flattened to individual ``option <name>`` and ``timeout <name>
-     <val>`` lines.
+   * **Options & Timeouts:** Directives nested under ``options`` or
+     ``timeouts`` maps are flattened to individual ``option <name>``
+     and ``timeout <name> <val>`` lines.
 
-   * **ACLs:** Rules nested under ``acls`` are converted to ``acl <name>
-     <criterion> <values...>``.
+   * **ACLs:** Rules nested under ``acls`` are converted to ``acl
+     <name> <criterion> <values...>``.
 
-   * **Servers:** Server records are inlined to standard ``server <name>
-     <address> [check] [options]`` lines.
+   * **Servers:** Server records are inlined to standard ``server
+     <name> <address> [check] [options]`` lines.
 
    * **Routing:** ``use_backends`` lists are rendered into single-line
      ``use_backend <backend> <condition>`` directives.
 
 Boolean Normalization
 
-   Boolean parameters (``True``) are rendered as bare flags (e.g., ``daemon``,
-   ``httplog``, ``check``). Directives mapped to ``False`` or ``None`` are
-   excluded from the output.
+   Boolean parameters (``True``) are rendered as bare flags (e.g.,
+   ``daemon``, ``httplog``, ``check``). Directives mapped to ``False``
+   or ``None`` are excluded from the output.
 
 
 Examples
@@ -191,7 +193,3 @@ Return Value
 .. note::
 
    * See Ansible Galaxy `filter vbotka.freebsd.ast_to_haproxy`_
-
-
-.. _filter vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
-.. _HAProxy: https://www.haproxy.org/

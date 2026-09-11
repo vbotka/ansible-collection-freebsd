@@ -22,7 +22,8 @@
 Use case
 ^^^^^^^^
 
-Use :ref:`ug_connection_jailexec` instead of the default ``ansible.builtin.ssh``.
+Use :ref:`ug_connection_jailexec` instead of the default
+``ansible.builtin.ssh``.
 
 Tree
 ^^^^
@@ -40,7 +41,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Create a dynamic inventory to connect to the jails via :ref:`ug_connection_jailexec`.
+* Create a dynamic inventory to connect to the jails via
+  :ref:`ug_connection_jailexec`.
 
 * For all created jails, in the playbook ``pb-test.yml``:
 
@@ -57,8 +59,8 @@ Requirements
 Notes
 ^^^^^
 
-The only difference between this example and :ref:`example_441` is
-the following three lines in the inventory configuration file:
+The only difference between this example and :ref:`example_441` is the
+following three lines in the inventory configuration file:
 
 .. code-block:: yaml
 
@@ -96,8 +98,11 @@ Inventory hosts
 
 .. note::
 
-   * The default value of the option ``ansible_jail_privilege_escalation`` is ``doas``.
+   * The default value of the option
+     ``ansible_jail_privilege_escalation`` is ``doas``.
+
    * See :ref:`ug_connection_jailexec`.
+
    * In FreeBSD, ``doas`` is not installed by default.
 
 .. literalinclude:: hosts/99_constructed.yml
@@ -125,11 +130,8 @@ Playbook output - Test jailexec connection plugin
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
-
-
-.. _inventory plugin vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/

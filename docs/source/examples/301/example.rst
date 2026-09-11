@@ -98,9 +98,3 @@ Playbook output - Disable FreeBSD repository
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
    :force:
-
-
-.. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
-.. _uclcmd: https://www.freshports.org/devel/uclcmd/
-.. _uclcmd Command line tool for working with UCL config files: https://www.freshports.org/devel/uclcmd/
-.. _UCL (Universal Configuration Language): https://wiki.freebsd.org/UniversalConfigurationLanguage

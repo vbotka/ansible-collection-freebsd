@@ -14,8 +14,9 @@
 Use case
 ^^^^^^^^
 
-Create a list of variables from files in the ``conf.d`` directory. Use the task file
-`al_include_confd_vars_list.yml`_ from the role `vbotka.freebsd.lib`_:
+Create a list of variables from files in the ``conf.d`` directory. Use
+the task file `al_include_confd_vars_list.yml`_ from the role
+`vbotka.freebsd.lib`_:
 
 .. code-block:: yaml
 
@@ -46,7 +47,9 @@ Synopsis
 
 * On the managed node:
 
-  * Create a list of variable values from files in the controller's directory ``conf.d``.
+  * Create a list of variable values from files in the controller's
+    directory ``conf.d``.
+
   * Display the created list.
 
 Requirements
@@ -57,14 +60,13 @@ Requirements
 Notes
 ^^^^^
 
-Variable names are not collected. The resulting list contains only the variable
-values.
+Variable names are not collected. The resulting list contains only the
+variable values.
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection `vbotka.freebsd`_.
+   | `vbotka.freebsd.lib`_ is the role **lib** in the collection ``vbotka.freebsd``.
    | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -151,13 +153,3 @@ Playbook output - Display variables
    :language: yaml+jinja
    :emphasize-lines: 44-53, 105-120
    :force:
-
-
-.. _vbotka.freebsd.lib: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _al_include_confd_vars_list.yml: https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml
-
-.. _Special variable playbook_dir: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-playbook_dir

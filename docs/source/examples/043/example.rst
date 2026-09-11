@@ -33,8 +33,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the playbook ``pb-test-to-ucl.yml``, test the filter `vbotka.freebsd.to_ucl`_.
-* In the playbook ``pb-test-from-ucl.yml``, test the filter `vbotka.freebsd.from_ucl`_.
+* In the playbook ``pb-test-to-ucl.yml``, test the filter
+  `vbotka.freebsd.to_ucl`_.
+
+* In the playbook ``pb-test-from-ucl.yml``, test the filter
+  `vbotka.freebsd.from_ucl`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -45,7 +48,8 @@ Requirements
 Notes
 ^^^^^
 
-The filters ``to_ucl`` and ``from_ucl`` require the Python `package ucl`_.
+The filters ``to_ucl`` and ``from_ucl`` require the Python `package
+ucl`_.
 
 .. seealso::
 
@@ -92,8 +96,3 @@ Playbook output - Test filter from_ucl
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
    :emphasize-lines: 6-12
-
-
-.. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
-.. _vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
-.. _package ucl: https://pypi.org/project/ucl/
