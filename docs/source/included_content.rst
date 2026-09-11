@@ -10,7 +10,7 @@ Plugins:
 * `filter from_ucl`_ - Parse a UCL string to a YAML dictionary.
 * `filter iocage`_ - Parse iocage output lists.
 * `filter to_ucl`_ - Convert a YAML dictionary to a UCL string.
-* `lookup galaxy_info`_ - Retrieve metadata from ``galaxy.yml``.
+* `lookup galaxy_info`_ - Retrieve metadata from galaxy.yml.
 
 Roles:
 

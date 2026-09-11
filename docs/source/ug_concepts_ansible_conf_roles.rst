@@ -3,9 +3,10 @@
 Repository ansible-conf-roles
 -----------------------------
 
-.. index:: single: ansible-conf-roles; Concepts
-.. index:: single: pb-roles.yml; Concepts
-.. index:: single: ai_conf_roles; Concepts
+.. index:: single: ansible-conf-roles; Repository ansible-conf-roles
+.. index:: single: pb-roles.yml; Repository ansible-conf-roles
+.. index:: single: ai_conf_roles; Repository ansible-conf-roles
+.. index:: single: limited collection; Repository ansible-conf-roles
 
 .. contents::
    :local:
@@ -128,8 +129,8 @@ whitelisted, while everything else is ignored during extraction.
    setup/sync/
    setup/sync/ansible-conf-roles.txt
 
-Procedure: Creating and Updating the Limited Collection
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Creating and Updating the Limited Collection
+""""""""""""""""""""""""""""""""""""""""""""
 
 To extract the minimal collection and install it into the target repository:
 

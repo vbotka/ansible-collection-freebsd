@@ -4,15 +4,17 @@
 Inventory vbotka.freebsd.iocage2
 --------------------------------
 
-This chapter highlights the core operational, performance, and architectural differences between the
-`inventory plugin vbotka.freebsd.iocage`_ and the `inventory plugin vbotka.freebsd.iocage2`_.
+This chapter highlights the core operational, performance, and architectural
+differences between the `inventory plugin vbotka.freebsd.iocage`_ and the
+`inventory plugin vbotka.freebsd.iocage2`_.
 
 Overview
 ^^^^^^^^
 
-While ``vbotka.freebsd.iocage`` relies on executing the high-level `iocage`_ command-line utility via
-shell subprocesses, ``vbotka.freebsd.iocage2`` communicates directly with the underlying FreeBSD
-system using native Python bindings (`filesystems/py-libzfs`_ and `sysutils/py-iocage`_).
+While ``vbotka.freebsd.iocage`` relies on executing the high-level `iocage`_
+command-line utility via shell subprocesses, ``vbotka.freebsd.iocage2``
+communicates directly with the underlying FreeBSD system using native Python
+bindings (`filesystems/py-libzfs`_ and `sysutils/py-iocage`_).
 
 Comparison Matrix
 ^^^^^^^^^^^^^^^^^
@@ -35,9 +37,10 @@ Key Differences
 Direct libzfs Integration
 """""""""""""""""""""""""
 
-`vbotka.freebsd.iocage2` queries ZFS pool structures directly via ``libzfs.ZFS()``.  It traverses
-``<pool>/iocage/jails`` child datasets in memory, eliminating shell execution overhead and
-preventing stdout string-parsing errors over SSH.
+`vbotka.freebsd.iocage2` queries ZFS pool structures directly via
+``libzfs.ZFS()``.  It traverses ``<pool>/iocage/jails`` child datasets in
+memory, eliminating shell execution overhead and preventing stdout
+string-parsing errors over SSH.
 
 Template Discovery
 """"""""""""""""""
@@ -46,21 +49,23 @@ Template Discovery
 
 * Checks the ``source_template`` property.
 * Checks ``cloned_from`` and ``template`` properties.
-* Inspects the underlying ZFS dataset ``origin`` snapshot path (e.g. ``<pool>/iocage/templates/<template_name>@snap``).
+* Inspects the underlying ZFS dataset ``origin`` snapshot path
+  (e.g. ``<pool>/iocage/templates/<template_name>@snap``).
 
 Interface Extraction for DHCP Jails
 """""""""""""""""""""""""""""""""""
 
-When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``), `vbotka.freebsd.iocage2`
-automatically inspects `hooks_results` (e.g. ``/var/db/dhclient-hook.address.epair0b``).
+When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
+``vbotka.freebsd.iocage2`` automatically inspects ``hooks_results``
+(e.g. ``/var/db/dhclient-hook.address.epair0b``).
 
 * Extracts the interface name directly from the hook filename (``epair0b``).
-* Populates ``iocage_ip4`` and ``iocage_ip4_dict`` dynamically so ``compose: ansible_host:
-  iocage_ip4`` works seamlessly.
+* Populates ``iocage_ip4`` and ``iocage_ip4_dict`` dynamically so ``compose:
+  ansible_host: iocage_ip4`` works seamlessly.
 
 .. note::
 
-   Target FreeBSD hosts require:
+   The jail host requires:
 
    * `filesystems/py-libzfs`_
    * `sysutils/py-iocage`_

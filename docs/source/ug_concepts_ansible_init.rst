@@ -3,10 +3,10 @@
 Service ansible_init
 --------------------
 
-.. index:: single: ansible_init; Concepts
-.. index:: single: service ansible_init; Concepts
-.. index:: single: ansible-conf-init-example; Concepts
-.. index:: single: ansible-conf-test; Concepts
+.. index:: single: ansible_init; Service ansible_init
+.. index:: single: service ansible_init; Service ansible_init
+.. index:: single: ansible-conf-init-example; Service ansible_init
+.. index:: single: ansible-conf-test; Service ansible_init
 
 .. contents::
    :local:

@@ -7,7 +7,7 @@ Best Practice
 
    The ``iocage`` CLI contains an extensive set of subcommands and
    options. Attempting to support every feature natively within the ``iocage``
-   Ansible module makes maintenance and automated testing difficult.
+   Ansible module makes maintenance and testing difficult.
 
 .. topic:: Role Runner Tasks for Extended Features
 

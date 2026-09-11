@@ -5,39 +5,18 @@ Plugins
 
 .. toctree::
    :maxdepth: 1
-   :caption: Modules
 
-   iocage <ug_module_iocage>
-   service <ug_module_service>
-   ucl <ug_module_ucl>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Inventory plugins
-
-   iocage <ug_inventory_iocage>
-   iocage2 <ug_inventory_iocage2>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Filter plugins
-
-   ast_to_haproxy <ug_filter_ast_to_haproxy>
-   ast_to_nginx <ug_filter_ast_to_nginx>
-   dict_to_ast <ug_filter_dict_to_ast>
-   from_ucl <ug_filter_from_ucl>
-   iocage <ug_filter_iocage>
-   project <ug_filter_project>
-   to_ucl <ug_filter_to_ucl>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Connection plugins
-
-   jailexec <ug_connection_jailexec>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Lookup plugins
-
-   galaxy_info <ug_lookup_galaxy_info>
+   module iocage <ug_module_iocage>
+   module service <ug_module_service>
+   module ucl <ug_module_ucl>
+   inventory iocage <ug_inventory_iocage>
+   inventory iocage2 <ug_inventory_iocage2>
+   filter ast_to_haproxy <ug_filter_ast_to_haproxy>
+   filter ast_to_nginx <ug_filter_ast_to_nginx>
+   filter dict_to_ast <ug_filter_dict_to_ast>
+   filter from_ucl <ug_filter_from_ucl>
+   filter iocage <ug_filter_iocage>
+   filter project <ug_filter_project>
+   filter to_ucl <ug_filter_to_ucl>
+   connection jailexec <ug_connection_jailexec>
+   lookup galaxy_info <ug_lookup_galaxy_info>

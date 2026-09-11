@@ -21,16 +21,16 @@ manager.
 
    This plugin:
 
-   * requires `sysutils/iocage`_
-   * extends `inventory plugin ansible.builtin.constructed`_. See the `Examples`_.
-   * implements inventory caching. See `Enabling inventory cache plugins`_.
+   - requires `sysutils/iocage`_ on the jail host.
+   - extends `inventory plugin ansible.builtin.constructed`_. See the `Examples`_.
+   - implements inventory caching. See `Enabling inventory cache plugins`_.
 
 .. seealso::
 
-   * Ansible Galaxy `inventory plugin vbotka.freebsd.iocage`_
-   * `iocage - A FreeBSD Jail Manager`_
-   * `man iocage`_
-   * `Jails and Containers`_
+   - Ansible Galaxy `inventory plugin vbotka.freebsd.iocage`_
+   - `iocage - A FreeBSD Jail Manager`_
+   - `man iocage`_
+   - `Jails and Containers`_
 
 
 .. _inventory plugin vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage

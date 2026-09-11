@@ -7,6 +7,7 @@ Installation
 Install the collection from Ansible Galaxy
 
 .. code-block:: console
+   :emphasize-lines: 1
 
    shell> ansible-galaxy collection install vbotka.freebsd
 

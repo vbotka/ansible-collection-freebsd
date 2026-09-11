@@ -3,10 +3,10 @@
 Repository ansible-conf-init
 ----------------------------
 
-.. index:: single: ansible-conf-init; Concepts
-.. index:: single: pb-init.yml; Concepts
-.. index:: single: ai_db_host; Concepts
-.. index:: single: ai_db_class; Concepts
+.. index:: single: ansible-conf-init; Repository ansible-conf-init
+.. index:: single: pb-init.yml; Repository ansible-conf-init
+.. index:: single: ai_db_host; Repository ansible-conf-init
+.. index:: single: ai_db_class; Repository ansible-conf-init
 
 .. contents::
    :local:
