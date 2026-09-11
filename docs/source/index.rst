@@ -5,7 +5,7 @@ vbotka.freebsd
 
 version |release|
 
-| Ansible Galaxy: ``vbotka.freebsd``
+| Ansible Galaxy: `collection vbotka.freebsd`_
 | GitHub: `ansible-collection-freebsd`_
 
 Preamble

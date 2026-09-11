@@ -152,6 +152,7 @@
 .. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
 .. _certificate: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/certificate/
 .. _collection docsite: https://ansible.readthedocs.io/projects/antsibull-docs/collection-docs
+.. _collection vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _collection: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _community.crypto docs: https://docs.ansible.com/ansible/latest/collections/community/crypto
 .. _community.crypto: https://galaxy.ansible.com/ui/repo/published/community/crypto/
@@ -276,6 +277,7 @@
 .. _vault: https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html#encrypting-files-with-ansible-vault
 .. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib/
 .. _vbotka.config_light: https://galaxy.ansible.com/ui/standalone/roles/vbotka/config_light/
+.. _vbotka.freebsd galaxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
 .. _vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
@@ -303,7 +305,6 @@
 .. _vbotka.freebsd.rsnapshot: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/rsnapshot/
 .. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 .. _vbotka.freebsd.zfs: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/zfs/
-.. _vbotka.freebsd galaxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_custom_image/
 .. _vbotka.freebsd_dhcp: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_dhcp/
 .. _vbotka.freebsd_network: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network/
