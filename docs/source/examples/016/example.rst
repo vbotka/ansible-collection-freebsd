@@ -39,7 +39,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails
+* The :ref:`ug_inventory_iocage` retrieves the jails
   (managed nodes):
 
   * ``test_111:113`` from host ``iocage_02``
@@ -56,7 +56,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_inventory_iocage`
 * Jails created in :ref:`example_010`
 
 Notes
@@ -65,7 +65,7 @@ Notes
 * The inventory files in the directory ``hosts`` are evaluated in
   alphabetical order.
 * See :ref:`example_015`.
-* The `inventory plugin vbotka.freebsd.iocage`_ does not provide the
+* The :ref:`ug_inventory_iocage` does not provide the
   option `use_vars_plugins`_.
 * See :ref:`example_019`.
 

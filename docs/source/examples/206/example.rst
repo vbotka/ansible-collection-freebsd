@@ -43,7 +43,7 @@ Extending :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage`_ configuration file,
+In the :ref:`ug_inventory_iocage` configuration file,
 use the option ``hooks_results`` to get the DHCP IP address. This
 option is common for all jails in this example:
 
@@ -104,7 +104,7 @@ Two DHCP jails with generated UUIDs are created from the template
    The clone ``test_131`` belongs to the swarm ``sw_01``. Set ``count:
    3`` to create two more jails in the swarm ``sw_01``.
 
-The `module vbotka.freebsd.iocage`_ does not work with multiple
+The :ref:`ug_module_iocage` does not work with multiple
 names. We will use ``ansible.builtin.command`` instead. Such a task is
 not idempotent anyway if the UUID is generated automatically. Example
 commands:
@@ -165,7 +165,7 @@ Synopsis
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use:
 
-  * `module vbotka.freebsd.iocage`_ to:
+  * :ref:`ug_module_iocage` to:
 
     * Create one jail with a fixed IP
     * Start the jail
@@ -186,8 +186,8 @@ Requirements
 ^^^^^^^^^^^^
 
 * Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
-* `module vbotka.freebsd.iocage`_
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
 
@@ -201,7 +201,7 @@ Notes
 
   * `ioc_list.py#L258`_
   * `ioc_list.py#L275`_
-  * The `inventory plugin vbotka.freebsd.iocage`_ uses it too::
+  * The :ref:`ug_inventory_iocage` uses it too::
 
       if iocage_ip4_dict['ip4']:
           iocage_ip4 = ','.join([d['ip'] for d in iocage_ip4_dict['ip4']])

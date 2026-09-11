@@ -17,7 +17,7 @@ Use case
 ^^^^^^^^
 
 Create custom facts to provide a dictionary of iocage dataset
-lists. Use the `filter vbotka.freebsd.iocage`_ to parse them.
+lists. Use the :ref:`ug_filter_iocage` to parse them.
 
 Tree
 ^^^^
@@ -47,7 +47,7 @@ Synopsis
   In the playbook ``pb-test.yml``:
 
   * Get the custom facts
-  * Use the `filter vbotka.freebsd.iocage`_ to parse the custom facts
+  * Use the :ref:`ug_filter_iocage` to parse the custom facts
   * Create the inventory group ``test`` and compose variables
   * Display the hosts and composed variables in the group ``test``
   * Display all groups
@@ -56,7 +56,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* `filter vbotka.freebsd.iocage`_
+* :ref:`ug_filter_iocage`
 * Root privileges on the managed nodes
 * Jails created in previous examples
 

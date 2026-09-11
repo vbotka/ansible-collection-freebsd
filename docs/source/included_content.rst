@@ -1,16 +1,16 @@
 Plugins:
 
-* `module iocage`_ - Manage iocage jails.
-* `module service`_ - Control or query system services.
-* `module ucl`_ - CRUD-like interface for managing UCL files.
-* `inventory iocage`_ - iocage inventory source.
-* `inventory iocage2`_ - iocage inventory source (using libzfs & iocage_lib).
-* `filter ast_to_nginx`_ - Convert an AST list to an NGINX configuration.
-* `filter dict_to_ast`_ - Convert a YAML dictionary to an AST list.
-* `filter from_ucl`_ - Parse a UCL string to a YAML dictionary.
-* `filter iocage`_ - Parse iocage output lists.
-* `filter to_ucl`_ - Convert a YAML dictionary to a UCL string.
-* `lookup galaxy_info`_ - Retrieve metadata from galaxy.yml.
+* :ref:`ug_module_iocage` - Manage iocage jails.
+* :ref:`ug_module_service` - Control or query system services.
+* :ref:`ug_module_ucl` - CRUD-like interface for managing UCL files.
+* :ref:`ug_inventory_iocage` - iocage inventory source.
+* :ref:`ug_inventory_iocage2` - iocage inventory source (using libzfs & iocage_lib).
+* :ref:`ug_filter_ast_to_nginx` - Convert an AST list to an NGINX configuration.
+* :ref:`ug_filter_dict_to_ast` - Convert a YAML dictionary to an AST list.
+* :ref:`ug_filter_from_ucl` - Parse a UCL string to a YAML dictionary.
+* :ref:`ug_filter_iocage` - Parse iocage output lists.
+* :ref:`ug_filter_to_ucl` - Convert a YAML dictionary to a UCL string.
+* :ref:`ug_lookup_galaxy_info` - Retrieve metadata from galaxy.yml.
 
 Roles:
 
@@ -19,7 +19,7 @@ Roles:
 * `config_light`_ - Install packages and configure files, services, and handlers.
 * `custom_image`_ - Download, mount, and customize system images.
 * `dhcp`_ - Install, configure, and manage the DHCP server.
-* `iocage`_ - Install and configure iocage.
+* `iocage (role)`_ - Install and configure iocage.
 * `iocage_template`_ - Create and configure iocage templates.
 * `lib`_ - Task library providing reusable utilities.
 * `network`_ - Configure system networking.

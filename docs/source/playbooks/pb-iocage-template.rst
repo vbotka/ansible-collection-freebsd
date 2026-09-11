@@ -224,7 +224,7 @@ Create ``dhclient`` hooks in ``<dataset>/root/etc/``:
 .. note::
 
    * These hooks are required to configure ``hooks_results`` in the
-     `inventory plugin vbotka.freebsd.iocage`_.
+     :ref:`ug_inventory_iocage`.
 
    * See `man dhclient-script`_.
 

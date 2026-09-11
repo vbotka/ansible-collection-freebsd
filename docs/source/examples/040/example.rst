@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Use the `lookup vbotka.freebsd.galaxy_info`_ plugin to get the
+Use the :ref:`ug_lookup_galaxy_info` plugin to get the
 metadata from ``galaxy.yml``.
 
 Tree

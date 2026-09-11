@@ -21,7 +21,7 @@
 Use case
 ^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage2`_, use the option
+In the :ref:`ug_inventory_iocage2`, use the option
 ``inventory_hostname_tag`` to specify which tag to create `Inventory
 aliases`_ from.
 
@@ -50,7 +50,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the `inventory plugin vbotka.freebsd.iocage2`_, retrieve the
+* In the :ref:`ug_inventory_iocage2`, retrieve the
   inventory aliases from the tag ``alias``.
 
 * In the inventory plugin `ansible.builtin.constructed`_, create the
@@ -63,7 +63,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage2`_
+* :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
 * Root privileges on the managed nodes
 * Jails created in :ref:`example_020`

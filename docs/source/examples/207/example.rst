@@ -121,7 +121,7 @@ Synopsis
   In the playbook ``vbotka.freebsd.pb_iocage_project_create.yml``,
   use:
 
-  * The `inventory plugin vbotka.freebsd.iocage`_ to create inventory
+  * The :ref:`ug_inventory_iocage` to create inventory
     hosts
 
   * The inventory plugin `ansible.builtin.constructed`_ to create
@@ -154,7 +154,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
 

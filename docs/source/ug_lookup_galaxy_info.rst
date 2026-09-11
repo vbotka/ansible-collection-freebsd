@@ -6,7 +6,7 @@
 Lookup vbotka.freebsd.galaxy_info
 ---------------------------------
 
-The `lookup vbotka.freebsd.galaxy_info`_ gets the meta data from galaxy.yml
+The :ref:`ug_lookup_galaxy_info` gets the meta data from galaxy.yml
 
 .. seealso::
 

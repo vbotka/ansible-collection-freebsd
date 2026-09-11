@@ -6,7 +6,7 @@
 Filter vbotka.freebsd.project
 -----------------------------
 
-The `filter vbotka.freebsd.project`_ restructures a dictionary of
+The :ref:`ug_filter_project` restructures a dictionary of
 jails and their hosts defined with ``vmm`` and ``class`` attributes.
 Groups full service specifications under their respective target
 hypervisor (``vmm``).  Inverts the ``class`` attribute into a
@@ -15,4 +15,4 @@ names.
 
 .. note::
 
-   * See Ansible Galaxy `filter vbotka.freebsd.project`_
+   * See Ansible Galaxy :ref:`ug_filter_project`

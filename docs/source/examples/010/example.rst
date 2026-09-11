@@ -23,7 +23,7 @@ Use case
 ^^^^^^^^
 
 Fetch releases, create basejails, clone jails from the basejails, and
-start the jails. Use the `inventory plugin vbotka.freebsd.iocage`_ to
+start the jails. Use the :ref:`ug_inventory_iocage` to
 create the inventory. Display the created inventory.
 
 Tree
@@ -53,7 +53,7 @@ Synopsis
   * iocage_04
 
   In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the
-  `module vbotka.freebsd.iocage`_ to:
+  :ref:`ug_module_iocage` to:
 
   * Fetch the release
   * Create a basejail
@@ -73,8 +73,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `module vbotka.freebsd.iocage`_
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
 * An activated `binary iocage`_
 

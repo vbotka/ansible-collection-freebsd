@@ -6,10 +6,10 @@
 Filter vbotka.freebsd.ast_to_nginx
 ----------------------------------
 
-The `filter vbotka.freebsd.ast_to_nginx`_ converts crossplane AST
+The :ref:`ug_filter_ast_to_nginx` converts crossplane AST
 (Abstract Syntax Tree) list to NGINX config.
 
 .. note::
 
    * This filter requires `crossplane`_
-   * See Ansible Galaxy `filter vbotka.freebsd.ast_to_nginx`_
+   * See Ansible Galaxy :ref:`ug_filter_ast_to_nginx`

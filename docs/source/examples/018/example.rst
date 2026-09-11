@@ -72,7 +72,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_inventory_iocage`
 * Jails ``ansible_client`` created in :ref:`example_010`
 
 Jails at iocage_02

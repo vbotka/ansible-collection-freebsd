@@ -113,7 +113,7 @@ Synopsis
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use:
 
-  * `module vbotka.freebsd.iocage`_ to:
+  * :ref:`ug_module_iocage` to:
 
     * Create facts only
 
@@ -134,8 +134,8 @@ Requirements
 ^^^^^^^^^^^^
 
 * Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
-* `module vbotka.freebsd.iocage`_
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
 

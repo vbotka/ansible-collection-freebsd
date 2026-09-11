@@ -18,7 +18,7 @@ Use case
 ^^^^^^^^
 
 Use the `inventory plugin community.general.iocage`_ instead of the
-`inventory plugin vbotka.freebsd.iocage`_.
+:ref:`ug_inventory_iocage`.
 
 Tree
 ^^^^

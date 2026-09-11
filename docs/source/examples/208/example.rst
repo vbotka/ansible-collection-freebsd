@@ -68,7 +68,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * Playbook `vbotka.freebsd.pb_iocage_template.yml`_
-* `module vbotka.freebsd.iocage`_
+* :ref:`ug_module_iocage`
 * Root privileges on the managed nodes
 
 Notes

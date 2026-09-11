@@ -3,7 +3,7 @@
 * `config_light`_
 * `custom_image`_
 * `dhcp`_
-* `iocage`_
+* `iocage (role)`_
 * `iocage_template`_
 * `lib`_
 * `network`_

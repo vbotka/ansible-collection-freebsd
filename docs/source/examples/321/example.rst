@@ -117,13 +117,3 @@ Update repos
 .. literalinclude:: out/out-04.txt
    :caption: [iocage_06]# pkg update -f
    :language: console
-
-
-.. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
-.. _vbotka.freebsd_packages: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_packages/
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
-
-.. _Poudriere - Configure clients: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-clients.html
-.. _man pkg: https://man.freebsd.org/cgi/man.cgi?pkg(8)
-.. _man pkg.conf: https://man.freebsd.org/cgi/man.cgi?pkg.conf(5)

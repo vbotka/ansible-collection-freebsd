@@ -17,7 +17,7 @@
 Use case
 ^^^^^^^^
 
-Test the `module vbotka.freebsd.service`_.
+Test the :ref:`ug_module_service`.
 
 Tree
 ^^^^
@@ -58,9 +58,9 @@ On the managed node:
 Requirements
 ^^^^^^^^^^^^
 
-* `module vbotka.freebsd.service`_
-* `filter vbotka.freebsd.iocage`_
-* `inventory plugin vbotka.freebsd.iocage2`_
+* :ref:`ug_module_service`
+* :ref:`ug_filter_iocage`
+* :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
 * Running jails on the iocage host
 

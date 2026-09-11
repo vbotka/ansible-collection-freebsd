@@ -1,4 +1,4 @@
-.. _ug_filter_ast_to_hproxy:
+.. _ug_filter_ast_to_haproxy:
 
 .. index:: single: filter vbotka.freebsd.ast_to_haproxy; Plugins
 .. index:: single: ast_to_haproxy; Plugins
@@ -192,4 +192,4 @@ Return Value
 
 .. note::
 
-   * See Ansible Galaxy `filter vbotka.freebsd.ast_to_haproxy`_
+   * See Ansible Galaxy :ref:`ug_filter_ast_to_haproxy`

@@ -6,9 +6,9 @@
 Filter vbotka.freebsd.dict_to_ast
 ---------------------------------
 
-The `filter vbotka.freebsd.dict_to_ast`_ converts YAML dictionary to
+The :ref:`ug_filter_dict_to_ast` converts YAML dictionary to
 crossplane AST (Abstract Syntax Tree) list.
 
 .. note::
 
-   * See Ansible Galaxy `filter vbotka.freebsd.dict_to_ast`_
+   * See Ansible Galaxy :ref:`ug_filter_dict_to_ast`

@@ -59,7 +59,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin vbotka.freebsd.iocage`_ retrieves the jails
+* The :ref:`ug_inventory_iocage` retrieves the jails
   (managed nodes):
 
   * ``test_111:113`` from host ``iocage_02``

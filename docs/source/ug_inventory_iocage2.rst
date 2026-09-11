@@ -77,7 +77,7 @@ When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
 
 .. seealso::
 
-   * `inventory plugin vbotka.freebsd.iocage`_
-   * `inventory plugin vbotka.freebsd.iocage2`_
+   * :ref:`ug_inventory_iocage`
+   * :ref:`ug_inventory_iocage2`
    * `filesystems/py-libzfs`_
    * `sysutils/py-iocage`_

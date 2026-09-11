@@ -144,11 +144,3 @@ List repo
 
 .. literalinclude:: out/out-04.txt
    :language: html
-
-
-.. _vbotka.freebsd.nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/nginx/
-.. _vbotka.freebsd.packages: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/packages/
-.. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
-
-.. _man pkg: https://man.freebsd.org/cgi/man.cgi?pkg(8)
-.. _man pkg.conf: https://man.freebsd.org/cgi/man.cgi?pkg.conf(5)

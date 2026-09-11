@@ -72,11 +72,11 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-base.yml``, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-base.yml``, use the :ref:`ug_module_iocage` to:
 
   * Create the basejail ``ansible_client``
 
-  In the playbook ``pb-iocage-clone.yml``, use the `module vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-clone.yml``, use the :ref:`ug_module_iocage` to:
 
   * Clone 3 jails from the basejail ``ansible_client``
 
@@ -86,7 +86,7 @@ Synopsis
   * pb-ansible-client.yml
   * pb-test.yml
 
-  use the `inventory plugin vbotka.freebsd.iocage`_ to:
+  use the :ref:`ug_inventory_iocage` to:
 
   * Create inventory groups and compose variables
   * Create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
@@ -97,8 +97,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `module vbotka.freebsd.iocage`_
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
 * An activated `binary iocage`_
 * Fetched releases

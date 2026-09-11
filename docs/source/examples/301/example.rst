@@ -15,7 +15,7 @@
 Use case
 ^^^^^^^^
 
-Test the `module vbotka.freebsd.ucl`_.
+Test the :ref:`ug_module_ucl`.
 
 Tree
 ^^^^
@@ -40,7 +40,7 @@ On a managed node:
 Requirements
 ^^^^^^^^^^^^
 
-* `module vbotka.freebsd.ucl`_
+* :ref:`ug_module_ucl`
 * Installed `uclcmd`_
 
 Notes

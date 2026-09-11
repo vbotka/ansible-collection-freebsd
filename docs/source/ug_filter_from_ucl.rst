@@ -6,9 +6,9 @@
 Filter vbotka.freebsd.from_ucl
 ------------------------------
 
-The `filter vbotka.freebsd.from_ucl`_ parses UCL string into a YAML
+The :ref:`ug_filter_from_ucl` parses UCL string into a YAML
 dictionary.
 
 .. note::
 
-   * See Ansible Galaxy `filter vbotka.freebsd.from_ucl`_
+   * See Ansible Galaxy :ref:`ug_filter_from_ucl`

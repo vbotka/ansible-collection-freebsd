@@ -46,13 +46,13 @@ Synopsis
 
 On two managed nodes:
 
-* Fetch dynamic inventory using the `inventory plugin vbotka.freebsd.iocage`_
+* Fetch dynamic inventory using the :ref:`ug_inventory_iocage`
 * Configure and test ``cache``
 
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_inventory_iocage`
 * Jails created in :ref:`example_010`
 
 ansible.cfg

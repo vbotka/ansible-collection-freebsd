@@ -108,7 +108,7 @@ it populates the ``notes`` property:
 Dictionary iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In the `inventory plugin vbotka.freebsd.iocage`_, enable the parameter
+In the :ref:`ug_inventory_iocage`, enable the parameter
 ``get_properties``, compose the dictionary ``iocage_tags``, and use it
 to generate ``keyed_groups``:
 

@@ -43,7 +43,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `inventory plugin vbotka.freebsd.iocage`_
+* :ref:`ug_inventory_iocage`
 
 Notes
 ^^^^^

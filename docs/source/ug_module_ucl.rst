@@ -6,13 +6,13 @@
 Module vbotka.freebsd.ucl
 -------------------------
 
-The `module vbotka.freebsd.ucl`_ is CRUD(Create, Read, Update and Delete)
+The :ref:`ug_module_ucl` is CRUD(Create, Read, Update and Delete)
 interface to managing UCL(Universal Configuration Language) files.
 
 .. note::
 
    * This module requires `devel/uclcmd`_
-   * See Ansible Galaxy `module vbotka.freebsd.ucl`_
+   * See Ansible Galaxy :ref:`ug_module_ucl`
 
 .. seealso::
 

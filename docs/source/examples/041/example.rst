@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Use the `filter vbotka.freebsd.project`_ to restructure a project
+Use the :ref:`ug_filter_project` to restructure a project
 dictionary.
 
 Tree
@@ -42,7 +42,7 @@ and ``class`` attributes:
 Requirements
 ^^^^^^^^^^^^
 
-* `filter vbotka.freebsd.project`_
+* :ref:`ug_filter_project`
 
 Notes
 ^^^^^
