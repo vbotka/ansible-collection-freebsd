@@ -3,13 +3,12 @@
 017 community.general.iocage
 ----------------------------
 
-Extending :ref:`example_016`.
-
 .. contents::
    :local:
    :depth: 1
 
 .. index:: single: inventory community.general.iocage; Example 017
+.. index:: single: community.general.iocage; Example 017
 .. index:: single: pb-iocage-obsolete.yml; Example 017
 .. index:: single: option compose; Example 017
 .. index:: single: compose; Example 017
@@ -30,11 +29,10 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   ├── pb-iocage-obsolete.yml
-  └── pb-test.yml
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^
@@ -44,10 +42,10 @@ The `inventory plugin community.general.iocage`_ should provide the same functio
 .. warning::
 
    The inventory plugin ``community.general.iocage`` may differ from
-   ``vbotka.freebsd.iocage``. If you want to be sure ``community.general.iocage``
-   provides the same functionality, compare the hash from
-   ``setup/vars/chcksum.yml`` with the ``community.general.iocage`` hash. Run the
-   included playbook ``pb-iocage-obsolete.yml``::
+   ``vbotka.freebsd.iocage``. If you want to be sure
+   ``community.general.iocage`` provides the same functionality, compare the
+   hash from ``setup/vars/chcksum.yml`` with the ``community.general.iocage``
+   hash. Run the included playbook ``pb-iocage-obsolete.yml``::
 
      shell> ansible-playbook pb-iocage-obsolete.yml
 
@@ -92,15 +90,10 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 1
-
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
    :emphasize-lines: 1
@@ -115,18 +108,18 @@ Inventory hosts
 
      (env) > ansible-inventory -i hosts --list --yaml
 
-Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^
+Playbook pb.yml
+^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test.yml
+.. literalinclude:: pb.yml
    :language: yaml+jinja
 
-Playbook output - Display groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display jails and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja

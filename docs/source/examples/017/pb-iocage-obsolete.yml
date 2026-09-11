@@ -1,6 +1,6 @@
 - name: Test inventory plugin version.
   hosts: localhost
-  gather_facts: false
+  connection: local
 
   vars:
 
