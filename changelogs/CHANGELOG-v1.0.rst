@@ -5,6 +5,25 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
+1.0.11
+======
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+--------------
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 1.0.10
 ======
 
@@ -25,6 +44,9 @@ Docs. Replaced links to Ansible Galaxy.
 Bugfixes
 --------
 * Fix filter to_ucl documentation.
+
+Breaking Changes / Porting Guide
+--------------------------------
 
 
 1.0.9
