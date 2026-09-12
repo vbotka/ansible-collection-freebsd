@@ -5,9 +5,16 @@
 Module vbotka.freebsd.service
 -----------------------------
 
-The :ref:`ug_module_service` is a wrapper to the `binary service`_.
+The ``service`` module is wrapper to the `binary service`_.
 
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t module vbotka.freebsd.service
 
 .. note::
 
-   See Ansible Galaxy :ref:`ug_module_service`
+   See Ansible Galaxy `Module vbotka.freebsd.service`_

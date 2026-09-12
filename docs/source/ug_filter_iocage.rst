@@ -5,9 +5,17 @@
 Filter vbotka.freebsd.iocage
 ----------------------------
 
-The :ref:`ug_filter_iocage` parses `iocage`_ lists.
+The ``iocage`` filter parses `iocage`_ lists.
+
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t filter vbotka.freebsd.iocage
 
 .. note::
 
    * This filter requires `sysutils/iocage`_
-   * See Ansible Galaxy :ref:`ug_filter_iocage`
+   * See Ansible Galaxy `filter iocage`_

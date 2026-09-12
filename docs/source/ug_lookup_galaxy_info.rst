@@ -6,7 +6,15 @@
 Lookup vbotka.freebsd.galaxy_info
 ---------------------------------
 
-The :ref:`ug_lookup_galaxy_info` gets the meta data from galaxy.yml
+The ``galaxy_info`` lookup plugin gets the meta data from galaxy.yml
+
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t lookup vbotka.freebsd.galaxy_info
 
 .. seealso::
 

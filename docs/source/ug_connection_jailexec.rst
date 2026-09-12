@@ -19,9 +19,17 @@
 connection vbotka.freebsd.jailexec
 ----------------------------------
 
-The connection plugin ``vbotka.freebsd.jailexec`` connects to FreeBSD
-jails without requiring SSH inside the jail. It uses the host-level
-``jexec`` utility to execute commands within target jails.
+The ``jailexec`` connection plugin connects to FreeBSD jails without requiring
+SSH inside the jail. It uses the host-level ``jexec`` utility to execute
+commands within target jails.
+
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t connection vbotka.freebsd.jailexec
 
 Execution Architecture
 ~~~~~~~~~~~~~~~~~~~~~~

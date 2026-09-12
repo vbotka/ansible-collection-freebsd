@@ -10,14 +10,21 @@ architectural differences between the `inventory plugin
 vbotka.freebsd.iocage`_ and the `inventory plugin
 vbotka.freebsd.iocage2`_.
 
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t inventory vbotka.freebsd.iocage2
+
 Overview
 ^^^^^^^^
 
-While ``vbotka.freebsd.iocage`` relies on executing the high-level
-`iocage`_ command-line utility via shell subprocesses,
-``vbotka.freebsd.iocage2`` communicates directly with the underlying
-FreeBSD system using native Python bindings (`filesystems/py-libzfs`_
-and `sysutils/py-iocage`_).
+While ``iocage`` inventory plugin relies on executing the high-level `iocage`_
+command-line utility via shell subprocesses, ``iocage2`` communicates directly
+with the underlying FreeBSD system using native Python bindings
+(`filesystems/py-libzfs`_ and `sysutils/py-iocage`_).
 
 Comparison Matrix
 ^^^^^^^^^^^^^^^^^
@@ -40,7 +47,7 @@ Key Differences
 Direct libzfs Integration
 """""""""""""""""""""""""
 
-`vbotka.freebsd.iocage2` queries ZFS pool structures directly via
+``vbotka.freebsd.iocage2`` queries ZFS pool structures directly via
 ``libzfs.ZFS()``.  It traverses ``<pool>/iocage/jails`` child datasets
 in memory, eliminating shell execution overhead and preventing stdout
 string-parsing errors over SSH.
@@ -48,7 +55,7 @@ string-parsing errors over SSH.
 Template Discovery
 """"""""""""""""""
 
-`vbotka.freebsd.iocage2` implements a multi-tier resolution strategy:
+``vbotka.freebsd.iocage2`` implements a multi-tier resolution strategy:
 
 * Checks the ``source_template`` property.
 * Checks ``cloned_from`` and ``template`` properties.
@@ -72,12 +79,5 @@ When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
 
    The jail host requires:
 
-   * `filesystems/py-libzfs`_
-   * `sysutils/py-iocage`_
-
-.. seealso::
-
-   * :ref:`ug_inventory_iocage`
-   * :ref:`ug_inventory_iocage2`
    * `filesystems/py-libzfs`_
    * `sysutils/py-iocage`_

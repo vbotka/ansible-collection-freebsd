@@ -40,6 +40,13 @@ Parameters
      - ``4``
      - Number of spaces used for directive indentation inside sections.
 
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t filter vbotka.freebsd.ast_to_haproxy
 
 Grammar & Transformations
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,4 +199,4 @@ Return Value
 
 .. note::
 
-   * See Ansible Galaxy :ref:`ug_filter_ast_to_haproxy`
+   * See Ansible Galaxy `filter ast_to_haproxy`_

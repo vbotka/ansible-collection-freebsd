@@ -5,8 +5,8 @@
 Inventory vbotka.freebsd.iocage
 -------------------------------
 
-The :ref:`ug_inventory_iocage` gets the inventory from
-the `iocage`_ jail manager.
+This ``iocage`` inventory plugin gets the inventory from the `iocage`_ jail
+manager.
 
 .. toctree::
    :maxdepth: 1
@@ -17,6 +17,14 @@ the `iocage`_ jail manager.
    ug_inventory_iocage_properties
    ug_inventory_iocage_tags
    ug_inventory_iocage_aliases
+
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t inventory vbotka.freebsd.iocage
 
 .. note::
 
@@ -32,7 +40,7 @@ the `iocage`_ jail manager.
 
 .. seealso::
 
-   - Ansible Galaxy :ref:`ug_inventory_iocage`
+   - Ansible Galaxy `inventory iocage`_
    - `iocage - A FreeBSD Jail Manager`_
    - `man iocage`_
    - `Jails and Containers`_

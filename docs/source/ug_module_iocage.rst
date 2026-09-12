@@ -4,9 +4,17 @@
 Module vbotka.freebsd.iocage
 ----------------------------
 
-The :ref:`ug_module_iocage` is a wrapper to the `binary iocage`_.
+The ``iocage`` module is wrapper to the `binary iocage`_.
+
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      shell> ansible-doc -t module vbotka.freebsd.iocage
 
 .. note::
 
    * This module requires `sysutils/iocage`_
-   * See Ansible Galaxy :ref:`ug_module_iocage`
+   * See Ansible Galaxy `Module vbotka.freebsd.iocage`_
