@@ -282,7 +282,7 @@
 .. _use_vars_plugins: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-use_vars_plugins
 .. _vars plugin ansible.builtin.host_group_vars: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/host_group_vars_vars.html
 .. _vault: https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html#encrypting-files-with-ansible-vault
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/ui/standalone/roles/vbotka/ansible_lib/
+.. _vbotka.ansible_lib: https://github.com/vbotka/ansible-lib/
 .. _vbotka.config_light: https://ansible-config-light.readthedocs.io/en/latest/
 .. _vbotka.freebsd galaxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _vbotka.freebsd.apache: https://ansible-apache.readthedocs.io/en/latest/
