@@ -20,10 +20,10 @@ to managing UCL(Universal Configuration Language) files.
 .. note::
 
    * This module requires `devel/uclcmd`_
-   * See Ansible Galaxy `Module vbotka.freebsd.ucl`_
 
 .. seealso::
 
    * `FreeBSD Wiki - UCL`_
    * `UCL - Universal Configuration Language`_
    * `uclcmd - Command line tool for working with UCL config files`_
+   * Ansible Galaxy `Module vbotka.freebsd.ucl`_

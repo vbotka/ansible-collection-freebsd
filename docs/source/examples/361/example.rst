@@ -65,6 +65,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* Role `vbotka.freebsd.network`_
+* Role `vbotka.freebsd.postinstall`_
 * Root privileges on the managed nodes.
 
 Notes
@@ -73,6 +75,11 @@ Notes
 The USB NICs ``ue0`` and ``ue1`` are used here for testing. Using them
 in production is not recommended. See the FreeBSD Forum thread `rc.d
 netif restart lagg0`_ to learn about issues with USB NICs.
+
+.. note::
+
+   | `vbotka.freebsd.network`_ is the role **network** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -110,17 +117,17 @@ Playbook output - Configure resolv.conf
 
 The tasks ``fp_resolvconf`` configure ``/etc/resolvconf.conf`` and
 ``/etc/resolv.conf`` using the modules ``community.general.sysrc`` and
-``ansible.builtin.lineinfile`` respectively. If you are not sure about
-the contents of these files, you may want to clean them before
-applying the configuration:
+``ansible.builtin.lineinfile`` respectively. If you are not sure about the
+contents of these files, you may want to clean them before applying the
+configuration:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    fp_resolvconf_conf_clean: true
    fp_resolv_conf_clean: true
 
-This makes the play non-idempotent. The defaults are ``false``. To
-keep the play idempotent, omit these variables.
+This makes the play non-idempotent. The defaults are ``false``. To keep the play
+idempotent, omit these variables.
 
 .. code-block:: console
 
@@ -158,7 +165,7 @@ MAC addresses are sanitized.
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.17 ifconfig lagg0
+   shell> ssh admin@10.1.0.17 ifconfig lagg0
 
 .. literalinclude:: out/out-03.txt
    :language: bash

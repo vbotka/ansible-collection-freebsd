@@ -2,14 +2,13 @@ properties:
   notes: "vmm={{ inventory_hostname }}"
 
 clones:
-  test_151:
+  test-161:
     clone_from: ansible-client
     properties:
       bpf: 1
       vnet: 1
-      defaultrouter: '172.16.99.1'
-      ip4_addr: 'vnet0|172.16.99.151/24'
-      notes: "swarm=sw_01"
+      ip4_addr: 'vnet0|172.16.99.161/24'
+      notes: "swarm=sw_01 alias=test_161"
 
 swarms:
   sw_01:
@@ -20,4 +19,4 @@ swarms:
       dhcp: 1
       vnet: 1
 
-start: [test_151]
+start: [test-161]

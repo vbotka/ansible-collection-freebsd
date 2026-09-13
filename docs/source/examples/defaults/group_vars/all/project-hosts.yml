@@ -1,5 +1,7 @@
 project_hosts:
+  log_server: 172.16.99.10
   iocage_06:
+    local_repos: 10.30.10.69
     defaultrouter: 172.16.99.1
     default_pkg_repo: 172.16.99.1
     local_pkg_repo: 172.16.99.1
@@ -7,4 +9,3 @@ project_hosts:
     repos: 172.16.99.21
     repos_devel: 172.16.99.22
     pkg_repo: 172.16.99.23
-    ansible_pull_syslogng_server: 172.16.99.31

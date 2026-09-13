@@ -2,9 +2,9 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_133] => 
+ok: [test_163] => 
     iocage_properties:
-        CONFIG_VERSION: '33'
+        CONFIG_VERSION: '34'
         allow_chflags: '0'
         allow_mlock: '0'
         allow_mount: '0'
@@ -40,7 +40,7 @@ ok: [test_133] =>
         cputime: 'off'
         datasize: 'off'
         dedup: 'off'
-        defaultrouter: 10.1.0.10
+        defaultrouter: 172.16.99.1
         defaultrouter6: auto
         depends: none
         devfs_ruleset: '4'
@@ -59,27 +59,27 @@ ok: [test_133] =>
         exec_system_jail_user: '0'
         exec_system_user: root
         exec_timeout: '60'
-        host_domainname: none
-        host_hostname: ansible-client
-        host_hostuuid: test_133
+        host_domainname: ''
+        host_hostname: test_163
+        host_hostuuid: test_163
         host_time: '1'
-        hostid: d6add9ad-8b6e-4316-a226-345a60532b41
+        hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
         hostid_strict_check: '0'
         interfaces: vnet0:bridge0
         ip4: new
-        ip4_addr: vnet0|10.1.0.133/24
+        ip4_addr: vnet0|172.16.99.253/24
         ip4_saddrsel: '1'
         ip6: new
         ip6_addr: none
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/test_133/data
+        jail_zfs_dataset: iocage/jails/test_163/data
         jail_zfs_mountpoint: none
-        last_started: '2026-02-24 21:58:41'
+        last_started: '2026-09-14 04:57:01'
         localhost_ip: none
         login_flags: -f root
-        mac_prefix: 5a9cfc
+        mac_prefix: f6289d
         maxproc: 'off'
         memorylocked: 'off'
         memoryuse: 'off'
@@ -113,7 +113,7 @@ ok: [test_133] =>
         quota: none
         readbps: 'off'
         readiops: 'off'
-        release: 15.0-RELEASE-p3
+        release: 15.1-RELEASE-p1
         reservation: none
         resolver: /etc/resolv.conf
         rlimits: 'off'
@@ -135,7 +135,7 @@ ok: [test_133] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: 5a9cfc882ebc 5a9cfc882ebd
+        vnet0_mac: f6289dc776b9 f6289dc776ba
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto
@@ -151,5 +151,5 @@ ok: [test_133] =>
         writeiops: 'off'
 
 PLAY RECAP *********************************************************************
-test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_163                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

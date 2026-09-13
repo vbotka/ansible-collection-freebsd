@@ -20,6 +20,6 @@ dictionary mapping class names to lists of service names.
 
       shell> ansible-doc -t filter vbotka.freebsd.project
 
-.. note::
+.. seealso::
 
-   * See Ansible Galaxy `filter project`_
+   * Ansible Galaxy `filter project`_

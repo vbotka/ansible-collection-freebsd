@@ -4,7 +4,7 @@
 . ../defaults/batch
 
 # Test
-ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 -t freebsd_iocage_sanity | tee out/out-01.txt
+ansible-playbook -i iocage.ini -l iocage_06 -t freebsd_iocage_sanity pb-iocage.yml | tee out/out-01.txt
 
 # Test quietly
-ANSIBLE_DISPLAY_OK_HOSTS=false ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 -t freebsd_iocage_sanity | tee out/out-02.txt
+ANSIBLE_DISPLAY_OK_HOSTS=false ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ansible-playbook -i iocage.ini -l iocage_06 -t freebsd_iocage_sanity pb-iocage.yml | tee out/out-02.txt

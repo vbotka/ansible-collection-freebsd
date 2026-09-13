@@ -6,5 +6,5 @@ included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudrier
 included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/poudriere/tasks/pkglist.yml for build.example.com => (item=arm)
 
 PLAY RECAP *********************************************************************
-build.example.com          : ok=25   changed=0    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0   
+build.example.com          : ok=23   changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
 

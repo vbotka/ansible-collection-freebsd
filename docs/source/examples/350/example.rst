@@ -20,8 +20,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.rsnapshot`_ to install and configure
-`rsnapshot`_.
+Use the role `vbotka.freebsd.rsnapshot`_ to install and configure `rsnapshot`_.
 
 Tree
 ^^^^
@@ -33,12 +32,15 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
-  │       ├── ansible-client.yml
   │       ├── common.yml
-  │       └── rsnapshot.yml
+  │       ├── rsnapshot.yml
+  │       └── swarms.yml
   ├── hosts
-  │   ├── 04_iocage.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
+  ├── host_vars
+  │   └── iocage_06
+  │       └── swarms.yml
   ├── iocage.ini
   ├── pb-install.yml
   └── pb-test.yml
@@ -48,9 +50,9 @@ Synopsis
 
 In the playbooks:
 
-* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_: Create and start jails.
-* ``pb-install.yml``: Install `rsnapshot`_ in running jails.
-* ``pb-test.yml``: Configure `rsnapshot`_ in running jails.
+* :ref:`ug_pb-iocage-ansible-clients`: Create and start jails in ``swarm``.
+* ``pb-install.yml``: Install `rsnapshot`_ in ``swarm``.
+* ``pb-test.yml``: Configure `rsnapshot`_ in ``swarm``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -60,9 +62,9 @@ Requirements
 Notes
 ^^^^^
 
-* Jail names do not work in the `name`_ parameter of the module
-  `community.general.pkgng`_ if the jail was created by
-  ``iocage``. Use the JID instead::
+* Jail names created by ``iocage`` do not work in the `jail
+  parameter`_ of the module `community.general.pkgng`_. Use the JID
+  instead::
 
     jail: "{{ iocage_jid }}"
 
@@ -80,6 +82,10 @@ Notes
     rsnapshot_packages:
       - sysutils/rsnapshot
 
+.. seealso::
+
+   * :ref:`ug_qa_jexec_iocage_name`
+
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -94,18 +100,33 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-group_vars
-^^^^^^^^^^
+hosts
+^^^^^
 
-.. literalinclude:: group_vars/all/ansible-client.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
+group_vars
+^^^^^^^^^^
 
 .. literalinclude:: group_vars/all/common.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/rsnapshot.yml
+   :language: yaml+jinja
+   :caption:
+
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_06/swarms.yml
    :language: yaml+jinja
    :caption:
 
@@ -122,29 +143,18 @@ Create and start jails
    :language: yaml+jinja
    :force:
 
-Jails at iocage_04
-^^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
-   [iocage_04]# iocage list -l
+   [iocage_06]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -163,8 +173,8 @@ Playbook pb-install.yml
 Playbook output - Install packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed when a task is delegated to an
-iocage host:
+The inventory ``iocage.ini`` is needed when a task is delegated to an iocage
+host:
 
 .. code-block:: console
 

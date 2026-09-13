@@ -73,7 +73,7 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_, fetch the
+  In the playbook :ref:`ug_pb-iocage-plugins`, fetch the
   `iocage plugins`_:
 
   * ``ansible-pull-syslogng-server``
@@ -95,14 +95,14 @@ Requirements
   * ``ansible-pull-syslogng-server``
   * ``ansible-pull-syslogng-client``
 
-* Configuration repositories for ``ansible-pull``:
+* Configuration repositories for `ansible-pull`_:
 
   * `ansible-conf-syslogng-server`_
   * `ansible-conf-syslogng-client`_
 
-* Playbook `vbotka.freebsd.pb_iocage_plugins.yml`_.
-* `Inventory plugin vbotka.freebsd.iocage`_.
-* :ref:`ug_connection_jailexec`.
+* Playbook :ref:`ug_pb-iocage-plugins`
+* :ref:`ug_inventory_iocage`
+* :ref:`ug_connection_jailexec`
 
 .. important::
 
@@ -177,8 +177,8 @@ Playbook output - Fetch iocage plugins
    :language: yaml+jinja
    :force:
 
-List iocage plugins
-^^^^^^^^^^^^^^^^^^^
+Plugins
+^^^^^^^
 
 .. code-block:: console
 
@@ -204,8 +204,8 @@ Playbook output - Clone jails from iocage plugins
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -214,8 +214,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

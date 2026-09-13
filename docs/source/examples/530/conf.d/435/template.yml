@@ -7,6 +7,7 @@ fit_templates:
       - python312
       - python
       - python3
+      - sudo
     files: "{{ fit_files | dict2items }}"
     properties:
       ip4: disable

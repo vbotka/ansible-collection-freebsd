@@ -7,9 +7,12 @@
    :local:
    :depth: 1
 
+.. index:: single: project; Example 435
+
 .. index:: single: Nginx; Example 435
 .. index:: single: role vbotka.freebsd.nginx; Example 435
 .. index:: single: vbotka.freebsd.nginx; Example 435
+
 .. index:: single: template ansible-nginx; Example 435
 .. index:: single: ansible-nginx; Example 435
 
@@ -57,7 +60,7 @@ Synopsis
     template ``ansible-nginx``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to configure the Nginx servers.
@@ -67,7 +70,7 @@ Requirements
 
 * Role `vbotka.freebsd.iocage_template`_
 * Role `vbotka.freebsd.nginx`_
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
 * Package repository created in :ref:`example_322`.
@@ -76,6 +79,13 @@ Notes
 ^^^^^
 
 * TBD
+
+.. note::
+
+   | `vbotka.freebsd.nginx`_ is the role **nginx** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_nginx`_ is the role **freebsd_nginx** in the namespace `vbotka`_.
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -161,15 +171,15 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash
 
 Playbook output - Create project jails from iocage templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -183,25 +193,25 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Playbook pb-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^

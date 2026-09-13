@@ -3,7 +3,7 @@
 203 Create DHCP jails with auto UUID and iocage_tags
 ----------------------------------------------------
 
-Extending :ref:`example_202`.
+This example extends :ref:`example_202`.
 
 .. contents::
    :local:
@@ -51,7 +51,7 @@ create three jails from the template ``ansible_client``::
   swarms:
     sw_01:
       count: 3
-      template: ansible_client
+      template: ansible-client
 
 The module ``vbotka.freebsd.iocage`` does not work with multiple
 names. Use ``ansible.builtin.command`` instead. If the UUID is
@@ -69,7 +69,7 @@ In the inventory plugin, compose the variable ``iocage_tags``::
 
 For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    iocage_tags:
      vmm: iocage_01
@@ -77,7 +77,7 @@ For example:
 
 Create groups from ``iocage_tags``:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    keyed_groups:
      - prefix: swarm
@@ -111,7 +111,7 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use:
+  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
   * :ref:`ug_module_iocage` to:
 
@@ -133,7 +133,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
@@ -148,26 +148,6 @@ Notes
 
    * `binary iocage`_
 
-Templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -lt
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-Templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -180,50 +160,8 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-Playbook output - Create and start swarms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.ini \
-                            -t swarm \
-                            -e swarm=true \
-                            -e debug=true \
-                             vbotka.freebsd.pb_iocage_ansible_clients.yml
-
-.. literalinclude:: out/out-03.txt
-   :language: yaml+jinja
-   :force:
-
-Jails at iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
-Jails at iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-05.txt
-   :language: bash
-
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -244,14 +182,56 @@ Inventory hosts
    The option ``get_properties: True`` is needed to get the dictionary
    ``iocage_properties``.
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+Playbook output - Create and start swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm \
+                            -e swarm=true \
+                            -e debug=true \
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
+
+.. literalinclude:: out/out-03.txt
+   :language: yaml+jinja
+   :force:
+
+Graph
+^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-06.txt
+   :language: bash
+
+Jails on iocage_02
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+Jails on iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-05.txt
    :language: bash
 
 Playbook pb-test.yml
@@ -265,7 +245,7 @@ Playbook output - Display iocage_tags
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja
@@ -278,4 +258,4 @@ Playbook output - Display iocage_tags
      ansible-playbook -i iocage.ini \
                       -t swarm_destroy \
                       -e swarm_destroy=true \
-                       vbotka.freebsd.pb_iocage_ansible_clients.yml
+                      vbotka.freebsd.pb_iocage_ansible_clients.yml

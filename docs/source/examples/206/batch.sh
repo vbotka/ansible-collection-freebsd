@@ -3,22 +3,28 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
-# Ddestroy jails
-VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
+# Destroy jails
+# VBOTKA_FREEBSD_BATCH=true ansible-playbook vbotka.freebsd.pb_iocage_destroy_all_jails.yml -i iocage.ini --flush-cache
+ssh admin@iocage_06 sudo iocage destroy -f test-161
+ssh admin@iocage_06 sudo iocage destroy -f test-162
+ssh admin@iocage_06 sudo iocage destroy -f test-163
 
 # Create templates
-(cd ../202 && ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini --flush-cache)
+# (cd ../202 && ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini --flush-cache)
 
 # Status
-ssh admin@$iocage_04 iocage list -lt | tee out/out-01.txt
+ssh admin@iocage_06 iocage list -lt | tee out/out-01.txt
 
 # Create jails
-ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t clone -e clone=true | tee out/out-02.txt
-ansible-playbook vbotka.freebsd.pb_iocage_ansible_clients.yml -i iocage.ini -t swarm -e swarm=true -e debug=true | tee out/out-03.txt
+ansible-playbook -i iocage.ini -t clone -e clone=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-02.txt
+ansible-playbook -i iocage.ini -t swarm -e swarm=true -e debug=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-03.txt
 
 # Status of jails
-ssh admin@$iocage_04 sudo iocage list -l | tee out/out-04.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-04.txt
 ansible-inventory -i hosts --graph | tee out/out-05.txt
 
 # Test
-ansible-playbook pb-test.yml -i hosts  --flush-cache| tee out/out-06.txt
+ansible-playbook -i hosts pb-test.yml | tee out/out-06.txt
+
+# Destroy swarms
+ansible-playbook -i iocage.ini -t swarm_destroy -e swarm_destroy=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-07.txt

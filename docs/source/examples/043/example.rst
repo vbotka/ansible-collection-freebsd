@@ -17,7 +17,8 @@
 Use case
 ^^^^^^^^
 
-Test the filters `vbotka.freebsd.to_ucl`_ and `vbotka.freebsd.from_ucl`_.
+Test the filters :ref:`filter vbotka.freebsd.to_ucl <ug_filter_to_ucl>` and
+:ref:`filter vbotka.freebsd.from_ucl <ug_filter_from_ucl>`.
 
 Tree
 ^^^^
@@ -33,23 +34,22 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the playbook ``pb-test-to-ucl.yml``, test the filter
-  `vbotka.freebsd.to_ucl`_.
+* In the playbook ``pb-test-to-ucl.yml``, test the :ref:`filter
+  vbotka.freebsd.to_ucl <ug_filter_to_ucl>`.
 
-* In the playbook ``pb-test-from-ucl.yml``, test the filter
-  `vbotka.freebsd.from_ucl`_.
+* In the playbook ``pb-test-from-ucl.yml``, test the :ref:`filter
+  vbotka.freebsd.from_ucl <ug_filter_from_ucl>`.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Filter `vbotka.freebsd.to_ucl`_
-* Filter `vbotka.freebsd.from_ucl`_
+* :ref:`ug_filter_to_ucl`
+* :ref:`ug_filter_from_ucl`
 
 Notes
 ^^^^^
 
-The filters ``to_ucl`` and ``from_ucl`` require the Python `package
-ucl`_.
+The filters ``to_ucl`` and ``from_ucl`` require the Python `package ucl`_.
 
 .. seealso::
 

@@ -18,8 +18,8 @@ ok: [iocage_06] => (item=/usr/local/etc/pkg)
 ok: [iocage_06] => (item=/usr/local/etc/pkg/repos)
 
 TASK [vbotka.freebsd.packages : Conf: Configure /usr/local/etc/pkg/repos] ******
-changed: [iocage_06] => (item=build)
+ok: [iocage_06] => (item=build)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=6    changed=1    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
 

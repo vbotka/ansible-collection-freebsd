@@ -2,6 +2,7 @@
 
 shopt -s globstar
 
+# shellcheck disable=SC1091
 . defaults/batch
 
 export VBOTKA_FREEBSD_BATCH=true
@@ -48,10 +49,11 @@ fi
 
 # Destroy templates
 if [[ $destroy_templates == true ]]; then
-    ssh admin@$iocage_01 "echo admin | sudo -S iocage destroy -f ansible_client"
-    ssh admin@$iocage_02 sudo iocage destroy -f ansible_client
+#   ssh admin@$iocage_01 "echo admin | sudo -S iocage destroy -f ansible_client"
+#   ssh admin@$iocage_02 sudo iocage destroy -f ansible_client
 #   ssh admin@$iocage_03 sudo iocage destroy -f ansible_client
-    ssh admin@$iocage_04 sudo iocage destroy -f ansible_client
+#   ssh admin@$iocage_04 sudo iocage destroy -f ansible_client
+    ssh admin@iocage_05 sudo iocage destroy -f ansible_client
 fi
 
 # Run all batch.sh

@@ -3,7 +3,7 @@
 019 Inventory option use_vars_plugins
 -------------------------------------
 
-Extending :ref:`example_016`.
+This example extends :ref:`example_016`.
 
 .. contents::
    :local:
@@ -26,9 +26,9 @@ Use case
 ^^^^^^^^
 
 The option `use_vars_plugins`_, responsible for reading ``host_vars``
-and ``group_vars`` directories, is not available in the `inventory
-plugin vbotka.freebsd.iocage`_ because the `constructed fragment`_
-does not provide it.
+and ``group_vars`` directories, is not available in the
+:ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` because
+the `constructed fragment`_ does not provide it.
 
 * Use the inventory plugin `ansible.builtin.constructed`_ to read
   ``group_vars``.
@@ -59,13 +59,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The :ref:`ug_inventory_iocage` retrieves the jails
-  (managed nodes):
+* The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
+  plugin retrieves the jails (managed nodes):
 
   * ``test_111:113`` from host ``iocage_02``
   * ``test_131:133`` from host ``iocage_04``
 
-  and creates inventory groups ``test_02`` and ``test_04``.
+  and creates the inventory groups ``test_02`` and ``test_04``.
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the
   inventory groups:
@@ -87,7 +87,7 @@ Notes
    * The `vars plugin ansible.builtin.host_group_vars`_
    * :ref:`example_016`
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -95,9 +95,9 @@ Jails at iocage_02
    [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
-   :language: bash
+   :language: console
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -105,7 +105,7 @@ Jails at iocage_04
    [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
-   :language: bash
+   :language: console
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -113,8 +113,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -153,7 +153,7 @@ group_vars
    * The option `use_vars_plugins`_ reads the **inventory**
      ``group_vars`` and ``host_vars``.
 
-   * The **playbook** ``group_vars`` and ``host_vars`` will be
+   * The **playbook** ``group_vars`` and ``host_vars`` are
      silently ignored.
 
    See `Variable precedence. Where should I put a variable?`_

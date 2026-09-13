@@ -8,7 +8,8 @@
 
   block:
 
-    - name: "Ai-vars-jail: Create ansible init vars dirs."
+    - name: "Ai-vars-jail: Create ansible init vars dirs {{ ai_vars }}"
+      when: (ai_vars_files ~ '/' ~ item) is directory
       register: out
       ansible.builtin.file:
         state: directory
@@ -23,18 +24,19 @@
       ansible.builtin.debug:
         var: out | d('none')
 
-    - name: "Ai-vars-jail: Create ansible init vars for jail."
+    - name: "Ai-vars-jail: Sync files to {{ ai_vars }}"
       when: (ai_vars_files ~ '/' ~ item) is directory
       ansible.posix.synchronize:
         src: "{{ ai_vars_files }}/{{ item }}/"
         dest: "{{ iocage_mount }}/iocage/jails/{{ item }}/root{{ ai_vars }}/"
+        copy_links: true
         rsync_opts:
           - --include=*.yml
           - --include=*.yaml
           - --exclude=*
       loop: "{{ iocage_jails_vars }}"
 
-    - name: "Ai-vars-jail: Debug create ansible init vars for jail."
+    - name: "Ai-vars-jail: Debug sync files."
       when: debug2 | d(false) | bool
       ansible.builtin.debug:
         var: out | d('none')

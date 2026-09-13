@@ -60,8 +60,8 @@ Synopsis
 
 In the playbooks:
 
-* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_: Create and start jails.
-* `vbotka.freebsd.pb_iocage_update_repos.yml`_: Update repositories.
+* :ref:`ug_pb-iocage-ansible-clients`: Create and start jails.
+* :ref:`ug_pb-iocage-update-repos`: Update repositories.
 * ``pb.yml``: In the jails, install and configure `lighttpd`_.
 
 Requirements
@@ -72,15 +72,13 @@ Requirements
 Notes
 ^^^^^
 
-* Jail names do not work in the `name`_ parameter of the module
-  `community.general.pkgng`_ if the jail was created by
-  ``iocage``. Use the JID instead::
+* Jail names created by ``iocage`` do not work in the `jail parameter`_ of the
+  module `community.general.pkgng`_. Use the JID instead::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The play ``pb.yml`` runs inside the jails. The inventory
-  ``iocage.ini`` is needed when a task is delegated to an iocage
-  host::
+* The play ``pb.yml`` runs inside the jails. The inventory ``iocage.ini`` is
+  needed when a task is delegated to an iocage host::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
 
@@ -95,9 +93,9 @@ Notes
       name:
         - www/lighttpd
 
-* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates
-  the repositories. Afterwards, use the `cached`_ local package
-  database instead of fetching an updated one::
+* The playbook :ref:`ug_pb-iocage-update-repos` updates the
+  repositories. Afterwards, use the `cached`_ local package database instead of
+  fetching an updated one::
 
     freebsd_pkgng_cached: true
 
@@ -121,6 +119,7 @@ Notes
 
    * `Ansible role Config Light`_
    * Module `community.general.pkgng`_
+   * :ref:`ug_qa_jexec_iocage_name`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -135,6 +134,17 @@ Inventory iocage.ini
 
 .. literalinclude:: iocage.ini
    :language: ini
+
+hosts
+^^^^^
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
 
 group_vars
 ^^^^^^^^^^
@@ -174,35 +184,24 @@ Create and start jails
 .. literalinclude:: out/out-11.txt
    :language: bash
 
-Jails at iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 .. literalinclude:: out/out-02.txt
+   :language: bash
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
    :language: bash
 
 Update repos
@@ -276,7 +275,7 @@ FreeBSD packages" from the jails to their iocage hosts.
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb.yml -i hosts -i iocage.ini
+   (env) > ansible-playbook -i hosts -i iocage.ini pb.yml
 
 .. literalinclude:: out/out-10.txt
    :language: yaml+jinja
@@ -302,7 +301,7 @@ content should be::
 
    Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_::
 
-     (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb.yml -i hosts
+     (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook -i hosts pb.yml
 
      PLAY [Test role vbotka.freebsd.config_light] **************************************************
 
@@ -311,6 +310,6 @@ content should be::
          ...
 
      PLAY RECAP ************************************************************************************
-     0ed0d0ca: ok=32   changed=0    unreachable=0    failed=0    skipped=91   rescued=0    ignored=0
-     59a3f932: ok=32   changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
-     test_111: ok=32   changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
+     0ed0d0ca: ok=32    changed=0    unreachable=0    failed=0    skipped=91   rescued=0    ignored=0
+     59a3f932: ok=32    changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0
+     test_111: ok=32    changed=0    unreachable=0    failed=0    skipped=69   rescued=0    ignored=0

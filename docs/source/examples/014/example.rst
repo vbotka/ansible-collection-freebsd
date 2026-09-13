@@ -3,7 +3,7 @@
 014 Inventory cache
 -------------------
 
-Extending :ref:`example_010`.
+This example extends :ref:`example_010`.
 
 .. contents::
    :local:
@@ -47,13 +47,15 @@ Synopsis
 
 On a managed node:
 
-* Fetch dynamic inventory using the :ref:`ug_inventory_iocage`
+* Fetch dynamic inventory using the :ref:`inventory
+  vbotka.freebsd.iocage <ug_inventory_iocage>`
+
 * Configure and test ``cache``
 
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_inventory_iocage`
+* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 * Jails created in :ref:`example_010`
 
 .. seealso::
@@ -78,8 +80,9 @@ Enable cache.
 
 .. hint::
 
-   If you do not configure ``cache_plugin``, Ansible falls back to caching inventory with the configured `fact
-   cache plugin`_. For example:
+   If you do not configure ``cache_plugin``, Ansible falls back to
+   caching inventory with the configured `fact cache plugin`_. For
+   example:
 
    .. code-block:: ini
 
@@ -99,14 +102,15 @@ Playbook pb-vars-ip4.yml
 Playbook output - Clear cache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this particular case, it takes 4 seconds to create the dynamic inventory and construct the variables
-after the ``cache`` has been cleared (flushed).
+In this particular case, it takes 4 seconds to create the dynamic
+inventory and construct the variables after the ``cache`` has been
+cleared (flushed).
 
 .. code-block:: console
 
    (env) > date +%r; \
            ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113 --flush-cache
+           ansible-playbook -i iocage.yml -l test_113 --flush-cache pb-vars-ip4.yml
 
 .. literalinclude:: out/out-01.txt
    :language: bash
@@ -115,13 +119,14 @@ after the ``cache`` has been cleared (flushed).
 Playbook output - Cache enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If ``cache`` is enabled, the inventory and variables are provided by the cache immediately.
+If ``cache`` is enabled, the inventory and variables are provided by
+the cache immediately.
 
 .. code-block:: console
 
    (env) > date +%r; \
            ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook pb-vars-ip4.yml -i iocage.yml -l test_113
+           ansible-playbook -i iocage.yml -l test_113 pb-vars-ip4.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -154,10 +159,10 @@ For example:
 
 .. code-block:: console
 
-   shell> ansible-playbook pb-cache-dump.yml \
-          -e cache_file=/var/tmp/inventory_cache/iocage_04_s1_vbotka.freebsd.iocage_kfb2392
+   shell> ansible-playbook -e cache_file=/var/tmp/inventory_cache/iocage_04_s1_vbotka.freebsd.iocage_kfb2392 \
+                           pb-cache-dump.yml
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    PLAY [Dump cache.] *************************************************************
 

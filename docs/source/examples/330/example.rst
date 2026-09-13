@@ -22,7 +22,7 @@ Use case
 
 Fetch releases, create basejails, clone from the basejails, and start the
 jails. Create and display the inventory. Use the `role vbotka.freebsd.iocage`_
-instead of the :ref:`ug_plugins`.
+instead of the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`.
 
 Tree
 ^^^^
@@ -69,9 +69,9 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes
+* `Role vbotka.freebsd.iocage`_
 * Activated ``iocage``
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -150,7 +150,7 @@ Playbook output - Runner
 
      shell> tail -f /var/log/iocage.log
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -160,7 +160,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-03.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -181,9 +181,7 @@ Playbook output - Display iocage_jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini \
-                            -e debug=true \
-                            pb-iocage-list.yml
+   (env) > ansible-playbook -i iocage.ini -e debug=true pb-iocage-list.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja

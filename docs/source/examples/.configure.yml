@@ -1,0 +1,90 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Collection: vbotka.freebsd
+# Playbook: .configure.yml
+#
+# Description:
+#
+#   Configure examples in collection vbotka.freebsd
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://github.com/vbotka/ansible-collection-freebsd/docs/source/examples/.configure.yml
+
+- name: Configure examples.
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+
+  tasks:
+
+    - name: Update ansible.cfg
+      when: update_ansible_conf | d(false) | bool
+      vars:
+        paths: "{{ find_out.files
+                   | json_query('[].path')
+                   | sort
+                   | map('community.general.dict_kv', 'path') }}"
+        update:
+          defaults: "{{ defaults | dict2items }}"
+        defaults:
+          callback_result_format: yaml
+          deprecation_warnings: false
+          display_skipped_hosts: false
+          gathering: explicit
+          interpreter_python: auto_silent
+          log_path: /var/log/ansible.log
+
+      block:
+
+        - ansible.builtin.find:
+            path: "{{ playbook_dir }}"
+            patterns: ansible.cfg
+            recurse: true
+          register: find_out
+
+        - ansible.builtin.debug:
+            var: paths
+          when: debug | d(false) | bool
+
+        - ansible.builtin.debug:
+            msg: |
+              path: "{{ path }}"
+              section: "{{ section }}"
+              option: "{{ option }}"
+              value: "{{ value }}"
+          vars:
+            path: "{{ item.0.path }}"
+            example: "{{ item.0.path | dirname | basename }}"
+            section: "{{ item.0.key }}"
+            option: "{{ item.1.key }}"
+            value: "{{ item.1.value }}"
+          loop: "{{ paths | product ([update | dict2items | first])
+                          | map('combine')
+                          | subelements('value') }}"
+          loop_control:
+            label: "{{ example }} [{{ section }}] {{ option }}={{ value }}"
+          when: debug | d(false) | bool
+
+        - community.general.ini_file:
+            path: "{{ path }}"
+            section: "{{ section }}"
+            option: "{{ option }}"
+            value: "{{ value }}"
+          vars:
+            path: "{{ item.0.path }}"
+            example: "{{ item.0.path | dirname | basename }}"
+            section: "{{ item.0.key }}"
+            option: "{{ item.1.key }}"
+            value: "{{ item.1.value }}"
+          loop: "{{ paths | product ([update | dict2items | first])
+                          | map('combine')
+                          | subelements('value') }}"
+          loop_control:
+            label: "{{ example }} [{{ section }}] {{ option }}={{ value }}"

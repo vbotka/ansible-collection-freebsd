@@ -3,7 +3,7 @@
 
   tasks:
 
-    - command: iocage get notes test_5
+    - command: iocage get notes test-210
       register: out
 
     - debug:

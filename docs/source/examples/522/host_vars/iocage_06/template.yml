@@ -1,19 +1,23 @@
 fit_templates:
   ansible-syslogng-server:
     release: 15.1-RELEASE
-    pkglist: /tmp/ansible/ansible-syslogng-server/pkgs-logserver.json
+    # pkglist: /tmp/ansible/ansible-syslogng-server/pkgs-logserver.json
+    pkg_conf: "{{ fit_pkg_conf | dict2items }}"
+    pkg: [lnav, sudo, syslog-ng, python312, python, python3]
     properties:
       ip4: disable
       ip6: disable
       ip6_addr: none
       boot: 0
       defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
-      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['ansible_syslogng_server'] }}/24"
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['log_server'] }}/24"
       vnet: 1
       notes: '"vmm={{ inventory_hostname }} alias=ansible_syslogng_server"'
   ansible-syslogng-client:
     release: 15.1-RELEASE
-    pkglist: /tmp/ansible/ansible-syslogng-client/pkgs-logclient.json
+    # pkglist: /tmp/ansible/ansible-syslogng-client/pkgs-logclient.json
+    pkg_conf: "{{ fit_pkg_conf | dict2items }}"
+    pkg: [sudo, syslog-ng, python312, python, python3]
     properties:
       ip4: disable
       ip6: disable
@@ -23,6 +27,24 @@ fit_templates:
       dhcp: 1
       vnet: 1
       notes: '"vmm={{ inventory_hostname }} alias=ansible_syslogng_client"'
+
+# Configure local pkg repo and install packages
+fit_pkg_install: true
+fit_pkg_conf:
+  /usr/local/etc/pkg/repos:
+    - {src: local.conf.j2, dest: local.conf}
+
+fit_dir_options:
+  /usr/local/etc/pkg/repos:
+    owner: root
+    group: wheel
+    mode: '0755'
+
+fit_file_options:
+  /usr/local/etc/pkg/repos/local.conf:
+    owner: root
+    group: wheel
+    mode: '0644'
 
 # Do not stop jails. Configure them first. Then stop and convert them to templates.
 fit_stop: false

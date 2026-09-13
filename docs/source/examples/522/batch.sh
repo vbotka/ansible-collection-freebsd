@@ -15,6 +15,9 @@ ssh admin@iocage_06 sudo iocage destroy -f bar
 ssh admin@iocage_06 sudo iocage destroy -f log-server
 ssh admin@iocage_06 sudo iocage destroy -f log-server-01
 
+# Destroy templates
+ssh admin@iocage_06 sudo iocage destroy -f ansible-syslogng-client ansible-syslogng-server
+
 # Create templates
 ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt
 

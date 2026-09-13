@@ -197,6 +197,6 @@ Return Value
      - string
      - The formatted HAProxy configuration string.
 
-.. note::
+.. seealso::
 
-   * See Ansible Galaxy `filter ast_to_haproxy`_
+   * Ansible Galaxy `filter ast_to_haproxy`_

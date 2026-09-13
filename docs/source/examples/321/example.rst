@@ -19,7 +19,7 @@ Use case
 ^^^^^^^^
 
 Use the role `vbotka.freebsd.packages`_ to configure a package repository for
-``Poudriere``.
+`Poudriere`_.
 
 Tree
 ^^^^
@@ -41,12 +41,13 @@ Synopsis
 ^^^^^^^^
 
 On a managed node, use the role `vbotka.freebsd.packages`_ to configure a
-package repository for ``Poudriere``.
+package repository for `Poudriere`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* TBD
+* `Role vbotka.freebsd.packages`_
+* :ref:`ug_filter_to_ucl`
 
 Notes
 ^^^^^
@@ -55,7 +56,7 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.packages`_ is the role **packages** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.packages`_ is the role **packages** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
 
 .. seealso::
@@ -92,13 +93,16 @@ Playbook pb.yml
 Playbook output - Create repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini -t pkg_keys,pkg_conf pb.yml
+
 .. literalinclude:: out/out-01.txt
-   :caption: (env) > ansible-playbook -i iocage.ini -t pkg_keys,pkg_conf pb.yml
    :language: yaml+jinja
    :force:
 
-Repository build.conf at iocage_06
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Repository build.conf
+^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
    :caption: /usr/local/etc/pkg/repos/build.conf
@@ -107,13 +111,19 @@ Repository build.conf at iocage_06
 Configuration
 ^^^^^^^^^^^^^
 
+.. code-block:: console
+
+   [iocage_06]# pkg -vv
+
 .. literalinclude:: out/out-03.txt
-   :caption: [iocage_06]# pkg -vv
-   :language: sh
+   :language: console
 
 Update repos
 ^^^^^^^^^^^^
 
+.. code-block:: console
+
+   [iocage_06]# pkg update -f
+
 .. literalinclude:: out/out-04.txt
-   :caption: [iocage_06]# pkg update -f
    :language: console

@@ -39,7 +39,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On the managed node:
+On a managed node:
 
 * Playbook ``pb-pkg-update.yml``:
 
@@ -62,9 +62,9 @@ Requirements
 Notes
 ^^^^^
 
-* Jail names do not work in the `name`_ parameter of the module
-  `community.general.pkgng`_ if the jail was created by
-  ``iocage``. Use the ``JID`` instead::
+* Jail names created by ``iocage`` do not work in the `jail
+  parameter`_ of the module `community.general.pkgng`_. Use the JID
+  instead::
 
     pkg_jail: "{{ iocage_jid }}"
 
@@ -93,15 +93,26 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.packages`_ is the role **packages** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.packages`_ is the role **packages** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_packages`_ is the role **freebsd_packages** in the namespace `vbotka`_.
 
 .. seealso::
 
    * Module `community.general.pkgng`_
+   * :ref:`ug_qa_jexec_iocage_name`
 
-Jails at iocage_06
-^^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-inventory -i hosts -i iocage.ini --graph
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -141,16 +152,6 @@ group_vars
 .. literalinclude:: group_vars/all/ansible-client.yml
    :language: yaml+jinja
    :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
 
 Playbook pb-pkg-update.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

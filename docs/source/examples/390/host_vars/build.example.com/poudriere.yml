@@ -22,7 +22,7 @@ poudriere_conf_no_zfs: "no"
 poudriere_conf_template: poudriere.conf2.j2
 poudriere_conf_url_base: http://build.example.com
 poudriere_conf_use_tmpfs: "no"
-poudriere_conf_zpool: iocage
+poudriere_conf_zpool: zroot
 poudriere_conf_zrootfs: /usr/local/poudriere
 poudriere_conf_data:
   BASEFS: "{{ poudriere_conf_basefs }}"
@@ -51,13 +51,13 @@ poudriere_pkg_arch: [amd64, arm]
 # make
 poudriere_make_conf:
   - "DEFAULT_VERSIONS+=\t\temacs=nox"
-  - "DEFAULT_VERSIONS+=\t\tphp=8.3"
+  - "DEFAULT_VERSIONS+=\t\tphp=8.4"
   - "DEFAULT_VERSIONS+=\t\tssl=openssl"
-  - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
-  - "OPTIONS_UNSET+=\t\t\tDOCS NLS X11 EXAMPLES"
-  - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
+# - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
+# - "OPTIONS_UNSET+=\t\t\tDOCS NLS X11 EXAMPLES"
+# - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
 
 # pkglist
-poudriere_pkglist_all: true
+# poudriere_pkglist_all: true
 pkglist_enable_amd64: [ansible, minimal]
-pkglist_enable_arm: [ansible, minimal]
+# pkglist_enable_arm: [ansible, minimal]

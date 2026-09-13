@@ -5,7 +5,7 @@ TASK [Get pool.] ***************************************************************
 ok: [iocage_06]
 
 TASK [Create jails] ************************************************************
-ok: [iocage_06] => (item=www-3 ansible-client-apache)
+ok: [iocage_06] => (item=www-3 ansible-apache)
 
 TASK [Start created hosts] *****************************************************
 ok: [iocage_06]

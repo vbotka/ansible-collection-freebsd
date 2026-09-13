@@ -2,38 +2,42 @@
 PLAY [swarm_sw_01] *************************************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [2f6cf965]
-changed: [test_131]
-changed: [e4c59701]
+changed: [df0394cb]
+changed: [test_161]
+changed: [283d850f]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [2f6cf965] => 
+ok: [test_161] => 
     msg: |-
-        out.stdout: 2f6cf965
-        ansible_host: 10.1.0.228
-        iocage_hooks: ['10.1.0.228']
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_04
-ok: [e4c59701] => 
-    msg: |-
-        out.stdout: e4c59701
-        ansible_host: 10.1.0.200
-        iocage_hooks: ['10.1.0.200']
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_04
-ok: [test_131] => 
-    msg: |-
-        out.stdout: test-131
-        ansible_host: 10.1.0.131
+        out.stdout: test-161
+        ansible_host: test_161
         iocage_hooks: ['-']
+        iocage_ip4: 172.16.99.201
+        iocage_tags:
+          alias: test_161
+          swarm: sw_01
+          vmm: iocage_06
+ok: [283d850f] => 
+    msg: |-
+        out.stdout: 283d850f
+        ansible_host: 283d850f
+        iocage_hooks: ['172.16.99.183']
+        iocage_ip4: 172.16.99.183
         iocage_tags:
           swarm: sw_01
-          vmm: iocage_04
+          vmm: iocage_06
+ok: [df0394cb] => 
+    msg: |-
+        out.stdout: df0394cb
+        ansible_host: df0394cb
+        iocage_hooks: ['172.16.99.182']
+        iocage_ip4: 172.16.99.182
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
 
 PLAY RECAP *********************************************************************
-2f6cf965                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-e4c59701                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_131                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+283d850f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+df0394cb                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

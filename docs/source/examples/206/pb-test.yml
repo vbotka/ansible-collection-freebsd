@@ -1,9 +1,5 @@
-- hosts: swarm_sw_01
-  remote_user: admin
-
-  vars:
-
-    ansible_python_interpreter: auto_silent
+- name: Display jails in the swarm.
+  hosts: swarm_sw_01
     
   tasks:
 
@@ -15,5 +11,6 @@
           out.stdout: {{ out.stdout }}
           ansible_host: {{ ansible_host }}
           iocage_hooks: {{ iocage_hooks }}
+          iocage_ip4: {{ iocage_ip4 }}
           iocage_tags:
             {{ iocage_tags | to_nice_yaml(2) | indent(2) }}

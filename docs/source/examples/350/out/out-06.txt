@@ -2,45 +2,45 @@
 PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [fd032233]
-ok: [b2b1ef56]
-ok: [bdf104a6]
+ok: [cf6aac80]
+ok: [ece6bfb3]
+ok: [f8c0e347]
 
 TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for b2b1ef56, bdf104a6, fd032233
+included: vbotka.freebsd.lib for ece6bfb3, f8c0e347, cf6aac80
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
-ok: [b2b1ef56]
-ok: [fd032233]
-ok: [bdf104a6]
+ok: [ece6bfb3]
+ok: [f8c0e347]
+ok: [cf6aac80]
 
 TASK [vbotka.freebsd.rsnapshot : Configure: Create directory /export/backup/snapshots] ***
-changed: [fd032233]
-changed: [bdf104a6]
-changed: [b2b1ef56]
+changed: [ece6bfb3]
+changed: [cf6aac80]
+changed: [f8c0e347]
 
 TASK [vbotka.freebsd.rsnapshot : Configure: Create configuration /usr/local/etc/rsnapshot.conf] ***
-changed: [bdf104a6]
-changed: [b2b1ef56]
-changed: [fd032233]
+changed: [ece6bfb3]
+changed: [f8c0e347]
+changed: [cf6aac80]
 
 TASK [vbotka.freebsd.rsnapshot : Test: Create test directory /export/backup/snapshots-test] ***
-changed: [b2b1ef56]
-changed: [fd032233]
-changed: [bdf104a6]
+changed: [f8c0e347]
+changed: [cf6aac80]
+changed: [ece6bfb3]
 
 TASK [vbotka.freebsd.rsnapshot : Test: Create test backup_points] **************
-changed: [bdf104a6] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
-changed: [b2b1ef56] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
-changed: [fd032233] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [ece6bfb3] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [f8c0e347] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
+changed: [cf6aac80] => (item={'dir': '/scratch/rsnapshot-test/', 'host': 'localhost/'})
 
 TASK [vbotka.freebsd.rsnapshot : Test: Create test configuration /usr/local/etc/rsnapshot-test.conf] ***
-changed: [b2b1ef56]
-changed: [fd032233]
-changed: [bdf104a6]
+changed: [f8c0e347]
+changed: [ece6bfb3]
+changed: [cf6aac80]
 
 PLAY RECAP *********************************************************************
-b2b1ef56                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
-bdf104a6                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
-fd032233                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+cf6aac80                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+ece6bfb3                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
+f8c0e347                   : ok=8    changed=5    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   
 

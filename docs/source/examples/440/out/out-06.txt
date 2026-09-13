@@ -2,11 +2,14 @@
 PLAY [Test role vbotka.freebsd.pf] *********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.pf : Rcconf-pf: Enable and start pf.] *********************
-ok: [iocage_05]
+changed: [iocage_06]
+
+RUNNING HANDLER [vbotka.freebsd.pf : Start pf] *********************************
+changed: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

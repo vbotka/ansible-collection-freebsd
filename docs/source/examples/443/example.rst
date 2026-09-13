@@ -38,7 +38,8 @@ Use case
 ^^^^^^^^
 
 Clone multiple jails from the `iocage plugin`_ ``ansible-zero``. Use
-:ref:`ug_connection_jailexec` to connect to the jails.
+:ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` to
+connect to the jails.
 
 Tree
 ^^^^
@@ -61,11 +62,11 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
+  In the playbook :ref:`ug_pb-iocage-plugins`:
 
   * Fetch the `iocage plugin`_ ``ansible-zero``.
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
+  In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
   * Clone jails from the iocage plugin ``ansible-zero``.
 
@@ -81,10 +82,10 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* iocage plugin ``ansible-zero``.
-* Playbook `vbotka.freebsd.pb_iocage_plugins.yml`_.
-* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_.
-* `Inventory plugin vbotka.freebsd.iocage`_.
+* iocage plugin ``ansible-zero``
+* Playbook :ref:`ug_pb-iocage-plugins`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
+* :ref:`ug_inventory_iocage`
 * :ref:`ug_connection_jailexec`.
 * Root privileges on the managed nodes.
 
@@ -92,7 +93,7 @@ Notes
 ^^^^^
 
 * The iocage plugin ``ansible-zero`` is used in the playbook
-  `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ to create the ``swarm``.
+  :ref:`ug_pb-iocage-ansible-clients` to create the ``swarm``.
 
 .. seealso::
 
@@ -111,6 +112,23 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/05_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 9
+
+.. note::
+
+   The iocage ``name`` property does not work with
+   ``ansible_jail_name``. The iocage ``jid`` must be used instead.
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
@@ -121,8 +139,8 @@ host_vars
 
 .. note::
 
-   By default, jails cloned from plugins inherit the iocage property type
-   ``pluginv2``. Change it to ``jail``.
+   By default, jails cloned from plugins inherit the iocage property
+   type ``pluginv2``. Change it to ``jail``.
 
 Playbook output - Fetch plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -140,11 +158,11 @@ Playbook output - Fetch plugins
 
 .. note::
 
-   The "Testing ansible-zero's DNSSEC response to pkg.FreeBSD.org" step in
-   ``iocage fetch`` may take some time.
+   The "Testing ansible-zero's DNSSEC response to pkg.FreeBSD.org"
+   step in ``iocage fetch`` may take some time.
 
-Plugins at iocage_05
-^^^^^^^^^^^^^^^^^^^^
+Plugins
+^^^^^^^
 
 .. code-block:: console
 
@@ -167,41 +185,24 @@ Playbook output - Create and start swarms
    :language: yaml+jinja
    :force:
 
-Jails at iocage_05
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_05]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/05_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 9
-
-.. note::
-
-   The iocage ``name`` property does not work with ``ansible_jail_name``. The
-   iocage ``jid`` must be used instead.
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-05.txt
+   :language: bash
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
    :language: bash
 
 Playbook pb-test.yml

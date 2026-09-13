@@ -16,6 +16,6 @@ The ``to_ucl`` filter converts YAML dictionary to UCL string.
 
       shell> ansible-doc -t filter vbotka.freebsd.to_ucl
 
-.. note::
+.. seealso::
 
-   * See Ansible Galaxy `filter to_ucl`_
+   * Ansible Galaxy `filter to_ucl`_

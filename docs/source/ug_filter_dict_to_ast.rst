@@ -17,6 +17,6 @@ The ``dict_to_ast`` filter converts YAML dictionary to crossplane AST
 
       shell> ansible-doc -t filter vbotka.freebsd.dict_to_ast
 
-.. note::
+.. seealso::
 
-   * See Ansible Galaxy `filter dict_to_ast`_
+   * Ansible Galaxy `filter dict_to_ast`_

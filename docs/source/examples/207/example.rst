@@ -57,14 +57,13 @@
 Use case
 ^^^^^^^^
 
-On multiple iocage hosts, create and run VNET jails with a DHCP
-interface from the template ``ansible_client``. Use the dictionary
-``iocage_tags`` and the option ``inventory_hostname_tag`` to create
-`Inventory aliases`_. Group the jails by iocage hosts, states, and
-classes. Declare the project in a single dictionary. The dictionary
-keys are jail aliases. For example:
+On multiple iocage hosts, create and run VNET jails with a DHCP interface from
+the template ``ansible_client``. Use the dictionary ``iocage_tags`` and the
+option ``inventory_hostname_tag`` to create `inventory aliases`_. Group the
+jails by iocage hosts, states, and classes. Declare the project in a single
+dictionary. The dictionary keys are jail aliases. For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    project:
      logserv_1:
@@ -121,7 +120,7 @@ Synopsis
   In the playbook ``vbotka.freebsd.pb_iocage_project_create.yml``,
   use:
 
-  * The :ref:`ug_inventory_iocage` to create inventory
+  * The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` to create inventory
     hosts
 
   * The inventory plugin `ansible.builtin.constructed`_ to create
@@ -131,7 +130,7 @@ Synopsis
     * ``iocage_tags``
     * ``iocage_classes``
 
-  * The module ``ansible.builtin.command`` and the `Binary iocage`_
+  * The module ``ansible.builtin.command`` and the `binary iocage`_
     CLI to:
 
     * Create jails
@@ -169,6 +168,49 @@ Notes
    * `Set Jail Property`_
    * `Binary iocage`_
 
+Templates on iocage_01
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_01]# iocage list -lt
+
+.. literalinclude:: out/out-01.txt
+   :language: console
+
+Templates on iocage_02
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -lt
+
+.. literalinclude:: out/out-02.txt
+   :language: console
+
+Templates on iocage_04
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: console
+
+.. note::
+
+   This example is tested with pre-existing jails:
+
+   .. code-block:: console
+
+      [iocage_01]# iocage list -h
+      - test_1  down    13.5-RELEASE    -
+      [iocage_02]# iocage list -h
+      - test_2  down    14.2-RELEASE    -
+      [iocage_04]# iocage list -h
+      - test_4  down    14.3-RELEASE    -
+
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -181,35 +223,27 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-Templates at iocage_01
-^^^^^^^^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
-.. code-block:: console
+.. literalinclude:: hosts/01_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 9,10
 
-   [iocage_01]# iocage list -lt
+.. literalinclude:: hosts/02_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 9,10
 
-.. literalinclude:: out/out-01.txt
-   :language: console
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 9,10
 
-Templates at iocage_02
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: console
-
-Templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -lt
-
-.. literalinclude:: out/out-03.txt
-   :language: console
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
 
 group_vars
 ^^^^^^^^^^
@@ -233,41 +267,6 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/01_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 9,10
-
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 9,10
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 9,10
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-.. note::
-
-   This example is tested with pre-existing jails:
-
-   .. code-block:: console
-
-      [iocage_01]# iocage list -h
-      - test_1  down    13.5-RELEASE    -
-      [iocage_02]# iocage list -h
-      - test_2  down    14.2-RELEASE    -
-      [iocage_04]# iocage list -h
-      - test_4  down    14.3-RELEASE    -
-
 Playbook output - Create and start project jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -275,7 +274,7 @@ Playbook output - Create and start project jails
 
    (env) > ansible-playbook -i hosts -i iocage.ini \
                             -e debug=true \
-			    vbotka.freebsd.pb_iocage_project_create.yml
+                            vbotka.freebsd.pb_iocage_project_create.yml
 
 .. seealso:: The playbook :ref:`ug_pb-iocage-project-create`
 
@@ -325,7 +324,7 @@ Playbook output - Stop and destroy jails
 
    (env) > ansible-playbook -i hosts -i iocage.ini \
                             -e debug=true \
-			    vbotka.freebsd.pb_iocage_project_destroy.yml
+                            vbotka.freebsd.pb_iocage_project_destroy.yml
 
 .. seealso:: The playbook :ref:`ug_pb-iocage-project-destroy`
 
@@ -338,7 +337,7 @@ Playbook output - Display remaining groups
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-all.yml --flush-cache
+   (env) > ansible-playbook -i hosts --flush-cache pb-test-all.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja

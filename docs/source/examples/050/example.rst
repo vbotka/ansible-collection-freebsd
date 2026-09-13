@@ -14,7 +14,7 @@
 Use case
 ^^^^^^^^
 
-Test the :ref:`ug_connection_jailexec`.
+Test the :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 Tree
 ^^^^
@@ -33,7 +33,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On an iocage node, test the :ref:`ug_connection_jailexec`.
+On an iocage node, test the :ref:`connection vbotka.freebsd.jailexec
+<ug_connection_jailexec>`.
 
 Requirements
 ^^^^^^^^^^^^
@@ -43,8 +44,8 @@ Requirements
 Notes
 ^^^^^
 
-* The jails are not dynamically updated in the inventory file
-  ``jailexec.ini``.
+* In this example, the jails are not dynamically updated in the
+  inventory file ``jailexec.ini`` below.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -74,8 +75,8 @@ Inventory jailexec.ini
    :language: ini
    :caption:
 
-Display the inventory of jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Jails inventory
+^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

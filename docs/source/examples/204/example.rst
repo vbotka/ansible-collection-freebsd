@@ -3,7 +3,7 @@
 204 Create DHCP jails with auto UUID and iocage_tags v2
 -------------------------------------------------------
 
-Extending :ref:`example_203`.
+This example extends :ref:`example_203`.
 
 .. contents::
    :local:
@@ -46,8 +46,9 @@ Extending :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-Instead of using the :ref:`ug_module_iocage`, create the
-variable ``iocage_jails`` using the :ref:`ug_filter_iocage`:
+Instead of using the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`,
+create the variable ``iocage_jails`` using the :ref:`filter
+vbotka.freebsd.iocage <ug_filter_iocage>`:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
    :language: yaml+jinja
@@ -126,7 +127,7 @@ Requirements
 
 * :ref:`ug_filter_iocage`
 * :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes
+* Root privileges on the managed nodes.
 * Templates created in :ref:`example_202`
 
 Notes
@@ -138,7 +139,7 @@ Notes
 
    * `binary iocage`_
 
-Templates at iocage_02
+Templates on iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -148,7 +149,7 @@ Templates at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Templates at iocage_04
+Templates on iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -170,54 +171,8 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-Playbook pb-iocage-ansible-clients-v2.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-iocage-ansible-clients-v2.yml
-   :language: yaml+jinja
-
-Playbook output - Create and start jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.ini \
-                            -t swarm -e swarm=true -e debug=true \
-                             pb-iocage-ansible-clients-v2.yml
-
-.. literalinclude:: out/out-03.txt
-   :language: yaml+jinja
-   :force:
-
-Jails at iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
-Jails at iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-05.txt
-   :language: bash
-
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -238,14 +193,60 @@ Inventory hosts
    The option ``get_properties: True`` is needed to get the dictionary
    ``iocage_properties``.
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+Playbook pb-iocage-ansible-clients-v2.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-ansible-clients-v2.yml
+   :language: yaml+jinja
+
+Playbook output - Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm -e swarm=true -e debug=true \
+                            pb-iocage-ansible-clients-v2.yml
+
+.. literalinclude:: out/out-03.txt
+   :language: yaml+jinja
+   :force:
+
+Graph
+^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-06.txt
+   :language: bash
+
+Jails on iocage_02
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_02]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+
+Jails on iocage_04
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-05.txt
    :language: bash
 
 Playbook pb-test.yml
@@ -259,7 +260,7 @@ Playbook output - Display iocage_tags
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja

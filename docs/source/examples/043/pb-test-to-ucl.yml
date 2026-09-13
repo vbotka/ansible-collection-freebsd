@@ -6,10 +6,10 @@
 
     pkg_repo_config:
       FreeBSD:
-        url: "pkg+http://pkg.FreeBSD.org/${ABI}/quarterly"
-        mirror_type: "srv"
-        signature_type: "fingerprints"
-        fingerprints: "/usr/share/keys/pkg"
+        url: pkg+http://pkg.FreeBSD.org/${ABI}/quarterly
+        mirror_type: srv
+        signature_type: fingerprints
+        fingerprints: /usr/share/keys/pkg
         enabled: true
         priority: 100
 

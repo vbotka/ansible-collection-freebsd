@@ -3,13 +3,9 @@
 Roles
 *****
 
-.. contents::
-   :local:
 
 Included roles
 --------------
-
-This collection is shipped with the roles:
 
 .. include:: roles_included.rst
 
@@ -23,10 +19,10 @@ Some roles in the namespace `vbotka`_ are documented on `Read the Docs`_.
 Configuration samples
 ---------------------
 
-Most roles in the ``vbotka`` namespace provide commented configuration samples in
+Most roles in the `vbotka`_ namespace provide commented configuration samples in
 their ``vars`` directories.
 
 .. hint::
 
    * See the ``README`` file for each role.
-   * See the collection ``Index`` for available examples.
+   * See the collection :ref:`genindex` for available examples.

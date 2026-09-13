@@ -43,12 +43,11 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repository `ansible-conf-init`_ to
-pull the jails' configuration from the repository
-`ansible-conf-roles`_. Create jails from the template. Put the
-configuration files for the classes ``log-server`` and ``log-client``
-into the jails' directories ``/root/ansible-vars``. Run
+Use the `iocage`_ template ``ansible-init`` created in :ref:`example_529`, or
+:ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
+jails' configuration from the repository `ansible-conf-roles`_. Create jails
+from the template. Put the configuration files for the classes ``log-server``
+and ``log-client`` into the jails' directories ``/root/ansible-vars``. Run
 `ansible-pull`_ asynchronously.
 
 Tree
@@ -86,26 +85,27 @@ Synopsis
 
 * On a managed node:
 
-  * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template ``ansible-init``.
 
-  * Configure the jails to use the ``pkg-repo`` created in
-    :ref:`example_527`.
+  * Configure the jails to use ``pkg-repo``.
 
-  * Wait for ``ansible-pull`` to configure the jails and display the
-    logs.
+  * Wait for `ansible-pull`_ to configure the jails and display the logs.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`.
-* Template ``ansible-init`` created in :ref:`example_524`.
-* Jail ``pkg-repo`` created in :ref:`example_527`.
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`ug_connection_jailexec`.
+* Jail ``repos`` created in :ref:`example_523`
+* Jail ``pkg-repo`` created in :ref:`example_527`
+* Template ``ansible-init`` created in:
+
+  * :ref:`example_529`, or
+  * :ref:`example_524`
+
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 
 .. note::
 
@@ -117,8 +117,8 @@ Requirements
    * The ``Troubleshooting`` section in :ref:`example_526`
    * GitHub repositories:
 
-     - `ansible-conf-init`_
-     - `ansible-conf-roles`_
+     * `ansible-conf-init`_
+     * `ansible-conf-roles`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -166,12 +166,11 @@ files
 
 .. note::
 
-   The playbook ``pb-init.yml`` (from the `ansible-conf-init`_
-   repository) reads this file from ``/root/ansible-vars`` using the
-   `ansible.builtin.include_vars`_ module (precedence 18.). The
-   ``ai_db_class`` dictionary overrides the values defined in the
-   repository's ``host_vars``. See `Understanding variable
-   precedence`_.
+   The playbook ``pb-init.yml`` (from the `ansible-conf-init`_ repository) reads
+   this file from ``/root/ansible-vars`` using the
+   `ansible.builtin.include_vars`_ module (precedence 18.). The ``ai_db_class``
+   dictionary overrides the values defined in the repository's
+   ``host_vars``. See `Understanding variable precedence`_.
 
 .. literalinclude:: files/ai-conf-roles.yml
    :language: yaml+jinja
@@ -179,9 +178,9 @@ files
 
 .. note::
 
-   The playbook ``pb-roles.yml`` (from the `ansible-conf-roles`_
-   repository) reads this file from ``/root/ansible-vars``. The
-   repository does not provide a default ``ai_conf_roles`` dictionary.
+   The playbook ``pb-roles.yml`` (from the `ansible-conf-roles`_ repository)
+   reads this file from ``/root/ansible-vars``. The repository does not provide
+   a default ``ai_conf_roles`` dictionary.
 
 .. literalinclude:: files/pkg-repo.yml
    :language: yaml+jinja
@@ -194,9 +193,9 @@ files
 
 .. important::
 
-   This configuration is minimal and functional for an isolated lab or
-   trusted internal LAN, but it poses several security risks in
-   production or shared network environments.
+   This configuration is minimal and functional for an isolated lab or trusted
+   internal LAN, but it poses several security risks in production or shared
+   network environments.
 
 .. literalinclude:: files/log-client/syslog-ng-client-pkg.yml
    :language: yaml+jinja
@@ -226,25 +225,25 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

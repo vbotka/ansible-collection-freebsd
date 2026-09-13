@@ -18,4 +18,7 @@ The ``iocage`` filter parses `iocage`_ lists.
 .. note::
 
    * This filter requires `sysutils/iocage`_
-   * See Ansible Galaxy `filter iocage`_
+
+.. seealso::
+
+   * Ansible Galaxy `filter iocage`_

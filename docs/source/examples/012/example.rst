@@ -3,7 +3,7 @@
 012 Display iocage_properties
 -----------------------------
 
-Extending :ref:`example_010`.
+This example extends :ref:`example_010`.
 
 .. contents::
    :local:
@@ -21,7 +21,7 @@ Extending :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Enable and display ``iocage_properties``.
+Retrieve and display `iocage properties`_.
 
 Tree
 ^^^^
@@ -33,6 +33,12 @@ Tree
   ├── ansible.cfg
   ├── iocage.yml
   └── pb-vars-properties.yml
+
+Synopsis
+^^^^^^^^
+
+Display ``iocage_properties`` in a selected jail by enabling ``get_properties``
+in the inventory plugin.
 
 Requirements
 ^^^^^^^^^^^^
@@ -49,7 +55,8 @@ ansible.cfg
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable ``get_properties``. See :ref:`ug_inventory_iocage`.
+Enable ``get_properties``. See :ref:`inventory vbotka.freebsd.iocage
+<ug_inventory_iocage>`.
 
 .. literalinclude:: iocage.yml
    :language: yaml+jinja
@@ -66,7 +73,7 @@ Playbook output - Display iocage_properties
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-vars-properties.yml -i iocage.yml -l test_133
+   (env) > ansible-playbook -i iocage.yml -l test_163 pb-vars-properties.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja

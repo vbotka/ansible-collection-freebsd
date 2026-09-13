@@ -2,15 +2,15 @@
 PLAY [Test empty iocage notes.] ************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_5] => 
+ok: [test-210] => 
     msg: |-
         iocage_properties.notes: none
         iocage_properties.notes type: str
 
 TASK [debug] *******************************************************************
-ok: [test_5] => 
+ok: [test-210] => 
     iocage_tags: {}
 
 PLAY RECAP *********************************************************************
-test_5                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-210                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

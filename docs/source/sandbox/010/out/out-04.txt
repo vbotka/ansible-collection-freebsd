@@ -2,68 +2,43 @@
 PLAY [test] ********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test-153] => 
+ok: [test_162] => 
     msg: |-
-        inventory_hostname: test-153
-        ansible_host: -
-        release: 15.1
-        release_major: 15
-        release_minor: 1
-ok: [test_153] => 
-    msg: |-
-        inventory_hostname: test_153
-        ansible_host: 172.16.99.253
-        release: 15.1
-        release_major: 15
-        release_minor: 1
-ok: [test-152] => 
-    msg: |-
-        inventory_hostname: test-152
-        ansible_host: -
-        release: 15.1
-        release_major: 15
-        release_minor: 1
-ok: [test_151] => 
-    msg: |-
-        inventory_hostname: test_151
-        ansible_host: 172.16.99.251
-        release: 15.1
-        release_major: 15
-        release_minor: 1
-ok: [test_152] => 
-    msg: |-
-        inventory_hostname: test_152
+        inventory_hostname: test_162
         ansible_host: 172.16.99.252
         release: 15.1
         release_major: 15
         release_minor: 1
-ok: [test-151] => 
+ok: [test_163] => 
     msg: |-
-        inventory_hostname: test-151
-        ansible_host: -
+        inventory_hostname: test_163
+        ansible_host: 172.16.99.253
+        release: 15.1
+        release_major: 15
+        release_minor: 1
+ok: [test_161] => 
+    msg: |-
+        inventory_hostname: test_161
+        ansible_host: 172.16.99.251
         release: 15.1
         release_major: 15
         release_minor: 1
 
 TASK [debug] *******************************************************************
-ok: [test-153] => 
+ok: [test_162] => 
     msg: |-
         groups:
-          all: [test-153, e072ce12, test_153, log-server-01, www-02, 4ec5cf17, test_151, test-152,
-            ansible-client, www-01, b69877b4, test_152, test-151]
-          distro_15_1_RELEASE_p1: [test-153, e072ce12, test_153, log-server-01, www-02, 4ec5cf17,
-            test_151, test-152, ansible-client, www-01, b69877b4, test_152, test-151]
-          state_down: [ansible-client]
-          state_up: [test-153, e072ce12, test_153, log-server-01, www-02, 4ec5cf17, test_151,
-            test-152, www-01, b69877b4, test_152, test-151]
-          test: [test-153, test_153, test_151, test-152, test_152, test-151]
+          all: [test_162, repos-devel, test_161, pkg-repo, log-server-01, test_163, ansible-client,
+            repos]
+          distro_15_1_RELEASE_p1: [test_162, repos-devel, test_161, pkg-repo, log-server-01,
+            test_163, ansible-client, repos]
+          state_down: [test_162, test_161, ansible-client]
+          state_up: [repos-devel, pkg-repo, log-server-01, test_163, repos]
+          test: [test_162, test_161, test_163]
           ungrouped: []
 
 PLAY RECAP *********************************************************************
-test-151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-153                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_151                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_152                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_153                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_161                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_162                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_163                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

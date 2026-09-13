@@ -96,7 +96,7 @@ Known issues
 The module `community.general.zpool`_ cannot create a correct
 diff. For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :force:
 
    (Pdb) p vdev_layout_diff
@@ -106,7 +106,7 @@ diff. For example:
 This makes the module non-idempotent. It crashes when run
 repeatedly. For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :force:
 
    failed: [srv.example.org] (item=iocage) =>
@@ -132,7 +132,7 @@ Setting ``force: true`` doesn't help. At the moment, the only
 workaround is to skip the module if the pool already exists. You will
 see a warning. For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :force:
 
    TASK [vbotka.freebsd_zfs : Pools: WARNING | community.general.zpool skipped.] ****

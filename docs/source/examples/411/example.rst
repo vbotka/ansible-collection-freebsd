@@ -14,11 +14,10 @@
 Use case
 ^^^^^^^^
 
-Create a dictionary of variables from nested directories in
-``al_vars``. Use the task file `al_include_dir_vars.yml`_ from the
-role `vbotka.freebsd.lib`_:
+Create a dictionary of variables from nested directories in ``al_vars``. Use the
+task file `al_include_dir_vars.yml`_ from the role `vbotka.freebsd.lib`_:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    - name: Create dict of vars from nested directories in al_vars
      vars:
@@ -40,19 +39,16 @@ Tree
   │       ├── production
   │       └── qa
   ├── ansible.cfg
-  ├── example.rst
   ├── hosts
-  ├── out
-  │   └── out-01.txt
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-* On the managed node:
+* On a managed node:
 
-  * Create a dictionary of variables from nested directories in the
-    controller's directory ``al_vars``.
+  * Create a dictionary of variables from nested directories in the controller's
+    directory ``al_vars``.
 
   * Display the created dictionary.
 
@@ -64,11 +60,11 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.lib`_ is the role **lib** in the `collection vbotka.freebsd`_.
    | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
 
 .. seealso::
@@ -82,8 +78,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts
    :language: ini
@@ -106,7 +102,7 @@ al_vars
 Expected results
 ^^^^^^^^^^^^^^^^
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    al_vars:
      team:

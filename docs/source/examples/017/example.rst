@@ -18,7 +18,7 @@ Use case
 ^^^^^^^^
 
 Use the `inventory plugin community.general.iocage`_ instead of the
-:ref:`ug_inventory_iocage`.
+:ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
 Tree
 ^^^^
@@ -53,7 +53,7 @@ same functionality.
    If the versions are different, you will see a warning similar to this one::
 
      * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
-     *                   WARNING                                   *
+     *                    WARNING                                  *
      *                                                             *
      * The inventory plugins are different:                        *
      *                                                             *

@@ -162,7 +162,7 @@ Run the playbook, limiting execution to ``srv_3``:
            rtsold: '0'
            securelevel: '2'
            shmsize: 'off'
-           source_template: ansible_client
+           source_template: ansible-client
            stacksize: 'off'
            state: up
            stop_timeout: '30'

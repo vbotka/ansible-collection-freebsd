@@ -1,12 +1,6 @@
 - name: Install packages in jails.
-  hosts: up
+  hosts: swarm_sw_01
   gather_facts: true
-  remote_user: admin
-  become: true
-
-  vars:
-
-    ansible_python_interpreter: auto_silent
     
   tasks:
 

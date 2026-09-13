@@ -19,6 +19,17 @@ The collection is shipped with:
 
 .. include:: included_content.rst
 
+.. tip::
+
+   * See the :ref:`ug_concepts`.
+   * See the :ref:`ug_examples` and proofs of concept in the `Sandbox`_.
+
+.. seealso::
+
+   * `Managing BSD hosts with Ansible`_
+   * `Jails and Containers - FreeBSD Handbook`_
+   * `Jails - FreeBSD Wiki`_
+
 .. note::
 
    * All collections listed in the above **Requirements** are included

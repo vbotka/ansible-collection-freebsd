@@ -22,9 +22,10 @@
 Use case
 ^^^^^^^^
 
-Fetch releases, create basejails, clone jails from the basejails, and
-start the jails. Use the :ref:`ug_inventory_iocage` to
-create the inventory. Display the created inventory.
+Fetch releases, create basejails, clone jails from the basejails, and start the
+jails. Use the :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
+plugin to generate the dynamic inventory, and display the created groups and
+hosts.
 
 Tree
 ^^^^
@@ -47,13 +48,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
-
-  * iocage_02
-  * iocage_04
-
-  In the playbook ``pb-iocage-fetch-base-clone-list.yml``, use the
-  :ref:`ug_module_iocage` to:
+* On the managed nodes ``iocage_02`` and ``iocage_04``, use the playbook
+  ``pb-iocage-fetch-base-clone-list.yml`` and the
+  :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Fetch the release
   * Create a basejail
@@ -61,10 +58,9 @@ Synopsis
   * Start 1 jail
   * Display lists of bases, plugins, templates, and jails
 
-* On the managed node ``iocage_04``:
-
-  In the playbook ``pb-test.yml``, use the `inventory plugin
-  vbotka.freebsd.iocage`_ to:
+* On the controller (targeting managed node ``iocage_04``), use the playbook
+  ``pb-test.yml`` and the dynamic inventory plugin
+  :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
   * Create inventory groups and compose variables
   * Display the hosts and composed variables in the group ``test``
@@ -76,13 +72,13 @@ Requirements
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
-* An activated `binary iocage`_
+* Activated `iocage`_
 
 Notes
 ^^^^^
 
-Fetching a release is quite time-consuming. Optionally, fetch the
-releases manually before running the playbook. For example:
+Fetching a release is time-consuming. You can optionally fetch releases
+manually before running the playbook. For example:
 
 .. code-block:: console
 
@@ -121,6 +117,10 @@ releases manually before running the playbook. For example:
    * `Start, Stop, or Restart a Jail`_
    * `Listing Jails`_
 
+.. hint::
+
+   If `iocage list is slow`_, use the cache. See :ref:`example_014`
+ 
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -161,7 +161,7 @@ Playbook output - Fetch, create, clone, and start
    :language: yaml+jinja
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -169,9 +169,9 @@ Jails at iocage_02
    [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
-   :language: bash
+   :language: console
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -179,12 +179,12 @@ Jails at iocage_04
    [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
-   :language: bash
+   :language: console
 
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-The jails at ``iocage_04``:
+The inventory file ``iocage.yml`` targeting jails on ``iocage_04``:
 
 .. literalinclude:: iocage.yml
    :language: yaml+jinja
@@ -193,7 +193,6 @@ The jails at ``iocage_04``:
 .. seealso::
 
    * `Inventory plugin ansible.builtin.constructed`_
-   * `Enabling inventory cache plugins`_
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -206,7 +205,7 @@ Playbook output - Display groups
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.yml
+   (env) > ansible-playbook -i iocage.yml pb-test.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja

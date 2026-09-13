@@ -13,6 +13,17 @@
 .. index:: single: template ansible-init; Example 530
 .. index:: single: template ansible-nginx; Example 530
 
+.. index:: single: git daemon; Example 530
+.. index:: single: git_daemon_flags; Example 530
+
+.. index:: single: ansible_init; Example 530
+.. index:: single: service ansible_init; Example 530
+.. index:: single: ansible_init.sh; Example 530
+.. index:: single: ansible_init_enable; Example 530
+.. index:: single: ansible_init_host; Example 530
+.. index:: single: ansible_init_repo; Example 530
+.. index:: single: ansible_init_playbook; Example 530
+
 Use case
 ^^^^^^^^
 
@@ -68,13 +79,18 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_.
-* Package repository created in :ref:`example_322`.
+* Role `vbotka.freebsd.iocage_template`_
+* Package repository created in :ref:`example_322`
 
 Notes
 ^^^^^
 
 * TBD
+
+.. note::
+
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -114,6 +130,13 @@ conf.d
    :language: yaml+jinja
    :caption:
 
+.. warning::
+
+   The ``git://`` protocol does not provide encryption or
+   authentication. While suitable for fast local prototyping or
+   isolated provisioning networks, use ``https://`` (or SSH) for
+   :ref:`ug_concepts_ansible_init` in production environments.
+
 .. literalinclude:: conf.d/527/template.yml
    :language: yaml+jinja
    :caption:
@@ -126,7 +149,7 @@ files
 ^^^^^
 
 .. literalinclude:: files/ansible-init.sh
-   :language: sh
+   :language: bash
    :caption:
 
 .. literalinclude:: files/index.html
@@ -177,12 +200,12 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash

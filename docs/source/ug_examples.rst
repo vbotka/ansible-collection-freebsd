@@ -3,7 +3,7 @@
 Examples
 ********
 
-:001-: Manage iocage
+:001-: Manage iocage hosts
 :010-: iocage plugins
 :040-: Other plugins
 :200-: Ansible client
@@ -13,7 +13,7 @@ Examples
   
 .. toctree::
    :maxdepth: 1
-   :caption: Manage iocage
+   :caption: Manage iocage hosts
 
    001 Debug vars and install iocage <examples/001/example.rst>
    002 Activate iocage <examples/002/example.rst>
@@ -21,7 +21,7 @@ Examples
 
 .. toctree::
    :maxdepth: 1
-   :caption: iocage module, inventory, and filter
+   :caption: iocage inventory, filter, and module
 
    010 Clone jails and create inventory <examples/010/example.rst>
    examples/011/example.rst
@@ -60,7 +60,7 @@ Examples
    206 DHCP and fixed IP clients <examples/206/example.rst>
    207 DHCP, auto UUID, tags, class <examples/207/example.rst>
    208 DHCP, ansible-client-pull <examples/208/example.rst>
-   209 pkglist, ansible-client-apache <examples/209/example.rst>
+   209 pkglist, ansible-apache <examples/209/example.rst>
    210 iocage notes and tags <examples/210/example.rst>
 
 .. toctree::

@@ -3,6 +3,8 @@
 021 Inventory plugin iocage2
 ----------------------------
 
+This example extends :ref:`example_020`.
+
 .. contents::
    :local:
    :depth: 1
@@ -21,8 +23,8 @@
 Use case
 ^^^^^^^^
 
-In the :ref:`ug_inventory_iocage2`, use the option
-``inventory_hostname_tag`` to specify which tag to create `Inventory
+In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the option
+``inventory_hostname_tag`` to specify which tag to create `inventory
 aliases`_ from.
 
 Tree
@@ -50,11 +52,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the :ref:`ug_inventory_iocage2`, retrieve the
-  inventory aliases from the tag ``alias``.
+* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
+  retrieve the inventory aliases from the tag ``alias``.
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the
-  inventory groups.
+* In the inventory plugin `ansible.builtin.constructed`_, create the inventory
+  groups.
 
 * Display the jails and groups.
 
@@ -64,15 +66,15 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage2`
-* :ref:`ug_connection_jailexec`
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
 * Root privileges on the managed nodes
 * Jails created in :ref:`example_020`
 
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in
-  alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical
+  order.
 
 .. seealso::
 
@@ -118,8 +120,8 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Jails at iocage_06
-^^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -128,8 +130,8 @@ Jails at iocage_06
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Jails graph at iocage_06
-^^^^^^^^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 

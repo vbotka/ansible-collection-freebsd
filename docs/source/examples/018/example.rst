@@ -3,7 +3,7 @@
 018 Clone basejails. Use DHCP.
 ------------------------------
 
-Extending :ref:`example_010`.
+This example extends :ref:`example_010`.
 
 .. contents::
    :local:
@@ -54,8 +54,8 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-clone-list.yml``, use the `module
-  vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-clone-list.yml``, use the :ref:`module
+  vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Clone 3 jails from the basejail ``ansible_client``
   * Start all jails
@@ -63,8 +63,8 @@ Synopsis
 
 * On the iocage host ``iocage_02``:
 
-  In the playbook ``pb-test.yml``, use the `inventory plugin
-  vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-test.yml``, use the :ref:`inventory
+  vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
   * Create inventory groups and compose variables
   * Display the hosts and composed variables in the group ``test``
@@ -75,7 +75,11 @@ Requirements
 * :ref:`ug_inventory_iocage`
 * Jails ``ansible_client`` created in :ref:`example_010`
 
-Jails at iocage_02
+.. note::
+
+   See :ref:`example_440`
+
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -85,7 +89,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -135,7 +139,7 @@ Playbook output - Clone, start, and list
    :language: bash
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -145,7 +149,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -176,8 +180,8 @@ true`` if ``env`` is used.
    * The ``SETENV`` tag, to preserve the environment, is needed when
      ``env`` is used.
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -203,7 +207,7 @@ Playbook output - Display iocage_* variables
    :language: yaml+jinja
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 If a jail is stopped, the IP4 column displays: ``DHCP (not running)``.
@@ -224,7 +228,7 @@ Playbook output - Display iocage_* variables (stopped jails)
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i iocage.yml
+   (env) > ansible-playbook -i iocage.yml pb-test.yml
 
 .. literalinclude:: out/out-09.txt
    :language: yaml+jinja

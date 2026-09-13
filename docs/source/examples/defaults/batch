@@ -6,5 +6,5 @@ iocage_04="10.1.0.29"
 iocage_05="handy"
 
 # example.com
-build_example_com="10.1.0.29"
+build_example_com="172.16.98.3"
 branch_server_example_com="10.1.0.17"

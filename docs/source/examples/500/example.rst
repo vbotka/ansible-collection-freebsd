@@ -27,11 +27,11 @@
 Use case
 ^^^^^^^^
 
-Configure and run a log server. Configure log clients and test
-them. Use `syslog-ng`_. Use the jails created in example
-:ref:`example_207`. The ``project`` keys are jail aliases.
+Configure and run a log server. Configure log clients and test them. Use
+`syslog-ng`_. Use the jails created in example :ref:`example_207`. The
+``project`` keys are jail aliases.
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    project:
      logserv_1:
@@ -119,10 +119,10 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `Inventory plugin vbotka.freebsd.iocage`_.
-* `Module vbotka.freebsd.service`_.
-* Role `vbotka.freebsd.postinstall`_.
-* Jails created in the project :ref:`example_207`.
+* Jails created in the project :ref:`Create DHCP jails with auto UUID<example_207>`
+* Role `vbotka.freebsd.postinstall`_
+* :ref:`ug_module_service`
+* :ref:`ug_inventory_iocage`
 
 Notes
 ^^^^^

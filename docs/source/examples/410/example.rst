@@ -14,11 +14,10 @@
 Use case
 ^^^^^^^^
 
-Create a list of variables from files in the ``conf.d`` directory. Use
-the task file `al_include_confd_vars_list.yml`_ from the role
-`vbotka.freebsd.lib`_:
+Create a list of variables from files in the ``conf.d`` directory. Use the task
+file `al_include_confd_vars_list.yml`_ from the role `vbotka.freebsd.lib`_:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    - name: Create list of vars from files in directory conf.d
      vars:
@@ -45,10 +44,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node:
+* On a managed node:
 
-  * Create a list of variable values from files in the controller's
-    directory ``conf.d``.
+  * Create a list of variable values from files in the controller's directory
+    ``conf.d``.
 
   * Display the created list.
 
@@ -60,12 +59,12 @@ Requirements
 Notes
 ^^^^^
 
-Variable names are not collected. The resulting list contains only the
-variable values.
+* Variable names are not collected. The resulting list contains only the
+  variable values.
 
 .. note::
 
-   | `vbotka.freebsd.lib`_ is the role **lib** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.lib`_ is the role **lib** in the `collection vbotka.freebsd`_.
    | `vbotka.ansible_lib`_ is the role **ansible_lib** in the namespace `vbotka`_.
 
 .. seealso::
@@ -79,8 +78,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts
    :language: ini
@@ -103,7 +102,7 @@ conf.d
 Expected results
 ^^^^^^^^^^^^^^^^
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    al_include_confd_vars_list_type: plain
    al_include_confd_vars_list:
@@ -117,7 +116,7 @@ Expected results
        users: [charlie, david]
 
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    al_include_confd_vars_list_type: fname
    al_include_confd_vars_list:

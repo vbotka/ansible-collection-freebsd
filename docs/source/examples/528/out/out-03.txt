@@ -19,12 +19,12 @@ changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
-TASK [Ai-vars: Create ansible init vars dirs.] *********************************
+TASK [Ai-vars: Create ansible init vars dirs /root/ansible-vars] ***************
 changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
-TASK [Ai-vars: Create ansible init vars.] **************************************
+TASK [Ai-vars: Copy files to /root/ansible-vars] *******************************
 changed: [iocage_06] => (item=log-server-01 ai-db-class.yml)
 changed: [iocage_06] => (item=log-server-01 ai-conf-roles.yml)
 changed: [iocage_06] => (item=log-server-01 pkg-repo.yml)
@@ -35,30 +35,25 @@ changed: [iocage_06] => (item=www-02 ai-db-class.yml)
 changed: [iocage_06] => (item=www-02 ai-conf-roles.yml)
 changed: [iocage_06] => (item=www-02 pkg-repo.yml)
 
-TASK [Ai-vars-templates: Create ansible init vars dirs.] ***********************
+TASK [Ai-vars-templates: Create ansible init vars dirs /root/ansible-vars] *****
 ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
 
-TASK [Ai-vars-templates: Create ansible init vars from templates.] *************
+TASK [Ai-vars-templates: Create files from templates in /root/ansible-vars] ****
 changed: [iocage_06] => (item=log-server-01 project-hosts.yml)
 changed: [iocage_06] => (item=www-01 project-hosts.yml)
 changed: [iocage_06] => (item=www-02 project-hosts.yml)
 
-TASK [Ai-vars-class: Create ansible init vars dirs.] ***************************
+TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
 ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
 
-TASK [Ai-vars-class: Create ansible init vars for class.] **********************
+TASK [Ai-vars-class: Sync files to /root/ansible-vars] *************************
 changed: [iocage_06] => (item=log-server-01 log-server)
 changed: [iocage_06] => (item=www-01 log-client)
 changed: [iocage_06] => (item=www-02 log-client)
-
-TASK [Ai-vars-jail: Create ansible init vars dirs.] ****************************
-changed: [iocage_06] => (item=log-server-01)
-changed: [iocage_06] => (item=www-01)
-changed: [iocage_06] => (item=www-02)
 
 TASK [Properties: Set properties.] *********************************************
 ok: [iocage_06] => (item=log-server-01)
@@ -69,5 +64,5 @@ TASK [Start: Start jails.] *****************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=13   changed=7    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+iocage_06                  : ok=12   changed=6    unreachable=0    failed=0    skipped=17   rescued=0    ignored=0   
 

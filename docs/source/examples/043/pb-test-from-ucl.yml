@@ -6,14 +6,14 @@
 
     pkg_repo_config:
       FreeBSD:
-        url: "pkg+http://pkg.FreeBSD.org/${ABI}/quarterly"
-        mirror_type: "srv"
-        signature_type: "fingerprints"
-        fingerprints: "/usr/share/keys/pkg"
+        url: pkg+http://pkg.FreeBSD.org/${ABI}/quarterly
+        mirror_type: srv
+        signature_type: fingerprints
+        fingerprints: /usr/share/keys/pkg
         enabled: true
         priority: 100
     pkg_repo_ucl: |
-      {{ pkg_repo_config | vbotka.freebsd.to_ucl }}
+      {{ pkg_repo_config | vbotka.freebsd.to_ucl(bool_as_yesno=true) }}
 
   tasks:
 

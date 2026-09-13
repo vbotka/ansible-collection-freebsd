@@ -10,8 +10,9 @@ Result - package lists
 
 .. hint::
 
-   * Use the variables ``pkdict_*.yml`` from the directory `defaults/main`_ of the role
-     `vbotka.freebsd_postinstall`_. Fit the package lists to your needs.
+   * Use the variables ``pkdict_*.yml`` from the directory `defaults/main`_ of
+     the role `vbotka.freebsd_postinstall`_. Fit the package lists to your
+     needs.
 
    * Use the below variables and enable the package lists in the dictionary
      ``pkglist_enable_amd64_dict``. For example,
@@ -92,7 +93,3 @@ Result - package lists
 
 .. literalinclude:: out/out-14-arm.txt
    :language: bash
-
-
-.. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/

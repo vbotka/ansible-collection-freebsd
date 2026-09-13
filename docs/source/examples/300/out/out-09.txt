@@ -21,11 +21,11 @@ ok: [iocage_06] =>
         changed: false
         failed: false
         rc: 0
-        start: smartd already running?  (pid=5752).
+        start: smartd already running?  (pid=29971).
         stderr: |-
-            smartd already running?  (pid=5752).
+            smartd already running?  (pid=29971).
         stderr_lines:
-        - smartd already running?  (pid=5752).
+        - smartd already running?  (pid=29971).
         stdout: ''
         stdout_lines: []
 
@@ -42,9 +42,9 @@ ok: [iocage_06] =>
         stderr: ''
         stderr_lines: []
         stdout: |-
-            smartd is running as pid 5752.
+            smartd is running as pid 29971.
         stdout_lines:
-        - smartd is running as pid 5752.
+        - smartd is running as pid 29971.
 
 TASK [Stop smartd. By default wait 500ms to complete the command.] *************
 changed: [iocage_06]
@@ -57,16 +57,16 @@ ok: [iocage_06] =>
         rc: 0
         state:
             post: smartd is not running.
-            pre: smartd is running as pid 5752.
+            pre: smartd is running as pid 29971.
         stderr: ''
         stderr_lines: []
         stdout: |-
             Stopping smartd.
-            Waiting for PIDS: 5752.
+            Waiting for PIDS: 29971.
         stdout_lines:
         - Stopping smartd.
-        - 'Waiting for PIDS: 5752.'
-        stop: 'Waiting for PIDS: 5752'
+        - 'Waiting for PIDS: 29971.'
+        stop: 'Waiting for PIDS: 29971'
 
 TASK [Start smartd. Wait 200ms to complete the command.] ***********************
 changed: [iocage_06]
@@ -79,7 +79,7 @@ ok: [iocage_06] =>
         rc: 0
         start: Starting smartd.
         state:
-            post: smartd is running as pid 55934.
+            post: smartd is running as pid 34510.
             pre: smartd is not running.
         stderr: ''
         stderr_lines: []
@@ -101,9 +101,9 @@ ok: [iocage_06] =>
         stderr: ''
         stderr_lines: []
         stdout: |-
-            smartd is running as pid 55934.
+            smartd is running as pid 34510.
         stdout_lines:
-        - smartd is running as pid 55934.
+        - smartd is running as pid 34510.
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

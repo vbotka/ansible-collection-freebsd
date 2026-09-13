@@ -6,7 +6,7 @@
 .. index:: single: jailexec; Q&A
 .. index:: single: jail name; Q&A
 
-Why doesn't jexec work with iocage names?
+Why jexec doesn't work with iocage names?
 -----------------------------------------
 
 The FreeBSD base command ``jexec`` expects either the numeric JID (Jail ID) or

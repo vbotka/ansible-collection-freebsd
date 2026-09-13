@@ -3,7 +3,7 @@
 030 Create custom facts
 -----------------------
 
-Extending :ref:`example_020`.
+This example extends :ref:`example_020`.
 
 .. contents::
    :local:
@@ -16,8 +16,8 @@ Extending :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Create custom facts to provide a dictionary of iocage dataset
-lists. Use the :ref:`ug_filter_iocage` to parse them.
+Create custom facts to provide a dictionary of iocage dataset lists. Use the
+:ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse them.
 
 Tree
 ^^^^
@@ -39,23 +39,27 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage.yml``, use the `role
-  vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
   * Create custom fact scripts
 
   In the playbook ``pb-test.yml``:
 
   * Get the custom facts
-  * Use the :ref:`ug_filter_iocage` to parse the custom facts
+
+  * Use the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse the
+    custom facts
+
   * Create the inventory group ``test`` and compose variables
+
   * Display the hosts and composed variables in the group ``test``
+
   * Display all groups
 
 Requirements
 ^^^^^^^^^^^^
 
-* `role vbotka.freebsd.iocage`_
+* `Role vbotka.freebsd.iocage`_
 * :ref:`ug_filter_iocage`
 * Root privileges on the managed nodes
 * Jails created in previous examples
@@ -65,7 +69,7 @@ Notes
 
 * See `Adding custom facts`_.
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -75,7 +79,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -112,7 +116,7 @@ Playbook output - Display versions
                             -t freebsd_iocage_debug \
                             -e freebsd_iocage_debug=true \
                             pb-iocage.yml \
-           | grep version
+          | grep version
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja

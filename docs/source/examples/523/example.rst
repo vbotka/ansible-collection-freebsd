@@ -9,7 +9,7 @@
 
 .. index:: single: template ansible-repos; Example 523
 .. index:: single: role vbotka.freebsd.iocage_template; Example 523
-.. index:: single: pb_iocage_project_create_from_templates; Example 523
+.. index:: single: pb_iocage_project_create_from_templates.yml; Example 523
 
 .. index:: single: filter vbotka.freebsd.project; Example 523
 .. index:: single: vbotka.freebsd.project; Example 523
@@ -24,10 +24,9 @@
 Use case
 ^^^^^^^^
 
-Create a jail that serves Git repositories for `ansible-pull`_. Create
-the `iocage`_ template ``ansible-repos`` and configure
-`git-daemon`_. Create jails from the template and clone repositories
-to the `base-path`_.
+Create a jail that serves Git repositories for `ansible-pull`_. Create the
+`iocage`_ template ``ansible-repos`` and configure `git-daemon`_. Create jails
+from the template and clone repositories to the `base-path`_.
 
 Tree
 ^^^^
@@ -61,35 +60,42 @@ Synopsis
 
 * On a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the
-    template ``ansible-repos``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
+    ``ansible-repos``.
 
-  * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
-    create jails from the template.
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
+    jails from the template.
 
-* In the inventory group ``pull_repos``, clone the repositories that
-  will be used by `ansible-pull`_.
+* In the inventory group ``pull_repos``, clone the repositories that will be
+  used by `ansible-pull`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_.
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`ug_connection_jailexec`.
-* Package repository created in :ref:`example_322`.
+* Role `vbotka.freebsd.iocage_template`_
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_to_ucl`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
+* Package repository created in :ref:`example_322`
+
+Notes
+^^^^^
+
+* See :ref:`example_311`.
 
 .. note::
 
-   * See :ref:`example_311`.
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
    GitHub repositories:
 
    * `ansible-conf-init`_
+   * `ansible-conf-roles`_
    * `ansible-conf-syslogng-server`_
    * `ansible-conf-syslogng-client`_
    * `ansible-conf-test`_
@@ -151,13 +157,13 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-.. important::
+.. warning::
 
    Running `git-daemon`_ with these specific flags sets up a public,
-   unauthenticated Git server. This configuration is highly efficient
-   for local mirroring, but it completely bypasses authentication and
-   authorization. Ensure the daemon is strictly read-only (which is
-   the default).
+   unauthenticated Git server. This configuration is highly efficient for local
+   mirroring, but it completely bypasses authentication and
+   authorization. Ensure the daemon is strictly read-only (which is the
+   default).
 
 templates
 ^^^^^^^^^
@@ -183,15 +189,15 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash
 
 Playbook output - Create project jails from iocage templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,25 +211,25 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Playbook pb-repos.yml
 ^^^^^^^^^^^^^^^^^^^^^

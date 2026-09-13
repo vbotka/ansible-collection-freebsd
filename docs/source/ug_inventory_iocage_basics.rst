@@ -65,7 +65,7 @@ Display the inventory:
              iocage_jid: None
              iocage_release: 14.2-RELEASE-p3
              iocage_state: down
-             iocage_template: ansible_client
+             iocage_template: ansible-client
              iocage_type: jail
            srv_2:
              iocage_basejail: 'no'
@@ -78,7 +78,7 @@ Display the inventory:
              iocage_jid: None
              iocage_release: 14.2-RELEASE-p3
              iocage_state: down
-             iocage_template: ansible_client
+             iocage_template: ansible-client
              iocage_type: jail
            srv_3:
              iocage_basejail: 'no'
@@ -91,7 +91,7 @@ Display the inventory:
              iocage_jid: None
              iocage_release: 14.2-RELEASE-p3
              iocage_state: down
-             iocage_template: ansible_client
+             iocage_template: ansible-client
              iocage_type: jail
 
 Alternatively, create `Shared IP jails`_:

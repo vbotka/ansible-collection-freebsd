@@ -90,7 +90,7 @@ As admin on the control node, display the inventory:
              iocage_jid: '204'
              iocage_release: 14.2-RELEASE-p3
              iocage_state: up
-             iocage_template: ansible_client
+             iocage_template: ansible-client
              iocage_type: jail
            srv_2:
              iocage_basejail: 'no'
@@ -105,7 +105,7 @@ As admin on the control node, display the inventory:
              iocage_jid: '205'
              iocage_release: 14.2-RELEASE-p3
              iocage_state: up
-             iocage_template: ansible_client
+             iocage_template: ansible-client
              iocage_type: jail
            srv_3:
              iocage_basejail: 'no'
@@ -120,7 +120,7 @@ As admin on the control node, display the inventory:
              iocage_jid: '206'
              iocage_release: 14.2-RELEASE-p3
              iocage_state: up
-             iocage_template: ansible_client
+             iocage_template: ansible-client
              iocage_type: jail
 
 Update ``hosts/02_iocage.yml`` to compose ``ansible_host`` from the

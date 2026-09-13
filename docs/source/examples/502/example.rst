@@ -18,14 +18,14 @@
 .. index:: single: log server; Example 502
 .. index:: single: syslog-ng; Example 502
 
+.. index:: single: git daemon; Example 502
+.. index:: single: git_daemon_flags; Example 502
 .. index:: single: git server; Example 502
-.. index:: single: git_daemon; Example 502
 
 Use case
 ^^^^^^^^
 
-Install and configure ``syslog-ng`` and ``git`` servers on
-``branch-server``.
+Install and configure ``syslog-ng`` and ``git`` servers on ``branch-server``.
 
 Tree
 ^^^^

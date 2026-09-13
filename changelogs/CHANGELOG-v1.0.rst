@@ -16,6 +16,12 @@ Major Changes
 
 Minor Changes
 --------------
+* Add pb_iocage_destroy_template_jails.yml
+* Update pb_iocage_destroy_all_jails.yml
+* Update pb_iocage_project_create_from_templates.yml
+* Upgrade role postinstall to 2.9.3
+* Upgrade role zfs to 2.9.1
+* Docs. Add playbook docs/source/examples/.configure.yml
 
 Bugfixes
 --------

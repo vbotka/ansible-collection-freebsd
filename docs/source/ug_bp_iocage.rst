@@ -16,5 +16,5 @@ iocage
 
 .. hint::
 
-   In the ``Index`` search ``clone jails``, ``base jails``, and
+   In the :ref:`genindex` search ``clone jails``, ``base jails``, and
    ``thick jails`` to see what examples are available.

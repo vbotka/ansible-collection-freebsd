@@ -3,7 +3,7 @@ freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: /zroot/iocage
 
 templates:
-  ansible-client-apache:
+  ansible-apache:
     release: '15.1-RELEASE'
     properties:
       bpf: 1
