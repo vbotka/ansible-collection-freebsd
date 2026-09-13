@@ -93,7 +93,7 @@ Requirements
 * `Filter vbotka.freebsd.ast_to_nginx`_.
 * `Filter vbotka.freebsd.project`_.
 * `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`ug_connection_jailexec`.
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 * Package repository created in :ref:`example_322`.
 
 .. seealso::

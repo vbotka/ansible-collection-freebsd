@@ -69,7 +69,7 @@ Requirements
 * Role `vbotka.freebsd.nginx`_
 * Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
 * :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
-* :ref:`ug_connection_jailexec`
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
 * Package repository created in :ref:`example_322`.
 
 Notes

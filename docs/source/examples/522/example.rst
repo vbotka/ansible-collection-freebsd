@@ -91,7 +91,7 @@ Requirements
 * Role `vbotka.freebsd.iocage_template`_.
 * Role `vbotka.freebsd.postinstall`_.
 * `Inventory plugin vbotka.freebsd.iocage2`_.
-* :ref:`ug_connection_jailexec`.
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 .. note::
 

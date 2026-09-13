@@ -102,7 +102,7 @@ Requirements
 
 * Playbook `vbotka.freebsd.pb_iocage_plugins.yml`_.
 * `Inventory plugin vbotka.freebsd.iocage`_.
-* :ref:`ug_connection_jailexec`.
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 .. important::
 

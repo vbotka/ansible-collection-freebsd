@@ -17,8 +17,8 @@
 Use case
 ^^^^^^^^
 
-Use the filter `vbotka.freebsd.ast_to_haproxy`_ to create an HAProxy
-configuration.
+Use the filter :ref:`filter vbotka.freebsd.ast_to_haproxy
+<ug_filter_ast_to_haproxy>` to create an HAProxy configuration.
 
 Tree
 ^^^^
@@ -35,15 +35,15 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In the playbook ``pb-ast-to-haproxy.yml``, use the filter
-`vbotka.freebsd.ast_to_haproxy`_ to convert an AST (Abstract Syntax
-Tree) list into an HAProxy configuration.
+In the playbook ``pb-ast-to-haproxy.yml``, use the :ref:`filter
+vbotka.freebsd.ast_to_haproxy <ug_filter_ast_to_haproxy>` to convert an AST
+(Abstract Syntax Tree) list into an HAProxy configuration.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Filter `vbotka.freebsd.ast_to_haproxy`_
-* Filter `vbotka.freebsd.dict_to_ast`_
+* :ref:`ug_filter_ast_to_haproxy`
+* :ref:`ug_filter_dict_to_ast`
 
 Notes
 ^^^^^

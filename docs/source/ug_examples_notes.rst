@@ -22,7 +22,7 @@
    * To avoid connecting directly to a jail via SSH, the examples use
      the dynamic inventory ``vbotka.freebsd.iocage2`` and connection
      plugin ``vbotka.freebsd.jailexec`` as described in
-     :ref:`ug_connection_jailexec`.
+     :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
    * Playbook filenames in the standalone examples use hyphens (``-``)
      (for example, ``pb-iocage.yml``).

@@ -78,7 +78,7 @@ Requirements
 * Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
 * `Filter vbotka.freebsd.project`_.
 * `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`ug_connection_jailexec`.
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 * Package repository created in :ref:`example_322`.
 
 .. note::

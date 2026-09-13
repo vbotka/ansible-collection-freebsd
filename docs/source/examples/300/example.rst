@@ -61,7 +61,7 @@ Requirements
 * :ref:`ug_module_service`
 * :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>`
 * :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
-* :ref:`ug_connection_jailexec`
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
 * Running jails on the iocage host
 
 Notes

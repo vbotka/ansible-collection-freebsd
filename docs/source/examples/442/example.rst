@@ -22,7 +22,7 @@
 Use case
 ^^^^^^^^
 
-Use :ref:`ug_connection_jailexec` instead of the default
+Use :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` instead of the default
 ``ansible.builtin.ssh``.
 
 Tree
@@ -42,7 +42,7 @@ Synopsis
 ^^^^^^^^
 
 * Create a dynamic inventory to connect to the jails via
-  :ref:`ug_connection_jailexec`.
+  :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 * For all created jails, in the playbook ``pb-test.yml``:
 
@@ -52,7 +52,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_connection_jailexec`
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
 * `Inventory plugin vbotka.freebsd.iocage2`_
 * Root privileges on the managed nodes.
 
@@ -101,7 +101,7 @@ Inventory hosts
    * The default value of the option
      ``ansible_jail_privilege_escalation`` is ``doas``.
 
-   * See :ref:`ug_connection_jailexec`.
+   * See :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
    * In FreeBSD, ``doas`` is not installed by default.
 

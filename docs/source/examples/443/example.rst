@@ -38,7 +38,7 @@ Use case
 ^^^^^^^^
 
 Clone multiple jails from the `iocage plugin`_ ``ansible-zero``. Use
-:ref:`ug_connection_jailexec` to connect to the jails.
+:ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` to connect to the jails.
 
 Tree
 ^^^^
@@ -85,7 +85,7 @@ Requirements
 * Playbook `vbotka.freebsd.pb_iocage_plugins.yml`_.
 * Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_.
 * `Inventory plugin vbotka.freebsd.iocage`_.
-* :ref:`ug_connection_jailexec`.
+* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 * Root privileges on the managed nodes.
 
 Notes
