@@ -29,8 +29,6 @@ For example, consider the following jails created by ``iocage``:
    +-----+---------------+-------+--------------+--------------+
    | 3   | repos         | up    | 15.1-RELEASE | 172.16.99.21 |
    +-----+---------------+-------+--------------+--------------+
-   | 4   | repos-devel   | up    | 15.1-RELEASE | 172.16.99.22 |
-   +-----+---------------+-------+--------------+--------------+
 
 Inspect what the FreeBSD kernel actually names your jails:
 
@@ -50,9 +48,6 @@ Inspect what the FreeBSD kernel actually names your jails:
      3  repos                         /zroot/iocage/jails/repos/root
         ioc-repos                     ACTIVE
         5
-     4  repos-devel                   /zroot/iocage/jails/repos-devel/root
-        ioc-repos-devel               ACTIVE
-        6
 
 Both the JID and the kernel jail name work with ``jexec``:
 
