@@ -3,7 +3,7 @@
 015 Multiple inventory caches
 -----------------------------
 
-Extending :ref:`example_014`.
+This example extends :ref:`example_014`.
 
 .. contents::
    :local:
@@ -46,7 +46,9 @@ Synopsis
 
 On two managed nodes:
 
-* Fetch dynamic inventory using the :ref:`ug_inventory_iocage`
+* Fetch dynamic inventory using the :ref:`inventory
+  vbotka.freebsd.iocage <ug_inventory_iocage>`
+
 * Configure and test ``cache``
 
 Requirements
@@ -61,8 +63,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 Set a unique ``cache_prefix``.
 
@@ -76,7 +78,10 @@ Set a unique ``cache_prefix``.
    :caption:
    :emphasize-lines: 5-9
 
-.. warning:: Using a common ``cache_prefix`` causes the cache files to overwrite each other repeatedly.
+.. warning::
+
+   Using a common ``cache_prefix`` causes the cache files to overwrite
+   each other repeatedly.
 
 Playbook pb-vars-ip4.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -89,15 +94,18 @@ Playbook output - Display iocage_ip4
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-vars-ip4.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-vars-ip4.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
 
 .. note::
 
-   * The inventory files in ``hosts`` are evaluated in alphabetical order.
-   * The jail ``ansible_client`` defined in ``04_iocage.yml`` overrides the one from ``02_iocage.yml``.
+   * The inventory files in ``hosts`` are evaluated in alphabetical
+     order.
+
+   * The jail ``ansible_client`` defined in ``04_iocage.yml``
+     overrides the one from ``02_iocage.yml``.
 
 Cache
 ^^^^^

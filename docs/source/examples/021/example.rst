@@ -3,6 +3,8 @@
 021 Inventory plugin iocage2
 ----------------------------
 
+This example extends :ref:`example_020`.
+
 .. contents::
    :local:
    :depth: 1
@@ -21,8 +23,8 @@
 Use case
 ^^^^^^^^
 
-In the :ref:`ug_inventory_iocage2`, use the option
-``inventory_hostname_tag`` to specify which tag to create `Inventory
+In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the option
+``inventory_hostname_tag`` to specify which tag to create `inventory
 aliases`_ from.
 
 Tree
@@ -50,11 +52,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the :ref:`ug_inventory_iocage2`, retrieve the
-  inventory aliases from the tag ``alias``.
+* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
+  retrieve the inventory aliases from the tag ``alias``.
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the
-  inventory groups.
+* In the inventory plugin `ansible.builtin.constructed`_, create the inventory
+  groups.
 
 * Display the jails and groups.
 
@@ -71,8 +73,8 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in
-  alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical
+  order.
 
 .. seealso::
 

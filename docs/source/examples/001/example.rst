@@ -29,10 +29,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node ``iocage_04``:
-
-  In the playbook ``pb-iocage.yml``, use the `role
-  vbotka.freebsd.iocage`_ to:
+* On the managed node ``iocage_04``, use the playbook ``pb-iocage.yml`` and the
+  `role vbotka.freebsd.iocage`_ to:
 
   * Display variables
   * Install the `iocage`_ package
@@ -40,22 +38,22 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `role vbotka.freebsd.iocage`_
+* `Role vbotka.freebsd.iocage`_
 * Root privileges on the managed nodes
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the command arguments to limit the play to
-  the managed node ``iocage_02``.
+* Pass ``-l iocage_02`` on the command line to limit the play to the managed node
+  ``iocage_02``.
 
-* Remove the limits ``-l iocage_0*`` to run the play on all managed
-  nodes.
+* Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
 
 * By default, ``iocage`` installation is enabled:
   ``freebsd_iocage_install: true``.
 
-* By default, ``debug`` is disabled: ``freebsd_iocage_debug: false``.
+* By default, debug output is disabled:
+  ``freebsd_iocage_debug: false``.
 
 .. seealso::
 
@@ -89,16 +87,16 @@ Playbook pb-iocage.yml
 
 .. seealso::
 
-   `Ansible playbooks`_
+   * `Ansible playbooks`_
 
 Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_debug \
-                                          -e freebsd_iocage_debug=true
+   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+                            -t freebsd_iocage_debug -e freebsd_iocage_debug=true \
+                            pb-iocage.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -113,9 +111,9 @@ Playbook output - Install iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_pkg \
-                                          -e freebsd_iocage_debug=true
+   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+                            -t freebsd_iocage_pkg -e freebsd_iocage_debug=true \
+                            pb-iocage.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml+jinja
@@ -123,4 +121,4 @@ Playbook output - Install iocage
 
 .. note::
 
-   This ``debug`` output shows the ``result`` of an already installed package.
+   This debug output shows the result of an already installed package.

@@ -29,7 +29,7 @@
           ansible.builtin.command: "iocage destroy -f {{ uuids | join(' ') }}"
           loop: "{{ swarms.keys() }}"
 
-        - name: Debug stop swarms.
+        - name: Debug destroy swarms.
           when: debug | bool
           ansible.builtin.debug:
             var: out

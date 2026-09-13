@@ -16,7 +16,7 @@
 .. index:: single: option ansible_jail_user; connection jailexec
 .. index:: single: option ansible_ssh_user; connection jailexec
 
-connection vbotka.freebsd.jailexec
+Connection vbotka.freebsd.jailexec
 ----------------------------------
 
 The ``jailexec`` connection plugin connects to FreeBSD jails without requiring

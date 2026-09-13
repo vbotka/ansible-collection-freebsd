@@ -14,8 +14,8 @@
 Use case
 ^^^^^^^^
 
-Use the :ref:`ug_lookup_galaxy_info` plugin to get the
-metadata from ``galaxy.yml``.
+Use the :ref:`lookup vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` plugin
+to get the metadata from ``galaxy.yml``.
 
 Tree
 ^^^^
@@ -31,8 +31,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node, in the playbook ``pb.yml``, use the `lookup
-vbotka.freebsd.galaxy_info`_ plugin to:
+On a managed node, in the playbook ``pb.yml``, use the :ref:`lookup
+vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` plugin to:
 
 * Display the complete metadata dictionary from ``galaxy.yml``
 * Display the attributes ``authors`` and ``version``
@@ -43,8 +43,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts
    :language: ini

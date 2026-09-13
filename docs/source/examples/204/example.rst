@@ -46,8 +46,8 @@ Extending :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-Instead of using the :ref:`ug_module_iocage`, create the
-variable ``iocage_jails`` using the :ref:`ug_filter_iocage`:
+Instead of using the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`, create the
+variable ``iocage_jails`` using the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>`:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
    :language: yaml+jinja
@@ -124,8 +124,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_filter_iocage`
-* :ref:`ug_inventory_iocage`
+* :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>`
+* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 * Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
 

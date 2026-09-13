@@ -37,13 +37,12 @@ Synopsis
   * In the playbook ``pb-iocage.yml``, run the command ``iocage get
     notes test_4`` and display the result.
 
-  * In the playbook ``pb-test.yml``, use the `inventory plugin
-    vbotka.freebsd.iocage`_ to create and display ``iocage_tags``.
+  * In the playbook ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` to create and display ``iocage_tags``.
 
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_inventory_iocage`
+* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 
 Notes
 ^^^^^

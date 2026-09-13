@@ -86,8 +86,7 @@ Requirements
 Notes
 ^^^^^
 
-* In this example, an inexpensive machine connected via Wi-Fi is used
-  to test the iocage host.
+* In this example, the controller uses Wi-Fi to connect to the managed host.
 
 * Adjust the following settings to match your network environment:
 

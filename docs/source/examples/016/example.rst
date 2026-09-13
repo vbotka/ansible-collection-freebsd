@@ -3,7 +3,7 @@
 016 Multiple inventory constructed
 ----------------------------------
 
-Extending :ref:`example_015`.
+This example extends :ref:`example_015`.
 
 .. contents::
    :local:
@@ -19,8 +19,8 @@ Use case
 ^^^^^^^^
 
 Create inventory groups using the inventory plugin
-`ansible.builtin.constructed`_ after loading the two `inventory plugin
-vbotka.freebsd.iocage`_ configuration files.
+`ansible.builtin.constructed`_ after loading the two :ref:`inventory
+vbotka.freebsd.iocage <ug_inventory_iocage>` configuration files.
 
 Tree
 ^^^^
@@ -39,8 +39,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The :ref:`ug_inventory_iocage` retrieves the jails
-  (managed nodes):
+* The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` retrieves the
+  jails:
 
   * ``test_111:113`` from host ``iocage_02``
   * ``test_131:133`` from host ``iocage_04``
@@ -62,14 +62,17 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in
-  alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical
+  order.
+
 * See :ref:`example_015`.
-* The :ref:`ug_inventory_iocage` does not provide the
-  option `use_vars_plugins`_.
+
+* The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
+  does not provide the option `use_vars_plugins`_.
+
 * See :ref:`example_019`.
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -77,9 +80,9 @@ Jails at iocage_02
    [iocage_02]# iocage list -l
 
 .. literalinclude:: out/out-01.txt
-   :language: bash
+   :language: console
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -87,7 +90,7 @@ Jails at iocage_04
    [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
-   :language: bash
+   :language: console
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -95,8 +98,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -121,7 +124,7 @@ Playbook output - Display groups
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja

@@ -138,7 +138,7 @@ Synopsis
   * Configure ``dhclient hooks``.
 
   In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use
-  the :ref:`ug_module_iocage` to:
+  the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Create jails from the Ansible client templates
   * Start all jails
@@ -156,8 +156,8 @@ Requirements
 
 * Playbook `vbotka.freebsd.pb_iocage_template.yml`_
 * Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
-* :ref:`ug_module_iocage`
-* :ref:`ug_inventory_iocage`
+* :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
+* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 * Root privileges on the managed nodes
 * An activated ``iocage`` installation
 * Fetched releases

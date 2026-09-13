@@ -35,28 +35,25 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node ``iocage_04``:
-
-  In the playbook ``pb-iocage.yml``, use the `role
-  vbotka.freebsd.iocage`_ to:
+* On the managed node ``iocage_04``, use the playbook ``pb-iocage.yml`` and the
+  `role vbotka.freebsd.iocage`_ to:
 
   * Activate `iocage`_
 
 Requirements
 ^^^^^^^^^^^^
 
-* `role vbotka.freebsd.iocage`_
+* `Role vbotka.freebsd.iocage`_
 * Root privileges on the managed nodes
 * The `iocage`_ binary
 
 Notes
 ^^^^^
 
-* Put ``-l iocage_02`` into the command arguments to run the play on
-  the managed node ``iocage_02``.
+* Pass ``-l iocage_02`` on the command line to run the play on the managed
+  node ``iocage_02``.
 
-* Remove the limits ``-l iocage_0*`` to run the play on all managed
-  nodes.
+* Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
 
 * By default, ``iocage`` activation is disabled:
   ``freebsd_iocage_activate: false``.
@@ -90,8 +87,7 @@ host_vars
 
 .. note::
 
-   * Activation will be skipped if the directory
-     ``freebsd_iocage_mount`` exists.
+   * Activation is skipped if the directory ``freebsd_iocage_mount`` exists.
 
    * The variable ``freebsd_iocage_mount`` is declared in
      ``defaults/main/main.yml``::
@@ -109,10 +105,11 @@ Playbook output - Activate iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage.yml -i iocage.ini -l iocage_04 \
-                                          -t freebsd_iocage_activate \
-                                          -e freebsd_iocage_activate=true \
-                                          -e freebsd_iocage_debug=true
+   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+                            -t freebsd_iocage_activate \
+                            -e freebsd_iocage_activate=true \
+                            -e freebsd_iocage_debug=true \
+                            pb-iocage.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -120,4 +117,4 @@ Playbook output - Activate iocage
 
 .. note::
 
-   This ``debug`` output shows the ``result`` of an already activated `iocage`_.
+   This debug output shows the result of an already activated `iocage`_.

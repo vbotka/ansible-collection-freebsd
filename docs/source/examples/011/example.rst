@@ -3,12 +3,13 @@
 011 Display variables iocage_*
 ------------------------------
 
-Extending :ref:`example_010`.
+This example extends :ref:`example_010`.
 
 .. contents::
    :local:
    :depth: 1
 
+.. index:: single: inventory vbotka.freebsd.iocage; Example 011
 .. index:: single: compose; Example 011
 .. index:: single: iocage_ip4_dict; Example 011
 .. index:: single: keyed_groups; Example 011
@@ -20,8 +21,8 @@ Extending :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Display all variables ``iocage_*`` created by the `inventory plugin
-vbotka.freebsd.iocage`_.
+Display all variables ``iocage_*`` created by the :ref:`inventory
+vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
 Tree
 ^^^^
@@ -69,7 +70,7 @@ Playbook output - Display iocage_* variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-vars-all.yml -i iocage.yml -l test_133
+   (env) > ansible-playbook -i iocage.yml -l test_133 pb-vars-all.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja

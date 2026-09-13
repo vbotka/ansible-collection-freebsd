@@ -3,14 +3,14 @@
 020 Get inventory aliases from notes
 ------------------------------------
 
-Extending :ref:`example_016`.
+This example extends :ref:`example_016`.
 
 .. contents::
    :local:
    :depth: 1
 
 .. index:: single: swarms; Example 020
-.. index:: single: inventory vbotka.freebsd.iocage; Example 020
+.. index:: single: inventory vbotka.freebsd.iocage2; Example 020
 .. index:: single: inventory ansible.builtin.constructed; Example 020
 .. index:: single: option inventory_hostname_required; Example 020
 .. index:: single: inventory_hostname_required; Example 020
@@ -27,9 +27,9 @@ Extending :ref:`example_016`.
 Use case
 ^^^^^^^^
 
-Get the `Inventory aliases`_ from the `Set Jail Property`_
-``notes``. In the :ref:`ug_inventory_iocage2`, use the
-option ``inventory_hostname_tag`` to specify which tag to use.
+Get the `inventory aliases`_ from the `jail property`_ ``notes``. In the
+:ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the option
+``inventory_hostname_tag`` to specify which tag to use.
 
 Tree
 ^^^^
@@ -66,11 +66,11 @@ Synopsis
 
   * Put the inventory alias into the tag ``alias=<alias>``
 
-* In the :ref:`ug_inventory_iocage2`, retrieve the
-  inventory aliases from the tag ``alias``
+* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
+  retrieve the inventory aliases from the tag ``alias``
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the
-  inventory groups
+* In the inventory plugin `ansible.builtin.constructed`_, create the inventory
+  groups
 
 * Display the jails and groups
 
@@ -84,8 +84,8 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in
-  alphabetical order.
+* The inventory files in the directory ``hosts`` are evaluated in alphabetical
+  order.
 
 .. seealso::
 
@@ -115,6 +115,22 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 10
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
+.. note::
+
+   The value of the iocage tag ``alias`` is used as the inventory alias.
+
 group_vars
 ^^^^^^^^^^
 
@@ -128,23 +144,6 @@ host_vars
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
-
-Inventory hosts
-^^^^^^^^^^^^^^^
-
-.. literalinclude:: hosts/06_iocage2.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 10
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-.. note::
-
-   The value of the iocage tag ``alias`` is used as the inventory
-   alias. If `iocage list is slow`_, use the cache.
 
 Playbook pb-iocage-swarms-create.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,11 +204,11 @@ Playbook pb-iocage-swarms-destroy.yml
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Destroy the swarms if you do not need them anymore.
+Destroy the swarms if you do not need them anymore. For example:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-swarms-destroy.yml -i iocage.ini -i hosts
+   (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-swarms-destroy.yml
 
 .. literalinclude:: out/out-08.txt
    :language: yaml+jinja
