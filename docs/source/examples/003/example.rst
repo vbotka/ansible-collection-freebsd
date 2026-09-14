@@ -27,7 +27,9 @@ Tree
   ├── host_vars
   │   ├── iocage_02
   │   │   └── iocage.yml
-  │   └── iocage_04
+  │   ├── iocage_04
+  │   │   └── iocage.yml
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   └── pb-iocage.yml
@@ -35,8 +37,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node ``iocage_04``, use the playbook ``pb-iocage.yml`` and the
-  `role vbotka.freebsd.iocage`_ to:
+* On the managed node, use the playbook ``pb-iocage.yml`` and the `role
+  vbotka.freebsd.iocage`_ to:
 
   * Audit the `iocage`_ configuration
 
@@ -50,13 +52,12 @@ Requirements
 Notes
 ^^^^^
 
-* Pass ``-l iocage_02`` on the command line to run the play on the managed node
-  ``iocage_02``.
+* Pass ``-l iocage_0X`` on the command line to run the play on the managed node
+  ``iocage_0X``.
 
 * Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
 
-* By default, sanity testing is enabled:
-  ``freebsd_iocage_sanity: true``.
+* By default, sanity testing is enabled: ``freebsd_iocage_sanity: true``.
 
 .. seealso::
 
@@ -87,6 +88,10 @@ host_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: host_vars/iocage_06/iocage.yml
+   :language: yaml+jinja
+   :caption:
+
 .. note::
 
    By default, activation testing is disabled::
@@ -104,7 +109,7 @@ Playbook output - Test sanity
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+   (env) > ansible-playbook -i iocage.ini -l iocage_06 \
                             -t freebsd_iocage_sanity \
                             pb-iocage.yml
 
@@ -119,7 +124,7 @@ Playbook output - Test sanity quietly
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
            ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-           ansible-playbook -i iocage.ini -l iocage_04 \
+           ansible-playbook -i iocage.ini -l iocage_06 \
                             -t freebsd_iocage_sanity \
                             pb-iocage.yml
 

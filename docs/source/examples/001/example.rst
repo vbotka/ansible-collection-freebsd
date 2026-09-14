@@ -29,8 +29,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node ``iocage_04``, use the playbook ``pb-iocage.yml`` and the
-  `role vbotka.freebsd.iocage`_ to:
+* On the managed node, use the playbook ``pb-iocage.yml`` and the `role
+  vbotka.freebsd.iocage`_ to:
 
   * Display variables
   * Install the `iocage`_ package
@@ -44,8 +44,8 @@ Requirements
 Notes
 ^^^^^
 
-* Pass ``-l iocage_02`` on the command line to limit the play to the managed node
-  ``iocage_02``.
+* Pass ``-l iocage_0X`` on the command line to limit the play to the managed node
+  ``iocage_0X``.
 
 * Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
 
@@ -94,7 +94,7 @@ Playbook output - Display variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+   (env) > ansible-playbook -i iocage.ini -l iocage_06 \
                             -t freebsd_iocage_debug -e freebsd_iocage_debug=true \
                             pb-iocage.yml
 
@@ -111,7 +111,7 @@ Playbook output - Install iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -l iocage_04 \
+   (env) > ansible-playbook -i iocage.ini -l iocage_06 \
                             -t freebsd_iocage_pkg -e freebsd_iocage_debug=true \
                             pb-iocage.yml
 

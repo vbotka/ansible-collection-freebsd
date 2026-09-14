@@ -37,8 +37,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In a selected jail, display the ``iocage_properties`` variable retrieved by
-enabling the ``get_properties`` option in the inventory plugin.
+Display ``iocage_properties`` in a selected jail by enabling ``get_properties``
+in the inventory plugin.
 
 Requirements
 ^^^^^^^^^^^^
@@ -73,7 +73,7 @@ Playbook output - Display iocage_properties
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.yml -l test_133 pb-vars-properties.yml
+   (env) > ansible-playbook -i iocage.yml -l test_163 pb-vars-properties.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja

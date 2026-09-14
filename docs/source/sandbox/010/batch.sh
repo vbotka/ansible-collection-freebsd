@@ -5,9 +5,9 @@
 
 # Stop and destroy jails.
 # ssh admin@iocage_06 sudo iocage clean -jf
-ssh admin@iocage_06 sudo iocage destroy -f test_151
-ssh admin@iocage_06 sudo iocage destroy -f test_152
-ssh admin@iocage_06 sudo iocage destroy -f test_153
+ssh admin@iocage_06 sudo iocage destroy -f test_161
+ssh admin@iocage_06 sudo iocage destroy -f test_162
+ssh admin@iocage_06 sudo iocage destroy -f test_163
 ssh admin@iocage_06 sudo iocage destroy -f ansible-client
 
 # Create jails.

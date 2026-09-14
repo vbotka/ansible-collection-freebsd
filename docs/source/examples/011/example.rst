@@ -38,8 +38,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In a selected jail, display all variables ``iocage_*`` created by the
-inventory plugin in :ref:`example_010`.
+In a selected jail, display all variables ``iocage_*`` created by the inventory
+plugin.
 
 Requirements
 ^^^^^^^^^^^^
@@ -70,7 +70,7 @@ Playbook output - Display iocage_* variables
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.yml -l test_133 pb-vars-all.yml
+   (env) > ansible-playbook -i iocage.yml -l test_163 pb-vars-all.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
