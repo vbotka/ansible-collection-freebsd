@@ -2,26 +2,17 @@
 PLAY [swarm_sw_01] *************************************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [a7a1e306]
 changed: [test_161]
-changed: [5f6409b9]
+changed: [c444f7ad]
+changed: [e0743d2e]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [5f6409b9] => 
+ok: [c444f7ad] => 
     msg: |-
-        out.stdout: 5f6409b9
-        ansible_host: 5f6409b9
-        iocage_hooks: ['172.16.99.175']
-        iocage_ip4: 172.16.99.175
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_06
-ok: [a7a1e306] => 
-    msg: |-
-        out.stdout: a7a1e306
-        ansible_host: a7a1e306
-        iocage_hooks: ['172.16.99.176']
-        iocage_ip4: 172.16.99.176
+        out.stdout: c444f7ad
+        ansible_host: c444f7ad
+        iocage_hooks: ['172.16.99.178']
+        iocage_ip4: 172.16.99.178
         iocage_tags:
           swarm: sw_01
           vmm: iocage_06
@@ -35,9 +26,18 @@ ok: [test_161] =>
           alias: test_161
           swarm: sw_01
           vmm: iocage_06
+ok: [e0743d2e] => 
+    msg: |-
+        out.stdout: e0743d2e
+        ansible_host: e0743d2e
+        iocage_hooks: ['172.16.99.179']
+        iocage_ip4: 172.16.99.179
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
 
 PLAY RECAP *********************************************************************
-5f6409b9                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-a7a1e306                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+c444f7ad                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e0743d2e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

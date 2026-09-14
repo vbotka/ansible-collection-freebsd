@@ -201,7 +201,7 @@ Notes
 
   * `ioc_list.py#L258`_
   * `ioc_list.py#L275`_
-  * The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` uses it too::
+  * The :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>` uses it too::
 
       if iocage_ip4_dict['ip4']:
           iocage_ip4 = ','.join([d['ip'] for d in iocage_ip4_dict['ip4']])
