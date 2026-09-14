@@ -1,9 +1,9 @@
 - name: Test empty iocage notes.
-  hosts: iocage_04
+  hosts: iocage_06
 
   tasks:
 
-    - command: iocage get notes test_4
+    - command: iocage get notes test-210
       register: out
 
     - debug:

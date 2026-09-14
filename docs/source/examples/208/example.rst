@@ -3,11 +3,12 @@
 208 Create iocage template for ansible-pull
 -------------------------------------------
 
+| (OBSOLETE)
+| Use :ref:`example_524`
+
 .. contents::
    :local:
    :depth: 1
-
-TODO: Run ansible-pull on boot.
 
 .. index:: single: ansible-pull; Example 208
 .. index:: single: ansible_client_pull; Example 208
@@ -68,8 +69,8 @@ Requirements
 ^^^^^^^^^^^^
 
 * Playbook :ref:`ug_pb-iocage-template`
-* :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
-* Root privileges on the managed nodes
+* :ref:`ug_module_iocage`
+* Root privilege on the managed nodes.
 
 Notes
 ^^^^^
@@ -79,7 +80,7 @@ Notes
 .. seealso::
 
    * `Using Templates <https://freebsd.github.io/iocage/templates.html>`_
-   * :ref:`ug_pb-iocage-template`
+   * Playbook :ref:`ug_pb-iocage-template`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -122,12 +123,12 @@ host_vars
 
 .. warning::
 
-   * The user ``act_user`` must exist on the ``iocage``
-     host. Otherwise, the module ``ansible.posix.authorized_key`` will
-     crash. See ``playbooks/pb_iocage_template/pk.yml``.
+   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise, the
+     module ``ansible.posix.authorized_key`` will crash. See
+     ``playbooks/pb_iocage_template/pk.yml``.
 
-   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the
-     public keys to your needs::
+   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the public keys
+     to your needs::
 
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller

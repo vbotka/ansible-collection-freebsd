@@ -1,5 +1,5 @@
 plugin: vbotka.freebsd.iocage
-host: 10.1.0.29
+host: iocage_06
 user: admin
 get_properties: true
 compose:
