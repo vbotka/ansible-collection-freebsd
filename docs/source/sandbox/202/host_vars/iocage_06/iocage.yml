@@ -37,18 +37,18 @@ act_dhclient:
     esac
 
 clones:
-  test-151:
+  test-161:
     clone_from: ansible-client
     properties:
-      notes: "alias=test_151"
-  test-152:
+      notes: "alias=test_161"
+  test-162:
     clone_from: ansible-client
     properties:
-      notes: "alias=test_152"
-  test-153:
+      notes: "alias=test_162"
+  test-163:
     clone_from: ansible-client
     properties:
-      notes: "alias=test_153"
+      notes: "alias=test_163"
 
 # clones default properties
 properties:

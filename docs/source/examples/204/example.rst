@@ -3,7 +3,7 @@
 204 Create DHCP jails with auto UUID and iocage_tags v2
 -------------------------------------------------------
 
-Extending :ref:`example_203`.
+This example extends :ref:`example_203`.
 
 .. contents::
    :local:
@@ -46,8 +46,9 @@ Extending :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-Instead of using the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`, create the
-variable ``iocage_jails`` using the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>`:
+Instead of using the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`,
+create the variable ``iocage_jails`` using the :ref:`filter
+vbotka.freebsd.iocage <ug_filter_iocage>`:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
    :language: yaml+jinja
@@ -124,9 +125,9 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>`
-* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-* Root privileges on the managed nodes
+* :ref:`ug_filter_iocage`
+* :ref:`ug_inventory_iocage`
+* Root privileges on the managed nodes.
 * Templates created in :ref:`example_202`
 
 Notes
@@ -190,7 +191,7 @@ Playbook output - Create and start jails
 
    (env) > ansible-playbook -i iocage.ini \
                             -t swarm -e swarm=true -e debug=true \
-                             pb-iocage-ansible-clients-v2.yml
+                            pb-iocage-ansible-clients-v2.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -216,8 +217,8 @@ Jails at iocage_04
 .. literalinclude:: out/out-05.txt
    :language: bash
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -259,7 +260,7 @@ Playbook output - Display iocage_tags
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-test.yml -i hosts
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja

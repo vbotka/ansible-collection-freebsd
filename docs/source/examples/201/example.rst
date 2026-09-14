@@ -3,7 +3,7 @@
 201 Display iocage datasets
 ---------------------------
 
-Extending :ref:`example_200`.
+This example extends :ref:`example_200`.
 
 .. contents::
    :local:
@@ -40,50 +40,49 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* At two managed nodes:
+* On two managed nodes:
 
   * iocage_02
   * iocage_04
 
-  In the playbook ``pb-iocage-display-datasets.yml``, use the `module
-  vbotka.freebsd.iocage`_ to:
+  In the playbook ``pb-iocage-display-datasets.yml``, use the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * create and display ``iocage`` lists and dictionaries.
+  * Create and display ``iocage`` lists and dictionaries.
 
 Notes
 ^^^^^
 
-* ``root`` is not needed to run ``iocage list ...`` on the ``iocage``
-  hosts when DHCP isn't used.
+* ``root`` is not needed to run ``iocage list ...`` on the ``iocage`` hosts when
+  DHCP isn't used.
 
-* Quoting from `man iocage`_:  ::
+* Quoting from `man iocage`_::
 
-         list    List  the  specified dataset type. By default, all jails are listed.
+          list    List  the  specified dataset type. By default, all jails are listed.
 
-                 Options:
+                  Options:
 
-                 [--http]              Changes [-R | --remote] to use HTTP.
+                  [--http]              Changes [-R | --remote] to use HTTP.
 
-                 [-H | -h | --header]  Used in scripting. Use tabs for separators.
+                  [-H | -h | --header]  Used in scripting. Use tabs for separators.
 
-                 [-P | --plugins]      Shows plugins installed on the system.
+                  [-P | --plugins]      Shows plugins installed on the system.
 
-                 [-PRO]                Lists official plugins available for download.
+                  [-PRO]                Lists official plugins available for download.
 
-                 [-R | --remote]       Shows available RELEASE options for remote.
+                  [-R | --remote]       Shows available RELEASE options for remote.
 
-                 [-b | -r | --base | --release | dataset_type]
-                                       List all bases.
+                  [-b | -r | --base | --release | dataset_type]
+                                        List all bases.
 
-                 [-l | --long]         Shows JID, NAME, BOOT, STATE, TYPE, RELEASE, IP4,
-                                       IP6, and TEMPLATE  information.
+                  [-l | --long]         Shows JID, NAME, BOOT, STATE, TYPE, RELEASE, IP4,
+                                        IP6, and TEMPLATE  information.
 
-                 [-q | --quick]        Lists all jails with less processing and fields.
+                  [-q | --quick]        Lists all jails with less processing and fields.
 
-                 [-s | --sort TEXT]    Sorts the list by the given type.
+                  [-s | --sort TEXT]    Sorts the list by the given type.
 
-                 [-t | --template | dataset_type]
-                                       Lists all templates.
+                  [-t | --template | dataset_type]
+                                        Lists all templates.
 
 Datasets at iocage_02
 ^^^^^^^^^^^^^^^^^^^^^
@@ -162,9 +161,11 @@ Inventory iocage.ini
 .. note::
 
    * The escalation ``become=true`` is not necessary.
+
    * ``root`` is not needed to run ``iocage list ...`` when DHCP isn't used.
-   * ``admin`` executes the module ``vbotka.freebsd.iocage`` on the iocage
-     hosts and creates the variables ``iocage_*``
+
+   * ``admin`` executes the module ``vbotka.freebsd.iocage`` on the iocage hosts
+     and creates the variables ``iocage_*``
 
 Playbook pb-iocage-display-datasets.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -177,7 +178,7 @@ Playbook output - Display iocage datasets
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb-iocage-display-datasets.yml -i iocage.ini
+   (env) > ansible-playbook -i iocage.ini pb-iocage-display-datasets.yml
 
 .. literalinclude:: out/out-09.txt
    :language: yaml+jinja

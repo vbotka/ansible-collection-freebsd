@@ -49,8 +49,8 @@ Extending :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Create iocage templates for Ansible clients. Obtain IP addresses via
-DHCP and create ``dhclient-exit-hooks``. For example, the hook below:
+Create iocage templates for Ansible clients. Obtain IP addresses via DHCP and
+create ``dhclient-exit-hooks``. For example, the hook below:
 
 .. code-block:: console
 
@@ -71,8 +71,8 @@ creates address files:
    shell> cat /zroot/iocage/jails/test_131/root/var/db/dhclient-hook.address.epair0b
    10.1.0.130
 
-Read the files created by the hooks and use the IP addresses to
-compose the variable ``ansible_host``:
+Read the files created by the hooks and use the IP addresses to compose the
+variable ``ansible_host``:
 
 .. code-block:: console
 
@@ -127,8 +127,7 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook :ref:`ug_pb-iocage-template`, use the
-  modules:
+  In the playbook :ref:`ug_pb-iocage-template`, use the modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
   * ``vbotka.freebsd.iocage`` exec to create a user and set ``.ssh`` ownership.
@@ -137,8 +136,8 @@ Synopsis
   * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
   * Configure ``dhclient hooks``.
 
-  In the playbook :ref:`ug_pb-iocage-ansible-client`, use
-  the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
+  In the playbook :ref:`ug_pb-iocage-ansible-client`, use the :ref:`module
+  vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Create jails from the Ansible client templates
   * Start all jails
@@ -156,21 +155,20 @@ Requirements
 
 * Playbook :ref:`ug_pb-iocage-template`
 * Playbook :ref:`ug_pb-iocage-ansible-client`
-* :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
-* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-* Root privileges on the managed nodes
-* An activated ``iocage`` installation
-* Fetched releases
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage`
+* Root privileges on the managed nodes.
+* An activated ``iocage`` installation.
+* Fetched releases.
 
 Notes
 ^^^^^
 
-* The option ``hooks_results`` expects the ``poolname`` of a jail to
-  be mounted to ``/poolname``. For example, if you activate the pool
-  ``zroot``, this plugin expects to find the ``hooks_results`` items
-  in the path ``/zroot/iocage/jails/<name>/root``. If you mount the
-  ``poolname`` to a different path, the easiest remedy is to create a
-  symlink.
+* The option ``hooks_results`` expects the ``poolname`` of a jail to be mounted
+  to ``/poolname``. For example, if you activate the pool ``zroot``, this plugin
+  expects to find the ``hooks_results`` items in the path
+  ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname`` to a
+  different path, the easiest remedy is to create a symlink.
 
 .. seealso::
 
@@ -281,7 +279,7 @@ Playbook output - Clone and start jails
 
    (env) > ansible-playbook -i iocage.ini \
                             -t clone -e clone=true \
-                             vbotka.freebsd.pb_iocage_ansible_clients.yml
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -307,8 +305,8 @@ Jails at iocage_04
 .. literalinclude:: out/out-06.txt
    :language: bash
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/02_iocage.yml
    :language: yaml+jinja
@@ -355,4 +353,4 @@ Playbook output - Display list iocage_hooks
 
      ansible-playbook -i iocage.ini \
                       -t clone_destroy -e clone_destroy=true \
-                       vbotka.freebsd.pb_iocage_ansible_clients.yml
+                      vbotka.freebsd.pb_iocage_ansible_clients.yml

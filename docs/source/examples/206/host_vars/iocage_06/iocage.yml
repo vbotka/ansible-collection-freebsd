@@ -7,8 +7,9 @@ clones:
     properties:
       bpf: 1
       vnet: 1
-      ip4_addr: 'vnet0|172.16.99.161/24'
-      notes: "swarm=sw_01 alias=test_161"
+      ip4_addr: 'vnet0|172.16.99.201/24'
+      defaultrouter: '172.16.99.1'
+      notes: 'swarm=sw_01 alias=test_161'
 
 swarms:
   sw_01:
