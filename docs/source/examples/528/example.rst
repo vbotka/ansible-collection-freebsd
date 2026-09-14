@@ -87,7 +87,7 @@ Synopsis
 * On a managed node:
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template ``ansible-init``.
 
   * Configure the jails to use the ``pkg-repo`` created in
@@ -102,7 +102,7 @@ Requirements
 * Jail ``repos`` created in :ref:`example_523`.
 * Template ``ansible-init`` created in :ref:`example_524`.
 * Jail ``pkg-repo`` created in :ref:`example_527`.
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
 * `Filter vbotka.freebsd.project`_.
 * `Inventory vbotka.freebsd.iocage2`_.
 * :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.

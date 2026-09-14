@@ -53,14 +53,14 @@ On a managed node:
   package list ``files/pkgs.json`` for `Automatic Package
   Installation`_ of the `Apache HTTP Server`_.
 
-* Use the playbook `vbotka.freebsd.pb_iocage_template.yml`_ to create
+* Use the playbook :ref:`ug_pb-iocage-template` to create
   the Ansible template ``ansible-client-apache``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `role vbotka.freebsd.iocage`_
-* Playbook `vbotka.freebsd.pb_iocage_template.yml`_
+* Playbook :ref:`ug_pb-iocage-template`
 
 Notes
 ^^^^^

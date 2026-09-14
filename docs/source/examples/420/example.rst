@@ -44,7 +44,7 @@ Synopsis
 
 On a managed node:
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates
+* The playbook :ref:`ug_pb-iocage-ansible-client` creates
   and starts a jail.
 
 * The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in

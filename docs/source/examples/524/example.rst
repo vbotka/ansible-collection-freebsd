@@ -73,7 +73,7 @@ Synopsis
     template ``ansible-init``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template.
 
   * Wait for `ansible-pull`_ to configure the jails and display the
@@ -84,7 +84,7 @@ Requirements
 
 * Jail ``repos`` created in :ref:`example_523`.
 * Role `vbotka.freebsd.iocage_template`_.
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
 * `Filter vbotka.freebsd.project`_.
 * `Inventory vbotka.freebsd.iocage2`_.
 * :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.

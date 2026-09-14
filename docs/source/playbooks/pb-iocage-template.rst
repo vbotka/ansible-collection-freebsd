@@ -15,11 +15,16 @@ pb_iocage_template
 .. index:: single: pkglist; pb_iocage_template
 .. index:: single: option iocage --pkglist; pb_iocage_template
 
+.. important::
+
+   This playbook provides entry-level functionality to test iocage templates.
+   Use the role `vbotka.freebsd.iocage_template`_ for advanced use cases.
+
 Synopsis
 ^^^^^^^^
 
-This playbook creates `iocage templates`_ from the dictionary
-``templates``. For example:
+This playbook creates `iocage templates`_ from the dictionary ``templates``. For
+example:
 
 .. code-block:: yaml
 
@@ -56,18 +61,11 @@ This configuration creates the template ``ansible_client``:
    Look at the ``Index`` and search the playbook
    ``pb_iocage_template.yml`` to see what examples are available.
 
-.. important::
-
-   This playbook provides entry-level functionality to test iocage
-   templates.  Use the role `vbotka.freebsd.iocage_template`_ for
-   advanced use cases.
-
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A few variables are required to configure a template for Ansible
-clients. Inspect the playbook tasks for specific implementation
-details.
+clients. Inspect the playbook tasks for specific implementation details.
 
 .. code-block:: yaml
 
@@ -87,8 +85,7 @@ details.
 act_pkg
 """""""
 
-Install a list of packages by defining the ``template`` attribute
-``act_pkg``:
+Install a list of packages by defining the ``template`` attribute ``act_pkg``:
 
 .. code-block:: yaml
 
@@ -99,9 +96,9 @@ Install a list of packages by defining the ``template`` attribute
          - lang/python311
        ...
 
-If this attribute is omitted, the variable ``act_pkg`` is used
-instead. Below is the minimal package list for an Ansible client
-(adjust the Python version as needed):
+If this attribute is omitted, the variable ``act_pkg`` is used instead. Below is
+the minimal package list for an Ansible client (adjust the Python version as
+needed):
 
 .. code-block:: yaml
 
@@ -109,10 +106,9 @@ instead. Below is the minimal package list for an Ansible client
      - security/sudo
      - lang/python311
 
-Adjust the package list to your requirements. Archiving tools like
-``gtar`` are typically needed (see `ansible.builtin.unarchive`_). If
-using the collection `community.crypto`_, include
-``security/py-openssl``:
+Adjust the package list to your requirements. Archiving tools like ``gtar`` are
+typically needed (see `ansible.builtin.unarchive`_). If using the collection
+`community.crypto`_, include ``security/py-openssl``:
 
 .. code-block:: yaml
 
@@ -124,13 +120,13 @@ using the collection `community.crypto`_, include
      - archivers/gtar
      - security/py-openssl
 
-Enable package installation by setting ``act_pkg_install: true``
-(defaults to ``false``).
+Enable package installation by setting ``act_pkg_install: true`` (defaults to
+``false``).
 
 Notes:
 
-* Prefer ``pkglist`` during template creation. Use ``act_pkg`` to
-  install additional packages in an already created jail.
+* Prefer ``pkglist`` during template creation. Use ``act_pkg`` to install
+  additional packages in an already created jail.
 
 * The module `community.general.pkgng`_ is jail-aware::
 
@@ -148,8 +144,8 @@ Notes:
 act_user
 """"""""
 
-Create a dedicated user in the jail, typically used as ``remote_user``
-for Ansible connections:
+Create a dedicated user in the jail, typically used as ``remote_user`` for
+Ansible connections:
 
 .. code-block:: yaml
 
@@ -162,8 +158,7 @@ for Ansible connections:
 act_pk
 """"""
 
-Path to a file containing public SSH keys authorized to connect as
-``act_user``:
+Path to a file containing public SSH keys authorized to connect as ``act_user``:
 
 .. code-block:: yaml
 
@@ -172,8 +167,8 @@ Path to a file containing public SSH keys authorized to connect as
 .. warning::
 
    The `ansible.posix.authorized_key`_ module used in this task is not
-   jail-aware.  The user specified in ``act_user`` must also exist on
-   the iocage host; otherwise, the module will fail.
+   jail-aware. The user specified in ``act_user`` must also exist on the iocage
+   host; otherwise, the module will fail.
 
 act_sudo
 """"""""
@@ -231,9 +226,9 @@ Create ``dhclient`` hooks in ``<dataset>/root/etc/``:
 pkglist
 ^^^^^^^
 
-``pkglist`` is an optional attribute of the ``templates``
-dictionary. Its value is the destination path on the iocage host where
-``pkgs.json`` is copied. See the ``--pkglist`` option in `man iocage`_:
+``pkglist`` is an optional attribute of the ``templates`` dictionary. Its value
+is the destination path on the iocage host where ``pkgs.json`` is copied. See
+the ``--pkglist`` option in `man iocage`_:
 
 .. code-block:: yaml
 
@@ -253,8 +248,8 @@ Create the package list in ``files/pkgs.json``:
        ]
    }
 
-The task file ``pkglist.yml`` expects ``files/pkgs.json`` relative to
-the inventory directory:
+The task file ``pkglist.yml`` expects ``files/pkgs.json`` relative to the
+inventory directory:
 
 .. code-block:: yaml
 
@@ -265,11 +260,10 @@ the inventory directory:
      loop: "{{ _templates }}"
      vars:
        _templates: "{{ templates | dict2items
-                                 | selectattr('value.pkglist', 'defined') }}"
+                       | selectattr('value.pkglist', 'defined') }}"
 
 Customize the packages as needed. For example, add ``gtar`` for
-`ansible.builtin.unarchive`_ or ``py-openssl`` for
-`community.crypto`_:
+`ansible.builtin.unarchive`_ or ``py-openssl`` for `community.crypto`_:
 
 .. code-block:: json
 
@@ -297,13 +291,11 @@ Customize the packages as needed. For example, add ``gtar`` for
 Workflow
 ^^^^^^^^
 
-The final tasks in ``template.yml`` convert the created jails into
-templates. If the playbook is run again, the initial tasks in
-``setup.yml`` will end the play for hosts whose templates already
-exist.
+The final tasks in ``template.yml`` convert the created jails into templates. If
+the playbook is run again, the initial tasks in ``setup.yml`` will end the play
+for hosts whose templates already exist.
 
-To reconfigure an existing template, unset its template state
-manually:
+To reconfigure an existing template, unset its template state manually:
 
 .. code-block:: console
 
@@ -315,23 +307,21 @@ If the jail must be running to apply changes, start it:
 
    shell> iocage start ansible_client
 
-Then use playbook tags to run the desired tasks. For example, to
-install additional packages defined in ``act_pkg``:
+Then use playbook tags to run the desired tasks. For example, to install
+additional packages defined in ``act_pkg``:
 
 .. code-block:: console
 
    (env) > ansible-playbook -t pkg -e act_pkg_install=true pb_iocage_template.yml
 
-After completing modifications, stop the jail and convert it back to a
-template:
+After completing modifications, stop the jail and convert it back to a template:
 
 .. code-block:: console
 
    shell> iocage stop ansible_client
    shell> iocage set template=1 ansible_client
 
-Alternatively, perform the stop and template conversion via the
-playbook:
+Alternatively, perform the stop and template conversion via the playbook:
 
 .. code-block:: console
 

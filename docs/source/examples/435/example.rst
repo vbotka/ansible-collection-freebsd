@@ -57,7 +57,7 @@ Synopsis
     template ``ansible-nginx``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to configure the Nginx servers.
@@ -67,7 +67,7 @@ Requirements
 
 * Role `vbotka.freebsd.iocage_template`_
 * Role `vbotka.freebsd.nginx`_
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
 * :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
 * Package repository created in :ref:`example_322`.

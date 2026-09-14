@@ -55,7 +55,7 @@ Synopsis
 ^^^^^^^^
 
 * On the iocage host ``iocage_04``, in the playbook
-  `vbotka.freebsd.pb_iocage_template.yml`_, use the modules:
+  :ref:`ug_pb-iocage-template`, use the modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert a jail to a template.
   * ``vbotka.freebsd.iocage`` exec to create a user and set ``.ssh`` ownership.
@@ -67,7 +67,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook `vbotka.freebsd.pb_iocage_template.yml`_
+* Playbook :ref:`ug_pb-iocage-template`
 * :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
 * Root privileges on the managed nodes
 

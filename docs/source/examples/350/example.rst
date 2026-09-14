@@ -48,7 +48,7 @@ Synopsis
 
 In the playbooks:
 
-* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_: Create and start jails.
+* :ref:`ug_pb-iocage-ansible-client`: Create and start jails.
 * ``pb-install.yml``: Install `rsnapshot`_ in running jails.
 * ``pb-test.yml``: Configure `rsnapshot`_ in running jails.
 

@@ -63,7 +63,7 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
+  In the playbook :ref:`ug_pb-iocage-ansible-client`:
 
   * create jails
   * start jails
@@ -81,7 +81,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* Playbook :ref:`ug_pb-iocage-ansible-client`
 * :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
 * :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
 * Root privileges on the managed nodes.

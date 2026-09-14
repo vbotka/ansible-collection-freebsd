@@ -61,11 +61,11 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook `vbotka.freebsd.pb_iocage_plugins.yml`_:
+  In the playbook :ref:`ug_pb-iocage-plugin`:
 
   * Fetch the `iocage plugin`_ ``ansible-zero``.
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_:
+  In the playbook :ref:`ug_pb-iocage-ansible-client`:
 
   * Clone jails from the iocage plugin ``ansible-zero``.
 
@@ -82,8 +82,8 @@ Requirements
 ^^^^^^^^^^^^
 
 * iocage plugin ``ansible-zero``.
-* Playbook `vbotka.freebsd.pb_iocage_plugins.yml`_.
-* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_.
+* Playbook :ref:`ug_pb-iocage-plugin`.
+* Playbook :ref:`ug_pb-iocage-ansible-client`.
 * `Inventory plugin vbotka.freebsd.iocage`_.
 * :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 * Root privileges on the managed nodes.
@@ -92,7 +92,7 @@ Notes
 ^^^^^
 
 * The iocage plugin ``ansible-zero`` is used in the playbook
-  `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ to create the ``swarm``.
+  :ref:`ug_pb-iocage-ansible-client` to create the ``swarm``.
 
 .. seealso::
 

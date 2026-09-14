@@ -60,8 +60,8 @@ Synopsis
 
 In the playbooks:
 
-* `vbotka.freebsd.pb_iocage_ansible_clients.yml`_: Create and start jails.
-* `vbotka.freebsd.pb_iocage_update_repos.yml`_: Update repositories.
+* :ref:`ug_pb-iocage-ansible-client`: Create and start jails.
+* :ref:`ug_pb-iocage-update-repos`: Update repositories.
 * ``pb.yml``: In the jails, install and configure `lighttpd`_.
 
 Requirements
@@ -95,7 +95,7 @@ Notes
       name:
         - www/lighttpd
 
-* The playbook `vbotka.freebsd.pb_iocage_update_repos.yml`_ updates
+* The playbook :ref:`ug_pb-iocage-update-repos` updates
   the repositories. Afterwards, use the `cached`_ local package
   database instead of fetching an updated one::
 

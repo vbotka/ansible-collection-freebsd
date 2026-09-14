@@ -163,7 +163,7 @@ Synopsis
 
   * iocage_04
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use:
+  In the playbook :ref:`ug_pb-iocage-ansible-client`, use:
 
   * :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
@@ -185,7 +185,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* Playbook :ref:`ug_pb-iocage-ansible-client`
 * :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
 * :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 * Root privileges on the managed nodes

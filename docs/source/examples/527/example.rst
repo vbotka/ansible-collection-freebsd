@@ -78,7 +78,7 @@ Synopsis
     template ``ansible-pkg-repo``.
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    :ref:`ug_pb-iocage-project-create-from-templates`,
     create a jail from the template.
 
 * In the inventory group ``fetch_pkg_repo``, fetch the selected
@@ -88,7 +88,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * Role `vbotka.freebsd.iocage_template`_.
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
 * `Filter vbotka.freebsd.dict_to_ast`_.
 * `Filter vbotka.freebsd.ast_to_nginx`_.
 * `Filter vbotka.freebsd.project`_.

@@ -72,7 +72,7 @@ Synopsis
 * On a managed node:
 
   * In the playbook
-    `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_,
+    :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template ``ansible-init``.
 
   * Wait for ``ansible-pull`` to configure the jails and display the logs.
@@ -82,7 +82,7 @@ Requirements
 
 * Jail ``repos`` created in :ref:`example_523`.
 * Template ``ansible-init`` created in :ref:`example_524`.
-* Playbook `vbotka.freebsd.pb_iocage_project_create_from_templates.yml`_.
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
 * `Filter vbotka.freebsd.project`_.
 * `Inventory vbotka.freebsd.iocage2`_.
 * :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.

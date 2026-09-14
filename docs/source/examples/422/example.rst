@@ -46,7 +46,7 @@ Synopsis
 
 On a managed node:
 
-* The playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_ creates and starts a jail.
+* The playbook :ref:`ug_pb-iocage-ansible-client` creates and starts a jail.
 * The playbook ``pb-data.yml`` creates the file ``data/info.php``.
 * The playbook ``pb-apache.yml`` configures PHP in the `Apache HTTP Server`_.
 

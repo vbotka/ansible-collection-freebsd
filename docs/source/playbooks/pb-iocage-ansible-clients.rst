@@ -51,7 +51,7 @@ Use the playbook tag ``clone`` to execute selected tasks:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_ansible_clients.yml -t clone -e clone=true
+   (env) > ansible-playbook -t clone -e clone=true pb_iocage_ansible_clients.yml
 
 Verify the created clones:
 
@@ -84,7 +84,7 @@ Use the playbook tag ``swarm`` to execute selected tasks:
 
 .. code-block:: console
 
-   (env) > ansible-playbook pb_iocage_ansible_clients.yml -t swarm -e swarm=true
+   (env) > ansible-playbook -t swarm -e swarm=true pb_iocage_ansible_clients.yml
 
 This creates 3 jails from the template ``ansible_client``. The names
 are generated automatically:

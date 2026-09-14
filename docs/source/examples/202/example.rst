@@ -127,7 +127,7 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook `vbotka.freebsd.pb_iocage_template.yml`_, use the
+  In the playbook :ref:`ug_pb-iocage-template`, use the
   modules:
 
   * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
@@ -137,7 +137,7 @@ Synopsis
   * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
   * Configure ``dhclient hooks``.
 
-  In the playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_, use
+  In the playbook :ref:`ug_pb-iocage-ansible-client`, use
   the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Create jails from the Ansible client templates
@@ -154,8 +154,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook `vbotka.freebsd.pb_iocage_template.yml`_
-* Playbook `vbotka.freebsd.pb_iocage_ansible_clients.yml`_
+* Playbook :ref:`ug_pb-iocage-template`
+* Playbook :ref:`ug_pb-iocage-ansible-client`
 * :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
 * :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 * Root privileges on the managed nodes
