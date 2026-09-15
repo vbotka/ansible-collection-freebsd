@@ -120,8 +120,8 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Jails at iocage_06
-^^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -130,8 +130,8 @@ Jails at iocage_06
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Jails graph at iocage_06
-^^^^^^^^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 

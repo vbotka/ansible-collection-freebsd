@@ -1,8 +1,5 @@
 - name: Install packages.
-  hosts: up
-  gather_facts: true
-  remote_user: admin
-  become: true
+  hosts: swarm_sw_01
 
   tasks:
 

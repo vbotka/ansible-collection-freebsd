@@ -54,9 +54,9 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.nginx`_
-* Role `vbotka.freebsd.packages`_
-* Filter :ref:`filter vbotka.freebsd.to_ucl <ug_filter_to_ucl>`
+* `Role vbotka.freebsd.nginx`_
+* `Role vbotka.freebsd.packages`_
+* :ref:`ug_filter_to_ucl`
 
 Notes
 ^^^^^

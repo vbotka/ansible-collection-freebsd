@@ -291,8 +291,8 @@ Jails
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 

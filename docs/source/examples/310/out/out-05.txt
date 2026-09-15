@@ -2,46 +2,184 @@
 PLAY [Install packages in jails.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [test_133]
-ok: [test_132]
-ok: [test_131]
+ok: [acf6055f]
+ok: [251f0c14]
+ok: [e8963453]
 
-TASK [Install packages] ********************************************************
-ok: [test_133 -> iocage_04(10.1.0.29)]
-ok: [test_131 -> iocage_04(10.1.0.29)]
-ok: [test_132 -> iocage_04(10.1.0.29)]
+TASK [Install packages.] *******************************************************
+changed: [acf6055f -> iocage_06]
+changed: [e8963453 -> iocage_06]
+changed: [251f0c14 -> iocage_06]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [test_131] => 
+ok: [acf6055f] => 
     out:
-        changed: false
+        changed: true
         failed: false
-        msg: package(s) already present
+        msg: installed 1 package
         stderr: ''
         stderr_lines: []
-        stdout: ''
-        stdout_lines: []
-ok: [test_132] => 
+        stdout: |-
+            The following 1 package(s) will be affected (of 0 checked):
+
+            New packages to be INSTALLED:
+                    python311: 3.11.16 [FreeBSD-ports]
+
+            Number of packages to be installed: 1
+
+            The process will require 202 MiB more space.
+            27 MiB to be downloaded.
+            [acf6055f] [1/1] Fetching python311-3.11.16: .......... done
+            Checking integrity... done (0 conflicting)
+            [acf6055f] [1/1] Installing python311-3.11.16...
+            [acf6055f] [1/1] Extracting python311-3.11.16: .......... done
+            =====
+            Message from python311-3.11.16:
+
+            --
+            Note that some standard Python modules are provided as separate ports
+            as they require additional dependencies. They are available as:
+
+            py311-gdbm       databases/py-gdbm@py311
+            py311-sqlite3    databases/py-sqlite3@py311
+            py311-tkinter    x11-toolkits/py-tkinter@py311
+        stdout_lines:
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'New packages to be INSTALLED:'
+        - "\tpython311: 3.11.16 [FreeBSD-ports]"
+        - ''
+        - 'Number of packages to be installed: 1'
+        - ''
+        - The process will require 202 MiB more space.
+        - 27 MiB to be downloaded.
+        - '[acf6055f] [1/1] Fetching python311-3.11.16: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[acf6055f] [1/1] Installing python311-3.11.16...'
+        - '[acf6055f] [1/1] Extracting python311-3.11.16: .......... done'
+        - =====
+        - 'Message from python311-3.11.16:'
+        - ''
+        - --
+        - Note that some standard Python modules are provided as separate ports
+        - 'as they require additional dependencies. They are available as:'
+        - ''
+        - py311-gdbm       databases/py-gdbm@py311
+        - py311-sqlite3    databases/py-sqlite3@py311
+        - py311-tkinter    x11-toolkits/py-tkinter@py311
+ok: [e8963453] => 
     out:
-        changed: false
+        changed: true
         failed: false
-        msg: package(s) already present
+        msg: installed 1 package
         stderr: ''
         stderr_lines: []
-        stdout: ''
-        stdout_lines: []
-ok: [test_133] => 
+        stdout: |-
+            The following 1 package(s) will be affected (of 0 checked):
+
+            New packages to be INSTALLED:
+                    python311: 3.11.16 [FreeBSD-ports]
+
+            Number of packages to be installed: 1
+
+            The process will require 202 MiB more space.
+            27 MiB to be downloaded.
+            [e8963453] [1/1] Fetching python311-3.11.16: .......... done
+            Checking integrity... done (0 conflicting)
+            [e8963453] [1/1] Installing python311-3.11.16...
+            [e8963453] [1/1] Extracting python311-3.11.16: .......... done
+            =====
+            Message from python311-3.11.16:
+
+            --
+            Note that some standard Python modules are provided as separate ports
+            as they require additional dependencies. They are available as:
+
+            py311-gdbm       databases/py-gdbm@py311
+            py311-sqlite3    databases/py-sqlite3@py311
+            py311-tkinter    x11-toolkits/py-tkinter@py311
+        stdout_lines:
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'New packages to be INSTALLED:'
+        - "\tpython311: 3.11.16 [FreeBSD-ports]"
+        - ''
+        - 'Number of packages to be installed: 1'
+        - ''
+        - The process will require 202 MiB more space.
+        - 27 MiB to be downloaded.
+        - '[e8963453] [1/1] Fetching python311-3.11.16: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[e8963453] [1/1] Installing python311-3.11.16...'
+        - '[e8963453] [1/1] Extracting python311-3.11.16: .......... done'
+        - =====
+        - 'Message from python311-3.11.16:'
+        - ''
+        - --
+        - Note that some standard Python modules are provided as separate ports
+        - 'as they require additional dependencies. They are available as:'
+        - ''
+        - py311-gdbm       databases/py-gdbm@py311
+        - py311-sqlite3    databases/py-sqlite3@py311
+        - py311-tkinter    x11-toolkits/py-tkinter@py311
+ok: [251f0c14] => 
     out:
-        changed: false
+        changed: true
         failed: false
-        msg: package(s) already present
+        msg: installed 1 package
         stderr: ''
         stderr_lines: []
-        stdout: ''
-        stdout_lines: []
+        stdout: |-
+            The following 1 package(s) will be affected (of 0 checked):
+
+            New packages to be INSTALLED:
+                    python311: 3.11.16 [FreeBSD-ports]
+
+            Number of packages to be installed: 1
+
+            The process will require 202 MiB more space.
+            27 MiB to be downloaded.
+            [251f0c14] [1/1] Fetching python311-3.11.16: .......... done
+            Checking integrity... done (0 conflicting)
+            [251f0c14] [1/1] Installing python311-3.11.16...
+            [251f0c14] [1/1] Extracting python311-3.11.16: .......... done
+            =====
+            Message from python311-3.11.16:
+
+            --
+            Note that some standard Python modules are provided as separate ports
+            as they require additional dependencies. They are available as:
+
+            py311-gdbm       databases/py-gdbm@py311
+            py311-sqlite3    databases/py-sqlite3@py311
+            py311-tkinter    x11-toolkits/py-tkinter@py311
+        stdout_lines:
+        - 'The following 1 package(s) will be affected (of 0 checked):'
+        - ''
+        - 'New packages to be INSTALLED:'
+        - "\tpython311: 3.11.16 [FreeBSD-ports]"
+        - ''
+        - 'Number of packages to be installed: 1'
+        - ''
+        - The process will require 202 MiB more space.
+        - 27 MiB to be downloaded.
+        - '[251f0c14] [1/1] Fetching python311-3.11.16: .......... done'
+        - Checking integrity... done (0 conflicting)
+        - '[251f0c14] [1/1] Installing python311-3.11.16...'
+        - '[251f0c14] [1/1] Extracting python311-3.11.16: .......... done'
+        - =====
+        - 'Message from python311-3.11.16:'
+        - ''
+        - --
+        - Note that some standard Python modules are provided as separate ports
+        - 'as they require additional dependencies. They are available as:'
+        - ''
+        - py311-gdbm       databases/py-gdbm@py311
+        - py311-sqlite3    databases/py-sqlite3@py311
+        - py311-tkinter    x11-toolkits/py-tkinter@py311
 
 PLAY RECAP *********************************************************************
-test_131                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_132                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_133                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+251f0c14                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+acf6055f                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e8963453                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

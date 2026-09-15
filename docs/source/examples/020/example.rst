@@ -94,8 +94,8 @@ Notes
    * `Set Jail Property`_
    * :ref:`example_016`
 
-Templates at iocage_06
-^^^^^^^^^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
@@ -169,8 +169,8 @@ Playbook output - Create swarms
 
      shell> ansible-inventory -i hosts --list --yaml
 
-Jails at iocage_06
-^^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

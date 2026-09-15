@@ -207,6 +207,7 @@
 .. _iocage templates: https://freebsd.github.io/iocage/templates.html
 .. _iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
+.. _jail parameter: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-jail
 .. _jail property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _lib: https://github.com/vbotka/ansible-lib/
 .. _lighttpd: https://www.lighttpd.net/
@@ -231,7 +232,7 @@
 .. _module vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/
 .. _module vbotka.freebsd.service: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/
 .. _module vbotka.freebsd.ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/
-.. _name: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
+.. _name parameter: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-name
 .. _network: https://github.com/vbotka/ansible-freebsd-network/
 .. _nginx: https://github.com/vbotka/ansible-freebsd-nginx/
 .. _official Ansible documentation: https://docs.ansible.com/ansible/latest/

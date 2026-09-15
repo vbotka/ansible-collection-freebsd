@@ -15,7 +15,7 @@
 Use case
 ^^^^^^^^
 
-Test the :ref:`ug_module_ucl`.
+Test the :ref:`module vbotka.freebsd.ucl <ug_module_ucl>`.
 
 Tree
 ^^^^

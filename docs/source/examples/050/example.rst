@@ -75,8 +75,8 @@ Inventory jailexec.ini
    :language: ini
    :caption:
 
-Display the inventory of jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Jails inventory
+^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

@@ -158,8 +158,8 @@ Playbook output - Create template
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 

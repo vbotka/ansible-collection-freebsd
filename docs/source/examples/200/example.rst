@@ -128,6 +128,21 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/02_iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 files
 ^^^^^
 
@@ -224,7 +239,7 @@ Playbook output - List jails
    :language: yaml+jinja
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -234,7 +249,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-06.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -243,21 +258,6 @@ Jails at iocage_04
 
 .. literalinclude:: out/out-07.txt
    :language: bash
-
-hosts
-^^^^^
-
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^

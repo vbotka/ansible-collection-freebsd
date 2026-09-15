@@ -87,7 +87,7 @@ Notes
    * The `vars plugin ansible.builtin.host_group_vars`_
    * :ref:`example_016`
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -97,7 +97,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: console
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

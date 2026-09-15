@@ -78,7 +78,7 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Jails at iocage_06
+Jails on iocage_06
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

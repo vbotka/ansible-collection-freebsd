@@ -9,7 +9,7 @@
 
 .. index:: single: template ansible-repos; Example 523
 .. index:: single: role vbotka.freebsd.iocage_template; Example 523
-.. index:: single: pb_iocage_project_create_from_templates; Example 523
+.. index:: single: pb_iocage_project_create_from_templates.yml; Example 523
 
 .. index:: single: filter vbotka.freebsd.project; Example 523
 .. index:: single: vbotka.freebsd.project; Example 523

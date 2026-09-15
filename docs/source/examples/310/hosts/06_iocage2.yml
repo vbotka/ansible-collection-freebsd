@@ -3,6 +3,9 @@ host: iocage_06
 user: admin
 sudo: true
 get_properties: true
+hooks_results:
+  - /var/db/dhclient-hook.address.epair0b
+inventory_hostname_tag: alias
 
 compose:
   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
@@ -15,3 +18,11 @@ compose:
   ansible_jail_privilege_escalation: "'sudo'"
 # ansible options
   ansible_python_interpreter: "'auto_silent'"
+
+keyed_groups:
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm
+  - prefix: swarm
+    key: iocage_tags.swarm

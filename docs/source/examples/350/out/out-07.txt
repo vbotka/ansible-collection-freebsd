@@ -1,0 +1,15 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_06]
+
+TASK [Stop swarms] *************************************************************
+ok: [iocage_06] => (item=sw_01)
+
+TASK [Destroy swarms] **********************************************************
+ok: [iocage_06] => (item=sw_01)
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

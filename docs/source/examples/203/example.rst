@@ -204,7 +204,7 @@ Playbook output - Create and start swarms
    :language: yaml+jinja
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -214,7 +214,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

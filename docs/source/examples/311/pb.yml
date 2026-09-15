@@ -1,8 +1,6 @@
 - name: Configure and start git_daemon
   hosts: iocage
   gather_facts: true
-  remote_user: admin
-  become: true
 
   tasks:
 

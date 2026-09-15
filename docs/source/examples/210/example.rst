@@ -59,16 +59,6 @@ Notes
    * `Set Jail Property`_
    * `Binary iocage`_
 
-Jails
-^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: console
-
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -87,6 +77,16 @@ hosts
 .. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_06]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
+   :language: console
 
 Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^

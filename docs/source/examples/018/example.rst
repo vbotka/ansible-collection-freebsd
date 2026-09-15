@@ -79,7 +79,7 @@ Requirements
 
    See :ref:`example_440`
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -89,7 +89,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -139,7 +139,7 @@ Playbook output - Clone, start, and list
    :language: bash
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -149,7 +149,7 @@ Jails at iocage_02
 .. literalinclude:: out/out-04.txt
    :language: bash
 
-Jails at iocage_04
+Jails on iocage_04
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -180,8 +180,8 @@ true`` if ``env`` is used.
    * The ``SETENV`` tag, to preserve the environment, is needed when
      ``env`` is used.
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -207,7 +207,7 @@ Playbook output - Display iocage_* variables
    :language: yaml+jinja
    :force:
 
-Jails at iocage_02
+Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
 If a jail is stopped, the IP4 column displays: ``DHCP (not running)``.

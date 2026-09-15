@@ -148,8 +148,8 @@ Limit the inventory to ``iocage_04``:
    :language: yaml+jinja
    :force:
 
-Templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 

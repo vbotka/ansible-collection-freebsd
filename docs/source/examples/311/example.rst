@@ -10,7 +10,8 @@
 .. index:: single: postinstall; Example 311
 .. index:: single: vbotka.freebsd.postinstall; Example 311
 .. index:: single: role vbotka.freebsd.postinstall; Example 311
-.. index:: single: git_daemon; Example 311
+.. index:: single: git daemon; Example 311
+.. index:: single: git_daemon_flags; Example 311
 .. index:: single: git server; Example 311
 
 .. index:: single: module community.general.pkgng; Example 311
@@ -31,7 +32,7 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_05
+  │   └── iocage_06
   │       └── gitserver.yml
   ├── iocage.ini
   └── pb.yml
@@ -56,9 +57,8 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
-   | Please ensure the versions are identical before switching between them.
 
 .. seealso::
 
@@ -79,9 +79,16 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_05/gitserver.yml
+.. literalinclude:: host_vars/iocage_06/gitserver.yml
    :language: yaml+jinja
    :caption:
+
+.. warning::
+
+   The ``git://`` protocol does not provide encryption or
+   authentication. While suitable for fast local prototyping or
+   isolated provisioning networks, use ``https://`` (or SSH) for
+   ``ansible_init_host`` in production environments.
 
 .. seealso::
 
@@ -109,7 +116,7 @@ Display service status
 
 .. code-block:: console
 
-   shell> ssh admin@iocage_05 service git_daemon status
+   shell> ssh admin@iocage_06 service git_daemon status
 
 .. literalinclude:: out/out-02.txt
    :language: console

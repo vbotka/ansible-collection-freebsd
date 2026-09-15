@@ -1,11 +1,32 @@
 @all:
   |--@ungrouped:
-  |  |--iocage_01
-  |  |--iocage_02
-  |  |--iocage_03
+  |--@state_up:
+  |  |--acf6055f
+  |  |--e8963453
+  |  |--251f0c14
+  |  |--repos
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--log_server_01
+  |--@vmm_iocage_06:
+  |  |--acf6055f
+  |  |--e8963453
+  |  |--251f0c14
+  |  |--repos
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--log_server_01
+  |--@swarm_sw_01:
+  |  |--acf6055f
+  |  |--e8963453
+  |  |--251f0c14
   |--@up:
-  |  |--test_131
-  |  |--test_132
-  |  |--test_133
+  |  |--acf6055f
+  |  |--e8963453
+  |  |--251f0c14
+  |  |--repos
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--log_server_01
   |--@iocage:
-  |  |--iocage_04
+  |  |--iocage_06

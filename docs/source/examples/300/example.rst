@@ -10,6 +10,7 @@
 .. index:: single: module vbotka.freebsd.service; Example 300
 .. index:: single: vbotka.freebsd.service; Example 300
 .. index:: single: module community.general.ini; Example 300
+.. index:: single: community.general.ini; Example 300
 .. index:: single: filter vbotka.freebsd.iocage; Example 300
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 300
 .. index:: single: connection vbotka.freebsd.jailexec; Example 300
@@ -17,7 +18,7 @@
 Use case
 ^^^^^^^^
 
-Test the :ref:`ug_module_service`.
+Test the :ref:`module vbotka.freebsd.service <ug_module_service>`.
 
 Tree
 ^^^^
@@ -59,10 +60,10 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_module_service`
-* :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>`
-* :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
-* Running jails on the iocage host
+* :ref:`ug_filter_iocage`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
+* Running jails on the iocage host.
 
 Notes
 ^^^^^
@@ -72,16 +73,6 @@ Notes
 .. seealso::
 
    * `man service`_
-
-Jails at managed node
-^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   # iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -95,8 +86,8 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
@@ -106,8 +97,18 @@ Inventory hosts
    :language: yaml+jinja
    :caption:
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_06]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
+   :language: bash
+
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -125,10 +126,10 @@ Playbook pb-test-01.yml
 Playbook output - Display sshd rcvar in jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The key and value of ``rcvar`` are returned in 1) the attribute
-``rcvar`` of the registered variable ``out.rcvar`` and in 2)
-``stdout``. Usually, you will use the first option. The second option
-shows how to use the filter ``community.general.jc``.
+The key and value of ``rcvar`` are returned in 1) the attribute ``rcvar`` of the
+registered variable ``out.rcvar`` and in 2) ``stdout``. Usually, you will use
+the first option. The second option shows how to use the filter
+``community.general.jc``.
 
 .. code-block:: console
 

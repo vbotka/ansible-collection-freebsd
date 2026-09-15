@@ -1,8 +1,8 @@
 Plugins:
 
 * :ref:`ug_module_iocage` - Manage iocage jails.
-* :ref:`ug_module_service` - Control or query system services.
-* :ref:`ug_module_ucl` - CRUD-like interface for managing UCL files.
+* :ref:`module vbotka.freebsd.service <ug_module_service>` - Control or query system services.
+* :ref:`module vbotka.freebsd.ucl <ug_module_ucl>` - CRUD-like interface for managing UCL files.
 * :ref:`ug_inventory_iocage` - iocage inventory source.
 * :ref:`ug_inventory_iocage2` - iocage inventory source (using libzfs & iocage_lib).
 * :ref:`ug_filter_ast_to_nginx` - Convert an AST list to an NGINX configuration.

@@ -188,7 +188,7 @@ Playbook output - Create and start swarms
    :language: yaml+jinja
    :force:
 
-Jails at iocage_06
+Jails on iocage_06
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
