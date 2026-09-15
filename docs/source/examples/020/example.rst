@@ -10,6 +10,7 @@ This example extends :ref:`example_016`.
    :depth: 1
 
 .. index:: single: swarms; Example 020
+.. index:: single: swarms destroy; Example 020
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 020
 .. index:: single: inventory ansible.builtin.constructed; Example 020
 .. index:: single: option inventory_hostname_required; Example 020
@@ -204,7 +205,7 @@ Playbook pb-iocage-swarms-destroy.yml
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Destroy the swarms if you do not need them anymore. For example:
+Destroy the swarms if you do not need them anymore.
 
 .. code-block:: console
 

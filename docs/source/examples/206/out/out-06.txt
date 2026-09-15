@@ -2,20 +2,11 @@
 PLAY [swarm_sw_01] *************************************************************
 
 TASK [ansible.builtin.command] *************************************************
+changed: [df0394cb]
 changed: [test_161]
-changed: [c444f7ad]
-changed: [e0743d2e]
+changed: [283d850f]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [c444f7ad] => 
-    msg: |-
-        out.stdout: c444f7ad
-        ansible_host: c444f7ad
-        iocage_hooks: ['172.16.99.178']
-        iocage_ip4: 172.16.99.178
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_06
 ok: [test_161] => 
     msg: |-
         out.stdout: test-161
@@ -26,18 +17,27 @@ ok: [test_161] =>
           alias: test_161
           swarm: sw_01
           vmm: iocage_06
-ok: [e0743d2e] => 
+ok: [283d850f] => 
     msg: |-
-        out.stdout: e0743d2e
-        ansible_host: e0743d2e
-        iocage_hooks: ['172.16.99.179']
-        iocage_ip4: 172.16.99.179
+        out.stdout: 283d850f
+        ansible_host: 283d850f
+        iocage_hooks: ['172.16.99.183']
+        iocage_ip4: 172.16.99.183
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
+ok: [df0394cb] => 
+    msg: |-
+        out.stdout: df0394cb
+        ansible_host: df0394cb
+        iocage_hooks: ['172.16.99.182']
+        iocage_ip4: 172.16.99.182
         iocage_tags:
           swarm: sw_01
           vmm: iocage_06
 
 PLAY RECAP *********************************************************************
-c444f7ad                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-e0743d2e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+283d850f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+df0394cb                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

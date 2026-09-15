@@ -37,8 +37,8 @@ ok: [iocage_06] =>
             - dhcp=1
             - vnet=1
             - notes=vmm=iocage_06 swarm=sw_01
-            delta: '0:00:00.984965'
-            end: '2026-09-14 13:59:12.936099'
+            delta: '0:00:01.121444'
+            end: '2026-09-15 05:34:00.787220'
             failed: false
             item:
                 key: sw_01
@@ -51,15 +51,15 @@ ok: [iocage_06] =>
                     template: ansible-client
             msg: ''
             rc: 0
-            start: '2026-09-14 13:59:11.951134'
+            start: '2026-09-15 05:33:59.665776'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                e0743d2e successfully created!
-                c444f7ad successfully created!
+                283d850f successfully created!
+                df0394cb successfully created!
             stdout_lines:
-            - e0743d2e successfully created!
-            - c444f7ad successfully created!
+            - 283d850f successfully created!
+            - df0394cb successfully created!
 
 TASK [Get iocage facts] ********************************************************
 ok: [iocage_06]
@@ -70,7 +70,7 @@ ok: [iocage_06]
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage start c444f7ad e0743d2e
+        iocage start df0394cb 283d850f
 
 TASK [Start swarms] ************************************************************
 ok: [iocage_06] => (item=sw_01)
@@ -88,10 +88,10 @@ ok: [iocage_06] =>
             cmd:
             - iocage
             - start
-            - c444f7ad
-            - e0743d2e
-            delta: '0:00:08.030447'
-            end: '2026-09-14 13:59:33.530201'
+            - df0394cb
+            - 283d850f
+            delta: '0:00:07.336939'
+            end: '2026-09-15 05:34:22.384399'
             failed: false
             item:
                 key: sw_01
@@ -104,7 +104,7 @@ ok: [iocage_06] =>
                     template: ansible-client
             msg: ''
             rc: 0
-            start: '2026-09-14 13:59:25.499754'
+            start: '2026-09-15 05:34:15.047460'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -112,39 +112,39 @@ ok: [iocage_06] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting c444f7ad
+                * Starting df0394cb
+                  + Started OK
+                  + Using devfs_ruleset: 1005 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 172.16.99.182/24
+                * Starting 283d850f
                   + Started OK
                   + Using devfs_ruleset: 1006 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.178/24
-                * Starting e0743d2e
-                  + Started OK
-                  + Using devfs_ruleset: 1007 (iocage generated default)
-                  + Configuring VNET OK
-                  + Using IP options: vnet
-                  + Starting services OK
-                  + Executing poststart OK
-                  + DHCP Address: 172.16.99.179/24
+                  + DHCP Address: 172.16.99.183/24
             stdout_lines:
-            - '* Starting c444f7ad'
+            - '* Starting df0394cb'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1005 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 172.16.99.182/24'
+            - '* Starting 283d850f'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1006 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.178/24'
-            - '* Starting e0743d2e'
-            - '  + Started OK'
-            - '  + Using devfs_ruleset: 1007 (iocage generated default)'
-            - '  + Configuring VNET OK'
-            - '  + Using IP options: vnet'
-            - '  + Starting services OK'
-            - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.179/24'
+            - '  + DHCP Address: 172.16.99.183/24'
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=10   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

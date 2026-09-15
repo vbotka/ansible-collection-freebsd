@@ -10,6 +10,7 @@ This example extends :ref:`example_203`.
    :depth: 1
 
 .. index:: single: swarms; Example 206
+.. index:: single: swarms destroy; Example 206
 
 .. index:: single: template ansible-client; Example 206
 .. index:: single: ansible-client; Example 206
@@ -317,10 +318,17 @@ Playbook output - Display jails in the swarm
    :language: yaml+jinja
    :force:
 
-.. hint::
+Playbook output - Destroy swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   The command below stops and destroys the jails in ``swarms``::
+Destroy the swarms if you do not need them anymore.
 
-     ansible-playbook -i iocage.ini \
-                      -t swarm_destroy -e swarm_destroy=true \
-                      vbotka.freebsd.pb_iocage_ansible_clients.yml
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm_destroy -e swarm_destroy=true \
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
+
+.. literalinclude:: out/out-07.txt
+   :language: yaml+jinja
+   :force:

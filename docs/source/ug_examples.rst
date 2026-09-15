@@ -60,7 +60,7 @@ Examples
    206 DHCP and fixed IP clients <examples/206/example.rst>
    207 DHCP, auto UUID, tags, class <examples/207/example.rst>
    208 DHCP, ansible-client-pull <examples/208/example.rst>
-   209 pkglist, ansible-client-apache <examples/209/example.rst>
+   209 pkglist, ansible-apache <examples/209/example.rst>
    210 iocage notes and tags <examples/210/example.rst>
 
 .. toctree::

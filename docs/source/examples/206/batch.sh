@@ -25,3 +25,6 @@ ansible-inventory -i hosts --graph | tee out/out-05.txt
 
 # Test
 ansible-playbook -i hosts pb-test.yml | tee out/out-06.txt
+
+# Destroy swarms
+ansible-playbook -i iocage.ini -t swarm_destroy -e swarm_destroy=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-07.txt

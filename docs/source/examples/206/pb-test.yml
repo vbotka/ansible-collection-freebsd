@@ -1,4 +1,5 @@
-- hosts: swarm_sw_01
+- name: Display jails in the swarm.
+  hosts: swarm_sw_01
     
   tasks:
 

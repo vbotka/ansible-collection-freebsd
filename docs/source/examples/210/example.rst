@@ -121,3 +121,4 @@ Playbook output - Display empty iocage_tags
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
+   :emphasize-lines: 6-7,11
