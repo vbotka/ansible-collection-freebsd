@@ -20,7 +20,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.pf`_ to configure pf.
+Use the role `vbotka.freebsd.pf`_ to configure ``pf``.
 
 Tree
 ^^^^
@@ -58,18 +58,18 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* Role `vbotka.freebsd.pf`_
 * Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. note::
 
-   | `vbotka.freebsd.pf`_ is the role **pf** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.pf`_ is the role **pf** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_pf`_ is the role **freebsd_pf** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -118,11 +118,10 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting and restarting the firewall breaks active SSH connections
-(see the handlers for details).  Consequently, both the start and
-reload handlers can fail to complete cleanly, causing the SSH session
-to go stale. Therefore, configure the rules first before enabling the
-service:
+Starting and restarting the firewall breaks active SSH connections (see the
+handlers for details). Consequently, both the start and reload handlers can
+fail to complete cleanly, causing the SSH session to go stale. Therefore,
+configure the rules first before enabling the service:
 
 .. code-block:: console
 
@@ -151,7 +150,7 @@ pf status
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.29 sudo service pf status
+   shell> ssh admin@10.1.0.29 sudo service pf status
 
 .. literalinclude:: out/out-04.txt
    :language: bash
@@ -161,7 +160,7 @@ pf status
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.29 cat /etc/pf.conf
+   shell> ssh admin@10.1.0.29 cat /etc/pf.conf
 
 .. literalinclude:: out/out-05.txt
    :language: bash

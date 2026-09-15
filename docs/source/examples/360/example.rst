@@ -25,11 +25,10 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── group_vars
-  │   └── all
-  │       └── iocage.yml
   ├── host_vars
-  │   └── iocage_04.yml
+  │   └── iocage_06
+  │       ├── loader.yml
+  │       └── network.yml
   ├── iocage.ini
   ├── pb-loader.yml
   └── pb-network.yml
@@ -43,18 +42,19 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* Role `vbotka.freebsd.network`_
+* Role `vbotka.freebsd.postinstall`_
 * Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. note::
 
-   | `vbotka.freebsd.network`_ is the role **network** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.network`_ is the role **network** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -68,17 +68,14 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04.yml
+.. literalinclude:: host_vars/iocage_06/loader.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/network.yml
    :language: yaml+jinja
    :caption:
 
@@ -123,7 +120,7 @@ MAC addresses are sanitized.
 
 .. code-block:: console
 
-   (env) > ssh admin@10.1.0.29 ifconfig bridge0
+   shell> ssh admin@iocage_06 ifconfig bridge0
 
 .. literalinclude:: out/out-03.txt
    :language: bash

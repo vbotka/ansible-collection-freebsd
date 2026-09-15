@@ -1,6 +1,3 @@
-fn_gateway_enable: true
-fn_defaultrouter: 10.1.0.10
-
 fp_loader_conf_template: ''
 fp_loader_conf:
   - {name: net.link.bridge.pfil_member, value: "0"}

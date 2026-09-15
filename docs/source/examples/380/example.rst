@@ -13,8 +13,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.custom_image`_ to configure a custom
-image.
+Use the role `vbotka.freebsd.custom_image`_ to configure a custom image.
 
 Tree
 ^^^^
@@ -35,8 +34,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Use the playbook ``pb.yml`` on ``images.example.com`` to customize a
-  FreeBSD image:
+* Use the role `vbotka.freebsd.custom_image`_ on ``images.example.com`` to
+  customize a FreeBSD image:
 
   * Configure the wireless adapter `RTL8188EU`_
   * Configure wpa_supplicant
@@ -45,18 +44,18 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* Role `vbotka.freebsd.custom_image`_
 * Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. note::
 
-   | `vbotka.freebsd.custom_image`_ is the role **custom_image** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.custom_image`_ is the role **custom_image** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_custom_image`_ is the role **freebsd_custom_image** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 .. seealso::
 
@@ -70,8 +69,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts
    :language: ini
@@ -90,8 +89,8 @@ host_vars
 
 .. hint::
 
-   Put the variables ``my_access_point`` and ``my_password`` into a
-   `vault`_ file. For example, ``group_vars/all/vault.yml``.
+   Put the variables ``my_access_point`` and ``my_password`` into a `vault`_
+   file. For example, ``group_vars/all/vault.yml``.
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
@@ -170,8 +169,7 @@ Playbook output - Mount, customize, and umount image
 
 The play is not idempotent when the image is unmounted. The default is
 ``cimage_umount=true``. In this case, at least three tasks report
-``changed``. The image is mounted, unmounted, and the memory disk is
-detached.
+``changed``. The image is mounted, unmounted, and the memory disk is detached.
 
 .. code-block:: console
 
@@ -206,7 +204,7 @@ MAC addresses are sanitized.
 
 .. code-block:: console
 
-   (env) > ssh freebsd@10.1.0.16 dmesg
+   shell> ssh freebsd@10.1.0.16 dmesg
 
 .. literalinclude:: out/out-08.txt
    :language: bash
