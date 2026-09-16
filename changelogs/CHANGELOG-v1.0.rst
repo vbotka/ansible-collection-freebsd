@@ -18,6 +18,7 @@ Minor Changes
 --------------
 * Add playbook for example configuration.
 * Upgrade role postinstall to 2.9.3
+* Upgrade role zfs to 2.9.1
 
 Bugfixes
 --------

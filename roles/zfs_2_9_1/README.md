@@ -8,11 +8,6 @@ This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_zfs/) FreeBSD. Configure ZFS.
 
-Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-zfs/issues).
-
-[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
-
-
 ## Requirements
 
 ### Collections
@@ -66,17 +61,6 @@ shell> cat freebsd-zfs.yml
 ```bash
 shell> ansible-playbook freebsd-zfs.yml
 ```
-
-
-## Ansible lint
-
-Use the configuration file *.ansible-lint.local* when running *ansible-lint*. Some rules might be
-disabled and some warnings might be ignored. See the notes in the configuration file.
-
-```bash
-shell> ansible-lint -c .ansible-lint.local
-```
-
 
 ## Known issues
 
