@@ -22,7 +22,6 @@ Minor Changes
 * Upgrade role postinstall to 2.9.3
 * Upgrade role zfs to 2.9.1
 * Docs. Add playbook docs/source/examples/.configure.yml
-* Add playbook for example configuration.
 
 Bugfixes
 --------
