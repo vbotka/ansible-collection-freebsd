@@ -38,7 +38,7 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   └── iocage_04
+  │   └── iocage_06
   │       ├── loader.yml
   │       └── zfs.yml
   ├── iocage.ini
@@ -48,20 +48,19 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed host ``iocage_04``:
+* On a managed host:
 
   * Create ZFS pools:
 
     * ``zroot``
-    * ``iocage``
 
   * Create and mount ZFS datasets:
 
     * ``zroot/export``      mounted on ``/export``
-    * ``iocage/ports``      mounted on ``/usr/ports``
-    * ``iocage/src``        mounted on ``/usr/src``
-    * ``iocage/obj``        mounted on ``/usr/obj``
-    * ``iocage/poudriere``  mounted on ``/usr/local/poudriere``
+    * ``zroot/ports``       mounted on ``/usr/ports``
+    * ``zroot/src``         mounted on ``/usr/src``
+    * ``zroot/obj``         mounted on ``/usr/obj``
+    * ``zroot/poudriere``   mounted on ``/usr/local/poudriere``
 
 Requirements
 ^^^^^^^^^^^^
@@ -72,12 +71,12 @@ Requirements
 Notes
 ^^^^^
 
-The role `vbotka.freebsd.postinstall`_ is used to configure
-``/boot/loader.conf``.
+* The role `vbotka.freebsd.postinstall`_ is used to configure
+  ``/boot/loader.conf``.
 
 .. note::
 
-   | `vbotka.freebsd.zfs`_ is the role **zfs** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.zfs`_ is the role **zfs** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_zfs`_ is the role **freebsd_zfs** in the namespace `vbotka`_.
 
 .. seealso::
@@ -93,8 +92,7 @@ Known issues
 
 * `zpool state=present is not idempotent #10771`_
 
-The module `community.general.zpool`_ cannot create a correct
-diff. For example:
+The module `community.general.zpool`_ cannot create a correct diff. For example:
 
 .. code-block:: yaml+jinja
    :force:
@@ -103,8 +101,8 @@ diff. For example:
    {'before': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2']}, {'type': 'stripe', 'disks': ['/dev/ada3']}]},
     'after': {'vdevs': [{'type': 'stripe', 'disks': ['/dev/ada2', '/dev/ada3']}]}}
 
-This makes the module non-idempotent. It crashes when run
-repeatedly. For example:
+This makes the module non-idempotent. It crashes when run repeatedly. For
+example:
 
 .. code-block:: yaml+jinja
    :force:
@@ -128,9 +126,8 @@ repeatedly. For example:
        rc: 1
        ...
 
-Setting ``force: true`` doesn't help. At the moment, the only
-workaround is to skip the module if the pool already exists. You will
-see a warning. For example:
+Setting ``force: true`` doesn't help. At the moment, the only workaround is to
+skip the module if the pool already exists. You will see a warning. For example:
 
 .. code-block:: yaml+jinja
    :force:
@@ -164,11 +161,11 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/loader.yml
+.. literalinclude:: host_vars/iocage_06/loader.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/zfs.yml
+.. literalinclude:: host_vars/iocage_06/zfs.yml
    :language: yaml+jinja
    :caption:
 
@@ -228,7 +225,7 @@ Playbook output - List pools
 
 .. code-block:: console
 
-   (env) > ansible-playbook -t fzfs_facts_pools -e fzfs_debug=treu pb-zfs.yml
+   (env) > ansible-playbook -i iocage.ini -t fzfs_facts_pools -e fzfs_debug=true pb-zfs.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -239,7 +236,7 @@ Playbook output - List datasets
 
 .. code-block:: console
 
-   (env) > ansible-playbook -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true pb-zfs.yml
+   (env) > ansible-playbook -i iocage.ini -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true pb-zfs.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja

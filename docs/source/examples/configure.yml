@@ -1,0 +1,70 @@
+- name: Configure examples.
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+    paths: "{{ find_out.files
+               | json_query('[].path')
+               | sort
+               | map('community.general.dict_kv', 'path') }}"
+
+  tasks:
+
+    - name: Update ansible.cfg
+      when: update_ansible_conf | d(false) | bool
+      vars:
+        update:
+          defaults: "{{ defaults | dict2items }}"
+        defaults:
+            interpreter_python: auto_silent
+
+      block:
+
+        - ansible.builtin.find:
+            path: "{{ playbook_dir }}"
+            patterns: ansible.cfg
+            recurse: true
+          register: find_out
+
+        - ansible.builtin.debug:
+            var: paths
+          when: debug | d(false) | bool
+
+        - ansible.builtin.debug:
+            msg: |
+              path: "{{ path }}"
+              section: "{{ section }}"
+              option: "{{ option }}"
+              value: "{{ value }}"
+          vars:
+            path: "{{ item.0.path }}"
+            example: "{{ item.0.path | dirname | basename }}"
+            section: "{{ item.0.key }}"
+            option: "{{ item.1.key }}"
+            value: "{{ item.1.value }}"
+          loop: "{{ paths | product ([update | dict2items | first])
+                          | map('combine')
+                          | subelements('value') }}"
+          loop_control:
+            label: "{{ example }} [{{ section }}] {{ option }}={{ value }}"
+          when: debug | d(false) | bool
+
+        - community.general.ini_file:
+            path: "{{ path }}"
+            section: "{{ section }}"
+            option: "{{ option }}"
+            value: "{{ value }}"
+          vars:
+            path: "{{ item.0.path }}"
+            example: "{{ item.0.path | dirname | basename }}"
+            section: "{{ item.0.key }}"
+            option: "{{ item.1.key }}"
+            value: "{{ item.1.value }}"
+          loop: "{{ paths | product ([update | dict2items | first])
+                          | map('combine')
+                          | subelements('value') }}"
+          loop_control:
+            label: "{{ example }} [{{ section }}] {{ option }}={{ value }}"
