@@ -12,9 +12,10 @@
     - name: Update ansible.cfg
       when: update_ansible_conf | d(false) | bool
       vars:
-        conf_update:
-          defaults:
-            - {k: interpreter_python, v: auto_silent}
+        update:
+          defaults: "{{ defaults | dict2items }}"
+        defaults:
+            interpreter_python: auto_silent
 
       block:
 
@@ -34,8 +35,8 @@
             path: "{{ item.0 }}"
             example: "{{ item.0 | dirname | basename }}"
             section: "{{ (item.1 | flatten | first).key }}"
-            option: "{{ (item.1 | flatten | last).k }}"
-            value: "{{ (item.1 | flatten | last).v }}"
-          loop: "{{ paths | product ([conf_update | dict2items | subelements('value')]) }}"
+            option: "{{ (item.1 | flatten | last).key }}"
+            value: "{{ (item.1 | flatten | last).value }}"
+          loop: "{{ paths | product ([update | dict2items | subelements('value')]) }}"
           loop_control:
             label: "{{ example }} [{{ section }}] {{ option }}={{ value }}"
