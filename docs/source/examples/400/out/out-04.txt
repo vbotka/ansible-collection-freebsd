@@ -2,20 +2,19 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_04]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
-ok: [iocage_04]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Facts: Debug list pools fzfs_debug=true] ************
-ok: [iocage_04] => 
+ok: [iocage_06] => 
     msg: |-
-        fzfs_pools_required: ['iocage', 'zroot']
+        fzfs_pools_required: ['zroot']
         fzfs_pools_missing: []
-        fzfs_pools_present: ['iocage', 'zroot']
-        name: iocage size: 7.25T free: 7.24T
-        name: zroot size: 472G free: 465G
+        fzfs_pools_present: ['zroot']
+        name: zroot size: 368G free: 352G
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

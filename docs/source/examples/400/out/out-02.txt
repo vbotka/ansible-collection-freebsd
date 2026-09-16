@@ -2,20 +2,20 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_04]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
-ok: [iocage_04] => 
+ok: [iocage_06] => 
     msg: |-
-        fzfs_role_version: 2.8.2
+        fzfs_role_version: 2.9.0
         ansible_role_name: vbotka.freebsd.zfs
         ansible_facts.architecture: amd64
         ansible_facts.os_family: FreeBSD
         ansible_facts.distribution: FreeBSD
         ansible_facts.distribution_major_version: 15
-        ansible_facts.distribution_version: 15.0
-        ansible_facts.distribution_release: 15.0-RELEASE-p1
-        ansible_facts.python_version: 3.11.14
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.13
 
         fzfs_enable: True
         fzfs_debug2: False
@@ -24,7 +24,7 @@ ok: [iocage_04] =>
         fzfs_facts_ds: False
         fzfs_facts_recurse: True
         fzfs_mount_all: True
-        fzfs_sysctl_tuneables_warning: "True"
+        fzfs_sysctl_tuneables_warning: True
 
         fzfs_sysctl_conf:
           []
@@ -33,33 +33,30 @@ ok: [iocage_04] =>
           []
 
         fzfs_pools:
-          iocage:
-            vdevs:
-            - disks: [/dev/ada2, /dev/ada3]
           zroot:
             vdevs:
-            - disks: [/dev/ada0p4, /dev/ada1p4]
+            - disks: [/dev/nda0p5]
 
         fzfs_manage:
-          - extra_zfs_properties: {compression: 'on', mountpoint: /export}
+          - extra_zfs_properties: {compression: lz4, mountpoint: /export}
             name: zroot/export
             state: present
-          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/ports}
-            name: iocage/ports
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/ports}
+            name: zroot/ports
             state: present
-          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/src}
-            name: iocage/src
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/src}
+            name: zroot/src
             state: present
-          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/obj}
-            name: iocage/obj
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/obj}
+            name: zroot/obj
             state: present
-          - extra_zfs_properties: {compression: 'on', mountpoint: /usr/local/poudriere}
-            name: iocage/poudriere
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/local/poudriere}
+            name: zroot/poudriere
             state: present
 
         fzfs_mountpoints:
           []
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
