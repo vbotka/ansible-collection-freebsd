@@ -7,16 +7,16 @@ ok: [build.example.com]
 TASK [vbotka.freebsd.poudriere : Poudriere Debug.] *****************************
 ok: [build.example.com] => 
     msg: |-
-        poudriere_role_version: 2.8.1
+        poudriere_role_version: 2.9.0
         ansible_role_name: vbotka.freebsd.poudriere
 
         ansible_facts.architecture: amd64
         ansible_facts.os_family: FreeBSD
         ansible_facts.distribution: FreeBSD
         ansible_facts.distribution_major_version: 15
-        ansible_facts.distribution_version: 15.0
-        ansible_facts.distribution_release: 15.0-RELEASE-p1
-        ansible_facts.python_version: 3.11.14
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.13
 
         freebsd_install_method: packages
         freebsd_use_packages: True
@@ -83,7 +83,7 @@ ok: [build.example.com] =>
             mode: '0755'
             owner: root
 
-        poudriere_conf_zpool: iocage
+        poudriere_conf_zpool: zroot
         poudriere_conf_no_zfs: no
         poudriere_conf_zrootfs: /usr/local/poudriere
         poudriere_conf_freebsd_host: https://download.freebsd.org
@@ -115,21 +115,18 @@ ok: [build.example.com] =>
           USE_COLORS: 'yes'
           USE_PORTLINT: 'no'
           USE_TMPFS: 'no'
-          ZPOOL: iocage
+          ZPOOL: zroot
           ZROOTFS: /usr/local/poudriere
 
         poudriere_pkglist_dir: /usr/local/etc/poudriere.d/pkglist
-        poudriere_pkglist_all: True
+        poudriere_pkglist_all: False
         poudriere_pkg_arch: [amd64, arm]
 
         poudriere_make_file: /usr/local/etc/poudriere.d/make.conf
         poudriere_make_conf:
           - "DEFAULT_VERSIONS+=\t\temacs=nox"
-          - "DEFAULT_VERSIONS+=\t\tphp=8.3"
+          - "DEFAULT_VERSIONS+=\t\tphp=8.4"
           - "DEFAULT_VERSIONS+=\t\tssl=openssl"
-          - "OPTIONS_SET+=\t\t\tGSSAPI_NONE KRB_NONE"
-          - "OPTIONS_UNSET+=\t\t\tDOCS NLS X11 EXAMPLES"
-          - "OPTIONS_UNSET+=\t\t\tGSSAPI_BASE KRB_BASE KERBEROS"
 
 PLAY RECAP *********************************************************************
 build.example.com          : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

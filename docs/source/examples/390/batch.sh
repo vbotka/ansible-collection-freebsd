@@ -13,7 +13,8 @@ ansible-playbook pb.yml -t poudriere_pkglists | tee out/out-07.txt
 ansible-playbook pb.yml -t poudriere_make | tee out/out-08.txt
 ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb.yml -e poudriere_install=true -e poudriere_cert=true  | tee out/out-09.txt
 #
-ssh admin@$build_example_com sudo tree /usr/local/etc/ssl/ | tee out/out-10.txt
+# Update the ssl tree manually
+# ssh admin@$build_example_com sudo tree /usr/local/etc/ssl/ | tee out/out-10.txt
 ssh admin@$build_example_com cat /usr/local/etc/poudriere.conf | tee out/out-11.txt
 ssh admin@$build_example_com tree /usr/local/etc/poudriere.d/pkglist | tee out/out-12.txt
 ssh admin@$build_example_com cat /usr/local/etc/poudriere.d/pkglist/amd64/ansible | tee out/out-13-amd64.txt

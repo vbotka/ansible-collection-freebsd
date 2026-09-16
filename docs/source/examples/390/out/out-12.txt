@@ -1,6 +1,5 @@
 /usr/local/etc/poudriere.d/pkglist
 ├── amd64
-│   ├── All
 │   ├── ansible
 │   ├── apache
 │   ├── apcups
@@ -41,11 +40,9 @@
 │   ├── wpa_supplicant
 │   └── yazvs
 ├── amd64.enabled
-│   ├── All
 │   ├── ansible -> /usr/local/etc/poudriere.d/pkglist/amd64/ansible
 │   └── minimal -> /usr/local/etc/poudriere.d/pkglist/amd64/minimal
 ├── arm
-│   ├── All
 │   ├── ansible
 │   ├── apache
 │   ├── apcups
@@ -82,8 +79,5 @@
 │   ├── wpa_supplicant
 │   └── yazvs
 └── arm.enabled
-    ├── All
-    ├── ansible -> /usr/local/etc/poudriere.d/pkglist/arm/ansible
-    └── minimal -> /usr/local/etc/poudriere.d/pkglist/arm/minimal
 
-5 directories, 82 files
+5 directories, 76 files

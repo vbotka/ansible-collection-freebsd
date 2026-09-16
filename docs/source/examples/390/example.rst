@@ -55,6 +55,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* Role `vbotka.freebsd.poudriere`_
+* Role `vbotka.freebsd.postinstall`_
 * Root privileges on the managed node ``build.example.com``.
 
 Notes
@@ -73,9 +75,8 @@ Notes
 
 .. note::
 
-   | `vbotka.freebsd.poudriere`_ is the role **poudriere** in the collection ``vbotka.freebsd``.
+   | `vbotka.freebsd.poudriere`_ is the role **poudriere** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_poudriere`_ is the role **freebsd_poudriere** in the namespace `vbotka`_.
-   | Please make sure the versions are the same before you switch between them.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -83,8 +84,8 @@ ansible.cfg
 .. literalinclude:: ansible.cfg
    :language: ini
 
-Inventory hosts
-^^^^^^^^^^^^^^^
+hosts
+^^^^^
 
 .. literalinclude:: hosts
    :language: ini
@@ -98,7 +99,7 @@ host_vars
 
 .. seealso::
 
-   The variables ``pkdict_*.yml`` in the directory `defaults/main`_ of
+   The variables ``pkgdict_*.yml`` in the directory `defaults/main`_ of
    the role `vbotka.freebsd_postinstall`_.
 
 .. literalinclude:: host_vars/build.example.com/fp_qemu.yml
