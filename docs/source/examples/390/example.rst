@@ -20,8 +20,8 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.poudriere`_ to install `poudriere`_ and
-build packages.
+Use the role `vbotka.freebsd.poudriere`_ to install and configure `Poudriere to
+create and test FreeBSD packages`_.
 
 Tree
 ^^^^
