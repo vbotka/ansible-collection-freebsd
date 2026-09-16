@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Add playbook for example configuration.
+* Upgrade role postinstall to 2.9.3
 
 Bugfixes
 --------
