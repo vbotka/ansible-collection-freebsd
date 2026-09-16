@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Add playbook for example configuration.
 
 Bugfixes
 --------

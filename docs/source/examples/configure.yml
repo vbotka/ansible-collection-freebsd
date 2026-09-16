@@ -1,0 +1,41 @@
+- name: Configure examples.
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+
+    ansible_python_interpreter: auto_silent
+
+  tasks:
+
+    - name: Update ansible.cfg
+      when: update_ansible_conf | d(false) | bool
+      vars:
+        conf_update:
+          defaults:
+            - {k: interpreter_python, v: auto_silent}
+
+      block:
+
+        - ansible.builtin.find:
+            path: "{{ playbook_dir }}"
+            patterns: ansible.cfg
+            recurse: true
+          register:
+            paths: _task.result.files | json_query('[].path') | sort | d([])
+
+        - community.general.ini_file:
+            path: "{{ path }}"
+            section: "{{ section }}"
+            option: "{{ option }}"
+            value: "{{ value }}"
+          vars:
+            path: "{{ item.0 }}"
+            example: "{{ item.0 | dirname | basename }}"
+            section: "{{ (item.1 | flatten | first).key }}"
+            option: "{{ (item.1 | flatten | last).k }}"
+            value: "{{ (item.1 | flatten | last).v }}"
+          loop: "{{ paths | product ([conf_update | dict2items | subelements('value')]) }}"
+          loop_control:
+            label: "{{ example }} [{{ section }}] {{ option }}={{ value }}"
