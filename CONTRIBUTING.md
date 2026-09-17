@@ -107,8 +107,7 @@ Before submitting a pull request, run local verification:
 
 Run `ansible-test sanity` to catch licensing, formatting, and structural issues:
 
-```bash ansible-test sanity --docker # or natively on FreeBSD: ansible-test
-sanity ```
+```bash ansible-test sanity --docker # or natively on FreeBSD: ansible-test sanity```
 
 3. **Unit & Integration Tests:**
 
