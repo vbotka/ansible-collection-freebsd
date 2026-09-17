@@ -183,8 +183,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -193,8 +193,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

@@ -162,7 +162,7 @@ For example:
    shell> ansible-playbook -e cache_file=/var/tmp/inventory_cache/iocage_04_s1_vbotka.freebsd.iocage_kfb2392 \
                            pb-cache-dump.yml
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    PLAY [Dump cache.] *************************************************************
 

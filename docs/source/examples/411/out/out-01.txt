@@ -2,27 +2,27 @@
 PLAY [Test vbotka.freebsd.lib al_include_dir_vars] *****************************
 
 TASK [Create dict of vars from nested directories al_vars] *********************
-included: vbotka.freebsd.lib for iocage_04
+included: vbotka.freebsd.lib for iocage_06
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Get list of directories.] ******
-ok: [iocage_04 -> localhost]
+ok: [iocage_06 -> localhost]
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Set list of directories.] ******
-ok: [iocage_04]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Set dictionary of lists of files.] ***
-ok: [iocage_04] => (item=team)
+ok: [iocage_06] => (item=team)
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Get content of files.] *********
-ok: [iocage_04] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'devel'])
-ok: [iocage_04] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'production'])
-ok: [iocage_04] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'qa'])
+ok: [iocage_06] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'devel'])
+ok: [iocage_06] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'production'])
+ok: [iocage_06] => (item=[{'key': 'team', 'value': ['devel', 'production', 'qa']}, 'qa'])
 
 TASK [vbotka.freebsd.lib : Al_include_dir_vars: Create dictionary al_vars.] ****
-ok: [iocage_04] => (item=team)
+ok: [iocage_06] => (item=team)
 
 TASK [debug] *******************************************************************
-ok: [iocage_04] => 
+ok: [iocage_06] => 
     msg: |-
         al_vars:
           team:
@@ -39,5 +39,5 @@ ok: [iocage_04] =>
               users: [darth, wendy]
 
 PLAY RECAP *********************************************************************
-iocage_04                  : ok=7    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

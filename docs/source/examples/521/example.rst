@@ -177,8 +177,8 @@ Playbook output - Fetch iocage plugins
    :language: yaml+jinja
    :force:
 
-List iocage plugins
-^^^^^^^^^^^^^^^^^^^
+Plugins
+^^^^^^^
 
 .. code-block:: console
 
@@ -204,8 +204,8 @@ Playbook output - Clone jails from iocage plugins
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -214,8 +214,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

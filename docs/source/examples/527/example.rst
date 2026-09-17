@@ -35,10 +35,10 @@
 Use case
 ^^^^^^^^
 
-Create a jail that serves a package repository for other jails. Create
-the `iocage`_ template ``ansible-pkg-repo`` and configure a web server
-to publish the repository. Create a jail from the template and fetch
-packages into the repository.
+Create a jail that serves a package repository for other jails. Create the
+`iocage`_ template ``ansible-pkg-repo`` and configure a web server to publish
+the repository. Create a jail from the template and fetch packages into the
+repository.
 
 Tree
 ^^^^
@@ -187,8 +187,8 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
@@ -209,8 +209,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -219,8 +219,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

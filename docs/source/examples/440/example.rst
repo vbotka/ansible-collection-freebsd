@@ -24,8 +24,8 @@ Use case
 ^^^^^^^^
 
 Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role
-`vbotka.freebsd.pf`_ to configure pf. Redirect ports from the local
-network to SSH services in the jails.
+`vbotka.freebsd.pf`_ to configure pf. Redirect ports from the local network to
+SSH services in the jails.
 
 Tree
 ^^^^

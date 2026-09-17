@@ -1,5 +1,4 @@
 .. _--flush-cache: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html#cmdoption-ansible-playbook-flush-cache
-.. _Poudriere to create and test FreeBSD packages: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
 .. _ANSIBLE_DISPLAY_OK_HOSTS: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_ok_hosts
 .. _ANSIBLE_DISPLAY_SKIPPED_HOSTS: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts
 .. _Activate iocage: https://freebsd.github.io/iocage/basic-use.html#activate-iocage
@@ -82,6 +81,7 @@
 .. _PHP manual phpinfo: https://www.php.net/manual/en/function.phpinfo.php
 .. _Patterns. Targeting hosts and groups.: https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html
 .. _Poudriere - Configure clients: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/guide-build-clients.html
+.. _Poudriere to create and test FreeBSD packages: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
 .. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/
 .. _QEMU: https://docs.freebsd.org/en/books/handbook/virtualization/#qemu-virtualization-host-guest
 .. _RTL8188EU: https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html
@@ -293,6 +293,7 @@
 .. _vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
 .. _vbotka.freebsd.certificate: https://github.com/vbotka/ansible-certificate
+.. _vbotka.freebsd_certificate: https://github.com/vbotka/ansible-certificate
 .. _vbotka.freebsd.config_light: https://ansible-config-light.readthedocs.io/en/latest/
 .. _vbotka.freebsd.custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
 .. _vbotka.freebsd.dhcp: https://github.com/vbotka/ansible-freebsd-dhcp
@@ -316,15 +317,16 @@
 .. _vbotka.freebsd.rsnapshot: https://github.com/vbotka/ansible-rsnapshot
 .. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 .. _vbotka.freebsd.zfs: https://github.com/vbotka/ansible-freebsd-zfs
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd
-.. _vbotka.freebsd_custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
-.. _vbotka.freebsd_dhcp: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_dhcp/
-.. _vbotka.freebsd_network: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_network/
-.. _vbotka.freebsd_packages: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_packages/
-.. _vbotka.freebsd_pf: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_pf/
-.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_postinstall/
-.. _vbotka.freebsd_poudriere: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_poudriere/
-.. _vbotka.freebsd_zfs: https://galaxy.ansible.com/ui/standalone/roles/vbotka/freebsd_zfs/
+.. _vbotka.freebsd: https://github.com/vbotka/ansible-collection-freebsd/
+.. _vbotka.freebsd_apache: https://github.com/vbotka/ansible-apache/
+.. _vbotka.freebsd_custom_image: https://github.com/vbotka/ansible-freebsd-custom-image/
+.. _vbotka.freebsd_dhcp: https://github.com/vbotka/ansible-freebsd-dhcp/
+.. _vbotka.freebsd_network: https://github.com/vbotka/ansible-freebsd-network/
+.. _vbotka.freebsd_packages: https://github.com/vbotka/ansible-freebsd-packages/
+.. _vbotka.freebsd_pf: https://github.com/vbotka/ansible-freebsd-pf/
+.. _vbotka.freebsd_postinstall: https://github.com/vbotka/ansible-freebsd-postinstall/
+.. _vbotka.freebsd_poudriere: https://github.com/vbotka/ansible-freebsd-poudriere/
+.. _vbotka.freebsd_zfs: https://github.com/vbotka/ansible-freebsd-zfs/
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 .. _venv — Creation of virtual environments: https://docs.python.org/3/library/venv.html#module-venv
 .. _zfs: https://github.com/vbotka/ansible-freebsd-zfs/

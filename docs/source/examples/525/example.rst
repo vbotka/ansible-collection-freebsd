@@ -32,10 +32,10 @@ Use case
 ^^^^^^^^
 
 Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repo `ansible-conf-init`_ to pull
-the jails' configuration from the repo `ansible-conf-test`_. Create
-jails from the template. Use ``class=test`` to select the
-configuration. Run `ansible-pull`_ asynchronously.
+:ref:`example_524`. Configure the repo `ansible-conf-init`_ to pull the jails'
+configuration from the repo `ansible-conf-test`_. Create jails from the
+template. Use ``class=test`` to select the configuration. Run `ansible-pull`_
+asynchronously.
 
 Tree
 ^^^^
@@ -69,11 +69,10 @@ Synopsis
 
 .. note::
 
-   The only difference compared to :ref:`example_524` is the
-   dictionary used for the jails' configuration. In this example, the
-   jails (baz and qux) are not included in the ``ai_db_host``
-   dictionary; instead, they are configured from the ``ai_db_class``
-   dictionary. See the `ansible-conf-init`_ repository.
+   The only difference compared to :ref:`example_524` is the dictionary used for
+   the jails' configuration. In this example, the jails (baz and qux) are not
+   included in the ``ai_db_host`` dictionary; instead, they are configured from
+   the ``ai_db_class`` dictionary. See the `ansible-conf-init`_ repository.
 
 Requirements
 ^^^^^^^^^^^^
@@ -143,8 +142,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -153,8 +152,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

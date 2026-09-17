@@ -31,12 +31,11 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Configure a
-``firstboot`` service ``ansible_init`` that runs `ansible-pull`_ and
-uses the repo `ansible-conf-init`_. Configure the repo
-`ansible-conf-init`_ to pull the jails' configuration from the repo
-`ansible-conf-test`_. Create jails from the template. Use the
-``hostname`` to select the configuration. Run `ansible-pull`_
+Create the `iocage`_ template ``ansible-init``. Configure a ``firstboot``
+service ``ansible_init`` that runs `ansible-pull`_ and uses the repo
+`ansible-conf-init`_. Configure the repo `ansible-conf-init`_ to pull the jails'
+configuration from the repo `ansible-conf-test`_. Create jails from the
+template. Use the ``hostname`` to select the configuration. Run `ansible-pull`_
 asynchronously.
 
 Tree
@@ -69,15 +68,13 @@ Synopsis
 
 * On a managed node:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the
-    template ``ansible-init``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
+    ``ansible-init``.
 
-  * In the playbook
-    :ref:`ug_pb-iocage-project-create-from-templates`,
-    create jails from the template.
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
+    jails from the template.
 
-  * Wait for `ansible-pull`_ to configure the jails and display the
-    test files.
+  * Wait for `ansible-pull`_ to configure the jails and display the test files.
 
 Requirements
 ^^^^^^^^^^^^
@@ -170,8 +167,8 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
@@ -192,8 +189,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -202,8 +199,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

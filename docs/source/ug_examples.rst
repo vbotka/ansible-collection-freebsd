@@ -3,7 +3,7 @@
 Examples
 ********
 
-:001-: Manage iocage
+:001-: Manage iocage hosts
 :010-: iocage plugins
 :040-: Other plugins
 :200-: Ansible client
@@ -13,7 +13,7 @@ Examples
   
 .. toctree::
    :maxdepth: 1
-   :caption: Manage iocage
+   :caption: Manage iocage hosts
 
    001 Debug vars and install iocage <examples/001/example.rst>
    002 Activate iocage <examples/002/example.rst>
@@ -21,7 +21,7 @@ Examples
 
 .. toctree::
    :maxdepth: 1
-   :caption: iocage module, inventory, and filter
+   :caption: iocage inventory, filter, and module
 
    010 Clone jails and create inventory <examples/010/example.rst>
    examples/011/example.rst

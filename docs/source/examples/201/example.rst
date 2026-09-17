@@ -84,7 +84,7 @@ Notes
                   [-t | --template | dataset_type]
                                         Lists all templates.
 
-Datasets at iocage_02
+Datasets on iocage_02
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -115,7 +115,7 @@ Datasets at iocage_02
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Datasets at iocage_04
+Datasets on iocage_04
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

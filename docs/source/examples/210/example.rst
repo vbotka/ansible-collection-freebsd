@@ -35,7 +35,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node:
+* On a managed node:
 
   * In the playbook ``pb-iocage.yml``, run the command ``iocage get notes
     test-210`` and display the result.

@@ -121,7 +121,7 @@ The tasks ``fp_resolvconf`` configure ``/etc/resolvconf.conf`` and
 contents of these files, you may want to clean them before applying the
 configuration:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    fp_resolvconf_conf_clean: true
    fp_resolv_conf_clean: true

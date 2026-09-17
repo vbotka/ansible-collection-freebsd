@@ -69,7 +69,7 @@ In the inventory plugin, compose the variable ``iocage_tags``::
 
 For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    iocage_tags:
      vmm: iocage_01
@@ -77,7 +77,7 @@ For example:
 
 Create groups from ``iocage_tags``:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    keyed_groups:
      - prefix: swarm
@@ -204,6 +204,16 @@ Playbook output - Create and start swarms
    :language: yaml+jinja
    :force:
 
+Graph
+^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+
 Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
@@ -222,16 +232,6 @@ Jails on iocage_04
    [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: bash
-
-Display inventory
-^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-06.txt
    :language: bash
 
 Playbook pb-test.yml

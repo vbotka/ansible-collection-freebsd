@@ -22,8 +22,8 @@
 Use case
 ^^^^^^^^
 
-Use :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` instead of the default
-``ansible.builtin.ssh``.
+Use :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
+instead of the default ``ansible.builtin.ssh``.
 
 Tree
 ^^^^
@@ -62,7 +62,7 @@ Notes
 The only difference between this example and :ref:`example_441` is the
 following three lines in the inventory configuration file:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    ansible_connection: "'vbotka.freebsd.jailexec'"
    ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none'))
@@ -109,8 +109,8 @@ Inventory hosts
    :language: yaml+jinja
    :caption:
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 

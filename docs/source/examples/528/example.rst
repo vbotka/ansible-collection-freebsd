@@ -44,11 +44,10 @@ Use case
 ^^^^^^^^
 
 Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repository `ansible-conf-init`_ to
-pull the jails' configuration from the repository
-`ansible-conf-roles`_. Create jails from the template. Put the
-configuration files for the classes ``log-server`` and ``log-client``
-into the jails' directories ``/root/ansible-vars``. Run
+:ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
+jails' configuration from the repository `ansible-conf-roles`_. Create jails
+from the template. Put the configuration files for the classes ``log-server``
+and ``log-client`` into the jails' directories ``/root/ansible-vars``. Run
 `ansible-pull`_ asynchronously.
 
 Tree
@@ -166,12 +165,11 @@ files
 
 .. note::
 
-   The playbook ``pb-init.yml`` (from the `ansible-conf-init`_
-   repository) reads this file from ``/root/ansible-vars`` using the
-   `ansible.builtin.include_vars`_ module (precedence 18.). The
-   ``ai_db_class`` dictionary overrides the values defined in the
-   repository's ``host_vars``. See `Understanding variable
-   precedence`_.
+   The playbook ``pb-init.yml`` (from the `ansible-conf-init`_ repository) reads
+   this file from ``/root/ansible-vars`` using the
+   `ansible.builtin.include_vars`_ module (precedence 18.). The ``ai_db_class``
+   dictionary overrides the values defined in the repository's
+   ``host_vars``. See `Understanding variable precedence`_.
 
 .. literalinclude:: files/ai-conf-roles.yml
    :language: yaml+jinja
@@ -179,9 +177,9 @@ files
 
 .. note::
 
-   The playbook ``pb-roles.yml`` (from the `ansible-conf-roles`_
-   repository) reads this file from ``/root/ansible-vars``. The
-   repository does not provide a default ``ai_conf_roles`` dictionary.
+   The playbook ``pb-roles.yml`` (from the `ansible-conf-roles`_ repository)
+   reads this file from ``/root/ansible-vars``. The repository does not provide
+   a default ``ai_conf_roles`` dictionary.
 
 .. literalinclude:: files/pkg-repo.yml
    :language: yaml+jinja
@@ -194,9 +192,9 @@ files
 
 .. important::
 
-   This configuration is minimal and functional for an isolated lab or
-   trusted internal LAN, but it poses several security risks in
-   production or shared network environments.
+   This configuration is minimal and functional for an isolated lab or trusted
+   internal LAN, but it poses several security risks in production or shared
+   network environments.
 
 .. literalinclude:: files/log-client/syslog-ng-client-pkg.yml
    :language: yaml+jinja
@@ -226,8 +224,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -236,8 +234,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

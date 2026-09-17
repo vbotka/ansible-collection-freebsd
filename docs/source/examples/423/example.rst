@@ -30,11 +30,10 @@
 Use case
 ^^^^^^^^
 
-Mount the host directory ``/usr/local/poudriere`` in the jail. Use the
-role `vbotka.freebsd.certificate`_ to create an SSL certificate for
-``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure
-an `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` to access
-``/usr/local/poudriere``.
+Mount the host directory ``/usr/local/poudriere`` in the jail. Use the role
+`vbotka.freebsd.certificate`_ to create an SSL certificate for
+``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure an `Apache
+HTTP Server Virtual Host`_ ``build.foo.bar`` to access ``/usr/local/poudriere``.
 
 Tree
 ^^^^
@@ -49,7 +48,7 @@ Tree
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_06
-  │   │   └── ansible-client-apache.yml
+  │   │   └── apache.yml
   │   └── www_5
   │       ├── apache.yml
   │       └── certificate.yml
@@ -62,26 +61,31 @@ Synopsis
 
 On a managed node:
 
-* The playbook :ref:`ug_pb-iocage-ansible-client` creates
-  and starts a jail, and mounts the host directory
-  ``/usr/local/poudriere`` in the jail.
+* The playbook :ref:`ug_pb-iocage-ansible-client` creates and starts a jail, and
+  mounts the host directory ``/usr/local/poudriere`` in the jail.
 
 * The playbook ``pb-certificate.yml`` creates an SSL certificate for
   ``build.foo.bar``.
 
-* The playbook ``pb-apache.yml`` uses the certificate, then configures
-  and starts the `Apache HTTP Server Virtual Host`_ ``build.foo.bar``
-  in the jail.
+* The playbook ``pb-apache.yml`` uses the certificate, then configures and
+  starts the `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` in the jail.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible-client-apache`` created in :ref:`example_209`.
+* Template ``ansible-apache`` created in :ref:`example_209`.
 
 Notes
 ^^^^^
 
-TBD
+* TBD
+
+.. note::
+
+   | `vbotka.freebsd.apache`_ is the role **apache** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_apache`_ is the role **freebsd_apache** in the namespace `vbotka`_.
+   | `vbotka.freebsd.certificate`_ is the role **certificate** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_certificate`_ is the role **freebsd_certificate** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -118,7 +122,7 @@ hosts
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/ansible-client-apache.yml
+.. literalinclude:: host_vars/iocage_06/apache.yml
    :language: yaml+jinja
    :caption:
 
@@ -142,6 +146,26 @@ Create and start the jail
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
+
+Graph
+^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-08.txt
+   :language: bash
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   shell> ssh admin@iocage_06 sudo iocage list -l
+
+.. literalinclude:: out/out-09.txt
+   :language: bash
 
 Playbook pb-certificate.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,26 +236,6 @@ Playbook output - Configure and start server
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   shell> ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-08.txt
-   :language: sh
-
-List jails
-^^^^^^^^^^
-
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-09.txt
-   :language: sh
-
 Results
 ^^^^^^^
 
@@ -245,13 +249,11 @@ Results
 
 * If the URL resolves, open the logs. For example:
 
-| https://build.foo.bar/logs/bulk/143amd64-default-devel/2025-08-12_13h34m10s/build.html
+  ``https://build.foo.bar/logs/bulk/143amd64-default-devel/2025-08-12_13h34m10s/build.html``
 
 .. image:: screenshot_build.png
    :width: 100%
    :align: center
-
-|
 
 .. seealso::
 

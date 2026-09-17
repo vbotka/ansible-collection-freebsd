@@ -96,8 +96,8 @@ Requirements
 .. note::
 
    * This example creates the same functionality as
-     :ref:`example_521`. Here, ``iocage templates`` are used instead
-     of ``iocage plugins``.
+     :ref:`example_521`. Here, ``iocage templates`` are used instead of
+     ``iocage plugins``.
 
    * The same functionality is also created in :ref:`example_526`.
 
@@ -235,8 +235,8 @@ Playbook output - Convert ansible-syslogng-* to templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
@@ -262,8 +262,8 @@ Playbook output - Create jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -272,8 +272,8 @@ Inventory graph
 .. literalinclude:: out/out-07.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -318,8 +318,8 @@ Playbook output - Test Log Clients
 
 .. hint::
 
-   Use the ``lnav`` utility on the ``log-server`` to display all log files in
-   the ``/var/log/remote`` directory::
+   Use the ``lnav`` utility on the ``log-server`` to display all log
+   files in the ``/var/log/remote`` directory::
 
      shell> iocage console log-server
      root@log-server:~ # lnav -r /var/log/remote/

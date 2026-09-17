@@ -31,7 +31,7 @@ Configure and run a log server. Configure log clients and test
 them. Use `syslog-ng`_. Use the jails created in example
 :ref:`example_207`. The ``project`` keys are jail aliases.
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    project:
      logserv_1:

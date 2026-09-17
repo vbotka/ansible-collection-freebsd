@@ -139,7 +139,7 @@ Notes
 
    * `binary iocage`_
 
-Templates at iocage_02
+Templates on iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -149,7 +149,7 @@ Templates at iocage_02
 .. literalinclude:: out/out-01.txt
    :language: bash
 
-Templates at iocage_04
+Templates on iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -170,6 +170,28 @@ Inventory iocage.ini
 
 .. literalinclude:: iocage.ini
    :language: ini
+
+hosts
+^^^^^
+
+.. literalinclude:: hosts/02_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 4,9
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 4,9
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
+.. note::
+
+   The option ``get_properties: True`` is needed to get the dictionary
+   ``iocage_properties``.
 
 group_vars
 ^^^^^^^^^^
@@ -197,6 +219,16 @@ Playbook output - Create and start jails
    :language: yaml+jinja
    :force:
 
+Graph
+^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+
 Jails on iocage_02
 ^^^^^^^^^^^^^^^^^^
 
@@ -215,38 +247,6 @@ Jails on iocage_04
    [iocage_04]# iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: bash
-
-hosts
-^^^^^
-
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 4,9
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-   :emphasize-lines: 4,9
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-.. note::
-
-   The option ``get_properties: True`` is needed to get the dictionary
-   ``iocage_properties``.
-
-Display inventory
-^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-06.txt
    :language: bash
 
 Playbook pb-test.yml

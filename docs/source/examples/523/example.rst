@@ -151,7 +151,7 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-.. important::
+.. warning::
 
    Running `git-daemon`_ with these specific flags sets up a public,
    unauthenticated Git server. This configuration is highly efficient
@@ -183,8 +183,8 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
-List templates
-^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
@@ -205,8 +205,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -215,8 +215,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

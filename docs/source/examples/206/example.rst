@@ -48,7 +48,7 @@ In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
 configuration file, use the option ``hooks_results`` to get the DHCP IP
 address. This option is common for all jails in this example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    hooks_results:
      - /var/db/dhclient-hook.address.epair0b
@@ -56,7 +56,7 @@ address. This option is common for all jails in this example:
 It will silently fail in jails with fixed IP addresses. If the item fails, the
 result is the dash character '-':
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    iocage_hooks:
      - '-'
@@ -65,7 +65,7 @@ This use case demonstrates the advantage of silently ignoring failed items over
 potential explicit error handling. Let the option ``compose`` pick what is
 needed:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
@@ -75,7 +75,7 @@ needed:
 One jail with a fixed IP is created from the template ``ansible-client`` in this
 example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    clones:
      test-161:
@@ -92,7 +92,7 @@ example:
 Two DHCP jails with generated UUIDs are created from the template
 ``ansible-client``:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    swarms:
      sw_01:
@@ -121,13 +121,13 @@ idempotent anyway if the UUID is generated automatically. Example commands:
 
 The inventory plugin composes the variable ``iocage_tags``:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
 
 For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    iocage_tags:
      vmm: iocage_06
@@ -135,7 +135,7 @@ For example:
 
 This dictionary is used to create groups:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    keyed_groups:
      - prefix: swarm
@@ -281,16 +281,6 @@ Create and start swarms
    :language: yaml+jinja
    :force:
 
-Jails
-^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
 Graph
 ^^^^^
 
@@ -299,6 +289,16 @@ Graph
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-05.txt
+   :language: bash
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_06]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
    :language: bash
 
 Playbook pb-test.yml

@@ -72,15 +72,13 @@ Requirements
 Notes
 ^^^^^
 
-* Jail names created by ``iocage`` do not work in the `jail
-  parameter`_ of the module `community.general.pkgng`_. Use the JID
-  instead::
+* Jail names created by ``iocage`` do not work in the `jail parameter`_ of the
+  module `community.general.pkgng`_. Use the JID instead::
 
     freebsd_pkgng_jail: "{{ iocage_jid }}"
 
-* The play ``pb.yml`` runs inside the jails. The inventory
-  ``iocage.ini`` is needed when a task is delegated to an iocage
-  host::
+* The play ``pb.yml`` runs inside the jails. The inventory ``iocage.ini`` is
+  needed when a task is delegated to an iocage host::
 
     freebsd_pkgng_delegate: "{{ iocage_tags.vmm }}"
 
@@ -95,9 +93,9 @@ Notes
       name:
         - www/lighttpd
 
-* The playbook :ref:`ug_pb-iocage-update-repos` updates
-  the repositories. Afterwards, use the `cached`_ local package
-  database instead of fetching an updated one::
+* The playbook :ref:`ug_pb-iocage-update-repos` updates the
+  repositories. Afterwards, use the `cached`_ local package database instead of
+  fetching an updated one::
 
     freebsd_pkgng_cached: true
 
@@ -137,6 +135,17 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 group_vars
 ^^^^^^^^^^
 
@@ -175,35 +184,24 @@ Create and start jails
 .. literalinclude:: out/out-11.txt
    :language: bash
 
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-hosts
+Graph
 ^^^^^
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 .. literalinclude:: out/out-02.txt
+   :language: bash
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_04]# iocage list -l
+
+.. literalinclude:: out/out-01.txt
    :language: bash
 
 Update repos

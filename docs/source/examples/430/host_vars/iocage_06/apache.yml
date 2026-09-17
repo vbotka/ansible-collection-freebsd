@@ -6,6 +6,6 @@ properties:
 
 create_hosts:
   www-2:
-    template: ansible-client-apache
+    template: ansible-apache
     properties:
       notes: alias=www_2

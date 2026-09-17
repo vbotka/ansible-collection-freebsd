@@ -9,7 +9,7 @@ properties:
 
 create_hosts:
   www-5:
-    template: ansible-client-apache
+    template: ansible-apache
     properties:
       notes: alias=www_5
     fstab:

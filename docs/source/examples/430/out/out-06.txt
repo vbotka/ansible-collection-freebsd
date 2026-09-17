@@ -2,15 +2,15 @@ Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
-            19:c3:df:65:1d:77:68:cd:74:57:ee:2a:c1:43:a6:72:b1:4f:12:f6
+            57:14:be:e7:66:fc:5d:ba:63:d7:e9:8f:fc:05:e0:fe:49:74:ad:c6
         Signature Algorithm: sha256WithRSAEncryption
         Issuer: CN=build.foo.bar
         Validity
-            Not Before: Sep  7 08:14:44 2026 GMT
-            Not After : Sep  4 08:14:44 2036 GMT
+            Not Before: Sep 17 09:58:47 2026 GMT
+            Not After : Sep 14 09:58:47 2036 GMT
         Subject: CN=build.foo.bar
         X509v3 extensions:
             X509v3 Subject Alternative Name: 
                 DNS:build.foo.bar
             X509v3 Subject Key Identifier: 
-                AA:97:19:86:69:45:19:98:F5:B2:74:F2:FA:45:B5:B7:85:B2:E2:AA
+                AA:1B:AF:C0:EF:94:D9:83:BB:13:B9:A1:AD:A9:1C:50:83:F4:45:15

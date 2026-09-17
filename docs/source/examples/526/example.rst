@@ -39,12 +39,11 @@ Use case
 ^^^^^^^^
 
 Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repository `ansible-conf-init`_ to
-pull the jails' configuration from the repositories
-`ansible-conf-syslogng-server`_ and
+:ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
+jails' configuration from the repositories `ansible-conf-syslogng-server`_ and
 `ansible-conf-syslogng-client`_. Create jails from the template. Use
-``class=log-server`` and ``class=log-client`` to select the
-configuration. Run `ansible-pull`_ asynchronously.
+``class=log-server`` and ``class=log-client`` to select the configuration. Run
+`ansible-pull`_ asynchronously.
 
 Tree
 ^^^^
@@ -71,9 +70,8 @@ Synopsis
 
 * On a managed node:
 
-  * In the playbook
-    :ref:`ug_pb-iocage-project-create-from-templates`,
-    create jails from the template ``ansible-init``.
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
+    jails from the template ``ansible-init``.
 
   * Wait for ``ansible-pull`` to configure the jails and display the logs.
 
@@ -149,8 +147,8 @@ Playbook output - Create project jails from iocage templates
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
@@ -159,8 +157,8 @@ Inventory graph
 .. literalinclude:: out/out-04.txt
    :language: sh
 
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 

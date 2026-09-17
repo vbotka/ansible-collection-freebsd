@@ -39,7 +39,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On the managed node:
+On a managed node:
 
 * Playbook ``pb-pkg-update.yml``:
 
@@ -101,8 +101,18 @@ Notes
    * Module `community.general.pkgng`_
    * :ref:`ug_qa_jexec_iocage_name`
 
-Jails on iocage_06
-^^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-inventory -i hosts -i iocage.ini --graph
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -142,16 +152,6 @@ group_vars
 .. literalinclude:: group_vars/all/ansible-client.yml
    :language: yaml+jinja
    :caption:
-
-Display inventory
-^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
 
 Playbook pb-pkg-update.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

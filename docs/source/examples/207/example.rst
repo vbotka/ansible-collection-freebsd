@@ -63,7 +63,7 @@ option ``inventory_hostname_tag`` to create `inventory aliases`_. Group the
 jails by iocage hosts, states, and classes. Declare the project in a single
 dictionary. The dictionary keys are jail aliases. For example:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    project:
      logserv_1:
@@ -168,7 +168,7 @@ Notes
    * `Set Jail Property`_
    * `Binary iocage`_
 
-Templates at iocage_01
+Templates on iocage_01
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -178,7 +178,7 @@ Templates at iocage_01
 .. literalinclude:: out/out-01.txt
    :language: console
 
-Templates at iocage_02
+Templates on iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -188,7 +188,7 @@ Templates at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: console
 
-Templates at iocage_04
+Templates on iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

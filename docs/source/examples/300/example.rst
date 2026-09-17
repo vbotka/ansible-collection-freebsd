@@ -48,7 +48,7 @@ In all running jails on the managed node:
 * Playbook ``pb-test-01.yml``: Display ``sshd`` ``rcvar``
 * Playbook ``pb-test-06.yml``: Display ``sendmail`` ``rcvar``
 
-On the managed node:
+On a managed node:
 
 * Playbook ``pb-test-02.yml``: Display ``sshd`` ``rcvar``
 * Playbook ``pb-test-03.yml``: Display enabled services

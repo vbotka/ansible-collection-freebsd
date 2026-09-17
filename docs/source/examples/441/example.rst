@@ -93,7 +93,7 @@ Notes
 The only difference between this example and :ref:`example_442` is
 the following two lines in the inventory configuration file:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    ansible_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm
    ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
@@ -188,24 +188,24 @@ Playbook output - Create and start swarms
    :language: yaml+jinja
    :force:
 
-Jails on iocage_06
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-03.txt
-   :language: bash
-
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
+   :language: bash
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_06]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
    :language: bash
 
 Playbook pb-test.yml

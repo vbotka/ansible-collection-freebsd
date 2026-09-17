@@ -33,7 +33,7 @@ Tree
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_06
-  │   │   └── ansible-client-apache.yml
+  │   │   └── apache.yml
   │   └── www_1
   │       └── apache.yml
   ├── iocage.ini
@@ -53,7 +53,8 @@ On a managed node:
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible-client-apache`` created in :ref:`example_209`.
+* Template ``ansible-apache`` created in :ref:`example_209`.
+* Role `vbotka.freebsd.apache`_
 
 Notes
 ^^^^^
@@ -66,6 +67,11 @@ Notes
 
 * Make sure DHCP and dynamic DNS are configured so that
   ``host_hostname`` and ``--name`` resolve.
+
+.. note::
+
+   | `vbotka.freebsd.apache`_ is the role **apache** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_apache`_ is the role **freebsd_apache** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -102,7 +108,7 @@ The value of the iocage tag ``alias`` is used as the inventory alias.
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/ansible-client-apache.yml
+.. literalinclude:: host_vars/iocage_06/apache.yml
    :language: yaml+jinja
    :caption:
 
@@ -141,25 +147,25 @@ Playbook output - Configure and start server
    :language: yaml+jinja
    :force:
 
-Inventory graph
-^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   shell> ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-03.txt
-   :language: sh
-
-List jails
-^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage list -l
 
+.. literalinclude:: out/out-03.txt
+   :language: bash
+
+Graph
+^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-inventory -i hosts --graph
+
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
 Results
 ^^^^^^^

@@ -78,7 +78,7 @@ variable ``ansible_host``:
 
    shell> cat hosts/01_iocage.yml
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :force:
 
    plugin: vbotka.freebsd.iocage
@@ -91,7 +91,7 @@ variable ``ansible_host``:
 In the declaration below, the variable ``ansible_host`` defaults to
 ``iocage_ip4`` if the hook is not available:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
 
    compose:
      ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
@@ -187,6 +187,21 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/02_iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/04_iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 files
 ^^^^^
 
@@ -252,7 +267,7 @@ Playbook output - Create templates
    :language: yaml+jinja
    :force:
 
-Templates at iocage_02
+Templates on iocage_02
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -262,7 +277,7 @@ Templates at iocage_02
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Templates at iocage_04
+Templates on iocage_04
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -304,21 +319,6 @@ Jails on iocage_04
 
 .. literalinclude:: out/out-06.txt
    :language: bash
-
-hosts
-^^^^^
-
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/04_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
 
 Display inventory
 ^^^^^^^^^^^^^^^^^

@@ -15,8 +15,8 @@ ansible-playbook -i iocage.ini -t create_host -e create_host=true vbotka.freebsd
 # Create Apache HTTP server
 ansible-playbook -i hosts pb-apache.yml | tee out/out-02.txt
 
-# Inventory graph
-ansible-inventory -i hosts --graph | tee out/out-03.txt
+# Jails
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-03.txt
 
-# List jails
-ssh admin@iocage_06 sudo iocage list -l | tee out/out-04.txt
+# Graph
+ansible-inventory -i hosts --graph | tee out/out-04.txt
