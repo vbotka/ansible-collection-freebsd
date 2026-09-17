@@ -24,13 +24,20 @@ Before submitting a new issue or feature request:
 
 1. **Search Existing Issues:** Check both open and closed issues and pull
    requests on GitHub to avoid duplicates.
+
 2. **Provide FreeBSD & Ansible Context:**
+
    - FreeBSD version (e.g., `freebsd-version -kru` or `uname -a`).
+
    - Ansible core version (`ansible --version`).
+
    - Python version and environment details.
+
 3. **Provide a Minimal Reproducible Example:**
+
    - Include a concise playbook, role task snippet, or inventory excerpt that
      reproduces the behavior.
+
    - Include relevant output with `-v` or `-vvv` (ensure sensitive data like
      passwords or tokens are scrubbed).
 
@@ -71,25 +78,31 @@ git checkout -b fix/issue-description
 - **POSIX / FreeBSD Compatibility:** Ensure shell commands and scripts are
   compatible with FreeBSD `/bin/sh` and standard FreeBSD userland utilities
   (avoid GNU-specific coreutils flags unless verified or guarded).
+
 - **Idempotency:** Tasks and modules must be idempotent whenever possible.
+
 - **YAML Formatting:** Use 2 spaces for indentation. Quote strings when
   necessary (e.g., variables, template expressions, or reserved keywords).
 
 ### Python Plugins & Modules (Filters, Inventory, Connection)
 
 - Follow **PEP 8** coding standards.
+
 - Plugins and modules should maintain clean separation of concerns and avoid
   unnecessary third-party dependencies outside the standard library where
   possible (or document dependencies clearly).
+
 - Maintain clear docstrings and Ansible `DOCUMENTATION`, `EXAMPLES`, and
   `RETURN` metadata blocks following standard Ansible collection documentation
   specs.
 
 ### Documentation
 
-- Collection documentation is built and maintained using Sphinx and `antsibull-
-  docs`.
+- Collection documentation is built and maintained using Sphinx and
+  `antsibull-docs`.
+
 - Keep documentation strings inside plugin source files accurate and up-to-date.
+
 - Ensure changes render cleanly with Sphinx without syntax warnings or broken
   cross-references.
 
@@ -101,14 +114,17 @@ Before submitting a pull request, run local verification:
 
 1. **Ansible Lint & Syntax Check:**
 
-```bash ansible-lint ```
+```bash
+ansible-lint
+```
 
 2. **Sanity Testing:**
 
 Run `ansible-test sanity` to catch licensing, formatting, and structural issues:
 
-```bash ansible-test sanity --docker # or natively on FreeBSD: ansible-test
-sanity ```
+```bash
+ansible-test sanity --docker # or natively on FreeBSD: ansible-test sanity
+```
 
 3. **Unit & Integration Tests:**
 
@@ -123,14 +139,19 @@ corresponding test cases (e.g., under `tests/unit/`).
   Ansible ecosystem standards (e.g., GPL-3.0-or-later for collection
   plugins/controllers, BSD-2-Clause for modules/independent components where
   applicable).
+
 - All source files should include appropriate SPDX license identifiers and
   copyright notices:
 
-```python # SPDX-License-Identifier: GPL-3.0-or-later ```
+```python
+# SPDX-License-Identifier: GPL-3.0-or-later
+```
 
 or:
 
-```python # SPDX-License-Identifier: BSD-2-Clause ```
+```python
+# SPDX-License-Identifier: BSD-2-Clause
+```
 
 - By submitting a pull request, you agree that your contributions will be
   licensed under the project's existing license terms.
@@ -140,11 +161,19 @@ or:
 ## Submitting Pull Requests
 
 1. Keep commits clean, logical, and accompanied by meaningful commit messages.
+
 2. Rebase onto the latest `master` branch before opening the PR:
-```bash git fetch upstream git rebase upstream/master ```
+
+```bash
+git fetch upstream git rebase upstream/master
+```
+
 3. Open a Pull Request on GitHub:
+
    - Provide a clear summary of what changes were made and why.
+
    - Reference any relevant GitHub issue numbers (e.g., `Fixes #42`).
+
    - Confirm tests pass locally.
 
 Thank you for helping improve FreeBSD automation with Ansible!
