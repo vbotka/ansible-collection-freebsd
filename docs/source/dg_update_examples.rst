@@ -1,25 +1,22 @@
 .. _dg_update_examples:
 
 Update examples
-***************
+---------------
 
-Run the script ``docs/source/examples/batch.sh``.
+.. contents::
+   :local:
+   :depth: 2
 
-Environment
------------
+Configure examples
+******************
 
-Inspect the script to see how the following environment variables are used:
-
-* ``VBOTKA_FREEBSD_BATCH``
-* ``VBOTKA_FREEBSD_COPY_ORIG``
-* ``VBOTKA_FREEBSD_DESTROY_JAILS``
-* ``VBOTKA_FREEBSD_DESTROY_TEMPLATES``
-* ``VBOTKA_FREEBSD_RUN_BATCH``
+See ``docs/source/examples/.configure.yml``
 
 host_key_checking
------------------
+*****************
 
-Disable `HOST_KEY_CHECKING`_ in ``ansible.cfg`` to avoid connection errors in the examples:
+If needed, disable `HOST_KEY_CHECKING`_ in ``ansible.cfg`` to avoid connection
+errors in the examples:
 
 .. code-block:: ini
    :emphasize-lines: 5
@@ -34,7 +31,7 @@ Disable `HOST_KEY_CHECKING`_ in ``ansible.cfg`` to avoid connection errors in th
    pipelining = true
 
 Contribute examples
--------------------
+*******************
 
 To adapt the examples to your environment, update:
 
@@ -44,7 +41,7 @@ To adapt the examples to your environment, update:
 * Files in ``files/*``
 
 Update files
-------------
+************
 
 .. code-block:: console
 
@@ -90,3 +87,21 @@ Update files
 
    * The collection (see ``galaxy.yml``)
    * Git tracking (see ``.gitignore``)
+
+Environment
+***********
+
+Inspect the script ``docs/source/examples/batch.sh`` to see how the following
+environment variables are used:
+
+* ``VBOTKA_FREEBSD_BATCH``
+* ``VBOTKA_FREEBSD_COPY_ORIG``
+* ``VBOTKA_FREEBSD_DESTROY_JAILS``
+* ``VBOTKA_FREEBSD_DESTROY_TEMPLATES``
+* ``VBOTKA_FREEBSD_RUN_BATCH``
+
+
+Update examples
+***************
+
+Run the script ``docs/source/examples/batch.sh``.
