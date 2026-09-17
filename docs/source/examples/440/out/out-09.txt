@@ -1,22 +1,22 @@
-Status: Enabled for 0 days 00:30:26           Debug: Urgent
+Status: Disabled for 0 days 00:00:08          Debug: Urgent
 
 Interface Stats for wlan0             IPv4             IPv6
-  Bytes In                               0                0
-  Bytes Out                              0                0
+  Bytes In                         8077074                0
+  Bytes Out                         927531                0
   Packets In
-    Passed                            8733                0
-    Blocked                             34                0
+    Passed                           10128                0
+    Blocked                           1433                0
   Packets Out
-    Passed                               0                0
-    Blocked                            184                0
+    Passed                            7831                0
+    Blocked                              0                0
 
 State Table                          Total             Rate
-  current entries                       46               
-  searches                           13083            7.2/s
-  inserts                             1154            0.6/s
-  removals                            1108            0.6/s
+  current entries                       25               
+  searches                           20539         2567.4/s
+  inserts                              552           69.0/s
+  removals                             527           65.9/s
 Counters
-  match                               1192            0.7/s
+  match                               2045          255.6/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s
@@ -25,7 +25,7 @@ Counters
   bad-timestamp                          0            0.0/s
   congestion                             0            0.0/s
   ip-option                              0            0.0/s
-  proto-cksum                            0            0.0/s
+  proto-cksum                           15            1.9/s
   state-mismatch                         0            0.0/s
   state-insert                           0            0.0/s
   state-limit                            0            0.0/s

@@ -2,58 +2,64 @@
 PLAY [Test the connection plugin jailexec.] ************************************
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [a730c895] => 
+ok: [9b33de6e] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: a730c895
+        ansible_host: 9b33de6e
         ansible_user: admin
 
         ansible_jail_host: iocage_06
+        ansible_jail_name: 23
+        ansible_jail_user: UNDEFINED
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: -
+        iocage_ip4: 172.16.99.172
         iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [9b516a9a] => 
+ok: [0b152d76] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 9b516a9a
+        ansible_host: 0b152d76
         ansible_user: admin
 
         ansible_jail_host: iocage_06
+        ansible_jail_name: 22
+        ansible_jail_user: UNDEFINED
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: -
+        iocage_ip4: 172.16.99.168
         iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [5b7a65b6] => 
+ok: [cb4d5365] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 5b7a65b6
+        ansible_host: cb4d5365
         ansible_user: admin
 
         ansible_jail_host: iocage_06
+        ansible_jail_name: 24
+        ansible_jail_user: UNDEFINED
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: -
+        iocage_ip4: 172.16.99.146
         iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
 
 TASK [ansible.builtin.command] *************************************************
-changed: [a730c895]
-changed: [9b516a9a]
-changed: [5b7a65b6]
+changed: [0b152d76]
+changed: [cb4d5365]
+changed: [9b33de6e]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [a730c895] => 
-    out.stdout: FreeBSD a730c895 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [9b33de6e] => 
+    out.stdout: FreeBSD 9b33de6e 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
-ok: [9b516a9a] => 
-    out.stdout: FreeBSD 9b516a9a 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [cb4d5365] => 
+    out.stdout: FreeBSD cb4d5365 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
-ok: [5b7a65b6] => 
-    out.stdout: FreeBSD 5b7a65b6 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [0b152d76] => 
+    out.stdout: FreeBSD 0b152d76 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
 
 PLAY RECAP *********************************************************************
-5b7a65b6                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-9b516a9a                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-a730c895                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+0b152d76                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+9b33de6e                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+cb4d5365                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

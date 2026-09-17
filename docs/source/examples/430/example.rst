@@ -16,6 +16,9 @@
 .. index:: single: role vbotka.freebsd.apache; Example 430
 .. index:: single: vbotka.freebsd.apache; Example 430
 
+.. index:: single: template ansible-apache; Example 430
+.. index:: single: ansible-apache; Example 430
+
 Use case
 ^^^^^^^^
 

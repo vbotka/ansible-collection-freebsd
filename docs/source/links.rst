@@ -301,10 +301,12 @@
 .. _vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 .. _vbotka.freebsd.iocage: https://github.com/vbotka/ansible-iocage
+.. _vbotka.freebsd_iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
 .. _vbotka.freebsd.iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
 .. _vbotka.freebsd.lib: https://github.com/vbotka/ansible-lib
 .. _vbotka.freebsd.network: https://github.com/vbotka/ansible-freebsd-network
 .. _vbotka.freebsd.nginx: https://github.com/vbotka/ansible-freebsd-nginx
+.. _vbotka.freebsd_nginx: https://github.com/vbotka/ansible-freebsd-nginx
 .. _vbotka.freebsd.packages: https://github.com/vbotka/ansible-freebsd-packages
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
 .. _vbotka.freebsd.pb_iocage_plugins.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_plugins.yml/

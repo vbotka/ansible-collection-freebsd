@@ -1,5 +1,3 @@
----
-
 - name: FreeBSD pf role setup.
   hosts: localhost
 

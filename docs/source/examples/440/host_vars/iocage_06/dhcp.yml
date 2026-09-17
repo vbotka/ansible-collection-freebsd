@@ -27,7 +27,7 @@ bsd_dhcpd_authoritative: true
 bsd_dhcpd_subnet: 172.16.99
 bsd_dhcpd_netmask: 255.255.255.0
 bsd_dhcpd_subnet_from: 100
-bsd_dhcpd_subnet_to: 200
+bsd_dhcpd_subnet_to: 199
 bsd_dhcpd_routers: [172.16.99.1]
 bsd_dhcpd_subnet_broadcast: 255
 

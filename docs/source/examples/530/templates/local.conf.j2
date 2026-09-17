@@ -1,2 +1,2 @@
 # {{ ansible_managed }}
-{{ local_pkg_conf | vbotka.freebsd.to_ucl }}
+{{ local_pkg_conf | vbotka.freebsd.to_ucl(bool_as_yesno=true) }}

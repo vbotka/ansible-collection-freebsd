@@ -2,12 +2,12 @@
 PLAY [Configure Nginx servers.] ************************************************
 
 TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_01] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
 
 TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-changed: [www_02]
 changed: [www_01]
+changed: [www_02]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
 changed: [www_02]

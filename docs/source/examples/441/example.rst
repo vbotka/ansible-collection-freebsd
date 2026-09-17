@@ -34,10 +34,9 @@
 Use case
 ^^^^^^^^
 
-Create multiple jails with auto UUID names. In the inventory, compose
-the variables ``ansible_host`` and ``ansible_port`` to connect to the
-jails via redirected SSH ports. See :ref:`example_440` for how ``pf``
-is configured.
+Create multiple jails with auto UUID names. In the inventory, compose the
+variables ``ansible_host`` and ``ansible_port`` to connect to the jails via
+redirected SSH ports. See :ref:`example_440` for how ``pf`` is configured.
 
 Tree
 ^^^^
@@ -90,8 +89,8 @@ Requirements
 Notes
 ^^^^^
 
-The only difference between this example and :ref:`example_442` is
-the following two lines in the inventory configuration file:
+* The only difference between this example and :ref:`example_442` is the
+  following two lines in the inventory configuration file:
 
 .. code-block:: yaml+jinja
 
@@ -102,8 +101,8 @@ the following two lines in the inventory configuration file:
 
    Example :ref:`example_050`
 
-Templates at iocage_06
-^^^^^^^^^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
 .. code-block:: console
 
@@ -135,12 +134,12 @@ hosts
 .. note::
 
    * In :ref:`example_440`, the variables ``ssh_rdr_start=2200`` and
-     ``dhcp_ip_start=100`` are used in the playbook
-     ``pb-pf-setup.yml`` to calculate the ports to redirect SSH from,
-     and to create the file ``pf-rdr-ssh.conf``.
+     ``dhcp_ip_start=100`` are used in the playbook ``pb-pf-setup.yml`` to
+     calculate the ports to redirect SSH from, and to create the file
+     ``pf-rdr-ssh.conf``.
 
-   * For example, from the controller, the following command connects
-     to the jail at ``<bsd_dhcpd_subnet>.106``::
+   * For example, from the controller, the following command connects to the
+     jail at ``<bsd_dhcpd_subnet>.106``::
 
        shell> ssh -p 2206 admin@iocage_06
 
@@ -167,11 +166,11 @@ host_vars
 
 .. hint::
 
-   If the default iocage option ``defaultrouter=auto`` does not work,
-   set it explicitly. This may be needed if the jails are assigned IP
-   addresses via DHCP on the bridge. In this case, the defaultrouter
-   for the jails is the IP address of the bridge. pf must provide NAT
-   and redirection. See :ref:`example_440`.
+   If the default iocage option ``defaultrouter=auto`` does not work, set it
+   explicitly. This may be needed if the jails are assigned IP addresses via
+   DHCP on the bridge. In this case, the defaultrouter for the jails is the IP
+   address of the bridge. pf must provide NAT and redirection. See
+   :ref:`example_440`.
 
 Playbook output - Create and start swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,7 +228,7 @@ Playbook output - Test SSH redirection
 
    The following play stops and destroys the jails in ``swarms``::
 
-     ansible-playbook -i iocage.ini \
-                      -t swarm_destroy \
-                      -e swarm_destroy=true \
-                      vbotka.freebsd.pb_iocage_ansible_clients.yml
+     (env) > ansible-playbook -i iocage.ini \
+                              -t swarm_destroy \
+                              -e swarm_destroy=true \
+                              vbotka.freebsd.pb_iocage_ansible_clients.yml
