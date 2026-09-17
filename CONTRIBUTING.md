@@ -101,7 +101,9 @@ Before submitting a pull request, run local verification:
 
 1. **Ansible Lint & Syntax Check:**
 
-```bash ansible-lint ```
+```bash
+ansible-lint
+```
 
 2. **Sanity Testing:**
 
