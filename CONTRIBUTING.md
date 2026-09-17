@@ -107,7 +107,9 @@ Before submitting a pull request, run local verification:
 
 Run `ansible-test sanity` to catch licensing, formatting, and structural issues:
 
-```bash ansible-test sanity --docker # or natively on FreeBSD: ansible-test sanity```
+```bash
+ansible-test sanity --docker # or natively on FreeBSD: ansible-test sanity
+```
 
 3. **Unit & Integration Tests:**
 
@@ -125,11 +127,15 @@ corresponding test cases (e.g., under `tests/unit/`).
 - All source files should include appropriate SPDX license identifiers and
   copyright notices:
 
-```python # SPDX-License-Identifier: GPL-3.0-or-later ```
+```python
+# SPDX-License-Identifier: GPL-3.0-or-later
+```
 
 or:
 
-```python # SPDX-License-Identifier: BSD-2-Clause ```
+```python
+# SPDX-License-Identifier: BSD-2-Clause
+```
 
 - By submitting a pull request, you agree that your contributions will be
   licensed under the project's existing license terms.
@@ -140,8 +146,13 @@ or:
 
 1. Keep commits clean, logical, and accompanied by meaningful commit messages.
 2. Rebase onto the latest `master` branch before opening the PR:
-```bash git fetch upstream git rebase upstream/master ```
+
+```bash
+git fetch upstream git rebase upstream/master
+```
+
 3. Open a Pull Request on GitHub:
+
    - Provide a clear summary of what changes were made and why.
    - Reference any relevant GitHub issue numbers (e.g., `Fixes #42`).
    - Confirm tests pass locally.
