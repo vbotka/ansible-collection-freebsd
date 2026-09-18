@@ -7,3 +7,4 @@ Questions and Answers
    :maxdepth: 1
 
    ug_qa_jexec_iocage_name
+   ug_qa_iocage_templates_vs_plugins
