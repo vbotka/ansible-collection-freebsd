@@ -1,5 +1,8 @@
 .. _ug_qa_iocage_templates_vs_plugins:
 
+.. index:: single, iocage_plugins; Q&A
+.. index:: single, iocage_templates; Q&A
+
 What are the advantages of iocage templates over plugins?
 ---------------------------------------------------------
 
