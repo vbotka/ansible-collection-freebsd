@@ -4,7 +4,7 @@ Concepts
 ********
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    ug_concepts_project
    ug_concepts_project_hosts
