@@ -15,14 +15,13 @@ Repository ansible-conf-roles
 Overview
 ^^^^^^^^
 
-The `ansible-conf-roles`_ repository provides an optional second-stage
-Ansible configuration and playbook. This repository can be defined in
-``ai_db_host`` and/or ``ai_db_class`` and invoked by the
-``pb-init.yml`` playbook from `ansible-conf-init`_.
+The `ansible-conf-roles`_ repository provides an optional second-stage Ansible
+configuration and playbook. This repository can be defined in ``ai_db_host``
+and/or ``ai_db_class`` and invoked by the ``pb-init.yml`` playbook from
+`ansible-conf-init`_.
 
-A minimal subset of the Ansible collection ``vbotka.freebsd`` is
-bundled in the ``collections/ansible_collections/vbotka/freebsd/``
-directory.
+A minimal subset of the Ansible collection ``vbotka.freebsd`` is bundled in the
+``collections/ansible_collections/vbotka/freebsd/`` directory.
 
 Playbook pb-roles.yml workflow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,9 +38,9 @@ Variables
 """""""""
 
 The playbook iterates through the directory defined by ``ai_vars`` and
-dynamically loads all ``.yml`` and ``.yaml`` variable files
-(populating dictionaries like ``ai_conf_roles``). It outputs debug
-information showing the current execution parameters. For example:
+dynamically loads all ``.yml`` and ``.yaml`` variable files (populating
+dictionaries like ``ai_conf_roles``). It outputs debug information showing the
+current execution parameters. For example:
 
 .. code-block:: yaml+jinja
 
@@ -52,10 +51,9 @@ information showing the current execution parameters. For example:
 Dynamic Role and Task Execution
 """""""""""""""""""""""""""""""
 
-The playbook converts the ``ai_conf_roles`` dictionary into a flat
-list of role-to-task pairs using the filter expression ``dict2items |
-subelements('value')``, then iterates over every role/task
-combination:
+The playbook converts the ``ai_conf_roles`` dictionary into a flat list of
+role-to-task pairs using the filter expression ``dict2items |
+subelements('value')``, then iterates over every role/task combination:
 
 .. code-block:: yaml+jinja
 
@@ -76,38 +74,35 @@ Bundling a Limited Collection
 Why a Limited Collection is Needed
 """"""""""""""""""""""""""""""""""
 
-The upstream ``vbotka.freebsd`` collection is a large collection
-containing numerous roles, plugins, and modules for diverse FreeBSD
-system administration tasks. Embedding the entire collection into
-consumer repositories like ``ansible-conf-roles``,
-``ansible-conf-init``, or ``ansible-conf-syslogng-*`` presents several
-disadvantages:
+The upstream ``vbotka.freebsd`` collection is a large collection containing
+numerous roles, plugins, and modules for diverse FreeBSD system administration
+tasks. Embedding the entire collection into consumer repositories like
+``ansible-conf-roles``, ``ansible-conf-init``, or ``ansible-conf-syslogng-*``
+presents several disadvantages:
 
-* **Repository Size:** Distributing unused roles and assets needlessly
-  increases repository clone sizes.
+* **Repository Size:** Distributing unused roles and assets needlessly increases
+  repository clone sizes.
 
-* **Dependency Footprint:** Restricting the collection to only the
-  roles and plugins actively referenced (such as ``packages``,
-  ``postinstall``, and target modules) ensures predictable
-  deployments.
+* **Dependency Footprint:** Restricting the collection to only the roles and
+  plugins actively referenced (such as ``packages``, ``postinstall``, and target
+  modules) ensures predictable deployments.
 
-* **Standalone Self-Containment:** Including a subset directly within
-  the repository allows environments without outbound internet access
-  or access to external Galaxy registries to execute configurations
-  out of the box.
+* **Standalone Self-Containment:** Including a subset directly within the
+  repository allows environments without outbound internet access or access to
+  external Galaxy registries to execute configurations out of the box.
 
 Sync Filter Configuration
 """""""""""""""""""""""""
 
-The subset of files to include is maintained via an ``rsync`` filter
-file (e.g., ``setup/sync/ansible-conf-roles.txt``). Directories and
-files are explicitly whitelisted, while everything else is ignored
-during extraction.
+The subset of files to include is maintained via an ``rsync`` filter file (e.g.,
+``setup/sync/ansible-conf-roles.txt``). Directories and files are explicitly
+whitelisted, while everything else is ignored during extraction.
 
 .. code-block:: text
 
    galaxy.yml
-   LICENSE
+   LICENSES
+   LICENSES/**
    meta/
    meta/**
 
@@ -138,8 +133,7 @@ during extraction.
 Creating and Updating the Limited Collection
 """"""""""""""""""""""""""""""""""""""""""""
 
-To extract the minimal collection and install it into the target
-repository:
+To extract a limited collection and install it into the target repository:
 
 1. **Export the path to the upstream source collection:**
 
@@ -183,10 +177,10 @@ repository:
       shell> git commit -a -S -m "Upgrade the limited collection to 1.0.1"
       shell> git push
 
-6. Repeat steps 4 and 5 for any additional consumer repositories (such
-   as ``ansible-conf-init``, ``ansible-conf-syslogng-server``, or
-   ``ansible-conf-syslogng-client``) using their corresponding sync
-   definition files.
+6. Repeat steps 4 and 5 for any additional consumer repositories (such as
+   ``ansible-conf-init``, ``ansible-conf-syslogng-server``, or
+   ``ansible-conf-syslogng-client``) using their corresponding sync definition
+   files.
 
 .. seealso::
 

@@ -29,3 +29,7 @@ Upgrade the collection if already installed. For example,
 .. seealso::
 
    `Installing collections`_
+
+.. tip::
+
+   See :ref:`ag_setup` on how to install additional plugins and roles.
