@@ -3,9 +3,15 @@
 443 iocage plugin ansible-zero
 ------------------------------
 
+| (OBSOLETE)
+| See :ref:`ug_qa_iocage_templates_vs_plugins`
+
 .. contents::
    :local:
    :depth: 1
+
+.. index:: single: obsolete; Example 443
+.. index:: single: iocage_plugins; Example 443
 
 .. index:: single: swarms; Example 443
 .. index:: single: tag swarm_plugins; Example 443

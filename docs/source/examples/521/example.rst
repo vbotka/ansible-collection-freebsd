@@ -3,9 +3,16 @@
 521 iocage plugins ansible-pull-syslogng-*
 ------------------------------------------
 
+| (OBSOLETE)
+| Use :ref:`example_522`
+| See :ref:`ug_qa_iocage_templates_vs_plugins`
+
 .. contents::
    :local:
    :depth: 1
+
+.. index:: single: obsolete; Example 521
+.. index:: single: iocage_plugins; Example 521
 
 .. index:: single: tag enabled_plugins; Example 521
 .. index:: single: enabled_plugins; Example 521
