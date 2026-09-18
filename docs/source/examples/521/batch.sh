@@ -4,20 +4,20 @@
 . ../defaults/batch
 
 # Stop foo, bar, and log-server
-ssh admin@$iocage_05 sudo iocage stop foo
-ssh admin@$iocage_05 sudo iocage stop bar
-ssh admin@$iocage_05 sudo iocage stop log-server
+ssh admin@iocage_06 sudo iocage stop foo
+ssh admin@iocage_06 sudo iocage stop bar
+ssh admin@iocage_06 sudo iocage stop log-server
 
 # Destroy foo, bar, and log-server
-ssh admin@$iocage_05 sudo iocage destroy -f foo
-ssh admin@$iocage_05 sudo iocage destroy -f bar
-ssh admin@$iocage_05 sudo iocage destroy -f log-server
+ssh admin@iocage_06 sudo iocage destroy -f foo
+ssh admin@iocage_06 sudo iocage destroy -f bar
+ssh admin@iocage_06 sudo iocage destroy -f log-server
 
 # Fetch plugins
 ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_plugins -e debug=true | tee out/out-01.txt
 
 # List plugins
-ssh admin@$iocage_05 sudo iocage list -P | tee out/out-02.txt
+ssh admin@iocage_06 sudo iocage list -P | tee out/out-02.txt
 
 # Create jails
 ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts | tee out/out-03.txt
@@ -26,7 +26,7 @@ ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts | tee out/out-03.txt
 ansible-inventory -i hosts --graph | tee out/out-04.txt
 
 # List jails
-ssh admin@$iocage_05 sudo iocage list -l | tee out/out-05.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 
 # Test Log Server
 ansible-playbook pb-logserver-test.yml -i hosts -e debug=true | tee out/out-06.txt

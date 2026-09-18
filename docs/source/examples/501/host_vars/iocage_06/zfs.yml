@@ -1,7 +1,6 @@
 fzfs_enable: true
 fzfs_pools:
-  iocage:
+  zroot:
     vdevs:
       - disks:
-          - /dev/ada2
-          - /dev/ada3
+          - /dev/nda0p5

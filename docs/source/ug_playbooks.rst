@@ -10,7 +10,7 @@ Playbooks
 .. _ug_pb-iocage-ansible-client:
 .. include:: playbooks/pb-iocage-ansible-clients.rst
 
-.. _ug_pb-iocage-plugin:
+.. _ug_pb-iocage-plugins:
 .. include:: playbooks/pb-iocage-plugins.rst
 
 .. _ug_pb-iocage-project-create:

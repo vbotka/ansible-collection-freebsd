@@ -52,8 +52,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
-* :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
 * Root privileges on the managed nodes.
 
 Notes

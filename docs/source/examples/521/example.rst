@@ -80,7 +80,7 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook :ref:`ug_pb-iocage-plugin`, fetch the
+  In the playbook :ref:`ug_pb-iocage-plugins`, fetch the
   `iocage plugins`_:
 
   * ``ansible-pull-syslogng-server``
@@ -107,9 +107,9 @@ Requirements
   * `ansible-conf-syslogng-server`_
   * `ansible-conf-syslogng-client`_
 
-* Playbook :ref:`ug_pb-iocage-plugin`.
-* `Inventory plugin vbotka.freebsd.iocage`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* Playbook :ref:`ug_pb-iocage-plugins`
+* :ref:`ug_inventory_iocage`
+* :ref:`ug_connection_jailexec`
 
 .. important::
 

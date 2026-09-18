@@ -40,7 +40,7 @@
 Use case
 ^^^^^^^^
 
-Configure an ``iocage`` host.
+Configure an `iocage`_ host.
 
 Tree
 ^^^^
@@ -54,7 +54,7 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── host_vars
-  │   └── iocage_04
+  │   └── iocage_06
   │       ├── iocage.yml
   │       ├── loader.yml
   │       ├── login.yml
@@ -75,13 +75,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On the managed node ``iocage_04``:
+On a managed node:
 
 * Configure ``/home/admin/.login_conf``
 * Install packages
 * Configure ``/boot/loader.conf``
 * Configure network
-* Configure ``pf``
 * Create ZFS pool ``iocage``
 * Activate iocage pool ``iocage``
 * Fetch release
@@ -90,13 +89,11 @@ On the managed node ``iocage_04``:
 Requirements
 ^^^^^^^^^^^^
 
-Roles:
-
-* `vbotka.freebsd.iocage`_
-* `vbotka.freebsd.network`_
-* `vbotka.freebsd.pf`_
-* `vbotka.freebsd.postinstall`_
-* `vbotka.freebsd.zfs`_
+* Role `vbotka.freebsd.iocage`_
+* Role `vbotka.freebsd.network`_
+* Role `vbotka.freebsd.postinstall`_
+* Role `vbotka.freebsd.zfs`_
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -106,6 +103,19 @@ Notes
   * configure ``/home/admin/.login_conf``
   * install ``packages``
   * configure ``/boot/loader.conf``
+
+* Firewall is configured in the previous examples.
+
+.. note::
+
+   | `vbotka.freebsd.iocage`_ is the role **iocage** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage`_ is the role **freebsd_iocage** in the namespace `vbotka`_.
+   | `vbotka.freebsd.network`_ is the role **network** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
+   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
+   | `vbotka.freebsd.zfs`_ is the role **zfs** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_zfs`_ is the role **freebsd_zfs** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -135,34 +145,30 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_04/loader.yml
+.. literalinclude:: host_vars/iocage_06/loader.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/login.yml
+.. literalinclude:: host_vars/iocage_06/login.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/network.yml
+.. literalinclude:: host_vars/iocage_06/network.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/packages.yml
+.. literalinclude:: host_vars/iocage_06/packages.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/pf.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_04/zfs.yml
+.. literalinclude:: host_vars/iocage_06/zfs.yml
    :language: yaml+jinja
    :caption:
 
 .. note::
 
-   Destroy the GPT tables on the disks you want to create the pool
-   from. For example::
+   Destroy the GPT tables on the disks you want to create the pool from. For
+   example::
 
      [iocage_04]# gpart destroy -F ada2
      [iocage_04]# gpart destroy -F ada3
@@ -189,7 +195,7 @@ host_vars
 
      errors: No known data errors
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -212,10 +218,6 @@ Playbooks
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: pb-pf.yml
-   :language: yaml+jinja
-   :caption:
-
 .. literalinclude:: pb-zfs.yml
    :language: yaml+jinja
    :caption:
@@ -224,7 +226,7 @@ Playbooks
    :language: yaml+jinja
    :caption:
 
-Playbook outputs
+Playbooks output
 ^^^^^^^^^^^^^^^^
 
 Configure /home/admin/.login_conf
@@ -279,17 +281,6 @@ Configure network
    :language: yaml+jinja
    :force:
 
-Configure pf
-""""""""""""
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.ini pb-pf.yml
-
-.. literalinclude:: out/out-05.txt
-   :language: yaml+jinja
-   :force:
-
 Configure ZFS
 """""""""""""
 
@@ -322,8 +313,7 @@ Activate iocage
 Fetch release
 """""""""""""
 
-.. note:: This example is not updated to the current release and serves
-          demonstration purposes only.
+Fetch the release. For example:
 
 .. literalinclude:: out/out-08.txt
    :language: console
@@ -351,7 +341,7 @@ All playbooks output
 
 .. code-block:: console
 
-   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook pb-all.yml -i iocage.ini
+   (env) > ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook -i iocage.ini pb-all.yml
 
 .. literalinclude:: out/out-10.txt
    :language: yaml+jinja

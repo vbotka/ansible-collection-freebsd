@@ -68,7 +68,7 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook :ref:`ug_pb-iocage-plugin`:
+  In the playbook :ref:`ug_pb-iocage-plugins`:
 
   * Fetch the `iocage plugin`_ ``ansible-zero``.
 
@@ -88,11 +88,11 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* iocage plugin ``ansible-zero``.
-* Playbook :ref:`ug_pb-iocage-plugin`.
-* Playbook :ref:`ug_pb-iocage-ansible-client`.
-* `Inventory plugin vbotka.freebsd.iocage`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* iocage plugin ``ansible-zero``
+* Playbook :ref:`ug_pb-iocage-plugins`
+* Playbook :ref:`ug_pb-iocage-ansible-client`
+* :ref:`ug_inventory_iocage`
+* :ref:`ug_connection_jailexec`.
 * Root privileges on the managed nodes.
 
 Notes

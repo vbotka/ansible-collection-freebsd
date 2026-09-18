@@ -4,6 +4,11 @@
 
   tasks:
 
+    - name: Display repos.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: repos[inventory_hostname]
+
     - name: Clone repos.
       ansible.builtin.git:
         repo: "{{ item.value.repo }}"

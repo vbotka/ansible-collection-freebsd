@@ -17,8 +17,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP
-Server`_.
+Use the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server`_.
 
 Tree
 ^^^^
@@ -53,8 +52,8 @@ On a managed node:
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible-apache`` created in :ref:`example_209`.
 * Role `vbotka.freebsd.apache`_
+* Template ``ansible-apache`` created in :ref:`example_209`.
 
 Notes
 ^^^^^

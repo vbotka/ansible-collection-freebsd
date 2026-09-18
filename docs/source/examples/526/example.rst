@@ -78,17 +78,24 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`.
-* Template ``ansible-init`` created in :ref:`example_524`.
-* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* Jail ``repos`` created in :ref:`example_523`
+* Template ``ansible-init`` created in :ref:`example_524`
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 
 .. note::
 
    * See `Practical rc.d scripting in BSD`_.
    * See the option ``firstboot_sentinel`` in `man rc.conf`_.
+
+.. note::
+
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
+   | `vbotka.freebsd.postinstall`_ is the role **postinstall** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_postinstall`_ is the role **freebsd_postinstall** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -152,10 +159,10 @@ Graph
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
 Jails
 ^^^^^
@@ -165,7 +172,7 @@ Jails
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -25,8 +25,7 @@
 Use case
 ^^^^^^^^
 
-Install and configure ``syslog-ng`` and ``git`` servers on
-``branch-server``.
+Install and configure ``syslog-ng`` and ``git`` servers on ``branch-server``.
 
 Tree
 ^^^^

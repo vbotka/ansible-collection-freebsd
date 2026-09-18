@@ -71,8 +71,8 @@ Requirements
 * Role `vbotka.freebsd.iocage_template`_
 * Role `vbotka.freebsd.nginx`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
-* :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 * Package repository created in :ref:`example_322`.
 
 Notes

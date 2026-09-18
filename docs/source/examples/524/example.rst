@@ -79,17 +79,23 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`.
-* Role `vbotka.freebsd.iocage_template`_.
-* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* Jail ``repos`` created in :ref:`example_523`
+* Role `vbotka.freebsd.iocage_template`_
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
+
+Notes
+^^^^^
+
+* See `Practical rc.d scripting in BSD`_.
+* See the option ``firstboot_sentinel`` in `man rc.conf`_.
 
 .. note::
 
-   * See `Practical rc.d scripting in BSD`_.
-   * See the option ``firstboot_sentinel`` in `man rc.conf`_.
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -167,6 +173,10 @@ Playbook output - Create iocage templates
    :language: yaml+jinja
    :force:
 
+.. hint::
+
+   Use the template ``ansible-init`` created in :ref:`example_529`
+
 Templates
 ^^^^^^^^^
 
@@ -175,7 +185,7 @@ Templates
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash
 
 Playbook output - Create project jails from iocage templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -194,10 +204,10 @@ Graph
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
 Jails
 ^^^^^
@@ -207,7 +217,7 @@ Jails
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Display the test files
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -217,11 +227,11 @@ Display the test files
    shell> ssh admin@iocage_06 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-06.txt
-   :language: sh
+   :language: text
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-07.txt
-   :language: sh
+   :language: text

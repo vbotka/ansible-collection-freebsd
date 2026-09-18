@@ -62,9 +62,9 @@ On a managed node:
 Requirements
 ^^^^^^^^^^^^
 
-* Template ``ansible-apache`` created in :ref:`example_209`.
 * Role `vbotka.freebsd.apache`_
 * Role `vbotka.freebsd.certificate`_
+* Template ``ansible-apache`` created in :ref:`example_209`.
 
 Notes
 ^^^^^

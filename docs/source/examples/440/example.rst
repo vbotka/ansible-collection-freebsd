@@ -81,9 +81,9 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Root privileges on the managed nodes.
 * Role `vbotka.freebsd.dhcp`_
 * Role `vbotka.freebsd.pf`_
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^

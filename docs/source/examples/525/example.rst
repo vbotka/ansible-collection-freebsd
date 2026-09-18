@@ -60,12 +60,10 @@ Synopsis
 
 * On a managed node:
 
-  * In the playbook
-    :ref:`ug_pb-iocage-project-create-from-templates`,
-    create jails from the template ``ansible-init``.
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
+    jails from the template ``ansible-init``.
 
-  * Wait for `ansible-pull`_ to configure the jails and display the
-    test files.
+  * Wait for `ansible-pull`_ to configure the jails and display the test files.
 
 .. note::
 
@@ -77,12 +75,12 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`.
-* Template ``ansible-init`` created in :ref:`example_524`.
-* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* Jail ``repos`` created in :ref:`example_523`
+* Template ``ansible-init`` created in :ref:`example_529` or :ref:`example_524`
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 
 .. note::
 
@@ -119,6 +117,10 @@ hosts
 group_vars
 ^^^^^^^^^^
 
+.. literalinclude:: group_vars/all/project-hosts.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/all/project.yml
    :language: yaml+jinja
    :caption:
@@ -147,10 +149,10 @@ Graph
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
 Jails
 ^^^^^
@@ -160,7 +162,7 @@ Jails
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Display the test files
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -170,11 +172,11 @@ Display the test files
    shell> ssh admin@iocage_06 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-06.txt
-   :language: sh
+   :language: text
 
 .. code-block:: console
 
    shell> ssh admin@iocage_06 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-07.txt
-   :language: sh
+   :language: text

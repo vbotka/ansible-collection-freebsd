@@ -81,10 +81,10 @@ Requirements
 ^^^^^^^^^^^^
 
 * Playbook :ref:`ug_pb-iocage-ansible-client`
-* :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`
-* :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage2`
+* Template ``ansible_client`` created in :ref:`example_202`
 * Root privileges on the managed nodes.
-* Template ``ansible_client`` created in :ref:`example_202`.
 
 Notes
 ^^^^^

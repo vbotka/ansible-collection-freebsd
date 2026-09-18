@@ -301,6 +301,7 @@
 .. _vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 .. _vbotka.freebsd.iocage: https://github.com/vbotka/ansible-iocage
+.. _vbotka.freebsd_iocage: https://github.com/vbotka/ansible-iocage
 .. _vbotka.freebsd_iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
 .. _vbotka.freebsd.iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
 .. _vbotka.freebsd.lib: https://github.com/vbotka/ansible-lib
