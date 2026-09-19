@@ -88,7 +88,7 @@ host_vars
    The ``git://`` protocol does not provide encryption or
    authentication. While suitable for fast local prototyping or
    isolated provisioning networks, use ``https://`` (or SSH) for
-   ``ansible_init_host`` in production environments.
+   :ref:`ug_concepts_ansible_init` in production environments.
 
 .. seealso::
 

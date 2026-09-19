@@ -136,7 +136,7 @@ Synopsis
   * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
   * Configure ``dhclient hooks``.
 
-  In the playbook :ref:`ug_pb-iocage-ansible-client`, use the :ref:`module
+  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use the :ref:`module
   vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Create jails from the Ansible client templates
@@ -154,7 +154,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * Playbook :ref:`ug_pb-iocage-template`
-* Playbook :ref:`ug_pb-iocage-ansible-client`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes.

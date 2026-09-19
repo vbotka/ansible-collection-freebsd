@@ -1,3 +1,5 @@
+.. _ug_pb-iocage-ansible-clients:
+
 pb_iocage_ansible_clients
 -------------------------
 
@@ -35,15 +37,15 @@ Use the dictionary ``clones``. For example:
 
    clones:
      test_111:
-       clone_from: ansible_client
+       clone_from: ansible-client
        properties:
          ip4_addr: 'em0|10.1.0.111/24'
      test_112:
-       clone_from: ansible_client
+       clone_from: ansible-client
        properties:
          ip4_addr: 'em0|10.1.0.112/24'
      test_113:
-       clone_from: ansible_client
+       clone_from: ansible-client
        properties:
          ip4_addr: 'em0|10.1.0.113/24'
 
@@ -78,7 +80,7 @@ Use the dictionary ``swarms``. For example:
    swarms:
      sw_01:
        count: 3
-       template: ansible_client
+       template: ansible-client
 
 Use the playbook tag ``swarm`` to execute selected tasks:
 
@@ -86,8 +88,8 @@ Use the playbook tag ``swarm`` to execute selected tasks:
 
    (env) > ansible-playbook -t swarm -e swarm=true pb_iocage_ansible_clients.yml
 
-This creates 3 jails from the template ``ansible_client``. The names
-are generated automatically:
+This creates 3 jails from the template ``ansible_client``. The names are
+generated automatically:
 
 .. code-block:: console
 
@@ -107,15 +109,15 @@ clone_host_hostname
 
 (WIP)
 
-Use the dictionary ``clone_host_hostname`` to define hostnames via
-keys and configure ``fstab`` entries. Refer to the ``iocage`` property
+Use the dictionary ``clone_host_hostname`` to define hostnames via keys and
+configure ``fstab`` entries. Refer to the ``iocage`` property
 ``host_hostname``. For example:
 
 .. code-block:: yaml
 
    clone_host_hostname:
      www-5:
-       template: ansible_client_apache
+       template: ansible-client_apache
        fstab:
          - spec: /usr/local/poudriere
            file: /usr/local/poudriere
@@ -170,7 +172,7 @@ To enable ZFS dataset mounting inside the jail:
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook
+   Look at the :ref:`genindex` and search the playbook
    ``pb_iocage_ansible_clients.yml`` to see all available examples.
 
 Workflow

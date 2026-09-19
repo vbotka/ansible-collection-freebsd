@@ -3,33 +3,17 @@
 Playbooks
 *********
 
-.. contents::
-   :local:
-   :depth: 1
+.. toctree::
+   :maxdepth: 1
 
-.. _ug_pb-iocage-ansible-client:
-.. include:: playbooks/pb-iocage-ansible-clients.rst
-
-.. _ug_pb-iocage-plugins:
-.. include:: playbooks/pb-iocage-plugins.rst
-
-.. _ug_pb-iocage-project-create:
-.. include:: playbooks/pb-iocage-project-create.rst
-
-.. _ug_pb-iocage-project-create-from-templates:
-.. include:: playbooks/pb-iocage-project-create-from-templates.rst
-
-.. _ug_pb-iocage-project-create-from-plugins:
-.. include:: playbooks/pb-iocage-project-create-from-plugins.rst
-
-.. _ug_pb-iocage-project-destroy:
-.. include:: playbooks/pb-iocage-project-destroy.rst
-
-.. _ug_pb-iocage-template:
-.. include:: playbooks/pb-iocage-template.rst
-
-.. _ug_pb-iocage-update-repos:
-.. include:: playbooks/pb-iocage-update-repos.rst
+   playbooks/pb-iocage-ansible-clients.rst
+   playbooks/pb-iocage-plugins.rst
+   playbooks/pb-iocage-project-create.rst
+   playbooks/pb-iocage-project-create-from-templates.rst
+   playbooks/pb-iocage-project-create-from-plugins.rst
+   playbooks/pb-iocage-project-destroy.rst
+   playbooks/pb-iocage-template.rst
+   playbooks/pb-iocage-update-repos.rst
 
 Other iocage playbooks
 ----------------------

@@ -60,7 +60,7 @@ Synopsis
 
 In the playbooks:
 
-* :ref:`ug_pb-iocage-ansible-client`: Create and start jails.
+* :ref:`ug_pb-iocage-ansible-clients`: Create and start jails.
 * :ref:`ug_pb-iocage-update-repos`: Update repositories.
 * ``pb.yml``: In the jails, install and configure `lighttpd`_.
 

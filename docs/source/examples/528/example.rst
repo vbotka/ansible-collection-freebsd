@@ -92,7 +92,7 @@ Synopsis
   * Configure the jails to use the ``pkg-repo`` created in
     :ref:`example_527`.
 
-  * Wait for ``ansible-pull`` to configure the jails and display the
+  * Wait for `ansible-pull`_ to configure the jails and display the
     logs.
 
 Requirements

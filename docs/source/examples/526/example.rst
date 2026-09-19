@@ -35,6 +35,12 @@
 .. index:: single: log server; Example 526
 .. index:: single: log client; Example 526
 
+.. index:: single: ansible_init.sh; Example 526
+.. index:: single: ansible_init_enable; Example 526
+.. index:: single: ansible_init_host; Example 526
+.. index:: single: ansible_init_repo; Example 526
+.. index:: single: ansible_init_playbook; Example 526
+
 Use case
 ^^^^^^^^
 
@@ -73,7 +79,7 @@ Synopsis
   * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
     jails from the template ``ansible-init``.
 
-  * Wait for ``ansible-pull`` to configure the jails and display the logs.
+  * Wait for `ansible-pull`_ to configure the jails and display the logs.
 
 Requirements
 ^^^^^^^^^^^^
@@ -237,7 +243,7 @@ Troubleshooting
    root@log-server-01:~/ansible-conf-syslogng-server # git pull
    Already up to date.
 
-* Start the service ``ansible_init``:
+* Start the service `ansible_init`_:
 
 .. code-block:: console
 

@@ -51,7 +51,7 @@ create three jails from the template ``ansible_client``::
   swarms:
     sw_01:
       count: 3
-      template: ansible_client
+      template: ansible-client
 
 The module ``vbotka.freebsd.iocage`` does not work with multiple
 names. Use ``ansible.builtin.command`` instead. If the UUID is
@@ -111,7 +111,7 @@ Synopsis
   * iocage_02
   * iocage_04
 
-  In the playbook :ref:`ug_pb-iocage-ansible-client`, use:
+  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
   * :ref:`ug_module_iocage` to:
 
@@ -133,7 +133,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook :ref:`ug_pb-iocage-ansible-client`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes

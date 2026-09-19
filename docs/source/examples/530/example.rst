@@ -16,6 +16,14 @@
 .. index:: single: git daemon; Example 530
 .. index:: single: git_daemon_flags; Example 530
 
+.. index:: single: ansible_init; Example 530
+.. index:: single: service ansible_init; Example 530
+.. index:: single: ansible_init.sh; Example 530
+.. index:: single: ansible_init_enable; Example 530
+.. index:: single: ansible_init_host; Example 530
+.. index:: single: ansible_init_repo; Example 530
+.. index:: single: ansible_init_playbook; Example 530
+
 Use case
 ^^^^^^^^
 
@@ -122,7 +130,7 @@ conf.d
    The ``git://`` protocol does not provide encryption or
    authentication. While suitable for fast local prototyping or
    isolated provisioning networks, use ``https://`` (or SSH) for
-   ``ansible_init_host`` in production environments.
+   :ref:`ug_concepts_ansible_init` in production environments.
 
 .. literalinclude:: conf.d/527/template.yml
    :language: yaml+jinja

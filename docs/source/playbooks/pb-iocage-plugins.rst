@@ -1,3 +1,5 @@
+.. _ug_pb-iocage-plugins:
+
 pb_iocage_plugins
 -----------------
 
@@ -109,7 +111,7 @@ Declare plugin details, repositories, and properties in the
 
 .. hint::
 
-   To find examples, search in the ``Index``:
+   To find examples, search in the :ref:`genindex`:
 
    * pb_iocage_plugins.yml
    * tag enabled_plugins

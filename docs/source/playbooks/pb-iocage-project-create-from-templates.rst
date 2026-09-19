@@ -1,3 +1,5 @@
+.. _ug_pb-iocage-project-create-from-templates:
+
 pb_iocage_project_create_from_templates
 ---------------------------------------
 
@@ -15,7 +17,7 @@ This playbook creates jails in a project from templates.
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook
+   Look at the :ref:`genindex` and search the playbook
    ``pb_iocage_project_create_from_templates.yml`` to see what examples are
    available.
 

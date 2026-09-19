@@ -72,7 +72,7 @@ Synopsis
 
   * Fetch the `iocage plugin`_ ``ansible-zero``.
 
-  In the playbook :ref:`ug_pb-iocage-ansible-client`:
+  In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
   * Clone jails from the iocage plugin ``ansible-zero``.
 
@@ -90,7 +90,7 @@ Requirements
 
 * iocage plugin ``ansible-zero``
 * Playbook :ref:`ug_pb-iocage-plugins`
-* Playbook :ref:`ug_pb-iocage-ansible-client`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_inventory_iocage`
 * :ref:`ug_connection_jailexec`.
 * Root privileges on the managed nodes.
@@ -99,7 +99,7 @@ Notes
 ^^^^^
 
 * The iocage plugin ``ansible-zero`` is used in the playbook
-  :ref:`ug_pb-iocage-ansible-client` to create the ``swarm``.
+  :ref:`ug_pb-iocage-ansible-clients` to create the ``swarm``.
 
 .. seealso::
 

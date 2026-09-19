@@ -52,7 +52,7 @@ Synopsis
 
 On a managed node:
 
-* The playbook :ref:`ug_pb-iocage-ansible-client` creates and starts a jail.
+* The playbook :ref:`ug_pb-iocage-ansible-clients` creates and starts a jail.
 
 * The playbook ``pb-certificate.yml`` creates an SSL certificate in the jail.
 

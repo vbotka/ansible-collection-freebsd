@@ -1,3 +1,5 @@
+.. _ug_pb-iocage-template:
+
 pb_iocage_template
 ------------------
 
@@ -58,7 +60,7 @@ This configuration creates the template ``ansible_client``:
 
 .. hint::
 
-   Look at the ``Index`` and search the playbook
+   Look at the :ref:`genindex` and search the playbook
    ``pb_iocage_template.yml`` to see what examples are available.
 
 Ansible Client Template variables
@@ -138,6 +140,7 @@ Notes:
 
 .. seealso::
 
+   * :ref:`ug_qa_jexec_iocage_name`
    * `Setting the Python interpreter`_
    * `Understanding privilege escalation`_
 

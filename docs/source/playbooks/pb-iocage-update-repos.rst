@@ -1,3 +1,5 @@
+.. _ug_pb-iocage-update-repos:
+
 pb_iocage_update_repos
 ----------------------
 

@@ -20,7 +20,7 @@ Use case
 ^^^^^^^^
 
 Create the `iocage`_ template ``ansible-init``. Enable the
-``firstboot`` service ``ansible_init`` that runs `ansible-pull`_ from
+`firstboot`_ service `ansible_init`_ that runs `ansible-pull`_ from
 the repositories on ``project_hosts.repos``.
 
 Tree

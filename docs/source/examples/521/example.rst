@@ -102,7 +102,7 @@ Requirements
   * ``ansible-pull-syslogng-server``
   * ``ansible-pull-syslogng-client``
 
-* Configuration repositories for ``ansible-pull``:
+* Configuration repositories for `ansible-pull`_:
 
   * `ansible-conf-syslogng-server`_
   * `ansible-conf-syslogng-client`_

@@ -28,11 +28,16 @@
 
 .. index:: single: inventory vbotka.freebsd.iocage2; Example 524
 
+.. index:: single: ansible_init_enable; Example 524
+.. index:: single: ansible_init_host; Example 524
+.. index:: single: ansible_init_repo; Example 524
+.. index:: single: ansible_init_playbook; Example 524
+
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Configure a ``firstboot``
-service ``ansible_init`` that runs `ansible-pull`_ and uses the repo
+Create the `iocage`_ template ``ansible-init``. Configure a `firstboot`_
+service `ansible_init`_ that runs `ansible-pull`_ and uses the repo
 `ansible-conf-init`_. Configure the repo `ansible-conf-init`_ to pull the jails'
 configuration from the repo `ansible-conf-test`_. Create jails from the
 template. Use the ``hostname`` to select the configuration. Run `ansible-pull`_

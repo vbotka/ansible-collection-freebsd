@@ -45,7 +45,7 @@ Synopsis
 
 On a managed node:
 
-* The playbook :ref:`ug_pb-iocage-ansible-client` creates and starts a jail.
+* The playbook :ref:`ug_pb-iocage-ansible-clients` creates and starts a jail.
 
 * The playbook ``pb-data.yml`` creates the file ``data/info.php``.
 

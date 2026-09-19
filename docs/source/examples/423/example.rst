@@ -61,7 +61,7 @@ Synopsis
 
 On a managed node:
 
-* The playbook :ref:`ug_pb-iocage-ansible-client` creates and starts a jail, and
+* The playbook :ref:`ug_pb-iocage-ansible-clients` creates and starts a jail, and
   mounts the host directory ``/usr/local/poudriere`` in the jail.
 
 * The playbook ``pb-certificate.yml`` creates an SSL certificate for

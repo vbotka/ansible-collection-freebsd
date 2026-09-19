@@ -16,10 +16,10 @@ Overview
 ^^^^^^^^
 
 The `ansible-conf-init`_ repository provides the first-stage Ansible
-configuration and playbook required by the ``ansible_init`` service to bootstrap
+configuration and playbook required by the `ansible_init`_ service to bootstrap
 remote hosts and jails.
 
-Designed for pull-based initialization workflows (``ansible-pull``) and
+Designed for pull-based initialization workflows (`ansible-pull`_) and
 automated provisioning pipelines (such as FreeBSD jails, VM templates, or
 bare-metal node bring-up), this repository acts as the initial control
 repository that a target machine clones and executes upon first boot.
@@ -65,7 +65,7 @@ Host-Specific Execution Path
 """"""""""""""""""""""""""""
 
 Runs when ``ai_hostname`` is found directly in ``ai_db_host``. It constructs an
-``ansible-pull`` command using the target host's specific repository URL,
+`ansible-pull`_ command using the target host's specific repository URL,
 destination directory, playbook name, and variable flags, then executes the
 generated command by importing ``tasks/execute-cmd.yml``.
 
@@ -73,7 +73,7 @@ Class-Specific Execution Path
 """""""""""""""""""""""""""""
 
 Runs when one or more valid classes are defined in ``ai_db_class``. It loops
-through each matched class to build a chained, multi-stage ``ansible-pull``
+through each matched class to build a chained, multi-stage `ansible-pull`_
 command sequence, then executes the chained commands by importing
 ``tasks/execute-cmd.yml``.
 
@@ -97,7 +97,7 @@ Best Practices
   integrations.
 
 * **Ensure Task Idempotency:** Verify that all tasks inside the repository are
-  strictly idempotent so repeated runs via ``ansible-pull`` or ``ansible_init``
+  strictly idempotent so repeated runs via `ansible-pull`_ or `ansible_init`_
   do not disrupt running services.
 
 * **Use Local Connection Strategy:** Confirm that ``ansible_connection: local``

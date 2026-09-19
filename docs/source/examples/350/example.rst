@@ -50,7 +50,7 @@ Synopsis
 
 In the playbooks:
 
-* :ref:`ug_pb-iocage-ansible-client`: Create and start jails in ``swarm``.
+* :ref:`ug_pb-iocage-ansible-clients`: Create and start jails in ``swarm``.
 * ``pb-install.yml``: Install `rsnapshot`_ in ``swarm``.
 * ``pb-test.yml``: Configure `rsnapshot`_ in ``swarm``.
 

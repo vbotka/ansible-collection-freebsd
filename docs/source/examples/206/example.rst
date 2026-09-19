@@ -164,7 +164,7 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook :ref:`ug_pb-iocage-ansible-client`, use:
+  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
   * :ref:`ug_module_iocage` to:
 
@@ -186,7 +186,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook :ref:`ug_pb-iocage-ansible-client`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
 * Root privileges on the managed nodes
