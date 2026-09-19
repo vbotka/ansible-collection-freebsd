@@ -16,6 +16,6 @@ The ``from_ucl`` filter parses UCL string into a YAML dictionary.
 
       shell> ansible-doc -t filter vbotka.freebsd.from_ucl
 
-.. note::
+.. seealso::
 
-   * See Ansible Galaxy `filter from_ucl`_
+   * Ansible Galaxy `filter from_ucl`_

@@ -19,3 +19,4 @@ The ``galaxy_info`` lookup plugin gets the meta data from galaxy.yml
 .. seealso::
 
    * `Collection Galaxy metadata structure`_
+   * Ansible Galaxy `lookup galaxy_info`_

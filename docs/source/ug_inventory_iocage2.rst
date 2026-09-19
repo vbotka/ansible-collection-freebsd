@@ -5,10 +5,8 @@
 Inventory vbotka.freebsd.iocage2
 --------------------------------
 
-This chapter highlights the core operational, performance, and
-architectural differences between the `inventory plugin
-vbotka.freebsd.iocage`_ and the `inventory plugin
-vbotka.freebsd.iocage2`_.
+This chapter highlights the core operational, performance, and architectural
+differences between the inventory plugin ``iocage`` and ``iocage2``.
 
 .. hint::
 
@@ -47,15 +45,14 @@ Key Differences
 Direct libzfs Integration
 """""""""""""""""""""""""
 
-``vbotka.freebsd.iocage2`` queries ZFS pool structures directly via
-``libzfs.ZFS()``.  It traverses ``<pool>/iocage/jails`` child datasets
-in memory, eliminating shell execution overhead and preventing stdout
-string-parsing errors over SSH.
+``iocage2`` queries ZFS pool structures directly via ``libzfs.ZFS()``.  It
+traverses ``<pool>/iocage/jails`` child datasets in memory, eliminating shell
+execution overhead and preventing stdout string-parsing errors over SSH.
 
 Template Discovery
 """"""""""""""""""
 
-``vbotka.freebsd.iocage2`` implements a multi-tier resolution strategy:
+``iocage2`` implements a multi-tier resolution strategy:
 
 * Checks the ``source_template`` property.
 * Checks ``cloned_from`` and ``template`` properties.
@@ -65,8 +62,8 @@ Template Discovery
 Interface Extraction for DHCP Jails
 """""""""""""""""""""""""""""""""""
 
-When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
-``vbotka.freebsd.iocage2`` automatically inspects ``hooks_results``
+When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``), ``iocage2``
+automatically inspects ``hooks_results``
 (e.g. ``/var/db/dhclient-hook.address.epair0b``).
 
 * Extracts the interface name directly from the hook filename
@@ -81,3 +78,7 @@ When a jail uses DHCP (``ip4_addr: none`` or ``ip4_addr: DHCP``),
 
    * `filesystems/py-libzfs`_
    * `sysutils/py-iocage`_
+
+.. seealso::
+
+   - Ansible Galaxy `inventory iocage2`_

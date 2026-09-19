@@ -17,4 +17,7 @@ The ``iocage`` module is wrapper to the `binary iocage`_.
 .. note::
 
    * This module requires `sysutils/iocage`_
-   * See Ansible Galaxy `Module vbotka.freebsd.iocage`_
+
+.. seealso::
+
+   * Ansible Galaxy `Module vbotka.freebsd.iocage`_

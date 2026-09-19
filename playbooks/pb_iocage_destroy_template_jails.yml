@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Destroy all jails.
+- name: Destroy jails created from a particular template.
   hosts: iocage
   environment: "{{ iocage_env | d({}) }}"
 
@@ -10,19 +10,42 @@
 
     debug: false
     vbotka_freebsd_batch: "{{ lookup('ansible.builtin.env', 'VBOTKA_FREEBSD_BATCH') | d(false, true) }}"
+    target_template: ""  # Set via -e "target_template=<name>"
+
     iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails')
                                        | dict2items
                                        | selectattr('value.type', 'eq', 'jail')
                                        | items2dict }}"
     all_jails: "{{ iocage_jails.keys() }}"
-    running_jails: "{{ iocage_jails | dict2items
-                                    | selectattr('value.state', 'eq', 'up')
-                                    | map(attribute='key') }}"
+
+    # Only target jails created from target_template
     destroy_jails: "{{ iocage_jails | dict2items
-                                    | rejectattr('value.template', 'in', all_jails)
-                                    | map(attribute='key') }}"
+                                    | selectattr('value.template', 'defined')
+                                    | selectattr('value.template', 'eq', target_template)
+                                    | map(attribute='key')
+                                    | list }}"
+
+    # Only stop jails targeted for destruction that are currently up
+    running_jails: "{{ iocage_jails | dict2items
+                                    | selectattr('key', 'in', destroy_jails)
+                                    | selectattr('value.state', 'eq', 'up')
+                                    | map(attribute='key')
+                                    | list }}"
 
   tasks:
+
+    - name: End play if target_template is empty. # noqa: run-once
+      tags: always
+      when: target_template | length == 0
+      run_once: true
+      block:
+
+        - name: Display skip notice.
+          ansible.builtin.debug:
+            msg: "target_template is empty. Nothing to do."
+
+        - name: Exit play cleanly.
+          ansible.builtin.meta: end_play
 
     - name: Not in a batch. Confirm to proceed. # noqa: run-once
       tags: always
@@ -36,7 +59,8 @@
           register: out
           ansible.builtin.pause:
             prompt: >
-              All jails on {{ ansible_play_hosts | join(', ') }} will be destroyed.
+              Jails created from template '{{ target_template }}' on
+              {{ ansible_play_hosts | join(', ') }} will be stopped and destroyed.
               Do you want to proceed? [y/n]
 
         - name: End play.
@@ -57,9 +81,10 @@
           when: debug | bool
           ansible.builtin.debug:
             msg: |
+              target_template: {{ target_template }}
               iocage_jails:
               {{ iocage_jails.keys() | to_nice_yaml }}
-              running_jails:
+              running_jails (to stop):
               {{ running_jails | to_nice_yaml }}
               destroy_jails:
               {{ destroy_jails | to_nice_yaml }}
@@ -80,8 +105,8 @@
       tags: stop_jails
       block:
 
-        - name: "Stop running jails."
-          changed_when: false
+        - name: "Stop running jails created from {{ target_template }}."
+          changed_when: true
           ansible.builtin.command: "iocage stop -f {{ running_jails | join(' ') }}"
 
       rescue:
@@ -100,8 +125,8 @@
       tags: destroy_jails
       block:
 
-        - name: "Destroy jails."
-          changed_when: false
+        - name: "Destroy jails created from {{ target_template }}."
+          changed_when: true
           ansible.builtin.command: "iocage destroy -f {{ destroy_jails | join(' ') }}"
 
       rescue:

@@ -87,14 +87,19 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_.
-* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
-* `Filter vbotka.freebsd.dict_to_ast`_.
-* `Filter vbotka.freebsd.ast_to_nginx`_.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
-* Package repository created in :ref:`example_322`.
+* Role `vbotka.freebsd.iocage_template`_
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_dict_to_ast`
+* :ref:`ug_filter_ast_to_nginx`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
+* Package repository created in :ref:`example_322`
+
+.. note::
+
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -195,7 +200,7 @@ Templates
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash
 
 Playbook output - Create project jails from iocage templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,10 +219,10 @@ Graph
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
 Jails
 ^^^^^
@@ -227,7 +232,7 @@ Jails
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Playbook pb-pkg-repo.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^

@@ -3,3 +3,14 @@ PLAY [Fetch packages to repo.] *************************************************
 
 TASK [vbotka.freebsd.packages : Packages_fetch: Create /usr/local/www/pkgrepo] ***
 changed: [pkg_repo]
+
+TASK [vbotka.freebsd.packages : Packages_fetch: Fetch selected lists from pkg_dict] ***
+changed: [pkg_repo] => (item=minimal)
+changed: [pkg_repo] => (item=syslog)
+
+RUNNING HANDLER [vbotka.freebsd.packages : Generate repo metadata] *************
+ok: [pkg_repo]
+
+PLAY RECAP *********************************************************************
+pkg_repo                   : ok=3    changed=2    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+

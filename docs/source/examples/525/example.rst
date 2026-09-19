@@ -76,7 +76,11 @@ Requirements
 ^^^^^^^^^^^^
 
 * Jail ``repos`` created in :ref:`example_523`
-* Template ``ansible-init`` created in :ref:`example_529` or :ref:`example_524`
+* Template ``ansible-init`` created in:
+
+  * :ref:`example_529`, or
+  * :ref:`example_524`
+
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_filter_project`
 * :ref:`ug_inventory_iocage2`

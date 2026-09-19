@@ -79,13 +79,18 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_.
-* Package repository created in :ref:`example_322`.
+* Role `vbotka.freebsd.iocage_template`_
+* Package repository created in :ref:`example_322`
 
 Notes
 ^^^^^
 
 * TBD
+
+.. note::
+
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -144,7 +149,7 @@ files
 ^^^^^
 
 .. literalinclude:: files/ansible-init.sh
-   :language: sh
+   :language: bash
    :caption:
 
 .. literalinclude:: files/index.html
@@ -203,4 +208,4 @@ Templates
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash

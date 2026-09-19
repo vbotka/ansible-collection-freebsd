@@ -5,15 +5,13 @@
   |  |--repos_devel
   |--@state_up:
   |  |--repos
-  |  |--log_server
   |  |--repos_devel
-  |  |--foo
-  |  |--pkg_repo
-  |  |--bar
+  |  |--log_server_01
+  |  |--www_02
+  |  |--www_01
   |--@vmm_iocage_06:
   |  |--repos
-  |  |--log_server
   |  |--repos_devel
-  |  |--foo
-  |  |--pkg_repo
-  |  |--bar
+  |  |--log_server_01
+  |  |--www_02
+  |  |--www_01

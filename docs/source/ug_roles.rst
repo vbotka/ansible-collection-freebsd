@@ -3,13 +3,9 @@
 Roles
 *****
 
-.. contents::
-   :local:
 
 Included roles
 --------------
-
-This collection is shipped with the roles:
 
 .. include:: roles_included.rst
 

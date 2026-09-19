@@ -20,4 +20,7 @@ Tree) list to NGINX config.
 .. note::
 
    * This filter requires `crossplane`_
-   * See Ansible Galaxy `filter ast_to_nginx`_
+
+.. seealso::
+
+   * Ansible Galaxy `filter ast_to_nginx`_

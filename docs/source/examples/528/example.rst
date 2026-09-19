@@ -43,7 +43,7 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in
+Use the `iocage`_ template ``ansible-init`` created in :ref:`example_529`, or
 :ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
 jails' configuration from the repository `ansible-conf-roles`_. Create jails
 from the template. Put the configuration files for the classes ``log-server``
@@ -85,26 +85,27 @@ Synopsis
 
 * On a managed node:
 
-  * In the playbook
-    :ref:`ug_pb-iocage-project-create-from-templates`,
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template ``ansible-init``.
 
-  * Configure the jails to use the ``pkg-repo`` created in
-    :ref:`example_527`.
+  * Configure the jails to use ``pkg-repo``.
 
-  * Wait for `ansible-pull`_ to configure the jails and display the
-    logs.
+  * Wait for `ansible-pull`_ to configure the jails and display the logs.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`.
-* Template ``ansible-init`` created in :ref:`example_524`.
-* Jail ``pkg-repo`` created in :ref:`example_527`.
-* Playbook :ref:`ug_pb-iocage-project-create-from-templates`.
-* `Filter vbotka.freebsd.project`_.
-* `Inventory vbotka.freebsd.iocage2`_.
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* Jail ``repos`` created in :ref:`example_523`
+* Jail ``pkg-repo`` created in :ref:`example_527`
+* Template ``ansible-init`` created in:
+
+  * :ref:`example_529`, or
+  * :ref:`example_524`
+
+* Playbook :ref:`ug_pb-iocage-project-create-from-templates`
+* :ref:`ug_filter_project`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 
 .. note::
 
@@ -116,8 +117,8 @@ Requirements
    * The ``Troubleshooting`` section in :ref:`example_526`
    * GitHub repositories:
 
-     - `ansible-conf-init`_
-     - `ansible-conf-roles`_
+     * `ansible-conf-init`_
+     * `ansible-conf-roles`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -229,10 +230,10 @@ Graph
 
 .. code-block:: console
 
-   shell> ansible-inventory -i hosts --graph
+   (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: sh
+   :language: bash
 
 Jails
 ^^^^^
@@ -242,7 +243,7 @@ Jails
    shell> ssh admin@iocage_06 sudo iocage list -l
 
 .. literalinclude:: out/out-05.txt
-   :language: sh
+   :language: bash
 
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

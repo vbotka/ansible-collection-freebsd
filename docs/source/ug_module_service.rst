@@ -15,6 +15,6 @@ The ``service`` module is wrapper to the `binary service`_.
 
       shell> ansible-doc -t module vbotka.freebsd.service
 
-.. note::
+.. seealso::
 
-   See Ansible Galaxy `Module vbotka.freebsd.service`_
+   * Ansible Galaxy `Module vbotka.freebsd.service`_

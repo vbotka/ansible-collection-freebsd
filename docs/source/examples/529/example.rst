@@ -19,9 +19,9 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Enable the
-`firstboot`_ service `ansible_init`_ that runs `ansible-pull`_ from
-the repositories on ``project_hosts.repos``.
+Create the `iocage`_ template ``ansible-init``. Enable the `firstboot`_ service
+`ansible_init`_ that runs `ansible-pull`_ from the repositories on
+``project_hosts.repos``.
 
 Tree
 ^^^^
@@ -49,19 +49,24 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to
-  create the template ``ansible-init``.
+* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to create
+  the template ``ansible-init``.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_.
-* Package repository created in :ref:`example_322`.
+* Package repository created in :ref:`example_322`
+* Role `vbotka.freebsd.iocage_template`_
 
 Notes
 ^^^^^
 
-TBD
+* TBD
+
+.. note::
+
+   | `vbotka.freebsd.iocage_template`_ is the role **iocage_template** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_iocage_template`_ is the role **freebsd_iocage_template** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -105,7 +110,7 @@ files
 ^^^^^
 
 .. literalinclude:: files/ansible-init.sh
-   :language: sh
+   :language: bash
    :caption:
 
 templates
@@ -140,4 +145,4 @@ Templates
    shell> ssh admin@iocage_06 sudo iocage list -lt
 
 .. literalinclude:: out/out-02.txt
-   :language: sh
+   :language: bash
