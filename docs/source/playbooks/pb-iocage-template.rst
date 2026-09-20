@@ -31,7 +31,7 @@ example:
 .. code-block:: yaml
 
    templates:
-     ansible_client:
+     ansible-client:
        release: 14.3-RELEASE
        properties:
          bpf: 'on'
@@ -39,9 +39,9 @@ example:
          vnet: 'on'
        dhclient: "{{ act_dhclient | dict2items }}"
        rcconf: "{{ act_rcconf | dict2items }}"
-       pkglist: /tmp/ansible/ansible_client/pkgs.json
+       pkglist: /tmp/ansible/ansible-client/pkgs.json
 
-This configuration creates the template ``ansible_client``:
+This configuration creates the template ``ansible-client``:
 
 .. code-block:: console
 
@@ -49,7 +49,7 @@ This configuration creates the template ``ansible_client``:
    +------+----------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
    | JID  |      NAME      | BOOT | STATE |   TYPE   |     RELEASE     |        IP4         | IP6 | TEMPLATE | BASEJAIL |
    +======+================+======+=======+==========+=================+====================+=====+==========+==========+
-   | None | ansible_client | off  | down  | template | 14.3-RELEASE-p1 | DHCP (not running) | -   | -        | no       |
+   | None | ansible-client | off  | down  | template | 14.3-RELEASE-p1 | DHCP (not running) | -   | -        | no       |
    +------+----------------+------+-------+----------+-----------------+--------------------+-----+----------+----------+
 
 .. note::
@@ -60,8 +60,8 @@ This configuration creates the template ``ansible_client``:
 
 .. hint::
 
-   Look at the :ref:`genindex` and search the playbook
-   ``pb_iocage_template.yml`` to see what examples are available.
+   Check the :ref:`genindex` and search the playbook ``pb_iocage_template.yml``
+   to view all available examples.
 
 Ansible Client Template variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -92,7 +92,7 @@ Install a list of packages by defining the ``template`` attribute ``act_pkg``:
 .. code-block:: yaml
 
    templates:
-     ansible_client:
+     ansible-client:
        act_pkg:
          - security/sudo
          - lang/python311
@@ -236,8 +236,8 @@ the ``--pkglist`` option in `man iocage`_:
 .. code-block:: yaml
 
    templates:
-     ansible_client:
-       pkglist: /tmp/ansible/ansible_client/pkgs.json
+     ansible-client:
+       pkglist: /tmp/ansible/ansible-client/pkgs.json
        ...
 
 Create the package list in ``files/pkgs.json``:
@@ -263,7 +263,7 @@ inventory directory:
      loop: "{{ _templates }}"
      vars:
        _templates: "{{ templates | dict2items
-                       | selectattr('value.pkglist', 'defined') }}"
+                      | selectattr('value.pkglist', 'defined') }}"
 
 Customize the packages as needed. For example, add ``gtar`` for
 `ansible.builtin.unarchive`_ or ``py-openssl`` for `community.crypto`_:
@@ -284,8 +284,8 @@ Customize the packages as needed. For example, add ``gtar`` for
    ``iocage`` tests DNS resolution before installing packages::
 
       Testing Host DNS response to pkg.freebsd.org
-      2025/08/06 01:18:12 (INFO) Testing ansible_client's SRV response to pkg.freebsd.org
-      2025/08/06 01:18:12 (INFO) Testing ansible_client's DNSSEC response to pkg.freebsd.org
+      2025/08/06 01:18:12 (INFO) Testing ansible-client's SRV response to pkg.freebsd.org
+      2025/08/06 01:18:12 (INFO) Testing ansible-client's DNSSEC response to pkg.freebsd.org
 
 .. seealso::
 
@@ -302,13 +302,13 @@ To reconfigure an existing template, unset its template state manually:
 
 .. code-block:: console
 
-   shell> iocage set template=0 ansible_client
+   shell> iocage set template=0 ansible-client
 
 If the jail must be running to apply changes, start it:
 
 .. code-block:: console
 
-   shell> iocage start ansible_client
+   shell> iocage start ansible-client
 
 Then use playbook tags to run the desired tasks. For example, to install
 additional packages defined in ``act_pkg``:
@@ -321,8 +321,8 @@ After completing modifications, stop the jail and convert it back to a template:
 
 .. code-block:: console
 
-   shell> iocage stop ansible_client
-   shell> iocage set template=1 ansible_client
+   shell> iocage stop ansible-client
+   shell> iocage set template=1 ansible-client
 
 Alternatively, perform the stop and template conversion via the playbook:
 

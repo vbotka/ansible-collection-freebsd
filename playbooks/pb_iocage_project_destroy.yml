@@ -28,7 +28,7 @@
     - name: Stop and destroy project jails.
       vars:
         iocage_jails_present: "{{ vmm[inventory_hostname] | intersect(groups.all) }}"
-        uuids: "{{ iocage_jails_present | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
+        uuids: "{{ iocage_jails_present | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) | list }}"
       block:
 
         - name: All jails already destroyed. End host.
@@ -36,12 +36,14 @@
           ansible.builtin.meta: end_host
 
         - name: Stop jails.
+          when: uuids | length > 0
           changed_when: false
           ansible.builtin.command: >
             iocage stop
             {{ uuids | join(' ') }}
 
         - name: Destroy jails.
+          when: uuids | length > 0
           changed_when: false
           ansible.builtin.command: >
             iocage destroy

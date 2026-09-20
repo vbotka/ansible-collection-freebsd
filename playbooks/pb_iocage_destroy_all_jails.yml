@@ -14,17 +14,19 @@
                                        | dict2items
                                        | selectattr('value.type', 'eq', 'jail')
                                        | items2dict }}"
-    all_jails: "{{ iocage_jails.keys() }}"
+    all_jails: "{{ iocage_jails.keys() | list }}"
     running_jails: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
-                                    | map(attribute='key') }}"
+                                    | map(attribute='key')
+                                    | list }}"
     destroy_jails: "{{ iocage_jails | dict2items
                                     | rejectattr('value.template', 'in', all_jails)
-                                    | map(attribute='key') }}"
+                                    | map(attribute='key')
+                                    | list }}"
 
   tasks:
 
-    - name: Not in a batch. Confirm to proceed. # noqa: run-once
+    - name: Not in a batch. Confirm to proceed.  # noqa: run-once
       tags: always
       when:
         - not ansible_check_mode
@@ -58,7 +60,7 @@
           ansible.builtin.debug:
             msg: |
               iocage_jails:
-              {{ iocage_jails.keys() | to_nice_yaml }}
+              {{ iocage_jails.keys() | list | to_nice_yaml }}
               running_jails:
               {{ running_jails | to_nice_yaml }}
               destroy_jails:

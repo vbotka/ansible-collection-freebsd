@@ -28,7 +28,7 @@
       tags: clone
       vars:
         iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.all) }}"
-        iocage_jails_created: "{{ out.results | map(attribute='stdout') | map('split') | map('first') }}"
+        iocage_jails_created: "{{ out.results | map(attribute='stdout') | map('split') | map('first') | list }}"
       block:
 
         - name: Display iocage_jails_absent
@@ -44,19 +44,13 @@
           changed_when: false
           register: out
           vars:
-            _notes: >-
-              "vmm={{ inventory_hostname }}
-              class={{ vmm[inventory_hostname][item]['class'] | join(',') }}
-              alias={{ item }}"
-            _properties_combined: |
-              {{ [vmm[inventory_hostname][item]['properties'] | d({}), properties | d({})]
-                 | select
-                 | combine(recursive=true) }}
+            _notes: "vmm={{ inventory_hostname }} class={{ vmm[inventory_hostname][item]['class'] | join(',') }} alias={{ item }}"
+            _properties_combined: "{{ [properties | d({}), vmm[inventory_hostname][item]['properties'] | d({})] | select | combine(recursive=true) }}"
             _properties: >-
               {% for k, v in _properties_combined.items() %}
               {{ k }}={{ v }}
               {% endfor %}
-              notes={{ _notes }}
+              notes={{ _notes | quote }}
           ansible.builtin.command: >
             iocage clone
             {{ vmm[inventory_hostname][item]['plugin'] }}
@@ -74,8 +68,8 @@
           ansible.builtin.debug:
             var: iocage_jails_created
 
-#       - name: Start created jails.
-#         changed_when: false
-#         ansible.builtin.command: >
-#           iocage start
-#           {{ iocage_jails_created | join(' ') }}
+#        - name: Start created jails.
+#          changed_when: false
+#          ansible.builtin.command: >
+#            iocage start
+#            {{ iocage_jails_created | join(' ') }}

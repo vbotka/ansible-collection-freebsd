@@ -9,6 +9,7 @@
   vars:
 
     debug: false
+    iocage_jails: {}
 
   tasks:
 
@@ -16,14 +17,14 @@
       block:
 
         - name: "Get iocage list of jails."
-          register: out
+          register: out_jails
           changed_when: false
           check_mode: false
           ansible.builtin.command: iocage list --long
 
         - name: "Set dictionary iocage_jails"
           ansible.builtin.set_fact:
-            iocage_jails: "{{ out.stdout | vbotka.freebsd.iocage('jails') }}"
+            iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
 
         - name: "Debug iocage_jails debug={{ debug }}"
           when: debug | bool
@@ -46,11 +47,12 @@
       vars:
         running_jails_jid: "{{ iocage_jails | dict2items
                                             | selectattr('value.state', 'eq', 'up')
-                                            | map(attribute='value.jid') }}"
+                                            | map(attribute='value.jid')
+                                            | list }}"
       block:
 
         - name: "Update repos."
-          register: out
+          register: out_pkg
           changed_when: false
           ansible.builtin.command: "pkg -j {{ item }} update"
           loop: "{{ running_jails_jid }}"
@@ -58,7 +60,7 @@
         - name: "Debug update repos debug={{ debug }}"
           when: debug | bool
           ansible.builtin.debug:
-            var: out
+            var: out_pkg
 
       rescue:
 

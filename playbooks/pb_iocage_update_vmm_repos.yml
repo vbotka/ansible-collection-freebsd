@@ -11,7 +11,7 @@
     - name: Update repos
       register: out
       changed_when: false
-      ansible.builtin.command: "pkg update -f"
+      ansible.builtin.command: pkg update -f
 
     - name: Debug update repos.
       when: debug | d(false) | bool

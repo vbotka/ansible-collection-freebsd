@@ -8,18 +8,18 @@
   vars:
 
     iocage_mount: "/{{ out_pool.stdout }}"
-    iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups['vmm_' ~ inventory_hostname] | d([])) }}"
-    iocage_jails_to_be_started: >
-      {% for jail,opts in vmm[inventory_hostname].items() -%}
-      {% if opts.properties.boot | d(properties.boot | d(0)) == 1 -%}
+    iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.get('vmm_' ~ inventory_hostname, [])) }}"
+    iocage_jails_to_be_started: >-
+      {% for jail, opts in (vmm[inventory_hostname] | d({})).items() %}
+      {% if (opts.properties.boot | d(properties.boot | d(0))) | int == 1 %}
       {{ jail }}
-      {% endif -%}
-      {% endfor -%}
+      {% endif %}
+      {% endfor %}
     custom_facts_dir: /usr/local/etc/ansible/facts.d
     custom_facts_path: "{{ custom_facts_dir }}/iocage.fact"
     ai_vars: /root/ansible-vars
-    ai_vars_files: "{{ lookup('env', 'PWD') }}/files"
-    ai_vars_templates: "{{ lookup('env', 'PWD') }}/templates"
+    ai_vars_files: "{{ lookup('ansible.builtin.env', 'PWD') }}/files"
+    ai_vars_templates: "{{ lookup('ansible.builtin.env', 'PWD') }}/templates"
 
   tasks:
 

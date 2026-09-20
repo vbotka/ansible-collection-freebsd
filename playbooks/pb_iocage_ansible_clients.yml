@@ -17,6 +17,7 @@
     clone: false
     clone_host_hostname: false
     clone_destroy: false
+    create_host: false
 
     _tags: "{{ dict(iocage_jails.keys()
                     | zip(iocage_jails.values()
@@ -27,7 +28,8 @@
     _started: "{{ iocage_jails
                   | dict2items
                   | selectattr('value.state', 'eq', 'up')
-                  | map(attribute='key') }}"
+                  | map(attribute='key')
+                  | list }}"
 
   tasks:
 

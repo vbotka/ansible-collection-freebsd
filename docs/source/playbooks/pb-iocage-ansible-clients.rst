@@ -88,7 +88,7 @@ Use the playbook tag ``swarm`` to execute selected tasks:
 
    (env) > ansible-playbook -t swarm -e swarm=true pb_iocage_ansible_clients.yml
 
-This creates 3 jails from the template ``ansible_client``. The names are
+This creates 3 jails from the template ``ansible-client``. The jail names are
 generated automatically:
 
 .. code-block:: console
@@ -131,7 +131,7 @@ Use the playbook tag ``clone_host_hostname`` to execute selected tasks:
    (env) > ansible-playbook -t clone_host_hostname -e clone_host_hostname=true \
                             pb_iocage_ansible_clients.yml
 
-default properties
+Default Properties
 """"""""""""""""""
 
 The dictionary ``properties`` stores default configuration settings:
@@ -172,8 +172,8 @@ To enable ZFS dataset mounting inside the jail:
 
 .. hint::
 
-   Look at the :ref:`genindex` and search the playbook
-   ``pb_iocage_ansible_clients.yml`` to see all available examples.
+   Check the :ref:`genindex` and search the playbook
+   ``pb_iocage_ansible_clients.yml`` to view all available examples.
 
 Workflow
 ^^^^^^^^

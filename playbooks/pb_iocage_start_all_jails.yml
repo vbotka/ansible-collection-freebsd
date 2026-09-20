@@ -9,19 +9,22 @@
   vars:
 
     debug: false
-    vbotka_freebsd_batch: "{{ lookup('ansible.builtin.env', 'VBOTKA_FREEBSD_BATCH') | default(false, true) }}"
-    all_jails: "{{ iocage_jails.keys() }}"
+    vbotka_freebsd_batch: "{{ lookup('ansible.builtin.env', 'VBOTKA_FREEBSD_BATCH') | d(false, true) }}"
+    iocage_jails: {}
+    all_jails: "{{ iocage_jails.keys() | list }}"
     running_jails: "{{ iocage_jails | dict2items
                                     | selectattr('value.state', 'eq', 'up')
-                                    | map(attribute='key') }}"
+                                    | map(attribute='key')
+                                    | list }}"
     templates: "{{ iocage_jails | dict2items
                                 | selectattr('value.template', 'eq', '-')
-                                | map(attribute='key') }}"
+                                | map(attribute='key')
+                                | list }}"
     start_jails: "{{ all_jails | difference(templates) | difference(running_jails) }}"
 
   tasks:
 
-    - name: Not in a batch. Confirm to proceed. # noqa: run-once
+    - name: Not in a batch. Confirm to proceed.  # noqa: run-once
       when:
         - not ansible_check_mode
         - not vbotka_freebsd_batch | bool

@@ -16,7 +16,6 @@
                                        | dict2items
                                        | selectattr('value.type', 'eq', 'jail')
                                        | items2dict }}"
-    all_jails: "{{ iocage_jails.keys() }}"
 
     # Only target jails created from target_template
     destroy_jails: "{{ iocage_jails | dict2items
@@ -34,7 +33,7 @@
 
   tasks:
 
-    - name: End play if target_template is empty. # noqa: run-once
+    - name: End play if target_template is empty.  # noqa: run-once
       tags: always
       when: target_template | length == 0
       run_once: true
@@ -47,7 +46,7 @@
         - name: Exit play cleanly.
           ansible.builtin.meta: end_play
 
-    - name: Not in a batch. Confirm to proceed. # noqa: run-once
+    - name: Not in a batch. Confirm to proceed.  # noqa: run-once
       tags: always
       when:
         - not ansible_check_mode
@@ -83,7 +82,7 @@
             msg: |
               target_template: {{ target_template }}
               iocage_jails:
-              {{ iocage_jails.keys() | to_nice_yaml }}
+              {{ iocage_jails.keys() | list | to_nice_yaml }}
               running_jails (to stop):
               {{ running_jails | to_nice_yaml }}
               destroy_jails:

@@ -10,8 +10,8 @@
 
     debug: false
     debug2: false
-    iocage_templates: "{{ out_templates.stdout | vbotka.freebsd.iocage('templates') }}"
-    iocage_jails: "{{ out_jails.stdout | vbotka.freebsd.iocage('jails') }}"
+    iocage_templates: "{{ out_templates.stdout | d('') | vbotka.freebsd.iocage('templates') }}"
+    iocage_jails: "{{ out_jails.stdout | d('') | vbotka.freebsd.iocage('jails') }}"
 
   tasks:
 
@@ -65,7 +65,7 @@
     - name: Configure /etc/rc.conf
       when: act_rcconf | d({}) | length > 0
       tags: rcconf
-      ansible.builtin.import_tasks: pb_iocage_template/rc_conf.yml
+      ansible.builtin.import_tasks: pb_iocage_template/rc-conf.yml
 
     - name: Stop jails.
       when: act_stop | d(true) | bool

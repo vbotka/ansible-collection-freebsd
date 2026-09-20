@@ -13,15 +13,16 @@
 
     iocage_plugins: "{{ out.stdout | vbotka.freebsd.iocage('plugins') }}"
     selected_plugins: "{{ plugins | dict2items
-                                  | selectattr('key', 'in', required_plugins)
-                                  | rejectattr('key', 'in', iocage_plugins) }}"
+                          | selectattr('key', 'in', required_plugins | d([]))
+                          | rejectattr('key', 'in', iocage_plugins.keys() | list)
+                          | list }}"
 
     cmd_fetch: >
       iocage fetch
       --plugin-name {{ item.key }}
       --git_repository {{ item.value.git }}
       --branch {{ item.value.branch }}
-      {{ item.value.properties | dictsort | map('join', '=') | join(' ') }}
+      {{ item.value.properties | d({}) | dictsort | map('join', '=') | join(' ') }}
 
   tasks:
 
