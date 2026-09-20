@@ -13,6 +13,7 @@ Release Summary
 
 Major Changes
 -------------
+Upgrade roles. Update playbooks and documentation.
 
 Minor Changes
 --------------
@@ -21,6 +22,7 @@ Minor Changes
 * Upgrade role postinstall to 2.9.3
 * Upgrade role zfs to 2.9.1
 * Docs. Add playbook docs/source/examples/.configure.yml
+* Docs. Update UG.
 
 Bugfixes
 --------

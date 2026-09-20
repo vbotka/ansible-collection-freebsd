@@ -2,8 +2,7 @@
 
 Thank you for your interest in contributing to the `vbotka.freebsd` Ansible
 collection! Contributions of all kinds are welcome: bug reports, documentation
-updates, feature requests, filter plugins, inventory plugins, connection
-plugins, and bug fixes.
+updates, feature requests, plugins, roles, playbooks, and bug fixes.
 
 This document outlines the workflow and quality standards for contributing to
 this project.
@@ -27,7 +26,7 @@ Before submitting a new issue or feature request:
 
 2. **Provide FreeBSD & Ansible Context:**
 
-   - FreeBSD version (e.g., `freebsd-version -kru` or `uname -a`).
+   - FreeBSD version (e.g., `uname -a`).
 
    - Ansible core version (`ansible --version`).
 
