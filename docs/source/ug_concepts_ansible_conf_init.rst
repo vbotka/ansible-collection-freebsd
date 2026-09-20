@@ -65,11 +65,7 @@ Host-Specific Execution Path
 """"""""""""""""""""""""""""
 
 Runs when ``ai_hostname`` is found directly in ``ai_db_host``. It constructs an
-<<<<<<< HEAD
 `ansible-pull`_ command using the target host's specific repository URL,
-=======
-``ansible-pull`` command using the target host's specific repository URL,
->>>>>>> cf29a1a (Docs. Update UG.)
 destination directory, playbook name, and variable flags, then executes the
 generated command by importing ``tasks/execute-cmd.yml``.
 
@@ -77,11 +73,7 @@ Class-Specific Execution Path
 """""""""""""""""""""""""""""
 
 Runs when one or more valid classes are defined in ``ai_db_class``. It loops
-<<<<<<< HEAD
 through each matched class to build a chained, multi-stage `ansible-pull`_
-=======
-through each matched class to build a chained, multi-stage ``ansible-pull``
->>>>>>> cf29a1a (Docs. Update UG.)
 command sequence, then executes the chained commands by importing
 ``tasks/execute-cmd.yml``.
 
@@ -105,11 +97,7 @@ Best Practices
   integrations.
 
 * **Ensure Task Idempotency:** Verify that all tasks inside the repository are
-<<<<<<< HEAD
   strictly idempotent so repeated runs via `ansible-pull`_ or `ansible_init`_
-=======
-  strictly idempotent so repeated runs via ``ansible-pull`` or ``ansible_init``
->>>>>>> cf29a1a (Docs. Update UG.)
   do not disrupt running services.
 
 * **Use Local Connection Strategy:** Confirm that ``ansible_connection: local``
