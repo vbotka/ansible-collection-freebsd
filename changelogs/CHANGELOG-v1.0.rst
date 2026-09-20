@@ -5,7 +5,7 @@ vbotka.freebsd Release Notes
 .. contents:: Topics
 
 
-1.0.11
+1.0.12
 ======
 
 Release Summary
@@ -13,7 +13,26 @@ Release Summary
 
 Major Changes
 -------------
+
+Minor Changes
+--------------
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
+1.0.11
+======
+
+Release Summary
+---------------
 Upgrade roles. Update playbooks and documentation.
+
+Major Changes
+-------------
 
 Minor Changes
 --------------
