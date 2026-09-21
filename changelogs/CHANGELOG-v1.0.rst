@@ -10,18 +10,14 @@ vbotka.freebsd Release Notes
 
 Release Summary
 ---------------
+Documentation update.
 
 Major Changes
 -------------
 
 Minor Changes
 --------------
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
+* Add setup/contrib/ansible-vbotka-freebsd-doc.sh
 
 
 1.0.11
@@ -42,12 +38,6 @@ Minor Changes
 * Upgrade role zfs to 2.9.1
 * Docs. Add playbook docs/source/examples/.configure.yml
 * Docs. Update UG.
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
 
 
 1.0.10
@@ -71,9 +61,6 @@ Bugfixes
 --------
 * Fix filter to_ucl documentation.
 
-Breaking Changes / Porting Guide
---------------------------------
-
 
 1.0.9
 =====
@@ -96,9 +83,6 @@ Bugfixes
 --------
 * Fix filter to_ucl. Add option bool_as_yesno (default=false). Convert
   true/false or quoted "yes"/"no" to bare yes/no.
-
-Breaking Changes / Porting Guide
---------------------------------
 
 
 1.0.8
@@ -206,12 +190,6 @@ Minor Changes
 * Docs. Update project-hosts.yml in sandbox.
 * Update galaxy.yml; do not distribute jailexec.
 
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
-
 
 1.0.2
 =====
@@ -240,9 +218,6 @@ Bugfixes
   collection_info metadata format) and falls back to galaxy.yml (for editable
   development checkouts). Fix documentation.
 * Fix ansible-test sanity.
-
-Breaking Changes / Porting Guide
---------------------------------
 
 
 1.0.1
