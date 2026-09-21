@@ -8,6 +8,12 @@ Inventory vbotka.freebsd.iocage2
 This chapter highlights the core operational, performance, and architectural
 differences between the inventory plugin ``iocage`` and ``iocage2``.
 
+Both plugins share identical configuration options and parameter syntax—making
+them drop-in compatible from a user configuration standpoint. Switching between
+them requires changing only the ``plugin`` name (e.g., from
+``vbotka.freebsd.iocage`` to ``vbotka.freebsd.iocage2``) in your inventory
+configuration file.
+
 .. hint::
 
    View the documentation from the command line:

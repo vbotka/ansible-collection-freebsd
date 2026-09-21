@@ -30,3 +30,7 @@ Other playbooks
 * pb_install_repos_from_git.yml
 * pb_preamble.yml
 * pb_synchronize_csv.yml
+
+.. seealso::
+
+   `Playbook Index <genindex.html#P>`_

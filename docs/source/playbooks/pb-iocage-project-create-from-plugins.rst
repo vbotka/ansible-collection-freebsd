@@ -3,6 +3,9 @@
 pb_iocage_project_create_from_plugins
 -------------------------------------
 
+| (OBSOLETE)
+| See :ref:`ug_qa_iocage_templates_vs_plugins`
+
 .. contents::
    :local:
    :depth: 3

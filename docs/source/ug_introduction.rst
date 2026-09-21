@@ -36,18 +36,8 @@ The collection is shipped with:
      in the standard `Ansible distribution`_.
 
    * The roles may require other collections and/or roles not listed
-     here. See each role's ``requirements.yml`` file and install the
+     here. See each role's *requirements.yml* file and install the
      missing collections and/or roles manually when needed.
-
-.. seealso::
-
-   * `Managing BSD hosts with Ansible`_
-   * `Jails and Containers - FreeBSD Handbook`_
-   * `Jails - FreeBSD Wiki`_
-
-.. tip::
-
-   See the :ref:`ug_examples` and proofs of concept in the `Sandbox`_.
 
 .. hint::
 

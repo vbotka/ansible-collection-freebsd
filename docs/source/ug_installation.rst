@@ -25,11 +25,11 @@ Upgrade the collection if already installed. For example,
    'ansible.utils:6.1.0' is already installed, skipping.
    'community.general:13.3.0' is already installed, skipping.
    'community.library_inventory_filtering_v1:1.1.5' is already installed, skipping.
-  
-.. seealso::
-
-   `Installing collections`_
 
 .. tip::
 
    See :ref:`ag_setup` on how to install additional plugins and roles.
+
+.. seealso::
+
+   `Installing collections`_.

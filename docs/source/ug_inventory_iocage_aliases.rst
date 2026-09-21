@@ -57,7 +57,7 @@ test jails:
      + Removing devfs_ruleset: 1002 OK
      + Removing jail process OK
      + Executing poststop OK
-   ansible_client is not running!
+   ansible-client is not running!
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -68,12 +68,12 @@ test jails:
    Destroying srv_3
 
 Create three VNET jails with a DHCP interface from the template
-``ansible_client`` using the ``--count`` option:
+``ansible-client`` using the ``--count`` option:
 
 .. code-block:: console
    :emphasize-lines: 1
 
-   shell> iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1
+   shell> iocage create --short --template ansible-client --count 3 bpf=1 dhcp=1 vnet=1
    1c11de2d successfully created!
    9d94cc9e successfully created!
    052b9557 successfully created!
@@ -112,7 +112,7 @@ jails using ``ALL``:
      + Starting services OK
      + Executing poststart OK
      + DHCP Address: 10.1.0.115/24
-   Please convert back to a jail before trying to start ansible_client
+   Please convert back to a jail before trying to start ansible-client
 
 List the running jails:
 
@@ -123,11 +123,11 @@ List the running jails:
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
    | JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
    +=====+==========+======+=======+======+=================+====================+=====+================+==========+
-   | 207 | 052b9557 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.137 | -   | ansible_client | no       |
+   | 207 | 052b9557 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.137 | -   | ansible-client | no       |
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 208 | 1c11de2d | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.146 | -   | ansible_client | no       |
+   | 208 | 1c11de2d | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.146 | -   | ansible-client | no       |
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 209 | 9d94cc9e | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.115 | -   | ansible_client | no       |
+   | 209 | 9d94cc9e | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.115 | -   | ansible-client | no       |
    +-----+----------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 Set ``notes`` on each jail. The ``alias`` tag is used by the plugin to

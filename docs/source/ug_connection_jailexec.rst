@@ -320,9 +320,9 @@ Depending on host management policies, configure sudo permissions in
 
      admin ALL=(ALL) NOPASSWD: /usr/sbin/jexec
 
-.. note::
+.. hint::
 
-   See :ref:`ag_setup_plugins`.
+   :ref:`Find out how to install plugins <ag_setup_plugins>`.
 
 .. seealso::
 

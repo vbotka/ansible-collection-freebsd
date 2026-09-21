@@ -30,12 +30,12 @@ manager.
 
    This plugin:
 
-   - requires `sysutils/iocage`_ on the jail host.
+   - Requires `sysutils/iocage`_ on the jail host.
 
-   - extends `inventory plugin ansible.builtin.constructed`_. See the
+   - Extends `inventory plugin ansible.builtin.constructed`_. See the
      `Examples`_.
 
-   - implements inventory caching. See `Enabling inventory cache
+   - Implements inventory caching. See `Enabling inventory cache
      plugins`_.
 
 .. seealso::

@@ -6,8 +6,8 @@
 Filter vbotka.freebsd.ast_to_nginx
 ----------------------------------
 
-The ``_ast_to_nginx`` filter converts crossplane AST (Abstract Syntax
-Tree) list to NGINX config.
+The ``_ast_to_nginx`` filter converts `crossplane`_ AST (Abstract Syntax Tree)
+list to NGINX config.
 
 .. hint::
 

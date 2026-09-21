@@ -20,3 +20,11 @@ Plugins
    filter to_ucl <ug_filter_to_ucl>
    connection jailexec <ug_connection_jailexec>
    lookup galaxy_info <ug_lookup_galaxy_info>
+
+.. seealso::
+
+   * `Module Index <genindex.html#M>`_
+   * `Inventory Index <genindex.html#I>`_
+   * `Filter Index <genindex.html#F>`_
+   * `Connection Index <genindex.html#C>`_
+   * `Lookup Index <genindex.html#L>`_

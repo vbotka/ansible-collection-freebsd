@@ -24,5 +24,8 @@ their ``vars`` directories.
 
 .. hint::
 
-   * See the ``README`` file for each role.
-   * See the collection :ref:`genindex` for available examples.
+   See the ``README`` file for each role.
+
+.. seealso::
+
+   `Role Index <genindex.html#R>`_
