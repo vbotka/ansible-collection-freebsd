@@ -145,12 +145,6 @@ assign `inventory aliases`_:
    shell> iocage set notes="vmm=iocage_02 project=bar alias=srv_3" 9d94cc9e
    notes: none -> vmm=iocage_02 project=bar alias=srv_3
 
-.. note::
-
-   The inventory parameter ``inventory_hostname_tag`` expects
-   space-delimited key-value pairs in ``notes`` (``key1=val1 key2=val2
-   ...``).
-
 Update the inventory configuration file ``hosts/02_iocage.yml``. Set
 ``inventory_hostname_tag: alias`` so that each host is named by its
 alias.  Enable ``get_properties: true`` so the plugin retrieves jail
@@ -175,26 +169,13 @@ properties:
      - prefix: project
        key: iocage_tags.project
 
-.. note::
-
-   Construct the ``iocage_tags`` dictionary according to the format
-   used in ``notes``. Alternative approaches can also be used, such as
-   regex extraction:
-
-   .. code-block:: yaml
-
-      iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
-
-To verify the resolved tags and inventory groups, create the playbook
+To verify the parsed tags and inventory groups, create the playbook
 ``pb-test-groups.yml``:
 
 .. code-block:: yaml+jinja
 
    - hosts: all
      remote_user: admin
-
-     vars:
-       ansible_python_interpreter: auto_silent
 
      tasks:
        - name: Display host properties and tags

@@ -52,6 +52,20 @@ Update the inventory configuration file ``hosts/02_iocage.yml``. Enable the
      - prefix: project
        key: iocage_tags.project
 
+.. note::
+
+   * Construct the ``iocage_tags`` dictionary according to the format used in
+     ``notes``.
+
+   * Here, the composed variable ``iocage_tags`` expects space-delimited
+     key-value pairs in ``notes`` (``key1=val1 key2=val2 ...``).
+
+   * Alternative approaches can also be used, such as regex extraction:
+
+     .. code-block:: yaml
+
+        iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+
 To verify the tags and groups, create the playbook ``pb-test-groups.yml``:
 
 .. code-block:: yaml+jinja

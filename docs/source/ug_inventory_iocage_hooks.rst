@@ -41,8 +41,8 @@ where ``/zroot/iocage`` is the activated ZFS pool:
    zroot/iocage/releases/14.2-RELEASE          2.93G   446G   384K  /zroot/iocage/releases/14.2-RELEASE
    zroot/iocage/releases/14.2-RELEASE/root     2.93G   446G  2.88G  /zroot/iocage/releases/14.2-RELEASE/root
    zroot/iocage/templates                       682M   446G   416K  /zroot/iocage/templates
-   zroot/iocage/templates/ansible_client        681M   446G   432K  /zroot/iocage/templates/ansible_client
-   zroot/iocage/templates/ansible_client/root   681M   446G  3.53G  /zroot/iocage/templates/ansible_client/root
+   zroot/iocage/templates/ansible-client        681M   446G   432K  /zroot/iocage/templates/ansible-client
+   zroot/iocage/templates/ansible-client/root   681M   446G  3.53G  /zroot/iocage/templates/ansible-client/root
 
 .. seealso:: `man dhclient-script`_
 
