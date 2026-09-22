@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Filter dict_to_ast renamed to to_ast. Docs updated."
 
 
 1.0.12

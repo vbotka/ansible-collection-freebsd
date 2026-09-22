@@ -166,14 +166,14 @@
 .. _filesystems/py-libzfs: https://www.freshports.org/filesystems/py-libzfs/
 .. _filter ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _filter ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _filter dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
+.. _filter to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _filter iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _filter project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
 .. _filter to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 .. _filter vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _filter vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _filter vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
+.. _filter vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
@@ -297,7 +297,7 @@
 .. _vbotka.freebsd.config_light: https://ansible-config-light.readthedocs.io/en/latest/
 .. _vbotka.freebsd.custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
 .. _vbotka.freebsd.dhcp: https://github.com/vbotka/ansible-freebsd-dhcp
-.. _vbotka.freebsd.dict_to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/dict_to_ast/
+.. _vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 .. _vbotka.freebsd.iocage: https://github.com/vbotka/ansible-iocage

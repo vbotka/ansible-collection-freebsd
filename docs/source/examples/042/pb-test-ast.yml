@@ -1,4 +1,4 @@
-- name: Test filter dict_to_ast
+- name: Test filter to_ast
   hosts: localhost
   connection: local
 
@@ -22,5 +22,5 @@
 
         msg: |
           ast:
-            {{ nginx_conf | vbotka.freebsd.dict_to_ast
+            {{ nginx_conf | vbotka.freebsd.to_ast
                           | to_yaml(indent=2) | indent(2) }}

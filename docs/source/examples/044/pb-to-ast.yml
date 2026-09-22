@@ -1,5 +1,5 @@
 ---
-- name: Test filter dict_to_ast
+- name: Test filter to_ast
   hosts: localhost
 
   vars_files:
@@ -10,4 +10,4 @@
 
     - debug:
         msg: |
-          {{ haproxy_conf | vbotka.freebsd.dict_to_ast }}
+          {{ haproxy_conf | vbotka.freebsd.to_ast }}

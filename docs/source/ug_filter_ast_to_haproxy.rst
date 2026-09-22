@@ -16,7 +16,7 @@ Synopsis
 The ``ast_to_haproxy`` filter translates an Abstract Syntax Tree (AST)
 structure into native `HAProxy`_ configuration syntax
 (``haproxy.cfg``). It is typically used in conjunction with
-``dict_to_ast`` to generate configuration files from high-level YAML
+``to_ast`` to generate configuration files from high-level YAML
 representations without relying on complex Jinja2 templates.
 
 
@@ -34,7 +34,7 @@ Parameters
    * - **_input**
      - sequence / mapping
      -
-     - AST structure emitted by ``dict_to_ast`` or custom AST builders.
+     - AST structure emitted by ``to_ast`` or custom AST builders.
    * - **indent**
      - integer
      - ``4``
@@ -142,7 +142,7 @@ Ansible Task Pipeline
         dest: /usr/local/etc/haproxy.conf
         content: |
           {{ haproxy_config_data
-             | vbotka.freebsd.dict_to_ast
+             | vbotka.freebsd.to_ast
              | vbotka.freebsd.ast_to_haproxy }}
         mode: '0644'
         validate: haproxy -c -f %s

@@ -16,9 +16,9 @@
 .. index:: single: vbotka.freebsd.project; Example 527
 .. index:: single: project; Example 527
 
-.. index:: single: filter vbotka.freebsd.dict_to_ast; Example 527
-.. index:: single: vbotka.freebsd.dict_to_ast; Example 527
-.. index:: single: dict_to_ast; Example 527
+.. index:: single: filter vbotka.freebsd.to_ast; Example 527
+.. index:: single: vbotka.freebsd.to_ast; Example 527
+.. index:: single: to_ast; Example 527
 
 .. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 527
 .. index:: single: vbotka.freebsd.ast_to_nginx; Example 527
@@ -89,7 +89,7 @@ Requirements
 
 * Role `vbotka.freebsd.iocage_template`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
-* :ref:`ug_filter_dict_to_ast`
+* :ref:`ug_filter_to_ast`
 * :ref:`ug_filter_ast_to_nginx`
 * :ref:`ug_filter_project`
 * :ref:`ug_inventory_iocage2`

@@ -10,9 +10,9 @@
 .. index:: single: filter vbotka.freebsd.ast_to_haproxy; Example 044
 .. index:: single: vbotka.freebsd.ast_to_haproxy; Example 044
 .. index:: single: ast_to_haproxy; Example 044
-.. index:: single: filter vbotka.freebsd.dict_to_ast; Example 044
-.. index:: single: vbotka.freebsd.dict_to_ast; Example 044
-.. index:: single: dict_to_ast; Example 044
+.. index:: single: filter vbotka.freebsd.to_ast; Example 044
+.. index:: single: vbotka.freebsd.to_ast; Example 044
+.. index:: single: to_ast; Example 044
 
 Use case
 ^^^^^^^^
@@ -43,7 +43,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_filter_ast_to_haproxy`
-* :ref:`ug_filter_dict_to_ast`
+* :ref:`ug_filter_to_ast`
 
 Notes
 ^^^^^

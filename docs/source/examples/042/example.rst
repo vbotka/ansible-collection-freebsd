@@ -1,15 +1,15 @@
 .. _example_042:
 
-042 Filters dict_to_ast and ast_to_nginx
-----------------------------------------
+042 Filters to_ast and ast_to_nginx
+-----------------------------------
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: filter vbotka.freebsd.dict_to_ast; Example 042
-.. index:: single: vbotka.freebsd.dict_to_ast; Example 042
-.. index:: single: dict_to_ast; Example 042
+.. index:: single: filter vbotka.freebsd.to_ast; Example 042
+.. index:: single: vbotka.freebsd.to_ast; Example 042
+.. index:: single: to_ast; Example 042
 .. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 042
 .. index:: single: vbotka.freebsd.ast_to_nginx; Example 042
 .. index:: single: ast_to_nginx; Example 042
@@ -17,7 +17,7 @@
 Use case
 ^^^^^^^^
 
-Use the :ref:`filter vbotka.freebsd.dict_to_ast <ug_filter_dict_to_ast>`
+Use the :ref:`filter vbotka.freebsd.to_ast <ug_filter_to_ast>`
 and the :ref:`filter vbotka.freebsd.ast_to_nginx <ug_filter_ast_to_nginx>`
 to create an NGINX configuration.
 
@@ -36,7 +36,7 @@ Synopsis
 ^^^^^^^^
 
 * In the playbook ``pb-test-ast.yml``, use the :ref:`filter
-  vbotka.freebsd.dict_to_ast <ug_filter_dict_to_ast>` to convert a YAML
+  vbotka.freebsd.to_ast <ug_filter_to_ast>` to convert a YAML
   dictionary into a crossplane-compatible AST (Abstract Syntax Tree) list for
   NGINX configuration generation.
 
@@ -47,7 +47,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_filter_dict_to_ast`
+* :ref:`ug_filter_to_ast`
 * :ref:`ug_filter_ast_to_nginx`
 
 Notes
@@ -72,8 +72,8 @@ Playbook pb-test-ast.yml
    :language: yaml+jinja
    :emphasize-lines: 7-17
 
-Playbook output - Test filter dict_to_ast
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test filter to_ast
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

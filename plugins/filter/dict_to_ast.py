@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 DOCUMENTATION = r"""
-name: dict_to_ast
+name: to_ast
 short_description: Converts YAML dictionary or data structure to Crossplane AST list
 version_added: "1.0.0"
 author:
@@ -35,7 +35,7 @@ nginx_conf:
       location /:
         return: ['200', 'Hello from Crossplane!']
 
-result: "{{ nginx_conf | vbotka.freebsd.dict_to_ast }}"
+result: "{{ nginx_conf | vbotka.freebsd.to_ast }}"
 
 # Example 2: Repeated blocks (multiple server blocks) using a list of dicts
 nginx_conf_multi:
@@ -46,7 +46,7 @@ nginx_conf_multi:
       - listen: ['443', 'ssl']
         server_name: ['secure.example.com']
 
-result_multi: "{{ nginx_conf_multi | vbotka.freebsd.dict_to_ast }}"
+result_multi: "{{ nginx_conf_multi | vbotka.freebsd.to_ast }}"
 """
 
 RETURN = r"""
@@ -74,7 +74,7 @@ def _process_item(key: str | int, value: any) -> list[dict]:
         return [{
             "directive": directive,
             "args": base_args,
-            "block": dict_to_ast(value),
+            "block": to_ast(value),
         }]
 
     # Case 2: List of nested blocks or repeated multi-argument directives
@@ -87,7 +87,7 @@ def _process_item(key: str | int, value: any) -> list[dict]:
                     nodes.append({
                         "directive": directive,
                         "args": base_args,
-                        "block": dict_to_ast(item),
+                        "block": to_ast(item),
                     })
                 else:
                     nodes.append({
@@ -125,7 +125,7 @@ def _process_item(key: str | int, value: any) -> list[dict]:
     }]
 
 
-def dict_to_ast(data: dict | list) -> list[dict]:
+def to_ast(data: dict | list) -> list[dict]:
     """Transforms YAML structure (dict or list) to crossplane AST list."""
     if not isinstance(data, (dict, list)):
         return []
@@ -138,7 +138,7 @@ def dict_to_ast(data: dict | list) -> list[dict]:
     elif isinstance(data, list):
         for item in data:
             if isinstance(item, dict):
-                ast.extend(dict_to_ast(item))
+                ast.extend(to_ast(item))
 
     return ast
 
@@ -147,5 +147,5 @@ class FilterModule(object):
 
     def filters(self):
         return {
-            "dict_to_ast": dict_to_ast,
+            "to_ast": to_ast,
         }
