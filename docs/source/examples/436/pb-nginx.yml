@@ -1,0 +1,16 @@
+- name: Configure Nginx servers.
+  hosts: nginx
+  gather_facts: true
+
+  roles:
+
+    - vbotka.freebsd_nginx
+
+- name: Create index.html
+  hosts: nginx
+
+  tasks:
+
+    - template:
+        src: index.html.j2
+        dest: /usr/local/www/nginx/index.html

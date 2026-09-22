@@ -1,0 +1,3 @@
+# Create user/group haproxy
+pw groupadd haproxy
+pw useradd haproxy -g haproxy -s /usr/sbin/nologin -d /var/empty -c "HAProxy Daemon"

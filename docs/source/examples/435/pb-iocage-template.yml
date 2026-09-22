@@ -1,4 +1,3 @@
----
 - name: Create iocage templates.
   hosts: iocage
 

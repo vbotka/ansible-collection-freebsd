@@ -21,3 +21,5 @@ fit_templates:
 fit_files:
   /usr/local/www/nginx:
     - index.html
+  /etc:
+    - dhclient-exit-hooks

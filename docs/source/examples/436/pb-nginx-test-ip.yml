@@ -1,0 +1,13 @@
+- name: Get Nginx inventory alias and IP.
+  hosts: nginx
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ groups['nginx']
+             | sort
+             | map('extract', hostvars)
+             | map('json_query', '[iocage_tags.alias, iocage_ip4]')
+             | map('join', ' ') }}
+      run_once: true
