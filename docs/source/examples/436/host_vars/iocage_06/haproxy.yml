@@ -1,4 +1,5 @@
 haproxy_enable: true
+haproxy_port: 8404
 
 haproxy_conf:
   global:
@@ -30,18 +31,19 @@ haproxy_conf:
       servers: "{{ dict(nginx_cluster_keys | zip(nginx_cluster_vals)) }}"
   listens:
     stats:
-      bind: "{{ project_hosts.iocage_06.defaultrouter }}:8404"
+      bind: "{{ project_hosts.iocage_06.defaultrouter }}:{{ haproxy_port }}"
       mode: http
       stats:
         - enable
         - uri /
         - refresh 5s
 
+nginx_cluster_port: 80
 nginx_cluster_hosts: "{{ groups['nginx'] | sort }}"
 nginx_cluster_keys: "{{ nginx_cluster_hosts
                         | map('extract', hostvars, ['iocage_tags', 'alias'])
                         | list }}"
-nginx_cluster_vals_query: "{address: iocage_ip4, port: '80', check: ''}"
+nginx_cluster_vals_query: "{address: iocage_ip4, port: '{{ nginx_cluster_port }}', check: ''}"
 nginx_cluster_vals: "{{ nginx_cluster_hosts
                         | map('extract', hostvars)
                         | map('json_query', nginx_cluster_vals_query)

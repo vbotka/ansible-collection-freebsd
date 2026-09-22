@@ -4,4 +4,4 @@
 
   roles:
 
-    - vbotka.freebsd_haproxy
+    - vbotka.freebsd.haproxy
