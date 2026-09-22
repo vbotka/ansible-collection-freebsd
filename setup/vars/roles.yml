@@ -61,6 +61,11 @@ bsd_roles:
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-dns
     version: 2.6.2
+  - galaxy: vbotka.freebsd_haproxy
+    name: haproxy
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-haproxy
+    version: 1.0.0
   - galaxy: vbotka.freebsd_iocage
     name: iocage
     scm: git
@@ -170,7 +175,7 @@ bsd_roles:
     name: nginx
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-nginx
-    version: 1.0.1
+    version: 1.0.2
   - galaxy: vbotka.nrpe
     name: nrpe
     scm: git

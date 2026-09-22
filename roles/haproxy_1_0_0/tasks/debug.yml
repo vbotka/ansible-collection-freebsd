@@ -1,0 +1,55 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Debug: haproxy_debug={{ haproxy_debug }}"
+  vars:
+    msg: |-
+      haproxy_role_version: {{ haproxy_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
+
+      ansible_facts.architecture: {{ ansible_facts.architecture }}
+      ansible_facts.os_family: {{ ansible_facts.os_family }}
+      ansible_facts.distribution: {{ ansible_facts.distribution }}
+      ansible_facts.distribution_major_version: {{ ansible_facts.distribution_major_version }}
+      ansible_facts.distribution_version: {{ ansible_facts.distribution_version }}
+      ansible_facts.distribution_release: {{ ansible_facts.distribution_release }}
+      ansible_facts.python_version: {{ ansible_facts.python_version }}
+
+      freebsd_install_method: {{ freebsd_install_method }}
+      freebsd_use_packages: {{ freebsd_use_packages | d(true) }}
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+      freebsd_pkgsite: {{ freebsd_pkgsite | d('UNDEFINED') }}
+      freebsd_cached: {{ freebsd_cached | d('UNDEFINED') }}
+      freebsd_use_globs: {{ freebsd_use_globs | d('UNDEFINED') }}
+
+      haproxy_install: {{ haproxy_install }}
+      haproxy_packages:
+        {{ haproxy_packages | to_yaml(indent=2) | indent(2) }}
+      haproxy_enable: {{ haproxy_enable }}
+      haproxy_service: {{ haproxy_service }}
+      haproxy_backup_conf: {{ haproxy_backup_conf }}
+
+      haproxy_conf_dir: {{ haproxy_conf_dir }}
+      haproxy_conf_file: {{ haproxy_conf_file }}
+      haproxy_conf_owner: {{ haproxy_conf_owner }}
+      haproxy_conf_group: {{ haproxy_conf_group }}
+      haproxy_conf_mode: {{ haproxy_conf_mode }}
+      haproxy_conf_template: {{ haproxy_conf_template }}
+
+      haproxy_rcconf:
+        {{ haproxy_rcconf | to_nice_yaml(indent=2) | indent(2) }}
+      haproxy_conf:
+        {{ haproxy_conf | to_yaml(indent=2) | indent(2) }}
+
+  ansible.builtin.debug:
+    msg: "{{ '{}'.format(msg) }}"
+
+
+- name: "Debug: Render haproxy_conf haproxy_debug2={{ haproxy_debug2 }}"
+  ansible.builtin.debug:
+    msg: "{{ haproxy_conf | vbotka.freebsd.to_ast | vbotka.freebsd.ast_to_haproxy }}"
+
+# EOF
+...

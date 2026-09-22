@@ -1,9 +1,9 @@
 ---
 galaxy_info:
   namespace: vbotka
-  role_name: freebsd_nginx
+  role_name: freebsd_haproxy
   author: Vladimir Botka
-  description: Install, configure, and run Nginx.
+  description: Install, configure, and run HAProxy.
   company: https://botka.info
   github_branch: master
   license: BSD
@@ -11,11 +11,11 @@ galaxy_info:
   platforms:
     - name: FreeBSD
       versions:
-        - 14.4
+        - 14.5
         - 15.0
         - 15.1
   galaxy_tags:
     - freebsd
-    - nginx
+    - haproxy
 collections:
   - community.general

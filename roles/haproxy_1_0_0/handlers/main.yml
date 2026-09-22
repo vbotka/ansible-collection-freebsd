@@ -1,0 +1,33 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# handlers for vbotka.freebsd_haproxy
+- name: Enable and start haproxy
+  listen: enable and start haproxy
+  vbotka.freebsd.service:
+    script: "{{ haproxy_service }}"
+    command: start
+
+- name: Disable and stop haproxy
+  listen: disable and stop haproxy
+  vbotka.freebsd.service:
+    script: "{{ haproxy_service }}"
+    command: stop
+
+- name: Restart haproxy
+  listen: restart haproxy
+  when: haproxy_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ haproxy_service }}"
+    command: restart
+
+- name: Reload haproxy
+  listen: reload haproxy
+  when: haproxy_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ haproxy_service }}"
+    command: reload
+
+# EOF
+...

@@ -1,0 +1,17 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Conf: Configure HAProxy."
+  notify: reload haproxy
+  ansible.builtin.template:
+    src: "{{ haproxy_conf_template }}"
+    dest: "{{ haproxy_conf_dir }}/{{ haproxy_conf_file }}"
+    owner: "{{ haproxy_conf_owner }}"
+    group: "{{ haproxy_conf_group }}"
+    mode: "{{ haproxy_conf_mode }}"
+    validate: haproxy -c -f %s
+    backup: "{{ haproxy_backup_conf }}"
+
+# EOF
+...

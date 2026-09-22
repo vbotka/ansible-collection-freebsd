@@ -1,0 +1,27 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Service: Enable and Start HAProxy."
+  when: haproxy_enable | bool
+  notify: enable and start haproxy
+  community.general.sysrc:
+    name: "{{ haproxy_service }}_enable"
+    value: 'YES'
+
+- name: "Service: Disable and Stop HAProxy."
+  when: not haproxy_enable | bool
+  notify: disable and stop haproxy
+  community.general.sysrc:
+    name: "{{ haproxy_service }}_enable"
+    value: 'NO'
+
+- name: "Service: Configure HAProxy service."
+  notify: reload haproxy
+  community.general.sysrc:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ haproxy_rcconf | dict2items }}"
+
+# EOF
+...
