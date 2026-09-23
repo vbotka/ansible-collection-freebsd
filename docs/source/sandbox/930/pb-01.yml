@@ -1,0 +1,22 @@
+- name: List of jails
+  hosts: iocage
+
+  tasks:
+
+    - name: Query iocage2 inventory plugin
+      delegate_to: localhost
+      ansible.builtin.command:
+        cmd: "ansible-inventory -i hosts --list --export"
+      register:
+        iocage_jails: (_task.result.stdout
+                       | from_yaml
+                       | vbotka.freebsd.clean_unsafe)._meta.hostvars
+      changed_when: false
+
+    - name: Display iocage_jails
+      ansible.builtin.debug:
+        var: iocage_jails.keys()
+
+    - name: Display iocage_jails
+      ansible.builtin.debug:
+        var: iocage_jails.pkg_repo
