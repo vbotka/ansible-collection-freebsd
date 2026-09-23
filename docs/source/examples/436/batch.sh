@@ -34,6 +34,7 @@ ssh admin@iocage_06 'bash -s' < test-haproxy.sh | tee out/out-06.txt
 
 # Stop HAProxy (local repo Nginx is running on port 80)
 ssh admin@iocage_06 sudo service haproxy stop
+sleep 2
 
 # Start Nginx. Port 80 conflict with HAProxy
 ssh admin@iocage_06 sudo service nginx start
