@@ -166,17 +166,17 @@
 .. _filesystems/py-libzfs: https://www.freshports.org/filesystems/py-libzfs/
 .. _filter ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _filter ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _filter to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _filter iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _filter project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
+.. _filter to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 .. _filter vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _filter vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _filter vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _filter vbotka.freebsd.iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _filter vbotka.freebsd.project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
+.. _filter vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 .. _firstboot: https://forums.freebsd.org/threads/firstboot.65143/
 .. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
@@ -255,6 +255,7 @@
 .. _role vbotka.freebsd.config_light: https://ansible-config-light.readthedocs.io/en/latest/
 .. _role vbotka.freebsd.custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
 .. _role vbotka.freebsd.dhcp: https://github.com/vbotka/ansible-freebsd-dhcp/
+.. _role vbotka.freebsd.haproxy: https://github.com/vbotka/ansible-freebsd-haproxy/
 .. _role vbotka.freebsd.iocage: https://github.com/vbotka/ansible-freebsd-iocage/
 .. _role vbotka.freebsd.lib: https://github.com/vbotka/ansible-lib/
 .. _role vbotka.freebsd.network: https://github.com/vbotka/ansible-freebsd-network/
@@ -271,17 +272,14 @@
 .. _share your feedback and report issues: https://github.com/vbotka/ansible-collection-freebsd/issues
 .. _syslog-ng - FreeBSD Wiki: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
 .. _syslog-ng - documentation: https://syslog-ng.github.io
-.. _syslog-ng Client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-.. _syslog-ng Server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
 .. _syslog-ng client hosts: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
 .. _syslog-ng client: https://syslog-ng.github.io/admin-guide/040_Quick-start_guide/000_Configuring_syslog-ng_on_client_hosts.html
-.. _syslog-ng server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
-.. _syslog-ng: https://wiki.freebsd.org/Ports/sysutils/syslog-ng
+.. _syslog-ng server: https://wiki.freebsd.org/Ports/sysutils/syslog-ng/
+.. _syslog-ng: https://wiki.freebsd.org/Ports/sysutils/syslog-ng/
 .. _sysutils/iocage: https://www.freshports.org/sysutils/iocage/
-.. _sysutils/py-iocage: https://www.freshports.org/sysutils/py-iocage
-.. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng
+.. _sysutils/py-iocage: https://www.freshports.org/sysutils/py-iocage/
+.. _sysutils/syslog-ng: https://www.freshports.org/sysutils/syslog-ng/
 .. _uclcmd - Command line tool for working with UCL config files: https://www.freshports.org/devel/uclcmd/
-.. _uclcmd Command line tool for working with UCL config files: https://www.freshports.org/devel/uclcmd/
 .. _uclcmd: https://www.freshports.org/devel/uclcmd/
 .. _use_globs: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-use_globs
 .. _use_vars_plugins: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-use_vars_plugins
@@ -293,39 +291,41 @@
 .. _vbotka.freebsd.apache: https://ansible-apache.readthedocs.io/en/latest/
 .. _vbotka.freebsd.ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _vbotka.freebsd.ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _vbotka.freebsd.certificate: https://github.com/vbotka/ansible-certificate
+.. _vbotka.freebsd.certificate: https://github.com/vbotka/ansible-certificate/
 .. _vbotka.freebsd.config_light: https://ansible-config-light.readthedocs.io/en/latest/
 .. _vbotka.freebsd.custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
-.. _vbotka.freebsd.dhcp: https://github.com/vbotka/ansible-freebsd-dhcp
-.. _vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
+.. _vbotka.freebsd.dhcp: https://github.com/vbotka/ansible-freebsd-dhcp/
 .. _vbotka.freebsd.from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
+.. _vbotka.freebsd.haproxy: https://github.com/vbotka/ansible-freebsd-haproxy/
 .. _vbotka.freebsd.iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
-.. _vbotka.freebsd.iocage: https://github.com/vbotka/ansible-iocage
-.. _vbotka.freebsd.iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
-.. _vbotka.freebsd.lib: https://github.com/vbotka/ansible-lib
-.. _vbotka.freebsd.network: https://github.com/vbotka/ansible-freebsd-network
-.. _vbotka.freebsd.nginx: https://github.com/vbotka/ansible-freebsd-nginx
-.. _vbotka.freebsd.packages: https://github.com/vbotka/ansible-freebsd-packages
+.. _vbotka.freebsd.iocage: https://github.com/vbotka/ansible-iocage/
+.. _vbotka.freebsd.iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template/
+.. _vbotka.freebsd.lib: https://github.com/vbotka/ansible-lib/
+.. _vbotka.freebsd.network: https://github.com/vbotka/ansible-freebsd-network/
+.. _vbotka.freebsd.nginx: https://github.com/vbotka/ansible-freebsd-nginx/
+.. _vbotka.freebsd.packages: https://github.com/vbotka/ansible-freebsd-packages/
 .. _vbotka.freebsd.pb_iocage_ansible_clients.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_ansible_clients.yml
 .. _vbotka.freebsd.pb_iocage_plugins.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_plugins.yml/
 .. _vbotka.freebsd.pb_iocage_project_create_from_templates.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_project_create_from_templates.yml
 .. _vbotka.freebsd.pb_iocage_template.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_template.yml
 .. _vbotka.freebsd.pb_iocage_update_repos.yml: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/playbook/pb_iocage_update_repos.yml
-.. _vbotka.freebsd.pf: https://github.com/vbotka/ansible-freebsd-pf
+.. _vbotka.freebsd.pf: https://github.com/vbotka/ansible-freebsd-pf/
 .. _vbotka.freebsd.postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
 .. _vbotka.freebsd.poudriere: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/
-.. _vbotka.freebsd.rsnapshot: https://github.com/vbotka/ansible-rsnapshot
+.. _vbotka.freebsd.rsnapshot: https://github.com/vbotka/ansible-rsnapshot/
+.. _vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
-.. _vbotka.freebsd.zfs: https://github.com/vbotka/ansible-freebsd-zfs
+.. _vbotka.freebsd.zfs: https://github.com/vbotka/ansible-freebsd-zfs/
 .. _vbotka.freebsd: https://github.com/vbotka/ansible-collection-freebsd/
 .. _vbotka.freebsd_apache: https://github.com/vbotka/ansible-apache/
-.. _vbotka.freebsd_certificate: https://github.com/vbotka/ansible-certificate
+.. _vbotka.freebsd_certificate: https://github.com/vbotka/ansible-certificate/
 .. _vbotka.freebsd_custom_image: https://github.com/vbotka/ansible-freebsd-custom-image/
 .. _vbotka.freebsd_dhcp: https://github.com/vbotka/ansible-freebsd-dhcp/
-.. _vbotka.freebsd_iocage: https://github.com/vbotka/ansible-iocage
-.. _vbotka.freebsd_iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
+.. _vbotka.freebsd_haproxy: https://github.com/vbotka/ansible-freebsd-haproxy/
+.. _vbotka.freebsd_iocage: https://github.com/vbotka/ansible-freebsd-iocage/
+.. _vbotka.freebsd_iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template/
 .. _vbotka.freebsd_network: https://github.com/vbotka/ansible-freebsd-network/
-.. _vbotka.freebsd_nginx: https://github.com/vbotka/ansible-freebsd-nginx
+.. _vbotka.freebsd_nginx: https://github.com/vbotka/ansible-freebsd-nginx/
 .. _vbotka.freebsd_packages: https://github.com/vbotka/ansible-freebsd-packages/
 .. _vbotka.freebsd_pf: https://github.com/vbotka/ansible-freebsd-pf/
 .. _vbotka.freebsd_postinstall: https://github.com/vbotka/ansible-freebsd-postinstall/

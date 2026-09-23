@@ -19,8 +19,7 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-nginx``. Create jails from the
-template.
+Create the `iocage`_ template ``ansible-nginx``. Create jails from the template.
 
 Tree
 ^^^^
@@ -31,6 +30,7 @@ Tree
   .
   ├── ansible.cfg
   ├── files
+  │   ├── dhclient-exit-hooks
   │   └── index.html
   ├── group_vars
   │   ├── all
@@ -142,6 +142,10 @@ host_vars
 
 files
 ^^^^^
+
+.. literalinclude:: files/dhclient-exit-hooks
+   :language: sh
+   :caption:
 
 .. literalinclude:: files/index.html
    :language: html

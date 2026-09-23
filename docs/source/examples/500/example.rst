@@ -109,12 +109,12 @@ Synopsis
 * In the inventory group ``logserv``:
 
   * Install `sysutils/syslog-ng`_.
-  * Configure `syslog-ng Server`_.
+  * Configure `syslog-ng server`_.
 
 * In the inventory group ``logclient``:
 
   * Install `sysutils/syslog-ng`_.
-  * Configure `syslog-ng Client`_.
+  * Configure `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^

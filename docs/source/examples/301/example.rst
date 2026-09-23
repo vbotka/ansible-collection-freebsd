@@ -50,7 +50,7 @@ Notes
 
 .. seealso::
 
-   * `uclcmd Command line tool for working with UCL config files`_
+   * `uclcmd - Command line tool for working with UCL config files`_
    * `UCL (Universal Configuration Language)`_
 
 ansible.cfg
