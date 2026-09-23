@@ -13,10 +13,11 @@ Plugins
    inventory iocage2 <ug_inventory_iocage2>
    filter ast_to_haproxy <ug_filter_ast_to_haproxy>
    filter ast_to_nginx <ug_filter_ast_to_nginx>
-   filter to_ast <ug_filter_to_ast>
+   filter clean_unsafe <ug_filter_clean_unsafe>
    filter from_ucl <ug_filter_from_ucl>
    filter iocage <ug_filter_iocage>
    filter project <ug_filter_project>
+   filter to_ast <ug_filter_to_ast>
    filter to_ucl <ug_filter_to_ucl>
    connection jailexec <ug_connection_jailexec>
    lookup galaxy_info <ug_lookup_galaxy_info>
