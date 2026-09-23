@@ -7,6 +7,7 @@
    :local:
    :depth: 1
 
+.. index:: single: HAProxy; Example 044
 .. index:: single: filter vbotka.freebsd.ast_to_haproxy; Example 044
 .. index:: single: vbotka.freebsd.ast_to_haproxy; Example 044
 .. index:: single: ast_to_haproxy; Example 044
@@ -18,7 +19,7 @@ Use case
 ^^^^^^^^
 
 Use the filter :ref:`filter vbotka.freebsd.ast_to_haproxy
-<ug_filter_ast_to_haproxy>` to create an HAProxy configuration.
+<ug_filter_ast_to_haproxy>` to create an `HAProxy`_ configuration.
 
 Tree
 ^^^^
