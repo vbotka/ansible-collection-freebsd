@@ -3,6 +3,9 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
+# Stop Nginx. Port 80 conflict with HAProxy
+ssh admin@iocage_06 sudo service nginx stop
+
 # Destroy www-01 and www-02
 ssh admin@iocage_06 sudo iocage destroy -f www-01
 ssh admin@iocage_06 sudo iocage destroy -f www-02
@@ -22,9 +25,6 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-03.txt
 
 # Configure Nginx cluster
 ansible-playbook -i hosts pb-nginx.yml | tee out/out-04.txt
-
-# Stop Nginx. Port 80 conflict with HAProxy
-ssh admin@iocage_06 sudo service nginx stop
 
 # Configure HAProxy
 ansible-playbook -i iocage.ini -i hosts pb-haproxy.yml | tee out/out-05.txt

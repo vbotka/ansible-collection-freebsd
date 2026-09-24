@@ -1,0 +1,24 @@
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_06 -> localhost]
+
+TASK [Reject jails without iocage_tags] ****************************************
+ok: [iocage_06]
+
+TASK [Create iocage_jails_tags] ************************************************
+ok: [iocage_06]
+
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_06 -> localhost]
+
+TASK [Reject jails without iocage_tags] ****************************************
+ok: [iocage_06]
+
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+

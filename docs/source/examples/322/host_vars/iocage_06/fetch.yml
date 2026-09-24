@@ -22,9 +22,11 @@ pkg_dict:
       - sysutils/lnav
 
 pkg_fetch_list:
+  - apache24
   - nginx-lite
   - python312
   - python
   - python3
   - py-ansible
   - py-crossplane
+  - rsnapshot

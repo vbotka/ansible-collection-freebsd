@@ -3,10 +3,37 @@
 
   tasks:
 
+    - name: Create dir /usr/local/etc/pkg/repos
+      ansible.builtin.file:
+        path: /usr/local/etc/pkg/repos
+        state: directory
+
+    - name: Configure local repo.
+      ansible.builtin.copy:
+        dest: /usr/local/etc/pkg/repos/local.conf
+        content: |
+          local {
+              url = "http://172.16.99.1";
+              enabled = yes;
+              signature_type = "none";
+          }
+
+    - name: Update pkg.
+      register: out
+      ansible.builtin.command: pkg update -r local
+      environment:
+        ASSUME_ALWAYS_YES: "YES"
+
+    - name: Debug.
+      when: debug | d(false) | bool
+      ansible.builtin.debug:
+        var: out
+      
     - name: Install rsnapshot packages.
       delegate_to: "{{ iocage_tags.vmm }}"
       register: out
       community.general.pkgng:
+        pkgsite: local
         name: "{{ rsnapshot_packages }}"
         jail: "{{ iocage_jid }}"
         cached: "{{ freebsd_pkgng_cached }}"

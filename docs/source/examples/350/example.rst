@@ -16,6 +16,7 @@
 .. index:: single: module community.general.pkgng; Example 350
 .. index:: single: community.general.pkgng; Example 350
 .. index:: single: delegate_to; Example 350
+.. index:: single: pkg update; Example 350
 
 Use case
 ^^^^^^^^

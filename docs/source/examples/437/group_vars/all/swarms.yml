@@ -1,0 +1,14 @@
+swarms:
+  nginx_cluster:
+    count: 3
+    class: [nginx]
+    template: ansible-nginx
+    properties:
+      notes: class=nginx
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+  notes: vmm={{ inventory_hostname }}

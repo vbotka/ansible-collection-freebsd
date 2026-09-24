@@ -3,19 +3,26 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 - name: Create clones from template
-  register: out_create
+  register: out_clone
   vars:
-    _notes: |-
-      {{ [properties.notes | d(''), item.value.properties.notes | d('')]
-         | select
-         | join(' ') }}
-    _target: [notes]
-    _properties_combined: |
-      {{ [properties | d({}), item.value.properties | d({})]
-         | community.general.remove_keys(target=_target)
+    _notes_source:
+      - "{{ properties.notes | d('') }}"
+      - "{{ item.value.properties.notes | d('') }}"
+    _notes: "{{ _notes_source | select | join(' ') }}"
+
+    _properties_source:
+      - "{{ properties | d({}) }}"
+      - "{{ item.value.properties | d({}) }}"
+    _properties_combined: >-
+      {{ _properties_source
+         | community.general.remove_keys(target=['notes'])
          | select
          | combine(recursive=true) }}
-    _properties: "{{ [_properties_combined, {'notes': _notes}] | combine }}"
+    _properties: >-
+      {% for k, v in _properties_combined.items() %}
+      {{ k }}={{ v }}
+      {% endfor %}
+      notes="{{ _notes }}"
   vbotka.freebsd.iocage:
     state: cloned
     clone_from: "{{ item.value.clone_from }}"
@@ -28,18 +35,25 @@
 - name: "Debug clones from template debug2={{ debug2 }}"
   when: debug2 | bool
   ansible.builtin.debug:
-    var: out_create
+    var: out_clone
 
 - name: Set iocage_jails
   ansible.builtin.set_fact:
     iocage_jails: "{{ ansible_facts.iocage_jails }}"
 
 - name: Start clones
-  when: _jails | length > 0
-  changed_when: false
   vars:
-    _jails: "{{ start | difference(_started) }}"
+    iocage_jails_started: "{{ iocage_jails
+                              | dict2items
+                              | selectattr('value.state', 'eq', 'up')
+                              | map(attribute='key')
+                              | list }}"
+    _jails: "{{ iocage_jails | difference(iocage_jails_started) | list }}"
+  changed_when: false
   register: out_start
+  when:
+    - not dry_run | bool
+    - _jails | length > 0
   ansible.builtin.command:
     cmd: >
       iocage start
@@ -49,9 +63,3 @@
   when: debug2 | bool
   ansible.builtin.debug:
     var: out_start
-
-# Note
-#
-# The string _notes is not quoted (compare with swarm.yml) because the module vbotka.freebsd.iocage
-# quotes the properties values. See the function _props_to_str in
-# https://github.com/vbotka/ansible-collection-freebsd/blob/master/plugins/modules/iocage.py

@@ -1,0 +1,30 @@
+
+PLAY [Configure Nginx servers.] ************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [6eaa034d]
+ok: [35bd4e0e]
+ok: [2094129b]
+
+TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
+ok: [2094129b] => (item=/usr/local/etc/nginx/nginx.conf)
+ok: [6eaa034d] => (item=/usr/local/etc/nginx/nginx.conf)
+ok: [35bd4e0e] => (item=/usr/local/etc/nginx/nginx.conf)
+
+TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
+ok: [35bd4e0e]
+ok: [2094129b]
+ok: [6eaa034d]
+
+PLAY [Create index.html] *******************************************************
+
+TASK [template] ****************************************************************
+ok: [6eaa034d]
+ok: [2094129b]
+ok: [35bd4e0e]
+
+PLAY RECAP *********************************************************************
+2094129b                   : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+35bd4e0e                   : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+6eaa034d                   : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

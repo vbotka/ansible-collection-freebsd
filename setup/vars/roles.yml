@@ -65,7 +65,7 @@ bsd_roles:
     name: haproxy
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-haproxy
-    version: 1.0.0
+    version: 1.0.1
   - galaxy: vbotka.freebsd_iocage
     name: iocage
     scm: git

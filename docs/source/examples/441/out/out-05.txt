@@ -2,52 +2,52 @@
 PLAY [Test the SSH redirection to the jails.] **********************************
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [0b152d76] => 
+ok: [4898b3bd] => 
     msg: |-
         ansible_connection: ssh
         ansible_host: iocage_06
-        ansible_port: 2268
+        ansible_port: 2281
         ansible_user: admin
 
-        iocage_ip4: 172.16.99.168
+        iocage_ip4: 172.16.99.181
         iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [9b33de6e] => 
+ok: [7d78360d] => 
     msg: |-
         ansible_connection: ssh
         ansible_host: iocage_06
-        ansible_port: 2272
+        ansible_port: 2282
         ansible_user: admin
 
-        iocage_ip4: 172.16.99.172
+        iocage_ip4: 172.16.99.182
         iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [cb4d5365] => 
+ok: [e47eeab9] => 
     msg: |-
         ansible_connection: ssh
         ansible_host: iocage_06
-        ansible_port: 2246
+        ansible_port: 2279
         ansible_user: admin
 
-        iocage_ip4: 172.16.99.146
+        iocage_ip4: 172.16.99.179
         iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
 
 TASK [ansible.builtin.command] *************************************************
-changed: [cb4d5365]
-changed: [0b152d76]
-changed: [9b33de6e]
+changed: [7d78360d]
+changed: [4898b3bd]
+changed: [e47eeab9]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [9b33de6e] => 
-    out.stdout: FreeBSD 9b33de6e 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [7d78360d] => 
+    out.stdout: FreeBSD 7d78360d 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
-ok: [0b152d76] => 
-    out.stdout: FreeBSD 0b152d76 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [4898b3bd] => 
+    out.stdout: FreeBSD 4898b3bd 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
-ok: [cb4d5365] => 
-    out.stdout: FreeBSD cb4d5365 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [e47eeab9] => 
+    out.stdout: FreeBSD e47eeab9 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
 
 PLAY RECAP *********************************************************************
-0b152d76                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-9b33de6e                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-cb4d5365                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+4898b3bd                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+7d78360d                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e47eeab9                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

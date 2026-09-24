@@ -4,33 +4,39 @@
 
 - name: Create swarms
   vars:
-    _notes: |-
-      "{{ [properties.notes | d(''), item.value.properties.notes | d(''), 'swarm=' ~ item.key]
-          | select
-          | join(' ') }}"
-    _target: [notes]
-    _properties_combined: |
-      {{ [properties | d({}), item.value.properties | d({})]
-         | community.general.remove_keys(target=_target)
+
+    _notes_source:
+      - "{{ properties.notes | d('') }}"
+      - "{{ item.value.properties.notes | d('') }}"
+      - "swarm={{ item.key }}"
+    _notes: "{{ _notes_source | select | join(' ') }}"
+
+    _properties_source:
+      - "{{ properties | d({}) }}"
+      - "{{ item.value.properties | d({}) }}"
+    _properties_combined: >-
+      {{ _properties_source
+         | community.general.remove_keys(target=['notes'])
          | select
          | combine(recursive=true) }}
     _properties: >-
       {% for k, v in _properties_combined.items() %}
       {{ k }}={{ v }}
       {% endfor %}
-      notes={{ _notes }}
-    _query: |
+      notes="{{ _notes }}"
+
+    _query: >-
       [?value.swarm==`{{ item.key }}`].key
-    _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
-    cmd_create_from_template: >
+    _count: "{{ item.value.count - iocage_jails_tags | dict2items | community.general.json_query(_query) | length }}"
+    cmd_create_from_template: >-
       iocage create
       --short
-      --template {{ item.value.template }}
+      --template {{ item.value.template | d('void') }}
       --count {{ _count }}
       {{ _properties }}
-    cmd_clone_from_plugin: >
+    cmd_clone_from_plugin: >-
       iocage clone
-      {{ item.value.plugin }}
+      {{ item.value.plugin | d('void') }}
       --newmac
       --count {{ _count }}
       {{ _properties }}
@@ -43,24 +49,74 @@
 
   block:
 
-    - name: Get iocage facts
-      vbotka.freebsd.iocage:
+    - name: Get iocage_jails from module.
+      when: "iocage_jails_source == 'module'"
+      block:
 
-    - name: Reject jails with empty notes
-      ansible.builtin.set_fact:
-        iocage_jails: "{{ ansible_facts.iocage_jails
-                          | dict2items
-                          | rejectattr('value.properties.notes', 'equalto', 'none')
-                          | items2dict }}"
+        - name: Query iocage module.
+          vbotka.freebsd.iocage:
 
-    - name: "Debug iocage_jails and _tags debug2={{ debug2 }}"
+        - name: Reject jails with empty notes.
+          ansible.builtin.set_fact:
+            iocage_jails: "{{ ansible_facts.iocage_jails
+                              | dict2items
+                              | rejectattr('value.properties.notes', 'equalto', 'none')
+                              | items2dict }}"
+
+        - name: Create iocage_jails_tags
+          vars:
+            _keys: "{{ iocage_jails.keys() | list }}"
+            _vals: "{{ iocage_jails | dict2items
+                                    | map(attribute='value.properties.notes')
+                                    | map('split')
+                                    | map('map', 'split', '=')
+                                    | map('community.general.dict') }}"
+          ansible.builtin.set_fact:
+            iocage_jails_tags: "{{ dict(_keys | zip(_vals)) }}"
+
+    - name: Get iocage_jails from inventory.
+      when: "iocage_jails_source == 'inventory'"
+      block:
+
+        - name: Query inventory plugin.
+          delegate_to: localhost
+          changed_when: false
+          register: out
+          ansible.builtin.command:
+            cmd: "ansible-inventory -i {{ iocage_jails_inventory_conf }} --list --export"
+
+        - name: Reject jails without iocage_tags
+          ansible.builtin.set_fact:
+            iocage_jails: "{{ (out.stdout
+                              | from_yaml
+                              | vbotka.freebsd.clean_unsafe)._meta.hostvars
+                              | dict2items
+                              | rejectattr('value.iocage_tags', 'undefined')
+                              | items2dict }}"
+
+        - name: Create iocage_jails_tags
+          vars:
+            _keys: "{{ iocage_jails.keys() | list }}"
+            _vals: "{{ iocage_jails | dict2items
+                                    | map(attribute='value.iocage_tags') }}"
+          ansible.builtin.set_fact:
+            iocage_jails_tags: "{{ dict(_keys | zip(_vals)) }}"
+
+    - name: "Debug iocage_jails and iocage_jails_tags debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: |
+          iocage_jails:      {{ iocage_jails.keys() | list | sort }}
+          iocage_jails_tags: {{ iocage_jails_tags.keys() | list | sort }}
+
+    - name: "Debug iocage_jails and iocage_jails_tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         msg: |
           iocage_jails:
             {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
-          _tags:
-            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+          iocage_jails_tags:
+            {{ iocage_jails_tags | to_nice_yaml(indent=2) | indent(2) }}
 
     - name: "Debug cmd_create debug={{ debug }}"
       when: debug | bool
@@ -90,32 +146,93 @@
 - name: Start swarms
   vars:
     _query: '[?value.swarm==`{{ item.key }}`].key'
-    _jails: "{{ _tags | dict2items | community.general.json_query(_query) | difference(_started) }}"
+    _jails: "{{ iocage_jails_tags | dict2items | community.general.json_query(_query) | difference(iocage_jails_started) }}"
     cmd_start: >
       iocage start
       {{ _jails | join(' ') }}
 
   block:
 
-    - name: Get iocage facts
-      vbotka.freebsd.iocage:
+    - name: Get iocage_jails from module.
+      when: "iocage_jails_source == 'module'"
+      block:
 
-    - name: Reject jails with empty notes
-      ansible.builtin.set_fact:
-        iocage_jails: "{{ ansible_facts.iocage_jails
-                          | dict2items
-                          | rejectattr('value.properties.notes', 'equalto', 'none')
-                          | items2dict }}"
+        - name: Query iocage module.
+          vbotka.freebsd.iocage:
 
-    - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
+        - name: Reject jails with empty notes.
+          ansible.builtin.set_fact:
+            iocage_jails: "{{ ansible_facts.iocage_jails
+                              | dict2items
+                              | rejectattr('value.properties.notes', 'equalto', 'none')
+                              | items2dict }}"
+
+        - name: Create iocage_jails_tags and iocage_jails_started
+          vars:
+            _keys: "{{ iocage_jails.keys() | list }}"
+            _vals: "{{ iocage_jails | dict2items
+                                    | map(attribute='value.properties.notes')
+                                    | map('split')
+                                    | map('map', 'split', '=')
+                                    | map('community.general.dict') }}"
+          ansible.builtin.set_fact:
+            iocage_jails_tags: "{{ dict(_keys | zip(_vals)) }}"
+            iocage_jails_started: "{{ iocage_jails
+                                      | dict2items
+                                      | selectattr('value.state', 'eq', 'up')
+                                      | map(attribute='key')
+                                      | list }}"
+
+    - name: Get iocage_jails from inventory.
+      when: "iocage_jails_source == 'inventory'"
+      block:
+
+        - name: Query inventory plugin.
+          delegate_to: localhost
+          changed_when: false
+          register: out
+          ansible.builtin.command:
+            cmd: "ansible-inventory -i {{ iocage_jails_inventory_conf }} --list --export"
+
+        - name: Reject jails without iocage_tags
+          ansible.builtin.set_fact:
+            iocage_jails: "{{ (out.stdout
+                              | from_yaml
+                              | vbotka.freebsd.clean_unsafe)._meta.hostvars
+                              | dict2items
+                              | rejectattr('value.iocage_tags', 'undefined')
+                              | items2dict }}"
+
+        - name: Create iocage_jails_tags and iocage_jails_started
+          vars:
+            _keys: "{{ iocage_jails.keys() | list }}"
+            _vals: "{{ iocage_jails | dict2items
+                                    | map(attribute='value.iocage_tags') }}"
+          ansible.builtin.set_fact:
+            iocage_jails_tags: "{{ dict(_keys | zip(_vals)) }}"
+            iocage_jails_started: "{{ iocage_jails
+                                      | dict2items
+                                      | selectattr('value.iocage_state', 'eq', 'up')
+                                      | map(attribute='key')
+                                      | list }}"
+
+    - name: "Debug iocage_jails and iocage_jails_tags debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: |
+          iocage_jails:         {{ iocage_jails.keys() | list | sort }}
+          iocage_jails_tags:    {{ iocage_jails_tags.keys() | list | sort }}
+          iocage_jails_started: {{ iocage_jails_started | sort }}
+
+    - name: "Debug iocage_jails, _started, and iocage_jails_tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         msg: |
           iocage_jails:
             {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
-          _started: {{ _started }}
-          _tags:
-            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+          iocage_jails_started: {{ iocage_jails_started }}
+          iocage_jails_tags:
+            {{ iocage_jails_tags | to_nice_yaml(indent=2) | indent(2) }}
 
     - name: "Debug cmd_start debug={{ debug }}"
       when: debug | bool

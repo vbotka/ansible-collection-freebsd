@@ -1,0 +1,7 @@
+nginx_cluster: 2094129b (172.16.99.153)
+nginx_cluster: 35bd4e0e (172.16.99.111)
+nginx_cluster: 6eaa034d (172.16.99.138)
+nginx_cluster: 2094129b (172.16.99.153)
+nginx_cluster: 35bd4e0e (172.16.99.111)
+nginx_cluster: 6eaa034d (172.16.99.138)
+nginx_cluster: 2094129b (172.16.99.153)

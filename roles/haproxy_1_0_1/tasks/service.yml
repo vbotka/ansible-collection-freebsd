@@ -23,5 +23,24 @@
     value: "{{ item.value }}"
   loop: "{{ haproxy_rcconf | dict2items }}"
 
+- name: Start HAProxy when enabled and not running.
+  when:
+    - haproxy_enable | bool
+    - haproxy_start | bool
+
+  block:
+
+    - name: "Service: Get haproxy status."
+      register: out
+      vbotka.freebsd.service:
+        script: "{{ haproxy_service }}"
+        command: status
+
+    - name: "Service: Start haproxy."
+      when: "out.status != 'running'"
+      vbotka.freebsd.service:
+        script: "{{ haproxy_service }}"
+        command: start
+
 # EOF
 ...

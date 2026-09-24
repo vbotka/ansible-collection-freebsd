@@ -1,0 +1,26 @@
+@all:
+  |--@ungrouped:
+  |--@nginx:
+  |  |--2094129b
+  |  |--6eaa034d
+  |  |--35bd4e0e
+  |--@state_up:
+  |  |--2094129b
+  |  |--6eaa034d
+  |  |--35bd4e0e
+  |  |--repos
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--log_server_01
+  |--@vmm_iocage_06:
+  |  |--2094129b
+  |  |--6eaa034d
+  |  |--35bd4e0e
+  |  |--repos
+  |  |--repos_devel
+  |  |--pkg_repo
+  |  |--log_server_01
+  |--@swarm_nginx_cluster:
+  |  |--2094129b
+  |  |--6eaa034d
+  |  |--35bd4e0e

@@ -1,13 +1,28 @@
 
 PLAY [Install packages.] *******************************************************
 
+TASK [Create dir /usr/local/etc/pkg/repos] *************************************
+changed: [5efe65c2]
+changed: [a9bd7ebe]
+changed: [cfd9efa4]
+
+TASK [Configure local repo.] ***************************************************
+changed: [cfd9efa4]
+changed: [5efe65c2]
+changed: [a9bd7ebe]
+
+TASK [Update pkg.] *************************************************************
+changed: [5efe65c2]
+changed: [a9bd7ebe]
+changed: [cfd9efa4]
+
 TASK [Install rsnapshot packages.] *********************************************
-changed: [ece6bfb3 -> iocage_06]
-changed: [f8c0e347 -> iocage_06]
-changed: [cf6aac80 -> iocage_06]
+changed: [5efe65c2 -> iocage_06]
+changed: [a9bd7ebe -> iocage_06]
+changed: [cfd9efa4 -> iocage_06]
 
 PLAY RECAP *********************************************************************
-cf6aac80                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-ece6bfb3                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-f8c0e347                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+5efe65c2                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+a9bd7ebe                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+cfd9efa4                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

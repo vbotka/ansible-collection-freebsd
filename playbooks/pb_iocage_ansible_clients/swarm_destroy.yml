@@ -5,8 +5,8 @@
 - name: Stop and destroy swarms
   vars:
     _query: '[?value.swarm==`{{ item.key }}`].key'
-    _swarm_exist: "{{ _tags | dict2items | community.general.json_query(_query) }}"
-    _jails_started: "{{ _swarm_exist | intersect(_started) }}"
+    _swarm_exist: "{{ iocage_jails_tags | dict2items | community.general.json_query(_query) }}"
+    _jails_started: "{{ _swarm_exist | intersect(iocage_jails_started) }}"
     cmd_stop: "iocage stop {{ _jails_started | join(' ') }}"
     cmd_destroy: "iocage destroy --force {{ _swarm_exist | join(' ') }}"
 
@@ -15,15 +15,31 @@
     - name: Get iocage facts
       vbotka.freebsd.iocage:
 
+    - name: Create iocage_jails_tags and iocage_jails_started
+      vars:
+        _keys: "{{ iocage_jails.keys() | list }}"
+        _vals: "{{ iocage_jails | dict2items
+                                | map(attribute='value.properties.notes')
+                                | map('split')
+                                | map('map', 'split', '=')
+                                | map('community.general.dict') }}"
+      ansible.builtin.set_fact:
+        iocage_jails_tags: "{{ dict(_keys | zip(_vals)) }}"
+        iocage_jails_started: "{{ iocage_jails
+                                  | dict2items
+                                  | selectattr('value.state', 'eq', 'up')
+                                  | map(attribute='key')
+                                  | list }}"
+
     - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
       when: debug2 | bool
       ansible.builtin.debug:
         msg: |
           iocage_jails:
             {{ iocage_jails | to_nice_yaml(indent=2) | indent(2) }}
-          _started: {{ _started }}
-          _tags:
-            {{ _tags | to_nice_yaml(indent=2) | indent(2) }}
+          iocage_jails_started: {{ iocage_jails_started }}
+          iocage_jails_tags:
+            {{ iocage_jails_tags | to_nice_yaml(indent=2) | indent(2) }}
 
     - name: "Debug cmd_stop debug={{ debug }}"
       when: debug | bool

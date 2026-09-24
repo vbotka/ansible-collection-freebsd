@@ -16,9 +16,9 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-nginx`` to create jails. Use the role
-`vbotka.freebsd.haproxy`_ to configure and run `HAProxy`_ to loadbalance the
-Nginx cluster.
+Use the `iocage`_ template ``ansible-nginx`` to create jails in the project. Use
+the role `vbotka.freebsd.haproxy`_ to configure and run `HAProxy`_ to
+loadbalance the Nginx cluster.
 
 Tree
 ^^^^

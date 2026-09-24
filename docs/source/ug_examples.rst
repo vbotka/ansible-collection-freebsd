@@ -97,6 +97,7 @@ Examples
    430 Configure Apache server SSL <examples/430/example.rst>
    435 Configure Nginx server <examples/435/example.rst>
    436 Configure HAProxy loadbalancer <examples/436/example.rst>
+   437 Configure HAProxy (swarm) <examples/437/example.rst>
    examples/440/example.rst
    examples/441/example.rst
    examples/442/example.rst

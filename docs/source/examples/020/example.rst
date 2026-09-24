@@ -60,10 +60,10 @@ Synopsis
 
 * On a managed node:
 
-  * Create jails using a template and the ``--count`` option
+  * Create jails using a template ``ansible-client`` and the ``--count`` option
 
-  * For each jail, set the property ``notes`` in the format
-    ``tag1=val1 tag2=val2 ...``
+  * For each jail, set the property ``notes`` in the format ``tag1=val1
+    tag2=val2 ...``
 
   * Put the inventory alias into the tag ``alias=<alias>``
 

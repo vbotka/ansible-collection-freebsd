@@ -1,24 +1,30 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Get iocage facts] ********************************************************
+TASK [Query iocage module.] ****************************************************
 ok: [iocage_06]
 
-TASK [Reject jails with empty notes] *******************************************
+TASK [Reject jails with empty notes.] ******************************************
+ok: [iocage_06]
+
+TASK [Create iocage_jails_tags] ************************************************
 ok: [iocage_06]
 
 TASK [Create swarms] ***********************************************************
 ok: [iocage_06] => (item=sw_01)
 
-TASK [Get iocage facts] ********************************************************
+TASK [Query iocage module.] ****************************************************
 ok: [iocage_06]
 
-TASK [Reject jails with empty notes] *******************************************
+TASK [Reject jails with empty notes.] ******************************************
+ok: [iocage_06]
+
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
 ok: [iocage_06]
 
 TASK [Start swarms] ************************************************************
 ok: [iocage_06] => (item=sw_01)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+iocage_06                  : ok=8    changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
 

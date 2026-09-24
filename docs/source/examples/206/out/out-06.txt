@@ -1,12 +1,21 @@
 
-PLAY [swarm_sw_01] *************************************************************
+PLAY [Display jails in the swarm.] *********************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [df0394cb]
 changed: [test_161]
-changed: [283d850f]
+changed: [a677d4ec]
+changed: [b1250589]
 
 TASK [ansible.builtin.debug] ***************************************************
+ok: [a677d4ec] => 
+    msg: |-
+        out.stdout: a677d4ec
+        ansible_host: a677d4ec
+        iocage_hooks: ['172.16.99.156']
+        iocage_ip4: 172.16.99.156
+        iocage_tags:
+          swarm: sw_01
+          vmm: iocage_06
 ok: [test_161] => 
     msg: |-
         out.stdout: test-161
@@ -17,27 +26,18 @@ ok: [test_161] =>
           alias: test_161
           swarm: sw_01
           vmm: iocage_06
-ok: [283d850f] => 
+ok: [b1250589] => 
     msg: |-
-        out.stdout: 283d850f
-        ansible_host: 283d850f
-        iocage_hooks: ['172.16.99.183']
-        iocage_ip4: 172.16.99.183
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_06
-ok: [df0394cb] => 
-    msg: |-
-        out.stdout: df0394cb
-        ansible_host: df0394cb
-        iocage_hooks: ['172.16.99.182']
-        iocage_ip4: 172.16.99.182
+        out.stdout: b1250589
+        ansible_host: b1250589
+        iocage_hooks: ['172.16.99.157']
+        iocage_ip4: 172.16.99.157
         iocage_tags:
           swarm: sw_01
           vmm: iocage_06
 
 PLAY RECAP *********************************************************************
-283d850f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-df0394cb                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+a677d4ec                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+b1250589                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

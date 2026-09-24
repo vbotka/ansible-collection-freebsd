@@ -28,6 +28,7 @@
       haproxy_packages:
         {{ haproxy_packages | to_yaml(indent=2) | indent(2) }}
       haproxy_enable: {{ haproxy_enable }}
+      haproxy_start: {{ haproxy_start }}
       haproxy_service: {{ haproxy_service }}
       haproxy_backup_conf: {{ haproxy_backup_conf }}
 
