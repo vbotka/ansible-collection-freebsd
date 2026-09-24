@@ -3,10 +3,6 @@
   hosts: iocage
   environment: "{{ iocage_env | d({}) }}"
 
-  vars:
-
-    debug: false
-
   tasks:
 
     - name: Create swarms.
@@ -21,7 +17,7 @@
       loop: "{{ swarms | dict2items }}"
 
     - name: Debug iocage create.
-      when: debug | bool
+      when: debug | d(false) | bool
       ansible.builtin.debug:
         var: out_swarms
 
@@ -45,6 +41,6 @@
         label: "{{ jail_name }} {{ iocage_tags }}"
 
     - name: Debug create tags.
-      when: debug | bool
+      when: debug | d(false) | bool
       ansible.builtin.debug:
         var: out_tags

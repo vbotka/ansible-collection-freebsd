@@ -10,5 +10,5 @@ changed: [iocage_06] => (item=www_prod)
 changed: [iocage_06] => (item=www_devel)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

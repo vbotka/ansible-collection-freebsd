@@ -10,13 +10,13 @@
 # Create templates
 # (cd ../202 && ansible-playbook -i iocage.ini --flush-cache vbotka.freebsd.pb_iocage_template.yml) 
 
-# Status of templates
+# Templates
 ssh admin@iocage_06 sudo iocage list -lt | tee out/out-01.txt
 
 # Create jails
 ansible-playbook -i iocage.ini --flush-cache pb-iocage-swarms-create.yml | tee out/out-03.txt
 
-# Status of jails
+# Jails
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-04.txt
 
 # Test

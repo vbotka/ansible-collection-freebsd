@@ -2,34 +2,40 @@
   hosts: iocage
   environment: "{{ iocage_env | d({}) }}"
 
-  vars:
-
-    debug: false
-
   tasks:
 
     - name: Stop and destroy swarms.
       vars:
         group: "swarm_{{ item }}"
-        uuids: "{{ groups[group] | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
+        uuids: "{{ groups[group] | d([])
+                   | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
       block:
 
+        - name: Display commands.
+          when: debug | d(false) | bool
+          register: out
+          ansible.builtin.debug:
+             msg: "iocage stop {{ uuids | join(' ') }}"
+          loop: "{{ swarms.keys() | list }}"
+
         - name: Stop swarms.
+          when: uuids | length > 0
           register: out
           ansible.builtin.command: "iocage stop {{ uuids | join(' ') }}"
-          loop: "{{ swarms.keys() }}"
+          loop: "{{ swarms.keys() | list }}"
 
         - name: Debug stop swarms.
-          when: debug | bool
+          when: debug | d(false) | bool
           ansible.builtin.debug:
             var: out
 
         - name: Destroy swarms.
+          when: uuids | length > 0
           register: out
           ansible.builtin.command: "iocage destroy -f {{ uuids | join(' ') }}"
-          loop: "{{ swarms.keys() }}"
+          loop: "{{ swarms.keys() | list }}"
 
         - name: Debug destroy swarms.
-          when: debug | bool
+          when: debug | d(false) | bool
           ansible.builtin.debug:
             var: out
