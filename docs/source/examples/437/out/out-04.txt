@@ -2,29 +2,39 @@
 PLAY [Configure Nginx servers.] ************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [6eaa034d]
-ok: [35bd4e0e]
-ok: [2094129b]
+ok: [3d3abc6a]
+ok: [437ac0dd]
+ok: [cb8e4bdb]
 
 TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-ok: [2094129b] => (item=/usr/local/etc/nginx/nginx.conf)
-ok: [6eaa034d] => (item=/usr/local/etc/nginx/nginx.conf)
-ok: [35bd4e0e] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [437ac0dd] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [cb8e4bdb] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [3d3abc6a] => (item=/usr/local/etc/nginx/nginx.conf)
 
 TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-ok: [35bd4e0e]
-ok: [2094129b]
-ok: [6eaa034d]
+changed: [437ac0dd]
+changed: [3d3abc6a]
+changed: [cb8e4bdb]
+
+RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
+changed: [3d3abc6a]
+changed: [437ac0dd]
+changed: [cb8e4bdb]
+
+RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
+ok: [3d3abc6a]
+ok: [cb8e4bdb]
+ok: [437ac0dd]
 
 PLAY [Create index.html] *******************************************************
 
 TASK [template] ****************************************************************
-ok: [6eaa034d]
-ok: [2094129b]
-ok: [35bd4e0e]
+changed: [437ac0dd]
+changed: [cb8e4bdb]
+changed: [3d3abc6a]
 
 PLAY RECAP *********************************************************************
-2094129b                   : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-35bd4e0e                   : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-6eaa034d                   : ok=4    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+3d3abc6a                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+437ac0dd                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+cb8e4bdb                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

@@ -38,6 +38,9 @@ ssh admin@iocage_06 'bash -s' < test-haproxy.sh | tee out/out-06.txt
 ssh admin@iocage_06 sudo service haproxy stop
 ssh admin@iocage_06 sudo service haproxy status
 
+# Destroy swarms
+ansible-playbook -i iocage.ini -t swarm_destroy -e swarm_destroy=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-07.txt
+
 # Start Nginx. Port 80 conflict with HAProxy
 ssh admin@iocage_06 sudo service nginx start
 ssh admin@iocage_06 sudo service nginx status

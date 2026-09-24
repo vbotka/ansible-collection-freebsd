@@ -12,24 +12,8 @@
 
   block:
 
-    - name: Get iocage facts
-      vbotka.freebsd.iocage:
-
-    - name: Create iocage_jails_tags and iocage_jails_started
-      vars:
-        _keys: "{{ iocage_jails.keys() | list }}"
-        _vals: "{{ iocage_jails | dict2items
-                                | map(attribute='value.properties.notes')
-                                | map('split')
-                                | map('map', 'split', '=')
-                                | map('community.general.dict') }}"
-      ansible.builtin.set_fact:
-        iocage_jails_tags: "{{ dict(_keys | zip(_vals)) }}"
-        iocage_jails_started: "{{ iocage_jails
-                                  | dict2items
-                                  | selectattr('value.state', 'eq', 'up')
-                                  | map(attribute='key')
-                                  | list }}"
+    - name: Get inventory.
+      ansible.builtin.import_tasks: get_inventory.yml
 
     - name: "Debug iocage_jails, _started, and _tags debug2={{ debug2 }}"
       when: debug2 | bool

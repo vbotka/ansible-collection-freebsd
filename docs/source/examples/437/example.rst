@@ -16,9 +16,10 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-nginx`` to create jails in ``swarm``. Use
-the role `vbotka.freebsd.haproxy`_ to configure and run `HAProxy`_ to
-loadbalance the Nginx cluster.
+Use the `iocage`_ template ``ansible-nginx`` to create jails in ``swarm``.  Use
+the role `vbotka.freebsd.nginx`_ to configure and run `Nginx`_ servers. Use the
+role `vbotka.freebsd.haproxy`_ to configure and run `HAProxy`_ to loadbalance
+the `Nginx`_ cluster.
 
 Tree
 ^^^^
@@ -53,6 +54,9 @@ Synopsis
 
   * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create jails in a swarm
     from the template.
+
+  * Use the role `vbotka.freebsd.haproxy`_ to configure and run the `HAProxy`_
+    loadbalancer.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
   configure the Nginx cluster.

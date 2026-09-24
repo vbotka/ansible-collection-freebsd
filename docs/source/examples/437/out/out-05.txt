@@ -5,7 +5,7 @@ TASK [Gathering Facts] *********************************************************
 ok: [iocage_06]
 
 TASK [vbotka.freebsd_haproxy : Conf: Configure HAProxy.] ***********************
-ok: [iocage_06]
+changed: [iocage_06]
 
 TASK [vbotka.freebsd_haproxy : Service: Enable and Start HAProxy.] *************
 ok: [iocage_06]
@@ -16,6 +16,9 @@ ok: [iocage_06]
 TASK [vbotka.freebsd_haproxy : Service: Start haproxy.] ************************
 changed: [iocage_06]
 
+RUNNING HANDLER [vbotka.freebsd_haproxy : Reload haproxy] **********************
+changed: [iocage_06]
+
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=5    changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 
