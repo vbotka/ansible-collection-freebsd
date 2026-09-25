@@ -7,8 +7,6 @@ Playbooks
    :maxdepth: 1
 
    playbooks/pb-iocage-ansible-clients.rst
-   playbooks/pb-iocage-plugins.rst
-   playbooks/pb-iocage-project-create-from-plugins.rst
    playbooks/pb-iocage-project-create-from-templates.rst
    playbooks/pb-iocage-project-create.rst
    playbooks/pb-iocage-project-destroy.rst
@@ -30,6 +28,15 @@ Other playbooks
 * pb_install_repos_from_git.yml
 * pb_preamble.yml
 * pb_synchronize_csv.yml
+
+(Obsolete playbooks)
+^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   playbooks/pb-iocage-plugins.rst
+   playbooks/pb-iocage-project-create-from-plugins.rst
 
 .. seealso::
 

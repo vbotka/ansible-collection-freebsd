@@ -35,9 +35,9 @@ The collection is shipped with:
    * All collections listed in the above **Requirements** are included
      in the standard `Ansible distribution`_.
 
-   * The roles may require other collections and/or roles not listed
-     here. See each role's *requirements.yml* file and install the
-     missing collections and/or roles manually when needed.
+   * The roles may require other collections and/or roles not listed here. See
+     each role's *requirements.yml* file and install the missing collections
+     and/or roles manually when needed.
 
 .. hint::
 
@@ -48,13 +48,12 @@ The collection is shipped with:
 
 .. important::
 
-   * `Ansible claims`_:
+   `Ansible claims`_:
 
-     .. code-block:: text
+   .. code-block:: text
 
-         BSD support is important to us at Ansible. ... we have an
-         active BSD community and strive to be as BSD-friendly as
-         possible.
+       BSD support is important to us at Ansible. ... we have an active BSD
+       community and strive to be as BSD-friendly as possible.
 
-     Search the `official Ansible documentation`_ for the current
-     status of FreeBSD support.
+   Search the `official Ansible documentation`_ for the current status of
+   FreeBSD support.
