@@ -68,8 +68,8 @@ Playbook pb-test-to-ucl.yml
    :language: yaml+jinja
    :emphasize-lines: 7-15,20
 
-Playbook output - Test filter to_ucl
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test to_ucl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -86,8 +86,8 @@ Playbook pb-test-from-ucl.yml
    :language: yaml+jinja
    :emphasize-lines: 7-16,22
 
-Playbook output - Test filter from_ucl
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test from_ucl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

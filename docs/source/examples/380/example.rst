@@ -164,8 +164,8 @@ Playbook output - Umount image
    :language: yaml+jinja
    :force:
 
-Playbook output - Mount, customize, and umount image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Customize image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The play is not idempotent when the image is unmounted. The default is
 ``cimage_umount=true``. In this case, at least three tasks report

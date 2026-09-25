@@ -121,8 +121,8 @@ Playbook output - Display versions
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
 
-Playbook output - Create custom fact scripts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

@@ -230,8 +230,8 @@ Install the package if you are running this play for the first time.
    :language: yaml+jinja
    :force:
 
-Test the Log Server
-^^^^^^^^^^^^^^^^^^^
+Test Log Server
+^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

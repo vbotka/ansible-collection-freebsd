@@ -68,8 +68,8 @@ Playbook pb-vars-properties.yml
 .. literalinclude:: pb-vars-properties.yml
    :language: yaml+jinja
 
-Playbook output - Display iocage_properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - iocage_properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

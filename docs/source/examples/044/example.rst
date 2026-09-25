@@ -73,8 +73,8 @@ Playbook pb-ast-to-haproxy.yml
 .. literalinclude:: pb-ast-to-haproxy.yml
    :language: yaml+jinja
 
-Playbook output - Test filter ast_to_haproxy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test ast_to_haproxy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

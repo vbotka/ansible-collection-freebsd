@@ -181,8 +181,8 @@ Playbook pb-all.yml
 .. literalinclude:: pb-all.yml
    :language: yaml+jinja
 
-Playbook output - Display variables and groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -208,8 +208,8 @@ Playbook pb-ansible-client.yml
 .. literalinclude:: pb-ansible-client.yml
    :language: yaml+jinja
 
-Playbook output - Display iocage_tags and group_names
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - group_names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

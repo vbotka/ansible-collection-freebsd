@@ -123,8 +123,8 @@ Playbook pb-test-01.yml
 .. literalinclude:: pb-test-01.yml
    :language: yaml+jinja
 
-Playbook output - Display sshd rcvar in jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - sshd rcvar in jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The key and value of ``rcvar`` are returned in 1) the attribute ``rcvar`` of the
 registered variable ``out.rcvar`` and in 2) ``stdout``. Usually, you will use
@@ -162,8 +162,8 @@ Playbook pb-test-03.yml
 .. literalinclude:: pb-test-03.yml
    :language: yaml+jinja
 
-Playbook output - Display enabled services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Enabled services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -196,8 +196,8 @@ Playbook pb-test-05.yml
 .. literalinclude:: pb-test-05.yml
    :language: yaml+jinja
 
-Playbook output - Display sshd commands synopsis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display sshd synopsis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

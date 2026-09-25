@@ -210,8 +210,8 @@ pkg_list`` task.
 
    Optionally, do not display ``OK`` hosts. See `display_ok_hosts`_.
 
-Playbook output - Audit installed packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Audit packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

@@ -134,8 +134,8 @@ templates
    :language: jinja
    :caption:
 
-Playbook output - Create project jails from iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create project jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -172,8 +172,8 @@ Playbook pb-nginx.yml
 .. literalinclude:: pb-nginx.yml
    :language: yaml+jinja
 
-Playbook output - Configure Nginx servers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure Nginx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

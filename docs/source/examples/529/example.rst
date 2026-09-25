@@ -126,8 +126,8 @@ Playbook pb-iocage-template.yml
 .. literalinclude:: pb-iocage-template.yml
    :language: yaml+jinja
 
-Playbook output - Create iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

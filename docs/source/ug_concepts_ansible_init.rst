@@ -7,6 +7,8 @@ Service ansible_init
 .. index:: single: service ansible_init; Service ansible_init
 .. index:: single: ansible-conf-init-example; Service ansible_init
 .. index:: single: ansible-conf-test; Service ansible_init
+.. index:: single: repo ansible-conf-init-example; Service ansible_init
+.. index:: single: repo ansible-conf-test; Service ansible_init
 
 .. index:: single: ansible_pull; Service ansible_init
 .. index:: single: firstboot; Service ansible_init

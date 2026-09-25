@@ -189,8 +189,8 @@ group_vars
    :language: yaml+jinja
    :caption:
 
-Playbook output - Create and start swarms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

@@ -172,8 +172,8 @@ host_vars
    address of the bridge. pf must provide NAT and redirection. See
    :ref:`example_440`.
 
-Playbook output - Create and start swarms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

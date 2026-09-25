@@ -65,8 +65,8 @@ Playbook pb-vars-all.yml
 .. literalinclude:: pb-vars-all.yml
    :language: yaml+jinja
 
-Playbook output - Display iocage_* variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - iocage_* variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

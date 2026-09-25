@@ -18,10 +18,10 @@
 .. index:: single: enabled_plugins; Example 521
 
 .. index:: single: ansible-pull; Example 521
-.. index:: single: ansible-pull repo ansible-conf-syslogng-server; Example 521
-.. index:: single: ansible-pull repo ansible-conf-syslogng-client; Example 521
 .. index:: single: ansible-conf-syslogng-server; Example 521
 .. index:: single: ansible-conf-syslogng-client; Example 521
+.. index:: single: repo ansible-conf-syslogng-server; Example 521
+.. index:: single: repo ansible-conf-syslogng-client; Example 521
 
 .. index:: single: iocage plugins; Example 521
 .. index:: single: iocage plugin ansible-pull-syslogng-server; Example 521

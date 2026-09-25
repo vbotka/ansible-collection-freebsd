@@ -199,8 +199,8 @@ Playbook pb-pf-setup.yml
 .. literalinclude:: pb-pf-setup.yml
    :language: yaml+jinja
 
-Playbook output - Create files/pf-rdr-ssh.conf
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

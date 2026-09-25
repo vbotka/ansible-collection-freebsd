@@ -213,7 +213,7 @@ files
    :language: yaml+jinja
    :caption:
 
-Playbook output - Create project jails from iocage templates
+Playbook output - Create jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

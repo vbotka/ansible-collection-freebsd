@@ -180,8 +180,8 @@ Playbook pb-test-connection.yml
 .. literalinclude:: pb-test-connection.yml
    :language: yaml+jinja
 
-Playbook output - Test connection and get hostname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

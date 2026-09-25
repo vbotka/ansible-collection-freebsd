@@ -267,8 +267,8 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Playbook output - Create and start project jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -332,8 +332,8 @@ Playbook output - Stop and destroy jails
    :language: yaml+jinja
    :force:
 
-Playbook output - Display remaining groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

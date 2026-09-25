@@ -129,23 +129,6 @@ Create and start jails
    :language: yaml+jinja
    :force:
 
-Playbook pb-apache.yml
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-apache.yml
-   :language: yaml+jinja
-
-Playbook output - Configure and start server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i hosts pb-apache.yml
-
-.. literalinclude:: out/out-02.txt
-   :language: yaml+jinja
-   :force:
-
 Jails
 ^^^^^
 
@@ -165,6 +148,23 @@ Graph
 
 .. literalinclude:: out/out-04.txt
    :language: bash
+
+Playbook pb-apache.yml
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-apache.yml
+   :language: yaml+jinja
+
+Playbook output - Configure Apache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i hosts pb-apache.yml
+
+.. literalinclude:: out/out-02.txt
+   :language: yaml+jinja
+   :force:
 
 Results
 ^^^^^^^

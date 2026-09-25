@@ -72,8 +72,8 @@ Playbook pb-test-ast.yml
    :language: yaml+jinja
    :emphasize-lines: 7-17
 
-Playbook output - Test filter to_ast
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test to_ast
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -90,8 +90,8 @@ Playbook pb-test-nginx.yml
    :language: yaml+jinja
    :emphasize-lines: 7-17
 
-Playbook output - Test filter ast_to_nginx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test ast_to_nginx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

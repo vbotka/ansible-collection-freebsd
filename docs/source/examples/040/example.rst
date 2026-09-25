@@ -55,8 +55,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml+jinja
 
-Playbook output - Display the metadata from galaxy.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - galaxy.yml metadata
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

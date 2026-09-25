@@ -64,6 +64,7 @@ Requirements
 
 * Role `vbotka.freebsd.apache`_
 * Role `vbotka.freebsd.certificate`_
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * Template ``ansible-apache`` created in :ref:`example_209`.
 
 Notes
@@ -215,8 +216,8 @@ Playbook pb-apache.yml
 .. literalinclude:: pb-apache.yml
    :language: yaml+jinja
 
-Playbook output - Configure and start server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure Apache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

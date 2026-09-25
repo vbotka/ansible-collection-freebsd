@@ -143,13 +143,6 @@ hosts
    :language: yaml+jinja
    :caption:
 
-files
-^^^^^
-
-.. literalinclude:: files/pkgs.json
-   :language: json
-   :caption:
-
 host_vars
 ^^^^^^^^^
 
@@ -159,6 +152,13 @@ host_vars
 
 .. literalinclude:: host_vars/iocage_04/iocage.yml
    :language: yaml+jinja
+   :caption:
+
+files
+^^^^^
+
+.. literalinclude:: files/pkgs.json
+   :language: json
    :caption:
 
 .. note::
@@ -259,8 +259,8 @@ Jails on iocage_04
 .. literalinclude:: out/out-07.txt
    :language: bash
 
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 

@@ -100,8 +100,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml+jinja
 
-Playbook output - Configure and start git_daemon
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure git_daemon
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

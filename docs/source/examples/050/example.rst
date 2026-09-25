@@ -54,15 +54,15 @@ ansible.cfg
    :language: ini
    :caption:
 
-Inventory of iocage nodes
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Inventory of jail hosts
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/01-iocage.ini
    :language: ini
    :caption:
 
-Dynamic inventory of the jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dynamic inventory of jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: hosts/02-iocage.yml
    :language: yaml+jinja
@@ -75,8 +75,8 @@ Inventory jailexec.ini
    :language: ini
    :caption:
 
-Jails inventory
-^^^^^^^^^^^^^^^
+Jails
+^^^^^
 
 .. code-block:: console
 
@@ -91,8 +91,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml+jinja
 
-Playbook output - Test jailexec connection
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test jailexec
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
