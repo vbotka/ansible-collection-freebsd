@@ -5,6 +5,7 @@
 
 # Stop Nginx. Port 80 conflict with HAProxy
 ssh admin@iocage_06 sudo service nginx stop
+ssh admin@iocage_06 sudo service nginx status
 
 # Destroy www-01 and www-02
 ssh admin@iocage_06 sudo iocage destroy -f www-01
@@ -28,6 +29,7 @@ ansible-playbook -i hosts pb-nginx.yml | tee out/out-04.txt
 
 # Configure HAProxy
 ansible-playbook -i iocage.ini -i hosts pb-haproxy.yml | tee out/out-05.txt
+ssh admin@iocage_06 sudo service haproxy status
 
 # Test HAProxy
 ssh admin@iocage_06 'bash -s' < test-haproxy.sh | tee out/out-06.txt
@@ -38,3 +40,4 @@ sleep 2
 
 # Start Nginx. Port 80 conflict with HAProxy
 ssh admin@iocage_06 sudo service nginx start
+ssh admin@iocage_06 sudo service nginx status

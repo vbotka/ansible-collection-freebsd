@@ -10,9 +10,15 @@ changed: [iocage_06]
 TASK [vbotka.freebsd.haproxy : Service: Enable and Start HAProxy.] *************
 ok: [iocage_06]
 
+TASK [vbotka.freebsd.haproxy : Service: Get haproxy status.] *******************
+ok: [iocage_06]
+
+TASK [vbotka.freebsd.haproxy : Service: Start haproxy.] ************************
+changed: [iocage_06]
+
 RUNNING HANDLER [vbotka.freebsd.haproxy : Reload haproxy] **********************
 changed: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=4    changed=2    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

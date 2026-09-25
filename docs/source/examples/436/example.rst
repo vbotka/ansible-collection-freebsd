@@ -8,6 +8,8 @@
    :depth: 1
 
 .. index:: single: project; Example 436
+.. index:: single: project create from templates; Example 436
+.. index:: single: pb_iocage_project_create_from_templates.yml; Example 436
 
 .. index:: single: HAProxy; Example 436
 .. index:: single: role vbotka.freebsd.haproxy; Example 436

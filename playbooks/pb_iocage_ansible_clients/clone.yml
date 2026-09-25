@@ -7,6 +7,7 @@
   vars:
     _notes_source:
       - "{{ properties.notes | d('') }}"
+      - "{{ item.value.notes | d('') }}"
       - "{{ item.value.properties.notes | d('') }}"
     _notes: "{{ _notes_source | select | join(' ') }}"
 
