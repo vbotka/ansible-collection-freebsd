@@ -11,7 +11,7 @@
    :depth: 1
 
 .. index:: single: swarms; Example 441
-
+.. index:: single: swarms create from templates; Example 441
 .. index:: single: pb_iocage_ansible_clients.yml; Example 441
 
 .. index:: single: option compose; Example 441
@@ -83,8 +83,8 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage2`
-* Template ``ansible_client`` created in :ref:`example_202`
-* Root privileges on the managed nodes.
+* Template ``ansible-client`` created in :ref:`example_202`
+* Root privileges on the managed nodes
 
 Notes
 ^^^^^
@@ -161,7 +161,7 @@ host_vars
 
 .. literalinclude:: host_vars/iocage_06.yml
    :language: yaml+jinja
-   :emphasize-lines: 6
+   :emphasize-lines: 5
    :caption:
 
 .. hint::

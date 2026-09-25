@@ -9,7 +9,9 @@ Extending :ref:`example_200`.
    :local:
    :depth: 1
 
-.. index:: single: ansible_client; Example 202
+.. index:: single: clones; Example 202
+
+.. index:: single: ansible-client; Example 202
 .. index:: single: template ansible_client; Example 202
 .. index:: single: DHCP; Example 202
 

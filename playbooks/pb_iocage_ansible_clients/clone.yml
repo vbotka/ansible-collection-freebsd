@@ -5,10 +5,13 @@
 - name: Create clones from template
   register: out_clone
   vars:
+
     _notes_source:
+      - "vmm={{ inventory_hostname }}"
       - "{{ properties.notes | d('') }}"
       - "{{ item.value.notes | d('') }}"
       - "{{ item.value.properties.notes | d('') }}"
+      - "class={{ item.value.class | d([]) | join(',') }}"
     _notes: "{{ _notes_source | select | join(' ') }}"
 
     _properties_source:
@@ -24,6 +27,7 @@
       {{ k }}={{ v }}
       {% endfor %}
       notes="{{ _notes }}"
+
   vbotka.freebsd.iocage:
     state: cloned
     clone_from: "{{ item.value.clone_from }}"

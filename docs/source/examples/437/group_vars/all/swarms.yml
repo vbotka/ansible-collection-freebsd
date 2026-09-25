@@ -3,8 +3,6 @@ swarms:
     count: 3
     class: [nginx]
     template: ansible-nginx
-    properties:
-      notes: class=nginx
 
 properties:
   bpf: 1

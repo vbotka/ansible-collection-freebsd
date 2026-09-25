@@ -6,9 +6,11 @@
   vars:
 
     _notes_source:
+      - "vmm={{ inventory_hostname }}"
       - "{{ properties.notes | d('') }}"
       - "{{ item.value.notes | d('') }}"
       - "{{ item.value.properties.notes | d('') }}"
+      - "class={{ item.value.class | d([]) | join(',') }}"
       - "swarm={{ item.key }}"
     _notes: "{{ _notes_source | select | join(' ') }}"
 

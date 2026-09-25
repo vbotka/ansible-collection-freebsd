@@ -7,10 +7,10 @@ ok: [iocage_06]
 TASK [Reject jails with empty notes.] ******************************************
 ok: [iocage_06]
 
-TASK [Create iocage_jails_tags] ************************************************
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
 ok: [iocage_06]
 
-TASK [Create swarms] ***********************************************************
+TASK [Create swarms.] **********************************************************
 ok: [iocage_06] => (item=sw_01)
 
 TASK [Query iocage module.] ****************************************************
@@ -22,7 +22,7 @@ ok: [iocage_06]
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
 ok: [iocage_06]
 
-TASK [Start swarms] ************************************************************
+TASK [Start swarms.] ***********************************************************
 ok: [iocage_06] => (item=sw_01)
 
 PLAY RECAP *********************************************************************

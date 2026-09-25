@@ -7,7 +7,9 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_client; Example 200
+.. index:: single: clones; Example 200
+
+.. index:: single: ansible-client; Example 200
 .. index:: single: template ansible_client; Example 200
 .. index:: single: sudoers; Example 200
 

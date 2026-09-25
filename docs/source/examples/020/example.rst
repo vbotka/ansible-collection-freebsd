@@ -167,7 +167,7 @@ Playbook output - Create swarms
 
    Run the command below to see the complete inventory::
 
-     shell> ansible-inventory -i hosts --list --yaml
+     (env) > ansible-inventory -i hosts --list --yaml
 
 Jails
 ^^^^^

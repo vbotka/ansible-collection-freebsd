@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index:: single: swarms; Example 437
+.. index:: single: swarms destroy; Example 437
 .. index:: single: swarms create from templates; Example 437
 .. index:: single: pb_iocage_project_create_from_templates.yml; Example 437
 

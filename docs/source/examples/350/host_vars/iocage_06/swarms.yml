@@ -1,6 +1,3 @@
-properties:
-  notes: "vmm={{ inventory_hostname }}"
-
 swarms:
   sw_01:
     count: 3

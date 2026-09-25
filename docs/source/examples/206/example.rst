@@ -9,8 +9,12 @@ This example extends :ref:`example_203`.
    :local:
    :depth: 1
 
+.. index:: single: clones; Example 206
+.. index:: single: clones create from templates; Example 206
 .. index:: single: swarms; Example 206
 .. index:: single: swarms destroy; Example 206
+.. index:: single: swarms create from templates; Example 437
+.. index:: single: pb_iocage_ansible_clients.yml; Example 435
 
 .. index:: single: template ansible-client; Example 206
 .. index:: single: ansible-client; Example 206
@@ -80,12 +84,13 @@ example:
    clones:
      test-161:
        clone_from: ansible-client
+       class: [test]
+       notes: swarm=sw_01 alias=test_161
        properties:
          bpf: 1
          vnet: 1
-         ip4_addr: "vnet0|172.16.99.201/24"
+         ip4_addr: 'vnet0|172.16.99.201/24'
          defaultrouter: '172.16.99.1'
-         notes: "swarm=sw_01 alias=test_161"
 
 **Automatically generated UUID**
 
@@ -98,6 +103,7 @@ Two DHCP jails with generated UUIDs are created from the template
      sw_01:
        count: 3
        template: ansible-client
+       class: [test]
        properties:
          bpf: 1
          dhcp: 1
@@ -114,8 +120,8 @@ idempotent anyway if the UUID is generated automatically. Example commands:
 
 .. code-block:: bash
 
-   shell> iocage create --short --template ansible-client --count 2 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_06 swarm=sw_01"
-   shell> iocage start cd31c2a2 d254f889
+   shell> iocage create --short --template ansible-client --count 2  bpf=1  dhcp=1  vnet=1  notes="vmm=iocage_06 class=test swarm=sw_01"
+   shell> iocage start 0f7541de 1be5e937
 
 **The variable iocage_tags**
 
@@ -138,10 +144,10 @@ This dictionary is used to create groups:
 .. code-block:: yaml+jinja
 
    keyed_groups:
-     - prefix: swarm
-       key: iocage_tags.swarm
      - prefix: vmm
        key: iocage_tags.vmm
+     - prefix: swarm
+       key: iocage_tags.swarm
 
 Tree
 ^^^^
@@ -168,27 +174,27 @@ Synopsis
 
   * :ref:`ug_module_iocage` to:
 
-    * Create one jail with a fixed IP.
-    * Start the jail.
+    * Create one jail with a fixed IP
+    * Start the jail
 
   * Module ``ansible.builtin.command`` to:
 
-    * Create two DHCP jails with generated UUIDs.
-    * Start the jails.
+    * Create two DHCP jails with generated UUIDs
+    * Start the jails
 
 * On all created jails:
 
   In the playbook ``pb-test.yml``:
 
-  * Connect to the created jails.
-  * Display basic configuration of the jails.
+  * Connect to the created jails
+  * Display basic configuration of the jails
 
 Requirements
 ^^^^^^^^^^^^
 
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
-* :ref:`ug_inventory_iocage`
+* :ref:`ug_inventory_iocage2`
 * Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
 

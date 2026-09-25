@@ -330,6 +330,7 @@
 .. _vbotka.freebsd_pf: https://github.com/vbotka/ansible-freebsd-pf/
 .. _vbotka.freebsd_postinstall: https://github.com/vbotka/ansible-freebsd-postinstall/
 .. _vbotka.freebsd_poudriere: https://github.com/vbotka/ansible-freebsd-poudriere/
+.. _vbotka.freebsd_rsnapshot: https://github.com/vbotka/ansible-rsnapshot/
 .. _vbotka.freebsd_zfs: https://github.com/vbotka/ansible-freebsd-zfs/
 .. _vbotka: https://galaxy.ansible.com/ui/standalone/namespaces/7289/
 .. _venv — Creation of virtual environments: https://docs.python.org/3/library/venv.html#module-venv

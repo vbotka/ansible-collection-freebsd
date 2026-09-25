@@ -8,6 +8,9 @@
    :depth: 1
 
 .. index:: single: swarms; Example 350
+.. index:: single: swarms destroy; Example 350
+.. index:: single: swarms create from templates; Example 350
+.. index:: single: pb_iocage_ansible_clients.yml; Example 350
 
 .. index:: single: rsnapshot; Example 350
 .. index:: single: role vbotka.freebsd.rsnapshot; Example 350
@@ -34,14 +37,13 @@ Tree
   ├── group_vars
   │   └── all
   │       ├── common.yml
-  │       ├── rsnapshot.yml
-  │       └── swarms.yml
+  │       └── rsnapshot.yml
   ├── hosts
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   └── iocage_06
-  │       └── swarms.yml
+  │   └── iocage_06
+  │       └── swarms.yml
   ├── iocage.ini
   ├── pb-install.yml
   └── pb-test.yml
@@ -58,6 +60,7 @@ In the playbooks:
 Requirements
 ^^^^^^^^^^^^
 
+* Role `vbotka.freebsd.rsnapshot`_
 * Templates created in :ref:`example_202`
 
 Notes
@@ -82,6 +85,11 @@ Notes
 
     rsnapshot_packages:
       - sysutils/rsnapshot
+
+.. note::
+
+   | `vbotka.freebsd.rsnapshot`_ is the role **rsnapshot** in the `collection vbotka.freebsd`_.
+   | `vbotka.freebsd_rsnapshot`_ is the role **freebsd_rsnapshot** in the namespace `vbotka`_.
 
 .. seealso::
 
@@ -122,7 +130,6 @@ group_vars
 .. literalinclude:: group_vars/all/rsnapshot.yml
    :language: yaml+jinja
    :caption:
-
 
 host_vars
 ^^^^^^^^^

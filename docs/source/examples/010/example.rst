@@ -7,6 +7,8 @@
    :local:
    :depth: 1
 
+.. index:: single: clones; Example 010
+
 .. index:: single: module vbotka.freebsd.iocage; Example 010
 .. index:: single: inventory vbotka.freebsd.iocage; Example 010
 .. index:: single: option compose; Example 010

@@ -9,6 +9,8 @@ This example extends :ref:`example_010`.
    :local:
    :depth: 1
 
+.. index:: single: clones; Example 013
+
 .. index:: single: module vbotka.freebsd.iocage; Example 013
 .. index:: single: inventory vbotka.freebsd.iocage; Example 013
 .. index:: single: property notes; Example 013

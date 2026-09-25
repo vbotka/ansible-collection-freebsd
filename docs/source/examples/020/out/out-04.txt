@@ -1,21 +1,21 @@
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
 | JID  |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
 +======+===============+======+=======+======+=================+=======================+=====+==================+==========+
-| None | 441dd231      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
+| None | 2e75ad34      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| None | 4f6cac9b      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
+| None | 6401a8ea      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| None | 83df9101      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
+| None | 671a57ca      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| None | 9d25991c      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
+| None | 6a6cd1d0      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| None | e6141b15      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
+| None | 9777cbeb      | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | ansible-client   | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 4    | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
+| 1    | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 5    | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
+| 2    | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 6    | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
+| 3    | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 7    | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
+| 4    | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
 +------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+

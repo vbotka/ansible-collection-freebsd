@@ -7,8 +7,8 @@ ok: [www_01]
 ok: [www_02]
 
 TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_03] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_01] => (item=/usr/local/etc/nginx/nginx.conf)
 
 TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
@@ -17,21 +17,21 @@ changed: [www_01]
 changed: [www_03]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
-changed: [www_03]
 changed: [www_01]
+changed: [www_03]
 changed: [www_02]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
+ok: [www_03]
 ok: [www_02]
 ok: [www_01]
-ok: [www_03]
 
 PLAY [Create index.html] *******************************************************
 
 TASK [template] ****************************************************************
+changed: [www_02]
 changed: [www_03]
 changed: [www_01]
-changed: [www_02]
 
 PLAY RECAP *********************************************************************
 www_01                     : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   

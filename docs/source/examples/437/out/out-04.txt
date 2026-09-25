@@ -2,39 +2,39 @@
 PLAY [Configure Nginx servers.] ************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [f0aae077]
-ok: [a713908c]
-ok: [d696d4fd]
+ok: [038bfa3c]
+ok: [517b18dc]
+ok: [ea2cf3a8]
 
 TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [f0aae077] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [d696d4fd] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [a713908c] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [038bfa3c] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [ea2cf3a8] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [517b18dc] => (item=/usr/local/etc/nginx/nginx.conf)
 
 TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-changed: [a713908c]
-changed: [d696d4fd]
-changed: [f0aae077]
+changed: [038bfa3c]
+changed: [517b18dc]
+changed: [ea2cf3a8]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
-changed: [a713908c]
-changed: [d696d4fd]
-changed: [f0aae077]
+changed: [ea2cf3a8]
+changed: [517b18dc]
+changed: [038bfa3c]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
-ok: [f0aae077]
-ok: [a713908c]
-ok: [d696d4fd]
+ok: [517b18dc]
+ok: [ea2cf3a8]
+ok: [038bfa3c]
 
 PLAY [Create index.html] *******************************************************
 
 TASK [template] ****************************************************************
-changed: [a713908c]
-changed: [d696d4fd]
-changed: [f0aae077]
+changed: [517b18dc]
+changed: [ea2cf3a8]
+changed: [038bfa3c]
 
 PLAY RECAP *********************************************************************
-a713908c                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-d696d4fd                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-f0aae077                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+038bfa3c                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+517b18dc                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+ea2cf3a8                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

@@ -16,8 +16,8 @@ ssh admin@iocage_06 sudo iocage destroy -f test-163
 ssh admin@iocage_06 iocage list -lt | tee out/out-01.txt
 
 # Create jails
-ansible-playbook -i iocage.ini -t clone -e clone=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-02.txt
-ansible-playbook -i iocage.ini -t swarm -e swarm=true -e debug=true vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-03.txt
+ansible-playbook -i iocage.ini -t clone -e clone=true -e debug=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-02.txt
+ansible-playbook -i iocage.ini -t swarm -e swarm=true -e debug=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-03.txt
 
 # Jails
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-04.txt
