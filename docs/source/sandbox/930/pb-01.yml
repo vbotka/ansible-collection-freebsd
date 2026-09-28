@@ -18,5 +18,6 @@
         var: iocage_jails.keys()
 
     - name: Display iocage_jails
+      when: debug | d(false) | bool
       ansible.builtin.debug:
         var: iocage_jails.pkg_repo
