@@ -2,25 +2,15 @@
 PLAY [Display jails in the swarm.] *********************************************
 
 TASK [ansible.builtin.command] *************************************************
-changed: [922f6099]
-changed: [bb30b165]
 changed: [test_161]
+changed: [8980bbac]
+changed: [5ddb6dbb]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [bb30b165] => 
+ok: [8980bbac] => 
     msg: |-
-        out.stdout: bb30b165
-        ansible_host: bb30b165
-        iocage_hooks: ['172.16.99.172']
-        iocage_ip4: 172.16.99.172
-        iocage_tags:
-          class: test
-          swarm: sw_01
-          vmm: iocage_06
-ok: [922f6099] => 
-    msg: |-
-        out.stdout: 922f6099
-        ansible_host: 922f6099
+        out.stdout: 8980bbac
+        ansible_host: 8980bbac
         iocage_hooks: ['172.16.99.168']
         iocage_ip4: 172.16.99.168
         iocage_tags:
@@ -38,9 +28,19 @@ ok: [test_161] =>
           class: test
           swarm: sw_01
           vmm: iocage_06
+ok: [5ddb6dbb] => 
+    msg: |-
+        out.stdout: 5ddb6dbb
+        ansible_host: 5ddb6dbb
+        iocage_hooks: ['172.16.99.154']
+        iocage_ip4: 172.16.99.154
+        iocage_tags:
+          class: test
+          swarm: sw_01
+          vmm: iocage_06
 
 PLAY RECAP *********************************************************************
-922f6099                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-bb30b165                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+5ddb6dbb                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+8980bbac                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

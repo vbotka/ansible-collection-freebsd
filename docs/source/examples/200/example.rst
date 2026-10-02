@@ -7,34 +7,30 @@
    :local:
    :depth: 1
 
-.. index:: single: clones; Example 200
-
-.. index:: single: ansible-client; Example 200
-.. index:: single: template ansible_client; Example 200
-.. index:: single: sudoers; Example 200
-
-.. index:: single: pb_iocage_template.yml; Example 200
-.. index:: single: pb_iocage_ansible_clients.yml; Example 200
-
-.. index:: single: inventory vbotka.freebsd.iocage; Example 200
-.. index:: single: module vbotka.freebsd.iocage; Example 200
-.. index:: single: module ansible.posix.authorized; Example 200
-.. index:: single: ansible.posix.authorized; Example 200
-.. index:: single: module ansible.builtin.lineinfile; Example 200
-.. index:: single: ansible.builtin.lineinfile; Example 200
-.. index:: single: module community.general.sysrc; Example 200
-.. index:: single: community.general.sysrc; Example 200
-
-.. index:: single: option compose; Example 200
-.. index:: single: compose; Example 200
-.. index:: single: option groups; Example 200
-
-.. index:: single: act_user; Example 200
-.. index:: single: act_pk; Example 200
-.. index:: single: act_sudo; Example 200
-.. index:: single: act_rcconf; Example 200
-.. index:: single: pkglist; Example 200
-.. index:: single: pkgs.json; Example 200
+.. index::
+   single: clones; Example 200
+   single: ansible-client; Example 200
+   single: template ansible_client; Example 200
+   single: sudoers; Example 200
+   single: pb_iocage_template.yml; Example 200
+   single: pb_iocage_ansible_clients.yml; Example 200
+   single: inventory vbotka.freebsd.iocage; Example 200
+   single: module vbotka.freebsd.iocage; Example 200
+   single: module ansible.posix.authorized; Example 200
+   single: ansible.posix.authorized; Example 200
+   single: module ansible.builtin.lineinfile; Example 200
+   single: ansible.builtin.lineinfile; Example 200
+   single: module community.general.sysrc; Example 200
+   single: community.general.sysrc; Example 200
+   single: option compose; Example 200
+   single: compose; Example 200
+   single: option groups; Example 200
+   single: act_user; Example 200
+   single: act_pk; Example 200
+   single: act_sudo; Example 200
+   single: act_rcconf; Example 200
+   single: pkglist; Example 200
+   single: pkgs.json; Example 200
 
 Use case
 ^^^^^^^^
@@ -52,6 +48,9 @@ Tree
   ├── files
   │   ├── pk_admins.txt
   │   └── pkgs.json
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
   ├── hosts
   │   ├── 02_iocage.yml
   │   ├── 04_iocage.yml
@@ -142,6 +141,13 @@ hosts
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/iocage.yml
    :language: yaml+jinja
    :caption:
 

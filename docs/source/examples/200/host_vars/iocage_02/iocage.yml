@@ -3,7 +3,7 @@ freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: /zroot/iocage
 
 templates:
-  ansible_client:
+  ansible-client:
     release: 14.3-RELEASE
     properties:
       bpf: 'on'
@@ -11,7 +11,7 @@ templates:
       vnet: 'on'
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
-    pkglist: /tmp/ansible/ansible_client/pkgs.json
+    pkglist: /tmp/ansible/ansible-client/pkgs.json
 
 # ansible client template defaults
 act_user: admin
@@ -24,15 +24,15 @@ act_dhclient: {}
 
 clones:
   test_111:
-    clone_from: ansible_client
+    clone_from: ansible-client
     properties:
       ip4_addr: 'em0|10.1.0.111/24'
   test_112:
-    clone_from: ansible_client
+    clone_from: ansible-client
     properties:
       ip4_addr: 'em0|10.1.0.112/24'
   test_113:
-    clone_from: ansible_client
+    clone_from: ansible-client
     properties:
       ip4_addr: 'em0|10.1.0.113/24'
 

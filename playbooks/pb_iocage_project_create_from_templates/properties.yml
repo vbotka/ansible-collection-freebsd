@@ -7,34 +7,38 @@
   register: out
   vars:
 
-    _notes_source:
-      - "vmm={{ inventory_hostname }}"
-      - "{{ properties.notes | d('') }}"
-      - "{{ vmm[inventory_hostname][item]['notes'] | d('') }}"
-      - "{{ vmm[inventory_hostname][item]['properties']['notes'] | d('') }}"
-      - "class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}"
-    _notes: "{{ _notes_source | select | join(' ') }}"
+#   _notes_source:
+#     - "{{ vmm[inventory_hostname][item]['notes'] | d('') }}"
+#     - "{{ vmm[inventory_hostname][item]['properties']['notes'] | d('') }}"
+#     - "{{ properties.notes | d('') }}"
+#     - "vmm={{ inventory_hostname }}"
+#     - "class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}"
+#   _notes: "{{ _notes_source | select | join(' ') }}"
 
-    _properties_source:
-      - "{{ properties | d({}) }}"
-      - "{{ vmm[inventory_hostname][item]['properties'] | d({}) }}"
+#   _properties_source:
+#     - "{{ properties | d({}) }}"
+#     - "{{ vmm[inventory_hostname][item]['properties'] | d({}) }}"
+#   _properties_combined: |
+#     {{ _properties_source
+#        | community.general.remove_keys(target=['notes'])
+#        | select
+#        | combine(recursive=true) }}
+#   _properties: >-
+#     {% for k, v in _properties_combined.items() %}
+#     {{ k }}={{ v }}
+#     {% endfor %}
+#     notes="{{ _notes }}"
 
-    _properties_combined: |
-      {{ _properties_source
-         | community.general.remove_keys(target=['notes'])
-         | select
-         | combine(recursive=true) }}
-    _properties: >-
-      {% for k, v in _properties_combined.items() %}
-      {{ k }}={{ v }}
-      {% endfor %}
-      notes="{{ _notes }}"
+    _properties: "{{ properties | d({})
+                     | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
 
   ansible.builtin.command: >
     iocage set
     {{ _properties }}
-    {{ item }}
-  loop: "{{ vmm[inventory_hostname].keys() }}"
+    {{ item.key }}
+  loop: "{{ vmm[inventory_hostname] | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
 
 - name: "Properties: Debug set properties."
   when: debug2 | d(false) | bool

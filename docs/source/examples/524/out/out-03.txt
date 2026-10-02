@@ -5,32 +5,28 @@ TASK [Setup: Get activated pool.] **********************************************
 ok: [iocage_06]
 
 TASK [Create: Create jails.] ***************************************************
-ok: [iocage_06] => (item=foo)
 ok: [iocage_06] => (item=bar)
+ok: [iocage_06] => (item=foo)
 
-TASK [Ai-vars-templates: Create ansible init vars dirs.] ***********************
+TASK [Ai-vars-templates: Create ansible init vars dirs /root/ansible-vars] *****
 changed: [iocage_06] => (item=foo)
 changed: [iocage_06] => (item=bar)
 
-TASK [Ai-vars-templates: Create ansible init vars from templates.] *************
+TASK [Ai-vars-templates: Create files from templates in /root/ansible-vars] ****
 changed: [iocage_06] => (item=foo project-hosts.yml)
 changed: [iocage_06] => (item=bar project-hosts.yml)
 
-TASK [Ai-vars-class: Create ansible init vars dirs.] ***************************
-ok: [iocage_06] => (item=foo)
-ok: [iocage_06] => (item=bar)
-
-TASK [Ai-vars-jail: Create ansible init vars dirs.] ****************************
+TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
 ok: [iocage_06] => (item=foo)
 ok: [iocage_06] => (item=bar)
 
 TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item=foo)
-ok: [iocage_06] => (item=bar)
+ok: [iocage_06] => (item={'key': 'foo', 'value': {'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['test'], 'ai_vars_templates': ['project-hosts.yml']}})
+ok: [iocage_06] => (item={'key': 'bar', 'value': {'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['test'], 'ai_vars_templates': ['project-hosts.yml']}})
 
 TASK [Start: Start jails.] *****************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=8    changed=2    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
+iocage_06                  : ok=7    changed=2    unreachable=0    failed=0    skipped=22   rescued=0    ignored=0   
 

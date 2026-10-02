@@ -1,0 +1,26 @@
+# The project keys are jails aliases.
+project:
+  logserv_1:
+    class: [logserv]
+    vmm: iocage_01
+  http_1:
+    class: [http, logclient]
+    vmm: iocage_02
+  db_1:
+    class: [db, logclient]
+    vmm: iocage_02
+  http_2:
+    class: [http, logclient]
+    vmm: iocage_04
+  db_2:
+    class: [db, logclient]
+    vmm: iocage_04
+
+# Jail properties.
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+vmm: "{{ (project | vbotka.freebsd.project).vmm }}"
+class: "{{ (project | vbotka.freebsd.project).class }}"

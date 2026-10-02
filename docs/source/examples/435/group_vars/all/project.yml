@@ -4,20 +4,16 @@ project:
     vmm: iocage_06
     template: ansible-nginx
     class: [nginx]
-    properties:
-      bpf: 1
-      dhcp: 1
-      vnet: 1
-      boot: 1
   www-02:
     notes: alias=www_02
     vmm: iocage_06
     template: ansible-nginx
     class: [nginx]
-    properties:
-      bpf: 1
-      dhcp: 1
-      vnet: 1
-      boot: 1
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
 
 vmm: "{{ (project | vbotka.freebsd.project).vmm }}"

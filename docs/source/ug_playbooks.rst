@@ -40,4 +40,4 @@ Other playbooks
 
 .. seealso::
 
-   `Playbook Index <genindex.html#P>`_
+   `Playbook Index <genindex.html#P>`__

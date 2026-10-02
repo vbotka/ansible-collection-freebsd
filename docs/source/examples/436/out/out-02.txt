@@ -5,7 +5,6 @@
   |  |--repos_devel
   |  |--www_03
   |  |--pkg_repo
-  |  |--log_server_01
   |  |--www_02
   |  |--www_01
   |--@vmm_iocage_06:
@@ -13,7 +12,6 @@
   |  |--repos_devel
   |  |--www_03
   |  |--pkg_repo
-  |  |--log_server_01
   |  |--www_02
   |  |--www_01
   |--@nginx:

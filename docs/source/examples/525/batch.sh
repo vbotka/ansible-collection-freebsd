@@ -7,7 +7,7 @@
 ssh admin@iocage_06 sudo iocage destroy -f baz
 ssh admin@iocage_06 sudo iocage destroy -f qux
 
-# List templates
+# Templates
 # ssh admin@iocage_06 sudo iocage list -lt | tee out/out-02.txt
 
 # Create the project
@@ -23,3 +23,9 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 sleep 3
 ssh admin@iocage_06 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt
 ssh admin@iocage_06 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt" | tee out/out-07.txt
+
+# Destroy jails
+ssh admin@iocage_06 sudo iocage destroy -f foo
+ssh admin@iocage_06 sudo iocage destroy -f bar
+ssh admin@iocage_06 sudo iocage destroy -f baz
+ssh admin@iocage_06 sudo iocage destroy -f qux

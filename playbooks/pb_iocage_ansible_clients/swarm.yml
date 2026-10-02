@@ -5,28 +5,31 @@
 - name: Create swarms.
   vars:
 
-    _notes_source:
-      - "vmm={{ inventory_hostname }}"
-      - "{{ properties.notes | d('') }}"
-      - "{{ item.value.notes | d('') }}"
-      - "{{ item.value.properties.notes | d('') }}"
-      - "class={{ item.value.class | d([]) | join(',') }}"
-      - "swarm={{ item.key }}"
-    _notes: "{{ _notes_source | select | join(' ') }}"
+#   _notes_source:
+#     - "{{ item.value.notes | d('') }}"
+#     - "{{ item.value.properties.notes | d('') }}"
+#     - "{{ properties.notes | d('') }}"
+#     - "vmm={{ inventory_hostname }}"
+#     - "class={{ item.value.class | d([]) | join(',') }}"
+#     - "swarm={{ item.key }}"
+#   _notes: "{{ _notes_source | select | join(' ') }}"
 
-    _properties_source:
-      - "{{ properties | d({}) }}"
-      - "{{ item.value.properties | d({}) }}"
-    _properties_combined: >-
-      {{ _properties_source
-         | community.general.remove_keys(target=['notes'])
-         | select
-         | combine(recursive=true) }}
-    _properties: >-
-      {% for k, v in _properties_combined.items() %}
-      {{ k }}={{ v }}
-      {% endfor %}
-      notes="{{ _notes }}"
+#   _properties_source:
+#     - "{{ properties | d({}) }}"
+#     - "{{ item.value.properties | d({}) }}"
+#   _properties_combined: >-
+#     {{ _properties_source
+#        | community.general.remove_keys(target=['notes'])
+#        | select
+#        | combine(recursive=true) }}
+#   _properties: >-
+#     {% for k, v in _properties_combined.items() %}
+#     {{ k }}={{ v }}
+#     {% endfor %}
+#     notes="{{ _notes }}"
+
+    _properties: "{{ properties | d({})
+                     | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
 
     _query: >-
       [?value.swarm==`{{ item.key }}`].key
@@ -75,7 +78,7 @@
       when: debug | bool
       ansible.builtin.debug:
         msg: "{{ cmd_create }}"
-      loop: "{{ swarms | dict2items }}"
+      loop: "{{ vmm_swarms[inventory_hostname] | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
 
@@ -87,7 +90,7 @@
       register: out
       ansible.builtin.command:
         cmd: "{{ cmd_create }}"
-      loop: "{{ swarms | dict2items }}"
+      loop: "{{ vmm_swarms[inventory_hostname] | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
 
@@ -131,7 +134,7 @@
       when: debug | bool
       ansible.builtin.debug:
         msg: "{{ cmd_start }}"
-      loop: "{{ swarms | dict2items }}"
+      loop: "{{ vmm_swarms[inventory_hostname] | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
 
@@ -143,7 +146,7 @@
       register: out
       ansible.builtin.command:
         cmd: "{{ cmd_start }}"
-      loop: "{{ swarms | dict2items }}"
+      loop: "{{ vmm_swarms[inventory_hostname] | dict2items }}"
       loop_control:
         label: "{{ item.key }}"
 

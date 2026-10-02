@@ -1,26 +1,24 @@
 @all:
   |--@ungrouped:
   |--@nginx:
-  |  |--ea2cf3a8
-  |  |--517b18dc
-  |  |--038bfa3c
+  |  |--00505cda
+  |  |--936e26b0
+  |  |--4a4366d5
   |--@state_up:
-  |  |--ea2cf3a8
-  |  |--517b18dc
+  |  |--00505cda
+  |  |--936e26b0
+  |  |--4a4366d5
   |  |--repos
-  |  |--038bfa3c
   |  |--repos_devel
   |  |--pkg_repo
-  |  |--log_server_01
   |--@vmm_iocage_06:
-  |  |--ea2cf3a8
-  |  |--517b18dc
+  |  |--00505cda
+  |  |--936e26b0
+  |  |--4a4366d5
   |  |--repos
-  |  |--038bfa3c
   |  |--repos_devel
   |  |--pkg_repo
-  |  |--log_server_01
   |--@swarm_nginx_cluster:
-  |  |--ea2cf3a8
-  |  |--517b18dc
-  |  |--038bfa3c
+  |  |--00505cda
+  |  |--936e26b0
+  |  |--4a4366d5

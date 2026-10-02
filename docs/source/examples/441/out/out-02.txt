@@ -13,13 +13,13 @@ ok: [iocage_06]
 TASK [Debug iocage_jails and iocage_jails_tags debug=true] *********************
 ok: [iocage_06] => 
     msg: |-
-        iocage_jails:      ['log-server-01', 'pkg-repo', 'repos', 'repos-devel']
-        iocage_jails_tags: ['log-server-01', 'pkg-repo', 'repos', 'repos-devel']
+        iocage_jails:      ['pkg-repo', 'repos', 'repos-devel']
+        iocage_jails_tags: ['pkg-repo', 'repos', 'repos-devel']
 
 TASK [Debug cmd_create debug=true] *********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage create --short --template ansible-client --count 3  bpf=1  dhcp=1  vnet=1  defaultrouter=172.16.99.1  notes="vmm=iocage_06 class=test swarm=sw_01"
+        iocage create --short --template ansible-client --count 3 bpf=1 dhcp=1 vnet=1 defaultrouter=172.16.99.1 notes="vmm=iocage_06 class=test swarm=sw_01"
 
 TASK [Create swarms.] **********************************************************
 ok: [iocage_06] => (item=sw_01)
@@ -47,8 +47,8 @@ ok: [iocage_06] =>
             - vnet=1
             - defaultrouter=172.16.99.1
             - notes=vmm=iocage_06 class=test swarm=sw_01
-            delta: '0:00:01.224573'
-            end: '2026-09-25 16:35:36.846242'
+            delta: '0:00:01.230350'
+            end: '2026-10-02 13:34:19.556532'
             failed: false
             item:
                 key: sw_01
@@ -57,19 +57,20 @@ ok: [iocage_06] =>
                     - test
                     count: 3
                     template: ansible-client
+                    vmm: iocage_06
             msg: ''
             rc: 0
-            start: '2026-09-25 16:35:35.621669'
+            start: '2026-10-02 13:34:18.326182'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                521a8b37 successfully created!
-                69b60cb0 successfully created!
-                5ef2b4f1 successfully created!
+                7005f3c8 successfully created!
+                2b8fa8d8 successfully created!
+                de54ae9a successfully created!
             stdout_lines:
-            - 521a8b37 successfully created!
-            - 69b60cb0 successfully created!
-            - 5ef2b4f1 successfully created!
+            - 7005f3c8 successfully created!
+            - 2b8fa8d8 successfully created!
+            - de54ae9a successfully created!
 
 TASK [Query iocage module.] ****************************************************
 ok: [iocage_06]
@@ -83,14 +84,14 @@ ok: [iocage_06]
 TASK [Debug iocage_jails and iocage_jails_tags debug=true] *********************
 ok: [iocage_06] => 
     msg: |-
-        iocage_jails:         ['521a8b37', '5ef2b4f1', '69b60cb0', 'log-server-01', 'pkg-repo', 'repos', 'repos-devel']
-        iocage_jails_tags:    ['521a8b37', '5ef2b4f1', '69b60cb0', 'log-server-01', 'pkg-repo', 'repos', 'repos-devel']
-        iocage_jails_started: ['log-server-01', 'pkg-repo', 'repos', 'repos-devel']
+        iocage_jails:         ['2b8fa8d8', '7005f3c8', 'de54ae9a', 'pkg-repo', 'repos', 'repos-devel']
+        iocage_jails_tags:    ['2b8fa8d8', '7005f3c8', 'de54ae9a', 'pkg-repo', 'repos', 'repos-devel']
+        iocage_jails_started: ['pkg-repo', 'repos', 'repos-devel']
 
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage start 521a8b37 5ef2b4f1 69b60cb0
+        iocage start 2b8fa8d8 de54ae9a 7005f3c8
 
 TASK [Start swarms.] ***********************************************************
 ok: [iocage_06] => (item=sw_01)
@@ -108,11 +109,11 @@ ok: [iocage_06] =>
             cmd:
             - iocage
             - start
-            - 521a8b37
-            - 5ef2b4f1
-            - 69b60cb0
-            delta: '0:00:11.869424'
-            end: '2026-09-25 16:36:03.873415'
+            - 2b8fa8d8
+            - de54ae9a
+            - 7005f3c8
+            delta: '0:00:09.838428'
+            end: '2026-10-02 13:34:43.369790'
             failed: false
             item:
                 key: sw_01
@@ -121,9 +122,10 @@ ok: [iocage_06] =>
                     - test
                     count: 3
                     template: ansible-client
+                    vmm: iocage_06
             msg: ''
             rc: 0
-            start: '2026-09-25 16:35:52.003991'
+            start: '2026-10-02 13:34:33.531362'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -133,55 +135,55 @@ ok: [iocage_06] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting 521a8b37
+                * Starting 2b8fa8d8
+                  + Started OK
+                  + Using devfs_ruleset: 1003 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 172.16.99.168/24
+                * Starting de54ae9a
                   + Started OK
                   + Using devfs_ruleset: 1004 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.140/24
-                * Starting 5ef2b4f1
+                  + DHCP Address: 172.16.99.169/24
+                * Starting 7005f3c8
                   + Started OK
                   + Using devfs_ruleset: 1005 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.143/24
-                * Starting 69b60cb0
-                  + Started OK
-                  + Using devfs_ruleset: 1006 (iocage generated default)
-                  + Configuring VNET OK
-                  + Using IP options: vnet
-                  + Starting services OK
-                  + Executing poststart OK
-                  + DHCP Address: 172.16.99.141/24
+                  + DHCP Address: 172.16.99.171/24
             stdout_lines:
-            - '* Starting 521a8b37'
+            - '* Starting 2b8fa8d8'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1003 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 172.16.99.168/24'
+            - '* Starting de54ae9a'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1004 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.140/24'
-            - '* Starting 5ef2b4f1'
+            - '  + DHCP Address: 172.16.99.169/24'
+            - '* Starting 7005f3c8'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1005 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.143/24'
-            - '* Starting 69b60cb0'
-            - '  + Started OK'
-            - '  + Using devfs_ruleset: 1006 (iocage generated default)'
-            - '  + Configuring VNET OK'
-            - '  + Using IP options: vnet'
-            - '  + Starting services OK'
-            - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.141/24'
+            - '  + DHCP Address: 172.16.99.171/24'
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=14   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   

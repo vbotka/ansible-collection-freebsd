@@ -10,26 +10,22 @@
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 441
-.. index:: single: swarms create from templates; Example 441
-.. index:: single: pb_iocage_ansible_clients.yml; Example 441
-
-.. index:: single: option compose; Example 441
-.. index:: single: compose; Example 441
-
-.. index:: single: option defaultrouter; Example 441
-.. index:: single: defaultrouter; Example 441
-
-.. index:: single: variable iocage_tags; Example 441
-.. index:: single: iocage_tags; Example 441
-
-.. index:: single: option iocage --count; Example 441
-.. index:: single: option iocage --short; Example 441
-.. index:: single: option iocage --template; Example 441
-
-.. index:: single: pf port redirection; Example 441
-.. index:: single: port redirection; Example 441
-.. index:: single: redirection of ports; Example 441
+.. index::
+   single: swarms; Example 441
+   single: swarms create from templates; Example 441
+   single: pb_iocage_ansible_clients.yml; Example 441
+   single: option compose; Example 441
+   single: compose; Example 441
+   single: option defaultrouter; Example 441
+   single: defaultrouter; Example 441
+   single: variable iocage_tags; Example 441
+   single: iocage_tags; Example 441
+   single: option iocage --count; Example 441
+   single: option iocage --short; Example 441
+   single: option iocage --template; Example 441
+   single: pf port redirection; Example 441
+   single: port redirection; Example 441
+   single: redirection of ports; Example 441
 
 Use case
 ^^^^^^^^

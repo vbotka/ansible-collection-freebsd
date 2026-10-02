@@ -16,29 +16,25 @@ TASK [Facts: Create custom facts files.] ***************************************
 changed: [iocage_06] => (item=baz)
 changed: [iocage_06] => (item=qux)
 
-TASK [Ai-vars-templates: Create ansible init vars dirs.] ***********************
+TASK [Ai-vars-templates: Create ansible init vars dirs /root/ansible-vars] *****
 changed: [iocage_06] => (item=baz)
 changed: [iocage_06] => (item=qux)
 
-TASK [Ai-vars-templates: Create ansible init vars from templates.] *************
+TASK [Ai-vars-templates: Create files from templates in /root/ansible-vars] ****
 changed: [iocage_06] => (item=baz project-hosts.yml)
 changed: [iocage_06] => (item=qux project-hosts.yml)
 
-TASK [Ai-vars-class: Create ansible init vars dirs.] ***************************
-ok: [iocage_06] => (item=baz)
-ok: [iocage_06] => (item=qux)
-
-TASK [Ai-vars-jail: Create ansible init vars dirs.] ****************************
+TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
 ok: [iocage_06] => (item=baz)
 ok: [iocage_06] => (item=qux)
 
 TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item=baz)
-ok: [iocage_06] => (item=qux)
+ok: [iocage_06] => (item={'key': 'baz', 'value': {'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['test'], 'custom_facts': 'class.fact.j2', 'ai_vars_templates': ['project-hosts.yml']}})
+ok: [iocage_06] => (item={'key': 'qux', 'value': {'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['test'], 'custom_facts': 'class.fact.j2', 'ai_vars_templates': ['project-hosts.yml']}})
 
 TASK [Start: Start jails.] *****************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=10   changed=4    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+iocage_06                  : ok=9    changed=4    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
 

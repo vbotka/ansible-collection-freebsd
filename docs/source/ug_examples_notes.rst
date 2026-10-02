@@ -18,6 +18,9 @@
      contain a ``.deny`` marker file and are excluded from ``batch.sh``. To run
      those examples, reconfigure the firewall as documented in :ref:`example_370`.
 
+   * Examples that are not tested with the current collection version also contain
+     the ``.deny`` marker file.
+
    * To avoid connecting directly to a jail via SSH, the examples use the
      dynamic inventory ``vbotka.freebsd.iocage2`` and the connection plugin
      ``vbotka.freebsd.jailexec``, as described in :ref:`connection

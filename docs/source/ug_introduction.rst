@@ -5,7 +5,7 @@ Introduction
 
 .. index:: single: Managing BSD hosts with Ansible; Introduction
 .. index:: single: result_format; Introduction
-.. index:: single: venv — Creation of virtual environments; Introduction
+.. index:: single: venv — virtual environments; Introduction
 
 * Supported systems: `FreeBSD Supported Production Releases`_
 * Requirements:

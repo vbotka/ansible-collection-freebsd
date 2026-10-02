@@ -13,7 +13,7 @@ ssh admin@iocage_06 sudo iocage destroy -f bar
 # Create template
 ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt
 
-# List templates
+# Templates
 ssh admin@iocage_06 sudo iocage list -lt | tee out/out-02.txt
 
 # Create and start project jails from iocage templates

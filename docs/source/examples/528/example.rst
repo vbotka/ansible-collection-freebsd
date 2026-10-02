@@ -7,38 +7,33 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_init; Example 528
-.. index:: single: service ansible_init; Example 528
-.. index:: single: template ansible-init; Example 528
-.. index:: single: firstboot; Example 528
-.. index:: single: ansible-conf-init; Example 528
-.. index:: single: ansible-conf-roles; Example 528
-.. index:: single: repo ansible-conf-init; Example 528
-.. index:: single: repo ansible-conf-roles; Example 528
-.. index:: single: ansible-pull; Example 528
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 528
-
-.. index:: single: filter vbotka.freebsd.project; Example 528
-.. index:: single: vbotka.freebsd.project; Example 528
-.. index:: single: project; Example 528
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 528
-.. index:: single: vbotka.freebsd.jailexec; Example 528
-.. index:: single: jailexec; Example 528
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 528
-
-.. index:: single: ai_db_host; Example 528
-.. index:: single: ai_db_class; Example 528
-.. index:: single: ai_conf_roles; Example 528
-
-.. index:: single: syslog-ng; Example 528
-.. index:: single: loggen; Example 528
-.. index:: single: log server; Example 528
-.. index:: single: log client; Example 528
-
-.. index:: single: pkg repo; Example 528
-.. index:: single: pkg_repos_conf; Example 528
+.. index::
+   single: ansible_init; Example 528
+   single: service ansible_init; Example 528
+   single: template ansible-init; Example 528
+   single: firstboot; Example 528
+   single: ansible-conf-init; Example 528
+   single: ansible-conf-roles; Example 528
+   single: repo ansible-conf-init; Example 528
+   single: repo ansible-conf-roles; Example 528
+   single: ansible-pull; Example 528
+   single: pb_iocage_project_create_from_templates.yml; Example 528
+   single: filter vbotka.freebsd.project; Example 528
+   single: vbotka.freebsd.project; Example 528
+   single: project; Example 528
+   single: connection vbotka.freebsd.jailexec; Example 528
+   single: vbotka.freebsd.jailexec; Example 528
+   single: jailexec; Example 528
+   single: inventory vbotka.freebsd.iocage2; Example 528
+   single: ai_db_host; Example 528
+   single: ai_db_class; Example 528
+   single: ai_conf_roles; Example 528
+   single: syslog-ng; Example 528
+   single: loggen; Example 528
+   single: log server; Example 528
+   single: log client; Example 528
+   single: pkg repo; Example 528
+   single: pkg_repos_conf; Example 528
 
 Use case
 ^^^^^^^^

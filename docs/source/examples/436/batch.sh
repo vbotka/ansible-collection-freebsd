@@ -31,8 +31,14 @@ ansible-playbook -i hosts pb-nginx.yml | tee out/out-04.txt
 ansible-playbook -i iocage.ini -i hosts pb-haproxy.yml | tee out/out-05.txt
 ssh admin@iocage_06 sudo service haproxy status
 
+# Test configuration
+ssh admin@iocage_06 sudo service haproxy configtest 2>&1 | tee out/out-06.txt
+
+# Test status
+ssh admin@iocage_06 sudo service haproxy status 2>&1 | tee out/out-07.txt
+
 # Test HAProxy
-ssh admin@iocage_06 'bash -s' < test-haproxy.sh | tee out/out-06.txt
+ssh admin@iocage_06 'bash -s' < test-haproxy.sh | tee out/out-08.txt
 
 # Stop HAProxy (local repo Nginx is running on port 80)
 ssh admin@iocage_06 sudo service haproxy stop

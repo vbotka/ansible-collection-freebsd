@@ -1,24 +1,22 @@
 @all:
   |--@ungrouped:
   |--@up:
-  |  |--092e528d
-  |  |--7f1d02ed
+  |  |--b437f715
+  |  |--dff48d9f
   |  |--repos
-  |  |--5c96fb35
+  |  |--31d0e6b6
   |  |--repos_devel
   |  |--pkg_repo
-  |  |--log_server_01
   |--@swarm_sw_01:
-  |  |--092e528d
-  |  |--7f1d02ed
-  |  |--5c96fb35
+  |  |--b437f715
+  |  |--dff48d9f
+  |  |--31d0e6b6
   |--@vmm_iocage_06:
-  |  |--092e528d
-  |  |--7f1d02ed
+  |  |--b437f715
+  |  |--dff48d9f
   |  |--repos
-  |  |--5c96fb35
+  |  |--31d0e6b6
   |  |--repos_devel
   |  |--pkg_repo
-  |  |--log_server_01
   |--@iocage:
   |  |--iocage_06

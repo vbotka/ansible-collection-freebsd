@@ -9,15 +9,14 @@ This example extends :ref:`example_441`.
    :local:
    :depth: 1
 
-.. index:: single: jailexec; Example 442
-.. index:: single: vbotka.freebsd.jailexec; Example 442
-.. index:: single: connection vbotka.freebsd.jailexec; Example 442
-
-.. index:: single: option compose; Example 442
-.. index:: single: compose; Example 442
-
-.. index:: single: variable iocage_tags; Example 442
-.. index:: single: iocage_tags; Example 442
+.. index::
+   single: jailexec; Example 442
+   single: vbotka.freebsd.jailexec; Example 442
+   single: connection vbotka.freebsd.jailexec; Example 442
+   single: option compose; Example 442
+   single: compose; Example 442
+   single: variable iocage_tags; Example 442
+   single: iocage_tags; Example 442
 
 Use case
 ^^^^^^^^

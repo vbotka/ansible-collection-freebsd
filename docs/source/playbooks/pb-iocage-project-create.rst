@@ -7,8 +7,9 @@ pb_iocage_project_create
    :local:
    :depth: 3
 
-.. index:: single: pb_iocage_project_create.yml; pb_iocage_project_create
-.. index:: single: project create; pb_iocage_project_create
+.. index::
+   single: pb_iocage_project_create.yml; pb_iocage_project_create
+   single: project create; pb_iocage_project_create
 
 Synopsis
 ^^^^^^^^
@@ -17,8 +18,7 @@ This playbook creates jails in a project.
 
 .. hint::
 
-   Check the :ref:`genindex` and search the playbook
-   ``pb_iocage_project_create.yml`` to view all available examples.
+   Search ``pb_iocage_project_create.yml`` in :ref:`genindex` for available examples.
 
 Example
 ^^^^^^^

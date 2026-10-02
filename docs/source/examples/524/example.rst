@@ -7,31 +7,28 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_init; Example 524
-.. index:: single: service ansible_init; Example 524
-.. index:: single: template ansible-init; Example 524
-.. index:: single: firstboot; Example 524
-.. index:: single: ansible-conf-init; Example 524
-.. index:: single: ansible-conf-test; Example 524
-.. index:: single: repo ansible-conf-init; Example 524
-.. index:: single: repo ansible-conf-test; Example 524
-.. index:: single: ansible-pull; Example 524
-.. index:: single: role vbotka.freebsd.iocage_template; Example 524
-
-.. index:: single: filter vbotka.freebsd.project; Example 524
-.. index:: single: vbotka.freebsd.project; Example 524
-.. index:: single: project; Example 524
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 524
-.. index:: single: vbotka.freebsd.jailexec; Example 524
-.. index:: single: jailexec; Example 524
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 524
-
-.. index:: single: ansible_init_enable; Example 524
-.. index:: single: ansible_init_host; Example 524
-.. index:: single: ansible_init_repo; Example 524
-.. index:: single: ansible_init_playbook; Example 524
+.. index::
+   single: ansible_init; Example 524
+   single: service ansible_init; Example 524
+   single: template ansible-init; Example 524
+   single: firstboot; Example 524
+   single: ansible-conf-init; Example 524
+   single: ansible-conf-test; Example 524
+   single: repo ansible-conf-init; Example 524
+   single: repo ansible-conf-test; Example 524
+   single: ansible-pull; Example 524
+   single: role vbotka.freebsd.iocage_template; Example 524
+   single: filter vbotka.freebsd.project; Example 524
+   single: vbotka.freebsd.project; Example 524
+   single: project; Example 524
+   single: connection vbotka.freebsd.jailexec; Example 524
+   single: vbotka.freebsd.jailexec; Example 524
+   single: jailexec; Example 524
+   single: inventory vbotka.freebsd.iocage2; Example 524
+   single: ansible_init_enable; Example 524
+   single: ansible_init_host; Example 524
+   single: ansible_init_repo; Example 524
+   single: ansible_init_playbook; Example 524
 
 Use case
 ^^^^^^^^

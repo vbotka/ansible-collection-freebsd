@@ -20,3 +20,13 @@ swarms:
       vnet: 1
 
 start: [test-161]
+
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"
+
+vmm_swarms: "{{ (project_swarms | vbotka.freebsd.project).vmm }}"
+project_swarms: "{{ dict(swarms.keys()
+                         | zip(swarms.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

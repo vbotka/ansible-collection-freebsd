@@ -10,11 +10,11 @@ pb_iocage_plugins
    :local:
    :depth: 3
 
-.. index:: single: pb_iocage_plugins.yml; pb_iocage_plugins
-
-.. index:: single: tag enabled_plugins; pb_iocage_plugins
-.. index:: single: tag project_plugins; pb_iocage_plugins
-.. index:: single: tag swarm_plugins; pb_iocage_plugins
+.. index::
+   single: pb_iocage_plugins.yml; pb_iocage_plugins
+   single: tag enabled_plugins; pb_iocage_plugins
+   single: tag project_plugins; pb_iocage_plugins
+   single: tag swarm_plugins; pb_iocage_plugins
 
 Synopsis
 ^^^^^^^^

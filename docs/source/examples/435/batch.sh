@@ -9,7 +9,7 @@ ssh admin@iocage_06 sudo iocage destroy -f www-02
 ssh admin@iocage_06 sudo iocage destroy -f www-03
 
 # Destroy template
-ssh admin@iocage_06 sudo iocage destroy -f ansible-nginx
+# ssh admin@iocage_06 sudo iocage destroy -f ansible-nginx
 
 # Create template
 ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt
@@ -26,5 +26,11 @@ ansible-inventory -i hosts --graph | tee out/out-04.txt
 # Jails
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 
-# Configure Nginx servers
+# Configure Nginx
 ansible-playbook -i hosts pb-nginx.yml | tee out/out-06.txt
+
+# Test configuration
+ssh admin@iocage_06 sudo iocage exec www-01 service nginx configtest 2>&1 | tee out/out-07.txt
+
+# Test status
+ssh admin@iocage_06 sudo iocage exec www-01 service nginx status 2>&1 | tee out/out-08.txt

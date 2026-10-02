@@ -7,13 +7,13 @@
    :local:
    :depth: 1
 
-.. index:: single: project; Example 436
-.. index:: single: project create from templates; Example 436
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 436
-
-.. index:: single: HAProxy; Example 436
-.. index:: single: role vbotka.freebsd.haproxy; Example 436
-.. index:: single: vbotka.freebsd.haproxy; Example 436
+.. index::
+   single: project; Example 436
+   single: project create from templates; Example 436
+   single: pb_iocage_project_create_from_templates.yml; Example 436
+   single: HAProxy; Example 436
+   single: role vbotka.freebsd.haproxy; Example 436
+   single: vbotka.freebsd.haproxy; Example 436
 
 Use case
 ^^^^^^^^
@@ -202,6 +202,32 @@ Playbook output - Configure HAProxy
    :language: yaml+jinja
    :force:
 
+Results
+^^^^^^^
+
+* Test the configuration:
+
+  .. code-block:: console
+
+     shell > ssh admin@iocage_06 sudo service haproxy configtest 2>&1
+
+  .. literalinclude:: out/out-06.txt
+     :language: console
+
+  .. note::
+
+     When the configuration syntax is valid, ``service haproxy configtest`` produces
+     no output.
+
+* Test that the server is running:
+
+  .. code-block:: console
+
+     shell > ssh admin@iocage_06 sudo service haproxy status 2>&1
+
+  .. literalinclude:: out/out-07.txt
+     :language: console
+
 Script test-haproxy.sh
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -215,6 +241,6 @@ Script output - Test HAProxy
 
    shell> ssh admin@iocage_06 'bash -s' < test-haproxy.sh
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-08.txt
    :language: console
    :force:

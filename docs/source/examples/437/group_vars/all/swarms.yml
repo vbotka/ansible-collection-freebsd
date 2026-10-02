@@ -10,3 +10,8 @@ properties:
   vnet: 1
   boot: 1
   notes: vmm={{ inventory_hostname }}
+
+vmm_swarms: "{{ (project_swarms | vbotka.freebsd.project).vmm }}"
+project_swarms: "{{ dict(swarms.keys()
+                         | zip(swarms.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

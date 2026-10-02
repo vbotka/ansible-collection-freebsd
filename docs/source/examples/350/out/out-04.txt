@@ -2,27 +2,27 @@
 PLAY [Install packages.] *******************************************************
 
 TASK [Create dir /usr/local/etc/pkg/repos] *************************************
-changed: [7f1d02ed]
-changed: [092e528d]
-changed: [5c96fb35]
+changed: [31d0e6b6]
+changed: [dff48d9f]
+changed: [b437f715]
 
 TASK [Configure local repo.] ***************************************************
-changed: [092e528d]
-changed: [7f1d02ed]
-changed: [5c96fb35]
+changed: [dff48d9f]
+changed: [b437f715]
+changed: [31d0e6b6]
 
 TASK [Update pkg.] *************************************************************
-changed: [5c96fb35]
-changed: [092e528d]
-changed: [7f1d02ed]
+changed: [b437f715]
+changed: [dff48d9f]
+changed: [31d0e6b6]
 
 TASK [Install rsnapshot packages.] *********************************************
-changed: [5c96fb35 -> iocage_06]
-changed: [092e528d -> iocage_06]
-changed: [7f1d02ed -> iocage_06]
+changed: [31d0e6b6 -> iocage_06]
+changed: [dff48d9f -> iocage_06]
+changed: [b437f715 -> iocage_06]
 
 PLAY RECAP *********************************************************************
-092e528d                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
-5c96fb35                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
-7f1d02ed                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+31d0e6b6                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+b437f715                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+dff48d9f                   : ok=4    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

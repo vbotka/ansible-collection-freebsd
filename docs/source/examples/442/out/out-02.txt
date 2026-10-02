@@ -1,14 +1,13 @@
 @all:
   |--@ungrouped:
-  |--@swarm_sw_01:
-  |  |--0b152d76
-  |  |--9b33de6e
-  |  |--cb4d5365
   |--@vmm_iocage_06:
-  |  |--0b152d76
   |  |--repos-devel
-  |  |--9b33de6e
+  |  |--7005f3c8
   |  |--pkg-repo
-  |  |--cb4d5365
-  |  |--log-server-01
   |  |--repos
+  |  |--2b8fa8d8
+  |  |--de54ae9a
+  |--@swarm_sw_01:
+  |  |--7005f3c8
+  |  |--2b8fa8d8
+  |  |--de54ae9a

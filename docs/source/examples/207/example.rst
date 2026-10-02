@@ -7,52 +7,46 @@
    :local:
    :depth: 1
 
-.. index:: single: template ansible_client; Example 207
-.. index:: single: ansible_client; Example 207
-.. index:: single: DHCP; Example 207
-.. index:: single: property notes; Example 207
-.. index:: single: notes; Example 207
-
-.. index:: single: alias; Example 207
-.. index:: single: inventory alias; Example 207
-.. index:: single: inventory class; Example 207
-
-.. index:: single: filter vbotka.freebsd.project; Example 207
-.. index:: single: vbotka.freebsd.project; Example 207
-.. index:: single: project; Example 207
-
-.. index:: single: inventory vbotka.freebsd.iocage; Example 207
-.. index:: single: inventory ansible.builtin.constructed; Example 207
-.. index:: single: module ansible.builtin.command; Example 207
-
-.. index:: single: option inventory_hostname_tag; Example 207
-.. index:: single: inventory_hostname_tag; Example 207
-.. index:: single: option get_properties; Example 207
-.. index:: single: get_properties; Example 207
-.. index:: single: option hooks_results; Example 207
-.. index:: single: hooks_results; Example 207
-.. index:: single: option compose; Example 207
-.. index:: single: compose; Example 207
-.. index:: single: option groups; Example 207
-.. index:: single: option keyed_groups; Example 207
-
-.. index:: single: variable iocage_jails; Example 207
-.. index:: single: iocage_jails; Example 207
-.. index:: single: variable iocage_hooks; Example 207
-.. index:: single: iocage_hooks; Example 207
-.. index:: single: variable iocage_properties; Example 207
-.. index:: single: iocage_properties; Example 207
-.. index:: single: variable iocage_tags; Example 207
-.. index:: single: iocage_tags; Example 207
-
-.. index:: single: option iocage --count; Example 207
-.. index:: single: option iocage --short; Example 207
-.. index:: single: option iocage --template; Example 207
-
-.. index:: single: pb_iocage_project_create.yml; Example 207
-.. index:: single: pb_iocage_project_destroy.yml; Example 207
-.. index:: single: project create; Example 207
-.. index:: single: project destroy; Example 207
+.. index::
+   single: template ansible_client; Example 207
+   single: ansible_client; Example 207
+   single: DHCP; Example 207
+   single: property notes; Example 207
+   single: notes; Example 207
+   single: alias; Example 207
+   single: inventory alias; Example 207
+   single: inventory class; Example 207
+   single: filter vbotka.freebsd.project; Example 207
+   single: vbotka.freebsd.project; Example 207
+   single: project; Example 207
+   single: inventory vbotka.freebsd.iocage; Example 207
+   single: inventory ansible.builtin.constructed; Example 207
+   single: module ansible.builtin.command; Example 207
+   single: option inventory_hostname_tag; Example 207
+   single: inventory_hostname_tag; Example 207
+   single: option get_properties; Example 207
+   single: get_properties; Example 207
+   single: option hooks_results; Example 207
+   single: hooks_results; Example 207
+   single: option compose; Example 207
+   single: compose; Example 207
+   single: option groups; Example 207
+   single: option keyed_groups; Example 207
+   single: variable iocage_jails; Example 207
+   single: iocage_jails; Example 207
+   single: variable iocage_hooks; Example 207
+   single: iocage_hooks; Example 207
+   single: variable iocage_properties; Example 207
+   single: iocage_properties; Example 207
+   single: variable iocage_tags; Example 207
+   single: iocage_tags; Example 207
+   single: option iocage --count; Example 207
+   single: option iocage --short; Example 207
+   single: option iocage --template; Example 207
+   single: pb_iocage_project_create.yml; Example 207
+   single: pb_iocage_project_destroy.yml; Example 207
+   single: project create; Example 207
+   single: project destroy; Example 207
 
 Use case
 ^^^^^^^^
@@ -154,8 +148,8 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
+* Root privileges on the managed nodes
 
 Notes
 ^^^^^

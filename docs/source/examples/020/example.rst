@@ -9,21 +9,21 @@ This example extends :ref:`example_016`.
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 020
-.. index:: single: swarms destroy; Example 020
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 020
-.. index:: single: inventory ansible.builtin.constructed; Example 020
-.. index:: single: option inventory_hostname_required; Example 020
-.. index:: single: inventory_hostname_required; Example 020
-.. index:: single: option inventory_hostname_tag; Example 020
-.. index:: single: inventory_hostname_tag; Example 020
-.. index:: single: iocage tag alias; Example 020
-.. index:: single: inventory alias; Example 020
-.. index:: single: alias; Example 020
-.. index:: single: option compose; Example 020
-.. index:: single: compose; Example 020
-
-.. index:: single: option iocage --count; Example 020
+.. index::
+   single: swarms; Example 020
+   single: swarms destroy; Example 020
+   single: inventory vbotka.freebsd.iocage2; Example 020
+   single: inventory ansible.builtin.constructed; Example 020
+   single: option inventory_hostname_required; Example 020
+   single: inventory_hostname_required; Example 020
+   single: option inventory_hostname_tag; Example 020
+   single: inventory_hostname_tag; Example 020
+   single: iocage tag alias; Example 020
+   single: inventory alias; Example 020
+   single: alias; Example 020
+   single: option compose; Example 020
+   single: compose; Example 020
+   single: option iocage --count; Example 020
 
 Use case
 ^^^^^^^^

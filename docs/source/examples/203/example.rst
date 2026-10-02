@@ -9,36 +9,32 @@ This example extends :ref:`example_202`.
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 203
-
-.. index:: single: template ansible_client; Example 203
-.. index:: single: ansible_client; Example 203
-.. index:: single: DHCP; Example 203
-.. index:: single: property notes; Example 203
-.. index:: single: notes; Example 203
-
-.. index:: single: inventory vbotka.freebsd.iocage; Example 203
-.. index:: single: module vbotka.freebsd.iocage; Example 203
-.. index:: single: module ansible.builtin.command; Example 203
-.. index:: single: pb_iocage_ansible_clients.yml; Example 203
-
-.. index:: single: option compose; Example 203
-.. index:: single: compose; Example 203
-.. index:: single: option get_properties; Example 203
-.. index:: single: get_properties; Example 203
-.. index:: single: option hooks_results; Example 203
-.. index:: single: hooks_results; Example 203
-
-.. index:: single: variable iocage_hooks; Example 203
-.. index:: single: iocage_hooks; Example 203
-.. index:: single: variable iocage_properties; Example 203
-.. index:: single: iocage_properties; Example 203
-.. index:: single: variable iocage_tags; Example 203
-.. index:: single: iocage_tags; Example 203
-
-.. index:: single: option iocage --count; Example 203
-.. index:: single: option iocage --short; Example 203
-.. index:: single: option iocage --template; Example 203
+.. index::
+   single: swarms; Example 203
+   single: template ansible_client; Example 203
+   single: ansible_client; Example 203
+   single: DHCP; Example 203
+   single: property notes; Example 203
+   single: notes; Example 203
+   single: inventory vbotka.freebsd.iocage; Example 203
+   single: module vbotka.freebsd.iocage; Example 203
+   single: module ansible.builtin.command; Example 203
+   single: pb_iocage_ansible_clients.yml; Example 203
+   single: option compose; Example 203
+   single: compose; Example 203
+   single: option get_properties; Example 203
+   single: get_properties; Example 203
+   single: option hooks_results; Example 203
+   single: hooks_results; Example 203
+   single: variable iocage_hooks; Example 203
+   single: iocage_hooks; Example 203
+   single: variable iocage_properties; Example 203
+   single: iocage_properties; Example 203
+   single: variable iocage_tags; Example 203
+   single: iocage_tags; Example 203
+   single: option iocage --count; Example 203
+   single: option iocage --short; Example 203
+   single: option iocage --template; Example 203
 
 Use case
 ^^^^^^^^

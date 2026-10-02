@@ -1,6 +1,11 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
+TASK [Debug _properties debug=true] ********************************************
+ok: [iocage_06] => (item=test-161 ansible-client) => 
+    msg: |-
+        _properties: "bpf=1 vnet=1 ip4_addr=vnet0|172.16.99.201/24 defaultrouter=172.16.99.1 notes="swarm=sw_01 alias=test_161 vmm=iocage_06 class=test""
+
 TASK [Create clones from template] *********************************************
 changed: [iocage_06] => (item=test-161 ansible-client)
 
@@ -11,5 +16,5 @@ TASK [Start clones] ************************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=3    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_06                  : ok=4    changed=1    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

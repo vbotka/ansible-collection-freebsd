@@ -28,4 +28,4 @@ their ``vars`` directories.
 
 .. seealso::
 
-   `Role Index <genindex.html#R>`_
+   `Role Index <genindex.html#R>`__

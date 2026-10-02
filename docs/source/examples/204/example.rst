@@ -9,39 +9,35 @@ This example extends :ref:`example_203`.
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 204
-
-.. index:: single: template ansible_client; Example 204
-.. index:: single: ansible_client; Example 204
-.. index:: single: DHCP; Example 204
-.. index:: single: property notes; Example 204
-.. index:: single: notes; Example 204
-
-.. index:: single: filter vbotka.freebsd.iocage; Example 204
-.. index:: single: inventory vbotka.freebsd.iocage; Example 204
-.. index:: single: module ansible.builtin.command; Example 204
-.. index:: single: pb-iocage-ansible-clients-v2.yml; Example 204
-
-.. index:: single: option get_properties; Example 204
-.. index:: single: get_properties; Example 204
-.. index:: single: option hooks_results; Example 204
-.. index:: single: hooks_results; Example 204
-.. index:: single: option compose; Example 204
-.. index:: single: compose; Example 204
-.. index:: single: option groups; Example 204
-
-.. index:: single: option iocage --count; Example 204
-.. index:: single: option iocage --short; Example 204
-.. index:: single: option iocage --template; Example 204
-
-.. index:: single: variable iocage_jails; Example 204
-.. index:: single: iocage_jails; Example 204
-.. index:: single: variable iocage_hooks; Example 204
-.. index:: single: iocage_hooks; Example 204
-.. index:: single: variable iocage_properties; Example 204
-.. index:: single: iocage_properties; Example 204
-.. index:: single: variable iocage_tags; Example 204
-.. index:: single: iocage_tags; Example 204
+.. index::
+   single: swarms; Example 204
+   single: template ansible_client; Example 204
+   single: ansible_client; Example 204
+   single: DHCP; Example 204
+   single: property notes; Example 204
+   single: notes; Example 204
+   single: filter vbotka.freebsd.iocage; Example 204
+   single: inventory vbotka.freebsd.iocage; Example 204
+   single: module ansible.builtin.command; Example 204
+   single: pb-iocage-ansible-clients-v2.yml; Example 204
+   single: option get_properties; Example 204
+   single: get_properties; Example 204
+   single: option hooks_results; Example 204
+   single: hooks_results; Example 204
+   single: option compose; Example 204
+   single: compose; Example 204
+   single: option groups; Example 204
+   single: option iocage --count; Example 204
+   single: option iocage --short; Example 204
+   single: option iocage --template; Example 204
+   single: variable iocage_jails; Example 204
+   single: iocage_jails; Example 204
+   single: variable iocage_hooks; Example 204
+   single: iocage_hooks; Example 204
+   single: variable iocage_properties; Example 204
+   single: iocage_properties; Example 204
+   single: variable iocage_tags; Example 204
+   single: iocage_tags; Example 204
 
 Use case
 ^^^^^^^^
@@ -127,8 +123,8 @@ Requirements
 
 * :ref:`ug_filter_iocage`
 * :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes.
 * Templates created in :ref:`example_202`
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^

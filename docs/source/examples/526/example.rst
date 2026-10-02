@@ -7,39 +7,35 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_init; Example 526
-.. index:: single: service ansible_init; Example 526
-.. index:: single: template ansible-init; Example 526
-.. index:: single: firstboot; Example 526
-.. index:: single: ansible-conf-init; Example 526
-.. index:: single: ansible-conf-syslogng-client; Example 526
-.. index:: single: ansible-conf-syslogng-server; Example 526
-.. index:: single: repo ansible-conf-init; Example 526
-.. index:: single: repo ansible-conf-syslogng-client; Example 526
-.. index:: single: repo ansible-conf-syslogng-server; Example 526
-.. index:: single: ansible-pull; Example 526
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 526
-
-.. index:: single: filter vbotka.freebsd.project; Example 526
-.. index:: single: vbotka.freebsd.project; Example 526
-.. index:: single: project; Example 526
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 526
-.. index:: single: vbotka.freebsd.jailexec; Example 526
-.. index:: single: jailexec; Example 526
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 526
-
-.. index:: single: syslog-ng; Example 526
-.. index:: single: loggen; Example 526
-.. index:: single: log server; Example 526
-.. index:: single: log client; Example 526
-
-.. index:: single: ansible_init.sh; Example 526
-.. index:: single: ansible_init_enable; Example 526
-.. index:: single: ansible_init_host; Example 526
-.. index:: single: ansible_init_repo; Example 526
-.. index:: single: ansible_init_playbook; Example 526
+.. index::
+   single: ansible_init; Example 526
+   single: service ansible_init; Example 526
+   single: template ansible-init; Example 526
+   single: firstboot; Example 526
+   single: ansible-conf-init; Example 526
+   single: ansible-conf-syslogng-client; Example 526
+   single: ansible-conf-syslogng-server; Example 526
+   single: repo ansible-conf-init; Example 526
+   single: repo ansible-conf-syslogng-client; Example 526
+   single: repo ansible-conf-syslogng-server; Example 526
+   single: ansible-pull; Example 526
+   single: pb_iocage_project_create_from_templates.yml; Example 526
+   single: filter vbotka.freebsd.project; Example 526
+   single: vbotka.freebsd.project; Example 526
+   single: project; Example 526
+   single: connection vbotka.freebsd.jailexec; Example 526
+   single: vbotka.freebsd.jailexec; Example 526
+   single: jailexec; Example 526
+   single: inventory vbotka.freebsd.iocage2; Example 526
+   single: syslog-ng; Example 526
+   single: loggen; Example 526
+   single: log server; Example 526
+   single: log client; Example 526
+   single: ansible_init.sh; Example 526
+   single: ansible_init_enable; Example 526
+   single: ansible_init_host; Example 526
+   single: ansible_init_repo; Example 526
+   single: ansible_init_playbook; Example 526
 
 Use case
 ^^^^^^^^

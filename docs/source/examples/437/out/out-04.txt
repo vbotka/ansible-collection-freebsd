@@ -2,39 +2,39 @@
 PLAY [Configure Nginx servers.] ************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [038bfa3c]
-ok: [517b18dc]
-ok: [ea2cf3a8]
+ok: [936e26b0]
+ok: [4a4366d5]
+ok: [00505cda]
 
 TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [038bfa3c] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [ea2cf3a8] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [517b18dc] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [4a4366d5] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [936e26b0] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [00505cda] => (item=/usr/local/etc/nginx/nginx.conf)
 
 TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-changed: [038bfa3c]
-changed: [517b18dc]
-changed: [ea2cf3a8]
+changed: [00505cda]
+changed: [936e26b0]
+changed: [4a4366d5]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
-changed: [ea2cf3a8]
-changed: [517b18dc]
-changed: [038bfa3c]
+changed: [00505cda]
+changed: [4a4366d5]
+changed: [936e26b0]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
-ok: [517b18dc]
-ok: [ea2cf3a8]
-ok: [038bfa3c]
+ok: [00505cda]
+ok: [4a4366d5]
+ok: [936e26b0]
 
 PLAY [Create index.html] *******************************************************
 
 TASK [template] ****************************************************************
-changed: [517b18dc]
-changed: [ea2cf3a8]
-changed: [038bfa3c]
+changed: [4a4366d5]
+changed: [00505cda]
+changed: [936e26b0]
 
 PLAY RECAP *********************************************************************
-038bfa3c                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-517b18dc                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-ea2cf3a8                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+00505cda                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+4a4366d5                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+936e26b0                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

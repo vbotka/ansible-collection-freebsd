@@ -5,9 +5,9 @@ TASK [Setup: Get activated pool.] **********************************************
 ok: [iocage_06]
 
 TASK [Create: Create jails.] ***************************************************
-ok: [iocage_06] => (item=www-02)
-ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
+ok: [iocage_06] => (item=log-server-01)
+ok: [iocage_06] => (item=www-02)
 
 TASK [Facts: Create custom facts dirs.] ****************************************
 changed: [iocage_06] => (item=log-server-01)
@@ -19,34 +19,29 @@ changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
-TASK [Ai-vars-templates: Create ansible init vars dirs.] ***********************
+TASK [Ai-vars-templates: Create ansible init vars dirs /root/ansible-vars] *****
 changed: [iocage_06] => (item=log-server-01)
 changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
-TASK [Ai-vars-templates: Create ansible init vars from templates.] *************
+TASK [Ai-vars-templates: Create files from templates in /root/ansible-vars] ****
 changed: [iocage_06] => (item=log-server-01 project-hosts.yml)
 changed: [iocage_06] => (item=www-01 project-hosts.yml)
 changed: [iocage_06] => (item=www-02 project-hosts.yml)
 
-TASK [Ai-vars-class: Create ansible init vars dirs.] ***************************
-ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
-
-TASK [Ai-vars-jail: Create ansible init vars dirs.] ****************************
+TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
 ok: [iocage_06] => (item=log-server-01)
 ok: [iocage_06] => (item=www-01)
 ok: [iocage_06] => (item=www-02)
 
 TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
+ok: [iocage_06] => (item={'key': 'log-server-01', 'value': {'notes': 'alias=log_server_01', 'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['log-server'], 'custom_facts': 'class.fact.j2', 'ai_vars_templates': ['project-hosts.yml'], 'properties': {'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.10/24', 'vnet': 1, 'boot': 1}}})
+ok: [iocage_06] => (item={'key': 'www-01', 'value': {'notes': 'alias=www_01', 'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['log-client'], 'custom_facts': 'class.fact.j2', 'ai_vars_templates': ['project-hosts.yml'], 'properties': {'bpf': 1, 'dhcp': 1, 'vnet': 1, 'boot': 1}}})
+ok: [iocage_06] => (item={'key': 'www-02', 'value': {'notes': 'alias=www_02', 'vmm': 'iocage_06', 'template': 'ansible-init', 'class': ['log-client'], 'custom_facts': 'class.fact.j2', 'ai_vars_templates': ['project-hosts.yml'], 'properties': {'bpf': 1, 'dhcp': 1, 'vnet': 1, 'boot': 1}}})
 
 TASK [Start: Start jails.] *****************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=10   changed=4    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+iocage_06                  : ok=9    changed=4    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
 

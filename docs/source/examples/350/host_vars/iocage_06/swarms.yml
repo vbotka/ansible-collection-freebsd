@@ -2,7 +2,13 @@ swarms:
   sw_01:
     count: 3
     template: ansible-client
-    properties:
-      bpf: 1
-      dhcp: 1
-      vnet: 1
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+vmm_swarms: "{{ (project_swarms | vbotka.freebsd.project).vmm }}"
+project_swarms: "{{ dict(swarms.keys()
+                         | zip(swarms.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

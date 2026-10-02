@@ -2,8 +2,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
-from typing import Any
-
 
 DOCUMENTATION = r"""
 name: clean_unsafe
@@ -55,6 +53,8 @@ _value:
   description: The cleaned data structure with all C(__ansible_unsafe) wrappers stripped.
   type: raw
 """
+
+from typing import Any
 
 
 def clean_unsafe(data: Any) -> Any:

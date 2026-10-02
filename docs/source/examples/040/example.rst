@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: lookup vbotka.freebsd.galaxy_info; Example 040
-.. index:: single: vbotka.freebsd.galaxy_info; Example 040
-.. index:: single: galaxy.yml; Example 040
+.. index::
+   single: lookup vbotka.freebsd.galaxy_info; Example 040
+   single: vbotka.freebsd.galaxy_info; Example 040
+   single: galaxy.yml; Example 040
 
 Use case
 ^^^^^^^^

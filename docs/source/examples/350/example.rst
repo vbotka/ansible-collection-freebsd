@@ -7,19 +7,18 @@
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 350
-.. index:: single: swarms destroy; Example 350
-.. index:: single: swarms create from templates; Example 350
-.. index:: single: pb_iocage_ansible_clients.yml; Example 350
-
-.. index:: single: rsnapshot; Example 350
-.. index:: single: role vbotka.freebsd.rsnapshot; Example 350
-.. index:: single: vbotka.freebsd.rsnapshot; Example 350
-
-.. index:: single: module community.general.pkgng; Example 350
-.. index:: single: community.general.pkgng; Example 350
-.. index:: single: delegate_to; Example 350
-.. index:: single: pkg update; Example 350
+.. index::
+   single: swarms; Example 350
+   single: swarms destroy; Example 350
+   single: swarms create from templates; Example 350
+   single: pb_iocage_ansible_clients.yml; Example 350
+   single: rsnapshot; Example 350
+   single: role vbotka.freebsd.rsnapshot; Example 350
+   single: vbotka.freebsd.rsnapshot; Example 350
+   single: module community.general.pkgng; Example 350
+   single: community.general.pkgng; Example 350
+   single: delegate_to; Example 350
+   single: pkg update; Example 350
 
 Use case
 ^^^^^^^^
@@ -60,6 +59,7 @@ In the playbooks:
 Requirements
 ^^^^^^^^^^^^
 
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * Role `vbotka.freebsd.rsnapshot`_
 * Templates created in :ref:`example_202`
 
@@ -151,16 +151,6 @@ Create and start jails
    :language: yaml+jinja
    :force:
 
-Jails
-^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
 Graph
 ^^^^^
 
@@ -171,6 +161,16 @@ Graph
 .. literalinclude:: out/out-03.txt
    :language: bash
    :force:
+
+Jails
+^^^^^
+
+.. code-block:: console
+
+   [iocage_06]# iocage list -l
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
 
 Playbook pb-install.yml
 ^^^^^^^^^^^^^^^^^^^^^^^

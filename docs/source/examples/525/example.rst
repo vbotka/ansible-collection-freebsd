@@ -7,26 +7,24 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_init; Example 525
-.. index:: single: service ansible_init; Example 525
-.. index:: single: template ansible-init; Example 525
-.. index:: single: firstboot; Example 525
-.. index:: single: ansible-conf-init; Example 525
-.. index:: single: ansible-conf-test; Example 525
-.. index:: single: repo ansible-conf-init; Example 525
-.. index:: single: repo ansible-conf-test; Example 525
-.. index:: single: ansible-pull; Example 525
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 525
-
-.. index:: single: filter vbotka.freebsd.project; Example 525
-.. index:: single: vbotka.freebsd.project; Example 525
-.. index:: single: project; Example 525
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 525
-.. index:: single: vbotka.freebsd.jailexec; Example 525
-.. index:: single: jailexec; Example 525
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 525
+.. index::
+   single: ansible_init; Example 525
+   single: service ansible_init; Example 525
+   single: template ansible-init; Example 525
+   single: firstboot; Example 525
+   single: ansible-conf-init; Example 525
+   single: ansible-conf-test; Example 525
+   single: repo ansible-conf-init; Example 525
+   single: repo ansible-conf-test; Example 525
+   single: ansible-pull; Example 525
+   single: pb_iocage_project_create_from_templates.yml; Example 525
+   single: filter vbotka.freebsd.project; Example 525
+   single: vbotka.freebsd.project; Example 525
+   single: project; Example 525
+   single: connection vbotka.freebsd.jailexec; Example 525
+   single: vbotka.freebsd.jailexec; Example 525
+   single: jailexec; Example 525
+   single: inventory vbotka.freebsd.iocage2; Example 525
 
 Use case
 ^^^^^^^^

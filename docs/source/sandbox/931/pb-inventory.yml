@@ -1,0 +1,10 @@
+- name: Properties test at inventory.
+  hosts: all
+  tasks:
+
+    - debug:
+        msg: |
+          {% for h in ansible_play_hosts -%}
+          {{ h }} {{ iocage_tags | to_yaml | trim }}
+          {% endfor %}
+      run_once: true

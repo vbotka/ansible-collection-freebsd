@@ -5,7 +5,7 @@ TASK [debug] *******************************************************************
 ok: [localhost] => 
     result:
         jails:
-            ansible_client:
+            ansible-client:
                 basejail: 'no'
                 boot: 'off'
                 ip4: 10.1.0.199
@@ -35,7 +35,7 @@ ok: [localhost] =>
                 jid: None
                 release: 14.1-RELEASE-p6
                 state: down
-                template: ansible_client
+                template: ansible-client
                 type: jail
         releases:
         - 14.1-RELEASE
@@ -43,7 +43,7 @@ ok: [localhost] =>
 TASK [debug] *******************************************************************
 ok: [localhost] => 
     jails:
-        ansible_client:
+        ansible-client:
             basejail: 'no'
             boot: 'off'
             ip4: 10.1.0.199
@@ -73,7 +73,7 @@ ok: [localhost] =>
             jid: None
             release: 14.1-RELEASE-p6
             state: down
-            template: ansible_client
+            template: ansible-client
             type: jail
 
 TASK [debug] *******************************************************************

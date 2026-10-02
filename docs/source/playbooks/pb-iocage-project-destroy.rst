@@ -7,8 +7,9 @@ pb_iocage_project_destroy
    :local:
    :depth: 3
 
-.. index:: single: pb_iocage_project_destroy.yml; pb_iocage_project_destroy
-.. index:: single: project destroy; pb_iocage_project_destroy
+.. index::
+   single: pb_iocage_project_destroy.yml; pb_iocage_project_destroy
+   single: project destroy; pb_iocage_project_destroy
 
 Synopsis
 ^^^^^^^^
@@ -17,8 +18,7 @@ This playbook destroys a project.
 
 .. hint::
 
-   Check the :ref:`genindex` and search the playbook
-   ``pb_iocage_project_destroy.yml`` to view all available examples.
+   Search ``pb_iocage_project_destroy.yml`` in :ref:`genindex` for available examples.
 
 Example
 ^^^^^^^

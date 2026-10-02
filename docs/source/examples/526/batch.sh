@@ -9,7 +9,7 @@ ssh admin@iocage_06 sudo iocage destroy -f log-server-01
 ssh admin@iocage_06 sudo iocage destroy -f www-01
 ssh admin@iocage_06 sudo iocage destroy -f www-02
 
-# List templates
+# Templates
 ssh admin@iocage_06 sudo iocage list -lt | tee out/out-02.txt
 
 # Create the project

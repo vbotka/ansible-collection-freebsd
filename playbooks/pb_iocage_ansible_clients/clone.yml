@@ -2,38 +2,49 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
+#   _notes_source:
+#     - "{{ item.value.notes | d('') }}"
+#     - "{{ item.value.properties.notes | d('') }}"
+#     - "{{ properties.notes | d('') }}"
+#     - "vmm={{ inventory_hostname }}"
+#     - "class={{ item.value.class | d([]) | join(',') }}"
+#   _notes: "{{ _notes_source | select | join(' ') }}"
+
+#   _properties_source:
+#     - "{{ properties | d({}) }}"
+#     - "{{ item.value.properties | d({}) }}"
+#   _properties_combined: >-
+#     {{ _properties_source
+#        | community.general.remove_keys(target=['notes'])
+#        | select
+#        | combine(recursive=true) }}
+#   _properties: >-
+#     {% for k, v in _properties_combined.items() %}
+#     {{ k }}={{ v }}
+#     {% endfor %}
+#     notes="{{ _notes }}"
+
+- name: "Debug _properties debug={{ debug }}"
+  when: debug | bool
+  ansible.builtin.debug:
+    msg: |
+      _properties: "{{ properties | d({})
+                       | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+  loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
+  loop_control:
+    label: "{{ item.key }} {{ item.value.clone_from }}"
+
 - name: Create clones from template
-  register: out_clone
   vars:
-
-    _notes_source:
-      - "vmm={{ inventory_hostname }}"
-      - "{{ properties.notes | d('') }}"
-      - "{{ item.value.notes | d('') }}"
-      - "{{ item.value.properties.notes | d('') }}"
-      - "class={{ item.value.class | d([]) | join(',') }}"
-    _notes: "{{ _notes_source | select | join(' ') }}"
-
-    _properties_source:
-      - "{{ properties | d({}) }}"
-      - "{{ item.value.properties | d({}) }}"
-    _properties_combined: >-
-      {{ _properties_source
-         | community.general.remove_keys(target=['notes'])
-         | select
-         | combine(recursive=true) }}
-    _properties: >-
-      {% for k, v in _properties_combined.items() %}
-      {{ k }}={{ v }}
-      {% endfor %}
-      notes="{{ _notes }}"
-
+    _properties: "{{ properties | d({})
+                     | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+  register: out_clone
   vbotka.freebsd.iocage:
     state: cloned
     clone_from: "{{ item.value.clone_from }}"
     name: "{{ item.key }}"
     properties: "{{ _properties }}"
-  loop: "{{ clones | dict2items }}"
+  loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
   loop_control:
     label: "{{ item.key }} {{ item.value.clone_from }}"
 
@@ -54,8 +65,8 @@
                               | map(attribute='key')
                               | list }}"
     _jails: "{{ iocage_jails | difference(iocage_jails_started) | list }}"
-  changed_when: false
   register: out_start
+  changed_when: false
   when:
     - not dry_run | bool
     - _jails | length > 0

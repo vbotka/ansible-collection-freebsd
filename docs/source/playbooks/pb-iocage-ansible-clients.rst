@@ -7,18 +7,17 @@ pb_iocage_ansible_clients
    :local:
    :depth: 3
 
-.. index:: single: pb_iocage_ansible_clients.yml; pb_iocage_ansible_clients
-
-.. index:: single: clones; pb_iocage_ansible_clients
-.. index:: single: swarms; pb_iocage_ansible_clients
-.. index:: single: clone_host_hostname; pb_iocage_ansible_clients
-
-.. index:: single: mount; pb_iocage_ansible_clients
-.. index:: single: fstab; pb_iocage_ansible_clients
-.. index:: single: host_hostname; pb_iocage_ansible_clients
-.. index:: single: allow_mount; pb_iocage_ansible_clients
-.. index:: single: allow_mount_zfs; pb_iocage_ansible_clients
-.. index:: single: jail_zfs; pb_iocage_ansible_clients
+.. index::
+   single: pb_iocage_ansible_clients.yml; pb_iocage_ansible_clients
+   single: clones; pb_iocage_ansible_clients
+   single: swarms; pb_iocage_ansible_clients
+   single: clone_host_hostname; pb_iocage_ansible_clients
+   single: mount; pb_iocage_ansible_clients
+   single: fstab; pb_iocage_ansible_clients
+   single: host_hostname; pb_iocage_ansible_clients
+   single: allow_mount; pb_iocage_ansible_clients
+   single: allow_mount_zfs; pb_iocage_ansible_clients
+   single: jail_zfs; pb_iocage_ansible_clients
 
 Synopsis
 ^^^^^^^^
@@ -172,8 +171,7 @@ To enable ZFS dataset mounting inside the jail:
 
 .. hint::
 
-   Check the :ref:`genindex` and search the playbook
-   ``pb_iocage_ansible_clients.yml`` to view all available examples.
+   Search ``pb_iocage_ansible_clients.yml`` in :ref:`genindex` for available examples.
 
 Workflow
 ^^^^^^^^

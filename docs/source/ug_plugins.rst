@@ -24,8 +24,8 @@ Plugins
 
 .. seealso::
 
-   * `Module Index <genindex.html#M>`_
-   * `Inventory Index <genindex.html#I>`_
-   * `Filter Index <genindex.html#F>`_
-   * `Connection Index <genindex.html#C>`_
-   * `Lookup Index <genindex.html#L>`_
+   * `Module Index <genindex.html#M>`__
+   * `Inventory Index <genindex.html#I>`__
+   * `Filter Index <genindex.html#F>`__
+   * `Connection Index <genindex.html#C>`__
+   * `Lookup Index <genindex.html#L>`__

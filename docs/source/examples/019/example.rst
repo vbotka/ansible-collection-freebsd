@@ -9,18 +9,17 @@ This example extends :ref:`example_016`.
    :local:
    :depth: 1
 
-.. index:: single: inventory vbotka.freebsd.iocage; Example 019
-.. index:: single: inventory ansible.builtin.constructed; Example 019
-
-.. index:: single: option use_vars_plugins; Example 019
-.. index:: single: use_vars_plugins; Example 019
-.. index:: single: option compose; Example 019
-.. index:: single: compose; Example 019
-.. index:: single: option groups; Example 019
-.. index:: single: groups; Example 019
-
-.. index:: single: vars plugin ansible.builtin.host_group_vars; Example 019
-.. index:: single: variable region; Example 019
+.. index::
+   single: inventory vbotka.freebsd.iocage; Example 019
+   single: inventory ansible.builtin.constructed; Example 019
+   single: option use_vars_plugins; Example 019
+   single: use_vars_plugins; Example 019
+   single: option compose; Example 019
+   single: compose; Example 019
+   single: option groups; Example 019
+   single: groups; Example 019
+   single: ansible.builtin.host_group_vars; Example 019
+   single: variable region; Example 019
 
 Use case
 ^^^^^^^^

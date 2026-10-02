@@ -7,28 +7,24 @@
    :local:
    :depth: 1
 
-.. index:: single: pkg repo; Example 527
-.. index:: single: template ansible-pkg-repo; Example 527
-.. index:: single: role vbotka.freebsd.iocage_template; Example 527
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 527
-
-.. index:: single: filter vbotka.freebsd.project; Example 527
-.. index:: single: vbotka.freebsd.project; Example 527
-.. index:: single: project; Example 527
-
-.. index:: single: filter vbotka.freebsd.to_ast; Example 527
-.. index:: single: vbotka.freebsd.to_ast; Example 527
-.. index:: single: to_ast; Example 527
-
-.. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 527
-.. index:: single: vbotka.freebsd.ast_to_nginx; Example 527
-.. index:: single: ast_to_nginx; Example 527
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 527
-.. index:: single: vbotka.freebsd.jailexec; Example 527
-.. index:: single: jailexec; Example 527
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 527
+.. index::
+   single: pkg repo; Example 527
+   single: template ansible-pkg-repo; Example 527
+   single: role vbotka.freebsd.iocage_template; Example 527
+   single: pb_iocage_project_create_from_templates.yml; Example 527
+   single: filter vbotka.freebsd.project; Example 527
+   single: vbotka.freebsd.project; Example 527
+   single: project; Example 527
+   single: filter vbotka.freebsd.to_ast; Example 527
+   single: vbotka.freebsd.to_ast; Example 527
+   single: to_ast; Example 527
+   single: filter vbotka.freebsd.ast_to_nginx; Example 527
+   single: vbotka.freebsd.ast_to_nginx; Example 527
+   single: ast_to_nginx; Example 527
+   single: connection vbotka.freebsd.jailexec; Example 527
+   single: vbotka.freebsd.jailexec; Example 527
+   single: jailexec; Example 527
+   single: inventory vbotka.freebsd.iocage2; Example 527
 
 .. index:: single: Nginx; Example 527
 

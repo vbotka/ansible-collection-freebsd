@@ -7,19 +7,17 @@
    :local:
    :depth: 1
 
-.. index:: single: template ansible-repos; Example 523
-.. index:: single: role vbotka.freebsd.iocage_template; Example 523
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 523
-
-.. index:: single: filter vbotka.freebsd.project; Example 523
-.. index:: single: vbotka.freebsd.project; Example 523
-.. index:: single: project; Example 523
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 523
-.. index:: single: vbotka.freebsd.jailexec; Example 523
-.. index:: single: jailexec; Example 523
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 523
+.. index::
+   single: template ansible-repos; Example 523
+   single: role vbotka.freebsd.iocage_template; Example 523
+   single: pb_iocage_project_create_from_templates.yml; Example 523
+   single: filter vbotka.freebsd.project; Example 523
+   single: vbotka.freebsd.project; Example 523
+   single: project; Example 523
+   single: connection vbotka.freebsd.jailexec; Example 523
+   single: vbotka.freebsd.jailexec; Example 523
+   single: jailexec; Example 523
+   single: inventory vbotka.freebsd.iocage2; Example 523
 
 Use case
 ^^^^^^^^

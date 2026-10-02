@@ -9,44 +9,39 @@ Extending :ref:`example_200`.
    :local:
    :depth: 1
 
-.. index:: single: clones; Example 202
-
-.. index:: single: ansible-client; Example 202
-.. index:: single: template ansible_client; Example 202
-.. index:: single: DHCP; Example 202
-
-.. index:: single: dhclient; Example 202
-.. index:: single: dhclient-exit-hooks; Example 202
-.. index:: single: property notes; Example 202
-.. index:: single: notes; Example 202
-.. index:: single: sudoers; Example 202
-
-.. index:: single: inventory vbotka.freebsd.iocage; Example 202
-.. index:: single: module vbotka.freebsd.iocage; Example 202
-.. index:: single: module ansible.posix.authorized; Example 202
-.. index:: single: ansible.posix.authorized; Example 202
-.. index:: single: module ansible.builtin.lineinfile; Example 202
-.. index:: single: ansible.builtin.lineinfile; Example 202
-.. index:: single: module community.general.sysrc; Example 202
-.. index:: single: community.general.sysrc; Example 202
-
-.. index:: single: pb_iocage_template.yml; Example 202
-.. index:: single: pb_iocage_ansible_clients.yml; Example 202
-
-.. index:: single: option compose; Example 202
-.. index:: single: compose; Example 202
-.. index:: single: option hooks_results; Example 202
-.. index:: single: hooks_results; Example 202
-
-.. index:: single: variable iocage_hooks; Example 202
-.. index:: single: iocage_hooks; Example 202
-.. index:: single: act_user; Example 202
-.. index:: single: act_pk; Example 202
-.. index:: single: act_sudo; Example 202
-.. index:: single: act_dhclient; Example 202
-.. index:: single: act_rcconf; Example 202
-.. index:: single: pkglist; Example 202
-.. index:: single: pkgs.json; Example 202
+.. index::
+   single: clones; Example 202
+   single: ansible-client; Example 202
+   single: template ansible_client; Example 202
+   single: DHCP; Example 202
+   single: dhclient; Example 202
+   single: dhclient-exit-hooks; Example 202
+   single: property notes; Example 202
+   single: notes; Example 202
+   single: sudoers; Example 202
+   single: inventory vbotka.freebsd.iocage; Example 202
+   single: module vbotka.freebsd.iocage; Example 202
+   single: module ansible.posix.authorized; Example 202
+   single: ansible.posix.authorized; Example 202
+   single: module ansible.builtin.lineinfile; Example 202
+   single: ansible.builtin.lineinfile; Example 202
+   single: module community.general.sysrc; Example 202
+   single: community.general.sysrc; Example 202
+   single: pb_iocage_template.yml; Example 202
+   single: pb_iocage_ansible_clients.yml; Example 202
+   single: option compose; Example 202
+   single: compose; Example 202
+   single: option hooks_results; Example 202
+   single: hooks_results; Example 202
+   single: variable iocage_hooks; Example 202
+   single: iocage_hooks; Example 202
+   single: act_user; Example 202
+   single: act_pk; Example 202
+   single: act_sudo; Example 202
+   single: act_dhclient; Example 202
+   single: act_rcconf; Example 202
+   single: pkglist; Example 202
+   single: pkgs.json; Example 202
 
 Use case
 ^^^^^^^^

@@ -1,0 +1,13 @@
+
+PLAY [Properties test at inventory.] *******************************************
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        repos {class: repos, vmm: iocage_06}
+        repos_devel {class: repos, vmm: iocage_06}
+        pkg_repo {class: repos, vmm: iocage_06}
+
+PLAY RECAP *********************************************************************
+repos                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

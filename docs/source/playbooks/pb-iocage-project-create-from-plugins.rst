@@ -10,8 +10,9 @@ pb_iocage_project_create_from_plugins
    :local:
    :depth: 3
 
-.. index:: single: pb_iocage_project_create_from_plugins.yml; pb_iocage_project_create_from_plugins
-.. index:: single: project create from plugins; pb_iocage_project_create_from_plugins
+.. index::
+   single: pb_iocage_project_create_from_plugins.yml; pb_iocage_project_create_from_plugins
+   single: project create from plugins; pb_iocage_project_create_from_plugins
 
 Synopsis
 ^^^^^^^^
@@ -20,8 +21,8 @@ This playbook creates jails in a project from plugins.
 
 .. hint::
 
-   Check the :ref:`genindex` and search the playbook
-   ``pb_iocage_project_create_from_plugins.yml`` to view all available examples.
+   Search ``pb_iocage_project_create_from_plugins.yml`` in :ref:`genindex` for
+   available examples.
 
 Example
 ^^^^^^^

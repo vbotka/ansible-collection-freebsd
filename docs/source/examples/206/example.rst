@@ -9,41 +9,36 @@ This example extends :ref:`example_203`.
    :local:
    :depth: 1
 
-.. index:: single: clones; Example 206
-.. index:: single: clones create from templates; Example 206
-.. index:: single: swarms; Example 206
-.. index:: single: swarms destroy; Example 206
-.. index:: single: swarms create from templates; Example 437
-.. index:: single: pb_iocage_ansible_clients.yml; Example 435
-
-.. index:: single: template ansible-client; Example 206
-.. index:: single: ansible-client; Example 206
-.. index:: single: DHCP; Example 206
-.. index:: single: property notes; Example 206
-.. index:: single: notes; Example 206
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 206
-.. index:: single: module vbotka.freebsd.iocage; Example 206
-.. index:: single: module ansible.builtin.command; Example 206
-.. index:: single: pb_iocage_ansible_clients.yml; Example 206
-
-.. index:: single: option compose; Example 206
-.. index:: single: compose; Example 206
-.. index:: single: option get_properties; Example 206
-.. index:: single: get_properties; Example 206
-.. index:: single: option hooks_results; Example 206
-.. index:: single: hooks_results; Example 206
-
-.. index:: single: option iocage --count; Example 206
-.. index:: single: option iocage --short; Example 206
-.. index:: single: option iocage --template; Example 206
-
-.. index:: single: variable iocage_hooks; Example 206
-.. index:: single: iocage_hooks; Example 206
-.. index:: single: variable iocage_properties; Example 206
-.. index:: single: iocage_properties; Example 206
-.. index:: single: variable iocage_tags; Example 206
-.. index:: single: iocage_tags; Example 206
+.. index::
+   single: clones; Example 206
+   single: clones create from templates; Example 206
+   single: swarms; Example 206
+   single: swarms destroy; Example 206
+   single: swarms create from templates; Example 206
+   single: pb_iocage_ansible_clients.yml; Example 206
+   single: template ansible-client; Example 206
+   single: ansible-client; Example 206
+   single: DHCP; Example 206
+   single: property notes; Example 206
+   single: notes; Example 206
+   single: inventory vbotka.freebsd.iocage2; Example 206
+   single: module vbotka.freebsd.iocage; Example 206
+   single: module ansible.builtin.command; Example 206
+   single: option compose; Example 206
+   single: compose; Example 206
+   single: option get_properties; Example 206
+   single: get_properties; Example 206
+   single: option hooks_results; Example 206
+   single: hooks_results; Example 206
+   single: option iocage --count; Example 206
+   single: option iocage --short; Example 206
+   single: option iocage --template; Example 206
+   single: variable iocage_hooks; Example 206
+   single: iocage_hooks; Example 206
+   single: variable iocage_properties; Example 206
+   single: iocage_properties; Example 206
+   single: variable iocage_tags; Example 206
+   single: iocage_tags; Example 206
 
 Use case
 ^^^^^^^^
@@ -195,8 +190,8 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage2`
-* Root privileges on the managed nodes
 * Templates created in :ref:`example_202`
+* Root privileges on the managed nodes
 
 Notes
 ^^^^^
@@ -268,6 +263,7 @@ Create and start clones
 
    (env) > ansible-playbook -i iocage.ini \
                             -t clone -e clone=true \
+			    -e debug=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-02.txt
@@ -280,7 +276,8 @@ Create and start swarms
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t swarm -e swarm=true -e debug=true \
+                            -t swarm -e swarm=true \
+			    -e debug=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-03.txt

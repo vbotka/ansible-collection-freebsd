@@ -7,14 +7,14 @@
    :local:
    :depth: 1
 
-.. index:: single: project; Example 435
-
-.. index:: single: Nginx; Example 435
-.. index:: single: role vbotka.freebsd.nginx; Example 435
-.. index:: single: vbotka.freebsd.nginx; Example 435
-
-.. index:: single: template ansible-nginx; Example 435
-.. index:: single: ansible-nginx; Example 435
+.. index::
+   single: project; Example 435
+   single: Nginx; Example 435
+   single: pb_iocage_ansible_clients.yml; Example 435
+   single: role vbotka.freebsd.nginx; Example 435
+   single: vbotka.freebsd.nginx; Example 435
+   single: template ansible-nginx; Example 435
+   single: ansible-nginx; Example 435
 
 Use case
 ^^^^^^^^
@@ -241,22 +241,31 @@ Results
 
   .. code-block:: console
 
-     [iocage_06]# iocage exec www-01 service nginx configtest
-     Performing sanity check on nginx configuration:
-     nginx: the configuration file /usr/local/etc/nginx/nginx.conf syntax is ok
-     nginx: configuration file /usr/local/etc/nginx/nginx.conf test is successful
+     shell > ssh admin@iocage_06 sudo iocage exec www-01 service nginx configtest 2>&1
+
+  .. literalinclude:: out/out-07.txt
+     :language: console
 
 * Test that the server is running:
 
   .. code-block:: console
 
-     [iocage_06]# iocage exec www-01 service nginx status
-     nginx is running as pid 51207.
+     shell > ssh admin@iocage_06 sudo iocage exec www-01 service nginx status 2>&1
+
+  .. literalinclude:: out/out-08.txt
+     :language: console
 
 * Test that the server is working (see the IP in the list of jails):
 
   .. code-block:: console
 
-     [iocage_06]# lynx 172.16.99.116
-
-     It works!
+     shell > ssh admin@iocage_06 fetch -qo - http://172.16.99.111/
+     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+     <html>
+     <head>
+     <title>It works!</title>
+     </head>
+     <body>
+     <p>It works!</p>
+     </body>
+     </html>

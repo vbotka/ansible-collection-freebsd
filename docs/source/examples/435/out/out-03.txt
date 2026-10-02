@@ -13,8 +13,8 @@ changed: [iocage_06] => (item=www-01)
 changed: [iocage_06] => (item=www-02)
 
 TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
+ok: [iocage_06] => (item={'key': 'www-01', 'value': {'notes': 'alias=www_01', 'vmm': 'iocage_06', 'template': 'ansible-nginx', 'class': ['nginx']}})
+ok: [iocage_06] => (item={'key': 'www-02', 'value': {'notes': 'alias=www_02', 'vmm': 'iocage_06', 'template': 'ansible-nginx', 'class': ['nginx']}})
 
 TASK [Start: Start jails.] *****************************************************
 ok: [iocage_06]

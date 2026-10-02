@@ -2,64 +2,64 @@
 PLAY [Test the connection plugin jailexec.] ************************************
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [9b33de6e] => 
+ok: [7005f3c8] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 9b33de6e
+        ansible_host: 7005f3c8
         ansible_user: admin
 
         ansible_jail_host: iocage_06
-        ansible_jail_name: 23
+        ansible_jail_name: 34
         ansible_jail_user: UNDEFINED
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 172.16.99.172
-        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [0b152d76] => 
+        iocage_ip4: 172.16.99.171
+        iocage_tags: {'vmm': 'iocage_06', 'class': 'test', 'swarm': 'sw_01'}
+ok: [2b8fa8d8] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 0b152d76
+        ansible_host: 2b8fa8d8
         ansible_user: admin
 
         ansible_jail_host: iocage_06
-        ansible_jail_name: 22
+        ansible_jail_name: 32
         ansible_jail_user: UNDEFINED
         ansible_jail_privilege_escalation: sudo
 
         iocage_ip4: 172.16.99.168
-        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [cb4d5365] => 
+        iocage_tags: {'vmm': 'iocage_06', 'class': 'test', 'swarm': 'sw_01'}
+ok: [de54ae9a] => 
     msg: |-
         ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: cb4d5365
+        ansible_host: de54ae9a
         ansible_user: admin
 
         ansible_jail_host: iocage_06
-        ansible_jail_name: 24
+        ansible_jail_name: 33
         ansible_jail_user: UNDEFINED
         ansible_jail_privilege_escalation: sudo
 
-        iocage_ip4: 172.16.99.146
-        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
+        iocage_ip4: 172.16.99.169
+        iocage_tags: {'vmm': 'iocage_06', 'class': 'test', 'swarm': 'sw_01'}
 
 TASK [ansible.builtin.command] *************************************************
-changed: [0b152d76]
-changed: [cb4d5365]
-changed: [9b33de6e]
+changed: [2b8fa8d8]
+changed: [de54ae9a]
+changed: [7005f3c8]
 
 TASK [ansible.builtin.debug] ***************************************************
-ok: [9b33de6e] => 
-    out.stdout: FreeBSD 9b33de6e 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [7005f3c8] => 
+    out.stdout: FreeBSD 7005f3c8 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
-ok: [cb4d5365] => 
-    out.stdout: FreeBSD cb4d5365 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [2b8fa8d8] => 
+    out.stdout: FreeBSD 2b8fa8d8 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
-ok: [0b152d76] => 
-    out.stdout: FreeBSD 0b152d76 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+ok: [de54ae9a] => 
+    out.stdout: FreeBSD de54ae9a 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
         GENERIC amd64
 
 PLAY RECAP *********************************************************************
-0b152d76                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-9b33de6e                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-cb4d5365                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2b8fa8d8                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+7005f3c8                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+de54ae9a                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
