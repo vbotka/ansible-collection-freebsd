@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.iocage; Example 002
-.. index:: single: iocage activate; Example 002
-.. index:: single: activate iocage; Example 002
+.. index::
+   single: role vbotka.freebsd.iocage; Example 002
+   single: iocage activate; Example 002
+   single: activate iocage; Example 002
 
 Use case
 ^^^^^^^^
@@ -37,10 +38,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to:
-
-  * Activate `iocage`_
+On a managed node, use the playbook ``pb-iocage.yml`` and the `role
+vbotka.freebsd.iocage`_ to activate `iocage`_
 
 Requirements
 ^^^^^^^^^^^^

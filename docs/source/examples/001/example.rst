@@ -7,13 +7,14 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.iocage; Example 001
-.. index:: single: iocage install; Example 001
+.. index::
+   single: role vbotka.freebsd.iocage; Example 001
+   single: iocage install; Example 001
 
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to install the `iocage`_ package.
+Use the `role vbotka.freebsd.iocage`_ to install the `iocage package`_.
 
 Tree
 ^^^^
@@ -101,6 +102,11 @@ Playbook output - Display variables
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
+
+.. note::
+
+   The displayed values of the ``freebsd_iocage_*`` variables are the ``iocage``
+   role defaults.
 
 .. seealso::
 

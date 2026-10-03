@@ -202,13 +202,14 @@
 .. _iocage jail type - base jail vs clone. Which to choose?: https://www.truenas.com/community/threads/iocage-jail-type-base-jail-vs-clone-which-to-choose.82639/
 .. _iocage list is slow: https://forums.freebsd.org/threads/freebsd-13-1-extremally-slow.86723
 .. _iocage man: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
+.. _iocage package: https://www.freshports.org/sysutils/iocage/
 .. _iocage plugin: https://github.com/vbotka/iocage-plugins/
 .. _iocage plugins: https://github.com/vbotka/iocage-plugins/
-.. _iocage port: https://www.freshports.org/sysutils/iocage
+.. _iocage port: https://www.freshports.org/sysutils/iocage/
 .. _iocage properties: https://freebsd.github.io/iocage/basic-use.html#configure-a-jail
 .. _iocage templates: https://freebsd.github.io/iocage/templates.html
 .. _iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
-.. _iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template
+.. _iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template/
 .. _jail parameter: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-jail
 .. _jail property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _lib: https://github.com/vbotka/ansible-lib/

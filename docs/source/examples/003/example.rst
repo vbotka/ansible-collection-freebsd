@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.iocage; Example 003
-.. index:: single: iocage audit; Example 003
-.. index:: single: audit iocage; Example 003
+.. index::
+   single: role vbotka.freebsd.iocage; Example 003
+   single: iocage audit; Example 003
+   single: audit iocage; Example 003
 
 Use case
 ^^^^^^^^
@@ -37,10 +38,8 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to:
-
-  * Audit the `iocage`_ configuration
+On a managed node, use the playbook ``pb-iocage.yml`` and the `role
+vbotka.freebsd.iocage`_ to audit the `iocage`_ configuration.
 
 Requirements
 ^^^^^^^^^^^^
@@ -59,9 +58,12 @@ Notes
 
 * By default, sanity testing is enabled: ``freebsd_iocage_sanity: true``.
 
+.. important::
+
+   :ref:`See example 501 how to configure iocage host. <example_501>`
+
 .. seealso::
 
-   * :ref:`example_501`
    * The tasks ``roles/iocage/tasks/sanity.yml``
    * The default variables ``roles/iocage/defaults/main/sanity.yml``
 
@@ -77,6 +79,19 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. note::
+
+   By default, activation testing is disabled::
+
+     freebsd_iocage_sanity_zfs_pool_active: false
+
 host_vars
 ^^^^^^^^^
 
@@ -91,12 +106,6 @@ host_vars
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
-
-.. note::
-
-   By default, activation testing is disabled::
-
-     freebsd_iocage_sanity_zfs_pool_active: false
 
 Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
