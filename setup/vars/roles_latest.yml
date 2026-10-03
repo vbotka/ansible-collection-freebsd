@@ -1,5 +1,5 @@
 ---
-bsd_roles_no: 37
+bsd_roles_no: 38
 bsd_roles:
   - galaxy: vbotka.ansible
     name: ansible
@@ -61,6 +61,11 @@ bsd_roles:
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-dns
     version: 2.6.2
+  - galaxy: vbotka.freebsd_haproxy
+    name: haproxy
+    scm: git
+    src: https://github.com/vbotka/ansible-freebsd-haproxy
+    version: 1.0.1
   - galaxy: vbotka.freebsd_iocage
     name: iocage
     scm: git
@@ -120,7 +125,7 @@ bsd_roles:
     name: pf
     scm: git
     src: https://github.com/vbotka/ansible-freebsd-pf
-    version: 2.9.0
+    version: 2.9.1
   - galaxy: vbotka.freebsd_php
     name: php
     scm: git
