@@ -1,0 +1,34 @@
+---
+- name: Create files for pf.
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+
+    files:
+      pf-rdr-ssh-localnet.conf:
+        template: default.conf.j2
+        net: localnet
+        if: ext_if
+        subnet: 172.16.99
+        start: 100
+        stop: 199
+        ssh_fwd_start: 2200
+      pf-rdr-ssh-vpnnet.conf:
+        template: default.conf.j2
+        net: wg_net
+        if: wg_if
+        subnet: 172.16.99
+        start: 100
+        stop: 199
+        ssh_fwd_start: 2200
+
+  tasks:
+
+    - name: Create files.
+      ansible.builtin.template:
+        src: "{{ item.value.template }}"
+        dest: "{{ playbook_dir }}/files/{{ item.key }}"
+      loop: "{{ files | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"

@@ -5,6 +5,21 @@ vbotka.freebsd_pf 2.9 Release Notes
 .. contents:: Topics
 
 
+2.9.2
+=====
+
+Release Summary
+---------------
+Update contrib/freebsd-pf-setup.yml
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add contrib/templates/default.conf.j2
+
+
 2.9.1
 =====
 

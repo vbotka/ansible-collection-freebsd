@@ -17,7 +17,7 @@ Major Changes
 Minor Changes
 --------------
 * Filter dict_to_ast renamed to to_ast. Docs updated.
-* Upgrade role pf to 2.9.1
+* Upgrade role pf to 2.9.2
 
 
 1.0.12
