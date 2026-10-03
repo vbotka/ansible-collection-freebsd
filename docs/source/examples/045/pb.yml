@@ -1,0 +1,53 @@
+- name: Test filter vbotka.freebsd.combine_properties
+  hosts: iocage
+
+  vars:
+
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+    jails:
+      www-02:
+        class: [log-client, nginx]
+        notes: alias=www_02
+        properties:
+          boot: 1
+
+    swarms:
+      swarm_01:
+        swarm: production
+        count: 3
+        class: [monitor, web]
+        properties:
+          boot: 1
+      devel:
+        count: 2
+        class: [monitor, web]
+        properties:
+          boot: 1
+
+    j: "{{ properties
+           | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+    s: "{{ properties
+           | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
+
+  tasks:
+
+    # Combine jail properties (default notes: vmm, class)
+    - name: Combine jail properties.
+      ansible.builtin.debug:
+        msg: "{{ j | to_yaml }}"
+      loop: "{{ jails | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    # Append custom attribute swarm to notes
+    - name: Combine swarm properties with custom notes attribute.
+      vars:
+      ansible.builtin.debug:
+        msg: "{{ s | to_yaml }}"
+      loop: "{{ swarms | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"

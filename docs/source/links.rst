@@ -167,6 +167,7 @@
 .. _filter ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _filter ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
 .. _filter from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
+.. _filter combine_properties: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/combine_properties/
 .. _filter iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _filter project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
 .. _filter to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/

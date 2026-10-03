@@ -1,5 +1,5 @@
 .. _ug_module_iocage:
-.. index:: single: module vbotka.freebsd.iocage; Plugins
+.. index:: single: module vbotka.freebsd.iocage; Module iocage
 
 Module vbotka.freebsd.iocage
 ----------------------------

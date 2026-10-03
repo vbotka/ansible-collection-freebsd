@@ -1,7 +1,9 @@
 .. _ug_filter_project:
 
-.. index:: single: filter vbotka.freebsd.project; Plugins
-.. index:: single: project; Plugins
+.. index:: single: filter vbotka.freebsd.project; Filter project
+.. index:: single: project; Filter project
+.. index:: single: vmm; Filter project
+.. index:: single: class; Filter project
 
 Filter vbotka.freebsd.project
 -----------------------------

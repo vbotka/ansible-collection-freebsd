@@ -6,9 +6,11 @@ Plugins:
 * :ref:`inventory iocage <ug_inventory_iocage>` - iocage inventory source.
 * :ref:`inventory iocage2 <ug_inventory_iocage2>` - iocage inventory source (using libzfs & iocage_lib).
 * :ref:`filter ast_to_nginx <ug_filter_ast_to_nginx>` - Convert an AST list to an NGINX configuration.
-* :ref:`filter to_ast <ug_filter_to_ast>` - Convert a YAML dictionary to an AST list.
+* :ref:`filter ast_to_haproxy <ug_filter_ast_to_haproxy>` - Convert an AST dictionary to an HAProxy configuration.
+* :ref:`filter clean_unsafe <ug_filter_clean_unsafe>` - Recursively remove __ansible_unsafe wrapper dictionaries.
 * :ref:`filter from_ucl <ug_filter_from_ucl>` - Parse a UCL string to a YAML dictionary.
 * :ref:`filter iocage <ug_filter_iocage>` - Parse iocage output lists.
+* :ref:`filter to_ast <ug_filter_to_ast>` - Convert a YAML dictionary to an AST list.
 * :ref:`filter to_ucl <ug_filter_to_ucl>` - Convert a YAML dictionary to a UCL string.
 * :ref:`lookup galaxy_info <ug_lookup_galaxy_info>` - Retrieve metadata from galaxy.yml.
 

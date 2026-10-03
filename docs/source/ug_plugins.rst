@@ -14,6 +14,7 @@ Plugins
    filter ast_to_haproxy <ug_filter_ast_to_haproxy>
    filter ast_to_nginx <ug_filter_ast_to_nginx>
    filter clean_unsafe <ug_filter_clean_unsafe>
+   filter combine_properties <ug_filter_combine_properties>
    filter from_ucl <ug_filter_from_ucl>
    filter iocage <ug_filter_iocage>
    filter project <ug_filter_project>
@@ -29,3 +30,9 @@ Plugins
    * `Filter Index <genindex.html#F>`__
    * `Connection Index <genindex.html#C>`__
    * `Lookup Index <genindex.html#L>`__
+
+.. note::
+
+   The ``project`` and ``combine_properties`` filters, used to
+   transform project data structures, are omitted from this
+   collection's list of included content.

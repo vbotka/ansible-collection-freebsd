@@ -1,7 +1,7 @@
 .. _ug_filter_to_ucl:
 
-.. index:: single: filter vbotka.freebsd.to_ucl; Plugins
-.. index:: single: to_ucl; Plugins
+.. index:: single: filter vbotka.freebsd.to_ucl; Filter to_ucl
+.. index:: single: to_ucl; Filter to_ucl
 
 Filter vbotka.freebsd.to_ucl
 ----------------------------

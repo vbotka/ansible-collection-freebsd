@@ -1,0 +1,41 @@
+- name: Test filter vbotka.freebsd.combine_properties
+  hosts: iocage
+
+  vars:
+
+    project:
+      logserv_1:
+        class: [log-server]
+        vmm: iocage_01
+      http_1:
+        class: [log-client, http]
+        vmm: iocage_02
+      db_1:
+        class: [log-client, db]
+        vmm: iocage_02
+      http_2:
+        class: [log-client, http]
+        vmm: iocage_04
+      db_2:
+        class: [log-client, db]
+        vmm: iocage_04
+
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+
+    vmm: "{{ (project | vbotka.freebsd.project).vmm }}"
+
+    _properties: "{{ properties
+                     | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+
+  tasks:
+
+    # Combine jail properties (default notes: vmm, class)
+    - name: Combine jail properties.
+      ansible.builtin.debug:
+        msg: "{{ _properties | to_yaml }}"
+      loop: "{{ vmm[inventory_hostname] | d({}) | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"

@@ -33,26 +33,26 @@ ok: [iocage_01] =>
                 vmm: iocage_04
 
 TASK [debug] *******************************************************************
-ok: [iocage_02] => (item=http_1) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 class=http,logclient""
 ok: [iocage_01] => (item=logserv_1) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="""
          properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 class=logserv""
+ok: [iocage_02] => (item=http_1) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 class=http,logclient""
 ok: [iocage_04] => (item=http_2) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="""
          properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_04 class=http,logclient""
-ok: [iocage_02] => (item=db_1) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 class=db,logclient""
 ok: [iocage_04] => (item=db_2) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="""
          properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_04 class=db,logclient""
+ok: [iocage_02] => (item=db_1) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 class=db,logclient""
 
 PLAY RECAP *********************************************************************
 iocage_01                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

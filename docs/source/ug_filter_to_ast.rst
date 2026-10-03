@@ -1,7 +1,7 @@
 .. _ug_filter_to_ast:
 
-.. index:: single: filter vbotka.freebsd.to_ast; Plugins
-.. index:: single: to_ast; Plugins
+.. index:: single: filter vbotka.freebsd.to_ast; Filter to_ast
+.. index:: single: to_ast; Filter to_ast
 
 Filter vbotka.freebsd.to_ast
 ---------------------------------

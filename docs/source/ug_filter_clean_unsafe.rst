@@ -1,7 +1,7 @@
 .. _ug_filter_clean_unsafe:
 
-.. index:: single: filter vbotka.freebsd.clean_unsafe; Plugins
-.. index:: single: clean_unsafe; Plugins
+.. index:: single: filter vbotka.freebsd.clean_unsafe; Filter clean_unsafe
+.. index:: single: clean_unsafe; Filter clean_unsafe
 
 Filter vbotka.freebsd.clean_unsafe
 ----------------------------------

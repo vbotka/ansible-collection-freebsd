@@ -1,7 +1,7 @@
 .. _ug_filter_ast_to_haproxy:
 
-.. index:: single: filter vbotka.freebsd.ast_to_haproxy; Plugins
-.. index:: single: ast_to_haproxy; Plugins
+.. index:: single: filter vbotka.freebsd.ast_to_haproxy; Filter ast_to_haproxy
+.. index:: single: ast_to_haproxy; Filter ast_to_haproxy
 
 Filter vbotka.freebsd.ast_to_haproxy
 ------------------------------------

@@ -1,1 +1,1 @@
-# Filter properties.
+# Filter combine_properties.
