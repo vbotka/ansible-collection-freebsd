@@ -1,4 +1,4 @@
-names: [www_p1, www_p2, www_p3, www_d1, www_d2]
+alias: [www_p1, www_p2, www_p3, www_d1, www_d2]
 swarms:
   www_prod:
     count: 3

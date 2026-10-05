@@ -113,7 +113,7 @@ cleared (flushed).
            ansible-playbook -i iocage.yml -l test_113 --flush-cache pb-vars-ip4.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: bash
+   :language: yaml
    :emphasize-lines: 1,3
 
 Playbook output - Cache enabled
@@ -129,7 +129,7 @@ the cache immediately.
            ansible-playbook -i iocage.yml -l test_113 pb-vars-ip4.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml+jinja
+   :language: yaml
    :force:
    :emphasize-lines: 1,3
 

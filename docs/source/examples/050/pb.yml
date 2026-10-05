@@ -3,8 +3,9 @@
 
   tasks:
 
-    - command: hostname
+    - command: uname -a
       register: out
 
     - debug:
-        var: out.stdout
+        msg: |
+          {{ out.stdout }}

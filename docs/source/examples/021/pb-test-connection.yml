@@ -1,11 +1,11 @@
-- name: Test connection and get hostname.
-  hosts: all
+- name: Test connection.
+  hosts: project_example_020
 
   tasks:
 
-    - command: hostname
+    - command: uname -a
       register: out
 
     - debug:
         msg: |
-          {{ inventory_hostname }} {{ out.stdout }}
+          {{ out.stdout }}

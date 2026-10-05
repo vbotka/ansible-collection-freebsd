@@ -1,35 +1,17 @@
 
-PLAY [Display all groups.] *****************************************************
+PLAY [Display connection variables.] *******************************************
 
 TASK [debug] *******************************************************************
-ok: [pkg_repo] => 
+ok: [www_p2] => 
     msg: |-
-        pkg-repo
-        {alias: pkg_repo, class: pkg-repo, vmm: iocage_06}
-ok: [log_server_01] => 
-    msg: |-
-        log-server-01
-        {alias: log_server_01, class: log-server, vmm: iocage_06}
-ok: [repos] => 
-    msg: |-
-        repos
-        {class: repos, vmm: iocage_06}
-ok: [repos_devel] => 
-    msg: |-
-        repos-devel
-        {alias: repos_devel, class: repos, vmm: iocage_06}
-
-TASK [debug] *******************************************************************
-ok: [repos] => 
-    msg: |-
-        all: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01']
-        ungrouped: []
-        state_up: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01']
-        vmm_iocage_06: ['repos', 'repos_devel', 'pkg_repo', 'log_server_01']
+        name     alias  ansible_jail_host ansible_jail_name
+        ---------------------------------------------------
+        23188308 www_p2 iocage_06         2
+        7efbc764 www_d1 iocage_06         4
+        d66d6232 www_d2 iocage_06         5
+        1d98b800 www_p3 iocage_06         3
+        d0407d07 www_p1 iocage_06         1
 
 PLAY RECAP *********************************************************************
-log_server_01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-pkg_repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos_devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

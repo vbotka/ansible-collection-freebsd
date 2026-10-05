@@ -1,0 +1,11 @@
+[jails]
+bbf40e62 ansible_jail_name=12
+de9c03ab ansible_jail_name=11
+e712848e ansible_jail_name=10
+
+[jails:vars]
+ansible_user=admin
+ansible_python_interpreter=auto_silent
+ansible_connection=vbotka.freebsd.jailexec
+ansible_jail_host=iocage_06
+ansible_jail_privilege_escalation=sudo

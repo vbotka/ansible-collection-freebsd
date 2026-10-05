@@ -25,9 +25,8 @@ representation formatters, or processed by strict deserialization engines (like
 the ``tagless`` profile in ``from_json``), these objects manifest as unwanted
 ``__ansible_unsafe`` mapping keys or trigger deserialization failures.
 
-The ``clean_unsafe`` filter sanitizes these data trees in place, producing clean
-native data structures suitable for YAML/JSON serialization and downstream
-filtering.
+The ``clean_unsafe`` filter sanitizes these data trees, producing clean native
+data structures suitable for YAML/JSON serialization and filtering.
 
 
 Parameters
@@ -55,44 +54,15 @@ Parameters
 
       shell> ansible-doc -t filter vbotka.freebsd.clean_unsafe
 
-Transformations
-^^^^^^^^^^^^^^^
-
-The filter evaluates elements recursively based on their container type:
-
-Mappings & Dictionaries
-
-   * **Wrapper Dictionaries:** Any single-key dictionary matching
-     ``{"__ansible_unsafe": <value>}`` is unpacked, and its underlying value is
-     recursively evaluated and returned in place of the dictionary.
-
-   * **Nested Mappings:** Standard dictionaries have all keys preserved while
-     each corresponding value is recursively cleaned.
-
-Sequences & Sets
-
-   * **Lists, Tuples, and Sets:** Iterated recursively, returning corresponding
-     clean sequences with all nested unsafe wrappers stripped.
-
-Scalars & Unsafe Primitives
-
-   * **AnsibleUnsafe Instances:** Primitive objects inheriting from Ansible's
-     internal ``AnsibleUnsafe`` hierarchy (such as ``AnsibleUnsafeText``) are
-     cast to standard Python primitives (e.g., native ``str``).
-
-   * **Native Primitives:** Standard integers, floats, booleans, and untagged
-     strings pass through unmodified.
-
 Examples
 ^^^^^^^^
 
-Input Raw Inventory Data
-""""""""""""""""""""""""
+Input
+"""""
 
 .. code-block:: yaml
 
-   # Raw hostvars resulting from ansible-inventory --export:
-   jail_inventory_vars:
+   inventory:
      log-server-01:
        iocage_basejail:
          __ansible_unsafe: 'no'
@@ -117,25 +87,25 @@ Input Raw Inventory Data
        iocage_state:
          __ansible_unsafe: up
 
-Ansible Task Pipeline
-"""""""""""""""""""""
+Tasks
+"""""
 
 .. code-block:: yaml
 
-   - name: Query iocage2 inventory plugin
+   - name: Query iocage inventory
      delegate_to: localhost
      changed_when: false
      register:
-       iocage_jails: _task.result.stdout | from_yaml
+       inventory: _task.result.stdout | from_yaml
      ansible.builtin.command:
        cmd: "ansible-inventory -i hosts --list --export"
 
    - name: Sanitize and display cleaned hostvars
      ansible.builtin.debug:
-       msg: "{{ iocage_jails._meta.hostvars | vbotka.freebsd.clean_unsafe | to_nice_yaml }}"
+       msg: "{{ inventory._meta.hostvars | vbotka.freebsd.clean_unsafe | to_nice_yaml }}"
 
-Cleaned Output
-""""""""""""""
+Output
+""""""
 
 .. code-block:: yaml
 

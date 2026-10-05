@@ -1,0 +1,13 @@
+- name: Display connection variables.
+  hosts: project_example_020
+
+  tasks:
+
+    - debug:
+        msg: |
+          name     alias  ansible_jail_host ansible_jail_name
+          ---------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ hostvars[h].iocage_properties.host_hostuuid }} {{ hostvars[h].iocage_tags.alias }} {{ hostvars[h].ansible_jail_host }}         {{ hostvars[h].ansible_jail_name }}
+          {% endfor %}
+      run_once: true

@@ -1,6 +1,34 @@
 
-PLAY [Group swarm_db] **********************************************************
-skipping: no hosts matched
+PLAY [Test connection.] ********************************************************
+
+TASK [command] *****************************************************************
+changed: [www_d1]
+changed: [www_p2]
+changed: [www_p1]
+changed: [www_d2]
+changed: [www_p3]
+
+TASK [debug] *******************************************************************
+ok: [www_p3] => 
+    msg: |-
+        FreeBSD 1d98b800 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+ok: [www_p1] => 
+    msg: |-
+        FreeBSD d0407d07 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+ok: [www_p2] => 
+    msg: |-
+        FreeBSD 23188308 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+ok: [www_d1] => 
+    msg: |-
+        FreeBSD 7efbc764 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+ok: [www_d2] => 
+    msg: |-
+        FreeBSD d66d6232 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
 
 PLAY RECAP *********************************************************************
+www_d1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p3                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

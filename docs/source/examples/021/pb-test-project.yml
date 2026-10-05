@@ -1,0 +1,16 @@
+- name: Display project_example_020
+  hosts: project_example_020
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ iocage_properties.host_hostuuid | d('UNDEFINED') }}: {{ iocage_tags | d({}) | to_yaml }}
+
+    - debug:
+        msg: |
+          {% for group in groups %}
+          {{ group }}:
+            {{ groups[group] | to_nice_yaml | indent(2) }}
+          {% endfor %}
+      run_once: true

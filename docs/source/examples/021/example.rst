@@ -9,23 +9,23 @@ This example extends :ref:`example_020`.
    :local:
    :depth: 1
 
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 021
-.. index:: single: inventory ansible.builtin.constructed; Example 021
-.. index:: single: connection vbotka.freebsd.jailexec; Example 021
-.. index:: single: vbotka.freebsd.jailexec; Example 021
-.. index:: single: jailexec; Example 021
-.. index:: single: option inventory_hostname_tag; Example 021
-.. index:: single: inventory_hostname_tag; Example 021
-.. index:: single: iocage tag alias; Example 021
-.. index:: single: inventory alias; Example 021
-.. index:: single: alias; Example 021
+.. index::
+   single: inventory vbotka.freebsd.iocage2; Example 021
+   single: inventory ansible.builtin.constructed; Example 021
+   single: connection vbotka.freebsd.jailexec; Example 021
+   single: vbotka.freebsd.jailexec; Example 021
+   single: jailexec; Example 021
+   single: option inventory_hostname_tag; Example 021
+   single: inventory_hostname_tag; Example 021
+   single: iocage tag alias; Example 021
+   single: inventory alias; Example 021
+   single: alias; Example 021
 
 Use case
 ^^^^^^^^
 
-In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the option
-``inventory_hostname_tag`` to specify which tag to create `inventory
-aliases`_ from.
+Use the :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` to
+connect to the jails created in :ref:`example_020`.
 
 Tree
 ^^^^
@@ -35,19 +35,13 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── group_vars
-  │   └── all
-  │       └── swarms.yml
   ├── hosts
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
-  ├── host_vars
-  │   └── iocage_06
-  │       └── iocage.yml
   ├── iocage.ini
-  ├── pb-test-all.yml
+  ├── pb-test-connection-vars.yml
   ├── pb-test-connection.yml
-  └── pb-test-db.yml
+  └── pb-test-project.yml
 
 Synopsis
 ^^^^^^^^
@@ -58,7 +52,7 @@ Synopsis
 * In the inventory plugin `ansible.builtin.constructed`_, create the inventory
   groups.
 
-* Display the jails and groups.
+* Display the connection variables.
 
 * Test the connection.
 
@@ -100,23 +94,9 @@ hosts
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5
+   :emphasize-lines: 13-17
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/swarms.yml
-   :language: yaml+jinja
-   :caption:
-
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -127,7 +107,7 @@ Jails
 
    [iocage_06]# iocage list -l
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-01.txt
    :language: bash
 
 Graph
@@ -135,42 +115,42 @@ Graph
 
 .. code-block:: console
 
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
+   (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-03.txt
-   :language: bash
+.. literalinclude:: out/out-02.txt
+   :language: console
 
-Playbook pb-test-all.yml
-^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-project.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-all.yml
+.. literalinclude:: pb-test-project.yml
    :language: yaml+jinja
 
-Playbook output - Display all groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts --flush-cache pb-test-all.yml
+   (env) > ansible-playbook -i hosts pb-test-project.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
 
-Playbook pb-test-db.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-connection-vars.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-db.yml
+.. literalinclude:: pb-test-connection-vars.yml
    :language: yaml+jinja
 
-Playbook output - Group swarm_db
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display connection variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-db.yml
+   (env) > ansible-playbook -i hosts pb-test-connection-vars.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -187,6 +167,6 @@ Playbook output - Test connection
 
    (env) > ansible-playbook -i hosts pb-test-connection.yml
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:

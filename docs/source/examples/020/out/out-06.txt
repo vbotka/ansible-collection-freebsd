@@ -1,57 +1,71 @@
 
-PLAY [Display all groups.] *****************************************************
+PLAY [Display project_example_020] *********************************************
 
 TASK [debug] *******************************************************************
-ok: [repos_devel] => 
-    msg: |-
-        repos-devel
-        {alias: repos_devel, class: repos, vmm: iocage_06}
-ok: [repos] => 
-    msg: |-
-        repos
-        {class: repos, vmm: iocage_06}
-ok: [www_d2] => 
-    msg: |-
-        255cee84
-        {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_06}
-ok: [www_p3] => 
-    msg: |-
-        b8dfe5e7
-        {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_06}
-ok: [www_d1] => 
-    msg: |-
-        d4897b8f
-        {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_06}
-ok: [pkg_repo] => 
-    msg: |-
-        pkg-repo
-        {alias: pkg_repo, class: pkg-repo, vmm: iocage_06}
 ok: [www_p2] => 
     msg: |-
-        c2fab2de
-        {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_06}
+        23188308: {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_06}
+ok: [www_d1] => 
+    msg: |-
+        7efbc764: {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_06}
+ok: [www_d2] => 
+    msg: |-
+        d66d6232: {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_06}
+ok: [www_p3] => 
+    msg: |-
+        1d98b800: {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_06}
 ok: [www_p1] => 
     msg: |-
-        bc29afbc
-        {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_06}
+        d0407d07: {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_06}
 
 TASK [debug] *******************************************************************
-ok: [repos] => 
+ok: [www_p2] => 
     msg: |-
-        all: ['repos', 'repos_devel', 'www_d2', 'www_p3', 'www_d1', 'pkg_repo', 'www_p2', 'www_p1']
-        ungrouped: []
-        vmm_iocage_06: ['repos', 'repos_devel', 'www_d2', 'www_p3', 'www_d1', 'pkg_repo', 'www_p2', 'www_p1']
-        project_example_020: ['www_d2', 'www_p3', 'www_d1', 'www_p2', 'www_p1']
-        swarm_www_devel: ['www_d2', 'www_d1']
-        swarm_www_prod: ['www_p3', 'www_p2', 'www_p1']
+        all:
+          - repos
+          - repos_devel
+          - www_p2
+          - pkg_repo
+          - www_d1
+          - log_server_01
+          - www_d2
+          - www_p3
+          - www_p1
+
+        ungrouped:
+          []
+
+        vmm_iocage_06:
+          - repos
+          - repos_devel
+          - www_p2
+          - pkg_repo
+          - www_d1
+          - log_server_01
+          - www_d2
+          - www_p3
+          - www_p1
+
+        project_example_020:
+          - www_p2
+          - www_d1
+          - www_d2
+          - www_p3
+          - www_p1
+
+        swarm_www_prod:
+          - www_p2
+          - www_p3
+          - www_p1
+
+        swarm_www_devel:
+          - www_d1
+          - www_d2
 
 PLAY RECAP *********************************************************************
-pkg_repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos_devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_d1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_d2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p2                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

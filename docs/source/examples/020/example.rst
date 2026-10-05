@@ -52,28 +52,28 @@ Tree
   ├── iocage.ini
   ├── pb-iocage-swarms-create.yml
   ├── pb-iocage-swarms-destroy.yml
-  ├── pb-test-all.yml
-  └── pb-test-db.yml
+  └── pb-test-project.yml
 
 Synopsis
 ^^^^^^^^
 
 * On a managed node:
 
-  * Create jails using a template ``ansible-client`` and the ``--count`` option
+  * Create jails using the template ``ansible-client`` and the ``--count``
+    option.
 
-  * For each jail, set the property ``notes`` in the format ``tag1=val1
-    tag2=val2 ...``
+  * For each jail, set the property ``notes`` in the format
+    ``tag1=val1 tag2=val2 ...``.
 
-  * Put the inventory alias into the tag ``alias=<alias>``
+  * Set the inventory alias in the tag ``alias=<alias>``.
 
 * In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
-  retrieve the inventory aliases from the tag ``alias``
+  retrieve the inventory aliases from the tag ``alias``.
 
 * In the inventory plugin `ansible.builtin.constructed`_, create the inventory
-  groups
+  groups.
 
-* Display the jails and groups
+* Display the jails and groups.
 
 Requirements
 ^^^^^^^^^^^^
@@ -124,13 +124,13 @@ hosts
    :caption:
    :emphasize-lines: 10
 
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
 .. note::
 
    The value of the iocage tag ``alias`` is used as the inventory alias.
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
 
 group_vars
 ^^^^^^^^^^
@@ -163,11 +163,15 @@ Playbook output - Create swarms
    :language: yaml+jinja
    :force:
 
-.. hint::
+Graph
+^^^^^
 
-   Run the command below to see the complete inventory::
+.. code-block:: console
 
-     (env) > ansible-inventory -i hosts --list --yaml
+   shell> ansible-inventory -i hosts --graph
+
+.. literalinclude:: out/out-04.txt
+   :language: console
 
 Jails
 ^^^^^
@@ -176,21 +180,27 @@ Jails
 
    [iocage_06]# iocage list -l
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: bash
 
-Playbook pb-test-all.yml
-^^^^^^^^^^^^^^^^^^^^^^^^
+.. hint::
 
-.. literalinclude:: pb-test-all.yml
+   Run the command below to see the complete inventory::
+
+     shell> ansible-inventory -i hosts --list --yaml
+
+Playbook pb-test-project.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-project.yml
    :language: yaml+jinja
 
-Playbook output - All groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-all.yml
+   (env) > ansible-playbook -i hosts pb-test-project.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -205,12 +215,12 @@ Playbook pb-iocage-swarms-destroy.yml
 Playbook output - Destroy swarms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Destroy the swarms if you do not need them anymore.
+Destroy the swarms if you no longer need them.
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-swarms-destroy.yml
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml+jinja
    :force:
