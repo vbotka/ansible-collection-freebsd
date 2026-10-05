@@ -7,17 +7,18 @@
    :local:
    :depth: 1
 
-.. index:: single: filter vbotka.freebsd.to_ucl; Example 043
-.. index:: single: vbotka.freebsd.to_ucl; Example 043
-.. index:: single: to_ucl; Example 043
-.. index:: single: filter vbotka.freebsd.from_ucl; Example 043
-.. index:: single: vbotka.freebsd.from_ucl; Example 043
-.. index:: single: from_ucl; Example 043
+.. index::
+   single: filter vbotka.freebsd.to_ucl; Example 043
+   single: vbotka.freebsd.to_ucl; Example 043
+   single: to_ucl; Example 043
+   single: filter vbotka.freebsd.from_ucl; Example 043
+   single: vbotka.freebsd.from_ucl; Example 043
+   single: from_ucl; Example 043
 
 Use case
 ^^^^^^^^
 
-Test the filters :ref:`filter vbotka.freebsd.to_ucl <ug_filter_to_ucl>` and
+Test the :ref:`filter vbotka.freebsd.to_ucl <ug_filter_to_ucl>` and the
 :ref:`filter vbotka.freebsd.from_ucl <ug_filter_from_ucl>`.
 
 Tree

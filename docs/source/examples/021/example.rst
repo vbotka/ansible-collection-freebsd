@@ -60,7 +60,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage2`
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
+* :ref:`ug_connection_jailexec`
 * Root privileges on the managed nodes
 * Jails created in :ref:`example_020`
 

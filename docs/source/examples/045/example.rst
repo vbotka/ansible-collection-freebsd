@@ -7,30 +7,31 @@
    :local:
    :depth: 1
 
-.. index:: single: filter vbotka.freebsd.combine_properties; Example 045
-.. index:: single: vbotka.freebsd.combine_properties; Example 045
-.. index:: single: combine_properties; Example 045
-.. index:: single: project; Example 045
-.. index:: single: swarms; Example 045
-.. index:: single: property notes; Example 045
+.. index::
+   single: filter vbotka.freebsd.combine_properties; Example 045
+   single: vbotka.freebsd.combine_properties; Example 045
+   single: combine_properties; Example 045
+   single: project; Example 045
+   single: swarms; Example 045
+   single: property notes; Example 045
 
 Use case
 ^^^^^^^^
 
-Test the filter :ref:`filter vbotka.freebsd.combine_properties
+Test the :ref:`filter vbotka.freebsd.combine_properties
 <ug_filter_combine_properties>`.
 
 Tree
 ^^^^
 
-.. code-block:: console
+::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── iocage.ini
-   ├── pb-project.yml
-   └── pb.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── iocage.ini
+  ├── pb-project.yml
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^

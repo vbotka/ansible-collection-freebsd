@@ -7,12 +7,13 @@
    :local:
    :depth: 1
 
-.. index:: single: filter vbotka.freebsd.to_ast; Example 042
-.. index:: single: vbotka.freebsd.to_ast; Example 042
-.. index:: single: to_ast; Example 042
-.. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 042
-.. index:: single: vbotka.freebsd.ast_to_nginx; Example 042
-.. index:: single: ast_to_nginx; Example 042
+.. index::
+   single: filter vbotka.freebsd.to_ast; Example 042
+   single: vbotka.freebsd.to_ast; Example 042
+   single: to_ast; Example 042
+   single: filter vbotka.freebsd.ast_to_nginx; Example 042
+   single: vbotka.freebsd.ast_to_nginx; Example 042
+   single: ast_to_nginx; Example 042
 
 Use case
 ^^^^^^^^

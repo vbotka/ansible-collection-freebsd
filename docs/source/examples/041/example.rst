@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: filter vbotka.freebsd.project; Example 041
-.. index:: single: vbotka.freebsd.project; Example 041
-.. index:: single: project; Example 041
+.. index::
+   single: filter vbotka.freebsd.project; Example 041
+   single: vbotka.freebsd.project; Example 041
+   single: project; Example 041
 
 Use case
 ^^^^^^^^

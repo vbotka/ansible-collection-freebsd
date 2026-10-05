@@ -23,30 +23,30 @@ ok: [iocage_01] =>
                 vmm: iocage_01
 
 TASK [debug] *******************************************************************
-ok: [iocage_01] => (item=sw_01) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_01 class=db,log-client""
-ok: [iocage_05] => (item=sw_01) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_05 class=db,log-client""
-ok: [iocage_02] => (item=sw_01) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_02 class=db,log-client""
-ok: [iocage_01] => (item=sw_02) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar vmm=iocage_01 class=www,log-client""
-ok: [iocage_03] => (item=sw_01) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_03 class=db,log-client""
 ok: [iocage_04] => (item=sw_01) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
          properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_04 class=db,log-client""
+ok: [iocage_05] => (item=sw_01) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_05 class=db,log-client""
+ok: [iocage_01] => (item=sw_01) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_01 class=db,log-client""
+ok: [iocage_02] => (item=sw_01) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_02 class=db,log-client""
+ok: [iocage_03] => (item=sw_01) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar vmm=iocage_03 class=db,log-client""
+ok: [iocage_04] => (item=sw_02) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar vmm=iocage_04 class=www,log-client""
 ok: [iocage_05] => (item=sw_02) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
@@ -55,14 +55,14 @@ ok: [iocage_02] => (item=sw_02) =>
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
          properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar vmm=iocage_02 class=www,log-client""
+ok: [iocage_01] => (item=sw_02) => 
+    msg: |-
+        _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
+         properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar vmm=iocage_01 class=www,log-client""
 ok: [iocage_03] => (item=sw_02) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
          properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar vmm=iocage_03 class=www,log-client""
-ok: [iocage_04] => (item=sw_02) => 
-    msg: |-
-        _properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar""
-         properties: "bpf=1 dhcp=1 vnet=1 notes="qux=qux foo=foo bar=bar vmm=iocage_04 class=www,log-client""
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
         _properties: "bpf=1 dhcp=1 vnet=1 notes="baz=baz foo=foo bar=bar""

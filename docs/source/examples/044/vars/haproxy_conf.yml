@@ -1,4 +1,3 @@
----
 haproxy_conf:
   global:
     log: "/var/run/log local0"

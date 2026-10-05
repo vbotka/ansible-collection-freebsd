@@ -9,9 +9,10 @@ This example extends :ref:`example_020`.
    :local:
    :depth: 1
 
-.. index:: single: custom facts; Example 030
-.. index:: single: filter vbotka.freebsd.iocage; Example 030
-.. index:: single: role vbotka.freebsd.iocage; Example 030
+.. index::
+   single: custom facts; Example 030
+   single: filter vbotka.freebsd.iocage; Example 030
+   single: role vbotka.freebsd.iocage; Example 030
 
 Use case
 ^^^^^^^^

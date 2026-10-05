@@ -35,10 +35,12 @@ Synopsis
 * Test the :ref:`connection plugin vbotka.freebsd.jailexec
   <ug_connection_jailexec>`.
 
+* Manually destroy the jails.
+
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`Connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`
+* :ref:`ug_connection_jailexec`
 
 Notes
 ^^^^^

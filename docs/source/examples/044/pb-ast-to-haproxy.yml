@@ -1,4 +1,3 @@
----
 - name: Test filter ast_to_haproxy
   hosts: localhost
 

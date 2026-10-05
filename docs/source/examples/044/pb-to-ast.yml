@@ -1,4 +1,3 @@
----
 - name: Test filter to_ast
   hosts: localhost
 

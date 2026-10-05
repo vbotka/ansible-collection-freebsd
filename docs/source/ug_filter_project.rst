@@ -1,9 +1,10 @@
 .. _ug_filter_project:
 
-.. index:: single: filter vbotka.freebsd.project; Filter project
-.. index:: single: project; Filter project
-.. index:: single: vmm; Filter project
-.. index:: single: class; Filter project
+.. index::
+   single: filter vbotka.freebsd.project; Filter project
+   single: project; Filter project
+   single: vmm; Filter project
+   single: class; Filter project
 
 Filter vbotka.freebsd.project
 -----------------------------
@@ -24,4 +25,5 @@ dictionary mapping class names to lists of service names.
 
 .. seealso::
 
+   * The concept :ref:`ug_concepts_project`.
    * Ansible Galaxy `filter project`_

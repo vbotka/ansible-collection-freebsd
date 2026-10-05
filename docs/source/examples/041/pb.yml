@@ -1,4 +1,3 @@
----
 - name: Test filter project.
   hosts: localhost
   connection: local

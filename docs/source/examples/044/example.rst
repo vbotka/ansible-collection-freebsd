@@ -7,31 +7,33 @@
    :local:
    :depth: 1
 
-.. index:: single: HAProxy; Example 044
-.. index:: single: filter vbotka.freebsd.ast_to_haproxy; Example 044
-.. index:: single: vbotka.freebsd.ast_to_haproxy; Example 044
-.. index:: single: ast_to_haproxy; Example 044
-.. index:: single: filter vbotka.freebsd.to_ast; Example 044
-.. index:: single: vbotka.freebsd.to_ast; Example 044
-.. index:: single: to_ast; Example 044
+.. index::
+   single: HAProxy; Example 044
+   single: filter vbotka.freebsd.ast_to_haproxy; Example 044
+   single: vbotka.freebsd.ast_to_haproxy; Example 044
+   single: ast_to_haproxy; Example 044
+   single: filter vbotka.freebsd.to_ast; Example 044
+   single: vbotka.freebsd.to_ast; Example 044
+   single: to_ast; Example 044
 
 Use case
 ^^^^^^^^
 
-Use the filter :ref:`filter vbotka.freebsd.ast_to_haproxy
-<ug_filter_ast_to_haproxy>` to create an `HAProxy`_ configuration.
+Use the :ref:`filter vbotka.freebsd.ast_to_haproxy <ug_filter_ast_to_haproxy>`
+to create an `HAProxy`_ configuration.
 
 Tree
 ^^^^
 
-.. code-block:: console
+::
 
-   shell> tree .
-   .
-   ├── ansible.cfg
-   ├── pb-ast-to-haproxy.yml
-   └── vars
-       └── haproxy_conf.yml
+  shell> tree .
+  .
+  ├── ansible.cfg
+  ├── pb-ast-to-haproxy.yml
+  ├── pb-to-ast.yml
+  └── vars
+      └── haproxy_conf.yml
 
 Synopsis
 ^^^^^^^^
@@ -67,14 +69,30 @@ vars
 .. literalinclude:: vars/haproxy_conf.yml
    :language: yaml
 
+Playbook pb-to-ast.yml
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-to-ast.yml
+   :language: yaml+jinja
+
+Playbook output - Test filter to_ast
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i localhost, pb-to-ast.yml
+
+.. literalinclude:: out/out-01.txt
+   :language: yaml+jinja
+
 Playbook pb-ast-to-haproxy.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-ast-to-haproxy.yml
    :language: yaml+jinja
 
-Playbook output - Test ast_to_haproxy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test filter ast_to_haproxy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

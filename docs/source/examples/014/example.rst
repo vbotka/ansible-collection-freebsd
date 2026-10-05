@@ -55,7 +55,7 @@ On a managed node:
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
+* :ref:`ug_inventory_iocage`
 * Jails created in :ref:`example_010`
 
 .. seealso::
