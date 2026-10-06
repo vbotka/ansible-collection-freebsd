@@ -23,18 +23,18 @@ act_rcconf:
 act_dhclient: {}
 
 clones:
-  test_111:
+  test-121:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'em0|10.1.0.111/24'
-  test_112:
+      ip4_addr: 'em0|10.1.0.121/24'
+  test-122:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'em0|10.1.0.112/24'
-  test_113:
+      ip4_addr: 'em0|10.1.0.122/24'
+  test-123:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'em0|10.1.0.113/24'
+      ip4_addr: 'em0|10.1.0.123/24'
 
 # clones default properties
 properties:

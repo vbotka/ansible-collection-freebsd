@@ -31,11 +31,12 @@
    single: act_rcconf; Example 200
    single: pkglist; Example 200
    single: pkgs.json; Example 200
+   single: defaultrouter; Example 200
 
 Use case
 ^^^^^^^^
 
-Create `iocage`_ templates for Ansible clients. Clone jails.
+Create `iocage`_ templates for Ansible clients. Clone jails from the templates.
 
 Tree
 ^^^^
@@ -49,16 +50,13 @@ Tree
   │   ├── pk_admins.txt
   │   └── pkgs.json
   ├── group_vars
-  │   └── all
-  │       └── iocage.yml
+  │   └── all
+  │       └── iocage.yml
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   └── pb-test.yml
@@ -66,10 +64,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
-
-  * iocage_02
-  * iocage_04
+* On a managed node:
 
   In the playbook :ref:`ug_pb-iocage-template`, use the modules:
 
@@ -82,27 +77,27 @@ Synopsis
   In the playbook :ref:`ug_pb-iocage-ansible-clients`, use the :ref:`module
   vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * Create jails from the iocage templates
-  * Start all jails
-  * Optionally, display the lists of jails
+  * Clone jails from the iocage templates.
+  * Start jails.
+  * Display the lists of jails.
 
 * On all created jails:
 
   In the playbook ``pb-test.yml``:
 
-  * Connect to created jails
-  * Display basic configuration of the jails
+  * Connect to cloned jails.
+  * Display basic configuration of the jails.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Playbook :ref:`ug_pb-iocage-template`
-* Playbook :ref:`ug_pb-iocage-ansible-clients`
+* :ref:`ug_pb-iocage-template`
+* :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
-* :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes.
+* :ref:`ug_inventory_iocage2`
 * An activated ``iocage`` installation.
 * Fetched releases.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -132,11 +127,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
 
@@ -154,11 +145,7 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -199,22 +186,12 @@ Playbook output - Create templates
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
 
-Templates at iocage_02
+Templates on iocage_06
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
-
-Templates at iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -lt
+   [iocage_06]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
@@ -247,26 +224,6 @@ Playbook output - List jails
    :language: yaml+jinja
    :force:
 
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-06.txt
-   :language: bash
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-07.txt
-   :language: bash
-
 Graph
 ^^^^^
 
@@ -275,6 +232,16 @@ Graph
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-08.txt
+   :language: console
+
+Jails on iocage_06
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   [iocage_06]# iocage list -l
+
+.. literalinclude:: out/out-07.txt
    :language: bash
 
 Playbook pb-test.yml

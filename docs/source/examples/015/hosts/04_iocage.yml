@@ -1,5 +1,5 @@
 plugin: vbotka.freebsd.iocage
-host: 10.1.0.29
+host: iocage_04
 user: admin
 get_properties: False
 cache: True

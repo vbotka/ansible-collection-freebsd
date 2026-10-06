@@ -47,8 +47,7 @@ Synopsis
 
 On a managed node:
 
-* Fetch dynamic inventory using the :ref:`inventory
-  vbotka.freebsd.iocage <ug_inventory_iocage>`
+* Fetch inventory using the :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
 
 * Configure and test ``cache``
 

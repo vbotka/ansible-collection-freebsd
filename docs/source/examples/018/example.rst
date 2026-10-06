@@ -26,7 +26,7 @@ This example extends :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Use DHCP to configure the interfaces.
+Clone basejails. Use DHCP to configure the interfaces.
 
 Tree
 ^^^^
@@ -51,9 +51,6 @@ Synopsis
 
 * On two managed nodes:
 
-  * iocage_02
-  * iocage_04
-
   In the playbook ``pb-iocage-clone-list.yml``, use the :ref:`module
   vbotka.freebsd.iocage <ug_module_iocage>` to:
 
@@ -61,10 +58,8 @@ Synopsis
   * Start all jails
   * Display lists of jails
 
-* On the iocage host ``iocage_02``:
-
-  In the playbook ``pb-test.yml``, use the :ref:`inventory
-  vbotka.freebsd.iocage <ug_inventory_iocage>` to:
+* In the playbook ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
+  <ug_inventory_iocage>` to:
 
   * Create inventory groups and compose variables
   * Display the hosts and composed variables in the group ``test``
@@ -73,7 +68,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails ``ansible_client`` created in :ref:`example_010`
+* Jails created in :ref:`example_010`
 
 .. note::
 

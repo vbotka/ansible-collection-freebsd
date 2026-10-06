@@ -50,9 +50,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed nodes ``iocage_02`` and ``iocage_04``, use the playbook
-  ``pb-iocage-fetch-base-clone-list.yml`` and the
-  :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
+* On the managed nodes:
+
+  Use the playbook ``pb-iocage-fetch-base-clone-list.yml``
+  and the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
   * Fetch the release
   * Create a basejail
@@ -60,8 +61,7 @@ Synopsis
   * Start 1 jail
   * Display lists of bases, plugins, templates, and jails
 
-* On the controller (targeting managed node ``iocage_04``), use the playbook
-  ``pb-test.yml`` and the dynamic inventory plugin
+* Use the playbook ``pb-test.yml`` and the inventory plugin
   :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
   * Create inventory groups and compose variables
@@ -73,8 +73,8 @@ Requirements
 
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes
 * Activated `iocage`_
+* Root privileges on the managed nodes
 
 Notes
 ^^^^^

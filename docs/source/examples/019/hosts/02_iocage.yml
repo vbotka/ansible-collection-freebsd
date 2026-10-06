@@ -1,5 +1,5 @@
 plugin: vbotka.freebsd.iocage
-host: 10.1.0.73
+host: iocage_02
 user: admin
 sudo: true
 sudo_preserve_env: true

@@ -69,7 +69,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes (``iocage_02`` and ``iocage_04``):
+* On two managed nodes:
 
   * In the playbook ``pb-iocage-base.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to create the basejail
@@ -94,9 +94,9 @@ Requirements
 
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes
 * Activated `iocage`_
 * Fetched releases
+* Root privileges on the managed nodes
 
 ansible.cfg
 ^^^^^^^^^^^

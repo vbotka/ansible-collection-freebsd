@@ -46,7 +46,7 @@ Extending :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Create iocage templates for Ansible clients. Obtain IP addresses via DHCP and
+Create `iocage templates`_ for Ansible clients. Obtain IP addresses via DHCP and
 create ``dhclient-exit-hooks``. For example, the hook below:
 
 .. code-block:: console
@@ -68,7 +68,8 @@ creates address files:
    shell> cat /zroot/iocage/jails/test_131/root/var/db/dhclient-hook.address.epair0b
    10.1.0.130
 
-Read the files created by the hooks and use the IP addresses to compose the
+In the configuration of the iocage plugin, set the option ``hooks_results`` to
+read the file(s) created by the hooks and use the IP address(es) to compose the
 variable ``ansible_host``:
 
 .. code-block:: console
@@ -77,6 +78,7 @@ variable ``ansible_host``:
 
 .. code-block:: yaml+jinja
    :force:
+   :emphasize-lines: 3-4
 
    plugin: vbotka.freebsd.iocage
    ...
@@ -120,9 +122,6 @@ Synopsis
 ^^^^^^^^
 
 * On two iocage hosts:
-
-  * iocage_02
-  * iocage_04
 
   In the playbook :ref:`ug_pb-iocage-template`, use the modules:
 

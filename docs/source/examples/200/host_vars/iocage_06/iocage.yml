@@ -1,14 +1,14 @@
-freebsd_iocage_pool: iocage
-freebsd_iocage_pool_mount: /iocage
-freebsd_iocage_mount: /iocage/iocage
+freebsd_iocage_pool: zroot
+freebsd_iocage_pool_mount: /zroot
+freebsd_iocage_mount: /zroot/iocage
 
 templates:
   ansible-client:
-    release: 15.0-RELEASE
+    release: 15.1-RELEASE
     properties:
-      bpf: 'on'
-      dhcp: 'on'
-      vnet: 'on'
+      bpf: 1
+      dhcp: 1
+      vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
     pkglist: /tmp/ansible/ansible-client/pkgs.json
@@ -18,27 +18,27 @@ act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
 act_rcconf:
-  iocage_enable: "YES"
   sshd_enable: "YES"
 act_dhclient: {}
 
 clones:
-  test-141:
+  test-161:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'vnet0|10.1.0.141/24'
-  test-142:
+      ip4_addr: 'vnet0|172.16.99.161/24'
+  test-162:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'vnet0|10.1.0.142/24'
-  test-143:
+      ip4_addr: 'vnet0|172.16.99.162/24'
+  test-163:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'vnet0|10.1.0.143/24'
+      ip4_addr: 'vnet0|172.16.99.163/24'
 
 # clones default properties
 properties:
-  bpf: 'on'
+  bpf: 1
+  defaultrouter: 172.16.99.1
   notes: "vmm={{ inventory_hostname }}"
 
 start: "{{ clones.keys() }}"
