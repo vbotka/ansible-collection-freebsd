@@ -45,7 +45,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+TBD
 
 Manually create the jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,6 +109,11 @@ hosts
    :language: ini
    :caption:
    :emphasize-lines: 2-4, 9-11
+
+.. hint::
+
+   For dynamic assignment of the connection variables ``ansible_jail_*`` see
+   :ref:`example_021`.
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^

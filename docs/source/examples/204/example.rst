@@ -11,8 +11,8 @@ This example extends :ref:`example_203`.
 
 .. index::
    single: swarms; Example 204
-   single: template ansible_client; Example 204
-   single: ansible_client; Example 204
+   single: template ansible-client; Example 204
+   single: ansible-client; Example 204
    single: DHCP; Example 204
    single: property notes; Example 204
    single: notes; Example 204

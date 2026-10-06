@@ -1,7 +1,7 @@
 .. _example_390:
 
-390 Build packages
-------------------
+390 Poudriere
+-------------
 
 .. contents::
    :local:

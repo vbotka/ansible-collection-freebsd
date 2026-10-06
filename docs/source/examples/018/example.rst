@@ -9,21 +9,19 @@ This example extends :ref:`example_010`.
    :local:
    :depth: 1
 
-.. index:: single: clones; Example 018
-
-.. index:: single: module vbotka.freebsd.iocage; Example 018
-.. index:: single: inventory vbotka.freebsd.iocage; Example 018
-.. index:: single: DHCP; Example 018
-.. index:: single: SETENV; Example 018
-.. index:: single: sudoers; Example 018
-
-.. index:: single: option sudo; Example 018
-.. index:: single: sudo; Example 018
-.. index:: single: option sudo_preserve_env; Example 018
-.. index:: single: sudo_preserve_env; Example 018
-
-.. index:: single: variable iocage_ip4_dict; Example 018
-.. index:: single: iocage_ip4_dict; Example 018
+.. index::
+   single: clones; Example 018
+   single: module vbotka.freebsd.iocage; Example 018
+   single: inventory vbotka.freebsd.iocage; Example 018
+   single: DHCP; Example 018
+   single: SETENV; Example 018
+   single: sudoers; Example 018
+   single: option sudo; Example 018
+   single: sudo; Example 018
+   single: option sudo_preserve_env; Example 018
+   single: sudo_preserve_env; Example 018
+   single: variable iocage_ip4_dict; Example 018
+   single: iocage_ip4_dict; Example 018
 
 Use case
 ^^^^^^^^

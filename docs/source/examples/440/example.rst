@@ -7,25 +7,26 @@
    :local:
    :depth: 1
 
-.. index:: single: DHCP; Example 440
-.. index:: single: bridge; Example 440
-.. index:: single: wlan; Example 440
-.. index:: single: pf; Example 440
-.. index:: single: pf port redirection; Example 440
-.. index:: single: port redirection; Example 440
-.. index:: single: redirection of ports; Example 440
-.. index:: single: firewall; Example 440
-.. index:: single: role vbotka.freebsd.dhcp; Example 440
-.. index:: single: role vbotka.freebsd.pf; Example 440
-.. index:: single: vbotka.freebsd.dhcp; Example 440
-.. index:: single: vbotka.freebsd.pf; Example 440
+.. index::
+   single: DHCP; Example 440
+   single: bridge; Example 440
+   single: wlan; Example 440
+   single: pf; Example 440
+   single: pf port redirection; Example 440
+   single: port redirection; Example 440
+   single: redirection of ports; Example 440
+   single: firewall; Example 440
+   single: role vbotka.freebsd.dhcp; Example 440
+   single: role vbotka.freebsd.pf; Example 440
+   single: vbotka.freebsd.dhcp; Example 440
+   single: vbotka.freebsd.pf; Example 440
 
 Use case
 ^^^^^^^^
 
 Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role
-`vbotka.freebsd.pf`_ to configure pf. Redirect ports from the local network to
-SSH services in the jails.
+`vbotka.freebsd.pf`_ to configure `PF`_. Redirect ports from the local network
+to SSH services in the jails.
 
 Tree
 ^^^^

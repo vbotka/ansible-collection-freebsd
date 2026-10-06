@@ -8,8 +8,8 @@
    :depth: 1
 
 .. index::
-   single: template ansible_client; Example 207
-   single: ansible_client; Example 207
+   single: template ansible-client; Example 207
+   single: ansible-client; Example 207
    single: DHCP; Example 207
    single: property notes; Example 207
    single: notes; Example 207
@@ -52,7 +52,7 @@ Use case
 ^^^^^^^^
 
 On multiple iocage hosts, create and run VNET jails with a DHCP interface from
-the template ``ansible_client``. Use the dictionary ``iocage_tags`` and the
+the template ``ansible-client``. Use the dictionary ``iocage_tags`` and the
 option ``inventory_hostname_tag`` to create `inventory aliases`_. Group the
 jails by iocage hosts, states, and classes. Declare the project in a single
 dictionary. The dictionary keys are jail aliases. For example:

@@ -7,10 +7,11 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.packages; Example 320
-.. index:: single: vbotka.freebsd.packages; Example 320
-.. index:: single: audit ansible_client; Example 320
-.. index:: single: display_skipped_hosts; Example 320
+.. index::
+   single: role vbotka.freebsd.packages; Example 320
+   single: vbotka.freebsd.packages; Example 320
+   single: audit ansible client; Example 320
+   single: display_skipped_hosts; Example 320
 
 Use case
 ^^^^^^^^

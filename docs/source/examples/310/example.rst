@@ -7,17 +7,16 @@
    :local:
    :depth: 1
 
-.. index:: single: postinstall; Example 310
-.. index:: single: vbotka.freebsd.postinstall; Example 310
-.. index:: single: role vbotka.freebsd.postinstall; Example 310
-.. index:: single: audit ansible_client; Example 310
-.. index:: single: display_skipped_hosts; Example 310
-
-.. index:: single: act_pkg; Example 310
-
-.. index:: single: module community.general.pkgng; Example 310
-.. index:: single: community.general.pkgng; Example 310
-.. index:: single: delegate_to; Example 310
+.. index::
+   single: postinstall; Example 310
+   single: vbotka.freebsd.postinstall; Example 310
+   single: role vbotka.freebsd.postinstall; Example 310
+   single: audit ansible client; Example 310
+   single: display_skipped_hosts; Example 310
+   single: act_pkg; Example 310
+   single: module community.general.pkgng; Example 310
+   single: community.general.pkgng; Example 310
+   single: delegate_to; Example 310
 
 Use case
 ^^^^^^^^
@@ -55,7 +54,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In the swarm ``sw_01``:
+In a ``swarm``:
 
 * Playbook ``pb-test-01.yml``: Test that the role does nothing by default.
 * Playbook ``pb-test-02.yml``: Install packages using the module `community.general.pkgng`_.
@@ -71,7 +70,7 @@ In the swarm ``sw_01``:
 Requirements
 ^^^^^^^^^^^^
 
-* Running ``swarm`` on the iocage host.
+* Running ``swarm`` on an iocage host.
 
 Notes
 ^^^^^

@@ -11,8 +11,8 @@ This example extends :ref:`example_202`.
 
 .. index::
    single: swarms; Example 203
-   single: template ansible_client; Example 203
-   single: ansible_client; Example 203
+   single: template ansible-client; Example 203
+   single: ansible-client; Example 203
    single: DHCP; Example 203
    single: property notes; Example 203
    single: notes; Example 203
@@ -42,7 +42,7 @@ Use case
 **Automatically generated UUID**
 
 Automatically generate UUID names for jails. At each iocage host,
-create three jails from the template ``ansible_client``::
+create three jails from the template ``ansible-client``::
 
   swarms:
     sw_01:
@@ -54,7 +54,7 @@ names. Use ``ansible.builtin.command`` instead. If the UUID is
 generated automatically, such a task is not idempotent anyway. Example
 commands::
 
-  iocage create --short --template ansible_client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
+  iocage create --short --template ansible-client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
   iocage start cd31c2a2 d254f889 158ef36d
 
 **The variable iocage_tags**

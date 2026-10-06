@@ -154,6 +154,7 @@
 .. _config_light: https://ansible-config-light.readthedocs.io/en/latest/
 .. _constructed fragment: https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/doc_fragments/constructed.py
 .. _crossplane: https://pypi.org/project/crossplane/
+.. _custom facts: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts
 .. _custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
 .. _default variables: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-variables.html
 .. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
@@ -166,8 +167,8 @@
 .. _filesystems/py-libzfs: https://www.freshports.org/filesystems/py-libzfs/
 .. _filter ast_to_haproxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_haproxy/
 .. _filter ast_to_nginx: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/ast_to_nginx/
-.. _filter from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _filter combine_properties: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/combine_properties/
+.. _filter from_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/from_ucl/
 .. _filter iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/iocage/
 .. _filter project: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/project/
 .. _filter to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/

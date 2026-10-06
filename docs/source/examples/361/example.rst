@@ -7,10 +7,13 @@
    :local:
    :depth: 1
 
-.. index:: single: network; Example 361
-.. index:: single: loadbalance; Example 361
-.. index:: single: role vbotka.freebsd.network; Example 361
-.. index:: single: vbotka.freebsd.network; Example 361
+.. index::
+   single: network; Example 361
+   single: loadbalance; Example 361
+   single: laggproto; Example 361
+   single: laggport; Example 361
+   single: role vbotka.freebsd.network; Example 361
+   single: vbotka.freebsd.network; Example 361
 
 Use case
 ^^^^^^^^
@@ -72,9 +75,11 @@ Requirements
 Notes
 ^^^^^
 
-The USB NICs ``ue0`` and ``ue1`` are used here for testing. Using them
-in production is not recommended. See the FreeBSD Forum thread `rc.d
-netif restart lagg0`_ to learn about issues with USB NICs.
+* The USB NICs ``ue0`` and ``ue1`` are used here for testing. Using them in
+  production is not recommended. See the FreeBSD Forum thread `rc.d netif
+  restart lagg0`_ to learn about issues with USB NICs.
+
+* For `HAProxy`_ loadbalancer see :ref:`example_436`
 
 .. note::
 

@@ -17,7 +17,7 @@ This example extends :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Create custom facts to provide a dictionary of iocage dataset lists. Use the
+Create `custom facts`_ to provide a dictionary of iocage dataset lists. Use the
 :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse them.
 
 Tree

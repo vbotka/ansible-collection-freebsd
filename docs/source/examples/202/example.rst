@@ -1,7 +1,7 @@
 .. _example_202:
 
-202 Create iocage templates. Clone DHCP jails.
-----------------------------------------------
+202 Clone jails from iocage templates. Use DHCP.
+------------------------------------------------
 
 Extending :ref:`example_200`.
 
@@ -51,7 +51,7 @@ create ``dhclient-exit-hooks``. For example, the hook below:
 
 .. code-block:: console
 
-   shell> cat /zroot/iocage/templates/ansible_client/root/etc/dhclient-exit-hooks
+   shell> cat /zroot/iocage/templates/ansible-client/root/etc/dhclient-exit-hooks
 
 .. code-block:: bash
 
@@ -233,8 +233,8 @@ host_vars
 
 .. note::
 
-   The variables ``act_*`` are used to configure the
-   ``ansible_client`` template:
+   The variables ``act_*`` are used to configure the ``ansible-client``
+   template:
 
    * The dhclient hooks ``act_dhclient`` will be created in ``/etc``.
    * The user ``act_user`` will be created in the template.
@@ -243,12 +243,12 @@ host_vars
 
 .. warning::
 
-   * The user ``act_user`` must exist on the ``iocage``
-     host. Otherwise, the module ``ansible.posix.authorized_key`` will
-     crash. See ``playbooks/pb_iocage_template/pk.yml``.
+   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise, the
+     module ``ansible.posix.authorized_key`` will crash. See
+     ``playbooks/pb_iocage_template/pk.yml``.
 
-   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the
-     public keys to your needs::
+   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the public keys
+     to your needs::
 
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller

@@ -1,7 +1,7 @@
 .. _example_200:
 
-200 Create iocage templates. Clone jails.
------------------------------------------
+200 Clone jails from iocage templates
+-------------------------------------
 
 .. contents::
    :local:
