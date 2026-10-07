@@ -1,20 +1,21 @@
-
-PLAY [Create and start jails. Optionally stop and destroy jails.] **************
-
-TASK [Get iocage facts] ********************************************************
-ok: [iocage_06]
-
-TASK [Display iocage_jails keys debug=true] ************************************
-ok: [iocage_06] => 
-    ansible_facts.iocage_jails.keys():
-    - log-server-01
-    - pkg-repo
-    - repos
-    - repos-devel
-    - test-161
-    - test-162
-    - test-163
-
-PLAY RECAP *********************************************************************
-iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-
+@all:
+  |--@ungrouped:
+  |  |--repos-devel
+  |  |--pkg-repo
+  |  |--log-server-01
+  |  |--repos
+  |--@test_05:
+  |  |--test-153
+  |  |--test-151
+  |  |--test-152
+  |--@test_06:
+  |  |--test-161
+  |  |--test-162
+  |  |--test-163
+  |--@test:
+  |  |--test-153
+  |  |--test-151
+  |  |--test-152
+  |  |--test-161
+  |  |--test-162
+  |  |--test-163

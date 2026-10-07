@@ -9,36 +9,36 @@
 #                  vbotka.freebsd.pb_iocage_destroy_all_jails.yml
 
 # Destroy templates
-# ssh admin@$iocage_02 sudo iocage destroy -f ansible-client
-# ssh admin@$iocage_04 sudo iocage destroy -f ansible-client
+# ssh admin@$iocage_05 sudo iocage destroy -f ansible-client
 # ssh admin@$iocage_06 sudo iocage destroy -f ansible-client
 
 # Create templates
 ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_template.yml | tee out/out-01.txt
 
 # Templates
-# ssh admin@iocage_02 iocage list -lt | tee out/out-02.txt
-# ssh admin@iocage_04 iocage list -lt | tee out/out-03.txt
+ssh admin@iocage_05 iocage list -lt | tee out/out-02.txt
 ssh admin@iocage_06 iocage list -lt | tee out/out-03.txt
 
 # Create clones
 ansible-playbook -i iocage.ini -t clone -e clone=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-04.txt
 
 # List jails
-ansible-playbook -i iocage.ini -t list -e debug=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-05.txt
+ansible-playbook -i iocage.ini -t list -e debug=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-06.txt
 
 # Graph
-ansible-inventory -i hosts --graph | tee out/out-08.txt
+ansible-inventory -i hosts --graph | tee out/out-05.txt
 
 # Jails
-# ssh admin@iocage_02 sudo CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1 iocage list -l | tee out/out-06.txt
-# ssh admin@iocage_04 sudo CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1 iocage list -l | tee out/out-07.txt
-ssh admin@iocage_06 sudo iocage list -l | tee out/out-07.txt
+ssh admin@iocage_05 sudo iocage list -l | tee out/out-07.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-08.txt
 
 # Test
 ansible-playbook -i hosts  pb-test.yml | tee out/out-09.txt
 
 # Destroy jails
+ssh admin@iocage_05 sudo iocage destroy -f test-151
+ssh admin@iocage_05 sudo iocage destroy -f test-152
+ssh admin@iocage_05 sudo iocage destroy -f test-153
 ssh admin@iocage_06 sudo iocage destroy -f test-161
 ssh admin@iocage_06 sudo iocage destroy -f test-162
 ssh admin@iocage_06 sudo iocage destroy -f test-163

@@ -1,9 +1,27 @@
-+-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-| JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |        IP4        | IP6 |    TEMPLATE    | BASEJAIL |
-+=====+==========+======+=======+======+=================+===================+=====+================+==========+
-| 74  | test_111 | off  | up    | jail | 14.3-RELEASE-p8 | em0|10.1.0.111/24 | -   | ansible_client | no       |
-+-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-| 75  | test_112 | off  | up    | jail | 14.3-RELEASE-p8 | em0|10.1.0.112/24 | -   | ansible_client | no       |
-+-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
-| 76  | test_113 | off  | up    | jail | 14.3-RELEASE-p8 | em0|10.1.0.113/24 | -   | ansible_client | no       |
-+-----+----------+------+-------+------+-----------------+-------------------+-----+----------------+----------+
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Get iocage facts] ********************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [Display iocage_jails keys debug=true] ************************************
+ok: [iocage_05] => 
+    ansible_facts.iocage_jails.keys():
+    - test-151
+    - test-152
+    - test-153
+ok: [iocage_06] => 
+    ansible_facts.iocage_jails.keys():
+    - log-server-01
+    - pkg-repo
+    - repos
+    - repos-devel
+    - test-161
+    - test-162
+    - test-163
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

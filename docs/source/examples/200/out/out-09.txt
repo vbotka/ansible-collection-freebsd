@@ -4,23 +4,38 @@ PLAY [Connect to the group test.] **********************************************
 TASK [command] *****************************************************************
 changed: [test-162]
 changed: [test-161]
+changed: [test-151]
+changed: [test-152]
+changed: [test-153]
 changed: [test-163]
 
 TASK [debug] *******************************************************************
+ok: [test-151] => 
+    msg: |-
+        test-151 test-151 4c4c4544-0057-3810-8046-b2c04f4a5232
 ok: [test-161] => 
     msg: |-
         test-161 test-161 792b42dd-47f2-1e43-bd8a-34e94790815f
+ok: [test-153] => 
+    msg: |-
+        test-153 test-153 4c4c4544-0057-3810-8046-b2c04f4a5232
 ok: [test-162] => 
     msg: |-
         test-162 test-162 792b42dd-47f2-1e43-bd8a-34e94790815f
+ok: [test-152] => 
+    msg: |-
+        test-152 test-152 4c4c4544-0057-3810-8046-b2c04f4a5232
 ok: [test-163] => 
     msg: |-
         test-163 test-163 792b42dd-47f2-1e43-bd8a-34e94790815f
 
 TASK [command] *****************************************************************
-changed: [test-161]
-changed: [test-163]
 changed: [test-162]
+changed: [test-161]
+changed: [test-151]
+changed: [test-152]
+changed: [test-153]
+changed: [test-163]
 
 TASK [debug] *******************************************************************
 ok: [test-161] => 
@@ -29,11 +44,23 @@ ok: [test-161] =>
 ok: [test-162] => 
     msg: |-
         test-162 root
+ok: [test-153] => 
+    msg: |-
+        test-153 root
+ok: [test-151] => 
+    msg: |-
+        test-151 root
+ok: [test-152] => 
+    msg: |-
+        test-152 root
 ok: [test-163] => 
     msg: |-
         test-163 root
 
 PLAY RECAP *********************************************************************
+test-151                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-152                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-153                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-161                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-162                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-163                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

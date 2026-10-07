@@ -36,7 +36,7 @@
 Use case
 ^^^^^^^^
 
-Create `iocage`_ templates for Ansible clients. Clone jails from the templates.
+Create the `iocage`_ template ``ansible-client``. Clone jails from the template.
 
 Tree
 ^^^^
@@ -53,9 +53,12 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── hosts
+  │   ├── 05_iocage.yml
   │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── iocage.yml
   │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
@@ -91,8 +94,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_pb-iocage-template`
-* :ref:`ug_pb-iocage-ansible-clients`
+* Playbook :ref:`ug_pb-iocage-template`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage2`
 * An activated ``iocage`` installation.
@@ -127,6 +130,10 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
@@ -144,6 +151,10 @@ group_vars
 
 host_vars
 ^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/iocage.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
@@ -164,7 +175,7 @@ files
    * The user ``act_user`` will serve as the Ansible ``remote_user``.
    * The file ``act_pk`` provides the public keys allowed to SSH to ``act_user`` in a jail.
 
-.. warning::
+.. important::
 
    * The user ``act_user`` must exist on the ``iocage``
      host. Otherwise, the module ``ansible.posix.authorized_key`` will
@@ -186,15 +197,16 @@ Playbook output - Create templates
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
 
-Templates on iocage_06
-^^^^^^^^^^^^^^^^^^^^^^
+Templates
+^^^^^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -lt
+.. literalinclude:: out/out-02.txt
+   :language: bash
+   :caption: [iocage_05]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -lt
 
 Playbook output - Clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -220,7 +232,7 @@ Playbook output - List jails
                             -e debug=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -231,18 +243,19 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-05.txt
    :language: console
 
-Jails on iocage_06
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
+Jails
+^^^^^
 
 .. literalinclude:: out/out-07.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-08.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
