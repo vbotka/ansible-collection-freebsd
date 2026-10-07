@@ -25,8 +25,7 @@
    single: vbotka.freebsd.jailexec; Example 527
    single: jailexec; Example 527
    single: inventory vbotka.freebsd.iocage2; Example 527
-
-.. index:: single: Nginx; Example 527
+   single: Nginx; Example 527
 
 Use case
 ^^^^^^^^
@@ -45,10 +44,10 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   ├── all
-  │   │   ├── project-hosts.yml
-  │   │   ├── project.yml
-  │   │   └── template.yml
+  │   └── all
+  │       ├── project-hosts.yml
+  │       ├── project.yml
+  │       └── template.yml
   │   └── fetch_pkg_repo
   │       └── pkg-repo.yml
   ├── hosts
@@ -57,6 +56,7 @@ Tree
   │   └── iocage_06
   │       ├── local-pkg-conf.yml
   │       ├── nginx-pkg-repo.yml
+  │       ├── release.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -83,7 +83,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_
+* `Role vbotka.freebsd.iocage_template`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_filter_to_ast`
 * :ref:`ug_filter_ast_to_nginx`
@@ -156,6 +156,10 @@ host_vars
    trusted internal LAN, but it poses several security risks in
    production or shared network environments.
 
+.. literalinclude:: host_vars/iocage_06/release.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml+jinja
    :caption:
@@ -204,7 +208,7 @@ Playbook output - Create jails
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini -i hosts \
-                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+                           vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -218,7 +222,7 @@ Graph
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: bash
+   :language: console
 
 Jails
 ^^^^^

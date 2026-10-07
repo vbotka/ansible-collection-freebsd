@@ -1,6 +1,6 @@
 fit_templates:
   ansible-nginx:
-    release: 15.1-RELEASE
+    release: "{{ fit_release }}"
     pkg_conf: "{{ fit_pkg_conf | dict2items }}"
     pkg:
       - nginx-lite

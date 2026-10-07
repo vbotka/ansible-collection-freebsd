@@ -27,6 +27,6 @@ pkg_fetch_list:
   - python312
   - python
   - python3
-  - py-ansible
+  - py312-ansible
   - py-crossplane
   - rsnapshot

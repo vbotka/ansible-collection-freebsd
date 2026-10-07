@@ -7,21 +7,22 @@
    :local:
    :depth: 1
 
-.. index:: single: local pkg repo; Example 529
-.. index:: single: pkg repo; Example 529
-.. index:: single: ansible_init; Example 529
-.. index:: single: service ansible_init; Example 529
-.. index:: single: template ansible-init; Example 529
-.. index:: single: firstboot; Example 529
-.. index:: single: ansible-pull; Example 529
-.. index:: single: role vbotka.freebsd.iocage_template; Example 529
+.. index::
+   single: local pkg repo; Example 529
+   single: pkg repo; Example 529
+   single: ansible_init; Example 529
+   single: service ansible_init; Example 529
+   single: template ansible-init; Example 529
+   single: firstboot; Example 529
+   single: ansible-pull; Example 529
+   single: role vbotka.freebsd.iocage_template; Example 529
 
 Use case
 ^^^^^^^^
 
 Create the `iocage`_ template ``ansible-init``. Enable the `firstboot`_ service
 `ansible_init`_ that runs `ansible-pull`_ from the repositories on
-``project_hosts.repos``.
+``project_hosts.repos``. Configure the ``local`` pkg repository.
 
 Tree
 ^^^^
@@ -40,6 +41,7 @@ Tree
   ├── host_vars
   │   └── iocage_06
   │       ├── local-pkg-conf.yml
+  │       ├── release.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -55,8 +57,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
+* `Role vbotka.freebsd.iocage_template`_
 * Package repository created in :ref:`example_322`
-* Role `vbotka.freebsd.iocage_template`_
 
 Notes
 ^^^^^
@@ -99,6 +101,10 @@ host_vars
 ^^^^^^^^^
 
 .. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/release.yml
    :language: yaml+jinja
    :caption:
 

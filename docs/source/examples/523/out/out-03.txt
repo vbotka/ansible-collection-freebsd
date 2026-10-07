@@ -13,8 +13,8 @@ changed: [iocage_06] => (item=repos)
 changed: [iocage_06] => (item=repos-devel)
 
 TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item={'key': 'repos', 'value': {'vmm': 'iocage_06', 'template': 'ansible-repos', 'class': ['repos'], 'properties': {'ip4': 'disable', 'ip6': 'disable', 'ip6_addr': 'none', 'boot': 1, 'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.21/24', 'vnet': 1}}})
-ok: [iocage_06] => (item={'key': 'repos-devel', 'value': {'notes': 'alias=repos_devel', 'vmm': 'iocage_06', 'template': 'ansible-repos', 'class': ['repos'], 'properties': {'ip4': 'disable', 'ip6': 'disable', 'ip6_addr': 'none', 'boot': 1, 'defaultrouter': '172.16.99.1', 'ip4_addr': 'vnet0|172.16.99.22/24', 'vnet': 1}}})
+ok: [iocage_06] => (item=repos)
+ok: [iocage_06] => (item=repos-devel)
 
 TASK [Start: Start jails.] *****************************************************
 ok: [iocage_06]

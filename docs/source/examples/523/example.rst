@@ -35,10 +35,10 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   ├── all
-  │   │   ├── project-hosts.yml
-  │   │   ├── project.yml
-  │   │   └── template.yml
+  │   └── all
+  │       ├── project-hosts.yml
+  │       ├── project.yml
+  │       └── template.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
@@ -46,6 +46,7 @@ Tree
   ├── host_vars
   │   └── iocage_06
   │       ├── local-pkg-conf.yml
+  │       ├── release.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -70,7 +71,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_
+* `Role vbotka.freebsd.iocage_template`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_filter_to_ucl`
 * :ref:`ug_filter_project`
@@ -151,6 +152,10 @@ host_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: host_vars/iocage_06/release.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml+jinja
    :caption:
@@ -203,7 +208,7 @@ Playbook output - Create jails
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini -i hosts \
-                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+                           vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -217,7 +222,7 @@ Graph
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: bash
+   :language: console
 
 Jails
 ^^^^^

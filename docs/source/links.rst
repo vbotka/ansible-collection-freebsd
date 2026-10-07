@@ -260,6 +260,7 @@
 .. _role vbotka.freebsd.dhcp: https://github.com/vbotka/ansible-freebsd-dhcp/
 .. _role vbotka.freebsd.haproxy: https://github.com/vbotka/ansible-freebsd-haproxy/
 .. _role vbotka.freebsd.iocage: https://github.com/vbotka/ansible-freebsd-iocage/
+.. _role vbotka.freebsd.iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template/
 .. _role vbotka.freebsd.lib: https://github.com/vbotka/ansible-lib/
 .. _role vbotka.freebsd.network: https://github.com/vbotka/ansible-freebsd-network/
 .. _role vbotka.freebsd.nginx: https://github.com/vbotka/ansible-freebsd-nginx/

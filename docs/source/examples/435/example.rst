@@ -44,6 +44,7 @@ Tree
   ├── host_vars
   │   └── iocage_06
   │       ├── local-pkg-conf.yml
+  │       ├── release.yml
   │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
@@ -68,8 +69,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_
-* Role `vbotka.freebsd.nginx`_
+* `Role vbotka.freebsd.iocage_template`_
+* `Role vbotka.freebsd.nginx`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
@@ -136,6 +137,10 @@ host_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: host_vars/iocage_06/release.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml+jinja
    :caption:
@@ -191,7 +196,7 @@ Playbook output - Create jails
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini -i hosts \
-                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+                           vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
@@ -205,7 +210,7 @@ Graph
    (env) > ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
-   :language: bash
+   :language: console
 
 Jails
 ^^^^^
@@ -241,7 +246,7 @@ Results
 
   .. code-block:: console
 
-     shell > ssh admin@iocage_06 sudo iocage exec www-01 service nginx configtest 2>&1
+     shell> ssh admin@iocage_06 sudo iocage exec www-01 service nginx configtest 2>&1
 
   .. literalinclude:: out/out-07.txt
      :language: console
@@ -250,7 +255,7 @@ Results
 
   .. code-block:: console
 
-     shell > ssh admin@iocage_06 sudo iocage exec www-01 service nginx status 2>&1
+     shell> ssh admin@iocage_06 sudo iocage exec www-01 service nginx status 2>&1
 
   .. literalinclude:: out/out-08.txt
      :language: console
@@ -259,7 +264,7 @@ Results
 
   .. code-block:: console
 
-     shell > ssh admin@iocage_06 fetch -qo - http://172.16.99.111/
+     shell> ssh admin@iocage_06 fetch -qo - http://172.16.99.111/
      <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
      <html>
      <head>

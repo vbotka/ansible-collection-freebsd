@@ -1,5 +1,4 @@
 project_hosts:
-  log_server: 172.16.99.10
   iocage_05:
     local_repos: 172.16.95.1
     defaultrouter: 172.16.95.1
