@@ -7,19 +7,20 @@
    :local:
    :depth: 1
 
-.. index:: single: pkg repo; Example 322
-.. index:: single: role vbotka.freebsd.packages; Example 322
-.. index:: single: vbotka.freebsd.packages; Example 322
-.. index:: single: role vbotka.freebsd.nginx; Example 322
-.. index:: single: vbotka.freebsd.nginx; Example 322
-.. index:: single: filter vbotka.freebsd.to_ucl; Example 322
-.. index:: single: vbotka.freebsd.to_ucl; Example 322
-.. index:: single: to_ucl; Example 322
+.. index::
+   single: pkg repo; Example 322
+   single: role vbotka.freebsd.packages; Example 322
+   single: vbotka.freebsd.packages; Example 322
+   single: role vbotka.freebsd.nginx; Example 322
+   single: vbotka.freebsd.nginx; Example 322
+   single: filter vbotka.freebsd.to_ucl; Example 322
+   single: vbotka.freebsd.to_ucl; Example 322
+   single: to_ucl; Example 322
 
 Use case
 ^^^^^^^^
 
-Create a local package repository and fetch packages. Configure a web server to
+Fetch packages and create a local package repository. Configure a web server to
 publish the repository.
 
 Tree
@@ -32,11 +33,9 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
-  │       └── project-hosts.yml
-  ├── host_vars
-  │   └── iocage_06
   │       ├── fetch.yml
   │       ├── nginx.yml
+  │       ├── project-hosts.yml
   │       └── repos.yml
   ├── iocage.ini
   ├── pb-nginx.yml
@@ -47,16 +46,17 @@ Synopsis
 
 * On a managed node:
 
-  * Use the role `vbotka.freebsd.packages`_ to configure a package repository and
-    fetch packages.
-  * Use the role `vbotka.freebsd.nginx`_ to publish the repository.
+  * Fetch packages and configure a package repository. Use the role
+    `vbotka.freebsd.packages`_.
+
+  * Install and configure Nginx to publish the repository. Use the role
+    `vbotka.freebsd.nginx`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* `Role vbotka.freebsd.nginx`_
 * `Role vbotka.freebsd.packages`_
-* :ref:`ug_filter_to_ucl`
+* `Role vbotka.freebsd.nginx`_
 
 Notes
 ^^^^^
@@ -67,7 +67,6 @@ Notes
 
    * `man pkg`_
    * `man pkg.conf`_
-   * Example :ref:`example_043`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -88,18 +87,15 @@ group_vars
    :language: yaml+jinja
    :caption:
 
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_06/repos.yml
+.. literalinclude:: group_vars/all/repos.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/fetch.yml
+.. literalinclude:: group_vars/all/fetch.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/nginx.yml
+.. literalinclude:: group_vars/all/nginx.yml
    :language: yaml+jinja
    :caption:
 
@@ -114,7 +110,7 @@ Playbook output - Create repo and fetch packages
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -t pkg_conf,pkg_fetch pb-packages.yml
+   (env) > ansible-playbook -i iocage.ini -t pkg_fetch,pkg_conf pb-packages.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
@@ -140,7 +136,14 @@ List repo
 
 .. code-block:: console
 
-   shell> ssh admin@iocage_06 fetch -qo - http://localhost
+   shell> ssh admin@iocage_05 fetch -qo - http://localhost
 
 .. literalinclude:: out/out-04.txt
+   :language: html
+
+.. code-block:: console
+
+   shell> ssh admin@iocage_06 fetch -qo - http://localhost
+
+.. literalinclude:: out/out-06.txt
    :language: html

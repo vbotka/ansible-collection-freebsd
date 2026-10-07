@@ -15,6 +15,11 @@
   tags: pkg_debug
   ansible.builtin.import_tasks: debug.yml
 
+- name: Fetch packages.
+  when: pkg_fetch | bool
+  tags: pkg_fetch
+  ansible.builtin.import_tasks: pkg-fetch.yml
+
 - name: Copy keys.
   tags: pkg_keys
   ansible.builtin.import_tasks: keys.yml
@@ -22,11 +27,6 @@
 - name: Configuration.
   tags: pkg_conf
   ansible.builtin.import_tasks: conf.yml
-
-- name: Fetch packages.
-  when: pkg_fetch | bool
-  tags: pkg_fetch
-  ansible.builtin.import_tasks: pkg-fetch.yml
 
 - name: Deinstall packages.
   when: pkg_list_deinstall | length > 0
