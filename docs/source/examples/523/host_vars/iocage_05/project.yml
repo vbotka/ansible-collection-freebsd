@@ -1,0 +1,24 @@
+project:
+  repos:
+    vmm: iocage_05
+    template: ansible-repos
+    class: [repos]
+    properties:
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['repos'] }}/24"
+  repos-devel:
+    notes: alias=repos_devel
+    vmm: iocage_05
+    template: ansible-repos
+    class: [repos]
+    properties:
+      ip4_addr: "vnet0|{{ project_hosts[inventory_hostname]['repos_devel'] }}/24"
+
+properties:
+  ip4: disable
+  ip6: disable
+  ip6_addr: none
+  boot: 1
+  defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+  vnet: 1
+
+vmm: "{{ (project | vbotka.freebsd.project).vmm }}"

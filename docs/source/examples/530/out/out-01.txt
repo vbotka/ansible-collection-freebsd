@@ -19,10 +19,10 @@ ok: [iocage_06] =>
     - '529'
 
 TASK [include_tasks] ***********************************************************
-included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_05, iocage_06 => (item=435)
-included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_05, iocage_06 => (item=523)
-included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_05, iocage_06 => (item=527)
-included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_05, iocage_06 => (item=529)
+included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_06, iocage_05 => (item=435)
+included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_06, iocage_05 => (item=523)
+included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_06, iocage_05 => (item=527)
+included: /export/scratch/collections/ansible_collections/vbotka/freebsd/docs/source/examples/530/tasks/create_template.yml for iocage_06, iocage_05 => (item=529)
 
 TASK [include_vars] ************************************************************
 ok: [iocage_05]
@@ -101,8 +101,8 @@ TASK [vbotka.freebsd.iocage_template : Template: Set template.] ****************
 ok: [iocage_05] => (item=ansible-nginx)
 
 TASK [include_vars] ************************************************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [include_role : vbotka.freebsd.iocage_template] ***************************
 included: vbotka.freebsd.iocage_template for iocage_05, iocage_06

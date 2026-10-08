@@ -2,5 +2,4 @@
   hosts: iocage
 
   roles:
-
     - vbotka.freebsd.iocage_template

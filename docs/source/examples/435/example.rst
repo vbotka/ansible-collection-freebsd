@@ -34,18 +34,21 @@ Tree
   │   └── index.html
   ├── group_vars
   │   ├── all
+  │   │   ├── local-pkg-conf.yml
   │   │   ├── project-hosts.yml
   │   │   ├── project.yml
-  │   │   └── templates.yml
+  │   │   ├── templates.yml
+  │   │   └── template.yml
   │   └── nginx
   │       └── nginx.yml
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   └── 06_iocage2.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── release.yml
   │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       ├── release.yml
-  │       └── template.yml
+  │       └── release.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── pb-nginx.yml
@@ -90,7 +93,7 @@ Notes
 
 .. seealso::
 
-   * TBD
+   * :ref:`example_530`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -107,12 +110,20 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
@@ -126,6 +137,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/template.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/nginx/nginx.yml
    :language: yaml+jinja
    :caption:
@@ -133,15 +148,11 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+.. literalinclude:: host_vars/iocage_05/release.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_06/release.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml+jinja
    :caption:
 
@@ -183,12 +194,13 @@ Playbook output - Create templates
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -lt
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -lt
 
 Playbook output - Create jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -198,7 +210,7 @@ Playbook output - Create jails
    (env) > ansible-playbook -i iocage.ini -i hosts \
                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -209,18 +221,19 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: console
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -l
 
 Playbook pb-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^
@@ -235,7 +248,7 @@ Playbook output - Configure Nginx
 
    (env) > ansible-playbook -i hosts pb-nginx.yml
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-08.txt
    :language: yaml+jinja
    :force:
 
@@ -244,21 +257,23 @@ Results
 
 * Test the configuration:
 
-  .. code-block:: console
-
-     shell> ssh admin@iocage_06 sudo iocage exec www-01 service nginx configtest 2>&1
-
-  .. literalinclude:: out/out-07.txt
+  .. literalinclude:: out/out-09.txt
      :language: console
+     :caption: shell> ssh admin@iocage_05 sudo iocage exec www-51 service nginx configtest 2>&1
+
+  .. literalinclude:: out/out-10.txt
+     :language: console
+     :caption: shell> ssh admin@iocage_06 sudo iocage exec www-61 service nginx configtest 2>&1
 
 * Test that the server is running:
 
-  .. code-block:: console
-
-     shell> ssh admin@iocage_06 sudo iocage exec www-01 service nginx status 2>&1
-
-  .. literalinclude:: out/out-08.txt
+  .. literalinclude:: out/out-11.txt
      :language: console
+     :caption: shell> ssh admin@iocage_05 sudo iocage exec www-51 service nginx status 2>&1
+
+  .. literalinclude:: out/out-12.txt
+     :language: console
+     :caption: shell> ssh admin@iocage_06 sudo iocage exec www-61 service nginx status 2>&1
 
 * Test that the server is working (see the IP in the list of jails):
 

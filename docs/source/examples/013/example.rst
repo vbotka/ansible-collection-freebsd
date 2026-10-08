@@ -9,27 +9,27 @@ This example extends :ref:`example_010`.
    :local:
    :depth: 1
 
-.. index:: single: clones; Example 013
-
-.. index:: single: module vbotka.freebsd.iocage; Example 013
-.. index:: single: inventory vbotka.freebsd.iocage; Example 013
-.. index:: single: property notes; Example 013
-.. index:: single: notes; Example 013
-.. index:: single: variable iocage_tags; Example 013
-.. index:: single: iocage_tags; Example 013
-.. index:: single: option compose; Example 013
-.. index:: single: compose; Example 013
-.. index:: single: option keyed_groups; Example 013
-.. index:: single: keyed_groups; Example 013
-.. index:: single: option get_properties; Example 013
-.. index:: single: get_properties; Example 013
-.. index:: single: variable iocage_properties; Example 013
-.. index:: single: iocage_properties; Example 013
-
-.. index:: single: iocage_jails; Example 013
-.. index:: single: iocage_plugins; Example 013
-.. index:: single: iocage_releases; Example 013
-.. index:: single: iocage_templates; Example 013
+.. index::
+   single: clones; Example 013
+   single: inventory groups; Example 013
+   single: module vbotka.freebsd.iocage; Example 013
+   single: inventory vbotka.freebsd.iocage; Example 013
+   single: property notes; Example 013
+   single: notes; Example 013
+   single: variable iocage_tags; Example 013
+   single: iocage_tags; Example 013
+   single: option compose; Example 013
+   single: compose; Example 013
+   single: option keyed_groups; Example 013
+   single: keyed_groups; Example 013
+   single: option get_properties; Example 013
+   single: get_properties; Example 013
+   single: variable iocage_properties; Example 013
+   single: iocage_properties; Example 013
+   single: iocage_jails; Example 013
+   single: iocage_plugins; Example 013
+   single: iocage_releases; Example 013
+   single: iocage_templates; Example 013
 
 Use case
 ^^^^^^^^
@@ -232,6 +232,8 @@ Playbook output - group_names
 
    There are no internal checks for hosts overriding each
    other. Maintaining inventory consistency is up to the user.
+
+   See :ref:`ug_qa_inventory_flat`
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^

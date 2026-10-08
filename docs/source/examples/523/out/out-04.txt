@@ -1,15 +1,33 @@
-@all:
-  |--@ungrouped:
-  |--@pull_repos:
-  |  |--repos
-  |  |--repos_devel
-  |--@state_up:
-  |  |--repos
-  |  |--repos_devel
-  |  |--pkg_repo
-  |  |--log_server_01
-  |--@vmm_iocage_06:
-  |  |--repos
-  |  |--repos_devel
-  |  |--pkg_repo
-  |  |--log_server_01
+
+PLAY [Create and start project jails from iocage templates.] *******************
+
+TASK [Setup: Get activated pool.] **********************************************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Create: Create jails.] ***************************************************
+ok: [iocage_05] => (item=repos-devel)
+ok: [iocage_06] => (item=repos-devel)
+ok: [iocage_05] => (item=repos)
+ok: [iocage_06] => (item=repos)
+
+TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
+changed: [iocage_06] => (item=repos)
+changed: [iocage_05] => (item=repos)
+changed: [iocage_06] => (item=repos-devel)
+changed: [iocage_05] => (item=repos-devel)
+
+TASK [Properties: Set properties.] *********************************************
+ok: [iocage_05] => (item=repos)
+ok: [iocage_06] => (item=repos)
+ok: [iocage_05] => (item=repos-devel)
+ok: [iocage_06] => (item=repos-devel)
+
+TASK [Start: Start jails.] *****************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=5    changed=1    unreachable=0    failed=0    skipped=24   rescued=0    ignored=0   
+iocage_06                  : ok=5    changed=1    unreachable=0    failed=0    skipped=23   rescued=0    ignored=0   
+

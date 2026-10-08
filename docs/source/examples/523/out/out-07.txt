@@ -1,9 +1,7 @@
-total 12
-drwxr-xr-x   8 git_daemon git_daemon  8 Oct  7 12:13 .
-drwxr-xr-x  11 root       wheel      11 Sep 19 15:28 ..
-drwxr-xr-x   5 git_daemon git_daemon 11 Oct  7 12:13 ansible-conf-init
-drwxr-xr-x   3 git_daemon git_daemon  9 Oct  7 12:13 ansible-conf-init-example
-drwxr-xr-x   4 git_daemon git_daemon 10 Oct  7 12:13 ansible-conf-roles
-drwxr-xr-x   5 git_daemon git_daemon 11 Oct  7 12:13 ansible-conf-syslogng-client
-drwxr-xr-x   5 git_daemon git_daemon 11 Oct  7 12:13 ansible-conf-syslogng-server
-drwxr-xr-x   3 git_daemon git_daemon  9 Oct  7 12:13 ansible-conf-test
++-----+-------------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
+| JID |    NAME     | BOOT | STATE | TYPE |   RELEASE    |          IP4          | IP6 |   TEMPLATE    | BASEJAIL |
++=====+=============+======+=======+======+==============+=======================+=====+===============+==========+
+| 24  | repos       | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.21/24 | -   | ansible-repos | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
+| 25  | repos-devel | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.22/24 | -   | ansible-repos | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+---------------+----------+

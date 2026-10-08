@@ -10,6 +10,7 @@ This example extends :ref:`example_016`.
    :depth: 1
 
 .. index::
+   single: inventory groups; Example 019
    single: inventory vbotka.freebsd.iocage; Example 019
    single: inventory ansible.builtin.constructed; Example 019
    single: option use_vars_plugins; Example 019

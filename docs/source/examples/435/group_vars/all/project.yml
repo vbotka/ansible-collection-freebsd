@@ -1,11 +1,21 @@
 project:
-  www-01:
-    notes: alias=www_01
+  www-51:
+    notes: alias=www_51
+    vmm: iocage_05
+    template: ansible-nginx
+    class: [nginx]
+  www-52:
+    notes: alias=www_52
+    vmm: iocage_05
+    template: ansible-nginx
+    class: [nginx]
+  www-61:
+    notes: alias=www_61
     vmm: iocage_06
     template: ansible-nginx
     class: [nginx]
-  www-02:
-    notes: alias=www_02
+  www-62:
+    notes: alias=www_62
     vmm: iocage_06
     template: ansible-nginx
     class: [nginx]

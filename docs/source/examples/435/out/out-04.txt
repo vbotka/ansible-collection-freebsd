@@ -1,19 +1,33 @@
-@all:
-  |--@ungrouped:
-  |--@state_up:
-  |  |--repos
-  |  |--repos_devel
-  |  |--pkg_repo
-  |  |--log_server_01
-  |  |--www_02
-  |  |--www_01
-  |--@vmm_iocage_06:
-  |  |--repos
-  |  |--repos_devel
-  |  |--pkg_repo
-  |  |--log_server_01
-  |  |--www_02
-  |  |--www_01
-  |--@nginx:
-  |  |--www_02
-  |  |--www_01
+
+PLAY [Create and start project jails from iocage templates.] *******************
+
+TASK [Setup: Get activated pool.] **********************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [Create: Create jails.] ***************************************************
+ok: [iocage_05] => (item=www-51)
+ok: [iocage_06] => (item=www-61)
+ok: [iocage_05] => (item=www-52)
+ok: [iocage_06] => (item=www-62)
+
+TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
+changed: [iocage_05] => (item=www-51)
+changed: [iocage_06] => (item=www-61)
+changed: [iocage_05] => (item=www-52)
+changed: [iocage_06] => (item=www-62)
+
+TASK [Properties: Set properties.] *********************************************
+ok: [iocage_05] => (item=www-51)
+ok: [iocage_06] => (item=www-61)
+ok: [iocage_05] => (item=www-52)
+ok: [iocage_06] => (item=www-62)
+
+TASK [Start: Start jails.] *****************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=5    changed=1    unreachable=0    failed=0    skipped=24   rescued=0    ignored=0   
+iocage_06                  : ok=5    changed=1    unreachable=0    failed=0    skipped=23   rescued=0    ignored=0   
+

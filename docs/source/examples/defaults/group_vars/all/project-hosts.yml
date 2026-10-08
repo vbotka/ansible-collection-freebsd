@@ -6,6 +6,7 @@ project_hosts:
     local_pkg_repo: 172.16.95.1
     log_server: 172.16.95.10
     repos: 172.16.95.21
+    repos_devel: 172.16.95.22
     pkg_repo: 172.16.95.23
   iocage_06:
     local_repos: 172.16.99.1

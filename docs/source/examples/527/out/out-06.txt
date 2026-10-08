@@ -1,16 +1,9 @@
-
-PLAY [Fetch packages to repo.] *************************************************
-
-TASK [vbotka.freebsd.packages : Packages_fetch: Create /usr/local/www/pkgrepo] ***
-changed: [pkg_repo]
-
-TASK [vbotka.freebsd.packages : Packages_fetch: Fetch selected lists from pkg_dict] ***
-changed: [pkg_repo] => (item=minimal)
-changed: [pkg_repo] => (item=syslog)
-
-RUNNING HANDLER [vbotka.freebsd.packages : Generate repo metadata] *************
-ok: [pkg_repo]
-
-PLAY RECAP *********************************************************************
-pkg_repo                   : ok=3    changed=2    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
-
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| JID |    NAME     | BOOT | STATE | TYPE |   RELEASE    |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++=====+=============+======+=======+======+==============+=======================+=====+==================+==========+
+| 26  | pkg-repo    | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.23/24 | -   | ansible-pkg-repo | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 24  | repos       | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.21/24 | -   | ansible-repos    | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 25  | repos-devel | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.22/24 | -   | ansible-repos    | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+

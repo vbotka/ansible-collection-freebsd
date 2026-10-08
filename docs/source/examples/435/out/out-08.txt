@@ -1,1 +1,33 @@
-nginx is running as pid 21081.
+
+PLAY [Configure Nginx servers.] ************************************************
+
+TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
+changed: [www_62] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_61] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_51] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_52] => (item=/usr/local/etc/nginx/nginx.conf)
+
+TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
+changed: [www_62]
+changed: [www_61]
+changed: [www_52]
+changed: [www_51]
+
+RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
+changed: [www_52]
+changed: [www_51]
+changed: [www_61]
+changed: [www_62]
+
+RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
+ok: [www_52]
+ok: [www_51]
+ok: [www_61]
+ok: [www_62]
+
+PLAY RECAP *********************************************************************
+www_51                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+www_52                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+www_61                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+www_62                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

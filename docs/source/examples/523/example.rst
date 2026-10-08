@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index::
+   single: local repos; Example 523
    single: template ansible-repos; Example 523
    single: role vbotka.freebsd.iocage_template; Example 523
    single: pb_iocage_project_create_from_templates.yml; Example 523
@@ -36,18 +37,22 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
-  │       ├── project-hosts.yml
-  │       ├── project.yml
-  │       └── template.yml
+  │   │   ├── local-pkg-conf.yml
+  │   │   ├── project-hosts.yml
+  │   │   ├── templates.yml
+  │   │   └── template.yml
   │   └── pull_repos
   │       └── repos.yml
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   └── 06_iocage2.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   ├── project.yml
+  │   │   └── release.yml
   │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       ├── release.yml
-  │       └── template.yml
+  │       ├── project.yml
+  │       └── release.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── pb-repos.yml
@@ -114,6 +119,10 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
@@ -121,42 +130,19 @@ hosts
 group_vars
 ^^^^^^^^^^
 
+.. literalinclude:: group_vars/all/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/project.yml
+.. literalinclude:: group_vars/all/templates.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/template.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: group_vars/pull_repos/repos.yml
-   :language: yaml+jinja
-   :caption:
-
-.. note::
-
-   The repositories are cloned from the local mirror at
-   ``git_server``. To reproduce this example, create your mirror and
-   adjust the IP address to your environment. See
-   :ref:`example_311`. Optionally, for testing, clone the repositories
-   directly from GitHub.
-
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_06/release.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml+jinja
    :caption:
 
@@ -167,6 +153,41 @@ host_vars
    mirroring, but it completely bypasses authentication and
    authorization. Ensure the daemon is strictly read-only (which is the
    default).
+
+.. literalinclude:: group_vars/pull_repos/repos.yml
+   :language: yaml+jinja
+   :caption:
+
+.. note::
+
+   The repositories are cloned from the local mirror at ``git_server``. To
+   reproduce this example, create your mirror and adjust the IP address to your
+   environment. See :ref:`example_311`. Optionally, for testing, clone the
+   repositories directly from GitHub.
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/project.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/project.yml
+   :language: yaml+jinja
+   :caption:
+
+.. important::
+
+   The names of the jails ``repos`` and ``repos-devel`` are identical in all
+   jail managers. Therefore, the ``project`` dictionaries must be jail-manager-specific.
+
+.. literalinclude:: host_vars/iocage_05/release.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/release.yml
+   :language: yaml+jinja
+   :caption:
 
 templates
 ^^^^^^^^^
@@ -195,12 +216,13 @@ Playbook output - Create templates
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -lt
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -lt
 
 Playbook output - Create jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -210,7 +232,7 @@ Playbook output - Create jails
    (env) > ansible-playbook -i iocage.ini -i hosts \
                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -221,18 +243,26 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-06.txt
    :language: console
+
+.. important::
+
+   The names of the jails ``repos`` and ``repos-devel`` are identical in all
+   jail managers. The Ansible inventory is flat.
+
+   See: :ref:`ug_qa_inventory_flat`
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-07.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -l
+
+.. literalinclude:: out/out-08.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -l
 
 Playbook pb-repos.yml
 ^^^^^^^^^^^^^^^^^^^^^
@@ -243,21 +273,34 @@ Playbook pb-repos.yml
 Playbook output - Clone repos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-playbook -i hosts pb-repos.yml
-
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
+   :caption: (env) > ansible-playbook -i hosts/05_iocage2.yml pb-repos.yml
+
+.. literalinclude:: out/out-10.txt
+   :language: yaml+jinja
+   :force:
+   :caption: (env) > ansible-playbook -i hosts/06_iocage2.yml pb-repos.yml
+
+.. important::
+
+   The names of the jails ``repos`` and ``repos-devel`` are identical in all
+   jail managers. Therefore, it is not possible to include them all in a single
+   inventory group. As a result, the play must be run for each jail manager
+   separately.
+
+   See: :ref:`ug_qa_inventory_flat`
 
 List repos
 ^^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage exec repos ls -la /usr/local/git
-
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-11.txt
    :language: console
    :force:
+   :caption: shell> ssh admin@iocage_05 sudo iocage exec repos ls -la /usr/local/git
+
+.. literalinclude:: out/out-12.txt
+   :language: console
+   :force:
+   :caption: shell> ssh admin@iocage_06 sudo iocage exec repos ls -la /usr/local/git

@@ -1,23 +1,7 @@
-
-PLAY [Configure Nginx servers.] ************************************************
-
-TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [www_01] => (item=/usr/local/etc/nginx/nginx.conf)
-
-TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-changed: [www_01]
-changed: [www_02]
-
-RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
-changed: [www_02]
-changed: [www_01]
-
-RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
-ok: [www_01]
-ok: [www_02]
-
-PLAY RECAP *********************************************************************
-www_01                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-www_02                     : ok=4    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-
++-----+--------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
+| JID |  NAME  | BOOT | STATE | TYPE |   RELEASE    |          IP4          | IP6 |   TEMPLATE    | BASEJAIL |
++=====+========+======+=======+======+==============+=======================+=====+===============+==========+
+| 10  | www-51 | on   | up    | jail | 15.0-RELEASE | epair0b|172.16.95.100 | -   | ansible-nginx | no       |
++-----+--------+------+-------+------+--------------+-----------------------+-----+---------------+----------+
+| 11  | www-52 | on   | up    | jail | 15.0-RELEASE | epair0b|172.16.95.105 | -   | ansible-nginx | no       |
++-----+--------+------+-------+------+--------------+-----------------------+-----+---------------+----------+

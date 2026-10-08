@@ -9,3 +9,4 @@ Questions and Answers
    ug_qa_jexec_iocage_name
    ug_qa_iocage_templates_vs_plugins
    ug_qa_jid_persistent
+   ug_qa_inventory_flat

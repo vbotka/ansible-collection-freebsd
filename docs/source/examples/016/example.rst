@@ -9,11 +9,13 @@ This example extends :ref:`example_015`.
    :local:
    :depth: 1
 
-.. index:: single: inventory ansible.builtin.constructed; Example 016
-.. index:: single: option compose; Example 016
-.. index:: single: compose; Example 016
-.. index:: single: option groups; Example 016
-.. index:: single: groups; Example 016
+.. index::
+   single: inventory groups; Example 016
+   single: inventory ansible.builtin.constructed; Example 016
+   single: option compose; Example 016
+   single: compose; Example 016
+   single: option groups; Example 016
+   single: groups; Example 016
 
 Use case
 ^^^^^^^^

@@ -2,12 +2,16 @@
 PLAY [Create iocage templates.] ************************************************
 
 TASK [vbotka.freebsd.iocage_template : Setup: Get iocage list of templates.] ***
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage_template : Setup: All templates already created.] ***
+ok: [iocage_05] => 
+    msg: All templates already created. End role.
 ok: [iocage_06] => 
     msg: All templates already created. End role.
 
 PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

@@ -1,0 +1,1 @@
+nginx is running as pid 27879.
