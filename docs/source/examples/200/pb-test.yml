@@ -1,21 +1,39 @@
-- name: Connect to the group test.
+- name: Display inventory.
   hosts: test
-    
+
+  vars:
+
+    _vars:
+      - ansible_host
+      - ansible_jail_host
+      - ansible_jail_name
+
+    _properties:
+      - host_hostname
+      - host_hostuuid
+
+    _cmd: 'whoami; uname -rms'
+    _cmd_header: 'who  uname'
+
   tasks:
-
-    - command: hostname
-      register: out_host
     
     - debug:
-        msg: >
-          {{ out_host.stdout }}
-          {{ iocage_properties.host_hostuuid }}
-          {{ iocage_properties.hostid }}
+        msg: |
+          inv       name     uuid     ansible_host  jail_host jail_name
+          -------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ _vars | map('extract', hostvars[h]) | join(' ') }}
+          {% endfor %}
+      run_once: true
 
-    - command: whoami
-      register: out_user
-   
+    - shell: "{{ _cmd }}"
+      register: out
+
     - debug:
-        msg: >
-          {{ out_host.stdout }}
-          {{ out_user.stdout }}
+        msg: |
+          inv       {{ _cmd_header }}
+          -----------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ hostvars[h].out.stdout_lines | join(' ') }}
+          {% endfor %}
+      run_once: true

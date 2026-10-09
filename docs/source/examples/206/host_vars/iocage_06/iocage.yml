@@ -1,8 +1,9 @@
 clones:
   test-161:
+    notes: alias=test_161
+    swarm: sw_01
     clone_from: ansible-client
     class: [test]
-    notes: swarm=sw_01 alias=test_161
     properties:
       bpf: 1
       vnet: 1

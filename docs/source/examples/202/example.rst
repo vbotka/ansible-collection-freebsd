@@ -1,9 +1,9 @@
 .. _example_202:
 
-202 Clone jails from iocage templates. Use DHCP.
-------------------------------------------------
+202 Clone jails from iocage templates (DHCP)
+--------------------------------------------
 
-Extending :ref:`example_200`.
+This example extends :ref:`example_200`.
 
 .. contents::
    :local:
@@ -13,12 +13,9 @@ Extending :ref:`example_200`.
    single: clones; Example 202
    single: ansible-client; Example 202
    single: template ansible_client; Example 202
-   single: DHCP; Example 202
-   single: dhclient; Example 202
-   single: dhclient-exit-hooks; Example 202
-   single: property notes; Example 202
-   single: notes; Example 202
    single: sudoers; Example 202
+   single: pb_iocage_template.yml; Example 202
+   single: pb_iocage_ansible_clients.yml; Example 202
    single: inventory vbotka.freebsd.iocage; Example 202
    single: module vbotka.freebsd.iocage; Example 202
    single: module ansible.posix.authorized; Example 202
@@ -27,27 +24,26 @@ Extending :ref:`example_200`.
    single: ansible.builtin.lineinfile; Example 202
    single: module community.general.sysrc; Example 202
    single: community.general.sysrc; Example 202
-   single: pb_iocage_template.yml; Example 202
-   single: pb_iocage_ansible_clients.yml; Example 202
    single: option compose; Example 202
    single: compose; Example 202
-   single: option hooks_results; Example 202
-   single: hooks_results; Example 202
-   single: variable iocage_hooks; Example 202
-   single: iocage_hooks; Example 202
+   single: option groups; Example 202
    single: act_user; Example 202
    single: act_pk; Example 202
    single: act_sudo; Example 202
-   single: act_dhclient; Example 202
    single: act_rcconf; Example 202
    single: pkglist; Example 202
    single: pkgs.json; Example 202
+   single: defaultrouter; Example 202
 
 Use case
 ^^^^^^^^
 
-Create `iocage templates`_ for Ansible clients. Obtain IP addresses via DHCP and
-create ``dhclient-exit-hooks``. For example, the hook below:
+Create the `iocage`_ template ``ansible-client``. Configure
+``dhclient-exit-hooks``. Clone jails from the template. Obtain IP addresses via
+DHCP. In the inventory plugin, configure ``hooks_results`` and create the
+variable ``ansible_host``.
+
+For example, the hook below:
 
 .. code-block:: console
 
@@ -61,16 +57,16 @@ create ``dhclient-exit-hooks``. For example, the hook below:
        ;;
    esac
 
-creates address files:
+creates IP address files:
 
 .. code-block:: console
 
-   shell> cat /zroot/iocage/jails/test_131/root/var/db/dhclient-hook.address.epair0b
+   shell> cat /zroot/iocage/jails/test-131/root/var/db/dhclient-hook.address.epair0b
    10.1.0.130
 
 In the configuration of the iocage plugin, set the option ``hooks_results`` to
-read the file(s) created by the hooks and use the IP address(es) to compose the
-variable ``ansible_host``:
+read the file(s) created by the hook(s) and use the IP address(es) to compose
+the variable ``ansible_host``:
 
 .. code-block:: console
 
@@ -107,13 +103,13 @@ Tree
   │   ├── pk_admins.txt
   │   └── pkgs.json
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_02
+  │   ├── iocage_05
   │   │   └── iocage.yml
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   └── pb-test.yml
@@ -121,30 +117,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two iocage hosts:
+In addition to the configuration in :ref:`example_200`:
 
-  In the playbook :ref:`ug_pb-iocage-template`, use the modules:
+* Configure ``dhclient-exit-hooks`` in the template ``ansible-client``.
 
-  * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
-  * ``vbotka.freebsd.iocage`` exec to create a user and set ``.ssh`` ownership.
-  * ``community.general.sysrc`` to configure ``/etc/rc.conf``.
-  * ``ansible.posix.authorized_key`` to configure public keys.
-  * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
-  * Configure ``dhclient hooks``.
+* Configure ``hooks_results`` in the inventory plugin and create the variable
+  ``ansible_host``.
 
-  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use the :ref:`module
-  vbotka.freebsd.iocage <ug_module_iocage>` to:
+* Clone jails from this template and start them.
 
-  * Create jails from the Ansible client templates
-  * Start all jails
-  * Optionally, display the lists of jails
-
-* On all created jails:
-
-  In the playbook ``pb-test.yml``:
-
-  * Connect to created jails
-  * Display basic jail configuration
+* Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^
@@ -152,10 +134,10 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-template`
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
-* :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes.
+* :ref:`ug_inventory_iocage2`
 * An activated ``iocage`` installation.
 * Fetched releases.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -165,11 +147,6 @@ Notes
   expects to find the ``hooks_results`` items in the path
   ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname`` to a
   different path, the easiest remedy is to create a symlink.
-
-.. seealso::
-
-   * `man dhclient-script <https://man.freebsd.org/cgi/man.cgi?dhclient-script>`_
-   * `Using Templates <https://freebsd.github.io/iocage/templates.html>`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -186,37 +163,35 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 5-6,9
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 5-6,9
+
+.. hint::
+
+   If there is a route from your Ansible controller to the jails, try to connect
+   with the connection plugin `ansible.builtin.ssh`_ (default).
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
-files
-^^^^^
-
-.. literalinclude:: files/pkgs.json
-   :language: json
-   :caption:
-
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 24-29
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 24-29
 
 .. hint::
 
@@ -232,25 +207,14 @@ host_vars
 
 .. note::
 
-   The variables ``act_*`` are used to configure the ``ansible-client``
-   template:
-
    * The dhclient hooks ``act_dhclient`` will be created in ``/etc``.
-   * The user ``act_user`` will be created in the template.
-   * The user ``act_user`` will serve as the Ansible ``remote_user``.
-   * The file ``act_pk`` provides the public keys allowed to SSH to ``act_user`` in the jail.
 
-.. warning::
+files
+^^^^^
 
-   * The user ``act_user`` must exist on the ``iocage`` host. Otherwise, the
-     module ``ansible.posix.authorized_key`` will crash. See
-     ``playbooks/pb_iocage_template/pk.yml``.
-
-   * The file ``files/pk_admins.txt`` has been sanitized. Adjust the public keys
-     to your needs::
-
-       shell> cat files/pk_admins.txt
-       ssh-rsa <sanitized> admin@controller
+.. literalinclude:: files/pkgs.json
+   :language: json
+   :caption:
 
 Playbook output - Create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -261,27 +225,17 @@ Playbook output - Create templates
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
-   :force:
 
-Templates on iocage_02
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -lt
+Templates
+^^^^^^^^^
 
 .. literalinclude:: out/out-02.txt
    :language: bash
-
-Templates on iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -lt
+   :caption: [iocage_05]# iocage list -lt
 
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -lt
 
 Playbook output - Clone and start jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -289,42 +243,48 @@ Playbook output - Clone and start jails
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t clone -e clone=true \
+                            -t clone \
+                            -e clone=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
+Playbook output - List jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_02]# iocage list -l
+   (env) > ansible-playbook -i iocage.ini \
+                            -t list \
+                            -e debug=true \
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-05.txt
-   :language: bash
+   :language: yaml+jinja
+   :force:
 
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-06.txt
-   :language: bash
-
-Display inventory
-^^^^^^^^^^^^^^^^^
+Graph
+^^^^^
 
 .. code-block:: console
 
    (env) > ansible-inventory -i hosts --graph
 
+.. literalinclude:: out/out-06.txt
+   :language: console
+
+Jails
+^^^^^
+
 .. literalinclude:: out/out-07.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-08.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -332,14 +292,14 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display list iocage_hooks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display test vars
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-test.yml
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
 
@@ -348,5 +308,6 @@ Playbook output - Display list iocage_hooks
    The command below stops and destroys the cloned jails::
 
      ansible-playbook -i iocage.ini \
-                      -t clone_destroy -e clone_destroy=true \
+                      -t clone_destroy \
+                      -e clone_destroy=true \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml

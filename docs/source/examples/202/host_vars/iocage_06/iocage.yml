@@ -3,22 +3,21 @@ freebsd_iocage_pool_mount: /zroot
 freebsd_iocage_mount: /zroot/iocage
 
 templates:
-  ansible_client:
-    release: 14.3-RELEASE
+  ansible-client:
+    release: 15.1-RELEASE
     properties:
       bpf: 1
       dhcp: 1
       vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
     rcconf: "{{ act_rcconf | dict2items }}"
-    pkglist: /tmp/ansible/ansible_client/pkgs.json
+    pkglist: /tmp/ansible/ansible-client/pkgs.json
 
-# ansible client template defaults
+# ansible client template vars
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
 act_rcconf:
-  iocage_enable: "YES"
   sshd_enable: "YES"
 act_dhclient:
   dhclient-exit-hooks: |
@@ -29,18 +28,19 @@ act_dhclient:
     esac
 
 clones:
-  test_111: {clone_from: ansible_client}
-  test_112: {clone_from: ansible_client}
-  test_113: {clone_from: ansible_client}
-start: "{{ clones.keys() }}"
-swarms: {}
+  test-161: {clone_from: ansible-client}
+  test-162: {clone_from: ansible-client}
+  test-163: {clone_from: ansible-client}
 
 # clones default properties
 properties:
   bpf: 1
   dhcp: 1
   vnet: 1
-  notes: "vmm={{ inventory_hostname }}"
 
-iocage_env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+start: "{{ clones.keys() }}"
+
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

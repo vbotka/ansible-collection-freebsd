@@ -1,67 +1,43 @@
 
-PLAY [Connect to the group test.] **********************************************
+PLAY [Display inventory.] ******************************************************
 
-TASK [command] *****************************************************************
-changed: [test-162]
-changed: [test-161]
-changed: [test-151]
+TASK [debug] *******************************************************************
+ok: [test-153] => 
+    msg: |-
+        inv       name     uuid     ansible_host  jail_host jail_name
+        -------------------------------------------------------------
+        test-153  test-153 test-153 172.16.95.153 iocage_05 21
+        test-151  test-151 test-151 172.16.95.151 iocage_05 19
+        test-152  test-152 test-152 172.16.95.152 iocage_05 20
+        test-161  test-161 test-161 172.16.99.161 iocage_06 24
+        test-162  test-162 test-162 172.16.99.162 iocage_06 23
+        test-163  test-163 test-163 172.16.99.163 iocage_06 25
+
+TASK [shell] *******************************************************************
 changed: [test-152]
+changed: [test-161]
+changed: [test-162]
+changed: [test-151]
 changed: [test-153]
 changed: [test-163]
 
 TASK [debug] *******************************************************************
-ok: [test-151] => 
-    msg: |-
-        test-151 test-151 4c4c4544-0057-3810-8046-b2c04f4a5232
-ok: [test-161] => 
-    msg: |-
-        test-161 test-161 792b42dd-47f2-1e43-bd8a-34e94790815f
 ok: [test-153] => 
     msg: |-
-        test-153 test-153 4c4c4544-0057-3810-8046-b2c04f4a5232
-ok: [test-162] => 
-    msg: |-
-        test-162 test-162 792b42dd-47f2-1e43-bd8a-34e94790815f
-ok: [test-152] => 
-    msg: |-
-        test-152 test-152 4c4c4544-0057-3810-8046-b2c04f4a5232
-ok: [test-163] => 
-    msg: |-
-        test-163 test-163 792b42dd-47f2-1e43-bd8a-34e94790815f
-
-TASK [command] *****************************************************************
-changed: [test-162]
-changed: [test-161]
-changed: [test-151]
-changed: [test-152]
-changed: [test-153]
-changed: [test-163]
-
-TASK [debug] *******************************************************************
-ok: [test-161] => 
-    msg: |-
-        test-161 root
-ok: [test-162] => 
-    msg: |-
-        test-162 root
-ok: [test-153] => 
-    msg: |-
-        test-153 root
-ok: [test-151] => 
-    msg: |-
-        test-151 root
-ok: [test-152] => 
-    msg: |-
-        test-152 root
-ok: [test-163] => 
-    msg: |-
-        test-163 root
+        inv       who  uname
+        -----------------------------------------
+        test-153  root FreeBSD 15.0-RELEASE amd64
+        test-151  root FreeBSD 15.0-RELEASE amd64
+        test-152  root FreeBSD 15.0-RELEASE amd64
+        test-161  root FreeBSD 15.1-RELEASE amd64
+        test-162  root FreeBSD 15.1-RELEASE amd64
+        test-163  root FreeBSD 15.1-RELEASE amd64
 
 PLAY RECAP *********************************************************************
-test-151                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-152                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-153                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-161                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-162                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-163                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-151                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-152                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-153                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-161                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-162                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-163                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

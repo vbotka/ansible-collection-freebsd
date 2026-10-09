@@ -1,9 +1,9 @@
 @all:
   |--@ungrouped:
-  |  |--repos-devel
   |  |--pkg-repo
-  |  |--log-server-01
   |  |--repos
+  |  |--repos-devel
+  |  |--log-server-01
   |--@test_05:
   |  |--test-153
   |  |--test-151

@@ -1,7 +1,6 @@
 - name: Display iocage datasets.
   hosts: iocage
-  environment:
-    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1
+  environment: "{{ iocage_env | d({}) }}"
     
   tasks:
 
@@ -20,11 +19,18 @@
                    | community.general.remove_keys(target=['properties']) }}"
       ansible.builtin.debug:
         msg: |
+          Releases - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           iocage_releases: {{ ansible_facts.iocage_releases }}
+
+          Plugins - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           iocage_plugins:
             {{ ansible_facts.iocage_plugins | to_nice_yaml(indent=2) | indent(2) }}
+
+          Templates - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           iocage_templates:
             {{ dict(tkeys | zip(tvals)) | to_nice_yaml(indent=2) | indent(2) }}
+
+          Jails - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           iocage_jails:
             {{ dict(jkeys | zip(jvals)) | to_nice_yaml(indent=2) | indent(2) }}
 

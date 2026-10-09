@@ -128,7 +128,8 @@
 .. _ansible-runner-role.readthedocs.io: https://ansible-runner-role.readthedocs.io/en/latest/
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
 .. _ansible.builtin.include_vars: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/include_vars_module.html
-.. _ansible.builtin.ssh: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-remote_user
+.. _ansible.builtin.ssh remote_user: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-remote_user
+.. _ansible.builtin.ssh: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/ssh_connection.html
 .. _ansible.builtin.unarchive: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html#notes
 .. _ansible.posix.authorized_key: https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html
 .. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix

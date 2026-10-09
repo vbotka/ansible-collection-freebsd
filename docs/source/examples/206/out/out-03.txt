@@ -13,8 +13,8 @@ ok: [iocage_06]
 TASK [Debug iocage_jails and iocage_jails_tags debug=true] *********************
 ok: [iocage_06] => 
     msg: |-
-        iocage_jails:      ['pkg_repo', 'repos', 'repos_devel', 'test_161']
-        iocage_jails_tags: ['pkg_repo', 'repos', 'repos_devel', 'test_161']
+        iocage_jails:      ['log_server_01', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
+        iocage_jails_tags: ['log_server_01', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
 
 TASK [Debug cmd_create debug=true] *********************************************
 ok: [iocage_06] => (item=sw_01) => 
@@ -48,8 +48,8 @@ ok: [iocage_06] =>
             - dhcp=1
             - vnet=1
             - notes=vmm=iocage_06 class=test swarm=sw_01
-            delta: '0:00:00.980280'
-            end: '2026-10-02 13:06:58.420520'
+            delta: '0:00:00.990988'
+            end: '2026-10-09 14:27:51.136021'
             failed: false
             item:
                 key: sw_01
@@ -65,15 +65,15 @@ ok: [iocage_06] =>
                     vmm: iocage_06
             msg: ''
             rc: 0
-            start: '2026-10-02 13:06:57.440240'
+            start: '2026-10-09 14:27:50.145033'
             stderr: ''
             stderr_lines: []
             stdout: |-
-                8980bbac successfully created!
-                5ddb6dbb successfully created!
+                726fc47c successfully created!
+                aadf4ea7 successfully created!
             stdout_lines:
-            - 8980bbac successfully created!
-            - 5ddb6dbb successfully created!
+            - 726fc47c successfully created!
+            - aadf4ea7 successfully created!
 
 TASK [Query inventory plugin.] *************************************************
 ok: [iocage_06 -> localhost]
@@ -87,14 +87,14 @@ ok: [iocage_06]
 TASK [Debug iocage_jails and iocage_jails_tags debug=true] *********************
 ok: [iocage_06] => 
     msg: |-
-        iocage_jails:         ['5ddb6dbb', '8980bbac', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
-        iocage_jails_tags:    ['5ddb6dbb', '8980bbac', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
-        iocage_jails_started: ['pkg_repo', 'repos', 'repos_devel', 'test_161']
+        iocage_jails:         ['726fc47c', 'aadf4ea7', 'log_server_01', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
+        iocage_jails_tags:    ['726fc47c', 'aadf4ea7', 'log_server_01', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
+        iocage_jails_started: ['log_server_01', 'pkg_repo', 'repos', 'repos_devel', 'test_161']
 
 TASK [Debug cmd_start debug=true] **********************************************
 ok: [iocage_06] => (item=sw_01) => 
     msg: |-
-        iocage start 8980bbac 5ddb6dbb
+        iocage start 726fc47c aadf4ea7
 
 TASK [Start swarms.] ***********************************************************
 ok: [iocage_06] => (item=sw_01)
@@ -112,10 +112,10 @@ ok: [iocage_06] =>
             cmd:
             - iocage
             - start
-            - 8980bbac
-            - 5ddb6dbb
-            delta: '0:00:06.728937'
-            end: '2026-10-02 13:07:10.148308'
+            - 726fc47c
+            - aadf4ea7
+            delta: '0:00:07.887103'
+            end: '2026-10-09 14:28:03.164626'
             failed: false
             item:
                 key: sw_01
@@ -131,7 +131,7 @@ ok: [iocage_06] =>
                     vmm: iocage_06
             msg: ''
             rc: 0
-            start: '2026-10-02 13:07:03.419371'
+            start: '2026-10-09 14:27:55.277523'
             stderr: |-
                 No default gateway found for ipv6.
                 No default gateway found for ipv6.
@@ -139,39 +139,39 @@ ok: [iocage_06] =>
             - No default gateway found for ipv6.
             - No default gateway found for ipv6.
             stdout: |-
-                * Starting 8980bbac
-                  + Started OK
-                  + Using devfs_ruleset: 1004 (iocage generated default)
-                  + Configuring VNET OK
-                  + Using IP options: vnet
-                  + Starting services OK
-                  + Executing poststart OK
-                  + DHCP Address: 172.16.99.168/24
-                * Starting 5ddb6dbb
+                * Starting 726fc47c
                   + Started OK
                   + Using devfs_ruleset: 1005 (iocage generated default)
                   + Configuring VNET OK
                   + Using IP options: vnet
                   + Starting services OK
                   + Executing poststart OK
-                  + DHCP Address: 172.16.99.154/24
+                  + DHCP Address: 172.16.99.153/24
+                * Starting aadf4ea7
+                  + Started OK
+                  + Using devfs_ruleset: 1006 (iocage generated default)
+                  + Configuring VNET OK
+                  + Using IP options: vnet
+                  + Starting services OK
+                  + Executing poststart OK
+                  + DHCP Address: 172.16.99.138/24
             stdout_lines:
-            - '* Starting 8980bbac'
-            - '  + Started OK'
-            - '  + Using devfs_ruleset: 1004 (iocage generated default)'
-            - '  + Configuring VNET OK'
-            - '  + Using IP options: vnet'
-            - '  + Starting services OK'
-            - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.168/24'
-            - '* Starting 5ddb6dbb'
+            - '* Starting 726fc47c'
             - '  + Started OK'
             - '  + Using devfs_ruleset: 1005 (iocage generated default)'
             - '  + Configuring VNET OK'
             - '  + Using IP options: vnet'
             - '  + Starting services OK'
             - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.154/24'
+            - '  + DHCP Address: 172.16.99.153/24'
+            - '* Starting aadf4ea7'
+            - '  + Started OK'
+            - '  + Using devfs_ruleset: 1006 (iocage generated default)'
+            - '  + Configuring VNET OK'
+            - '  + Using IP options: vnet'
+            - '  + Starting services OK'
+            - '  + Executing poststart OK'
+            - '  + DHCP Address: 172.16.99.138/24'
 
 PLAY RECAP *********************************************************************
 iocage_06                  : ok=14   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   

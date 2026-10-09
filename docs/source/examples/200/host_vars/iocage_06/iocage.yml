@@ -13,7 +13,7 @@ templates:
     rcconf: "{{ act_rcconf | dict2items }}"
     pkglist: /tmp/ansible/ansible-client/pkgs.json
 
-# ansible client template defaults
+# ansible client template vars
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true
@@ -42,3 +42,8 @@ properties:
   notes: "vmm={{ inventory_hostname }}"
 
 start: "{{ clones.keys() }}"
+
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

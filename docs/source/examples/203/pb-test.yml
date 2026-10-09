@@ -1,18 +1,13 @@
-- name: Connect to the group test.
+- name: Display inventory.
   hosts: swarm_sw_01
-  gather_facts: false
-  remote_user: admin
-
-  vars:
-
-    ansible_python_interpreter: auto_silent
     
   tasks:
-
-    - ansible.builtin.command: hostname
-      register: out_host
     
-    - ansible.builtin.debug:
-        msg: >
-          ansible_host={{ ansible_host }}
-          iocage_tags={{ iocage_tags | to_yaml }}
+    - debug:
+        msg: |
+          inv      name     ansible_host  iocage_tags
+          ---------------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }} {{ hostvars[h].iocage_properties.host_hostname }} {{ hostvars[h].ansible_host }} {{ hostvars[h].iocage_tags | to_yaml }}
+          {%- endfor %}
+      run_once: true

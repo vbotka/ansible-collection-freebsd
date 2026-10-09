@@ -19,27 +19,24 @@ act_pk: pk_admins.txt
 act_sudo: true
 act_rcconf:
   sshd_enable: "YES"
-act_dhclient: {}
+act_dhclient:
+  dhclient-exit-hooks: |
+    case "$reason" in
+        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+        ;;
+    esac
 
 clones:
-  test-151:
-    clone_from: ansible-client
-    properties:
-      ip4_addr: 'vnet0|172.16.95.151/24'
-  test-152:
-    clone_from: ansible-client
-    properties:
-      ip4_addr: 'vnet0|172.16.95.152/24'
-  test-153:
-    clone_from: ansible-client
-    properties:
-      ip4_addr: 'vnet0|172.16.95.153/24'
+  test-151: {clone_from: ansible-client}
+  test-152: {clone_from: ansible-client}
+  test-153: {clone_from: ansible-client}
 
 # clones default properties
 properties:
   bpf: 1
-  defaultrouter: 172.16.95.1
-  notes: "vmm={{ inventory_hostname }}"
+  dhcp: 1
+  vnet: 1
 
 start: "{{ clones.keys() }}"
 

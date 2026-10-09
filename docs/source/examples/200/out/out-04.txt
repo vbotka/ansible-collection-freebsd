@@ -5,8 +5,8 @@ TASK [Create clones from template] *********************************************
 changed: [iocage_05] => (item=test-151 ansible-client)
 changed: [iocage_06] => (item=test-161 ansible-client)
 changed: [iocage_05] => (item=test-152 ansible-client)
-changed: [iocage_05] => (item=test-153 ansible-client)
 changed: [iocage_06] => (item=test-162 ansible-client)
+changed: [iocage_05] => (item=test-153 ansible-client)
 changed: [iocage_06] => (item=test-163 ansible-client)
 
 TASK [Set iocage_jails] ********************************************************

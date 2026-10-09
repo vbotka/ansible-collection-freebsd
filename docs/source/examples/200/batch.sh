@@ -7,6 +7,12 @@
 # VBOTKA_FREEBSD_BATCH=true \
 # ansible-playbook -i iocage.ini --flush-cache \
 #                  vbotka.freebsd.pb_iocage_destroy_all_jails.yml
+ssh admin@iocage_05 sudo iocage destroy -f test-151
+ssh admin@iocage_05 sudo iocage destroy -f test-152
+ssh admin@iocage_05 sudo iocage destroy -f test-153
+ssh admin@iocage_06 sudo iocage destroy -f test-161
+ssh admin@iocage_06 sudo iocage destroy -f test-162
+ssh admin@iocage_06 sudo iocage destroy -f test-163
 
 # Destroy templates
 # ssh admin@$iocage_05 sudo iocage destroy -f ansible-client
@@ -35,10 +41,12 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-08.txt
 # Test
 ansible-playbook -i hosts  pb-test.yml | tee out/out-09.txt
 
-# Destroy jails
-ssh admin@iocage_05 sudo iocage destroy -f test-151
-ssh admin@iocage_05 sudo iocage destroy -f test-152
-ssh admin@iocage_05 sudo iocage destroy -f test-153
-ssh admin@iocage_06 sudo iocage destroy -f test-161
-ssh admin@iocage_06 sudo iocage destroy -f test-162
-ssh admin@iocage_06 sudo iocage destroy -f test-163
+# Do not destroy jails in batch.
+if [ "${VBOTKA_FREEBSD_BATCH:-}" != "true" ]; then
+    ssh admin@iocage_05 sudo iocage destroy -f test-151
+    ssh admin@iocage_05 sudo iocage destroy -f test-152
+    ssh admin@iocage_05 sudo iocage destroy -f test-153
+    ssh admin@iocage_06 sudo iocage destroy -f test-161
+    ssh admin@iocage_06 sudo iocage destroy -f test-162
+    ssh admin@iocage_06 sudo iocage destroy -f test-163
+fi

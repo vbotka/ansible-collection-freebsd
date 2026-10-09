@@ -167,7 +167,7 @@ Path to a file containing public SSH keys authorized to connect as ``act_user``:
 
    act_pk: pk_admins.txt
 
-.. warning::
+.. important::
 
    The `ansible.posix.authorized_key`_ module used in this task is not
    jail-aware. The user specified in ``act_user`` must also exist on the iocage

@@ -8,6 +8,9 @@ ok: [iocage_06]
 TASK [Display iocage_jails keys debug=true] ************************************
 ok: [iocage_05] => 
     ansible_facts.iocage_jails.keys():
+    - pkg-repo
+    - repos
+    - repos-devel
     - test-151
     - test-152
     - test-153

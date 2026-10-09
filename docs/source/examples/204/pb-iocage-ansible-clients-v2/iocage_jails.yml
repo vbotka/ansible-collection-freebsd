@@ -1,4 +1,3 @@
----
 - name: Get iocage list of jails
   register: out
   changed_when: false

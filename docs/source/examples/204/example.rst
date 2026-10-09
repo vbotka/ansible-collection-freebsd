@@ -1,7 +1,7 @@
 .. _example_204:
 
-204 Create DHCP jails with auto UUID and iocage_tags v2
--------------------------------------------------------
+204 Clone DHCP jails with auto UUID and iocage_tags v2
+------------------------------------------------------
 
 This example extends :ref:`example_203`.
 
@@ -57,7 +57,7 @@ Given the input ``vars/iocage_datasets.yml``:
 .. literalinclude:: vars/iocage_datasets.yml
    :language: yaml+jinja
 
-The playbook ``pb-test-filter.yml`` below:
+The playbook ``pb-test-filter.yml``:
 
 .. literalinclude:: pb-test-filter.yml
    :language: yaml+jinja
@@ -80,8 +80,8 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-iocage-ansible-clients-v2
@@ -97,63 +97,44 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
-
-  * iocage_02
-  * iocage_04
+* On a managed node:
 
   In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
 
-  * Module ``ansible.builtin.command`` to:
+  * The module ``ansible.builtin.command`` to:
 
-    * Create the variable ``iocage_jails``
-    * Create jails
-    * Start jails
-    * Optionally, stop and destroy the jails
+    * Create the variable ``iocage_jails``.
+    * Create jails.
+    * Start jails.
+    * Optionally, stop and destroy the jails.
 
 * On all created jails:
 
   In the playbook ``pb-test.yml``:
 
-  * Connect to the created jails
-  * Display basic jail configuration
+  * Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_filter_iocage`
-* :ref:`ug_inventory_iocage`
+* :ref:`ug_inventory_iocage2`
 * Templates created in :ref:`example_202`
 * Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-* Templates created in :ref:`example_202` are used in this example.
+* This example doesn't need the filters:
+
+  * :ref:`project <ug_filter_project>`
+  * :ref:`combine_properties <ug_filter_combine_properties>`
+
+  The variables are created from Jinja expressions.
 
 .. seealso::
 
    * `binary iocage`_
-
-Templates on iocage_02
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -lt
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-Templates on iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -170,19 +151,20 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,9
+   :emphasize-lines: 4
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,9
+   :emphasize-lines: 4
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 4
 
 .. note::
 
@@ -202,13 +184,14 @@ Playbook pb-iocage-ansible-clients-v2.yml
 .. literalinclude:: pb-iocage-ansible-clients-v2.yml
    :language: yaml+jinja
 
-Playbook output - Create and start jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t swarm -e swarm=true -e debug=true \
+                            -t swarm -e swarm=true \
+                            -e debug=true \
                             pb-iocage-ansible-clients-v2.yml
 
 .. literalinclude:: out/out-03.txt
@@ -222,28 +205,19 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-06.txt
-   :language: bash
-
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
 .. literalinclude:: out/out-04.txt
-   :language: bash
+   :language: console
 
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
+Jails
+^^^^^
 
 .. literalinclude:: out/out-05.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -251,8 +225,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display iocage_tags
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display test vars
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

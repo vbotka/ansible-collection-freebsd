@@ -113,7 +113,7 @@ hosts
 .. hint::
 
    For dynamic assignment of the connection variables ``ansible_jail_*`` see
-   :ref:`example_021`.
+   :ref:`example_200`.
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^

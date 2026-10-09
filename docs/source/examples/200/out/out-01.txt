@@ -8,55 +8,10 @@ ok: [iocage_06]
 TASK [Setup: All templates already created.] ***********************************
 ok: [iocage_06] => 
     msg: All templates already created. End host.
-
-TASK [Pkglist: Create directories for pkglist files.] **************************
-changed: [iocage_05] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
-
-TASK [Pkglist: Copy pkglist files.] ********************************************
-changed: [iocage_05] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
-
-TASK [Create: Get iocage list of templates.] ***********************************
-ok: [iocage_05]
-
-TASK [Create: Create templates.] ***********************************************
-changed: [iocage_05] => (item=ansible-client 15.0-RELEASE)
-
-TASK [Start: Get iocage list of jails.] ****************************************
-ok: [iocage_05]
-
-TASK [Start: Start created templates.] *****************************************
-ok: [iocage_05]
-
-TASK [User: Create user.] ******************************************************
-changed: [iocage_05] => (item=ansible-client admin)
-
-TASK [Pk: The keys are valid.] *************************************************
 ok: [iocage_05] => 
-    changed: false
-    msg: All assertions passed
-
-TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_05] => (item=ansible-client admin)
-
-TASK [Pk: Chown .ssh] **********************************************************
-ok: [iocage_05] => (item=ansible-client admin)
-
-TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_05] => (item=ansible-client admin)
-
-TASK [Rcconf: Configure /etc/rc.conf] ******************************************
-changed: [iocage_05] => (item=ansible-client sshd_enable YES)
-
-TASK [Stop: Get iocage list of jails.] *****************************************
-ok: [iocage_05]
-
-TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_05]
-
-TASK [Template: Set template.] *************************************************
-ok: [iocage_05] => (item=ansible-client)
+    msg: All templates already created. End host.
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=16   changed=7    unreachable=0    failed=0    skipped=22   rescued=0    ignored=0   
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

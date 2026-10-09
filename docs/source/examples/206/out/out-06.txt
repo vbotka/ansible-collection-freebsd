@@ -1,46 +1,31 @@
 
-PLAY [Display jails in the swarm.] *********************************************
+PLAY [Display inventory.] ******************************************************
 
-TASK [ansible.builtin.command] *************************************************
+TASK [debug] *******************************************************************
+ok: [726fc47c] => 
+    msg: |-
+        inv       name     uuid     jail_host jail_name
+        -----------------------------------------------
+        726fc47c  726fc47c 726fc47c iocage_06 94
+        aadf4ea7  aadf4ea7 aadf4ea7 iocage_06 95
+        test_161  test-161 test-161 iocage_06 93
+
+TASK [shell] *******************************************************************
+changed: [726fc47c]
+changed: [aadf4ea7]
 changed: [test_161]
-changed: [8980bbac]
-changed: [5ddb6dbb]
 
-TASK [ansible.builtin.debug] ***************************************************
-ok: [8980bbac] => 
+TASK [debug] *******************************************************************
+ok: [726fc47c] => 
     msg: |-
-        out.stdout: 8980bbac
-        ansible_host: 8980bbac
-        iocage_hooks: ['172.16.99.168']
-        iocage_ip4: 172.16.99.168
-        iocage_tags:
-          class: test
-          swarm: sw_01
-          vmm: iocage_06
-ok: [test_161] => 
-    msg: |-
-        out.stdout: test-161
-        ansible_host: test_161
-        iocage_hooks: ['-']
-        iocage_ip4: 172.16.99.201
-        iocage_tags:
-          alias: test_161
-          class: test
-          swarm: sw_01
-          vmm: iocage_06
-ok: [5ddb6dbb] => 
-    msg: |-
-        out.stdout: 5ddb6dbb
-        ansible_host: 5ddb6dbb
-        iocage_hooks: ['172.16.99.154']
-        iocage_ip4: 172.16.99.154
-        iocage_tags:
-          class: test
-          swarm: sw_01
-          vmm: iocage_06
+        inv       who  uname
+        -----------------------------------------
+        726fc47c  root FreeBSD 15.1-RELEASE amd64
+        aadf4ea7  root FreeBSD 15.1-RELEASE amd64
+        test_161  root FreeBSD 15.1-RELEASE amd64
 
 PLAY RECAP *********************************************************************
-5ddb6dbb                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-8980bbac                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+726fc47c                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+aadf4ea7                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_161                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

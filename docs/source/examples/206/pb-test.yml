@@ -1,16 +1,38 @@
-- name: Display jails in the swarm.
+- name: Display inventory.
   hosts: swarm_sw_01
-    
-  tasks:
 
-    - ansible.builtin.command: hostname
+  vars:
+
+    _vars:
+      - ansible_jail_host
+      - ansible_jail_name
+
+    _properties:
+      - host_hostname
+      - host_hostuuid
+
+    _cmd: 'whoami; uname -rms'
+    _cmd_header: 'who  uname'
+
+  tasks:
+    
+    - debug:
+        msg: |
+          inv       name     uuid     jail_host jail_name
+          -----------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ _vars | map('extract', hostvars[h]) | join(' ') }}
+          {% endfor %}
+      run_once: true
+
+    - shell: "{{ _cmd }}"
       register: out
 
-    - ansible.builtin.debug:
+    - debug:
         msg: |
-          out.stdout: {{ out.stdout }}
-          ansible_host: {{ ansible_host }}
-          iocage_hooks: {{ iocage_hooks }}
-          iocage_ip4: {{ iocage_ip4 }}
-          iocage_tags:
-            {{ iocage_tags | to_nice_yaml(2) | indent(2) }}
+          inv       {{ _cmd_header }}
+          -----------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ hostvars[h].out.stdout_lines | join(' ') }}
+          {% endfor %}
+      run_once: true

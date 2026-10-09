@@ -22,7 +22,7 @@ Use case
 ^^^^^^^^
 
 Use :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` instead
-of the default ``ansible.builtin.ssh``.
+of the default `ansible.builtin.ssh`_.
 
 Tree
 ^^^^

@@ -17,6 +17,7 @@ ok: [localhost] =>
                     msg: ''
                 ip6: '-'
                 jid: None
+                name: ansible-client
                 release: 14.1-RELEASE-p6
                 state: down
                 template: '-'
@@ -33,6 +34,7 @@ ok: [localhost] =>
                     msg: ''
                 ip6: '-'
                 jid: None
+                name: test_111
                 release: 14.1-RELEASE-p6
                 state: down
                 template: ansible-client
@@ -55,6 +57,7 @@ ok: [localhost] =>
                 msg: ''
             ip6: '-'
             jid: None
+            name: ansible-client
             release: 14.1-RELEASE-p6
             state: down
             template: '-'
@@ -71,6 +74,7 @@ ok: [localhost] =>
                 msg: ''
             ip6: '-'
             jid: None
+            name: test_111
             release: 14.1-RELEASE-p6
             state: down
             template: ansible-client

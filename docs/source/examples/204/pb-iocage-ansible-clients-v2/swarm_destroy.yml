@@ -1,4 +1,3 @@
----
 - name: Stop and destroy swarms
   vars:
     _query: '[?value.swarm==`{{ item.key }}`].key'

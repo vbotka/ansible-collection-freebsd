@@ -36,7 +36,8 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-client``. Clone jails from the template.
+Create the `iocage`_ template ``ansible-client``. Clone jails from the
+template. Create variables for connection plugins.
 
 Tree
 ^^^^
@@ -49,9 +50,6 @@ Tree
   ├── files
   │   ├── pk_admins.txt
   │   └── pkgs.json
-  ├── group_vars
-  │   └── all
-  │       └── iocage.yml
   ├── hosts
   │   ├── 05_iocage.yml
   │   ├── 06_iocage.yml
@@ -84,12 +82,18 @@ Synopsis
   * Start jails.
   * Display the lists of jails.
 
+  In the :ref:`inventory plugin vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, create variables
+  for:
+
+  * Connection plugin `ansible.builtin.ssh`_
+  * :ref:`Connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`
+
 * On all created jails:
 
   In the playbook ``pb-test.yml``:
 
-  * Connect to cloned jails.
-  * Display basic configuration of the jails.
+  * Display selected variables.
+  * Test the connection to cloned jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -98,6 +102,7 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 * An activated ``iocage`` installation.
 * Fetched releases.
 * Root privileges on the managed nodes.
@@ -105,9 +110,7 @@ Requirements
 Notes
 ^^^^^
 
-* The playbook :ref:`ug_pb-iocage-template` expects to find the file
-  ``pkgs.json`` in the directory ``files``. See the tasks
-  ``playbooks/pb_iocage_template_pkglist.yml`` and :ref:`ug_pb-iocage-template`.
+* TBD
 
 .. seealso::
 
@@ -133,19 +136,25 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 10,12-16
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 10,12-16
+
+.. note::
+
+   The :ref:`connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`
+   is used to connect to the jails. The variable ``ansible_host`` is used by
+   the connection plugin `ansible.builtin.ssh`_ (default).
+
+.. hint::
+
+   If there is a route from your Ansible controller to the jails, comment out
+   ``ansible_connection`` and try to connect.
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
-
-group_vars
-^^^^^^^^^^
-
-.. literalinclude:: group_vars/all/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -160,13 +169,6 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-files
-^^^^^
-
-.. literalinclude:: files/pkgs.json
-   :language: json
-   :caption:
-
 .. note::
 
    The variables ``act_*`` are used to configure the template:
@@ -174,6 +176,10 @@ files
    * The user ``act_user`` will be created in the template.
    * The user ``act_user`` will serve as the Ansible ``remote_user``.
    * The file ``act_pk`` provides the public keys allowed to SSH to ``act_user`` in a jail.
+   * The service sshd is enabled in ``act_rcconf``.
+
+   The connection plugin ``jailexec`` doesn't need SSH and the plublic key in
+   the jails.
 
 .. important::
 
@@ -186,6 +192,19 @@ files
 
        shell> cat files/pk_admins.txt
        ssh-rsa <sanitized> admin@controller
+
+files
+^^^^^
+
+.. literalinclude:: files/pkgs.json
+   :language: json
+   :caption:
+
+.. note::
+
+   The playbook :ref:`ug_pb-iocage-template` expects to find the file
+   ``pkgs.json`` in the directory ``files``. See the tasks
+   ``playbooks/pb_iocage_template_pkglist.yml`` and :ref:`ug_pb-iocage-template`.
 
 Playbook output - Create templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

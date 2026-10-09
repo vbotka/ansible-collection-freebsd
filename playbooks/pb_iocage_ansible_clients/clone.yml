@@ -29,7 +29,7 @@
   ansible.builtin.debug:
     msg: |
       _properties: "{{ properties | d({})
-                       | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+                       | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
   loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
   loop_control:
     label: "{{ item.key }} {{ item.value.clone_from }}"
@@ -37,7 +37,7 @@
 - name: Create clones from template
   vars:
     _properties: "{{ properties | d({})
-                     | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+                     | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
   register: out_clone
   vbotka.freebsd.iocage:
     state: cloned
