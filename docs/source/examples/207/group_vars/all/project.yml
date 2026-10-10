@@ -1,23 +1,29 @@
-# The project keys are jails aliases.
+project_template: ansible-client
+
 project:
   logserv_1:
-    class: [logserv]
-    vmm: iocage_01
+    vmm: iocage_05
+    class: [log-server]
   http_1:
-    class: [http, logclient]
-    vmm: iocage_02
+    vmm: iocage_05
+    class: [http, log-client]
   db_1:
-    class: [db, logclient]
-    vmm: iocage_02
+    vmm: iocage_05
+    class: [db, log-client]
+  logserv_2:
+    vmm: iocage_06
+    class: [log-server]
   http_2:
-    class: [http, logclient]
-    vmm: iocage_04
+    vmm: iocage_06
+    class: [http, log-client]
   db_2:
-    class: [db, logclient]
-    vmm: iocage_04
+    vmm: iocage_06
+    class: [db, log-client]
 
 vmm: "{{ (project | vbotka.freebsd.project).vmm }}"
 class: "{{ (project | vbotka.freebsd.project).class }}"
 
-# Jail properties.
-properties: "bpf=1 dhcp=1 vnet=1"
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1

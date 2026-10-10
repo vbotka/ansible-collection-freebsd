@@ -53,9 +53,9 @@ Examples
    :maxdepth: 1
    :caption: Ansible client
 
-   200 Clone jails from templates <examples/200/example.rst>
+   200 Created jails from templates <examples/200/example.rst>
    201 Display iocage datasets <examples/201/example.rst>
-   202 DHCP, Clone jails from templates <examples/202/example.rst>
+   202 DHCP, Create jails from templates <examples/202/example.rst>
    203 DHCP, auto UUID, iocage_tags <examples/203/example.rst>
    204 DHCP, auto UUID, iocage_tags v2 <examples/204/example.rst>
    206 DHCP and fixed IP clients <examples/206/example.rst>

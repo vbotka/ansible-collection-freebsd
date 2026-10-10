@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Create jails from template
+- name: Create jails from template.
   vars:
     _notes: |-
       "{{ [properties.notes | d(''), item.value.properties.notes | d('')]
@@ -51,7 +51,7 @@
       loop_control:
         label: "{{ item.key }} {{ item.value.template }}"
 
-    - name: Create jails
+    - name: Create jails.
       when: not dry_run | bool
       changed_when: false
       register: out_create
@@ -88,7 +88,7 @@
       loop_control:
         label: "{{ item.0.key }} {{ item.1.spec }} {{ item.1.file }}"
 
-    - name: Add fstab
+    - name: Add fstab.
       when: not dry_run | bool
       changed_when: false
       register: out_fstab
@@ -108,7 +108,7 @@
       ansible.builtin.debug:
         msg: "{{ cmd_start }}"
 
-    - name: Start created hosts
+    - name: Start created hosts.
       when: not dry_run | bool
       changed_when: false
       register: out_start

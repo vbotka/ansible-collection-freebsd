@@ -4,33 +4,8 @@
 
 - name: Create swarms.
   vars:
-
-#   _notes_source:
-#     - "{{ item.value.notes | d('') }}"
-#     - "{{ item.value.properties.notes | d('') }}"
-#     - "{{ properties.notes | d('') }}"
-#     - "vmm={{ inventory_hostname }}"
-#     - "class={{ item.value.class | d([]) | join(',') }}"
-#     - "swarm={{ item.key }}"
-#   _notes: "{{ _notes_source | select | join(' ') }}"
-
-#   _properties_source:
-#     - "{{ properties | d({}) }}"
-#     - "{{ item.value.properties | d({}) }}"
-#   _properties_combined: >-
-#     {{ _properties_source
-#        | community.general.remove_keys(target=['notes'])
-#        | select
-#        | combine(recursive=true) }}
-#   _properties: >-
-#     {% for k, v in _properties_combined.items() %}
-#     {{ k }}={{ v }}
-#     {% endfor %}
-#     notes="{{ _notes }}"
-
     _properties: "{{ properties | d({})
                      | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
-
     _query: >-
       [?value.swarm==`{{ item.key }}`].key
     _count: "{{ item.value.count - iocage_jails_tags | dict2items | community.general.json_query(_query) | length }}"

@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Stop and destroy swarms
+- name: Stop and destroy swarms.
   vars:
     _query: '[?value.swarm==`{{ item.key }}`].key'
     _swarm_exist: "{{ iocage_jails_tags | dict2items | community.general.json_query(_query) }}"
@@ -33,7 +33,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Stop swarms
+    - name: Stop swarms.
       when:
         - not dry_run | d(true) | bool
         - _jails_started | length > 0
@@ -58,7 +58,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Destroy swarms
+    - name: Destroy swarms.
       when:
         - not dry_run | d(true) | bool
         - _swarm_exist | length > 0

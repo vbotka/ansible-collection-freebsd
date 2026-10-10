@@ -1,7 +1,7 @@
 .. _example_204:
 
-204 Clone DHCP jails with auto UUID and iocage_tags v2
-------------------------------------------------------
+204 Create DHCP jails with auto UUID and iocage_tags v2
+-------------------------------------------------------
 
 This example extends :ref:`example_203`.
 

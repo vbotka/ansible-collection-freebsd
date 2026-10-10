@@ -13,6 +13,14 @@ Playbooks
    playbooks/pb-iocage-template.rst
    playbooks/pb-iocage-update-repos.rst
 
+Playbooks comparison
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   playbooks/pb-comparison-clients-vs-project.rst
+
 Other iocage playbooks
 ----------------------
 

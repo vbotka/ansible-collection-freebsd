@@ -6,32 +6,8 @@
   changed_when: false
   register: out
   vars:
-
-#   _notes_source:
-#     - "{{ vmm[inventory_hostname][item]['notes'] | d('') }}"
-#     - "{{ vmm[inventory_hostname][item]['properties']['notes'] | d('') }}"
-#     - "{{ properties.notes | d('') }}"
-#     - "vmm={{ inventory_hostname }}"
-#     - "class={{ vmm[inventory_hostname][item]['class'] | d([]) | join(',') }}"
-#   _notes: "{{ _notes_source | select | join(' ') }}"
-
-#   _properties_source:
-#     - "{{ properties | d({}) }}"
-#     - "{{ vmm[inventory_hostname][item]['properties'] | d({}) }}"
-#   _properties_combined: |
-#     {{ _properties_source
-#        | community.general.remove_keys(target=['notes'])
-#        | select
-#        | combine(recursive=true) }}
-#   _properties: >-
-#     {% for k, v in _properties_combined.items() %}
-#     {{ k }}={{ v }}
-#     {% endfor %}
-#     notes="{{ _notes }}"
-
     _properties: "{{ properties | d({})
                      | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
-
   ansible.builtin.command: >
     iocage set
     {{ _properties }}

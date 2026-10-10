@@ -1,21 +1,21 @@
 @all:
   |--@ungrouped:
+  |--@swarm_sw_01:
+  |  |--1dada63d
+  |  |--60fb5dd9
+  |  |--d2f59b39
+  |  |--e0985c95
+  |  |--83a645c0
+  |  |--6c1d5196
+  |--@vmm_iocage_05:
+  |  |--1dada63d
+  |  |--60fb5dd9
+  |  |--d2f59b39
   |--@vmm_iocage_06:
   |  |--pkg-repo
   |  |--repos
   |  |--repos-devel
-  |  |--e4436900
-  |  |--f13e7583
-  |  |--1a69b5bb
+  |  |--e0985c95
   |  |--log-server-01
-  |--@swarm_sw_01:
-  |  |--b7628f37
-  |  |--4530eedb
-  |  |--b2f0b44b
-  |  |--e4436900
-  |  |--f13e7583
-  |  |--1a69b5bb
-  |--@vmm_iocage_05:
-  |  |--b7628f37
-  |  |--4530eedb
-  |  |--b2f0b44b
+  |  |--83a645c0
+  |  |--6c1d5196

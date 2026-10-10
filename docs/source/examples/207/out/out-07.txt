@@ -1,38 +1,15 @@
-
-PLAY [Display all groups.] *****************************************************
-
-TASK [debug] *******************************************************************
-ok: [test_1] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_1
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [test_2] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_2
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [test_4] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_4
-        iocage_classes: []
-
-        iocage_tags: {}
-
-TASK [debug] *******************************************************************
-ok: [test_1] => 
-    msg: |-
-        all: ['test_1', 'test_2', 'test_4']
-        ungrouped: []
-        state_down: ['test_1', 'test_2', 'test_4']
-
-PLAY RECAP *********************************************************************
-test_1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_4                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| JID |    NAME     | BOOT | STATE | TYPE |   RELEASE    |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++=====+=============+======+=======+======+==============+=======================+=====+==================+==========+
+| 20  | 098b24e6    | off  | up    | jail | 15.0-RELEASE | epair0b|172.16.95.156 | -   | ansible-client   | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 19  | a34bea54    | off  | up    | jail | 15.0-RELEASE | epair0b|172.16.95.104 | -   | ansible-client   | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 21  | b8d3154c    | off  | up    | jail | 15.0-RELEASE | epair0b|172.16.95.157 | -   | ansible-client   | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 1   | pkg-repo    | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.23/24 | -   | ansible-pkg-repo | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 2   | repos       | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.21/24 | -   | ansible-repos    | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+
+| 3   | repos-devel | on   | up    | jail | 15.0-RELEASE | vnet0|172.16.95.22/24 | -   | ansible-repos    | no       |
++-----+-------------+------+-------+------+--------------+-----------------------+-----+------------------+----------+

@@ -1,7 +1,7 @@
 .. _example_203:
 
-203 Clone DHCP jails with auto UUID and iocage_tags
----------------------------------------------------
+203 Create DHCP jails with auto UUID and iocage_tags
+----------------------------------------------------
 
 This example extends :ref:`example_202`.
 
@@ -41,7 +41,7 @@ Use case
 
 **Automatically generated UUID**
 
-Automatically generate ``UUID`` names for jails. On each iocage host, clone
+Automatically generate ``UUID`` names for jails. On each iocage host, create
 three jails from the template ``ansible-client``:
 
 .. code-block:: yaml

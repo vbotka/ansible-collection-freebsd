@@ -52,12 +52,12 @@
 
   tasks:
 
-    - name: Read data from CSV file
+    - name: Read data from CSV file.
       community.general.read_csv:
         path: "{{ my_csv_file }}"
       register: my_db
 
-    - name: Create group of destinations
+    - name: Create group of destinations.
       ansible.builtin.add_host:
         hostname: "{{ item.dest }}"
         groups: my_dest
@@ -81,11 +81,11 @@
 
   tasks:
 
-    - name: Display debug and end host
+    - name: Display debug and end host.
       when: my_debug | bool
       block:
 
-        - name: Display debug
+        - name: Debug.
           vars:
             _query: "[?dest == '{{ inventory_hostname }}']"
           ansible.builtin.debug:
@@ -94,13 +94,13 @@
               from {{ item.src }} to {{ inventory_hostname }}
           loop: "{{ my_list | json_query(_query) }}"
 
-        - name: End host
+        - name: End host.
           ansible.builtin.meta: end_host
 
-    - name: Synchronize sources to targets
+    - name: Synchronize sources to targets.
       block:
 
-        - name: Rsync
+        - name: Rsync.
           vars:
             _query: "[?dest == '{{ inventory_hostname }}']"
           register: my_result

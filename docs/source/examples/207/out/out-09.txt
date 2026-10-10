@@ -1,0 +1,22 @@
+
+PLAY [Display inventory.] ******************************************************
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        inv              name             uuid             ansible_host    jail_host    jail_name
+        -----------------------------------------------------------------------------------------
+        repos            repos            repos            172.16.99.21    iocage_06    3
+        pkg_repo         pkg-repo         pkg-repo         172.16.99.23    iocage_06    2
+        http_1           b8d3154c         b8d3154c         172.16.95.157   iocage_05    21
+        repos_devel      repos-devel      repos-devel      172.16.99.22    iocage_06    4
+        db_1             a34bea54         a34bea54         172.16.95.104   iocage_05    19
+        logserv_1        098b24e6         098b24e6         172.16.95.156   iocage_05    20
+        db_2             dc3a9322         dc3a9322         172.16.99.149   iocage_06    22
+        log_server_01    log-server-01    log-server-01    172.16.99.10    iocage_06    1
+        http_2           26f3320a         26f3320a         172.16.99.170   iocage_06    21
+        logserv_2        b8bfb71d         b8bfb71d         172.16.99.104   iocage_06    20
+
+PLAY RECAP *********************************************************************
+repos                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,3 +1,7 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
 - name: Get iocage_jails from module.
   when: "iocage_jails_source == 'module'"
   block:

@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Stop clones
+- name: Stop clones.
   register: out
   vbotka.freebsd.iocage:
     state: stopped
@@ -16,7 +16,7 @@
   ansible.builtin.debug:
     var: out
 
-- name: Destroy clones
+- name: Destroy clones.
   register: out
   vbotka.freebsd.iocage:
     state: absent

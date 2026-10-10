@@ -26,7 +26,10 @@
       notes="{{ _notes }}"
 
     _query: '[?value.swarm==`{{ item.key }}`].key'
-    _count: "{{ item.value.count - _tags | dict2items | community.general.json_query(_query) | length }}"
+    _count: "{{ item.value.count - _tags
+                | dict2items
+                | community.general.json_query(_query)
+                | length }}"
 
     cmd_create: >
       iocage create
@@ -57,7 +60,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Create swarms
+    - name: Create swarms.
       when:
         - not dry_run | bool
         - _count | int > 0
@@ -104,7 +107,7 @@
       loop_control:
         label: "{{ item.key }}"
 
-    - name: Start swarms
+    - name: Start swarms.
       when:
         - not dry_run | bool
         - _jails | length > 0

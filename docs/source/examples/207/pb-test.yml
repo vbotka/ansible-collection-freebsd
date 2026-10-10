@@ -1,0 +1,27 @@
+- name: Display inventory.
+  hosts: all
+
+  vars:
+
+    _vars:
+      - ansible_host
+      - ansible_jail_host
+      - ansible_jail_name
+
+    _properties:
+      - host_hostname
+      - host_hostuuid
+
+    _fmt: "%-16s %-16s %-16s %-15s %-12s %-10s"
+
+  tasks:
+    - debug:
+        msg: |
+          {{ _fmt | format('inv', 'name', 'uuid', 'ansible_host', 'jail_host', 'jail_name') }}
+          -----------------------------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {%   set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
+          {%   set v = _vars | map('extract', hostvars[h]) | list %}
+          {{ _fmt | format(h, p[0]|string, p[1]|string, v[0]|string, v[1]|string, v[2]|string) }}
+          {% endfor %}
+      run_once: true

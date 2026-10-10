@@ -6,24 +6,24 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Reject jails with empty notes.] ******************************************
-ok: [iocage_06]
 ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Create swarms.] **********************************************************
-ok: [iocage_06] => (item=sw_01)
 ok: [iocage_05] => (item=sw_01)
+ok: [iocage_06] => (item=sw_01)
 
 TASK [Query iocage module.] ****************************************************
 ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Reject jails with empty notes.] ******************************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
 ok: [iocage_06]

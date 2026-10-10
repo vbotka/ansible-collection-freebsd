@@ -40,3 +40,7 @@ Execute the playbook:
 .. code-block:: console
 
    (env) > ansible-playbook pb_iocage_project_destroy.yml
+
+.. seealso::
+
+   * :ref:`example_207`

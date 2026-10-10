@@ -35,17 +35,19 @@
           when: iocage_jails_present | length == 0
           ansible.builtin.meta: end_host
 
-        - name: Stop jails.
+        - name: Stop and destroy jails.
           when: uuids | length > 0
-          changed_when: false
-          ansible.builtin.command: >
-            iocage stop
-            {{ uuids | join(' ') }}
+          block:
 
-        - name: Destroy jails.
-          when: uuids | length > 0
-          changed_when: false
-          ansible.builtin.command: >
-            iocage destroy
-            --force
-            {{ uuids | join(' ') }}
+            - name: Stop jails.
+              changed_when: false
+              ansible.builtin.command: >
+                iocage stop
+                {{ uuids | join(' ') }}
+
+            - name: Destroy jails.
+              changed_when: false
+              ansible.builtin.command: >
+                iocage destroy
+                --force
+                {{ uuids | join(' ') }}

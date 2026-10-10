@@ -12,7 +12,7 @@
   ansible.builtin.debug:
     var: iocage_jails
 
-- name: "Start: Start created templates."
+- name: Start created templates.
   when: _jails | length > 0
   vars:
     jails_started: "{{ iocage_jails

@@ -1,86 +1,23 @@
 
-PLAY [Display all groups.] *****************************************************
+PLAY [Create and start project jails.] *****************************************
 
-TASK [debug] *******************************************************************
-ok: [test_1] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_1
-        iocage_classes: []
+TASK [Create jails.] ***********************************************************
+ok: [iocage_06]
+ok: [iocage_05]
 
-        iocage_tags: {}
-ok: [logserv_1] => 
-    msg: |-
-        ansible_host: 10.1.0.213
-        iocage_properties.host_hostuuid: fb342671
-        iocage_classes: [logserv]
+TASK [Set notes.] **************************************************************
+ok: [iocage_05] => (item=db_1 alias=db_1 class=db,log-client vmm=iocage_05)
+ok: [iocage_06] => (item=logserv_2 alias=logserv_2 class=log-server vmm=iocage_06)
+ok: [iocage_05] => (item=logserv_1 alias=logserv_1 class=log-server vmm=iocage_05)
+ok: [iocage_06] => (item=http_2 alias=http_2 class=http,log-client vmm=iocage_06)
+ok: [iocage_05] => (item=http_1 alias=http_1 class=http,log-client vmm=iocage_05)
+ok: [iocage_06] => (item=db_2 alias=db_2 class=db,log-client vmm=iocage_06)
 
-        iocage_tags: {alias: logserv_1, class: logserv, vmm: iocage_01}
-ok: [test_2] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_2
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [http_1] => 
-    msg: |-
-        ansible_host: 10.1.0.187
-        iocage_properties.host_hostuuid: 2355c7ca
-        iocage_classes: [http, logclient]
-
-        iocage_tags: {alias: http_1, class: 'http,logclient', vmm: iocage_02}
-ok: [db_1] => 
-    msg: |-
-        ansible_host: 10.1.0.190
-        iocage_properties.host_hostuuid: a36ffb91
-        iocage_classes: [db, logclient]
-
-        iocage_tags: {alias: db_1, class: 'db,logclient', vmm: iocage_02}
-ok: [test_4] => 
-    msg: |-
-        ansible_host: -
-        iocage_properties.host_hostuuid: test_4
-        iocage_classes: []
-
-        iocage_tags: {}
-ok: [http_2] => 
-    msg: |-
-        ansible_host: 10.1.0.130
-        iocage_properties.host_hostuuid: 0353ff78
-        iocage_classes: [http, logclient]
-
-        iocage_tags: {alias: http_2, class: 'http,logclient', vmm: iocage_04}
-ok: [db_2] => 
-    msg: |-
-        ansible_host: 10.1.0.101
-        iocage_properties.host_hostuuid: 48dc9d76
-        iocage_classes: [db, logclient]
-
-        iocage_tags: {alias: db_2, class: 'db,logclient', vmm: iocage_04}
-
-TASK [debug] *******************************************************************
-ok: [test_1] => 
-    msg: |-
-        all: ['test_1', 'logserv_1', 'test_2', 'http_1', 'db_1', 'test_4', 'http_2', 'db_2']
-        ungrouped: []
-        state_down: ['test_1', 'test_2', 'test_4']
-        logserv: ['logserv_1']
-        state_up: ['logserv_1', 'http_1', 'db_1', 'http_2', 'db_2']
-        vmm_iocage_01: ['logserv_1']
-        http: ['http_1', 'http_2']
-        logclient: ['http_1', 'db_1', 'http_2', 'db_2']
-        vmm_iocage_02: ['http_1', 'db_1']
-        db: ['db_1', 'db_2']
-        vmm_iocage_04: ['http_2', 'db_2']
+TASK [Start created jails.] ****************************************************
+ok: [iocage_05]
+ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-db_1                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_2                       : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-http_1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-http_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-logserv_1                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_4                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

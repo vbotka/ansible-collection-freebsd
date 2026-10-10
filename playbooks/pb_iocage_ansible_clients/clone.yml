@@ -2,28 +2,6 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-#   _notes_source:
-#     - "{{ item.value.notes | d('') }}"
-#     - "{{ item.value.properties.notes | d('') }}"
-#     - "{{ properties.notes | d('') }}"
-#     - "vmm={{ inventory_hostname }}"
-#     - "class={{ item.value.class | d([]) | join(',') }}"
-#   _notes: "{{ _notes_source | select | join(' ') }}"
-
-#   _properties_source:
-#     - "{{ properties | d({}) }}"
-#     - "{{ item.value.properties | d({}) }}"
-#   _properties_combined: >-
-#     {{ _properties_source
-#        | community.general.remove_keys(target=['notes'])
-#        | select
-#        | combine(recursive=true) }}
-#   _properties: >-
-#     {% for k, v in _properties_combined.items() %}
-#     {{ k }}={{ v }}
-#     {% endfor %}
-#     notes="{{ _notes }}"
-
 - name: "Debug _properties debug={{ debug }}"
   when: debug | bool
   ansible.builtin.debug:
@@ -34,7 +12,7 @@
   loop_control:
     label: "{{ item.key }} {{ item.value.clone_from }}"
 
-- name: Create clones from template
+- name: Create jail from template.
   vars:
     _properties: "{{ properties | d({})
                      | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
@@ -48,16 +26,18 @@
   loop_control:
     label: "{{ item.key }} {{ item.value.clone_from }}"
 
+  # Note: state `cloned' uses `iocage create ...' if `clone_from' is a template.
+
 - name: "Debug clones from template debug2={{ debug2 }}"
   when: debug2 | bool
   ansible.builtin.debug:
     var: out_clone
 
-- name: Set iocage_jails
+- name: Set iocage_jails.
   ansible.builtin.set_fact:
     iocage_jails: "{{ ansible_facts.iocage_jails }}"
 
-- name: Start clones
+- name: Start clones.
   vars:
     iocage_jails_started: "{{ iocage_jails
                               | dict2items

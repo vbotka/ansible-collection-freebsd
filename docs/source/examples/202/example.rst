@@ -1,7 +1,7 @@
 .. _example_202:
 
-202 Clone jails from iocage templates (DHCP)
---------------------------------------------
+202 Create jails from iocage templates (DHCP)
+---------------------------------------------
 
 This example extends :ref:`example_200`.
 
@@ -39,7 +39,7 @@ Use case
 ^^^^^^^^
 
 Create the `iocage`_ template ``ansible-client``. Configure
-``dhclient-exit-hooks``. Clone jails from the template. Obtain IP addresses via
+``dhclient-exit-hooks``. Create jails from the template. Obtain IP addresses via
 DHCP. In the inventory plugin, configure ``hooks_results`` and create the
 variable ``ansible_host``.
 
@@ -124,7 +124,7 @@ In addition to the configuration in :ref:`example_200`:
 * Configure ``hooks_results`` in the inventory plugin and create the variable
   ``ansible_host``.
 
-* Clone jails from this template and start them.
+* Create jails from this template and start them.
 
 * Display selected variables.
 
@@ -237,14 +237,13 @@ Templates
    :language: bash
    :caption: [iocage_06]# iocage list -lt
 
-Playbook output - Clone and start jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t clone \
-                            -e clone=true \
+                            -t clone -e clone=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-04.txt
@@ -308,6 +307,5 @@ Playbook output - Display test vars
    The command below stops and destroys the cloned jails::
 
      ansible-playbook -i iocage.ini \
-                      -t clone_destroy \
-                      -e clone_destroy=true \
+                      -t clone_destroy -e clone_destroy=true \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml

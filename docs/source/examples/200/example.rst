@@ -1,7 +1,7 @@
 .. _example_200:
 
-200 Clone jails from iocage templates
--------------------------------------
+200 Create jails from iocage templates
+--------------------------------------
 
 .. contents::
    :local:
@@ -36,7 +36,7 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-client``. Clone jails from the
+Create the `iocage`_ template ``ansible-client``. Create jails from the
 template. Create variables for connection plugins.
 
 Tree
@@ -78,7 +78,7 @@ Synopsis
   In the playbook :ref:`ug_pb-iocage-ansible-clients`, use the :ref:`module
   vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * Clone jails from the iocage templates.
+  * Create jails from the iocage templates.
   * Start jails.
   * Display the lists of jails.
 
@@ -93,7 +93,7 @@ Synopsis
   In the playbook ``pb-test.yml``:
 
   * Display selected variables.
-  * Test the connection to cloned jails.
+  * Test the connection to created jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -227,14 +227,13 @@ Templates
    :language: bash
    :caption: [iocage_06]# iocage list -lt
 
-Playbook output - Clone and start jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t clone \
-                            -e clone=true \
+                            -t clone -e clone=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-04.txt
@@ -295,9 +294,8 @@ Playbook output - Display test vars
 
 .. hint::
 
-   The command below stops and destroys the cloned jails::
+   The command below stops and destroys the created jails::
 
      ansible-playbook -i iocage.ini \
-                      -t clone_destroy \
-                      -e clone_destroy=true \
+                      -t clone_destroy -e clone_destroy=true \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml

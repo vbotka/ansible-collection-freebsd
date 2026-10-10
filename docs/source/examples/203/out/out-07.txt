@@ -2,17 +2,17 @@
 PLAY [Display inventory.] ******************************************************
 
 TASK [debug] *******************************************************************
-ok: [b7628f37] => 
+ok: [1dada63d] => 
     msg: |-
         inv      name     ansible_host  iocage_tags
         ---------------------------------------------------------------------------
-        b7628f37 b7628f37 172.16.95.130 {class: test, swarm: sw_01, vmm: iocage_05}
-        4530eedb 4530eedb 172.16.95.104 {class: test, swarm: sw_01, vmm: iocage_05}
-        b2f0b44b b2f0b44b 172.16.95.129 {class: test, swarm: sw_01, vmm: iocage_05}
-        e4436900 e4436900 172.16.99.103 {class: test, swarm: sw_01, vmm: iocage_06}
-        f13e7583 f13e7583 172.16.99.104 {class: test, swarm: sw_01, vmm: iocage_06}
-        1a69b5bb 1a69b5bb 172.16.99.128 {class: test, swarm: sw_01, vmm: iocage_06}
+        1dada63d 1dada63d 172.16.95.154 {class: test, swarm: sw_01, vmm: iocage_05}
+        60fb5dd9 60fb5dd9 172.16.95.104 {class: test, swarm: sw_01, vmm: iocage_05}
+        d2f59b39 d2f59b39 172.16.95.155 {class: test, swarm: sw_01, vmm: iocage_05}
+        e0985c95 e0985c95 172.16.99.110 {class: test, swarm: sw_01, vmm: iocage_06}
+        83a645c0 83a645c0 172.16.99.114 {class: test, swarm: sw_01, vmm: iocage_06}
+        6c1d5196 6c1d5196 172.16.99.104 {class: test, swarm: sw_01, vmm: iocage_06}
 
 PLAY RECAP *********************************************************************
-b7628f37                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+1dada63d                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
