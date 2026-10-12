@@ -55,7 +55,7 @@ Parameters
      - Type
      - Default
      - Description
-   * - ``project``
+   * - :ref:`project <ug_concepts_project>`
      - dictionary
      - *(Required)*
      - Dictionary of jail definitions where keys are jail aliases and values
@@ -193,6 +193,7 @@ Example
 
 .. seealso::
 
+   * :ref:`ug_concepts_project`
    * :ref:`example_207`
    * :ref:`ug_inventory_iocage2`
    * :ref:`ug_pb-iocage-project-destroy`
