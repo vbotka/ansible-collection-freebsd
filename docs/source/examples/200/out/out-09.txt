@@ -6,19 +6,19 @@ ok: [test-153] =>
     msg: |-
         inv       name     uuid     ansible_host  jail_host jail_name
         -------------------------------------------------------------
-        test-153  test-153 test-153 172.16.95.153 iocage_05 21
-        test-151  test-151 test-151 172.16.95.151 iocage_05 19
-        test-152  test-152 test-152 172.16.95.152 iocage_05 20
-        test-161  test-161 test-161 172.16.99.161 iocage_06 24
-        test-162  test-162 test-162 172.16.99.162 iocage_06 23
-        test-163  test-163 test-163 172.16.99.163 iocage_06 25
+        test-153  test-153 test-153 172.16.95.153 iocage_05 27
+        test-151  test-151 test-151 172.16.95.151 iocage_05 25
+        test-152  test-152 test-152 172.16.95.152 iocage_05 26
+        test-161  test-161 test-161 172.16.99.161 iocage_06 26
+        test-162  test-162 test-162 172.16.99.162 iocage_06 27
+        test-163  test-163 test-163 172.16.99.163 iocage_06 28
 
 TASK [shell] *******************************************************************
-changed: [test-152]
 changed: [test-161]
 changed: [test-162]
-changed: [test-151]
+changed: [test-152]
 changed: [test-153]
+changed: [test-151]
 changed: [test-163]
 
 TASK [debug] *******************************************************************

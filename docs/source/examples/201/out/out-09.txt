@@ -115,7 +115,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|172.16.95.151/24
             ip6: '-'
-            jid: '19'
+            jid: '25'
             name: test-151
             release: 15.0-RELEASE
             state: up
@@ -126,7 +126,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|172.16.95.152/24
             ip6: '-'
-            jid: '20'
+            jid: '26'
             name: test-152
             release: 15.0-RELEASE
             state: up
@@ -137,7 +137,7 @@ ok: [iocage_05] =>
             boot: 'off'
             ip4: vnet0|172.16.95.153/24
             ip6: '-'
-            jid: '21'
+            jid: '27'
             name: test-153
             release: 15.0-RELEASE
             state: up
@@ -296,7 +296,7 @@ ok: [iocage_06] =>
             boot: 'off'
             ip4: vnet0|172.16.99.161/24
             ip6: '-'
-            jid: '24'
+            jid: '26'
             name: test-161
             release: 15.1-RELEASE-p1
             state: up
@@ -307,7 +307,7 @@ ok: [iocage_06] =>
             boot: 'off'
             ip4: vnet0|172.16.99.162/24
             ip6: '-'
-            jid: '23'
+            jid: '27'
             name: test-162
             release: 15.1-RELEASE-p1
             state: up
@@ -318,7 +318,7 @@ ok: [iocage_06] =>
             boot: 'off'
             ip4: vnet0|172.16.99.163/24
             ip6: '-'
-            jid: '25'
+            jid: '28'
             name: test-163
             release: 15.1-RELEASE-p1
             state: up

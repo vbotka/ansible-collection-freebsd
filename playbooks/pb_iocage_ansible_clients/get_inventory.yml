@@ -45,9 +45,7 @@
 
     - name: Reject jails without iocage_tags
       ansible.builtin.set_fact:
-        iocage_jails: "{{ (out.stdout
-                          | from_yaml
-                          | vbotka.freebsd.clean_unsafe)._meta.hostvars
+        iocage_jails: "{{ (out.stdout | from_yaml | vbotka.freebsd.clean_unsafe)._meta.hostvars
                           | dict2items
                           | rejectattr('value.iocage_tags', 'undefined')
                           | items2dict }}"

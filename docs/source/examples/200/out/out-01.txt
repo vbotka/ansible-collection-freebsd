@@ -6,9 +6,9 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Setup: All templates already created.] ***********************************
-ok: [iocage_06] => 
-    msg: All templates already created. End host.
 ok: [iocage_05] => 
+    msg: All templates already created. End host.
+ok: [iocage_06] => 
     msg: All templates already created. End host.
 
 PLAY RECAP *********************************************************************

@@ -28,7 +28,7 @@
 
   # Note: state `cloned' uses `iocage create ...' if `clone_from' is a template.
 
-- name: "Debug clones from template debug2={{ debug2 }}"
+- name: "Debug create jail from template debug2={{ debug2 }}"
   when: debug2 | bool
   ansible.builtin.debug:
     var: out_clone

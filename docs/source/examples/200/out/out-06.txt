@@ -1,7 +1,7 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Get iocage facts] ********************************************************
+TASK [Get iocage datasets.] ****************************************************
 ok: [iocage_05]
 ok: [iocage_06]
 
