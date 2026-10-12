@@ -20,7 +20,7 @@ project dictionary
 ^^^^^^^^^^^^^^^^^^
 
 The ``project`` variable is a dictionary of jails. The ``vmm``
-attribute defines the host on which each jail is running:
+attribute defines the host on which each jail runs:
 
 .. code-block:: yaml+jinja
 
@@ -41,11 +41,19 @@ attribute defines the host on which each jail is running:
        class: [db, logclient]
        vmm: iocage_04
 
+.. important::
+
+   * Use dashes (``-``) in ``project`` keys if the keys represent actual
+     jail names. See :ref:`ug_qa_iocage_dash_vs_underscore`.
+
+   * Do not use dashes (``-``) in ``project`` keys if the keys serve as
+     Ansible inventory host aliases. See :ref:`ug_qa_ansible_dash_vs_underscore`.
+
 vmm dictionary
 ^^^^^^^^^^^^^^
 
-The ``vmm`` dictionary groups jails under the hosts running
-them. Defining:
+The ``vmm`` dictionary groups jails under the hosts running them.
+Defining:
 
 .. code-block:: yaml+jinja
 
@@ -78,7 +86,8 @@ produces:
 class dictionary
 ^^^^^^^^^^^^^^^^
 
-The ``class`` dictionary maps classes to their member jails. Defining:
+The ``class`` dictionary maps classes to their member jails.
+Defining:
 
 .. code-block:: yaml+jinja
 

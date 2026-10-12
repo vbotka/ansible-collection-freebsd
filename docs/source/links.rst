@@ -30,6 +30,7 @@
 .. _Connection methods and details: https://docs.ansible.com/ansible/latest/inventory_guide/connection_details.html
 .. _Contributions are welcome: https://github.com/firstcontributions/first-contributions
 .. _Create a Jail: https://freebsd.github.io/iocage/basic-use.html#create-a-jail
+.. _Creating valid variable names: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#creating-valid-variable-names
 .. _Dell XPS 13 9365 15.0-RELEASE dmesg: http://dmesgd.nycbug.org/index.cgi?do=view&id=8848
 .. _Documentation fragments: https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_documenting.html#documentation-fragments
 .. _Enabling inventory cache plugins: https://docs.ansible.com/ansible/latest/plugins/cache.html#enabling-inventory-cache-plugins
@@ -84,6 +85,10 @@
 .. _Poudriere to create and test FreeBSD packages: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
 .. _Practical rc.d scripting in BSD: https://docs.freebsd.org/en/articles/rc-scripting/
 .. _QEMU: https://docs.freebsd.org/en/books/handbook/virtualization/#qemu-virtualization-host-guest
+.. _RFC 1035 Stricter rule requiring labels to start with a letter (a-z or A-Z): https://www.rfc-editor.org/info/rfc1035/
+.. _RFC 1035: https://www.rfc-editor.org/info/rfc1035/
+.. _RFC 1123 Relaxed rule allowing labels to start with a digit (0-9) as well as a letter: https://www.rfc-editor.org/info/rfc1123/
+.. _RFC 1123: https://www.rfc-editor.org/info/rfc1123/
 .. _RTL8188EU: https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html
 .. _Read the Docs: https://rtfd.io
 .. _Sandbox: https://github.com/vbotka/ansible-collection-freebsd/tree/master/docs/source/sandbox/
@@ -123,6 +128,7 @@
 .. _ansible-freebsd-postinstall.readthedocs.io: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
 .. _ansible-freebsd-poudriere.readthedocs.io: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/
 .. _ansible-freebsd-wpa-cli.readthedocs.io: https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/
+.. _ansible-lint var-naming: https://docs.ansible.com/projects/lint/rules/var-naming/
 .. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 .. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
 .. _ansible-runner-role.readthedocs.io: https://ansible-runner-role.readthedocs.io/en/latest/
