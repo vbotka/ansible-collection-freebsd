@@ -13,19 +13,23 @@ pb_iocage_project_create
    single: playbook; pb_iocage_project_create.yml
    single: iocage create; pb_iocage_project_create
    single: iocage notes; pb_iocage_project_create
+   single: properties.yml; pb_iocage_project_create
+   single: sanity.yml; pb_iocage_project_create
+   single: start.yml; pb_iocage_project_create
 
 Synopsis
 ^^^^^^^^
 
 The playbook ``vbotka.freebsd.pb_iocage_project_create.yml`` automates the bulk
-creation, metadata tagging, and startup of FreeBSD jails across one or more
-iocage jail manager hosts declared in an inventory.
+creation, property configuration, metadata tagging, and startup of FreeBSD jails
+across one or more jail manager hosts declared in an inventory.
 
 The playbook calculates the delta between declared project jail aliases and
-currently existing inventory hosts to ensure idempotency. It batches jail
-creation using ``iocage create --count``, writes structured metadata (alias,
-class memberships, and host assignment) into the jail ``notes`` property, and
-starts the newly provisioned instances.
+currently existing inventory hosts to ensure idempotency. It supports optional
+pre-flight sanity checks, batches jail creation using ``iocage create --count``,
+configures custom jail properties and metadata tags (alias, class memberships,
+and host assignment) via ``properties.yml``, and starts newly provisioned jails
+configured to boot.
 
 .. hint::
 
@@ -34,15 +38,17 @@ starts the newly provisioned instances.
 Requirements
 ^^^^^^^^^^^^
 
-- Root or ``sudo``/``doas`` privilege escalation on the managed nodes.
-- A functional ``iocage`` installation on the managed nodes with the specified
-  template already present (e.g., ``ansible-init`` or ``ansible-client``).
-- Dual-inventory configuration:
+- Python 3 on the controller with Jinja2 and PyYAML.
+- Root or ``sudo``/``doas`` privilege escalation on the jail manager hosts.
+- A functional ``iocage`` installation on jail manager hosts with the specified
+  template present (e.g., ``ansible-init`` or ``ansible-client``).
+- Dual-inventory configuration passed at runtime:
 
-  - An inventory describing the jail manager nodes (e.g., ``iocage.ini``).
+  - An inventory describing the jail manager hosts (e.g., ``iocage.ini``).
 
-  - An inventory discovering existing jails (e.g., ``hosts/``) so that
-    ``groups.all`` contains currently deployed jail aliases.
+  - An inventory discovering existing jails (e.g., ``hosts/`` using
+    ``vbotka.freebsd.iocage2``) so that ``groups.all`` contains currently
+    deployed jail aliases.
 
 Parameters
 ^^^^^^^^^^
@@ -55,7 +61,7 @@ Parameters
      - Type
      - Default
      - Description
-   * - :ref:`project <ug_concepts_project>`
+   * - ``project``
      - dictionary
      - *(Required)*
      - Dictionary of jail definitions where keys are jail aliases and values
@@ -63,68 +69,81 @@ Parameters
    * - ``project_template``
      - string
      - ``ansible-init``
-     - Name of the iocage template used to create the jails.
+     - Name of the existing iocage template used to create the new jails.
    * - ``properties``
      - dictionary
      - ``{}``
-     - iocage jail properties to pass to
-       ``iocage create`` (e.g., ``bpf: 1``, ``dhcp: 1``, ``vnet: 1``).
-   * - ``debug``
-     - boolean
-     - ``false``
-     - Enables debug output tasks displaying evaluated variables, missing
-       jails, and newly created jail UUIDs.
+     - Key-value mapping of iocage jail properties applied during jail
+       configuration (e.g., ``bpf: 1``, ``dhcp: 1``, ``vnet: 1``, ``boot: 'on'``).
    * - ``sanity``
      - boolean
      - ``true``
-     - Test project sanity.
+     - Executes validation tasks before creating jails.
    * - ``start``
      - boolean
      - ``true``
-     - Start jails when ``properties.boot == 1``.
+     - Controls importing startup tasks. Jails start when both ``start`` and
+       ``properties.boot`` evaluate to true.
+   * - ``debug``
+     - boolean
+     - ``false``
+     - Displays debug output tasks.
    * - ``vmm``
      - dictionary
      - *(Computed)*
-     - Mapping of iocage hosts to their assigned jail dictionaries, typically
-       derived using ``(project | vbotka.freebsd.project).vmm``.
+     - Mapping of jail manager hosts to their assigned jail dictionaries,
+       typically derived using ``(project | vbotka.freebsd.project).vmm``.
    * - ``class``
      - dictionary
      - *(Computed)*
      - Mapping of class groups to jail aliases, typically derived using
        ``(project | vbotka.freebsd.project).class``.
 
-Workflow
-^^^^^^^^
+Playbook Details
+^^^^^^^^^^^^^^^^
 
-1. **Host Evaluation & Delta Calculation**:
-   On each managed iocage host, the variable ``iocage_jails_absent`` computes:
+Execution Workflow
+""""""""""""""""""
 
-   .. code-block:: yaml
+1. **Debug & Setup**:
+   Optionally displays project variables via ``debug.yml``, then executes
+   initialization steps in ``setup.yml`` across the jail manager hosts.
 
-      iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.all) }}"
+2. **Sanity Checks**:
+   When ``sanity: true`` (the default), invokes ``sanity.yml`` to validate
+   prerequisites, configuration structures, and host definitions before
+   proceeding.
 
-   If no jails are missing on the target host (``iocage_jails_absent | length == 0``),
-   the host execution terminates via ``ansible.builtin.meta: end_host``.
+3. **Delta Calculation & Batch Creation**:
+   The tasks in ``create.yml`` determine missing jails by comparing declared
+   project aliases against ``groups.all``. If missing jails are detected,
+   ``iocage create --short --template <template> --count <count>`` creates
+   the required batch of jails with short UUIDs.
 
-2. **Batch Creation**:
-   Invokes ``iocage create --short --template <template> --count <count> <properties>``
-   to create the missing jails.
-
-3. **Notes**:
-   Loops over the created jails and assigns structured iocage tags to the jail's
-   ``notes`` property:
+4. **Setting Properties and Metadata**:
+   The task file ``properties.yml`` pairs the created UUIDs with the missing
+   project aliases (populating ``project_jails_created``) and applies custom
+   iocage properties along with structured tags in ``notes``:
 
    .. code-block:: none
 
       alias=<alias> class=<class1,class2,...> vmm=<host>
 
-4. **Jail Startup**:
-   Runs ``iocage start`` with the batch of created jail identifiers.
+   This metadata is subsequently parsed by plugins such as
+   ``ansible.builtin.constructed`` and ``vbotka.freebsd.iocage2`` to dynamically
+   build inventory groups and host variables.
 
-Example
-^^^^^^^
+5. **Jail Startup**:
+   When ``start: true`` (the default) and ``properties.boot`` evaluates to
+   true, ``start.yml`` invokes ``iocage start`` for the newly created jails.
 
-1. Define jail managers inventory in ``iocage.ini``:
+Examples
+^^^^^^^^
+
+Basic Deployment
+""""""""""""""""
+
+1. Define jail manager hosts in ``iocage.ini``:
 
    .. code-block:: ini
       :caption: iocage.ini
@@ -137,25 +156,54 @@ Example
       ansible_user=admin
       ansible_become=true
 
-2. Define jails inventory in ``hosts/``:
+2. Configure dynamic jail inventory sources in ``hosts/``:
 
-   .. code-block:: ini
-      :caption: hosts/05_iocage.yml
+   .. code-block:: yaml
+      :caption: hosts/05_iocage2.yml
 
-      plugin: vbotka.freebsd.iocage
+      plugin: vbotka.freebsd.iocage2
       host: iocage_05
       user: admin
       get_properties: true
       inventory_hostname_tag: alias
+      hooks_results:
+        - /var/db/dhclient-hook.address.epair0b
 
-   .. code-block:: ini
-      :caption: hosts/06_iocage.yml
+   .. code-block:: yaml
+      :caption: hosts/06_iocage2.yml
 
-      plugin: vbotka.freebsd.iocage
+      plugin: vbotka.freebsd.iocage2
       host: iocage_06
       user: admin
       get_properties: true
       inventory_hostname_tag: alias
+      hooks_results:
+        - /var/db/dhclient-hook.address.epair0b
+
+   .. code-block:: yaml
+      :caption: hosts/99_constructed.yml
+
+      plugin: ansible.builtin.constructed
+
+      compose:
+        iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+        iocage_classes: iocage_properties.notes | regex_findall('(?<=class=)[\w\-]+|(?<=,)[\w\-]+')
+        ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
+        ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
+        ansible_jail_name: iocage_jid
+        ansible_python_interpreter: "'auto_silent'"
+
+      groups:
+        db: iocage_classes is contains('db')
+        http: iocage_classes is contains('http')
+        log_servers: iocage_classes is contains('log-server')
+        log_clients: iocage_classes is contains('log-client')
+
+      keyed_groups:
+        - prefix: state
+          key: iocage_state
+        - prefix: vmm
+          key: iocage_tags.vmm
 
 3. Declare project specifications in ``group_vars/all/project.yml``:
 
@@ -189,19 +237,27 @@ Example
 
       properties:
         bpf: 1
+        boot: 'on'
         dhcp: 1
         vnet: 1
 
-4. Execute the playbook:
+4. Execute the playbook with existing inventory tracking:
 
    .. code-block:: console
 
       (env) > ansible-playbook -i hosts -i iocage.ini \
                                vbotka.freebsd.pb_iocage_project_create.yml
 
+   To skip the startup tasks even when ``properties.boot`` is enabled:
+
+   .. code-block:: console
+
+      (env) > ansible-playbook -i hosts -i iocage.ini -e start=false \
+                               vbotka.freebsd.pb_iocage_project_create.yml
+
 .. seealso::
 
-   * :ref:`ug_concepts_project`
-   * :ref:`example_207`
-   * :ref:`ug_inventory_iocage2`
+   * :ref:`ug_pb_comparison_clients_vs_project`
    * :ref:`ug_pb-iocage-project-destroy`
+   * :ref:`ug_inventory_iocage2`
+   * :ref:`example_207`
