@@ -1,0 +1,22 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Create: Create jails."
+  changed_when: false
+  register: out
+  ansible.builtin.command: >
+    iocage create
+    --short
+    --template {{ project_template | d('ansible-init') }}
+    --count {{ iocage_jails_absent | length }}
+    {{ (properties | d({})) | dictsort | map('join', '=') | join(' ') }}
+
+- name: "Create: Set iocage_jails_created"
+  ansible.builtin.set_fact:
+    iocage_jails_created: "{{ out.stdout_lines | d([]) | map('split') | map('first') | list }}"
+
+- name: "Create: Display iocage_jails_created"
+  when: debug | d(false) | bool
+  ansible.builtin.debug:
+    var: iocage_jails_created

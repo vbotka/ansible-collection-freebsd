@@ -1,0 +1,15 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Debug: Display variables."
+  ansible.builtin.debug:
+    msg: |
+      project_template: {{ project_template | d('ansible-init') }}
+
+      project:
+        {{ project | to_yaml(indent=2) | indent(2) }}
+      properties:
+        {{ properties | d({}) | to_nice_yaml(indent=2) | indent(2) }}
+      class:
+        {{ class | to_yaml(indent=2) | indent(2) }}

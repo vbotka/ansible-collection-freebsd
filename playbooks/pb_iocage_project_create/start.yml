@@ -1,0 +1,9 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Start: Start created jails."
+  changed_when: false
+  ansible.builtin.command: >
+    iocage start
+    {{ iocage_jails_created | join(' ') }}

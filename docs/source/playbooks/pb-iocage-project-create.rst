@@ -34,16 +34,15 @@ starts the newly provisioned instances.
 Requirements
 ^^^^^^^^^^^^
 
-- Python 3 on the controller with Jinja2 and PyYAML.
 - Root or ``sudo``/``doas`` privilege escalation on the managed nodes.
 - A functional ``iocage`` installation on the managed nodes with the specified
   template already present (e.g., ``ansible-init`` or ``ansible-client``).
-- Dual-inventory configuration passed at runtime:
+- Dual-inventory configuration:
 
   - An inventory describing the jail manager nodes (e.g., ``iocage.ini``).
-  - An inventory or plugin script discovering existing running/stopped jails
-    (e.g., ``hosts/`` using ``vbotka.freebsd.iocage2``) so that ``groups.all``
-    contains currently deployed jail aliases.
+
+  - An inventory discovering existing jails (e.g., ``hosts/``) so that
+    ``groups.all`` contains currently deployed jail aliases.
 
 Parameters
 ^^^^^^^^^^
@@ -64,11 +63,11 @@ Parameters
    * - ``project_template``
      - string
      - ``ansible-init``
-     - Name of the existing iocage template used to create the new jails.
+     - Name of the iocage template used to create the jails.
    * - ``properties``
      - dictionary
      - ``{}``
-     - Key-value mapping of iocage jail properties to pass to
+     - iocage jail properties to pass to
        ``iocage create`` (e.g., ``bpf: 1``, ``dhcp: 1``, ``vnet: 1``).
    * - ``debug``
      - boolean
@@ -86,11 +85,8 @@ Parameters
      - Mapping of class groups to jail aliases, typically derived using
        ``(project | vbotka.freebsd.project).class``.
 
-Playbook Details
-^^^^^^^^^^^^^^^^
-
-Execution Workflow
-""""""""""""""""""
+Workflow
+^^^^^^^^
 
 1. **Host Evaluation & Delta Calculation**:
    On each managed iocage host, the variable ``iocage_jails_absent`` computes:
@@ -100,34 +96,27 @@ Execution Workflow
       iocage_jails_absent: "{{ vmm[inventory_hostname] | difference(groups.all) }}"
 
    If no jails are missing on the target host (``iocage_jails_absent | length == 0``),
-   the host execution terminates immediately via ``ansible.builtin.meta: end_host``.
+   the host execution terminates via ``ansible.builtin.meta: end_host``.
 
 2. **Batch Creation**:
    Invokes ``iocage create --short --template <template> --count <count> <properties>``
-   to generate short UUIDs for the exact number of missing jails.
+   to create the missing jails.
 
-3. **Tagging and Metadata Storage**:
-   Loops over the created UUIDs and assigns structured tags to the jail's
+3. **Notes**:
+   Loops over the created jails and assigns structured iocage tags to the jail's
    ``notes`` property:
 
    .. code-block:: none
 
       alias=<alias> class=<class1,class2,...> vmm=<host>
 
-   This metadata is subsequently parsed by plugins such as
-   ``ansible.builtin.constructed`` and ``vbotka.freebsd.iocage2`` to dynamically
-   build inventory groups and host variables.
-
 4. **Jail Startup**:
    Runs ``iocage start`` with the batch of created jail identifiers.
 
-Examples
-^^^^^^^^
+Example
+^^^^^^^
 
-Basic Deployment
-""""""""""""""""
-
-1. Define jail manager hosts in ``iocage.ini``:
+1. Define jail managers inventory in ``iocage.ini``:
 
    .. code-block:: ini
       :caption: iocage.ini
@@ -140,7 +129,27 @@ Basic Deployment
       ansible_user=admin
       ansible_become=true
 
-2. Declare project specifications in ``group_vars/all/project.yml``:
+2. Define jails inventory in ``hosts/``:
+
+   .. code-block:: ini
+      :caption: hosts/05_iocage.yml
+
+      plugin: vbotka.freebsd.iocage
+      host: iocage_05
+      user: admin
+      get_properties: true
+      inventory_hostname_tag: alias
+
+   .. code-block:: ini
+      :caption: hosts/06_iocage.yml
+
+      plugin: vbotka.freebsd.iocage
+      host: iocage_06
+      user: admin
+      get_properties: true
+      inventory_hostname_tag: alias
+
+3. Declare project specifications in ``group_vars/all/project.yml``:
 
    .. code-block:: yaml
       :caption: group_vars/all/project.yml
@@ -175,7 +184,7 @@ Basic Deployment
         dhcp: 1
         vnet: 1
 
-3. Execute the playbook with existing inventory tracking:
+4. Execute the playbook:
 
    .. code-block:: console
 

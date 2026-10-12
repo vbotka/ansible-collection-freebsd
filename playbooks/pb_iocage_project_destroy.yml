@@ -2,52 +2,47 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Stop and destroy jails.
+- name: Stop and destroy project jails.
   hosts: iocage
-
-  vars:
-
-    debug: false
 
   tasks:
 
-    - name: Display vars.  # noqa: run-once
-      when: debug | bool
-      vars:
-        project_jails_present: "{{ project | intersect(groups.all) }}"
-      run_once: true
+    - name: Set iocage_jails_present
+      ansible.builtin.set_fact:
+        project_jails_present: "{{ vmm[inventory_hostname] | intersect(groups.all) }}"
+
+    - name: Set uuids
+      ansible.builtin.set_fact:
+        uuids: "{{ project_jails_present
+                   | map('extract', hostvars, ['iocage_properties', 'host_hostuuid'])
+                   | list }}"
+
+    - name: Display vars.
+      when: debug | d(false) | bool
       ansible.builtin.debug:
         msg: |
-          vmm:
-            {{ vmm | to_yaml | indent(2) }}
-          class:
-            {{ class | to_yaml | indent(2) }}
-          groups.all: {{ groups.all }}
-          project_jails_present: {{ project_jails_present }}
+          project_jails_present:
+            {{ project_jails_present | to_nice_yaml(indent=2) | indent(2) }}
+          uuids:
+            {{ uuids | to_nice_yaml(indent=2) | indent(2) }}
+          groups.all:
+            {{ groups.all | to_yaml(indent=2) | indent(2) }}
+          vmm.{{ inventory_hostname }}:
+            {{ vmm[inventory_hostname] | to_yaml(indent=2) | indent(2) }}
 
-    - name: Stop and destroy project jails.
-      vars:
-        iocage_jails_present: "{{ vmm[inventory_hostname] | intersect(groups.all) }}"
-        uuids: "{{ iocage_jails_present | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) | list }}"
-      block:
+    - name: All jails already destroyed. End host.
+      when: project_jails_present | length == 0
+      ansible.builtin.meta: end_host
 
-        - name: All jails already destroyed. End host.
-          when: iocage_jails_present | length == 0
-          ansible.builtin.meta: end_host
+    - name: Stop jails.
+      changed_when: false
+      ansible.builtin.command: >
+        iocage stop
+        {{ uuids | join(' ') }}
 
-        - name: Stop and destroy jails.
-          when: uuids | length > 0
-          block:
-
-            - name: Stop jails.
-              changed_when: false
-              ansible.builtin.command: >
-                iocage stop
-                {{ uuids | join(' ') }}
-
-            - name: Destroy jails.
-              changed_when: false
-              ansible.builtin.command: >
-                iocage destroy
-                --force
-                {{ uuids | join(' ') }}
+    - name: Destroy jails.
+      changed_when: false
+      ansible.builtin.command: >
+        iocage destroy
+        --force
+        {{ uuids | join(' ') }}

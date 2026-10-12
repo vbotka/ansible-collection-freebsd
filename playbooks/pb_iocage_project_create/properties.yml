@@ -1,0 +1,20 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Properties: Set notes."
+  changed_when: false
+  vars:
+    alias: "{{ iocage_jails_absent[idx] }}"
+    notes: >-
+      alias={{ alias }}
+      class={{ vmm[inventory_hostname][alias]['class'] | join(',') }}
+      vmm={{ inventory_hostname }}
+  ansible.builtin.command: >
+    iocage set
+    notes="{{ notes }}"
+    {{ item }}
+  loop: "{{ iocage_jails_created }}"
+  loop_control:
+    index_var: idx
+    label: "{{ alias }} {{ notes }}"

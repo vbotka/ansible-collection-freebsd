@@ -1,5 +1,13 @@
 
-PLAY [Stop and destroy jails.] *************************************************
+PLAY [Stop and destroy project jails.] *****************************************
+
+TASK [Set iocage_jails_present] ************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [Set uuids] ***************************************************************
+ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Stop jails.] *************************************************************
 ok: [iocage_06]
@@ -10,6 +18,6 @@ ok: [iocage_06]
 ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 
