@@ -2,39 +2,39 @@
   |--@ungrouped:
   |--@state_up:
   |  |--repos
+  |  |--http_1
   |  |--db_1
   |  |--pkg_repo
-  |  |--http_1
   |  |--repos_devel
   |  |--logserv_1
-  |  |--logserv_2
   |  |--db_2
-  |  |--http_2
   |  |--log_server_01
+  |  |--logserv_2
+  |  |--http_2
   |--@vmm_iocage_06:
   |  |--repos
   |  |--pkg_repo
   |  |--repos_devel
-  |  |--logserv_2
   |  |--db_2
-  |  |--http_2
   |  |--log_server_01
-  |--@db:
-  |  |--db_1
-  |  |--db_2
-  |--@log_clients:
-  |  |--db_1
-  |  |--http_1
-  |  |--db_2
+  |  |--logserv_2
   |  |--http_2
-  |--@vmm_iocage_05:
-  |  |--db_1
-  |  |--http_1
-  |  |--logserv_1
   |--@http:
   |  |--http_1
   |  |--http_2
+  |--@log_clients:
+  |  |--http_1
+  |  |--db_1
+  |  |--db_2
+  |  |--http_2
+  |--@vmm_iocage_05:
+  |  |--http_1
+  |  |--db_1
+  |  |--logserv_1
+  |--@db:
+  |  |--db_1
+  |  |--db_2
   |--@log_servers:
   |  |--logserv_1
-  |  |--logserv_2
   |  |--log_server_01
+  |  |--logserv_2

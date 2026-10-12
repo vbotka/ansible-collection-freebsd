@@ -4,6 +4,7 @@
 
 - name: "Start: Start created jails."
   changed_when: false
+  when: properties.boot | d(false) | bool
   ansible.builtin.command: >
     iocage start
     {{ iocage_jails_created | join(' ') }}

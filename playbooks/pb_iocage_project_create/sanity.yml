@@ -1,0 +1,30 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+- name: "Sanity: templates ignored."
+  vars:
+    project_templates: "{{ vmm[inventory_hostname]
+                           | dict2items
+                           | selectattr('value.template', 'defined')
+                           | map(attribute='key')
+                           | list }}"
+  when: project_templates | length > 0
+  ansible.builtin.debug:
+    msg: >-
+      [WARNING]
+      Per-jail template attributes found in the project dictionary will be ignored.
+      The project-level template "{{ project_template }}" will be used to create all jails.
+
+- name: "Sanity: valid aliases."
+  vars:
+    alias_naming_pattern: "^[a-z_][a-z0-9_]*$"
+    alias_invalid: "{{ vmm[inventory_hostname].keys()
+                       | reject('match', alias_naming_pattern)
+                       | list }}"
+  when: alias_invalid | length > 0
+  ansible.builtin.debug:
+    msg: >-
+      [WARNING]
+      Invalid alias names: "{{ alias_invalid | join(',') }}" found in the project dictionary.
+      ansible-lint naming pattern is "{{ alias_naming_pattern }}"

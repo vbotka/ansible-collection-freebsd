@@ -8,14 +8,19 @@
   tasks:
 
     - name: Debug.  # noqa: run-once
-      when: debug | d(false) | bool
       tags: [always, debug]
+      when: debug | d(false) | bool
       run_once: true
       ansible.builtin.import_tasks: pb_iocage_project_create/debug.yml
 
     - name: Setup.
       tags: [always, setup]
       ansible.builtin.import_tasks: pb_iocage_project_create/setup.yml
+
+    - name: Sanity.
+      tags: sanity
+      when: sanity | d(true) | bool
+      ansible.builtin.import_tasks: pb_iocage_project_create/sanity.yml
 
     - name: Create jails.
       ansible.builtin.import_tasks: pb_iocage_project_create/create.yml
@@ -24,4 +29,5 @@
       ansible.builtin.import_tasks: pb_iocage_project_create/properties.yml
 
     - name: Start jails.
+      when: start | d(true) | bool
       ansible.builtin.import_tasks: pb_iocage_project_create/start.yml

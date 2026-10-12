@@ -5,16 +5,15 @@
 - name: "Properties: Set notes."
   changed_when: false
   vars:
-    alias: "{{ iocage_jails_absent[idx] }}"
     notes: >-
-      alias={{ alias }}
-      class={{ vmm[inventory_hostname][alias]['class'] | join(',') }}
+      alias={{ item.value }}
+      class={{ vmm[inventory_hostname][item.value]['class'] | join(',') }}
       vmm={{ inventory_hostname }}
   ansible.builtin.command: >
     iocage set
+    {{ properties | d({}) | dictsort | map('join', '=') | join(' ') }}
     notes="{{ notes }}"
-    {{ item }}
-  loop: "{{ iocage_jails_created }}"
+    {{ item.key }}
+  loop: "{{ project_jails_created | dict2items }}"
   loop_control:
-    index_var: idx
-    label: "{{ alias }} {{ notes }}"
+    label: "{{ item.key }} {{ item.value }} {{ notes }}"

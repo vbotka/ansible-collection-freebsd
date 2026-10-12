@@ -6,30 +6,34 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Setup: Set iocage_mount and iocage_jails_absent] *************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Create: Create jails.] ***************************************************
 ok: [iocage_06]
 ok: [iocage_05]
 
 TASK [Create: Set iocage_jails_created] ****************************************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Create: Set project_jails_created] ***************************************
 ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Properties: Set notes.] **************************************************
-ok: [iocage_05] => (item=http_1 alias=http_1 class=http,log-client vmm=iocage_05)
-ok: [iocage_06] => (item=logserv_2 alias=logserv_2 class=log-server vmm=iocage_06)
-ok: [iocage_05] => (item=db_1 alias=db_1 class=db,log-client vmm=iocage_05)
-ok: [iocage_06] => (item=db_2 alias=db_2 class=db,log-client vmm=iocage_06)
-ok: [iocage_05] => (item=logserv_1 alias=logserv_1 class=log-server vmm=iocage_05)
-ok: [iocage_06] => (item=http_2 alias=http_2 class=http,log-client vmm=iocage_06)
+ok: [iocage_05] => (item=c85ed6e2 db_1 alias=db_1 class=db,log-client vmm=iocage_05)
+ok: [iocage_06] => (item=5aacc59f logserv_2 alias=logserv_2 class=log-server vmm=iocage_06)
+ok: [iocage_05] => (item=db53a8e3 logserv_1 alias=logserv_1 class=log-server vmm=iocage_05)
+ok: [iocage_06] => (item=c3c2fbbe db_2 alias=db_2 class=db,log-client vmm=iocage_06)
+ok: [iocage_05] => (item=afd2feff http_1 alias=http_1 class=http,log-client vmm=iocage_05)
+ok: [iocage_06] => (item=0923136d http_2 alias=http_2 class=http,log-client vmm=iocage_06)
 
 TASK [Start: Start created jails.] *********************************************
 ok: [iocage_05]
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=6    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

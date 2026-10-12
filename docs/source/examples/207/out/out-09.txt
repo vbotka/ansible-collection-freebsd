@@ -7,15 +7,15 @@ ok: [repos] =>
         inv              name             uuid             ansible_host    jail_host    jail_name
         -----------------------------------------------------------------------------------------
         repos            repos            repos            172.16.99.21    iocage_06    3
-        db_1             2236727b         2236727b         172.16.95.162   iocage_05    11
+        http_1           afd2feff         afd2feff         172.16.95.172   iocage_05    24
+        db_1             c85ed6e2         c85ed6e2         172.16.95.170   iocage_05    22
         pkg_repo         pkg-repo         pkg-repo         172.16.99.23    iocage_06    2
-        http_1           7c183875         7c183875         172.16.95.104   iocage_05    10
         repos_devel      repos-devel      repos-devel      172.16.99.22    iocage_06    4
-        logserv_1        edeb9a06         edeb9a06         172.16.95.163   iocage_05    12
-        logserv_2        5350cc57         5350cc57         172.16.99.104   iocage_06    11
-        db_2             e4b87cfe         e4b87cfe         172.16.99.158   iocage_06    12
-        http_2           8a5f928e         8a5f928e         172.16.99.139   iocage_06    13
+        logserv_1        db53a8e3         db53a8e3         172.16.95.171   iocage_05    23
+        db_2             c3c2fbbe         c3c2fbbe         172.16.99.181   iocage_06    24
         log_server_01    log-server-01    log-server-01    172.16.99.10    iocage_06    1
+        logserv_2        5aacc59f         5aacc59f         172.16.99.179   iocage_06    23
+        http_2           0923136d         0923136d         172.16.99.182   iocage_06    25
 
 PLAY RECAP *********************************************************************
 repos                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

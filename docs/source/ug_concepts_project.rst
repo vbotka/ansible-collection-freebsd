@@ -44,10 +44,11 @@ attribute defines the host on which each jail runs:
 .. important::
 
    * Use dashes (``-``) in ``project`` keys if the keys represent actual
-     jail names. See :ref:`ug_qa_iocage_dash_vs_underscore`.
+     ``jail names``. See :ref:`ug_qa_iocage_dash_vs_underscore`.
 
-   * Do not use dashes (``-``) in ``project`` keys if the keys serve as
-     Ansible inventory host aliases. See :ref:`ug_qa_ansible_dash_vs_underscore`.
+   * Do not use dashes (``-``) in ``project`` keys if the keys serve as Ansible
+     inventory host ``aliases``. Use underscores (``_``) instead. See
+     :ref:`ug_qa_ansible_dash_vs_underscore`.
 
 vmm dictionary
 ^^^^^^^^^^^^^^

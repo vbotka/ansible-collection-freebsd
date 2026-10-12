@@ -74,6 +74,14 @@ Parameters
      - ``false``
      - Enables debug output tasks displaying evaluated variables, missing
        jails, and newly created jail UUIDs.
+   * - ``sanity``
+     - boolean
+     - ``true``
+     - Test project sanity.
+   * - ``start``
+     - boolean
+     - ``true``
+     - Start jails when ``properties.boot == 1``.
    * - ``vmm``
      - dictionary
      - *(Computed)*

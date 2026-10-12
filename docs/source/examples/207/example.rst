@@ -96,7 +96,7 @@ Synopsis
   * Module ``ansible.builtin.command`` and `iocage`_ utility to:
 
     * Create jails
-    * Set notes
+    * Set properties
     * Start jails
 
 * On all jails:
@@ -199,8 +199,7 @@ Playbook output - Create project
 
    The inventory ``-i hosts`` provides the group of all existing
    jails, allowing the play to create only missing project jails. This
-   makes the play idempotent despite using the module
-   ``ansible.builtin.command`` with the ``iocage`` option ``--count``.
+   makes the play idempotent.
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja

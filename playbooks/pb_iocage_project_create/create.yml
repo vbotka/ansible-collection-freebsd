@@ -10,13 +10,19 @@
     --short
     --template {{ project_template | d('ansible-init') }}
     --count {{ iocage_jails_absent | length }}
-    {{ (properties | d({})) | dictsort | map('join', '=') | join(' ') }}
 
 - name: "Create: Set iocage_jails_created"
   ansible.builtin.set_fact:
-    iocage_jails_created: "{{ out.stdout_lines | d([]) | map('split') | map('first') | list }}"
+    iocage_jails_created: "{{ out.stdout_lines | d([])
+                                               | map('split')
+                                               | map('first')
+                                               | list }}"
 
-- name: "Create: Display iocage_jails_created"
+- name: "Create: Set project_jails_created"
+  ansible.builtin.set_fact:
+    project_jails_created: "{{ dict(iocage_jails_created | zip(iocage_jails_absent)) }}"
+
+- name: "Create: Display project_jails_created"
   when: debug | d(false) | bool
   ansible.builtin.debug:
-    var: iocage_jails_created
+    var: project_jails_created
