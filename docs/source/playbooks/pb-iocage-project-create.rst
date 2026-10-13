@@ -27,7 +27,7 @@ across one or more jail manager hosts declared in an inventory.
 The playbook calculates the delta between declared project jail aliases and
 currently existing inventory hosts to ensure idempotency. It supports optional
 pre-flight sanity checks, batches jail creation using ``iocage create --count``,
-configures custom jail properties and metadata tags (alias, class memberships,
+configures custom jail properties and iocage tags (alias, class memberships,
 and host assignment) via ``properties.yml``, and starts newly provisioned jails
 configured to boot.
 

@@ -175,7 +175,8 @@ The swarms workflow manages groups of homogeneous, automatically named UUID jail
 Tasks
 ^^^^^
 
-The playbook orchestrates task files via ``ansible.builtin.import_tasks`` based on operational tags and variables:
+The playbook orchestrates task files via ``ansible.builtin.import_tasks`` based
+on Ansible tags and variables:
 
 .. list-table:: Task Files Overview
    :widths: 35 20 45
