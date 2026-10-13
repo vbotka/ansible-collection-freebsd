@@ -2,17 +2,29 @@
 PLAY [Display inventory.] ******************************************************
 
 TASK [debug] *******************************************************************
-ok: [1dada63d] => 
+ok: [8cded86a] => 
     msg: |-
-        inv      name     ansible_host  iocage_tags
-        ---------------------------------------------------------------------------
-        1dada63d 1dada63d 172.16.95.154 {class: test, swarm: sw_01, vmm: iocage_05}
-        60fb5dd9 60fb5dd9 172.16.95.104 {class: test, swarm: sw_01, vmm: iocage_05}
-        d2f59b39 d2f59b39 172.16.95.155 {class: test, swarm: sw_01, vmm: iocage_05}
-        e0985c95 e0985c95 172.16.99.110 {class: test, swarm: sw_01, vmm: iocage_06}
-        83a645c0 83a645c0 172.16.99.114 {class: test, swarm: sw_01, vmm: iocage_06}
-        6c1d5196 6c1d5196 172.16.99.104 {class: test, swarm: sw_01, vmm: iocage_06}
+        inv       name     uuid     ansible_host
+        ----------------------------------------
+        8cded86a  8cded86a 8cded86a 172.16.95.197
+        bc058617  bc058617 bc058617 172.16.95.198
+        4151952b  4151952b 4151952b 172.16.95.199
+        d1b35be2  d1b35be2 d1b35be2 172.16.99.185
+        62971c37  62971c37 62971c37 172.16.99.140
+        87d09892  87d09892 87d09892 172.16.99.143
+
+TASK [debug] *******************************************************************
+ok: [8cded86a] => 
+    msg: |-
+        inv       name     uuid     iocage_tags
+        ----------------------------------------------------------------------
+        8cded86a  8cded86a 8cded86a {class: test, swarm: sw_01, vmm: iocage_05}
+        bc058617  bc058617 bc058617 {class: test, swarm: sw_01, vmm: iocage_05}
+        4151952b  4151952b 4151952b {class: test, swarm: sw_01, vmm: iocage_05}
+        d1b35be2  d1b35be2 d1b35be2 {class: test, swarm: sw_01, vmm: iocage_06}
+        62971c37  62971c37 62971c37 {class: test, swarm: sw_01, vmm: iocage_06}
+        87d09892  87d09892 87d09892 {class: test, swarm: sw_01, vmm: iocage_06}
 
 PLAY RECAP *********************************************************************
-1dada63d                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+8cded86a                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -24,7 +24,7 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-06.txt
 
 # Test
 ansible-playbook -i hosts pb-test.yml | tee out/out-07.txt
-ansible-playbook pb-test-filter.yml | tee out/out-pb-test-filter.txt
+ansible-playbook -i localhost, pb-test-filter.yml | tee out/out-pb-test-filter.txt
 
 # Destroy swarms in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then

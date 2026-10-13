@@ -4,10 +4,10 @@ PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 TASK [Get pool.] ***************************************************************
 ok: [iocage_06]
 
-TASK [Create jails] ************************************************************
+TASK [Create jails.] ***********************************************************
 ok: [iocage_06] => (item=www-2 ansible-apache)
 
-TASK [Start created hosts] *****************************************************
+TASK [Start created hosts.] ****************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************

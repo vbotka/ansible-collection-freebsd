@@ -125,7 +125,7 @@ The inventory plugin composes the variable ``iocage_tags``:
 
 .. code-block:: yaml+jinja
 
-   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+   iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
 
 For example:
 
@@ -293,7 +293,7 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-04.txt
    :language: console
 
 Jails
@@ -303,7 +303,7 @@ Jails
 
    [iocage_06]# iocage list -l
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: bash
 
 Playbook pb-test.yml

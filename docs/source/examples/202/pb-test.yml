@@ -1,13 +1,31 @@
 - name: Display inventory.
   hosts: test
+
+  vars:
+
+    _vars:
+      - ansible_host
+
+    _properties:
+      - host_hostname
+      - host_hostuuid
     
   tasks:
     
     - debug:
         msg: |
-          inv      name     ansible_host
-          ------------------------------
+          inv       name     uuid     ansible_host
+          ----------------------------------------
           {% for h in ansible_play_hosts %}
-          {{ h }} {{ hostvars[h].iocage_properties.host_hostname }} {{ hostvars[h].ansible_host }}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ _vars | map('extract', hostvars[h]) | join(' ') }}
           {% endfor %}
+      run_once: true
+    
+    - debug:
+        msg: |
+          inv       name     uuid     iocage_tags
+          ----------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ hostvars[h].iocage_tags | to_yaml }}
+          {%- endfor %}
       run_once: true

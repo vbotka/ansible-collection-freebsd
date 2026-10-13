@@ -163,17 +163,17 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4-5
+   :emphasize-lines: 4-5,8
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4-5
+   :emphasize-lines: 4-5,8
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 3-4
+   :emphasize-lines: 3
 
 .. note::
 

@@ -166,12 +166,12 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5-6,9
+   :emphasize-lines: 1
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5-6,9
+   :emphasize-lines: 1
 
 .. hint::
 
@@ -304,7 +304,7 @@ Playbook output - Display test vars
 
 .. hint::
 
-   The command below stops and destroys the cloned jails::
+   The command below stops and destroys the created jails::
 
      ansible-playbook -i iocage.ini \
                       -t clone_destroy -e clone_destroy=true \

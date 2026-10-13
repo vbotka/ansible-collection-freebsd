@@ -136,12 +136,15 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 10,12-16
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 10,12-16
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 6,8-12
 
 .. note::
 
@@ -153,10 +156,6 @@ hosts
 
    If there is a route from your Ansible controller to the jails, comment out
    ``ansible_connection`` and try to connect.
-
-.. literalinclude:: hosts/99_constructed.yml
-   :language: yaml+jinja
-   :caption:
 
 host_vars
 ^^^^^^^^^
@@ -178,7 +177,7 @@ host_vars
    * The file ``act_pk`` provides the public keys allowed to SSH to ``act_user`` in a jail.
    * The service sshd is enabled in ``act_rcconf``.
 
-   The connection plugin ``jailexec`` doesn't need SSH and the plublic key in
+   The connection plugin ``jailexec`` doesn't need SSH and the public key in
    the jails.
 
 .. important::

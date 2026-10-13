@@ -1,9 +1,10 @@
 - name: Display inventory.
-  hosts: swarm_sw_01
+  hosts: test
 
   vars:
 
     _vars:
+      - ansible_host
       - ansible_jail_host
       - ansible_jail_name
 
@@ -18,11 +19,20 @@
     
     - debug:
         msg: |
-          inv       name     uuid     jail_host jail_name
-          -----------------------------------------------
+          inv       name     uuid     ansible_host  jail_host jail_name
+          ----------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
           {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ _vars | map('extract', hostvars[h]) | join(' ') }}
           {% endfor %}
+      run_once: true
+    
+    - debug:
+        msg: |
+          inv       name     uuid     iocage_tags
+          ----------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ hostvars[h].iocage_tags | to_yaml }}
+          {%- endfor %}
       run_once: true
 
     - shell: "{{ _cmd }}"

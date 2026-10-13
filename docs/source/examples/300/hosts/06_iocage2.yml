@@ -5,7 +5,7 @@ sudo: true
 get_properties: true
 
 compose:
-  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
   iocage_classes: iocage_properties.notes | regex_findall('(?<=class=)[\w\-]+|(?<=,)[\w\-]+')
 # connection plugin vbotka.freebsd.jailexec
   ansible_connection: "'vbotka.freebsd.jailexec'"

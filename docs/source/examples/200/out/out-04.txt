@@ -10,8 +10,8 @@ changed: [iocage_05] => (item=test-153 ansible-client)
 changed: [iocage_06] => (item=test-163 ansible-client)
 
 TASK [Set iocage_jails.] *******************************************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Start clones.] ***********************************************************
 ok: [iocage_05]

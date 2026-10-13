@@ -5,13 +5,25 @@ TASK [debug] *******************************************************************
 ok: [test-153] => 
     msg: |-
         inv       name     uuid     ansible_host  jail_host jail_name
-        -------------------------------------------------------------
-        test-153  test-153 test-153 172.16.95.153 iocage_05 27
-        test-151  test-151 test-151 172.16.95.151 iocage_05 25
-        test-152  test-152 test-152 172.16.95.152 iocage_05 26
-        test-161  test-161 test-161 172.16.99.161 iocage_06 26
-        test-162  test-162 test-162 172.16.99.162 iocage_06 27
-        test-163  test-163 test-163 172.16.99.163 iocage_06 28
+        ----------------------------------------------------------------------
+        test-153  test-153 test-153 172.16.95.153 iocage_05 58
+        test-151  test-151 test-151 172.16.95.151 iocage_05 59
+        test-152  test-152 test-152 172.16.95.152 iocage_05 57
+        test-161  test-161 test-161 172.16.99.161 iocage_06 65
+        test-162  test-162 test-162 172.16.99.162 iocage_06 67
+        test-163  test-163 test-163 172.16.99.163 iocage_06 66
+
+TASK [debug] *******************************************************************
+ok: [test-153] => 
+    msg: |-
+        inv       name     uuid     iocage_tags
+        ----------------------------------------------------------------------
+        test-153  test-153 test-153 {swarm: test-153, vmm: iocage_05}
+        test-151  test-151 test-151 {swarm: test-151, vmm: iocage_05}
+        test-152  test-152 test-152 {swarm: test-152, vmm: iocage_05}
+        test-161  test-161 test-161 {swarm: test-161, vmm: iocage_06}
+        test-162  test-162 test-162 {swarm: test-162, vmm: iocage_06}
+        test-163  test-163 test-163 {swarm: test-163, vmm: iocage_06}
 
 TASK [shell] *******************************************************************
 changed: [test-161]
@@ -36,7 +48,7 @@ ok: [test-153] =>
 PLAY RECAP *********************************************************************
 test-151                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-152                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-153                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-153                   : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-161                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-162                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test-163                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

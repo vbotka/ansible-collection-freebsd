@@ -2,30 +2,39 @@
 PLAY [Display inventory.] ******************************************************
 
 TASK [debug] *******************************************************************
-ok: [726fc47c] => 
+ok: [45d27e72] => 
     msg: |-
-        inv       name     uuid     jail_host jail_name
-        -----------------------------------------------
-        726fc47c  726fc47c 726fc47c iocage_06 94
-        aadf4ea7  aadf4ea7 aadf4ea7 iocage_06 95
-        test_161  test-161 test-161 iocage_06 93
-
-TASK [shell] *******************************************************************
-changed: [726fc47c]
-changed: [aadf4ea7]
-changed: [test_161]
+        inv       name     uuid     ansible_host  jail_host jail_name
+        ----------------------------------------------------------------------
+        45d27e72  45d27e72 45d27e72 172.16.99.122 iocage_06 81
+        936bdbca  936bdbca 936bdbca 172.16.99.121 iocage_06 80
+        test_161  test-161 test-161 172.16.99.201 iocage_06 79
 
 TASK [debug] *******************************************************************
-ok: [726fc47c] => 
+ok: [45d27e72] => 
+    msg: |-
+        inv       name     uuid     iocage_tags
+        ----------------------------------------------------------------------
+        45d27e72  45d27e72 45d27e72 {class: test, swarm: sw_01, vmm: iocage_06}
+        936bdbca  936bdbca 936bdbca {class: test, swarm: sw_01, vmm: iocage_06}
+        test_161  test-161 test-161 {alias: test_161, class: test, swarm: sw_01, vmm: iocage_06}
+
+TASK [shell] *******************************************************************
+changed: [936bdbca]
+changed: [test_161]
+changed: [45d27e72]
+
+TASK [debug] *******************************************************************
+ok: [45d27e72] => 
     msg: |-
         inv       who  uname
         -----------------------------------------
-        726fc47c  root FreeBSD 15.1-RELEASE amd64
-        aadf4ea7  root FreeBSD 15.1-RELEASE amd64
+        45d27e72  root FreeBSD 15.1-RELEASE amd64
+        936bdbca  root FreeBSD 15.1-RELEASE amd64
         test_161  root FreeBSD 15.1-RELEASE amd64
 
 PLAY RECAP *********************************************************************
-726fc47c                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-aadf4ea7                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+45d27e72                   : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+936bdbca                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 test_161                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

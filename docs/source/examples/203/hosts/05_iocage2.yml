@@ -1,6 +1,10 @@
 plugin: vbotka.freebsd.iocage2
 host: iocage_05
 user: admin
-get_properties: True
+get_properties: true
 hooks_results:
   - /var/db/dhclient-hook.address.epair0b
+compose:
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
+groups:
+  test_05: iocage_tags.swarm == 'sw_01'

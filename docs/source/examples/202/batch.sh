@@ -14,6 +14,11 @@ if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     ssh admin@iocage_06 sudo iocage destroy -f ansible-client
 fi
 
+# Copy public key in batch.
+if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
+    cp files/pk_admins.txt.orig files/pk_admins.txt
+fi
+
 # Create templates.
 ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_template.yml | tee out/out-01.txt
 
@@ -45,4 +50,9 @@ if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     ssh admin@iocage_06 sudo iocage destroy -f test-161
     ssh admin@iocage_06 sudo iocage destroy -f test-162
     ssh admin@iocage_06 sudo iocage destroy -f test-163
+fi
+
+# Sanitize public key in batch.
+if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
+    cp files/pk_admins.txt.san files/pk_admins.txt
 fi

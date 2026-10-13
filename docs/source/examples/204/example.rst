@@ -154,22 +154,24 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4
+   :emphasize-lines: 4-5,8
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4
+   :emphasize-lines: 4-5,8
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4
+   :emphasize-lines: 3
 
 .. note::
 
-   The option ``get_properties: True`` is needed to get the dictionary
-   ``iocage_properties``.
+   * The option ``get_properties: True`` is needed to get the dictionary
+     ``iocage_properties``.
+
+   * The option ``hooks_results`` is needed to get the list ``iocage_hooks``.
 
 group_vars
 ^^^^^^^^^^

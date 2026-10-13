@@ -7,16 +7,48 @@ ok: [repos] =>
         inv              name             uuid             ansible_host    jail_host    jail_name
         -----------------------------------------------------------------------------------------
         repos            repos            repos            172.16.99.21    iocage_06    3
-        http_1           afd2feff         afd2feff         172.16.95.172   iocage_05    24
-        db_1             c85ed6e2         c85ed6e2         172.16.95.170   iocage_05    22
         pkg_repo         pkg-repo         pkg-repo         172.16.99.23    iocage_06    2
+        http_1           c7ab83ca         c7ab83ca         172.16.95.105   iocage_05    72
+        db_1             20546a20         20546a20         172.16.95.100   iocage_05    71
+        logserv_1        bad435e6         bad435e6         172.16.95.107   iocage_05    73
         repos_devel      repos-devel      repos-devel      172.16.99.22    iocage_06    4
-        logserv_1        db53a8e3         db53a8e3         172.16.95.171   iocage_05    23
-        db_2             c3c2fbbe         c3c2fbbe         172.16.99.181   iocage_06    24
         log_server_01    log-server-01    log-server-01    172.16.99.10    iocage_06    1
-        logserv_2        5aacc59f         5aacc59f         172.16.99.179   iocage_06    23
-        http_2           0923136d         0923136d         172.16.99.182   iocage_06    25
+        http_2           41d64dcc         41d64dcc         172.16.99.124   iocage_06    84
+        db_2             5d334414         5d334414         172.16.99.115   iocage_06    83
+        logserv_2        b1516644         b1516644         172.16.99.123   iocage_06    82
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        inv              name             uid              iocage_classes
+        ----------------------------------------------------------------------
+        repos            repos            repos            ['repos']
+        pkg_repo         pkg-repo         pkg-repo         ['pkg-repo']
+        http_1           c7ab83ca         c7ab83ca         ['http', 'log-client']
+        db_1             20546a20         20546a20         ['db', 'log-client']
+        logserv_1        bad435e6         bad435e6         ['log-server']
+        repos_devel      repos-devel      repos-devel      ['repos']
+        log_server_01    log-server-01    log-server-01    ['log-server']
+        http_2           41d64dcc         41d64dcc         ['http', 'log-client']
+        db_2             5d334414         5d334414         ['db', 'log-client']
+        logserv_2        b1516644         b1516644         ['log-server']
+
+TASK [debug] *******************************************************************
+ok: [repos] => 
+    msg: |-
+        inv              name             uid              iocage_tags
+        ----------------------------------------------------------------------
+        repos            repos            repos            {'vmm': 'iocage_06', 'class': 'repos'}
+        pkg_repo         pkg-repo         pkg-repo         {'alias': 'pkg_repo', 'vmm': 'iocage_06', 'class': 'pkg-repo'}
+        http_1           c7ab83ca         c7ab83ca         {'alias': 'http_1', 'class': 'http,log-client', 'vmm': 'iocage_05'}
+        db_1             20546a20         20546a20         {'alias': 'db_1', 'class': 'db,log-client', 'vmm': 'iocage_05'}
+        logserv_1        bad435e6         bad435e6         {'alias': 'logserv_1', 'class': 'log-server', 'vmm': 'iocage_05'}
+        repos_devel      repos-devel      repos-devel      {'alias': 'repos_devel', 'vmm': 'iocage_06', 'class': 'repos'}
+        log_server_01    log-server-01    log-server-01    {'alias': 'log_server_01', 'vmm': 'iocage_06', 'class': 'log-server'}
+        http_2           41d64dcc         41d64dcc         {'alias': 'http_2', 'class': 'http,log-client', 'vmm': 'iocage_06'}
+        db_2             5d334414         5d334414         {'alias': 'db_2', 'class': 'db,log-client', 'vmm': 'iocage_06'}
+        logserv_2        b1516644         b1516644         {'alias': 'logserv_2', 'class': 'log-server', 'vmm': 'iocage_06'}
 
 PLAY RECAP *********************************************************************
-repos                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

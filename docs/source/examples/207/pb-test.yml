@@ -12,16 +12,37 @@
       - host_hostname
       - host_hostuuid
 
-    _fmt: "%-16s %-16s %-16s %-15s %-12s %-10s"
+    _fmt1: "%-16s %-16s %-16s %-15s %-12s %-10s"
+    _fmt2: "%-16s %-16s %-16s %-30s"
 
   tasks:
     - debug:
         msg: |
-          {{ _fmt | format('inv', 'name', 'uuid', 'ansible_host', 'jail_host', 'jail_name') }}
+          {{ _fmt1 | format('inv', 'name', 'uuid', 'ansible_host', 'jail_host', 'jail_name') }}
           -----------------------------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
-          {%   set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
-          {%   set v = _vars | map('extract', hostvars[h]) | list %}
-          {{ _fmt | format(h, p[0]|string, p[1]|string, v[0]|string, v[1]|string, v[2]|string) }}
+          {% set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
+          {% set v = _vars | map('extract', hostvars[h]) | list %}
+          {{ _fmt1 | format(h, p[0]|string, p[1]|string, v[0]|string, v[1]|string, v[2]|string) }}
+          {% endfor %}
+      run_once: true
+    
+    - debug:
+        msg: |
+          {{ _fmt2 | format('inv', 'name', 'uid', 'iocage_classes') }}
+          ----------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
+          {{ _fmt2 | format(h, p[0]|string, p[1]|string, hostvars[h].iocage_classes | string) }}
+          {% endfor %}
+      run_once: true
+    
+    - debug:
+        msg: |
+          {{ _fmt2 | format('inv', 'name', 'uid', 'iocage_tags') }}
+          ----------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
+          {{ _fmt2 | format(h, p[0]|string, p[1]|string, hostvars[h].iocage_tags | string) }}
           {% endfor %}
       run_once: true

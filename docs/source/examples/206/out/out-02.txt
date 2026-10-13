@@ -6,13 +6,13 @@ ok: [iocage_06] => (item=test-161 ansible-client) =>
     msg: |-
         _properties: "bpf=1 vnet=1 ip4_addr=vnet0|172.16.99.201/24 defaultrouter=172.16.99.1 notes="alias=test_161 vmm=iocage_06 class=test swarm=sw_01""
 
-TASK [Create clones from template] *********************************************
+TASK [Create jail from template.] **********************************************
 changed: [iocage_06] => (item=test-161 ansible-client)
 
-TASK [Set iocage_jails] ********************************************************
+TASK [Set iocage_jails.] *******************************************************
 ok: [iocage_06]
 
-TASK [Start clones] ************************************************************
+TASK [Start clones.] ***********************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************

@@ -8,8 +8,9 @@ hooks_results:
 inventory_hostname_tag: alias
 
 compose:
-  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
   iocage_classes: iocage_properties.notes | regex_findall('(?<=class=)[\w\-]+|(?<=,)[\w\-]+')
+  ansible_host: (iocage_hooks.0 == '-') | ternary(iocage_ip4, iocage_hooks.0)
 # connection plugin vbotka.freebsd.jailexec
   ansible_connection: "'vbotka.freebsd.jailexec'"
   ansible_ssh_user: "'admin'"
@@ -18,6 +19,9 @@ compose:
   ansible_jail_privilege_escalation: "'sudo'"
 # ansible options
   ansible_python_interpreter: "'auto_silent'"
+
+groups:
+  test: iocage_tags.swarm == 'sw_01'
 
 keyed_groups:
   - prefix: state

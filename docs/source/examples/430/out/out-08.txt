@@ -2,27 +2,22 @@
   |--@ungrouped:
   |--@state_up:
   |  |--repos
-  |  |--www_1
   |  |--repos_devel
+  |  |--http_2
   |  |--www_2
   |  |--pkg_repo
-  |  |--www_5
   |  |--log_server_01
-  |  |--www_4
-  |  |--www_3
+  |  |--db_2
+  |  |--logserv_2
   |--@vmm_iocage_06:
   |  |--repos
-  |  |--www_1
   |  |--repos_devel
+  |  |--http_2
   |  |--www_2
   |  |--pkg_repo
-  |  |--www_5
   |  |--log_server_01
-  |  |--www_4
-  |  |--www_3
+  |  |--db_2
+  |  |--logserv_2
   |--@www:
-  |  |--www_1
+  |  |--http_2
   |  |--www_2
-  |  |--www_5
-  |  |--www_4
-  |  |--www_3

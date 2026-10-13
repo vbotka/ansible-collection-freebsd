@@ -95,9 +95,9 @@ Synopsis
 
   * Module ``ansible.builtin.command`` and `iocage`_ utility to:
 
-    * Create jails
-    * Set properties
-    * Start jails
+    * Create jails.
+    * Set properties.
+    * Start jails.
 
 * On all jails:
 

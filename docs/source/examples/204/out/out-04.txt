@@ -1,21 +1,36 @@
 @all:
   |--@ungrouped:
+  |--@test_05:
+  |  |--1bf8f936
+  |  |--aa6f4230
+  |  |--083861c1
+  |--@test_06:
+  |  |--8e5bae1f
+  |  |--0ff9cd7b
+  |  |--f8bc708f
+  |--@test:
+  |  |--1bf8f936
+  |  |--aa6f4230
+  |  |--083861c1
+  |  |--8e5bae1f
+  |  |--0ff9cd7b
+  |  |--f8bc708f
+  |--@swarm_sw_01:
+  |  |--1bf8f936
+  |  |--aa6f4230
+  |  |--083861c1
+  |  |--8e5bae1f
+  |  |--0ff9cd7b
+  |  |--f8bc708f
+  |--@vmm_iocage_05:
+  |  |--1bf8f936
+  |  |--aa6f4230
+  |  |--083861c1
   |--@vmm_iocage_06:
   |  |--pkg-repo
   |  |--repos
   |  |--repos-devel
-  |  |--9919c412
+  |  |--8e5bae1f
+  |  |--0ff9cd7b
+  |  |--f8bc708f
   |  |--log-server-01
-  |  |--b73b0dd0
-  |  |--7a934d92
-  |--@swarm_sw_01:
-  |  |--ca11cd7a
-  |  |--81e6067c
-  |  |--7553a088
-  |  |--9919c412
-  |  |--b73b0dd0
-  |  |--7a934d92
-  |--@vmm_iocage_05:
-  |  |--ca11cd7a
-  |  |--81e6067c
-  |  |--7553a088
