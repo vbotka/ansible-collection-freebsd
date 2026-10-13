@@ -99,11 +99,8 @@ Parameters
      - Mapping of class groups to jail aliases, typically derived using
        ``(project | vbotka.freebsd.project).class``.
 
-Playbook Details
-^^^^^^^^^^^^^^^^
-
-Execution Workflow
-""""""""""""""""""
+Workflow
+^^^^^^^^
 
 1. **Debug & Setup**:
    Optionally displays project variables via ``debug.yml``, then executes
@@ -137,11 +134,8 @@ Execution Workflow
    When ``start: true`` (the default) and ``properties.boot`` evaluates to
    true, ``start.yml`` invokes ``iocage start`` for the newly created jails.
 
-Examples
-^^^^^^^^
-
-Basic Deployment
-""""""""""""""""
+Example
+^^^^^^^
 
 1. Define jail manager hosts in ``iocage.ini``:
 
@@ -205,7 +199,7 @@ Basic Deployment
         - prefix: vmm
           key: iocage_tags.vmm
 
-3. Declare project specifications in ``group_vars/all/project.yml``:
+3. Declare project in ``group_vars/all/project.yml``:
 
    .. code-block:: yaml
       :caption: group_vars/all/project.yml
@@ -241,7 +235,7 @@ Basic Deployment
         dhcp: 1
         vnet: 1
 
-4. Execute the playbook with existing inventory tracking:
+4. Execute the playbook:
 
    .. code-block:: console
 
