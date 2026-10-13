@@ -63,7 +63,7 @@ for batch in */batch.sh; do
     if [[ -f "${example}/.deny" ]]; then
         echo " -"
     elif [[ -f "${example}/.done" ]]; then
-        echo " + done"
+	echo " + done $(date -r "${example}/.done" '+%Y-%m-%d %H:%M')"
     elif [[ "$run_batch" == true ]]; then
         echo " exec - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
         (cd "$example" && ./batch.sh && touch .done)
