@@ -2,44 +2,44 @@
 PLAY [Iocage fetch releases, create basejail, clone and start jails.] **********
 
 TASK [Fetch releases] **********************************************************
-ok: [iocage_04] => (item=15.0-RELEASE)
-ok: [iocage_02] => (item=14.3-RELEASE)
+ok: [iocage_05] => (item=14.5-RELEASE)
+ok: [iocage_06] => (item=15.1-RELEASE)
 
 TASK [Create basejail] *********************************************************
-changed: [iocage_04] => (item=ansible_client 15.0-RELEASE)
-changed: [iocage_02] => (item=ansible_client 14.3-RELEASE)
+changed: [iocage_06] => (item=ansible-test 15.1-RELEASE)
+changed: [iocage_05] => (item=ansible-test 14.5-RELEASE)
 
 TASK [Clone from basejail] *****************************************************
-changed: [iocage_04] => (item=test_131 ansible_client)
-changed: [iocage_04] => (item=test_132 ansible_client)
-changed: [iocage_04] => (item=test_133 ansible_client)
-changed: [iocage_02] => (item=test_111 ansible_client)
-changed: [iocage_02] => (item=test_112 ansible_client)
-changed: [iocage_02] => (item=test_113 ansible_client)
+changed: [iocage_05] => (item=test-511 ansible-test)
+changed: [iocage_05] => (item=test-512 ansible-test)
+changed: [iocage_06] => (item=test-611 ansible-test)
+changed: [iocage_05] => (item=test-513 ansible-test)
+changed: [iocage_06] => (item=test-612 ansible-test)
+changed: [iocage_06] => (item=test-613 ansible-test)
 
 TASK [Start clones] ************************************************************
-changed: [iocage_04] => (item=test_133)
-changed: [iocage_02] => (item=test_113)
+changed: [iocage_05] => (item=test-511)
+changed: [iocage_06] => (item=test-611)
 
 TASK [Create Ansible facts iocage_*] *******************************************
-ok: [iocage_04]
-ok: [iocage_02]
+ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Display lists of bases, plugins, templates, and jails.] ******************
-ok: [iocage_02] => 
+ok: [iocage_05] => 
     msg: |-
-        ['14.2-RELEASE', '14.3-RELEASE']
+        ['14.5-RELEASE']
         []
         []
-        ['ansible_client', 'test_111', 'test_112', 'test_113']
-ok: [iocage_04] => 
+        ['ansible-test', 'test-511', 'test-512', 'test-513']
+ok: [iocage_06] => 
     msg: |-
-        ['14.3-RELEASE', '15.0-RELEASE']
+        ['15.0-RELEASE', '15.1-RELEASE']
         []
-        ['ansible_client_apache', 'ansible_client_pull']
-        ['ansible_client', 'test_131', 'test_132', 'test_133']
+        ['ansible-apache', 'ansible-init', 'ansible-nginx', 'ansible-pkg-repo', 'ansible-repos', 'ansible-syslogng-client', 'ansible-syslogng-server']
+        ['ansible-test', 'log-server-01', 'pkg-repo', 'repos', 'repos-devel', 'test-611', 'test-612', 'test-613']
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-iocage_04                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

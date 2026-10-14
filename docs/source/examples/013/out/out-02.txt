@@ -2,28 +2,28 @@
 PLAY [iocage] ******************************************************************
 
 TASK [Clone from basejail] *****************************************************
-changed: [iocage_04] => (item=test_131 ansible_client)
-changed: [iocage_04] => (item=test_132 ansible_client)
-changed: [iocage_04] => (item=test_133 ansible_client)
-changed: [iocage_02] => (item=test_111 ansible_client)
-changed: [iocage_02] => (item=test_112 ansible_client)
-changed: [iocage_02] => (item=test_113 ansible_client)
+changed: [iocage_05] => (item=test-511 ansible-test)
+changed: [iocage_05] => (item=test-512 ansible-test)
+changed: [iocage_06] => (item=test-611 ansible-test)
+changed: [iocage_05] => (item=test-513 ansible-test)
+changed: [iocage_06] => (item=test-612 ansible-test)
+changed: [iocage_06] => (item=test-613 ansible-test)
 
 TASK [Display lists of bases, plugins, templates, and jails.] ******************
-ok: [iocage_04] => 
+ok: [iocage_06] => 
     msg: |-
-        releases: ['14.3-RELEASE', '15.0-RELEASE']
+        releases: ['15.0-RELEASE', '15.1-RELEASE']
         plugins: []
-        templates: ['ansible_client_apache', 'ansible_client_pull']
-        jails: ['ansible_client', 'test_131', 'test_132', 'test_133']
-ok: [iocage_02] => 
+        templates: ['ansible-apache', 'ansible-init', 'ansible-nginx', 'ansible-pkg-repo', 'ansible-repos', 'ansible-syslogng-client', 'ansible-syslogng-server']
+        jails: ['ansible-test', 'log-server-01', 'pkg-repo', 'repos', 'repos-devel', 'test-611', 'test-612', 'test-613']
+ok: [iocage_05] => 
     msg: |-
-        releases: ['14.2-RELEASE', '14.3-RELEASE']
+        releases: ['14.5-RELEASE']
         plugins: []
         templates: []
-        jails: ['ansible_client', 'test_111', 'test_112', 'test_113']
+        jails: ['ansible-test', 'test-511', 'test-512', 'test-513']
 
 PLAY RECAP *********************************************************************
-iocage_02                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-iocage_04                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

@@ -2,41 +2,43 @@
 PLAY [test] ********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_131] => 
+ok: [test-611] => 
     msg: |-
-        inventory_hostname: test_131
-        ansible_host: 10.1.0.131
-        release: 15.0
+        inventory_hostname: test-611
+        ansible_host: 172.16.99.211
+        release: 15.1
         release_major: 15
-        release_minor: 0
-ok: [test_132] => 
+        release_minor: 1
+ok: [test-612] => 
     msg: |-
-        inventory_hostname: test_132
-        ansible_host: 10.1.0.132
-        release: 15.0
+        inventory_hostname: test-612
+        ansible_host: 172.16.99.212
+        release: 15.1
         release_major: 15
-        release_minor: 0
-ok: [test_133] => 
+        release_minor: 1
+ok: [test-613] => 
     msg: |-
-        inventory_hostname: test_133
-        ansible_host: 10.1.0.133
-        release: 15.0
+        inventory_hostname: test-613
+        ansible_host: 172.16.99.213
+        release: 15.1
         release_major: 15
-        release_minor: 0
+        release_minor: 1
 
 TASK [debug] *******************************************************************
-ok: [test_131] => 
+ok: [test-611] => 
     msg: |-
         groups:
-          all: [ansible_client, test_131, test_132, test_133]
-          distro_15_0_RELEASE_p3: [ansible_client, test_131, test_132, test_133]
-          state_down: [ansible_client, test_131, test_132]
-          state_up: [test_133]
-          test: [test_131, test_132, test_133]
+          all: [ansible-test, log-server-01, pkg-repo, repos, repos-devel, test-611, test-612,
+            test-613]
+          distro_15_1_RELEASE_p1: [ansible-test, log-server-01, pkg-repo, repos, repos-devel,
+            test-611, test-612, test-613]
+          state_down: [ansible-test, test-612, test-613]
+          state_up: [log-server-01, pkg-repo, repos, repos-devel, test-611]
+          test: [test-611, test-612, test-613]
           ungrouped: []
 
 PLAY RECAP *********************************************************************
-test_131                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-611                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-612                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

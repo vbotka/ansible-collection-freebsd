@@ -2,7 +2,7 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test_163] => 
+ok: [test-613] => 
     iocage_properties:
         CONFIG_VERSION: '34'
         allow_chflags: '0'
@@ -29,7 +29,7 @@ ok: [test_163] =>
         available: readonly
         basejail: '1'
         boot: '0'
-        bpf: '0'
+        bpf: '1'
         children_max: '0'
         comment: none
         compression: 'on'
@@ -60,23 +60,23 @@ ok: [test_163] =>
         exec_system_user: root
         exec_timeout: '60'
         host_domainname: ''
-        host_hostname: test_163
-        host_hostuuid: test_163
+        host_hostname: test-613
+        host_hostuuid: test-613
         host_time: '1'
         hostid: 792b42dd-47f2-1e43-bd8a-34e94790815f
         hostid_strict_check: '0'
         interfaces: vnet0:bridge0
         ip4: new
-        ip4_addr: vnet0|172.16.99.253/24
+        ip4_addr: vnet0|172.16.99.213/24
         ip4_saddrsel: '1'
         ip6: new
         ip6_addr: none
         ip6_saddrsel: '1'
         ip_hostname: '0'
         jail_zfs: '0'
-        jail_zfs_dataset: iocage/jails/test_163/data
+        jail_zfs_dataset: iocage/jails/test-613/data
         jail_zfs_mountpoint: none
-        last_started: '2026-09-14 04:57:01'
+        last_started: none
         localhost_ip: none
         login_flags: -f root
         mac_prefix: f6289d
@@ -121,7 +121,7 @@ ok: [test_163] =>
         securelevel: '2'
         shmsize: 'off'
         stacksize: 'off'
-        state: up
+        state: down
         stop_timeout: '30'
         swapuse: 'off'
         sync_state: none
@@ -135,7 +135,7 @@ ok: [test_163] =>
         used: readonly
         vmemoryuse: 'off'
         vnet: '1'
-        vnet0_mac: f6289dc776b9 f6289dc776ba
+        vnet0_mac: none
         vnet0_mtu: auto
         vnet1_mac: none
         vnet1_mtu: auto
@@ -151,5 +151,5 @@ ok: [test_163] =>
         writeiops: 'off'
 
 PLAY RECAP *********************************************************************
-test_163                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

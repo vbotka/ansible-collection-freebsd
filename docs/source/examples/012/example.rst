@@ -9,14 +9,15 @@ This example extends :ref:`example_010`.
    :local:
    :depth: 1
 
-.. index:: single: variable iocage_properties; Example 012
-.. index:: single: iocage_properties; Example 012
-.. index:: single: option get_properties; Example 012
-.. index:: single: get_properties; Example 012
-.. index:: single: option compose; Example 012
-.. index:: single: compose; Example 012
-.. index:: single: option keyed_groups; Example 012
-.. index:: single: keyed_groups; Example 012
+.. index::
+   single: variable iocage_properties; Example 012
+   single: iocage_properties; Example 012
+   single: option get_properties; Example 012
+   single: get_properties; Example 012
+   single: option compose; Example 012
+   single: compose; Example 012
+   single: option keyed_groups; Example 012
+   single: keyed_groups; Example 012
 
 Use case
 ^^^^^^^^
@@ -37,14 +38,14 @@ Tree
 Synopsis
 ^^^^^^^^
 
-Display ``iocage_properties`` in a selected jail by enabling ``get_properties``
-in the inventory plugin.
+* Display ``iocage_properties`` in a selected jail by enabling ``get_properties``
+  in the inventory plugin.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_010`
+* Jails created in :ref:`example_010`.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -55,12 +56,17 @@ ansible.cfg
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable ``get_properties``. See :ref:`inventory vbotka.freebsd.iocage
-<ug_inventory_iocage>`.
-
 .. literalinclude:: iocage.yml
    :language: yaml+jinja
    :emphasize-lines: 4
+
+.. note::
+
+   Enable ``get_properties``.
+
+.. seealso::
+
+   See :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
 Playbook pb-vars-properties.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -73,7 +79,7 @@ Playbook output - iocage_properties
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.yml -l test_163 pb-vars-properties.yml
+   (env) > ansible-playbook -i iocage.yml -l test-613 pb-vars-properties.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja

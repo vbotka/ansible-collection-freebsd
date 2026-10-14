@@ -21,7 +21,7 @@ Tree
 
 ::
 
-  shell> tree
+  shell> tree .
   .
   ├── ansible.cfg
   ├── iocage.ini
@@ -33,14 +33,14 @@ Synopsis
 * On a managed node, use the playbook ``pb-iocage.yml`` and the `role
   vbotka.freebsd.iocage`_ to:
 
-  * Display variables
-  * Install the `iocage`_ package
+  * Display variables.
+  * Install the `iocage`_ package.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^

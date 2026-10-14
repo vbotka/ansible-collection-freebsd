@@ -2,27 +2,39 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
-    msg: ansible_client running at iocage_04
-ok: [test_111] => 
-    msg: test_111 running at iocage_02
-ok: [test_112] => 
-    msg: test_112 running at iocage_02
-ok: [test_113] => 
-    msg: test_113 running at iocage_02
-ok: [test_131] => 
-    msg: test_131 running at iocage_04
-ok: [test_132] => 
-    msg: test_132 running at iocage_04
-ok: [test_133] => 
-    msg: test_133 running at iocage_04
+ok: [ansible-test] => 
+    msg: ansible-test running at iocage_06
+ok: [test-511] => 
+    msg: test-511 running at iocage_05
+ok: [test-512] => 
+    msg: test-512 running at iocage_05
+ok: [test-513] => 
+    msg: test-513 running at iocage_05
+ok: [log-server-01] => 
+    msg: log-server-01 running at iocage_06
+ok: [pkg-repo] => 
+    msg: pkg-repo running at iocage_06
+ok: [repos] => 
+    msg: repos running at iocage_06
+ok: [repos-devel] => 
+    msg: repos-devel running at iocage_06
+ok: [test-612] => 
+    msg: test-612 running at iocage_06
+ok: [test-611] => 
+    msg: test-611 running at iocage_06
+ok: [test-613] => 
+    msg: test-613 running at iocage_06
 
 PLAY RECAP *********************************************************************
-ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_131                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-test               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server-01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg-repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos-devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-511                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-512                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-513                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-611                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-612                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

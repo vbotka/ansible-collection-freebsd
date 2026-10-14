@@ -22,13 +22,14 @@ Tree
 
 ::
 
-  shell> tree
+  shell> tree .
   .
   ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   ├── iocage_04
+  │   ├── iocage_05
   │   │   └── iocage.yml
   │   └── iocage_06
   │       └── iocage.yml
@@ -38,29 +39,24 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-vbotka.freebsd.iocage`_ to audit the `iocage`_ configuration.
+* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
+  vbotka.freebsd.iocage`_ to audit the `iocage`_ configuration.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes
-* The `iocage`_ binary
+* Root privileges on the managed nodes.
+* The `iocage`_ binary.
 
 Notes
 ^^^^^
-
-* Pass ``-l iocage_0X`` on the command line to run the play on the managed node
-  ``iocage_0X``.
-
-* Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
 
 * By default, sanity testing is enabled: ``freebsd_iocage_sanity: true``.
 
 .. important::
 
-   :ref:`See example 501 how to configure iocage host. <example_501>`
+   See :ref:`example_501` for how to configure an iocage host.
 
 .. seealso::
 
@@ -95,11 +91,7 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -118,7 +110,7 @@ Playbook output - Test sanity
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -l iocage_06 \
+   (env) > ansible-playbook -i iocage.ini \
                             -t freebsd_iocage_sanity \
                             pb-iocage.yml
 
@@ -133,7 +125,7 @@ Playbook output - Test sanity quietly
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
            ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-           ansible-playbook -i iocage.ini -l iocage_06 \
+           ansible-playbook -i iocage.ini \
                             -t freebsd_iocage_sanity \
                             pb-iocage.yml
 

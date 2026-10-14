@@ -1,17 +1,17 @@
 plugin: vbotka.freebsd.iocage
-host: 10.1.0.29
+host: iocage_06
 user: admin
 get_properties: True
 compose:
   ansible_host: iocage_ip4
   release: iocage_release | split('-') | first
-  iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
 groups:
-    test_04: inventory_hostname.startswith('test')
+    test_06: inventory_hostname.startswith('test')
 keyed_groups:
-  - prefix: distro_04
+  - prefix: distro_06
     key: iocage_release
-  - prefix: state_04
+  - prefix: state_06
     key: iocage_state
   - prefix: vmm
     key: iocage_tags.vmm

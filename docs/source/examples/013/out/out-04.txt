@@ -1,24 +1,24 @@
 
-PLAY [ansible_client] **********************************************************
+PLAY [ansible-test] ************************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
+ok: [ansible-test] => 
     msg: |-
-        inventory_hostname: ansible_client
-        ansible_host: 10.1.0.198
-        release: 15.0
+        inventory_hostname: ansible-test
+        ansible_host: 172.16.99.200
+        release: 15.1
 
         iocage_tags:
-          vmm: iocage_04
+          vmm: iocage_06
 
         group_names:
-          - distro_02_14_3_RELEASE_p8
-          - distro_04_15_0_RELEASE_p3
-          - state_02_down
-          - state_04_down
-          - vmm_iocage_02
-          - vmm_iocage_04
+          - distro_05_14_5_RELEASE_p1
+          - distro_06_15_1_RELEASE_p1
+          - state_05_down
+          - state_06_down
+          - vmm_iocage_05
+          - vmm_iocage_06
 
 PLAY RECAP *********************************************************************
-ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-test               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

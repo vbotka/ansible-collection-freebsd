@@ -7,19 +7,18 @@
    :local:
    :depth: 1
 
-.. index:: single: clones; Example 010
-
-.. index:: single: module vbotka.freebsd.iocage; Example 010
-.. index:: single: inventory vbotka.freebsd.iocage; Example 010
-.. index:: single: option compose; Example 010
-.. index:: single: compose; Example 010
-.. index:: single: option keyed_groups; Example 010
-.. index:: single: keyed_groups; Example 010
-
-.. index:: single: iocage_jails; Example 010
-.. index:: single: iocage_plugins; Example 010
-.. index:: single: iocage_releases; Example 010
-.. index:: single: iocage_templates; Example 010
+.. index::
+   single: clones; Example 010
+   single: module vbotka.freebsd.iocage; Example 010
+   single: inventory vbotka.freebsd.iocage; Example 010
+   single: option compose; Example 010
+   single: compose; Example 010
+   single: option keyed_groups; Example 010
+   single: keyed_groups; Example 010
+   single: iocage_jails; Example 010
+   single: iocage_plugins; Example 010
+   single: iocage_releases; Example 010
+   single: iocage_templates; Example 010
 
 Use case
 ^^^^^^^^
@@ -38,9 +37,9 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_02
+  │   ├── iocage_05
   │   │   └── iocage.yml
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   ├── iocage.yml
@@ -55,26 +54,26 @@ Synopsis
   Use the playbook ``pb-iocage-fetch-base-clone-list.yml``
   and the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * Fetch the release
-  * Create a basejail
-  * Clone 3 jails from the basejail
-  * Start 1 jail
-  * Display lists of bases, plugins, templates, and jails
+  * Fetch the release.
+  * Create a basejail.
+  * Clone 3 jails from the basejail.
+  * Start 1 jail.
+  * Display lists of bases, plugins, templates, and jails.
 
 * Use the playbook ``pb-test.yml`` and the inventory plugin
   :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-  * Create inventory groups and compose variables
-  * Display the hosts and composed variables in the group ``test``
-  * Display all created groups
+  * Create inventory groups and compose variables.
+  * Display the hosts and composed variables in the group ``test``.
+  * Display all created groups.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
-* Activated `iocage`_
-* Root privileges on the managed nodes
+* Activated `iocage`_.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -121,8 +120,8 @@ manually before running the playbook. For example:
 
 .. hint::
 
-   If `iocage list is slow`_, use the cache. See :ref:`example_014`
- 
+   If `iocage list is slow`_, use the cache. See :ref:`example_014`.
+
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -138,11 +137,11 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -163,30 +162,21 @@ Playbook output - Fetch, create, clone, and start
    :language: yaml+jinja
    :force:
 
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
+Jails
+^^^^^
 
 .. literalinclude:: out/out-02.txt
    :language: console
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
+   :caption: [iocage_05]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
    :language: console
+   :caption: [iocage_06]# iocage list -l
 
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-The inventory file ``iocage.yml`` targeting jails on ``iocage_04``:
+The inventory file ``iocage.yml`` targeting jails on ``iocage_06``:
 
 .. literalinclude:: iocage.yml
    :language: yaml+jinja
@@ -212,4 +202,3 @@ Playbook output - Display groups
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
-   :emphasize-lines: 30-35

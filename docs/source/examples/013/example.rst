@@ -36,12 +36,12 @@ Use case
 
 Use the property ``notes`` to create ``iocage tags``:
 
-* Add the property ``notes: "vmm={{ inventory_hostname }}"``
+* Add the property ``notes: "vmm={{ inventory_hostname }}"``.
 
 In the inventory plugin:
 
-* Compose the variable ``iocage_tags``
-* Create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``
+* Compose the variable ``iocage_tags``.
+* Create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``.
 
 Tree
 ^^^^
@@ -52,16 +52,16 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   └── 04_iocage.yml
+  │   ├── 05_iocage.yml
+  │   └── 06_iocage.yml
   ├── host_vars
-  │   ├── iocage_02
+  │   ├── iocage_05
   │   │   └── iocage.yml
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all.yml
-  ├── pb-ansible-client.yml
+  ├── pb-ansible-test.yml
   ├── pb-iocage-base.yml
   ├── pb-iocage-clone.yml
   └── pb-test.yml
@@ -69,23 +69,23 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
+* On managed nodes:
 
   * In the playbook ``pb-iocage-base.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to create the basejail
-    ``ansible_client``.
+    ``ansible-test``.
 
   * In the playbook ``pb-iocage-clone.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to clone 3 jails from the
-    basejail ``ansible_client``.
+    basejail ``ansible-test``.
 
-  * In the playbooks ``pb-all.yml``, ``pb-ansible-client.yml``, and
+  * In the playbooks ``pb-all.yml``, ``pb-ansible-test.yml``, and
     ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
     <ug_inventory_iocage>` to:
 
-    * Create inventory groups and compose variables
-    * Create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
-    * Display hosts, composed variables, and groups
+    * Create inventory groups and compose variables.
+    * Create the dictionary ``iocage_tags`` from ``iocage_properties.notes``.
+    * Display hosts, composed variables, and groups.
 
 * Comment on hosts potentially silently overriding each other.
 
@@ -94,9 +94,9 @@ Requirements
 
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
-* Activated `iocage`_
-* Fetched releases
-* Root privileges on the managed nodes
+* Activated `iocage`_.
+* Fetched releases.
+* Root privileges on the managed nodes.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -113,33 +113,33 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-Enable ``get_properties: true`` to create the dictionary
-``iocage_properties``. Then, the dictionary ``iocage_tags`` can be
-created from ``iocage_properties.notes``.
-
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 6,10,19
+   :emphasize-lines: 4,8,17
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
    :emphasize-lines: 4,8,17
 
 .. note::
 
-   The structure of ``notes`` is arbitrary. If you change it, update
-   the ``iocage_tags`` declaration accordingly.
+   * Enable ``get_properties: true`` to create the dictionary
+     ``iocage_properties``. Then, the dictionary ``iocage_tags`` can be created
+     from ``iocage_properties.notes``.
+
+   * The structure of ``notes`` is arbitrary. If you change it, update the
+     ``iocage_tags`` declaration accordingly.
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -199,15 +199,15 @@ Playbook output - variables and groups
    * The inventory files in the directory ``hosts`` are evaluated in
      alphabetical order.
 
-   * The jail ``ansible_client`` defined in ``04_iocage.yml``
-     overrides the one from ``02_iocage.yml``.
+   * The jail ``ansible-client`` from ``06_iocage.yml`` overrides the one from
+     ``05_iocage.yml``.
 
    * See the special variable `groups`_.
 
-Playbook pb-ansible-client.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-ansible-test.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-ansible-client.yml
+.. literalinclude:: pb-ansible-test.yml
    :language: yaml+jinja
 
 Playbook output - group_names
@@ -215,7 +215,7 @@ Playbook output - group_names
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-ansible-client.yml
+   (env) > ansible-playbook -i hosts pb-ansible-test.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -224,7 +224,7 @@ Playbook output - group_names
 .. note::
 
    * The structure of the inventory hosts and groups is flat. The jail
-     ``ansible_client`` is the same in all groups.
+     ``ansible-test`` is the same in all groups.
 
    * See the special variable `group_names`_.
 
@@ -233,7 +233,7 @@ Playbook output - group_names
    There are no internal checks for hosts overriding each
    other. Maintaining inventory consistency is up to the user.
 
-   See :ref:`ug_qa_inventory_flat`
+   See :ref:`ug_qa_inventory_flat`.
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
