@@ -21,7 +21,7 @@ Use case
 ^^^^^^^^
 
 Create inventory groups using the inventory plugin
-`ansible.builtin.constructed`_ after loading the two :ref:`inventory
+`ansible.builtin.constructed`_ after loading the :ref:`inventory
 vbotka.freebsd.iocage <ug_inventory_iocage>` configuration files.
 
 Tree
@@ -33,8 +33,8 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   └── pb-test.yml
 
@@ -44,22 +44,22 @@ Synopsis
 * The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` retrieves the
   jails:
 
-  * ``test_111:113`` from host ``iocage_02``
-  * ``test_131:133`` from host ``iocage_04``
+  * ``test_511:513`` from host ``iocage_05``.
+  * ``test_611:613`` from host ``iocage_06``.
 
-  and creates the inventory groups ``test_02`` and ``test_04``.
+  and creates the inventory groups ``test_05`` and ``test_06``.
 
 * The inventory plugin `ansible.builtin.constructed`_ creates the
   inventory groups:
 
-  * ``test`` comprising hosts whose names start with ``'test'``
-  * ``test_up`` comprising running hosts whose names start with ``'test'``
+  * ``test`` comprising hosts whose names start with ``'test'``.
+  * ``test_up`` comprising running hosts whose names start with ``'test'``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_010`
+* Jails created in :ref:`example_013`.
 
 Notes
 ^^^^^
@@ -74,26 +74,6 @@ Notes
 
 * See :ref:`example_019`.
 
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: console
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-02.txt
-   :language: console
-
 ansible.cfg
 ^^^^^^^^^^^
 
@@ -103,17 +83,35 @@ ansible.cfg
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+
+Graph
+^^^^^
+
+.. literalinclude:: out/out-01.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
+
+Jails
+^^^^^
+
+.. literalinclude:: out/out-02.txt
+   :language: console
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
+   :language: console
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -128,6 +126,6 @@ Playbook output - Display groups
 
    (env) > ansible-playbook -i hosts pb-test.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:

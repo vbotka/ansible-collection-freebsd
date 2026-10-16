@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-61;8000;1c
+
 # shellcheck disable=SC1091
 . ../defaults/batch
 

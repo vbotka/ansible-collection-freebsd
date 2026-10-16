@@ -60,6 +60,7 @@
 .. _Install package inside jail vs install package from outside: https://forums.freebsd.org/threads/install-package-inside-jail-vs-install-package-from-outside.54123/
 .. _Installing and Configuring a DHCP Server: https://docs.freebsd.org/en/books/handbook/network-servers/#network-dhcp-server
 .. _Installing collections: https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html
+.. _Inventory alias: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _Inventory plugin ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
 .. _Inventory plugins: https://docs.ansible.com/ansible/latest/plugins/inventory.html#inventory-plugins
@@ -206,6 +207,7 @@
 .. _ioc_list.py#L275: https://github.com/freebsd/iocage/blob/master/iocage_lib/ioc_list.py#L275
 .. _iocage (role): https://github.com/vbotka/ansible-freebsd-iocage
 .. _iocage - A FreeBSD Jail Manager: https://freebsd.github.io/iocage/
+.. _iocage Jail Property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
 .. _iocage docs: https://iocage.readthedocs.io/en/latest/
 .. _iocage galaxy: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/
 .. _iocage jail type - base jail vs clone. Which to choose?: https://www.truenas.com/community/threads/iocage-jail-type-base-jail-vs-clone-which-to-choose.82639/

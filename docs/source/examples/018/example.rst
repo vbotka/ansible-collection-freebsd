@@ -3,8 +3,6 @@
 018 Clone basejails. Use DHCP.
 ------------------------------
 
-This example extends :ref:`example_010`.
-
 .. contents::
    :local:
    :depth: 1
@@ -14,14 +12,9 @@ This example extends :ref:`example_010`.
    single: module vbotka.freebsd.iocage; Example 018
    single: inventory vbotka.freebsd.iocage; Example 018
    single: DHCP; Example 018
-   single: SETENV; Example 018
    single: sudoers; Example 018
    single: option sudo; Example 018
    single: sudo; Example 018
-   single: option sudo_preserve_env; Example 018
-   single: sudo_preserve_env; Example 018
-   single: variable iocage_ip4_dict; Example 018
-   single: iocage_ip4_dict; Example 018
 
 Use case
 ^^^^^^^^
@@ -36,63 +29,57 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
+  ├── hosts
+  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   └── iocage_04
-  │       └── iocage.yml
+  │   ├── iocage_05
+  │   │   └── iocage.yml
+  │   └── iocage_06
+  │       └── iocage.yml
   ├── iocage.ini
-  ├── iocage.yml
-  ├── pb-iocage-clone-list.yml
+  ├── pb-iocage-base.yml
+  ├── pb-iocage-clone.yml
+  ├── pb-iocage-destroy.yml
+  ├── pb-iocage-start.yml
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
+* On managed nodes:
 
-  In the playbook ``pb-iocage-clone-list.yml``, use the :ref:`module
-  vbotka.freebsd.iocage <ug_module_iocage>` to:
+  * In the playbook ``pb-iocage-base.yml``, use the :ref:`module
+    vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * Clone 3 jails from the basejail ``ansible_client``
-  * Start all jails
-  * Display lists of jails
+    * Create the basejail ``ansible-test``.
+
+  * In the playbook ``pb-iocage-clone.yml``, use the :ref:`module
+    vbotka.freebsd.iocage <ug_module_iocage>` to:
+
+    * Clone 3 jails from  ``ansible-test``
+    * Display iocage datasets lists.
+
+  * In the playbook ``pb-iocage-start.yml``, use `iocage`_ to:
+
+    * Start cloned jails.
 
 * In the playbook ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
   <ug_inventory_iocage>` to:
 
   * Create inventory groups and compose variables
-  * Display the hosts and composed variables in the group ``test``
+  * Display the hosts and composed variables in the group ``example_018``
 
 Requirements
 ^^^^^^^^^^^^
 
+* :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_010`
 
-.. note::
+.. seealso::
 
-   See :ref:`example_440`
-
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
+   * :ref:`example_440`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -106,84 +93,115 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
+hosts
+^^^^^
+
+.. literalinclude:: hosts/05_iocage.yml
+   :language: ini
+   :caption:
+   :emphasize-lines: 6
+
+.. literalinclude:: hosts/06_iocage.yml
+   :language: ini
+   :caption:
+   :emphasize-lines: 6
+
+.. note::
+
+   * The value of iocage tag ``alias`` is used as `inventory alias`_.
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: ini
+   :caption:
+
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
-Playbook pb-iocage-clone-list.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
 
-.. literalinclude:: pb-iocage-clone-list.yml
+   * The keys of the ``clones`` dictionaries are used as `inventory alias`_.
+
+Playbook pb-iocage-base.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-base.yml
    :language: yaml+jinja
 
-Playbook output - Clone, start, and list
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create basejails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini pb-iocage-clone-list.yml
+   (env) > ansible-playbook -i iocage.ini pb-iocage-base.yml
+
+.. literalinclude:: out/out-01.txt
+   :language: yaml
+   :force:
+
+Playbook pb-iocage-clone.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-clone.yml
+   :language: yaml+jinja
+   :emphasize-lines: 13
+
+.. note::
+
+   * iocage tags ``alias``, ``vmm``, and ``class`` are created from ``notes``.
+
+Playbook output - Create cones
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i iocage.ini pb-iocage-clone.yml
+
+.. literalinclude:: out/out-02.txt
+   :language: yaml
+   :force:
+
+Graph
+^^^^^
 
 .. literalinclude:: out/out-03.txt
    :language: bash
-   :force:
-
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-05.txt
-   :language: bash
-
-Inventory iocage.yml
-^^^^^^^^^^^^^^^^^^^^
-
-Enable ``sudo: true``. Otherwise, `iocage`_ will complain ``DHCP
-(running -- address requires root)``. Also enable ``sudo_preserve_env:
-true`` if ``env`` is used.
-
-.. literalinclude:: iocage.yml
-   :language: yaml+jinja
-   :emphasize-lines: 4,5
-
-.. hint::
-
-   * Optionally, limit admin sudo access to the command ``iocage list``::
-
-       shell> grep iocage /usr/local/etc/sudoers
-       admin ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/iocage list*
-
-   * The ``SETENV`` tag, to preserve the environment, is needed when
-     ``env`` is used.
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-05.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
+
+Playbook pb-iocage-start.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-iocage-start.yml
+   :language: yaml+jinja
+
+Playbook output - Start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: console
 
-   (env) > ansible-inventory -i iocage.yml --list --yaml
+   (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-start.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
+   :force:
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -191,40 +209,13 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - iocage_* variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display iocage_* variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.yml pb-test.yml
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-07.txt
-   :language: yaml+jinja
-   :force:
-
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-If a jail is stopped, the IP4 column displays: ``DHCP (not running)``.
-
-.. code-block:: console
-
-   [iocage_02]# iocage stop test_112 test_113
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-08.txt
-   :language: bash
-
-Playbook output - iocage_* variables (stopped jails)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.yml pb-test.yml
-
-.. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:

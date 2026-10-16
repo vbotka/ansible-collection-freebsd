@@ -2,31 +2,28 @@ fetch:
   - 15.1-RELEASE
 
 basejails:
-  - name: ansible-test
+  ansible-test:
     release: 15.1-RELEASE
+    properties:
+      ip4_addr: 'vnet0|172.16.99.200/24'
 
 clones:
-  - name: test-611
+  test-611:
     clone_from: ansible-test
     properties:
-      bpf: 1
-      vnet: 1
-      defaultrouter: 172.16.99.1
       ip4_addr: 'vnet0|172.16.99.211/24'
-  - name: test-612
+  test-612:
     clone_from: ansible-test
     properties:
-      bpf: 1
-      vnet: 1
-      defaultrouter: 172.16.99.1
       ip4_addr: 'vnet0|172.16.99.212/24'
-  - name: test-613
+  test-613:
     clone_from: ansible-test
     properties:
-      bpf: 1
-      vnet: 1
-      defaultrouter: 172.16.99.1
       ip4_addr: 'vnet0|172.16.99.213/24'
+
+properties:
+  vnet: 1
+  defaultrouter: 172.16.99.1
 
 start:
   - test-611

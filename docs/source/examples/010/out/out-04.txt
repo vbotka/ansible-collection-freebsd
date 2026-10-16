@@ -2,43 +2,41 @@
 PLAY [test] ********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [test-611] => 
+ok: [test-512] => 
     msg: |-
-        inventory_hostname: test-611
-        ansible_host: 172.16.99.211
-        release: 15.1
-        release_major: 15
-        release_minor: 1
-ok: [test-612] => 
+        inventory_hostname: test-512
+        ansible_host: 172.16.95.212
+        release: 14.5
+        release_major: 14
+        release_minor: 5
+ok: [test-511] => 
     msg: |-
-        inventory_hostname: test-612
-        ansible_host: 172.16.99.212
-        release: 15.1
-        release_major: 15
-        release_minor: 1
-ok: [test-613] => 
+        inventory_hostname: test-511
+        ansible_host: 172.16.95.211
+        release: 14.5
+        release_major: 14
+        release_minor: 5
+ok: [test-513] => 
     msg: |-
-        inventory_hostname: test-613
-        ansible_host: 172.16.99.213
-        release: 15.1
-        release_major: 15
-        release_minor: 1
+        inventory_hostname: test-513
+        ansible_host: 172.16.95.213
+        release: 14.5
+        release_major: 14
+        release_minor: 5
 
 TASK [debug] *******************************************************************
-ok: [test-611] => 
+ok: [test-511] => 
     msg: |-
         groups:
-          all: [ansible-test, log-server-01, pkg-repo, repos, repos-devel, test-611, test-612,
-            test-613]
-          distro_15_1_RELEASE_p1: [ansible-test, log-server-01, pkg-repo, repos, repos-devel,
-            test-611, test-612, test-613]
-          state_down: [ansible-test, test-612, test-613]
-          state_up: [log-server-01, pkg-repo, repos, repos-devel, test-611]
-          test: [test-611, test-612, test-613]
+          all: [ansible-test, test-511, test-512, test-513]
+          distro_14_5_RELEASE_p1: [ansible-test, test-511, test-512, test-513]
+          state_down: [ansible-test, test-512, test-513]
+          state_up: [test-511]
+          test: [test-511, test-512, test-513]
           ungrouped: []
 
 PLAY RECAP *********************************************************************
-test-611                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-612                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-511                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-512                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-513                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

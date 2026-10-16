@@ -2,27 +2,39 @@
 PLAY [all] *********************************************************************
 
 TASK [debug] *******************************************************************
-ok: [ansible_client] => 
-    iocage_ip4: 10.1.0.198
-ok: [test_111] => 
-    iocage_ip4: 10.1.0.111
-ok: [test_112] => 
-    iocage_ip4: 10.1.0.112
-ok: [test_113] => 
-    iocage_ip4: 10.1.0.113
-ok: [test_131] => 
-    iocage_ip4: 10.1.0.131
-ok: [test_132] => 
-    iocage_ip4: 10.1.0.132
-ok: [test_133] => 
-    iocage_ip4: 10.1.0.133
+ok: [ansible-test] => 
+    iocage_ip4: 172.16.99.200
+ok: [test-511] => 
+    iocage_ip4: 172.16.95.211
+ok: [test-512] => 
+    iocage_ip4: 172.16.95.212
+ok: [test-513] => 
+    iocage_ip4: 172.16.95.213
+ok: [log-server-01] => 
+    iocage_ip4: 172.16.99.10
+ok: [pkg-repo] => 
+    iocage_ip4: 172.16.99.23
+ok: [repos] => 
+    iocage_ip4: 172.16.99.21
+ok: [repos-devel] => 
+    iocage_ip4: 172.16.99.22
+ok: [test-612] => 
+    iocage_ip4: 172.16.99.212
+ok: [test-611] => 
+    iocage_ip4: 172.16.99.211
+ok: [test-613] => 
+    iocage_ip4: 172.16.99.213
 
 PLAY RECAP *********************************************************************
-ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_131                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_132                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_133                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ansible-test               : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log-server-01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+pkg-repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+repos-devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-511                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-512                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-513                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-611                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-612                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

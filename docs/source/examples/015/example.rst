@@ -9,19 +9,19 @@ This example extends :ref:`example_014`.
    :local:
    :depth: 1
 
-.. index:: single: inventory vbotka.freebsd.iocage; Example 015
-.. index:: single: option compose; Example 015
-.. index:: single: compose; Example 015
-.. index:: single: option keyed_groups; Example 015
-.. index:: single: keyed_groups; Example 015
-.. index:: single: option cache; Example 015
-.. index:: single: cache; Example 015
-.. index:: single: option cache_plugin; Example 015
-.. index:: single: cache_plugin; Example 015
-.. index:: single: option cache_prefix; Example 015
-.. index:: single: cache_prefix; Example 015
-.. index:: single: variable iocage_ip4_dict; Example 015
-.. index:: single: iocage_ip4_dict; Example 015
+.. index::
+   single: cache; Example 015
+   single: inventory cache; Example 015
+   single: cache_plugin; Example 015
+   single: cache_prefix; Example 015
+   single: compose; Example 015
+   single: inventory vbotka.freebsd.iocage; Example 015
+   single: iocage_ip4_dict; Example 015
+   single: option cache; Example 015
+   single: option cache_plugin; Example 015
+   single: option cache_prefix; Example 015
+   single: option compose; Example 015
+   single: variable iocage_ip4_dict; Example 015
 
 Use case
 ^^^^^^^^
@@ -37,25 +37,26 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   └── 04_iocage.yml
+  │   ├── 05_iocage.yml
+  │   └── 06_iocage.yml
+  ├── pb-cache-dump.yml
   └── pb-vars-ip4.yml
 
 Synopsis
 ^^^^^^^^
 
-On two managed nodes:
+* On managed nodes:
 
-* Fetch dynamic inventory using the :ref:`inventory
-  vbotka.freebsd.iocage <ug_inventory_iocage>`
+  * Fetch dynamic inventory using the :ref:`inventory
+    vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
-* Configure and test ``cache``
+  * Configure and test ``cache``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_010`
+* Jails created in :ref:`example_013`.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -66,22 +67,22 @@ ansible.cfg
 hosts
 ^^^^^
 
-Set a unique ``cache_prefix``.
-
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 7-11
+   :emphasize-lines: 4-8
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5-9
+   :emphasize-lines: 4-8
 
-.. warning::
+.. important::
 
-   Using a common ``cache_prefix`` causes the cache files to overwrite
-   each other repeatedly.
+   * Set a unique ``cache_prefix``.
+
+   * Using a common ``cache_prefix`` causes the cache files to overwrite each
+     other.
 
 Playbook pb-vars-ip4.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,27 +102,37 @@ Playbook output - Display iocage_ip4
 
 .. note::
 
-   * The inventory files in ``hosts`` are evaluated in alphabetical
-     order.
+   * The inventory files in the directory ``hosts`` are evaluated in
+     alphabetical order.
 
-   * The jail ``ansible_client`` defined in ``04_iocage.yml``
-     overrides the one from ``02_iocage.yml``.
+   * The jail ``ansible-test`` from ``06_iocage.yml`` overrides the one from
+     ``05_iocage.yml``.
 
 Cache
 ^^^^^
 
-Inspect the cache files. For example:
+Use the playbook below to inspect the cache:
+
+.. literalinclude:: pb-cache-dump.yml
+   :language: yaml+jinja
+   :caption:
+
+For example:
 
 .. code-block:: console
 
-   shell> cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a
+   (env) > ansible-playbook \
+           -e cache_file=/var/tmp/inventory_cache/iocage_05_s1_vbotka.freebsd.iocage_k9573e1 \
+           pb-cache-dump.yml
 
 .. literalinclude:: out/out-02.txt
-   :language: json
+   :language: yaml
 
 .. code-block:: console
 
-   shell> cat /var/tmp/inventory_cache/iocage_04_vbotka.freebsd.iocage_a5393s_d0c35
+   (env) > ansible-playbook \
+           -e cache_file=/var/tmp/inventory_cache/iocage_06_s1_vbotka.freebsd.iocage_k8aa36d \
+           pb-cache-dump.yml
 
 .. literalinclude:: out/out-03.txt
-   :language: json
+   :language: yaml

@@ -8,6 +8,6 @@
     - debug:
         msg: |
           {% for group in groups %}
-          {{ group }}: {{ groups[group] }}
+          {{ group }}: {{ groups[group] | to_yaml | trim }}
           {% endfor %}
       run_once: true

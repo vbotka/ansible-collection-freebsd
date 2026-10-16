@@ -1,0 +1,7 @@
+- name: Dump cache.
+  hosts: localhost
+  vars:
+    cache: "{{ lookup('file', cache_file) | from_yaml }}"
+  tasks:
+    - debug:
+        var: cache.__payload__ | from_yaml

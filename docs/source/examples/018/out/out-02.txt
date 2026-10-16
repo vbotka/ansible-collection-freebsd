@@ -1,5 +1,30 @@
-+------+----------------+------+-------+------+-----------------+-----+-----+----------+----------+
-| JID  |      NAME      | BOOT | STATE | TYPE |     RELEASE     | IP4 | IP6 | TEMPLATE | BASEJAIL |
-+======+================+======+=======+======+=================+=====+=====+==========+==========+
-| None | ansible_client | off  | down  | jail | 15.0-RELEASE-p3 | -   | -   | -        | yes      |
-+------+----------------+------+-------+------+-----------------+-----+-----+----------+----------+
+
+PLAY [Create clones.] **********************************************************
+
+TASK [Clone from basejail.] ****************************************************
+changed: [iocage_05] => (item=test_511 ansible-test)
+changed: [iocage_05] => (item=test_512 ansible-test)
+changed: [iocage_06] => (item=test_611 ansible-test)
+changed: [iocage_05] => (item=test_513 ansible-test)
+changed: [iocage_06] => (item=test_612 ansible-test)
+changed: [iocage_06] => (item=test_613 ansible-test)
+
+TASK [Display lists of bases, plugins, templates, and jails.] ******************
+ok: [iocage_05] => 
+    msg: |-
+        [14.5-RELEASE]
+        []
+        []
+        [740ce246, a3d9d0e9, ansible-test, e1181d90]
+ok: [iocage_06] => 
+    msg: |-
+        [15.0-RELEASE, 15.1-RELEASE]
+        []
+        [ansible-apache, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos, ansible-syslogng-client,
+          ansible-syslogng-server]
+        [2bcd520a, 88fbf701, ansible-test, e0e441a8, log-server-01, pkg-repo, repos, repos-devel]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

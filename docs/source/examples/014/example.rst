@@ -3,7 +3,7 @@
 014 Inventory cache
 -------------------
 
-This example extends :ref:`example_010`.
+This example extends :ref:`example_013`.
 
 .. contents::
    :local:
@@ -11,6 +11,7 @@ This example extends :ref:`example_010`.
 
 .. index::
    single: cache; Example 014
+   single: inventory cache; Example 014
    single: cache_plugin; Example 014
    single: cache_prefix; Example 014
    single: compose; Example 014
@@ -24,7 +25,6 @@ This example extends :ref:`example_010`.
    single: option compose; Example 014
    single: option keyed_groups; Example 014
    single: variable iocage_ip4_dict; Example 014
-   single: option --flush-cache; Example 014
 
 Use case
 ^^^^^^^^
@@ -56,7 +56,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_010`.
+* Jails created in :ref:`example_013`.
 
 .. seealso::
 
@@ -99,48 +99,33 @@ Playbook pb-vars-ip4.yml
    :language: yaml+jinja
    :caption:
 
-Playbook output - Clear cache
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In this particular case, it takes 4 seconds to create the dynamic
-inventory and construct the variables after the ``cache`` has been
-cleared (flushed).
+Playbook output - Cache timing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > date +%r; \
            ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook -i iocage.yml --flush-cache pb-vars-ip4.yml
+           ansible-playbook -i iocage.yml pb-vars-ip4.yml
+   (env) > sleep 1
+   (env) > date +%r; \
+           ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+           ansible-playbook -i iocage.yml pb-vars-ip4.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml
-   :emphasize-lines: 1,3
-
-Playbook output - Cache enabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If ``cache`` is enabled, the inventory and variables are provided by
-the cache immediately.
-
-.. code-block:: console
-
-   (env) > date +%r; \
-           ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook -i iocage.yml -l test_113 pb-vars-ip4.yml
 
 .. literalinclude:: out/out-02.txt
    :language: yaml
-   :force:
-   :emphasize-lines: 1,3
 
-.. hint::
+.. important::
 
-   Use the option `--flush-cache`_ to clear the cache.
+   See: :ref:`ug_qa_cache_fact_vs_inventory`
 
 Cache
 ^^^^^
 
-Use the playbook below to inspect the cache:
+Use the below playbook to inspect the cache:
 
 .. literalinclude:: pb-cache-dump.yml
    :language: yaml+jinja

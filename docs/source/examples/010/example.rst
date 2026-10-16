@@ -176,7 +176,7 @@ Jails
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-The inventory file ``iocage.yml`` targeting jails on ``iocage_06``:
+The inventory file ``iocage.yml`` targeting jails on ``iocage_05``:
 
 .. literalinclude:: iocage.yml
    :language: yaml+jinja

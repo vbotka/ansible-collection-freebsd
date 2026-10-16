@@ -29,7 +29,7 @@ ok: [test-613] =>
         available: readonly
         basejail: '1'
         boot: '0'
-        bpf: '1'
+        bpf: '0'
         children_max: '0'
         comment: none
         compression: 'on'

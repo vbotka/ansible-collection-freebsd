@@ -1,40 +1,22 @@
-
-PLAY [Display jails and groups.] ***********************************************
-
-TASK [debug] *******************************************************************
-ok: [repos] => 
-    msg: |-
-        repos 172.16.99.21
-        class: ['repos']
-        tags: {class: repos, vmm: iocage_06}
-ok: [log_server_01] => 
-    msg: |-
-        log-server-01 172.16.99.10
-        class: ['log-server']
-        tags: {alias: log_server_01, class: log-server, vmm: iocage_06}
-ok: [repos_devel] => 
-    msg: |-
-        repos-devel 172.16.99.22
-        class: ['repos']
-        tags: {alias: repos_devel, class: repos, vmm: iocage_06}
-ok: [pkg_repo] => 
-    msg: |-
-        pkg-repo 172.16.99.23
-        class: ['pkg-repo']
-        tags: {alias: pkg_repo, class: pkg-repo, vmm: iocage_06}
-
-TASK [debug] *******************************************************************
-ok: [repos] => 
-    msg: |-
-        all: ['repos', 'log_server_01', 'pkg_repo', 'repos_devel']
-        ungrouped: []
-        state_up: ['repos', 'log_server_01', 'pkg_repo', 'repos_devel']
-        vmm_iocage_06: ['repos', 'log_server_01', 'pkg_repo', 'repos_devel']
-        log_servers: ['log_server_01']
-
-PLAY RECAP *********************************************************************
-log_server_01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-pkg_repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos_devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
+@all:
+  |--@ungrouped:
+  |  |--ansible-test
+  |  |--log-server-01
+  |  |--pkg-repo
+  |  |--repos
+  |  |--repos-devel
+  |--@test_05:
+  |  |--test-511
+  |  |--test-512
+  |  |--test-513
+  |--@test_06:
+  |  |--test-611
+  |  |--test-612
+  |  |--test-613
+  |--@test:
+  |  |--test-511
+  |  |--test-512
+  |  |--test-513
+  |  |--test-611
+  |  |--test-612
+  |  |--test-613

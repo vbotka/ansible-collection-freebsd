@@ -1,7 +1,0 @@
-plugin: vbotka.freebsd.iocage
-host: iocage_02
-user: admin
-sudo: true
-sudo_preserve_env: true
-env:
-  CRYPTOGRAPHY_OPENSSL_NO_LEGACY: 1

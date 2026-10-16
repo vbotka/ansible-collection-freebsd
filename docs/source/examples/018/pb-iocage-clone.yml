@@ -1,0 +1,34 @@
+- name: Create clones.
+  hosts: iocage
+  environment: "{{ iocage_env | d({}) }}"
+
+  tasks:
+
+    - name: Clone from basejail.
+      vars:
+        _properties:
+          - "{{ properties | d({}) }}"
+          - "{{ item.properties | d({}) }}"
+          - notes:
+              "alias={{ item.key }} vmm={{ inventory_hostname }} class=example_018"
+      register: out
+      vbotka.freebsd.iocage:
+        state: cloned
+        clone_from: "{{ item.value.clone_from }}"
+        properties: "{{ _properties | combine }}"
+      loop: "{{ clones | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.clone_from }}"
+
+    - name: Debug
+      when: debug | d(false) | bool
+      debug:
+        var: out
+
+    - name: Display lists of bases, plugins, templates, and jails.
+      debug:
+        msg: |-
+          {{ ansible_facts.iocage_releases | to_yaml | trim }}
+          {{ ansible_facts.iocage_plugins.keys() | to_yaml | trim }}
+          {{ ansible_facts.iocage_templates.keys() | to_yaml | trim }}
+          {{ ansible_facts.iocage_jails.keys() | to_yaml | trim }}

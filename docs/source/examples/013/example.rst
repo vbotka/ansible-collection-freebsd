@@ -34,7 +34,7 @@ This example extends :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Use the property ``notes`` to create ``iocage tags``:
+Use the `iocage jail property`_ ``notes`` to create ``iocage tags``:
 
 * Add the property ``notes: "vmm={{ inventory_hostname }}"``.
 
@@ -53,7 +53,8 @@ Tree
   ├── ansible.cfg
   ├── hosts
   │   ├── 05_iocage.yml
-  │   └── 06_iocage.yml
+  │   ├── 06_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_05
   │   │   └── iocage.yml
@@ -61,9 +62,9 @@ Tree
   │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all.yml
-  ├── pb-ansible-test.yml
   ├── pb-iocage-base.yml
   ├── pb-iocage-clone.yml
+  ├── pb-test-vmm.yml
   └── pb-test.yml
 
 Synopsis
@@ -79,8 +80,8 @@ Synopsis
     vbotka.freebsd.iocage <ug_module_iocage>` to clone 3 jails from the
     basejail ``ansible-test``.
 
-  * In the playbooks ``pb-all.yml``, ``pb-ansible-test.yml``, and
-    ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
+  * In the playbooks ``pb-all.yml``, ``pb-test.yml``, and
+    ``pb-test-vmm.yml``, use the :ref:`inventory vbotka.freebsd.iocage
     <ug_inventory_iocage>` to:
 
     * Create inventory groups and compose variables.
@@ -97,6 +98,10 @@ Requirements
 * Activated `iocage`_.
 * Fetched releases.
 * Root privileges on the managed nodes.
+
+.. seealso::
+
+   * :ref:`example_016`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -116,12 +121,17 @@ hosts
 .. literalinclude:: hosts/05_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,8,17
+   :emphasize-lines: 4
 
 .. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,8,17
+   :emphasize-lines: 4
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 5,11-12
 
 .. note::
 
@@ -138,10 +148,12 @@ host_vars
 .. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 27
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 27
 
 Playbook pb-iocage-base.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -177,47 +189,54 @@ Playbook output - Clone jails
    :language: yaml+jinja
    :force:
 
-Playbook pb-all.yml
-^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-all.yml
-   :language: yaml+jinja
-
-Playbook output - variables and groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i hosts pb-all.yml
+Graph
+^^^^^
 
 .. literalinclude:: out/out-03.txt
-   :language: yaml+jinja
-   :force:
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 .. note::
 
    * The inventory files in the directory ``hosts`` are evaluated in
      alphabetical order.
 
-   * The jail ``ansible-client`` from ``06_iocage.yml`` overrides the one from
+   * The jail ``ansible-test`` from ``06_iocage.yml`` overrides the one from
      ``05_iocage.yml``.
 
    * See the special variable `groups`_.
 
-Playbook pb-ansible-test.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-all.yml
+^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-ansible-test.yml
+.. literalinclude:: pb-all.yml
    :language: yaml+jinja
 
-Playbook output - group_names
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-ansible-test.yml
+   (env) > ansible-playbook -i hosts pb-all.yml
 
 .. literalinclude:: out/out-04.txt
+   :language: yaml+jinja
+   :force:
+
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test.yml
+   :language: yaml+jinja
+
+Playbook output - Display tags and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i hosts pb-test.yml
+
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -235,19 +254,19 @@ Playbook output - group_names
 
    See :ref:`ug_qa_inventory_flat`.
 
-Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-vmm.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test.yml
+.. literalinclude:: pb-test-vmm.yml
    :language: yaml+jinja
 
-Playbook output - Display all jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display jails running on hosts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test.yml
+   (env) > ansible-playbook -i hosts pb-test-vmm.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:

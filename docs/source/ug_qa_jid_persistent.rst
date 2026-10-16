@@ -1,7 +1,8 @@
 .. _ug_qa_jid_persistent:
 
-.. index:: single: JID; Q&A
-.. index:: single: UUID; Q&A
+.. index::
+   single: JID; Q&A
+   single: UUID; Q&A
 
 Is it possible to set the jail ID (JID) in iocage?
 --------------------------------------------------

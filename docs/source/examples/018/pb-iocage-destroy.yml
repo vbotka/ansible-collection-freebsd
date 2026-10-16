@@ -1,0 +1,20 @@
+- name: Destroy jails in example 018.
+  hosts: iocage
+
+  vars:
+
+    my_group: "{{ groups['vmm_' ~ inventory_hostname] }}"
+    my_jails: "{{ my_group
+                  | intersect(groups.example_018) }}"
+    my_uuid: "{{ my_jails
+                 | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
+
+  tasks:
+
+    - name: Destroy jails in example 018.
+      block:
+
+        - debug:
+            msg: "iocage destroy -f {{ my_uuid | join(' ') }}"
+
+        - command: "iocage destroy -f {{ my_uuid | join(' ') }}"

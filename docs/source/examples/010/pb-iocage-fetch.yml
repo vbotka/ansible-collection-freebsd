@@ -1,23 +1,24 @@
-- hosts: iocage
+- name: Fetch releases.
+  hosts: iocage
   environment: "{{ iocage_env | d({}) }}"
 
   tasks:
 
-    - name: Fetch releases
+    - name: Fetch releases.
       register: out
       vbotka.freebsd.iocage:
         release: "{{ item }}"
       loop: "{{ fetch }}"
 
-    - name: Debug
+    - name: Debug.
       when: debug | d(false) | bool
-      ansible.builtin.debug:
+      debug:
         var: out
-      
-    - name: Display lists of bases, plugins, templates, and jails
-      ansible.builtin.debug:
+
+    - name: Display lists of bases, plugins, templates, and jails.
+      debug:
         msg: |-
-          releases: {{ iocage_releases }}
-          plugins: {{ iocage_plugins.keys() | list }}
-          templates: {{ iocage_templates.keys() | list }}
-          jails: {{ iocage_jails.keys() | list }}
+          {{ ansible_facts.iocage_releases | to_yaml | trim }}
+          {{ ansible_facts.iocage_plugins.keys() | to_yaml | trim }}
+          {{ ansible_facts.iocage_templates.keys() | to_yaml | trim }}
+          {{ ansible_facts.iocage_jails.keys() | to_yaml | trim }}
