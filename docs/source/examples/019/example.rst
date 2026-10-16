@@ -142,7 +142,9 @@ group_vars
 
 .. hint::
 
-   Run the command below to see the complete inventory::
+   Run the command below to see the complete inventory
+
+   .. code-block:: console
 
      shell> ansible-inventory -i hosts --list --yaml
 
