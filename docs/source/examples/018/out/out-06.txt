@@ -2,10 +2,10 @@
 PLAY [Start jails in example 018.] *********************************************
 
 TASK [debug] *******************************************************************
-ok: [iocage_05] => 
-    msg: iocage start e1181d90 740ce246 a3d9d0e9
 ok: [iocage_06] => 
     msg: iocage start 88fbf701 2bcd520a e0e441a8
+ok: [iocage_05] => 
+    msg: iocage start 740ce246 e1181d90 a3d9d0e9
 
 TASK [command] *****************************************************************
 changed: [iocage_05]

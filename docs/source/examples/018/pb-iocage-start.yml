@@ -3,10 +3,10 @@
 
   vars:
 
-    my_group: "{{ groups['vmm_' ~ inventory_hostname] }}"
-    my_jails: "{{ my_group
-                  | intersect(groups.example_018) }}"
-    my_uuid: "{{ my_jails
+    my_jails_down: "{{ groups['vmm_' ~ inventory_hostname]
+                       | intersect(groups.example_018)
+                       | intersect(groups.state_down) }}"
+    my_uuid: "{{ my_jails_down
                  | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
 
   tasks:
