@@ -1,16 +1,16 @@
-- name: Get custom facts
+- name: Get custom facts.
   hosts: iocage
 
   tasks:
 
-    - name: Get custom facts
+    - name: Get custom facts.
       ansible.builtin.setup:
         filter: ansible_local
 
-    - name: Debug
+    - name: Debug.
       ansible.builtin.debug:
         var: ansible_local.iocage
 
-    - name: Debug
+    - name: Debug.
       ansible.builtin.debug:
         var: ansible_local.iocage | vbotka.freebsd.iocage

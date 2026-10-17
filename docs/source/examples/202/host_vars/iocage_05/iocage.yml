@@ -1,12 +1,11 @@
-freebsd_iocage_pool: zroot
-freebsd_iocage_pool_mount: /zroot
-freebsd_iocage_mount: /zroot/iocage
+freebsd_iocage_pool: iocage
+freebsd_iocage_pool_mount: /iocage
+freebsd_iocage_mount: /iocage/iocage
 
 templates:
   ansible-client:
-    release: 15.0-RELEASE
+    release: 14.5-RELEASE
     properties:
-      bpf: 1
       dhcp: 1
       vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
@@ -34,7 +33,6 @@ clones:
 
 # clones default properties
 properties:
-  bpf: 1
   dhcp: 1
   vnet: 1
 

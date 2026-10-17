@@ -1,34 +1,22 @@
 
-PLAY [Test connection.] ********************************************************
-
-TASK [command] *****************************************************************
-changed: [www_d1]
-changed: [www_p2]
-changed: [www_p1]
-changed: [www_d2]
-changed: [www_p3]
+PLAY [Display connection variables.] *******************************************
 
 TASK [debug] *******************************************************************
 ok: [www_p3] => 
     msg: |-
-        FreeBSD 1d98b800 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_p1] => 
-    msg: |-
-        FreeBSD d0407d07 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_p2] => 
-    msg: |-
-        FreeBSD 23188308 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_d1] => 
-    msg: |-
-        FreeBSD 7efbc764 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_d2] => 
-    msg: |-
-        FreeBSD d66d6232 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+        JID  NAME       alias      IP4             ansible_jail_host ansible_jail_name
+        ------------------------------------------------------------------------------
+        21   f7136384   www_p3     172.16.95.192   iocage_05         21
+        22   97958d31   db_p1      172.16.95.193   iocage_05         22
+        20   6096c2d0   www_p2     172.16.95.191   iocage_05         20
+        23   e26c96d4   db_p2      172.16.95.194   iocage_05         23
+        19   776739b4   www_p1     172.16.95.166   iocage_05         19
+        25   f7a6d647   www_d3     172.16.99.121   iocage_06         25
+        27   a7a0d85d   db_d2      172.16.99.123   iocage_06         27
+        23   857f12ac   www_d1     172.16.99.160   iocage_06         23
+        26   32505fe9   db_d1      172.16.99.122   iocage_06         26
+        24   d044d520   www_d2     172.16.99.118   iocage_06         24
 
 PLAY RECAP *********************************************************************
-www_d1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p3                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

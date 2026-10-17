@@ -8,8 +8,8 @@
    single: --refresh-cache; Q&A
    single: --flush-cache; Q&A
 
-Ansible Cache Invalidation: Fact vs Inventory
----------------------------------------------
+How to clear an inventory cache?
+--------------------------------
 
 Running ``ansible-playbook ... --flush-cache`` invalidates the **fact cache**,
 but it **does not clear the inventory cache**.
@@ -54,13 +54,13 @@ Consequently, files such as:
 
 .. code-block:: text
 
-   iocage_05_s1_vbotka.freebsd.iocage_ka06f2d
+   /var/tmp/inventory_cache/iocage_05_s1_vbotka.freebsd.iocage_ka06f2d
 
 will remain untouched, and the inventory plugin will serve cached inventory
 until the cache expires or is manually cleared.
 
-How to Force an Inventory Cache Refresh
----------------------------------------
+How to force an inventory cache refresh?
+----------------------------------------
 
 To force Ansible to update the inventory cache, use any of the following
 approaches:

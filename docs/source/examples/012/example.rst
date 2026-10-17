@@ -38,7 +38,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Display ``iocage_properties`` in a selected jail by enabling ``get_properties``
+* In a selected jail, display ``iocage_properties`` by enabling ``get_properties``
   in the inventory plugin.
 
 Requirements

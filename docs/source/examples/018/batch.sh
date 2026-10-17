@@ -5,19 +5,8 @@
 
 # Destroy jails in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ssh admin@iocage_05 sudo iocage stop -f test-511
-    ssh admin@iocage_05 sudo iocage stop -f test-512
-    ssh admin@iocage_05 sudo iocage stop -f test-513
-    ssh admin@iocage_05 sudo iocage destroy -f test-511
-    ssh admin@iocage_05 sudo iocage destroy -f test-512
-    ssh admin@iocage_05 sudo iocage destroy -f test-513
+    ansible-playbook -i iocage.ini -i hosts pb-iocage-destroy.yml
     ssh admin@iocage_05 sudo iocage destroy -f ansible-test
-    ssh admin@iocage_06 sudo iocage stop -f test-611
-    ssh admin@iocage_06 sudo iocage stop -f test-612
-    ssh admin@iocage_06 sudo iocage stop -f test-613
-    ssh admin@iocage_06 sudo iocage destroy -f test-611
-    ssh admin@iocage_06 sudo iocage destroy -f test-612
-    ssh admin@iocage_06 sudo iocage destroy -f test-613
     ssh admin@iocage_06 sudo iocage destroy -f ansible-test
 fi
 
@@ -40,9 +29,11 @@ ansible-playbook -i iocage.ini -i hosts pb-iocage-start.yml | tee out/out-06.txt
 # Test.
 ansible-playbook -i hosts pb-test.yml | tee out/out-07.txt
 
-# Destroy jails in batch.
-if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ansible-playbook -i iocage.ini -i hosts pb-iocage-destroy.yml | tee out/out-08.txt
-fi
+# Do not destroy jails in batch. (The jails are used in 019.)
+# if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
+#     ansible-playbook -i iocage.ini -i hosts pb-iocage-destroy.yml | tee out/out-08.txt
+#     ssh admin@iocage_05 sudo iocage destroy -f ansible-test
+#     ssh admin@iocage_06 sudo iocage destroy -f ansible-test
+# fi
 
 touch .done

@@ -35,60 +35,50 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
+* On the managed nodes:
 
-  * iocage_02
-  * iocage_04
+  * In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
-  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
+    * Create custom fact scripts.
 
-  * Create custom fact scripts
+  * In the playbook ``pb-test.yml``:
 
-  In the playbook ``pb-test.yml``:
+    * Get the custom facts.
 
-  * Get the custom facts
+    * Use the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse
+      the custom facts.
 
-  * Use the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse the
-    custom facts
+  * TODO:
 
-  * Create the inventory group ``test`` and compose variables
+    * Create the inventory group ``test`` and compose variables.
 
-  * Display the hosts and composed variables in the group ``test``
+    * Display the hosts and composed variables in the group ``test``.
 
-  * Display all groups
+    * Display all groups.
 
 Requirements
 ^^^^^^^^^^^^
 
-* `Role vbotka.freebsd.iocage`_
-* :ref:`ug_filter_iocage`
-* Root privileges on the managed nodes
-* Jails created in previous examples
+* `Role vbotka.freebsd.iocage`_.
+* :ref:`ug_filter_iocage`.
+* Root privileges on the managed nodes.
+* Jails created in previous examples.
 
 Notes
 ^^^^^
 
 * See `Adding custom facts`_.
 
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
+Jails
+^^^^^
 
 .. literalinclude:: out/out-01.txt
    :language: bash
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
+   :caption: [iocage_05]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -114,8 +104,7 @@ Playbook output - Display versions
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t freebsd_iocage_debug \
-                            -e freebsd_iocage_debug=true \
+                            -t freebsd_iocage_debug -e freebsd_iocage_debug=true \
                             pb-iocage.yml \
           | grep version
 
@@ -128,8 +117,7 @@ Playbook output - Create scripts
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t freebsd_iocage_facts \
-                            -e freebsd_iocage_facts=true \
+                            -t freebsd_iocage_facts -e freebsd_iocage_facts=true \
                             pb-iocage.yml
 
 .. literalinclude:: out/out-04.txt
@@ -141,14 +129,14 @@ Display custom fact script
 
 .. code-block:: console
 
-   [iocage_02]# cat /etc/ansible/facts.d/iocage.fact
+   [iocage_05]# cat /etc/ansible/facts.d/iocage.fact
 
 .. literalinclude:: out/out-05.txt
    :language: python
 
-.. hint::
+.. important::
 
-   Install ``lang/python``:
+   The script needs ``/usr/local/bin/python``. Install ``lang/python``:
 
    "This is a meta port to the Python interpreter and provides
    symbolic links to bin/python, bin/pydoc, bin/idle and so on to allow

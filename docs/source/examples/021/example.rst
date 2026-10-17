@@ -24,8 +24,9 @@ This example extends :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Use the :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` to
-connect to the jails created in :ref:`example_020`.
+Use the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>` to
+retrieve the inventory. Use the :ref:`connection vbotka.freebsd.jailexec
+<ug_connection_jailexec>` to connect to the jails created in :ref:`example_020`.
 
 Tree
 ^^^^
@@ -36,6 +37,7 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
@@ -46,23 +48,26 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
-  retrieve the inventory aliases from the tag ``alias``.
+* On the managed nodes:
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the inventory
-  groups.
+  * In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
+    retrieve the inventory and create connection variables for the
+    :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
-* Display the connection variables.
+  * In the inventory plugin `ansible.builtin.constructed`_, create the inventory
+    groups.
 
-* Test the connection.
+  * Display the connection variables.
+
+  * Test :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_inventory_iocage2`
-* :ref:`ug_connection_jailexec`
-* Root privileges on the managed nodes
-* Jails created in :ref:`example_020`
+* :ref:`ug_inventory_iocage2`.
+* :ref:`ug_connection_jailexec`.
+* Root privileges on the managed nodes.
+* Jails created in :ref:`example_020`.
 
 Notes
 ^^^^^
@@ -74,7 +79,7 @@ Notes
 
    * `Inventory aliases`_
    * `Set Jail Property`_
-   * :ref:`example_016`
+   * :ref:`example_050`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -91,34 +96,37 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 11-15
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 13-17
+   :emphasize-lines: 11-15
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
-Jails
-^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
 Graph
 ^^^^^
 
-.. code-block:: console
+.. literalinclude:: out/out-01.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
-   (env) > ansible-inventory -i hosts --graph
+Jails
+^^^^^
 
 .. literalinclude:: out/out-02.txt
-   :language: console
+   :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test-project.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -133,7 +141,7 @@ Playbook output - Test project
 
    (env) > ansible-playbook -i hosts pb-test-project.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -150,7 +158,7 @@ Playbook output - Display connection variables
 
    (env) > ansible-playbook -i hosts pb-test-connection-vars.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -167,6 +175,6 @@ Playbook output - Test connection
 
    (env) > ansible-playbook -i hosts pb-test-connection.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:

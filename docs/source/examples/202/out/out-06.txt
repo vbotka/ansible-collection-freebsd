@@ -1,9 +1,10 @@
 @all:
   |--@ungrouped:
-  |  |--pkg-repo
-  |  |--repos
+  |  |--ansible-test
   |  |--repos-devel
+  |  |--pkg-repo
   |  |--log-server-01
+  |  |--repos
   |--@test_05:
   |  |--test-153
   |  |--test-151

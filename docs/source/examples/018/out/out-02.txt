@@ -14,15 +14,15 @@ ok: [iocage_05] =>
     msg: |-
         [14.5-RELEASE]
         []
-        []
-        [740ce246, a3d9d0e9, ansible-test, e1181d90]
+        [ansible-client]
+        [2c393434, 48c97938, 92322e99, ansible-test]
 ok: [iocage_06] => 
     msg: |-
         [15.0-RELEASE, 15.1-RELEASE]
         []
-        [ansible-apache, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos, ansible-syslogng-client,
-          ansible-syslogng-server]
-        [2bcd520a, 88fbf701, ansible-test, e0e441a8, log-server-01, pkg-repo, repos, repos-devel]
+        [ansible-apache, ansible-client, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos,
+          ansible-syslogng-client, ansible-syslogng-server]
+        [70e8cfed, ansible-test, cddbe097, d1b19d04, log-server-01, pkg-repo, repos, repos-devel]
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

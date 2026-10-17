@@ -1,0 +1,9 @@
+- hosts: region_EU
+  tasks:
+    - debug:
+        var: iocage_ip4
+
+- hosts: region_US
+  tasks:
+    - debug:
+        var: iocage_ip4

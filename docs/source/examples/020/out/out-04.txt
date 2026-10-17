@@ -1,25 +1,43 @@
 @all:
   |--@ungrouped:
+  |--@vmm_iocage_05:
+  |  |--www_p3
+  |  |--db_p1
+  |  |--www_p2
+  |  |--db_p2
+  |  |--www_p1
+  |--@project_example_020:
+  |  |--www_p3
+  |  |--db_p1
+  |  |--www_p2
+  |  |--db_p2
+  |  |--www_p1
+  |  |--www_d3
+  |  |--db_d2
+  |  |--www_d1
+  |  |--db_d1
+  |  |--www_d2
+  |--@swarm_www_prod:
+  |  |--www_p3
+  |  |--www_p2
+  |  |--www_p1
+  |--@swarm_db_prod:
+  |  |--db_p1
+  |  |--db_p2
   |--@vmm_iocage_06:
   |  |--repos
   |  |--repos_devel
-  |  |--www_p2
   |  |--pkg_repo
-  |  |--www_d1
+  |  |--www_d3
+  |  |--db_d2
   |  |--log_server_01
-  |  |--www_d2
-  |  |--www_p3
-  |  |--www_p1
-  |--@project_example_020:
-  |  |--www_p2
   |  |--www_d1
+  |  |--db_d1
   |  |--www_d2
-  |  |--www_p3
-  |  |--www_p1
-  |--@swarm_www_prod:
-  |  |--www_p2
-  |  |--www_p3
-  |  |--www_p1
   |--@swarm_www_devel:
+  |  |--www_d3
   |  |--www_d1
   |  |--www_d2
+  |--@swarm_db_devel:
+  |  |--db_d2
+  |  |--db_d1

@@ -6,9 +6,9 @@ ok: [test-153] =>
     msg: |-
         inv       name     uuid     ansible_host
         ----------------------------------------
-        test-153  test-153 test-153 172.16.95.110
-        test-151  test-151 test-151 172.16.95.111
-        test-152  test-152 test-152 172.16.95.109
+        test-153  test-153 test-153 172.16.95.170
+        test-151  test-151 test-151 172.16.95.169
+        test-152  test-152 test-152 172.16.95.167
         test-161  test-161 test-161 172.16.99.172
         test-162  test-162 test-162 172.16.99.159
         test-163  test-163 test-163 172.16.99.146

@@ -1,3 +1,5 @@
+.. _ug_inventory_iocage_hooks:
+
 Hooks
 ^^^^^
 

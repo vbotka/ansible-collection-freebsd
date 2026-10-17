@@ -70,7 +70,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On managed nodes:
+* On the managed nodes:
 
   * In the playbook ``pb-iocage-base.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to create the basejail

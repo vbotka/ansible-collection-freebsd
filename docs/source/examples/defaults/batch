@@ -1,3 +1,46 @@
 # example.com
 build_example_com="172.16.98.3"
 branch_server_example_com="10.1.0.17"
+
+cleanup_iocage() {
+  local hosts=("iocage_05" "iocage_06")
+  local suffixes=(11 12 13)
+  local OPTIND opt
+
+  # Flags:
+  #   -h: Comma-separated hosts (e.g., -h "iocage_05,iocage_06")
+  #   -s: Suffixes (e.g., -s "11,12" or -s "11 12 13")
+  while getopts ":h:s" opt; do
+    case "${opt}" in
+      h)
+        IFS=',' read -r -a hosts <<< "${OPTARG}"
+        ;;
+      s)
+        read -r -a suffixes <<< "${OPTARG//,/ }"
+        ;;
+      \?)
+        echo "Invalid option: -${OPTARG}" >&2
+        return 1
+        ;;
+    esac
+  done
+  shift $((OPTIND - 1))
+
+  # Treat any remaining arguments as hosts
+  [[ $# -gt 0 ]] && hosts=("$@")
+
+  for host in "${hosts[@]}"; do
+    # Extract host digit (e.g., 'iocage_05' -> '5')
+    local num="${host#*iocage_0}"
+    num="${num#0}"
+
+    echo "=== Cleaning up host: ${host} (Suffixes: ${suffixes[*]}) ==="
+
+    for suffix in "${suffixes[@]}"; do
+      local jail="test-${num}${suffix}"
+      echo "  -> Processing ${jail} on ${host}"
+      ssh "admin@${host}" sudo iocage stop -f "$jail"
+      ssh "admin@${host}" sudo iocage destroy -f "$jail"
+    done
+  done
+}

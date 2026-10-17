@@ -108,10 +108,6 @@ Playbook output - Display variables
    The displayed values of the ``freebsd_iocage_*`` variables are the ``iocage``
    role defaults.
 
-.. seealso::
-
-   * `ansible-playbook`_
-
 Playbook output - Install iocage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

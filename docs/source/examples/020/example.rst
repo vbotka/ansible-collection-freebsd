@@ -3,7 +3,7 @@
 020 Get inventory aliases from notes
 ------------------------------------
 
-This example extends :ref:`example_016`.
+This example extends :ref:`example_018`.
 
 .. contents::
    :local:
@@ -44,12 +44,15 @@ Tree
   │   └── all
   │       └── swarms.yml
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── iocage.yml
   │   └── iocage_06
   │       └── iocage.yml
-  ├── iocage.ini
+  │── iocage.ini
   ├── pb-iocage-swarms-create.yml
   ├── pb-iocage-swarms-destroy.yml
   └── pb-test-project.yml
@@ -57,7 +60,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * Create jails using the template ``ansible-client`` and the ``--count``
     option.
@@ -79,8 +82,8 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage2`
-* Root privileges on the managed nodes
-* Templates created in :ref:`example_202`
+* Root privileges on the managed nodes.
+* Templates created in :ref:`example_202`.
 
 Notes
 ^^^^^
@@ -97,12 +100,13 @@ Notes
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -lt
-
 .. literalinclude:: out/out-01.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -lt
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -lt
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -119,14 +123,23 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 5
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 10
+   :emphasize-lines: 5
 
 .. note::
 
-   The value of the iocage tag ``alias`` is used as the inventory alias.
+   * The value of the iocage tag ``alias`` is used as the :ref:`inventory alias
+     <ug_inventory_iocage_aliases>`.
+
+   * The hook :ref:`dhclient-exit-hooks <ug_inventory_iocage_hooks>` is
+     configured in the template :ref:`ansible-client <example_202>`.
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
@@ -141,6 +154,10 @@ group_vars
 
 host_vars
 ^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/iocage.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
@@ -166,22 +183,21 @@ Playbook output - Create swarms
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   shell> ansible-inventory -i hosts --graph
 
 .. literalinclude:: out/out-04.txt
    :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
 .. literalinclude:: out/out-05.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 .. hint::
 
@@ -201,25 +217,6 @@ Playbook output - Test project
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-test-project.yml
-
-.. literalinclude:: out/out-06.txt
-   :language: yaml+jinja
-   :force:
-
-Playbook pb-iocage-swarms-destroy.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-iocage-swarms-destroy.yml
-   :language: yaml+jinja
-
-Playbook output - Destroy swarms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Destroy the swarms if you no longer need them.
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-swarms-destroy.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja

@@ -45,7 +45,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On managed nodes:
+* On the managed nodes:
 
   * Fetch dynamic inventory using the :ref:`inventory
     vbotka.freebsd.iocage <ug_inventory_iocage>`.

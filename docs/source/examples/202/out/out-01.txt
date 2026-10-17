@@ -10,8 +10,8 @@ ok: [iocage_05] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
 ok: [iocage_06] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
 
 TASK [Pkglist: Copy pkglist files.] ********************************************
-ok: [iocage_05] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
 ok: [iocage_06] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
+ok: [iocage_05] => (item=ansible-client /tmp/ansible/ansible-client/pkgs.json)
 
 TASK [Create: Get iocage list of templates.] ***********************************
 ok: [iocage_05]
@@ -19,7 +19,7 @@ ok: [iocage_06]
 
 TASK [Create: Create templates.] ***********************************************
 changed: [iocage_06] => (item=ansible-client 15.1-RELEASE)
-changed: [iocage_05] => (item=ansible-client 15.0-RELEASE)
+changed: [iocage_05] => (item=ansible-client 14.5-RELEASE)
 
 TASK [Start: Get iocage list of jails.] ****************************************
 ok: [iocage_05]
@@ -34,16 +34,16 @@ changed: [iocage_05] => (item=ansible-client admin)
 changed: [iocage_06] => (item=ansible-client admin)
 
 TASK [Pk: The keys are valid.] *************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     changed: false
     msg: All assertions passed
-ok: [iocage_06] => 
+ok: [iocage_05] => 
     changed: false
     msg: All assertions passed
 
 TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_06] => (item=ansible-client admin)
 changed: [iocage_05] => (item=ansible-client admin)
+changed: [iocage_06] => (item=ansible-client admin)
 
 TASK [Pk: Chown .ssh] **********************************************************
 ok: [iocage_05] => (item=ansible-client admin)
@@ -66,12 +66,12 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Stop: Stop jails.] *******************************************************
-ok: [iocage_06]
 ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [Template: Set template.] *************************************************
-ok: [iocage_06] => (item=ansible-client)
 ok: [iocage_05] => (item=ansible-client)
+ok: [iocage_06] => (item=ansible-client)
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=17   changed=6    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   

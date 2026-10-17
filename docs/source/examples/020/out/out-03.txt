@@ -2,103 +2,190 @@
 PLAY [Create and start swarms (not idempotent!).] ******************************
 
 TASK [Create swarms.] **********************************************************
-changed: [iocage_06] => (item={'key': 'www_prod', 'value': {'count': 3, 'template': 'ansible-client'}})
-changed: [iocage_06] => (item={'key': 'www_devel', 'value': {'count': 2, 'template': 'ansible-client'}})
+changed: [iocage_05] => (item={'key': 'www_prod', 'value': {'count': 3, 'template': 'ansible-client'}})
+changed: [iocage_06] => (item={'key': 'www_devel', 'value': {'count': 3, 'template': 'ansible-client'}})
+changed: [iocage_06] => (item={'key': 'db_devel', 'value': {'count': 2, 'template': 'ansible-client'}})
+changed: [iocage_05] => (item={'key': 'db_prod', 'value': {'count': 2, 'template': 'ansible-client'}})
 
 TASK [Debug create swarms.] ****************************************************
-ok: [iocage_06] => (item=www_prod) => 
+ok: [iocage_05] => (item=www_prod) => 
     msg: |-
         cmd:
-          ['iocage', 'create', '--short', '--count', '3', '--template', 'ansible-client', 'bpf=1', 'dhcp=1', 'vnet=1']
+          ['iocage', 'create', '--short', '--count', '3', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
         stdout:
-          d0407d07 successfully created!
-        23188308 successfully created!
-        1d98b800 successfully created!
+          776739b4 successfully created!
+        6096c2d0 successfully created!
+        f7136384 successfully created!
 ok: [iocage_06] => (item=www_devel) => 
     msg: |-
         cmd:
-          ['iocage', 'create', '--short', '--count', '2', '--template', 'ansible-client', 'bpf=1', 'dhcp=1', 'vnet=1']
+          ['iocage', 'create', '--short', '--count', '3', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
         stdout:
-          7efbc764 successfully created!
-        d66d6232 successfully created!
+          857f12ac successfully created!
+        d044d520 successfully created!
+        f7a6d647 successfully created!
+ok: [iocage_05] => (item=db_prod) => 
+    msg: |-
+        cmd:
+          ['iocage', 'create', '--short', '--count', '2', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
+        stdout:
+          97958d31 successfully created!
+        e26c96d4 successfully created!
+ok: [iocage_06] => (item=db_devel) => 
+    msg: |-
+        cmd:
+          ['iocage', 'create', '--short', '--count', '2', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
+        stdout:
+          32505fe9 successfully created!
+        a7a0d85d successfully created!
 
 TASK [Create notes.] ***********************************************************
-changed: [iocage_06] => (item=d0407d07 vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p1)
-changed: [iocage_06] => (item=23188308 vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p2)
-changed: [iocage_06] => (item=1d98b800 vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p3)
-changed: [iocage_06] => (item=7efbc764 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1)
-changed: [iocage_06] => (item=d66d6232 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2)
+changed: [iocage_05] => (item=776739b4 vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p1)
+changed: [iocage_06] => (item=857f12ac vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1)
+changed: [iocage_05] => (item=6096c2d0 vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p2)
+changed: [iocage_06] => (item=d044d520 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2)
+changed: [iocage_05] => (item=f7136384 vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p3)
+changed: [iocage_05] => (item=97958d31 vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p1)
+changed: [iocage_06] => (item=f7a6d647 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d3)
+changed: [iocage_05] => (item=e26c96d4 vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p2)
+changed: [iocage_06] => (item=32505fe9 vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d1)
+changed: [iocage_06] => (item=a7a0d85d vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d2)
 
 TASK [Debug create notes.] *****************************************************
+ok: [iocage_05] => (item=0) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p1', '776739b4']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p1
 ok: [iocage_06] => (item=0) => 
     msg: |-
-        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p1', 'd0407d07']
-        notes: none -> vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p1
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1', '857f12ac']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1
+ok: [iocage_05] => (item=1) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p2', '6096c2d0']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p2
 ok: [iocage_06] => (item=1) => 
     msg: |-
-        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p2', '23188308']
-        notes: none -> vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p2
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2', 'd044d520']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2
+ok: [iocage_05] => (item=2) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p3', 'f7136384']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p3
 ok: [iocage_06] => (item=2) => 
     msg: |-
-        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p3', '1d98b800']
-        notes: none -> vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p3
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d3', 'f7a6d647']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d3
+ok: [iocage_05] => (item=3) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p1', '97958d31']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p1
 ok: [iocage_06] => (item=3) => 
     msg: |-
-        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1', '7efbc764']
-        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d1', '32505fe9']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d1
+ok: [iocage_05] => (item=4) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p2', 'e26c96d4']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p2
 ok: [iocage_06] => (item=4) => 
     msg: |-
-        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2', 'd66d6232']
-        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d2', 'a7a0d85d']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d2
 
 TASK [Start jails.] ************************************************************
+changed: [iocage_05]
 changed: [iocage_06]
 
 TASK [Debug start jails.] ******************************************************
 ok: [iocage_06] => 
     msg: |-
-        cmd: ['iocage', 'start', 'd0407d07', '23188308', '1d98b800', '7efbc764', 'd66d6232']
-        * Starting d0407d07
-          + Started OK
-          + Using devfs_ruleset: 1000 (iocage generated default)
-          + Configuring VNET OK
-          + Using IP options: vnet
-          + Starting services OK
-          + Executing poststart OK
-          + DHCP Address: 172.16.99.168/24
-        * Starting 23188308
-          + Started OK
-          + Using devfs_ruleset: 1001 (iocage generated default)
-          + Configuring VNET OK
-          + Using IP options: vnet
-          + Starting services OK
-          + Executing poststart OK
-          + DHCP Address: 172.16.99.199/24
-        * Starting 1d98b800
-          + Started OK
-          + Using devfs_ruleset: 1002 (iocage generated default)
-          + Configuring VNET OK
-          + Using IP options: vnet
-          + Starting services OK
-          + Executing poststart OK
-          + DHCP Address: 172.16.99.101/24
-        * Starting 7efbc764
-          + Started OK
-          + Using devfs_ruleset: 1003 (iocage generated default)
-          + Configuring VNET OK
-          + Using IP options: vnet
-          + Starting services OK
-          + Executing poststart OK
-          + DHCP Address: 172.16.99.166/24
-        * Starting d66d6232
+        cmd: ['iocage', 'start', '857f12ac', 'd044d520', 'f7a6d647', '32505fe9', 'a7a0d85d']
+        * Starting 857f12ac
           + Started OK
           + Using devfs_ruleset: 1004 (iocage generated default)
           + Configuring VNET OK
           + Using IP options: vnet
           + Starting services OK
           + Executing poststart OK
-          + DHCP Address: 172.16.99.120/24
+          + DHCP Address: 172.16.99.160/24
+        * Starting d044d520
+          + Started OK
+          + Using devfs_ruleset: 1005 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.118/24
+        * Starting f7a6d647
+          + Started OK
+          + Using devfs_ruleset: 1006 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.121/24
+        * Starting 32505fe9
+          + Started OK
+          + Using devfs_ruleset: 1007 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.122/24
+        * Starting a7a0d85d
+          + Started OK
+          + Using devfs_ruleset: 1008 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.123/24
+ok: [iocage_05] => 
+    msg: |-
+        cmd: ['iocage', 'start', '776739b4', '6096c2d0', 'f7136384', '97958d31', 'e26c96d4']
+        * Starting 776739b4
+          + Started OK
+          + Using devfs_ruleset: 1000 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.166/24
+        * Starting 6096c2d0
+          + Started OK
+          + Using devfs_ruleset: 1001 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.191/24
+        * Starting f7136384
+          + Started OK
+          + Using devfs_ruleset: 1002 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.192/24
+        * Starting 97958d31
+          + Started OK
+          + Using devfs_ruleset: 1003 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.193/24
+        * Starting e26c96d4
+          + Started OK
+          + Using devfs_ruleset: 1004 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.194/24
 
 PLAY RECAP *********************************************************************
+iocage_05                  : ok=6    changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

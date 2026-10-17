@@ -3,11 +3,6 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
-# Destroy jails
-# VBOTKA_FREEBSD_BATCH=true \
-# ansible-playbook -i iocage.ini --flush-cache \
-#                  vbotka.freebsd.pb_iocage_destroy_all_jails.yml
-
 # Destroy templates in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     ssh admin@iocage_05 sudo iocage destroy -f ansible-client
@@ -32,14 +27,14 @@ ansible-playbook -i iocage.ini -t clone -e clone=true  vbotka.freebsd.pb_iocage_
 # List jails.
 ansible-playbook -i iocage.ini -t list -e debug=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-05.txt
 
-# Graph
+# Graph.
 ansible-inventory -i hosts --graph | tee out/out-06.txt
 
-# Jails
+# Jails.
 ssh admin@iocage_05 sudo iocage list -l | tee out/out-07.txt
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-08.txt
 
-# Test
+# Test.
 ansible-playbook -i hosts  pb-test.yml | tee out/out-09.txt
 
 # Destroy jails in batch.
@@ -56,3 +51,5 @@ fi
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     cp files/pk_admins.txt.san files/pk_admins.txt
 fi
+
+touch .done

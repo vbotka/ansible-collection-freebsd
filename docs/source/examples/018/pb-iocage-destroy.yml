@@ -5,7 +5,7 @@
 
     my_group: "{{ groups['vmm_' ~ inventory_hostname] }}"
     my_jails: "{{ my_group
-                  | intersect(groups.example_018) }}"
+                  | intersect(groups.example_018) | d([]) }}"
     my_uuid: "{{ my_jails
                  | map('extract', hostvars, ['iocage_properties', 'host_hostuuid']) }}"
 
@@ -15,6 +15,12 @@
       block:
 
         - debug:
+            msg: Nothing to destroy.
+          when: my_uuid | length == 0
+
+        - debug:
             msg: "iocage destroy -f {{ my_uuid | join(' ') }}"
+          when: my_uuid | length > 0
 
         - command: "iocage destroy -f {{ my_uuid | join(' ') }}"
+          when: my_uuid | length > 0

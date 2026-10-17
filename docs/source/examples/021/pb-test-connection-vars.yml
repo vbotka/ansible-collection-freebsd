@@ -1,13 +1,26 @@
 - name: Display connection variables.
   hosts: project_example_020
 
+  vars:
+
+    _vars:
+      - iocage_jid
+      - iocage_properties
+      - iocage_tags
+      - iocage_ip4
+      - ansible_jail_host
+      - ansible_jail_name
+
+    fmt: "%-4s %-10s %-10s %-15s %-17s %-6s"
+
   tasks:
 
     - debug:
         msg: |
-          name     alias  ansible_jail_host ansible_jail_name
-          ---------------------------------------------------
+          JID  NAME       alias      IP4             ansible_jail_host ansible_jail_name
+          ------------------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
-          {{ hostvars[h].iocage_properties.host_hostuuid }} {{ hostvars[h].iocage_tags.alias }} {{ hostvars[h].ansible_jail_host }}         {{ hostvars[h].ansible_jail_name }}
+          {% set v = _vars | map('extract', hostvars[h]) | list %}
+          {{ fmt | format(v[0]|string, v[1].host_hostuuid|string, v[2].alias|string, v[3]|string, v[4]|string, v[5]|string) }}
           {% endfor %}
       run_once: true

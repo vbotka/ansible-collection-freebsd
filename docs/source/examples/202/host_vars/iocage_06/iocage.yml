@@ -6,7 +6,6 @@ templates:
   ansible-client:
     release: 15.1-RELEASE
     properties:
-      bpf: 1
       dhcp: 1
       vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
@@ -34,7 +33,6 @@ clones:
 
 # clones default properties
 properties:
-  bpf: 1
   dhcp: 1
   vnet: 1
 

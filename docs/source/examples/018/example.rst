@@ -30,14 +30,14 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 05_iocage.yml
-  │   ├── 06_iocage.yml
-  │   └── 99_constructed.yml
+  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_05
-  │   │   └── iocage.yml
-  │   └── iocage_06
-  │       └── iocage.yml
+  │   ├── iocage_05
+  │   │   └── iocage.yml
+  │   └── iocage_06
+  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-iocage-base.yml
   ├── pb-iocage-clone.yml
@@ -48,7 +48,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On managed nodes:
+* On the managed nodes:
 
   * In the playbook ``pb-iocage-base.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to:
@@ -58,7 +58,7 @@ Synopsis
   * In the playbook ``pb-iocage-clone.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-    * Clone 3 jails from  ``ansible-test``
+    * Clone 3 jails from ``ansible-test``.
     * Display iocage datasets lists.
 
   * In the playbook ``pb-iocage-start.yml``, use `iocage`_ to:
@@ -68,8 +68,8 @@ Synopsis
 * In the playbook ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
   <ug_inventory_iocage>` to:
 
-  * Create inventory groups and compose variables
-  * Display the hosts and composed variables in the group ``example_018``
+  * Create inventory groups and compose variables.
+  * Display the hosts and composed variables in the group ``example_018``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -97,12 +97,12 @@ hosts
 ^^^^^
 
 .. literalinclude:: hosts/05_iocage.yml
-   :language: ini
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 6
 
 .. literalinclude:: hosts/06_iocage.yml
-   :language: ini
+   :language: yaml+jinja
    :caption:
    :emphasize-lines: 6
 
@@ -111,7 +111,7 @@ hosts
    * The value of iocage tag ``alias`` is used as `inventory alias`_.
 
 .. literalinclude:: hosts/99_constructed.yml
-   :language: ini
+   :language: yaml+jinja
    :caption:
 
 host_vars
@@ -155,10 +155,11 @@ Playbook pb-iocage-clone.yml
 
 .. note::
 
-   * iocage tags ``alias``, ``vmm``, and ``class`` are created from ``notes``.
+   * :ref:`ug_concepts_iocage_tags` ``alias``, ``vmm``, and ``class`` are
+     created from ``notes``.
 
-Playbook output - Create cones
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create clones
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
