@@ -21,7 +21,6 @@
         vmm: iocage_04
 
     properties:
-      bpf: 1
       dhcp: 1
       vnet: 1
 

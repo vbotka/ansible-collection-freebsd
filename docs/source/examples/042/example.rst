@@ -48,8 +48,8 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_filter_to_ast`
-* :ref:`ug_filter_ast_to_nginx`
+* :ref:`ug_filter_to_ast`.
+* :ref:`ug_filter_ast_to_nginx`.
 
 Notes
 ^^^^^

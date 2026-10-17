@@ -5,3 +5,5 @@
 
 # Create templates
 ansible-playbook -i localhost, pb.yml | tee out/out-01.txt
+
+touch .done

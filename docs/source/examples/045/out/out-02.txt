@@ -2,21 +2,21 @@
 PLAY [Test filter vbotka.freebsd.combine_properties] ***************************
 
 TASK [Combine jail properties.] ************************************************
-ok: [iocage_01] => (item=logserv_1) => 
-    msg: |-
-        bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 class=log-server"
-ok: [iocage_02] => (item=http_1) => 
-    msg: |-
-        bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 class=log-client,http"
 ok: [iocage_04] => (item=http_2) => 
     msg: |-
-        bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_04 class=log-client,http"
-ok: [iocage_02] => (item=db_1) => 
+        dhcp=1 vnet=1 notes="vmm=iocage_04 class=log-client,http"
+ok: [iocage_01] => (item=logserv_1) => 
     msg: |-
-        bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_02 class=log-client,db"
+        dhcp=1 vnet=1 notes="vmm=iocage_01 class=log-server"
+ok: [iocage_02] => (item=http_1) => 
+    msg: |-
+        dhcp=1 vnet=1 notes="vmm=iocage_02 class=log-client,http"
 ok: [iocage_04] => (item=db_2) => 
     msg: |-
-        bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_04 class=log-client,db"
+        dhcp=1 vnet=1 notes="vmm=iocage_04 class=log-client,db"
+ok: [iocage_02] => (item=db_1) => 
+    msg: |-
+        dhcp=1 vnet=1 notes="vmm=iocage_02 class=log-client,db"
 
 PLAY RECAP *********************************************************************
 iocage_01                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

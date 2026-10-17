@@ -32,16 +32,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node, in the playbook ``pb.yml``, use the :ref:`lookup
-vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` plugin to:
+* On the managed nodes, in the playbook ``pb.yml``, use the :ref:`lookup
+  vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` plugin to:
 
-* Display the complete metadata dictionary from ``galaxy.yml``.
-* Display the attributes ``authors`` and ``version``.
+  * Display the complete metadata dictionary from ``galaxy.yml``.
+  * Display the attributes ``authors`` and ``version``.
 
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_lookup_galaxy_info`
+* :ref:`ug_lookup_galaxy_info`.
 
 ansible.cfg
 ^^^^^^^^^^^
