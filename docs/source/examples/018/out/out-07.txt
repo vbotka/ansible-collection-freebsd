@@ -1,18 +1,29 @@
 
-PLAY [Test jails in example 018.] **********************************************
+PLAY [Test jails in example_018] ***********************************************
 
 TASK [debug] *******************************************************************
 ok: [test_513] => 
     msg: |-
-        inv        id  ip               release          state
-        ------------------------------------------------------
-        test_513   3   172.16.95.177    14.5-RELEASE-p1  up
-        test_512   1   172.16.95.175    14.5-RELEASE-p1  up
-        test_511   2   172.16.95.176    14.5-RELEASE-p1  up
-        test_611   5   172.16.99.120    15.1-RELEASE-p1  up
-        test_612   6   172.16.99.167    15.1-RELEASE-p1  up
-        test_613   7   172.16.99.168    15.1-RELEASE-p1  up
+        inv        id  hostuuid  ansible_host    iocage_tags
+        ----------------------------------------------------------------------------------------------
+        test_513   17  ab3d9dc8  172.16.95.111   {alias: test_513, class: example_018, vmm: iocage_05}
+        test_512   15  f00df506  172.16.95.109   {alias: test_512, class: example_018, vmm: iocage_05}
+        test_511   16  f515d3a0  172.16.95.110   {alias: test_511, class: example_018, vmm: iocage_05}
+        test_611   21  31f3565a  172.16.99.132   {alias: test_611, class: example_018, vmm: iocage_06}
+        test_612   19  95d14b88  172.16.99.125   {alias: test_612, class: example_018, vmm: iocage_06}
+        test_613   20  e7e6756e  172.16.99.131   {alias: test_613, class: example_018, vmm: iocage_06}
+
+TASK [debug] *******************************************************************
+ok: [test_513] => 
+    msg: |-
+        all: ['ansible-test', 'test_513', 'test_512', 'test_511', 'repos', 'test_611', 'test_612', 'test_613', 'log_server_01', 'pkg_repo', 'repos_devel']
+        ungrouped: []
+        state_down: ['ansible-test']
+        example_018: ['test_513', 'test_512', 'test_511', 'test_611', 'test_612', 'test_613']
+        state_up: ['test_513', 'test_512', 'test_511', 'repos', 'test_611', 'test_612', 'test_613', 'log_server_01', 'pkg_repo', 'repos_devel']
+        vmm_iocage_05: ['test_513', 'test_512', 'test_511']
+        vmm_iocage_06: ['repos', 'test_611', 'test_612', 'test_613', 'log_server_01', 'pkg_repo', 'repos_devel']
 
 PLAY RECAP *********************************************************************
-test_513                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_513                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

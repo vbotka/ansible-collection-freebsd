@@ -1,7 +1,7 @@
 .. _example_020:
 
-020 Get inventory aliases from notes
-------------------------------------
+020 Inventory option hooks_results
+----------------------------------
 
 This example extends :ref:`example_018`.
 
@@ -10,6 +10,10 @@ This example extends :ref:`example_018`.
    :depth: 1
 
 .. index::
+   single: option hooks_results; Example 020
+   single: hooks_results; Example 020
+   single: variable iocage_hooks; Example 020
+   single: iocage_hooks; Example 020
    single: swarms; Example 020
    single: swarms destroy; Example 020
    single: inventory vbotka.freebsd.iocage2; Example 020
@@ -28,9 +32,11 @@ This example extends :ref:`example_018`.
 Use case
 ^^^^^^^^
 
-Get the `inventory aliases`_ from the `jail property`_ ``notes``. In the
-:ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the option
-``inventory_hostname_tag`` to specify which tag to use.
+In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the
+option :ref:`hooks_results <ug_inventory_iocage_hooks>` to get the IP address
+set by DHCP. Use the option :ref:`inventory_hostname_tag
+<ug_inventory_iocage_aliases>` to specify which iocage tag to create aliases
+from. Get the `inventory aliases`_ from the `jail property`_ ``notes``.
 
 Tree
 ^^^^
@@ -52,10 +58,10 @@ Tree
   │   │   └── iocage.yml
   │   └── iocage_06
   │       └── iocage.yml
-  │── iocage.ini
+  ├── iocage.ini
   ├── pb-iocage-swarms-create.yml
   ├── pb-iocage-swarms-destroy.yml
-  └── pb-test-project.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -68,15 +74,19 @@ Synopsis
   * For each jail, set the property ``notes`` in the format
     ``tag1=val1 tag2=val2 ...``.
 
-  * Set the inventory alias in the tag ``alias=<alias>``.
+  * Set the inventory alias in the iocage tag ``alias=<alias>``.
 
-* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
-  retrieve the inventory aliases from the tag ``alias``.
+* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`:
+
+  * Create the variable ``ansible_host`` from the first item of the
+    list ``iocage_hooks``.
+
+  * Retrieve the inventory aliases from the iocage tag ``alias``.
 
 * In the inventory plugin `ansible.builtin.constructed`_, create the inventory
   groups.
 
-* Display the jails and groups.
+* Display the selected variables and groups.
 
 Requirements
 ^^^^^^^^^^^^
@@ -88,8 +98,7 @@ Requirements
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical
-  order.
+* TBD
 
 .. seealso::
 
@@ -126,17 +135,23 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5
+   :emphasize-lines: 5-6
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5
+   :emphasize-lines: 5-6
 
 .. note::
 
+   * The inventory files in the directory ``hosts`` are evaluated in alphabetical
+     order.
+
    * The value of the iocage tag ``alias`` is used as the :ref:`inventory alias
      <ug_inventory_iocage_aliases>`.
+
+   * The content of the files listed in ``hooks_results`` is stored in
+     the list ``iocage_hooks``.
 
    * The hook :ref:`dhclient-exit-hooks <ug_inventory_iocage_hooks>` is
      configured in the template :ref:`ansible-client <example_202>`.
@@ -183,7 +198,6 @@ Playbook output - Create swarms
 Graph
 ^^^^^
 
-
 .. literalinclude:: out/out-04.txt
    :language: console
    :caption: (env) > ansible-inventory -i hosts --graph
@@ -205,18 +219,18 @@ Jails
 
      shell> ansible-inventory -i hosts --list --yaml
 
-Playbook pb-test-project.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-project.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Test project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-project.yml
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-07.txt
    :language: yaml+jinja

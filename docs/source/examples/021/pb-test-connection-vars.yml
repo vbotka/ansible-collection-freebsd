@@ -5,22 +5,21 @@
 
     _vars:
       - iocage_jid
-      - iocage_properties
-      - iocage_tags
       - iocage_ip4
       - ansible_jail_host
       - ansible_jail_name
 
-    fmt: "%-4s %-10s %-10s %-15s %-17s %-6s"
+    fmt: "%-10s %-3s %-9s %-15s %-17s %-6s"
 
   tasks:
 
     - debug:
         msg: |
-          JID  NAME       alias      IP4             ansible_jail_host ansible_jail_name
-          ------------------------------------------------------------------------------
+          inv        id  hostuuid  IP4             ansible_jail_host ansible_jail_name
+          -----------------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
-          {% set v = _vars | map('extract', hostvars[h]) | list %}
-          {{ fmt | format(v[0]|string, v[1].host_hostuuid|string, v[2].alias|string, v[3]|string, v[4]|string, v[5]|string) }}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {% set uuid = hostvars[h]['iocage_properties']['host_hostuuid'] | string %}
+          {{ fmt | format(h, v[0], uuid, v[1], v[2], v[3]) }}
           {% endfor %}
       run_once: true

@@ -1,4 +1,7 @@
 plugin: ansible.builtin.constructed
+compose:
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
+  ansible_python_interpreter: "'auto_silent'"
 keyed_groups:
   - prefix: vmm
     key: iocage_tags.vmm

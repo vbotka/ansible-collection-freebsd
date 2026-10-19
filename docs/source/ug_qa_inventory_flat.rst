@@ -41,7 +41,7 @@ isolate each host by its jail manager?
 Answer
 ^^^^^^
 
-**No.** In Ansible, host names within an inventory must be globally unique.
+**No.** In Ansible, host names within an inventory must be **globally unique**.
 
 Because ``repos`` and ``repos_devel`` are defined only once by name:
 

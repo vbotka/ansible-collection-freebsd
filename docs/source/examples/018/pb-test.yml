@@ -1,24 +1,31 @@
-- name: Test jails in example 018.
+- name: Test jails in example_018
   hosts: example_018
 
   vars:
 
     _vars:
       - iocage_jid
-      - iocage_ip4
-      - iocage_release
-      - iocage_state
+      - ansible_host
 
-    fmt: "%-10s %-3s %-16s %-16s %-6s"
+    fmt: "%-10s %-3s %-9s %-15s %-40s"
 
   tasks:
 
     - debug:
         msg: |
-          inv        id  ip               release          state
-          ------------------------------------------------------
+          inv        id  hostuuid  ansible_host    iocage_tags
+          ----------------------------------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
-          {% set v = _vars | map('extract', hostvars[h]) | list %}
-          {{ fmt | format(h, v[0]|string, v[1]|string, v[2]|string, v[3]|string) }}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {% set uuid = hostvars[h]['iocage_properties']['host_hostuuid'] | string %}
+          {% set tags = hostvars[h]['iocage_tags'] | to_yaml | trim %}
+          {{ fmt | format(h, v[0], uuid, v[1], tags) }}
+          {% endfor %}
+      run_once: true
+
+    - debug:
+        msg: |
+          {% for group in groups %}
+          {{ group }}: {{ groups[group] }}
           {% endfor %}
       run_once: true

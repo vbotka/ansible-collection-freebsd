@@ -142,6 +142,9 @@ hosts
    * The structure of ``notes`` is arbitrary. If you change it, update the
      ``iocage_tags`` declaration accordingly.
 
+   * The inventory files in the directory ``hosts`` are evaluated in
+     alphabetical order.
+
 host_vars
 ^^^^^^^^^
 
@@ -196,16 +199,6 @@ Graph
    :language: console
    :caption: (env) > ansible-inventory -i hosts --graph
 
-.. note::
-
-   * The inventory files in the directory ``hosts`` are evaluated in
-     alphabetical order.
-
-   * The jail ``ansible-test`` from ``06_iocage.yml`` overrides the one from
-     ``05_iocage.yml``.
-
-   * See the special variable `groups`_.
-
 Playbook pb-all.yml
 ^^^^^^^^^^^^^^^^^^^
 
@@ -223,14 +216,31 @@ Playbook output - Display variables and groups
    :language: yaml+jinja
    :force:
 
+.. important::
+
+   * The jail ``ansible-test`` from ``06_iocage.yml`` overrides the one from
+     ``05_iocage.yml``.
+   * The structure of the inventory hosts and groups is **flat**. In Ansible,
+     host names within an inventory must be **globally unique**. The jail
+     ``ansible-test``, present in multiple iocage hosts, is included in the
+     inventory only once.
+   * See :ref:`ug_qa_inventory_flat`.
+   * See the special variable `group_names`_.
+
+.. warning::
+
+   There are no internal checks for hosts overriding each other. In Ansible,
+   host names within an inventory must be **globally unique**. Maintaining
+   inventory consistency is up to the user.
+
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display tags and groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -239,20 +249,6 @@ Playbook output - Display tags and groups
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
-
-.. note::
-
-   * The structure of the inventory hosts and groups is flat. The jail
-     ``ansible-test`` is the same in all groups.
-
-   * See the special variable `group_names`_.
-
-.. warning::
-
-   There are no internal checks for hosts overriding each
-   other. Maintaining inventory consistency is up to the user.
-
-   See :ref:`ug_qa_inventory_flat`.
 
 Playbook pb-test-vmm.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^

@@ -2,58 +2,42 @@
 PLAY [Test connection.] ********************************************************
 
 TASK [command] *****************************************************************
+changed: [db_p1]
+changed: [db_p2]
+changed: [www_p1]
 changed: [www_p2]
 changed: [www_p3]
-changed: [db_p1]
-changed: [www_p1]
-changed: [db_p2]
 changed: [db_d2]
-changed: [www_d3]
-changed: [www_d1]
 changed: [www_d2]
+changed: [www_d1]
+changed: [www_d3]
 changed: [db_d1]
 
 TASK [debug] *******************************************************************
-ok: [db_p1] => 
-    msg: |-
-        FreeBSD 97958d31 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
-ok: [db_p2] => 
-    msg: |-
-        FreeBSD e26c96d4 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
 ok: [www_p3] => 
     msg: |-
-        FreeBSD f7136384 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
-ok: [www_p1] => 
-    msg: |-
-        FreeBSD 776739b4 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
-ok: [www_p2] => 
-    msg: |-
-        FreeBSD 6096c2d0 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
-ok: [db_d2] => 
-    msg: |-
-        FreeBSD a7a0d85d 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_d3] => 
-    msg: |-
-        FreeBSD f7a6d647 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_d2] => 
-    msg: |-
-        FreeBSD d044d520 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [db_d1] => 
-    msg: |-
-        FreeBSD 32505fe9 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [www_d1] => 
-    msg: |-
-        FreeBSD 857f12ac 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+        inv        hostname
+        -------------------
+        www_p3     a82cdd6a
+        db_p2      b4366392
+        www_p2     d872adc6
+        db_p1      4f2fb435
+        www_p1     680e6eaa
+        db_d2      f91b6104
+        www_d3     fb3eaf11
+        db_d1      75aec436
+        www_d2     636c5a5c
+        www_d1     43e16879
 
 PLAY RECAP *********************************************************************
-db_d1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_d2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_p1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_p2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d3                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db_d1                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db_d2                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db_p1                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db_p2                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d1                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d2                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_d3                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p1                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+www_p2                     : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p3                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

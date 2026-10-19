@@ -1,117 +1,35 @@
 
-PLAY [Display project_example_020] *********************************************
+PLAY [Test jails in project_example_020] ***************************************
 
 TASK [debug] *******************************************************************
 ok: [www_p3] => 
     msg: |-
-        f7136384: {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_05}
-ok: [db_p1] => 
-    msg: |-
-        97958d31: {alias: db_p1, project: example_020, swarm: db_prod, vmm: iocage_05}
-ok: [www_p2] => 
-    msg: |-
-        6096c2d0: {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_05}
-ok: [db_p2] => 
-    msg: |-
-        e26c96d4: {alias: db_p2, project: example_020, swarm: db_prod, vmm: iocage_05}
-ok: [www_p1] => 
-    msg: |-
-        776739b4: {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_05}
-ok: [www_d3] => 
-    msg: |-
-        f7a6d647: {alias: www_d3, project: example_020, swarm: www_devel, vmm: iocage_06}
-ok: [www_d1] => 
-    msg: |-
-        857f12ac: {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_06}
-ok: [db_d2] => 
-    msg: |-
-        a7a0d85d: {alias: db_d2, project: example_020, swarm: db_devel, vmm: iocage_06}
-ok: [db_d1] => 
-    msg: |-
-        32505fe9: {alias: db_d1, project: example_020, swarm: db_devel, vmm: iocage_06}
-ok: [www_d2] => 
-    msg: |-
-        d044d520: {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_06}
+        inv        id  hostuuid  ansible_host    iocage_tags
+        ----------------------------------------------------------------------------------------------------------------
+        www_p3     25  a82cdd6a  172.16.95.118   {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_05}
+        db_p2      27  b4366392  172.16.95.120   {alias: db_p2, project: example_020, swarm: db_prod, vmm: iocage_05}
+        www_p2     24  d872adc6  172.16.95.117   {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_05}
+        db_p1      26  4f2fb435  172.16.95.119   {alias: db_p1, project: example_020, swarm: db_prod, vmm: iocage_05}
+        www_p1     23  680e6eaa  172.16.95.116   {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_05}
+        db_d2      31  f91b6104  172.16.99.151   {alias: db_d2, project: example_020, swarm: db_devel, vmm: iocage_06}
+        www_d3     29  fb3eaf11  172.16.99.145   {alias: www_d3, project: example_020, swarm: www_devel, vmm: iocage_06}
+        db_d1      30  75aec436  172.16.99.134   {alias: db_d1, project: example_020, swarm: db_devel, vmm: iocage_06}
+        www_d2     28  636c5a5c  172.16.99.137   {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_06}
+        www_d1     27  43e16879  172.16.99.136   {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_06}
 
 TASK [debug] *******************************************************************
 ok: [www_p3] => 
     msg: |-
-        all:
-          - www_p3
-          - db_p1
-          - www_p2
-          - db_p2
-          - www_p1
-          - repos
-          - repos_devel
-          - pkg_repo
-          - www_d3
-          - db_d2
-          - log_server_01
-          - www_d1
-          - db_d1
-          - www_d2
-
-        ungrouped:
-          []
-
-        vmm_iocage_05:
-          - www_p3
-          - db_p1
-          - www_p2
-          - db_p2
-          - www_p1
-
-        project_example_020:
-          - www_p3
-          - db_p1
-          - www_p2
-          - db_p2
-          - www_p1
-          - www_d3
-          - db_d2
-          - www_d1
-          - db_d1
-          - www_d2
-
-        swarm_www_prod:
-          - www_p3
-          - www_p2
-          - www_p1
-
-        swarm_db_prod:
-          - db_p1
-          - db_p2
-
-        vmm_iocage_06:
-          - repos
-          - repos_devel
-          - pkg_repo
-          - www_d3
-          - db_d2
-          - log_server_01
-          - www_d1
-          - db_d1
-          - www_d2
-
-        swarm_www_devel:
-          - www_d3
-          - www_d1
-          - www_d2
-
-        swarm_db_devel:
-          - db_d2
-          - db_d1
+        all: ['ansible-test', 'www_p3', 'db_p2', 'www_p2', 'db_p1', 'www_p1', 'repos', 'db_d2', 'repos_devel', 'www_d3', 'pkg_repo', 'log_server_01', 'db_d1', 'www_d2', 'www_d1']
+        ungrouped: ['ansible-test']
+        vmm_iocage_05: ['www_p3', 'db_p2', 'www_p2', 'db_p1', 'www_p1']
+        project_example_020: ['www_p3', 'db_p2', 'www_p2', 'db_p1', 'www_p1', 'db_d2', 'www_d3', 'db_d1', 'www_d2', 'www_d1']
+        swarm_www_prod: ['www_p3', 'www_p2', 'www_p1']
+        swarm_db_prod: ['db_p2', 'db_p1']
+        vmm_iocage_06: ['repos', 'db_d2', 'repos_devel', 'www_d3', 'pkg_repo', 'log_server_01', 'db_d1', 'www_d2', 'www_d1']
+        swarm_db_devel: ['db_d2', 'db_d1']
+        swarm_www_devel: ['www_d3', 'www_d2', 'www_d1']
 
 PLAY RECAP *********************************************************************
-db_d1                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_d2                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_p1                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-db_p2                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 www_p3                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

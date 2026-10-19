@@ -33,7 +33,7 @@ Examples
    examples/017/example.rst
    examples/018/example.rst
    examples/019/example.rst
-   020 Inventory aliases from notes <examples/020/example.rst>
+   examples/020/example.rst
    examples/021/example.rst
    examples/030/example.rst
 

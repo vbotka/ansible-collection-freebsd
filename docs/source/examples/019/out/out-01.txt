@@ -1,0 +1,50 @@
+@all:
+  |--@ungrouped:
+  |--@test_CA:
+  |  |--test_513
+  |  |--test_512
+  |  |--test_511
+  |--@test_NL:
+  |  |--test_611
+  |  |--test_612
+  |  |--test_613
+  |--@state_down:
+  |  |--ansible-test
+  |--@example_018:
+  |  |--test_513
+  |  |--test_512
+  |  |--test_511
+  |  |--test_611
+  |  |--test_612
+  |  |--test_613
+  |--@region_US:
+  |  |--test_513
+  |  |--test_512
+  |  |--test_511
+  |--@state_up:
+  |  |--test_513
+  |  |--test_512
+  |  |--test_511
+  |  |--repos
+  |  |--test_611
+  |  |--test_612
+  |  |--test_613
+  |  |--log_server_01
+  |  |--pkg_repo
+  |  |--repos_devel
+  |--@vmm_iocage_05:
+  |  |--test_513
+  |  |--test_512
+  |  |--test_511
+  |--@vmm_iocage_06:
+  |  |--repos
+  |  |--test_611
+  |  |--test_612
+  |  |--test_613
+  |  |--log_server_01
+  |  |--pkg_repo
+  |  |--repos_devel
+  |--@region_EU:
+  |  |--test_611
+  |  |--test_612
+  |  |--test_613

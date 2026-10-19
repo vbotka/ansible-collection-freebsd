@@ -11,7 +11,7 @@ ssh admin@iocage_05 sudo iocage list -l | tee out/out-02.txt
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-03.txt
 
 # Test.
-ansible-playbook -i hosts pb-test-all.yml | tee out/out-04.txt
+ansible-playbook -i hosts pb-test.yml | tee out/out-04.txt
 ansible-playbook -i hosts pb-test-region.yml | tee out/out-05.txt
 
 # Destroy jails in batch.

@@ -10,14 +10,14 @@ ok: [iocage_05] =>
     msg: |-
         [14.5-RELEASE]
         []
-        []
+        [ansible-client]
         [ansible-test]
 ok: [iocage_06] => 
     msg: |-
         [15.0-RELEASE, 15.1-RELEASE]
         []
-        [ansible-apache, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos, ansible-syslogng-client,
-          ansible-syslogng-server]
+        [ansible-apache, ansible-client, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos,
+          ansible-syslogng-client, ansible-syslogng-server]
         [ansible-test, log-server-01, pkg-repo, repos, repos-devel]
 
 PLAY RECAP *********************************************************************

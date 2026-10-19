@@ -1,7 +1,7 @@
 .. _example_018:
 
-018 Clone basejails. Use DHCP.
-------------------------------
+018 DHCP, auto UUID, and aliases
+--------------------------------
 
 .. contents::
    :local:
@@ -12,14 +12,17 @@
    single: module vbotka.freebsd.iocage; Example 018
    single: inventory vbotka.freebsd.iocage; Example 018
    single: DHCP; Example 018
-   single: sudoers; Example 018
+   single: option inventory_hostname_tag; Example 018
+   single: alias; Example 018
    single: option sudo; Example 018
    single: sudo; Example 018
+   single: host_hostuuid; Example 018
 
 Use case
 ^^^^^^^^
 
-Clone basejails. Use DHCP to configure the interfaces.
+Clone basejails. Use DHCP to configure the interfaces. Automatically generate
+UUID names for jails and configure inventory aliases.
 
 Tree
 ^^^^
@@ -58,8 +61,12 @@ Synopsis
   * In the playbook ``pb-iocage-clone.yml``, use the :ref:`module
     vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-    * Clone 3 jails from ``ansible-test``.
-    * Display iocage datasets lists.
+    * Clone 3 jails from ``ansible-test``:
+
+      * Automatically generate UUID names.
+      * Configure inventory aliases.
+
+    * Display iocage datasets.
 
   * In the playbook ``pb-iocage-start.yml``, use `iocage`_ to:
 
@@ -68,8 +75,10 @@ Synopsis
 * In the playbook ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
   <ug_inventory_iocage>` to:
 
-  * Create inventory groups and compose variables.
-  * Display the hosts and composed variables in the group ``example_018``.
+  * Compose variables snd create inventory groups.
+
+  * Display the hosts, groups, and selected variables in the group
+    ``example_018``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -153,6 +162,15 @@ Playbook pb-iocage-clone.yml
    :language: yaml+jinja
    :emphasize-lines: 13
 
+.. important::
+
+   Quoting option ``name`` from :ref:`inventory iocage <ug_inventory_iocage>`: ::
+
+     States `present, cloned, template, basejail, thickjail' will return `uuid'
+     and `uuid_short' if `name' is `None' or empty.
+
+   :ref:`ug_inventory_iocage`
+
 .. note::
 
    * :ref:`ug_concepts_iocage_tags` ``alias``, ``vmm``, and ``class`` are
@@ -210,8 +228,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display iocage_* variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

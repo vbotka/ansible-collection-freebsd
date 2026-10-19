@@ -20,18 +20,18 @@ ok: [test-512] =>
         ansible_host: 172.16.95.212
         release: 14.5
         iocage_tags: {vmm: iocage_05}
-ok: [test-513] => 
-    msg: |-
-        inventory_hostname: test-513
-        ansible_host: 172.16.95.213
-        release: 14.5
-        iocage_tags: {vmm: iocage_05}
 ok: [log-server-01] => 
     msg: |-
         inventory_hostname: log-server-01
         ansible_host: 172.16.99.10
         release: 15.1
         iocage_tags: {alias: log_server_01, class: log-server, vmm: iocage_06}
+ok: [test-513] => 
+    msg: |-
+        inventory_hostname: test-513
+        ansible_host: 172.16.95.213
+        release: 14.5
+        iocage_tags: {vmm: iocage_05}
 ok: [pkg-repo] => 
     msg: |-
         inventory_hostname: pkg-repo
@@ -56,16 +56,16 @@ ok: [test-611] =>
         ansible_host: 172.16.99.211
         release: 15.1
         iocage_tags: {vmm: iocage_06}
-ok: [test-612] => 
-    msg: |-
-        inventory_hostname: test-612
-        ansible_host: 172.16.99.212
-        release: 15.1
-        iocage_tags: {vmm: iocage_06}
 ok: [test-613] => 
     msg: |-
         inventory_hostname: test-613
         ansible_host: 172.16.99.213
+        release: 15.1
+        iocage_tags: {vmm: iocage_06}
+ok: [test-612] => 
+    msg: |-
+        inventory_hostname: test-612
+        ansible_host: 172.16.99.212
         release: 15.1
         iocage_tags: {vmm: iocage_06}
 

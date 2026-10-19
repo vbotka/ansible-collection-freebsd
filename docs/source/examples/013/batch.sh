@@ -33,7 +33,7 @@ ansible-inventory -i hosts --graph | tee out/out-03.txt
 # Display variables and groups.
 ansible-playbook -i hosts pb-all.yml | tee out/out-04.txt
 
-# Display iocage tags and groups.
+# Display iocage variables and groups.
 ansible-playbook -i hosts pb-test.yml | tee out/out-05.txt
 
 # Display jails running on vmm.

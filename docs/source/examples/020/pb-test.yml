@@ -1,0 +1,31 @@
+- name: Test jails in project_example_020
+  hosts: project_example_020
+
+  vars:
+
+    _vars:
+      - iocage_jid
+      - ansible_host
+
+    fmt: "%-10s %-3s %-9s %-15s %-40s"
+
+  tasks:
+
+    - debug:
+        msg: |
+          inv        id  hostuuid  ansible_host    iocage_tags
+          ----------------------------------------------------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {% set uuid = hostvars[h]['iocage_properties']['host_hostuuid'] | string %}
+          {% set tags = hostvars[h]['iocage_tags'] | to_yaml | trim %}
+          {{ fmt | format(h, v[0], uuid, v[1], tags) }}
+          {% endfor %}
+      run_once: true
+
+    - debug:
+        msg: |
+          {% for group in groups %}
+          {{ group }}: {{ groups[group] }}
+          {% endfor %}
+      run_once: true

@@ -17,11 +17,11 @@ ansible-playbook -i iocage.ini -t freebsd_iocage_facts -e freebsd_iocage_facts=t
 ssh admin@iocage_05 cat /etc/ansible/facts.d/iocage.fact | tee out/out-05.txt
 
 # Test.
-ansible-playbook -i iocage.ini pb-test.yml | tee out/out-06.txt
+ansible-playbook -i iocage.ini -l iocage_05 pb-test.yml | tee out/out-06.txt
 
 # Destroy jails in batch. (The jails are created in 020).
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    (cd ../020 &&ansible-playbook -i iocage.ini -i hosts pb-iocage-swarms-destroy.yml)
+    (cd ../020 && ansible-playbook -i iocage.ini -i hosts pb-iocage-swarms-destroy.yml)
 fi
 
 touch .done

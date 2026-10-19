@@ -54,7 +54,7 @@ Tree
   │       │   └── region.yml
   │       └── test_NL
   │           └── region.yml
-  ├── pb-test-all.yml
+  ├── pb-test.yml
   └── pb-test-region.yml
 
 Synopsis
@@ -73,8 +73,6 @@ Synopsis
   * The inventory plugin `ansible.builtin.constructed`_ creates the
     inventory groups:
 
-    * ``test`` comprising hosts whose names start with ``'test'``.
-    * ``test_up`` comprising running hosts whose names start with ``'test'``.
     * ``region_EU`` comprising hosts where the variable ``region`` is ``'EU'``.
     * ``region_US`` comprising hosts where the variable ``region`` is ``'US'``.
 
@@ -165,14 +163,14 @@ group_vars
 
    See: `Variable precedence. Where should I put a variable?`_
 
-Playbook pb-test-all.yml
+Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-all.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - List all jails and groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

@@ -10,19 +10,19 @@ changed: [iocage_06] => (item=test-612 ansible-test)
 changed: [iocage_06] => (item=test-613 ansible-test)
 
 TASK [Display lists of bases, plugins, templates, and jails.] ******************
-ok: [iocage_05] => 
-    msg: |-
-        [14.5-RELEASE]
-        []
-        []
-        [ansible-test, test-511, test-512, test-513]
 ok: [iocage_06] => 
     msg: |-
         [15.0-RELEASE, 15.1-RELEASE]
         []
-        [ansible-apache, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos, ansible-syslogng-client,
-          ansible-syslogng-server]
+        [ansible-apache, ansible-client, ansible-init, ansible-nginx, ansible-pkg-repo, ansible-repos,
+          ansible-syslogng-client, ansible-syslogng-server]
         [ansible-test, log-server-01, pkg-repo, repos, repos-devel, test-611, test-612, test-613]
+ok: [iocage_05] => 
+    msg: |-
+        [14.5-RELEASE]
+        []
+        [ansible-client]
+        [ansible-test, test-511, test-512, test-513]
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

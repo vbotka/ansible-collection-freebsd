@@ -1,7 +1,7 @@
 .. _example_021:
 
-021 Inventory plugin iocage2
-----------------------------
+021 Connection variables for jailexec
+-------------------------------------
 
 This example extends :ref:`example_020`.
 
@@ -20,6 +20,16 @@ This example extends :ref:`example_020`.
    single: iocage tag alias; Example 021
    single: inventory alias; Example 021
    single: alias; Example 021
+   single: option hooks_results; Example 021
+   single: hooks_results; Example 021
+   single: option ansible_connection; Example 021
+   single: ansible_connection; Example 021
+   single: option ansible_jail_host; Example 021
+   single: ansible_jail_host; Example 021
+   single: option ansible_jail_name; Example 021
+   single: ansible_jail_name; Example 021
+   single: option ansible_jail_privilege_escalation; Example 021
+   single: ansible_jail_privilege_escalation; Example 021
 
 Use case
 ^^^^^^^^
@@ -43,7 +53,7 @@ Tree
   ├── iocage.ini
   ├── pb-test-connection-vars.yml
   ├── pb-test-connection.yml
-  └── pb-test-project.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
@@ -64,16 +74,15 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_inventory_iocage2`.
-* :ref:`ug_connection_jailexec`.
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
 * Root privileges on the managed nodes.
 * Jails created in :ref:`example_020`.
 
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical
-  order.
+* TBD.
 
 .. seealso::
 
@@ -99,16 +108,23 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 11-15
+   :emphasize-lines: 9-13
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 11-15
+   :emphasize-lines: 9-13
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+
+.. note::
+
+   * The inventory files in the directory ``hosts`` are evaluated in
+     alphabetical order.
+
+   * See: :ref:`ug_connection_jailexec`.
 
 Graph
 ^^^^^
@@ -128,18 +144,18 @@ Jails
    :language: bash
    :caption: [iocage_06]# iocage list -l
 
-Playbook pb-test-project.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-project.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Test project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-project.yml
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja

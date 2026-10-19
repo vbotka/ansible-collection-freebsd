@@ -9,15 +9,15 @@ if [[ -f defaults/batch ]]; then
 fi
 
 # Allow environment variables to override defaults
-: "${VBOTKA_FREEBSD_BATCH:=true}"
+: "${VBOTKA_FREEBSD_BATCH:=false}"
 : "${VBOTKA_FREEBSD_COPY_ORIG:=false}"
 : "${VBOTKA_FREEBSD_DESTROY_JAILS:=false}"
 : "${VBOTKA_FREEBSD_DESTROY_TEMPLATES:=false}"
 
+run_batch="$VBOTKA_FREEBSD_BATCH"
 copy_orig="$VBOTKA_FREEBSD_COPY_ORIG"
 destroy_jails="$VBOTKA_FREEBSD_DESTROY_JAILS"
 destroy_templates="$VBOTKA_FREEBSD_DESTROY_TEMPLATES"
-run_batch="$VBOTKA_FREEBSD_BATCH"
 
 printf 'copy_orig=%s\n' "$copy_orig"
 printf 'destroy_jails=%s\n' "$destroy_jails"

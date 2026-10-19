@@ -23,7 +23,7 @@ ssh admin@iocage_05 sudo iocage list -l | tee out/out-05.txt
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-06.txt
 
 # Test.
-ansible-playbook -i hosts pb-test-project.yml | tee out/out-07.txt
+ansible-playbook -i hosts pb-test.yml | tee out/out-07.txt
 # ansible-playbook -i hosts pb-test-properties.yml
 # ansible-playbook -i hosts pb-test-hostuuid.yml
 # ansible-playbook -i hosts pb-test-connection.yml

@@ -1,11 +1,20 @@
 - name: Test connection.
   hosts: project_example_020
 
+  vars:
+
+    fmt: "%-10s %-16s"
+
   tasks:
 
-    - command: uname -a
+    - command: hostname
       register: out
 
     - debug:
         msg: |
-          {{ out.stdout }}
+          inv        hostname
+          -------------------
+          {% for h in ansible_play_hosts %}
+          {{ fmt | format(h, hostvars[h].out.stdout) }}
+          {% endfor %}
+      run_once: true

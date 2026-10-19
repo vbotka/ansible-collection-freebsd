@@ -1,7 +1,7 @@
 .. _example_030:
 
-030 Create custom facts
------------------------
+030 Custom facts
+----------------
 
 This example extends :ref:`example_020`.
 
@@ -59,15 +59,19 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* `Role vbotka.freebsd.iocage`_.
-* :ref:`ug_filter_iocage`.
+* `Role vbotka.freebsd.iocage`_
+* :ref:`ug_filter_iocage`
 * Root privileges on the managed nodes.
 * Jails created in previous examples.
 
 Notes
 ^^^^^
 
-* See `Adding custom facts`_.
+* TBD.
+
+.. seealso::
+
+   * `Adding custom facts`_
 
 Jails
 ^^^^^
@@ -155,7 +159,7 @@ Playbook output - Display custom facts
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini pb-test.yml
+   (env) > ansible-playbook -i iocage.ini -l iocage_05 pb-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja

@@ -3,9 +3,9 @@ PLAY [Start jails in example 018.] *********************************************
 
 TASK [debug] *******************************************************************
 ok: [iocage_05] => 
-    msg: iocage start 48c97938 92322e99 2c393434
+    msg: iocage start f00df506 f515d3a0 ab3d9dc8
 ok: [iocage_06] => 
-    msg: iocage start 70e8cfed cddbe097 d1b19d04
+    msg: iocage start 95d14b88 e7e6756e 31f3565a
 
 TASK [command] *****************************************************************
 changed: [iocage_05]

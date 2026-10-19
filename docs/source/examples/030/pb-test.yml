@@ -13,4 +13,4 @@
 
     - name: Debug.
       ansible.builtin.debug:
-        var: ansible_local.iocage | vbotka.freebsd.iocage
+        var: ansible_local.iocage | vbotka.freebsd.iocage | to_yaml
