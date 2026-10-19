@@ -93,7 +93,7 @@ Requirements
 
 * :ref:`ug_inventory_iocage2`
 * Root privileges on the managed nodes.
-* Templates created in :ref:`example_202`.
+* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^

@@ -2,23 +2,23 @@
 PLAY [Test the connection plugin vbotka.freebsd.jailexec] **********************
 
 TASK [command] *****************************************************************
-changed: [de9c03ab]
-changed: [e712848e]
-changed: [bbf40e62]
+changed: [49f92d2a]
+changed: [2756b146]
+changed: [2e117f73]
 
 TASK [debug] *******************************************************************
-ok: [de9c03ab] => 
+ok: [2e117f73] => 
     msg: |-
-        FreeBSD de9c03ab 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [e712848e] => 
+        FreeBSD 2e117f73 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
+ok: [49f92d2a] => 
     msg: |-
-        FreeBSD e712848e 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
-ok: [bbf40e62] => 
+        FreeBSD 49f92d2a 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
+ok: [2756b146] => 
     msg: |-
-        FreeBSD bbf40e62 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf GENERIC amd64
+        FreeBSD 2756b146 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
 
 PLAY RECAP *********************************************************************
-bbf40e62                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-de9c03ab                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-e712848e                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2756b146                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2e117f73                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+49f92d2a                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

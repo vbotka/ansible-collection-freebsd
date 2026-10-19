@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: connection vbotka.freebsd.jailexec; Example 050
-.. index:: single: vbotka.freebsd.jailexec; Example 050
-.. index:: single: jailexec; Example 050
+.. index::
+   single: connection vbotka.freebsd.jailexec; Example 050
+   single: vbotka.freebsd.jailexec; Example 050
+   single: jailexec; Example 050
 
 Use case
 ^^^^^^^^
@@ -30,70 +31,38 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Manually create and start jails. Update the inventory file ``hosts``.
+* On the managed nodes:
 
-* Test the :ref:`connection plugin vbotka.freebsd.jailexec
-  <ug_connection_jailexec>`.
+  * Manually create and start jails.
 
-* Manually destroy the jails.
+  * Update the inventory file ``hosts``.
+
+  * Test the :ref:`connection plugin vbotka.freebsd.jailexec
+    <ug_connection_jailexec>`.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_connection_jailexec`
+* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-TBD
+* TBD.
 
 Manually create the jails
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_06]# iocage create --short --count 3 --template ansible-client bpf=1 dhcp=1 vnet=1 boot=1
-   e712848e successfully created!
-   No default gateway found for ipv6.
-   * Starting e712848e
-     + Started OK
-     + Using devfs_ruleset: 1000 (iocage generated default)
-     + Configuring VNET OK
-     + Using IP options: vnet
-     + Starting services OK
-     + Executing poststart OK
-     + DHCP Address: 172.16.99.168/24
-   de9c03ab successfully created!
-   No default gateway found for ipv6.
-   * Starting de9c03ab
-     + Started OK
-     + Using devfs_ruleset: 1001 (iocage generated default)
-     + Configuring VNET OK
-     + Using IP options: vnet
-     + Starting services OK
-     + Executing poststart OK
-     + DHCP Address: 172.16.99.167/24
-   bbf40e62 successfully created!
-   No default gateway found for ipv6.
-   * Starting bbf40e62
-     + Started OK
-     + Using devfs_ruleset: 1002 (iocage generated default)
-     + Configuring VNET OK
-     + Using IP options: vnet
-     + Starting services OK
-     + Executing poststart OK
-     + DHCP Address: 172.16.99.142/24
+   [iocage_05]# iocage create --short -c 3 -t ansible-client  dhcp=1 vnet=1 boot=1
 
-   [iocage_06]# iocage list -l
-   +-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-   | JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
-   +=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
-   | 12  | bbf40e62      | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.142 | -   | ansible-client   | no       |
-   +-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-   | 11  | de9c03ab      | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.167 | -   | ansible-client   | no       |
-   +-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-   | 10  | e712848e      | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.168 | -   | ansible-client   | no       |
-   +-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+   [iocage_05]# iocage list -h
+   30	2756b146	up	14.5-RELEASE	DHCP
+   28	2e117f73	up	14.5-RELEASE	DHCP
+   29	49f92d2a	up	14.5-RELEASE	DHCP
+   None	ansible-test	down	14.5-RELEASE	DHCP
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -112,8 +81,10 @@ hosts
 
 .. hint::
 
-   For dynamic assignment of the connection variables ``ansible_jail_*`` see
-   :ref:`example_200`.
+   For dynamic assignment of the connection variables ``ansible_jail_*`` see:
+
+   * :ref:`example_020`
+   * :ref:`example_200`
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
