@@ -16,7 +16,7 @@ This example extends :ref:`example_200`.
    single: sudoers; Example 202
    single: pb_iocage_template.yml; Example 202
    single: pb_iocage_ansible_clients.yml; Example 202
-   single: inventory vbotka.freebsd.iocage; Example 202
+   single: inventory vbotka.freebsd.iocage2; Example 202
    single: module vbotka.freebsd.iocage; Example 202
    single: module ansible.posix.authorized; Example 202
    single: ansible.posix.authorized; Example 202
@@ -103,8 +103,8 @@ Tree
   │   ├── pk_admins.txt
   │   └── pkgs.json
   ├── hosts
-  │   ├── 05_iocage.yml
-  │   ├── 06_iocage.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_05
@@ -117,16 +117,18 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In addition to the configuration in :ref:`example_200`:
+* On the managed nodes:
 
-* Configure ``dhclient-exit-hooks`` in the template ``ansible-client``.
+  In addition to the configuration in :ref:`example_200`:
 
-* Configure ``hooks_results`` in the inventory plugin and create the variable
-  ``ansible_host``.
+  * Configure ``dhclient-exit-hooks`` in the template ``ansible-client``.
 
-* Create jails from this template and start them.
+  * Configure ``hooks_results`` in the inventory plugin and create the variable
+    ``ansible_host``.
 
-* Display selected variables.
+  * Create jails from this template and start them.
+
+  * Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^
@@ -291,7 +293,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display test vars
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -307,5 +309,7 @@ Playbook output - Display test vars
    The command below stops and destroys the created jails::
 
      ansible-playbook -i iocage.ini \
-                      -t clone_destroy -e clone_destroy=true \
+                      -t clone_destroy \
+		      -e clone_destroy=true \
+		      -e iocage_module=false \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml

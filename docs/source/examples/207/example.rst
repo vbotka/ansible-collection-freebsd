@@ -19,7 +19,7 @@
    single: filter vbotka.freebsd.project; Example 207
    single: vbotka.freebsd.project; Example 207
    single: project; Example 207
-   single: inventory vbotka.freebsd.iocage; Example 207
+   single: inventory vbotka.freebsd.iocage2; Example 207
    single: inventory ansible.builtin.constructed; Example 207
    single: module ansible.builtin.command; Example 207
    single: option inventory_hostname_tag; Example 207
@@ -78,7 +78,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   In the playbook :ref:`ug_pb-iocage-project-create`, use:
 
@@ -87,11 +87,11 @@ Synopsis
   * Inventory `ansible.builtin.constructed`_ to create groups and compose
     variables:
 
-    * iocage_tags
-    * iocage_classes
-    * ansible_host
-    * ansible_jail_host
-    * ansible_jail_name
+    * ``iocage_tags``
+    * ``iocage_classes``
+    * ``ansible_host``
+    * ``ansible_jail_host``
+    * ``ansible_jail_name``
 
   * Module ``ansible.builtin.command`` and `iocage`_ utility to:
 
@@ -116,7 +116,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. seealso::
 
@@ -237,7 +237,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display test vars
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -245,19 +245,5 @@ Playbook output - Display test vars
    (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-09.txt
-   :language: yaml+jinja
-   :force:
-
-Playbook output - Destroy project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i hosts -i iocage.ini \
-                            vbotka.freebsd.pb_iocage_project_destroy.yml
-
-.. seealso:: The playbook :ref:`ug_pb-iocage-project-destroy`
-
-.. literalinclude:: out/out-10.txt
    :language: yaml+jinja
    :force:

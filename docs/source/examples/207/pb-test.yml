@@ -33,7 +33,7 @@
           ----------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
           {% set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
-          {{ _fmt2 | format(h, p[0]|string, p[1]|string, hostvars[h].iocage_classes | string) }}
+          {{ _fmt2 | format(h, p[0]|string, p[1]|string, hostvars[h].iocage_classes | to_yaml | trim) }}
           {% endfor %}
       run_once: true
     
@@ -43,6 +43,6 @@
           ----------------------------------------------------------------------
           {% for h in ansible_play_hosts %}
           {% set p = _properties | map('extract', hostvars[h].get('iocage_properties', {})) | list %}
-          {{ _fmt2 | format(h, p[0]|string, p[1]|string, hostvars[h].iocage_tags | string) }}
+          {{ _fmt2 | format(h, p[0]|string, p[1]|string, hostvars[h].iocage_tags | to_yaml | trim) }}
           {% endfor %}
       run_once: true

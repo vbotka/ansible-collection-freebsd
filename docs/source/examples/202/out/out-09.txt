@@ -2,29 +2,29 @@
 PLAY [Display inventory.] ******************************************************
 
 TASK [debug] *******************************************************************
-ok: [test-153] => 
+ok: [test-513] => 
     msg: |-
         inv       name     uuid     ansible_host
         ----------------------------------------
-        test-153  test-153 test-153 172.16.95.170
-        test-151  test-151 test-151 172.16.95.169
-        test-152  test-152 test-152 172.16.95.167
-        test-161  test-161 test-161 172.16.99.172
-        test-162  test-162 test-162 172.16.99.159
-        test-163  test-163 test-163 172.16.99.146
+        test-513  test-513 test-513 172.16.95.125
+        test-511  test-511 test-511 172.16.95.124
+        test-512  test-512 test-512 172.16.95.100
+        test-613  test-613 test-613 172.16.99.112
+        test-611  test-611 test-611 172.16.99.104
+        test-612  test-612 test-612 172.16.99.109
 
 TASK [debug] *******************************************************************
-ok: [test-153] => 
+ok: [test-513] => 
     msg: |-
         inv       name     uuid     iocage_tags
         ----------------------------------------------------------------------
-        test-153  test-153 test-153 {swarm: test-153, vmm: iocage_05}
-        test-151  test-151 test-151 {swarm: test-151, vmm: iocage_05}
-        test-152  test-152 test-152 {swarm: test-152, vmm: iocage_05}
-        test-161  test-161 test-161 {swarm: test-161, vmm: iocage_06}
-        test-162  test-162 test-162 {swarm: test-162, vmm: iocage_06}
-        test-163  test-163 test-163 {swarm: test-163, vmm: iocage_06}
+        test-513  test-513 test-513 {swarm: test-513, vmm: iocage_05}
+        test-511  test-511 test-511 {swarm: test-511, vmm: iocage_05}
+        test-512  test-512 test-512 {swarm: test-512, vmm: iocage_05}
+        test-613  test-613 test-613 {swarm: test-613, vmm: iocage_06}
+        test-611  test-611 test-611 {swarm: test-611, vmm: iocage_06}
+        test-612  test-612 test-612 {swarm: test-612, vmm: iocage_06}
 
 PLAY RECAP *********************************************************************
-test-153                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-513                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

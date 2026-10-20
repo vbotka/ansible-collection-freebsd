@@ -12,3 +12,5 @@ ansible-playbook vbotka.freebsd.pb_iocage_template.yml -i iocage.ini -e debug=tr
 
 # List templates
 ssh admin@$iocage_04 iocage list -lt | tee out/out-02.txt
+
+touch .done

@@ -14,8 +14,8 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Create swarms.] **********************************************************
-ok: [iocage_06] => (item=sw_01)
 ok: [iocage_05] => (item=sw_01)
+ok: [iocage_06] => (item=sw_01)
 
 TASK [Query iocage module.] ****************************************************
 ok: [iocage_05]

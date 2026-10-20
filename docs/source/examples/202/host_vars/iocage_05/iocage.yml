@@ -6,6 +6,7 @@ templates:
   ansible-client:
     release: 14.5-RELEASE
     properties:
+      bpf: 1
       dhcp: 1
       vnet: 1
     dhclient: "{{ act_dhclient | dict2items }}"
@@ -27,12 +28,13 @@ act_dhclient:
     esac
 
 clones:
-  test-151: {clone_from: ansible-client}
-  test-152: {clone_from: ansible-client}
-  test-153: {clone_from: ansible-client}
+  test-511: {clone_from: ansible-client}
+  test-512: {clone_from: ansible-client}
+  test-513: {clone_from: ansible-client}
 
 # clones default properties
 properties:
+  bpf: 1
   dhcp: 1
   vnet: 1
 

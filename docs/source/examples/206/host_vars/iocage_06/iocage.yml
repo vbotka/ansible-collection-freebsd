@@ -1,13 +1,12 @@
 clones:
-  test-161:
-    notes: alias=test_161
+  test-611:
+    notes: alias=test_611
     swarm: sw_01
     clone_from: ansible-client
     class: [test]
     properties:
-      bpf: 1
       vnet: 1
-      ip4_addr: 'vnet0|172.16.99.201/24'
+      ip4_addr: 'vnet0|172.16.99.211/24'
       defaultrouter: '172.16.99.1'
 
 swarms:
@@ -20,7 +19,7 @@ swarms:
       dhcp: 1
       vnet: 1
 
-start: [test-161]
+start: [test-611]
 
 vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
 project_clones: "{{ dict(clones.keys()

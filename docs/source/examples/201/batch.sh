@@ -25,3 +25,5 @@ if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     ssh admin@iocage_06 sudo iocage destroy -f test-162
     ssh admin@iocage_06 sudo iocage destroy -f test-163
 fi
+
+touch .done

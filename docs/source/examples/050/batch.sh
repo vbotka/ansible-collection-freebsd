@@ -5,3 +5,5 @@
 
 # Test the connection plugin vbotka.freebsd.jailexec
 ansible-playbook -i hosts pb.yml | tee out/out-01.txt
+
+touch .done

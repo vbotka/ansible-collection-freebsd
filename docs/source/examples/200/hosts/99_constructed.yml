@@ -13,4 +13,4 @@ compose:
   # other variables
   ansible_python_interpreter: "'auto_silent'"
 groups:
-    test: inventory_hostname.startswith('test')
+  test: inventory_hostname.startswith('test')

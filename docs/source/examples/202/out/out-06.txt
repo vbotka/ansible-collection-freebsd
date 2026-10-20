@@ -1,22 +1,21 @@
 @all:
   |--@ungrouped:
-  |  |--ansible-test
   |  |--repos-devel
   |  |--pkg-repo
   |  |--log-server-01
   |  |--repos
   |--@test_05:
-  |  |--test-153
-  |  |--test-151
-  |  |--test-152
+  |  |--test-513
+  |  |--test-511
+  |  |--test-512
   |--@test_06:
-  |  |--test-161
-  |  |--test-162
-  |  |--test-163
+  |  |--test-613
+  |  |--test-611
+  |  |--test-612
   |--@test:
-  |  |--test-153
-  |  |--test-151
-  |  |--test-152
-  |  |--test-161
-  |  |--test-162
-  |  |--test-163
+  |  |--test-513
+  |  |--test-511
+  |  |--test-512
+  |  |--test-613
+  |  |--test-611
+  |  |--test-612

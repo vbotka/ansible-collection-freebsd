@@ -17,7 +17,7 @@ This example extends :ref:`example_203`.
    single: property notes; Example 204
    single: notes; Example 204
    single: filter vbotka.freebsd.iocage; Example 204
-   single: inventory vbotka.freebsd.iocage; Example 204
+   single: inventory vbotka.freebsd.iocage2; Example 204
    single: module ansible.builtin.command; Example 204
    single: pb-iocage-ansible-clients-v2.yml; Example 204
    single: option get_properties; Example 204
@@ -97,7 +97,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
 
@@ -227,7 +227,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display test vars
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console

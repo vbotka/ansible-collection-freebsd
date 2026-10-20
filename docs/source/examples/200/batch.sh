@@ -3,25 +3,11 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
-# Destroy jails
-# VBOTKA_FREEBSD_BATCH=true \
-# ansible-playbook -i iocage.ini --flush-cache \
-#                  vbotka.freebsd.pb_iocage_destroy_all_jails.yml
-ssh admin@iocage_05 sudo iocage destroy -f test-151
-ssh admin@iocage_05 sudo iocage destroy -f test-152
-ssh admin@iocage_05 sudo iocage destroy -f test-153
-ssh admin@iocage_06 sudo iocage destroy -f test-161
-ssh admin@iocage_06 sudo iocage destroy -f test-162
-ssh admin@iocage_06 sudo iocage destroy -f test-163
-
-# Destroy templates in batch.
+# In batch, destroy jails and templates. Copy public key.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
+    ansible-playbook -i iocage.ini -t clone_destroy -e clone_destroy=true -e iocage_module=false vbotka.freebsd.pb_iocage_ansible_clients.yml
     ssh admin@iocage_05 sudo iocage destroy -f ansible-client
     ssh admin@iocage_06 sudo iocage destroy -f ansible-client
-fi
-
-# Copy public key in batch.
-if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     cp files/pk_admins.txt.orig files/pk_admins.txt
 fi
 
@@ -36,10 +22,10 @@ ssh admin@iocage_06 iocage list -lt | tee out/out-03.txt
 ansible-playbook -i iocage.ini -t clone -e clone=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-04.txt
 
 # List jails
-ansible-playbook -i iocage.ini -t list -e debug=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-06.txt
+ansible-playbook -i iocage.ini -t list -e debug=true  vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-05.txt
 
 # Graph
-ansible-inventory -i hosts --graph | tee out/out-05.txt
+ansible-inventory -i hosts --graph | tee out/out-06.txt
 
 # Jails
 ssh admin@iocage_05 sudo iocage list -l | tee out/out-07.txt
@@ -48,17 +34,11 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-08.txt
 # Test
 ansible-playbook -i hosts  pb-test.yml | tee out/out-09.txt
 
-# Do not destroy jails. (The jails are used in 201.)
-# if [ "${VBOTKA_FREEBSD_BATCH:-}" != "true" ]; then
-#     ssh admin@iocage_05 sudo iocage destroy -f test-151
-#     ssh admin@iocage_05 sudo iocage destroy -f test-152
-#     ssh admin@iocage_05 sudo iocage destroy -f test-153
-#     ssh admin@iocage_06 sudo iocage destroy -f test-161
-#     ssh admin@iocage_06 sudo iocage destroy -f test-162
-#     ssh admin@iocage_06 sudo iocage destroy -f test-163
-# fi
+# Do not destroy jails and template. (The jails are used in 201.)
 
 # Sanitize public key in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     cp files/pk_admins.txt.san files/pk_admins.txt
 fi
+
+touch .done

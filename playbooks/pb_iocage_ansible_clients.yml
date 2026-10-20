@@ -12,6 +12,7 @@
     debug2: false
     dry_run: false
 
+    iocage_module: true
     iocage_jails_source: module
     iocage_jails_inventory_conf: "{{ lookup('env', 'PWD') }}/hosts"
 

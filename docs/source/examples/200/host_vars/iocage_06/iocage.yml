@@ -22,22 +22,22 @@ act_rcconf:
 act_dhclient: {}
 
 clones:
-  test-161:
+  test-611:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'vnet0|172.16.99.161/24'
-  test-162:
+      ip4_addr: 'vnet0|172.16.99.211/24'
+  test-612:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'vnet0|172.16.99.162/24'
-  test-163:
+      ip4_addr: 'vnet0|172.16.99.212/24'
+  test-613:
     clone_from: ansible-client
     properties:
-      ip4_addr: 'vnet0|172.16.99.163/24'
+      ip4_addr: 'vnet0|172.16.99.213/24'
 
 # clones default properties
 properties:
-  bpf: 1
+  vnet: 1
   defaultrouter: 172.16.99.1
   notes: "vmm={{ inventory_hostname }}"
 

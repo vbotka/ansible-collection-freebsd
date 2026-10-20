@@ -77,14 +77,13 @@ Create one jail with a fixed IP:
 
    clones:
      test-161:
-       notes: alias=test_161
+       notes: alias=test_611
        swarm: sw_01
        clone_from: ansible-client
        class: [test]
        properties:
-         bpf: 1
          vnet: 1
-         ip4_addr: 'vnet0|172.16.99.201/24'
+         ip4_addr: 'vnet0|172.16.99.211/24'
          defaultrouter: '172.16.99.1'
 
 **Automatically generated UUID**
@@ -157,14 +156,14 @@ Tree
   │   └── 06_iocage2.yml
   ├── host_vars
   │   └── iocage_06
-  │       └── iocage.yml
+  │       └── iocage2.yml
   ├── iocage.ini
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
@@ -312,7 +311,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display test vars
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -323,17 +322,10 @@ Playbook output - Display test vars
    :language: yaml+jinja
    :force:
 
-Playbook output - Destroy swarms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. hint::
 
-Destroy the swarms if you do not need them anymore.
+   The command below stops and destroys the jails in ``swarms``::
 
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.ini \
-                            -t swarm_destroy -e swarm_destroy=true \
-                            vbotka.freebsd.pb_iocage_ansible_clients.yml
-
-.. literalinclude:: out/out-07.txt
-   :language: yaml+jinja
-   :force:
+     ansible-playbook -i iocage.ini \
+                      -t swarm_destroy -e swarm_destroy=true \
+                      vbotka.freebsd.pb_iocage_ansible_clients.yml

@@ -40,24 +40,24 @@ Tree
   │       ├── pkgdict.yml
   │       └── pkglist.yml
   ├── host_vars
-  │   ├── iocage_05
-  │   │   └── iocage.yml
-  │   └── iocage_06
-  │       └── iocage.yml
+  │   ├── iocage_05
+  │   │   └── iocage.yml
+  │   └── iocage_06
+  │       └── iocage.yml
   ├── iocage.ini
   └── pb-pkglist.yml
 
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* Use the `role vbotka.freebsd.iocage`_ to create the `iocage`_ package list
-  ``files/pkgs.json`` for `automatic package installation`_ of the `Apache HTTP
-  Server`_.
+  * Use the `role vbotka.freebsd.iocage`_ to create the `iocage`_ package list
+    ``files/pkgs.json`` for `automatic package installation`_ of the `Apache HTTP
+    Server`_.
 
-* Use the playbook :ref:`ug_pb-iocage-template` to create the Ansible template
-  ``ansible-apache``.
+  * Use the playbook :ref:`ug_pb-iocage-template` to create the Ansible template
+    ``ansible-apache``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -70,9 +70,9 @@ Notes
 
 * Use the same ``pkgdict_*.yml`` variables in:
 
-  * `Role vbotka.freebsd.poudriere`_ to build packages
-  * `Role vbotka.freebsd.packages`_ to install packages
-  * `Role vbotka.freebsd.iocage`_ to install packages in jails
+  * `Role vbotka.freebsd.poudriere`_ to build packages.
+  * `Role vbotka.freebsd.packages`_ to install packages.
+  * `Role vbotka.freebsd.iocage`_ to install packages in jails.
 
 * The inventory ``iocage.ini`` is not needed to create the file
   ``pkgs.json``. It would be sufficient to run the play on ``localhost``. It is

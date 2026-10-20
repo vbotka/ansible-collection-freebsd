@@ -7,10 +7,11 @@
    :local:
    :depth: 1
 
-.. index:: single: iocage notes; Example 210
-.. index:: single: inventory vbotka.freebsd.iocage; Example 210
-.. index:: single: pb-iocage.yml; Example 210
-.. index:: single: pb-test.yml; Example 210
+.. index::
+   single: iocage notes; Example 210
+   single: inventory vbotka.freebsd.iocage; Example 210
+   single: pb-iocage.yml; Example 210
+   single: pb-test.yml; Example 210
 
 Use case
 ^^^^^^^^
@@ -35,7 +36,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * In the playbook ``pb-iocage.yml``, run the command ``iocage get notes
     test-210`` and display the result.
@@ -52,7 +53,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. seealso::
 

@@ -14,7 +14,7 @@
    single: sudoers; Example 200
    single: pb_iocage_template.yml; Example 200
    single: pb_iocage_ansible_clients.yml; Example 200
-   single: inventory vbotka.freebsd.iocage; Example 200
+   single: inventory vbotka.freebsd.iocage2; Example 200
    single: module vbotka.freebsd.iocage; Example 200
    single: module ansible.posix.authorized; Example 200
    single: ansible.posix.authorized; Example 200
@@ -51,8 +51,8 @@ Tree
   │   ├── pk_admins.txt
   │   └── pkgs.json
   ├── hosts
-  │   ├── 05_iocage.yml
-  │   ├── 06_iocage.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_05
@@ -65,7 +65,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   In the playbook :ref:`ug_pb-iocage-template`, use the modules:
 
@@ -85,8 +85,8 @@ Synopsis
   In the :ref:`inventory plugin vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, create variables
   for:
 
-  * Connection plugin `ansible.builtin.ssh`_
-  * :ref:`Connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`
+  * Connection plugin `ansible.builtin.ssh`_.
+  * :ref:`Connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 * On all created jails:
 
@@ -110,7 +110,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. seealso::
 
@@ -249,7 +249,7 @@ Playbook output - List jails
                             -e debug=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -260,7 +260,7 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: console
 
 Jails
@@ -280,7 +280,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display test vars
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -296,5 +296,7 @@ Playbook output - Display test vars
    The command below stops and destroys the created jails::
 
      ansible-playbook -i iocage.ini \
-                      -t clone_destroy -e clone_destroy=true \
+                      -t clone_destroy \
+		      -e clone_destroy=true \
+		      -e iocage_module=false \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml

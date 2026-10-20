@@ -1,31 +1,64 @@
 ---
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
+- name: Stop and destroy clones by module.
+  when: iocage_module | bool
+  block:
 
-- name: Stop clones.
-  register: out
-  vbotka.freebsd.iocage:
-    state: stopped
-    name: "{{ item.key }}"
-  loop: "{{ clones | dict2items }}"
-  loop_control:
-    label: "{{ item.key }}"
+    - name: Stop clones.
+      register: out
+      vbotka.freebsd.iocage:
+        state: stopped
+        name: "{{ item.key }}"
+      loop: "{{ clones | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
 
-- name: "Debug stop clones debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out
+    - name: "Debug stop clones debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
 
-- name: Destroy clones.
-  register: out
-  vbotka.freebsd.iocage:
-    state: absent
-    name: "{{ item.key }}"
-  loop: "{{ clones | dict2items }}"
-  loop_control:
-    label: "{{ item.key }}"
+    - name: Destroy clones.
+      register: out
+      vbotka.freebsd.iocage:
+        state: absent
+        name: "{{ item.key }}"
+      loop: "{{ clones | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
 
-- name: "Debug destroy clones debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out
+    - name: "Debug destroy clones debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+- name: Stop and destroy clones by command.
+  when: not iocage_module | bool
+  block:
+
+    - name: Stop clones.
+      register: out
+      changed_when: false
+      ansible.builtin.command: >-
+        iocage stop
+        --force
+        {{ clones.keys() | join(' ') }}
+
+    - name: "Debug stop clones debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Destroy clones.
+      changed_when: false
+      register: out
+      ansible.builtin.command: >-
+        iocage destroy
+        --force
+        {{ clones.keys() | join(' ') }}
+
+    - name: "Debug destroy clones debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

@@ -2,29 +2,29 @@
 PLAY [Display inventory.] ******************************************************
 
 TASK [debug] *******************************************************************
-ok: [1bf8f936] => 
+ok: [e668d19d] => 
     msg: |-
         inv       name     uuid     ansible_host
         ----------------------------------------
-        1bf8f936  1bf8f936 1bf8f936 172.16.95.101
-        aa6f4230  aa6f4230 aa6f4230 172.16.95.102
-        083861c1  083861c1 083861c1 172.16.95.103
-        8e5bae1f  8e5bae1f 8e5bae1f 172.16.99.118
-        0ff9cd7b  0ff9cd7b 0ff9cd7b 172.16.99.141
-        f8bc708f  f8bc708f f8bc708f 172.16.99.113
+        e668d19d  e668d19d e668d19d 172.16.95.131
+        d1725355  d1725355 d1725355 172.16.95.132
+        12d9aa88  12d9aa88 12d9aa88 172.16.95.130
+        a8553559  a8553559 a8553559 172.16.99.162
+        20e3f95e  20e3f95e 20e3f95e 172.16.99.161
+        62a3a620  62a3a620 62a3a620 172.16.99.150
 
 TASK [debug] *******************************************************************
-ok: [1bf8f936] => 
+ok: [e668d19d] => 
     msg: |-
         inv       name     uuid     iocage_tags
         ----------------------------------------------------------------------
-        1bf8f936  1bf8f936 1bf8f936 {class: test, swarm: sw_01, vmm: iocage_05}
-        aa6f4230  aa6f4230 aa6f4230 {class: test, swarm: sw_01, vmm: iocage_05}
-        083861c1  083861c1 083861c1 {class: test, swarm: sw_01, vmm: iocage_05}
-        8e5bae1f  8e5bae1f 8e5bae1f {class: test, swarm: sw_01, vmm: iocage_06}
-        0ff9cd7b  0ff9cd7b 0ff9cd7b {class: test, swarm: sw_01, vmm: iocage_06}
-        f8bc708f  f8bc708f f8bc708f {class: test, swarm: sw_01, vmm: iocage_06}
+        e668d19d  e668d19d e668d19d {class: test, swarm: sw_01, vmm: iocage_05}
+        d1725355  d1725355 d1725355 {class: test, swarm: sw_01, vmm: iocage_05}
+        12d9aa88  12d9aa88 12d9aa88 {class: test, swarm: sw_01, vmm: iocage_05}
+        a8553559  a8553559 a8553559 {class: test, swarm: sw_01, vmm: iocage_06}
+        20e3f95e  20e3f95e 20e3f95e {class: test, swarm: sw_01, vmm: iocage_06}
+        62a3a620  62a3a620 62a3a620 {class: test, swarm: sw_01, vmm: iocage_06}
 
 PLAY RECAP *********************************************************************
-1bf8f936                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e668d19d                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

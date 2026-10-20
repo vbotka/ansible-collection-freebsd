@@ -3,14 +3,10 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
-# Destroy templates in batch.
+# In batch, destroy templates and copy public key.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     ssh admin@iocage_05 sudo iocage destroy -f ansible-apache
     ssh admin@iocage_06 sudo iocage destroy -f ansible-apache
-fi
-
-# Copy public key in batch.
-if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     cp files/pk_admins.txt.orig files/pk_admins.txt
 fi
 
@@ -28,3 +24,5 @@ ssh admin@iocage_06 iocage list -lt | tee out/out-04.txt
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     cp files/pk_admins.txt.san files/pk_admins.txt
 fi
+
+touch .done

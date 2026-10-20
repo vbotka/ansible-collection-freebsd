@@ -64,6 +64,10 @@ Manually create the jails
    29	49f92d2a	up	14.5-RELEASE	DHCP
    None	ansible-test	down	14.5-RELEASE	DHCP
 
+.. seealso::
+
+   * :ref:`ug_qa_jid_persistent`
+
 ansible.cfg
 ^^^^^^^^^^^
 

@@ -18,7 +18,7 @@ act_pkg_install: true
 act_pkg: "{{ freebsd_iocage_pkglist_pkgs | map('extract', freebsd_iocage_pkglist_dict)
                                          | flatten | unique | sort }}"
 
-# ansible client template defaults
+# ansible client template
 act_user: admin
 act_pk: pk_admins.txt
 act_sudo: true

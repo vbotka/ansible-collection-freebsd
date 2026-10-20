@@ -19,7 +19,7 @@ ok: [iocage_06]
 
 TASK [Create: Create templates.] ***********************************************
 changed: [iocage_06] => (item=ansible-client 15.1-RELEASE)
-changed: [iocage_05] => (item=ansible-client 15.0-RELEASE)
+changed: [iocage_05] => (item=ansible-client 14.5-RELEASE)
 
 TASK [Start: Get iocage list of jails.] ****************************************
 ok: [iocage_05]
@@ -34,10 +34,10 @@ changed: [iocage_05] => (item=ansible-client admin)
 changed: [iocage_06] => (item=ansible-client admin)
 
 TASK [Pk: The keys are valid.] *************************************************
-ok: [iocage_05] => 
+ok: [iocage_06] => 
     changed: false
     msg: All assertions passed
-ok: [iocage_06] => 
+ok: [iocage_05] => 
     changed: false
     msg: All assertions passed
 

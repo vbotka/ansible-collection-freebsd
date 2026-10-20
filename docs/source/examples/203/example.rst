@@ -16,7 +16,7 @@ This example extends :ref:`example_202`.
    single: DHCP; Example 203
    single: property notes; Example 203
    single: notes; Example 203
-   single: inventory vbotka.freebsd.iocage; Example 203
+   single: inventory vbotka.freebsd.iocage2; Example 203
    single: module vbotka.freebsd.iocage; Example 203
    single: module ansible.builtin.command; Example 203
    single: pb_iocage_ansible_clients.yml; Example 203
@@ -57,7 +57,7 @@ with multiple names. Use the module ``ansible.builtin.command`` instead. If the
 
 .. code-block:: bash
 
-   shell> iocage create --short --template ansible-client --count 3 bpf=1 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
+   shell> iocage create --short --template ansible-client --count 3 dhcp=1 vnet=1 notes="vmm=iocage_01 swarm=sw_01"
    iocage start cd31c2a2 d254f889 158ef36d
 
 **The variable iocage_tags**
@@ -66,7 +66,7 @@ In the inventory plugin, compose the variable ``iocage_tags``:
 
 .. code-block:: yaml
 
-   iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+   iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
 
 For example:
 
@@ -98,8 +98,8 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── hosts
-  │   ├── 05_iocage.yml
-  │   ├── 06_iocage.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
   └── pb-test.yml
@@ -107,7 +107,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
@@ -132,14 +132,14 @@ Requirements
 
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
-* :ref:`ug_inventory_iocage`
+* :ref:`ug_inventory_iocage2`
 * Templates created in :ref:`example_202`
 * Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. seealso::
 
@@ -228,7 +228,7 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display test vars
+Playbook output - Display variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
