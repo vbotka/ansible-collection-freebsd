@@ -1,11 +1,22 @@
 - name: Test module vbotka.freebsd.ucl
   hosts: iocage
-    
+
+  vars:
+
+    repo:
+      FreeBSD:
+        '14.5': FreeBSD
+        '15.1': FreeBSD-ports
+    version: "{{ ansible_facts.distribution_version }}"
+
   tasks:
 
-    - name: Disable FreeBSD-ports repository.
-      register: out
+    - name: Get distribution version.
+      ansible.builtin.setup:
+        gather_subset: distribution
+
+    - name: Disable FreeBSD repository.
       vbotka.freebsd.ucl:
         path: /etc/pkg/FreeBSD.conf
-        upath: FreeBSD-ports.enabled
+        upath: "{{ repo['FreeBSD'][version] }}.enabled"
         value: false

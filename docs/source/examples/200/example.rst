@@ -67,33 +67,33 @@ Synopsis
 
 * On the managed nodes:
 
-  In the playbook :ref:`ug_pb-iocage-template`, use the modules:
+  * In the playbook :ref:`ug_pb-iocage-template`, use the modules:
 
-  * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
-  * ``vbotka.freebsd.iocage`` exec tasks to create a user and set ``.ssh`` ownership.
-  * ``ansible.posix.authorized_key`` to configure public keys.
-  * ``community.general.sysrc`` to configure ``/etc/rc.conf``.
-  * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
+    * ``vbotka.freebsd.iocage`` to create, start, stop, and convert jails to templates.
+    * ``vbotka.freebsd.iocage`` exec tasks to create a user and set ``.ssh`` ownership.
+    * ``ansible.posix.authorized_key`` to configure public keys.
+    * ``community.general.sysrc`` to configure ``/etc/rc.conf``.
+    * ``ansible.builtin.lineinfile`` to configure ``/usr/local/etc/sudoers``.
 
-  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use the :ref:`module
-  vbotka.freebsd.iocage <ug_module_iocage>` to:
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, use the :ref:`module
+    vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * Create jails from the iocage templates.
-  * Start jails.
-  * Display the lists of jails.
+    * Create jails from the iocage templates.
+    * Start jails.
+    * Display the lists of jails.
 
-  In the :ref:`inventory plugin vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, create variables
-  for:
+  * In the :ref:`inventory plugin vbotka.freebsd.iocage2
+    <ug_inventory_iocage2>`, create variables for:
 
-  * Connection plugin `ansible.builtin.ssh`_.
-  * :ref:`Connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+    * Connection plugin `ansible.builtin.ssh`_.
+    * :ref:`Connection plugin vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
 * On all created jails:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * Display selected variables.
-  * Test the connection to created jails.
+    * Display selected variables.
+    * Test the connection to created jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -170,15 +170,19 @@ host_vars
 
 .. note::
 
-   The variables ``act_*`` are used to configure the template:
+   * The variables ``act_*`` are used to configure the template:
 
-   * The user ``act_user`` will be created in the template.
-   * The user ``act_user`` will serve as the Ansible ``remote_user``.
-   * The file ``act_pk`` provides the public keys allowed to SSH to ``act_user`` in a jail.
-   * The service sshd is enabled in ``act_rcconf``.
+     * The user ``act_user`` will be created in the template.
+     * The user ``act_user`` will serve as the Ansible ``remote_user``.
+     * The file ``act_pk`` provides the public keys allowed to SSH to
+       ``act_user`` in a jail.
+     * The service sshd is enabled in ``act_rcconf``.
 
-   The connection plugin ``jailexec`` doesn't need SSH and the public key in
-   the jails.
+   * The connection plugin ``jailexec`` doesn't need SSH and the public key in
+     the jails.
+
+   * The template ``ansible-client`` uses DHCP. Set a fixed IP address if DHCP
+     is not available.
 
 .. important::
 

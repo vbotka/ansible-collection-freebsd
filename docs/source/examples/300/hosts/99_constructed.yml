@@ -1,7 +1,0 @@
-plugin: ansible.builtin.constructed
-
-keyed_groups:
-  - prefix: state
-    key: iocage_state
-  - prefix: vmm
-    key: iocage_tags.vmm

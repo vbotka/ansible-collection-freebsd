@@ -7,4 +7,7 @@
 ansible-playbook -i iocage.ini pb.yml | tee out/out-01.txt
 
 # Get service status
-ssh admin@iocage_06 service git_daemon status | tee out/out-02.txt
+ssh admin@iocage_05 service git_daemon status | tee out/out-02.txt
+ssh admin@iocage_06 service git_daemon status | tee out/out-03.txt
+
+touch .done

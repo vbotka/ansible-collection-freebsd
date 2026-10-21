@@ -109,23 +109,23 @@ Synopsis
 
 * On the managed nodes:
 
-  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
-  * The :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
+    * The :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-    * Create facts only.
+      * Create facts only.
 
-  * The module ``ansible.builtin.command`` to:
+    * The module ``ansible.builtin.command`` to:
 
-    * Create jails.
-    * Start jails.
-    * Optionally, stop and destroy the jails.
+      * Create jails.
+      * Start jails.
+      * Optionally, stop and destroy the jails.
 
 * On all created jails:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * Display selected variables.
+    * Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^

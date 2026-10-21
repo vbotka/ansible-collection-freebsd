@@ -7,15 +7,15 @@
    :local:
    :depth: 1
 
-.. index:: single: postinstall; Example 311
-.. index:: single: vbotka.freebsd.postinstall; Example 311
-.. index:: single: role vbotka.freebsd.postinstall; Example 311
-.. index:: single: git daemon; Example 311
-.. index:: single: git_daemon_flags; Example 311
-.. index:: single: git server; Example 311
-
-.. index:: single: module community.general.pkgng; Example 311
-.. index:: single: community.general.pkgng; Example 311
+.. index::
+   single: postinstall; Example 311
+   single: vbotka.freebsd.postinstall; Example 311
+   single: role vbotka.freebsd.postinstall; Example 311
+   single: git daemon; Example 311
+   single: git_daemon_flags; Example 311
+   single: git server; Example 311
+   single: module community.general.pkgng; Example 311
+   single: community.general.pkgng; Example 311
 
 Use case
 ^^^^^^^^
@@ -32,6 +32,8 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── gitserver.yml
   │   └── iocage_06
   │       └── gitserver.yml
   ├── iocage.ini
@@ -40,20 +42,22 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the remote host, install ``git``.
+* On the managed nodes:
 
-* Use the role `vbotka.freebsd.postinstall`_ to configure and start
-  `git_daemon`_.
+  * Install ``git``.
+
+  * Use the role `vbotka.freebsd.postinstall`_ to configure and start
+    `git_daemon`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* TBD
+* TBD.
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -79,20 +83,23 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/iocage_05/gitserver.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/gitserver.yml
    :language: yaml+jinja
    :caption:
 
-.. warning::
-
-   The ``git://`` protocol does not provide encryption or
-   authentication. While suitable for fast local prototyping or
-   isolated provisioning networks, use ``https://`` (or SSH) for
-   :ref:`ug_concepts_ansible_init` in production environments.
-
 .. seealso::
 
-   The `default variables`_ of the role `vbotka.freebsd.postinstall`_
+   * Role `postinstall default variables`_
+
+.. warning::
+
+   The ``git://`` protocol does not provide encryption or authentication. While
+   suitable for fast local prototyping or isolated provisioning networks, use
+   ``https://`` (or SSH) in production environments.
 
 Playbook pb.yml
 ^^^^^^^^^^^^^^^
@@ -114,10 +121,12 @@ Playbook output - Configure git_daemon
 Display service status
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 service git_daemon status
-
 .. literalinclude:: out/out-02.txt
    :language: console
    :force:
+   :caption: [iocage_05]# service git_daemon status
+
+.. literalinclude:: out/out-03.txt
+   :language: console
+   :force:
+   :caption: [iocage_06]# service git_daemon status

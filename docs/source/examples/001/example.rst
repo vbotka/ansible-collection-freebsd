@@ -30,11 +30,12 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to:
+* On the managed nodes:
 
-  * Display variables.
-  * Install the `iocage`_ package.
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
+
+    * Display variables.
+    * Install the `iocage`_ package.
 
 Requirements
 ^^^^^^^^^^^^

@@ -1,21 +1,78 @@
 
 PLAY [Test module vbotka.freebsd.ucl] ******************************************
 
-TASK [Disable FreeBSD-ports repository.] ***************************************
---- before: /etc/pkg/FreeBSD.conf (content)
-+++ after: /etc/pkg/FreeBSD.conf (content)
-@@ -3,7 +3,7 @@
-     mirror_type = "srv";
-     signature_type = "fingerprints";
-     fingerprints = "/usr/share/keys/pkg";
--    enabled = true;
-+    enabled = false;
- }
- FreeBSD-ports-kmods {
-     url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
+TASK [Get distribution version.] ***********************************************
+ok: [iocage_05]
+ok: [iocage_06]
 
-changed: [iocage_06]
+TASK [Debug.] ******************************************************************
+ok: [iocage_05] => 
+    msg: |-
+        version: 14.5
+        repo: FreeBSD
+ok: [iocage_06] => 
+    msg: |-
+        version: 15.1
+        repo: FreeBSD-ports
+
+TASK [Get /etc/pkg/FreeBSD.conf] ***********************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    out.stdout: |-
+        FreeBSD-ports {
+            url = "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly";
+            mirror_type = "srv";
+            signature_type = "fingerprints";
+            fingerprints = "/usr/share/keys/pkg";
+            enabled = true;
+        }
+        FreeBSD-ports-kmods {
+            url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
+            mirror_type = "srv";
+            signature_type = "fingerprints";
+            fingerprints = "/usr/share/keys/pkg";
+            enabled = true;
+        }
+        FreeBSD-base {
+            url = "pkg+https://pkg.FreeBSD.org/${ABI}/base_release_${VERSION_MINOR}";
+            mirror_type = "srv";
+            signature_type = "fingerprints";
+            fingerprints = "/usr/share/keys/pkgbase-${VERSION_MAJOR}";
+            enabled = true;
+        }
+ok: [iocage_05] => 
+    out.stdout: |-
+        FreeBSD {
+            url = "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly";
+            mirror_type = "srv";
+            signature_type = "fingerprints";
+            fingerprints = "/usr/share/keys/pkg";
+            enabled = true;
+        }
+        FreeBSD-kmods {
+            url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
+            mirror_type = "srv";
+            signature_type = "fingerprints";
+            fingerprints = "/usr/share/keys/pkg";
+            enabled = true;
+        }
+
+TASK [Get FreeBSD repository url.] *********************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_05] => 
+    out.stdout: |-
+        "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly"
+ok: [iocage_06] => 
+    out.stdout: |-
+        "pkg+https://pkg.FreeBSD.org/${ABI}/quarterly"
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_05                  : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

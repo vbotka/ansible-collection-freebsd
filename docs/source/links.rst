@@ -164,7 +164,6 @@
 .. _crossplane: https://pypi.org/project/crossplane/
 .. _custom facts: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts
 .. _custom_image: https://ansible-freebsd-custom-image.readthedocs.io/en/latest/
-.. _default variables: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-variables.html
 .. _defaults/main: https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main
 .. _devel/uclcmd: https://www.freshports.org/devel/uclcmd/
 .. _dhcp: https://github.com/vbotka/ansible-freebsd-dhcp
@@ -256,6 +255,7 @@
 .. _pf and bridge: https://forums.freebsd.org/threads/pf-and-bridge-4.77952/
 .. _pf: https://github.com/vbotka/ansible-freebsd-pf/
 .. _pkg-origin: https://man.freebsd.org/cgi/man.cgi?query=pkg-install
+.. _postinstall default variables: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-variables.html
 .. _postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
 .. _poudriere port: https://github.com/freebsd/poudriere/
 .. _poudriere: https://ansible-freebsd-poudriere.readthedocs.io/en/latest/

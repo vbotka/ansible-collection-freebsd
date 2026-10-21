@@ -38,9 +38,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In the playbook ``pb-ast-to-haproxy.yml``, use the :ref:`filter
-vbotka.freebsd.ast_to_haproxy <ug_filter_ast_to_haproxy>` to convert an AST
-(Abstract Syntax Tree) list into an HAProxy configuration.
+* In the playbook ``pb-ast-to-haproxy.yml``, use the :ref:`filter
+  vbotka.freebsd.ast_to_haproxy <ug_filter_ast_to_haproxy>` to convert
+  an AST (Abstract Syntax Tree) list into an HAProxy configuration.
 
 Requirements
 ^^^^^^^^^^^^

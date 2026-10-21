@@ -1,0 +1,47 @@
+- name: Module vbotka.freebsd.service examples.
+  hosts: iocage
+
+  vars:
+
+    rcvar: "{{ out_rcvar.stdout | community.general.jc('ini') | to_yaml | trim }}"
+    status: "{{ out_status.stdout | trim }}"
+    synopsis:
+      cmds: "{{ out.synopsis.cmds | to_yaml | trim }}"
+      prefix: "{{ out.synopsis.prefix | to_yaml | trim }}"
+    services:
+      enabled: "{{ out_enabled.stdout_lines | map('basename') | sort | to_yaml | trim }}"
+
+  tasks:
+
+    - name: Get sshd ON/OFF knob value.
+      register: out_rcvar
+      vbotka.freebsd.service:
+        script: sshd
+        command: rcvar
+    - ansible.builtin.debug:
+        var: rcvar
+
+    - name: Get sshd status.
+      register: out_status
+      vbotka.freebsd.service:
+        script: sshd
+        command: status
+    - ansible.builtin.debug:
+        var: status
+
+    - name: Get script sshd commands synopsis.
+      register: out
+      vbotka.freebsd.service:
+        script: sshd
+        synopsis: true
+    - ansible.builtin.debug:
+        msg: |
+          synopsis.cmds: {{ synopsis.cmds }}
+          synopsis.prefix: {{ synopsis.prefix }}
+
+    - name: List enbled services.
+      register: out_enabled
+      vbotka.freebsd.service:
+        list_enabled: true
+    - ansible.builtin.debug:
+        var: services.enabled

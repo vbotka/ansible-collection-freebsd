@@ -80,30 +80,30 @@ Synopsis
 
 * On the managed nodes:
 
-  In the playbook :ref:`ug_pb-iocage-project-create`, use:
+  * In the playbook :ref:`ug_pb-iocage-project-create`, use:
 
-  * :ref:`ug_inventory_iocage2` to create inventory.
+    * :ref:`ug_inventory_iocage2` to create inventory.
 
-  * Inventory `ansible.builtin.constructed`_ to create groups and compose
-    variables:
+    * Inventory `ansible.builtin.constructed`_ to create groups and compose
+      variables:
 
-    * ``iocage_tags``
-    * ``iocage_classes``
-    * ``ansible_host``
-    * ``ansible_jail_host``
-    * ``ansible_jail_name``
+      * ``iocage_tags``
+      * ``iocage_classes``
+      * ``ansible_host``
+      * ``ansible_jail_host``
+      * ``ansible_jail_name``
 
-  * Module ``ansible.builtin.command`` and `iocage`_ utility to:
+    * Module ``ansible.builtin.command`` and `iocage`_ utility to:
 
-    * Create jails.
-    * Set properties.
-    * Start jails.
+      * Create jails.
+      * Set properties.
+      * Start jails.
 
 * On all jails:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * Display selected variables.
+    * Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^

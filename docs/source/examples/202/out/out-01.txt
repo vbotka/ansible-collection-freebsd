@@ -42,20 +42,20 @@ ok: [iocage_06] =>
     msg: All assertions passed
 
 TASK [Pk: Configure public keys.] **********************************************
-changed: [iocage_06] => (item=ansible-client admin)
 changed: [iocage_05] => (item=ansible-client admin)
+changed: [iocage_06] => (item=ansible-client admin)
 
 TASK [Pk: Chown .ssh] **********************************************************
 ok: [iocage_05] => (item=ansible-client admin)
 ok: [iocage_06] => (item=ansible-client admin)
 
 TASK [Sudo: Configure sudo.] ***************************************************
-changed: [iocage_05] => (item=ansible-client admin)
 changed: [iocage_06] => (item=ansible-client admin)
+changed: [iocage_05] => (item=ansible-client admin)
 
 TASK [Dhclient: Configure hooks.] **********************************************
-changed: [iocage_05] => (item=ansible-client dhclient-exit-hooks)
 changed: [iocage_06] => (item=ansible-client dhclient-exit-hooks)
+changed: [iocage_05] => (item=ansible-client dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
 changed: [iocage_05] => (item=ansible-client sshd_enable YES)

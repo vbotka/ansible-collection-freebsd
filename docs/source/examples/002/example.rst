@@ -36,15 +36,17 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to activate `iocage`_.
+* On the managed nodes:
+
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to
+    activate `iocage`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes.
 * The `iocage`_ binary.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^

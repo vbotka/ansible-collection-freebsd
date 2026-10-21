@@ -23,8 +23,7 @@ Use case
 
 Use the role `vbotka.freebsd.postinstall`_ to audit the basic configuration of
 Ansible clients. The role is idempotent. A successful result means no changes
-are reported. This example implements the same configuration as
-:ref:`example_200`.
+are reported. Use the template ``ansible-client`` created in :ref:`example_202`.
 
 Tree
 ^^^^
@@ -39,13 +38,12 @@ Tree
   │   └── pk_admins.txt
   ├── group_vars
   │   └── all
-  │       └── ansible-client.yml
+  │       ├── iocage.yml
+  │       └── swarms.yml
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
-  ├── host_vars
-  │   └── iocage_06
-  │       └── iocage.yml
   ├── iocage.ini
   ├── pb-test-01.yml
   ├── pb-test-02.yml
@@ -54,23 +52,48 @@ Tree
 Synopsis
 ^^^^^^^^
 
-In a ``swarm``:
+* On the managed nodes:
 
-* Playbook ``pb-test-01.yml``: Test that the role does nothing by default.
-* Playbook ``pb-test-02.yml``: Install packages using the module `community.general.pkgng`_.
-* Playbook ``pb-test-03.yml``: Install packages by importing `vbotka.freebsd.postinstall`_.
-* Playbook ``pb-test-01.yml``:
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
-  * Install packages
-  * Create user
-  * Configure public keys
-  * Configure sudo
-  * Configure dhclient
+    * Create ``swarm`` from the template ``ansible-client``.
+    * Start the jails.
+
+  * In the :ref:`inventory plugin vbotka.freebsd.iocage2 <ug_inventory_iocage2>`:
+
+    * Create variables for :ref:`connection plugin vbotka.freebsd.jailexec
+      <ug_connection_jailexec>`.
+
+    * Create groups.
+
+  * In the playbook ``pb-test-01.yml``, test the role
+    `vbotka.freebsd.postinstall`_ does nothing by default.
+
+  * In the playbook ``pb-test-02.yml``, install packages using the module
+    `community.general.pkgng`_.
+
+  * In the playbook ``pb-test-03.yml``, install packages by importing
+    `vbotka.freebsd.postinstall`_.
+
+  * In the playbook ``pb-test-01.yml``, use the role
+    `vbotka.freebsd.postinstall`_ to:
+
+    * Install packages.
+    * Create user.
+    * Configure public keys.
+    * Configure sudo.
+    * Configure dhclient.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Running ``swarm`` on an iocage host.
+* Role `vbotka.freebsd.postinstall`_
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
+* :ref:`ug_module_iocage`
+* :ref:`ug_inventory_iocage2`
+* :ref:`ug_connection_jailexec`
+* Template ``ansible-client`` created in :ref:`example_202`
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -81,7 +104,7 @@ Notes
 
     jail: "{{ iocage_jid }}"
 
-* The plays below run inside the jails. The inventory ``iocage.ini`` is needed
+* The below plays run inside the jails. The inventory ``iocage.ini`` is needed
   when a task is delegated to an iocage host.
 
 * The public key in ``files/pk_admins.txt`` has been sanitized.
@@ -99,8 +122,6 @@ Notes
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the `display_skipped_hosts`_ option.
-
 .. literalinclude:: ansible.cfg
    :language: ini
 
@@ -113,6 +134,10 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
@@ -124,40 +149,48 @@ hosts
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/ansible-client.yml
-   :language: yaml+jinja
-   :caption:
-
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_06/iocage.yml
+.. literalinclude:: group_vars/all/iocage.yml
    :language: yaml+jinja
    :caption:
 
 .. seealso::
 
-   The `default variables`_ of the role `vbotka.freebsd.postinstall`_
+   * Role `postinstall default variables`_.
 
-Jails
-^^^^^
+.. literalinclude:: group_vars/all/swarms.yml
+   :language: yaml+jinja
+   :caption:
+
+Playbook output - Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   [iocage_06]# iocage list -l
+   (env) > ansible-playbook -i iocage.ini \
+                            -t swarm -e swarm=true \
+                            vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: bash
+   :language: yaml+jinja
+   :force:
 
 Graph
 ^^^^^
 
-.. code-block:: console
+.. literalinclude:: out/out-02.txt
+   :language: bash
+   :caption: (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
+Jails
+^^^^^
 
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test-01.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -172,7 +205,7 @@ Playbook output - By default do nothing
 
    (env) > ansible-playbook -i hosts pb-test-01.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -187,13 +220,14 @@ Use the module `community.general.pkgng`_ to demonstrate installation in a jail.
 Playbook output - Install packages by community.general.pkgng
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The inventory ``iocage.ini`` is needed to delegate the ``Install packages`` tasks.
+The inventory ``iocage.ini`` is needed to delegate the task ``Install packages``
+tasks.
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts -i iocage.ini pb-test-02.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -205,39 +239,39 @@ Use the imported tasks ``packages.yml`` from the role `vbotka.freebsd.postinstal
 .. literalinclude:: pb-test-03.yml
    :language: yaml+jinja
 
-Playbook output - Import vbotka.freebsd_postinstall packages.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Install packages by importing tasks packages.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts -i iocage.ini pb-test-03.yml
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml+jinja
    :force:
 
 .. hint::
 
-   Try ``pb-test-01.yml``, set the tag ``-t fp_packages``, and enable
-   the import with ``-e fp_install=true``::
+   * Try ``pb-test-01.yml``, set the tag ``-t fp_packages``, and enable
+     the import with ``-e fp_install=true``::
 
-     (env) > ansible-playbook -i hosts -i iocage.ini \
-                              -t fp_packages -e fp_install=true \
-                              pb-test-03.yml
+       (env) > ansible-playbook -i hosts -i iocage.ini \
+                                -t fp_packages -e fp_install=true \
+                                pb-test-03.yml
 
-   If the role ``vbotka.freebsd_postinstall`` is installed, try using it::
+   * If the role ``vbotka.freebsd_postinstall`` is installed, try using it::
 
-     - name: Install packages
-       ansible.builtin.import_role:
-         name: vbotka.freebsd_postinstall
-         tasks_from: packages
+       - name: Install packages
+         ansible.builtin.import_role:
+           name: vbotka.freebsd_postinstall
+           tasks_from: packages
 
    Both options should yield the same result.
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-Test the configuration step by step. Run the plays below with the options
+Test the configuration step by step. Run the below plays with the options
 ``--check --diff`` first.
 
 * Install packages::
@@ -284,7 +318,7 @@ Run the play:
                             -e @extra-vars.yml \
                             pb-test-01.yml
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-08.txt
    :language: yaml+jinja
    :force:
 
@@ -293,19 +327,18 @@ Optionally, disable the `display_ok_hosts`_ option:
 .. code-block:: console
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
-           ansible-playbook -i hosts -i iocage.ini \
-                            -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \
-                            -e @extra-vars.yml \
-                            pb-test-01.yml
+          ansible-playbook -i hosts -i iocage.ini \
+                           -t fp_packages,fp_users,fp_authorized_key,fp_sudoers,fp_dhclient_hooks \
+                           -e @extra-vars.yml \
+                           pb-test-01.yml
 
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
 
-
 .. hint::
 
-   The plays above show that, depending on the use case, you can:
+   The above plays show that, depending on the use case, you can:
 
    * Use tags to select task groups from a role.
 

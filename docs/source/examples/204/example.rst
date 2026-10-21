@@ -99,20 +99,20 @@ Synopsis
 
 * On the managed nodes:
 
-  In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
+  * In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
 
-  * The module ``ansible.builtin.command`` to:
+    * The module ``ansible.builtin.command`` to:
 
-    * Create the variable ``iocage_jails``.
-    * Create jails.
-    * Start jails.
-    * Optionally, stop and destroy the jails.
+      * Create the variable ``iocage_jails``.
+      * Create jails.
+      * Start jails.
+      * Optionally, stop and destroy the jails.
 
 * On all created jails:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * Display selected variables.
+    * Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^

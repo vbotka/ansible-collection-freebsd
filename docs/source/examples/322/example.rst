@@ -44,7 +44,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * Fetch packages and configure a package repository. Use the role
     `vbotka.freebsd.packages`_.
@@ -61,7 +61,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. seealso::
 

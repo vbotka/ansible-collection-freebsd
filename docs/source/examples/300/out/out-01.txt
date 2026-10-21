@@ -1,11 +1,63 @@
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
-+=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
-| 1   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 2   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 3   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 4   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+
+PLAY [Module vbotka.freebsd.service examples.] *********************************
+
+TASK [Get sshd ON/OFF knob value.] *********************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_06] => 
+    rcvar: '{sshd_enable: ''YES''}'
+ok: [iocage_05] => 
+    rcvar: '{sshd_enable: ''YES''}'
+
+TASK [Get sshd status.] ********************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_05] => 
+    status: sshd is running as pid 2120.
+ok: [iocage_06] => 
+    status: sshd is running as pid 5158.
+
+TASK [Get script sshd commands synopsis.] **************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_05] => 
+    msg: |-
+        synopsis.cmds: [start, stop, restart, rcvar, enable, disable, delete, enabled, describe, extracommands,
+          configtest, keygen, reload, status, poll]
+        synopsis.prefix: [fast, force, one, quiet]
+ok: [iocage_06] => 
+    msg: |-
+        synopsis.cmds: [start, stop, restart, rcvar, enable, disable, delete, enabled, describe, extracommands,
+          configtest, keygen, reload, status, poll]
+        synopsis.prefix: [fast, force, one, quiet]
+
+TASK [List enbled services.] ***************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [ansible.builtin.debug] ***************************************************
+ok: [iocage_05] => 
+    services.enabled: |-
+        [bgfsck, blacklistd, cleanvar, cleartmp, cron, devd, devmatch, dmesg, fail2ban, git_daemon,
+          gptboot, hostid, hostid_save, iocage, ip6addrctl, isc-dhcpd, kldxref, mixer, netif,
+          newsyslog, ntpd, os-release, pf, pflog, rctl, resolv, savecore, sshd, sshguard,
+          syslogd, utx, var_run, virecover, zfs, zfsbe, zpool, zpoolreguid, zpoolupgrade,
+          zvol]
+ok: [iocage_06] => 
+    services.enabled: |-
+        [bgfsck, blacklistd, cleanvar, cleartmp, cron, dbus, devd, devmatch, dmesg, fail2ban,
+          git_daemon, gptboot, hostid, hostid_save, iocage, ip6addrctl, isc-dhcpd, kldxref,
+          lightdm, mixer, netif, newsyslog, nginx, ntpd, os-release, pf, pflog, qemu_user_static,
+          rctl, resolv, savecore, smartd, sshd, sshguard, syslogd, utx, var_run, virecover,
+          wireguard, zfs, zfsbe, zpool, zpoolreguid, zpoolupgrade, zvol]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

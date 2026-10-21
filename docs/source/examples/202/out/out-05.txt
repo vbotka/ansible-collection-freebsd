@@ -6,6 +6,11 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Display iocage_jails keys debug=true] ************************************
+ok: [iocage_05] => 
+    ansible_facts.iocage_jails.keys():
+    - test-511
+    - test-512
+    - test-513
 ok: [iocage_06] => 
     ansible_facts.iocage_jails.keys():
     - log-server-01
@@ -15,11 +20,6 @@ ok: [iocage_06] =>
     - test-611
     - test-612
     - test-613
-ok: [iocage_05] => 
-    ansible_facts.iocage_jails.keys():
-    - test-511
-    - test-512
-    - test-513
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

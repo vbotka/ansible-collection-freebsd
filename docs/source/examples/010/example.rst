@@ -51,14 +51,14 @@ Synopsis
 
 * On the managed nodes:
 
-  Use the playbook ``pb-iocage-fetch-base-clone-list.yml``
-  and the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
+  * Use the playbook ``pb-iocage-fetch-base-clone-list.yml``
+    and the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * Fetch the release.
-  * Create a basejail.
-  * Clone 3 jails from the basejail.
-  * Start 1 jail.
-  * Display lists of bases, plugins, templates, and jails.
+    * Fetch the release.
+    * Create a basejail.
+    * Clone 3 jails from the basejail.
+    * Start 1 jail.
+    * Display lists of bases, plugins, templates, and jails.
 
 * Use the playbook ``pb-test.yml`` and the inventory plugin
   :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:

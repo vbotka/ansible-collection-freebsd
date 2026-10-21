@@ -62,3 +62,14 @@
       when: debug2 | bool
       ansible.builtin.debug:
         var: out
+
+  rescue:
+
+    - name: "Stop/Destroy clones failed."
+      ansible.builtin.debug:
+        msg: |
+          {{ ansible_failed_task }}
+          {{ ansible_failed_result }}
+
+    - name: "End of the host."
+      ansible.builtin.meta: end_host

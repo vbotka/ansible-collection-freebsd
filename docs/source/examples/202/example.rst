@@ -102,6 +102,9 @@ Tree
   ├── files
   │   ├── pk_admins.txt
   │   └── pkgs.json
+  ├── group_vars
+  │   └── iocage
+  │       └── iocage.yml
   ├── hosts
   │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
@@ -119,20 +122,21 @@ Synopsis
 
 * On the managed nodes:
 
-  In addition to the configuration in :ref:`example_200`:
+  * In addition to the configuration in :ref:`example_200`:
 
-  * Configure ``dhclient-exit-hooks`` in the template ``ansible-client``.
+    * Configure ``dhclient-exit-hooks`` in the template ``ansible-client``.
 
-  * Configure ``hooks_results`` in the inventory plugin and create the variable
-    ``ansible_host``.
+    * Configure ``hooks_results`` in the inventory plugin and create the variable
+      ``ansible_host``.
 
-  * Create jails from this template and start them.
+    * Create jails from this template and start them.
 
-  * Display selected variables.
+    * Display selected variables.
 
 Requirements
 ^^^^^^^^^^^^
 
+* DHCP server.
 * Playbook :ref:`ug_pb-iocage-template`
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_module_iocage`
@@ -144,11 +148,15 @@ Requirements
 Notes
 ^^^^^
 
-* The option ``hooks_results`` expects the ``poolname`` of a jail to be mounted
-  to ``/poolname``. For example, if you activate the pool ``zroot``, this plugin
-  expects to find the ``hooks_results`` items in the path
+* The option ``hooks_results`` expects the ``poolname`` of the jail manager to
+  be mounted to ``/poolname``. For example, if you activate the pool ``zroot``,
+  this plugin expects to find the ``hooks_results`` items in the path
   ``/zroot/iocage/jails/<name>/root``. If you mount the ``poolname`` to a
   different path, the easiest remedy is to create a symlink.
+
+.. seealso::
+
+   * :ref:`example_440`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -168,19 +176,27 @@ hosts
 .. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 1
+   :emphasize-lines: 5
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 1
+   :emphasize-lines: 5
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 4
 
 .. hint::
 
    If there is a route from your Ansible controller to the jails, try to connect
    with the connection plugin `ansible.builtin.ssh`_ (default).
 
-.. literalinclude:: hosts/99_constructed.yml
+group_vars
+^^^^^^^^^^
+
+.. literalinclude:: group_vars/iocage/iocage.yml
    :language: yaml+jinja
    :caption:
 

@@ -34,10 +34,10 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-08.txt
 # Test.
 ansible-playbook -i hosts  pb-test.yml | tee out/out-09.txt
 
-# In batch, destroy jails. Copy public key.
+# In batch, destroy jails. Sanitize public key.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
     ansible-playbook -i iocage.ini -t clone_destroy -e clone_destroy=true -e iocage_module=false vbotka.freebsd.pb_iocage_ansible_clients.yml
-    cp files/pk_admins.txt.orig files/pk_admins.txt
+    cp files/pk_admins.txt.san files/pk_admins.txt
 fi
 
 touch .done

@@ -13,3 +13,5 @@ ssh admin@iocage_05 cat /usr/local/etc/pkg/repos/local.conf | tee out/out-03.txt
 ssh admin@iocage_05 fetch -qo - http://localhost | tee out/out-04.txt
 ssh admin@iocage_06 cat /usr/local/etc/pkg/repos/local.conf | tee out/out-05.txt
 ssh admin@iocage_06 fetch -qo - http://localhost | tee out/out-06.txt
+
+touch .done

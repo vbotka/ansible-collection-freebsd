@@ -1,0 +1,144 @@
+
+PLAY [Test role vbotka.freebsd.packages] ***************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [log_server_01]
+
+TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [log_server_01]
+
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [log_server_01] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python
+          - lang/python3
+          - lang/python312
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+ok: [log_server_01]
+
+TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
+ok: [log_server_01] => 
+    pkg_audit:
+        log_server_01:
+            packages:
+                curl:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 8.23.0
+                        cve:
+                        - CVE-2026-87866
+                        - CVE-2026-87865
+                        - CVE-2026-87863
+                        - CVE-2026-87862
+                        - CVE-2026-87861
+                        - CVE-2026-86415
+                        - CVE-2026-86414
+                        - CVE-2026-86413
+                        - CVE-2026-86412
+                        - CVE-2026-86410
+                        - CVE-2026-92392
+                        - CVE-2026-92391
+                        - CVE-2026-92390
+                        - CVE-2026-92389
+                        - CVE-2026-92388
+                        - CVE-2026-92387
+                        - CVE-2026-92386
+                        - CVE-2026-94265
+                        - CVE-2026-94266
+                        - CVE-2026-107928
+                        - CVE-2026-107929
+                        description: Curl -- Multiple vulnerabilities
+                        url: https://vuxml.FreeBSD.org/freebsd/14dab969-c797-11f1-a6ea-8447094a420f.html
+                    reverse dependencies:
+                    - syslog-ng
+                    - lnav
+                    - git
+                    version: 8.21.0
+                expat:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.8.5
+                        cve:
+                        - CVE-2026-93990
+                        description: libexpat -- Improper Handling of Unicode Encoding
+                        url: https://vuxml.FreeBSD.org/freebsd/7fed71c4-be3a-11f1-ab8d-00a0980083d7.html
+                    reverse dependencies:
+                    - git
+                    - python312
+                    - glib
+                    - syslog-ng
+                    - py312-ansible-core
+                    - py312-ansible
+                    - py312-toml
+                    - py312-pyyaml
+                    - py312-cryptography
+                    - py312-cffi
+                    - py312-passlib
+                    - py312-Jinja2
+                    - py312-markupsafe
+                    - py312-Babel
+                    - py312-resolvelib
+                    - py312-packaging
+                    - py312-importlib-resources
+                    - py312-pycparser
+                    version: 2.8.2
+                p5-Authen-SASL:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - < 2.2100
+                        cve:
+                        - CVE-2026-86219
+                        description: p5-Authen-SASL -- Replay attack in Authen::SASL::Perl::DIGEST_MD5
+                        url: https://vuxml.FreeBSD.org/freebsd/023a3d0c-b987-11f1-ad2b-40b034429ecf.html
+                    reverse dependencies:
+                    - git
+                    version: '2.1900'
+                python312:
+                    issue_count: 1
+                    issues:
+                    -   Affected versions:
+                        - '>= 0'
+                        cve:
+                        - CVE-2025-15367
+                        description: Python -- poplib module, when passed a user-controlled
+                            command, can have additional commands injected using newlines
+                        url: https://vuxml.FreeBSD.org/freebsd/6d3488ae-2e0f-11f1-88c7-00a098b42aeb.html
+                    reverse dependencies:
+                    - glib
+                    - syslog-ng
+                    - py312-ansible-core
+                    - py312-ansible
+                    - py312-toml
+                    - py312-pyyaml
+                    - py312-cryptography
+                    - py312-cffi
+                    - py312-passlib
+                    - py312-Jinja2
+                    - py312-markupsafe
+                    - py312-Babel
+                    - py312-resolvelib
+                    - py312-packaging
+                    - py312-importlib-resources
+                    - git
+                    - py312-pycparser
+                    version: 3.12.14
+            pkg_count: 4
+
+PLAY RECAP *********************************************************************
+log_server_01              : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

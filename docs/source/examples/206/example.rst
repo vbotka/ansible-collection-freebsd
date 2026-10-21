@@ -165,24 +165,24 @@ Synopsis
 
 * On the managed nodes:
 
-  In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
 
-  * :ref:`ug_module_iocage` to:
+    * :ref:`ug_module_iocage` to:
 
-    * Create one jail with a fixed IP.
-    * Start the jail.
+      * Create one jail with a fixed IP.
+      * Start the jail.
 
-  * Module ``ansible.builtin.command`` to:
+    * Module ``ansible.builtin.command`` to:
 
-    * Create two DHCP jails with generated UUIDs.
-    * Start the jails.
+      * Create two DHCP jails with generated UUIDs.
+      * Start the jails.
 
 * On all created jails:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * Display selected variables.
-  * Test the connection to cloned jails.
+    * Display selected variables.
+    * Test the connection to cloned jails.
 
 Requirements
 ^^^^^^^^^^^^

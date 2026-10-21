@@ -31,6 +31,7 @@ Tree
   │   └── all
   │       └── ansible-client.yml
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
@@ -40,25 +41,26 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* Playbook ``pb-pkg-update.yml``:
+  * In the playbook ``pb-pkg-update.yml``:
 
-  * Upgrade the package ``ports-mgmt/pkg``
-  * Update FreeBSD repository catalogue (default `cached`_ = false)
+    * Update FreeBSD repository catalogue (default `cached`_ = false).
+    * Upgrade the package ``ports-mgmt/pkg``.
 
-In all running jails:
+* In all running jails:
 
-* Playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``, test the role `vbotka.freebsd.packages`_:
 
-  * Display variables
-  * Install packages
-  * Audit installed packages
+    * Display variables.
+    * Install packages.
+    * Audit installed packages.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Running jails on the iocage host.
+* Role `vbotka.freebsd.packages`_
+* Some running jails.
 
 Notes
 ^^^^^
@@ -105,27 +107,23 @@ Notes
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
-
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-01.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 ansible.cfg
 ^^^^^^^^^^^
-
-Do not display skipped hosts. See the `display_skipped_hosts`_ option.
 
 .. literalinclude:: ansible.cfg
    :language: ini
@@ -138,6 +136,10 @@ Inventory iocage.ini
 
 hosts
 ^^^^^
+
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
@@ -160,14 +162,14 @@ Playbook pb-pkg-update.yml
 .. literalinclude:: pb-pkg-update.yml
    :language: yaml+jinja
 
-Playbook output - Update repo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Update repos and upgrade pkg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini -e debug=true pb-pkg-update.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -185,11 +187,10 @@ Limit the inventory to a single jail:
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts -l log_server_01 \
-                            -t pkg_debug \
-                            -e pkg_debug=true \
+                            -t pkg_debug -e pkg_debug=true \
                             pb-test.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -203,7 +204,7 @@ pkg_list`` task.
 
    (env) > ansible-playbook -i hosts -i iocage.ini pb-test.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -221,6 +222,6 @@ Playbook output - Audit packages
                             -e pkg_stat=true -e pkg_audit_enable=true -e pkg_debug=true \
                             pb-test.yml
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml+jinja
    :force:
