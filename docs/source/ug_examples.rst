@@ -80,7 +80,7 @@ Examples
    320 Install and audit packages <examples/320/example.rst>
    321 Poudriere package repo <examples/321/example.rst>
    322 Local package repo <examples/322/example.rst>
-   330 Clone jails and create inventory <examples/330/example.rst>
+   330 Clone jails (runner) <examples/330/example.rst>
    340 lighttpd <examples/340/example.rst>
    350 rsnapshot <examples/350/example.rst>
    360 bridge <examples/360/example.rst>

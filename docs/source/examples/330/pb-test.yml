@@ -1,7 +1,7 @@
-- name: Create lists
+- name: Iocage datasets.
   import_playbook: pb-iocage-list.yml
 
-- name: Create group test
+- name: Create inventory group test.
   hosts: iocage
 
   vars:
@@ -10,16 +10,16 @@
 
   tasks:
 
-    - name: Create inventory group test
+    - name: Create inventory group test.
       run_once: true
       block:
 
-        - name: Debug
+        - name: Debug.
           when: debug | d(false) | bool
           ansible.builtin.debug:
             var: jails
 
-        - name: Create inventory group test
+        - name: Create inventory group test.
           ansible.builtin.add_host:
             groups: test
             name: "{{ item }}"
@@ -28,18 +28,20 @@
             release:  "{{ jails[item].release }}"
           loop: "{{ jails.keys() | select('match', 'test') }}"
   
-- name: Use group test
+- name: Use inventory group test.
   hosts: test
 
   tasks:
 
-    - debug:
+    - name: Debug jails.
+      ansible.builtin.debug:
         msg: |
           inventory_hostname: {{ inventory_hostname }}
           ansible_host: {{ ansible_host }}
           release: {{ release }}
 
-    - debug:
+    - name: Debug groups.
+      ansible.builtin.debug:
         msg: |
           groups:
             {{ groups | to_yaml(indent=2) | indent(2) }}
