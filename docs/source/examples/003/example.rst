@@ -41,8 +41,9 @@ Synopsis
 
 * On the managed nodes:
 
-  * Use the playbook ``pb-iocage.yml`` and the `role
-    vbotka.freebsd.iocage`_ to audit the `iocage`_ configuration.
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
+
+    * Audit the `iocage`_ configuration.
 
 Requirements
 ^^^^^^^^^^^^

@@ -97,6 +97,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
+* In the playbook ``pb-test-filter.yml``, test the :ref:`filter
+  vbotka.freebsd.iocage <ug_filter_iocage>`.
+
 * On the managed nodes:
 
   * In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
@@ -108,11 +111,11 @@ Synopsis
       * Start jails.
       * Optionally, stop and destroy the jails.
 
-* On all created jails:
+* On all created jails in the group ``test``:
 
   * In the playbook ``pb-test.yml``:
 
-    * Display selected variables.
+    * Display jails and selected variables.
 
 Requirements
 ^^^^^^^^^^^^

@@ -1,7 +1,8 @@
 .. _ug_filter_to_ast:
 
-.. index:: single: filter vbotka.freebsd.to_ast; Filter to_ast
-.. index:: single: to_ast; Filter to_ast
+.. index::
+   single: filter vbotka.freebsd.to_ast; Filter to_ast
+   single: to_ast; Filter to_ast
 
 Filter vbotka.freebsd.to_ast
 ---------------------------------
@@ -15,7 +16,7 @@ The ``to_ast`` filter converts YAML dictionary to crossplane AST
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.to_ast
+      (env) > ansible-doc -t filter vbotka.freebsd.to_ast
 
 .. seealso::
 

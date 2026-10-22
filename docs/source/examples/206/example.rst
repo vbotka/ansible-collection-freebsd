@@ -177,11 +177,11 @@ Synopsis
       * Create two DHCP jails with generated UUIDs.
       * Start the jails.
 
-* On all created jails:
+* On all created jails in the group ``test``:
 
   * In the playbook ``pb-test.yml``:
 
-    * Display selected variables.
+    * Display jails, ``ansible_jail_*`` variables, and iocage tags.
     * Test the connection to cloned jails.
 
 Requirements

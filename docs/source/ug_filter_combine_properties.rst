@@ -58,7 +58,7 @@ Parameters
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.combine_properties
+      (env) > ansible-doc -t filter vbotka.freebsd.combine_properties
 
 
 Transformations

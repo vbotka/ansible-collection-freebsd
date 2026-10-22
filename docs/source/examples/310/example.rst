@@ -64,7 +64,9 @@ Synopsis
     * Create variables for :ref:`connection plugin vbotka.freebsd.jailexec
       <ug_connection_jailexec>`.
 
-    * Create groups.
+    * Create inventory groups.
+
+* On all created jails in the group ``swarm_sw_01``:
 
   * In the playbook ``pb-test-01.yml``, test the role
     `vbotka.freebsd.postinstall`_ does nothing by default.
@@ -72,8 +74,8 @@ Synopsis
   * In the playbook ``pb-test-02.yml``, install packages using the module
     `community.general.pkgng`_.
 
-  * In the playbook ``pb-test-03.yml``, install packages by importing
-    `vbotka.freebsd.postinstall`_.
+  * In the playbook ``pb-test-03.yml``, install packages by importing tasks from
+    the role `vbotka.freebsd.postinstall`_.
 
   * In the playbook ``pb-test-01.yml``, use the role
     `vbotka.freebsd.postinstall`_ to:

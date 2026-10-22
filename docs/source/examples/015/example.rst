@@ -47,10 +47,22 @@ Synopsis
 
 * On the managed nodes:
 
-  * Fetch dynamic inventory using the :ref:`inventory
-    vbotka.freebsd.iocage <ug_inventory_iocage>`.
+  * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-  * Configure and test ``cache``.
+    * Compose variables and create inventory groups.
+    * Configure inventory ``cache``.
+
+* On all jails:
+
+  * In the playbook ``pb-vars-ip4.yml``:
+
+    * Test the inventory cache.
+
+* On the controller (localhost):
+
+  * In the playbook ``pb-cache-dump.yml``:
+
+    * Display the content of a cache files.
 
 Requirements
 ^^^^^^^^^^^^

@@ -36,7 +36,19 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* TBD
+* On the managed nodes:
+
+  * In the playbook ``pb.yml`` use the :ref:`filter
+    vbotka.freebsd.combine_properties <ug_filter_combine_properties>` to combine
+    ``properties`` for a dictionary of:
+
+    * Jails. Create ``default notes``.
+
+    * Swarms. Set option ``notes=[vmm, class, swarm]``.
+
+  * In the playbook ``pb-project.yml`` use the :ref:`filter
+    vbotka.freebsd.combine_properties <ug_filter_combine_properties>` to combine
+    ``properties`` for the dictionary ``project``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -46,7 +58,7 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. seealso::
 

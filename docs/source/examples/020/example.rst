@@ -68,25 +68,33 @@ Synopsis
 
 * On the managed nodes:
 
-  * Create jails using the template ``ansible-client`` and the ``--count``
-    option.
+  * In the playbook ``pb-iocage-swarms-create.yml``:
 
-  * For each jail, set the property ``notes`` in the format
-    ``tag1=val1 tag2=val2 ...``.
+    * Create jails using the template ``ansible-client`` and the ``--count``
+      option.
 
-  * Set the inventory alias in the iocage tag ``alias=<alias>``.
+    * For each jail, set the property ``notes`` in the format
+      ``tag1=val1 tag2=val2 ...``.
 
-* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`:
+    * In the ``notes``, set the inventory alias ``alias=<alias>``.
 
-  * Create the variable ``ansible_host`` from the first item of the
-    list ``iocage_hooks``.
+    * In the :ref:`inventory plugin vbotka.freebsd.iocage2
+      <ug_inventory_iocage2>`:
 
-  * Retrieve the inventory aliases from the iocage tag ``alias``.
+      * Create the variable ``ansible_host`` from the first item of the
+        list ``iocage_hooks``.
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the inventory
-  groups.
+      * Retrieve the inventory aliases from the iocage tag ``alias``.
 
-* Display the selected variables and groups.
+    * In the inventory plugin `ansible.builtin.constructed`_:
+
+      * Create inventory groups.
+
+* On the jails in the group ``project_example_020``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display the jails, groups, iocage tags, and selected variables.
 
 Requirements
 ^^^^^^^^^^^^

@@ -46,7 +46,7 @@ Synopsis
 
   * In the playbook ``pb-iocage-display-datasets.yml``, use the
     :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to create
-    and display ``iocage`` lists and dictionaries.
+    and display ``iocage`` datasets.
 
 Requirements
 ^^^^^^^^^^^^

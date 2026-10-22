@@ -1,7 +1,8 @@
 .. _ug_filter_ast_to_nginx:
 
-.. index:: single: filter vbotka.freebsd.ast_to_nginx; Filter ast_to_nginx
-.. index:: single: ast_to_nginx; Filter ast_to_nginx
+.. index::
+   single: filter vbotka.freebsd.ast_to_nginx; Filter ast_to_nginx
+   single: ast_to_nginx; Filter ast_to_nginx
 
 Filter vbotka.freebsd.ast_to_nginx
 ----------------------------------
@@ -15,7 +16,7 @@ list to NGINX config.
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.ast_to_nginx
+      (env) > ansible-doc -t filter vbotka.freebsd.ast_to_nginx
       
 .. note::
 

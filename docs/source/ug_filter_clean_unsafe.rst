@@ -1,7 +1,8 @@
 .. _ug_filter_clean_unsafe:
 
-.. index:: single: filter vbotka.freebsd.clean_unsafe; Filter clean_unsafe
-.. index:: single: clean_unsafe; Filter clean_unsafe
+.. index::
+   single: filter vbotka.freebsd.clean_unsafe; Filter clean_unsafe
+   single: clean_unsafe; Filter clean_unsafe
 
 Filter vbotka.freebsd.clean_unsafe
 ----------------------------------
@@ -52,7 +53,7 @@ Parameters
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.clean_unsafe
+      (env) > ansible-doc -t filter vbotka.freebsd.clean_unsafe
 
 Examples
 ^^^^^^^^

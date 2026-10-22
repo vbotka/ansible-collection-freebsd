@@ -40,7 +40,7 @@ Synopsis
 
 * In the playbook ``pb-ast-to-haproxy.yml``, use the :ref:`filter
   vbotka.freebsd.ast_to_haproxy <ug_filter_ast_to_haproxy>` to convert
-  an AST (Abstract Syntax Tree) list into an HAProxy configuration.
+  an AST (Abstract Syntax Tree) list into an `HAProxy`_ configuration.
 
 Requirements
 ^^^^^^^^^^^^
@@ -51,11 +51,11 @@ Requirements
 Notes
 ^^^^^
 
-TBD
+* TBD
 
 .. seealso::
 
-   * `HAProxy`_ The Reliable, High Performance TCP/HTTP Load Balancer
+   * `HAProxy`_ - The Reliable, High Performance TCP/HTTP Load Balancer
 
 ansible.cfg
 ^^^^^^^^^^^

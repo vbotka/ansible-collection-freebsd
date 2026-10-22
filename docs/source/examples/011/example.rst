@@ -23,7 +23,7 @@ Use case
 ^^^^^^^^
 
 Display all variables ``iocage_*`` created by the :ref:`inventory
-vbotka.freebsd.iocage <ug_inventory_iocage>`.
+plugin vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
 Tree
 ^^^^
@@ -39,8 +39,9 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* In a selected jail, display all variables ``iocage_*`` created by the inventory
-  plugin.
+* In a selected jail:
+
+  * Display all variables ``iocage_*`` created by the inventory plugin.
 
 Requirements
 ^^^^^^^^^^^^

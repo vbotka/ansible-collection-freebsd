@@ -48,7 +48,7 @@ Synopsis
     * Update FreeBSD repository catalogue (default `cached`_ = false).
     * Upgrade the package ``ports-mgmt/pkg``.
 
-* In all running jails:
+* In all running jails in the group ``state_up``:
 
   * In the playbook ``pb-test.yml``, test the role `vbotka.freebsd.packages`_:
 

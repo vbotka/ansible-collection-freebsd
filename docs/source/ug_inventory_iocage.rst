@@ -24,7 +24,7 @@ manager.
 
    .. code:: console
 
-      shell> ansible-doc -t inventory vbotka.freebsd.iocage
+      (env) > ansible-doc -t inventory vbotka.freebsd.iocage
 
 .. note::
 

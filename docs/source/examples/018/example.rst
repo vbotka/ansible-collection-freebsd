@@ -72,13 +72,15 @@ Synopsis
 
     * Start cloned jails.
 
-* In the playbook ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
-  <ug_inventory_iocage>` to:
+  * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-  * Compose variables snd create inventory groups.
+    * Compose variables and create inventory groups.
 
-  * Display the hosts, groups, and selected variables in the group
-    ``example_018``.
+* On the jails in the group ``example_018``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display the jails, groups, iocage tags, and selected variables.
 
 Requirements
 ^^^^^^^^^^^^

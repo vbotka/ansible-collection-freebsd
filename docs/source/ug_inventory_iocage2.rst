@@ -20,7 +20,7 @@ configuration file.
 
    .. code:: console
 
-      shell> ansible-doc -t inventory vbotka.freebsd.iocage2
+      (env) > ansible-doc -t inventory vbotka.freebsd.iocage2
 
 Overview
 ^^^^^^^^

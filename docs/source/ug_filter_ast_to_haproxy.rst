@@ -1,7 +1,8 @@
 .. _ug_filter_ast_to_haproxy:
 
-.. index:: single: filter vbotka.freebsd.ast_to_haproxy; Filter ast_to_haproxy
-.. index:: single: ast_to_haproxy; Filter ast_to_haproxy
+.. index::
+   single: filter vbotka.freebsd.ast_to_haproxy; Filter ast_to_haproxy
+   single: ast_to_haproxy; Filter ast_to_haproxy
 
 Filter vbotka.freebsd.ast_to_haproxy
 ------------------------------------
@@ -45,7 +46,7 @@ Parameters
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.ast_to_haproxy
+      (env) > ansible-doc -t filter vbotka.freebsd.ast_to_haproxy
 
 Grammar & Transformations
 ^^^^^^^^^^^^^^^^^^^^^^^^^

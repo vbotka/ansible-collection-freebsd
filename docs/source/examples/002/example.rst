@@ -38,8 +38,9 @@ Synopsis
 
 * On the managed nodes:
 
-  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to
-    activate `iocage`_.
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
+
+    * Activate `iocage`_.
 
 Requirements
 ^^^^^^^^^^^^

@@ -18,7 +18,7 @@ Use case
 ^^^^^^^^
 
 Create `custom facts`_ to provide a dictionary of iocage dataset lists. Use the
-:ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse them.
+:ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse the dictionary.
 
 Tree
 ^^^^
@@ -51,9 +51,7 @@ Synopsis
   * TODO:
 
     * Create the inventory group ``test`` and compose variables.
-
     * Display the hosts and composed variables in the group ``test``.
-
     * Display all groups.
 
 Requirements

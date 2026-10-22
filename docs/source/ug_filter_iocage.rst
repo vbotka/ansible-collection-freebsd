@@ -13,7 +13,7 @@ The ``iocage`` filter parses `iocage`_ lists.
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.iocage
+      (env) > ansible-doc -t filter vbotka.freebsd.iocage
 
 .. note::
 

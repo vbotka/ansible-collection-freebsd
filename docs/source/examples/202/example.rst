@@ -133,6 +133,12 @@ Synopsis
 
     * Display selected variables.
 
+* On all created jails in the group ``test``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display jails and selected variables.
+
 Requirements
 ^^^^^^^^^^^^
 
@@ -326,6 +332,6 @@ Playbook output - Display variables
 
      ansible-playbook -i iocage.ini \
                       -t clone_destroy \
-		      -e clone_destroy=true \
-		      -e iocage_module=false \
+                      -e clone_destroy=true \
+                      -e iocage_module=false \
                       vbotka.freebsd.pb_iocage_ansible_clients.yml

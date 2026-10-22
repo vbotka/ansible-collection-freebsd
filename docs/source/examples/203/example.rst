@@ -109,23 +109,21 @@ Synopsis
 
 * On the managed nodes:
 
-  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, use:
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
-    * The :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
+    * Create swarms.
 
-      * Create facts only.
+  * In the :ref:`inventory plugin vbotka.freebsd.iocage2
+    <ug_inventory_iocage2>`:
 
-    * The module ``ansible.builtin.command`` to:
+    * Compose the dictionary ``iocage_tags``.
+    * Create inventory groups.
 
-      * Create jails.
-      * Start jails.
-      * Optionally, stop and destroy the jails.
-
-* On all created jails:
+* On all created jails in the group ``test``:
 
   * In the playbook ``pb-test.yml``:
 
-    * Display selected variables.
+    * Display jails and selected variables.
 
 Requirements
 ^^^^^^^^^^^^

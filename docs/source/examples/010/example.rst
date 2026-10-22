@@ -24,9 +24,9 @@ Use case
 ^^^^^^^^
 
 Fetch releases, create basejails, clone jails from the basejails, and start the
-jails. Use the :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-plugin to generate the dynamic inventory, and display the created groups and
-hosts.
+jails. Use the :ref:`inventory plugin vbotka.freebsd.iocage
+<ug_inventory_iocage>` to generate the dynamic inventory. Display the created
+jails and groups.
 
 Tree
 ^^^^
@@ -54,18 +54,22 @@ Synopsis
   * Use the playbook ``pb-iocage-fetch-base-clone-list.yml``
     and the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-    * Fetch the release.
-    * Create a basejail.
-    * Clone 3 jails from the basejail.
+    * Fetch the releases.
+    * Create a basejails.
+    * Clone 3 jails from the basejails.
     * Start 1 jail.
-    * Display lists of bases, plugins, templates, and jails.
+    * Display iocage datasets.
 
-* Use the playbook ``pb-test.yml`` and the inventory plugin
-  :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:
+  * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-  * Create inventory groups and compose variables.
-  * Display the hosts and composed variables in the group ``test``.
-  * Display all created groups.
+    * Compose variables and create inventory groups.
+
+* On cloned jails in the group ``test``:
+
+  * Use the playbook ``pb-test.yml`` to:
+
+    * Display jails and composed variables.
+    * Display groups.
 
 Requirements
 ^^^^^^^^^^^^

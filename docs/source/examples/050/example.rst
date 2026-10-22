@@ -35,10 +35,10 @@ Synopsis
 
   * Manually create and start jails.
 
-  * Update the inventory file ``hosts``.
+  * Manually update the variables ``ansible_jail_*`` in the inventory file
+    ``hosts``.
 
-  * Test the :ref:`connection plugin vbotka.freebsd.jailexec
-    <ug_connection_jailexec>`.
+  * In the playbook ``pb.yml``, test the connection.
 
 Requirements
 ^^^^^^^^^^^^
@@ -59,10 +59,10 @@ Manually create the jails
    [iocage_05]# iocage create --short -c 3 -t ansible-client  dhcp=1 vnet=1 boot=1
 
    [iocage_05]# iocage list -h
-   30	2756b146	up	14.5-RELEASE	DHCP
-   28	2e117f73	up	14.5-RELEASE	DHCP
-   29	49f92d2a	up	14.5-RELEASE	DHCP
-   None	ansible-test	down	14.5-RELEASE	DHCP
+   30   2756b146        up      14.5-RELEASE    DHCP
+   28   2e117f73        up      14.5-RELEASE    DHCP
+   29   49f92d2a        up      14.5-RELEASE    DHCP
+   None ansible-test    down    14.5-RELEASE    DHCP
 
 .. seealso::
 
@@ -96,8 +96,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml+jinja
 
-Playbook output - Test jailexec
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test the connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

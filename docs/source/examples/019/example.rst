@@ -62,19 +62,31 @@ Synopsis
 
 * On the managed nodes:
 
-  * The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-    retrieves the jails:
+  * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-    * ``test_511:513`` from host ``iocage_05``.
-    * ``test_611:613`` from host ``iocage_06``.
+    * Retrieve the jails ``test_511:513`` from the host ``iocage_05``.
+    * Retrieve the jails ``test_611:613`` from the host ``iocage_06``.
+    * Create inventory groups ``test_CA`` and ``test_NL``.
 
-    and creates the inventory groups ``test_CA`` and ``test_NL``.
-
-  * The inventory plugin `ansible.builtin.constructed`_ creates the
+  * Use the inventory plugin `ansible.builtin.constructed`_ to create the
     inventory groups:
 
     * ``region_EU`` comprising hosts where the variable ``region`` is ``'EU'``.
     * ``region_US`` comprising hosts where the variable ``region`` is ``'US'``.
+    * ``example_018`` comprising hosts where the variable ``iocage_classes``
+      contains ``'example_018'``.
+
+* On the jails in the group ``example_018``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display the jails, groups, and selected variables.
+
+* On the jails in the groups ``region_EU`` and ``region_US``:
+
+  * In the playbook ``pb-test-region.yml``:
+
+    * Display the jails and selected variables.
 
 Requirements
 ^^^^^^^^^^^^

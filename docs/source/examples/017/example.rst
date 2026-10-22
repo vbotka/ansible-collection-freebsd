@@ -19,7 +19,7 @@ Use case
 ^^^^^^^^
 
 Use the `inventory plugin community.general.iocage`_ instead of the
-:ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`.
+:ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
 Tree
 ^^^^
@@ -39,8 +39,17 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The `inventory plugin community.general.iocage`_ should provide the
-  same functionality.
+* On the managed nodes:
+
+  * Test the `inventory plugin community.general.iocage`_. It should provide the
+    same functionality as the :ref:`inventory plugin vbotka.freebsd.iocage
+    <ug_inventory_iocage>`
+
+* On cloned jails in the group ``test``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display jails and inventory groups.
 
 .. important::
 
@@ -83,9 +92,14 @@ Notes
 ^^^^^
 
 * Available in ``community.general`` >= 10.2.0.
-* See::
 
-    shell> ansible-doc -t inventory community.general.iocage
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      (env) > ansible-doc -t inventory community.general.iocage
 
 ansible.cfg
 ^^^^^^^^^^^

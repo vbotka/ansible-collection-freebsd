@@ -21,7 +21,7 @@ Use case
 ^^^^^^^^
 
 Create inventory groups using the inventory plugin
-`ansible.builtin.constructed`_ after loading the :ref:`inventory
+`ansible.builtin.constructed`_ after loading the :ref:`inventory plugin
 vbotka.freebsd.iocage <ug_inventory_iocage>` configuration files.
 
 Tree
@@ -41,19 +41,26 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` retrieves the
-  jails:
+* On the managed nodes:
 
-  * ``test_511:513`` from host ``iocage_05``.
-  * ``test_611:613`` from host ``iocage_06``.
+  * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-  and creates the inventory groups ``test_05`` and ``test_06``.
+    * Retrieve the jails ``test_511:513`` from the host ``iocage_05``.
+    * Retrieve the jails ``test_611:613`` from the host ``iocage_06``.
+    * Create inventory groups ``test_05`` and ``test_06``.
 
-* The inventory plugin `ansible.builtin.constructed`_ creates the
-  inventory groups:
+  * Use the inventory plugin `ansible.builtin.constructed`_ to create the
+    inventory groups:
 
-  * ``test`` comprising hosts whose names start with ``'test'``.
-  * ``test_up`` comprising running hosts whose names start with ``'test'``.
+    * ``test`` comprising hosts whose names start with ``'test'``.
+    * ``test_up`` comprising running hosts whose names start with ``'test'``.
+
+* On cloned jails in the group ``test``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display jails and inventory groups.
+
 
 Requirements
 ^^^^^^^^^^^^
@@ -66,13 +73,6 @@ Notes
 
 * The inventory files in the directory ``hosts`` are evaluated in alphabetical
   order.
-
-* See :ref:`example_015`.
-
-* The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-  does not provide the option `use_vars_plugins`_.
-
-* See :ref:`example_019`.
 
 ansible.cfg
 ^^^^^^^^^^^

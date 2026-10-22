@@ -34,14 +34,13 @@ This example extends :ref:`example_010`.
 Use case
 ^^^^^^^^
 
-Use the `iocage jail property`_ ``notes`` to create ``iocage tags``:
+* Use the `iocage jail property`_ ``notes`` to create ``iocage
+  tags``. Add the property ``notes: "vmm={{ inventory_hostname }}"``.
 
-* Add the property ``notes: "vmm={{ inventory_hostname }}"``.
+* In the inventory plugin:
 
-In the inventory plugin:
-
-* Compose the variable ``iocage_tags``.
-* Create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``.
+  * Compose the variable ``iocage_tags``.
+  * Create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``.
 
 Tree
 ^^^^
@@ -80,13 +79,27 @@ Synopsis
     vbotka.freebsd.iocage <ug_module_iocage>` to clone 3 jails from the
     basejail ``ansible-test``.
 
-  * In the playbooks ``pb-all.yml``, ``pb-test.yml``, and
-    ``pb-test-vmm.yml``, use the :ref:`inventory vbotka.freebsd.iocage
-    <ug_inventory_iocage>` to:
+  * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>`
+    to:
 
-    * Create inventory groups and compose variables.
-    * Create the dictionary ``iocage_tags`` from ``iocage_properties.notes``.
-    * Display hosts, composed variables, and groups.
+    * Compose the dictionary ``iocage_tags`` from ``iocage_properties.notes``.
+    * Compose variables and create inventory groups.
+
+* On all jails:
+
+  * In the playbook ``pb-all.yml``:
+
+    * Display jails, iocage tags, and groups.
+
+* On cloned jails in the group ``test``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display jails, composed variables, iocage tags, and groups.
+
+  * In the playbook ``pb-test-vmm.yml``:
+
+    * Display jails running on iocage hosts.
 
 * Comment on hosts potentially silently overriding each other.
 

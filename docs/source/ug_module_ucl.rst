@@ -1,7 +1,9 @@
 .. _ug_module_ucl:
-.. index:: single: module vbotka.freebsd.ucl; Module ucl
-.. index:: single: vbotka.freebsd.ucl; Module ucl
-.. index:: single: ucl; Module ucl
+
+.. index::
+   single: module vbotka.freebsd.ucl; Module ucl
+   single: vbotka.freebsd.ucl; Module ucl
+   single: ucl; Module ucl
 
 Module vbotka.freebsd.ucl
 -------------------------
@@ -15,7 +17,7 @@ to managing UCL(Universal Configuration Language) files.
 
    .. code:: console
 
-      shell> ansible-doc -t module vbotka.freebsd.ucl
+      (env) > ansible-doc -t module vbotka.freebsd.ucl
 
 .. note::
 

@@ -21,7 +21,7 @@ dictionary mapping class names to lists of service names.
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.project
+      (env) > ansible-doc -t filter vbotka.freebsd.project
 
 .. seealso::
 

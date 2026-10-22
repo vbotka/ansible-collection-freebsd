@@ -34,8 +34,8 @@ This example extends :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Use the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>` to
-retrieve the inventory. Use the :ref:`connection vbotka.freebsd.jailexec
+Use the :ref:`inventory plugin vbotka.freebsd.iocage2 <ug_inventory_iocage2>` to
+retrieve the inventory. Use the :ref:`connection plugin vbotka.freebsd.jailexec
 <ug_connection_jailexec>` to connect to the jails created in :ref:`example_020`.
 
 Tree
@@ -60,16 +60,28 @@ Synopsis
 
 * On the managed nodes:
 
-  * In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
-    retrieve the inventory and create connection variables for the
-    :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+  * In the :ref:`inventory plugin vbotka.freebsd.iocage2
+    <ug_inventory_iocage2>`, retrieve the inventory and create connection
+    variables for the :ref:`connection plugin vbotka.freebsd.jailexec
+    <ug_connection_jailexec>`.
 
   * In the inventory plugin `ansible.builtin.constructed`_, create the inventory
     groups.
 
-  * Display the connection variables.
+* On the jails in the group ``project_example_020``:
 
-  * Test :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+  * In the playbook ``pb-test.yml``:
+
+    * Display the jails, groups, iocage tags, and selected variables.
+
+  * In the playbook ``pb-test-connection-vars.yml``:
+
+    * Display the connection variables.
+
+  * In the playbook ``pb-test-connection.yml``:
+
+    * Test the :ref:`connection plugin vbotka.freebsd.jailexec
+      <ug_connection_jailexec>`.
 
 Requirements
 ^^^^^^^^^^^^

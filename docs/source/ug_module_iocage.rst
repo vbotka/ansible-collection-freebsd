@@ -1,4 +1,5 @@
 .. _ug_module_iocage:
+
 .. index:: single: module vbotka.freebsd.iocage; Module iocage
 
 Module vbotka.freebsd.iocage
@@ -12,7 +13,7 @@ The ``iocage`` module is wrapper to the `binary iocage`_.
 
    .. code:: console
 
-      shell> ansible-doc -t module vbotka.freebsd.iocage
+      (env) > ansible-doc -t module vbotka.freebsd.iocage
 
 .. note::
 
