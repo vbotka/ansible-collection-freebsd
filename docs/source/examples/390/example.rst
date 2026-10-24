@@ -7,21 +7,21 @@
    :local:
    :depth: 1
 
-.. index:: single: Poudriere; Example 390
-.. index:: single: role vbotka.freebsd.poudriere; Example 390
-.. index:: single: vbotka.freebsd.poudriere; Example 390
-.. index:: single: QEMU; Example 390
-.. index:: single: ARM; Example 390
-.. index:: single: armv6; Example 390
-.. index:: single: armv7; Example 390
-.. index:: single: aarch64; Example 390
-.. index:: single: amd64; Example 390
+.. index::
+   single: Poudriere; Example 390
+   single: role vbotka.freebsd.poudriere; Example 390
+   single: vbotka.freebsd.poudriere; Example 390
+   single: QEMU; Example 390
+   single: ARM; Example 390
+   single: armv6; Example 390
+   single: armv7; Example 390
+   single: aarch64; Example 390
+   single: amd64; Example 390
 
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.poudriere`_ to install and configure `Poudriere to
-create and test FreeBSD packages`_.
+Use the role `vbotka.freebsd.poudriere`_ to install and configure `Poudriere`_.
 
 Tree
 ^^^^
@@ -42,10 +42,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed node ``build.example.com``:
+* On the managed nodes:
 
   * In the playbook ``pb.yml``, use the role
-    `vbotka.freebsd.poudriere`_ to install and configure `poudriere`_.
+    `vbotka.freebsd.poudriere`_ to install and configure `Poudriere`_.
 
   * In the playbook ``pb-postinstall.yml``, use the role
     `vbotka.freebsd.postinstall`_ to install and configure `QEMU`_.

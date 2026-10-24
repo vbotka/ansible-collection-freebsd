@@ -7,27 +7,25 @@
    :local:
    :depth: 1
 
-.. index:: single: ZFS; Example 400
-.. index:: single: role vbotka.freebsd.zfs; Example 400
-.. index:: single: vbotka.freebsd.zfs; Example 400
-
-.. index:: single: community.general.zfs; Example 400
-.. index:: single: community.general.zfs_facts; Example 400
-.. index:: single: community.general.zpool; Example 400
-.. index:: single: community.general.zpool_facts; Example 400
-.. index:: single: module community.general.zfs; Example 400
-.. index:: single: module community.general.zfs_facts; Example 400
-.. index:: single: module community.general.zpool; Example 400
-.. index:: single: module community.general.zpool_facts; Example 400
-
-.. index:: single: /boot/loader.conf; Example 400
-.. index:: single: vfs.zfs.prefetch.disable; Example 400
+.. index::
+   single: ZFS; Example 400
+   single: role vbotka.freebsd.zfs; Example 400
+   single: vbotka.freebsd.zfs; Example 400
+   single: community.general.zfs; Example 400
+   single: community.general.zfs_facts; Example 400
+   single: community.general.zpool; Example 400
+   single: community.general.zpool_facts; Example 400
+   single: module community.general.zfs; Example 400
+   single: module community.general.zfs_facts; Example 400
+   single: module community.general.zpool; Example 400
+   single: module community.general.zpool_facts; Example 400
+   single: /etc/sysctl.conf; Example 400
+   single: vfs.zfs.prefetch.disable; Example 400
 
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.zfs`_ to configure ZFS pools and
-datasets.
+Use the role `vbotka.freebsd.zfs`_ to configure ZFS pools and datasets.
 
 Tree
 ^^^^
@@ -38,29 +36,29 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
+  │   ├── iocage_05
+  │   │   ├── sysctl.conf
+  │   │   └── zfs.yml
   │   └── iocage_06
-  │       ├── loader.yml
+  │       ├── sysctl.conf
   │       └── zfs.yml
   ├── iocage.ini
-  ├── pb-loader.yml
+  ├── pb-sysctl.yml
   └── pb-zfs.yml
 
 Synopsis
 ^^^^^^^^
 
-* On a managed host:
+* On the managed nodes:
 
-  * Create ZFS pools:
+  * In the playbook ``pb-sysctl.yml``:
 
-    * ``zroot``
+    * Configure kernel settings.
 
-  * Create and mount ZFS datasets:
+  * In the playbook ``pb-zfs.yml``:
 
-    * ``zroot/export``      mounted on ``/export``
-    * ``zroot/ports``       mounted on ``/usr/ports``
-    * ``zroot/src``         mounted on ``/usr/src``
-    * ``zroot/obj``         mounted on ``/usr/obj``
-    * ``zroot/poudriere``   mounted on ``/usr/local/poudriere``
+    * Create ZFS pools.
+    * Create and mount ZFS datasets.
 
 Requirements
 ^^^^^^^^^^^^
@@ -161,7 +159,15 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/loader.yml
+.. literalinclude:: host_vars/iocage_05/sysctl.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_05/zfs.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/sysctl.yml
    :language: yaml+jinja
    :caption:
 
@@ -169,28 +175,22 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Playbook pb-loader.yml
+Playbook pb-sysctl.yml
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-loader.yml
+.. literalinclude:: pb-sysctl.yml
    :language: yaml+jinja
 
-Playbook output - loader.conf
+Playbook output - sysctl.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini pb-loader.yml
+   (env) > ansible-playbook -i iocage.ini pb-sysctl.yml
 
 .. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
-
-.. note::
-
-   Reboot if you see the message::
-
-     [MESSAGE] Reboot to activate configuration in /boot/loader.conf
 
 Playbook pb-zfs.yml
 ^^^^^^^^^^^^^^^^^^^
@@ -225,7 +225,9 @@ Playbook output - List pools
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -t fzfs_facts_pools -e fzfs_debug=true pb-zfs.yml
+   (env) > ansible-playbook -i iocage.ini \
+                            -t fzfs_facts_pools -e fzfs_debug=true \
+                            pb-zfs.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -236,7 +238,9 @@ Playbook output - List datasets
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true pb-zfs.yml
+   (env) > ansible-playbook -i iocage.ini \
+                            -t fzfs_facts_ds -e fzfs_facts_ds=true -e fzfs_debug=true \
+                            pb-zfs.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja

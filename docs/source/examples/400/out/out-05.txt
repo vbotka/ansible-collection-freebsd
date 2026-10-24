@@ -3,17 +3,45 @@ PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.zfs : Facts: Run zpool_facts] *****************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Facts: Run zfs_facts] *******************************
+ok: [iocage_05] => (item=iocage)
 ok: [iocage_06] => (item=zroot)
 
 TASK [vbotka.freebsd.zfs : Facts: Get dictionary of datasets] ******************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Facts: Debug list of datasets fzfs_debug=true] ******
+ok: [iocage_05] => 
+    fzfs_datasets | to_nice_yaml: |-
+        iocage:
+            iocage: /iocage
+            iocage/export: /export
+            iocage/iocage: /iocage/iocage
+            iocage/iocage/download: /iocage/iocage/download
+            iocage/iocage/download/14.5-RELEASE: /iocage/iocage/download/14.5-RELEASE
+            iocage/iocage/images: /iocage/iocage/images
+            iocage/iocage/jails: /iocage/iocage/jails
+            iocage/iocage/log: /iocage/iocage/log
+            iocage/iocage/releases: /iocage/iocage/releases
+            iocage/iocage/releases/14.5-RELEASE: /iocage/iocage/releases/14.5-RELEASE
+            iocage/iocage/releases/14.5-RELEASE/root: /iocage/iocage/releases/14.5-RELEASE/root
+            iocage/iocage/releases/14.5-RELEASE/root@ansible-apache: null
+            iocage/iocage/releases/14.5-RELEASE/root@ansible-client: null
+            iocage/iocage/templates: /iocage/iocage/templates
+            iocage/iocage/templates/ansible-apache: /iocage/iocage/templates/ansible-apache
+            iocage/iocage/templates/ansible-apache/root: /iocage/iocage/templates/ansible-apache/root
+            iocage/iocage/templates/ansible-client: /iocage/iocage/templates/ansible-client
+            iocage/iocage/templates/ansible-client/root: /iocage/iocage/templates/ansible-client/root
+            iocage/obj: /usr/obj
+            iocage/ports: /usr/ports
+            iocage/src: /usr/src
 ok: [iocage_06] => 
     fzfs_datasets | to_nice_yaml: |-
         zroot:
@@ -45,6 +73,8 @@ ok: [iocage_06] =>
             zroot/iocage/releases/15.1-RELEASE/root@ansible-nginx: null
             zroot/iocage/releases/15.1-RELEASE/root@ansible-pkg-repo: null
             zroot/iocage/releases/15.1-RELEASE/root@ansible-repos: null
+            zroot/iocage/releases/15.1-RELEASE/root@ansible-syslogng-client: null
+            zroot/iocage/releases/15.1-RELEASE/root@ansible-syslogng-server: null
             zroot/iocage/templates: /zroot/iocage/templates
             zroot/iocage/templates/ansible-apache: /zroot/iocage/templates/ansible-apache
             zroot/iocage/templates/ansible-apache/root: /zroot/iocage/templates/ansible-apache/root
@@ -66,6 +96,10 @@ ok: [iocage_06] =>
             zroot/iocage/templates/ansible-repos/root@repos-devel: null
             zroot/iocage/templates/ansible-repos@repos: null
             zroot/iocage/templates/ansible-repos@repos-devel: null
+            zroot/iocage/templates/ansible-syslogng-client: /zroot/iocage/templates/ansible-syslogng-client
+            zroot/iocage/templates/ansible-syslogng-client/root: /zroot/iocage/templates/ansible-syslogng-client/root
+            zroot/iocage/templates/ansible-syslogng-server: /zroot/iocage/templates/ansible-syslogng-server
+            zroot/iocage/templates/ansible-syslogng-server/root: /zroot/iocage/templates/ansible-syslogng-server/root
             zroot/obj: /usr/obj
             zroot/ports: /usr/ports
             zroot/poudriere: /usr/local/poudriere
@@ -73,5 +107,6 @@ ok: [iocage_06] =>
             zroot/src: /usr/src
 
 PLAY RECAP *********************************************************************
+iocage_05                  : ok=5    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 iocage_06                  : ok=5    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 

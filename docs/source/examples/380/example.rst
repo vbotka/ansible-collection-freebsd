@@ -7,8 +7,9 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.custom_image; Example 380
-.. index:: single: vbotka.freebsd.custom_image; Example 380
+.. index::
+   single: role vbotka.freebsd.custom_image; Example 380
+   single: vbotka.freebsd.custom_image; Example 380
 
 Use case
 ^^^^^^^^
@@ -34,12 +35,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Use the role `vbotka.freebsd.custom_image`_ on ``images.example.com`` to
-  customize a FreeBSD image:
+* On the managed hosts:
 
-  * Configure the wireless adapter `RTL8188EU`_
-  * Configure wpa_supplicant
-  * Connect to the access point
+  * Use the role `vbotka.freebsd.custom_image`_ to customize a FreeBSD image:
+
+    * Configure a wireless adapter.
+    * Configure wpa_supplicant.
+    * Connect to an access point.
 
 Requirements
 ^^^^^^^^^^^^
@@ -62,6 +64,7 @@ Notes
    * `Get FreeBSD`_
    * `Memory Disks`_
    * `Wireless Networks`_
+   * `RTL8188EU`_
 
 ansible.cfg
 ^^^^^^^^^^^

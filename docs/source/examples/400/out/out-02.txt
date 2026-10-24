@@ -2,12 +2,61 @@
 PLAY [Configure ZFS.] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.zfs : Debug fzfs_debug=true] ******************************
+ok: [iocage_05] => 
+    msg: |-
+        fzfs_role_version: 2.9.1
+        ansible_role_name: vbotka.freebsd.zfs
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 14
+        ansible_facts.distribution_version: 14.5
+        ansible_facts.distribution_release: 14.5-RELEASE
+        ansible_facts.python_version: 3.12.14
+
+        fzfs_enable: True
+        fzfs_debug2: False
+        fzfs_pools_sanity: True
+        fzfs_assert_quiet: True
+        fzfs_facts_ds: False
+        fzfs_facts_recurse: True
+        fzfs_mount_all: True
+        fzfs_sysctl_tuneables_warning: True
+
+        fzfs_sysctl_conf:
+          []
+
+        fzfs_rcconf:
+          []
+
+        fzfs_pools:
+          iocage:
+            vdevs:
+            - disks: [/dev/nda0p6]
+
+        fzfs_manage:
+          - extra_zfs_properties: {compression: lz4, mountpoint: /export}
+            name: iocage/export
+            state: present
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/ports}
+            name: iocage/ports
+            state: present
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/src}
+            name: iocage/src
+            state: present
+          - extra_zfs_properties: {compression: lz4, mountpoint: /usr/obj}
+            name: iocage/obj
+            state: present
+
+        fzfs_mountpoints:
+          []
 ok: [iocage_06] => 
     msg: |-
-        fzfs_role_version: 2.9.0
+        fzfs_role_version: 2.9.1
         ansible_role_name: vbotka.freebsd.zfs
         ansible_facts.architecture: amd64
         ansible_facts.os_family: FreeBSD
@@ -58,5 +107,6 @@ ok: [iocage_06] =>
           []
 
 PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

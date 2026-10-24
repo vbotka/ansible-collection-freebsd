@@ -1,0 +1,3 @@
+fp_sysctl_conf:
+  - name: vfs.zfs.prefetch.disable
+    value: "1"

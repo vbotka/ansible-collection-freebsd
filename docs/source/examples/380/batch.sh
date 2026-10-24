@@ -13,3 +13,5 @@ ansible-playbook pb.yml | tee out/out-07.txt
 
 # ssh freebsd@10.1.0.16 dmesg | tee out/out-08.txt
 # sed -E -i "s/[0-9a-fA-F:]{17}/11:22:33:44:55:66/" out/out-08.txt
+
+touch .done

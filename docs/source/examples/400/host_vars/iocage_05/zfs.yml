@@ -1,0 +1,28 @@
+fzfs_enable: true
+
+fzfs_pools:
+  iocage:
+    vdevs:
+      - disks: [/dev/nda0p6]
+
+fzfs_manage:
+  - name: iocage/export
+    state: present
+    extra_zfs_properties:
+      compression: 'lz4'
+      mountpoint: /export
+  - name: iocage/ports
+    state: present
+    extra_zfs_properties:
+      compression: 'lz4'
+      mountpoint: /usr/ports
+  - name: iocage/src
+    state: present
+    extra_zfs_properties:
+      compression: 'lz4'
+      mountpoint: /usr/src
+  - name: iocage/obj
+    state: present
+    extra_zfs_properties:
+      compression: 'lz4'
+      mountpoint: /usr/obj

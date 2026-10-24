@@ -10,12 +10,12 @@ Result - package lists
 
 .. hint::
 
-   * Use the variables ``pkdict_*.yml`` from the directory `defaults/main`_ of
-     the role `vbotka.freebsd_postinstall`_. Fit the package lists to your
-     needs.
+   * Use the variables ``pkdict_*.yml`` from the directory
+     `defaults/main`_ of the role `vbotka.freebsd_postinstall`_. Fit
+     the package lists to your needs.
 
-   * Use the below variables and enable the package lists in the dictionary
-     ``pkglist_enable_amd64_dict``. For example,
+   * Use the below variables and enable the package lists in the
+     dictionary ``pkglist_enable_amd64_dict``. For example:
 
      .. code-block:: yaml
 

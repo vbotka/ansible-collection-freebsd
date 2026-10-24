@@ -1,18 +1,27 @@
 
-PLAY [Configure loader.conf] ***************************************************
+PLAY [Configure sysctl.conf] ***************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_06]
+ok: [iocage_05]
 
-TASK [vbotka.freebsd.postinstall : Loader: Backup orig /boot/loader.conf] ******
+TASK [vbotka.freebsd.postinstall : Sysctl: Configure /etc/sysctl.conf] *********
+ok: [iocage_06] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '1'})
+ok: [iocage_05] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '1'})
+
+TASK [vbotka.freebsd.postinstall : Sysctl: Get sysctls settable via loader.] ***
+ok: [iocage_05]
 ok: [iocage_06]
 
-TASK [vbotka.freebsd.postinstall : Loader: Configure by sysctl /boot/loader.conf] ***
-ok: [iocage_06] => (item={'name': 'vfs.zfs.prefetch.disable', 'value': '0'})
-
-TASK [vbotka.freebsd.postinstall : Loader: Get sysctls settable via loader.] ***
-ok: [iocage_06]
+TASK [vbotka.freebsd.postinstall : Sysctl: Warn when fp_sysctl_conf keeps boot-time tuneables settable via loader.] ***
+ok: [iocage_05] => 
+    msg: |-
+        [WARNING] Loader boot-time tuneables in fp_sysctl_conf: [vfs.zfs.prefetch.disable]
+ok: [iocage_06] => 
+    msg: |-
+        [WARNING] Loader boot-time tuneables in fp_sysctl_conf: [vfs.zfs.prefetch.disable]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=4    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+iocage_05                  : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+iocage_06                  : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 
