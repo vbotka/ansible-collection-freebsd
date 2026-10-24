@@ -5,20 +5,7 @@
 
 # Destroy jails in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ssh admin@iocage_05 sudo iocage stop -f test-511
-    ssh admin@iocage_05 sudo iocage stop -f test-512
-    ssh admin@iocage_05 sudo iocage stop -f test-513
-    ssh admin@iocage_05 sudo iocage destroy -f test-511
-    ssh admin@iocage_05 sudo iocage destroy -f test-512
-    ssh admin@iocage_05 sudo iocage destroy -f test-513
-    ssh admin@iocage_05 sudo iocage destroy -f ansible-test
-    ssh admin@iocage_06 sudo iocage stop -f test-611
-    ssh admin@iocage_06 sudo iocage stop -f test-612
-    ssh admin@iocage_06 sudo iocage stop -f test-613
-    ssh admin@iocage_06 sudo iocage destroy -f test-611
-    ssh admin@iocage_06 sudo iocage destroy -f test-612
-    ssh admin@iocage_06 sudo iocage destroy -f test-613
-    ssh admin@iocage_06 sudo iocage destroy -f ansible-test
+    cleanup_iocage_test_jails "5 6" "11 12 13" true
 fi
 
 # Create jails

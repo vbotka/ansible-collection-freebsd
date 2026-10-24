@@ -66,7 +66,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_013`.
+* Jails created in :ref:`example_013`
 
 Notes
 ^^^^^

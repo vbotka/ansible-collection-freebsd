@@ -1,8 +1,24 @@
 @all:
   |--@ungrouped:
-  |--@up:
-  |  |--8ff2f325
-  |  |--a99a6436
-  |  |--ba2fcc3a
+  |--@state_up:
+  |  |--repos-devel
+  |  |--96f28cb3
+  |  |--pkg-repo
+  |  |--log-server-01
+  |  |--c5797cc4
+  |  |--repos
+  |  |--8d979d36
+  |--@vmm_iocage_06:
+  |  |--repos-devel
+  |  |--96f28cb3
+  |  |--pkg-repo
+  |  |--log-server-01
+  |  |--c5797cc4
+  |  |--repos
+  |  |--8d979d36
+  |--@swarm_sw_01:
+  |  |--96f28cb3
+  |  |--c5797cc4
+  |  |--8d979d36
   |--@iocage:
-  |  |--iocage_04
+  |  |--iocage_06

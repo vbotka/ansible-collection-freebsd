@@ -1,5 +1,5 @@
 fn_gateway_enable: true
-fn_defaultrouter: 10.30.10.1
+fn_defaultrouter: 172.16.0.1
 fn_cloned_interfaces:
   - {interface: bridge0, state: value_present}
 fn_interfaces:

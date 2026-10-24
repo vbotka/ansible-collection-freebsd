@@ -2,12 +2,12 @@
 PLAY [Iocage datasets.] ********************************************************
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
-ok: [iocage_06]
 ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
-ok: [iocage_06]
 ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
 changed: [iocage_05] => (item=iocage list -rh)
@@ -38,34 +38,14 @@ PLAY [Use inventory group test.] ***********************************************
 TASK [Debug jails.] ************************************************************
 ok: [test-511] => 
     msg: |-
-        inventory_hostname: test-511
-        ansible_host: 172.16.95.211
-        release: 14.5-RELEASE-p1
-ok: [test-512] => 
-    msg: |-
-        inventory_hostname: test-512
-        ansible_host: 172.16.95.212
-        release: 14.5-RELEASE-p1
-ok: [test-513] => 
-    msg: |-
-        inventory_hostname: test-513
-        ansible_host: 172.16.95.213
-        release: 14.5-RELEASE-p1
-ok: [test-611] => 
-    msg: |-
-        inventory_hostname: test-611
-        ansible_host: 172.16.99.211
-        release: 15.1-RELEASE-p1
-ok: [test-612] => 
-    msg: |-
-        inventory_hostname: test-612
-        ansible_host: 172.16.99.212
-        release: 15.1-RELEASE-p1
-ok: [test-613] => 
-    msg: |-
-        inventory_hostname: test-613
-        ansible_host: 172.16.99.213
-        release: 15.1-RELEASE-p1
+        inv        jid  boot  state type       release          ip4                      template        basejail
+        ---------------------------------------------------------------------------------------------------------
+        test-511   None off   down  jail       14.5-RELEASE-p1  vnet0|172.16.95.211/24   ansible-test    no
+        test-512   None off   down  jail       14.5-RELEASE-p1  vnet0|172.16.95.212/24   ansible-test    no
+        test-513   None off   down  jail       14.5-RELEASE-p1  vnet0|172.16.95.213/24   ansible-test    no
+        test-611   None off   down  jail       15.1-RELEASE-p1  vnet0|172.16.99.211/24   ansible-test    no
+        test-612   None off   down  jail       15.1-RELEASE-p1  vnet0|172.16.99.212/24   ansible-test    no
+        test-613   None off   down  jail       15.1-RELEASE-p1  vnet0|172.16.99.213/24   ansible-test    no
 
 TASK [Debug groups.] ***********************************************************
 ok: [test-511] => 
@@ -80,9 +60,4 @@ PLAY RECAP *********************************************************************
 iocage_05                  : ok=5    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
 iocage_06                  : ok=4    changed=1    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 test-511                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-512                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-513                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-611                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-612                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

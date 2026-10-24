@@ -6,22 +6,22 @@ ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
-ok: [iocage_06]
 ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
 changed: [iocage_05] => (item=iocage list -rh)
 changed: [iocage_06] => (item=iocage list -rh)
 changed: [iocage_05] => (item=iocage list -lh)
-changed: [iocage_06] => (item=iocage list -lh)
 changed: [iocage_05] => (item=iocage list -Ph)
-changed: [iocage_06] => (item=iocage list -Ph)
+changed: [iocage_06] => (item=iocage list -lh)
 changed: [iocage_05] => (item=iocage list -th)
+changed: [iocage_06] => (item=iocage list -Ph)
 changed: [iocage_06] => (item=iocage list -th)
 
 TASK [Set iocage datasets.] ****************************************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Display iocage datasets.] ************************************************
 ok: [iocage_05] => 

@@ -59,8 +59,8 @@ Requirements
 
 * `Role vbotka.freebsd.iocage`_
 * :ref:`ug_filter_iocage`
-* Root privileges on the managed nodes.
 * Jails created in previous examples.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^

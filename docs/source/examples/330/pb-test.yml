@@ -25,20 +25,38 @@
             name: "{{ item }}"
             ansible_host: "{{ jails[item].ip4 | split('|') | last
                                               | split('/') | first }}"
+            jid: "{{ jails[item].jid }}"
+            boot: "{{ jails[item].boot }}"
+            state: "{{ jails[item].state }}"
+            type: "{{ jails[item].type }}"
             release:  "{{ jails[item].release }}"
+            ip4: "{{ jails[item].ip4 }}"
+            ip6: "{{ jails[item].ip6 }}"
+            template: "{{ jails[item].template }}"
+            basejail: "{{ jails[item].basejail }}"
           loop: "{{ jails.keys() | select('match', 'test') }}"
   
 - name: Use inventory group test.
   hosts: test
+
+  vars:
+
+    _vars: [jid, boot, state, type, release, ip4, template, basejail]
+    opts: "{{ ['inv'] + _vars }}"
+    fmt: "%-10s %-4s %-5s %-5s %-10s %-16s %-24s %-15s %-8s"
 
   tasks:
 
     - name: Debug jails.
       ansible.builtin.debug:
         msg: |
-          inventory_hostname: {{ inventory_hostname }}
-          ansible_host: {{ ansible_host }}
-          release: {{ release }}
+          {{ fmt | format(*opts) }}
+          ---------------------------------------------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {{ fmt | format(h, v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7]) }}
+          {% endfor %}
+      run_once: true
 
     - name: Debug groups.
       ansible.builtin.debug:

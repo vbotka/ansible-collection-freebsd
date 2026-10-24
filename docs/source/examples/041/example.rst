@@ -42,7 +42,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_filter_project`.
+* :ref:`ug_filter_project`
 
 Notes
 ^^^^^

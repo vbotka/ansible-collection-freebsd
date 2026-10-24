@@ -2,23 +2,23 @@
 PLAY [Iocage fetch releases, create basejail, and clone jails.] ****************
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are available.] ******
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.iocage : Runner: Assert all commands are iocage.] *********
-ok: [iocage_06]
 ok: [iocage_05]
+ok: [iocage_06]
 
 TASK [vbotka.freebsd.iocage : Runner: Run listed commands.] ********************
-ok: [iocage_06] => (item=iocage fetch --release 15.1-RELEASE)
 ok: [iocage_05] => (item=iocage fetch --release 14.5-RELEASE)
+ok: [iocage_06] => (item=iocage fetch --release 15.1-RELEASE)
 changed: [iocage_05] => (item=iocage create --release 14.5-RELEASE --name ansible-test)
 changed: [iocage_06] => (item=iocage create --release 15.1-RELEASE --name ansible-test)
 changed: [iocage_05] => (item=iocage set vnet=1 ansible-test)
 changed: [iocage_06] => (item=iocage set vnet=1 ansible-test)
 changed: [iocage_05] => (item=iocage set defaultrouter=172.16.95.1 ansible-test)
-changed: [iocage_06] => (item=iocage set defaultrouter=172.16.99.1 ansible-test)
 changed: [iocage_05] => (item=iocage set notes=vmm=iocage_05 ansible-test)
+changed: [iocage_06] => (item=iocage set defaultrouter=172.16.99.1 ansible-test)
 changed: [iocage_05] => (item=iocage set ip4_addr=vnet0|172.16.95.200/24 ansible-test)
 changed: [iocage_06] => (item=iocage set notes=vmm=iocage_06 ansible-test)
 changed: [iocage_05] => (item=iocage clone ansible-test --name test-511)
@@ -29,20 +29,20 @@ changed: [iocage_05] => (item=iocage clone ansible-test --name test-513)
 changed: [iocage_05] => (item=iocage set vnet=1 test-511)
 changed: [iocage_06] => (item=iocage clone ansible-test --name test-612)
 changed: [iocage_05] => (item=iocage set defaultrouter=172.16.95.1 test-511)
-changed: [iocage_05] => (item=iocage set notes=vmm=iocage_05 test-511)
 changed: [iocage_06] => (item=iocage clone ansible-test --name test-613)
+changed: [iocage_05] => (item=iocage set notes=vmm=iocage_05 test-511)
 changed: [iocage_05] => (item=iocage set ip4_addr=vnet0|172.16.95.211/24 test-511)
 changed: [iocage_06] => (item=iocage set vnet=1 test-611)
 changed: [iocage_05] => (item=iocage set vnet=1 test-512)
-changed: [iocage_05] => (item=iocage set defaultrouter=172.16.95.1 test-512)
 changed: [iocage_06] => (item=iocage set defaultrouter=172.16.99.1 test-611)
+changed: [iocage_05] => (item=iocage set defaultrouter=172.16.95.1 test-512)
 changed: [iocage_05] => (item=iocage set notes=vmm=iocage_05 test-512)
 changed: [iocage_06] => (item=iocage set notes=vmm=iocage_06 test-611)
 changed: [iocage_05] => (item=iocage set ip4_addr=vnet0|172.16.95.212/24 test-512)
 changed: [iocage_06] => (item=iocage set ip4_addr=vnet0|172.16.99.211/24 test-611)
 changed: [iocage_05] => (item=iocage set vnet=1 test-513)
-changed: [iocage_05] => (item=iocage set defaultrouter=172.16.95.1 test-513)
 changed: [iocage_06] => (item=iocage set vnet=1 test-612)
+changed: [iocage_05] => (item=iocage set defaultrouter=172.16.95.1 test-513)
 changed: [iocage_05] => (item=iocage set notes=vmm=iocage_05 test-513)
 changed: [iocage_06] => (item=iocage set defaultrouter=172.16.99.1 test-612)
 changed: [iocage_05] => (item=iocage set ip4_addr=vnet0|172.16.95.213/24 test-513)

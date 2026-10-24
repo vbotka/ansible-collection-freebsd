@@ -30,10 +30,5 @@ ansible-playbook -i iocage.ini -i hosts pb-iocage-start.yml | tee out/out-06.txt
 ansible-playbook -i hosts pb-test.yml | tee out/out-07.txt
 
 # Do not destroy jails in batch. (The jails are used in 019.)
-# if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-#     ansible-playbook -i iocage.ini -i hosts pb-iocage-destroy.yml | tee out/out-08.txt
-#     ssh admin@iocage_05 sudo iocage destroy -f ansible-test
-#     ssh admin@iocage_06 sudo iocage destroy -f ansible-test
-# fi
 
 touch .done

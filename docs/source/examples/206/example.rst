@@ -43,9 +43,8 @@ This example extends :ref:`example_203`.
 Use case
 ^^^^^^^^
 
-In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
-configuration file, use the option ``hooks_results`` to get the DHCP IP
-address:
+In the :ref:`inventory plugin vbotka.freebsd.iocage2 <ug_inventory_iocage2>`
+configuration file, use the option ``hooks_results`` to get the DHCP IP address:
 
 .. code-block:: yaml+jinja
 

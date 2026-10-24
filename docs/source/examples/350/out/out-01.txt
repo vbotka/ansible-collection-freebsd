@@ -1,10 +1,10 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Query iocage module.] ****************************************************
-ok: [iocage_06]
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_06 -> localhost]
 
-TASK [Reject jails with empty notes.] ******************************************
+TASK [Reject jails without iocage_tags] ****************************************
 ok: [iocage_06]
 
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
@@ -13,10 +13,10 @@ ok: [iocage_06]
 TASK [Create swarms.] **********************************************************
 ok: [iocage_06] => (item=sw_01)
 
-TASK [Query iocage module.] ****************************************************
-ok: [iocage_06]
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_06 -> localhost]
 
-TASK [Reject jails with empty notes.] ******************************************
+TASK [Reject jails without iocage_tags] ****************************************
 ok: [iocage_06]
 
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************

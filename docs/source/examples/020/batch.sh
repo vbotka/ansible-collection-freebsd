@@ -29,8 +29,5 @@ ansible-playbook -i hosts pb-test.yml | tee out/out-07.txt
 # ansible-playbook -i hosts pb-test-connection.yml
 
 # Do not destroy jails in batch. (The jails are used in 021, 030.)
-# if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-#     ansible-playbook -i iocage.ini -i hosts -e debug=false -e dry_run=false pb-iocage-swarms-destroy.yml
-# fi
 
 touch .done

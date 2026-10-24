@@ -3,22 +3,29 @@ PLAY [Configure network.] ******************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.network : Interfaces: Configure interfaces options in /etc/rc.conf] ***
+ok: [iocage_05] => (item={'interface': 'bridge0', 'options': 'inet 172.16.95.1/24'})
 ok: [iocage_06] => (item={'interface': 'bridge0', 'options': 'inet 172.16.99.1/24'})
 
 TASK [vbotka.freebsd.network : Cloned-interfaces: Configure cloned_interfaces in /etc/rc.conf] ***
+ok: [iocage_05] => (item={'interface': 'bridge0', 'state': 'value_present'})
 ok: [iocage_06] => (item={'interface': 'bridge0', 'state': 'value_present'})
 
 TASK [vbotka.freebsd.network : Routing: Set defaultrouter in /etc/rc.conf] *****
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.network : Routing: Set gateway_enable=YES in /etc/rc.conf] ***
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [vbotka.freebsd.network : Routing: Remove list of static routes from /etc/rc.conf] ***
+ok: [iocage_05]
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
+iocage_05                  : ok=6    changed=0    unreachable=0    failed=0    skipped=17   rescued=0    ignored=0   
 iocage_06                  : ok=6    changed=0    unreachable=0    failed=0    skipped=17   rescued=0    ignored=0   
 

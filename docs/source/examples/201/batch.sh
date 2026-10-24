@@ -18,12 +18,7 @@ ansible-playbook pb-iocage-display-datasets.yml -i iocage.ini | tee out/out-09.t
 
 # Destroy jails in batch. (The jails are created in 200.)
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ssh admin@iocage_05 sudo iocage destroy -f test-151
-    ssh admin@iocage_05 sudo iocage destroy -f test-152
-    ssh admin@iocage_05 sudo iocage destroy -f test-153
-    ssh admin@iocage_06 sudo iocage destroy -f test-161
-    ssh admin@iocage_06 sudo iocage destroy -f test-162
-    ssh admin@iocage_06 sudo iocage destroy -f test-163
+    cleanup_iocage_test_jails "5 6" "11 12 13"
 fi
 
 touch .done

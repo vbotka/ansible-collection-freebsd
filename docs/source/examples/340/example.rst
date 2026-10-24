@@ -7,17 +7,17 @@
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 340
-
-.. index:: single: role vbotka.freebsd.config_light; Example 340
-.. index:: single: vbotka.freebsd.config_light; Example 340
-.. index:: single: lighttpd; Example 340
+.. index::
+   single: lighttpd; Example 340
+   single: swarms; Example 340
+   single: pb_iocage_ansible_clients.yml; Example 340
+   single: role vbotka.freebsd.config_light; Example 340
+   single: vbotka.freebsd.config_light; Example 340
 
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.config_light`_ to install and configure
-`lighttpd`_.
+Use the role `vbotka.freebsd.config_light`_ to install and configure `lighttpd`_.
 
 Tree
 ^^^^
@@ -47,27 +47,36 @@ Tree
   │       ├── cl-lighttpd.yml
   │       └── common.yml
   ├── hosts
-  │   ├── 04_iocage.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
-  ├── host_vars
-  │   └── iocage_04
-  │       └── iocage.yml
   ├── iocage.ini
+  ├── pb-test.yml
   └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-In the playbooks:
+* On the managed nodes:
 
-* :ref:`ug_pb-iocage-ansible-clients`: Create and start jails.
-* :ref:`ug_pb-iocage-update-repos`: Update repositories.
-* ``pb.yml``: In the jails, install and configure `lighttpd`_.
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create and start jails.
+
+  * In the playbook :ref:`ug_pb-iocage-update-repos`, update repositories.
+
+  * In the playbook ``pb-test.yml``, display the status of the `lighttpd`_
+    service.
+
+* On all created jails in the group ``swarm_sw_01``:
+
+  * In the playbook ``pb.yml``, install and configure `lighttpd`_.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Templates created in :ref:`example_202`
+* Playbook :ref:`ug_pb-iocage-ansible-clients`
+* Playbook :ref:`ug_pb-iocage-update-repos`
+* Role `vbotka.freebsd.config_light`_
+* :ref:`ug_connection_jailexec`
+* Template ``ansible-client`` created in :ref:`example_202`
 
 Notes
 ^^^^^
@@ -124,8 +133,6 @@ Notes
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the `display_skipped_hosts`_ option.
-
 .. literalinclude:: ansible.cfg
    :language: ini
 
@@ -138,7 +145,7 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
 
@@ -165,13 +172,6 @@ group_vars
    :language: yaml+jinja
    :caption:
 
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
 Create and start jails
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -179,30 +179,25 @@ Create and start jails
 
    (env) > ansible-playbook -i iocage.ini \
                             -t swarm -e swarm=true \
+                            -e iocage_jails_source=inventory \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
-.. literalinclude:: out/out-11.txt
+.. literalinclude:: out/out-01.txt
    :language: bash
 
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Update repos
 ^^^^^^^^^^^^
@@ -211,7 +206,7 @@ Update repos
 
    (env) > ansible-playbook -i iocage.ini vbotka.freebsd.pb_iocage_update_repos.yml
 
-.. literalinclude:: out/out-12.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -263,7 +258,7 @@ Assemble data and create handlers.
                             -t cl_setup -e cl_setup=true \
                             pb.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -277,7 +272,24 @@ FreeBSD packages" from the jails to their iocage hosts.
 
    (env) > ansible-playbook -i hosts -i iocage.ini pb.yml
 
-.. literalinclude:: out/out-10.txt
+.. literalinclude:: out/out-06.txt
+   :language: yaml+jinja
+   :force:
+
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test.yml
+   :language: yaml+jinja
+
+Playbook output - Display lighttpd status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-test.yml
+
+.. literalinclude:: out/out-07.txt
    :language: yaml+jinja
    :force:
 

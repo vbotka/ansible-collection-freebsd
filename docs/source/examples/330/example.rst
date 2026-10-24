@@ -8,12 +8,12 @@
    :depth: 1
 
 .. index::
+   single: clones; Example 330
    single: runner; Example 330
    single: tasks runner.yml; Example 330
    single: role vbotka.freebsd.iocage; Example 330
    single: variable freebsd_iocage_runner_cmd; Example 330
    single: variable freebsd_iocage_runner_exec; Example 330
-   single: clones; Example 330
    single: pb-iocage-fetch-base-clone.yml; Example 330
    single: pb-iocage-list.yml; Example 330
    single: module ansible.builtin.add_host; Example 330
@@ -23,8 +23,11 @@ Use case
 ^^^^^^^^
 
 Fetch releases, create basejails, clone jails from the basejails, and start the
-jails. Create and display the inventory. Use the tasks ``runner`` from the
-`role vbotka.freebsd.iocage`_.
+jails. Create and display the inventory.
+
+* To manage jails, use the tasks ``runner`` from the `role vbotka.freebsd.iocage`_.
+* To parse iocage datasets, use Jinja2.
+* To create inventory, use the module ``ansible.builtin.add_host``.
 
 Tree
 ^^^^
@@ -80,8 +83,6 @@ Notes
 
 * This example demonstrates functionality similar to :ref:`example_010`.
 
-* The `role vbotka.freebsd.iocage`_ is preinstalled in this collection.
-
 .. seealso::
 
    * `Fetch a Release`_
@@ -131,8 +132,8 @@ Playbook output - Display variables
    :language: yaml+jinja
    :force:
 
-Playbook output - Create jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Clone jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -187,7 +188,7 @@ Playbook pb-test.yml
 
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
-   :emphasize-lines: 1,4,31
+   :emphasize-lines: 1,4,39
 
 Playbook output - Create and use inventory group
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

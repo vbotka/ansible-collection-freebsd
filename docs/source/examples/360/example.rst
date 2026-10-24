@@ -7,15 +7,17 @@
    :local:
    :depth: 1
 
-.. index:: single: network; Example 360
-.. index:: single: bridge; Example 360
-.. index:: single: role vbotka.freebsd.network; Example 360
-.. index:: single: vbotka.freebsd.network; Example 360
+.. index::
+   single: network; Example 360
+   single: bridge; Example 360
+   single: role vbotka.freebsd.network; Example 360
+   single: vbotka.freebsd.network; Example 360
 
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.network`_ to configure bridges.
+Use the roles `vbotka.freebsd.postinstall`_ and `vbotka.freebsd.network`_ to
+configure bridges.
 
 Tree
 ^^^^
@@ -26,6 +28,9 @@ Tree
   .
   ├── ansible.cfg
   ├── host_vars
+  │   ├── iocage_05
+  │   │   ├── loader.yml
+  │   │   └── network.yml
   │   └── iocage_06
   │       ├── loader.yml
   │       └── network.yml
@@ -36,8 +41,11 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Configure ``/boot/loader.conf``
-* Configure bridge interfaces.
+* On the managed nodes:
+
+  * In the playbook ``pb-loader.yml``, configure kernel parameters.
+
+  * In the playbook ``pb-network.yml``, configure network parameters.
 
 Requirements
 ^^^^^^^^^^^^
@@ -49,7 +57,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -70,6 +78,14 @@ Inventory iocage.ini
 
 host_vars
 ^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/loader.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_05/network.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: host_vars/iocage_06/loader.yml
    :language: yaml+jinja
@@ -116,11 +132,14 @@ Playbook output - Configure network
 Result
 ^^^^^^
 
-MAC addresses are sanitized.
-
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 ifconfig bridge0
-
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_05]# ifconfig bridge0
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_06]# ifconfig bridge0
+
+.. note::
+
+   * MAC addresses are sanitized.

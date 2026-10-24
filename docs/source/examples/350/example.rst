@@ -8,17 +8,13 @@
    :depth: 1
 
 .. index::
-   single: swarms; Example 350
-   single: swarms destroy; Example 350
-   single: swarms create from templates; Example 350
-   single: pb_iocage_ansible_clients.yml; Example 350
    single: rsnapshot; Example 350
+   single: swarms; Example 350
+   single: pb_iocage_ansible_clients.yml; Example 350
    single: role vbotka.freebsd.rsnapshot; Example 350
    single: vbotka.freebsd.rsnapshot; Example 350
    single: module community.general.pkgng; Example 350
    single: community.general.pkgng; Example 350
-   single: delegate_to; Example 350
-   single: pkg update; Example 350
 
 Use case
 ^^^^^^^^
@@ -35,33 +31,36 @@ Tree
   ├── ansible.cfg
   ├── group_vars
   │   └── all
+  │       ├── ansible-client.yml
   │       ├── common.yml
   │       └── rsnapshot.yml
   ├── hosts
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
-  ├── host_vars
-  │   └── iocage_06
-  │       └── swarms.yml
   ├── iocage.ini
   ├── pb-install.yml
-  └── pb-test.yml
+  └── pb.yml
 
 Synopsis
 ^^^^^^^^
 
-In the playbooks:
+* On the managed nodes:
 
-* :ref:`ug_pb-iocage-ansible-clients`: Create and start jails in ``swarm``.
-* ``pb-install.yml``: Install `rsnapshot`_ in ``swarm``.
-* ``pb-test.yml``: Configure `rsnapshot`_ in ``swarm``.
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create and start jails.
+
+  * In the playbook ``pb-install.yml``, install `rsnapshot`_ in the jails.
+
+* On all created jails in the group ``swarm_sw_01``:
+
+  * In the playbook ``pb.yml``, install and configure `rsnapshot`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * Role `vbotka.freebsd.rsnapshot`_
-* Templates created in :ref:`example_202`
+* :ref:`ug_connection_jailexec`
+* Template ``ansible-client`` created in :ref:`example_202`
 
 Notes
 ^^^^^
@@ -98,8 +97,6 @@ Notes
 ansible.cfg
 ^^^^^^^^^^^
 
-Do not display skipped hosts. See the `display_skipped_hosts`_ option.
-
 .. literalinclude:: ansible.cfg
    :language: ini
 
@@ -123,18 +120,15 @@ hosts
 group_vars
 ^^^^^^^^^^
 
+.. literalinclude:: group_vars/all/ansible-client.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/all/common.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/rsnapshot.yml
-   :language: yaml+jinja
-   :caption:
-
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_06/swarms.yml
    :language: yaml+jinja
    :caption:
 
@@ -145,6 +139,7 @@ Create and start jails
 
    (env) > ansible-playbook -i iocage.ini \
                             -t swarm -e swarm=true \
+                            -e iocage_jails_source=inventory \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
@@ -154,23 +149,16 @@ Create and start jails
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
-
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
-   :force:
+   :caption: (env) > ansible-inventory -i hosts -i iocage.ini --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-install.yml
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,8 +166,8 @@ Playbook pb-install.yml
 .. literalinclude:: pb-install.yml
    :language: yaml+jinja
 
-Playbook output - Install packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Install rsnapshot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inventory ``iocage.ini`` is needed when a task is delegated to an iocage
 host:
@@ -192,10 +180,10 @@ host:
    :language: yaml+jinja
    :force:
 
-Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^
+Playbook pb.yml
+^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test.yml
+.. literalinclude:: pb.yml
    :language: yaml+jinja
 
 Playbook output - Display variables
@@ -205,7 +193,7 @@ Playbook output - Display variables
 
    (env) > ansible-playbook -i hosts \
                             -t rsnapshot_debug -e rsnapshot_debug=true \
-                            pb-test.yml
+                            pb.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -216,7 +204,7 @@ Playbook output - Configure rsnapshot
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test.yml
+   (env) > ansible-playbook -i hosts pb.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -225,4 +213,4 @@ Playbook output - Configure rsnapshot
 Results
 ^^^^^^^
 
-* TBD
+* TBD.

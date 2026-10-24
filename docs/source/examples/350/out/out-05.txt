@@ -2,20 +2,20 @@
 PLAY [Test role vbotka.freebsd.rsnapshot] **************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [b437f715]
-ok: [31d0e6b6]
-ok: [dff48d9f]
+ok: [d2e17a43]
+ok: [479332d5]
+ok: [babf31db]
 
 TASK [Vars: Include OS vars.] **************************************************
-included: vbotka.freebsd.lib for b437f715, dff48d9f, 31d0e6b6
+included: vbotka.freebsd.lib for d2e17a43, babf31db, 479332d5
 
 TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/rsnapshot/vars/defaults] ***
-ok: [b437f715]
-ok: [dff48d9f]
-ok: [31d0e6b6]
+ok: [d2e17a43]
+ok: [babf31db]
+ok: [479332d5]
 
 TASK [vbotka.freebsd.rsnapshot : Debug] ****************************************
-ok: [dff48d9f] => 
+ok: [d2e17a43] => 
     msg: |-
         rsnapshot_role_version: 2.9.0
         ansible_role_name: vbotka.freebsd.rsnapshot
@@ -25,14 +25,14 @@ ok: [dff48d9f] =>
         ansible_facts.distribution_major_version: 15
         ansible_facts.distribution_version: 15.1
         ansible_facts.distribution_release: 15.1-RELEASE
-        ansible_facts.python_version: 3.12.14
+        ansible_facts.python_version: 3.12.15
 
         freebsd_install_method: packages
         freebsd_use_packages: True
         freebsd_cached: False
         freebsd_state: present
         freebsd_use_globs: False
-        freebsd_install_retries: 10
+        freebsd_install_retries: 3
         freebsd_install_delay: 5
         linux_install_retries: 10
         linux_install_delay: 5
@@ -47,7 +47,7 @@ ok: [dff48d9f] =>
         rsnapshot_config_version: 1.2
         rsnapshot_test: True
         rsnapshot_config_template_test: rsnapshot-test.conf.j2
-ok: [31d0e6b6] => 
+ok: [babf31db] => 
     msg: |-
         rsnapshot_role_version: 2.9.0
         ansible_role_name: vbotka.freebsd.rsnapshot
@@ -57,14 +57,14 @@ ok: [31d0e6b6] =>
         ansible_facts.distribution_major_version: 15
         ansible_facts.distribution_version: 15.1
         ansible_facts.distribution_release: 15.1-RELEASE
-        ansible_facts.python_version: 3.12.14
+        ansible_facts.python_version: 3.12.15
 
         freebsd_install_method: packages
         freebsd_use_packages: True
         freebsd_cached: False
         freebsd_state: present
         freebsd_use_globs: False
-        freebsd_install_retries: 10
+        freebsd_install_retries: 3
         freebsd_install_delay: 5
         linux_install_retries: 10
         linux_install_delay: 5
@@ -79,7 +79,7 @@ ok: [31d0e6b6] =>
         rsnapshot_config_version: 1.2
         rsnapshot_test: True
         rsnapshot_config_template_test: rsnapshot-test.conf.j2
-ok: [b437f715] => 
+ok: [479332d5] => 
     msg: |-
         rsnapshot_role_version: 2.9.0
         ansible_role_name: vbotka.freebsd.rsnapshot
@@ -89,14 +89,14 @@ ok: [b437f715] =>
         ansible_facts.distribution_major_version: 15
         ansible_facts.distribution_version: 15.1
         ansible_facts.distribution_release: 15.1-RELEASE
-        ansible_facts.python_version: 3.12.14
+        ansible_facts.python_version: 3.12.15
 
         freebsd_install_method: packages
         freebsd_use_packages: True
         freebsd_cached: False
         freebsd_state: present
         freebsd_use_globs: False
-        freebsd_install_retries: 10
+        freebsd_install_retries: 3
         freebsd_install_delay: 5
         linux_install_retries: 10
         linux_install_delay: 5
@@ -113,7 +113,7 @@ ok: [b437f715] =>
         rsnapshot_config_template_test: rsnapshot-test.conf.j2
 
 PLAY RECAP *********************************************************************
-31d0e6b6                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-b437f715                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-dff48d9f                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+479332d5                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+babf31db                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+d2e17a43                   : ok=4    changed=0    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 

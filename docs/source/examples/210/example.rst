@@ -39,9 +39,9 @@ Synopsis
 * On the managed nodes:
 
   * In the playbook ``pb-iocage.yml``, run the command ``iocage get notes
-    test-210`` and display the result.
+    test-611`` and display the result.
 
-  * In the playbook ``pb-test.yml``, use the :ref:`inventory
+  * In the playbook ``pb-test.yml``, use the :ref:`inventory plugin
     vbotka.freebsd.iocage <ug_inventory_iocage>` to create and display
     ``iocage_tags``.
 

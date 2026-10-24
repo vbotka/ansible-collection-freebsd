@@ -47,7 +47,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage`
-* Jails created in :ref:`example_010`.
+* Jails created in :ref:`example_010`
 
 ansible.cfg
 ^^^^^^^^^^^

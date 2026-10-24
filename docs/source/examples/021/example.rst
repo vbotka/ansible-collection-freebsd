@@ -88,8 +88,8 @@ Requirements
 
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
+* Jails created in :ref:`example_020`
 * Root privileges on the managed nodes.
-* Jails created in :ref:`example_020`.
 
 Notes
 ^^^^^
