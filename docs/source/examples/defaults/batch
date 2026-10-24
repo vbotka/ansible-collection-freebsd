@@ -1,6 +1,4 @@
-# example.com
-build_example_com="172.16.98.3"
-branch_server_example_com="10.1.0.17"
+# defaults/batch
 
 cleanup_iocage_test_jails() {
   local ids nums destroy_ansible_test

@@ -84,7 +84,7 @@ Examples
    340 lighttpd <examples/340/example.rst>
    350 rsnapshot <examples/350/example.rst>
    360 bridge <examples/360/example.rst>
-   361 loadbalance <examples/361/example.rst>
+   361 lagg loadbalance <examples/361/example.rst>
    370 PF <examples/370/example.rst>
    380 Custom image <examples/380/example.rst>
    examples/390/example.rst

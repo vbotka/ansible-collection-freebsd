@@ -7,15 +7,15 @@
    :local:
    :depth: 1
 
-.. index:: single: pf; Example 370
-.. index:: single: firewall; Example 370
-.. index:: single: role vbotka.freebsd.pf; Example 370
-.. index:: single: vbotka.freebsd.pf; Example 370
-
-.. index:: single: blacklistd; Example 370
-.. index:: single: fail2ban; Example 370
-.. index:: single: sshguard; Example 370
-.. index:: single: NAT; Example 370
+.. index::
+   single: pf; Example 370
+   single: firewall; Example 370
+   single: role vbotka.freebsd.pf; Example 370
+   single: vbotka.freebsd.pf; Example 370
+   single: blacklistd; Example 370
+   single: fail2ban; Example 370
+   single: sshguard; Example 370
+   single: NAT; Example 370
 
 Use case
 ^^^^^^^^
@@ -38,22 +38,24 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects to the iocage host ``iocage_04`` at
-  IP 10.1.0.29 configured in ``/etc/rc.conf``:
+* On the managed nodes:
 
-  .. code-block:: ini
+  * The Ansible controller connects to the iocage host ``iocage_04`` at
+    IP 10.1.0.29 configured in ``/etc/rc.conf``:
 
-     cloned_interfaces="bridge0"
-     create_args_bridge0="addm igb0"
-     ifconfig_bridge0="inet 10.1.0.29/24"
-     ifconfig_igb0="up -tso -vlanhwtso"
+    .. code-block:: ini
 
-* In the playbook ``pb.yml`` for ``iocage_04``, configure:
+       cloned_interfaces="bridge0"
+       create_args_bridge0="addm igb0"
+       ifconfig_bridge0="inet 10.1.0.29/24"
+       ifconfig_igb0="up -tso -vlanhwtso"
 
-  * blacklistd, fail2ban, and sshguard
-  * NAT
-  * log all blocked
-  * pass from localnet to any
+  * In the playbook ``pb.yml``, configure:
+
+    * ``blacklistd``, ``fail2ban``, and ``sshguard``
+    * NAT
+    * Log all blocked packets
+    * Pass traffic from ``localnet`` to any destination
 
 Requirements
 ^^^^^^^^^^^^
@@ -64,7 +66,19 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* The network routes internal traffic through a bridged interface (``bridge0``
+  bridging the physical uplink and local jail networks).
+
+* The filter enforces a default-deny policy.
+
+* Outbound connections, initiated by the host and local subnet (10.1.0.0/24),
+  generate state table entries for two-way communication.
+
+* Inbound flow requires stateful permissions.
+
+* Perimeter defense: failed connection attempts and authentication abuses
+  trigger host-level daemons (``blacklistd``, ``fail2ban``, and ``sshguard``) that inject
+  offending source addresses into PF tables and anchors to isolate threats.
 
 .. note::
 
@@ -148,19 +162,14 @@ Result
 pf status
 """""""""
 
-.. code-block:: console
-
-   shell> ssh admin@10.1.0.29 sudo service pf status
-
 .. literalinclude:: out/out-04.txt
    :language: bash
+   :caption: [iocage_04]# service pf status
 
 /etc/pf.conf
 """"""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@10.1.0.29 cat /etc/pf.conf
 
 .. literalinclude:: out/out-05.txt
    :language: bash
+   :caption: [iocage_04]# cat /etc/pf.conf

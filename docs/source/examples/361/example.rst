@@ -1,7 +1,7 @@
 .. _example_361:
 
-361 Configure loadbalance
--------------------------
+361 Configure lagg loadbalance
+------------------------------
 
 .. contents::
    :local:
@@ -9,7 +9,8 @@
 
 .. index::
    single: network; Example 361
-   single: loadbalance; Example 361
+   single: lagg; Example 361
+   single: lagg loadbalance; Example 361
    single: laggproto; Example 361
    single: laggport; Example 361
    single: role vbotka.freebsd.network; Example 361
@@ -18,7 +19,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.network`_ to configure ``loadbalance``.
+Use the role `vbotka.freebsd.network`_ to configure ``lagg loadbalance``.
 
 Tree
 ^^^^
