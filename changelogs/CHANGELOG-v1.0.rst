@@ -20,6 +20,7 @@ Minor Changes
 * Upgrade role pf to 2.9.2
 * Docs. Add Sphinx dark theme sphinx_rtd_dark_mode
 * Docs. Add CSS custom_dark.css
+* Docs. Update requirements.txt
 
 
 1.0.12
