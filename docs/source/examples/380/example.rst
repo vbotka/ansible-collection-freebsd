@@ -10,6 +10,10 @@
 .. index::
    single: role vbotka.freebsd.custom_image; Example 380
    single: vbotka.freebsd.custom_image; Example 380
+   single: Raspberry Pi; Example 380
+   single: aarch64; Example 380
+   single: arm64-aarch64-RPI; Example 380
+   single: RTL8188EU; Example 380
 
 Use case
 ^^^^^^^^
@@ -35,7 +39,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On the managed hosts:
+* On the managed nodes:
 
   * Use the role `vbotka.freebsd.custom_image`_ to customize a FreeBSD image:
 
@@ -52,7 +56,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -134,6 +138,10 @@ Playbook output - Unpack images
    :language: yaml+jinja
    :force:
 
+.. note::
+
+   This does not override already unpacked image(s).
+
 Playbook output - Mount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -184,6 +192,8 @@ The play is not idempotent when the image is unmounted. The default is
 
 Write the image file to USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For example:
 
 .. code-block:: console
 
