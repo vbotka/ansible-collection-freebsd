@@ -21,6 +21,7 @@ Minor Changes
 * Docs. Add Sphinx dark theme sphinx_rtd_dark_mode
 * Docs. Add CSS custom_dark.css
 * Docs. Update requirements.txt
+* Docs. Remove docs/source/examples/configure.yml
 
 
 1.0.12
