@@ -2,42 +2,100 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: "Debug _properties debug={{ debug }}"
-  when: debug | bool
-  ansible.builtin.debug:
-    msg: |
-      _properties: "{{ properties | d({})
-                       | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
-  loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
-  loop_control:
-    label: "{{ item.key }} {{ item.value.clone_from }}"
-
 - name: Create jail from template.
   vars:
     _properties: "{{ properties | d({})
                      | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
-  register: out_clone
-  vbotka.freebsd.iocage:
-    state: cloned
-    clone_from: "{{ item.value.clone_from }}"
-    name: "{{ item.key }}"
-    properties: "{{ _properties }}"
-  loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
-  loop_control:
-    label: "{{ item.key }} {{ item.value.clone_from }}"
+  block:
 
-  # Note: state `cloned' uses `iocage create ...' if `clone_from' is a template.
+    - name: "Debug _properties debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: _properties
+      loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.clone_from }}"
 
-- name: "Debug create jail from template debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out_clone
+      # Note: state `cloned' uses `iocage create ...' if `clone_from' is a template.
+    - name: Create jail from template.
+      register: out
+      vbotka.freebsd.iocage:
+        state: cloned
+        clone_from: "{{ item.value.clone_from }}"
+        name: "{{ item.key }}"
+        properties: "{{ _properties }}"
+      loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.clone_from }}"
 
-- name: Set iocage_jails.
-  ansible.builtin.set_fact:
-    iocage_jails: "{{ ansible_facts.iocage_jails }}"
+    - name: "Debug create jail from template debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
 
-- name: Start clones.
+    - name: Create dictionary iocage_jails
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ ansible_facts.iocage_jails }}"
+
+- name: Configure jail fstab.
+  when: _fstab | length > 0
+  vars:
+    _fstab: "{{ vmm_clones[inventory_hostname] | dict2items | subelements('value.fstab', skip_missing=true) }}"
+  block:
+
+    - name: Get activated pool.
+      register: out_pool
+      changed_when: false
+      check_mode: false
+      ansible.builtin.command: iocage get -p
+
+    - name: Create mount points.
+      register: out
+      changed_when: false
+      ansible.builtin.command: >-
+        mkdir -p /{{ out_pool.stdout }}/iocage/jails/{{ item.0.key }}/root{{ item.1.file }}
+      loop: "{{ _fstab }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: Debug create mount points.
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Debug configure fstab commands.
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: >-
+          iocage fstab
+          {{ item.0.key }}
+          {{ item.1.spec }} {{ item.1.file }}
+          nullfs rw 0 0
+          --add
+      loop: "{{ _fstab }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: Configure fstab.
+      register: out
+      changed_when: false
+      ansible.builtin.command: >-
+        iocage fstab
+        {{ item.0.key }}
+        {{ item.1.spec }} {{ item.1.file }}
+        nullfs rw 0 0
+        --add
+      loop: "{{ _fstab }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: Debug configure fstab.
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+- name: Start created jails.
+  when: _jails | length > 0
   vars:
     iocage_jails_started: "{{ iocage_jails
                               | dict2items
@@ -45,17 +103,18 @@
                               | map(attribute='key')
                               | list }}"
     _jails: "{{ iocage_jails | difference(iocage_jails_started) | list }}"
-  register: out_start
-  changed_when: false
-  when:
-    - not dry_run | bool
-    - _jails | length > 0
-  ansible.builtin.command:
-    cmd: >
-      iocage start
-      {{ _jails | join(' ') }}
+  block:
 
-- name: "Debug start clones debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out_start
+    - name: Start created jails.
+      when: not dry_run | bool
+      register: out
+      changed_when: false
+      ansible.builtin.command:
+        cmd: >
+          iocage start
+          {{ _jails | join(' ') }}
+
+    - name: "Debug start created jails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out

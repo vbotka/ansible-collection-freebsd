@@ -6,3 +6,5 @@
     - copy:
         src: info.php
         dest: /usr/local/www/apache24/data
+        owner: www
+        group: www

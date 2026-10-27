@@ -1,5 +1,4 @@
 properties:
-  notes: vmm={{ inventory_hostname }} class=http
   bpf: 1
   dhcp: 1
   vnet: 1
@@ -7,13 +6,18 @@ properties:
   allow_mount_zfs: 1
   jail_zfs: 1
 
-create_hosts:
+clones:
   www-5:
-    template: ansible-apache
-    properties:
-      notes: alias=www_5
+    notes: alias=www_5
+    class: apache
+    clone_from: ansible-apache
     fstab:
       - spec: /usr/local/poudriere
         file: /usr/local/poudriere
         type: nullfs
         options: ro 0 0
+
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

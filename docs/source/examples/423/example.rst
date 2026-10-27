@@ -7,25 +7,24 @@
    :local:
    :depth: 1
 
-.. index:: single: Poudriere data; Example 423
-.. index:: single: Apache Virtual Host; Example 423
-.. index:: single: Apache HTTP Server; Example 423
-.. index:: single: role vbotka.freebsd.apache; Example 423
-.. index:: single: vbotka.freebsd.apache; Example 423
-
-.. index:: single: certificate; Example 423
-.. index:: single: SSL certificate; Example 423
-.. index:: single: role vbotka.freebsd.certificate; Example 423
-.. index:: single: vbotka.freebsd.certificate; Example 423
-
-.. index:: single: fstab; Example 423
-.. index:: single: mount; Example 423
-.. index:: single: iocage allow_mount; Example 423
-.. index:: single: iocage allow_mount_zfs; Example 423
-.. index:: single: iocage jail_zfs; Example 423
-.. index:: single: allow_mount; Example 423
-.. index:: single: allow_mount_zfs; Example 423
-.. index:: single: jail_zfs; Example 423
+.. index::
+   single: Poudriere; Example 423
+   single: Apache Virtual Host; Example 423
+   single: Apache HTTP Server; Example 423
+   single: role vbotka.freebsd.apache; Example 423
+   single: vbotka.freebsd.apache; Example 423
+   single: certificate; Example 423
+   single: SSL certificate; Example 423
+   single: role vbotka.freebsd.certificate; Example 423
+   single: vbotka.freebsd.certificate; Example 423
+   single: fstab; Example 423
+   single: mount; Example 423
+   single: iocage allow_mount; Example 423
+   single: iocage allow_mount_zfs; Example 423
+   single: iocage jail_zfs; Example 423
+   single: allow_mount; Example 423
+   single: allow_mount_zfs; Example 423
+   single: jail_zfs; Example 423
 
 Use case
 ^^^^^^^^
@@ -59,28 +58,32 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* The playbook :ref:`ug_pb-iocage-ansible-clients` creates and starts a jail, and
-  mounts the host directory ``/usr/local/poudriere`` in the jail.
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
-* The playbook ``pb-certificate.yml`` creates an SSL certificate for
-  ``build.foo.bar``.
+    * Create jails from the template ``ansible-apache``.
+    * Mount the host directory ``/usr/local/poudriere`` in the jails.
 
-* The playbook ``pb-apache.yml`` uses the certificate, then configures and
-  starts the `Apache HTTP Server Virtual Host`_ ``build.foo.bar`` in the jail.
+* On the created jails:
+
+  * In the playbook ``pb-certificate.yml``, create an SSL certificate
+    for ``build.foo.bar``.
+
+  * In the playbook ``pb-apache.yml``, configure and start the `Apache
+    HTTP Server Virtual Host`_ ``build.foo.bar``.
 
 Requirements
 ^^^^^^^^^^^^
 
 * Role `vbotka.freebsd.apache`_
 * Role `vbotka.freebsd.certificate`_
-* Template ``ansible-apache`` created in :ref:`example_209`.
+* Template ``ansible-apache`` created in :ref:`example_209`
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -97,6 +100,7 @@ Notes
    * `Apache HTTP Server Virtual Host`_
    * `Apache HTTP Server - SSL/TLS Strong Encryption`_
    * `man 8 iocage`_
+   * :ref:`example_390`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -136,13 +140,13 @@ host_vars
    :language: yaml+jinja
    :caption:
 
-Create and start the jail
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Create and start jails
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t create_host -e create_host=true \
+                            -t clone -e clone=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
@@ -152,22 +156,16 @@ Create and start the jail
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-08.txt
-   :language: bash
+.. literalinclude:: out/out-02.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-09.txt
-   :language: bash
+.. literalinclude:: out/out-03.txt
+   :language: console
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-certificate.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,7 +182,7 @@ Playbook output - Display variables
                             -t certificate_debug -e certificate_debug=true \
                             pb-certificate.yml
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -195,7 +193,7 @@ Playbook output - Setup
 
    (env) > ansible-playbook -i hosts -t certificate_setup pb-certificate.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -206,7 +204,7 @@ Playbook output - Create certificate
 
    (env) > ansible-playbook -i hosts -t certificate_openssl pb-certificate.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -217,7 +215,7 @@ Playbook output - Display status
 
    (env) > ansible-playbook -i hosts -t certificate_openssl_stat pb-certificate.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml+jinja
    :force:
 
@@ -227,14 +225,14 @@ Playbook pb-apache.yml
 .. literalinclude:: pb-apache.yml
    :language: yaml+jinja
 
-Playbook output - Configure Apache
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Apache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-apache.yml
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-08.txt
    :language: yaml+jinja
    :force:
 
@@ -243,11 +241,15 @@ Results
 
 * Test the configuration:
 
-  .. code-block:: console
+  .. literalinclude:: out/out-09.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-5 service apache24 configtest
 
-     [iocage_06]# iocage exec www-5 service apache24 configtest
-     Performing sanity check on apache24 configuration:
-     Syntax OK
+* Test that the server is running:
+
+  .. literalinclude:: out/out-10.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-5 service apache24 status
 
 * If the URL resolves, open the logs. For example:
 
@@ -256,7 +258,3 @@ Results
 .. image:: screenshot_build.png
    :width: 100%
    :align: center
-
-.. seealso::
-
-   :ref:`example_390`

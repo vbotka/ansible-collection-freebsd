@@ -45,7 +45,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * Create a dictionary of variables from nested directories in the controller's
     directory ``al_vars``.

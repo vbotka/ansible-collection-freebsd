@@ -7,17 +7,16 @@
    :local:
    :depth: 1
 
-.. index:: single: certificate; Example 430
-.. index:: single: SSL certificate; Example 430
-.. index:: single: role vbotka.freebsd.certificate; Example 430
-.. index:: single: vbotka.freebsd.certificate; Example 430
-
-.. index:: single: Apache HTTP Server; Example 430
-.. index:: single: role vbotka.freebsd.apache; Example 430
-.. index:: single: vbotka.freebsd.apache; Example 430
-
-.. index:: single: template ansible-apache; Example 430
-.. index:: single: ansible-apache; Example 430
+.. index::
+   single: certificate; Example 430
+   single: SSL certificate; Example 430
+   single: role vbotka.freebsd.certificate; Example 430
+   single: vbotka.freebsd.certificate; Example 430
+   single: Apache HTTP Server; Example 430
+   single: role vbotka.freebsd.apache; Example 430
+   single: vbotka.freebsd.apache; Example 430
+   single: template ansible-apache; Example 430
+   single: ansible-apache; Example 430
 
 Use case
 ^^^^^^^^
@@ -50,14 +49,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* The playbook :ref:`ug_pb-iocage-ansible-clients` creates and starts a jail.
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create jails from the
+    template ``ansible-apache``.
 
-* The playbook ``pb-certificate.yml`` creates an SSL certificate in the jail.
+* On the created jails:
 
-* The playbook ``pb-apache.yml`` uses the certificate, then configures and
-  starts `Apache HTTP Server`_ in the jail.
+  * In the playbook ``pb-certificate.yml``, create an SSL certificate for ``www-2``.
+  * Dump the certificate.
+  * In the playbook ``pb-apache.yml``, configure and start `Apache HTTP Server`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -65,12 +66,12 @@ Requirements
 * Role `vbotka.freebsd.apache`_
 * Role `vbotka.freebsd.certificate`_
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
-* Template ``ansible-apache`` created in :ref:`example_209`.
+* Template ``ansible-apache`` created in :ref:`example_209`
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -131,7 +132,7 @@ Create and start the jail
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t create_host -e create_host=true \
+                            -t clone -e clone=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
 .. literalinclude:: out/out-01.txt
@@ -141,22 +142,16 @@ Create and start the jail
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-09.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-certificate.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,7 +168,7 @@ Playbook output - Display variables
                             -t certificate_debug -e certificate_debug=true \
                             pb-certificate.yml
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -184,7 +179,7 @@ Playbook output - Setup
 
    (env) > ansible-playbook -i hosts -t certificate_setup pb-certificate.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -195,7 +190,7 @@ Playbook output - Create certificate
 
    (env) > ansible-playbook -i hosts -t certificate_openssl pb-certificate.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -206,9 +201,21 @@ Playbook output - Display status
 
    (env) > ansible-playbook -i hosts -t certificate_openssl_stat pb-certificate.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-07.txt
    :language: yaml+jinja
    :force:
+
+Certificate
+^^^^^^^^^^^
+
+.. code-block:: console
+
+   shell> ssh admin@iocage_06 sudo iocage exec www-2 -- \
+         'openssl x509 -in /usr/local/etc/ssl/certs/www-2.crt \
+                       -text -noout -certopt no_pubkey,no_sigdump'
+
+.. literalinclude:: out/out-08.txt
+   :language: console
 
 Playbook pb-apache.yml
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -216,59 +223,51 @@ Playbook pb-apache.yml
 .. literalinclude:: pb-apache.yml
    :language: yaml+jinja
 
-Playbook output - Configure Apache
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Apache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-apache.yml
 
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-09.txt
    :language: yaml+jinja
    :force:
 
 Results
 ^^^^^^^
 
-* Certificate:
-
-  .. code-block:: console
-
-     shell> ssh admin@iocage_06 sudo iocage exec www-2 -- \
-            'openssl x509 -in /usr/local/etc/ssl/certs/www-2.crt \
-                          -text -noout -certopt no_pubkey,no_sigdump'
-
-  .. literalinclude:: out/out-06.txt
-     :language: text
-
 * Test the configuration:
 
-  .. code-block:: console
-
-     [iocage_06]# iocage exec www-2 service apache24 configtest
-     Performing sanity check on apache24 configuration:
-     Syntax OK
+  .. literalinclude:: out/out-10.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-2 service apache24 configtest
 
 * Test that the server is running:
 
-  .. code-block:: console
+  .. literalinclude:: out/out-11.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-2 service apache24 status
 
-     [iocage_06]# iocage exec www-2 service apache24 status
-     apache24 is running as pid 47937.
+* Test that the server is working (see the IP in the list of jails):
+
+  .. code-block:: console
+     :caption: [iocage_06]# lynx <IP>
+
+     It works!
 
 * Test SSL:
 
   .. code-block:: console
-
-     [iocage_06]# lynx https://<IP>
+     :caption: [iocage_06]# lynx https://<IP>
 
      It works!
 
   .. note::
 
-     The browser will complain about a self-signed certificate.
+     The browser will complain about the self-signed certificate.
 
-* In a browser, open the page ``https://www-2/``. If the URL resolves,
-  the content should be::
+* In a browser, open the page ``https://www-2/``. If the URL resolves, the
+  content should be::
 
     It works!

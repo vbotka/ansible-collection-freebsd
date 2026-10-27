@@ -7,12 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: Apache HTTP Server; Example 420
-.. index:: single: role vbotka.freebsd.apache; Example 420
-.. index:: single: vbotka.freebsd.apache; Example 420
-
-.. index:: single: iocage host_hostname; Example 420
-.. index:: single: host_hostname; Example 420
+.. index::
+   single: Apache HTTP Server; Example 420
+   single: role vbotka.freebsd.apache; Example 420
+   single: vbotka.freebsd.apache; Example 420
 
 Use case
 ^^^^^^^^
@@ -41,31 +39,25 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* The playbook :ref:`ug_pb-iocage-ansible-clients` creates
-  and starts a jail.
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create jails
+    from the template ``ansible-apache``.
 
-* The playbook ``pb-apache.yml`` configures `Apache HTTP Server`_ in
-  the jail.
+* On the created jails:
+
+  * In the playbook ``pb-apache.yml``, configure and start the `Apache HTTP Server`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * Role `vbotka.freebsd.apache`_
-* Template ``ansible-apache`` created in :ref:`example_209`.
+* Template ``ansible-apache`` created in :ref:`example_209`
 
 Notes
 ^^^^^
 
-* ``iocage`` option ``--name`` provides "NAME instead of a UUID for
-  the new jail".
-
-* ``iocage`` property ``host_hostname`` provides "The hostname of the
-  jail. Default: UUID".
-
-* Make sure DHCP and dynamic DNS are configured so that
-  ``host_hostname`` and ``--name`` resolve.
+* TBD.
 
 .. note::
 
@@ -93,12 +85,9 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-The value of the iocage tag ``alias`` is used as the inventory alias.
-
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
@@ -121,7 +110,7 @@ Create and start jails
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t create_host -e create_host=true \
+                            -t clone -e clone=true \
                             -e debug=true -e debug2=true \
                             vbotka.freebsd.pb_iocage_ansible_clients.yml
 
@@ -129,25 +118,19 @@ Create and start jails
    :language: yaml+jinja
    :force:
 
-Jails
-^^^^^
-
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-03.txt
-   :language: bash
-
 Graph
 ^^^^^
 
-.. code-block:: console
+.. literalinclude:: out/out-02.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
-   (env) > ansible-inventory -i hosts --graph
+Jails
+^^^^^
 
-.. literalinclude:: out/out-04.txt
-   :language: bash
+.. literalinclude:: out/out-03.txt
+   :language: console
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-apache.yml
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -155,14 +138,14 @@ Playbook pb-apache.yml
 .. literalinclude:: pb-apache.yml
    :language: yaml+jinja
 
-Playbook output - Configure Apache
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure and start Apache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-apache.yml
 
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
@@ -171,23 +154,19 @@ Results
 
 * Test the configuration:
 
-  .. code-block:: console
-
-     [iocage_06]# iocage exec www-1 service apache24 configtest
-     Performing sanity check on apache24 configuration:
-     Syntax OK
+  .. literalinclude:: out/out-05.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-1 service apache24 configtest
 
 * Test that the server is running:
 
-  .. code-block:: console
-
-     [iocage_06]# iocage exec www-1 service apache24 status
-     apache24 is running as pid 57456.
+  .. literalinclude:: out/out-06.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-1 service apache24 status
 
 * Test that the server is working (see the IP in the list of jails):
 
   .. code-block:: console
-
-     [iocage_06]# lynx <IP>
+     :caption: [iocage_06]# lynx <IP>
 
      It works!

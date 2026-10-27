@@ -1,5 +1,5 @@
 - name: Test vbotka.freebsd.lib al_include_confd_vars_list
-  hosts: all
+  hosts: iocage
 
   tasks:
 

@@ -1,0 +1,2 @@
+Performing sanity check on apache24 configuration:
+Syntax OK
