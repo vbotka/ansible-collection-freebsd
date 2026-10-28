@@ -70,6 +70,7 @@ Examples
 
    300 Module service <examples/300/example.rst>
    301 Module ucl <examples/301/example.rst>
+   302 Module cgetent <examples/302/example.rst>
 
 .. toctree::
    :maxdepth: 1

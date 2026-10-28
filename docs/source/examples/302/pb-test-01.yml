@@ -1,0 +1,42 @@
+- name: Test module vbotka.freebsd.cgetent
+  hosts: iocage
+    
+  tasks:
+
+    - name: Fetch default login class attributes from /etc/login.conf
+      vbotka.freebsd.cgetent:
+        database: /etc/login.conf
+        key: default
+
+    - name: Display result.
+      ansible.builtin.debug:
+        var: ansible_facts.cgetent.default
+
+    - name: Retrieve developer login class with recursive inheritance resolved.
+      vbotka.freebsd.cgetent:
+        database: /etc/login.conf
+        key: daemon
+        resolve_tc: true
+
+    - name: Display result.
+      ansible.builtin.debug:
+        var: ansible_facts.cgetent.daemon
+
+    - name: Retrieve printcap raw record without tc= resolution.
+      vbotka.freebsd.cgetent:
+        database: /etc/printcap
+        key: lp
+        resolve_tc: false
+        fail_key: false
+
+    - name: Display result.
+      ansible.builtin.debug:
+        var: ansible_facts.cgetent.lp
+
+    - name: Fetch all records from /etc/login.conf
+      vbotka.freebsd.cgetent:
+        database: /etc/login.conf
+
+    - name: Display result.
+      ansible.builtin.debug:
+        var: ansible_facts.cgetent

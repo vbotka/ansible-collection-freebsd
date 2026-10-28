@@ -17,6 +17,7 @@ demonstrating the practical application and integration of these elements.
 
 plugins:
 
+* [module cgetent](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/cgetent/) - Query capability database.
 * [module iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
 * [module service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/) - Control or list system services.
 * [module ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/) - CRUD-like interface for managing UCL files.

@@ -1,5 +1,6 @@
 Plugins:
 
+* :ref:`module cgetent <ug_module_cgetent>` - Query capability database.
 * :ref:`module iocage <ug_module_iocage>` - Manage iocage jails.
 * :ref:`module service <ug_module_service>` - Control or query system services.
 * :ref:`module ucl <ug_module_ucl>` - CRUD-like interface for managing UCL files.

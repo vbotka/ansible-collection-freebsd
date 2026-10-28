@@ -6,6 +6,7 @@ Plugins
 .. toctree::
    :maxdepth: 1
 
+   module cgetent <ug_module_cgetent>
    module iocage <ug_module_iocage>
    module service <ug_module_service>
    module ucl <ug_module_ucl>
