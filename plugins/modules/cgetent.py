@@ -96,7 +96,7 @@ def parse_raw_records(filepath: str, split_char: str | None = None) -> dict[str,
     with open(filepath, 'r', encoding='utf-8') as f:
         raw_lines = f.readlines()
 
-    # Step 1: Strip comments and collect non-empty lines
+    # Strip comments and collect non-empty lines
     cleaned_lines: list[str] = []
     for line in raw_lines:
         line = line.strip()
@@ -104,10 +104,10 @@ def parse_raw_records(filepath: str, split_char: str | None = None) -> dict[str,
             continue
         cleaned_lines.append(line)
 
-    # Step 2: Join backslash continuation lines
+    # Join backslash continuation lines
     content = " ".join(cleaned_lines).replace(r"\ ", "")
 
-    # Step 3: Split into individual record blocks
+    # Split into individual record blocks
     raw_entries = re.split(r':(?=\s*[a-zA-Z0-9_.-]+[:|])', content)
 
     for entry in raw_entries:
