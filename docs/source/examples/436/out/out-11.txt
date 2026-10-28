@@ -1,0 +1,6 @@
+nginx_cluster: www_511 (172.16.95.143)
+nginx_cluster: www_512 (172.16.95.145)
+nginx_cluster: www_513 (172.16.95.146)
+nginx_cluster: www_511 (172.16.95.143)
+nginx_cluster: www_512 (172.16.95.145)
+nginx_cluster: www_513 (172.16.95.146)

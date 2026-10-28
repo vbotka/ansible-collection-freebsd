@@ -229,7 +229,7 @@ Playbook output - Create jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
+   (env) > ansible-playbook -i hosts -i iocage.ini \
                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-04.txt

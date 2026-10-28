@@ -1,3 +1,4 @@
+haproxy_install: true
 haproxy_enable: true
 haproxy_start: true
 haproxy_port: 8404

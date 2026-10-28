@@ -199,7 +199,7 @@ Playbook output - Configure HAProxy
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-haproxy.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-haproxy.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja

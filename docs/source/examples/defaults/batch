@@ -1,22 +1,55 @@
-# defaults/batch
-
 cleanup_iocage_test_jails() {
-  local ids nums destroy_ansible_test
+  local OPTIND opt
+  local ids_raw nums_raw
+  local ids nums
+  local prefix="test"
+  local destroy_ansible_test="false"
   local id host num
 
-  read -r -a ids <<< "${1:-5 6}"
-  read -r -a nums <<< "${2:-11 12 13}"
-  destroy_ansible_test="${3:-false}"
+  ids_raw="5 6"
+  nums_raw="11 12 13"
+
+  while getopts ":i:n:p:ah" opt; do
+    case "${opt}" in
+      i) ids_raw="${OPTARG}" ;;
+      n) nums_raw="${OPTARG}" ;;
+      p) prefix="${OPTARG}" ;;
+      a) destroy_ansible_test="true" ;;
+      h)
+        cat <<'EOF'
+Usage: cleanup_iocage_test_jails [-i "ids"] [-n "nums"] [-p prefix] [-a] [-h]
+  -i  Space-separated host IDs (default: "5 6")
+  -n  Space-separated jail number suffixes (default: "11 12 13")
+  -p  Jail name prefix (default: "test")
+  -a  Destroy the ansible-test jail as well
+  -h  Show this help message
+EOF
+        return 0
+        ;;
+      :)
+        echo "Error: Option -${OPTARG} requires an argument." >&2
+        return 1
+        ;;
+      \?)
+        echo "Error: Invalid option -${OPTARG}." >&2
+        return 1
+        ;;
+    esac
+  done
+  shift "$((OPTIND - 1))"
+
+  read -r -a ids <<< "${ids_raw}"
+  read -r -a nums <<< "${nums_raw}"
 
   for id in "${ids[@]}"; do
     host="iocage_0${id}"
 
     for num in "${nums[@]}"; do
-      ssh "admin@${host}" "sudo iocage stop -f test-${id}${num}"
+      ssh "admin@${host}" "sudo iocage stop -f ${prefix}-${id}${num}"
     done
 
     for num in "${nums[@]}"; do
-      ssh "admin@${host}" "sudo iocage destroy -f test-${id}${num}"
+      ssh "admin@${host}" "sudo iocage destroy -f ${prefix}-${id}${num}"
     done
 
     if [[ "${destroy_ansible_test}" == "true" ]]; then

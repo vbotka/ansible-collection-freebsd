@@ -5,7 +5,7 @@
 
 # Destroy jails in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    cleanup_iocage_test_jails "5 6" "11 12 13" true
+    cleanup_iocage_test_jails -i "5 6" -n "11 12 13" -a
 fi
 
 # Create basejails.

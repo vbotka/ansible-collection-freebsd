@@ -28,7 +28,7 @@ ssh admin@iocage_06 sudo iocage list -l | tee out/out-03.txt
 ansible-playbook -i hosts pb-nginx.yml | tee out/out-04.txt
 
 # Configure HAProxy
-ansible-playbook -i iocage.ini -i hosts pb-haproxy.yml | tee out/out-05.txt
+ansible-playbook -i hosts -i iocage.ini pb-haproxy.yml | tee out/out-05.txt
 ssh admin@iocage_06 sudo service haproxy status
 
 # Test HAProxy

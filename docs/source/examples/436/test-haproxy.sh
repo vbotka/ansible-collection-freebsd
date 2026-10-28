@@ -1,5 +1,6 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-for i in $(seq 1 7); do
-    curl -s http://172.16.99.1/ | sed -n 's/.*<p>\(.*\)<\/p>.*/\1/p'
+for _ in {1..7}; do
+    curl -s "http://${1}/" | sed -n 's/.*<p>\([^<]*\)<\/p>.*/\1/p'
 done

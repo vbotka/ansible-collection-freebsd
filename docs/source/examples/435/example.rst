@@ -43,7 +43,8 @@ Tree
   │       └── nginx.yml
   ├── hosts
   │   ├── 05_iocage2.yml
-  │   └── 06_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
   │   ├── iocage_05
   │   │   └── release.yml
@@ -58,16 +59,17 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the
-    template ``ansible-nginx``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
+    ``ansible-nginx``.
 
   * In the playbook
     :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template.
 
-* In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to configure the Nginx servers.
+* In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
+  configure the Nginx servers.
 
 Requirements
 ^^^^^^^^^^^^
@@ -77,12 +79,12 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
-* Package repository created in :ref:`example_322`.
+* Package repository created in :ref:`example_322`
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -115,6 +117,10 @@ hosts
    :caption:
 
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
@@ -207,8 +213,8 @@ Playbook output - Create jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
-                           vbotka.freebsd.pb_iocage_project_create_from_templates.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini \
+                            vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
@@ -259,21 +265,21 @@ Results
 
   .. literalinclude:: out/out-09.txt
      :language: console
-     :caption: shell> ssh admin@iocage_05 sudo iocage exec www-51 service nginx configtest 2>&1
+     :caption: [iocage_05]# iocage exec www-51 service nginx configtest 2>&1
 
   .. literalinclude:: out/out-10.txt
      :language: console
-     :caption: shell> ssh admin@iocage_06 sudo iocage exec www-61 service nginx configtest 2>&1
+     :caption: [iocage_06]# iocage exec www-61 service nginx configtest 2>&1
 
 * Test that the server is running:
 
   .. literalinclude:: out/out-11.txt
      :language: console
-     :caption: shell> ssh admin@iocage_05 sudo iocage exec www-51 service nginx status 2>&1
+     :caption: [iocage_05]# iocage exec www-51 service nginx status 2>&1
 
   .. literalinclude:: out/out-12.txt
      :language: console
-     :caption: shell> ssh admin@iocage_06 sudo iocage exec www-61 service nginx status 2>&1
+     :caption: [iocage_06]# iocage exec www-61 service nginx status 2>&1
 
 * Test that the server is working (see the IP in the list of jails):
 

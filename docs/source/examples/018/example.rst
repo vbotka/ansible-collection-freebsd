@@ -218,7 +218,7 @@ Playbook output - Start jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-start.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-start.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja

@@ -1,40 +1,17 @@
-
-PLAY [Configure Nginx servers.] ************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [www_03]
-ok: [www_01]
-ok: [www_02]
-
-TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [www_03] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [www_02] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [www_01] => (item=/usr/local/etc/nginx/nginx.conf)
-
-TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-changed: [www_02]
-changed: [www_03]
-changed: [www_01]
-
-RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
-changed: [www_03]
-changed: [www_02]
-changed: [www_01]
-
-RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
-ok: [www_03]
-ok: [www_01]
-ok: [www_02]
-
-PLAY [Create index.html] *******************************************************
-
-TASK [template] ****************************************************************
-changed: [www_03]
-changed: [www_02]
-changed: [www_01]
-
-PLAY RECAP *********************************************************************
-www_01                     : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-www_02                     : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-www_03                     : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
-
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
+| 1   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 2   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 3   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 4   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 14  | www-611       | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.196 | -   | ansible-nginx    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 15  | www-612       | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.197 | -   | ansible-nginx    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 16  | www-613       | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.172 | -   | ansible-nginx    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+

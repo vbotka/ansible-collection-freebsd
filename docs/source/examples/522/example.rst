@@ -270,7 +270,7 @@ Playbook output - Create jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-create-jails.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja

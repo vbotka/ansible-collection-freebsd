@@ -5,7 +5,7 @@
 
 # Destroy jails in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ansible-playbook -i iocage.ini -i hosts pb-iocage-destroy.yml
+    ansible-playbook -i hosts -i iocage.ini pb-iocage-destroy.yml
     ssh admin@iocage_05 sudo iocage destroy -f ansible-test
     ssh admin@iocage_06 sudo iocage destroy -f ansible-test
 fi
@@ -24,7 +24,7 @@ ssh admin@iocage_05 sudo iocage list -l | tee out/out-04.txt
 ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
 
 # Start.
-ansible-playbook -i iocage.ini -i hosts pb-iocage-start.yml | tee out/out-06.txt
+ansible-playbook -i hosts -i iocage.ini pb-iocage-start.yml | tee out/out-06.txt
 
 # Test.
 ansible-playbook -i hosts pb-test.yml | tee out/out-07.txt

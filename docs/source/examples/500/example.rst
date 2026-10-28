@@ -68,7 +68,7 @@ Configure and run a log server. Configure log clients and test them. Use
 
   .. code-block:: console
 
-     (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-project-create.yml
+     (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-project-create.yml
 
 Tree
 ^^^^

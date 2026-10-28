@@ -7,9 +7,9 @@ ok: [iocage_06]
 
 TASK [Create: Create jails.] ***************************************************
 ok: [iocage_05] => (item=www-51)
-ok: [iocage_06] => (item=www-61)
-ok: [iocage_05] => (item=www-52)
 ok: [iocage_06] => (item=www-62)
+ok: [iocage_05] => (item=www-52)
+ok: [iocage_06] => (item=www-61)
 
 TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
 changed: [iocage_05] => (item=www-51)

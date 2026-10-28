@@ -32,7 +32,7 @@ ansible-playbook -i iocage.ini pb-iocage-template-stop-convert.yml | tee out/out
 ssh admin@iocage_06 sudo iocage list -lt | tee out/out-05.txt
 
 # Create jails
-ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml | tee out/out-06.txt
+ansible-playbook -i hosts -i iocage.ini pb-create-jails.yml | tee out/out-06.txt
 
 # Inventory graph
 ansible-inventory -i hosts --graph | tee out/out-07.txt

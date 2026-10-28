@@ -3,7 +3,6 @@
   gather_facts: true
 
   roles:
-
     - vbotka.freebsd.nginx
 
 - name: Create index.html

@@ -13,9 +13,9 @@ ssh admin@$iocage_04 sudo iocage destroy -f ansible_client
 echo "*** Create templates."
 (cd ../202 && ansible-playbook -i iocage.ini --flush-cache pb-iocage-template.yml)
 echo "*** Show inventory."
-(cd ../207 && ansible-inventory -i iocage.ini -i hosts --graph)
+(cd ../207 && ansible-inventory -i hosts -i iocage.ini --graph)
 echo "*** Create jails."
-(cd ../207 && ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create.yml)
+(cd ../207 && ansible-playbook -i hosts -i iocage.ini vbotka.freebsd.pb_iocage_project_create.yml)
 
 # Status of the project
 ansible-playbook -i hosts --flush-cache pb-all-groups.yml | tee out/out-01.txt

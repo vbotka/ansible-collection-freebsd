@@ -1,13 +1,13 @@
 @all:
   |--@ungrouped:
   |--@nginx:
-  |  |--www_52
   |  |--www_51
+  |  |--www_52
   |  |--www_61
   |  |--www_62
   |--@state_up:
-  |  |--www_52
   |  |--www_51
+  |  |--www_52
   |  |--repos
   |  |--repos_devel
   |  |--pkg_repo
@@ -15,8 +15,8 @@
   |  |--www_61
   |  |--www_62
   |--@vmm_iocage_05:
-  |  |--www_52
   |  |--www_51
+  |  |--www_52
   |--@vmm_iocage_06:
   |  |--repos
   |  |--repos_devel

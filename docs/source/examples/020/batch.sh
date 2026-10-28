@@ -5,7 +5,7 @@
 
 # Destroy jails in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ansible-playbook -i iocage.ini -i hosts -e debug=false -e dry_run=false pb-iocage-swarms-destroy.yml
+    ansible-playbook -i hosts -i iocage.ini -e debug=false -e dry_run=false pb-iocage-swarms-destroy.yml
 fi
 
 # Templates.

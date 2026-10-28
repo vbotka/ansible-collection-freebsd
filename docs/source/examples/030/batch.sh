@@ -21,7 +21,7 @@ ansible-playbook -i iocage.ini -l iocage_05 pb-test.yml | tee out/out-06.txt
 
 # Destroy jails in batch. (The jails are created in 020).
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    (cd ../020 && ansible-playbook -i iocage.ini -i hosts pb-iocage-swarms-destroy.yml)
+    (cd ../020 && ansible-playbook -i hosts -i iocage.ini pb-iocage-swarms-destroy.yml)
 fi
 
 touch .done

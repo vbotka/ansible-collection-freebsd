@@ -38,8 +38,12 @@ Tree
   │   └── nginx
   │       └── nginx.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── haproxy.yml
   │   └── iocage_06
   │       └── haproxy.yml
   ├── iocage.ini
@@ -52,10 +56,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
-    ``project`` jails from the template.
+    ``project`` jails from the templates.
 
   * Use the role `vbotka.freebsd.haproxy`_ to configure and run the `HAProxy`_
     loadbalancer.
@@ -75,7 +79,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -86,7 +90,7 @@ Notes
 
 .. seealso::
 
-   * TBD
+   * TBD.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -103,7 +107,15 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
@@ -125,6 +137,10 @@ group_vars
 host_vars
 ^^^^^^^^^
 
+.. literalinclude:: host_vars/iocage_05/haproxy.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: host_vars/iocage_06/haproxy.yml
    :language: yaml+jinja
    :caption:
@@ -141,7 +157,7 @@ Playbook output - Create project jails
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
+   (env) > ansible-playbook -i hosts -i iocage.ini \
                             vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
 .. literalinclude:: out/out-01.txt
@@ -161,12 +177,13 @@ Graph
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_05] iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_06] iocage list -l
 
 Playbook pb-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^
@@ -181,7 +198,7 @@ Playbook output - Configure Nginx
 
    (env) > ansible-playbook -i hosts pb-nginx.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -196,9 +213,9 @@ Playbook output - Configure HAProxy
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-haproxy.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-haproxy.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -207,12 +224,13 @@ Results
 
 * Test the configuration:
 
-  .. code-block:: console
-
-     shell > ssh admin@iocage_06 sudo service haproxy configtest 2>&1
-
-  .. literalinclude:: out/out-06.txt
+  .. literalinclude:: out/out-07.txt
      :language: console
+     :caption: [iocage_05] service haproxy configtest 2>&1
+
+  .. literalinclude:: out/out-08.txt
+     :language: console
+     :caption: [iocage_06] service haproxy configtest 2>&1
 
   .. note::
 
@@ -221,12 +239,13 @@ Results
 
 * Test that the server is running:
 
-  .. code-block:: console
-
-     shell > ssh admin@iocage_06 sudo service haproxy status 2>&1
-
-  .. literalinclude:: out/out-07.txt
+  .. literalinclude:: out/out-09.txt
      :language: console
+     :caption: [iocage_05] service haproxy status 2>&1
+
+  .. literalinclude:: out/out-10.txt
+     :language: console
+     :caption: [iocage_06] service haproxy status 2>&1
 
 Script test-haproxy.sh
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -237,10 +256,10 @@ Script test-haproxy.sh
 Script output - Test HAProxy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 'bash -s' < test-haproxy.sh
-
-.. literalinclude:: out/out-08.txt
+.. literalinclude:: out/out-11.txt
    :language: console
-   :force:
+   :caption: [iocage_05] test-haproxy.sh 172.16.95.1
+
+.. literalinclude:: out/out-12.txt
+   :language: console
+   :caption: [iocage_06] test-haproxy.sh 172.16.99.1
