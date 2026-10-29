@@ -13,7 +13,7 @@ description:
   - Similar to M(ansible.builtin.getent), results are registered in the C(ansible_facts) namespace.
   - Recognizes string (C(=)), numeric (C(#)), boolean (bare name), commented out (C(.) prefix),
     and absent/cancelled (C(@) suffix) capability types.
-version_added: "1.0.0"
+version_added: "1.1.0"
 author:
   - Vladimir Botka (@vbotka)
 options:

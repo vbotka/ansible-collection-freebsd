@@ -58,3 +58,5 @@ ssh admin@iocage_05 sudo service nginx start
 ssh admin@iocage_06 sudo service nginx start
 ssh admin@iocage_05 sudo service nginx status
 ssh admin@iocage_06 sudo service nginx status
+
+touch .done

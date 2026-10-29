@@ -12,7 +12,7 @@ ssh admin@iocage_06 sudo service nginx status
 # Destroy swarms.
 ansible-playbook -i hosts -i iocage.ini -t swarm_destroy -e swarm_destroy=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml
 
-# Swarm.
+# Swarms.
 ansible-playbook -i iocage.ini -t swarm -e swarm=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-01.txt
 
 # Graph.
@@ -43,10 +43,9 @@ ssh admin@iocage_06 sudo service haproxy status 2>&1 | tee out/out-10.txt
 ssh admin@iocage_05 'bash -s -- 172.16.95.1' < test-haproxy.sh | tee out/out-11.txt
 ssh admin@iocage_06 'bash -s -- 172.16.99.1' < test-haproxy.sh | tee out/out-12.txt
 
-# Destroy swarms
-# Destroy the jails in batch.
+# Destroy the swarmss in batch.
 if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
-    ansible-playbook -i hosts -i iocage.ini -t swarm_destroy -e swarm_destroy=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-07.txt
+    ansible-playbook -i hosts -i iocage.ini -t swarm_destroy -e swarm_destroy=true -e iocage_jails_source=inventory vbotka.freebsd.pb_iocage_ansible_clients.yml | tee out/out-13.txt
 fi
 
 # Stop HAProxy (local repo Nginx is running on port 80).
@@ -59,3 +58,5 @@ ssh admin@iocage_05 sudo service nginx start
 ssh admin@iocage_06 sudo service nginx start
 ssh admin@iocage_05 sudo service nginx status
 ssh admin@iocage_06 sudo service nginx status
+
+touch .done
