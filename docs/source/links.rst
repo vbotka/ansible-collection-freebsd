@@ -52,7 +52,6 @@
 .. _Get FreeBSD: https://www.freebsd.org/where
 .. _Git on the Server - The protocols: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols
 .. _Good Practices for Ansible: https://redhat-cop.github.io/automation-good-practices/
-.. _haproxy (role): https://github.com/vbotka/ansible-freebsd-haproxy
 .. _HAProxy: https://www.haproxy.org/
 .. _HOST_KEY_CHECKING: https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
 .. _How Do I Mount Host Datasets Inside Jails: https://www.truenas.com/community/threads/freenas-11-iocage-how-do-i-mount-host-datasets-inside-jails.55193/
@@ -194,6 +193,7 @@
 .. _git_daemon: https://git-scm.com/book/en/v2/Git-on-the-Server-Git-Daemon
 .. _group_names: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names
 .. _groups: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-groups
+.. _haproxy (role): https://github.com/vbotka/ansible-freebsd-haproxy
 .. _inventory aliases: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#inventory-aliases
 .. _inventory iocage2: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage2/
 .. _inventory iocage: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/inventory/iocage/
