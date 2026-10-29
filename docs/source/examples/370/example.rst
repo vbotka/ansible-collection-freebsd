@@ -9,6 +9,7 @@
 
 .. index::
    single: pf; Example 370
+   single: /etc/pf.conf; Example 370
    single: firewall; Example 370
    single: role vbotka.freebsd.pf; Example 370
    single: vbotka.freebsd.pf; Example 370

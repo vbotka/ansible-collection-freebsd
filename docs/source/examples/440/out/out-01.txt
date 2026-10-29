@@ -2,14 +2,14 @@
 PLAY [Test role vbotka.freebsd.dhcp] *******************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.dhcp : Sanity: Collect installed packages.] ***************
-ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.dhcp : Sanity: Set my_missing_packages] *******************
-ok: [iocage_06]
+ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+iocage_05                  : ok=3    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 

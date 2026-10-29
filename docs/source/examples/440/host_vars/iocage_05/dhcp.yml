@@ -1,5 +1,5 @@
----
 bsd_dhcpd_install: false
+
 bsd_dhcpd_enable: true
 bsd_dhcpd_debug: false
 bsd_dhcpd_sanity: true
@@ -24,11 +24,11 @@ bsd_dhcpd_max_lease_time: 7200
 bsd_dhcpd_authoritative: true
 
 # Subnet
-bsd_dhcpd_subnet: 172.16.99
+bsd_dhcpd_subnet: 172.16.95
 bsd_dhcpd_netmask: 255.255.255.0
 bsd_dhcpd_subnet_from: 100
 bsd_dhcpd_subnet_to: 199
-bsd_dhcpd_routers: [172.16.99.1]
+bsd_dhcpd_routers: [172.16.95.1]
 bsd_dhcpd_subnet_broadcast: 255
 
-# EOF
+bsd_dhcpd_assigned_ip: {}

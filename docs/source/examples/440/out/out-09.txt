@@ -1,22 +1,22 @@
 Status: Disabled for 0 days 00:00:08          Debug: Urgent
 
 Interface Stats for wlan0             IPv4             IPv6
-  Bytes In                         8077074                0
-  Bytes Out                         927531                0
+  Bytes In                         6706038                0
+  Bytes Out                        1299838                0
   Packets In
-    Passed                           10128                0
-    Blocked                           1433                0
+    Passed                           16764                0
+    Blocked                           1590                0
   Packets Out
-    Passed                            7831                0
+    Passed                           14672                0
     Blocked                              0                0
 
 State Table                          Total             Rate
-  current entries                       25               
-  searches                           20539         2567.4/s
-  inserts                              552           69.0/s
-  removals                             527           65.9/s
+  current entries                        8               
+  searches                           33193         4149.1/s
+  inserts                              145           18.1/s
+  removals                             137           17.1/s
 Counters
-  match                               2045          255.6/s
+  match                               1735          216.9/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s
@@ -25,11 +25,10 @@ Counters
   bad-timestamp                          0            0.0/s
   congestion                             0            0.0/s
   ip-option                              0            0.0/s
-  proto-cksum                           15            1.9/s
+  proto-cksum                            0            0.0/s
   state-mismatch                         0            0.0/s
   state-insert                           0            0.0/s
   state-limit                            0            0.0/s
   src-limit                              0            0.0/s
   synproxy                               0            0.0/s
   map-failed                             0            0.0/s
-  translate                              0            0.0/s

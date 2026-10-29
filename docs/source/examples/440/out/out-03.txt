@@ -1,8 +1,8 @@
 
-PLAY [FreeBSD pf role setup.] **************************************************
+PLAY [Create files for pf.] ****************************************************
 
-TASK [Create pf-rdr-ssh.conf] **************************************************
-ok: [localhost]
+TASK [Create files.] ***********************************************************
+ok: [localhost] => (item=pf-rdr-ssh.conf)
 
 PLAY RECAP *********************************************************************
 localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -53,6 +53,10 @@ ssh admin@iocage_05 sudo service haproxy stop
 ssh admin@iocage_06 sudo service haproxy stop
 sleep 2
 
+# Disable HAProxy. 
+ssh admin@iocage_05 sudo sysrc haproxy_enable=NO
+ssh admin@iocage_06 sudo sysrc haproxy_enable=NO
+
 # Start Nginx. Port 80 conflict with HAProxy.
 ssh admin@iocage_05 sudo service nginx start
 ssh admin@iocage_06 sudo service nginx start
