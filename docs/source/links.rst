@@ -188,7 +188,7 @@
 .. _filter vbotka.freebsd.to_ast: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ast/
 .. _filter vbotka.freebsd.to_ucl: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/filter/to_ucl/
 .. _firstboot: https://forums.freebsd.org/threads/firstboot.65143/
-.. _getcap: https://man.freebsd.org/cgi/man.cgi?query=getcap
+.. _getcap(3): https://man.freebsd.org/cgi/man.cgi?query=getcap
 .. _git-daemon: https://man.freebsd.org/cgi/man.cgi?query=git-daemon
 .. _git_daemon: https://git-scm.com/book/en/v2/Git-on-the-Server-Git-Daemon
 .. _group_names: https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#term-group_names

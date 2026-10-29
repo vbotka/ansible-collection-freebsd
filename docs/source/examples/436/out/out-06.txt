@@ -2,36 +2,26 @@
 PLAY [Configure HAProxy.] ******************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.haproxy : Packages: Install HAProxy packages.] ************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.haproxy : Conf: Configure HAProxy.] ***********************
 ok: [iocage_06]
-changed: [iocage_05]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.haproxy : Service: Enable and Start HAProxy.] *************
 ok: [iocage_06]
-changed: [iocage_05]
+ok: [iocage_05]
 
 TASK [vbotka.freebsd.haproxy : Service: Get haproxy status.] *******************
 ok: [iocage_05]
 ok: [iocage_06]
 
-TASK [vbotka.freebsd.haproxy : Service: Start haproxy.] ************************
-changed: [iocage_05]
-changed: [iocage_06]
-
-RUNNING HANDLER [vbotka.freebsd.haproxy : Enable and start haproxy] ************
-ok: [iocage_05]
-
-RUNNING HANDLER [vbotka.freebsd.haproxy : Reload haproxy] **********************
-changed: [iocage_05]
-
 PLAY RECAP *********************************************************************
-iocage_05                  : ok=8    changed=4    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-iocage_06                  : ok=6    changed=1    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+iocage_05                  : ok=5    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+iocage_06                  : ok=5    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 

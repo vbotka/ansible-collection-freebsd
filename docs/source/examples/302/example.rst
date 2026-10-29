@@ -47,7 +47,7 @@ Notes
 
 .. seealso::
 
-   * `getcap`_
+   * `getcap(3)`_
 
 ansible.cfg
 ^^^^^^^^^^^

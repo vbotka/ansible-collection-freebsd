@@ -67,6 +67,8 @@ Synopsis
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
   configure the Nginx cluster.
 
+* Use the script ``test-haproxy.sh`` to test `HAProxy`_.
+
 Requirements
 ^^^^^^^^^^^^
 
@@ -75,6 +77,7 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
+* :ref:`example_312`
 
 Notes
 ^^^^^

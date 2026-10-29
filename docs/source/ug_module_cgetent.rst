@@ -23,5 +23,5 @@ namespace.
 
 .. seealso::
 
-   * `getcap`_
+   * `getcap(3)`_
    * Ansible Galaxy `Module vbotka.freebsd.cgetent`_

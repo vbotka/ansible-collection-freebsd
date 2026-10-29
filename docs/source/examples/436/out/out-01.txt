@@ -2,24 +2,24 @@
 PLAY [Create and start project jails from iocage templates.] *******************
 
 TASK [Setup: Get activated pool.] **********************************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Create: Create jails.] ***************************************************
 ok: [iocage_05] => (item=www-511)
 ok: [iocage_06] => (item=www-611)
+ok: [iocage_06] => (item=www-612)
+ok: [iocage_05] => (item=www-512)
 ok: [iocage_05] => (item=www-513)
 ok: [iocage_06] => (item=www-613)
-ok: [iocage_05] => (item=www-512)
-ok: [iocage_06] => (item=www-612)
 
 TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
-changed: [iocage_05] => (item=www-511)
 changed: [iocage_06] => (item=www-611)
-changed: [iocage_05] => (item=www-512)
+changed: [iocage_05] => (item=www-511)
 changed: [iocage_06] => (item=www-612)
-changed: [iocage_05] => (item=www-513)
+changed: [iocage_05] => (item=www-512)
 changed: [iocage_06] => (item=www-613)
+changed: [iocage_05] => (item=www-513)
 
 TASK [Properties: Set properties.] *********************************************
 ok: [iocage_05] => (item=www-511)

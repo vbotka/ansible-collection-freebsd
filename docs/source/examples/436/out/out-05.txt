@@ -3,52 +3,52 @@ PLAY [Configure Nginx servers.] ************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [www_612]
-ok: [www_613]
 ok: [www_611]
-ok: [www_511]
-ok: [www_513]
 ok: [www_512]
+ok: [www_511]
+ok: [www_613]
+ok: [www_513]
 
 TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
-changed: [www_612] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_611] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_612] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [www_512] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_513] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_511] => (item=/usr/local/etc/nginx/nginx.conf)
-changed: [www_512] => (item=/usr/local/etc/nginx/nginx.conf)
 changed: [www_613] => (item=/usr/local/etc/nginx/nginx.conf)
 
 TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
-changed: [www_612]
 changed: [www_611]
 changed: [www_512]
-changed: [www_513]
 changed: [www_511]
+changed: [www_513]
 changed: [www_613]
+changed: [www_612]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
+changed: [www_611]
+changed: [www_612]
 changed: [www_511]
 changed: [www_513]
 changed: [www_512]
-changed: [www_611]
-changed: [www_612]
 changed: [www_613]
 
 RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
-ok: [www_511]
-ok: [www_513]
-ok: [www_612]
 ok: [www_611]
-ok: [www_613]
+ok: [www_513]
+ok: [www_511]
 ok: [www_512]
+ok: [www_612]
+ok: [www_613]
 
 PLAY [Create index.html] *******************************************************
 
 TASK [template] ****************************************************************
-changed: [www_511]
 changed: [www_611]
 changed: [www_612]
 changed: [www_513]
 changed: [www_512]
+changed: [www_511]
 changed: [www_613]
 
 PLAY RECAP *********************************************************************
