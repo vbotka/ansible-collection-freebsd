@@ -52,6 +52,7 @@
 .. _Get FreeBSD: https://www.freebsd.org/where
 .. _Git on the Server - The protocols: https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols
 .. _Good Practices for Ansible: https://redhat-cop.github.io/automation-good-practices/
+.. _haproxy (role): https://github.com/vbotka/ansible-freebsd-haproxy
 .. _HAProxy: https://www.haproxy.org/
 .. _HOST_KEY_CHECKING: https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
 .. _How Do I Mount Host Datasets Inside Jails: https://www.truenas.com/community/threads/freenas-11-iocage-how-do-i-mount-host-datasets-inside-jails.55193/

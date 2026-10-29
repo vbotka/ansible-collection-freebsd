@@ -17,16 +17,17 @@ Plugins:
 
 Roles:
 
-* `apache`_ - Install, configure, and manage the Apache HTTP server.
+* `apache`_ - Install, configure, and run the Apache HTTP server.
 * `certificate`_ - Generate and verify OpenSSL certificates.
 * `config_light`_ - Install packages and configure files, services, and handlers.
 * `custom_image`_ - Download, mount, and customize system images.
-* `dhcp`_ - Install, configure, and manage the DHCP server.
+* `dhcp`_ - Install, configure, and run the DHCP server.
+* `haproxy (role)`_ - Install, configure, and run the HAProxy load balancer.
 * `iocage (role)`_ - Install and configure iocage.
 * `iocage_template`_ - Create and configure iocage templates.
 * `lib`_ - Task library providing reusable utilities.
 * `network`_ - Configure system networking.
-* `nginx`_ - Install, configure, and manage NGINX.
+* `nginx`_ - Install, configure, and run NGINX.
 * `packages`_ - Configure package repositories and install packages.
 * `pf`_ - Configure the Packet Filter (PF) firewall.
 * `postinstall`_ - Perform post-installation system configuration.
