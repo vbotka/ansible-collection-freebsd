@@ -1,0 +1,36 @@
+- name: Create haproxy user, group, and login class.
+  hosts: iocage
+  gather_facts: true
+
+  tasks:
+
+    - name: Create group haproxy.
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.postinstall
+        tasks_from: groups
+
+    - name: Create user haproxy.
+      ansible.builtin.import_role:
+        name: vbotka.freebsd.postinstall
+        tasks_from: users
+
+
+    - name: Create login class haproxy.
+      vars:
+        fp_login_conf: "{{ [ansible_facts.cgetent, fp_login_conf_update]
+                           | combine(recursive=true) }}"
+      block:
+
+        - name: Get current /etc/login.conf
+          vbotka.freebsd.cgetent:
+            database: /etc/login.conf
+
+        - name: Display updated dictionary.
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: fp_login_conf | to_nice_yaml
+
+        - name: Create login class haproxy.
+          ansible.builtin.import_role:
+            name: vbotka.freebsd.postinstall
+            tasks_from: login

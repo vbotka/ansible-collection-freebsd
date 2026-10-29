@@ -12,21 +12,19 @@
       ansible.builtin.debug:
         var: ansible_facts.cgetent.default
 
-    - name: Retrieve developer login class with recursive inheritance resolved.
+    - name: Fetch daemon login class attributes from /etc/login.conf
       vbotka.freebsd.cgetent:
         database: /etc/login.conf
         key: daemon
-        resolve_tc: true
 
     - name: Display result.
       ansible.builtin.debug:
         var: ansible_facts.cgetent.daemon
 
-    - name: Retrieve printcap raw record without tc= resolution.
+    - name: Fetch lp record from /etc/printcap
       vbotka.freebsd.cgetent:
         database: /etc/printcap
         key: lp
-        resolve_tc: false
         fail_key: false
 
     - name: Display result.

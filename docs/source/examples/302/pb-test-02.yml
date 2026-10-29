@@ -1,0 +1,12 @@
+- name: Test module vbotka.freebsd.cgetent
+  hosts: iocage
+    
+  tasks:
+
+    - name: Fetch all records from /etc/termcap
+      vbotka.freebsd.cgetent:
+        database: /etc/termcap
+
+    - name: Display result.
+      ansible.builtin.debug:
+        var: ansible_facts.cgetent

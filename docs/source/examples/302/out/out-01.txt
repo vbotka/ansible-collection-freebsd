@@ -2,8 +2,8 @@
 PLAY [Test module vbotka.freebsd.cgetent] **************************************
 
 TASK [Fetch default login class attributes from /etc/login.conf] ***************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Display result.] *********************************************************
 ok: [iocage_05] => 
@@ -13,7 +13,7 @@ ok: [iocage_05] =>
         cputime: unlimited
         datasize: unlimited
         filesize: unlimited
-        ignoretime: null
+        ignoretime: false
         kqueues: unlimited
         maxproc: unlimited
         memorylocked: 64K
@@ -39,7 +39,7 @@ ok: [iocage_06] =>
         cputime: unlimited
         datasize: unlimited
         filesize: unlimited
-        ignoretime: null
+        ignoretime: false
         kqueues: unlimited
         maxproc: unlimited
         memorylocked: 64K
@@ -59,67 +59,23 @@ ok: [iocage_06] =>
         vmemoryuse: unlimited
         welcome: /etc/motd
 
-TASK [Retrieve developer login class with recursive inheritance resolved.] *****
-ok: [iocage_05]
+TASK [Fetch daemon login class attributes from /etc/login.conf] ****************
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Display result.] *********************************************************
 ok: [iocage_06] => 
     ansible_facts.cgetent.daemon:
-        copyright: /etc/COPYRIGHT
-        coredumpsize: unlimited
-        cputime: unlimited
-        datasize: unlimited
-        filesize: unlimited
-        ignoretime: null
-        kqueues: unlimited
-        maxproc: unlimited
         memorylocked: 128M
-        memoryuse: unlimited
-        nologin: /var/run/nologin
-        openfiles: unlimited
-        passwd_format: sha512
-        path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-        priority: '0'
-        pseudoterminals: unlimited
-        sbsize: unlimited
-        setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-        stacksize: unlimited
-        swapuse: unlimited
-        umask: '022'
-        umtxp: unlimited
-        vmemoryuse: unlimited
-        welcome: /etc/motd
+        tc: default
 ok: [iocage_05] => 
     ansible_facts.cgetent.daemon:
-        copyright: /etc/COPYRIGHT
-        coredumpsize: unlimited
-        cputime: unlimited
-        datasize: unlimited
-        filesize: unlimited
-        ignoretime: null
-        kqueues: unlimited
-        maxproc: unlimited
         memorylocked: 128M
-        memoryuse: unlimited
-        nologin: /var/run/nologin
-        openfiles: unlimited
-        passwd_format: sha512
-        path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-        priority: '0'
-        pseudoterminals: unlimited
-        sbsize: unlimited
-        setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-        stacksize: unlimited
-        swapuse: unlimited
-        umask: '022'
-        umtxp: unlimited
-        vmemoryuse: unlimited
-        welcome: /etc/motd
+        tc: default
 
-TASK [Retrieve printcap raw record without tc= resolution.] ********************
-ok: [iocage_05]
+TASK [Fetch lp record from /etc/printcap] **************************************
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Display result.] *********************************************************
 ok: [iocage_05] => 
@@ -128,71 +84,22 @@ ok: [iocage_06] =>
     ansible_facts.cgetent.lp: null
 
 TASK [Fetch all records from /etc/login.conf] **********************************
-ok: [iocage_05]
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Display result.] *********************************************************
 ok: [iocage_05] => 
     ansible_facts.cgetent:
-        Russian Users Account:
-            charset: UTF-8
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            lang: ru_RU.UTF-8
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
         daemon:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
             memorylocked: 128M
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         default:
             copyright: /etc/COPYRIGHT
             coredumpsize: unlimited
             cputime: unlimited
             datasize: unlimited
             filesize: unlimited
-            ignoretime: null
+            ignoretime: false
             kqueues: unlimited
             maxproc: unlimited
             memorylocked: 64K
@@ -212,273 +119,62 @@ ok: [iocage_05] =>
             vmemoryuse: unlimited
             welcome: /etc/motd
         dialer:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
-        ignorenologin:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: unlimited
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
+        haproxy:
+            openfiles-cur: '524288'
+            openfiles-max: '1048576'
+            tc: daemon
         insecure:
-            /bin: true
-            /sbin: true
-            /usr/bin: true
-            /usr/local/bin: true
-            /usr/local/sbin: true
-            /usr/sbin: true
             copyright: /etc/COPYRIGHT
             coredumpsize: 8M
             cputime: 1h30m
             datasize: 8M
             filesize: 8M
+            ignoretime: false
+            label: biba/10(10-10)
             manpath: /usr/share/man /usr/local/man
             maxproc: '32'
             memorylocked: 4M
             memoryuse: 8M
             nologin: /usr/sbin/nologin
             openfiles: '24'
-            path: ~/bin
+            passwordtime: 91d
+            path: ~/bin /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin
             priority: '0'
+            requirehome: true
             setenv: MAIL=/var/mail/$,BLOCKSIZE=K
             stacksize: 2M
+            umask: '022'
             vmemoryuse: 100M
             welcome: /etc/motd
         news:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
-        requirehome:
-            ignoretime: null
-            label: biba/10(10-10)
-            passwordtime: 91d
-            umask: '022'
-        root: {}
-        russian:
+            tc: default
+        root:
+            ignorenologin: true
+            memorylocked: unlimited
+            tc: default
+        russian|Russian Users Account:
             charset: UTF-8
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
             lang: ru_RU.UTF-8
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         staff:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         standard:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         xuser:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
 ok: [iocage_06] => 
     ansible_facts.cgetent:
-        Russian Users Account:
-            charset: UTF-8
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            lang: ru_RU.UTF-8
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
         daemon:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
             memorylocked: 128M
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         default:
             copyright: /etc/COPYRIGHT
             coredumpsize: unlimited
             cputime: unlimited
             datasize: unlimited
             filesize: unlimited
-            ignoretime: null
+            ignoretime: false
             kqueues: unlimited
             maxproc: unlimited
             memorylocked: 64K
@@ -498,212 +194,50 @@ ok: [iocage_06] =>
             vmemoryuse: unlimited
             welcome: /etc/motd
         dialer:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
-        ignorenologin:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: unlimited
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
+        haproxy:
+            openfiles-cur: '524288'
+            openfiles-max: '1048576'
+            tc: daemon
         insecure:
-            /bin: true
-            /sbin: true
-            /usr/bin: true
-            /usr/local/bin: true
-            /usr/local/sbin: true
-            /usr/sbin: true
             copyright: /etc/COPYRIGHT
             coredumpsize: 8M
             cputime: 1h30m
             datasize: 8M
             filesize: 8M
+            ignoretime: false
+            label: biba/10(10-10)
             manpath: /usr/share/man /usr/local/man
             maxproc: '32'
             memorylocked: 4M
             memoryuse: 8M
             nologin: /usr/sbin/nologin
             openfiles: '24'
-            path: ~/bin
+            passwordtime: 91d
+            path: ~/bin /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin
             priority: '0'
+            requirehome: true
             setenv: MAIL=/var/mail/$,BLOCKSIZE=K
             stacksize: 2M
+            umask: '022'
             vmemoryuse: 100M
             welcome: /etc/motd
         news:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
-        requirehome:
-            ignoretime: null
-            label: biba/10(10-10)
-            passwordtime: 91d
-            umask: '022'
-        root: {}
-        russian:
+            tc: default
+        root:
+            ignorenologin: true
+            memorylocked: unlimited
+            tc: default
+        russian|Russian Users Account:
             charset: UTF-8
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
             lang: ru_RU.UTF-8
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         staff:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         standard:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
         xuser:
-            copyright: /etc/COPYRIGHT
-            coredumpsize: unlimited
-            cputime: unlimited
-            datasize: unlimited
-            filesize: unlimited
-            ignoretime: null
-            kqueues: unlimited
-            maxproc: unlimited
-            memorylocked: 64K
-            memoryuse: unlimited
-            nologin: /var/run/nologin
-            openfiles: unlimited
-            passwd_format: sha512
-            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
-            priority: '0'
-            pseudoterminals: unlimited
-            sbsize: unlimited
-            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
-            stacksize: unlimited
-            swapuse: unlimited
-            umask: '022'
-            umtxp: unlimited
-            vmemoryuse: unlimited
-            welcome: /etc/motd
+            tc: default
 
 PLAY RECAP *********************************************************************
 iocage_05                  : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

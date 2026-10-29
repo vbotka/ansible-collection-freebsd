@@ -1,5 +1,4 @@
-# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
-# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
 from __future__ import annotations
@@ -7,12 +6,13 @@ from __future__ import annotations
 DOCUMENTATION = r'''
 ---
 module: cgetent
-short_description: A wrapper to the BSD cgetent capability database parser
+short_description: A BSD cgetent capability database parser
 description:
   - Runs capability database queries on BSD systems against files like C(/etc/login.conf),
     C(/etc/printcap), or C(/etc/termcap).
   - Similar to M(ansible.builtin.getent), results are registered in the C(ansible_facts) namespace.
-  - Supports recursive capability inheritance via table continuation (C(tc=)).
+  - Recognizes string (C(=)), numeric (C(#)), boolean (bare name), commented out (C(.) prefix),
+    and absent/cancelled (C(@) suffix) capability types.
 version_added: "1.0.0"
 author:
   - Vladimir Botka (@vbotka)
@@ -37,12 +37,6 @@ options:
       - If set to C(false), missing keys will return an empty record or null.
     type: bool
     default: true
-  resolve_tc:
-    description:
-      - Whether to recursively resolve table continuations (C(tc=)).
-      - When set to C(true), capabilities from inherited records are merged, with current entry attributes taking precedence.
-    type: bool
-    default: true
 '''
 
 EXAMPLES = r'''
@@ -51,17 +45,14 @@ EXAMPLES = r'''
     database: /etc/login.conf
     key: default
 
-- name: Retrieve developer login class with recursive inheritance resolved
-  vbotka.freebsd.cgetent:
-    database: /etc/login.conf
-    key: developer
-    resolve_tc: true
+- name: Debug retrieved login.conf records
+  ansible.builtin.debug:
+    var: ansible_facts.cgetent['default']
 
-- name: Retrieve printcap raw record without tc= resolution
+- name: Retrieve printcap entries and do not fail on missing key
   vbotka.freebsd.cgetent:
     database: /etc/printcap
     key: lp
-    resolve_tc: false
     fail_key: false
 
 - name: Fetch all records from /etc/login.conf
@@ -81,104 +72,84 @@ ansible_facts:
 '''
 
 import os
-import re
 from typing import Any
 from ansible.module_utils.basic import AnsibleModule
 
 
-def parse_raw_records(filepath: str, split_char: str | None = None) -> dict[str, dict[str, Any]]:
+def parse_capability_file(filepath: str, split_char: str | None = None) -> dict[str, dict[str, Any]]:
     """
-    Parses a BSD capability database into a raw dictionary mapping record
-    names to their immediate capabilities, preserving 'tc' keys.
+    Parses a BSD capability database (getcap(3) / login.conf format):
+      - Non-indented lines are record keys.
+      - Indented lines are capability lines.
+      - Colons (:) separate capabilities on a line.
+      - String capabilities use '='.
+      - Numeric capabilities use '#'.
+      - Boolean capabilities are bare names (value True).
+      - Capabilities starting with '.' are commented out and skipped.
+      - Capabilities ending with '@' indicate absent/cancelled entries (value False).
     """
     records: dict[str, dict[str, Any]] = {}
+    current_key: str | None = None
 
     with open(filepath, 'r', encoding='utf-8') as f:
-        raw_lines = f.readlines()
+        for line in f:
+            stripped = line.strip()
+            if not stripped or stripped.startswith('#'):
+                continue
 
-    # Strip comments and collect non-empty lines
-    cleaned_lines: list[str] = []
-    for line in raw_lines:
-        line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-        cleaned_lines.append(line)
-
-    # Join backslash continuation lines
-    content = " ".join(cleaned_lines).replace(r"\ ", "")
-
-    # Split into individual record blocks
-    raw_entries = re.split(r':(?=\s*[a-zA-Z0-9_.-]+[:|])', content)
-
-    for entry in raw_entries:
-        entry = entry.strip().strip(':')
-        if not entry:
-            continue
-
-        parts = [p.strip() for p in entry.split(':') if p.strip()]
-        if not parts:
-            continue
-
-        names = [n.strip() for n in parts[0].split('|')]
-        capabilities: dict[str, Any] = {}
-
-        for cap in parts[1:]:
-            if '=' in cap:
-                k, v = cap.split('=', 1)
-                if split_char:
-                    capabilities[k] = [val.strip() for val in v.split(split_char)]
-                else:
-                    capabilities[k] = v
-            elif '#' in cap:
-                k, v = cap.split('#', 1)
-                try:
-                    capabilities[k] = int(v)
-                except ValueError:
-                    capabilities[k] = v
-            elif cap.endswith('@'):
-                capabilities[cap[:-1]] = None  # Disabled capability indicator
+            # Non-indented lines define the record key / class name
+            if line[0] not in (' ', '\t'):
+                key_name = stripped.rstrip('\\').strip().strip(':')
+                current_key = key_name
+                records[current_key] = {}
             else:
-                capabilities[cap] = True       # Boolean capability
+                if current_key is None:
+                    continue
 
-        for name in names:
-            records[name] = capabilities
+                # Strip trailing continuation slashes, whitespace, and bounding colons
+                cap_line = stripped.rstrip('\\').strip().strip(':')
+                if not cap_line:
+                    continue
+
+                # Split indented lines on colons ':'
+                items = cap_line.split(':')
+                for item in items:
+                    item = item.strip()
+                    if not item:
+                        continue
+
+                    # Commented out capability (starts with '.')
+                    if item.startswith('.'):
+                        continue
+
+                    # Absent / cancelled capability (ends with '@')
+                    if item.endswith('@'):
+                        cap_name = item[:-1].strip()
+                        records[current_key][cap_name] = False
+                        continue
+
+                    # String capability (contains '=')
+                    if '=' in item:
+                        k, v = item.split('=', 1)
+                        k = k.strip()
+                        v = v.strip()
+                        if split_char:
+                            records[current_key][k] = [val.strip() for val in v.split(split_char)]
+                        else:
+                            records[current_key][k] = v
+                    # Numeric capability (contains '#')
+                    elif '#' in item:
+                        k, v = item.split('#', 1)
+                        k = k.strip()
+                        try:
+                            records[current_key][k] = int(v.strip())
+                        except ValueError:
+                            records[current_key][k] = v.strip()
+                    # Boolean capability (bare name)
+                    else:
+                        records[current_key][item] = True
 
     return records
-
-
-def resolve_record(
-    name: str,
-    raw_records: dict[str, dict[str, Any]],
-    visited: list[str] | None = None,
-) -> dict[str, Any]:
-    """
-    Recursively resolves 'tc=' table continuations for a given record.
-    Child capabilities take precedence over parent capabilities.
-    Detects and prevents cyclic inheritance loops.
-    """
-    if visited is None:
-        visited = []
-
-    if name in visited:
-        cycle_chain = " -> ".join(visited + [name])
-        raise ValueError(f"Cyclic tc= reference detected: {cycle_chain}")
-
-    visited.append(name)
-    current = raw_records.get(name, {}).copy()
-
-    if 'tc' in current:
-        parent_name = current.pop('tc')
-        if parent_name not in raw_records:
-            raise KeyError(f"Referenced tc='{parent_name}' not found in capability database")
-
-        parent_resolved = resolve_record(parent_name, raw_records, list(visited))
-
-        # Merge order: parent first, current entry overwrites parent
-        merged = parent_resolved.copy()
-        merged.update(current)
-        return merged
-
-    return current
 
 
 def run_module() -> None:
@@ -187,7 +158,6 @@ def run_module() -> None:
         key=dict(type='str', required=False, default=None, no_log=False),
         split=dict(type='str', required=False, default=None),
         fail_key=dict(type='bool', default=True),
-        resolve_tc=dict(type='bool', default=True),
     )
 
     module = AnsibleModule(
@@ -199,41 +169,36 @@ def run_module() -> None:
     key: str | None = module.params['key']
     split_char: str | None = module.params['split']
     fail_key: bool = module.params['fail_key']
-    resolve_tc: bool = module.params['resolve_tc']
 
     if not os.path.isfile(database):
         module.fail_json(msg=f"Capability database file not found: {database}")
 
     try:
-        raw_records = parse_raw_records(database, split_char)
+        all_records = parse_capability_file(database, split_char)
     except Exception as e:
         module.fail_json(msg=f"Failed to parse {database}: {str(e)}")
 
     results: dict[str, Any] = {}
-
     if key is not None:
-        if key in raw_records:
-            try:
-                if resolve_tc:
-                    results[key] = resolve_record(key, raw_records)
-                else:
-                    results[key] = raw_records[key]
-            except Exception as e:
-                module.fail_json(msg=f"Failed resolving capabilities for key '{key}': {str(e)}")
+        if key in all_records:
+            results[key] = all_records[key]
         else:
-            if fail_key:
+            # Check if key matches an alias in pipe-separated headers (e.g. 'russian')
+            matched_alias = None
+            for rec_name, rec_data in all_records.items():
+                aliases = [a.strip() for a in rec_name.split('|')]
+                if key in aliases:
+                    matched_alias = rec_data
+                    break
+
+            if matched_alias is not None:
+                results[key] = matched_alias
+            elif fail_key:
                 module.fail_json(msg=f"Key '{key}' not found in capability database '{database}'")
             else:
                 results[key] = None
     else:
-        for rec_key in raw_records:
-            try:
-                if resolve_tc:
-                    results[rec_key] = resolve_record(rec_key, raw_records)
-                else:
-                    results[rec_key] = raw_records[rec_key]
-            except Exception as e:
-                module.fail_json(msg=f"Failed resolving capabilities for key '{rec_key}': {str(e)}")
+        results = all_records
 
     module.exit_json(
         changed=False,

@@ -78,6 +78,7 @@ Examples
 
    310 Configure and audit Ansible clients <examples/310/example.rst>
    examples/311/example.rst
+   312 Create haproxy group, user, class <examples/312/example.rst>
    320 Install and audit packages <examples/320/example.rst>
    321 Poudriere package repo <examples/321/example.rst>
    322 Local package repo <examples/322/example.rst>

@@ -52,7 +52,7 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* TBD.
+* Role `vbotka.freebsd.postinstall`_
 
 Notes
 ^^^^^

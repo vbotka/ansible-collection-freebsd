@@ -1,0 +1,19 @@
+fp_groups_conf:
+  - gid: 604
+    name: haproxy
+
+fp_users_conf:
+  - name: haproxy
+    id: 604
+    comment: HAProxy pseudo-user
+    group: haproxy
+    home: /var/empty
+    shell: /usr/sbin/nologin
+
+fp_login_conf_global: true
+fp_login_conf_template: login.conf-v2.j2
+fp_login_conf_update:
+  haproxy:
+    openfiles-cur: 524288
+    openfiles-max: 1048576
+    tc: daemon
