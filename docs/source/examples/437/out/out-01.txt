@@ -3,25 +3,33 @@ PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
 TASK [Query inventory plugin.] *************************************************
 ok: [iocage_06 -> localhost]
+ok: [iocage_05 -> localhost]
 
 TASK [Reject jails without iocage_tags] ****************************************
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Create swarms.] **********************************************************
+ok: [iocage_05] => (item=nginx_cluster)
 ok: [iocage_06] => (item=nginx_cluster)
 
 TASK [Query inventory plugin.] *************************************************
 ok: [iocage_06 -> localhost]
+ok: [iocage_05 -> localhost]
 
 TASK [Reject jails without iocage_tags] ****************************************
 ok: [iocage_06]
+ok: [iocage_05]
 
 TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
+ok: [iocage_05]
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
 iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
 

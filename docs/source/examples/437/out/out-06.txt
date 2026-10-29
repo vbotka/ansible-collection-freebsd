@@ -1,7 +1,31 @@
-nginx_cluster: 00505cda (172.16.99.170)
-nginx_cluster: 4a4366d5 (172.16.99.149)
-nginx_cluster: 936e26b0 (172.16.99.114)
-nginx_cluster: 00505cda (172.16.99.170)
-nginx_cluster: 4a4366d5 (172.16.99.149)
-nginx_cluster: 936e26b0 (172.16.99.114)
-nginx_cluster: 00505cda (172.16.99.170)
+
+PLAY [Configure HAProxy.] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [vbotka.freebsd_haproxy : Packages: Install HAProxy packages.] ************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [vbotka.freebsd_haproxy : Conf: Configure HAProxy.] ***********************
+changed: [iocage_06]
+changed: [iocage_05]
+
+TASK [vbotka.freebsd_haproxy : Service: Enable and Start HAProxy.] *************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [vbotka.freebsd_haproxy : Service: Get haproxy status.] *******************
+ok: [iocage_06]
+ok: [iocage_05]
+
+RUNNING HANDLER [vbotka.freebsd_haproxy : Reload haproxy] **********************
+changed: [iocage_05]
+changed: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=6    changed=2    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=2    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

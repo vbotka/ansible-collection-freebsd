@@ -7,19 +7,18 @@
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 437
-.. index:: single: swarms destroy; Example 437
-.. index:: single: swarms create from templates; Example 437
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 437
-
-.. index:: single: HAProxy; Example 437
-.. index:: single: role vbotka.freebsd.haproxy; Example 437
-.. index:: single: vbotka.freebsd.haproxy; Example 437
+.. index::
+   single: swarms; Example 437
+   single: swarms create from templates; Example 437
+   single: pb_iocage_ansible_clients.yml; Example 437
+   single: HAProxy; Example 437
+   single: role vbotka.freebsd.haproxy; Example 437
+   single: vbotka.freebsd.haproxy; Example 437
 
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-nginx`` to create jails in ``swarm``.  Use
+Use the `iocage`_ template ``ansible-nginx`` to create jails in ``swarm``. Use
 the role `vbotka.freebsd.nginx`_ to configure and run `Nginx`_ servers. Use the
 role `vbotka.freebsd.haproxy`_ to configure and run `HAProxy`_ to loadbalance
 the `Nginx`_ cluster.
@@ -39,8 +38,12 @@ Tree
   │   └── nginx
   │       └── nginx.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── haproxy.yml
   │   └── iocage_06
   │       └── haproxy.yml
   ├── iocage.ini
@@ -53,16 +56,18 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
-  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create jails in a swarm
-    from the template.
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`, create jails in a
+    ``swarm`` from the templates.
 
   * Use the role `vbotka.freebsd.haproxy`_ to configure and run the `HAProxy`_
     loadbalancer.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
   configure the Nginx cluster.
+
+* Use the script ``test-haproxy.sh`` to test `HAProxy`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -72,11 +77,12 @@ Requirements
 * Playbook :ref:`ug_pb-iocage-ansible-clients`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
+* :ref:`example_312`
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -87,7 +93,7 @@ Notes
 
 .. seealso::
 
-   * TBD
+   * TBD.
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -104,7 +110,15 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
@@ -125,6 +139,10 @@ group_vars
 
 host_vars
 ^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/haproxy.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: host_vars/iocage_06/haproxy.yml
    :language: yaml+jinja
@@ -154,22 +172,20 @@ Playbook output - Create jails
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_05] iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_06] iocage list -l
 
 Playbook pb-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^
@@ -184,7 +200,7 @@ Playbook output - Configure Nginx
 
    (env) > ansible-playbook -i hosts pb-nginx.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:
 
@@ -201,9 +217,37 @@ Playbook output - Configure HAProxy
 
    (env) > ansible-playbook -i hosts -i iocage.ini pb-haproxy.yml
 
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
+
+Results
+^^^^^^^
+
+* Test the configuration:
+
+  .. literalinclude:: out/out-07.txt
+     :language: console
+     :caption: [iocage_05] service haproxy configtest 2>&1
+
+  .. literalinclude:: out/out-08.txt
+     :language: console
+     :caption: [iocage_06] service haproxy configtest 2>&1
+
+  .. note::
+
+     When the configuration syntax is valid, ``service haproxy configtest`` produces
+     no output.
+
+* Test that the server is running:
+
+  .. literalinclude:: out/out-09.txt
+     :language: console
+     :caption: [iocage_05] service haproxy status 2>&1
+
+  .. literalinclude:: out/out-10.txt
+     :language: console
+     :caption: [iocage_06] service haproxy status 2>&1
 
 Script test-haproxy.sh
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -214,10 +258,10 @@ Script test-haproxy.sh
 Script output - Test HAProxy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 'bash -s' < test-haproxy.sh
-
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-11.txt
    :language: console
-   :force:
+   :caption: [iocage_05] test-haproxy.sh 172.16.95.1
+
+.. literalinclude:: out/out-12.txt
+   :language: console
+   :caption: [iocage_06] test-haproxy.sh 172.16.99.1

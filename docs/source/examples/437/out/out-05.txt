@@ -1,24 +1,61 @@
 
-PLAY [Configure HAProxy.] ******************************************************
+PLAY [Configure Nginx servers.] ************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [iocage_06]
+ok: [05319d7e]
+ok: [5e5ae7da]
+ok: [d2d0eec1]
+ok: [e4c5ce31]
+ok: [50616f64]
+ok: [68291686]
 
-TASK [vbotka.freebsd_haproxy : Conf: Configure HAProxy.] ***********************
-changed: [iocage_06]
+TASK [vbotka.freebsd.nginx : Conf: Configure Nginx.] ***************************
+changed: [5e5ae7da] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [05319d7e] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [68291686] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [e4c5ce31] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [d2d0eec1] => (item=/usr/local/etc/nginx/nginx.conf)
+changed: [50616f64] => (item=/usr/local/etc/nginx/nginx.conf)
 
-TASK [vbotka.freebsd_haproxy : Service: Enable and Start HAProxy.] *************
-ok: [iocage_06]
+TASK [vbotka.freebsd.nginx : Service: Enable and Start Nginx.] *****************
+changed: [05319d7e]
+changed: [5e5ae7da]
+changed: [50616f64]
+changed: [d2d0eec1]
+changed: [68291686]
+changed: [e4c5ce31]
 
-TASK [vbotka.freebsd_haproxy : Service: Get haproxy status.] *******************
-ok: [iocage_06]
+RUNNING HANDLER [vbotka.freebsd.nginx : Enable and start nginx] ****************
+changed: [05319d7e]
+changed: [5e5ae7da]
+changed: [e4c5ce31]
+changed: [68291686]
+changed: [d2d0eec1]
+changed: [50616f64]
 
-TASK [vbotka.freebsd_haproxy : Service: Start haproxy.] ************************
-changed: [iocage_06]
+RUNNING HANDLER [vbotka.freebsd.nginx : Reload nginx] **************************
+ok: [5e5ae7da]
+ok: [68291686]
+ok: [05319d7e]
+ok: [50616f64]
+ok: [e4c5ce31]
+ok: [d2d0eec1]
 
-RUNNING HANDLER [vbotka.freebsd_haproxy : Reload haproxy] **********************
-changed: [iocage_06]
+PLAY [Create index.html] *******************************************************
+
+TASK [template] ****************************************************************
+changed: [05319d7e]
+changed: [50616f64]
+changed: [5e5ae7da]
+changed: [e4c5ce31]
+changed: [68291686]
+changed: [d2d0eec1]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+05319d7e                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+50616f64                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+5e5ae7da                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+68291686                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+d2d0eec1                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+e4c5ce31                   : ok=6    changed=4    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
 
