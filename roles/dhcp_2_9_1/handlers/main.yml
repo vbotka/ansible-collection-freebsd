@@ -7,6 +7,7 @@
     name: "{{ bsd_dhcpd_service }}"
     state: started
     enabled: true
+  register: _bsd_dhcpd_started
 
 - name: Disable and stop dhcpd
   listen: disable and stop dhcpd
@@ -20,6 +21,7 @@
   ansible.builtin.service:
     name: "{{ bsd_dhcpd_service }}"
     state: started
+  register: _bsd_dhcpd_started
 
 - name: Stop dhcpd
   listen: stop dhcpd
@@ -32,6 +34,8 @@
   ansible.builtin.service:
     name: "{{ bsd_dhcpd_service }}"
     state: restarted
-  when: bsd_dhcpd_enable | bool
+  when:
+    - bsd_dhcpd_enable | bool
+    - not (_bsd_dhcpd_started.changed | default(false))
 
 # EOF

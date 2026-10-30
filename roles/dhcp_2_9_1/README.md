@@ -1,16 +1,12 @@
 # freebsd_dhcp
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_dhcp)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_dhcp/)
 [![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-dhcp.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-dhcp)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-dhcp)](https://github.com/vbotka/ansible-freebsd-dhcp/tags)
 
-This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.dhcp](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp)
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.dhcp](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_dhcp/) Install and configure DHCP in FreeBSD.
-
-Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-dhcp/issues).
-
-[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
 ## Requirements
@@ -27,13 +23,13 @@ Review the defaults and examples in vars.
 
 ## Workflow
 
-1) Change shell on the remote host to /bin/sh if necessary
+1) Change shell on the remote host to /bin/sh if necessary:
 
 ```bash
 shell> ansible dhcp.example.com -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
-2) Install the role
+2) Install the role:
 
 ```bash
 shell> ansible-galaxy role install vbotka.freebsd_dhcp
@@ -41,7 +37,7 @@ shell> ansible-galaxy role install vbotka.freebsd_dhcp
 
 3) Fit the variables.
 
-4) Create the playbook
+4) Create the playbook:
 
 ```yaml
 shell> cat freebsd-dhcp.yml
@@ -50,7 +46,7 @@ shell> cat freebsd-dhcp.yml
     - role: vbotka.freebsd_dhcp
 ```
 
-5) Run the playbook
+5) Run the playbook:
 
 Test the syntax
 
@@ -58,25 +54,25 @@ Test the syntax
 shell> ansible-playbook --syntax-check  freebsd-dhcp.yml
 ```
 
-Install packages
+Install packages:
 
 ```bash
 shell> ansible-playbook -t bsd_dhcpd_packages -e bsd_dhcpd_install=true freebsd-dhcp.yml
 ```
 
-Look at the variables
+Look at the variables:
 
 ```bash
 shell> ansible-playbook -t bsd_dhcpd_debug -e bsd_dhcpd_debug=true freebsd-dhcp.yml
 ```
 
-Dry run and see what will be configured
+Dry run and see what will be configured:
 
 ```bash
 shell> ansible-playbook --check --diff freebsd-dhcp.yml
 ```
 
-If this is what you want, run the play
+If this is what you want, run the play:
 
 ```bash
 shell> ansible-playbook freebsd-dhcp.yml
@@ -90,17 +86,6 @@ If you use the PF firewall, add the following rules to /etc/pf.conf
 ```
 dhcp_ports="{ bootps, bootpc }"
 pass quick on $if proto { tcp, udp } to $if port $dhcp_ports
-```
-
-
-## Ansible lint
-
-Use the configuration file *.ansible-lint.local* when running
-*ansible-lint*. Some rules might be disabled and some warnings might
-be ignored. See the notes in the configuration file.
-
-```bash
-shell> ansible-lint -c .ansible-lint.local
 ```
 
 

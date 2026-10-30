@@ -15,12 +15,12 @@
   when: bsd_dhcpd_install | bool
   tags: bsd_dhcpd_packages
 
-- name: Import rcconf.yml
-  ansible.builtin.import_tasks: rcconf.yml
-  tags: bsd_dhcpd_rcconf
-
 - name: Import conf.yml
   ansible.builtin.import_tasks: conf.yml
   tags: bsd_dhcpd_conf
+
+- name: Import rcconf.yml
+  ansible.builtin.import_tasks: rcconf.yml
+  tags: bsd_dhcpd_rcconf
 
 # EOF

@@ -20,6 +20,7 @@ Minor Changes
 * Filter dict_to_ast renamed to to_ast. Docs updated.
 * Upgrade role pf to 2.9.2
 * Upgrade role postinstall to 2.9.4
+* Upgrade role dhcp to 2.9.1
 * Docs. Add Sphinx dark theme sphinx_rtd_dark_mode
 * Docs. Add CSS custom_dark.css
 * Docs. Update requirements.txt
