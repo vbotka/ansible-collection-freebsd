@@ -35,7 +35,7 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible_client_pull`` that will use
+Create the `iocage template`_ ``ansible_client_pull`` that will use
 `ansible-pull`_.
 
 Tree

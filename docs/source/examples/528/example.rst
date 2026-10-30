@@ -38,7 +38,7 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in :ref:`example_529`, or
+Use the `iocage template`_ ``ansible-init`` created in :ref:`example_529`, or
 :ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
 jails' configuration from the repository `ansible-conf-roles`_. Create jails
 from the template. Put the configuration files for the classes ``log-server``

@@ -38,7 +38,7 @@ This example extends :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-client``. Configure
+Create the `iocage template`_ ``ansible-client``. Configure
 ``dhclient-exit-hooks``. Create jails from the template. Obtain IP addresses via
 DHCP. In the inventory plugin, configure ``hooks_results`` and create the
 variable ``ansible_host``.

@@ -11,7 +11,7 @@ iocage
 .. seealso::
 
    * `man iocage`_
-   * `iocage - A FreeBSD Jail Manager`_
+   * `iocage - FreeBSD Jail Manager`_
    * `iocage jail type - base jail vs clone. Which to choose?`_
 
 .. hint::

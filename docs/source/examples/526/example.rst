@@ -40,7 +40,7 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in
+Use the `iocage template`_ ``ansible-init`` created in
 :ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
 jails' configuration from the repositories `ansible-conf-syslogng-server`_ and
 `ansible-conf-syslogng-client`_. Create jails from the template. Use

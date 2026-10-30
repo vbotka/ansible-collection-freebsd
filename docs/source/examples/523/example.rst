@@ -24,7 +24,7 @@ Use case
 ^^^^^^^^
 
 Create a jail that serves Git repositories for `ansible-pull`_. Create the
-`iocage`_ template ``ansible-repos`` and configure `git-daemon`_. Create jails
+`iocage template`_ ``ansible-repos`` and configure `git-daemon`_. Create jails
 from the template and clone repositories to the `base-path`_.
 
 Tree

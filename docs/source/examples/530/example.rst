@@ -26,7 +26,7 @@
 Use case
 ^^^^^^^^
 
-Create `iocage`_ templates in one play.
+Create `iocage templates`_ in one play.
 
 Tree
 ^^^^

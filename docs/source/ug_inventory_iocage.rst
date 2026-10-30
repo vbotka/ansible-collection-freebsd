@@ -40,7 +40,7 @@ manager.
 
 .. seealso::
 
-   - `iocage - A FreeBSD Jail Manager`_
+   - `iocage - FreeBSD Jail Manager`_
    - `man iocage`_
    - `Jails and Containers`_
    - Ansible Galaxy `inventory iocage`_

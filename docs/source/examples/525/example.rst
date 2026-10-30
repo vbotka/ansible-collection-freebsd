@@ -29,7 +29,7 @@
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in
+Use the `iocage template`_ ``ansible-init`` created in
 :ref:`example_524`. Configure the repo `ansible-conf-init`_ to pull the jails'
 configuration from the repo `ansible-conf-test`_. Create jails from the
 template. Use ``class=test`` to select the configuration. Run `ansible-pull`_

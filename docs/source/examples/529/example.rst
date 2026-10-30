@@ -20,7 +20,7 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Enable the `firstboot`_ service
+Create the `iocage template`_ ``ansible-init``. Enable the `firstboot`_ service
 `ansible_init`_ that runs `ansible-pull`_ from the repositories on
 ``project_hosts.repos``. Configure the ``local`` pkg repository.
 

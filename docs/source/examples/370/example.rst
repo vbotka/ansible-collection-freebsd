@@ -21,7 +21,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.pf`_ to configure ``pf``.
+Use the role `vbotka.freebsd.pf`_ to configure `Packet Filter (PF)`_.
 
 Tree
 ^^^^

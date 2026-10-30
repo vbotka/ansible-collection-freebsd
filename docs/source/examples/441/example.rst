@@ -32,7 +32,8 @@ Use case
 
 Create multiple jails with auto UUID names. In the inventory, compose the
 variables ``ansible_host`` and ``ansible_port`` to connect to the jails via
-redirected SSH ports. See :ref:`example_440` for how ``pf`` is configured.
+redirected SSH ports. See :ref:`example_440` for how `Packet Filter (PF)`_ is
+configured.
 
 Tree
 ^^^^

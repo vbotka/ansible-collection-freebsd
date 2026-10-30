@@ -31,7 +31,7 @@ Use case
 ^^^^^^^^
 
 Create a jail that serves a package repository for other jails. Create the
-`iocage`_ template ``ansible-pkg-repo`` and configure a web server to publish
+`iocage template`_ ``ansible-pkg-repo`` and configure a web server to publish
 the repository. Create jails from the template and fetch packages into the
 repository.
 

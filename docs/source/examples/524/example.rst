@@ -33,7 +33,7 @@
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Configure a `firstboot`_
+Create the `iocage template`_ ``ansible-init``. Configure a `firstboot`_
 service `ansible_init`_ that runs `ansible-pull`_ and uses the repo
 `ansible-conf-init`_. Configure the repo `ansible-conf-init`_ to pull the jails'
 configuration from the repo `ansible-conf-test`_. Create jails from the
