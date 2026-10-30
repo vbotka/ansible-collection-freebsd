@@ -32,7 +32,7 @@ Use case
 
 Create multiple jails with auto ``UUID``. In the inventory, `compose`_ the
 variables ``ansible_host`` and ``ansible_port`` to connect to the jails via
-redirected SSH ports. See :ref:`example_440` for how `Packet Filter (PF)`_ is
+`redirected SSH ports`_. See :ref:`example_440` for how `Packet Filter (PF)`_ is
 configured.
 
 Tree
@@ -57,22 +57,22 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
-    * create jails
-    * start jails
-    * optionally, stop and destroy the jails.
+    * Create jails.
+    * Start jails.
+    * Optionally, stop and destroy the jails.
 
-* Create a dynamic inventory to redirect SSH to the jails.
+* Create a dynamic inventory to `redirect SSH ports`_ to the jails.
 
-* On created jails:
+* On the created jails:
 
   * In the playbook ``pb-test.yml``:
 
-    * connect to the created jails
-    * display the basic configuration of the jails.
+    * Connect to the created jails.
+    * Display the basic configuration of the jails.
 
 Requirements
 ^^^^^^^^^^^^

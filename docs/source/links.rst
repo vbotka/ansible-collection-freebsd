@@ -287,6 +287,7 @@
 .. _rc.d netif restart lagg0: https://forums.freebsd.org/threads/rc-d-netif-restart-lagg0-and-pf.95879/
 .. _redirect ports: https://www.dragonflybsd.org/~aggelos/pf/rdr.html
 .. _redirect SSH ports: https://www.dragonflybsd.org/~aggelos/pf/rdr.html
+.. _redirected SSH ports: https://www.dragonflybsd.org/~aggelos/pf/rdr.html
 .. _redirection: https://www.dragonflybsd.org/~aggelos/pf/rdr.html
 .. _repo iocage: https://github.com/freebsd/iocage/
 .. _result_format=yaml: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-result_format
