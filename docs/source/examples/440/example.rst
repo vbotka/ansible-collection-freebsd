@@ -82,7 +82,7 @@ Synopsis
     * Log all blocked packets
     * Allow SSH, HTTP, and HTTPS from the external network
     * Pass traffic from ``localnet`` and jails' `VNET`_ to any destination
-    * `Redirect SSH ports`_ to jails.
+    * `Redirect SSH ports`_ to jails
 
 Requirements
 ^^^^^^^^^^^^
@@ -286,7 +286,7 @@ pf status
 
 .. literalinclude:: out/out-10.txt
    :language: bash
-   :caption: iocage_05]# cat /etc/pf.conf
+   :caption: [iocage_05]# cat /etc/pf.conf
 
 .. note::
 
