@@ -117,10 +117,10 @@ Workflow
    ``iocage create --short --template <template> --count <count>`` creates
    the required batch of jails with short UUIDs.
 
-4. **Setting Properties and Metadata**:
-   The task file ``properties.yml`` pairs the created UUIDs with the missing
-   project aliases (populating ``project_jails_created``) and applies custom
-   iocage properties along with structured tags in ``notes``:
+4. **Setting Properties and Metadata**: The task file ``properties.yml`` pairs
+   the created UUIDs with the missing project aliases (populating
+   ``project_jails_created``) and applies custom `iocage properties`_ along with
+   structured ``iocage tags`` in `iocage notes`_:
 
    .. code-block:: none
 

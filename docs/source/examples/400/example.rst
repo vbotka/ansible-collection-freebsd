@@ -25,7 +25,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.zfs`_ to configure ZFS pools and datasets.
+Use the role `vbotka.freebsd.zfs`_ to configure `ZFS`_ pools and datasets.
 
 Tree
 ^^^^
@@ -57,8 +57,8 @@ Synopsis
 
   * In the playbook ``pb-zfs.yml``:
 
-    * Create ZFS pools.
-    * Create and mount ZFS datasets.
+    * Create `ZFS pools`_.
+    * Create and mount `ZFS datasets`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -79,6 +79,7 @@ Notes
 
 .. seealso::
 
+   * `ZFS`_
    * `The Z File System (ZFS)`_
    * `FreeBSD Wiki ZFS`_
    * `FreeBSD Wiki Category ZFS`_

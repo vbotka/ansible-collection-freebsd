@@ -20,7 +20,7 @@ Use case
 
 Use the :ref:`filter vbotka.freebsd.to_ast <ug_filter_to_ast>`
 and the :ref:`filter vbotka.freebsd.ast_to_nginx <ug_filter_ast_to_nginx>`
-to create an NGINX configuration.
+to create an `NGINX`_ configuration.
 
 Tree
 ^^^^
@@ -39,11 +39,11 @@ Synopsis
 * In the playbook ``pb-test-ast.yml``, use the :ref:`filter
   vbotka.freebsd.to_ast <ug_filter_to_ast>` to convert a YAML
   dictionary into a crossplane-compatible AST (Abstract Syntax Tree) list for
-  NGINX configuration generation.
+  `NGINX`_ configuration generation.
 
 * In the playbook ``pb-test-nginx.yml``, use the :ref:`filter
   vbotka.freebsd.ast_to_nginx <ug_filter_ast_to_nginx>` to convert a crossplane
-  AST (Abstract Syntax Tree) list into an NGINX configuration.
+  AST (Abstract Syntax Tree) list into an `NGINX`_ configuration.
 
 Requirements
 ^^^^^^^^^^^^

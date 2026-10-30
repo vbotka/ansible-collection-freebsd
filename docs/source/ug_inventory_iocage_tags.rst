@@ -31,7 +31,7 @@ As root on the iocage host, set the ``notes`` property for each jail:
    notes: none -> vmm=iocage_02 project=bar
 
 Update the inventory configuration file ``hosts/02_iocage.yml``. Enable the
-``get_properties`` parameter to retrieve jail properties, compose the
+``get_properties`` parameter to retrieve jail properties, `compose`_ the
 ``iocage_tags`` dictionary, and define ``keyed_groups``:
 
 .. code-block:: yaml+jinja

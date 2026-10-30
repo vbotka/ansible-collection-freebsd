@@ -26,7 +26,7 @@ Fetch releases, create basejails, clone jails from the basejails, and start the
 jails. Create and display the inventory.
 
 * To manage jails, use the tasks ``runner`` from the `role vbotka.freebsd.iocage`_.
-* To parse iocage datasets, use Jinja2.
+* To parse `iocage datasets`_, use Jinja2.
 * To create inventory, use the module ``ansible.builtin.add_host``.
 
 Tree
@@ -62,12 +62,12 @@ Synopsis
   * In the playbook ``pb-iocage-list.yml``, use the `role vbotka.freebsd.iocage`_
     to:
 
-    * Get iocage datasets.
-    * Optionally, display the datasets.
+    * Get `iocage datasets`_.
+    * Optionally, display the `iocage datasets`_.
 
   * In the playbook ``pb-test.yml``:
 
-    * Create the inventory group ``test`` and compose variables.
+    * Create the inventory group ``test`` and `compose`_ variables.
     * Display the hosts and composed variables in the group ``test``.
     * Display inventory groups.
 
@@ -75,7 +75,7 @@ Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Activated ``iocage``.
+* Activated `iocage`_.
 * Root privileges on the managed nodes.
 
 Notes

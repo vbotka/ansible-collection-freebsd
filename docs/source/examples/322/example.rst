@@ -49,7 +49,7 @@ Synopsis
   * Fetch packages and configure a package repository. Use the role
     `vbotka.freebsd.packages`_.
 
-  * Install and configure Nginx to publish the repository. Use the role
+  * Install and configure `Nginx`_ to publish the repository. Use the role
     `vbotka.freebsd.nginx`_.
 
 Requirements

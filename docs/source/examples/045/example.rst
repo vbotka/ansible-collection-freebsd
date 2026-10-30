@@ -40,7 +40,7 @@ Synopsis
 
   * In the playbook ``pb.yml`` use the :ref:`filter
     vbotka.freebsd.combine_properties <ug_filter_combine_properties>` to combine
-    ``properties`` for a dictionary of:
+    `iocage properties`_ for a dictionary of:
 
     * Jails. Create ``default notes``.
 
@@ -48,7 +48,7 @@ Synopsis
 
   * In the playbook ``pb-project.yml`` use the :ref:`filter
     vbotka.freebsd.combine_properties <ug_filter_combine_properties>` to combine
-    ``properties`` for the dictionary ``project``.
+    `iocage properties`_ for the dictionary :ref:`project <ug_concepts_project>`.
 
 Requirements
 ^^^^^^^^^^^^

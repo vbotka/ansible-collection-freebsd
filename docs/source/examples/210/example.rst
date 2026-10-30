@@ -16,7 +16,7 @@
 Use case
 ^^^^^^^^
 
-Test empty iocage notes. Create ``iocage_tags``. The result should be an empty
+Test empty `iocage notes`_. Create ``iocage_tags``. The result should be an empty
 dictionary.
 
 Tree

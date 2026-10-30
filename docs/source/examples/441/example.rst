@@ -30,7 +30,7 @@
 Use case
 ^^^^^^^^
 
-Create multiple jails with auto UUID names. In the inventory, compose the
+Create multiple jails with auto ``UUID``. In the inventory, `compose`_ the
 variables ``ansible_host`` and ``ansible_port`` to connect to the jails via
 redirected SSH ports. See :ref:`example_440` for how `Packet Filter (PF)`_ is
 configured.
@@ -59,20 +59,20 @@ Synopsis
 
 * On a managed node:
 
-  In the playbook :ref:`ug_pb-iocage-ansible-clients`:
+  * In the playbook :ref:`ug_pb-iocage-ansible-clients`:
 
-  * create jails
-  * start jails
-  * optionally, stop and destroy the jails.
+    * create jails
+    * start jails
+    * optionally, stop and destroy the jails.
 
 * Create a dynamic inventory to redirect SSH to the jails.
 
-* For all created jails:
+* On created jails:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * connect to the created jails
-  * display the basic configuration of the jails.
+    * connect to the created jails
+    * display the basic configuration of the jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -81,7 +81,7 @@ Requirements
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage2`
 * Template ``ansible-client`` created in :ref:`example_202`
-* Root privileges on the managed nodes
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -96,17 +96,14 @@ Notes
 
 .. seealso::
 
-   Example :ref:`example_050`
+   :ref:`example_050`
 
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -lt
-
 .. literalinclude:: out/out-01.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -lt
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -158,7 +155,7 @@ host_vars
 
 .. literalinclude:: host_vars/iocage_06.yml
    :language: yaml+jinja
-   :emphasize-lines: 5
+   :emphasize-lines: 11
    :caption:
 
 .. hint::
@@ -166,7 +163,7 @@ host_vars
    If the default iocage option ``defaultrouter=auto`` does not work, set it
    explicitly. This may be needed if the jails are assigned IP addresses via
    DHCP on the bridge. In this case, the defaultrouter for the jails is the IP
-   address of the bridge. pf must provide NAT and redirection. See
+   address of the bridge. `PF`_ must provide `NAT`_ and `redirection`_. See
    :ref:`example_440`.
 
 Playbook output - Create swarms

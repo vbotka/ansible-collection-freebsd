@@ -35,7 +35,7 @@ Use case
 In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the
 option :ref:`hooks_results <ug_inventory_iocage_hooks>` to get the IP address
 set by DHCP. Use the option :ref:`inventory_hostname_tag
-<ug_inventory_iocage_aliases>` to specify which iocage tag to create aliases
+<ug_inventory_iocage_aliases>` to specify which ``iocage tag`` to create aliases
 from. Get the `inventory aliases`_ from the `jail property`_ ``notes``.
 
 Tree

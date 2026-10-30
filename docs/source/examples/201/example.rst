@@ -26,7 +26,7 @@ This example extends :ref:`example_200`.
 Use case
 ^^^^^^^^
 
-Get and display ``iocage`` datasets.
+Get and display `iocage datasets`_.
 
 Tree
 ^^^^
@@ -44,9 +44,14 @@ Synopsis
 
 * On the managed nodes:
 
-  * In the playbook ``pb-iocage-display-datasets.yml``, use the
-    :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` to create
-    and display ``iocage`` datasets.
+  * In the playbook ``pb-iocage-display-datasets.yml``, use the :ref:`module
+    vbotka.freebsd.iocage <ug_module_iocage>` to get `iocage datasets`_ and create
+    variables:
+
+    * iocage_jails
+    * iocage_plugins
+    * iocage_releases
+    * iocage_templates
 
 Requirements
 ^^^^^^^^^^^^

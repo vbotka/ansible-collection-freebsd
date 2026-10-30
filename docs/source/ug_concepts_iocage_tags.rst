@@ -108,7 +108,7 @@ Dictionary iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^
 
 In the :ref:`inventory iocage <ug_inventory_iocage>`, enable the option
-``get_properties`` and compose the dictionary ``iocage_tags``:
+``get_properties`` and `compose`_ the dictionary ``iocage_tags``:
 
 .. code-block:: yaml
 

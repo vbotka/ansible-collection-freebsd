@@ -62,7 +62,7 @@ with multiple names. Use the module ``ansible.builtin.command`` instead. If the
 
 **The variable iocage_tags**
 
-In the inventory plugin, compose the variable ``iocage_tags``:
+In the inventory plugin, `compose`_ the variable ``iocage_tags``:
 
 .. code-block:: yaml
 

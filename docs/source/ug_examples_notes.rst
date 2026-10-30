@@ -12,7 +12,7 @@
 
    * By default, examples that provision jails use the iocage host configuration
      described in :ref:`example_440`. The firewall filters traffic on both the
-     external interface and the VNET bridge interface on the iocage host. DHCP
+     external interface and the `VNET`_ bridge interface on the iocage host. DHCP
      is enabled on the bridge for the jails, and SSH traffic from the local
      network is forwarded to them. Examples that do not use this configuration
      contain a ``.deny`` marker file and are excluded from ``batch.sh``. To run

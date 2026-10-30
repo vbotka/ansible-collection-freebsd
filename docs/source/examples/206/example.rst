@@ -110,7 +110,7 @@ Create two more DHCP jails with generated UUIDs:
 
 The :ref:`module vbotka.freebsd.iocage <ug_module_iocage>` does not work with
 multiple names. Use ``ansible.builtin.command`` instead. Such a task is not
-idempotent anyway if the UUID is generated automatically. Example commands:
+idempotent anyway if the ``UUID`` is generated automatically. Example commands:
 
 .. code-block:: bash
 
@@ -246,7 +246,7 @@ hosts
 
 .. note::
 
-   The option ``get_properties: true`` is needed to compose the dictionary
+   The option ``get_properties: true`` is needed to `compose`_ the dictionary
    ``iocage_tags``.
 
 host_vars

@@ -35,7 +35,7 @@ Synopsis
   * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
 
     * Display variables.
-    * Install the `iocage`_ package.
+    * Install the `iocage package`_.
 
 Requirements
 ^^^^^^^^^^^^

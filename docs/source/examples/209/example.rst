@@ -20,7 +20,7 @@ Use case
 ^^^^^^^^
 
 Use the `role vbotka.freebsd.iocage`_ to create an `iocage`_ package
-list for `automatic package installation`_. Create an iocage template
+list for `automatic package installation`_. Create an `iocage template`_
 for `Apache HTTP Server`_.
 
 Tree
@@ -56,8 +56,8 @@ Synopsis
     create the `iocage`_ package list ``files/pkgs.json`` for `automatic package
     installation`_ of the `Apache HTTP Server`_.
 
-  * In the playbook :ref:`ug_pb-iocage-template` create the iocage
-    template ``ansible-apache``.
+  * In the playbook :ref:`ug_pb-iocage-template` create the `iocage
+    template`_ ``ansible-apache``.
 
 Requirements
 ^^^^^^^^^^^^

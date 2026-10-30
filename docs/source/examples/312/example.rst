@@ -19,7 +19,7 @@ Use case
 ^^^^^^^^
 
 Create ``haproxy`` user and group. Add ``haproxy`` class into the file
-``/etc/login.conf``. Use the role `vbotka.freebsd.postinstall`_ and:ref:`module
+``/etc/login.conf``. Use the role `vbotka.freebsd.postinstall`_ and :ref:`module
 vbotka.freebsd.cgetent <ug_module_cgetent>`.
 
 Tree

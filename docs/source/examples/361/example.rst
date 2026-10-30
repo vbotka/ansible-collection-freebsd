@@ -19,7 +19,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.network`_ to configure ``lagg loadbalance``.
+Use the role `vbotka.freebsd.network`_ to configure `lagg`_ loadbalance.
 
 Tree
 ^^^^

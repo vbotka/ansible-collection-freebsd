@@ -21,8 +21,8 @@
 Use case
 ^^^^^^^^
 
-Clone basejails. Use DHCP to configure the interfaces. Automatically generate
-UUID names for jails and configure inventory aliases.
+Clone basejails. Use `DHCP`_ to configure the interfaces. Automatically generate
+jails ``UUID`` for jails and configure `inventory aliases`_.
 
 Tree
 ^^^^
@@ -63,10 +63,10 @@ Synopsis
 
     * Clone 3 jails from ``ansible-test``:
 
-      * Automatically generate UUID names.
-      * Configure inventory aliases.
+      * Automatically generate jails ``UUID``.
+      * Configure `inventory aliases`_.
 
-    * Display iocage datasets.
+    * Display `iocage datasets`_.
 
   * In the playbook ``pb-iocage-start.yml``, use `iocage`_ to:
 
@@ -80,7 +80,8 @@ Synopsis
 
   * In the playbook ``pb-test.yml``:
 
-    * Display the jails, groups, iocage tags, and selected variables.
+    * Display the jails, groups, :ref:`ug_concepts_iocage_tags`, and selected
+      variables.
 
 Requirements
 ^^^^^^^^^^^^

@@ -29,7 +29,7 @@ This example extends :ref:`example_013`.
 Use case
 ^^^^^^^^
 
-Enable and test the inventory cache.
+Enable and test the `inventory cache`_.
 
 Tree
 ^^^^
@@ -51,13 +51,13 @@ Synopsis
   * Use the :ref:`inventory plugin vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
     * Compose variables and create inventory groups.
-    * Configure inventory ``cache``.
+    * Configure `inventory cache`_.
 
 * On all jails:
 
   * In the playbook ``pb-vars-ip4.yml``:
 
-    * Test the inventory cache.
+    * Test the `inventory cache`_.
 
 * On the controller (localhost):
 

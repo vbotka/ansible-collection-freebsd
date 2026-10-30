@@ -43,7 +43,7 @@ Key Considerations
 
 2. **FreeBSD Conventions**:
    FreeBSD conventions favor hyphens when naming network-facing entities or composite
-   identifiers (such as ``epair`` interfaces created for VNET jails).
+   identifiers (such as ``epair`` interfaces created for `VNET`_ jails).
 
 3. **When Underscores Might Be Used**:
    Some administrators use underscores when a jail's identity maps directly to an existing

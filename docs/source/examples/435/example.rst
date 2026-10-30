@@ -66,10 +66,10 @@ Synopsis
 
   * In the playbook
     :ref:`ug_pb-iocage-project-create-from-templates`,
-    create jails from the template.
+    create jails from the :ref:`project <ug_concepts_project>`.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
-  configure the Nginx servers.
+  configure the `Nginx`_ servers.
 
 Requirements
 ^^^^^^^^^^^^

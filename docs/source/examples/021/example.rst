@@ -72,7 +72,8 @@ Synopsis
 
   * In the playbook ``pb-test.yml``:
 
-    * Display the jails, groups, iocage tags, and selected variables.
+    * Display the jails, groups, :ref:`ug_concepts_iocage_tags` , and selected
+      variables.
 
   * In the playbook ``pb-test-connection-vars.yml``:
 

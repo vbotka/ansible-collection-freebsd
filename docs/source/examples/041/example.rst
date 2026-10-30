@@ -16,7 +16,7 @@ Use case
 ^^^^^^^^
 
 Use the :ref:`filter vbotka.freebsd.project <ug_filter_project>` to restructure
-a project dictionary.
+a :ref:`project <ug_concepts_project>` dictionary.
 
 Tree
 ^^^^

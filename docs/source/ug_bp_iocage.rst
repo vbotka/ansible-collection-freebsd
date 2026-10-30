@@ -3,6 +3,8 @@
 iocage
 ------
 
+See `iocage Best Practices`_.
+
 .. index:: single: iocage; iocage
 .. index:: single: clone jails; iocage
 .. index:: single: base jails; iocage

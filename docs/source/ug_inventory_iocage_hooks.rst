@@ -125,7 +125,7 @@ As admin on the control node, display the inventory:
              iocage_template: ansible-client
              iocage_type: jail
 
-Update ``hosts/02_iocage.yml`` to compose ``ansible_host`` from the
+Update ``hosts/02_iocage.yml`` to `compose`_ ``ansible_host`` from the
 hook output:
 
 .. code-block:: yaml+jinja

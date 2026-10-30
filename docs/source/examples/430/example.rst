@@ -21,9 +21,9 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.certificate`_ to create an SSL certificate. Use the
-role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server - SSL/TLS Strong
-Encryption`_.
+Use the role `vbotka.freebsd.certificate`_ to create an `SSL certificate`_. Use
+the role `vbotka.freebsd.apache`_ to configure `Apache HTTP Server - SSL/TLS
+Strong Encryption`_.
 
 Tree
 ^^^^
@@ -56,7 +56,7 @@ Synopsis
 
 * On the created jails:
 
-  * In the playbook ``pb-certificate.yml``, create an SSL certificate for ``www-2``.
+  * In the playbook ``pb-certificate.yml``, create an `SSL certificate`_ for ``www-2``.
   * Dump the certificate.
   * In the playbook ``pb-apache.yml``, configure and start `Apache HTTP Server`_.
 

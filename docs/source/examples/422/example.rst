@@ -8,6 +8,7 @@
    :depth: 1
 
 .. index::
+   single: PHP; Example 422
    single: Apache PHP; Example 422
    single: mod_php; Example 422
    single: Apache HTTP Server; Example 422
@@ -17,7 +18,7 @@
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.apache`_ to configure PHP in `Apache HTTP Server`_.
+Use the role `vbotka.freebsd.apache`_ to configure `PHP`_ in `Apache HTTP Server`_.
 
 Tree
 ^^^^

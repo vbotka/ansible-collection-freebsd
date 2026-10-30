@@ -17,8 +17,9 @@ This example extends :ref:`example_020`.
 Use case
 ^^^^^^^^
 
-Create `custom facts`_ to provide a dictionary of iocage dataset lists. Use the
-:ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse the dictionary.
+Create `custom facts`_ to provide a dictionary of ``iocage dataset`` lists. Use
+the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse the
+dictionary.
 
 Tree
 ^^^^
@@ -43,14 +44,14 @@ Synopsis
 
   * In the playbook ``pb-test.yml``:
 
-    * Get the custom facts.
+    * Get the `custom facts`_.
 
     * Use the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse
-      the custom facts.
+      the `custom facts`_.
 
   * TODO:
 
-    * Create the inventory group ``test`` and compose variables.
+    * Create the inventory group ``test`` and `compose`_ variables.
     * Display the hosts and composed variables in the group ``test``.
     * Display all groups.
 

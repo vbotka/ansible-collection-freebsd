@@ -19,9 +19,9 @@ Use case
 ^^^^^^^^
 
 Use the `iocage template`_ ``ansible-nginx`` to create jails in the
-``project``. Use the role `vbotka.freebsd.nginx`_ to configure and run `Nginx`_
-servers. Use the role `vbotka.freebsd.haproxy`_ to configure and run `HAProxy`_
-to loadbalance the `Nginx`_ cluster.
+:ref:`project <ug_concepts_project>`. Use the role `vbotka.freebsd.nginx`_ to
+configure and run `Nginx`_ servers. Use the role `vbotka.freebsd.haproxy`_ to
+configure and run `HAProxy`_ to loadbalance the `Nginx`_ cluster.
 
 Tree
 ^^^^
@@ -58,14 +58,15 @@ Synopsis
 
 * On the managed nodes:
 
-  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
-    ``project`` jails from the templates.
+  * In the playbook
+    :ref:`ug_pb-iocage-project-create-from-templates`,
+    create jails from the :ref:`project <ug_concepts_project>`.
 
   * Use the role `vbotka.freebsd.haproxy`_ to configure and run the `HAProxy`_
     loadbalancer.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
-  configure the Nginx cluster.
+  configure the `Nginx`_ cluster.
 
 * Use the script ``test-haproxy.sh`` to test `HAProxy`_.
 

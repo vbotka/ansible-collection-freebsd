@@ -69,7 +69,7 @@ test jails:
    Destroying srv_2
    Destroying srv_3
 
-Create three VNET jails with a DHCP interface from the template
+Create three `VNET`_ jails with a DHCP interface from the template
 ``ansible-client`` using the ``--count`` option:
 
 .. code-block:: console

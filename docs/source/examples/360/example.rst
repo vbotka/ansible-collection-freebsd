@@ -17,7 +17,7 @@ Use case
 ^^^^^^^^
 
 Use the roles `vbotka.freebsd.postinstall`_ and `vbotka.freebsd.network`_ to
-configure bridges.
+configure ``bridges``.
 
 Tree
 ^^^^
@@ -63,6 +63,10 @@ Notes
 
    | `vbotka.freebsd.network`_ is the role **network** in the `collection vbotka.freebsd`_.
    | `vbotka.freebsd_network`_ is the role **freebsd_network** in the namespace `vbotka`_.
+
+.. seealso::
+
+   * `FreeBSD Handbook 7. Network`_
 
 ansible.cfg
 ^^^^^^^^^^^

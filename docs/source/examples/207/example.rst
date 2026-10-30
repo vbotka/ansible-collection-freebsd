@@ -51,11 +51,12 @@
 Use case
 ^^^^^^^^
 
-On multiple iocage hosts, create and run VNET jails with a DHCP interface from
-the template ``ansible-client``. Use the dictionary ``iocage_tags`` and the
+On multiple iocage hosts, create and run `VNET`_ jails with a DHCP interface
+from the template ``ansible-client``. Use the dictionary ``iocage_tags`` and the
 option ``inventory_hostname_tag`` to create `inventory aliases`_. Group the
-jails by iocage hosts, states, and classes. Declare the project in a single
-dictionary. The dictionary keys are jail aliases.
+jails by iocage hosts, states, and classes. Declare the
+:ref:`project<ug_concepts_project>` in a single dictionary. The dictionary keys
+are jail aliases.
 
 Tree
 ^^^^
@@ -93,13 +94,13 @@ Synopsis
     create inventory.
 
   * In the inventory plugin `ansible.builtin.constructed`_ create groups and
-    compose variables:
+    `compose`_ variables:
 
-      * ``iocage_tags``
-      * ``iocage_classes``
-      * ``ansible_host``
-      * ``ansible_jail_host``
-      * ``ansible_jail_name``
+      * iocage_tags
+      * iocage_classes
+      * ansible_host
+      * ansible_jail_host
+      * ansible_jail_name
 
 * On all created jails:
 
@@ -122,6 +123,7 @@ Notes
 
 .. seealso::
 
+   * :ref:`ug_concepts_project`
    * `Inventory aliases`_
    * `Set Jail Property`_
    * `Binary iocage`_

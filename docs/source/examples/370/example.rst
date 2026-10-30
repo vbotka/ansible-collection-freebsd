@@ -53,8 +53,8 @@ Synopsis
 
   * In the playbook ``pb.yml``, configure:
 
-    * ``blacklistd``, ``fail2ban``, and ``sshguard``
-    * NAT
+    * `blacklistd`_, `fail2ban`_, and `sshguard`_
+    * `NAT`_
     * Log all blocked packets
     * Pass traffic from ``localnet`` to any destination
 

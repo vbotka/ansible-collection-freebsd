@@ -65,7 +65,7 @@ Synopsis
     loadbalancer.
 
 * In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
-  configure the Nginx cluster.
+  configure the `Nginx`_ cluster.
 
 * Use the script ``test-haproxy.sh`` to test `HAProxy`_.
 

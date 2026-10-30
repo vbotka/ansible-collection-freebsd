@@ -26,8 +26,8 @@ Use case
 ^^^^^^^^
 
 Use the role `vbotka.freebsd.dhcp`_ to configure `DHCP`_. Use the role
-`vbotka.freebsd.pf`_ to configure `Packet Filter (PF)`_. Redirect ports from the
-local network to SSH services in the jails.
+`vbotka.freebsd.pf`_ to configure `Packet Filter (PF)`_. Configure `NAT`_ and
+`redirect ports`_ from the local network to SSH services in the jails.
 
 Tree
 ^^^^
@@ -77,12 +77,12 @@ Synopsis
 
   * In the playbook ``pb-pf.yml``, configure:
 
-    * ``blacklistd``, ``fail2ban``, and ``sshguard``
-    * NAT
+    * `blacklistd`_, `fail2ban`_, and `sshguard`_
+    * `NAT`_
     * Log all blocked packets
     * Allow SSH, HTTP, and HTTPS from the external network
-    * Pass traffic from ``localnet`` and jails' vnet to any destination
-    * Redirect SSH ports to jails
+    * Pass traffic from ``localnet`` and jails' `VNET`_ to any destination
+    * `Redirect SSH ports`_ to jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -263,42 +263,30 @@ Results
 isc-dhcpd status
 """"""""""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_05 sudo service isc-dhcpd status
-
 .. literalinclude:: out/out-07.txt
    :language: bash
+   :caption: [iocage_05]# service isc-dhcpd status
 
 /usr/local/etc/dhcpd.conf
 """""""""""""""""""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_05 cat /usr/local/etc/dhcpd.conf
-
 .. literalinclude:: out/out-08.txt
    :language: bash
+   :caption: [iocage_05]# cat /usr/local/etc/dhcpd.conf
 
 pf status
 """""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_05 sudo service pf status
-
 .. literalinclude:: out/out-09.txt
    :language: bash
+   :caption: [iocage_05]# service pf status
 
 /etc/pf.conf
 """"""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_05 cat /etc/pf.conf
-
 .. literalinclude:: out/out-10.txt
    :language: bash
+   :caption: iocage_05]# cat /etc/pf.conf
 
 .. note::
 

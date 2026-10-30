@@ -30,7 +30,7 @@ Use case
 ^^^^^^^^
 
 Mount the host directory ``/usr/local/poudriere`` in the jail. Use the role
-`vbotka.freebsd.certificate`_ to create an SSL certificate for
+`vbotka.freebsd.certificate`_ to create an `SSL certificate`_ for
 ``build.foo.bar``. Use the role `vbotka.freebsd.apache`_ to configure an `Apache
 HTTP Server Virtual Host`_ ``build.foo.bar`` to access ``/usr/local/poudriere``.
 
@@ -67,7 +67,7 @@ Synopsis
 
 * On the created jails:
 
-  * In the playbook ``pb-certificate.yml``, create an SSL certificate
+  * In the playbook ``pb-certificate.yml``, create an `SSL certificate`_
     for ``build.foo.bar``.
 
   * In the playbook ``pb-apache.yml``, configure and start the `Apache

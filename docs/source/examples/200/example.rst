@@ -37,7 +37,7 @@ Use case
 ^^^^^^^^
 
 Create the `iocage template`_ ``ansible-client``. Create jails from the
-template. Create variables for connection plugins.
+template. Create variables for `connection plugins`_.
 
 Tree
 ^^^^
