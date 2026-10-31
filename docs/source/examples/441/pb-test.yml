@@ -1,21 +1,30 @@
 - name: Test the SSH redirection to the jails.
   hosts: swarm_sw_01
   gather_facts: false
-    
+
+  vars:
+
+    _vars:
+      - ansible_user
+      - ansible_host
+      - ansible_port
+      - iocage_ip4
+    fmt: "%-10s %-13s %-13s %-13s %-15s"
+
   tasks:
-    
-    - ansible.builtin.debug:
+
+    - debug:
         msg: |
-          ansible_connection: {{ ansible_connection }}
-          ansible_host: {{ ansible_host }}
-          ansible_port: {{ ansible_port }}
-          ansible_user: {{ ansible_user }}
+          {{ fmt | format('inv', 'ansible_user', 'ansible_host', 'ansible_port', 'ip4') }}
+          ------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {{ fmt | format(h, v[0], v[1], v[2], v[3]) }}
+          {% endfor %}
+      run_once: true
 
-          iocage_ip4: {{ iocage_ip4 }}
-          iocage_tags: {{ iocage_tags }}
-
-    - ansible.builtin.command: uname -a
+    - command: uname -a
       register: out
 
-    - ansible.builtin.debug:
+    - debug:
         var: out.stdout

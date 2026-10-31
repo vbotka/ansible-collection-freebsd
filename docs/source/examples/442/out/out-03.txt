@@ -1,65 +1,17 @@
-
-PLAY [Test the connection plugin jailexec.] ************************************
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [7005f3c8] => 
-    msg: |-
-        ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 7005f3c8
-        ansible_user: admin
-
-        ansible_jail_host: iocage_06
-        ansible_jail_name: 34
-        ansible_jail_user: UNDEFINED
-        ansible_jail_privilege_escalation: sudo
-
-        iocage_ip4: 172.16.99.171
-        iocage_tags: {'vmm': 'iocage_06', 'class': 'test', 'swarm': 'sw_01'}
-ok: [2b8fa8d8] => 
-    msg: |-
-        ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: 2b8fa8d8
-        ansible_user: admin
-
-        ansible_jail_host: iocage_06
-        ansible_jail_name: 32
-        ansible_jail_user: UNDEFINED
-        ansible_jail_privilege_escalation: sudo
-
-        iocage_ip4: 172.16.99.168
-        iocage_tags: {'vmm': 'iocage_06', 'class': 'test', 'swarm': 'sw_01'}
-ok: [de54ae9a] => 
-    msg: |-
-        ansible_connection: vbotka.freebsd.jailexec
-        ansible_host: de54ae9a
-        ansible_user: admin
-
-        ansible_jail_host: iocage_06
-        ansible_jail_name: 33
-        ansible_jail_user: UNDEFINED
-        ansible_jail_privilege_escalation: sudo
-
-        iocage_ip4: 172.16.99.169
-        iocage_tags: {'vmm': 'iocage_06', 'class': 'test', 'swarm': 'sw_01'}
-
-TASK [ansible.builtin.command] *************************************************
-changed: [2b8fa8d8]
-changed: [de54ae9a]
-changed: [7005f3c8]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [7005f3c8] => 
-    out.stdout: FreeBSD 7005f3c8 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
-        GENERIC amd64
-ok: [2b8fa8d8] => 
-    out.stdout: FreeBSD 2b8fa8d8 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
-        GENERIC amd64
-ok: [de54ae9a] => 
-    out.stdout: FreeBSD de54ae9a 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
-        GENERIC amd64
-
-PLAY RECAP *********************************************************************
-2b8fa8d8                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-7005f3c8                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-de54ae9a                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
+| 22  | 0145317d      | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.121 | -   | ansible-client   | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 21  | 0fa824cb      | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.118 | -   | ansible-client   | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 20  | 3f767276      | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.149 | -   | ansible-client   | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 1   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 2   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 3   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 4   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+

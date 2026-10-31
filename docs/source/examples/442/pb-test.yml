@@ -1,24 +1,29 @@
 - name: Test the connection plugin jailexec.
   hosts: swarm_sw_01
-    
+  gather_facts: false
+
+  vars:
+
+    _vars:
+      - ansible_user
+      - ansible_jail_host
+      - ansible_jail_name
+    fmt: "%-10s %-13s %-18s %-13s"
+
   tasks:
-    
-    - ansible.builtin.debug:
+
+    - debug:
         msg: |
-          ansible_connection: {{ ansible_connection }}
-          ansible_host: {{ ansible_host }}
-          ansible_user: {{ ansible_user }}
+          {{ fmt | format('inv', 'ansible_user', 'ansible_jail_host', 'ansible_jail_name') }}
+          -------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {{ fmt | format(h, v[0], v[1], v[2]) }}
+          {% endfor %}
+      run_once: true
 
-          ansible_jail_host: {{ ansible_jail_host }}
-          ansible_jail_name: {{ ansible_jail_name }} 
-          ansible_jail_user: {{ ansible_jail_user | d('UNDEFINED') }} 
-          ansible_jail_privilege_escalation: {{ ansible_jail_privilege_escalation }}
-
-          iocage_ip4: {{ iocage_ip4 }}
-          iocage_tags: {{ iocage_tags }}
-
-    - ansible.builtin.command: uname -a
+    - command: uname -a
       register: out
 
-    - ansible.builtin.debug:
+    - debug:
         var: out.stdout

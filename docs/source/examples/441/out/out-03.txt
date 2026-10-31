@@ -1,15 +1,35 @@
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| JID |    NAME     | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
-+=====+=============+======+=======+======+=================+=======================+=====+==================+==========+
-| 32  | 2b8fa8d8    | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.168 | -   | ansible-client   | no       |
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 34  | 7005f3c8    | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.171 | -   | ansible-client   | no       |
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 33  | de54ae9a    | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.169 | -   | ansible-client   | no       |
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 1   | pkg-repo    | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 2   | repos       | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 3   | repos-devel | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
-+-----+-------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+
+PLAY [Create and start jails. Optionally stop and destroy jails.] **************
+
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_06 -> localhost]
+ok: [iocage_05 -> localhost]
+
+TASK [Reject jails without iocage_tags] ****************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [Create swarms.] **********************************************************
+ok: [iocage_05] => (item=sw_01)
+ok: [iocage_06] => (item=sw_01)
+
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_05 -> localhost]
+ok: [iocage_06 -> localhost]
+
+TASK [Reject jails without iocage_tags] ****************************************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
+ok: [iocage_05]
+ok: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
+iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
+

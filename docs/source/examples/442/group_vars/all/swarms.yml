@@ -1,14 +1,14 @@
 swarms:
   sw_01:
     count: 3
-    template: ansible-client
     class: [test]
+    template: ansible-client
 
 properties:
   bpf: 1
   dhcp: 1
   vnet: 1
-  defaultrouter: "{{ project_hosts[inventory_hostname]['defaultrouter'] }}"
+  boot: 1
 
 vmm_swarms: "{{ (project_swarms | vbotka.freebsd.project).vmm }}"
 project_swarms: "{{ dict(swarms.keys()

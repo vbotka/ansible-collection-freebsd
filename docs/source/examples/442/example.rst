@@ -33,6 +33,7 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   └── pb-test.yml
@@ -40,13 +41,15 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Create a dynamic inventory to connect to the jails via
-  :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* On the managed nodes:
 
-* For all created jails, in the playbook ``pb-test.yml``:
+  * Create a dynamic inventory to connect to the jails via
+    :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
-  * connect to the jails
-  * display the basic configuration of the jails.
+* On the created jails, in the playbook ``pb-test.yml``:
+
+  * Display the configuration variables.
+  * Test the connection to the jails.
 
 Requirements
 ^^^^^^^^^^^^
@@ -59,12 +62,13 @@ Notes
 ^^^^^
 
 * The only difference between this example and :ref:`example_441` is the
-  following three lines in the inventory configuration file:
+  following four lines in the inventory configuration file:
 
 .. code-block:: yaml+jinja
 
    ansible_connection: "'vbotka.freebsd.jailexec'"
    ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
+   ansible_jail_name: iocage_jid
    ansible_jail_privilege_escalation: "'sudo'"
 
 .. seealso::
@@ -80,43 +84,44 @@ ansible.cfg
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 9-11
-
-.. note::
-
-   * The default value of the option
-     ``ansible_jail_privilege_escalation`` is ``doas``.
-
-   * See :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
-
-   * In FreeBSD, ``doas`` is not installed by default.
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 5-8
+
+.. note::
+
+   * The default for ``ansible_jail_privilege_escalation`` is ``doas``.
+
+   * In FreeBSD, ``doas`` is not installed by default.
+
+   * See :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
 
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-01.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -131,6 +136,6 @@ Playbook output - Test jailexec
 
    (env) > ansible-playbook -i hosts pb-test.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:

@@ -1,6 +1,16 @@
 plugin: ansible.builtin.constructed
+
+compose:
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
+  ansible_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
+  ansible_port: iocage_ip4 | split('.') | last | int - 100 + 2200
+  ansible_user: "'admin'"
+  ansible_python_interpreter: "'auto_silent'"
+
 keyed_groups:
-  - prefix: swarm
-    key: iocage_tags.swarm
+  - prefix: state
+    key: iocage_state
   - prefix: vmm
     key: iocage_tags.vmm
+  - prefix: swarm
+    key: iocage_tags.swarm
