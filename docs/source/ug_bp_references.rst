@@ -3,6 +3,9 @@
 References
 ----------
 
+.. index::
+   single: references; Best practice
+
 FreeBSD
 ^^^^^^^
 

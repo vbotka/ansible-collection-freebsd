@@ -1,20 +1,20 @@
 .. _ug_connection_jailexec:
 
-.. index:: single: connection vbotka.freebsd.jailexec; connection jailexec
-.. index:: single: vbotka.freebsd.jailexec; connection jailexec
-.. index:: single: jailexec; connection jailexec
-.. index:: single: ansible_connection; connection jailexec
-.. index:: single: ansible_jail_host; connection jailexec
-.. index:: single: ansible_jail_name; connection jailexec
-.. index:: single: ansible_jail_privilege_escalation; connection jailexec
-.. index:: single: ansible_jail_user; connection jailexec
-.. index:: single: ansible_ssh_user; connection jailexec
-.. index:: single: option ansible_connection; connection jailexec
-.. index:: single: option ansible_jail_host; connection jailexec
-.. index:: single: option ansible_jail_name; connection jailexec
-.. index:: single: option ansible_jail_privilege_escalation; connection jailexec
-.. index:: single: option ansible_jail_user; connection jailexec
-.. index:: single: option ansible_ssh_user; connection jailexec
+.. index:: single: connection vbotka.freebsd.jailexec; Connection jailexec
+.. index:: single: vbotka.freebsd.jailexec; Connection jailexec
+.. index:: single: jailexec; Connection jailexec
+.. index:: single: ansible_connection; Connection jailexec
+.. index:: single: ansible_jail_host; Connection jailexec
+.. index:: single: ansible_jail_name; Connection jailexec
+.. index:: single: ansible_jail_privilege_escalation; Connection jailexec
+.. index:: single: ansible_jail_user; Connection jailexec
+.. index:: single: ansible_ssh_user; Connection jailexec
+.. index:: single: option ansible_connection; Connection jailexec
+.. index:: single: option ansible_jail_host; Connection jailexec
+.. index:: single: option ansible_jail_name; Connection jailexec
+.. index:: single: option ansible_jail_privilege_escalation; Connection jailexec
+.. index:: single: option ansible_jail_user; Connection jailexec
+.. index:: single: option ansible_ssh_user; Connection jailexec
 
 Connection vbotka.freebsd.jailexec
 ----------------------------------

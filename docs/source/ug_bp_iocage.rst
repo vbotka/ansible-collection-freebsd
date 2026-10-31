@@ -3,12 +3,13 @@
 iocage
 ------
 
-See `iocage Best Practices`_.
+.. index::
+   single: iocage; Best practice - iocage
+   single: clone jails; Best practice - iocage
+   single: base jails; Best practice - iocage
+   single: thick jails; Best practice - iocage
 
-.. index:: single: iocage; iocage
-.. index:: single: clone jails; iocage
-.. index:: single: base jails; iocage
-.. index:: single: thick jails; iocage
+See `iocage Best Practices`_.
 
 .. seealso::
 

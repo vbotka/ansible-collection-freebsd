@@ -3,6 +3,9 @@
 Workflow
 --------
 
+.. index::
+   single: workflow; Best practice
+
 A standard automation workflow balances native module tasks with role
 runner tasks to handle operations from base provisioning to jail
 orchestration.

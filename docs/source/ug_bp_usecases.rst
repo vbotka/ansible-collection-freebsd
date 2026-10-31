@@ -10,6 +10,9 @@ Use cases
 Dynamic inventory
 ^^^^^^^^^^^^^^^^^
 
+.. index::
+   single: dynamic inventory; Best practice
+
 A common use case involves managing environments where the operator lacks
 ``root`` access on the `iocage`_ host. Unprivileged access on the host is
 sufficient to execute ``iocage list`` commands and generate the ``dynamic
