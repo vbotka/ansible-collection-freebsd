@@ -3,37 +3,38 @@
 019 Inventory option use_vars_plugins
 -------------------------------------
 
-This example extends :ref:`example_016`.
+This example extends :ref:`example_018`.
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: inventory vbotka.freebsd.iocage; Example 019
-.. index:: single: inventory ansible.builtin.constructed; Example 019
-
-.. index:: single: option use_vars_plugins; Example 019
-.. index:: single: use_vars_plugins; Example 019
-.. index:: single: option compose; Example 019
-.. index:: single: compose; Example 019
-.. index:: single: option groups; Example 019
-.. index:: single: groups; Example 019
-
-.. index:: single: vars plugin ansible.builtin.host_group_vars; Example 019
-.. index:: single: variable region; Example 019
+.. index::
+   single: inventory groups; Example 019
+   single: inventory vbotka.freebsd.iocage; Example 019
+   single: inventory ansible.builtin.constructed; Example 019
+   single: option use_vars_plugins; Example 019
+   single: use_vars_plugins; Example 019
+   single: option compose; Example 019
+   single: compose; Example 019
+   single: option groups; Example 019
+   single: groups; Example 019
+   single: option keyed_groups; Example 019
+   single: keyed_groups; Example 019
+   single: ansible.builtin.host_group_vars; Example 019
 
 Use case
 ^^^^^^^^
 
-The option `use_vars_plugins`_, responsible for reading ``host_vars``
-and ``group_vars`` directories, is not available in the
-:ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>` because
-the `constructed fragment`_ does not provide it.
+The option `use_vars_plugins`_, responsible for reading ``host_vars`` and
+``group_vars`` directories, is not available in the inventory plugin
+:ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` because the `constructed
+fragment`_ does not provide it.
 
 * Use the inventory plugin `ansible.builtin.constructed`_ to read
   ``group_vars``.
 
-* Use the variable ``region`` to create the groups ``region_EU`` and
+* Use the variable ``region`` to create inventory groups ``region_EU`` and
   ``region_US``.
 
 Tree
@@ -45,35 +46,53 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
   │   ├── 99_constructed.yml
   │   └── group_vars
-  │       ├── test_02
+  │       ├── test_CA
   │       │   └── region.yml
-  │       └── test_04
+  │       └── test_NL
   │           └── region.yml
-  ├── pb-test-all.yml
-  └── pb-test-EU.yml
+  ├── pb-test.yml
+  └── pb-test-region.yml
 
 Synopsis
 ^^^^^^^^
 
-* The :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-  plugin retrieves the jails (managed nodes):
+* On the managed nodes:
 
-  * ``test_111:113`` from host ``iocage_02``
-  * ``test_131:133`` from host ``iocage_04``
+  * Use the inventory plugin :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-  and creates the inventory groups ``test_02`` and ``test_04``.
+    * Retrieve the jails ``test_511:513`` from the host ``iocage_05``.
+    * Retrieve the jails ``test_611:613`` from the host ``iocage_06``.
+    * Create inventory groups ``test_CA`` and ``test_NL``.
 
-* The inventory plugin `ansible.builtin.constructed`_ creates the
-  inventory groups:
+  * Use the inventory plugin `ansible.builtin.constructed`_ to create the
+    inventory groups:
 
-  * ``test`` comprising hosts whose names start with ``'test'``
-  * ``test_up`` comprising running hosts whose names start with ``'test'``
-  * ``region_EU`` comprising hosts where the variable ``region`` is ``'EU'``
-  * ``region_US`` comprising hosts where the variable ``region`` is ``'US'``
+    * ``region_EU`` comprising hosts where the variable ``region`` is ``'EU'``.
+    * ``region_US`` comprising hosts where the variable ``region`` is ``'US'``.
+    * ``example_018`` comprising hosts where the variable ``iocage_classes``
+      contains ``'example_018'``.
+
+* On the jails in the group ``example_018``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display the jails, groups, and selected variables.
+
+* On the jails in the groups ``region_EU`` and ``region_US``:
+
+  * In the playbook ``pb-test-region.yml``:
+
+    * Display the jails and selected variables.
+
+Requirements
+^^^^^^^^^^^^
+
+* :ref:`ug_inventory_iocage`
+* Jails created in the example :ref:`example_018`.
 
 Notes
 ^^^^^
@@ -85,27 +104,7 @@ Notes
 
    * `Documentation fragments`_
    * The `vars plugin ansible.builtin.host_group_vars`_
-   * :ref:`example_016`
-
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
-   :language: console
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
-
-.. literalinclude:: out/out-02.txt
-   :language: console
+   * :ref:`example_018`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -116,37 +115,31 @@ ansible.cfg
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 2
+   :emphasize-lines: 2,10-11
 
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: hosts/group_vars/test_02/region.yml
+.. literalinclude:: hosts/group_vars/test_CA/region.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: hosts/group_vars/test_04/region.yml
+.. literalinclude:: hosts/group_vars/test_NL/region.yml
    :language: yaml+jinja
    :caption:
 
-.. hint::
-
-   Run the command below to see the complete inventory::
-
-     shell> ansible-inventory -i hosts --list --yaml
-
-.. warning::
+.. important::
 
    In the inventory plugin `ansible.builtin.constructed`_:
 
@@ -156,40 +149,62 @@ group_vars
    * The **playbook** ``group_vars`` and ``host_vars`` are
      silently ignored.
 
-   See `Variable precedence. Where should I put a variable?`_
+   See: `Variable precedence. Where should I put a variable?`_
 
-Playbook pb-test-all.yml
+Graph
+^^^^^
+
+.. literalinclude:: out/out-01.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
+
+.. hint::
+
+   Run the command below to see the complete inventory::
+
+     (env) > ansible-inventory -i hosts --list --yaml
+
+Jails
+^^^^^
+
+.. literalinclude:: out/out-02.txt
+   :language: console
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
+   :language: console
+   :caption: [iocage_06]# iocage list -l
+
+Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-all.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - List groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-test-all.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
-Playbook pb-test-EU.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-region.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-EU.yml
+.. literalinclude:: pb-test-region.yml
    :language: yaml+jinja
 
-Playbook output - EU running hosts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Limit the EU region to running hosts.
+Playbook output - List jails in region
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts -l test_up pb-test-EU.yml
+   (env) > ansible-playbook -i hosts pb-test-region.yml
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-05.txt
    :language: yaml+jinja
    :force:

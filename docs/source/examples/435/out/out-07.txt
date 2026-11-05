@@ -1,9 +1,15 @@
-total 12
-drwxr-xr-x   8 git_daemon git_daemon  8 Aug 19 08:34 .
-drwxr-xr-x  11 root       wheel      11 Aug 19 08:33 ..
-drwxr-xr-x   5 git_daemon git_daemon 11 Aug 19 08:34 ansible-conf-init
-drwxr-xr-x   3 git_daemon git_daemon  9 Aug 19 08:34 ansible-conf-init-example
-drwxr-xr-x   4 git_daemon git_daemon 10 Aug 19 08:34 ansible-conf-roles
-drwxr-xr-x   6 git_daemon git_daemon 12 Aug 19 08:34 ansible-conf-syslogng-client
-drwxr-xr-x   5 git_daemon git_daemon 11 Aug 19 08:34 ansible-conf-syslogng-server
-drwxr-xr-x   3 git_daemon git_daemon  9 Aug 19 08:34 ansible-conf-test
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
+| 1   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 2   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 3   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 4   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 13  | www-61        | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.111 | -   | ansible-nginx    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 14  | www-62        | on   | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.195 | -   | ansible-nginx    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+

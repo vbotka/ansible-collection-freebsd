@@ -1,6 +1,6 @@
 .. _example_502:
 
-502 branch-server
+502 Branch server
 -----------------
 
 (WIP)
@@ -9,18 +9,16 @@
    :local:
    :depth: 1
 
-.. index:: single: branch-server; Example 502
-
-.. index:: single: role vbotka.freebsd.config_light; Example 502
-.. index:: single: vbotka.freebsd.config_light; Example 502
-.. index:: single: config_light; Example 502
-
-.. index:: single: log server; Example 502
-.. index:: single: syslog-ng; Example 502
-
-.. index:: single: git daemon; Example 502
-.. index:: single: git_daemon_flags; Example 502
-.. index:: single: git server; Example 502
+.. index::
+   single: branch-server; Example 502
+   single: role vbotka.freebsd.config_light; Example 502
+   single: vbotka.freebsd.config_light; Example 502
+   single: config_light; Example 502
+   single: log server; Example 502
+   single: syslog-ng; Example 502
+   single: git daemon; Example 502
+   single: git_daemon_flags; Example 502
+   single: git server; Example 502
 
 Use case
 ^^^^^^^^

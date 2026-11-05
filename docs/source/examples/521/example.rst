@@ -18,10 +18,10 @@
 .. index:: single: enabled_plugins; Example 521
 
 .. index:: single: ansible-pull; Example 521
-.. index:: single: ansible-pull repo ansible-conf-syslogng-server; Example 521
-.. index:: single: ansible-pull repo ansible-conf-syslogng-client; Example 521
 .. index:: single: ansible-conf-syslogng-server; Example 521
 .. index:: single: ansible-conf-syslogng-client; Example 521
+.. index:: single: repo ansible-conf-syslogng-server; Example 521
+.. index:: single: repo ansible-conf-syslogng-client; Example 521
 
 .. index:: single: iocage plugins; Example 521
 .. index:: single: iocage plugin ansible-pull-syslogng-server; Example 521
@@ -113,8 +113,8 @@ Requirements
 
 .. important::
 
-   For security reasons, you might want to create private repositories
-   with the iocage plugins and configurations. See :ref:`example_523`.
+   For security reasons, you might want to create private repositories with the
+   iocage plugins and configurations. See the example :ref:`example_523`.
 
 .. note::
 
@@ -205,7 +205,7 @@ Playbook output - Clone jails from iocage plugins
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-create-jails.yml
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja

@@ -3,32 +3,33 @@
 014 Inventory cache
 -------------------
 
-This example extends :ref:`example_010`.
+This example extends :ref:`example_013`.
 
 .. contents::
    :local:
    :depth: 1
 
-.. index:: single: cache; Example 014
-.. index:: single: cache_plugin; Example 014
-.. index:: single: cache_prefix; Example 014
-.. index:: single: compose; Example 014
-.. index:: single: community.general.timestamp; Example 014
-.. index:: single: inventory vbotka.freebsd.iocage; Example 014
-.. index:: single: iocage_ip4_dict; Example 014
-.. index:: single: keyed_groups; Example 014
-.. index:: single: option cache; Example 014
-.. index:: single: option cache_plugin; Example 014
-.. index:: single: option cache_prefix; Example 014
-.. index:: single: option compose; Example 014
-.. index:: single: option keyed_groups; Example 014
-.. index:: single: variable iocage_ip4_dict; Example 014
-.. index:: single: option --flush-cache; Example 014
+.. index::
+   single: cache; Example 014
+   single: inventory cache; Example 014
+   single: cache_plugin; Example 014
+   single: cache_prefix; Example 014
+   single: compose; Example 014
+   single: community.general.timestamp; Example 014
+   single: inventory vbotka.freebsd.iocage; Example 014
+   single: iocage_ip4_dict; Example 014
+   single: keyed_groups; Example 014
+   single: option cache; Example 014
+   single: option cache_plugin; Example 014
+   single: option cache_prefix; Example 014
+   single: option compose; Example 014
+   single: option keyed_groups; Example 014
+   single: variable iocage_ip4_dict; Example 014
 
 Use case
 ^^^^^^^^
 
-Enable and test the inventory cache.
+Enable and test the `inventory cache`_.
 
 Tree
 ^^^^
@@ -45,18 +46,30 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* Fetch dynamic inventory using the :ref:`inventory
-  vbotka.freebsd.iocage <ug_inventory_iocage>`
+  * Use the inventory plugin :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to:
 
-* Configure and test ``cache``
+    * Compose variables and create inventory groups.
+    * Configure `inventory cache`_.
+
+* On all jails:
+
+  * In the playbook ``pb-vars-ip4.yml``:
+
+    * Test the `inventory cache`_.
+
+* On the controller (localhost):
+
+  * In the playbook ``pb-cache-dump.yml``:
+
+    * Display the content of a cache file.
 
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`
-* Jails created in :ref:`example_010`
+* :ref:`ug_inventory_iocage`
+* Jails created in the example :ref:`example_013`.
 
 .. seealso::
 
@@ -72,11 +85,9 @@ ansible.cfg
 Inventory iocage.yml
 ^^^^^^^^^^^^^^^^^^^^
 
-Enable cache.
-
 .. literalinclude:: iocage.yml
    :language: yaml+jinja
-   :emphasize-lines: 7-11
+   :emphasize-lines: 5-9
 
 .. hint::
 
@@ -99,57 +110,33 @@ Playbook pb-vars-ip4.yml
    :language: yaml+jinja
    :caption:
 
-Playbook output - Clear cache
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In this particular case, it takes 4 seconds to create the dynamic
-inventory and construct the variables after the ``cache`` has been
-cleared (flushed).
+Playbook output - Cache timing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > date +%r; \
            ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook -i iocage.yml -l test_113 --flush-cache pb-vars-ip4.yml
+           ansible-playbook -i iocage.yml pb-vars-ip4.yml
+   (env) > sleep 1
+   (env) > date +%r; \
+           ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
+           ansible-playbook -i iocage.yml pb-vars-ip4.yml
 
 .. literalinclude:: out/out-01.txt
-   :language: bash
-   :emphasize-lines: 1,3
-
-Playbook output - Cache enabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If ``cache`` is enabled, the inventory and variables are provided by
-the cache immediately.
-
-.. code-block:: console
-
-   (env) > date +%r; \
-           ANSIBLE_STDOUT_CALLBACK=community.general.timestamp \
-           ansible-playbook -i iocage.yml -l test_113 pb-vars-ip4.yml
+   :language: yaml
 
 .. literalinclude:: out/out-02.txt
-   :language: yaml+jinja
-   :force:
-   :emphasize-lines: 1,3
+   :language: yaml
 
-.. hint::
+.. important::
 
-   Use the option `--flush-cache`_ to clear the cache.
+   See: :ref:`ug_qa_cache_fact_vs_inventory`
 
 Cache
 ^^^^^
 
-Inspect the cache file. For example:
-
-.. code-block:: console
-
-   shell> cat /var/tmp/inventory_cache/iocage_vbotka.freebsd.iocage_a5393s_956f5
-
-.. literalinclude:: out/out-03.txt
-   :language: json
-
-The cache format changed in Ansible 2.19. Use the playbook below to inspect the cache:
+Use the below playbook to inspect the cache:
 
 .. literalinclude:: pb-cache-dump.yml
    :language: yaml+jinja
@@ -159,32 +146,9 @@ For example:
 
 .. code-block:: console
 
-   shell> ansible-playbook -e cache_file=/var/tmp/inventory_cache/iocage_04_s1_vbotka.freebsd.iocage_kfb2392 \
-                           pb-cache-dump.yml
+   (env) > ansible-playbook \
+           -e cache_file=/var/tmp/inventory_cache/iocage_05_s1_vbotka.freebsd.iocage_ka06f2d \
+           pb-cache-dump.yml
 
-.. code-block:: yaml+jinja
-
-   PLAY [Dump cache.] *************************************************************
-
-   TASK [assert] ******************************************************************
-   ok: [localhost]
-
-   TASK [debug] *******************************************************************
-   ok: [localhost] =>
-       cache.__payload__ | from_yaml:
-           _meta:
-               hostvars:
-                   test_4:
-                       iocage_basejail: 'no'
-                       iocage_boot: 'off'
-                       iocage_hooks:
-                       - '-'
-                       iocage_ip4: '-'
-                       iocage_ip4_dict:
-                           ip4: []
-                           msg: '-'
-                       iocage_ip6: '-'
-                       iocage_jid: None
-                       iocage_properties:
-                           CONFIG_VERSION: '33'
-       ...
+.. literalinclude:: out/out-03.txt
+   :language: yaml

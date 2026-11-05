@@ -7,25 +7,29 @@
    :local:
    :depth: 1
 
-.. index:: single: DHCP; Example 440
-.. index:: single: bridge; Example 440
-.. index:: single: wlan; Example 440
-.. index:: single: pf; Example 440
-.. index:: single: pf port redirection; Example 440
-.. index:: single: port redirection; Example 440
-.. index:: single: redirection of ports; Example 440
-.. index:: single: firewall; Example 440
-.. index:: single: role vbotka.freebsd.dhcp; Example 440
-.. index:: single: role vbotka.freebsd.pf; Example 440
-.. index:: single: vbotka.freebsd.dhcp; Example 440
-.. index:: single: vbotka.freebsd.pf; Example 440
+.. index::
+   single: DHCP; Example 440
+   single: bridge; Example 440
+   single: wlan; Example 440
+   single: pf; Example 440
+   single: /etc/pf.conf; Example 440
+   single: pf port redirection; Example 440
+   single: port redirection; Example 440
+   single: redirection of ports; Example 440
+   single: firewall; Example 440
+   single: role vbotka.freebsd.dhcp; Example 440
+   single: role vbotka.freebsd.pf; Example 440
+   single: vbotka.freebsd.dhcp; Example 440
+   single: vbotka.freebsd.pf; Example 440
 
 Use case
 ^^^^^^^^
 
-Use the role `vbotka.freebsd.dhcp`_ to configure DHCP. Use the role
-`vbotka.freebsd.pf`_ to configure pf. Redirect ports from the local network to
-SSH services in the jails.
+Use the role `vbotka.freebsd.dhcp`_ to configure `DHCP`_. Use the role
+`vbotka.freebsd.pf`_ to configure `Packet Filter (PF)`_. Configure `NAT`_ and
+`redirect ports`_ from the local network to SSH services in the jails.
+
+See the best practice :ref:`ug_bp_connection_ssh_rdr`.
 
 Tree
 ^^^^
@@ -38,45 +42,49 @@ Tree
   ├── files
   │   └── pf-rdr-ssh.conf
   ├── host_vars
-  │   └── iocage_06
+  │   └── iocage_05
   │       ├── dhcp.yml
   │       └── pf.yml
   ├── iocage.ini
   ├── pb-dhcp.yml
   ├── pb-pf-setup.yml
-  └── pb-pf.yml
+  ├── pb-pf.yml
+  └── templates
+      └── default.conf.j2
 
 Synopsis
 ^^^^^^^^
 
-* The Ansible controller connects to the managed node on the WLAN interface
-  configured in ``/etc/rc.conf``:
+* On the managed nodes:
 
-  .. code-block:: ini
+  * The Ansible controller connects to the managed node on the interface
+    configured in ``/etc/rc.conf``:
 
-     gateway_enable="YES"
-     defaultrouter="10.30.10.1"
-     cloned_interfaces="bridge0"
-     ifconfig_bridge0="inet 172.16.99.1/24"
-     wlans_iwm0="wlan0"
-     create_args_wlan0="country US"
-     ifconfig_wlan0="WPA SYNCDHCP"
-     dhcpd_ifaces="bridge0"
+    .. code-block:: ini
 
-* In the playbook ``pb-dhcp.yml`` configure:
+       gateway_enable="YES"
+       defaultrouter="172.16.0.1"
+       cloned_interfaces="bridge0"
+       ifconfig_bridge0="inet 172.16.95.1/24"
+       wlans_iwm0="wlan0"
+       create_args_wlan0="country US"
+       ifconfig_wlan0="WPA SYNCDHCP"
+       dhcpd_ifaces="bridge0"
 
-  * subnet 172.16.99.0/24
-  * routers [172.16.99.1]
-  * range 100-200
+  * In the playbook ``pb-dhcp.yml``, configure:
 
-* In the playbook ``pb-pf.yml`` configure:
+    * Subnet 172.16.95.0/24
+    * Routers [172.16.95.1]
+    * Range 100-199
 
-  * blacklistd, fail2ban, and sshguard
-  * NAT
-  * log all blocked
-  * allow SSH, HTTP, and HTTPS from the external network
-  * pass from localnet and jails' vnet to any
-  * redirect SSH ports to jails
+  * In the playbook ``pb-pf.yml``, configure:
+
+    * `blacklistd`_, `fail2ban`_, and `sshguard`_
+    * `NAT`_
+    * Log all blocked packets
+    * Allow SSH, HTTP, and HTTPS from the external network
+    * Pass traffic from ``localnet`` and jails' `VNET`_ to any destination
+    * `Redirect SSH ports`_ to jails
 
 Requirements
 ^^^^^^^^^^^^
@@ -88,8 +96,6 @@ Requirements
 Notes
 ^^^^^
 
-* In this example, the controller uses Wi-Fi to connect to the managed node.
-
 * Adjust the following settings to match your network environment:
 
   * ``/etc/rc.conf``:
@@ -100,16 +106,16 @@ Notes
 
   * ``dhcp.yml``:
 
-    * bsd_dhcpd_subnet
-    * bsd_dhcpd_subnet_from
-    * bsd_dhcpd_subnet_to
-    * bsd_dhcpd_routers
+    * ``bsd_dhcpd_subnet``
+    * ``bsd_dhcpd_subnet_from``
+    * ``bsd_dhcpd_subnet_to``
+    * ``bsd_dhcpd_routers``
 
   * ``pf.yml``:
 
-    * pf_local_net
-    * pf_jail_net
-    * pf_ssh_redirected_ports
+    * ``pf_local_net``
+    * ``pf_jail_net``
+    * ``pf_ssh_redirected_ports``
 
 .. note::
 
@@ -124,7 +130,6 @@ Notes
    * FreeBSD Handbook `Firewalls`_
    * FreeBSD Forum `pf and bridge`_
    * `man 4 if_bridge`_
-   * `Dell XPS 13 9365 15.0-RELEASE dmesg`_ used as ``iocage_05``
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -138,28 +143,14 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-files
-^^^^^
-
-.. literalinclude:: files/pf-rdr-ssh.conf
-   :lines: 1-10
-   :language: console
-   :caption:
-
-.. note::
-
-   * The above listing is limited to the first 10 lines.
-
-   * See the playbook ``pb-pf-setup.yml`` below for how to create the file.
-
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/dhcp.yml
+.. literalinclude:: host_vars/iocage_05/dhcp.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/pf.yml
+.. literalinclude:: host_vars/iocage_05/pf.yml
    :language: yaml+jinja
    :caption:
 
@@ -199,8 +190,8 @@ Playbook pb-pf-setup.yml
 .. literalinclude:: pb-pf-setup.yml
    :language: yaml+jinja
 
-Playbook output - Create files/pf-rdr-ssh.conf
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -209,6 +200,18 @@ Playbook output - Create files/pf-rdr-ssh.conf
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
    :force:
+
+files
+^^^^^
+
+.. literalinclude:: files/pf-rdr-ssh.conf
+   :lines: 1-4
+   :language: console
+   :caption:
+
+.. note::
+
+   * The above listing is limited to the first 4 lines.
 
 Playbook pb-pf.yml
 ^^^^^^^^^^^^^^^^^^
@@ -232,27 +235,11 @@ Playbook output - Install packages
 Playbook output - Configure pf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting and restarting the firewall breaks active SSH connections (see the
-handlers for details). Consequently, both the start and reload handlers can
-fail to complete cleanly, causing the SSH session to go stale. Therefore,
-configure the rules first before enabling the service:
-
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -e pf_enable=false pb-pf.yml
+   (env) > ansible-playbook -i iocage.ini pb-pf.yml
 
 .. literalinclude:: out/out-05.txt
-   :language: yaml+jinja
-   :force:
-
-Playbook output - Enable pf
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i iocage.ini -t pf_rcconf_pf pb-pf.yml
-
-.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:
 
@@ -262,46 +249,34 @@ Results
 isc-dhcpd status
 """"""""""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo service isc-dhcpd status
-
 .. literalinclude:: out/out-07.txt
    :language: bash
+   :caption: [iocage_05]# service isc-dhcpd status
 
 /usr/local/etc/dhcpd.conf
 """""""""""""""""""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 cat /usr/local/etc/dhcpd.conf
-
 .. literalinclude:: out/out-08.txt
    :language: bash
+   :caption: [iocage_05]# cat /usr/local/etc/dhcpd.conf
 
 pf status
 """""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo service pf status
-
 .. literalinclude:: out/out-09.txt
    :language: bash
+   :caption: [iocage_05]# service pf status
 
 /etc/pf.conf
 """"""""""""
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 cat /etc/pf.conf
-
 .. literalinclude:: out/out-10.txt
    :language: bash
+   :caption: [iocage_05]# cat /etc/pf.conf
 
 .. note::
 
    To connect via SSH to a jail (for example, a jail at IP
-   172.16.99.114), run::
+   172.16.95.114), run::
 
-     shell> ssh -p 2214 admin@iocage_06
+     shell> ssh -p 2314 admin@iocage_05

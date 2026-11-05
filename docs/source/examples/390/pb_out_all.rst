@@ -1,7 +1,7 @@
 poudriere - all tasks
 ^^^^^^^^^^^^^^^^^^^^^
 
-Optionally, do not display ``ok`` hosts
+Optionally, do not display ``ok`` hosts:
 
 .. code-block:: console
 

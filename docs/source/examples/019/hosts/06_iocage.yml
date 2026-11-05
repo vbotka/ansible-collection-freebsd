@@ -1,0 +1,8 @@
+plugin: vbotka.freebsd.iocage
+host: iocage_06
+user: admin
+sudo: true
+get_properties: true
+inventory_hostname_tag: alias
+groups:
+  test_NL: inventory_hostname.startswith('test')

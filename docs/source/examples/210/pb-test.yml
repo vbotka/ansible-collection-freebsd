@@ -1,5 +1,5 @@
 - name: Test empty iocage notes.
-  hosts: test-210
+  hosts: test-611
 
   tasks:
 

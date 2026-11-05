@@ -177,8 +177,8 @@ Plugins
 .. literalinclude:: out/out-02.txt
    :language: bash
 
-Playbook output - Create and start swarms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -217,8 +217,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Test connection plugin jailexec
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test jailexec
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

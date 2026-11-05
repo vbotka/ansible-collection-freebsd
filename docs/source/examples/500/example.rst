@@ -3,6 +3,8 @@
 500 syslog-ng server and syslog-ng clients
 ------------------------------------------
 
+(NOT UPDATED WITH version 1.1.0)
+
 .. contents::
    :local:
    :depth: 1
@@ -68,7 +70,7 @@ Configure and run a log server. Configure log clients and test them. Use
 
   .. code-block:: console
 
-     (env) > ansible-playbook -i iocage.ini -i hosts pb-iocage-project-create.yml
+     (env) > ansible-playbook -i hosts -i iocage.ini pb-iocage-project-create.yml
 
 Tree
 ^^^^
@@ -109,12 +111,12 @@ Synopsis
 * In the inventory group ``logserv``:
 
   * Install `sysutils/syslog-ng`_.
-  * Configure `syslog-ng Server`_.
+  * Configure `syslog-ng server`_.
 
 * In the inventory group ``logclient``:
 
   * Install `sysutils/syslog-ng`_.
-  * Configure `syslog-ng Client`_.
+  * Configure `syslog-ng client`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -230,8 +232,8 @@ Install the package if you are running this play for the first time.
    :language: yaml+jinja
    :force:
 
-Test the Log Server
-^^^^^^^^^^^^^^^^^^^
+Test Log Server
+^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

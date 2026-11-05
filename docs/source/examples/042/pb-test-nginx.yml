@@ -20,5 +20,5 @@
 
     - debug:
         msg: |
-          {{ nginx_conf | vbotka.freebsd.dict_to_ast
+          {{ nginx_conf | vbotka.freebsd.to_ast
                         | vbotka.freebsd.ast_to_nginx }}

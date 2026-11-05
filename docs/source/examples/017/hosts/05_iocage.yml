@@ -1,0 +1,7 @@
+plugin: community.general.iocage
+host: iocage_05
+user: admin
+compose:
+  ansible_host: iocage_ip4
+groups:
+  test_05: inventory_hostname.startswith('test')

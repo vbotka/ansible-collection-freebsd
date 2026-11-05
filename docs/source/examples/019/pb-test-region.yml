@@ -1,0 +1,41 @@
+- name: Test region EU.
+  hosts: region_EU
+  vars:
+    _vars:
+      - iocage_jid
+      - ansible_host
+      - iocage_release
+      - iocage_state
+      - region
+    fmt: "%-10s %-3s %-16s %-16s %-6s %-2s"
+  tasks:
+    - debug:
+        msg: |
+          inv        id  ansible_host     release          state  region
+          --------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {{ fmt | format(h, v[0], v[1], v[2], v[3], v[4]) }}
+          {% endfor %}
+      run_once: true
+
+- name: Test region US.
+  hosts: region_US
+  vars:
+    _vars:
+      - iocage_jid
+      - ansible_host
+      - iocage_release
+      - iocage_state
+      - region
+    fmt: "%-10s %-3s %-16s %-16s %-6s %-2s"
+  tasks:
+    - debug:
+        msg: |
+          inv        id  ansible_host     release          state  region
+          --------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {% set v = _vars | map('extract', hostvars[h]) | map('string') %}
+          {{ fmt | format(h, v[0], v[1], v[2], v[3], v[4]) }}
+          {% endfor %}
+      run_once: true

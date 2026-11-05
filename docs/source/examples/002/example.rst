@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.iocage; Example 002
-.. index:: single: iocage activate; Example 002
-.. index:: single: activate iocage; Example 002
+.. index::
+   single: role vbotka.freebsd.iocage; Example 002
+   single: iocage activate; Example 002
+   single: activate iocage; Example 002
 
 Use case
 ^^^^^^^^
@@ -21,13 +22,11 @@ Tree
 
 ::
 
-  shell> tree
+  shell> tree .
   .
   ├── ansible.cfg
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   ├── iocage_04
+  │   ├── iocage_05
   │   │   └── iocage.yml
   │   └── iocage_06
   │       └── iocage.yml
@@ -37,25 +36,21 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to:
+* On the managed nodes:
 
-  * Activate `iocage`_
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
+
+    * Activate `iocage`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes
-* The `iocage`_ binary
+* The `iocage`_ binary.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
-
-* Pass ``-l iocage_0X`` on the command line to run the play on the managed
-  node ``iocage_0X``.
-
-* Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
 
 * By default, ``iocage`` activation is disabled:
   ``freebsd_iocage_activate: false``.
@@ -79,11 +74,7 @@ Inventory iocage.ini
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -111,7 +102,7 @@ Playbook output - Activate iocage
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -l iocage_06 \
+   (env) > ansible-playbook -i iocage.ini \
                             -t freebsd_iocage_activate \
                             -e freebsd_iocage_activate=true \
                             -e freebsd_iocage_debug=true \

@@ -3,29 +3,47 @@
 # shellcheck disable=SC1091
 . ../defaults/batch
 
-# Destroy jails foo and bar
-ssh admin@iocage_06 sudo iocage destroy -f foo
+# Destroy jails. (foo, bar)
+ssh admin@iocage_05 sudo iocage destroy -f foo
 ssh admin@iocage_06 sudo iocage destroy -f bar
 
-# Destroy template ansible-init
-# ssh admin@iocage_06 sudo iocage destroy -f ansible-init
+# By default, use the template ansible-init, created in 529. If the template
+# does not exist run 529 first.
 
-# Create template
-ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt
+# In batch, manage templates.
+# if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
+#     # Destroy templates.
+#     ssh admin@iocage_05 sudo iocage destroy -f ansible-init
+#     ssh admin@iocage_06 sudo iocage destroy -f ansible-init
+#     # Create templates.
+#     ansible-playbook -i iocage.ini pb-iocage-template.yml | tee out/out-01.txt
+# fi
 
-# List templates
-ssh admin@iocage_06 sudo iocage list -lt | tee out/out-02.txt
+# Templates.
+ssh admin@iocage_05 sudo iocage list -lt | tee out/out-02.txt
+ssh admin@iocage_06 sudo iocage list -lt | tee out/out-03.txt
 
-# Create and start project jails from iocage templates
-ansible-playbook -i iocage.ini -i hosts vbotka.freebsd.pb_iocage_project_create_from_templates.yml | tee out/out-03.txt
+# Create jails.
+ansible-playbook -i hosts -i iocage.ini vbotka.freebsd.pb_iocage_project_create_from_templates.yml | tee out/out-04.txt
 
-# Graph
-ansible-inventory -i hosts --graph | tee out/out-04.txt
+# Graph.
+ansible-inventory -i hosts --graph | tee out/out-05.txt
 
-# Jails
-ssh admin@iocage_06 sudo iocage list -l | tee out/out-05.txt
+# Jails.
+ssh admin@iocage_05 sudo iocage list -l | tee out/out-06.txt
+ssh admin@iocage_06 sudo iocage list -l | tee out/out-07.txt
 
-# Test (if at=now set sleep 90)
+# Test. (if at=now set sleep 90)
 sleep 5
-ssh admin@iocage_06 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt" | tee out/out-06.txt
-ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt" | tee out/out-07.txt
+ssh admin@iocage_05 sudo iocage exec foo "cat /tmp/ansible-hello-world.txt" | tee out/out-08.txt
+ssh admin@iocage_06 sudo iocage exec bar "cat /tmp/ansible-hello-world.txt" | tee out/out-09.txt
+
+# In batch, stop and destroy jails.
+if [ "${VBOTKA_FREEBSD_BATCH:-}" = "true" ]; then
+    ssh admin@iocage_05 sudo iocage stop foo
+    ssh admin@iocage_06 sudo iocage stop bar
+    ssh admin@iocage_05 sudo iocage destroy -f foo
+    ssh admin@iocage_06 sudo iocage destroy -f bar
+fi
+
+touch .done

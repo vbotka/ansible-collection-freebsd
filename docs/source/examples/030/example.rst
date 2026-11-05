@@ -1,7 +1,7 @@
 .. _example_030:
 
-030 Create custom facts
------------------------
+030 Custom facts
+----------------
 
 This example extends :ref:`example_020`.
 
@@ -9,15 +9,17 @@ This example extends :ref:`example_020`.
    :local:
    :depth: 1
 
-.. index:: single: custom facts; Example 030
-.. index:: single: filter vbotka.freebsd.iocage; Example 030
-.. index:: single: role vbotka.freebsd.iocage; Example 030
+.. index::
+   single: custom facts; Example 030
+   single: filter vbotka.freebsd.iocage; Example 030
+   single: role vbotka.freebsd.iocage; Example 030
 
 Use case
 ^^^^^^^^
 
-Create custom facts to provide a dictionary of iocage dataset lists. Use the
-:ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse them.
+Create `custom facts`_ to provide a dictionary of `iocage datasets`_. Use
+the filter :ref:`vbotka.freebsd.iocage <ug_filter_iocage>` to parse the
+dictionary.
 
 Tree
 ^^^^
@@ -34,60 +36,52 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
+* On the managed nodes:
 
-  * iocage_02
-  * iocage_04
+  * In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
 
-  In the playbook ``pb-iocage.yml``, use the `role vbotka.freebsd.iocage`_ to:
+    * Create custom fact scripts.
 
-  * Create custom fact scripts
+  * In the playbook ``pb-test.yml``:
 
-  In the playbook ``pb-test.yml``:
+    * Get the `custom facts`_.
 
-  * Get the custom facts
+    * Use the filter :ref:`vbotka.freebsd.iocage <ug_filter_iocage>` to parse
+      the `custom facts`_.
 
-  * Use the :ref:`filter vbotka.freebsd.iocage <ug_filter_iocage>` to parse the
-    custom facts
+  * TODO:
 
-  * Create the inventory group ``test`` and compose variables
-
-  * Display the hosts and composed variables in the group ``test``
-
-  * Display all groups
+    * Create the inventory group ``test`` and `compose`_ variables.
+    * Display the hosts and composed variables in the group ``test``.
+    * Display all groups.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
 * :ref:`ug_filter_iocage`
-* Root privileges on the managed nodes
-* Jails created in previous examples
+* Jails created in previous examples.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-* See `Adding custom facts`_.
+* TBD.
 
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
+.. seealso::
 
-.. code-block:: console
+   * `Adding custom facts`_
 
-   [iocage_02]# iocage list -l
+Jails
+^^^^^
 
 .. literalinclude:: out/out-01.txt
    :language: bash
-
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
+   :caption: [iocage_05]# iocage list -l
 
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -113,22 +107,20 @@ Playbook output - Display versions
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t freebsd_iocage_debug \
-                            -e freebsd_iocage_debug=true \
+                            -t freebsd_iocage_debug -e freebsd_iocage_debug=true \
                             pb-iocage.yml \
           | grep version
 
 .. literalinclude:: out/out-03.txt
    :language: yaml+jinja
 
-Playbook output - Create custom fact scripts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t freebsd_iocage_facts \
-                            -e freebsd_iocage_facts=true \
+                            -t freebsd_iocage_facts -e freebsd_iocage_facts=true \
                             pb-iocage.yml
 
 .. literalinclude:: out/out-04.txt
@@ -140,14 +132,14 @@ Display custom fact script
 
 .. code-block:: console
 
-   [iocage_02]# cat /etc/ansible/facts.d/iocage.fact
+   [iocage_05]# cat /etc/ansible/facts.d/iocage.fact
 
 .. literalinclude:: out/out-05.txt
    :language: python
 
-.. hint::
+.. important::
 
-   Install ``lang/python``:
+   The script needs ``/usr/local/bin/python``. Install ``lang/python``:
 
    "This is a meta port to the Python interpreter and provides
    symbolic links to bin/python, bin/pydoc, bin/idle and so on to allow
@@ -166,7 +158,7 @@ Playbook output - Display custom facts
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini pb-test.yml
+   (env) > ansible-playbook -i iocage.ini -l iocage_05 pb-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja

@@ -1,0 +1,39 @@
+
+PLAY [Test module vbotka.freebsd.ucl] ******************************************
+
+TASK [Get distribution version.] ***********************************************
+ok: [iocage_05]
+ok: [iocage_06]
+
+TASK [Disable FreeBSD repository.] *********************************************
+--- before: /etc/pkg/FreeBSD.conf (content)
++++ after: /etc/pkg/FreeBSD.conf (content)
+@@ -3,7 +3,7 @@
+     mirror_type = "srv";
+     signature_type = "fingerprints";
+     fingerprints = "/usr/share/keys/pkg";
+-    enabled = true;
++    enabled = false;
+ }
+ FreeBSD-kmods {
+     url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
+
+changed: [iocage_05]
+--- before: /etc/pkg/FreeBSD.conf (content)
++++ after: /etc/pkg/FreeBSD.conf (content)
+@@ -3,7 +3,7 @@
+     mirror_type = "srv";
+     signature_type = "fingerprints";
+     fingerprints = "/usr/share/keys/pkg";
+-    enabled = true;
++    enabled = false;
+ }
+ FreeBSD-ports-kmods {
+     url = "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_quarterly_${VERSION_MINOR}";
+
+changed: [iocage_06]
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

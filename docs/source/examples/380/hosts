@@ -1,5 +1,3 @@
-images.example.com ansible_host=10.1.0.29
-
 [images]
 images.example.com
 

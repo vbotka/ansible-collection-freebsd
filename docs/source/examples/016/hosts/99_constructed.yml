@@ -1,4 +1,15 @@
 plugin: ansible.builtin.constructed
+compose:
+  ansible_host: iocage_ip4
+  release: iocage_release | split('-') | first
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
 groups:
     test: inventory_hostname.startswith('test')
     test_up: inventory_hostname.startswith('test') and iocage_state == 'up'
+keyed_groups:
+  - prefix: distro
+    key: iocage_release
+  - prefix: state
+    key: iocage_state
+  - prefix: vmm
+    key: iocage_tags.vmm

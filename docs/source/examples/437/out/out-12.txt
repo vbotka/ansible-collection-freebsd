@@ -1,0 +1,6 @@
+nginx_cluster: 05319d7e (172.16.99.168)
+nginx_cluster: 5e5ae7da (172.16.99.120)
+nginx_cluster: d2d0eec1 (172.16.99.167)
+nginx_cluster: 05319d7e (172.16.99.168)
+nginx_cluster: 5e5ae7da (172.16.99.120)
+nginx_cluster: d2d0eec1 (172.16.99.167)

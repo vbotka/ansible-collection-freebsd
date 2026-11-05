@@ -7,18 +7,17 @@
    :local:
    :depth: 1
 
-.. index:: single: template ansible-syslogng-server; Example 522
-.. index:: single: template ansible-syslogng-client; Example 522
-.. index:: single: role vbotka.freebsd.iocage_template; Example 522
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 522
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 522
-
-.. index:: single: syslog-ng; Example 522
-.. index:: single: syslogd; Example 522
-.. index:: single: loggen; Example 522
-.. index:: single: log server; Example 522
-.. index:: single: log client; Example 522
+.. index::
+   single: template ansible-syslogng-server; Example 522
+   single: template ansible-syslogng-client; Example 522
+   single: role vbotka.freebsd.iocage_template; Example 522
+   single: connection vbotka.freebsd.jailexec; Example 522
+   single: inventory vbotka.freebsd.iocage2; Example 522
+   single: syslog-ng; Example 522
+   single: syslogd; Example 522
+   single: loggen; Example 522
+   single: log server; Example 522
+   single: log client; Example 522
 
 Use case
 ^^^^^^^^
@@ -48,7 +47,8 @@ Tree
   │   └── all
   │       └── project-hosts.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
   │   ├── ansible_syslogng_client
   │   │   └── syslog-ng-client.yml
@@ -71,16 +71,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
-  Use the role `vbotka.freebsd.iocage_template`_ to create templates:
+  * Use the role `vbotka.freebsd.iocage_template`_ to create templates:
 
-  * ``ansible-syslogng-server``
-  * ``ansible-syslogng-client``
+    * ``ansible-syslogng-server``
+    * ``ansible-syslogng-client``
 
-  In the playbook ``pb-create-jails.yml``:
+  * In the playbook ``pb-create-jails.yml``:
 
-  * Create jails from the created templates.
+    * Create jails from the created templates.
 
 * In the inventory group ``log_servers``, configure and test `syslog-ng server`_.
 
@@ -138,6 +138,10 @@ hosts
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+
 group_vars
 ^^^^^^^^^^
 
@@ -187,8 +191,8 @@ Playbook pb-iocage-template.yml
 .. literalinclude:: pb-iocage-template.yml
    :language: yaml+jinja
 
-Playbook output - Create iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -204,8 +208,8 @@ Playbook pb-logserver.yml
 .. literalinclude:: pb-logserver.yml
    :language: yaml+jinja
 
-Playbook output - Configure and start Log Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure Log Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -265,12 +269,12 @@ Playbook pb-create-jails.yml
 .. literalinclude:: pb-create-jails.yml
    :language: yaml+jinja
 
-Playbook output - Create jails from iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts pb-create-jails.yml
+   (env) > ansible-playbook -i hosts -i iocage.ini pb-create-jails.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja

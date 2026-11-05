@@ -1,27 +1,48 @@
 - name: Test module vbotka.freebsd.ucl
   hosts: iocage
+
+  vars:
+
+    repo:
+      FreeBSD:
+        '14.5': FreeBSD
+        '15.1': FreeBSD-ports
+    version: "{{ ansible_facts.distribution_version }}"
     
   tasks:
 
     - name: Install devel/uclcmd
+      tags: install
       when: install | d(false) | bool
       community.general.pkgng:
         name: devel/uclcmd
         use_globs: false
 
-    - name: Get /etc/pkg/FreeBSD.conf
-      register: out
-      vbotka.freebsd.ucl:
-        path: /etc/pkg/FreeBSD.conf
+    - name: Test.
+      tags: test
+      block:
 
-    - ansible.builtin.debug:
-        var: out.stdout
+        - name: Get distribution version.
+          ansible.builtin.setup:
+            gather_subset: distribution
 
-    - name: Get FreeBSD-base repository url.
-      register: out
-      vbotka.freebsd.ucl:
-        path: /etc/pkg/FreeBSD.conf
-        upath: FreeBSD-base.url
+        - name: Debug.
+          ansible.builtin.debug:
+            msg: |
+              version: {{ ansible_facts.distribution_version }}
+              repo: {{ repo['FreeBSD'][version] }}
 
-    - ansible.builtin.debug:
-        var: out.stdout
+        - name: Get /etc/pkg/FreeBSD.conf
+          register: out
+          vbotka.freebsd.ucl:
+            path: /etc/pkg/FreeBSD.conf
+        - ansible.builtin.debug:
+            var: out.stdout
+
+        - name: Get FreeBSD repository url.
+          register: out
+          vbotka.freebsd.ucl:
+            path: /etc/pkg/FreeBSD.conf
+            upath: "{{ repo['FreeBSD'][version] }}.url"
+        - ansible.builtin.debug:
+            var: out.stdout

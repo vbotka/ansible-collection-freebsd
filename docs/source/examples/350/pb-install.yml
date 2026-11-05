@@ -2,7 +2,7 @@
   hosts: swarm_sw_01
 
   tasks:
-
+      
     - name: Install rsnapshot packages.
       delegate_to: "{{ iocage_tags.vmm }}"
       register: out

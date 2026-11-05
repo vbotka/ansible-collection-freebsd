@@ -1,0 +1,39 @@
+project:
+  www-511:
+    notes: alias=www_511
+    vmm: iocage_05
+    template: ansible-nginx
+    class: [nginx]
+  www-512:
+    notes: alias=www_512
+    vmm: iocage_05
+    template: ansible-nginx
+    class: [nginx]
+  www-513:
+    notes: alias=www_513
+    vmm: iocage_05
+    template: ansible-nginx
+    class: [nginx]
+  www-611:
+    notes: alias=www_611
+    vmm: iocage_06
+    template: ansible-nginx
+    class: [nginx]
+  www-612:
+    notes: alias=www_612
+    vmm: iocage_06
+    template: ansible-nginx
+    class: [nginx]
+  www-613:
+    notes: alias=www_613
+    vmm: iocage_06
+    template: ansible-nginx
+    class: [nginx]
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+
+vmm: "{{ (project | vbotka.freebsd.project).vmm }}"

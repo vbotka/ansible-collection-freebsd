@@ -7,8 +7,13 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.custom_image; Example 380
-.. index:: single: vbotka.freebsd.custom_image; Example 380
+.. index::
+   single: role vbotka.freebsd.custom_image; Example 380
+   single: vbotka.freebsd.custom_image; Example 380
+   single: Raspberry Pi; Example 380
+   single: aarch64; Example 380
+   single: arm64-aarch64-RPI; Example 380
+   single: RTL8188EU; Example 380
 
 Use case
 ^^^^^^^^
@@ -34,12 +39,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Use the role `vbotka.freebsd.custom_image`_ on ``images.example.com`` to
-  customize a FreeBSD image:
+* On the managed nodes:
 
-  * Configure the wireless adapter `RTL8188EU`_
-  * Configure wpa_supplicant
-  * Connect to the access point
+  * Use the role `vbotka.freebsd.custom_image`_ to customize a FreeBSD image:
+
+    * Configure a wireless adapter.
+    * Configure wpa_supplicant.
+    * Connect to an access point.
 
 Requirements
 ^^^^^^^^^^^^
@@ -50,7 +56,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -62,6 +68,7 @@ Notes
    * `Get FreeBSD`_
    * `Memory Disks`_
    * `Wireless Networks`_
+   * `RTL8188EU`_
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -131,6 +138,10 @@ Playbook output - Unpack images
    :language: yaml+jinja
    :force:
 
+.. note::
+
+   This does not override already unpacked image(s).
+
 Playbook output - Mount image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -164,8 +175,8 @@ Playbook output - Umount image
    :language: yaml+jinja
    :force:
 
-Playbook output - Mount, customize, and umount image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Customize image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The play is not idempotent when the image is unmounted. The default is
 ``cimage_umount=true``. In this case, at least three tasks report
@@ -181,6 +192,8 @@ The play is not idempotent when the image is unmounted. The default is
 
 Write the image file to USB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For example:
 
 .. code-block:: console
 

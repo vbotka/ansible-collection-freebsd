@@ -1,0 +1,7 @@
+nginx_cluster: 50616f64 (172.16.95.154)
+nginx_cluster: 68291686 (172.16.95.155)
+nginx_cluster: e4c5ce31 (172.16.95.156)
+nginx_cluster: 50616f64 (172.16.95.154)
+nginx_cluster: 68291686 (172.16.95.155)
+nginx_cluster: e4c5ce31 (172.16.95.156)
+nginx_cluster: 50616f64 (172.16.95.154)

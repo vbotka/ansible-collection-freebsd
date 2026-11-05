@@ -1,0 +1,21 @@
+- name: Display lighttpd status.
+  hosts: iocage
+
+  tasks:
+
+    - name: Display lighttpd status.
+      when: groups.swarm_sw_01 | d([]) | length > 0
+      block:
+
+        - name: Get status.
+          register: out
+          command: >-
+              iocage exec
+              {{ item }}
+              service lighttpd status
+          loop: "{{ groups.swarm_sw_01 }}"
+
+        - name: Display status.
+          debug:
+            msg: |
+              {{ dict(out.results | json_query('[].[item, stdout]')) }}

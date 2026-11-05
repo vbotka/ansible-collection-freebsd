@@ -1,43 +1,40 @@
 
-PLAY [swarm_sw_01] *************************************************************
+PLAY [Display inventory.] ******************************************************
 
-TASK [ansible.builtin.command] *************************************************
-changed: [df0394cb]
-changed: [test_161]
-changed: [283d850f]
+TASK [debug] *******************************************************************
+ok: [6bafd85a] => 
+    msg: |-
+        inv       name     uuid     ansible_host  jail_host jail_name
+        ----------------------------------------------------------------------
+        6bafd85a  6bafd85a 6bafd85a 172.16.99.138 iocage_06 30
+        01ed855e  01ed855e 01ed855e 172.16.99.163 iocage_06 31
+        test_611  test-611 test-611 172.16.99.211 iocage_06 29
 
-TASK [ansible.builtin.debug] ***************************************************
-ok: [test_161] => 
+TASK [debug] *******************************************************************
+ok: [6bafd85a] => 
     msg: |-
-        out.stdout: test-161
-        ansible_host: test_161
-        iocage_hooks: ['-']
-        iocage_ip4: 172.16.99.201
-        iocage_tags:
-          alias: test_161
-          swarm: sw_01
-          vmm: iocage_06
-ok: [283d850f] => 
+        inv       name     uuid     iocage_tags
+        ----------------------------------------------------------------------
+        6bafd85a  6bafd85a 6bafd85a {class: test, swarm: sw_01, vmm: iocage_06}
+        01ed855e  01ed855e 01ed855e {class: test, swarm: sw_01, vmm: iocage_06}
+        test_611  test-611 test-611 {alias: test_611, class: test, swarm: sw_01, vmm: iocage_06}
+
+TASK [shell] *******************************************************************
+changed: [test_611]
+changed: [01ed855e]
+changed: [6bafd85a]
+
+TASK [debug] *******************************************************************
+ok: [6bafd85a] => 
     msg: |-
-        out.stdout: 283d850f
-        ansible_host: 283d850f
-        iocage_hooks: ['172.16.99.183']
-        iocage_ip4: 172.16.99.183
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_06
-ok: [df0394cb] => 
-    msg: |-
-        out.stdout: df0394cb
-        ansible_host: df0394cb
-        iocage_hooks: ['172.16.99.182']
-        iocage_ip4: 172.16.99.182
-        iocage_tags:
-          swarm: sw_01
-          vmm: iocage_06
+        inv       who  uname
+        -----------------------------------------
+        6bafd85a  root FreeBSD 15.1-RELEASE amd64
+        01ed855e  root FreeBSD 15.1-RELEASE amd64
+        test_611  root FreeBSD 15.1-RELEASE amd64
 
 PLAY RECAP *********************************************************************
-283d850f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-df0394cb                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_161                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+01ed855e                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+6bafd85a                   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_611                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

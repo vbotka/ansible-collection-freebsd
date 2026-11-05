@@ -1,7 +1,7 @@
-Version                 : 2.7.5
-libpkg                  : 2.7.5
+Version                 : 2.8.4
+libpkg                  : 2.8.4
 libarchive              : libarchive 3.8.7
-sqlite                  : 3.51.1
+sqlite                  : 3.53.2
 openssl                 : OpenSSL 3.5.6 7 Apr 2026
 PKG_DBDIR = "/var/db/pkg";
 PKG_CACHEDIR = "/var/cache/pkg";
@@ -29,7 +29,7 @@ PLUGINS_CONF_DIR = "/usr/local/etc/pkg/";
 PERMISSIVE = false;
 REPO_AUTOUPDATE = true;
 NAMESERVER = "";
-HTTP_USER_AGENT = "pkg/2.7.5";
+HTTP_USER_AGENT = "pkg/2.8.4";
 EVENT_PIPE = "";
 FETCH_TIMEOUT = 30;
 UNSET_TIMESTAMP = false;
@@ -146,6 +146,7 @@ PKG_DEBUG_FLAGS [
 COMPRESSION_THREADS = -1;
 PKG_REINSTALL_ON_OPTIONS_CHANGE = true;
 TRACK_LINUX_COMPAT_SHLIBS = false;
+PKG_RWHICH_DATABASE = true;
 ABI = "FreeBSD:15:amd64";
 ALTABI = "freebsd:15:x86:64";
 OSVERSION = "1501000";
@@ -181,10 +182,11 @@ Repositories:
     enabled         : yes,
     priority        : 0,
     signature_type  : "PUBKEY",
-    pubkey          : "/usr/local/etc/ssl/crt/build.example.com-sk.crt"
+    pubkey          : "/usr/local/etc/ssl/crt/build.example.com-sk.pub"
   }
   local: { 
     url             : "file:///usr/local/repo",
     enabled         : yes,
-    priority        : 0
+    priority        : 0,
+    signature_type  : "NONE"
   }

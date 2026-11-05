@@ -1,53 +1,9 @@
-
-PLAY [Test the SSH redirection to the jails.] **********************************
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [0b152d76] => 
-    msg: |-
-        ansible_connection: ssh
-        ansible_host: iocage_06
-        ansible_port: 2268
-        ansible_user: admin
-
-        iocage_ip4: 172.16.99.168
-        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [9b33de6e] => 
-    msg: |-
-        ansible_connection: ssh
-        ansible_host: iocage_06
-        ansible_port: 2272
-        ansible_user: admin
-
-        iocage_ip4: 172.16.99.172
-        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-ok: [cb4d5365] => 
-    msg: |-
-        ansible_connection: ssh
-        ansible_host: iocage_06
-        ansible_port: 2246
-        ansible_user: admin
-
-        iocage_ip4: 172.16.99.146
-        iocage_tags: {'vmm': 'iocage_06', 'swarm': 'sw_01'}
-
-TASK [ansible.builtin.command] *************************************************
-changed: [cb4d5365]
-changed: [0b152d76]
-changed: [9b33de6e]
-
-TASK [ansible.builtin.debug] ***************************************************
-ok: [9b33de6e] => 
-    out.stdout: FreeBSD 9b33de6e 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
-        GENERIC amd64
-ok: [0b152d76] => 
-    out.stdout: FreeBSD 0b152d76 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
-        GENERIC amd64
-ok: [cb4d5365] => 
-    out.stdout: FreeBSD cb4d5365 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
-        GENERIC amd64
-
-PLAY RECAP *********************************************************************
-0b152d76                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-9b33de6e                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-cb4d5365                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
+| JID |   NAME   | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |    TEMPLATE    | BASEJAIL |
++=====+==========+======+=======+======+=================+=======================+=====+================+==========+
+| 10  | 00bafd6f | on   | up    | jail | 14.5-RELEASE-p1 | epair0b|172.16.95.137 | -   | ansible-client | no       |
++-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
+| 12  | 479f82fa | on   | up    | jail | 14.5-RELEASE-p1 | epair0b|172.16.95.174 | -   | ansible-client | no       |
++-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+
+| 11  | 8b260031 | on   | up    | jail | 14.5-RELEASE-p1 | epair0b|172.16.95.173 | -   | ansible-client | no       |
++-----+----------+------+-------+------+-----------------+-----------------------+-----+----------------+----------+

@@ -9,46 +9,42 @@ This example extends :ref:`example_203`.
    :local:
    :depth: 1
 
-.. index:: single: swarms; Example 204
-
-.. index:: single: template ansible_client; Example 204
-.. index:: single: ansible_client; Example 204
-.. index:: single: DHCP; Example 204
-.. index:: single: property notes; Example 204
-.. index:: single: notes; Example 204
-
-.. index:: single: filter vbotka.freebsd.iocage; Example 204
-.. index:: single: inventory vbotka.freebsd.iocage; Example 204
-.. index:: single: module ansible.builtin.command; Example 204
-.. index:: single: pb-iocage-ansible-clients-v2.yml; Example 204
-
-.. index:: single: option get_properties; Example 204
-.. index:: single: get_properties; Example 204
-.. index:: single: option hooks_results; Example 204
-.. index:: single: hooks_results; Example 204
-.. index:: single: option compose; Example 204
-.. index:: single: compose; Example 204
-.. index:: single: option groups; Example 204
-
-.. index:: single: option iocage --count; Example 204
-.. index:: single: option iocage --short; Example 204
-.. index:: single: option iocage --template; Example 204
-
-.. index:: single: variable iocage_jails; Example 204
-.. index:: single: iocage_jails; Example 204
-.. index:: single: variable iocage_hooks; Example 204
-.. index:: single: iocage_hooks; Example 204
-.. index:: single: variable iocage_properties; Example 204
-.. index:: single: iocage_properties; Example 204
-.. index:: single: variable iocage_tags; Example 204
-.. index:: single: iocage_tags; Example 204
+.. index::
+   single: swarms; Example 204
+   single: template ansible-client; Example 204
+   single: ansible-client; Example 204
+   single: DHCP; Example 204
+   single: property notes; Example 204
+   single: notes; Example 204
+   single: filter vbotka.freebsd.iocage; Example 204
+   single: inventory vbotka.freebsd.iocage2; Example 204
+   single: module ansible.builtin.command; Example 204
+   single: pb-iocage-ansible-clients-v2.yml; Example 204
+   single: option get_properties; Example 204
+   single: get_properties; Example 204
+   single: option hooks_results; Example 204
+   single: hooks_results; Example 204
+   single: option compose; Example 204
+   single: compose; Example 204
+   single: option groups; Example 204
+   single: option iocage --count; Example 204
+   single: option iocage --short; Example 204
+   single: option iocage --template; Example 204
+   single: variable iocage_jails; Example 204
+   single: iocage_jails; Example 204
+   single: variable iocage_hooks; Example 204
+   single: iocage_hooks; Example 204
+   single: variable iocage_properties; Example 204
+   single: iocage_properties; Example 204
+   single: variable iocage_tags; Example 204
+   single: iocage_tags; Example 204
 
 Use case
 ^^^^^^^^
 
-Instead of using the :ref:`module vbotka.freebsd.iocage <ug_module_iocage>`,
-create the variable ``iocage_jails`` using the :ref:`filter
-vbotka.freebsd.iocage <ug_filter_iocage>`:
+Instead of using the module :ref:`vbotka.freebsd.iocage <ug_module_iocage>`,
+create the variable ``iocage_jails`` using the filter
+:ref:`vbotka.freebsd.iocage <ug_filter_iocage>`:
 
 .. literalinclude:: pb-iocage-ansible-clients-v2/iocage_jails.yml
    :language: yaml+jinja
@@ -61,7 +57,7 @@ Given the input ``vars/iocage_datasets.yml``:
 .. literalinclude:: vars/iocage_datasets.yml
    :language: yaml+jinja
 
-The playbook ``pb-test-filter.yml`` below:
+The playbook ``pb-test-filter.yml``:
 
 .. literalinclude:: pb-test-filter.yml
    :language: yaml+jinja
@@ -84,8 +80,8 @@ Tree
   │   └── all
   │       └── iocage.yml
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   ├── 04_iocage.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-iocage-ansible-clients-v2
@@ -101,63 +97,47 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes:
+* In the playbook ``pb-test-filter.yml``, test the filter
+  :ref:`vbotka.freebsd.iocage <ug_filter_iocage>`.
 
-  * iocage_02
-  * iocage_04
+* On the managed nodes:
 
-  In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
+  * In the playbook ``pb-iocage-ansible-clients-v2.yml``, use:
 
-  * Module ``ansible.builtin.command`` to:
+    * The module ``ansible.builtin.command`` to:
 
-    * Create the variable ``iocage_jails``
-    * Create jails
-    * Start jails
-    * Optionally, stop and destroy the jails
+      * Create the variable ``iocage_jails``.
+      * Create jails.
+      * Start jails.
+      * Optionally, stop and destroy the jails.
 
-* On all created jails:
+* On all created jails in the group ``test``:
 
-  In the playbook ``pb-test.yml``:
+  * In the playbook ``pb-test.yml``:
 
-  * Connect to the created jails
-  * Display basic jail configuration
+    * Display jails and selected variables.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_filter_iocage`
-* :ref:`ug_inventory_iocage`
+* :ref:`ug_inventory_iocage2`
+* Templates created in the example :ref:`example_202`.
 * Root privileges on the managed nodes.
-* Templates created in :ref:`example_202`
 
 Notes
 ^^^^^
 
-* Templates created in :ref:`example_202` are used in this example.
+* This example doesn't need the filters:
+
+  * :ref:`project <ug_filter_project>`
+  * :ref:`combine_properties <ug_filter_combine_properties>`
+
+  The variables are created from Jinja expressions.
 
 .. seealso::
 
    * `binary iocage`_
-
-Templates on iocage_02
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -lt
-
-.. literalinclude:: out/out-01.txt
-   :language: bash
-
-Templates on iocage_04
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -lt
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -174,24 +154,27 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,9
+   :emphasize-lines: 4-5,8
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,9
+   :emphasize-lines: 4-5,8
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 3
 
 .. note::
 
-   The option ``get_properties: True`` is needed to get the dictionary
-   ``iocage_properties``.
+   * The option ``get_properties: True`` is needed to get the dictionary
+     ``iocage_properties``.
+
+   * The option ``hooks_results`` is needed to get the list ``iocage_hooks``.
 
 group_vars
 ^^^^^^^^^^
@@ -206,13 +189,14 @@ Playbook pb-iocage-ansible-clients-v2.yml
 .. literalinclude:: pb-iocage-ansible-clients-v2.yml
    :language: yaml+jinja
 
-Playbook output - Create and start jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create swarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t swarm -e swarm=true -e debug=true \
+                            -t swarm -e swarm=true \
+                            -e debug=true \
                             pb-iocage-ansible-clients-v2.yml
 
 .. literalinclude:: out/out-03.txt
@@ -226,28 +210,19 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-06.txt
-   :language: bash
-
-Jails on iocage_02
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_02]# iocage list -l
-
 .. literalinclude:: out/out-04.txt
-   :language: bash
+   :language: console
 
-Jails on iocage_04
-^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   [iocage_04]# iocage list -l
+Jails
+^^^^^
 
 .. literalinclude:: out/out-05.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-06.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -255,8 +230,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display iocage_tags
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

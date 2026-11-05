@@ -7,27 +7,29 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.iocage; Example 003
-.. index:: single: iocage audit; Example 003
-.. index:: single: audit iocage; Example 003
+.. index::
+   single: role vbotka.freebsd.iocage; Example 003
+   single: iocage audit; Example 003
+   single: audit iocage; Example 003
 
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to audit the `iocage`_ configuration.
+Use the `role vbotka.freebsd.iocage`_ to audit the configuration of an `iocage`_ host.
 
 Tree
 ^^^^
 
 ::
 
-  shell> tree
+  shell> tree .
   .
   ├── ansible.cfg
+  ├── group_vars
+  │   └── all
+  │       └── iocage.yml
   ├── host_vars
-  │   ├── iocage_02
-  │   │   └── iocage.yml
-  │   ├── iocage_04
+  │   ├── iocage_05
   │   │   └── iocage.yml
   │   └── iocage_06
   │       └── iocage.yml
@@ -37,31 +39,30 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to:
+* On the managed nodes:
 
-  * Audit the `iocage`_ configuration
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
+
+    * Audit the configuration of the `iocage`_ hosts.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes
-* The `iocage`_ binary
+* The `iocage`_ binary.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-* Pass ``-l iocage_0X`` on the command line to run the play on the managed node
-  ``iocage_0X``.
-
-* Remove the limit ``-l iocage_0*`` to run the play on all managed nodes.
-
 * By default, sanity testing is enabled: ``freebsd_iocage_sanity: true``.
+
+.. important::
+
+   See the example :ref:`example_501` for how to configure an iocage host.
 
 .. seealso::
 
-   * :ref:`example_501`
    * The tasks ``roles/iocage/tasks/sanity.yml``
    * The default variables ``roles/iocage/defaults/main/sanity.yml``
 
@@ -77,18 +78,10 @@ Inventory iocage.ini
 .. literalinclude:: iocage.ini
    :language: ini
 
-host_vars
-^^^^^^^^^
+group_vars
+^^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_04/iocage.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_06/iocage.yml
+.. literalinclude:: group_vars/all/iocage.yml
    :language: yaml+jinja
    :caption:
 
@@ -97,6 +90,17 @@ host_vars
    By default, activation testing is disabled::
 
      freebsd_iocage_sanity_zfs_pool_active: false
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/iocage.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/iocage.yml
+   :language: yaml+jinja
+   :caption:
 
 Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +113,7 @@ Playbook output - Test sanity
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -l iocage_06 \
+   (env) > ansible-playbook -i iocage.ini \
                             -t freebsd_iocage_sanity \
                             pb-iocage.yml
 
@@ -124,7 +128,7 @@ Playbook output - Test sanity quietly
 
    (env) > ANSIBLE_DISPLAY_OK_HOSTS=false \
            ANSIBLE_DISPLAY_SKIPPED_HOSTS=false \
-           ansible-playbook -i iocage.ini -l iocage_06 \
+           ansible-playbook -i iocage.ini \
                             -t freebsd_iocage_sanity \
                             pb-iocage.yml
 

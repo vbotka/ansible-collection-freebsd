@@ -1,0 +1,5 @@
+local_pkg_conf:
+  local:
+    url: "http://{{ project_hosts[inventory_hostname]['default_pkg_repo'] }}"
+    enabled: true
+    signature_type: "none"

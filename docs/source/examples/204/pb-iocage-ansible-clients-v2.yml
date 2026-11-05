@@ -1,4 +1,3 @@
----
 - name: Create and start jails. Optionally stop and destroy jails.
   hosts: iocage
   environment: "{{ iocage_env | d({}) }}"

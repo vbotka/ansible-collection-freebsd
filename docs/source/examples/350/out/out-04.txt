@@ -2,12 +2,12 @@
 PLAY [Install packages.] *******************************************************
 
 TASK [Install rsnapshot packages.] *********************************************
-changed: [ece6bfb3 -> iocage_06]
-changed: [f8c0e347 -> iocage_06]
-changed: [cf6aac80 -> iocage_06]
+changed: [d2e17a43 -> iocage_06]
+changed: [479332d5 -> iocage_06]
+changed: [babf31db -> iocage_06]
 
 PLAY RECAP *********************************************************************
-cf6aac80                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-ece6bfb3                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-f8c0e347                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+479332d5                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+babf31db                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+d2e17a43                   : ok=1    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 

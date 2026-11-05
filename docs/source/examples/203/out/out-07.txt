@@ -1,39 +1,30 @@
 
-PLAY [Connect to the group test.] **********************************************
+PLAY [Display inventory.] ******************************************************
 
-TASK [ansible.builtin.command] *************************************************
-changed: [c62c0b8a]
-changed: [16ecd72b]
-changed: [dbb0a0b0]
-changed: [fd54d2f8]
-changed: [44dcc34f]
-changed: [a2508697]
+TASK [debug] *******************************************************************
+ok: [1405e889] => 
+    msg: |-
+        inv       name     uuid     ansible_host
+        ----------------------------------------
+        1405e889  1405e889 1405e889 172.16.95.123
+        aa46718d  aa46718d aa46718d 172.16.95.127
+        c85fd58b  c85fd58b c85fd58b 172.16.95.126
+        d06551e8  d06551e8 d06551e8 172.16.99.153
+        5a7372ea  5a7372ea 5a7372ea 172.16.99.156
+        9e9f2e91  9e9f2e91 9e9f2e91 172.16.99.138
 
-TASK [ansible.builtin.debug] ***************************************************
-ok: [44dcc34f] => 
+TASK [debug] *******************************************************************
+ok: [1405e889] => 
     msg: |-
-        ansible_host=10.1.0.181 iocage_tags={swarm: sw_01, vmm: iocage_02}
-ok: [a2508697] => 
-    msg: |-
-        ansible_host=10.1.0.241 iocage_tags={swarm: sw_01, vmm: iocage_02}
-ok: [fd54d2f8] => 
-    msg: |-
-        ansible_host=10.1.0.141 iocage_tags={swarm: sw_01, vmm: iocage_02}
-ok: [16ecd72b] => 
-    msg: |-
-        ansible_host=10.1.0.109 iocage_tags={swarm: sw_01, vmm: iocage_04}
-ok: [c62c0b8a] => 
-    msg: |-
-        ansible_host=10.1.0.112 iocage_tags={swarm: sw_01, vmm: iocage_04}
-ok: [dbb0a0b0] => 
-    msg: |-
-        ansible_host=10.1.0.217 iocage_tags={swarm: sw_01, vmm: iocage_04}
+        inv       name     uuid     iocage_tags
+        ----------------------------------------------------------------------
+        1405e889  1405e889 1405e889 {class: test, swarm: sw_01, vmm: iocage_05}
+        aa46718d  aa46718d aa46718d {class: test, swarm: sw_01, vmm: iocage_05}
+        c85fd58b  c85fd58b c85fd58b {class: test, swarm: sw_01, vmm: iocage_05}
+        d06551e8  d06551e8 d06551e8 {class: test, swarm: sw_01, vmm: iocage_06}
+        5a7372ea  5a7372ea 5a7372ea {class: test, swarm: sw_01, vmm: iocage_06}
+        9e9f2e91  9e9f2e91 9e9f2e91 {class: test, swarm: sw_01, vmm: iocage_06}
 
 PLAY RECAP *********************************************************************
-16ecd72b                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-44dcc34f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-a2508697                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-c62c0b8a                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-dbb0a0b0                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-fd54d2f8                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+1405e889                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

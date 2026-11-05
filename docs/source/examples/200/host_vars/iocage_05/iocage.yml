@@ -1,0 +1,49 @@
+freebsd_iocage_pool: iocage
+freebsd_iocage_pool_mount: /iocage
+freebsd_iocage_mount: /iocage/iocage
+
+templates:
+  ansible-client:
+    release: 14.5-RELEASE
+    properties:
+      bpf: 1
+      dhcp: 1
+      vnet: 1
+    dhclient: "{{ act_dhclient | dict2items }}"
+    rcconf: "{{ act_rcconf | dict2items }}"
+    pkglist: /tmp/ansible/ansible-client/pkgs.json
+
+# ansible client template vars
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  sshd_enable: "YES"
+act_dhclient: {}
+
+clones:
+  test-511:
+    clone_from: ansible-client
+    properties:
+      ip4_addr: 'vnet0|172.16.95.211/24'
+  test-512:
+    clone_from: ansible-client
+    properties:
+      ip4_addr: 'vnet0|172.16.95.212/24'
+  test-513:
+    clone_from: ansible-client
+    properties:
+      ip4_addr: 'vnet0|172.16.95.213/24'
+
+# clones default properties
+properties:
+  vnet: 1
+  defaultrouter: 172.16.95.1
+  notes: "vmm={{ inventory_hostname }}"
+
+start: "{{ clones.keys() }}"
+
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

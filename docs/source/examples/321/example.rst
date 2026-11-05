@@ -7,13 +7,14 @@
    :local:
    :depth: 1
 
-.. index:: single: pkg repo; Example 321
-.. index:: single: pkg_repos_conf; Example 321
-.. index:: single: signature_type; Example 321
-.. index:: single: pubkey; Example 321
-.. index:: single: mirror_type; Example 321
-.. index:: single: role vbotka.freebsd.packages; Example 321
-.. index:: single: vbotka.freebsd.packages; Example 321
+.. index::
+   single: pkg repo; Example 321
+   single: pkg_repos_conf; Example 321
+   single: signature_type; Example 321
+   single: pubkey; Example 321
+   single: mirror_type; Example 321
+   single: role vbotka.freebsd.packages; Example 321
+   single: vbotka.freebsd.packages; Example 321
 
 Use case
 ^^^^^^^^
@@ -30,7 +31,7 @@ Tree
   .
   ├── ansible.cfg
   ├── files
-  │   └── build.example.com-sk.crt
+  │   └── build.example.com-sk.pub
   ├── host_vars
   │   └── iocage_06
   │       └── repos.yml
@@ -40,8 +41,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node, use the role `vbotka.freebsd.packages`_ to configure a
-package repository for `Poudriere`_.
+* On the managed nodes:
+
+  * Use the role `vbotka.freebsd.packages`_ to configure a package repository
+    for `Poudriere`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -52,7 +55,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 

@@ -1,10 +1,9 @@
----
 - name: Test Log Clients.
   hosts: log_clients
 
   vars:
 
-    log_server: "{{ hostvars['log_server']['iocage_ip4'] }}"
+    log_server: 172.16.99.10
 
   tasks:
 

@@ -1,17 +1,38 @@
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
-+=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
-| 1   | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 2   | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 3   | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 4   | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 7   | www-1         | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.180 | -   | ansible-apache   | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 8   | www-3         | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.120 | -   | ansible-apache   | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
-| 9   | www-4         | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.142 | -   | ansible-apache   | no       |
-+-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+
+PLAY [Configure and start Apache HTTP Server.] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [www_4]
+
+TASK [Vars: Include OS vars.] **************************************************
+included: vbotka.freebsd.lib for www_4
+
+TASK [vbotka.freebsd.lib : Al_include_os_vars_path: Vars from /scratch/collections/ansible_collections/vbotka/freebsd/roles/apache/vars/defaults] ***
+ok: [www_4]
+
+TASK [vbotka.freebsd.apache : Httpd-conf: Configure parameters in /usr/local/etc/apache24/httpd.conf] ***
+changed: [www_4] => (item={'regexp': 'ServerName', 'line': 'www-4'})
+changed: [www_4] => (item={'regexp': 'ServerAdmin', 'line': 'admin@www-4'})
+changed: [www_4] => (item={'regexp': 'ServerTokens', 'line': 'Prod'})
+
+TASK [vbotka.freebsd.apache : Httpd-dirs: Configure directories in /usr/local/etc/apache24/Includes/] ***
+changed: [www_4] => (item=/usr/local/www/apache24/data/)
+
+TASK [vbotka.freebsd.apache : Httpd-modules: Load modules in /usr/local/etc/apache24/httpd.conf] ***
+changed: [www_4] => (item={'module': 'php_module', 'mod': 'libphp.so'})
+
+TASK [vbotka.freebsd.apache : Rc-conf: Enable and Start Apache] ****************
+changed: [www_4]
+
+RUNNING HANDLER [vbotka.freebsd.apache : Enable and start vbotka.freebsd.apache] ***
+changed: [www_4]
+
+RUNNING HANDLER [vbotka.freebsd.apache : Restart vbotka.freebsd.apache] ********
+changed: [www_4]
+
+RUNNING HANDLER [vbotka.freebsd.apache : Reload vbotka.freebsd.apache] *********
+ok: [www_4]
+
+PLAY RECAP *********************************************************************
+www_4                      : ok=10   changed=6    unreachable=0    failed=0    skipped=33   rescued=0    ignored=0   
+

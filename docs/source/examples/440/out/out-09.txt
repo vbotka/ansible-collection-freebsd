@@ -1,22 +1,22 @@
-Status: Disabled for 0 days 00:00:08          Debug: Urgent
+Status: Enabled for 0 days 02:23:16           Debug: Urgent
 
 Interface Stats for wlan0             IPv4             IPv6
-  Bytes In                         8077074                0
-  Bytes Out                         927531                0
+  Bytes In                        43081503                0
+  Bytes Out                        1899161                0
   Packets In
-    Passed                           10128                0
-    Blocked                           1433                0
+    Passed                           36812                0
+    Blocked                           9809                0
   Packets Out
-    Passed                            7831                0
-    Blocked                              0                0
+    Passed                           23481                0
+    Blocked                             34                0
 
 State Table                          Total             Rate
-  current entries                       25               
-  searches                           20539         2567.4/s
-  inserts                              552           69.0/s
-  removals                             527           65.9/s
+  current entries                       27               
+  searches                           72081            8.4/s
+  inserts                             1056            0.1/s
+  removals                            1029            0.1/s
 Counters
-  match                               2045          255.6/s
+  match                              10911            1.3/s
   bad-offset                             0            0.0/s
   fragment                               0            0.0/s
   short                                  0            0.0/s
@@ -25,11 +25,10 @@ Counters
   bad-timestamp                          0            0.0/s
   congestion                             0            0.0/s
   ip-option                              0            0.0/s
-  proto-cksum                           15            1.9/s
+  proto-cksum                           31            0.0/s
   state-mismatch                         0            0.0/s
   state-insert                           0            0.0/s
   state-limit                            0            0.0/s
   src-limit                              0            0.0/s
   synproxy                               0            0.0/s
   map-failed                             0            0.0/s
-  translate                              0            0.0/s

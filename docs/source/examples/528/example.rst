@@ -7,48 +7,45 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_init; Example 528
-.. index:: single: service ansible_init; Example 528
-.. index:: single: template ansible-init; Example 528
-.. index:: single: firstboot; Example 528
-.. index:: single: ansible-conf-init; Example 528
-.. index:: single: ansible-conf-roles; Example 528
-.. index:: single: repo ansible-conf-init; Example 528
-.. index:: single: repo ansible-conf-roles; Example 528
-.. index:: single: ansible-pull; Example 528
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 528
-
-.. index:: single: filter vbotka.freebsd.project; Example 528
-.. index:: single: vbotka.freebsd.project; Example 528
-.. index:: single: project; Example 528
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 528
-.. index:: single: vbotka.freebsd.jailexec; Example 528
-.. index:: single: jailexec; Example 528
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 528
-
-.. index:: single: ai_db_host; Example 528
-.. index:: single: ai_db_class; Example 528
-.. index:: single: ai_conf_roles; Example 528
-
-.. index:: single: syslog-ng; Example 528
-.. index:: single: loggen; Example 528
-.. index:: single: log server; Example 528
-.. index:: single: log client; Example 528
-
-.. index:: single: pkg repo; Example 528
-.. index:: single: pkg_repos_conf; Example 528
+.. index::
+   single: ansible_init; Example 528
+   single: service ansible_init; Example 528
+   single: template ansible-init; Example 528
+   single: firstboot; Example 528
+   single: ansible-conf-init; Example 528
+   single: ansible-conf-roles; Example 528
+   single: repo ansible-conf-init; Example 528
+   single: repo ansible-conf-roles; Example 528
+   single: ansible-pull; Example 528
+   single: pb_iocage_project_create_from_templates.yml; Example 528
+   single: filter vbotka.freebsd.project; Example 528
+   single: vbotka.freebsd.project; Example 528
+   single: project; Example 528
+   single: connection vbotka.freebsd.jailexec; Example 528
+   single: vbotka.freebsd.jailexec; Example 528
+   single: jailexec; Example 528
+   single: inventory vbotka.freebsd.iocage2; Example 528
+   single: ai_db_host; Example 528
+   single: ai_db_class; Example 528
+   single: ai_conf_roles; Example 528
+   single: syslog-ng; Example 528
+   single: loggen; Example 528
+   single: log server; Example 528
+   single: log client; Example 528
+   single: pkg repo; Example 528
+   single: pkg_repos_conf; Example 528
 
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in :ref:`example_529`, or
-:ref:`example_524`. Configure the repository `ansible-conf-init`_ to pull the
-jails' configuration from the repository `ansible-conf-roles`_. Create jails
-from the template. Put the configuration files for the classes ``log-server``
-and ``log-client`` into the jails' directories ``/root/ansible-vars``. Run
-`ansible-pull`_ asynchronously.
+Use the `iocage template`_ ``ansible-init`` created in the example
+:ref:`example_529`, or :ref:`example_524`. Configure the repository
+`ansible-conf-init`_ to pull the jails' configuration from the repository
+`ansible-conf-roles`_. Create jails from the template. Put the configuration
+files for the classes ``log-server`` and ``log-client`` into the jails'
+directories ``/root/ansible-vars``. Run `ansible-pull`_ asynchronously.
+
+See the concept :ref:`ug_concepts_ansible_conf_roles`.
 
 Tree
 ^^^^
@@ -69,11 +66,13 @@ Tree
   │   │   └── syslog-ng-server.yml
   │   └── pkg-repo.yml
   ├── group_vars
-  │   └── all
+  │   └── iocage
   │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── iocage.ini
   ├── pb-logclient-test.yml
   ├── pb-logserver-test.yml
@@ -83,7 +82,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`,
     create jails from the template ``ansible-init``.
@@ -95,17 +94,16 @@ Synopsis
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`
-* Jail ``pkg-repo`` created in :ref:`example_527`
-* Template ``ansible-init`` created in:
-
-  * :ref:`example_529`, or
-  * :ref:`example_524`
-
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_filter_project`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
+* Jail ``repos`` created in the example :ref:`example_523`.
+* Jail ``pkg-repo`` created in the example :ref:`example_527`.
+* Template ``ansible-init`` created in:
+
+  * Example :ref:`example_529`, or
+  * Example :ref:`example_524`.
 
 .. note::
 
@@ -135,18 +133,26 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/project-hosts.yml
+.. literalinclude:: group_vars/iocage/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/project.yml
+.. literalinclude:: group_vars/iocage/project.yml
    :language: yaml+jinja
    :caption:
 
@@ -188,7 +194,7 @@ files
 
 .. note::
 
-   To install packages, the jails use the ``pkg-repo`` created in
+   To install packages, the jails use the ``pkg-repo`` created in the example
    :ref:`example_527`.
 
 .. important::
@@ -213,15 +219,15 @@ files
    :language: yaml+jinja
    :caption:
 
-Playbook output - Create project jails from iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
+   (env) > ansible-playbook -i hosts -i iocage.ini \
                             vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
 
@@ -232,18 +238,19 @@ Graph
 
    (env) > ansible-inventory -i hosts --graph
 
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-logserver-test.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,7 +263,7 @@ Playbook output - Test Log Server
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts -e debug=true pb-logserver-test.yml
+   (env) > ansible-playbook -i hosts pb-logserver-test.yml
 
 .. literalinclude:: out/out-06.txt
    :language: yaml+jinja
@@ -287,3 +294,9 @@ Playbook output - Test Log Clients
 
      shell> iocage console log-server-01
      root@log-server-01:~ # lnav -r /var/log/remote/
+
+   In the log files, see the ``ansible-pull`` run-string, e.g.::
+
+     ansible-pull -i hosts -U git://172.16.95.21/ansible-conf-roles -d
+     /root/ansible-conf-roles -e "ai_vars=/root/ansible-vars" -e
+     "ai_pull_mode=true" pb-roles.yml && echo '[INFO] ansible-pull finished.'

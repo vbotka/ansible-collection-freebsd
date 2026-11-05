@@ -1,21 +1,24 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Get pool.] ***************************************************************
+TASK [Create jail from template.] **********************************************
+changed: [iocage_06] => (item=www-5 ansible-apache)
+
+TASK [Create dictionary iocage_jails] ******************************************
 ok: [iocage_06]
 
-TASK [Create jails] ************************************************************
-ok: [iocage_06] => (item=www-5 ansible-apache)
+TASK [Get activated pool.] *****************************************************
+ok: [iocage_06]
 
 TASK [Create mount points.] ****************************************************
-changed: [iocage_06] => (item=www-5 /usr/local/poudriere)
+ok: [iocage_06] => (item=www-5 /usr/local/poudriere)
 
-TASK [Add fstab] ***************************************************************
-ok: [iocage_06] => (item=www-5 /usr/local/poudriere /usr/local/poudriere)
+TASK [Configure fstab.] ********************************************************
+ok: [iocage_06] => (item=www-5 /usr/local/poudriere)
 
-TASK [Start created hosts] *****************************************************
+TASK [Start created jails.] ****************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=5    changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=1    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 

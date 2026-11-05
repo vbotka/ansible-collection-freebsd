@@ -1,15 +1,15 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Get pool.] ***************************************************************
+TASK [Create jail from template.] **********************************************
+changed: [iocage_06] => (item=www-1 ansible-apache)
+
+TASK [Set iocage_jails.] *******************************************************
 ok: [iocage_06]
 
-TASK [Create jails] ************************************************************
-ok: [iocage_06] => (item=www-1 ansible-apache)
-
-TASK [Start created hosts] *****************************************************
+TASK [Start clones.] ***********************************************************
 ok: [iocage_06]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=3    changed=0    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+iocage_06                  : ok=3    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

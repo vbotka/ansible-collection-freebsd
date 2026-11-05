@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+{% set if = item.value.if %}
+{% set net = item.value.net %}
+{% set subnet = item.value.subnet %}
+{% set start = item.value.start %}
+{% set stop = item.value.stop %}
+{% set port = item.value.port %}
+{% for i in range(0, stop - start + 1) %}
+rdr on ${{ if }} proto tcp from ${{ net }} to (${{ if }}) port {{ port + i }} -> {{ subnet }}.{{ start + i }} port 22
+{% endfor %}

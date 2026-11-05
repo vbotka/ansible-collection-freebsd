@@ -1,20 +1,37 @@
----
 - name: Test Log Clients.
   hosts: log_clients
 
-  vars:
-
-    log_server: "{{ hostvars['log_server_01']['iocage_ip4'] }}"
-
   tasks:
 
-    - name: Run loggen
-      register: out
-      ansible.builtin.command: "loggen -i -S -n 1 {{ log_server }} 514"
+    - name: Read dictionary project_hosts.
+      block:
 
-    - name: Debug.
-      ansible.builtin.debug:
-        var: out.stderr
+        - name: Read /root/ansible-vars/project-hosts.yml
+          register: ai_vars_raw
+          ansible.builtin.slurp:
+            src: /root/ansible-vars/project-hosts.yml
+
+        - name: Set project_hosts
+          ansible.builtin.set_fact:
+            ai_vars: "{{ ai_vars_raw.content | b64decode | from_yaml }}"
+
+        - name: Debug.
+          when: debug | d(false) | bool
+          ansible.builtin.debug:
+            var: ai_vars.project_hosts
+
+    - name: Run loggen.
+      block:
+
+        - name: Run loggen.
+          register: out
+          ansible.builtin.command: >-
+            loggen -i -S -n 1
+            {{ ai_vars.project_hosts.log_server }} 514
+
+        - name: Debug.
+          ansible.builtin.debug:
+            var: out.stderr
 
 - name: Display the logs.
   hosts: log_servers

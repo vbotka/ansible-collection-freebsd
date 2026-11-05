@@ -1,5 +1,5 @@
 - name: Test role vbotka.freebsd.packages
-  hosts: up
+  hosts: state_up
   gather_facts: true
 
   roles:

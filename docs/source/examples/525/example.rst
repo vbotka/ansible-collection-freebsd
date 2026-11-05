@@ -7,35 +7,45 @@
    :local:
    :depth: 1
 
-.. index:: single: ansible_init; Example 525
-.. index:: single: service ansible_init; Example 525
-.. index:: single: template ansible-init; Example 525
-.. index:: single: firstboot; Example 525
-.. index:: single: ansible-conf-init; Example 525
-.. index:: single: ansible-conf-test; Example 525
-.. index:: single: repo ansible-conf-init; Example 525
-.. index:: single: repo ansible-conf-test; Example 525
-.. index:: single: ansible-pull; Example 525
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 525
-
-.. index:: single: filter vbotka.freebsd.project; Example 525
-.. index:: single: vbotka.freebsd.project; Example 525
-.. index:: single: project; Example 525
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 525
-.. index:: single: vbotka.freebsd.jailexec; Example 525
-.. index:: single: jailexec; Example 525
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 525
+.. index::
+   single: ansible_init; Example 525
+   single: service ansible_init; Example 525
+   single: template ansible-init; Example 525
+   single: firstboot; Example 525
+   single: ansible-conf-init; Example 525
+   single: ansible-conf-test; Example 525
+   single: repo ansible-conf-init; Example 525
+   single: repo ansible-conf-test; Example 525
+   single: ansible-pull; Example 525
+   single: pb_iocage_project_create_from_templates.yml; Example 525
+   single: filter vbotka.freebsd.project; Example 525
+   single: vbotka.freebsd.project; Example 525
+   single: project; Example 525
+   single: connection vbotka.freebsd.jailexec; Example 525
+   single: vbotka.freebsd.jailexec; Example 525
+   single: jailexec; Example 525
+   single: inventory vbotka.freebsd.iocage2; Example 525
 
 Use case
 ^^^^^^^^
 
-Use the `iocage`_ template ``ansible-init`` created in
-:ref:`example_524`. Configure the repo `ansible-conf-init`_ to pull the jails'
-configuration from the repo `ansible-conf-test`_. Create jails from the
-template. Use ``class=test`` to select the configuration. Run `ansible-pull`_
-asynchronously.
+* Use the `iocage template`_ ``ansible-init`` created in :ref:`example_524` or
+  :ref:`example_529`.
+
+* Configure dictionaries ``ai_db_*`` in `ansible-conf-init`_ to pull
+  configuration for the jails in ``call=test`` from the repository
+  `ansible-conf-test`_, and to run `ansible-pull`_ asynchronously.
+
+* In the project host definitions configure the jails ``class=test``.
+
+* Create jails from the template using the playbook
+  :ref:`ug_pb-iocage-project-create-from-templates`.
+
+See the concepts:
+
+* :ref:`ug_concepts_ansible_init`
+* :ref:`ug_concepts_ansible_conf_init`
+* :ref:`ug_concepts_iocage_class`
 
 Tree
 ^^^^
@@ -46,11 +56,13 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
+  │   └── iocage
   │       ├── project-hosts.yml
   │       └── project.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── iocage.ini
   └── templates
       └── project-hosts.yml.j2
@@ -58,7 +70,7 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
     jails from the template ``ansible-init``.
@@ -68,23 +80,22 @@ Synopsis
 .. note::
 
    The only difference compared to :ref:`example_524` is the dictionary used for
-   the jails' configuration. In this example, the jails (baz and qux) are not
-   included in the ``ai_db_host`` dictionary; instead, they are configured from
+   the jails' configuration. In this example, the jails (baz and qux) are **not
+   included** in the ``ai_db_host`` dictionary; instead, they are configured from
    the ``ai_db_class`` dictionary. See the `ansible-conf-init`_ repository.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Jail ``repos`` created in :ref:`example_523`
-* Template ``ansible-init`` created in:
-
-  * :ref:`example_529`, or
-  * :ref:`example_524`
-
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_filter_project`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
+* Jail ``repos`` created in the example :ref:`example_523`.
+* Template ``ansible-init`` created in:
+
+  * :ref:`example_529`, or
+  * :ref:`example_524`.
 
 .. note::
 
@@ -114,18 +125,26 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/project-hosts.yml
+.. literalinclude:: group_vars/iocage/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/project.yml
+.. literalinclude:: group_vars/iocage/project.yml
    :language: yaml+jinja
    :caption:
 
@@ -136,51 +155,43 @@ templates
    :language: jinja
    :caption:
 
-Playbook output - Create project jails from iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
+   (env) > ansible-playbook -i hosts -i iocage.ini \
                             vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-01.txt
    :language: yaml+jinja
    :force:
 
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-04.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-04.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Display the test files
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage exec baz "cat /tmp/ansible-hello-world.txt"
+.. literalinclude:: out/out-05.txt
+   :language: text
+   :caption: [iocage_05]# iocage exec baz "cat /tmp/ansible-hello-world.txt"
 
 .. literalinclude:: out/out-06.txt
    :language: text
-
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage exec qux "cat /tmp/ansible-hello-world.txt"
-
-.. literalinclude:: out/out-07.txt
-   :language: text
+   :caption: [iocage_06]# iocage exec qux "cat /tmp/ansible-hello-world.txt"

@@ -7,40 +7,36 @@
    :local:
    :depth: 2
 
-.. index:: single: postinstall; Example 501
-.. index:: single: role vbotka.freebsd.postinstall; Example 501
-.. index:: single: vbotka.freebsd.postinstall; Example 501
-
-.. index:: single: network; Example 501
-.. index:: single: role vbotka.freebsd.network; Example 501
-.. index:: single: vbotka.freebsd.network; Example 501
-
-.. index:: single: pf; Example 501
-.. index:: single: role vbotka.freebsd.pf; Example 501
-.. index:: single: vbotka.freebsd.pf; Example 501
-
-.. index:: single: ZFS; Example 501
-.. index:: single: role vbotka.freebsd.zfs; Example 501
-.. index:: single: vbotka.freebsd.zfs; Example 501
-
-.. index:: single: community.general.zfs; Example 501
-.. index:: single: community.general.zfs_facts; Example 501
-.. index:: single: community.general.zpool; Example 501
-.. index:: single: community.general.zpool_facts; Example 501
-.. index:: single: module community.general.zfs; Example 501
-.. index:: single: module community.general.zfs_facts; Example 501
-.. index:: single: module community.general.zpool; Example 501
-.. index:: single: module community.general.zpool_facts; Example 501
-
-.. index:: single: iocage activate; Example 501
-.. index:: single: activate iocage; Example 501
-.. index:: single: .login_conf; Example 501
-.. index:: single: /boot/loader.conf; Example 501
+.. index::
+   single: postinstall; Example 501
+   single: role vbotka.freebsd.postinstall; Example 501
+   single: vbotka.freebsd.postinstall; Example 501
+   single: network; Example 501
+   single: role vbotka.freebsd.network; Example 501
+   single: vbotka.freebsd.network; Example 501
+   single: pf; Example 501
+   single: role vbotka.freebsd.pf; Example 501
+   single: vbotka.freebsd.pf; Example 501
+   single: ZFS; Example 501
+   single: role vbotka.freebsd.zfs; Example 501
+   single: vbotka.freebsd.zfs; Example 501
+   single: community.general.zfs; Example 501
+   single: community.general.zfs_facts; Example 501
+   single: community.general.zpool; Example 501
+   single: community.general.zpool_facts; Example 501
+   single: module community.general.zfs; Example 501
+   single: module community.general.zfs_facts; Example 501
+   single: module community.general.zpool; Example 501
+   single: module community.general.zpool_facts; Example 501
+   single: iocage activate; Example 501
+   single: activate iocage; Example 501
+   single: .login_conf; Example 501
+   single: /boot/loader.conf; Example 501
 
 Use case
 ^^^^^^^^
 
-Configure an `iocage`_ host.
+Configure `iocage`_ hosts.
 
 Tree
 ^^^^
@@ -51,16 +47,20 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   └── all
-  │       └── iocage.yml
-  ├── host_vars
-  │   └── iocage_06
-  │       ├── iocage.yml
+  │   ├── all
+  │   │   └── common.yml
+  │   └── iocage
   │       ├── loader.yml
   │       ├── login.yml
+  │       └── packages.yml
+  ├── host_vars
+  │   ├── iocage_05
+  │   │   ├── iocage.yml
+  │   │   ├── network.yml
+  │   │   └── zfs.yml
+  │   └── iocage_06
+  │       ├── iocage.yml
   │       ├── network.yml
-  │       ├── packages.yml
-  │       ├── pf.yml
   │       └── zfs.yml
   ├── iocage.ini
   ├── pb-all.yml
@@ -75,16 +75,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node:
+* On the managed nodes:
 
-* Configure ``/home/admin/.login_conf``
-* Install packages
-* Configure ``/boot/loader.conf``
-* Configure network
-* Create ZFS pool ``iocage``
-* Activate iocage pool ``iocage``
-* Fetch release
-* Test ``iocage`` sanity.
+  * Configure ``/home/admin/.login_conf``
+  * Install packages.
+  * Configure ``/boot/loader.conf``
+  * Configure network.
+  * Create ZFS pool ``iocage``
+  * Activate iocage pool ``iocage``
+  * Fetch release.
+  * Test ``iocage`` sanity.
 
 Requirements
 ^^^^^^^^^^^^
@@ -100,9 +100,9 @@ Notes
 
 * The role `vbotka.freebsd.postinstall`_ is used to:
 
-  * configure ``/home/admin/.login_conf``
-  * install ``packages``
-  * configure ``/boot/loader.conf``
+  * Configure ``/home/admin/.login_conf``
+  * Install ``packages``
+  * Configure ``/boot/loader.conf``
 
 * Firewall is configured in the previous examples.
 
@@ -138,26 +138,42 @@ Inventory iocage.ini
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/iocage.yml
+.. literalinclude:: group_vars/all/common.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/loader.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/login.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/packages.yml
    :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/loader.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/login.yml
+.. literalinclude:: host_vars/iocage_05/network.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_05/zfs.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: host_vars/iocage_06/network.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_06/packages.yml
    :language: yaml+jinja
    :caption:
 
@@ -194,10 +210,6 @@ host_vars
                ada3      ONLINE       0     0     0
 
      errors: No known data errors
-
-.. literalinclude:: host_vars/iocage_06/iocage.yml
-   :language: yaml+jinja
-   :caption:
 
 Playbooks
 ^^^^^^^^^
@@ -294,7 +306,7 @@ Configure ZFS
 
 .. seealso::
 
-   Module community.general.zpool :ref:`example_400_known_issues`.
+   Module community.general.zpool :ref:`example_400_known_issues`
 
 Activate iocage
 """""""""""""""
@@ -302,8 +314,8 @@ Activate iocage
 .. code-block:: console
 
    (env) > ansible-playbook -i iocage.ini \
-                            -t freebsd_iocage_activate -e freebsd_iocage_activate=true \
-                            -e freebsd_iocage_debug=true \
+                            -t freebsd_iocage_activate \
+                            -e freebsd_iocage_activate=true \
                             pb-iocage.yml
 
 .. literalinclude:: out/out-07.txt

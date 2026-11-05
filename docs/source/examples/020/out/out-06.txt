@@ -1,62 +1,23 @@
-
-PLAY [Display all groups.] *****************************************************
-
-TASK [debug] *******************************************************************
-ok: [repos] => 
-    msg: |-
-        repos
-        {class: repos, vmm: iocage_06}
-ok: [repos_devel] => 
-    msg: |-
-        repos-devel
-        {alias: repos_devel, class: repos, vmm: iocage_06}
-ok: [www_p1] => 
-    msg: |-
-        ed4f2b5c
-        {alias: www_p1, project: example_020, swarm: www_prod, vmm: iocage_06}
-ok: [www_p3] => 
-    msg: |-
-        1caef90a
-        {alias: www_p3, project: example_020, swarm: www_prod, vmm: iocage_06}
-ok: [pkg_repo] => 
-    msg: |-
-        pkg-repo
-        {alias: pkg_repo, class: pkg-repo, vmm: iocage_06}
-ok: [www_p2] => 
-    msg: |-
-        68acad68
-        {alias: www_p2, project: example_020, swarm: www_prod, vmm: iocage_06}
-ok: [log_server_01] => 
-    msg: |-
-        log-server-01
-        {alias: log_server_01, class: log-server, vmm: iocage_06}
-ok: [www_d2] => 
-    msg: |-
-        8539981e
-        {alias: www_d2, project: example_020, swarm: www_devel, vmm: iocage_06}
-ok: [www_d1] => 
-    msg: |-
-        1fafe0d4
-        {alias: www_d1, project: example_020, swarm: www_devel, vmm: iocage_06}
-
-TASK [debug] *******************************************************************
-ok: [repos] => 
-    msg: |-
-        all: ['repos', 'repos_devel', 'www_p1', 'www_p3', 'pkg_repo', 'www_p2', 'log_server_01', 'www_d2', 'www_d1']
-        ungrouped: []
-        vmm_iocage_06: ['repos', 'repos_devel', 'www_p1', 'www_p3', 'pkg_repo', 'www_p2', 'log_server_01', 'www_d2', 'www_d1']
-        project_example_020: ['www_p1', 'www_p3', 'www_p2', 'www_d2', 'www_d1']
-        swarm_www_prod: ['www_p1', 'www_p3', 'www_p2']
-        swarm_www_devel: ['www_d2', 'www_d1']
-
-PLAY RECAP *********************************************************************
-log_server_01              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-pkg_repo                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-repos_devel                : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_d2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p1                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p2                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-www_p3                     : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| JID  |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++======+===============+======+=======+======+=================+=======================+=====+==================+==========+
+| 27   | 43e16879      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.136 | -   | ansible-client   | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 28   | 636c5a5c      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.137 | -   | ansible-client   | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 30   | 75aec436      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.134 | -   | ansible-client   | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| None | ansible-test  | off  | down  | jail | 15.1-RELEASE-p1 | DHCP (not running)    | -   | -                | yes      |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 31   | f91b6104      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.151 | -   | ansible-client   | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 29   | fb3eaf11      | off  | up    | jail | 15.1-RELEASE-p1 | epair0b|172.16.99.145 | -   | ansible-client   | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 1    | log-server-01 | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.10/24 | -   | ansible-init     | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 2    | pkg-repo      | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.23/24 | -   | ansible-pkg-repo | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 3    | repos         | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.21/24 | -   | ansible-repos    | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 4    | repos-devel   | on   | up    | jail | 15.1-RELEASE-p1 | vnet0|172.16.99.22/24 | -   | ansible-repos    | no       |
++------+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+

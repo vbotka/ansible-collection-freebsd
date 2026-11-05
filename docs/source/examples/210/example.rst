@@ -7,15 +7,16 @@
    :local:
    :depth: 1
 
-.. index:: single: iocage notes; Example 210
-.. index:: single: inventory vbotka.freebsd.iocage; Example 210
-.. index:: single: pb-iocage.yml; Example 210
-.. index:: single: pb-test.yml; Example 210
+.. index::
+   single: iocage notes; Example 210
+   single: inventory vbotka.freebsd.iocage; Example 210
+   single: pb-iocage.yml; Example 210
+   single: pb-test.yml; Example 210
 
 Use case
 ^^^^^^^^
 
-Test empty iocage notes. Create ``iocage_tags``. The result should be an empty
+Test empty `iocage notes`_. Create ``iocage_tags``. The result should be an empty
 dictionary.
 
 Tree
@@ -35,13 +36,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
   * In the playbook ``pb-iocage.yml``, run the command ``iocage get notes
-    test-210`` and display the result.
+    test-611`` and display the result.
 
-  * In the playbook ``pb-test.yml``, use the :ref:`inventory
-    vbotka.freebsd.iocage <ug_inventory_iocage>` to create and display
+  * In the playbook ``pb-test.yml``, use the inventory plugin
+    :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>` to create and display
     ``iocage_tags``.
 
 Requirements
@@ -52,7 +53,7 @@ Requirements
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. seealso::
 
@@ -81,12 +82,9 @@ hosts
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
 .. literalinclude:: out/out-01.txt
    :language: console
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-iocage.yml
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -94,8 +92,8 @@ Playbook pb-iocage.yml
 .. literalinclude:: pb-iocage.yml
    :language: yaml+jinja
 
-Playbook output - Display empty notes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Empty notes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -111,8 +109,8 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display empty iocage_tags
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Empty iocage_tags
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

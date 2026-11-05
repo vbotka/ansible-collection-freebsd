@@ -1,6 +1,9 @@
----
 - name: Configure Log Client.
   hosts: ansible_syslogng_client
+
+  vars:
+    project_hosts:
+      log_server: 172.16.99.10
     
   tasks:
 

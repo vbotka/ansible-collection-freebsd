@@ -4,7 +4,11 @@
 . ../defaults/batch
 
 # Test
-ansible-playbook pb-vars-ip4.yml -i hosts | tee out/out-01.txt
+ansible-playbook -i hosts pb-vars-ip4.yml | tee out/out-01.txt
 
-# cat /var/tmp/inventory_cache/iocage_02_vbotka.freebsd.iocage_a5393s_8ea2a | tee out/out-02.txt
-# cat /var/tmp/inventory_cache/iocage_04_vbotka.freebsd.iocage_a5393s_d0c35 | tee out/out-03.txt
+# cache_file=/var/tmp/inventory_cache/iocage_05_s1_vbotka.freebsd.iocage_k9573e1
+# ansible-playbook -e cache_file="${cache_file}" pb-cache-dump.yml | tee out/out-02.txt
+# cache_file=/var/tmp/inventory_cache/iocage_06_s1_vbotka.freebsd.iocage_k8aa36d
+# ansible-playbook -e cache_file="${cache_file}" pb-cache-dump.yml | tee out/out-03.txt
+
+touch .done

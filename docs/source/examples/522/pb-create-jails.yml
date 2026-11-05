@@ -1,4 +1,3 @@
----
 - name: Create jails from iocage templates.
   hosts: iocage
 

@@ -1,0 +1,14 @@
+
+PLAY [Test role vbotka.freebsd.postinstall] ************************************
+
+TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
+included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for 79075158, e94e49a9, 27df792f, 234c28c9, d9eedd0b, fb67d94a => (item=custom)
+
+PLAY RECAP *********************************************************************
+234c28c9                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+27df792f                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+79075158                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+d9eedd0b                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+e94e49a9                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+fb67d94a                   : ok=17   changed=0    unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   
+

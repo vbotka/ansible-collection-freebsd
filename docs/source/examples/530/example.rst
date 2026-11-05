@@ -7,27 +7,29 @@
    :local:
    :depth: 1
 
-.. index:: single: local pkg repo; Example 530
-.. index:: single: template ansible-pkg-repo; Example 530
-.. index:: single: template ansible-repos; Example 530
-.. index:: single: template ansible-init; Example 530
-.. index:: single: template ansible-nginx; Example 530
-
-.. index:: single: git daemon; Example 530
-.. index:: single: git_daemon_flags; Example 530
-
-.. index:: single: ansible_init; Example 530
-.. index:: single: service ansible_init; Example 530
-.. index:: single: ansible_init.sh; Example 530
-.. index:: single: ansible_init_enable; Example 530
-.. index:: single: ansible_init_host; Example 530
-.. index:: single: ansible_init_repo; Example 530
-.. index:: single: ansible_init_playbook; Example 530
+.. index::
+   single: local pkg repo; Example 530
+   single: template ansible-pkg-repo; Example 530
+   single: template ansible-repos; Example 530
+   single: template ansible-init; Example 530
+   single: template ansible-nginx; Example 530
+   single: git daemon; Example 530
+   single: git_daemon_flags; Example 530
+   single: ansible_init; Example 530
+   single: service ansible_init; Example 530
+   single: ansible_init.sh; Example 530
+   single: ansible_init_enable; Example 530
+   single: ansible_init_host; Example 530
+   single: ansible_init_repo; Example 530
+   single: ansible_init_playbook; Example 530
 
 Use case
 ^^^^^^^^
 
-Create `iocage`_ templates in one play.
+Create multiple `iocage templates`_ in one play using the role
+`vbotka.freebsd.iocage_template`_. Loop over template configurations in
+``conf.d`` to create templates: ``ansible-init``, ``ansible-nginx``,
+``ansible-pkg-repo``, and ``ansible-repos``.
 
 Tree
 ^^^^
@@ -48,15 +50,19 @@ Tree
   │       └── template.yml
   ├── files
   │   ├── ansible-init.sh
+  │   ├── dhclient-exit-hooks
   │   └── index.html
   ├── group_vars
   │   └── all
+  │       ├── local-pkg-conf.yml
+  │       ├── nginx-pkg-repo.yml
   │       ├── project-hosts.yml
   │       └── template.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── template.yml
   │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       └── nginx-pkg-repo.yml
+  │       └── template.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── tasks
@@ -68,19 +74,20 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to
-  create the templates:
+* On the managed nodes:
 
-  * ``ansible-init``
-  * ``ansible-nginx``
-  * ``ansible-pkg-repo``
-  * ``ansible-repos``
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the templates:
+
+    * ``ansible-init``
+    * ``ansible-nginx``
+    * ``ansible-pkg-repo``
+    * ``ansible-repos``
 
 Requirements
 ^^^^^^^^^^^^
 
 * Role `vbotka.freebsd.iocage_template`_
-* Package repository created in :ref:`example_322`
+* Package repository created in the example :ref:`example_322`.
 
 Notes
 ^^^^^
@@ -111,11 +118,30 @@ Inventory iocage.ini
 group_vars
 ^^^^^^^^^^
 
+.. literalinclude:: group_vars/all/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/all/nginx-pkg-repo.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
    :caption:
 
 .. literalinclude:: group_vars/all/template.yml
+   :language: yaml+jinja
+   :caption:
+
+host_vars
+^^^^^^^^^
+
+.. literalinclude:: host_vars/iocage_05/template.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/template.yml
    :language: yaml+jinja
    :caption:
 
@@ -152,19 +178,12 @@ files
    :language: bash
    :caption:
 
+.. literalinclude:: files/dhclient-exit-hooks
+   :language: sh
+   :caption:
+
 .. literalinclude:: files/index.html
    :language: html
-   :caption:
-
-host_vars
-^^^^^^^^^
-
-.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
-   :language: yaml+jinja
-   :caption:
-
-.. literalinclude:: host_vars/iocage_06/nginx-pkg-repo.yml
-   :language: yaml+jinja
    :caption:
 
 templates
@@ -189,8 +208,8 @@ Playbook pb-iocage-template.yml
    :language: yaml+jinja
    :caption:
 
-Playbook output - Create iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -203,9 +222,10 @@ Playbook output - Create iocage templates
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -lt
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -lt

@@ -20,13 +20,3 @@
           type: {{ info | type_debug }}
           authors: {{ info.0 }}
           version: {{ info.1 }}
-
-#   - name: Error. Unknown attribute foo
-#     block:
-#        - set_fact:
-#           foo: "{{ query('vbotka.freebsd.galaxy_info', 'foo') }}"
-#        - debug:
-#           var: foo
-#      rescue:
-#        - debug:
-#           var: ansible_failed_result

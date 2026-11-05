@@ -7,18 +7,19 @@
    :local:
    :depth: 1
 
-.. index:: single: inventory community.general.iocage; Example 017
-.. index:: single: community.general.iocage; Example 017
-.. index:: single: pb-iocage-obsolete.yml; Example 017
-.. index:: single: option compose; Example 017
-.. index:: single: compose; Example 017
-.. index:: single: option groups; Example 017
+.. index::
+   single: inventory community.general.iocage; Example 017
+   single: community.general.iocage; Example 017
+   single: pb-iocage-obsolete.yml; Example 017
+   single: option compose; Example 017
+   single: compose; Example 017
+   single: option groups; Example 017
 
 Use case
 ^^^^^^^^
 
-Use the `inventory plugin community.general.iocage`_ instead of the
-:ref:`inventory vbotka.freebsd.iocage <ug_inventory_iocage>`.
+Use the inventory plugin `community.general.iocage`_ instead of the inventory
+plugin :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>`.
 
 Tree
 ^^^^
@@ -29,18 +30,28 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
+  │   ├── 05_iocage.yml
   │   ├── 06_iocage.yml
   │   └── 99_constructed.yml
   ├── pb-iocage-obsolete.yml
-  └── pb.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-The `inventory plugin community.general.iocage`_ should provide the
-same functionality.
+* On the managed nodes:
 
-.. warning::
+  * Test the inventory plugin `community.general.iocage`_. It should provide the
+    same functionality as the inventory plugin :ref:`vbotka.freebsd.iocage
+    <ug_inventory_iocage>`.
+
+* On cloned jails in the group ``test``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display jails and inventory groups.
+
+.. important::
 
    The inventory plugin ``community.general.iocage`` may differ from
    ``vbotka.freebsd.iocage``. If you want to be sure
@@ -53,7 +64,7 @@ same functionality.
    If the versions are different, you will see a warning similar to this one::
 
      * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
-     *                    WARNING                                  *
+     *                     WARNING                                 *
      *                                                             *
      * The inventory plugins are different:                        *
      *                                                             *
@@ -81,9 +92,14 @@ Notes
 ^^^^^
 
 * Available in ``community.general`` >= 10.2.0.
-* See::
 
-    shell> ansible-doc -t inventory community.general.iocage
+.. hint::
+
+   View the documentation from the command line:
+
+   .. code:: console
+
+      (env) > ansible-doc -t inventory community.general.iocage
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -94,6 +110,11 @@ ansible.cfg
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 1
+
 .. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
@@ -103,16 +124,23 @@ hosts
    :language: yaml+jinja
    :caption:
 
+Graph
+^^^^^
+
+.. literalinclude:: out/out-01.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
+
 .. hint::
 
    List all inventory::
 
      (env) > ansible-inventory -i hosts --list --yaml
 
-Playbook pb.yml
-^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
 Playbook output - Display jails and groups
@@ -120,8 +148,8 @@ Playbook output - Display jails and groups
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb.yml
+   (env) > ansible-playbook -i hosts pb-test.yml
 
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-02.txt
    :language: yaml+jinja
    :force:

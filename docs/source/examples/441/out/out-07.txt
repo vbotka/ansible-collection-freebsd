@@ -1,0 +1,51 @@
+
+PLAY [Test the SSH redirection to the jails.] **********************************
+
+TASK [debug] *******************************************************************
+ok: [8b260031] => 
+    msg: |-
+        inv        ansible_user  ansible_host  ansible_port  ip4
+        ------------------------------------------------------------------
+        8b260031   admin         iocage_05     2373          172.16.95.173
+        479f82fa   admin         iocage_05     2374          172.16.95.174
+        00bafd6f   admin         iocage_05     2337          172.16.95.137
+        68039a83   admin         iocage_06     2349          172.16.99.149
+        31131d90   admin         iocage_06     2326          172.16.99.126
+        b7a20439   admin         iocage_06     2319          172.16.99.119
+
+TASK [command] *****************************************************************
+changed: [68039a83]
+changed: [31131d90]
+changed: [479f82fa]
+changed: [8b260031]
+changed: [00bafd6f]
+changed: [b7a20439]
+
+TASK [debug] *******************************************************************
+ok: [8b260031] => 
+    out.stdout: FreeBSD 8b260031 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880
+        GENERIC amd64
+ok: [479f82fa] => 
+    out.stdout: FreeBSD 479f82fa 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880
+        GENERIC amd64
+ok: [00bafd6f] => 
+    out.stdout: FreeBSD 00bafd6f 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880
+        GENERIC amd64
+ok: [31131d90] => 
+    out.stdout: FreeBSD 31131d90 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+ok: [68039a83] => 
+    out.stdout: FreeBSD 68039a83 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+ok: [b7a20439] => 
+    out.stdout: FreeBSD b7a20439 15.1-RELEASE FreeBSD 15.1-RELEASE releng/15.1-n283562-96841ea08dcf
+        GENERIC amd64
+
+PLAY RECAP *********************************************************************
+00bafd6f                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+31131d90                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+479f82fa                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+68039a83                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+8b260031                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+b7a20439                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

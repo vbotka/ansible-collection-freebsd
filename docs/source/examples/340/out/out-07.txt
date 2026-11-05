@@ -1,0 +1,18 @@
+
+PLAY [Display lighttpd status.] ************************************************
+
+TASK [Get status.] *************************************************************
+changed: [iocage_06] => (item=96f28cb3)
+changed: [iocage_06] => (item=c5797cc4)
+changed: [iocage_06] => (item=8d979d36)
+
+TASK [Display status.] *********************************************************
+ok: [iocage_06] => 
+    msg:
+        8d979d36: lighttpd is running as pid 43946.
+        96f28cb3: lighttpd is running as pid 43918.
+        c5797cc4: lighttpd is running as pid 43948.
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

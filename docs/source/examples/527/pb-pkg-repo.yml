@@ -1,4 +1,3 @@
----
 - name: Fetch packages to repo.
   hosts: fetch_pkg_repo
 

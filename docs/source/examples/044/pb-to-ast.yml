@@ -1,0 +1,12 @@
+- name: Test filter to_ast
+  hosts: localhost
+
+  vars_files:
+
+    - vars/haproxy_conf.yml
+
+  tasks:
+
+    - debug:
+        msg: |
+          {{ haproxy_conf | vbotka.freebsd.to_ast }}

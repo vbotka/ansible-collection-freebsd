@@ -1,11 +1,18 @@
 plugin: ansible.builtin.constructed
-
+compose:
+  iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
+  # connection plugin vbotka.freebsd.jailexec
+  ansible_connection: "'vbotka.freebsd.jailexec'"
+  ansible_ssh_user: "'admin'"
+  ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)')).vmm | d('none')
+  ansible_jail_name: iocage_jid
+  ansible_jail_privilege_escalation: "'sudo'"
+  # ansible options
+  ansible_python_interpreter: "'auto_silent'"
 keyed_groups:
+  - prefix: vmm
+    key: iocage_tags.vmm
   - prefix: project
     key: iocage_tags.project
   - prefix: swarm
     key: iocage_tags.swarm
-  - prefix: state
-    key: iocage_state
-  - prefix: vmm
-    key: iocage_tags.vmm

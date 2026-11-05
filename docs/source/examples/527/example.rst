@@ -7,38 +7,35 @@
    :local:
    :depth: 1
 
-.. index:: single: pkg repo; Example 527
-.. index:: single: template ansible-pkg-repo; Example 527
-.. index:: single: role vbotka.freebsd.iocage_template; Example 527
-.. index:: single: pb_iocage_project_create_from_templates.yml; Example 527
-
-.. index:: single: filter vbotka.freebsd.project; Example 527
-.. index:: single: vbotka.freebsd.project; Example 527
-.. index:: single: project; Example 527
-
-.. index:: single: filter vbotka.freebsd.dict_to_ast; Example 527
-.. index:: single: vbotka.freebsd.dict_to_ast; Example 527
-.. index:: single: dict_to_ast; Example 527
-
-.. index:: single: filter vbotka.freebsd.ast_to_nginx; Example 527
-.. index:: single: vbotka.freebsd.ast_to_nginx; Example 527
-.. index:: single: ast_to_nginx; Example 527
-
-.. index:: single: connection vbotka.freebsd.jailexec; Example 527
-.. index:: single: vbotka.freebsd.jailexec; Example 527
-.. index:: single: jailexec; Example 527
-
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 527
-
-.. index:: single: Nginx; Example 527
+.. index::
+   single: pkg repo; Example 527
+   single: template ansible-pkg-repo; Example 527
+   single: role vbotka.freebsd.iocage_template; Example 527
+   single: pb_iocage_project_create_from_templates.yml; Example 527
+   single: filter vbotka.freebsd.project; Example 527
+   single: vbotka.freebsd.project; Example 527
+   single: project; Example 527
+   single: filter vbotka.freebsd.to_ast; Example 527
+   single: vbotka.freebsd.to_ast; Example 527
+   single: to_ast; Example 527
+   single: filter vbotka.freebsd.ast_to_nginx; Example 527
+   single: vbotka.freebsd.ast_to_nginx; Example 527
+   single: ast_to_nginx; Example 527
+   single: connection vbotka.freebsd.jailexec; Example 527
+   single: vbotka.freebsd.jailexec; Example 527
+   single: jailexec; Example 527
+   single: inventory vbotka.freebsd.iocage2; Example 527
+   single: Nginx; Example 527
 
 Use case
 ^^^^^^^^
 
 Create a jail that serves a package repository for other jails. Create the
-`iocage`_ template ``ansible-pkg-repo`` and configure a web server to publish
-the repository. Create a jail from the template and fetch packages into the
-repository.
+`iocage template`_ ``ansible-pkg-repo`` using the role
+`vbotka.freebsd.iocage_template`_ and configure an `Nginx`_ web server to
+publish the repository. Create jails from the template using the playbook
+:ref:`ug_pb-iocage-project-create-from-templates`. Fetch the selected packages
+into the repository using the playbook ``pb-pkg-repo.yml``.
 
 Tree
 ^^^^
@@ -49,19 +46,25 @@ Tree
   .
   ├── ansible.cfg
   ├── group_vars
-  │   ├── all
+  │   ├── iocage
+  │   │   ├── local-pkg-conf.yml
+  │   │   ├── nginx-pkg-repo.yml
   │   │   ├── project-hosts.yml
-  │   │   ├── project.yml
+  │   │   ├── templates.yml
   │   │   └── template.yml
   │   └── fetch_pkg_repo
   │       └── pkg-repo.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   ├── project.yml
+  │   │   └── release.yml
   │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       ├── nginx-pkg-repo.yml
-  │       └── template.yml
+  │       ├── project.yml
+  │       └── release.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── pb-pkg-repo.yml
@@ -72,29 +75,28 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the
-    template ``ansible-pkg-repo``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
+    ``ansible-pkg-repo``.
 
-  * In the playbook
-    :ref:`ug_pb-iocage-project-create-from-templates`,
-    create a jail from the template.
+  * In the playbook :ref:`ug_pb-iocage-project-create-from-templates`, create
+    jails from the template.
 
-* In the inventory group ``fetch_pkg_repo``, fetch the selected
-  packages into the repository.
+* In the inventory group ``fetch_pkg_repo``, fetch the selected packages into
+  the repository.
 
 Requirements
 ^^^^^^^^^^^^
 
 * Role `vbotka.freebsd.iocage_template`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
-* :ref:`ug_filter_dict_to_ast`
+* :ref:`ug_filter_to_ast`
 * :ref:`ug_filter_ast_to_nginx`
 * :ref:`ug_filter_project`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
-* Package repository created in :ref:`example_322`
+* Package repository created in the example :ref:`example_322`.
 
 .. note::
 
@@ -103,7 +105,7 @@ Requirements
 
 .. seealso::
 
-   Example :ref:`example_042`
+   Example :ref:`example_322`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -120,22 +122,44 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/project-hosts.yml
+.. literalinclude:: group_vars/iocage/local-pkg-conf.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/project.yml
+.. literalinclude:: group_vars/iocage/nginx-pkg-repo.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/template.yml
+.. warning::
+
+   This configuration is minimal and functional for an isolated lab or
+   trusted internal LAN, but it poses several security risks in
+   production or shared network environments.
+
+.. literalinclude:: group_vars/iocage/project-hosts.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/templates.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/template.yml
    :language: yaml+jinja
    :caption:
 
@@ -146,21 +170,24 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+.. literalinclude:: host_vars/iocage_05/project.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/nginx-pkg-repo.yml
+.. literalinclude:: host_vars/iocage_06/project.yml
    :language: yaml+jinja
    :caption:
 
 .. important::
 
-   This configuration is minimal and functional for an isolated lab or
-   trusted internal LAN, but it poses several security risks in
-   production or shared network environments.
+   The jail name ``pkg-repo`` is identical in all jail managers. Therefore, the
+   ``project`` dictionaries must be jail-manager-specific.
 
-.. literalinclude:: host_vars/iocage_06/template.yml
+.. literalinclude:: host_vars/iocage_05/release.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: host_vars/iocage_06/release.yml
    :language: yaml+jinja
    :caption:
 
@@ -181,8 +208,8 @@ Playbook pb-iocage-template.yml
 .. literalinclude:: pb-iocage-template.yml
    :language: yaml+jinja
 
-Playbook output - Create iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -195,44 +222,50 @@ Playbook output - Create iocage templates
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -lt
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -lt
 
-Playbook output - Create project jails from iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -lt
+
+Playbook output - Create jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
+   (env) > ansible-playbook -i hosts -i iocage.ini \
                             vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
 Graph
 ^^^^^
 
-.. code-block:: console
+.. literalinclude:: out/out-05.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
-   (env) > ansible-inventory -i hosts --graph
+.. important::
 
-.. literalinclude:: out/out-04.txt
-   :language: bash
+   The name of the jail ``pkg-repo`` is identical in all jail managers. The
+   Ansible inventory is flat.
+
+   See: :ref:`ug_qa_inventory_flat`
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-pkg-repo.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -240,24 +273,37 @@ Playbook pb-pkg-repo.yml
 .. literalinclude:: pb-pkg-repo.yml
    :language: yaml+jinja
 
-Playbook output - Fetch packages to repo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Fetch packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-playbook -i hosts pb-pkg-repo.yml
-
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-08.txt
    :language: yaml+jinja
    :force:
+   :caption: (env) > ansible-playbook -i hosts/05_iocage2.yml -i hosts/99_constructed.yml pb-pkg-repo.yml
+
+.. literalinclude:: out/out-09.txt
+   :language: yaml+jinja
+   :force:
+   :caption: (env) > ansible-playbook -i hosts/06_iocage2.yml -i hosts/99_constructed.yml pb-pkg-repo.yml
+
+.. important::
+
+   The name of the jail ``pkg-repo`` is identical in all jail
+   managers. Therefore, it is not possible to include them all in a single
+   inventory group. As a result, the play must be run for each jail manager
+   separately.
+
+   See: :ref:`ug_qa_inventory_flat`
 
 List repo
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 fetch -qo - http://172.16.99.23/
-
-.. literalinclude:: out/out-07.txt
+.. literalinclude:: out/out-10.txt
    :language: html
    :force:
+   :caption: [iocage_05]# fetch -qo - http://172.16.95.23/
+
+.. literalinclude:: out/out-11.txt
+   :language: html
+   :force:
+   :caption: [iocage_06]# fetch -qo - http://172.16.99.23/

@@ -1,4 +1,4 @@
-- name: Iocage list datasets.
+- name: Iocage datasets.
   hosts: iocage
 
   vars:
@@ -7,7 +7,7 @@
 
   tasks:
 
-    - name: Run commands
+    - name: Get iocage datasets.
       tags: runner
       ansible.builtin.import_role:
         name: vbotka.freebsd.iocage
@@ -21,12 +21,12 @@
             - cmd: iocage list -Ph
             - cmd: iocage list -th
 
-    - name: Debug
+    - name: Debug.
       when: debug2 | d(false) | bool
       ansible.builtin.debug:
         var: out
 
-    - name: Set lists
+    - name: Set iocage datasets.
       ansible.builtin.set_fact:
         iocage_releases: "{{ out.results.0.stdout.splitlines() }}"
         iocage_jails: "{{ dict(out.results.1.stdout.splitlines()
@@ -36,7 +36,7 @@
                                | map('community.general.dict')
                                | json_query('[].[name, @]')) }}"
 
-    - name: Display lists
+    - name: Display iocage datasets.
       when: debug | d(false) | bool
       ansible.builtin.debug:
         msg: |-

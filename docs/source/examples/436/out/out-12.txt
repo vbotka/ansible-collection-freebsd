@@ -1,0 +1,7 @@
+nginx_cluster: www_611 (172.16.99.196)
+nginx_cluster: www_612 (172.16.99.197)
+nginx_cluster: www_613 (172.16.99.172)
+nginx_cluster: www_611 (172.16.99.196)
+nginx_cluster: www_612 (172.16.99.197)
+nginx_cluster: www_613 (172.16.99.172)
+nginx_cluster: www_611 (172.16.99.196)

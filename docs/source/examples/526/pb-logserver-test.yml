@@ -1,4 +1,3 @@
----
 - name: Test Log Server.
   hosts: log_servers
     
@@ -14,7 +13,7 @@
         - sleep 2; find /var/log/remote/localhost/ -name *.log | xargs cat
 
     - name: Debug.
-      when: debug | d(false) | bool
+      when: debug | d(true) | bool
       ansible.builtin.debug:
         msg: |
           {% for i in out.results %}

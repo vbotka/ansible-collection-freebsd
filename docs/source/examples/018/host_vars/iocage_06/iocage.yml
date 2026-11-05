@@ -1,0 +1,15 @@
+basejails:
+  ansible-test:
+    release: 15.1-RELEASE
+
+clones:
+  test_611:
+    clone_from: ansible-test
+  test_612:
+    clone_from: ansible-test
+  test_613:
+    clone_from: ansible-test
+
+properties:
+  dhcp: 1
+  vnet: 1

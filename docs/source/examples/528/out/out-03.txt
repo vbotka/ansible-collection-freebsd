@@ -1,68 +1,13 @@
-
-PLAY [Create and start project jails from iocage templates.] *******************
-
-TASK [Setup: Get activated pool.] **********************************************
-ok: [iocage_06]
-
-TASK [Create: Create jails.] ***************************************************
-ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
-
-TASK [Facts: Create custom facts dirs.] ****************************************
-changed: [iocage_06] => (item=log-server-01)
-changed: [iocage_06] => (item=www-01)
-changed: [iocage_06] => (item=www-02)
-
-TASK [Facts: Create custom facts files.] ***************************************
-changed: [iocage_06] => (item=log-server-01)
-changed: [iocage_06] => (item=www-01)
-changed: [iocage_06] => (item=www-02)
-
-TASK [Ai-vars: Create ansible init vars dirs /root/ansible-vars] ***************
-changed: [iocage_06] => (item=log-server-01)
-changed: [iocage_06] => (item=www-01)
-changed: [iocage_06] => (item=www-02)
-
-TASK [Ai-vars: Copy files to /root/ansible-vars] *******************************
-changed: [iocage_06] => (item=log-server-01 ai-db-class.yml)
-changed: [iocage_06] => (item=log-server-01 ai-conf-roles.yml)
-changed: [iocage_06] => (item=log-server-01 pkg-repo.yml)
-changed: [iocage_06] => (item=www-01 ai-db-class.yml)
-changed: [iocage_06] => (item=www-01 ai-conf-roles.yml)
-changed: [iocage_06] => (item=www-01 pkg-repo.yml)
-changed: [iocage_06] => (item=www-02 ai-db-class.yml)
-changed: [iocage_06] => (item=www-02 ai-conf-roles.yml)
-changed: [iocage_06] => (item=www-02 pkg-repo.yml)
-
-TASK [Ai-vars-templates: Create ansible init vars dirs /root/ansible-vars] *****
-ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
-
-TASK [Ai-vars-templates: Create files from templates in /root/ansible-vars] ****
-changed: [iocage_06] => (item=log-server-01 project-hosts.yml)
-changed: [iocage_06] => (item=www-01 project-hosts.yml)
-changed: [iocage_06] => (item=www-02 project-hosts.yml)
-
-TASK [Ai-vars-class: Create ansible init vars dirs /root/ansible-vars] *********
-ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
-
-TASK [Ai-vars-class: Sync files to /root/ansible-vars] *************************
-changed: [iocage_06] => (item=log-server-01 log-server)
-changed: [iocage_06] => (item=www-01 log-client)
-changed: [iocage_06] => (item=www-02 log-client)
-
-TASK [Properties: Set properties.] *********************************************
-ok: [iocage_06] => (item=log-server-01)
-ok: [iocage_06] => (item=www-01)
-ok: [iocage_06] => (item=www-02)
-
-TASK [Start: Start jails.] *****************************************************
-ok: [iocage_06]
-
-PLAY RECAP *********************************************************************
-iocage_06                  : ok=12   changed=6    unreachable=0    failed=0    skipped=17   rescued=0    ignored=0   
-
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| JID |     NAME      | BOOT | STATE | TYPE |     RELEASE     |          IP4          | IP6 |     TEMPLATE     | BASEJAIL |
++=====+===============+======+=======+======+=================+=======================+=====+==================+==========+
+| 6   | log-server-01 | on   | up    | jail | 14.5-RELEASE-p1 | vnet0|172.16.95.10/24 | -   | ansible-init     | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 1   | pkg-repo      | on   | up    | jail | 14.5-RELEASE-p1 | vnet0|172.16.95.23/24 | -   | ansible-pkg-repo | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 2   | repos         | on   | up    | jail | 14.5-RELEASE-p1 | vnet0|172.16.95.21/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 3   | repos-devel   | on   | up    | jail | 14.5-RELEASE-p1 | vnet0|172.16.95.22/24 | -   | ansible-repos    | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+
+| 7   | www-01        | on   | up    | jail | 14.5-RELEASE-p1 | epair0b|172.16.95.175 | -   | ansible-init     | no       |
++-----+---------------+------+-------+------+-----------------+-----------------------+-----+------------------+----------+

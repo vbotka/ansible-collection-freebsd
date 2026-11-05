@@ -1,0 +1,7 @@
+- name: Configure HAProxy.
+  hosts: iocage
+  gather_facts: true
+
+  roles:
+
+    - vbotka.freebsd_haproxy

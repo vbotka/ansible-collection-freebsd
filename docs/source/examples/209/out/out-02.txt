@@ -2,58 +2,78 @@
 PLAY [Create Ansible client templates.] ****************************************
 
 TASK [Setup: Get iocage list of templates.] ************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Create: Get iocage list of templates.] ***********************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Create: Create templates.] ***********************************************
+changed: [iocage_05] => (item=ansible-apache 14.5-RELEASE)
 changed: [iocage_06] => (item=ansible-apache 15.1-RELEASE)
 
 TASK [Start: Get iocage list of jails.] ****************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Start: Start created templates.] *****************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Pkg: Get iocage list of jails.] ******************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Pkg: Install packages.] **************************************************
 changed: [iocage_06] => (item=ansible-apache)
+changed: [iocage_05] => (item=ansible-apache)
 
 TASK [User: Create user.] ******************************************************
+changed: [iocage_05] => (item=ansible-apache admin)
 changed: [iocage_06] => (item=ansible-apache admin)
 
 TASK [Pk: The keys are valid.] *************************************************
 ok: [iocage_06] => 
     changed: false
     msg: All assertions passed
+ok: [iocage_05] => 
+    changed: false
+    msg: All assertions passed
 
 TASK [Pk: Configure public keys.] **********************************************
+changed: [iocage_05] => (item=ansible-apache admin)
 changed: [iocage_06] => (item=ansible-apache admin)
 
 TASK [Pk: Chown .ssh] **********************************************************
+ok: [iocage_05] => (item=ansible-apache admin)
 ok: [iocage_06] => (item=ansible-apache admin)
 
 TASK [Sudo: Configure sudo.] ***************************************************
+changed: [iocage_05] => (item=ansible-apache admin)
 changed: [iocage_06] => (item=ansible-apache admin)
 
 TASK [Dhclient: Configure hooks.] **********************************************
+changed: [iocage_05] => (item=ansible-apache dhclient-exit-hooks)
 changed: [iocage_06] => (item=ansible-apache dhclient-exit-hooks)
 
 TASK [Rcconf: Configure /etc/rc.conf] ******************************************
+changed: [iocage_05] => (item=ansible-apache sshd_enable YES)
 changed: [iocage_06] => (item=ansible-apache sshd_enable YES)
 
 TASK [Stop: Get iocage list of jails.] *****************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Stop: Stop jails.] *******************************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
 TASK [Template: Set template.] *************************************************
+ok: [iocage_05] => (item=ansible-apache)
 ok: [iocage_06] => (item=ansible-apache)
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=17   changed=7    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
+iocage_05                  : ok=17   changed=7    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
+iocage_06                  : ok=17   changed=7    unreachable=0    failed=0    skipped=20   rescued=0    ignored=0   
 

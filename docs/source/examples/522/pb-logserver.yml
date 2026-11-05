@@ -1,4 +1,3 @@
----
 - name: Configure and start Log Server.
   hosts: ansible_syslogng_server
     

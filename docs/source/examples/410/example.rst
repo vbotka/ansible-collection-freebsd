@@ -7,9 +7,10 @@
    :local:
    :depth: 1
 
-.. index:: single: al_include_confd_vars_list; Example 410
-.. index:: single: role vbotka.freebsd.lib; Example 410
-.. index:: single: vbotka.freebsd.lib; Example 410
+.. index::
+   single: al_include_confd_vars_list; Example 410
+   single: role vbotka.freebsd.lib; Example 410
+   single: vbotka.freebsd.lib; Example 410
 
 Use case
 ^^^^^^^^
@@ -44,10 +45,10 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
-  * Create a list of variable values from files in the controller's directory
-    ``conf.d``.
+  * In the playbook ``pb.yml``, create a list of variables' values from files in
+    the directory ``conf.d``.
 
   * Display the created list.
 
@@ -60,7 +61,7 @@ Notes
 ^^^^^
 
 * Variable names are not collected. The resulting list contains only the
-  variable values.
+  variables' values.
 
 .. note::
 
@@ -114,7 +115,6 @@ Expected results
        users: [darth, wendy]
      - team: devel
        users: [charlie, david]
-
 
 .. code-block:: yaml+jinja
 

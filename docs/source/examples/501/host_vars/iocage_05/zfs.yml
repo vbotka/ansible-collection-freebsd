@@ -1,0 +1,6 @@
+fzfs_enable: true
+fzfs_pools:
+  iocage:
+    vdevs:
+      - disks:
+          - /dev/nda0p6

@@ -7,20 +7,21 @@
    :local:
    :depth: 1
 
-.. index:: single: role vbotka.freebsd.iocage; Example 001
-.. index:: single: iocage install; Example 001
+.. index::
+   single: role vbotka.freebsd.iocage; Example 001
+   single: iocage install; Example 001
 
 Use case
 ^^^^^^^^
 
-Use the `role vbotka.freebsd.iocage`_ to install the `iocage`_ package.
+Use the `role vbotka.freebsd.iocage`_ to install the `iocage package`_.
 
 Tree
 ^^^^
 
 ::
 
-  shell> tree
+  shell> tree .
   .
   ├── ansible.cfg
   ├── iocage.ini
@@ -29,17 +30,18 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the playbook ``pb-iocage.yml`` and the `role
-  vbotka.freebsd.iocage`_ to:
+* On the managed nodes:
 
-  * Display variables
-  * Install the `iocage`_ package
+  * Use the playbook ``pb-iocage.yml`` and the `role vbotka.freebsd.iocage`_ to:
+
+    * Display variables.
+    * Install the `iocage package`_.
 
 Requirements
 ^^^^^^^^^^^^
 
 * `Role vbotka.freebsd.iocage`_
-* Root privileges on the managed nodes
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
@@ -102,9 +104,10 @@ Playbook output - Display variables
    :language: yaml+jinja
    :force:
 
-.. seealso::
+.. note::
 
-   * `ansible-playbook`_
+   The displayed values of the ``freebsd_iocage_*`` variables are the ``iocage``
+   role defaults.
 
 Playbook output - Install iocage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -20,7 +20,7 @@ ansible-playbook vbotka.freebsd.pb_iocage_plugins.yml -i iocage.ini -t enabled_p
 ssh admin@iocage_06 sudo iocage list -P | tee out/out-02.txt
 
 # Create jails
-ansible-playbook pb-create-jails.yml -i iocage.ini -i hosts | tee out/out-03.txt
+ansible-playbook pb-create-jails.yml -i hosts -i iocage.ini | tee out/out-03.txt
 
 # Inventory graph
 ansible-inventory -i hosts --graph | tee out/out-04.txt

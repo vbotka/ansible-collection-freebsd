@@ -1,7 +1,7 @@
 .. _example_021:
 
-021 Inventory plugin iocage2
-----------------------------
+021 Connection variables for jailexec
+-------------------------------------
 
 This example extends :ref:`example_020`.
 
@@ -9,23 +9,35 @@ This example extends :ref:`example_020`.
    :local:
    :depth: 1
 
-.. index:: single: inventory vbotka.freebsd.iocage2; Example 021
-.. index:: single: inventory ansible.builtin.constructed; Example 021
-.. index:: single: connection vbotka.freebsd.jailexec; Example 021
-.. index:: single: vbotka.freebsd.jailexec; Example 021
-.. index:: single: jailexec; Example 021
-.. index:: single: option inventory_hostname_tag; Example 021
-.. index:: single: inventory_hostname_tag; Example 021
-.. index:: single: iocage tag alias; Example 021
-.. index:: single: inventory alias; Example 021
-.. index:: single: alias; Example 021
+.. index::
+   single: inventory vbotka.freebsd.iocage2; Example 021
+   single: inventory ansible.builtin.constructed; Example 021
+   single: connection vbotka.freebsd.jailexec; Example 021
+   single: vbotka.freebsd.jailexec; Example 021
+   single: jailexec; Example 021
+   single: option inventory_hostname_tag; Example 021
+   single: inventory_hostname_tag; Example 021
+   single: iocage tag alias; Example 021
+   single: inventory alias; Example 021
+   single: alias; Example 021
+   single: option hooks_results; Example 021
+   single: hooks_results; Example 021
+   single: option ansible_connection; Example 021
+   single: ansible_connection; Example 021
+   single: option ansible_jail_host; Example 021
+   single: ansible_jail_host; Example 021
+   single: option ansible_jail_name; Example 021
+   single: ansible_jail_name; Example 021
+   single: option ansible_jail_privilege_escalation; Example 021
+   single: ansible_jail_privilege_escalation; Example 021
 
 Use case
 ^^^^^^^^
 
-In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`, use the option
-``inventory_hostname_tag`` to specify which tag to create `inventory
-aliases`_ from.
+Use the inventory plugin :ref:`vbotka.freebsd.iocage2 <ug_inventory_iocage2>` to
+retrieve the inventory. Use the connection plugin :ref:`vbotka.freebsd.jailexec
+<ug_connection_jailexec>` to connect to the jails created in the example
+:ref:`example_020`.
 
 Tree
 ^^^^
@@ -35,52 +47,68 @@ Tree
   shell> tree .
   .
   ├── ansible.cfg
-  ├── group_vars
-  │   └── all
-  │       └── swarms.yml
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
-  ├── host_vars
-  │   └── iocage_06
-  │       └── iocage.yml
   ├── iocage.ini
-  ├── pb-test-all.yml
+  ├── pb-test-connection-vars.yml
   ├── pb-test-connection.yml
-  └── pb-test-db.yml
+  └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* In the :ref:`inventory vbotka.freebsd.iocage2 <ug_inventory_iocage2>`,
-  retrieve the inventory aliases from the tag ``alias``.
+* On the managed nodes:
 
-* In the inventory plugin `ansible.builtin.constructed`_, create the inventory
-  groups.
+  * In the inventory plugin :ref:`vbotka.freebsd.iocage2
+    <ug_inventory_iocage2>`, retrieve the inventory.
 
-* Display the jails and groups.
+  * In the inventory plugin `ansible.builtin.constructed`_:
 
-* Test the connection.
+    * Compose:
+
+      * The dictionary ``iocage_tags``.
+
+      * The connection variables for the connection plugin
+        :ref:`vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+
+    * Create inventory groups.
+
+* On the jails in the group ``project_example_020``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display the jails, groups, :ref:`ug_concepts_iocage_tags` , and selected
+      variables.
+
+  * In the playbook ``pb-test-connection-vars.yml``:
+
+    * Display the connection variables.
+
+  * In the playbook ``pb-test-connection.yml``:
+
+    * Test the :ref:`connection plugin vbotka.freebsd.jailexec
+      <ug_connection_jailexec>`.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_inventory_iocage2`
-* :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`
-* Root privileges on the managed nodes
-* Jails created in :ref:`example_020`
+* :ref:`ug_connection_jailexec`
+* Jails created in :ref:`example_020`.
+* Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
-* The inventory files in the directory ``hosts`` are evaluated in alphabetical
-  order.
+* TBD.
 
 .. seealso::
 
    * `Inventory aliases`_
    * `Set Jail Property`_
-   * :ref:`example_016`
+   * :ref:`example_050`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -97,78 +125,78 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 5
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 3,5-9,13-18
 
-group_vars
-^^^^^^^^^^
+.. note::
 
-.. literalinclude:: group_vars/all/swarms.yml
-   :language: yaml+jinja
-   :caption:
+   * The inventory files in the directory ``hosts`` are evaluated in
+     alphabetical order.
 
-host_vars
-^^^^^^^^^
+.. seealso::
 
-.. literalinclude:: host_vars/iocage_06/iocage.yml
-   :language: yaml+jinja
-   :caption:
+   * Connection plugin :ref:`vbotka.freebsd.jailexec <ug_connection_jailexec>`
 
-Jails
-^^^^^
-
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-02.txt
-   :language: bash
+   * Best practice connection plugin :ref:`vbotka.freebsd.jailexec
+     <ug_bp_connection_jailexec>`
 
 Graph
 ^^^^^
 
-.. code-block:: console
+.. literalinclude:: out/out-01.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
-   (env) > ansible-inventory -i hosts -i iocage.ini --graph
+Jails
+^^^^^
+
+.. literalinclude:: out/out-02.txt
+   :language: bash
+   :caption: [iocage_05]# iocage list -l
 
 .. literalinclude:: out/out-03.txt
    :language: bash
+   :caption: [iocage_06]# iocage list -l
 
-Playbook pb-test-all.yml
-^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test.yml
+^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-all.yml
+.. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display all groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts --flush-cache pb-test-all.yml
+   (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
-Playbook pb-test-db.yml
-^^^^^^^^^^^^^^^^^^^^^^^
+Playbook pb-test-connection-vars.yml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: pb-test-db.yml
+.. literalinclude:: pb-test-connection-vars.yml
    :language: yaml+jinja
 
-Playbook output - Group swarm_db
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display connection variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i hosts pb-test-db.yml
+   (env) > ansible-playbook -i hosts pb-test-connection-vars.yml
 
 .. literalinclude:: out/out-05.txt
    :language: yaml+jinja
@@ -180,8 +208,8 @@ Playbook pb-test-connection.yml
 .. literalinclude:: pb-test-connection.yml
    :language: yaml+jinja
 
-Playbook output - Test connection and get hostname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

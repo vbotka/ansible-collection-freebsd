@@ -2,45 +2,82 @@
 PLAY [Install packages in jails.] **********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [e8963453]
-ok: [acf6055f]
-ok: [251f0c14]
+ok: [79075158]
+ok: [e94e49a9]
+ok: [d9eedd0b]
+ok: [234c28c9]
+ok: [27df792f]
+ok: [fb67d94a]
 
-TASK [vbotka.freebsd.postinstall : Packages: Set _fp_pkg_enabled and _fp_pkg_dict for amd64] ***
-ok: [e8963453]
-ok: [251f0c14]
-ok: [acf6055f]
+TASK [Install packages.] *******************************************************
+ok: [234c28c9 -> iocage_06]
+ok: [d9eedd0b -> iocage_06]
+ok: [27df792f -> iocage_05]
+ok: [79075158 -> iocage_05]
+ok: [e94e49a9 -> iocage_05]
+ok: [fb67d94a -> iocage_06]
 
-TASK [vbotka.freebsd.postinstall : Packages: Assert all items in _fp_pkg_enabled are available in _fp_pkg_dict] ***
-ok: [acf6055f]
-ok: [251f0c14]
-ok: [e8963453]
-
-TASK [vbotka.freebsd.postinstall : Packages: Assert freebsd_install_method in [packages, ports]] ***
-ok: [e8963453]
-ok: [acf6055f]
-ok: [251f0c14]
-
-TASK [vbotka.freebsd.postinstall : Packages: Installation by pkgng required when fp_install_delegate] ***
-ok: [acf6055f]
-ok: [251f0c14]
-ok: [e8963453]
-
-TASK [vbotka.freebsd.postinstall : Packages: Required variable fp_pkg_jail when fp_install_delegate] ***
-ok: [e8963453]
-ok: [251f0c14]
-ok: [acf6055f]
-
-TASK [vbotka.freebsd.postinstall : Packages: Install packages] *****************
-included: /scratch/collections/ansible_collections/vbotka/freebsd/roles/postinstall/tasks/packages-install.yml for acf6055f, e8963453, 251f0c14 => (item=custom)
-
-TASK [vbotka.freebsd.postinstall : Packages-install: Install packages list custom] ***
-ok: [acf6055f -> iocage_06]
-ok: [251f0c14 -> iocage_06]
-ok: [e8963453 -> iocage_06]
+TASK [ansible.builtin.debug] ***************************************************
+ok: [27df792f] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [234c28c9] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [79075158] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [e94e49a9] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [d9eedd0b] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
+ok: [fb67d94a] => 
+    out:
+        changed: false
+        failed: false
+        msg: package(s) already present
+        stderr: ''
+        stderr_lines: []
+        stdout: ''
+        stdout_lines: []
 
 PLAY RECAP *********************************************************************
-251f0c14                   : ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
-acf6055f                   : ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
-e8963453                   : ok=8    changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+234c28c9                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+27df792f                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+79075158                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+d9eedd0b                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+e94e49a9                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+fb67d94a                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -1,90 +1,140 @@
-{
-    "_meta": {
-        "hostvars": {
-            "ansible_client": {
-                "iocage_basejail": "yes",
-                "iocage_boot": "off",
-                "iocage_ip4": "10.1.0.198",
-                "iocage_ip4_dict": {
-                    "ip4": [
-                        {
-                            "ifc": "vnet0",
-                            "ip": "10.1.0.198",
-                            "mask": "24"
-                        }
-                    ],
-                    "msg": ""
-                },
-                "iocage_ip6": "-",
-                "iocage_jid": "None",
-                "iocage_release": "14.3-RELEASE-p1",
-                "iocage_state": "down",
-                "iocage_template": "-",
-                "iocage_type": "jail"
-            },
-            "test_131": {
-                "iocage_basejail": "yes",
-                "iocage_boot": "off",
-                "iocage_ip4": "10.1.0.131",
-                "iocage_ip4_dict": {
-                    "ip4": [
-                        {
-                            "ifc": "vnet0",
-                            "ip": "10.1.0.131",
-                            "mask": "24"
-                        }
-                    ],
-                    "msg": ""
-                },
-                "iocage_ip6": "-",
-                "iocage_jid": "None",
-                "iocage_release": "14.3-RELEASE-p1",
-                "iocage_state": "down",
-                "iocage_template": "ansible_client",
-                "iocage_type": "jail"
-            },
-            "test_132": {
-                "iocage_basejail": "yes",
-                "iocage_boot": "off",
-                "iocage_ip4": "10.1.0.132",
-                "iocage_ip4_dict": {
-                    "ip4": [
-                        {
-                            "ifc": "vnet0",
-                            "ip": "10.1.0.132",
-                            "mask": "24"
-                        }
-                    ],
-                    "msg": ""
-                },
-                "iocage_ip6": "-",
-                "iocage_jid": "None",
-                "iocage_release": "14.3-RELEASE-p1",
-                "iocage_state": "down",
-                "iocage_template": "ansible_client",
-                "iocage_type": "jail"
-            },
-            "test_133": {
-                "iocage_basejail": "yes",
-                "iocage_boot": "off",
-                "iocage_ip4": "10.1.0.133",
-                "iocage_ip4_dict": {
-                    "ip4": [
-                        {
-                            "ifc": "vnet0",
-                            "ip": "10.1.0.133",
-                            "mask": "24"
-                        }
-                    ],
-                    "msg": ""
-                },
-                "iocage_ip6": "-",
-                "iocage_jid": "None",
-                "iocage_release": "14.3-RELEASE-p1",
-                "iocage_state": "down",
-                "iocage_template": "ansible_client",
-                "iocage_type": "jail"
-            }
-        }
-    }
-}
+
+PLAY [Dump cache.] *************************************************************
+
+TASK [debug] *******************************************************************
+ok: [localhost] => 
+    cache.__payload__ | from_yaml:
+        _meta:
+            hostvars:
+                ansible-test:
+                    iocage_basejail: 'yes'
+                    iocage_boot: 'off'
+                    iocage_ip4: 172.16.99.200
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.200
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: None
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: down
+                    iocage_template: '-'
+                    iocage_type: jail
+                log-server-01:
+                    iocage_basejail: 'no'
+                    iocage_boot: 'on'
+                    iocage_ip4: 172.16.99.10
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.10
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: '1'
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: up
+                    iocage_template: ansible-init
+                    iocage_type: jail
+                pkg-repo:
+                    iocage_basejail: 'no'
+                    iocage_boot: 'on'
+                    iocage_ip4: 172.16.99.23
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.23
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: '2'
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: up
+                    iocage_template: ansible-pkg-repo
+                    iocage_type: jail
+                repos:
+                    iocage_basejail: 'no'
+                    iocage_boot: 'on'
+                    iocage_ip4: 172.16.99.21
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.21
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: '3'
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: up
+                    iocage_template: ansible-repos
+                    iocage_type: jail
+                repos-devel:
+                    iocage_basejail: 'no'
+                    iocage_boot: 'on'
+                    iocage_ip4: 172.16.99.22
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.22
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: '4'
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: up
+                    iocage_template: ansible-repos
+                    iocage_type: jail
+                test-611:
+                    iocage_basejail: 'yes'
+                    iocage_boot: 'off'
+                    iocage_ip4: 172.16.99.211
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.211
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: '5'
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: up
+                    iocage_template: ansible-test
+                    iocage_type: jail
+                test-612:
+                    iocage_basejail: 'yes'
+                    iocage_boot: 'off'
+                    iocage_ip4: 172.16.99.212
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.212
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: None
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: down
+                    iocage_template: ansible-test
+                    iocage_type: jail
+                test-613:
+                    iocage_basejail: 'yes'
+                    iocage_boot: 'off'
+                    iocage_ip4: 172.16.99.213
+                    iocage_ip4_dict:
+                        ip4:
+                        -   ifc: vnet0
+                            ip: 172.16.99.213
+                            mask: '24'
+                        msg: ''
+                    iocage_ip6: '-'
+                    iocage_jid: None
+                    iocage_release: 15.1-RELEASE-p1
+                    iocage_state: down
+                    iocage_template: ansible-test
+                    iocage_type: jail
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

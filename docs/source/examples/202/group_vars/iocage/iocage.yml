@@ -1,0 +1,28 @@
+# Ansible client template vars.
+act_user: admin
+act_pk: pk_admins.txt
+act_sudo: true
+act_rcconf:
+  sshd_enable: "YES"
+act_dhclient:
+  dhclient-exit-hooks: |
+    case "$reason" in
+        "BOUND"|"REBIND"|"REBOOT"|"RENEW")
+        echo $new_ip_address > /var/db/dhclient-hook.address.$interface
+        ;;
+    esac
+
+# Clones default properties.
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+
+# Start all jails.
+start: "{{ clones.keys() }}"
+
+# Dictionaries used by the playbook pb_iocage_template
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

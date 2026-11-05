@@ -1,0 +1,19 @@
+
+PLAY [Test filter vbotka.freebsd.combine_properties] ***************************
+
+TASK [Combine jail properties.] ************************************************
+ok: [iocage_06] => (item=www-02) => 
+    msg: |-
+        bpf=1 dhcp=1 vnet=1 boot=1 notes="alias=www_02 vmm=iocage_06 class=log-client,nginx"
+
+TASK [Combine swarm properties with custom notes attribute.] *******************
+ok: [iocage_06] => (item=swarm_01) => 
+    msg: |-
+        bpf=1 dhcp=1 vnet=1 boot=1 notes="vmm=iocage_06 class=monitor,web swarm=production"
+ok: [iocage_06] => (item=devel) => 
+    msg: |-
+        bpf=1 dhcp=1 vnet=1 boot=1 notes="vmm=iocage_06 class=monitor,web swarm=devel"
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

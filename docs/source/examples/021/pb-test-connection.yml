@@ -1,5 +1,9 @@
-- name: Test connection and get hostname.
-  hosts: all
+- name: Test connection.
+  hosts: project_example_020
+
+  vars:
+
+    fmt: "%-10s %-16s"
 
   tasks:
 
@@ -8,4 +12,9 @@
 
     - debug:
         msg: |
-          {{ inventory_hostname }} {{ out.stdout }}
+          inv        hostname
+          -------------------
+          {% for h in ansible_play_hosts %}
+          {{ fmt | format(h, hostvars[h].out.stdout) }}
+          {% endfor %}
+      run_once: true

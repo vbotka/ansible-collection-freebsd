@@ -1,16 +1,31 @@
-- name: Connect to the group test.
+- name: Display inventory.
   hosts: test
-  gather_facts: false
-  remote_user: admin
 
   vars:
 
-    ansible_python_interpreter: auto_silent
+    _vars:
+      - ansible_host
+
+    _properties:
+      - host_hostname
+      - host_hostuuid
     
   tasks:
-
-    - ansible.builtin.command: hostname
-      register: out_host
     
-    - ansible.builtin.debug:
-        msg: "ansible_host={{ ansible_host }} iocage_hooks={{ iocage_hooks }}"
+    - debug:
+        msg: |
+          inv       name     uuid     ansible_host
+          ----------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ _vars | map('extract', hostvars[h]) | join(' ') }}
+          {% endfor %}
+      run_once: true
+    
+    - debug:
+        msg: |
+          inv       name     uuid     iocage_tags
+          ----------------------------------------------------------------------
+          {% for h in ansible_play_hosts %}
+          {{ h }}  {{ _properties | map('extract', hostvars[h]['iocage_properties']) | join(' ') }} {{ hostvars[h].iocage_tags | to_yaml }}
+          {%- endfor %}
+      run_once: true

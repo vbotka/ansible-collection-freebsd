@@ -2,38 +2,109 @@
 PLAY [Test role vbotka.freebsd.packages] ***************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [repos_devel]
-ok: [repos]
-ok: [pkg_repo]
 ok: [log_server_01]
 
 TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
-ok: [repos_devel]
-ok: [log_server_01]
-ok: [repos]
-ok: [pkg_repo]
-
-TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
-ok: [repos_devel]
-ok: [log_server_01]
-ok: [repos]
-ok: [pkg_repo]
-
-TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
-ok: [repos_devel]
-ok: [pkg_repo]
-ok: [repos]
 ok: [log_server_01]
 
-TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
-ok: [repos -> iocage_06]
-ok: [log_server_01 -> iocage_06]
-ok: [pkg_repo -> iocage_06]
-ok: [repos_devel -> iocage_06]
+TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
+ok: [log_server_01] => 
+    msg: |-
+        ansible_facts.architecture: amd64
+        pkg_dict:
+          []
+
+        pkg_list:
+          - lang/python
+          - lang/python3
+          - lang/python312
+
+        pkg_list_deinstall:
+          []
+
+        pkg_dict_select:
+          []
+
+TASK [vbotka.freebsd.packages : Debug pkg_debug=true] **************************
+ok: [log_server_01] => 
+    msg: |-
+        pkg_role_version: 2.9.9
+        pkg_version_community_general: 9.3.0
+
+        ansible_facts.architecture: amd64
+        ansible_facts.os_family: FreeBSD
+        ansible_facts.distribution: FreeBSD
+        ansible_facts.distribution_major_version: 15
+        ansible_facts.distribution_version: 15.1
+        ansible_facts.distribution_release: 15.1-RELEASE
+        ansible_facts.python_version: 3.12.14
+
+        freebsd_install_method: packages
+        freebsd_install_retries: 3
+        freebsd_install_delay: 5
+
+        pkg_fetch: False
+        pkg_fetch_dir: /usr/local/repo
+        pkg_fetch_dir_owner: root
+        pkg_fetch_dir_group: wheel
+        pkg_fetch_dir_mode: 0755
+        pkg_fetch_dict_all: False
+        pkg_fetch_dict_select:
+          []
+
+        pkg_fetch_list:
+          []
+
+        pkg_sanity: True
+        pkg_sanity_version_community_general: True
+        pkg_stat: False
+        pkg_audit_enable: False
+        pkg_backup_conf: False
+        pkg_dryrun: False
+        pkg_install_individually: False
+        pkg_delegate: "iocage_06"
+
+        pkg_owner: root
+        pkg_group: wheel
+        pkg_annotation: UNDEFINED
+        pkg_autoremove: UNDEFINED
+        pkg_cached: True
+        pkg_chroot: UNDEFINED
+        pkg_ignore_osver: UNDEFINED
+        pkg_jail: 1
+        pkg_pkgsite: UNDEFINED
+        pkg_rootdir: UNDEFINED
+        pkg_state: UNDEFINED
+        pkg_use_globs: False
+
+        pkg_default_repo_template: repo.j2
+        pkg_default_repo_conf:
+          []
+
+        pkg_keys:
+          {}
+
+        pkg_repos_template: repos.j2
+        pkg_repos_conf_clean: False
+        pkg_repos_conf:
+          []
+
+        pkg_repos_conf_ucl:
+          []
+
+        pkg_dict_all: False
+        pkg_dict_select:
+          []
+
+        pkg_dict:
+          []
+
+        pkg_list:
+          [lang/python312, lang/python, lang/python3]
+
+        pkg_list_deinstall:
+          []
 
 PLAY RECAP *********************************************************************
-log_server_01              : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
-pkg_repo                   : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
-repos                      : ok=5    changed=0    unreachable=0    failed=0    skipped=52   rescued=0    ignored=0   
-repos_devel                : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
+log_server_01              : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

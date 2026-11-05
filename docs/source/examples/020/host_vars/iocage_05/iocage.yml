@@ -1,0 +1,8 @@
+alias: [www_p1, www_p2, www_p3, db_p1, db_p2]
+swarms:
+  www_prod:
+    count: 3
+    template: ansible-client
+  db_prod:
+    count: 2
+    template: ansible-client

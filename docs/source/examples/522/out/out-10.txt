@@ -2,18 +2,18 @@
 PLAY [Test Log Clients.] *******************************************************
 
 TASK [Run loggen] **************************************************************
-changed: [bar]
 changed: [foo]
+changed: [bar]
 
 TASK [Debug.] ******************************************************************
-ok: [bar] => 
-    out.stderr: |-
-        count=1, rate = 500000.00 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500326, (average) msg size=256, bandwidth=0.50 kB/sec
 ok: [foo] => 
     out.stderr: |-
-        count=1, rate = 200000.00 msg/sec
-        average rate = 2.00 msg/sec, count=1, time=0.500344, (average) msg size=256, bandwidth=0.50 kB/sec
+        count=1, rate = 90909.09 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500159, (average) msg size=256, bandwidth=0.50 kB/sec
+ok: [bar] => 
+    out.stderr: |-
+        count=1, rate = 23809.52 msg/sec
+        average rate = 2.00 msg/sec, count=1, time=0.500255, (average) msg size=256, bandwidth=0.50 kB/sec
 
 PLAY [Display the logs.] *******************************************************
 
@@ -21,31 +21,31 @@ TASK [Get log files paths.] ****************************************************
 ok: [log_server]
 
 TASK [Get log files.] **********************************************************
-changed: [log_server] => (item=/var/log/remote/ip-172-16-99-160/2026_09_18.log)
-changed: [log_server] => (item=/var/log/remote/ip-172-16-99-108/2026_09_18.log)
-changed: [log_server] => (item=/var/log/remote/ip-172-16-99-143/2026_09_18.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.100/2026_11_02.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.128/2026_11_02.log)
+changed: [log_server] => (item=/var/log/remote/172.16.99.108/2026_11_02.log)
 
 TASK [Display log files.] ******************************************************
-ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-160/2026_09_18.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.100/2026_11_02.log']) => 
     msg: |-
-        Sep 18 10:57:49 ip-172-16-99-160 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1789721869, stamp: 2026-09-18T10:57:49 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Nov  2 11:44:05 172.16.99.100 syslog-ng[1989]: syslog-ng starting up; version='4.12.0'
+        Nov  2 11:44:05 172.16.99.100 syslog-ng[1989]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
+        Nov  2 11:44:06 172.16.99.100 1 2026-11-02T11:44:06.588347+01:00 ansible-syslogng-client ansible-vbotka.freebsd.service 2014 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Nov  2 11:44:06 172.16.99.100 syslog-ng[1989]: Follow-mode file source not found, deferring open; filename='/var/log/ansible.log'
+        Nov  2 11:44:06 172.16.99.100 syslog-ng[1989]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
+        Nov  2 11:44:06 172.16.99.100 syslog-ng[1989]: Loading the new configuration;
+        Nov  2 11:44:06 172.16.99.100 syslog-ng[1989]: Configuration reload finished;
+        Nov  2 11:44:07 172.16.99.100 1 2026-11-02T11:44:07.675208+01:00 ansible-syslogng-client ansible-vbotka.freebsd.service 2121 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-108/2026_09_18.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.128/2026_11_02.log']) => 
     msg: |-
-        Sep 18 10:57:10 ip-172-16-99-108 syslog-ng[38331]: syslog-ng starting up; version='4.12.0'
-        Sep 18 10:57:10 ip-172-16-99-108 syslog-ng[38331]: Syslog connection established; fd='19', server='AF_INET(172.16.99.10:514)', local='AF_INET(0.0.0.0:0)'
-        Sep 18 10:57:12 ip-172-16-99-108 1 2026-09-18T10:57:12.550315+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 38356 - - Invoked with command=reload script=syslog-ng list_enabled=False synopsis=False wait=0.5 env=None jail=None
-        Sep 18 10:57:13 ip-172-16-99-108 syslog-ng[38331]: Follow-mode file source not found, deferring open; filename='/var/log/ansible.log'
-        Sep 18 10:57:13 ip-172-16-99-108 syslog-ng[38331]: Error converting persistent state from on-disk format, losing file position information; filename='/var/log/ansible.log'
-        Sep 18 10:57:13 ip-172-16-99-108 syslog-ng[38331]: Loading the new configuration;
-        Sep 18 10:57:13 ip-172-16-99-108 syslog-ng[38331]: Configuration reload finished;
-        Sep 18 10:57:15 ip-172-16-99-108 1 2026-09-18T10:57:15.359005+02:00 ansible-syslogng-client ansible-vbotka.freebsd.service 38463 - - Invoked with command=stop script=syslogd list_enabled=False synopsis=False wait=0.5 env=None jail=None
+        Nov  2 11:44:42 172.16.99.128 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1793616282, stamp: 2026-11-02T11:44:42 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ok: [log_server] => (item=['cat', '/var/log/remote/ip-172-16-99-143/2026_09_18.log']) => 
+ok: [log_server] => (item=['cat', '/var/log/remote/172.16.99.108/2026_11_02.log']) => 
     msg: |-
-        Sep 18 10:57:49 ip-172-16-99-143 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1789721869, stamp: 2026-09-18T10:57:49 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
+        Nov  2 11:44:42 172.16.99.108 prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1793616282, stamp: 2026-11-02T11:44:42 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

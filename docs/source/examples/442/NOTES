@@ -1,0 +1,6 @@
+The following files are not needed in this example:
+
+* iocage.ini, and
+* host_vars
+
+They are only needed to destroy the swarm in this batch.

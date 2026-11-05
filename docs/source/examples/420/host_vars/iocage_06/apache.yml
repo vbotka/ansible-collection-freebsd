@@ -1,11 +1,15 @@
 properties:
-  notes: vmm={{ inventory_hostname }} class=http
   bpf: 1
   dhcp: 1
   vnet: 1
 
-create_hosts:
+clones:
   www-1:
-    template: ansible-apache
-    properties:
-      notes: alias=www_1
+    notes: alias=www_1
+    class: apache
+    clone_from: ansible-apache
+
+vmm_clones: "{{ (project_clones | vbotka.freebsd.project).vmm }}"
+project_clones: "{{ dict(clones.keys()
+                         | zip(clones.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

@@ -1,23 +1,29 @@
 
-PLAY [all] *********************************************************************
+PLAY [Test jails in example_018] ***********************************************
 
 TASK [debug] *******************************************************************
-ok: [test_111] => 
+ok: [test_513] => 
     msg: |-
-        test_111 67 14.3-RELEASE-p8 10.1.0.174 ['10.1.0.174'] up ''
-ok: [ansible_client] => 
+        inv        id  hostuuid  ansible_host    iocage_tags
+        ----------------------------------------------------------------------------------------------
+        test_513   17  ab3d9dc8  172.16.95.111   {alias: test_513, class: example_018, vmm: iocage_05}
+        test_512   15  f00df506  172.16.95.109   {alias: test_512, class: example_018, vmm: iocage_05}
+        test_511   16  f515d3a0  172.16.95.110   {alias: test_511, class: example_018, vmm: iocage_05}
+        test_611   21  31f3565a  172.16.99.132   {alias: test_611, class: example_018, vmm: iocage_06}
+        test_612   19  95d14b88  172.16.99.125   {alias: test_612, class: example_018, vmm: iocage_06}
+        test_613   20  e7e6756e  172.16.99.131   {alias: test_613, class: example_018, vmm: iocage_06}
+
+TASK [debug] *******************************************************************
+ok: [test_513] => 
     msg: |-
-        ansible_client None 14.3-RELEASE-p8 - [] down '-'
-ok: [test_112] => 
-    msg: |-
-        test_112 68 14.3-RELEASE-p8 10.1.0.147 ['10.1.0.147'] up ''
-ok: [test_113] => 
-    msg: |-
-        test_113 69 14.3-RELEASE-p8 10.1.0.231 ['10.1.0.231'] up ''
+        all: ['ansible-test', 'test_513', 'test_512', 'test_511', 'repos', 'test_611', 'test_612', 'test_613', 'log_server_01', 'pkg_repo', 'repos_devel']
+        ungrouped: []
+        state_down: ['ansible-test']
+        example_018: ['test_513', 'test_512', 'test_511', 'test_611', 'test_612', 'test_613']
+        state_up: ['test_513', 'test_512', 'test_511', 'repos', 'test_611', 'test_612', 'test_613', 'log_server_01', 'pkg_repo', 'repos_devel']
+        vmm_iocage_05: ['test_513', 'test_512', 'test_511']
+        vmm_iocage_06: ['repos', 'test_611', 'test_612', 'test_613', 'log_server_01', 'pkg_repo', 'repos_devel']
 
 PLAY RECAP *********************************************************************
-ansible_client             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_111                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_112                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-test_113                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test_513                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 

@@ -7,21 +7,30 @@
    :local:
    :depth: 1
 
-.. index:: single: local pkg repo; Example 529
-.. index:: single: pkg repo; Example 529
-.. index:: single: ansible_init; Example 529
-.. index:: single: service ansible_init; Example 529
-.. index:: single: template ansible-init; Example 529
-.. index:: single: firstboot; Example 529
-.. index:: single: ansible-pull; Example 529
-.. index:: single: role vbotka.freebsd.iocage_template; Example 529
+.. index::
+   single: local pkg repo; Example 529
+   single: pkg repo; Example 529
+   single: ansible_init; Example 529
+   single: service ansible_init; Example 529
+   single: template ansible-init; Example 529
+   single: firstboot; Example 529
+   single: ansible-pull; Example 529
+   single: role vbotka.freebsd.iocage_template; Example 529
 
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-init``. Enable the `firstboot`_ service
-`ansible_init`_ that runs `ansible-pull`_ from the repositories on
-``project_hosts.repos``.
+Create the `iocage template`_ ``ansible-init`` using the role
+`vbotka.freebsd.iocage_template`_. Enable the `firstboot`_ service
+`ansible_init`_ that runs `ansible-pull`_ from the repository
+`ansible-conf-init`_ (default) on ``project_hosts.repos``. Configure the the
+template to install packages from the ``local`` repository on
+``project_hosts.default_pkg_repo``.
+
+See the concepts:
+
+* :ref:`ug_concepts_ansible_init`
+* :ref:`ug_concepts_ansible_conf_init`
 
 Tree
 ^^^^
@@ -34,13 +43,16 @@ Tree
   ├── files
   │   └── ansible-init.sh
   ├── group_vars
-  │   └── all
+  │   └── iocage
+  │       ├── local-pkg-conf.yml
   │       ├── project-hosts.yml
+  │       ├── template-common.yml
   │       └── template.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── release.yml
   │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       └── template.yml
+  │       └── release.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   └── templates
@@ -49,14 +61,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node, use the role `vbotka.freebsd.iocage_template`_ to create
-  the template ``ansible-init``.
+* On the managed nodes:
+
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
+    ``ansible-init``.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Package repository created in :ref:`example_322`
 * Role `vbotka.freebsd.iocage_template`_
+* Package repository created in the example :ref:`example_322`.
 
 Notes
 ^^^^^
@@ -87,22 +101,30 @@ Inventory iocage.ini
 group_vars
 ^^^^^^^^^^
 
-.. literalinclude:: group_vars/all/project-hosts.yml
+.. literalinclude:: group_vars/iocage/local-pkg-conf.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: group_vars/all/template.yml
+.. literalinclude:: group_vars/iocage/project-hosts.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/template-common.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: group_vars/iocage/template.yml
    :language: yaml+jinja
    :caption:
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+.. literalinclude:: host_vars/iocage_05/release.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/template.yml
+.. literalinclude:: host_vars/iocage_06/release.yml
    :language: yaml+jinja
    :caption:
 
@@ -126,8 +148,8 @@ Playbook pb-iocage-template.yml
 .. literalinclude:: pb-iocage-template.yml
    :language: yaml+jinja
 
-Playbook output - Create iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -140,9 +162,10 @@ Playbook output - Create iocage templates
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -lt
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -lt
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -lt

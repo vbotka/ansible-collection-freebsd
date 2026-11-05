@@ -1,7 +1,8 @@
 poudriere - generate SSL certificate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Optionally, create a SSL certificate for the web server. These tasks are disabled by default.
+Optionally, create a SSL certificate for the web server. These tasks
+are disabled by default.
 
 .. code-block:: console
 

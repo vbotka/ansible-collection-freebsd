@@ -8,3 +8,5 @@ ansible-playbook -i iocage.ini -l iocage_06 -t freebsd_iocage_debug -e freebsd_i
 
 # Install iocage
 ansible-playbook -i iocage.ini -l iocage_06 -t freebsd_iocage_pkg -e freebsd_iocage_debug=true pb-iocage.yml | tee out/out-02.txt
+
+touch .done

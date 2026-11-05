@@ -9,21 +9,20 @@ This example extends :ref:`example_441`.
    :local:
    :depth: 1
 
-.. index:: single: jailexec; Example 442
-.. index:: single: vbotka.freebsd.jailexec; Example 442
-.. index:: single: connection vbotka.freebsd.jailexec; Example 442
-
-.. index:: single: option compose; Example 442
-.. index:: single: compose; Example 442
-
-.. index:: single: variable iocage_tags; Example 442
-.. index:: single: iocage_tags; Example 442
+.. index::
+   single: jailexec; Example 442
+   single: vbotka.freebsd.jailexec; Example 442
+   single: connection vbotka.freebsd.jailexec; Example 442
+   single: option compose; Example 442
+   single: compose; Example 442
+   single: variable iocage_tags; Example 442
+   single: iocage_tags; Example 442
 
 Use case
 ^^^^^^^^
 
-Use :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>` instead
-of the default ``ansible.builtin.ssh``.
+Use the connection plugin :ref:`vbotka.freebsd.jailexec
+<ug_connection_jailexec>` instead of the default `ansible.builtin.ssh`_.
 
 Tree
 ^^^^
@@ -34,6 +33,7 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
+  │   ├── 05_iocage2.yml
   │   ├── 06_iocage2.yml
   │   └── 99_constructed.yml
   └── pb-test.yml
@@ -41,36 +41,40 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* Create a dynamic inventory to connect to the jails via
-  :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
+* On the managed nodes:
 
-* For all created jails, in the playbook ``pb-test.yml``:
+  * Create a dynamic inventory to connect to the jails via the connection plugin
+    :ref:`vbotka.freebsd.jailexec <ug_connection_jailexec>`.
 
-  * connect to the jails
-  * display the basic configuration of the jails.
+* On the created jails, in the playbook ``pb-test.yml``:
+
+  * Display the connection variables.
+  * Test the connection to the jails.
 
 Requirements
 ^^^^^^^^^^^^
 
-* :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
+* :ref:`ug_inventory_iocage2`
 * Root privileges on the managed nodes.
 
 Notes
 ^^^^^
 
 * The only difference between this example and :ref:`example_441` is the
-  following three lines in the inventory configuration file:
+  following four lines in the inventory configuration file:
 
 .. code-block:: yaml+jinja
 
    ansible_connection: "'vbotka.freebsd.jailexec'"
    ansible_jail_host: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)')).vmm | d('none')
+   ansible_jail_name: iocage_jid
    ansible_jail_privilege_escalation: "'sudo'"
 
 .. seealso::
 
-   Example :ref:`example_050`
+   * Best practice :ref:`ug_bp_connection_jailexec`
+   * :ref:`example_050`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -81,43 +85,41 @@ ansible.cfg
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 9-11
-
-.. note::
-
-   * The default value of the option
-     ``ansible_jail_privilege_escalation`` is ``doas``.
-
-   * See :ref:`connection vbotka.freebsd.jailexec <ug_connection_jailexec>`.
-
-   * In FreeBSD, ``doas`` is not installed by default.
 
 .. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 5-8
+
+.. note::
+
+   * The default for ``ansible_jail_privilege_escalation`` is ``doas``.
+   * In FreeBSD, ``doas`` is not installed by default.
 
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-02.txt
+.. literalinclude:: out/out-01.txt
    :language: bash
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   [iocage_06]# iocage list -l
-
-.. literalinclude:: out/out-01.txt
+.. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: [iocage_05]# iocage list -l
+
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: [iocage_06]# iocage list -l
 
 Playbook pb-test.yml
 ^^^^^^^^^^^^^^^^^^^^
@@ -125,13 +127,13 @@ Playbook pb-test.yml
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Test jailexec connection plugin
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Test jailexec
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-test.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:

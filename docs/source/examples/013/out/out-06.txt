@@ -1,0 +1,25 @@
+
+PLAY [test] ********************************************************************
+
+TASK [debug] *******************************************************************
+ok: [test-511] => 
+    msg: test-511 running at iocage_05
+ok: [test-512] => 
+    msg: test-512 running at iocage_05
+ok: [test-513] => 
+    msg: test-513 running at iocage_05
+ok: [test-611] => 
+    msg: test-611 running at iocage_06
+ok: [test-612] => 
+    msg: test-612 running at iocage_06
+ok: [test-613] => 
+    msg: test-613 running at iocage_06
+
+PLAY RECAP *********************************************************************
+test-511                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-512                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-513                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-611                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-612                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+test-613                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

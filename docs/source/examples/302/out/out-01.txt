@@ -1,0 +1,245 @@
+
+PLAY [Test module vbotka.freebsd.cgetent] **************************************
+
+TASK [Fetch default login class attributes from /etc/login.conf] ***************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Display result.] *********************************************************
+ok: [iocage_05] => 
+    ansible_facts.cgetent.default:
+        copyright: /etc/COPYRIGHT
+        coredumpsize: unlimited
+        cputime: unlimited
+        datasize: unlimited
+        filesize: unlimited
+        ignoretime: false
+        kqueues: unlimited
+        maxproc: unlimited
+        memorylocked: 64K
+        memoryuse: unlimited
+        nologin: /var/run/nologin
+        openfiles: unlimited
+        passwd_format: sha512
+        path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
+        priority: '0'
+        pseudoterminals: unlimited
+        sbsize: unlimited
+        setenv: MAIL=/var/mail/$,BLOCKSIZE=K
+        stacksize: unlimited
+        swapuse: unlimited
+        umask: '022'
+        umtxp: unlimited
+        vmemoryuse: unlimited
+        welcome: /etc/motd
+ok: [iocage_06] => 
+    ansible_facts.cgetent.default:
+        copyright: /etc/COPYRIGHT
+        coredumpsize: unlimited
+        cputime: unlimited
+        datasize: unlimited
+        filesize: unlimited
+        ignoretime: false
+        kqueues: unlimited
+        maxproc: unlimited
+        memorylocked: 64K
+        memoryuse: unlimited
+        nologin: /var/run/nologin
+        openfiles: unlimited
+        passwd_format: sha512
+        path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
+        priority: '0'
+        pseudoterminals: unlimited
+        sbsize: unlimited
+        setenv: MAIL=/var/mail/$,BLOCKSIZE=K
+        stacksize: unlimited
+        swapuse: unlimited
+        umask: '022'
+        umtxp: unlimited
+        vmemoryuse: unlimited
+        welcome: /etc/motd
+
+TASK [Fetch daemon login class attributes from /etc/login.conf] ****************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Display result.] *********************************************************
+ok: [iocage_06] => 
+    ansible_facts.cgetent.daemon:
+        memorylocked: 128M
+        tc: default
+ok: [iocage_05] => 
+    ansible_facts.cgetent.daemon:
+        memorylocked: 128M
+        tc: default
+
+TASK [Fetch lp record from /etc/printcap] **************************************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Display result.] *********************************************************
+ok: [iocage_05] => 
+    ansible_facts.cgetent.lp: null
+ok: [iocage_06] => 
+    ansible_facts.cgetent.lp: null
+
+TASK [Fetch all records from /etc/login.conf] **********************************
+ok: [iocage_06]
+ok: [iocage_05]
+
+TASK [Display result.] *********************************************************
+ok: [iocage_05] => 
+    ansible_facts.cgetent:
+        daemon:
+            memorylocked: 128M
+            tc: default
+        default:
+            copyright: /etc/COPYRIGHT
+            coredumpsize: unlimited
+            cputime: unlimited
+            datasize: unlimited
+            filesize: unlimited
+            ignoretime: false
+            kqueues: unlimited
+            maxproc: unlimited
+            memorylocked: 64K
+            memoryuse: unlimited
+            nologin: /var/run/nologin
+            openfiles: unlimited
+            passwd_format: sha512
+            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
+            priority: '0'
+            pseudoterminals: unlimited
+            sbsize: unlimited
+            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
+            stacksize: unlimited
+            swapuse: unlimited
+            umask: '022'
+            umtxp: unlimited
+            vmemoryuse: unlimited
+            welcome: /etc/motd
+        dialer:
+            tc: default
+        haproxy:
+            openfiles-cur: '524288'
+            openfiles-max: '1048576'
+            tc: daemon
+        insecure:
+            copyright: /etc/COPYRIGHT
+            coredumpsize: 8M
+            cputime: 1h30m
+            datasize: 8M
+            filesize: 8M
+            ignoretime: false
+            label: biba/10(10-10)
+            manpath: /usr/share/man /usr/local/man
+            maxproc: '32'
+            memorylocked: 4M
+            memoryuse: 8M
+            nologin: /usr/sbin/nologin
+            openfiles: '24'
+            passwordtime: 91d
+            path: ~/bin /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin
+            priority: '0'
+            requirehome: true
+            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
+            stacksize: 2M
+            umask: '022'
+            vmemoryuse: 100M
+            welcome: /etc/motd
+        news:
+            tc: default
+        root:
+            ignorenologin: true
+            memorylocked: unlimited
+            tc: default
+        russian|Russian Users Account:
+            charset: UTF-8
+            lang: ru_RU.UTF-8
+            tc: default
+        staff:
+            tc: default
+        standard:
+            tc: default
+        xuser:
+            tc: default
+ok: [iocage_06] => 
+    ansible_facts.cgetent:
+        daemon:
+            memorylocked: 128M
+            tc: default
+        default:
+            copyright: /etc/COPYRIGHT
+            coredumpsize: unlimited
+            cputime: unlimited
+            datasize: unlimited
+            filesize: unlimited
+            ignoretime: false
+            kqueues: unlimited
+            maxproc: unlimited
+            memorylocked: 64K
+            memoryuse: unlimited
+            nologin: /var/run/nologin
+            openfiles: unlimited
+            passwd_format: sha512
+            path: /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin ~/bin
+            priority: '0'
+            pseudoterminals: unlimited
+            sbsize: unlimited
+            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
+            stacksize: unlimited
+            swapuse: unlimited
+            umask: '022'
+            umtxp: unlimited
+            vmemoryuse: unlimited
+            welcome: /etc/motd
+        dialer:
+            tc: default
+        haproxy:
+            openfiles-cur: '524288'
+            openfiles-max: '1048576'
+            tc: daemon
+        insecure:
+            copyright: /etc/COPYRIGHT
+            coredumpsize: 8M
+            cputime: 1h30m
+            datasize: 8M
+            filesize: 8M
+            ignoretime: false
+            label: biba/10(10-10)
+            manpath: /usr/share/man /usr/local/man
+            maxproc: '32'
+            memorylocked: 4M
+            memoryuse: 8M
+            nologin: /usr/sbin/nologin
+            openfiles: '24'
+            passwordtime: 91d
+            path: ~/bin /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin
+            priority: '0'
+            requirehome: true
+            setenv: MAIL=/var/mail/$,BLOCKSIZE=K
+            stacksize: 2M
+            umask: '022'
+            vmemoryuse: 100M
+            welcome: /etc/motd
+        news:
+            tc: default
+        root:
+            ignorenologin: true
+            memorylocked: unlimited
+            tc: default
+        russian|Russian Users Account:
+            charset: UTF-8
+            lang: ru_RU.UTF-8
+            tc: default
+        staff:
+            tc: default
+        standard:
+            tc: default
+        xuser:
+            tc: default
+
+PLAY RECAP *********************************************************************
+iocage_05                  : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+iocage_06                  : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

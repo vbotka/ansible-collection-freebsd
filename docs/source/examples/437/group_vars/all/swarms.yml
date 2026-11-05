@@ -1,0 +1,16 @@
+swarms:
+  nginx_cluster:
+    count: 3
+    class: [nginx]
+    template: ansible-nginx
+
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  boot: 1
+
+vmm_swarms: "{{ (project_swarms | vbotka.freebsd.project).vmm }}"
+project_swarms: "{{ dict(swarms.keys()
+                         | zip(swarms.values()
+                               | map('combine', {'vmm': inventory_hostname}))) }}"

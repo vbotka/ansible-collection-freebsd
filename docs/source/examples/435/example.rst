@@ -7,20 +7,19 @@
    :local:
    :depth: 1
 
-.. index:: single: project; Example 435
-
-.. index:: single: Nginx; Example 435
-.. index:: single: role vbotka.freebsd.nginx; Example 435
-.. index:: single: vbotka.freebsd.nginx; Example 435
-
-.. index:: single: template ansible-nginx; Example 435
-.. index:: single: ansible-nginx; Example 435
+.. index::
+   single: project; Example 435
+   single: Nginx; Example 435
+   single: pb_iocage_ansible_clients.yml; Example 435
+   single: role vbotka.freebsd.nginx; Example 435
+   single: vbotka.freebsd.nginx; Example 435
+   single: template ansible-nginx; Example 435
+   single: ansible-nginx; Example 435
 
 Use case
 ^^^^^^^^
 
-Create the `iocage`_ template ``ansible-nginx``. Create jails from the
-template.
+Create the `iocage template`_ ``ansible-nginx``. Create jails from the template.
 
 Tree
 ^^^^
@@ -31,20 +30,26 @@ Tree
   .
   ├── ansible.cfg
   ├── files
+  │   ├── dhclient-exit-hooks
   │   └── index.html
   ├── group_vars
   │   ├── all
+  │   │   ├── local-pkg-conf.yml
   │   │   ├── project-hosts.yml
   │   │   ├── project.yml
-  │   │   └── templates.yml
+  │   │   ├── templates.yml
+  │   │   └── template.yml
   │   └── nginx
   │       └── nginx.yml
   ├── hosts
-  │   └── 06_iocage2.yml
+  │   ├── 05_iocage2.yml
+  │   ├── 06_iocage2.yml
+  │   └── 99_constructed.yml
   ├── host_vars
+  │   ├── iocage_05
+  │   │   └── release.yml
   │   └── iocage_06
-  │       ├── local-pkg-conf.yml
-  │       └── template.yml
+  │       └── release.yml
   ├── iocage.ini
   ├── pb-iocage-template.yml
   ├── pb-nginx.yml
@@ -54,31 +59,32 @@ Tree
 Synopsis
 ^^^^^^^^
 
-* On a managed node:
+* On the managed nodes:
 
-  * Use the role `vbotka.freebsd.iocage_template`_ to create the
-    template ``ansible-nginx``.
+  * Use the role `vbotka.freebsd.iocage_template`_ to create the template
+    ``ansible-nginx``.
 
   * In the playbook
     :ref:`ug_pb-iocage-project-create-from-templates`,
-    create jails from the template.
+    create jails from the :ref:`project <ug_concepts_project>`.
 
-* In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to configure the Nginx servers.
+* In the inventory group ``nginx``, use the role `vbotka.freebsd.nginx`_ to
+  configure the `Nginx`_ servers.
 
 Requirements
 ^^^^^^^^^^^^
 
-* Role `vbotka.freebsd.iocage_template`_
-* Role `vbotka.freebsd.nginx`_
+* `Role vbotka.freebsd.iocage_template`_
+* `Role vbotka.freebsd.nginx`_
 * Playbook :ref:`ug_pb-iocage-project-create-from-templates`
 * :ref:`ug_inventory_iocage2`
 * :ref:`ug_connection_jailexec`
-* Package repository created in :ref:`example_322`.
+* Package repository created in the example :ref:`example_322`.
 
 Notes
 ^^^^^
 
-* TBD
+* TBD.
 
 .. note::
 
@@ -89,7 +95,7 @@ Notes
 
 .. seealso::
 
-   * TBD
+   * Example :ref:`example_530`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -106,12 +112,24 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
+.. literalinclude:: hosts/05_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: hosts/06_iocage2.yml
+   :language: yaml+jinja
+   :caption:
+
+.. literalinclude:: hosts/99_constructed.yml
    :language: yaml+jinja
    :caption:
 
 group_vars
 ^^^^^^^^^^
+
+.. literalinclude:: group_vars/all/local-pkg-conf.yml
+   :language: yaml+jinja
+   :caption:
 
 .. literalinclude:: group_vars/all/project-hosts.yml
    :language: yaml+jinja
@@ -125,6 +143,10 @@ group_vars
    :language: yaml+jinja
    :caption:
 
+.. literalinclude:: group_vars/all/template.yml
+   :language: yaml+jinja
+   :caption:
+
 .. literalinclude:: group_vars/nginx/nginx.yml
    :language: yaml+jinja
    :caption:
@@ -132,16 +154,20 @@ group_vars
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_06/local-pkg-conf.yml
+.. literalinclude:: host_vars/iocage_05/release.yml
    :language: yaml+jinja
    :caption:
 
-.. literalinclude:: host_vars/iocage_06/template.yml
+.. literalinclude:: host_vars/iocage_06/release.yml
    :language: yaml+jinja
    :caption:
 
 files
 ^^^^^
+
+.. literalinclude:: files/dhclient-exit-hooks
+   :language: sh
+   :caption:
 
 .. literalinclude:: files/index.html
    :language: html
@@ -160,8 +186,8 @@ Playbook pb-iocage-template.yml
 .. literalinclude:: pb-iocage-template.yml
    :language: yaml+jinja
 
-Playbook output - Create iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Create templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -174,44 +200,43 @@ Playbook output - Create iocage templates
 Templates
 ^^^^^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -lt
-
 .. literalinclude:: out/out-02.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -lt
 
-Playbook output - Create project jails from iocage templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. literalinclude:: out/out-03.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -lt
+
+Playbook output - Create jails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   (env) > ansible-playbook -i iocage.ini -i hosts \
+   (env) > ansible-playbook -i hosts -i iocage.ini \
                             vbotka.freebsd.pb_iocage_project_create_from_templates.yml
 
-.. literalinclude:: out/out-03.txt
+.. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
 Graph
 ^^^^^
 
-.. code-block:: console
-
-   (env) > ansible-inventory -i hosts --graph
-
-.. literalinclude:: out/out-04.txt
-   :language: bash
+.. literalinclude:: out/out-05.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
 
 Jails
 ^^^^^
 
-.. code-block:: console
-
-   shell> ssh admin@iocage_06 sudo iocage list -l
-
-.. literalinclude:: out/out-05.txt
+.. literalinclude:: out/out-06.txt
    :language: bash
+   :caption: shell> ssh admin@iocage_05 sudo iocage list -l
+
+.. literalinclude:: out/out-07.txt
+   :language: bash
+   :caption: shell> ssh admin@iocage_06 sudo iocage list -l
 
 Playbook pb-nginx.yml
 ^^^^^^^^^^^^^^^^^^^^^
@@ -219,14 +244,14 @@ Playbook pb-nginx.yml
 .. literalinclude:: pb-nginx.yml
    :language: yaml+jinja
 
-Playbook output - Configure Nginx servers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Configure Nginx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-nginx.yml
 
-.. literalinclude:: out/out-06.txt
+.. literalinclude:: out/out-08.txt
    :language: yaml+jinja
    :force:
 
@@ -235,24 +260,35 @@ Results
 
 * Test the configuration:
 
-  .. code-block:: console
+  .. literalinclude:: out/out-09.txt
+     :language: console
+     :caption: [iocage_05]# iocage exec www-51 service nginx configtest 2>&1
 
-     [iocage_06]# iocage exec www-01 service nginx configtest
-     Performing sanity check on nginx configuration:
-     nginx: the configuration file /usr/local/etc/nginx/nginx.conf syntax is ok
-     nginx: configuration file /usr/local/etc/nginx/nginx.conf test is successful
+  .. literalinclude:: out/out-10.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-61 service nginx configtest 2>&1
 
 * Test that the server is running:
 
-  .. code-block:: console
+  .. literalinclude:: out/out-11.txt
+     :language: console
+     :caption: [iocage_05]# iocage exec www-51 service nginx status 2>&1
 
-     [iocage_06]# iocage exec www-01 service nginx status
-     nginx is running as pid 51207.
+  .. literalinclude:: out/out-12.txt
+     :language: console
+     :caption: [iocage_06]# iocage exec www-61 service nginx status 2>&1
 
 * Test that the server is working (see the IP in the list of jails):
 
   .. code-block:: console
 
-     [iocage_06]# lynx 172.16.99.116
-
-     It works!
+     shell> ssh admin@iocage_06 fetch -qo - http://172.16.99.111/
+     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+     <html>
+     <head>
+     <title>It works!</title>
+     </head>
+     <body>
+     <p>It works!</p>
+     </body>
+     </html>

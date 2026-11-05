@@ -1,165 +1,35 @@
 
 PLAY [Create and start jails. Optionally stop and destroy jails.] **************
 
-TASK [Get iocage facts] ********************************************************
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_05 -> localhost]
+ok: [iocage_06 -> localhost]
+
+TASK [Reject jails without iocage_tags] ****************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
-TASK [Reject jails with empty notes] *******************************************
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
+ok: [iocage_05]
 ok: [iocage_06]
 
-TASK [Debug cmd_create debug=true] *********************************************
-ok: [iocage_06] => (item=sw_01) => 
-    msg: |-
-        iocage create --short --template ansible-client --count 3  bpf=1  dhcp=1  vnet=1  defaultrouter=172.16.99.1  notes="vmm=iocage_06 swarm=sw_01"
-
-TASK [Create swarms] ***********************************************************
+TASK [Create swarms.] **********************************************************
+ok: [iocage_05] => (item=sw_01)
 ok: [iocage_06] => (item=sw_01)
 
-TASK [Debug create swarms debug=true] ******************************************
-ok: [iocage_06] => 
-    out:
-        changed: false
-        failed: false
-        msg: All items completed
-        results:
-        -   ansible_loop_var: item
-            changed: false
-            changed_when_result: false
-            cmd:
-            - iocage
-            - create
-            - --short
-            - --template
-            - ansible-client
-            - --count
-            - '3'
-            - bpf=1
-            - dhcp=1
-            - vnet=1
-            - defaultrouter=172.16.99.1
-            - notes=vmm=iocage_06 swarm=sw_01
-            delta: '0:00:01.156027'
-            end: '2026-09-17 16:29:33.855103'
-            failed: false
-            item:
-                key: sw_01
-                value:
-                    count: 3
-                    template: ansible-client
-            msg: ''
-            rc: 0
-            start: '2026-09-17 16:29:32.699076'
-            stderr: ''
-            stderr_lines: []
-            stdout: |-
-                0b152d76 successfully created!
-                9b33de6e successfully created!
-                cb4d5365 successfully created!
-            stdout_lines:
-            - 0b152d76 successfully created!
-            - 9b33de6e successfully created!
-            - cb4d5365 successfully created!
+TASK [Query inventory plugin.] *************************************************
+ok: [iocage_06 -> localhost]
+ok: [iocage_05 -> localhost]
 
-TASK [Get iocage facts] ********************************************************
+TASK [Reject jails without iocage_tags] ****************************************
+ok: [iocage_05]
 ok: [iocage_06]
 
-TASK [Reject jails with empty notes] *******************************************
+TASK [Create iocage_jails_tags and iocage_jails_started] ***********************
 ok: [iocage_06]
-
-TASK [Debug cmd_start debug=true] **********************************************
-ok: [iocage_06] => (item=sw_01) => 
-    msg: |-
-        iocage start 0b152d76 9b33de6e cb4d5365
-
-TASK [Start swarms] ************************************************************
-ok: [iocage_06] => (item=sw_01)
-
-TASK [Debug start swarms debug=true] *******************************************
-ok: [iocage_06] => 
-    out:
-        changed: false
-        failed: false
-        msg: All items completed
-        results:
-        -   ansible_loop_var: item
-            changed: false
-            changed_when_result: false
-            cmd:
-            - iocage
-            - start
-            - 0b152d76
-            - 9b33de6e
-            - cb4d5365
-            delta: '0:00:10.989660'
-            end: '2026-09-17 16:29:57.763228'
-            failed: false
-            item:
-                key: sw_01
-                value:
-                    count: 3
-                    template: ansible-client
-            msg: ''
-            rc: 0
-            start: '2026-09-17 16:29:46.773568'
-            stderr: |-
-                No default gateway found for ipv6.
-                No default gateway found for ipv6.
-                No default gateway found for ipv6.
-            stderr_lines:
-            - No default gateway found for ipv6.
-            - No default gateway found for ipv6.
-            - No default gateway found for ipv6.
-            stdout: |-
-                * Starting 0b152d76
-                  + Started OK
-                  + Using devfs_ruleset: 1004 (iocage generated default)
-                  + Configuring VNET OK
-                  + Using IP options: vnet
-                  + Starting services OK
-                  + Executing poststart OK
-                  + DHCP Address: 172.16.99.168/24
-                * Starting 9b33de6e
-                  + Started OK
-                  + Using devfs_ruleset: 1005 (iocage generated default)
-                  + Configuring VNET OK
-                  + Using IP options: vnet
-                  + Starting services OK
-                  + Executing poststart OK
-                  + DHCP Address: 172.16.99.172/24
-                * Starting cb4d5365
-                  + Started OK
-                  + Using devfs_ruleset: 1006 (iocage generated default)
-                  + Configuring VNET OK
-                  + Using IP options: vnet
-                  + Starting services OK
-                  + Executing poststart OK
-                  + DHCP Address: 172.16.99.146/24
-            stdout_lines:
-            - '* Starting 0b152d76'
-            - '  + Started OK'
-            - '  + Using devfs_ruleset: 1004 (iocage generated default)'
-            - '  + Configuring VNET OK'
-            - '  + Using IP options: vnet'
-            - '  + Starting services OK'
-            - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.168/24'
-            - '* Starting 9b33de6e'
-            - '  + Started OK'
-            - '  + Using devfs_ruleset: 1005 (iocage generated default)'
-            - '  + Configuring VNET OK'
-            - '  + Using IP options: vnet'
-            - '  + Starting services OK'
-            - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.172/24'
-            - '* Starting cb4d5365'
-            - '  + Started OK'
-            - '  + Using devfs_ruleset: 1006 (iocage generated default)'
-            - '  + Configuring VNET OK'
-            - '  + Using IP options: vnet'
-            - '  + Starting services OK'
-            - '  + Executing poststart OK'
-            - '  + DHCP Address: 172.16.99.146/24'
+ok: [iocage_05]
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=10   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_05                  : ok=7    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
+iocage_06                  : ok=7    changed=0    unreachable=0    failed=0    skipped=15   rescued=0    ignored=0   
 

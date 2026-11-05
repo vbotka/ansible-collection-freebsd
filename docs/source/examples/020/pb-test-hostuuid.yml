@@ -1,0 +1,9 @@
+- name: Display ansible_host and hostuuid.
+  hosts: project_example_020
+
+  tasks:
+
+    - debug:
+        msg: |
+          ansible_host: {{ ansible_host }}
+          host_hostuuid: {{ iocage_properties.host_hostuuid }}

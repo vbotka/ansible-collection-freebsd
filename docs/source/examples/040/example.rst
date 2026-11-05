@@ -7,14 +7,15 @@
    :local:
    :depth: 1
 
-.. index:: single: lookup vbotka.freebsd.galaxy_info; Example 040
-.. index:: single: vbotka.freebsd.galaxy_info; Example 040
-.. index:: single: galaxy.yml; Example 040
+.. index::
+   single: lookup vbotka.freebsd.galaxy_info; Example 040
+   single: vbotka.freebsd.galaxy_info; Example 040
+   single: galaxy.yml; Example 040
 
 Use case
 ^^^^^^^^
 
-Use the :ref:`lookup vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` plugin
+Use the lookup plugin :ref:`vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>`
 to get the metadata from ``galaxy.yml``.
 
 Tree
@@ -31,11 +32,16 @@ Tree
 Synopsis
 ^^^^^^^^
 
-On a managed node, in the playbook ``pb.yml``, use the :ref:`lookup
-vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` plugin to:
+* On the managed nodes, in the playbook ``pb.yml``, use the lookup plugin
+  :ref:`vbotka.freebsd.galaxy_info <ug_lookup_galaxy_info>` to:
 
-* Display the complete metadata dictionary from ``galaxy.yml``
-* Display the attributes ``authors`` and ``version``
+  * Display the complete metadata dictionary from ``galaxy.yml``.
+  * Display the attributes ``authors`` and ``version``.
+
+Requirements
+^^^^^^^^^^^^
+
+* :ref:`ug_lookup_galaxy_info`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -55,8 +61,8 @@ Playbook pb.yml
 .. literalinclude:: pb.yml
    :language: yaml+jinja
 
-Playbook output - Display the metadata from galaxy.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - galaxy.yml metadata
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 

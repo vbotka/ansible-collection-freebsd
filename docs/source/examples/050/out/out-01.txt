@@ -1,59 +1,24 @@
-all:
-  children:
-    iocage:
-      hosts:
-        iocage_05:
-          ansible_become: 'true'
-          ansible_host: handy
-          ansible_python_interpreter: auto_silent
-          ansible_user: admin
-    ungrouped:
-      hosts:
-        cb040eb9:
-          iocage_basejail: 'no'
-          iocage_boot: 'off'
-          iocage_ip4: 192.168.99.100
-          iocage_ip4_dict:
-            ip4:
-            - ifc: epair0b
-              ip: 192.168.99.100
-              mask: '-'
-            msg: ''
-          iocage_ip6: '-'
-          iocage_jid: '1'
-          iocage_release: 15.0-RELEASE
-          iocage_state: up
-          iocage_template: ansible_client
-          iocage_type: jail
-        dd911c4f:
-          iocage_basejail: 'no'
-          iocage_boot: 'off'
-          iocage_ip4: 192.168.99.101
-          iocage_ip4_dict:
-            ip4:
-            - ifc: epair0b
-              ip: 192.168.99.101
-              mask: '-'
-            msg: ''
-          iocage_ip6: '-'
-          iocage_jid: '2'
-          iocage_release: 15.0-RELEASE
-          iocage_state: up
-          iocage_template: ansible_client
-          iocage_type: jail
-        f20ab29e:
-          iocage_basejail: 'no'
-          iocage_boot: 'off'
-          iocage_ip4: 192.168.99.102
-          iocage_ip4_dict:
-            ip4:
-            - ifc: epair0b
-              ip: 192.168.99.102
-              mask: '-'
-            msg: ''
-          iocage_ip6: '-'
-          iocage_jid: '3'
-          iocage_release: 15.0-RELEASE
-          iocage_state: up
-          iocage_template: ansible_client
-          iocage_type: jail
+
+PLAY [Test the connection plugin vbotka.freebsd.jailexec] **********************
+
+TASK [command] *****************************************************************
+changed: [49f92d2a]
+changed: [2756b146]
+changed: [2e117f73]
+
+TASK [debug] *******************************************************************
+ok: [2e117f73] => 
+    msg: |-
+        FreeBSD 2e117f73 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
+ok: [49f92d2a] => 
+    msg: |-
+        FreeBSD 49f92d2a 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
+ok: [2756b146] => 
+    msg: |-
+        FreeBSD 2756b146 14.5-RELEASE FreeBSD 14.5-RELEASE releng/14.5-n274872-4099b5c82880 GENERIC amd64
+
+PLAY RECAP *********************************************************************
+2756b146                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2e117f73                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+49f92d2a                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

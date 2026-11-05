@@ -9,37 +9,40 @@ This example extends :ref:`example_010`.
    :local:
    :depth: 1
 
-.. index:: single: module vbotka.freebsd.iocage; Example 013
-.. index:: single: inventory vbotka.freebsd.iocage; Example 013
-.. index:: single: property notes; Example 013
-.. index:: single: notes; Example 013
-.. index:: single: variable iocage_tags; Example 013
-.. index:: single: iocage_tags; Example 013
-.. index:: single: option compose; Example 013
-.. index:: single: compose; Example 013
-.. index:: single: option keyed_groups; Example 013
-.. index:: single: keyed_groups; Example 013
-.. index:: single: option get_properties; Example 013
-.. index:: single: get_properties; Example 013
-.. index:: single: variable iocage_properties; Example 013
-.. index:: single: iocage_properties; Example 013
-
-.. index:: single: iocage_jails; Example 013
-.. index:: single: iocage_plugins; Example 013
-.. index:: single: iocage_releases; Example 013
-.. index:: single: iocage_templates; Example 013
+.. index::
+   single: clones; Example 013
+   single: inventory groups; Example 013
+   single: module vbotka.freebsd.iocage; Example 013
+   single: inventory vbotka.freebsd.iocage; Example 013
+   single: property notes; Example 013
+   single: notes; Example 013
+   single: variable iocage_tags; Example 013
+   single: iocage_tags; Example 013
+   single: option compose; Example 013
+   single: compose; Example 013
+   single: option keyed_groups; Example 013
+   single: keyed_groups; Example 013
+   single: option get_properties; Example 013
+   single: get_properties; Example 013
+   single: variable iocage_properties; Example 013
+   single: iocage_properties; Example 013
+   single: iocage_jails; Example 013
+   single: iocage_plugins; Example 013
+   single: iocage_releases; Example 013
+   single: iocage_templates; Example 013
 
 Use case
 ^^^^^^^^
 
-Use the property ``notes`` to create ``iocage tags``:
+* Use the `iocage jail property`_ ``notes`` to create ``iocage
+  tags``. Add the property ``notes: "vmm={{ inventory_hostname }}"``.
 
-* Add the property ``notes: "vmm={{ inventory_hostname }}"``
+* In the inventory plugin:
 
-In the inventory plugin:
+  * Compose the variable ``iocage_tags``.
+  * Create inventory groups ``vmm_*`` from the attribute ``iocage_tags.vmm``.
 
-* Compose the variable ``iocage_tags``
-* Create groups ``vmm_*`` from the attribute ``iocage_tags.vmm``
+See the concept :ref:`ug_concepts_iocage_tags`.
 
 Tree
 ^^^^
@@ -50,51 +53,70 @@ Tree
   .
   ├── ansible.cfg
   ├── hosts
-  │   ├── 02_iocage.yml
-  │   └── 04_iocage.yml
+  │   ├── 05_iocage.yml
+  │   ├── 06_iocage.yml
+  │   └── 99_constructed.yml
   ├── host_vars
-  │   ├── iocage_02
+  │   ├── iocage_05
   │   │   └── iocage.yml
-  │   └── iocage_04
+  │   └── iocage_06
   │       └── iocage.yml
   ├── iocage.ini
   ├── pb-all.yml
-  ├── pb-ansible-client.yml
   ├── pb-iocage-base.yml
   ├── pb-iocage-clone.yml
+  ├── pb-test-vmm.yml
   └── pb-test.yml
 
 Synopsis
 ^^^^^^^^
 
-* On two managed nodes (``iocage_02`` and ``iocage_04``):
+* On the managed nodes:
 
-  * In the playbook ``pb-iocage-base.yml``, use the :ref:`module
-    vbotka.freebsd.iocage <ug_module_iocage>` to create the basejail
-    ``ansible_client``.
+  * Use the module :ref:`vbotka.freebsd.iocage <ug_module_iocage>` to:
 
-  * In the playbook ``pb-iocage-clone.yml``, use the :ref:`module
-    vbotka.freebsd.iocage <ug_module_iocage>` to clone 3 jails from the
-    basejail ``ansible_client``.
+    * Create the basejail ``ansible-test`` in the playbook ``pb-iocage-base.yml``.
 
-  * In the playbooks ``pb-all.yml``, ``pb-ansible-client.yml``, and
-    ``pb-test.yml``, use the :ref:`inventory vbotka.freebsd.iocage
-    <ug_inventory_iocage>` to:
+    * Clone 3 jails from the basejail ``ansible-test`` in the playbook
+      ``pb-iocage-clone.yml``.
 
-    * Create inventory groups and compose variables
-    * Create the dictionary ``iocage_tags`` from ``iocage_properties.notes``
-    * Display hosts, composed variables, and groups
+  * Use the inventory plugin :ref:`vbotka.freebsd.iocage <ug_inventory_iocage>`
+    to:
 
-* Comment on hosts potentially silently overriding each other.
+    * Compose the dictionary ``iocage_tags`` from ``iocage_properties.notes``.
+
+    * Compose variables and create inventory groups.
+
+* On all jails:
+
+  * In the playbook ``pb-all.yml``:
+
+    * Display jails, iocage tags, and inventory groups.
+
+* On cloned jails in the group ``test``:
+
+  * In the playbook ``pb-test.yml``:
+
+    * Display jails, composed variables, iocage tags, and inventory groups.
+
+  * In the playbook ``pb-test-vmm.yml``:
+
+    * Display jails running on iocage hosts.
+
+* Comment on hosts potentially silently overriding each other in the inventory.
 
 Requirements
 ^^^^^^^^^^^^
 
 * :ref:`ug_module_iocage`
 * :ref:`ug_inventory_iocage`
-* Root privileges on the managed nodes
-* Activated `iocage`_
-* Fetched releases
+* Activated `iocage`_.
+* Fetched releases.
+* Root privileges on the managed nodes.
+
+.. seealso::
+
+   * Example :ref:`example_016`
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -111,35 +133,45 @@ Inventory iocage.ini
 hosts
 ^^^^^
 
-Enable ``get_properties: true`` to create the dictionary
-``iocage_properties``. Then, the dictionary ``iocage_tags`` can be
-created from ``iocage_properties.notes``.
-
-.. literalinclude:: hosts/02_iocage.yml
+.. literalinclude:: hosts/05_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 6,10,19
+   :emphasize-lines: 4
 
-.. literalinclude:: hosts/04_iocage.yml
+.. literalinclude:: hosts/06_iocage.yml
    :language: yaml+jinja
    :caption:
-   :emphasize-lines: 4,8,17
+   :emphasize-lines: 4
+
+.. literalinclude:: hosts/99_constructed.yml
+   :language: yaml+jinja
+   :caption:
+   :emphasize-lines: 5,11-12
 
 .. note::
 
-   The structure of ``notes`` is arbitrary. If you change it, update
-   the ``iocage_tags`` declaration accordingly.
+   * Enable ``get_properties: true`` to create the dictionary
+     ``iocage_properties``. Then, the dictionary ``iocage_tags`` can be created
+     from ``iocage_properties.notes``.
+
+   * The structure of ``notes`` is arbitrary. If you change it, update the
+     ``iocage_tags`` declaration accordingly.
+
+   * The inventory files in the directory ``hosts`` are evaluated in
+     alphabetical order.
 
 host_vars
 ^^^^^^^^^
 
-.. literalinclude:: host_vars/iocage_02/iocage.yml
+.. literalinclude:: host_vars/iocage_05/iocage.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 27
 
-.. literalinclude:: host_vars/iocage_04/iocage.yml
+.. literalinclude:: host_vars/iocage_06/iocage.yml
    :language: yaml+jinja
    :caption:
+   :emphasize-lines: 27
 
 Playbook pb-iocage-base.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -175,6 +207,13 @@ Playbook output - Clone jails
    :language: yaml+jinja
    :force:
 
+Graph
+^^^^^
+
+.. literalinclude:: out/out-03.txt
+   :language: console
+   :caption: (env) > ansible-inventory -i hosts --graph
+
 Playbook pb-all.yml
 ^^^^^^^^^^^^^^^^^^^
 
@@ -188,62 +227,57 @@ Playbook output - Display variables and groups
 
    (env) > ansible-playbook -i hosts pb-all.yml
 
-.. literalinclude:: out/out-03.txt
-   :language: yaml+jinja
-   :force:
-
-.. note::
-
-   * The inventory files in the directory ``hosts`` are evaluated in
-     alphabetical order.
-
-   * The jail ``ansible_client`` defined in ``04_iocage.yml``
-     overrides the one from ``02_iocage.yml``.
-
-   * See the special variable `groups`_.
-
-Playbook pb-ansible-client.yml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. literalinclude:: pb-ansible-client.yml
-   :language: yaml+jinja
-
-Playbook output - Display iocage_tags and group_names
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: console
-
-   (env) > ansible-playbook -i hosts pb-ansible-client.yml
-
 .. literalinclude:: out/out-04.txt
    :language: yaml+jinja
    :force:
 
-.. note::
+.. important::
 
-   * The structure of the inventory hosts and groups is flat. The jail
-     ``ansible_client`` is the same in all groups.
-
+   * The jail ``ansible-test`` from ``06_iocage.yml`` overrides the one from
+     ``05_iocage.yml``.
+   * The structure of the inventory hosts and groups is **flat**. In Ansible,
+     host names within an inventory must be **globally unique**. The jail
+     ``ansible-test``, present in multiple iocage hosts, is included in the
+     inventory only once.
+   * See: :ref:`ug_qa_inventory_flat`
    * See the special variable `group_names`_.
 
 .. warning::
 
-   There are no internal checks for hosts overriding each
-   other. Maintaining inventory consistency is up to the user.
+   There are no internal checks for hosts overriding each other. In Ansible,
+   host names within an inventory must be **globally unique**. Maintaining
+   inventory consistency is up to the user.
 
 Playbook pb-test.yml
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: pb-test.yml
    :language: yaml+jinja
 
-Playbook output - Display all jails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Playbook output - Display variables and groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
    (env) > ansible-playbook -i hosts pb-test.yml
 
 .. literalinclude:: out/out-05.txt
+   :language: yaml+jinja
+   :force:
+
+Playbook pb-test-vmm.yml
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: pb-test-vmm.yml
+   :language: yaml+jinja
+
+Playbook output - Display jails running on hosts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+
+   (env) > ansible-playbook -i hosts pb-test-vmm.yml
+
+.. literalinclude:: out/out-06.txt
    :language: yaml+jinja
    :force:

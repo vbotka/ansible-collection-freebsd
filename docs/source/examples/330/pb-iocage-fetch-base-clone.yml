@@ -17,7 +17,7 @@
         creates: {{ freebsd_iocage_mount }}/jails/{{ jail.name }}
       {% endfor %}
       {% for jail in basejails %}
-      {% for k, v in (properties | combine(jail.properties)).items() %}
+      {% for k, v in ([properties, jail.properties] | combine).items() %}
       - cmd: iocage set {{ k }}={{ v }} {{ jail.name }}
       {% endfor %}
       {% endfor %}
@@ -27,7 +27,7 @@
         creates: {{ freebsd_iocage_mount }}/jails/{{ jail.name }}
       {% endfor %}
       {% for jail in clones %}
-      {% for k, v in (properties | combine(jail.properties)).items() %}
+      {% for k, v in ([properties, jail.properties] | combine).items() %}
       - cmd: iocage set {{ k }}={{ v }} {{ jail.name }}
       {% endfor %}
       {% endfor %}
@@ -35,7 +35,7 @@
 
   tasks:
 
-    - name: Debug
+    - name: Debug.
       when: debug | d(false) | bool
       tags: debug
       ansible.builtin.debug:
@@ -48,13 +48,13 @@
       tags: runner
       block:
 
-        - name: Run commands
+        - name: Run commands.
           register: out
           ansible.builtin.import_role:
             name: vbotka.freebsd.iocage
             tasks_from: runner
 
-        - name: Debug
+        - name: Debug.
           when: debug2 | d(false) | bool
           ansible.builtin.debug:
             var: out

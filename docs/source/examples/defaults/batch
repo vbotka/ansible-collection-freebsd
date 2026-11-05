@@ -1,10 +1,59 @@
-# iocage
-iocage_01="10.1.0.18"
-iocage_02="10.1.0.73"
-iocage_03="10.1.0.17"
-iocage_04="10.1.0.29"
-iocage_05="handy"
+cleanup_iocage_test_jails() {
+  local OPTIND opt
+  local ids_raw nums_raw
+  local ids nums
+  local prefix="test"
+  local destroy_ansible_test="false"
+  local id host num
 
-# example.com
-build_example_com="172.16.98.3"
-branch_server_example_com="10.1.0.17"
+  ids_raw="5 6"
+  nums_raw="11 12 13"
+
+  while getopts ":i:n:p:ah" opt; do
+    case "${opt}" in
+      i) ids_raw="${OPTARG}" ;;
+      n) nums_raw="${OPTARG}" ;;
+      p) prefix="${OPTARG}" ;;
+      a) destroy_ansible_test="true" ;;
+      h)
+        cat <<'EOF'
+Usage: cleanup_iocage_test_jails [-i "ids"] [-n "nums"] [-p prefix] [-a] [-h]
+  -i  Space-separated host IDs (default: "5 6")
+  -n  Space-separated jail number suffixes (default: "11 12 13")
+  -p  Jail name prefix (default: "test")
+  -a  Destroy the ansible-test jail as well
+  -h  Show this help message
+EOF
+        return 0
+        ;;
+      :)
+        echo "Error: Option -${OPTARG} requires an argument." >&2
+        return 1
+        ;;
+      \?)
+        echo "Error: Invalid option -${OPTARG}." >&2
+        return 1
+        ;;
+    esac
+  done
+  shift "$((OPTIND - 1))"
+
+  read -r -a ids <<< "${ids_raw}"
+  read -r -a nums <<< "${nums_raw}"
+
+  for id in "${ids[@]}"; do
+    host="iocage_0${id}"
+
+    for num in "${nums[@]}"; do
+      ssh "admin@${host}" "sudo iocage stop -f ${prefix}-${id}${num}"
+    done
+
+    for num in "${nums[@]}"; do
+      ssh "admin@${host}" "sudo iocage destroy -f ${prefix}-${id}${num}"
+    done
+
+    if [[ "${destroy_ansible_test}" == "true" ]]; then
+      ssh "admin@${host}" "sudo iocage destroy -f ansible-test"
+    fi
+  done
+}

@@ -1,17 +1,191 @@
 
-PLAY [Create swarms (not idempotent!)] *****************************************
+PLAY [Create and start swarms (not idempotent!).] ******************************
 
 TASK [Create swarms.] **********************************************************
-changed: [iocage_06] => (item={'key': 'www_prod', 'value': {'count': 3, 'template': 'ansible-client'}})
-changed: [iocage_06] => (item={'key': 'www_devel', 'value': {'count': 2, 'template': 'ansible-client'}})
+changed: [iocage_05] => (item={'key': 'www_prod', 'value': {'count': 3, 'template': 'ansible-client'}})
+changed: [iocage_06] => (item={'key': 'www_devel', 'value': {'count': 3, 'template': 'ansible-client'}})
+changed: [iocage_05] => (item={'key': 'db_prod', 'value': {'count': 2, 'template': 'ansible-client'}})
+changed: [iocage_06] => (item={'key': 'db_devel', 'value': {'count': 2, 'template': 'ansible-client'}})
 
-TASK [Create tags.] ************************************************************
-changed: [iocage_06] => (item=ed4f2b5c vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p1)
-changed: [iocage_06] => (item=68acad68 vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p2)
-changed: [iocage_06] => (item=1caef90a vmm=iocage_06 project=example_020 swarm=www_prod alias=www_p3)
-changed: [iocage_06] => (item=1fafe0d4 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1)
-changed: [iocage_06] => (item=8539981e vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2)
+TASK [Debug create swarms.] ****************************************************
+ok: [iocage_05] => (item=www_prod) => 
+    msg: |-
+        cmd:
+          ['iocage', 'create', '--short', '--count', '3', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
+        stdout:
+          680e6eaa successfully created!
+        d872adc6 successfully created!
+        a82cdd6a successfully created!
+ok: [iocage_05] => (item=db_prod) => 
+    msg: |-
+        cmd:
+          ['iocage', 'create', '--short', '--count', '2', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
+        stdout:
+          4f2fb435 successfully created!
+        b4366392 successfully created!
+ok: [iocage_06] => (item=www_devel) => 
+    msg: |-
+        cmd:
+          ['iocage', 'create', '--short', '--count', '3', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
+        stdout:
+          43e16879 successfully created!
+        636c5a5c successfully created!
+        fb3eaf11 successfully created!
+ok: [iocage_06] => (item=db_devel) => 
+    msg: |-
+        cmd:
+          ['iocage', 'create', '--short', '--count', '2', '--template', 'ansible-client', 'dhcp=1', 'vnet=1']
+        stdout:
+          75aec436 successfully created!
+        f91b6104 successfully created!
+
+TASK [Create notes.] ***********************************************************
+changed: [iocage_05] => (item=680e6eaa vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p1)
+changed: [iocage_06] => (item=43e16879 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1)
+changed: [iocage_05] => (item=d872adc6 vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p2)
+changed: [iocage_06] => (item=636c5a5c vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2)
+changed: [iocage_05] => (item=a82cdd6a vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p3)
+changed: [iocage_06] => (item=fb3eaf11 vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d3)
+changed: [iocage_05] => (item=4f2fb435 vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p1)
+changed: [iocage_05] => (item=b4366392 vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p2)
+changed: [iocage_06] => (item=75aec436 vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d1)
+changed: [iocage_06] => (item=f91b6104 vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d2)
+
+TASK [Debug create notes.] *****************************************************
+ok: [iocage_05] => (item=0) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p1', '680e6eaa']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p1
+ok: [iocage_06] => (item=0) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1', '43e16879']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d1
+ok: [iocage_05] => (item=1) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p2', 'd872adc6']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p2
+ok: [iocage_05] => (item=2) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p3', 'a82cdd6a']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=www_prod alias=www_p3
+ok: [iocage_05] => (item=3) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p1', '4f2fb435']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p1
+ok: [iocage_05] => (item=4) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p2', 'b4366392']
+        notes: none -> vmm=iocage_05 project=example_020 swarm=db_prod alias=db_p2
+ok: [iocage_06] => (item=1) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2', '636c5a5c']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d2
+ok: [iocage_06] => (item=2) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d3', 'fb3eaf11']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=www_devel alias=www_d3
+ok: [iocage_06] => (item=3) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d1', '75aec436']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d1
+ok: [iocage_06] => (item=4) => 
+    msg: |-
+        cmd: ['iocage', 'set', 'notes=vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d2', 'f91b6104']
+        notes: none -> vmm=iocage_06 project=example_020 swarm=db_devel alias=db_d2
+
+TASK [Start jails.] ************************************************************
+changed: [iocage_05]
+changed: [iocage_06]
+
+TASK [Debug start jails.] ******************************************************
+ok: [iocage_06] => 
+    msg: |-
+        cmd: ['iocage', 'start', '43e16879', '636c5a5c', 'fb3eaf11', '75aec436', 'f91b6104']
+        * Starting 43e16879
+          + Started OK
+          + Using devfs_ruleset: 1004 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.136/24
+        * Starting 636c5a5c
+          + Started OK
+          + Using devfs_ruleset: 1005 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.137/24
+        * Starting fb3eaf11
+          + Started OK
+          + Using devfs_ruleset: 1006 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.145/24
+        * Starting 75aec436
+          + Started OK
+          + Using devfs_ruleset: 1007 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.134/24
+        * Starting f91b6104
+          + Started OK
+          + Using devfs_ruleset: 1008 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.99.151/24
+ok: [iocage_05] => 
+    msg: |-
+        cmd: ['iocage', 'start', '680e6eaa', 'd872adc6', 'a82cdd6a', '4f2fb435', 'b4366392']
+        * Starting 680e6eaa
+          + Started OK
+          + Using devfs_ruleset: 1000 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.116/24
+        * Starting d872adc6
+          + Started OK
+          + Using devfs_ruleset: 1001 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.117/24
+        * Starting a82cdd6a
+          + Started OK
+          + Using devfs_ruleset: 1002 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.118/24
+        * Starting 4f2fb435
+          + Started OK
+          + Using devfs_ruleset: 1003 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.119/24
+        * Starting b4366392
+          + Started OK
+          + Using devfs_ruleset: 1004 (iocage generated default)
+          + Configuring VNET OK
+          + Using IP options: vnet
+          + Starting services OK
+          + Executing poststart OK
+          + DHCP Address: 172.16.95.120/24
 
 PLAY RECAP *********************************************************************
-iocage_06                  : ok=2    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+iocage_05                  : ok=6    changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+iocage_06                  : ok=6    changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 

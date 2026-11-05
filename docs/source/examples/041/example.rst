@@ -7,15 +7,18 @@
    :local:
    :depth: 1
 
-.. index:: single: filter vbotka.freebsd.project; Example 041
-.. index:: single: vbotka.freebsd.project; Example 041
-.. index:: single: project; Example 041
+.. index::
+   single: filter vbotka.freebsd.project; Example 041
+   single: vbotka.freebsd.project; Example 041
+   single: project; Example 041
 
 Use case
 ^^^^^^^^
 
-Use the :ref:`filter vbotka.freebsd.project <ug_filter_project>` to restructure
-a project dictionary.
+Use the filter :ref:`vbotka.freebsd.project <ug_filter_project>` to restructure
+a :ref:`project <ug_concepts_project>` dictionary.
+
+See the concept :ref:`ug_concepts_project`.
 
 Tree
 ^^^^
@@ -30,13 +33,13 @@ Tree
 Synopsis
 ^^^^^^^^
 
-Restructure a dictionary of jails and their hosts defined with ``vmm`` and
-``class`` attributes:
+* Restructure a dictionary of jails and their hosts defined with ``vmm`` and
+  ``class`` attributes:
 
-* Group full service specifications under their respective host (``vmm``).
+  * Group full service specifications under their respective host (``vmm``).
 
-* Invert the ``class`` attribute into a reverse-lookup dictionary mapping class
-  names to lists of ``jails``.
+  * Invert the ``class`` attribute into a reverse-lookup dictionary mapping
+    class names to lists of ``jails``.
 
 Requirements
 ^^^^^^^^^^^^
@@ -46,7 +49,7 @@ Requirements
 Notes
 ^^^^^
 
-* See the concept :ref:`ug_concepts_project`.
+* TBD
 
 ansible.cfg
 ^^^^^^^^^^^
@@ -59,7 +62,7 @@ Playbook pb.yml
 
 .. literalinclude:: pb.yml
    :language: yaml+jinja
-   :emphasize-lines: 8-23,25-26
+   :emphasize-lines: 7-22,24-25
 
 Playbook output - Test filter project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

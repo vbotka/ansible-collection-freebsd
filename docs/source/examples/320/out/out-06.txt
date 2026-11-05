@@ -2,70 +2,38 @@
 PLAY [Test role vbotka.freebsd.packages] ***************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [pkg_repo]
+ok: [repos]
+ok: [repos_devel]
 ok: [log_server_01]
 
 TASK [vbotka.freebsd.packages : Vars: Set the lists for amd64] *****************
+ok: [pkg_repo]
+ok: [repos_devel]
+ok: [repos]
 ok: [log_server_01]
 
-TASK [vbotka.freebsd.packages : Vars: Debug pkg_debug=true] ********************
-ok: [log_server_01] => 
-    msg: |-
-        ansible_facts.architecture: amd64
-        pkg_dict:
-          []
-
-        pkg_list:
-          - lang/python
-          - lang/python3
-          - lang/python312
-
-        pkg_list_deinstall:
-          []
-
-        pkg_dict_select:
-          []
-
-TASK [vbotka.freebsd.packages : Stat: Get pkg audit] ***************************
+TASK [vbotka.freebsd.packages : Sanity: Test collection community_general minimal version 9.3.0] ***
+ok: [pkg_repo]
+ok: [repos_devel]
+ok: [repos]
 ok: [log_server_01]
 
-TASK [vbotka.freebsd.packages : Stat: Debug pkg audit pkg_debug=true] **********
-ok: [log_server_01] => 
-    pkg_audit:
-        log_server_01:
-            packages:
-                python312:
-                    issue_count: 1
-                    issues:
-                    -   Affected versions:
-                        - '>= 0'
-                        cve:
-                        - CVE-2025-15366
-                        description: Python -- imaplib module, when passed a user-controlled
-                            command, can have additional commands injected using newlines
-                        url: https://vuxml.FreeBSD.org/freebsd/0be929a5-2e0f-11f1-88c7-00a098b42aeb.html
-                    reverse dependencies:
-                    - python
-                    - python3
-                    - glib
-                    - syslog-ng
-                    - py312-toml
-                    - py312-ansible-core
-                    - py312-ansible
-                    - py312-pyyaml
-                    - py312-cryptography
-                    - py312-resolvelib
-                    - py312-cffi
-                    - py312-passlib
-                    - py312-packaging
-                    - py312-Jinja2
-                    - py312-importlib-resources
-                    - py312-Babel
-                    - git
-                    - py312-pycparser
-                    - py312-markupsafe
-                    version: 3.12.14
-            pkg_count: 1
+TASK [vbotka.freebsd.packages : Sanity: Required variable pkg_jail when pkg_delegate] ***
+ok: [repos_devel]
+ok: [log_server_01]
+ok: [repos]
+ok: [pkg_repo]
+
+TASK [vbotka.freebsd.packages : Packages_install: Install list pkg_list] *******
+ok: [repos_devel -> iocage_06]
+ok: [repos -> iocage_06]
+ok: [pkg_repo -> iocage_06]
+ok: [log_server_01 -> iocage_06]
 
 PLAY RECAP *********************************************************************
-log_server_01              : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+log_server_01              : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
+pkg_repo                   : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
+repos                      : ok=5    changed=0    unreachable=0    failed=0    skipped=52   rescued=0    ignored=0   
+repos_devel                : ok=5    changed=0    unreachable=0    failed=0    skipped=51   rescued=0    ignored=0   
 
