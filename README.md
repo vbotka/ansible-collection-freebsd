@@ -17,6 +17,7 @@ demonstrating the practical application and integration of these elements.
 
 plugins:
 
+* [module cgetent](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/cgetent/) - Query capability database.
 * [module iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/iocage/) - iocage jail handling.
 * [module service](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/service/) - Control or list system services.
 * [module ucl](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/module/ucl/) - CRUD-like interface for managing UCL files.
@@ -36,6 +37,7 @@ roles:
 * [config_light](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/config_light/) - Install packages, configure files, services, and handlers.
 * [custom_image](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image/) - Download, mount, and customize system images.
 * [dhcp](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/dhcp/) - Install, configure, and run DHCP server.
+* [haproxy](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/haproxy/) - Install, configure, and run HAProxy load balancer.
 * [iocage](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage/) - Install and configure iocage.
 * [iocage_template](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/iocage_template/) - Create iocage templates.
 * [lib](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/lib/) - Library of tasks.

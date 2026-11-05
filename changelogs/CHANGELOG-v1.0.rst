@@ -1,6 +1,6 @@
-============================
-vbotka.freebsd Release Notes
-============================
+================================
+vbotka.freebsd 1.0 Release Notes
+================================
 
 .. contents:: Topics
 

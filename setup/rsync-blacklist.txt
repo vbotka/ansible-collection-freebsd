@@ -1,0 +1,5 @@
+.ansible
+.git
+.github
+dest
+vbotka-freebsd-*.tar.gz
