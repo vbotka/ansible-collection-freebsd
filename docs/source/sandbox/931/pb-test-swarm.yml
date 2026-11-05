@@ -1,0 +1,65 @@
+- name: Properties test swarm.
+  hosts: iocage
+
+  vars_files:
+
+    - project-test-swarm.yml
+
+  vars:
+
+    _notes_source:
+      - "{{ item.value.notes | d('') }}"
+      - "{{ item.value.properties.notes | d('') }}"
+      - "{{ properties.notes | d('') }}"
+    _notes: "{{ _notes_source | select | join(' ') }}"
+    _properties_source:
+      - "{{ properties | d({}) }}"
+      - "{{ item.value.properties | d({}) }}"
+    _properties_combined: |
+      {{ _properties_source
+         | vbotka.freebsd.remove_keys(target=['notes'])
+         | select
+         | combine(recursive=true) }}
+    _properties: >-
+      {% for k, v in _properties_combined.items() -%}
+      {{ k }}={{ v }}
+      {% endfor -%}
+      notes="{{ _notes }}"
+
+  tasks:
+
+    - debug:
+        var: swarms
+      when: debug2 | d(false) | bool
+
+    - debug:
+        var: project
+      when: debug2 | d(false) | bool
+
+    - debug:
+        var: vmm
+      when: debug2 | d(false) | bool
+
+    - debug:
+        var: vmm
+      run_once: true
+
+    - debug:
+        msg: |
+          _notes_source: {{ _notes_source }}
+          _properties_source: {{ _properties_source }}
+          _properties_combined: {{ _properties_combined }}
+          _properties: {{ _properties }}
+      loop: "{{ vmm[inventory_hostname] | d({}) | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+      when: debug | d(false) | bool
+
+    - debug:
+        msg: |
+          _properties: "{{ _properties | trim}}"
+           properties: "{{ properties | d({})
+                           | vbotka.freebsd.combine_properties(inventory_hostname, item) }}"
+      loop: "{{ vmm[inventory_hostname] | d({}) | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"

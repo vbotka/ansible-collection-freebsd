@@ -11,5 +11,5 @@
     - debug:
         msg: |
           {{ haproxy_conf
-             | vbotka.freebsd.dict_to_ast
+             | vbotka.freebsd.to_ast
              | vbotka.freebsd.ast_to_haproxy }}

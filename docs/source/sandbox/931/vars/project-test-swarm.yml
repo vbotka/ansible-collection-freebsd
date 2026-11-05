@@ -1,0 +1,23 @@
+properties:
+  bpf: 1
+  dhcp: 1
+  vnet: 1
+  notes: foo=foo bar=bar
+
+swarms:
+  sw_01:
+    count: 3
+    template: ansible-client
+    class: [db, log-client]
+    notes: baz=baz
+  sw_02:
+    count: 3
+    template: ansible-client
+    class: [www, log-client]
+    notes: qux=qux
+
+project: "{{ dict(swarms.keys()
+                  | zip(swarms.values()
+                        | map('combine', {'vmm': inventory_hostname}))) }}"
+vmm: "{{ (project | vbotka.freebsd.project).vmm }}"
+class: "{{ (project | vbotka.freebsd.project).class }}"

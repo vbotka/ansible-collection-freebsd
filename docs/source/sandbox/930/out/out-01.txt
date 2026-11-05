@@ -1,0 +1,17 @@
+
+PLAY [List of jails] ***********************************************************
+
+TASK [Query iocage2 inventory plugin] ******************************************
+ok: [iocage_06 -> localhost]
+
+TASK [Display iocage_jails] ****************************************************
+ok: [iocage_06] => 
+    iocage_jails.keys():
+    - log_server_01
+    - pkg_repo
+    - repos
+    - repos_devel
+
+PLAY RECAP *********************************************************************
+iocage_06                  : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

@@ -29,6 +29,8 @@
 924 * Template ansible-pkg-repo (linked to 929)
 928 * Template ansible-init (local pkg repo) (linked to 929)
 929 Templates create all
+930 List of jails incl. properties.
+931 Filter combine_properties.
 
 ## Notes
 
