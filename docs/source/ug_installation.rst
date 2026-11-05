@@ -27,6 +27,13 @@ Upgrade the collection if already installed. For example:
    'community.general:13.3.0' is already installed, skipping.
    'community.library_inventory_filtering_v1:1.1.5' is already installed, skipping.
 
+Optionally, download the tarball from `Ansible Galaxy -> Install -> Download`_
+and install the collection manually. For example:
+
+.. code-block:: console
+
+   (env) > ansible-galaxy collection install ~/Downloads/vbotka-freebsd-1.1.0.tar.gz
+
 .. tip::
 
    See :ref:`ag_setup` on how to install additional plugins and roles.

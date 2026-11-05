@@ -4,6 +4,7 @@
 .. _AST: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 .. _Activate iocage: https://freebsd.github.io/iocage/basic-use.html#activate-iocage
 .. _Adding custom facts: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#adding-custom-facts
+.. _Ansible Galaxy -> Install -> Download: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
 .. _Ansible Tags: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html
 .. _Ansible claims: https://docs.ansible.com/ansible/latest/os_guide/intro_bsd.html#bsd-efforts-and-contributions
 .. _Ansible concepts: https://docs.ansible.com/projects/ansible/latest/getting_started/basic_concepts.html

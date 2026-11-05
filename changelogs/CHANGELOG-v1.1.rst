@@ -16,6 +16,7 @@ Major Changes
 
 Minor Changes
 --------------
+* Docs. Update UG installation options.
 
 Bugfixes
 --------
