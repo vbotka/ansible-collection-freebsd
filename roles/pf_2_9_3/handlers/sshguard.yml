@@ -1,0 +1,26 @@
+---
+# handlers for freebsd_pf
+
+- name: Start sshguard
+  listen: start sshguard
+  register: pf_sshguard_started
+  ansible.builtin.service:
+    name: sshguard
+    state: started
+
+- name: Stop sshguard
+  listen: stop sshguard
+  ansible.builtin.service:
+    name: sshguard
+    state: stopped
+
+- name: Restart sshguard
+  listen: restart sshguard
+  when:
+    - pf_sshguard_enable | bool
+    - not (pf_sshguard_started.changed | d(false))
+  ansible.builtin.service:
+    name: sshguard
+    state: restarted
+
+# EOF

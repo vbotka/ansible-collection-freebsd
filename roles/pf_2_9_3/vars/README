@@ -1,0 +1,31 @@
+Samples
+=======
+
+pfconf_default_ex01.yml.sample (Simple router)
+----------------------------------------------
+* blacklistd
+* ext_if, int_if; nat
+* block all, pass from { self, $localnet } to any keep state
+
+pfconf_default_ex02.yml.sample (Simple server with jails)
+---------------------------------------------------------
+* blacklistd, fail2ban, sshguard
+* ext_if, nat
+* ext_tcp_ports = "{ ssh, http, https }"
+* block all, pass from { self, $jails_net } to any keep state
+
+pfconf_default_ex03.yml.sample (Simple server with jails and redirections)
+--------------------------------------------------------------------------
+* blacklistd, fail2ban, sshguard
+* ext_if; nat
+* ext_tcp_ports = "{ ssh, http, https }"
+* block all, pass from { self, $jails_net } to any keep state
+
+pfconf_default3_ex01.yml.sample (jail host with Wireguard over WiFi and redirection)
+------------------------------------------------------------------------------------
+* blacklistd, fail2ban, sshguard
+* ext_if, int_if; nat
+* vpn_if, wg_if
+* ext_tcp_ports = "{ ssh, http, https }"
+* block all, pass in on { $ext_if, $vpn_if, $wg_if
+* rdr included from pf-rdr-ssh-vpnnet.conf and pf-rdr-ssh-localnet.conf (see files)

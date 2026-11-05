@@ -1,0 +1,2 @@
+# {{ ansible_managed }}
+{{ haproxy_conf | vbotka.freebsd.to_ast | vbotka.freebsd.ast_to_haproxy }}

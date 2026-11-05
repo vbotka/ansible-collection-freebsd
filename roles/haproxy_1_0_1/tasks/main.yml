@@ -1,0 +1,25 @@
+---
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
+# tasks for vbotka.freebsd_haproxy
+- name: Import debug.yml
+  when: haproxy_debug | bool
+  tags: [haproxy_debug, always]
+  ansible.builtin.import_tasks: debug.yml
+
+- name: Import packages.yml
+  when: haproxy_install | bool
+  tags: haproxy_packages
+  ansible.builtin.import_tasks: packages.yml
+
+- name: Import conf.yml
+  tags: haproxy_conf
+  ansible.builtin.import_tasks: conf.yml
+
+- name: Import service.yml
+  tags: haproxy_service
+  ansible.builtin.import_tasks: service.yml
+
+# EOF
+...

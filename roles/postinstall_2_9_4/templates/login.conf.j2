@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+# {{ template_path }}
+
+{% for item in fp_login_conf %}
+{{ item.class }}:\
+{% for citem in item.conf | flatten %}
+{{ '\t' }}:{{ citem }}:\
+{% endfor %}
+
+{% endfor %}
+{% for item in fp_login_conf_extra %}
+{{ item.class }}:\
+{% for citem in item.conf | flatten %}
+{{ '\t' }}:{{ citem }}:\
+{% endfor %}
+
+{% endfor %}
