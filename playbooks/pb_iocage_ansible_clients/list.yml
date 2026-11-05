@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Get iocage facts
+- name: Get iocage datasets.
   vbotka.freebsd.iocage:
 
 - name: "Display iocage_jails dictionary debug2={{ debug2 }}"

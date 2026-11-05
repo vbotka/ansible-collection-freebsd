@@ -8,7 +8,7 @@
 
   tasks:
 
-    - name: Update repos
+    - name: Update repos.
       register: out
       changed_when: false
       ansible.builtin.command: pkg update -f

@@ -2,7 +2,7 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Debug
+- name: Debug.
   ansible.builtin.debug:
     msg: |
       templates:

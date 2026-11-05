@@ -2,56 +2,119 @@
 # (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
-- name: Create clones from template
-  register: out_create
+- name: Create jail from template.
   vars:
-    _notes: |-
-      {{ [properties.notes | d(''), item.value.properties.notes | d('')]
-         | select
-         | join(' ') }}
-    _target: [notes]
-    _properties_combined: |
-      {{ [properties | d({}), item.value.properties | d({})]
-         | community.general.remove_keys(target=_target)
-         | select
-         | combine(recursive=true) }}
-    _properties: "{{ [_properties_combined, {'notes': _notes}] | combine }}"
-  vbotka.freebsd.iocage:
-    state: cloned
-    clone_from: "{{ item.value.clone_from }}"
-    name: "{{ item.key }}"
-    properties: "{{ _properties }}"
-  loop: "{{ clones | dict2items }}"
-  loop_control:
-    label: "{{ item.key }} {{ item.value.clone_from }}"
+    _properties: "{{ properties | d({})
+                     | vbotka.freebsd.combine_properties(inventory_hostname, item, notes=['vmm', 'class', 'swarm']) }}"
+  block:
 
-- name: "Debug clones from template debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out_create
+    - name: "Debug _properties debug={{ debug }}"
+      when: debug | bool
+      ansible.builtin.debug:
+        var: _properties
+      loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.clone_from }}"
 
-- name: Set iocage_jails
-  ansible.builtin.set_fact:
-    iocage_jails: "{{ ansible_facts.iocage_jails }}"
+      # Note: state `cloned' uses `iocage create ...' if `clone_from' is a template.
+    - name: Create jail from template.
+      register: out
+      vbotka.freebsd.iocage:
+        state: cloned
+        clone_from: "{{ item.value.clone_from }}"
+        name: "{{ item.key }}"
+        properties: "{{ _properties }}"
+      loop: "{{ vmm_clones[inventory_hostname] | dict2items }}"
+      loop_control:
+        label: "{{ item.key }} {{ item.value.clone_from }}"
 
-- name: Start clones
+    - name: "Debug create jail from template debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Create dictionary iocage_jails
+      ansible.builtin.set_fact:
+        iocage_jails: "{{ ansible_facts.iocage_jails }}"
+
+- name: Configure jail fstab.
+  when: _fstab | length > 0
+  vars:
+    _fstab: "{{ vmm_clones[inventory_hostname] | dict2items | subelements('value.fstab', skip_missing=true) }}"
+  block:
+
+    - name: Get activated pool.
+      register: out_pool
+      changed_when: false
+      check_mode: false
+      ansible.builtin.command: iocage get -p
+
+    - name: Create mount points.
+      register: out
+      changed_when: false
+      ansible.builtin.command: >-
+        mkdir -p /{{ out_pool.stdout }}/iocage/jails/{{ item.0.key }}/root{{ item.1.file }}
+      loop: "{{ _fstab }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: Debug create mount points.
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+    - name: Debug configure fstab commands.
+      when: debug | bool
+      ansible.builtin.debug:
+        msg: >-
+          iocage fstab
+          {{ item.0.key }}
+          {{ item.1.spec }} {{ item.1.file }}
+          nullfs rw 0 0
+          --add
+      loop: "{{ _fstab }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: Configure fstab.
+      register: out
+      changed_when: false
+      ansible.builtin.command: >-
+        iocage fstab
+        {{ item.0.key }}
+        {{ item.1.spec }} {{ item.1.file }}
+        nullfs rw 0 0
+        --add
+      loop: "{{ _fstab }}"
+      loop_control:
+        label: "{{ item.0.key }} {{ item.1.file }}"
+
+    - name: Debug configure fstab.
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
+
+- name: Start created jails.
   when: _jails | length > 0
-  changed_when: false
   vars:
-    _jails: "{{ start | difference(_started) }}"
-  register: out_start
-  ansible.builtin.command:
-    cmd: >
-      iocage start
-      {{ _jails | join(' ') }}
+    iocage_jails_started: "{{ iocage_jails
+                              | dict2items
+                              | selectattr('value.state', 'eq', 'up')
+                              | map(attribute='key')
+                              | list }}"
+    _jails: "{{ iocage_jails | difference(iocage_jails_started) | list }}"
+  block:
 
-- name: "Debug start clones debug2={{ debug2 }}"
-  when: debug2 | bool
-  ansible.builtin.debug:
-    var: out_start
+    - name: Start created jails.
+      when: not dry_run | bool
+      register: out
+      changed_when: false
+      ansible.builtin.command:
+        cmd: >
+          iocage start
+          {{ _jails | join(' ') }}
 
-# Note
-#
-# The string _notes is not quoted (compare with swarm.yml) because the module vbotka.freebsd.iocage
-# quotes the properties values. See the function _props_to_str in
-# https://github.com/vbotka/ansible-collection-freebsd/blob/master/plugins/modules/iocage.py
+    - name: "Debug start created jails debug2={{ debug2 }}"
+      when: debug2 | bool
+      ansible.builtin.debug:
+        var: out
