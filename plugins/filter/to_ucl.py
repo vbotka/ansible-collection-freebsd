@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
-from typing import Any
 from ansible.errors import AnsibleFilterError
 
 DOCUMENTATION = r"""
@@ -77,6 +76,8 @@ _value:
 """
 
 import re
+from typing import Any
+
 try:
     import ucl
     HAS_LIBUCL = True

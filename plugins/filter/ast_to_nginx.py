@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
-from typing import Any
 from ansible.errors import AnsibleFilterError
 from ansible.module_utils.basic import missing_required_lib
 
@@ -63,6 +62,8 @@ _value:
   type: str
   returned: always
 """
+
+from typing import Any
 
 try:
     import crossplane

@@ -8,6 +8,8 @@ DOCUMENTATION = r"""
   name: project
   short_description: Restructure project into host-mapped and class-mapped dictionaries
   version_added: "1.0.4"
+  author:
+    - Vladimir Botka (@vbotka)
   description:
     - Restructures a dictionary of jails and their hosts defined with C(vmm) and C(class)
       attributes.

@@ -1,5 +1,4 @@
-# Copyright 2026 Vladimir Botka <vbotka@gmail.com>
-# Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
+# (c) 2026 Vladimir Botka <vbotka@gmail.com>
 # SPDX-License-Identifier: BSD-2-Clause
 
 from __future__ import annotations
