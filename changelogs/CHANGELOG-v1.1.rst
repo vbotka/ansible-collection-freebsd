@@ -19,6 +19,7 @@ Minor Changes
 
 Bugfixes
 --------
+* Fix filter combine_properties documentation.
 
 
 1.1.0

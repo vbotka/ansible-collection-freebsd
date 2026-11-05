@@ -41,11 +41,6 @@ DOCUMENTATION = r"""
       elements: string
       default: ['vmm', 'class']
       required: false
-  return:
-    _value:
-      description:
-        - Space-delimited string of property assignments ending with C(notes="...").
-      type: string
 """
 
 EXAMPLES = r"""
@@ -67,6 +62,7 @@ RETURN = r"""
     description: Single-line string containing combined key=value pairs and notes.
     type: string
     sample: 'bpf=1 dhcp=1 vnet=1 boot=1 notes="alias=www_02 vmm=iocage_06 class=nginx swarm=swarm_01"'
+    returned: always
 """
 
 from collections.abc import Mapping, Sequence
