@@ -5,6 +5,7 @@ roles_install:
   - config_light
   - custom_image
   - dhcp
+  - haproxy
   - iocage
   - iocage_template
   - lib
