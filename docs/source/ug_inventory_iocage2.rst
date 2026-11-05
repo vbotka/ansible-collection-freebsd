@@ -1,6 +1,6 @@
 .. _ug_inventory_iocage2:
 
-.. index:: single: inventory vbotka.freebsd.iocage2; Plugins
+.. index:: single: inventory vbotka.freebsd.iocage2; Inventory iocage2
 
 Inventory vbotka.freebsd.iocage2
 --------------------------------
@@ -20,7 +20,7 @@ configuration file.
 
    .. code:: console
 
-      shell> ansible-doc -t inventory vbotka.freebsd.iocage2
+      (env) > ansible-doc -t inventory vbotka.freebsd.iocage2
 
 Overview
 ^^^^^^^^

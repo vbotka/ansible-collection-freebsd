@@ -1,13 +1,14 @@
 .. _ug_filter_ast_to_nginx:
 
-.. index:: single: filter vbotka.freebsd.ast_to_nginx; Plugins
-.. index:: single: ast_to_nginx; Plugins
+.. index::
+   single: filter vbotka.freebsd.ast_to_nginx; Filter ast_to_nginx
+   single: ast_to_nginx; Filter ast_to_nginx
 
 Filter vbotka.freebsd.ast_to_nginx
 ----------------------------------
 
-The ``_ast_to_nginx`` filter converts `crossplane`_ AST (Abstract Syntax Tree)
-list to NGINX config.
+The ``ast_to_nginx`` filter uses `crossplane`_ to convert a list of `AST`_
+(Abstract Syntax Tree) to NGINX config.
 
 .. hint::
 
@@ -15,8 +16,8 @@ list to NGINX config.
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.ast_to_nginx
-      
+      (env) > ansible-doc -t filter vbotka.freebsd.ast_to_nginx
+
 .. note::
 
    * This filter requires `crossplane`_

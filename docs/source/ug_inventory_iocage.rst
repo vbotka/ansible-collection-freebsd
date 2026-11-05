@@ -1,6 +1,6 @@
 .. _ug_inventory_iocage:
 
-.. index:: single: inventory vbotka.freebsd.iocage; Plugins
+.. index:: single: inventory vbotka.freebsd.iocage; Inventory iocage
 
 Inventory vbotka.freebsd.iocage
 -------------------------------
@@ -24,7 +24,7 @@ manager.
 
    .. code:: console
 
-      shell> ansible-doc -t inventory vbotka.freebsd.iocage
+      (env) > ansible-doc -t inventory vbotka.freebsd.iocage
 
 .. note::
 
@@ -40,7 +40,7 @@ manager.
 
 .. seealso::
 
-   - `iocage - A FreeBSD Jail Manager`_
+   - `iocage - FreeBSD Jail Manager`_
    - `man iocage`_
    - `Jails and Containers`_
    - Ansible Galaxy `inventory iocage`_

@@ -11,11 +11,12 @@ Namespace vbotka
 ^^^^^^^^^^^^^^^^
 
 To install other roles from the `vbotka`_ namespace, see ``setup/vars/roles.yml``. The
-dictionary ``bsd_roles`` maintains the list of tested roles:
+dictionary ``bsd_roles`` tracks tested roles:
 
 .. code-block:: yaml
    :force:
 
+   bsd_roles_no: 38
    bsd_roles:
      - galaxy: vbotka.ansible
        name: ansible
@@ -46,7 +47,7 @@ dictionary ``bsd_roles`` maintains the list of tested roles:
        version: 2.6.2
        ...
 
-Add the roles you want to install to the ``bsd_roles_install`` list in
+Add the roles you want to install to the ``roles_install`` list in
 ``setup/vars/roles_install.yml`` and run the playbook:
 
 .. code-block:: console
@@ -133,7 +134,7 @@ inside the collection context:
 
 .. seealso::
 
-   The special variable `ansible_role_name`_
+   * The special variable `ansible_role_name`_
 
 Other dependent roles
 """""""""""""""""""""
@@ -166,11 +167,12 @@ based on the runtime context:
 Other roles
 ^^^^^^^^^^^
 
-To add custom or external roles to this collection, update the ``bsd_roles`` dictionary.
+To add custom or external roles to this collection, update the
+``bsd_roles`` and ``roles_install`` dictionaries.
 
 .. seealso::
 
-   `Migrating Roles to Roles in Collections on Galaxy`_.
+   * `Migrating Roles to Roles in Collections on Galaxy`_
 
 .. note::
 

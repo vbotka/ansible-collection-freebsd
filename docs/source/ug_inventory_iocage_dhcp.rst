@@ -1,3 +1,5 @@
+.. _ug_inventory_iocage_dhcp:
+
 DHCP
 ^^^^
 
@@ -34,7 +36,7 @@ As root on the iocage host, start the jails:
      + Starting services OK
      + Executing poststart OK
      + DHCP Address: 10.1.0.169/24
-   Please convert back to a jail before trying to start ansible_client
+   Please convert back to a jail before trying to start ansible-client
 
 List the running jails:
 
@@ -45,11 +47,11 @@ List the running jails:
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
    | JID | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
    +=====+=======+======+=======+======+=================+====================+=====+================+==========+
-   | 204 | srv_1 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.183 | -   | ansible_client | no       |
+   | 204 | srv_1 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.183 | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 205 | srv_2 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.204 | -   | ansible_client | no       |
+   | 205 | srv_2 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.204 | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
+   | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 As admin on the control node, query the jail list without root
@@ -63,11 +65,11 @@ addresses requires root access:
    +-----+-------+------+-------+------+-----------------+-----------------------------------------+-----+----------------+----------+
    | JID | NAME  | BOOT | STATE | TYPE |     RELEASE     |                   IP4                   | IP6 |    TEMPLATE    | BASEJAIL |
    +=====+=======+======+=======+======+=================+=========================================+=====+================+==========+
-   | 204 | srv_1 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible_client | no       |
+   | 204 | srv_1 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+-----------------------------------------+-----+----------------+----------+
-   | 205 | srv_2 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible_client | no       |
+   | 205 | srv_2 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+-----------------------------------------+-----+----------------+----------+
-   | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible_client | no       |
+   | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | DHCP (running -- address requires root) | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+-----------------------------------------+-----+----------------+----------+
 
 Run the command with ``sudo`` to display the IP addresses:
@@ -79,11 +81,11 @@ Run the command with ``sudo`` to display the IP addresses:
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
    | JID | NAME  | BOOT | STATE | TYPE |     RELEASE     |        IP4         | IP6 |    TEMPLATE    | BASEJAIL |
    +=====+=======+======+=======+======+=================+====================+=====+================+==========+
-   | 204 | srv_1 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.183 | -   | ansible_client | no       |
+   | 204 | srv_1 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.183 | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 205 | srv_2 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.204 | -   | ansible_client | no       |
+   | 205 | srv_2 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.204 | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
-   | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible_client | no       |
+   | 206 | srv_3 | off  | up    | jail | 14.2-RELEASE-p3 | epair0b|10.1.0.169 | -   | ansible-client | no       |
    +-----+-------+------+-------+------+-----------------+--------------------+-----+----------------+----------+
 
 Update the inventory configuration file ``hosts/02_iocage.yml`` to

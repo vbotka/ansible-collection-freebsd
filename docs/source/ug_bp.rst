@@ -26,6 +26,7 @@ Best Practice
 
    ug_bp_installation
    ug_bp_workflow
-   ug_bp_usecases
    ug_bp_iocage
+   ug_bp_connection
+   ug_bp_usecases
    ug_bp_references

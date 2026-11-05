@@ -15,7 +15,10 @@ dictionary ``plugins`` tracks tested plugins:
 
 .. code-block:: yaml
 
+   plugins_no: 4
    plugins:
+     connection:
+       jailexec: https://raw.githubusercontent.com/chofstede/ansible_jailexec
      inventory:
        iocage: preinstalled in distfiles
      modules:
@@ -27,20 +30,22 @@ located in ``setup/vars/plugins_install.yml``, then run the playbook:
 
 .. code-block:: console
 
-   shell> cd setup
-   shell> ansible-playbook setup.yml -t plugins
+   (env) > cd setup
+   (env) > ansible-playbook setup.yml -t plugins
 
 Other plugins
 ^^^^^^^^^^^^^
 
-To install other plugins into this collection, update the ``plugins``
-dictionary. In addition, update the following files:
+To install other plugins into this collection, update the ``plugins`` and
+``plugins_install`` dictionaries. In addition, update the following files:
 
 * ``setup/vars/branch.yml``
 * ``setup/vars/checksum.yml``
 * ``setup/vars/patch.yml`` and ``setup/files`` (if necessary)
 
-.. seealso:: :ref:`dg_update_iocage_module`
+.. seealso::
+
+   * :ref:`dg_update_iocage_module`
 
 .. warning::
 

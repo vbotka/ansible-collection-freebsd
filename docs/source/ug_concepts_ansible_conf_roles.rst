@@ -109,7 +109,7 @@ whitelisted, while everything else is ignored during extraction.
    plugins/
    plugins/filter/
    plugins/filter/ast_to_nginx.py
-   plugins/filter/dict_to_ast.py
+   plugins/filter/to_ast.py
    plugins/filter/from_ucl.py
    plugins/filter/to_ucl.py
    plugins/modules/

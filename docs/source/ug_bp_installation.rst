@@ -3,6 +3,9 @@
 Installation
 ------------
 
+.. index::
+   single: installation; Best practice - installation
+
 Install and configure ``iocage`` using the tasks from the ``iocage role`` to
 ensure a consistent host setup. Begin by installing the ``sysutils/iocage``
 package or port ::

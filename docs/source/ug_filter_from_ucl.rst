@@ -1,12 +1,13 @@
 .. _ug_filter_from_ucl:
 
-.. index:: single: filter vbotka.freebsd.from_ucl; Plugins
-.. index:: single: from_ucl; Plugins
+.. index::
+   single: filter vbotka.freebsd.from_ucl; Filter from_ucl
+   single: from_ucl; Filter from_ucl
 
 Filter vbotka.freebsd.from_ucl
 ------------------------------
 
-The ``from_ucl`` filter parses UCL string into a YAML dictionary.
+The ``from_ucl`` filter parses `UCL`_ string into a YAML dictionary.
 
 .. hint::
 
@@ -14,7 +15,7 @@ The ``from_ucl`` filter parses UCL string into a YAML dictionary.
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.from_ucl
+      (env) > ansible-doc -t filter vbotka.freebsd.from_ucl
 
 .. seealso::
 

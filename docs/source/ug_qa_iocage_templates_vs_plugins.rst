@@ -53,7 +53,7 @@ Templates allow full administrative ownership over the base image:
 
 * Custom OS hardening and baseline firewall/PF configurations
 * Preconfigured local package repository mirrors (e.g., Poudriere)
-* Predictable VNET configurations and network interface naming
+* Predictable `VNET`_ configurations and network interface naming
 * Customized system initialization services and rc.conf defaults
 
 Infrastructure-as-Code Integration

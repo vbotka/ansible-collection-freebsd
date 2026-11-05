@@ -1,7 +1,8 @@
 .. _ug_filter_ast_to_haproxy:
 
-.. index:: single: filter vbotka.freebsd.ast_to_haproxy; Plugins
-.. index:: single: ast_to_haproxy; Plugins
+.. index::
+   single: filter vbotka.freebsd.ast_to_haproxy; Filter ast_to_haproxy
+   single: ast_to_haproxy; Filter ast_to_haproxy
 
 Filter vbotka.freebsd.ast_to_haproxy
 ------------------------------------
@@ -13,11 +14,10 @@ Filter vbotka.freebsd.ast_to_haproxy
 Synopsis
 ^^^^^^^^
 
-The ``ast_to_haproxy`` filter translates an Abstract Syntax Tree (AST)
-structure into native `HAProxy`_ configuration syntax
-(``haproxy.cfg``). It is typically used in conjunction with
-``dict_to_ast`` to generate configuration files from high-level YAML
-representations without relying on complex Jinja2 templates.
+The ``ast_to_haproxy`` filter translates an `AST`_ (Abstract Syntax Tree) structure
+into native `HAProxy`_ configuration syntax (``haproxy.cfg``). It is typically
+used in conjunction with ``to_ast`` to generate configuration files from
+high-level YAML representations without relying on complex Jinja2 templates.
 
 
 Parameters
@@ -34,7 +34,7 @@ Parameters
    * - **_input**
      - sequence / mapping
      -
-     - AST structure emitted by ``dict_to_ast`` or custom AST builders.
+     - AST structure emitted by ``to_ast`` or custom AST builders.
    * - **indent**
      - integer
      - ``4``
@@ -46,42 +46,40 @@ Parameters
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.ast_to_haproxy
+      (env) > ansible-doc -t filter vbotka.freebsd.ast_to_haproxy
 
 Grammar & Transformations
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The filter applies several domain-specific normalizations to
-accommodate structured data trees:
+The filter applies several domain-specific normalizations to accommodate
+structured data trees:
 
 Section Containers
 
-   Plural section dictionaries (``frontends``, ``backends``,
-   ``listens``) are unwrapped into individual, singular top-level
-   sections (``frontend <name>``, ``backend <name>``, ``listen
-   <name>``).
+   Plural section dictionaries (``frontends``, ``backends``, ``listens``) are
+   unwrapped into individual, singular top-level sections (``frontend <name>``,
+   ``backend <name>``, ``listen <name>``).
 
 Directives & Sub-groups
 
-   * **Options & Timeouts:** Directives nested under ``options`` or
-     ``timeouts`` maps are flattened to individual ``option <name>``
-     and ``timeout <name> <val>`` lines.
+   * **Options & Timeouts:** Directives nested under ``options`` or ``timeouts``
+     maps are flattened to individual ``option <name>`` and ``timeout <name>
+     <val>`` lines.
 
-   * **ACLs:** Rules nested under ``acls`` are converted to ``acl
-     <name> <criterion> <values...>``.
+   * **ACLs:** Rules nested under ``acls`` are converted to ``acl <name>
+     <criterion> <values...>``.
 
-   * **Servers:** Server records are inlined to standard ``server
-     <name> <address> [check] [options]`` lines.
+   * **Servers:** Server records are inlined to standard ``server <name>
+     <address> [check] [options]`` lines.
 
    * **Routing:** ``use_backends`` lists are rendered into single-line
      ``use_backend <backend> <condition>`` directives.
 
 Boolean Normalization
 
-   Boolean parameters (``True``) are rendered as bare flags (e.g.,
-   ``daemon``, ``httplog``, ``check``). Directives mapped to ``False``
-   or ``None`` are excluded from the output.
-
+   Boolean parameters (``True``) are rendered as bare flags (e.g., ``daemon``,
+   ``httplog``, ``check``). Directives mapped to ``False`` or ``None`` are
+   excluded from the output.
 
 Examples
 ^^^^^^^^
@@ -142,7 +140,7 @@ Ansible Task Pipeline
         dest: /usr/local/etc/haproxy.conf
         content: |
           {{ haproxy_config_data
-             | vbotka.freebsd.dict_to_ast
+             | vbotka.freebsd.to_ast
              | vbotka.freebsd.ast_to_haproxy }}
         mode: '0644'
         validate: haproxy -c -f %s

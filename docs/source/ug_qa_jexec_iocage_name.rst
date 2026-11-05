@@ -9,7 +9,7 @@
 Why jexec doesn't work with iocage names?
 -----------------------------------------
 
-The FreeBSD base command ``jexec`` expects either the numeric JID (Jail ID) or
+The FreeBSD base command `jexec`_ expects either the numeric Jail ID (JID) or
 the kernel-level jail name registered in the OS jail subsystem. ``iocage``
 assigns a prefixed internal name (such as ``ioc-pkg-repo``) or a UUID to the
 FreeBSD kernel's jail subsystem, while mapping your friendly label
@@ -49,7 +49,7 @@ Inspect what the FreeBSD kernel actually names your jails:
         ioc-repos                     ACTIVE
         5
 
-Both the JID and the kernel jail name work with ``jexec``:
+Both the JID and the kernel jail name work with `jexec`_:
 
 .. code-block:: console
 

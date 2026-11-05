@@ -7,13 +7,19 @@ Playbooks
    :maxdepth: 1
 
    playbooks/pb-iocage-ansible-clients.rst
-   playbooks/pb-iocage-plugins.rst
-   playbooks/pb-iocage-project-create-from-plugins.rst
    playbooks/pb-iocage-project-create-from-templates.rst
    playbooks/pb-iocage-project-create.rst
    playbooks/pb-iocage-project-destroy.rst
    playbooks/pb-iocage-template.rst
    playbooks/pb-iocage-update-repos.rst
+
+Playbooks comparison
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   playbooks/pb-comparison-clients-vs-project.rst
 
 Other iocage playbooks
 ----------------------
@@ -31,6 +37,15 @@ Other playbooks
 * pb_preamble.yml
 * pb_synchronize_csv.yml
 
+(Obsolete playbooks)
+^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   playbooks/pb-iocage-plugins.rst
+   playbooks/pb-iocage-project-create-from-plugins.rst
+
 .. seealso::
 
-   `Playbook Index <genindex.html#P>`_
+   `Playbook Index <genindex.html#P>`__

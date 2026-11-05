@@ -1,11 +1,12 @@
 .. _ug_filter_iocage:
 
-.. index:: single: filter vbotka.freebsd.iocage; Plugins
+.. index:: single: filter vbotka.freebsd.iocage; Filter iocage
 
 Filter vbotka.freebsd.iocage
 ----------------------------
 
-The ``iocage`` filter parses `iocage`_ lists.
+The ``iocage`` filter parses `iocage datasets`_ (jails, plugins, releases, and
+templates).
 
 .. hint::
 
@@ -13,7 +14,7 @@ The ``iocage`` filter parses `iocage`_ lists.
 
    .. code:: console
 
-      shell> ansible-doc -t filter vbotka.freebsd.iocage
+      (env) > ansible-doc -t filter vbotka.freebsd.iocage
 
 .. note::
 

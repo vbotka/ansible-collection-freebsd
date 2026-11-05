@@ -1,20 +1,22 @@
 .. _ug_lookup_galaxy_info:
-.. index:: single: lookup vbotka.freebsd.galaxy_info; Plugins
-.. index:: single: vbotka.freebsd.galaxy_info; Plugins
-.. index:: single: galaxy_info; Plugins
+
+.. index::
+   single: lookup vbotka.freebsd.galaxy_info; Lookup galaxy_info
+   single: vbotka.freebsd.galaxy_info; Lookup galaxy_info
+   single: galaxy_info; Lookup galaxy_info
 
 Lookup vbotka.freebsd.galaxy_info
 ---------------------------------
 
-The ``galaxy_info`` lookup plugin gets the meta data from galaxy.yml
+The ``galaxy_info`` lookup plugin retrieves metadata from ``galaxy.yml``.
 
 .. hint::
 
    View the documentation from the command line:
 
-   .. code:: console
+   .. code-block:: console
 
-      shell> ansible-doc -t lookup vbotka.freebsd.galaxy_info
+      (env) > ansible-doc -t lookup vbotka.freebsd.galaxy_info
 
 .. seealso::
 

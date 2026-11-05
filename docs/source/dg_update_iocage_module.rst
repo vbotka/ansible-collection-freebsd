@@ -9,7 +9,7 @@ Update iocage module
 
 * Make changes to the ``current`` branch or create a new branch.
 
-* Update the code and commit your changes. (Pull requests are welcome!)
+* Update the code and commit your changes. (Pull requests are welcome.)
 
 * Calculate the ``iocage.py`` hash. For example::
 

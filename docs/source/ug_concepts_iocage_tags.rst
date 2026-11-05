@@ -3,9 +3,10 @@
 iocage tags
 -----------
 
-.. index:: single: variable iocage_tags; iocage tags
-.. index:: single: iocage_tags; iocage tags
-.. index:: single: tag; iocage tags
+.. index::
+   single: variable iocage_tags; iocage tags
+   single: iocage_tags; iocage tags
+   single: tag; iocage tags
 
 .. contents::
    :local:
@@ -100,20 +101,20 @@ it populates the ``notes`` property:
 
 .. hint::
 
-   Search for ``swarms`` in the `Index <genindex.html#S>`_ to find related
+   Search for ``swarms`` in the `Index <genindex.html#S>`__ to find related
    examples.
 
 Dictionary iocage_tags
 ^^^^^^^^^^^^^^^^^^^^^^
 
 In the :ref:`inventory iocage <ug_inventory_iocage>`, enable the option
-``get_properties`` and compose the dictionary ``iocage_tags``:
+``get_properties`` and `compose`_ the dictionary ``iocage_tags``:
 
 .. code-block:: yaml
 
    get_properties: true
    compose:
-     iocage_tags: dict(iocage_properties.notes | regex_findall('(\w+)=([\w\-]+)'))
+     iocage_tags: dict(iocage_properties.notes | regex_findall('(\\w+)=([\\w\\-,]+)'))
 
 The inventory plugin populates the ``iocage_tags`` variable for each host. For
 example:
@@ -135,7 +136,6 @@ Then, for example, it is used to construct inventory groups:
        key: iocage_tags.vmm
 
 .. code-block:: console
-   :emphasize-lines: 1
 
    (env) > ansible-inventory -i hosts --graph
    @all:
@@ -151,5 +151,5 @@ Then, for example, it is used to construct inventory groups:
 
 .. hint::
 
-   Search for ``iocage_tags`` in the :ref:`genindex` to find related
-   examples.
+   Search for ``iocage_tags`` in the `Index <genindex.html#I>`__ to find
+   related examples.

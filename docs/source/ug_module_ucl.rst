@@ -1,13 +1,15 @@
 .. _ug_module_ucl:
-.. index:: single: module vbotka.freebsd.ucl; Plugins
-.. index:: single: vbotka.freebsd.ucl; Plugins
-.. index:: single: ucl; Plugins
+
+.. index::
+   single: module vbotka.freebsd.ucl; Module ucl
+   single: vbotka.freebsd.ucl; Module ucl
+   single: ucl; Module ucl
 
 Module vbotka.freebsd.ucl
 -------------------------
 
-The ``ucl`` module is CRUD(Create, Read, Update and Delete) interface
-to managing UCL(Universal Configuration Language) files.
+The ``ucl`` module is CRUD (Create, Read, Update and Delete) interface
+to managing `UCL`_ (Universal Configuration Language) files.
 
 .. hint::
 
@@ -15,7 +17,7 @@ to managing UCL(Universal Configuration Language) files.
 
    .. code:: console
 
-      shell> ansible-doc -t module vbotka.freebsd.ucl
+      (env) > ansible-doc -t module vbotka.freebsd.ucl
 
 .. note::
 

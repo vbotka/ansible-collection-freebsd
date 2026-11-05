@@ -4,19 +4,20 @@
 Installation
 ************
 
-Install the collection from Ansible Galaxy
+Install the collection from Ansible Galaxy:
 
 .. code-block:: console
-   :emphasize-lines: 1
 
-   shell> ansible-galaxy collection install vbotka.freebsd
+   (env) > ansible-galaxy collection install vbotka.freebsd
 
-Upgrade the collection if already installed. For example,
+Upgrade the collection if already installed. For example:
 
 .. code-block:: console
-   :emphasize-lines: 1
 
-   shell> ansible-galaxy collection install --upgrade vbotka.freebsd
+   (env) > ansible-galaxy collection install --upgrade vbotka.freebsd
+
+.. code-block:: console
+
    Starting galaxy collection install process
    Process install dependency map
    Starting collection install process

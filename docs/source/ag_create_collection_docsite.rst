@@ -5,13 +5,13 @@ Create collection docsite
 
 See `Creating a collection docsite <https://ansible.readthedocs.io/projects/antsibull-docs/collection-docs/>`_.
 
-For example, given the collection is installed in the directory ::
+For example, assuming the collection is installed in the directory::
 
   ~/.ansible/collections/ansible_collections/vbotka/freebsd/
 
-Create the collection docsite in this directory
+Create the collection docsite in this directory:
 
-.. code:: console
+.. code-block:: console
 
    (env) > cd ~/.ansible/collections/ansible_collections/vbotka/freebsd/
    (env) > python3 -m pip install ansible-core antsibull-docs
@@ -24,17 +24,16 @@ Create the collection docsite in this directory
    (env) > python3 -m pip install -r requirements.txt
    (env) > ./build.sh
 
-Upon successful build, you'll see the message ::
+Upon a successful build, you will see the message::
 
   The HTML pages are in build/html.
   ~/.ansible/collections/ansible_collections/vbotka/freebsd/dest
 
-
-Open the local doc page in a browser ::
+Open the local documentation page in a browser::
 
   ~/.ansible/collections/ansible_collections/vbotka/freebsd/dest/build/html/index.html
 
 .. seealso::
 
-   * `Documenting collections <https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_documenting.html#documenting-collections>`_.
-   * `docs directory <https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_structure.html#docs-directory>`_.
+   * `Documenting collections <https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_documenting.html#documenting-collections>`_
+   * `docs directory <https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_structure.html#docs-directory>`_

@@ -3,13 +3,16 @@
 References
 ----------
 
+.. index::
+   single: references; Best practice
+
 FreeBSD
 ^^^^^^^
 
 * `Jails and Containers`_
 * `Jails FreeBSD Wiki`_
 * `man jail`_
-* `iocage - A FreeBSD Jail Manager`_
+* `iocage - FreeBSD Jail Manager`_
 * `How to Implement VLANs on FreeBSD`_
 
 Other

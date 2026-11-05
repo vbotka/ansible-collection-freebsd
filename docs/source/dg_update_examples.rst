@@ -10,7 +10,7 @@ Update examples
 Configure examples
 ******************
 
-See ``docs/source/examples/.configure.yml``
+See ``docs/source/examples/.configure.yml``.
 
 host_key_checking
 *****************
@@ -35,45 +35,28 @@ Contribute examples
 
 To adapt the examples to your environment, update:
 
-* ``ansible_host`` in ``iocage.ini`` files
-* ``host`` in ``hosts/*.yml`` files
-* IPs in ``docs/source/examples/defaults/batch``
-* Files in ``files/*``
+* ``iocage.ini`` files
+* ``hosts`` or ``hosts/*.yml`` files
+* ``files/*``
 
 Update files
 ************
 
+List ``files`` in ``docs/source/examples/``:
+
 .. code-block:: console
 
    (env) > find . -type d -name files | xargs ls -1
+
+.. code-block:: console
+
    ./source/examples/200/files:
    pk_admins.txt
    pk_admins.txt.orig
    pk_admins.txt.san
    pkgs.json
 
-   ./source/examples/202/files:
-   pk_admins.txt
-   pk_admins.txt.orig
-   pk_admins.txt.san
-   pkgs.json
-
-   ./source/examples/208/files:
-   pk_admins.txt
-   pk_admins.txt.orig
-   pk_admins.txt.san
-   pkgs.json
-
-   ./source/examples/209/files:
-   pk_admins.txt
-   pk_admins.txt.orig
-   pk_admins.txt.san
-   pkgs.json
-
-   ./source/examples/310/files:
-   pk_admins.txt
-   pk_admins.txt.orig
-   pk_admins.txt.san
+   ...
 
    ./source/examples/321/files:
    build.example.com-sk.crt
@@ -99,7 +82,6 @@ environment variables are used:
 * ``VBOTKA_FREEBSD_DESTROY_JAILS``
 * ``VBOTKA_FREEBSD_DESTROY_TEMPLATES``
 * ``VBOTKA_FREEBSD_RUN_BATCH``
-
 
 Update examples
 ***************
