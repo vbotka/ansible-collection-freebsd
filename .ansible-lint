@@ -5,6 +5,7 @@ use_default_rules: true
 skip_list:
   - var-naming[no-role-prefix]
   - schema[meta]
+  - event-query[device-type]
 exclude_paths:
   - dest
   - docs
@@ -17,6 +18,17 @@ exclude_paths:
 #
 # * schema[meta]: $.galaxy_info.platforms[0].versions[0] 12.4 is not one
 #   of ['6.1', '7.1', '7.2', 'all'].
+#
+# * event-query[device-type]: Module 'vbotka.freebsd.iocage' uses
+#   device_type '"jail"' which must be a quoted literal from the
+#   normalized taxonomy. Valid types include: virtual_machine, bare_metal,
+#   container, switch, router, firewall, cloud_instance, esxi_host,
+#   vcenter_appliance, cluster, resource, endpoint. See event_query.md for
+#   the full list.  extensions/audit/event_query.yml:1
+#   See:
+#   https://forum.ansible.com/t/the-future-of-ansible-resource-management-help-shape-our-new-standardized-taxonomy/45595/8?u=vbotka
+#   https://docs.ansible.com/projects/ansible/latest/dev_guide/developing_collections_resource_reporting.html
+#
 #
 # Notes on ignore_list:
 #
