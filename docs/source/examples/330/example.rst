@@ -17,6 +17,7 @@
    single: pb-iocage-fetch-base-clone.yml; Example 330
    single: pb-iocage-list.yml; Example 330
    single: module ansible.builtin.add_host; Example 330
+   single: add_host; Example 330
    single: ansible.builtin.add_host; Example 330
 
 Use case
@@ -27,7 +28,7 @@ jails. Create and display the inventory.
 
 * To manage jails, use the tasks ``runner`` from the `role vbotka.freebsd.iocage`_.
 * To parse `iocage datasets`_, use Jinja2.
-* To create inventory, use the module ``ansible.builtin.add_host``.
+* To create inventory, use the module `ansible.builtin.add_host`_.
 
 Tree
 ^^^^

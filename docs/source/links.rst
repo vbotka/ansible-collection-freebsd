@@ -21,7 +21,6 @@
 .. _Automatic Package Installation: https://freebsd.github.io/iocage/advanced-use.html?highlight=pkglist#automatic-package-installation
 .. _BSD-2-Clause: https://spdx.org/licenses/BSD-2-Clause.html
 .. _Best microSD Cards for Raspberry Pi 2025: https://www.tomshardware.com/best-picks/raspberry-pi-microsd-cards
-.. _Binary iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _Building ARM Packages with Poudriere: https://forums.freebsd.org/threads/building-arm-packages-with-poudriere-the-simple-way.52994
 .. _Building Packages Through Emulation: https://wiki.freebsd.org/Ports/BuildingPackagesThroughEmulation
 .. _Building Packages with Poudriere: https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere
@@ -156,6 +155,7 @@
 .. _ansible-playbook: https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 .. _ansible-pull: https://docs.ansible.com/projects/ansible/latest/cli/ansible-pull.html
 .. _ansible-runner-role.readthedocs.io: https://ansible-runner-role.readthedocs.io/en/latest/
+.. _ansible.builtin.add_host: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/add_host_module.html
 .. _ansible.builtin.command: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/command_module.html
 .. _ansible.builtin.constructed: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/constructed_inventory.html
 .. _ansible.builtin.getent: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/getent_module.html
@@ -175,6 +175,7 @@
 .. _base-path: https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath
 .. _binary iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _binary service: https://man.freebsd.org/cgi/man.cgi?service(8)
+.. _blacklistd(8): https://man.freebsd.org/cgi/man.cgi?blacklistd(8)
 .. _blacklistd: https://man.freebsd.org/cgi/man.cgi?blacklistd(8)
 .. _cached: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-cached
 .. _certificate docs: https://ansible-certificate.readthedocs.io/en/latest/
@@ -255,10 +256,12 @@
 .. _iocage properties: https://freebsd.github.io/iocage/basic-use.html#configure-a-jail
 .. _iocage template: https://freebsd.github.io/iocage/templates.html
 .. _iocage templates: https://freebsd.github.io/iocage/templates.html
+.. _iocage(8): https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
 .. _iocage_template: https://github.com/vbotka/ansible-freebsd-iocage-template/
 .. _jail parameter: https://docs.ansible.com/ansible/latest/collections/community/general/pkgng_module.html#parameter-jail
 .. _jail property: https://freebsd.github.io/iocage/basic-use.html?highlight=properties#set-jail-property
+.. _jexec(8): https://man.freebsd.org/cgi/man.cgi?query=jexec&sektion=8
 .. _jexec: https://man.freebsd.org/cgi/man.cgi?query=jexec&sektion=8
 .. _lagg: https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-aggregation
 .. _lighttpd: https://www.lighttpd.net/
@@ -270,6 +273,7 @@
 .. _man if_bridge: https://man.freebsd.org/cgi/man.cgi?query=if_bridge
 .. _man ifconfig: https://man.freebsd.org/cgi/man.cgi?query=ifconfig
 .. _man iocage: https://man.freebsd.org/cgi/man.cgi?query=iocage&sektion=8
+.. _jail(8): https://man.freebsd.org/cgi/man.cgi?query=jail&sektion=8
 .. _man jail: https://man.freebsd.org/cgi/man.cgi?query=jail&sektion=8
 .. _man jexec: https://man.freebsd.org/cgi/man.cgi?query=jexec&sektion=8
 .. _man pkg.conf: https://man.freebsd.org/cgi/man.cgi?pkg.conf(5)
@@ -289,6 +293,7 @@
 .. _package ucl: https://pypi.org/project/ucl/
 .. _pf and bridge: https://forums.freebsd.org/threads/pf-and-bridge-4.77952/
 .. _pf: https://freebsdfoundation.org/resource/an-introduction-to-packet-filter-pf/
+.. _pkg(8): https://man.freebsd.org/cgi/man.cgi?pkg(8)
 .. _pkg-origin: https://man.freebsd.org/cgi/man.cgi?query=pkg-install
 .. _postinstall default variables: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/guide-variables.html
 .. _postinstall: https://ansible-freebsd-postinstall.readthedocs.io/en/latest/
@@ -319,6 +324,7 @@
 .. _role vbotka.freebsd.rsnapshot: https://github.com/vbotka/ansible-rsnapshot/
 .. _role vbotka.freebsd.zfs: https://github.com/vbotka/ansible-freebsd-zfs/
 .. _rsnapshot: https://rsnapshot.org/
+.. _service(8): https://man.freebsd.org/cgi/man.cgi?service(8)
 .. _share your feedback and report issues: https://github.com/vbotka/ansible-collection-freebsd/issues
 .. _sshguard: https://www.sshguard.net/
 .. _syslog-ng - FreeBSD Wiki: https://wiki.freebsd.org/Ports/sysutils/syslog-ng

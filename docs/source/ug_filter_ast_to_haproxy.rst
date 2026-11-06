@@ -14,10 +14,9 @@ Filter vbotka.freebsd.ast_to_haproxy
 Synopsis
 ^^^^^^^^
 
-The ``ast_to_haproxy`` filter translates an `AST`_ (Abstract Syntax Tree) structure
-into native `HAProxy`_ configuration syntax (``haproxy.cfg``). It is typically
-used in conjunction with ``to_ast`` to generate configuration files from
-high-level YAML representations without relying on complex Jinja2 templates.
+The ``ast_to_haproxy`` filter translates an `AST`_ (Abstract Syntax Tree)
+structure into `HAProxy`_ configuration (``haproxy.cfg``). It is typically used
+in conjunction with ``to_ast`` to generate configuration files from YAML.
 
 
 Parameters

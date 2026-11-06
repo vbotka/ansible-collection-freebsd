@@ -7,7 +7,7 @@
 Module vbotka.freebsd.service
 -----------------------------
 
-The ``service`` module is wrapper to the `binary service`_.
+The ``service`` module is wrapper to `service(8)`_.
 
 .. hint::
 

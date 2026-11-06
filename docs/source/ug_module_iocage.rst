@@ -5,7 +5,7 @@
 Module vbotka.freebsd.iocage
 ----------------------------
 
-The ``iocage`` module is wrapper to the `binary iocage`_.
+The ``iocage`` module is wrapper to `iocage(8)`_.
 
 .. hint::
 

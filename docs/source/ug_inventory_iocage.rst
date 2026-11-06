@@ -5,7 +5,7 @@
 Inventory vbotka.freebsd.iocage
 -------------------------------
 
-This ``iocage`` inventory plugin gets the inventory from the `iocage`_ jail
+This ``iocage`` inventory plugin gets the inventory from the `iocage(8)`_ jail
 manager.
 
 .. toctree::

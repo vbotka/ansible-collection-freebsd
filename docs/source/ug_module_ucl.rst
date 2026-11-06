@@ -8,8 +8,8 @@
 Module vbotka.freebsd.ucl
 -------------------------
 
-The ``ucl`` module is CRUD (Create, Read, Update and Delete) interface
-to managing `UCL`_ (Universal Configuration Language) files.
+The ``ucl`` module is wrapper to `uclcmd`_ a CRUD (Create, Read, Update and
+Delete) interface to managing `UCL`_ (Universal Configuration Language) files.
 
 .. hint::
 

@@ -23,5 +23,5 @@ Runs capability database queries on BSD systems against files like
 
 .. seealso::
 
-   * `getcap(3)`_
+   * man `getcap(3)`_
    * Ansible Galaxy `Module vbotka.freebsd.cgetent`_
