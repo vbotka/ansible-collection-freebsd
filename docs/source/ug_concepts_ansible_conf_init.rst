@@ -30,7 +30,6 @@ Playbook pb-init.yml workflow
 .. figure:: figures/pb-init.svg
    :alt: Playbook pb-init.yml Workflow
    :align: center
-   :width: 80%
 
 |
 

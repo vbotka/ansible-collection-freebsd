@@ -29,7 +29,6 @@ Playbook pb-roles.yml workflow
 .. figure:: figures/pb-roles.svg
    :alt: Playbook pb-roles.yml Workflow
    :align: center
-   :width: 80%
 
 |
 
