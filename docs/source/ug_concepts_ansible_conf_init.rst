@@ -29,7 +29,6 @@ Playbook pb-init.yml workflow
 
 .. figure:: figures/pb-init.svg
    :alt: Playbook pb-init.yml Workflow
-   :scale: 120
    :align: center
    :width: 80%
 
