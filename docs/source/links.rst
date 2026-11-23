@@ -190,6 +190,7 @@
 .. _community.general.zpool: https://docs.ansible.com/ansible/devel/collections/community/general/zpool_module.html
 .. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
 .. _compose: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-compose
+.. _composed: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/constructed_inventory.html#parameter-compose
 .. _config_light docs: https://ansible-config-light.readthedocs.io/en/latest/
 .. _connection plugins: https://docs.ansible.com/projects/ansible/latest/plugins/connection.html
 .. _constructed fragment: https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/doc_fragments/constructed.py

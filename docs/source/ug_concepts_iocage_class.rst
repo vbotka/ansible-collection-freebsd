@@ -16,9 +16,9 @@ iocage classes
 List iocage_classes
 ^^^^^^^^^^^^^^^^^^^
 
-The variable ``iocage_classes`` is a list of jail classes ``composed``
-by an inventory plugin from the iocage ``class`` tag. For example,
-given the following project definition:
+The variable ``iocage_classes`` is a list of jail classes `composed`_ by an
+inventory plugin from the iocage ``class`` tag. For example, given the following
+project definition:
 
 .. code-block:: yaml+jinja
 
@@ -26,7 +26,7 @@ given the following project definition:
      log-server-01:
        notes: alias=log_server_01
        vmm: iocage_06
-       class: [log-server]
+       class: [log-server, http]
        ...
 
 a task sets the jail properties and creates the ``notes`` field:
@@ -54,13 +54,12 @@ a task sets the jail properties and creates the ``notes`` field:
        {{ item }}
      loop: "{{ vmm[inventory_hostname].keys() }}"
 
-The ``class`` property inside ``notes`` is stored as a comma-separated
-string:
+The ``class`` property inside ``notes`` is stored as a comma-separated string:
 
 .. code-block:: console
 
    # iocage get notes log-server-01
-   vmm=iocage_06 class=log-server alias=log_server_01
+   vmm=iocage_06 class=log-server,http alias=log_server_01
 
 
 Inventory groups
@@ -85,7 +84,7 @@ group):
 Custom facts
 ^^^^^^^^^^^^
 
-The list of classes can also be stored in local custom facts:
+The list of classes can also be stored in local `custom facts`_:
 
 .. code-block:: console
 
@@ -94,7 +93,8 @@ The list of classes can also be stored in local custom facts:
    cat << EOF
    {
        "class": [
-           "log-server"
+           "log-server",
+           "http"
        ]
    }
    EOF
