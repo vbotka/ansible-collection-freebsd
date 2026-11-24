@@ -6,6 +6,7 @@ Developer's Guide
 .. toctree::
    :maxdepth: 1
 
+   dg_clone_git
    dg_update_examples
    dg_update_iocage_module
 

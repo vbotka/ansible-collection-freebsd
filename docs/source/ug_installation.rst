@@ -38,6 +38,11 @@ and install the collection manually. For example:
 
    See :ref:`ag_setup` on how to install additional plugins and roles.
 
+
+.. note::
+
+   To install the latest version :ref:`dg_clone_git`.
+
 .. seealso::
 
    `Installing collections`_.
